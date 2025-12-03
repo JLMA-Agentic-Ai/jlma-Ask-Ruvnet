@@ -514,7 +514,7 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
                       <div className="pdf-viewer">
                         <h2>{canvasContent.title}</h2>
                         <iframe
-                          src={canvasContent.content}
+                          src={`${canvasContent.content}#view=Fit`}
                           title={canvasContent.title}
                           style={{ width: '100%', height: 'calc(100vh - 150px)', border: 'none' }}
                         />
