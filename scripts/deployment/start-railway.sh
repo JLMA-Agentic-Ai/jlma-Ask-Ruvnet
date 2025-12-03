@@ -27,4 +27,4 @@ fi
 
 # Start the server
 echo "🔌 Starting Node.js server..."
-exec npm start
+exec node src/server/app.js
