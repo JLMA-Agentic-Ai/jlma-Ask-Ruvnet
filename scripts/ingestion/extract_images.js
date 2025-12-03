@@ -27,12 +27,31 @@ async function extract() {
     const images = await findImages(SOURCE_DIR);
     console.log(`📸 Found ${images.length} images.`);
 
-    // Clear output file
-    fs.writeFileSync(OUTPUT_FILE, '');
+    // Load existing processed images
+    let processedImages = new Set();
+    if (fs.existsSync(OUTPUT_FILE)) {
+        const content = fs.readFileSync(OUTPUT_FILE, 'utf8');
+        content.split('\n').forEach(line => {
+            if (line.trim()) {
+                try {
+                    const entry = JSON.parse(line);
+                    processedImages.add(entry.metadata.source);
+                } catch (e) { }
+            }
+        });
+    }
+    console.log(`🔄 Resuming... Already processed ${processedImages.size} images.`);
 
     for (let i = 0; i < images.length; i++) {
         const imgPath = images[i];
         const filename = path.basename(imgPath);
+        const stat = fs.statSync(imgPath);
+
+        if (processedImages.has(filename)) {
+            console.log(`Skipping ${i + 1}/${images.length}: ${filename} (Already processed)`);
+            continue;
+        }
+
         console.log(`Processing ${i + 1}/${images.length}: ${filename}...`);
 
         try {
@@ -46,7 +65,8 @@ async function extract() {
                     metadata: {
                         source: filename,
                         type: 'image_ocr',
-                        path: imgPath
+                        path: imgPath,
+                        timestamp: stat.mtime.toISOString()
                     }
                 };
                 fs.appendFileSync(OUTPUT_FILE, JSON.stringify(entry) + '\n');

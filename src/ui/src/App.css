@@ -1913,3 +1913,28 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
+/* BRUTE FORCE OVERRIDES FOR PRESENTATION MODE */
+.main-layout.presentation .canvas-content {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.main-layout.presentation .pdf-viewer,
+.main-layout.presentation .video-viewer {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.main-layout.presentation iframe,
+.main-layout.presentation video {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+}

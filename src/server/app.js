@@ -111,14 +111,30 @@ app.post('/api/chat', async (req, res) => {
                 });
                 console.log(`Retrieved ${results.length} results from ReasoningBank`);
 
-                sources = results.map(r => ({
-                    id: r.metadata?.docId || r.id,
-                    content: (r.input || r.task || "").substring(0, 2000), // Truncate content
-                    score: r.similarity || 0,
-                    source: r.metadata?.source
-                }));
+                sources = results.map(r => {
+                    const timestamp = r.metadata?.timestamp ? new Date(r.metadata.timestamp).getTime() : 0;
+                    const now = Date.now();
+                    const daysOld = (now - timestamp) / (1000 * 60 * 60 * 24);
 
-                context = sources.map(s => `[Source: ${s.source || s.id}]\n${s.content}`).join('\n\n');
+                    // Recency Boost: Boost score by up to 20% for very recent items (decaying over 30 days)
+                    let recencyBoost = 0;
+                    if (timestamp > 0) {
+                        recencyBoost = Math.max(0, 0.2 * (1 - daysOld / 30));
+                    }
+
+                    return {
+                        id: r.metadata?.docId || r.id,
+                        content: (r.input || r.task || "").substring(0, 2000),
+                        score: (r.similarity || 0) + recencyBoost, // Apply boost
+                        source: r.metadata?.source,
+                        timestamp: r.metadata?.timestamp
+                    };
+                });
+
+                // Re-sort by boosted score
+                sources.sort((a, b) => b.score - a.score);
+
+                context = sources.map(s => `[Source: ${s.source || s.id} | Score: ${s.score.toFixed(2)}]\n${s.content}`).join('\n\n');
             } catch (err) {
                 console.error('Error retrieving from ReasoningBank:', err);
                 // Continue without context
