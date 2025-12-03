@@ -5,6 +5,7 @@ const BASE_FILE = path.resolve(__dirname, 'processed_knowledge.json');
 const IMAGE_FILE = path.resolve(__dirname, 'image_knowledge.json');
 const REPO_FILE = path.resolve(__dirname, 'repo_knowledge.json');
 const VIDEO_FILE = path.resolve(__dirname, 'video_knowledge.json');
+const VIDEO_TRANSCRIPT_FILE = path.resolve(__dirname, 'video_transcripts.json');
 
 function merge() {
     console.log('🔄 Merging knowledge files...');
@@ -33,10 +34,17 @@ function merge() {
         videoData = content.split('\n').filter(l => l.trim());
     }
 
+    let videoTranscriptData = [];
+    if (fs.existsSync(VIDEO_TRANSCRIPT_FILE)) {
+        const content = fs.readFileSync(VIDEO_TRANSCRIPT_FILE, 'utf8');
+        videoTranscriptData = content.split('\n').filter(l => l.trim());
+    }
+
     console.log(`   Base entries: ${baseData.length}`);
     console.log(`   Image entries: ${imageData.length}`);
     console.log(`   Repo entries: ${repoData.length}`);
-    console.log(`   Video entries: ${videoData.length}`);
+    console.log(`   Video metadata: ${videoData.length}`);
+    console.log(`   Video transcripts: ${videoTranscriptData.length}`);
 
     // Append image data to base file
     // We append directly to the file to avoid memory issues if it's huge, 
@@ -63,6 +71,13 @@ function merge() {
     }
 
     for (const line of videoData) {
+        if (!baseContent.includes(line)) {
+            stream.write(line + '\n');
+            newEntries++;
+        }
+    }
+
+    for (const line of videoTranscriptData) {
         if (!baseContent.includes(line)) {
             stream.write(line + '\n');
             newEntries++;
