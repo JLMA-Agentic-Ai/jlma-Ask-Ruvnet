@@ -75,7 +75,10 @@ function merge() {
     // but here we just read/write for simplicity as it's NDJSON.
 
     // Check if images are already in base (simple check)
-    const baseContent = fs.readFileSync(BASE_FILE, 'utf8');
+    let baseContent = '';
+    if (fs.existsSync(BASE_FILE)) {
+        baseContent = fs.readFileSync(BASE_FILE, 'utf8');
+    }
     let newEntries = 0;
 
     const stream = fs.createWriteStream(BASE_FILE, { flags: 'a' });
