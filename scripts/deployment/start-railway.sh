@@ -19,8 +19,8 @@ if [ ! -f "$DB_PATH" ]; then
   echo "🩹 Initiating SELF-HEALING protocol..."
   
   # Run ingestion to rebuild the brain
-  echo "🧠 Rebuilding knowledge base (skipped due to production bug)..."
-  # node $INGEST_SCRIPT
+  echo "🧠 Rebuilding knowledge base (this may take a few minutes)..."
+  node $INGEST_SCRIPT
   
   if [ $? -eq 0 ]; then
     echo "✅ Self-healing complete! Knowledge base restored."
