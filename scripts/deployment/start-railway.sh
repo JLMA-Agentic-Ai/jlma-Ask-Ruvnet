@@ -1,24 +1,30 @@
 #!/bin/bash
-# Railway startup script
-set -e
+# Self-Healing Startup Script for Railway
 
-echo "🚂 Starting Ask rUVnet on Railway..."
+DB_PATH="/app/.swarm/memory.db"
+INGEST_SCRIPT="scripts/ingestion/ingest_correct.js"
 
-# Extract database if compressed file exists and .swarm doesn't
-if [ -f "swarm-db.tar.gz" ] && [ ! -d ".swarm" ]; then
-    echo "📦 Extracting knowledge base (first deploy)..."
-    tar -xzf swarm-db.tar.gz
-    echo "✅ Knowledge base ready (114,450 episodes)"
-fi
+echo "🚀 Starting Ask-Ruvnet on Railway..."
+echo "📂 Checking for knowledge base at: $DB_PATH"
 
-# Verify database exists
-if [ -f ".swarm/memory.db" ]; then
-    DB_SIZE=$(ls -lh .swarm/memory.db | awk '{print $5}')
-    echo "✅ Database loaded: $DB_SIZE"
+# Check if database exists in the persistent volume
+if [ ! -f "$DB_PATH" ]; then
+  echo "🚨 CRITICAL: Database not found in persistent volume!"
+  echo "🩹 Initiating SELF-HEALING protocol..."
+  
+  # Run ingestion to rebuild the brain
+  echo "🧠 Rebuilding knowledge base (this may take a few minutes)..."
+  node $INGEST_SCRIPT
+  
+  if [ $? -eq 0 ]; then
+    echo "✅ Self-healing complete! Knowledge base restored."
+  else
+    echo "❌ Self-healing FAILED. Starting server anyway (might be lobotomized)."
+  fi
 else
-    echo "⚠️  Warning: Database not found, starting with empty knowledge base"
+  echo "✅ Knowledge base found. Size: $(du -h $DB_PATH | cut -f1)"
 fi
 
 # Start the server
-echo "🚀 Starting Node.js server..."
-cd src/server && node app.js
+echo "🔌 Starting Node.js server..."
+exec npm start
