@@ -7,6 +7,8 @@ const REPO_FILE = path.resolve(__dirname, 'repo_knowledge.json');
 const VIDEO_FILE = path.resolve(__dirname, 'video_knowledge.json');
 const VIDEO_TRANSCRIPT_FILE = path.resolve(__dirname, 'video_transcripts.json');
 const VIDEO_DETAILED_FILE = path.resolve(__dirname, 'video_transcripts_detailed.json');
+const GITHUB_COMMANDS_FILE = path.resolve(__dirname, 'github_commands.json');
+const EXISTING_TRANSCRIPTS_FILE = path.resolve(__dirname, 'existing_transcripts.json');
 
 function merge() {
     console.log('🔄 Merging knowledge files...');
@@ -47,12 +49,26 @@ function merge() {
         videoDetailedData = content.split('\n').filter(l => l.trim());
     }
 
+    let githubData = [];
+    if (fs.existsSync(GITHUB_COMMANDS_FILE)) {
+        const content = fs.readFileSync(GITHUB_COMMANDS_FILE, 'utf8');
+        githubData = content.split('\n').filter(l => l.trim());
+    }
+
+    let existingTranscriptData = [];
+    if (fs.existsSync(EXISTING_TRANSCRIPTS_FILE)) {
+        const content = fs.readFileSync(EXISTING_TRANSCRIPTS_FILE, 'utf8');
+        existingTranscriptData = content.split('\n').filter(l => l.trim());
+    }
+
     console.log(`   Base entries: ${baseData.length}`);
     console.log(`   Image entries: ${imageData.length}`);
     console.log(`   Repo entries: ${repoData.length}`);
     console.log(`   Video metadata: ${videoData.length}`);
     console.log(`   Video transcripts: ${videoTranscriptData.length}`);
     console.log(`   Video detailed: ${videoDetailedData.length}`);
+    console.log(`   GitHub commands: ${githubData.length}`);
+    console.log(`   Existing transcripts: ${existingTranscriptData.length}`);
 
     // Append image data to base file
     // We append directly to the file to avoid memory issues if it's huge, 
@@ -93,6 +109,20 @@ function merge() {
     }
 
     for (const line of videoDetailedData) {
+        if (!baseContent.includes(line)) {
+            stream.write(line + '\n');
+            newEntries++;
+        }
+    }
+
+    for (const line of githubData) {
+        if (!baseContent.includes(line)) {
+            stream.write(line + '\n');
+            newEntries++;
+        }
+    }
+
+    for (const line of existingTranscriptData) {
         if (!baseContent.includes(line)) {
             stream.write(line + '\n');
             newEntries++;

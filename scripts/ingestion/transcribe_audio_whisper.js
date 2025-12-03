@@ -41,12 +41,23 @@ function extractAudio(videoPath) {
     }
 
     try {
-        console.log(`   🎵 Extracting audio...`);
+        console.log(`   🎵 Extracting audio (32k mono)...`);
         execSync(
-            `ffmpeg -i "${videoPath}" -vn -acodec libmp3lame -q:a 4 "${audioPath}" -y`,
+            `ffmpeg -i "${videoPath}" -vn -acodec libmp3lame -b:a 32k -ac 1 "${audioPath}" -y`,
             { stdio: 'pipe' }
         );
-        console.log(`   ✅ Audio extracted`);
+
+        // Check size
+        const stats = fs.statSync(audioPath);
+        const sizeMB = stats.size / (1024 * 1024);
+        console.log(`   ✅ Audio extracted (${sizeMB.toFixed(2)} MB)`);
+
+        if (sizeMB > 24) {
+            console.warn(`   ⚠️  Audio file too large for Whisper API (>25MB). Splitting needed.`);
+            // For now, we'll skip or implement splitting later if needed
+            // But 32k should fit 100 mins
+        }
+
         return audioPath;
     } catch (error) {
         console.error(`   ❌ FFmpeg error:`, error.message);
