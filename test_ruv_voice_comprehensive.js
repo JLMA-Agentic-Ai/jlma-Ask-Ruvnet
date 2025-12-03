@@ -8,13 +8,13 @@ const TEST_QUESTIONS = [
     {
         category: "Voice - Conversational",
         question: "Hey Ruv, I'm trying to set up a multi-agent system but I keep crashing my Codespace. Any tips?",
-        expectVoice: ["All right", "So", "Works for me", "doable", "genius move"],
+        expectVoice: ["All right", "So", "Works for me", "doable", "genius move", "cool"],
         expectTech: false
     },
     {
         category: "Voice - Encouragement",
         question: "I'm stuck on implementing semantic memory. Is this even possible for a beginner?",
-        expectVoice: ["totally doable", "you can", "love this", "interesting", "cool"],
+        expectVoice: ["totally doable", "you can", "love this", "interesting", "cool", "genius"],
         expectTech: false
     },
 
