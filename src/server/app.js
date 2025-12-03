@@ -57,7 +57,7 @@ async function initAgenticFlow() {
     }
 }
 
-initAgenticFlow();
+// initAgenticFlow(); // Disabled due to production import issues
 
 // Response cache for common queries (removed as per instruction, but keeping for context if needed later)
 // const responseCache = new Map();
