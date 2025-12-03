@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 const fs = require('fs');
-app.use(express.static(path.join(__dirname, '../../public'))); // Serve frontend
+app.use(express.static(path.join(__dirname, '../ui/dist'))); // Serve frontend
 app.use('/frames', express.static(path.join(__dirname, '../../data_ingestion_ruv_coaching'))); // Serve video frames
 
 // Initialize Agentic Flow Components
