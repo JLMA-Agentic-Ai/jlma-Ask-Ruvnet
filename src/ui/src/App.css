@@ -1894,3 +1894,22 @@ body {
 .light-mode .powered-by strong {
   color: #ea580c !important;
 }
+
+/* PDF and Video Viewers - Full Width Fix */
+.pdf-viewer,
+.video-viewer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdf-viewer iframe,
+.video-viewer video {
+  width: 100%;
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
