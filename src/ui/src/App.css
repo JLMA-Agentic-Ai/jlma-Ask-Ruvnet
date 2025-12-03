@@ -280,6 +280,22 @@ body {
 
 .main-layout.chat {
   display: block;
+  width: 100%;
+}
+
+.main-layout.chat .chat-panel {
+  width: 100%;
+  border-right: none;
+}
+
+.main-layout.presentation {
+  display: block;
+  width: 100%;
+}
+
+.main-layout.presentation .canvas-panel {
+  width: 100% !important;
+  border-left: none;
 }
 
 /* --- CHAT PANEL --- */
