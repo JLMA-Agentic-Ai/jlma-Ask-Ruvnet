@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "npm config set python python3",
     "start": "bash scripts/deployment/start-railway.sh"
   },
   "keywords": [],
