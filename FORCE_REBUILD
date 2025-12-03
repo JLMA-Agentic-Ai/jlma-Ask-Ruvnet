@@ -1,2 +1,0 @@
-This file triggers a database rebuild on deployment startup.
-Remove this file after successful deployment if you want to persist the DB.
