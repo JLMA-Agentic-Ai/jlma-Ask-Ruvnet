@@ -255,7 +255,7 @@ function App() {
 ## 🔗 ACTIVE GITHUB REPOSITORIES
 The following codebases are actively monitored for real-time architectural analysis. **Status: SYNCED**
 
-${data.repos.length > 0 ? data.repos.map(r => `- **${r.name}** ✅ *Synced*`).join('\n') : '_No repositories detected. (Check server paths)_'}
+${data.repos.length > 0 ? data.repos.map(r => `- **${r.name}** (v${r.version || 'latest'}) ✅ *Synced*`).join('\n') : '_No repositories detected. (Check server paths)_'}
 
 ---
 
