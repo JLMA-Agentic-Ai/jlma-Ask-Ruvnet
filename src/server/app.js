@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const RuvectorStore = require('../core/RuvectorStore');
 const { OpenAI } = require('openai');
 const path = require('path');
+const repoMonitor = require('./RepoMonitor');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
 const app = express();
@@ -470,9 +471,22 @@ app.get('/api/knowledge', (req, res) => {
     res.json(knowledge);
 });
 
+// Repo Monitor Status Endpoint
+app.get('/api/repo-monitor/status', (req, res) => {
+    res.json({
+        monitor: repoMonitor.getStatus(),
+        message: 'Repository monitor checks for updates every 2 days'
+    });
+});
+
 
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Agentic Learner initialized.`);
+
+    // Start automatic repo monitoring (checks every 2 days)
+    repoMonitor.start().catch(err => {
+        console.error('Failed to start repo monitor:', err);
+    });
 });
