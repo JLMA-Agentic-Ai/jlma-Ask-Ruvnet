@@ -1,3 +1,8 @@
+---
+created: 2025-12-02
+last_modified: 2025-12-02
+---
+
 1 Finish loading knkowledge base
 
 2 Add the ability to reset chat and go to a new chat that essentially brings it back to the way the app looks when you just started the app. Otherwise, there's no way to get back to the Quick Start resources! 

@@ -1,3 +1,8 @@
+---
+created: 2025-12-02
+last_modified: 2025-12-02
+---
+
 # Technology Decisions & Migration Path
 
 **CRITICAL REFERENCE DOCUMENT - DO NOT IGNORE**

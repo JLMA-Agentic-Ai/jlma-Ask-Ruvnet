@@ -1,3 +1,8 @@
+---
+created: 2025-12-02
+last_modified: 2025-12-02
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

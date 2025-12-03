@@ -1,3 +1,8 @@
+---
+created: 2025-12-02
+last_modified: 2025-12-02
+---
+
 # Ask rUVnet - Railway Deployment Guide
 
 ## 🚂 Deploying to Railway
@@ -135,6 +140,38 @@ curl https://your-railway-url.up.railway.app/api/chat \
 ```
 
 Should return a detailed answer from the knowledge base!
+
+---
+
+
+## 🔧 CLI Authentication: The Definitive Guide
+
+If you need to use the Railway CLI for management (linking, deleting services, uploading volumes), follow these strict rules to avoid "Unauthorized" errors.
+
+### 1. The Token Type Matters
+- **Project Tokens (Service Tokens):** Scoped to a specific environment. Good for *deployment* (`railway up`), but **CANNOT** perform account-level actions like `link` or `delete`.
+- **User Tokens (Personal Access Tokens):** The "Skeleton Key". Can do everything. **Use this for local CLI management.**
+  - Generate at: [Account Settings > Tokens](https://railway.com/account/tokens)
+
+### 2. The `CI=true` Trick
+The Railway CLI tries to be interactive (browser login) by default. To force it to accept a token without opening a browser, you **MUST** set `CI=true`.
+
+**Correct Command Pattern:**
+```bash
+export CI=true
+export RAILWAY_TOKEN=your_user_token_here
+npx -y @railway/cli <command>
+```
+
+### 3. Common Commands (Non-Interactive)
+- **Check Status:** `npx -y @railway/cli status`
+- **List Services:** `npx -y @railway/cli list` (Might require API usage if CLI is stubborn)
+- **Deploy:** `npx -y @railway/cli up --service <service_name>`
+
+### 4. API Fallback
+If the CLI fails to list/delete services even with the User Token, use the GraphQL API directly:
+- **Endpoint:** `https://backboard.railway.app/graphql/v2`
+- **Header:** `Authorization: Bearer <User_Token>`
 
 ---
 

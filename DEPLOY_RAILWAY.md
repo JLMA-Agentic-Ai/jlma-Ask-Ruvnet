@@ -1,3 +1,8 @@
+---
+created: 2025-12-02
+last_modified: 2025-12-02
+---
+
 # 🚂 RAILWAY DEPLOYMENT - COMPLETE GUIDE
 
 ## ✅ Prerequisites Completed

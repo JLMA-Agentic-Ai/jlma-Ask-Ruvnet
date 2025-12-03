@@ -1,3 +1,8 @@
+---
+created: 2025-12-02
+last_modified: 2025-12-02
+---
+
 # RuVector & Agentic Flow - Complete Technical Reference
 
 **PERMANENT KNOWLEDGE BASE - Read This Before Making Any Claims**

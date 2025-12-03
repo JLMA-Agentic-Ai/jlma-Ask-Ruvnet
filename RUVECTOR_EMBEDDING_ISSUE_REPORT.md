@@ -1,3 +1,8 @@
+---
+created: 2025-12-02
+last_modified: 2025-12-02
+---
+
 # RuVector Native Binding Issue - Comprehensive Technical Report
 
 **Date:** December 2, 2025  
