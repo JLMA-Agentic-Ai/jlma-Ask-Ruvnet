@@ -9,6 +9,11 @@ ls -F src/ui/dist
 echo "📂 Checking for knowledge base at: $DB_PATH"
 
 # Check if database exists in the persistent volume
+if [ -f "FORCE_REBUILD" ]; then
+  echo "⚠️ FORCE_REBUILD file detected. Deleting existing database..."
+  rm -f "$DB_PATH"
+fi
+
 if [ ! -f "$DB_PATH" ]; then
   echo "🚨 CRITICAL: Database not found in persistent volume!"
   echo "🩹 Initiating SELF-HEALING protocol..."
