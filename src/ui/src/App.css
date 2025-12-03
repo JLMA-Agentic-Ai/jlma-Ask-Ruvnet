@@ -739,7 +739,8 @@ body {
 
 /* Premium Buttons */
 .sidebar-btn,
-.level-btn {
+.level-btn,
+.mode-btn {
   width: 100%;
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
@@ -759,7 +760,8 @@ body {
 }
 
 .sidebar-btn:hover,
-.level-btn:hover {
+.level-btn:hover,
+.mode-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: var(--accent-primary);
   color: var(--text-primary);
@@ -767,7 +769,8 @@ body {
 }
 
 .sidebar-btn.active,
-.level-btn.active {
+.level-btn.active,
+.mode-btn.active {
   background: rgba(249, 115, 22, 0.15);
   /* Amber tint */
   border-color: var(--accent-primary);
