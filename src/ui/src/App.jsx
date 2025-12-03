@@ -146,6 +146,7 @@ function App() {
         title: filename.replace(/_/g, ' ').replace('.pdf', ''),
         action: 'document'
       });
+      setViewMode('presentation'); // Switch to presentation mode
       return;
     }
 
@@ -157,6 +158,7 @@ function App() {
         title: filename.replace(/_/g, ' ').replace('.mp4', ''),
         action: 'document'
       });
+      setViewMode('presentation'); // Switch to presentation mode
       return;
     }
 
@@ -346,6 +348,7 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
               setMessages([]);
               setCanvasContent(null);
               setInput('');
+              setViewMode('split'); // Reset view mode on new chat
             }}
             title="Start a new conversation"
           >
@@ -417,62 +420,64 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
         </div>
 
         <div className={`main-layout ${viewMode}`}>
-          <div className="chat-panel">
-            <div className="chat-container">
-              {messages.length === 0 ? (
-                <HeroSection onAction={(prompt) => handleSubmit(null, prompt)} />
-              ) : (
-                <>
-                  {messages.map((msg, idx) => (
-                    <div key={idx} className={`message ${msg.role}`} ref={idx === messages.length - 1 ? lastMessageRef : null}>
-                      <div className="avatar">
-                        {msg.role === 'assistant' ? <img src="/assets/Ruv prompt.png" alt="Ruv" className="avatar-img" /> : '👤'}
-                      </div>
-                      <div className="content">
-                        <ReactMarkdown className="markdown-content" remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
-                        {msg.role === 'assistant' && !msg.canvasGenerated && (
-                          <div className="message-actions">
-                            <button className="action-btn" onClick={() => handleSpecialAction('simplify', msg.content)}>🔄 Simplify</button>
-                            <button className="action-btn" onClick={() => handleSpecialAction('code', msg.content)}>💻 Code</button>
-                            <button className="action-btn" onClick={() => handleSpecialAction('diagram', msg.content)}>📊 Diagram</button>
-                            <button className="action-btn" onClick={() => setCanvasContent({ type: 'text', content: msg.content })}>➡️ Canvas</button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                  {loading && (
-                    <div className="message assistant thinking">
-                      <div className="avatar"><img src="/assets/Ruv prompt.png" alt="Ruv" className="avatar-img" /></div>
-                      <div className="content">
-                        <div className="thinking-message">
-                          <strong>🤔 Thinking...</strong>
-                          <div className="typing-indicator"><span></span><span></span><span></span></div>
+          {viewMode !== 'presentation' && (
+            <div className="chat-panel">
+              <div className="chat-container">
+                {messages.length === 0 ? (
+                  <HeroSection onAction={(prompt) => handleSubmit(null, prompt)} />
+                ) : (
+                  <>
+                    {messages.map((msg, idx) => (
+                      <div key={idx} className={`message ${msg.role}`} ref={idx === messages.length - 1 ? lastMessageRef : null}>
+                        <div className="avatar">
+                          {msg.role === 'assistant' ? <img src="/assets/Ruv prompt.png" alt="Ruv" className="avatar-img" /> : '👤'}
+                        </div>
+                        <div className="content">
+                          <ReactMarkdown className="markdown-content" remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
+                          {msg.role === 'assistant' && !msg.canvasGenerated && (
+                            <div className="message-actions">
+                              <button className="action-btn" onClick={() => handleSpecialAction('simplify', msg.content)}>🔄 Simplify</button>
+                              <button className="action-btn" onClick={() => handleSpecialAction('code', msg.content)}>💻 Code</button>
+                              <button className="action-btn" onClick={() => handleSpecialAction('diagram', msg.content)}>📊 Diagram</button>
+                              <button className="action-btn" onClick={() => setCanvasContent({ type: 'text', content: msg.content })}>➡️ Canvas</button>
+                            </div>
+                          )}
                         </div>
                       </div>
-                    </div>
-                  )}
-                  <div ref={messagesEndRef} />
-                </>
-              )}
-            </div>
-
-            <form className="input-area" onSubmit={handleSubmit}>
-              <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
-              <button type="button" className="icon-btn" onClick={() => fileInputRef.current.click()}>📎</button>
-              <button type="button" className={`icon-btn voice ${listening ? 'listening' : ''}`} onClick={startVoiceInput}>{listening ? '🔴' : '🎤'}</button>
-              <div className="input-wrapper">
-                {file && <div className="file-preview">📄 {file.name} <button type="button" onClick={() => setFile(null)}>×</button></div>}
-                <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder={listening ? "Listening..." : "Ask a question..."} disabled={loading} />
+                    ))}
+                    {loading && (
+                      <div className="message assistant thinking">
+                        <div className="avatar"><img src="/assets/Ruv prompt.png" alt="Ruv" className="avatar-img" /></div>
+                        <div className="content">
+                          <div className="thinking-message">
+                            <strong>🤔 Thinking...</strong>
+                            <div className="typing-indicator"><span></span><span></span><span></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    <div ref={messagesEndRef} />
+                  </>
+                )}
               </div>
-              <button type="submit" disabled={loading || (!input.trim() && !file)}>SEND</button>
-            </form>
-          </div>
 
-          {viewMode === 'split' && (
-            <div className="canvas-panel">
+              <form className="input-area" onSubmit={handleSubmit}>
+                <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
+                <button type="button" className="icon-btn" onClick={() => fileInputRef.current.click()}>📎</button>
+                <button type="button" className={`icon-btn voice ${listening ? 'listening' : ''}`} onClick={startVoiceInput}>{listening ? '🔴' : '🎤'}</button>
+                <div className="input-wrapper">
+                  {file && <div className="file-preview">📄 {file.name} <button type="button" onClick={() => setFile(null)}>×</button></div>}
+                  <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder={listening ? "Listening..." : "Ask a question..."} disabled={loading} />
+                </div>
+                <button type="submit" disabled={loading || (!input.trim() && !file)}>SEND</button>
+              </form>
+            </div>
+          )}
+
+          {(viewMode === 'split' || viewMode === 'presentation') && (
+            <div className="canvas-panel" style={viewMode === 'presentation' ? { width: '100%', borderLeft: 'none' } : {}}>
               <div className="canvas-header">
-                <h3>CANVAS</h3>
+                <h3>{viewMode === 'presentation' ? 'PRESENTATION MODE' : 'CANVAS'}</h3>
                 {canvasContent && (
                   <div className="canvas-actions">
                     <button onClick={exportCanvas} className="canvas-btn" title="Download content">EXPORT</button>
@@ -489,7 +494,19 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
                 ) : (
                   <>
                     <div className="content-controls">
-                      <button onClick={() => setCanvasContent(null)} className="close-content-btn" title="Close View">✕ Close View</button>
+                      <button
+                        onClick={() => {
+                          if (viewMode === 'presentation') {
+                            setViewMode('split');
+                          } else {
+                            setCanvasContent(null);
+                          }
+                        }}
+                        className="close-content-btn"
+                        title="Close View"
+                      >
+                        {viewMode === 'presentation' ? '🔙 Exit Presentation' : '✕ Close View'}
+                      </button>
                     </div>
                     {canvasContent.type === 'diagram' ? (
                       <div ref={canvasRef} className="diagram-container"></div>
@@ -499,7 +516,7 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
                         <iframe
                           src={canvasContent.content}
                           title={canvasContent.title}
-                          style={{ width: '100%', height: 'calc(100vh - 200px)', border: 'none' }}
+                          style={{ width: '100%', height: 'calc(100vh - 150px)', border: 'none' }}
                         />
                       </div>
                     ) : canvasContent.type === 'video' ? (
@@ -507,7 +524,7 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
                         <h2>{canvasContent.title}</h2>
                         <video
                           controls
-                          style={{ width: '100%', maxHeight: '70vh', borderRadius: '8px' }}
+                          style={{ width: '100%', maxHeight: '85vh', borderRadius: '8px' }}
                           src={canvasContent.content}
                         >
                           Your browser does not support the video tag.
