@@ -1,0 +1,9588 @@
+1
+00:00:05,790 --> 00:00:07,170
+Here we are.
+
+2
+00:00:13,840 --> 00:00:17,840
+So this was quite the
+week. It was like the
+
+3
+00:00:17,840 --> 00:00:22,720
+week of every AI new
+announcement. There's
+
+4
+00:00:22,720 --> 00:00:23,740
+so many announcements,
+I don't even know
+
+5
+00:00:23,740 --> 00:00:27,620
+where to start. It's
+been absolutely crazy,
+
+6
+00:00:27,620 --> 00:00:30,080
+spectacular, amazing.
+I think we live for
+
+7
+00:00:30,080 --> 00:00:33,940
+these types of weeks
+on the AI hacker space.
+
+8
+00:00:34,120 --> 00:00:37,880
+It's been nothing short
+of just astounding
+
+9
+00:00:37,880 --> 00:00:39,780
+in terms of some of
+the tools that have
+
+10
+00:00:39,780 --> 00:00:42,220
+come out from Google
+and others. just i
+
+11
+00:00:42,220 --> 00:00:44,220
+i don't know where
+to start rob how's it
+
+12
+00:00:44,220 --> 00:00:48,520
+going great great yeah
+it was epic uh the
+
+13
+00:00:48,520 --> 00:00:52,300
+vo3 video with sound
+uh crazy stuff out
+
+14
+00:00:52,300 --> 00:00:55,540
+of google um and
+somehow in between it
+
+15
+00:00:55,540 --> 00:00:59,660
+all with the new tools
+um and and all your
+
+16
+00:00:59,660 --> 00:01:02,600
+clients you still get
+you still drop spark
+
+17
+00:01:02,600 --> 00:01:04,920
+bench and some
+incredible new stuff so
+
+18
+00:01:04,920 --> 00:01:07,160
+i'm looking forward
+to this week we've
+
+19
+00:01:07,160 --> 00:01:12,000
+got uh we got three
+guests so um ****** v3
+
+20
+00:01:12,560 --> 00:01:16,800
+is with us this week
+and then uh braun our
+
+21
+00:01:16,800 --> 00:01:18,920
+our good old member
+uh braun field walker
+
+22
+00:01:18,920 --> 00:01:24,500
+he's got a a new um rapid
+audio to text conversion
+
+23
+00:01:24,500 --> 00:01:27,740
+tool that he wants
+to show and then uh
+
+24
+00:01:27,740 --> 00:01:30,980
+bensa and mandweep are
+going to uh recap we
+
+25
+00:01:30,980 --> 00:01:34,480
+had the uh big london
+uk event this week
+
+26
+00:01:34,480 --> 00:01:38,320
+and it was a great success
+it's it was the week
+
+27
+00:01:38,320 --> 00:01:40,840
+of google it would
+seem and and and big
+
+28
+00:01:40,840 --> 00:01:44,280
+big thank you to google
+london and and benson
+
+29
+00:01:44,280 --> 00:01:46,560
+mandweep for putting
+all that together and
+
+30
+00:01:46,560 --> 00:01:50,480
+and our friends at
+requesty who were critical
+
+31
+00:01:50,480 --> 00:01:52,840
+in in sort of the
+organization of it i
+
+32
+00:01:52,840 --> 00:01:55,200
+think london is going
+to be a really good spot
+
+33
+00:01:55,200 --> 00:01:58,960
+for us for sure yeah
+so we'll see some
+
+34
+00:01:58,960 --> 00:02:00,680
+pictures and get a little
+recap from those guys
+
+35
+00:02:00,680 --> 00:02:06,580
+on that so huge yeah
+for sure and so well
+
+36
+00:02:06,580 --> 00:02:08,180
+you know we we've got
+a lot to cover today
+
+37
+00:02:08,180 --> 00:02:13,040
+and i think in my opinion
+google won the week
+
+38
+00:02:13,040 --> 00:02:16,620
+um you know if you look
+at this if you look
+
+39
+00:02:16,620 --> 00:02:19,400
+at the stuff that was
+put out not just you
+
+40
+00:02:19,400 --> 00:02:21,980
+know bs but real things
+you could try you
+
+41
+00:02:21,980 --> 00:02:24,220
+know whether it was
+that flow video system
+
+42
+00:02:24,220 --> 00:02:26,320
+which is just mind
+-boggling the way that they
+
+43
+00:02:26,320 --> 00:02:29,600
+handle both audio and
+video and adjust it
+
+44
+00:02:29,600 --> 00:02:31,100
+i don't know if anyone's
+played with it but
+
+45
+00:02:31,100 --> 00:02:33,380
+the the output i'm
+getting from it is nothing
+
+46
+00:02:33,380 --> 00:02:36,820
+short of spectacular
+um it's expensive like
+
+47
+00:02:36,820 --> 00:02:39,580
+yet another 250 dollar
+uh you know thing
+
+48
+00:02:39,580 --> 00:02:41,540
+you have to sign up for
+i'm hoping martin we
+
+49
+00:02:41,540 --> 00:02:44,760
+can get a uh a cheaper
+non-profit version
+
+50
+00:02:44,760 --> 00:02:48,820
+of the google uh ai
+stuff so martin by the
+
+51
+00:02:48,820 --> 00:02:50,820
+way thank you for setting
+up all these uh non
+
+52
+00:02:50,820 --> 00:02:52,660
+-profit things for us
+we're getting lots of
+
+53
+00:02:52,660 --> 00:02:54,660
+uh good deals actually
+martin why don't you
+
+54
+00:02:54,660 --> 00:02:56,860
+give us a quick over
+some of the non-profit
+
+55
+00:02:56,860 --> 00:02:58,400
+deals you've been
+able to spin up for us
+
+56
+00:02:58,400 --> 00:03:02,220
+yeah so i i guess the
+main one um well uh
+
+57
+00:03:02,220 --> 00:03:06,240
+github was first so we
+got um the github non
+
+58
+00:03:06,240 --> 00:03:09,280
+-profit account um
+essentially that allows us
+
+59
+00:03:09,280 --> 00:03:12,330
+to add people to the
+organization without
+
+60
+00:03:12,330 --> 00:03:14,540
+paying the four dollars
+per person that makes
+
+61
+00:03:14,540 --> 00:03:19,120
+a huge difference for
+us um a second uh the
+
+62
+00:03:19,120 --> 00:03:22,800
+google workspace um so
+google workspace for
+
+63
+00:03:22,800 --> 00:03:25,180
+domain we were on
+business standard that's
+
+64
+00:03:25,180 --> 00:03:29,170
+like i don't know 17
+a person but we get
+
+65
+00:03:29,170 --> 00:03:31,120
+several hundred i can't
+remember the right
+
+66
+00:03:31,120 --> 00:03:35,520
+number um users on the
+domain for free um and
+
+67
+00:03:35,520 --> 00:03:37,680
+that's that's a really
+good uh basis point
+
+68
+00:03:37,680 --> 00:03:42,500
+and beyond that we can
+actually take a um like
+
+69
+00:03:42,500 --> 00:03:46,000
+a subscribed version
+and get 72 off again
+
+70
+00:03:46,000 --> 00:03:47,960
+makes a huge difference
+for an organization
+
+71
+00:03:47,960 --> 00:03:51,060
+like ours where really
+it's volunteers that
+
+72
+00:03:51,060 --> 00:03:54,500
+pile in that um help
+us get things done and
+
+73
+00:03:54,500 --> 00:03:56,800
+get the things done
+that you want done right
+
+74
+00:03:56,800 --> 00:03:59,000
+because you you can
+basically put your
+
+75
+00:03:59,000 --> 00:04:02,640
+actions where your heart
+is um beyond that uh
+
+76
+00:04:02,640 --> 00:04:05,340
+we also now have
+subscription to TechSoup.
+
+77
+00:04:06,440 --> 00:04:09,060
+TechSoup and
+Goodstack, each of
+
+78
+00:04:09,060 --> 00:04:11,740
+those provide
+the gateways into
+
+79
+00:04:12,400 --> 00:04:14,980
+multiple software
+partners.
+
+80
+00:04:15,240 --> 00:04:18,600
+It's no secret I used
+to work with Atlassian
+
+81
+00:04:18,600 --> 00:04:21,520
+software and they
+will give you 75%
+
+82
+00:04:21,520 --> 00:04:25,100
+off for non-profits
+which again if you're
+
+83
+00:04:25,100 --> 00:04:27,640
+using something like
+Loom which is one-to
+
+84
+00:04:27,640 --> 00:04:29,560
+-one video chatting
+and they'll do the
+
+85
+00:04:29,560 --> 00:04:33,060
+compression of chats
+then you can basically
+
+86
+00:04:33,060 --> 00:04:36,100
+email back and forth a
+little video conversation
+
+87
+00:04:36,100 --> 00:04:39,020
+that's a great
+enabler to mean that
+
+88
+00:04:39,020 --> 00:04:42,000
+you don't have to be
+in the same room and
+
+89
+00:04:42,000 --> 00:04:44,620
+always have a meeting
+because you can just
+
+90
+00:04:44,620 --> 00:04:46,540
+basically swap ideas
+over these little
+
+91
+00:04:46,540 --> 00:04:49,780
+videos. I think that
+Confluence, Jira, Jira
+
+92
+00:04:49,780 --> 00:04:51,400
+Service Desk all
+those sorts of things
+
+93
+00:04:52,760 --> 00:04:55,860
+so yeah I mean
+there's a lot in there
+
+94
+00:04:55,860 --> 00:04:57,620
+I will try and
+prepare a little
+
+95
+00:04:57,620 --> 00:05:00,160
+summary next time and
+give you an update
+
+96
+00:05:00,740 --> 00:05:02,720
+I definitely
+appreciate all
+
+97
+00:05:02,720 --> 00:05:03,700
+the hard work
+you've put into
+
+98
+00:05:03,700 --> 00:05:05,260
+saving us quite
+a bit of money.
+
+99
+00:05:05,520 --> 00:05:09,300
+So we got GitHub
+essentially for free,
+
+100
+00:05:09,300 --> 00:05:10,560
+which is amazing,
+which includes
+
+101
+00:05:10,560 --> 00:05:12,760
+code spaces and
+other capabilities.
+
+102
+00:05:12,760 --> 00:05:15,520
+We're getting various
+cloud services.
+
+103
+00:05:15,520 --> 00:05:17,820
+I think some of them
+were like 75% off
+
+104
+00:05:17,820 --> 00:05:22,220
+for AI and related
+tools. So what we're
+
+105
+00:05:22,220 --> 00:05:23,720
+going to try to do
+is figure out how
+
+106
+00:05:23,720 --> 00:05:25,980
+we can get others in
+the organization to
+
+107
+00:05:25,980 --> 00:05:28,220
+also take advantage
+of some of these
+
+108
+00:05:28,220 --> 00:05:30,400
+non-profit rates that
+we're able to get.
+
+109
+00:05:30,400 --> 00:05:32,980
+Because I'm not going
+to lie, a big part
+
+110
+00:05:32,980 --> 00:05:36,160
+of the reason for us
+to be a non-profit was
+
+111
+00:05:36,160 --> 00:05:39,580
+to get discounts on
+these tools that we
+
+112
+00:05:39,580 --> 00:05:41,900
+use that are really
+expensive, especially if
+
+113
+00:05:41,900 --> 00:05:43,740
+you're trying to do
+a benchmarking system
+
+114
+00:05:43,740 --> 00:05:46,000
+or just trying
+everything under the sun.
+
+115
+00:05:46,000 --> 00:05:48,680
+It really just adds
+up quickly. So really
+
+116
+00:05:48,680 --> 00:05:50,160
+appreciate you putting
+the effort in. And
+
+117
+00:05:50,160 --> 00:05:51,760
+I know a lot of this
+was like a lot of busy
+
+118
+00:05:51,760 --> 00:05:54,540
+work and back and
+forth with Google and
+
+119
+00:05:54,540 --> 00:05:57,500
+whatever. So thanks
+for making that happen.
+
+120
+00:05:58,560 --> 00:06:03,120
+We appreciate that. So
+what else is going on
+
+121
+00:06:03,120 --> 00:06:05,660
+this week? A lot. And
+let me just jump in.
+
+122
+00:06:05,660 --> 00:06:07,220
+I'm going to give you
+a quick rundown of some
+
+123
+00:06:07,220 --> 00:06:08,480
+of the stuff. I'm
+going to try not to go
+
+124
+00:06:08,480 --> 00:06:09,980
+too long because we've
+got a lot to cover.
+
+125
+00:06:09,980 --> 00:06:11,580
+We've got some really
+good people presenting
+
+126
+00:06:11,580 --> 00:06:13,760
+and a lot of stuff to
+cover. So like always,
+
+127
+00:06:13,760 --> 00:06:15,440
+if you have questions,
+feel free to pop those
+
+128
+00:06:15,440 --> 00:06:18,100
+into the chat. I will
+try my best to keep
+
+129
+00:06:18,100 --> 00:06:20,100
+an eye on that. But
+I'm going to go quick.
+
+130
+00:06:20,840 --> 00:06:25,440
+So here we are. So
+let's start with cost. I
+
+131
+00:06:25,440 --> 00:06:27,240
+always like to jump
+into Requesti. I love
+
+132
+00:06:27,240 --> 00:06:30,140
+Requesti. And I made a
+big mistake yesterday.
+
+133
+00:06:30,140 --> 00:06:32,720
+And you'll see it
+right here. I managed
+
+134
+00:06:32,720 --> 00:06:37,860
+to spend $225 of my
+own money, I might add,
+
+135
+00:06:38,080 --> 00:06:42,580
+because I mistakenly
+used the Opus 4 model
+
+136
+00:06:42,930 --> 00:06:46,840
+for my testing rather
+than using Sonic 4.
+
+137
+00:06:47,100 --> 00:06:49,160
+And a couple of
+things to note,
+
+138
+00:06:49,280 --> 00:06:51,680
+avoid Opus 4 for
+right now. There's no
+
+139
+00:06:51,680 --> 00:06:54,780
+prompt caching or if
+there is, it *****,
+
+140
+00:06:54,780 --> 00:06:57,440
+as you can tell by
+my cost. So once I
+
+141
+00:06:57,440 --> 00:07:00,620
+realized that only
+I've just spent $224,
+
+142
+00:07:01,180 --> 00:07:04,340
+I switched and removed
+Opus 4 from it.
+
+143
+00:07:04,340 --> 00:07:05,960
+But look, if you look
+at the actual number
+
+144
+00:07:05,960 --> 00:07:07,000
+here for a moment,
+you'll see that I
+
+145
+00:07:07,000 --> 00:07:10,700
+used 42 million tokens
+yesterday and today
+
+146
+00:07:10,700 --> 00:07:12,440
+so far, which I've
+been really busy
+
+147
+00:07:12,440 --> 00:07:14,900
+day building random
+stuff, I've used about
+
+148
+00:07:14,900 --> 00:07:17,940
+50 million tokens.
+The difference in
+
+149
+00:07:17,940 --> 00:07:20,590
+cost is dramatic.
+Today, I've spent $55,
+
+150
+00:07:20,590 --> 00:07:25,740
+and I've saved $105
+in terms of context.
+
+151
+00:07:26,240 --> 00:07:30,180
+And so to figure
+out where the issue
+
+152
+00:07:30,180 --> 00:07:32,600
+was, I went in,
+I got to figure
+
+153
+00:07:32,600 --> 00:07:33,880
+out, I think it was
+cost management.
+
+154
+00:07:34,640 --> 00:07:36,720
+And then that
+allowed me to
+
+155
+00:07:36,720 --> 00:07:39,240
+go and see the
+model details.
+
+156
+00:07:39,240 --> 00:07:42,920
+And we go down here for
+a sec. yeah we'll see
+
+157
+00:07:42,920 --> 00:07:46,020
+here the different
+models so opus 4 was the
+
+158
+00:07:46,020 --> 00:07:48,100
+killer and when we
+look here you see i'm
+
+159
+00:07:48,100 --> 00:07:53,820
+spending a dollar 29
+per request versus sonic
+
+160
+00:07:53,820 --> 00:08:00,040
+4 10 cents and so my
+93 93 requests ended
+
+161
+00:08:00,040 --> 00:08:04,680
+up costing 120 bucks so
+that that's what killed
+
+162
+00:08:04,680 --> 00:08:07,640
+me essentially i
+think but what was
+
+163
+00:08:07,640 --> 00:08:11,420
+interesting i'm And like,
+so once I realized that,
+
+164
+00:08:11,420 --> 00:08:14,400
+you know, I'm like,
+why was Opus so much
+
+165
+00:08:14,400 --> 00:08:17,580
+more expensive than
+Sonnet? Well, it turns out
+
+166
+00:08:17,580 --> 00:08:20,960
+that you'll see here,
+the cash rate is 0%.
+
+167
+00:08:21,420 --> 00:08:26,220
+So that was like a
+spark in my brain that
+
+168
+00:08:26,220 --> 00:08:28,720
+said, well, I need
+to be able to measure
+
+169
+00:08:28,720 --> 00:08:31,280
+not only the performance
+of these systems,
+
+170
+00:08:31,280 --> 00:08:34,420
+but the cost versus
+performance of these
+
+171
+00:08:34,420 --> 00:08:36,600
+systems. And what
+if I could actually
+
+172
+00:08:36,600 --> 00:08:39,940
+optimize the system on
+both sort of dimensions
+
+173
+00:08:39,940 --> 00:08:42,440
+of both prompt cache
+and other things,
+
+174
+00:08:42,440 --> 00:08:45,740
+which then opened up
+the whole avenue of
+
+175
+00:08:45,740 --> 00:08:46,800
+thinking, I don't
+know what you want to
+
+176
+00:08:46,800 --> 00:08:48,320
+call it, that basically
+said, well, I need
+
+177
+00:08:48,320 --> 00:08:50,160
+to be able to measure
+the effectiveness
+
+178
+00:08:50,160 --> 00:08:51,940
+of these systems in
+something that's more
+
+179
+00:08:51,940 --> 00:08:54,720
+than just me arbitrarily
+trying to do it.
+
+180
+00:08:54,920 --> 00:08:58,820
+That's where I dreamt
+up this idea of a root
+
+181
+00:08:58,820 --> 00:09:01,780
+code evaluation and
+benchmarking system.
+
+182
+00:09:01,780 --> 00:09:05,060
+Now, when you look
+at some of the source
+
+183
+00:09:05,060 --> 00:09:08,010
+numbers, like I think
+Martin shared a benchmark
+
+184
+00:09:08,010 --> 00:09:10,160
+within the text chat
+for those who are
+
+185
+00:09:10,160 --> 00:09:13,700
+interested in on the
+Sonnet and Opus models.
+
+186
+00:09:13,880 --> 00:09:15,480
+And one of the ones
+they're using is something
+
+187
+00:09:15,480 --> 00:09:18,980
+called SWE Benchmark.
+So the SWE Benchmark
+
+188
+00:09:18,980 --> 00:09:22,640
+essentially are, I
+think, around 2,000
+
+189
+00:09:22,640 --> 00:09:27,000
+or 3,000 random GitHub
+issues that you can
+
+190
+00:09:27,000 --> 00:09:29,720
+go and test against.
+And now they give you
+
+191
+00:09:29,720 --> 00:09:32,020
+that as a giant JSON
+file. Well, yeah, there
+
+192
+00:09:32,020 --> 00:09:34,640
+it is. Thanks, Martin.
+And basically what
+
+193
+00:09:34,640 --> 00:09:37,240
+this does is allows
+you to sort of run it,
+
+194
+00:09:37,240 --> 00:09:39,920
+test it, and see what
+the result is. And
+
+195
+00:09:39,920 --> 00:09:42,400
+it's random. So what I
+thought, well, what if
+
+196
+00:09:42,400 --> 00:09:45,730
+I can integrate that and
+create a specification?
+
+197
+00:09:46,100 --> 00:09:48,540
+And this will do
+two things for me.
+
+198
+00:09:48,640 --> 00:09:51,820
+One, I've been exploring
+this idea of long
+
+199
+00:09:51,820 --> 00:09:54,920
+horizon agentic
+development. These are
+
+200
+00:09:54,920 --> 00:09:57,380
+things that run for
+more than several hours,
+
+201
+00:09:57,380 --> 00:09:59,220
+right? And one of
+the problems that I
+
+202
+00:09:59,220 --> 00:10:01,070
+have with long-running
+agenting processes
+
+203
+00:10:01,070 --> 00:10:04,420
+is often they finish
+because it's hard to
+
+204
+00:10:04,420 --> 00:10:06,340
+give an application and
+know that it's going
+
+205
+00:10:06,340 --> 00:10:08,360
+to take you 36 hours
+to build. But when
+
+206
+00:10:08,360 --> 00:10:10,880
+you have 3,000
+different problems to
+
+207
+00:10:10,880 --> 00:10:13,300
+solve, that can run for
+weeks, to be honest.
+
+208
+00:10:13,300 --> 00:10:15,120
+So it's a nice way
+to have long-running
+
+209
+00:10:15,120 --> 00:10:17,740
+things, and it allows
+me to randomly test.
+
+210
+00:10:18,240 --> 00:10:21,180
+The second problem I
+ran into is I've yet
+
+211
+00:10:21,180 --> 00:10:23,860
+to run this test
+and have it not be
+
+212
+00:10:23,860 --> 00:10:25,620
+able to complete it,
+which I think is a
+
+213
+00:10:25,620 --> 00:10:27,080
+good thing. So I'm,
+I'm literally running
+
+214
+00:10:27,080 --> 00:10:29,100
+a hundred percent
+on, on the tests and
+
+215
+00:10:29,100 --> 00:10:30,920
+the benchmarking,
+which is pretty amazing
+
+216
+00:10:30,920 --> 00:10:32,880
+as well. So let me
+show you that quick.
+
+217
+00:10:33,280 --> 00:10:34,140
+All right.
+
+218
+00:10:34,140 --> 00:10:37,360
+So I, I, so I went
+in here and I created
+
+219
+00:10:37,360 --> 00:10:40,000
+this, you'll see how
+I've got an SQL light and
+
+220
+00:10:40,000 --> 00:10:41,880
+we got a database.
+We got two different
+
+221
+00:10:41,880 --> 00:10:45,140
+databases I created. I,
+I parsed. So I, I'm using
+
+222
+00:10:45,140 --> 00:10:47,720
+the SQL bench system
+and you'll see there's
+
+223
+00:10:47,720 --> 00:10:49,140
+data sets, these data
+sets, I'm not going
+
+224
+00:10:49,140 --> 00:10:50,660
+to open this cause
+they're huge, but these
+
+225
+00:10:50,660 --> 00:10:52,740
+are basically JSON,
+which is terrible format
+
+226
+00:10:52,740 --> 00:10:55,440
+to work within. So I
+converted the JSON to
+
+227
+00:10:55,440 --> 00:10:57,000
+something a little
+easier to work with which
+
+228
+00:10:57,000 --> 00:10:59,480
+is SQLite I was thinking
+of using DuckDB,
+
+229
+00:10:59,740 --> 00:11:01,880
+but I ended up using
+SQLite. It's just
+
+230
+00:11:01,880 --> 00:11:04,460
+easier And and you can
+see here that I've got
+
+231
+00:11:04,460 --> 00:11:07,020
+the completion summary.
+I've got the various
+
+232
+00:11:07,020 --> 00:11:09,800
+tasks So these tasks
+essentially let me
+
+233
+00:11:09,800 --> 00:11:11,200
+let me make this a
+little easier for you
+
+234
+00:11:11,200 --> 00:11:13,720
+guys to see so these
+are basically random
+
+235
+00:11:13,960 --> 00:11:16,480
+Tasks and I and I'm
+doing blind tests I'm
+
+236
+00:11:16,480 --> 00:11:19,000
+not giving the answer
+to the to the problem,
+
+237
+00:11:19,000 --> 00:11:21,140
+which these also
+include both the
+
+238
+00:11:21,140 --> 00:11:23,380
+problem set So this
+would be like, you know,
+
+239
+00:11:23,380 --> 00:11:26,040
+here's the problem
+statement from GitHub.
+
+240
+00:11:26,220 --> 00:11:29,960
+And then we have,
+here's the hints, you
+
+241
+00:11:29,960 --> 00:11:32,120
+know, giving you some
+details on what the
+
+242
+00:11:32,120 --> 00:11:34,280
+problem is or whoever
+submitted saying, you
+
+243
+00:11:34,280 --> 00:11:36,460
+know, how and what
+the problem is. Then
+
+244
+00:11:36,460 --> 00:11:39,300
+we've got the, you
+know, the patch that was
+
+245
+00:11:39,300 --> 00:11:42,680
+given to fix it and
+other things to qualify.
+
+246
+00:11:42,680 --> 00:11:44,800
+But what I really
+want to know is, you
+
+247
+00:11:44,800 --> 00:11:46,960
+know, tests to fail and
+test to pass, right?
+
+248
+00:11:46,960 --> 00:11:48,880
+Right. So then what
+I can do is I can go
+
+249
+00:11:48,880 --> 00:11:51,060
+in here and I have
+a whole variety of,
+
+250
+00:11:51,060 --> 00:11:53,260
+again, of different tests
+I can run, you know,
+
+251
+00:11:53,260 --> 00:11:55,440
+based on the Spark
+framework, you know,
+
+252
+00:11:56,260 --> 00:11:57,960
+includes, you
+know, auto curve.
+
+253
+00:11:57,960 --> 00:12:00,540
+Now, what's cool for
+this beyond just the
+
+254
+00:12:00,540 --> 00:12:02,900
+basic test is I can
+use this to optimize my
+
+255
+00:12:02,900 --> 00:12:06,200
+my Spark protocol to
+do a test to see if I
+
+256
+00:12:06,200 --> 00:12:08,680
+can improve the
+performance of the actual
+
+257
+00:12:08,680 --> 00:12:11,000
+prompt itself. So it
+does it maybe rather than
+
+258
+00:12:11,000 --> 00:12:12,640
+taking 10 steps, I
+can get it down to two
+
+259
+00:12:12,640 --> 00:12:14,860
+steps or three steps
+or one step. maybe.
+
+260
+00:12:14,860 --> 00:12:17,660
+I can also measure,
+you know, security and
+
+261
+00:12:17,660 --> 00:12:20,880
+other various vectors
+like, you know, time,
+
+262
+00:12:20,880 --> 00:12:23,680
+cost, and complexity,
+which is all the stuff
+
+263
+00:12:23,680 --> 00:12:26,840
+that occurred to me
+when I saw a $225 bill
+
+264
+00:12:26,840 --> 00:12:28,740
+the other day. So now
+I'm going to go back
+
+265
+00:12:28,740 --> 00:12:31,140
+in here. So then I
+created as a mode. So
+
+266
+00:12:31,140 --> 00:12:33,160
+for those who are, you
+know, familiar with
+
+267
+00:12:33,160 --> 00:12:36,540
+my Rue modes approach,
+I created a mode here
+
+268
+00:12:36,540 --> 00:12:38,440
+called benchmark. And
+you see here, I've
+
+269
+00:12:38,440 --> 00:12:40,980
+got different details
+on how the benchmark
+
+270
+00:12:40,980 --> 00:12:43,220
+needs to work, problems
+to classify, what
+
+271
+00:12:43,220 --> 00:12:46,040
+the SQL looks like, how
+to interact with it.
+
+272
+00:12:46,040 --> 00:12:49,680
+I then created a number
+of different actual
+
+273
+00:12:49,680 --> 00:12:52,540
+files to actually
+implement it. So you can
+
+274
+00:12:52,540 --> 00:12:54,700
+see here, I've got
+scripts that can begin
+
+275
+00:12:54,700 --> 00:12:57,200
+to comparisons and
+the benchmarks, but I
+
+276
+00:12:57,200 --> 00:12:58,660
+don't want to have to
+run all those scripts.
+
+277
+00:12:58,660 --> 00:13:01,960
+That's a pain. So the
+Roo actually does that
+
+278
+00:13:01,960 --> 00:13:04,540
+when you go here.
+So now I choose the
+
+279
+00:13:04,540 --> 00:13:06,900
+benchmarking
+orchestrator. So I make
+an orchestrator
+
+280
+00:13:06,900 --> 00:13:08,760
+that basically is
+dedicated to that.
+
+281
+00:13:08,800 --> 00:13:11,420
+Fingers crossed. It
+worked every time until
+
+282
+00:13:11,420 --> 00:13:13,080
+I want to do a live
+demo, but I'm going to
+
+283
+00:13:13,080 --> 00:13:17,670
+say run a, you know,
+run one random task.
+
+284
+00:13:18,760 --> 00:13:21,000
+Let's just keep it and
+
+285
+00:13:21,000 --> 00:13:21,820
+we'll see what happens.
+
+286
+00:13:22,480 --> 00:13:23,920
+All right, so you can
+
+287
+00:13:23,920 --> 00:13:25,040
+see I'm using Sonic 4.
+
+288
+00:13:25,740 --> 00:13:27,780
+And if all goes well, it
+
+289
+00:13:27,780 --> 00:13:29,520
+should orchestrate
+a sub task.
+
+290
+00:13:30,700 --> 00:13:33,360
+So it's going to
+figure itself out. Here
+
+291
+00:13:33,360 --> 00:13:35,760
+we go. It's going to
+look at some stuff,
+
+292
+00:13:36,380 --> 00:13:38,640
+thinking, all right.
+
+293
+00:13:38,920 --> 00:13:41,160
+Now it's going
+to switch to the
+
+294
+00:13:41,160 --> 00:13:43,200
+code mode it didn't
+do a subtask,
+
+295
+00:13:43,200 --> 00:13:44,260
+I guess it doesn't
+really matter.
+
+296
+00:13:44,260 --> 00:13:47,240
+I'm just asking it to
+do this mode. So I've
+
+297
+00:13:47,240 --> 00:13:49,400
+actually updated
+the autocoder to be
+
+298
+00:13:49,400 --> 00:13:52,480
+specifically relating to
+the benchmarks. You can
+
+299
+00:13:52,480 --> 00:13:54,700
+see that it's now
+running the benchmark. So
+
+300
+00:13:54,700 --> 00:13:56,820
+what this did is it
+actually is getting a
+
+301
+00:13:56,820 --> 00:13:58,880
+task. So you can see
+here it ran the helper
+
+302
+00:13:58,880 --> 00:14:02,080
+and now it's randomly
+getting a task out of
+
+303
+00:14:02,080 --> 00:14:04,980
+the thousands that
+exist within the SQLite.
+
+304
+00:14:04,980 --> 00:14:05,980
+And then what it's gonna
+
+305
+00:14:05,980 --> 00:14:07,560
+do once it gets the task,
+
+306
+00:14:07,660 --> 00:14:10,200
+it's going to
+say basically I'm
+
+307
+00:14:10,200 --> 00:14:11,520
+starting the task.
+so it's another
+
+308
+00:14:11,520 --> 00:14:13,940
+command. So what
+I'm doing is I'm
+
+309
+00:14:13,940 --> 00:14:17,620
+integrating a
+combination of Python and
+
+310
+00:14:17,860 --> 00:14:19,360
+benchmarking as part of
+
+311
+00:14:19,360 --> 00:14:21,440
+the automated Spark flow.
+
+312
+00:14:21,800 --> 00:14:25,780
+The reason I'm doing
+that is I'm not so much
+
+313
+00:14:25,780 --> 00:14:27,640
+interested in, I am
+interested in the benchmark
+
+314
+00:14:27,640 --> 00:14:29,180
+and the cost, but I'm
+more interested in
+
+315
+00:14:29,180 --> 00:14:33,980
+the optimization of
+the flow itself. So by
+
+316
+00:14:33,980 --> 00:14:36,800
+doing this, I can
+recursively optimize the
+
+317
+00:14:36,800 --> 00:14:39,660
+actual Spark system to
+say benchmark yourself,
+
+318
+00:14:39,660 --> 00:14:43,060
+then optimize the
+actual rules and code
+
+319
+00:14:43,060 --> 00:14:46,180
+based on the benchmark
+until you get coherence.
+
+320
+00:14:46,180 --> 00:14:48,300
+So what I'm looking
+for is to go from 10
+
+321
+00:14:48,300 --> 00:14:51,960
+steps down to something
+less, right? But at
+
+322
+00:14:51,960 --> 00:14:53,850
+the end of the day,
+what's interesting about
+
+323
+00:14:53,850 --> 00:14:55,660
+what you're looking at
+right now in terms of
+
+324
+00:14:55,660 --> 00:14:58,880
+this benchmark is out
+of all the times I've
+
+325
+00:14:58,880 --> 00:15:01,100
+run this, and I've run
+this probably 60, 70
+
+326
+00:15:01,100 --> 00:15:04,100
+times at this point,
+I've yet to find any
+
+327
+00:15:04,100 --> 00:15:07,940
+problem in the more than
+3,000 problems in the
+
+328
+00:15:07,940 --> 00:15:10,360
+database that this
+system hasn't been able
+
+329
+00:15:10,360 --> 00:15:14,540
+to solve, which means
+that using Spark, we're
+
+330
+00:15:14,540 --> 00:15:17,580
+basically 100% capability,
+at least according
+
+331
+00:15:17,580 --> 00:15:20,460
+to the SWE bench. Now,
+I need someone else
+
+332
+00:15:20,460 --> 00:15:22,790
+other than me to take
+a look at it and find
+
+333
+00:15:22,790 --> 00:15:25,640
+and poke holes into my
+benchmarking philosophy.
+
+334
+00:15:25,640 --> 00:15:30,280
+But in In terms of
+capability, we are
+
+335
+00:15:30,280 --> 00:15:33,560
+now, if you believe
+this to be true, I think
+
+336
+00:15:33,560 --> 00:15:35,840
+I do. It's a little
+early to go out there,
+
+337
+00:15:35,840 --> 00:15:37,640
+but I'm going to use a
+bit of hyperbole here.
+
+338
+00:15:37,640 --> 00:15:41,980
+We are at a phase
+where AI and AI-based
+
+339
+00:15:41,980 --> 00:15:45,860
+coding is at the level
+of any senior developer,
+
+340
+00:15:45,860 --> 00:15:47,700
+without question.
+This is solving any
+
+341
+00:15:47,700 --> 00:15:49,860
+problem I put at it.
+You could take this
+
+342
+00:15:49,860 --> 00:15:52,080
+also, not just use
+this against the SWE
+
+343
+00:15:52,080 --> 00:15:53,980
+bench. You can literally
+point this at any
+
+344
+00:15:53,980 --> 00:15:57,060
+PR on GitHub or JIRA
+or whatever and do it
+
+345
+00:15:57,060 --> 00:15:58,840
+that way and you'll
+get the same result.
+
+346
+00:15:58,840 --> 00:16:00,140
+So here you can see
+that I'm getting
+
+347
+00:16:00,140 --> 00:16:01,740
+my tests. So it
+automatically tests.
+
+348
+00:16:01,740 --> 00:16:03,780
+It tests itself.
+All tests pass.
+
+349
+00:16:04,360 --> 00:16:06,880
+And look, it costs $0
+
+350
+00:16:06,880 --> 00:16:08,980
+.33, which is, you know,
+
+351
+00:16:09,210 --> 00:16:11,160
+not that expensive
+unless you
+
+352
+00:16:11,160 --> 00:16:14,740
+run it 30,000
+times. But, again,
+
+353
+00:16:15,160 --> 00:16:17,060
+nothing I point
+at it, you
+
+354
+00:16:17,060 --> 00:16:18,480
+know, it can't be solved.
+
+355
+00:16:18,480 --> 00:16:20,920
+So this is actually
+a really good way if
+
+356
+00:16:20,920 --> 00:16:22,840
+you're looking at
+integrating this into your
+
+357
+00:16:22,840 --> 00:16:24,400
+dev flow, you could
+actually take what
+
+358
+00:16:24,400 --> 00:16:26,220
+I've done here in terms
+of the benchmarking
+
+359
+00:16:26,220 --> 00:16:28,400
+and use it as part
+of a kind of project
+
+360
+00:16:28,400 --> 00:16:31,340
+management flow. We could
+point it at different
+
+361
+00:16:31,340 --> 00:16:33,940
+websites and kind
+of create like an
+
+362
+00:16:33,940 --> 00:16:37,500
+angel bot where it goes
+and fixes all those
+
+363
+00:16:37,500 --> 00:16:40,880
+issues you see in NPM
+libraries, whatever.
+
+364
+00:16:41,000 --> 00:16:43,360
+It's basically
+a self-fixing
+
+365
+00:16:43,360 --> 00:16:46,340
+system that I built
+as a benchmarking
+
+366
+00:16:46,340 --> 00:16:48,040
+tool, which is
+pretty cool.
+
+367
+00:16:48,100 --> 00:16:49,580
+Now at the end,
+you can see here,
+
+368
+00:16:49,580 --> 00:16:51,780
+so it's using a
+combination of, oh,
+
+369
+00:16:51,780 --> 00:16:52,980
+it looks like this
+one failed. So
+
+370
+00:16:52,980 --> 00:16:55,300
+let's see if it'll
+fix that problem.
+
+371
+00:16:56,680 --> 00:16:58,700
+I need to fix the
+test function. Oh,
+
+372
+00:16:58,700 --> 00:17:00,780
+the test function
+failed. Okay.
+
+373
+00:17:00,800 --> 00:17:04,440
+But anyway, moral
+story is it can fix
+
+374
+00:17:04,440 --> 00:17:06,200
+anything and it
+just kind of works
+
+375
+00:17:06,260 --> 00:17:08,580
+and which is pretty
+cool. All right. That's
+
+376
+00:17:08,580 --> 00:17:09,880
+one thing I built. I'm
+going to jump to the
+
+377
+00:17:09,880 --> 00:17:11,740
+next thing. We can come
+back to that later.
+
+378
+00:17:13,180 --> 00:17:15,540
+While we're on the
+topic of, and this is
+
+379
+00:17:15,540 --> 00:17:16,760
+something I'm going to
+post this afternoon.
+
+380
+00:17:16,760 --> 00:17:17,740
+You guys are going to
+get a little sneak peek
+
+381
+00:17:17,740 --> 00:17:22,600
+of it. I hate RAG.
+RAG *****. Retrieval
+
+382
+00:17:22,600 --> 00:17:24,560
+augmented generation
+is probably the worst
+
+383
+00:17:24,560 --> 00:17:27,920
+possible way to integrate
+data into an LLM.
+
+384
+00:17:27,920 --> 00:17:32,340
+It's slow, it's cumbersome,
+it's really hard
+
+385
+00:17:32,340 --> 00:17:34,860
+to update, and it
+doesn't work well with
+
+386
+00:17:34,860 --> 00:17:38,460
+tools or MCPs. It's
+like it was built for an
+
+387
+00:17:38,460 --> 00:17:41,560
+era that didn't have
+the concepts of function
+
+388
+00:17:41,560 --> 00:17:44,280
+calling, tooling or
+MCPs. So it occurred
+
+389
+00:17:44,280 --> 00:17:46,720
+to me literally this
+morning while I was
+
+390
+00:17:46,720 --> 00:17:50,600
+on my exercise bike,
+what would a retrieval
+
+391
+00:17:50,600 --> 00:17:52,900
+system look like that
+was actually optimized
+
+392
+00:17:52,900 --> 00:17:56,700
+for the current
+generation of LLMs,
+
+393
+00:17:56,720 --> 00:18:00,400
+specifically cache, right?
+So these LLMs now have
+
+394
+00:18:00,400 --> 00:18:02,100
+the ability to have
+prompt caching built
+
+395
+00:18:02,100 --> 00:18:04,600
+directly into it. So
+as you saw earlier,
+
+396
+00:18:04,600 --> 00:18:07,440
+prompt caching is what
+makes these systems
+
+397
+00:18:07,440 --> 00:18:10,900
+really cheap and
+affordable and fast. So by
+
+398
+00:18:10,900 --> 00:18:14,040
+prompt caching, I'm able
+to get substantially
+
+399
+00:18:14,040 --> 00:18:16,100
+faster response
+times. And I built a
+
+400
+00:18:16,100 --> 00:18:19,600
+benchmark, of course, to
+prove this process that
+
+401
+00:18:19,600 --> 00:18:23,880
+allows me to use a
+kind of time to live.
+
+402
+00:18:23,880 --> 00:18:25,540
+So I'm pinging the thing,
+giving it the data,
+
+403
+00:18:25,540 --> 00:18:27,880
+and then extracting
+the data directly from
+
+404
+00:18:27,880 --> 00:18:29,900
+the prompt cache in
+the LLM for things
+
+405
+00:18:29,900 --> 00:18:33,720
+like Sonic 4, as well
+as various things like
+
+406
+00:18:34,180 --> 00:18:37,620
+the latest open AI and
+stuff like that. So
+
+407
+00:18:37,620 --> 00:18:39,880
+the architecture
+basically is similar to
+
+408
+00:18:39,880 --> 00:18:42,580
+RAG, but I'm bypassing
+the need for any kind
+
+409
+00:18:42,580 --> 00:18:45,920
+of vector, which again,
+vectors, because of
+
+410
+00:18:45,920 --> 00:18:47,440
+the similar research,
+have a tendency to
+
+411
+00:18:47,440 --> 00:18:49,240
+not give you the right
+response. So this is
+
+412
+00:18:49,240 --> 00:18:52,240
+explicit. Then I can
+call a tool registry,
+
+413
+00:18:52,360 --> 00:18:54,660
+MCPs or other
+sort of tooling,
+
+414
+00:18:54,660 --> 00:18:56,640
+and then process
+directly that
+
+415
+00:18:56,800 --> 00:19:00,000
+into a sort of data
+structure, both local,
+
+416
+00:19:00,000 --> 00:19:03,640
+like a SQLite or DuckDB
+or whatever, as well
+
+417
+00:19:03,640 --> 00:19:05,740
+as injecting that
+directly into the caching
+
+418
+00:19:05,740 --> 00:19:08,200
+mechanism of the LLM,
+which is substantially
+
+419
+00:19:08,200 --> 00:19:11,440
+faster. So the benefits
+to that include,
+
+420
+00:19:11,500 --> 00:19:13,860
+in my initial test, which
+I'm going to go here
+
+421
+00:19:13,860 --> 00:19:16,400
+and show you. So let's
+go to my next one.
+
+422
+00:19:17,180 --> 00:19:19,500
+So I ran this just
+before the call this
+
+423
+00:19:19,500 --> 00:19:22,300
+morning. I did a quick
+test. I was able to get
+
+424
+00:19:22,300 --> 00:19:31,680
+a 91% cost reduction
+versus RAG, 91%. So the
+
+425
+00:19:31,680 --> 00:19:33,640
+problem with RAG is
+the data has to be
+
+426
+00:19:33,640 --> 00:19:36,800
+inserted every time,
+which causes differences
+
+427
+00:19:36,800 --> 00:19:39,500
+in the prompt. Because
+it's a similarity,
+
+428
+00:19:39,500 --> 00:19:41,820
+those differences mean
+that it's hard to cache
+
+429
+00:19:41,820 --> 00:19:43,800
+because there's minor
+inconsistencies in
+
+430
+00:19:43,800 --> 00:19:45,880
+it. And it just doesn't
+work as well. And I
+
+431
+00:19:45,880 --> 00:19:51,500
+was able to go from a,
+what was my, a 3X or
+
+432
+00:19:51,500 --> 00:19:56,540
+a 320% increase or
+decrease in latency in
+
+433
+00:19:56,540 --> 00:19:58,920
+terms of speed. So I went
+from 160 milliseconds
+
+434
+00:19:58,920 --> 00:20:01,120
+down to like 20
+milliseconds and I was
+
+435
+00:20:01,120 --> 00:20:04,260
+able to save 91%. And
+the other benefit here
+
+436
+00:20:04,260 --> 00:20:06,560
+is I've got the ability
+now to integrate
+
+437
+00:20:06,560 --> 00:20:09,600
+any MCP as part of
+the RAG process, both
+
+438
+00:20:09,600 --> 00:20:12,800
+locally using studio, as
+well as remotely using
+
+439
+00:20:12,800 --> 00:20:16,260
+any MCP that exists
+on the internet. So
+
+440
+00:20:16,260 --> 00:20:20,880
+anyway, I'm calling it
+fact because it kind of
+
+441
+00:20:20,880 --> 00:20:24,160
+works. And I'm going
+to do a blog post
+
+442
+00:20:24,160 --> 00:20:25,720
+later this afternoon
+about this. You guys can
+
+443
+00:20:25,720 --> 00:20:29,700
+try it if you want um
+again like everything
+
+444
+00:20:29,700 --> 00:20:31,720
+i created a benchmarking
+you can see this
+
+445
+00:20:31,720 --> 00:20:35,780
+was entirely built
+between um me getting on
+
+446
+00:20:35,780 --> 00:20:38,080
+my exercise bike at
+8 30 this morning and
+
+447
+00:20:38,080 --> 00:20:41,200
+now so it's caught there's
+quite a bit of stuff
+
+448
+00:20:41,200 --> 00:20:42,780
+here you can see here
+that like you know
+
+449
+00:20:42,780 --> 00:20:45,740
+here's the structure
+of the folders and all
+
+450
+00:20:45,740 --> 00:20:47,760
+the all the components
+that's built it's
+
+451
+00:20:47,760 --> 00:20:52,060
+it's substantial zero
+shot like sonnet for
+
+452
+00:20:52,060 --> 00:20:55,920
+for building complicated
+things is spectacular
+
+453
+00:20:55,920 --> 00:20:58,300
+might not be the
+right word it's it's
+
+454
+00:20:58,300 --> 00:21:02,360
+phenomenal anyway you can
+see here is how I built
+
+455
+00:21:02,360 --> 00:21:05,160
+it here's my docs
+you can see my in my
+
+456
+00:21:05,160 --> 00:21:07,900
+initial planning so
+basically I started with
+
+457
+00:21:07,900 --> 00:21:10,580
+basically a readme this
+is the sort of here's
+
+458
+00:21:10,580 --> 00:21:12,820
+what I want to build
+here and I want to
+
+459
+00:21:12,820 --> 00:21:15,100
+try the new arcade dev
+system which is really
+
+460
+00:21:15,100 --> 00:21:17,940
+a cool system so you
+can see how that works
+
+461
+00:21:17,940 --> 00:21:20,440
+where the heck what's
+that image I don't
+
+462
+00:21:20,440 --> 00:21:22,080
+even know what that
+even is but it looks
+
+463
+00:21:22,080 --> 00:21:24,520
+like it inserted a weird
+image you know anyway
+
+464
+00:21:24,520 --> 00:21:26,200
+you can get a feel
+for it check out the
+
+465
+00:21:26,200 --> 00:21:27,960
+scripts folder if you
+want to see all the little
+
+466
+00:21:27,960 --> 00:21:30,380
+benchmarking here's
+the benchmark read
+
+467
+00:21:30,380 --> 00:21:36,280
+read me i think i think
+on my exercise bike
+
+468
+00:21:36,280 --> 00:21:39,340
+in a matter of three
+hours we reinvented the
+
+469
+00:21:39,340 --> 00:21:42,260
+idea of rag all right
+i'm done that was me
+
+470
+00:21:42,260 --> 00:21:44,440
+going at super speed
+here this morning how
+
+471
+00:21:44,440 --> 00:21:46,880
+does the cash get
+injected into the model?
+
+472
+00:21:48,200 --> 00:21:52,200
+I'm using two approaches
+right now. I can
+
+473
+00:21:52,200 --> 00:21:56,360
+do direct request of
+the MCP, which induces
+
+474
+00:21:56,360 --> 00:21:58,960
+significant latency
+depending on whether it's
+
+475
+00:21:58,960 --> 00:22:01,720
+local or remote.
+Studio would be faster.
+
+476
+00:22:01,720 --> 00:22:04,380
+But for the actual
+benchmarking, I'm using
+
+477
+00:22:04,380 --> 00:22:08,040
+SQLite. So I'm taking
+the data as a separate
+
+478
+00:22:08,040 --> 00:22:11,600
+process running
+independently of the actual
+
+479
+00:22:11,600 --> 00:22:14,140
+request. So I generally
+know what information
+
+480
+00:22:14,140 --> 00:22:15,520
+I can show you guys
+quickly what that
+
+481
+00:22:15,520 --> 00:22:19,060
+looks like and let's
+go back just a quick
+
+482
+00:22:19,060 --> 00:22:22,660
+and again I'm trying to
+this is this is a art
+
+483
+00:22:22,660 --> 00:22:24,340
+of the possible sort
+of thing by the way
+
+484
+00:22:24,340 --> 00:22:26,360
+you know I don't know
+and I looked around I
+
+485
+00:22:26,360 --> 00:22:28,360
+couldn't find anyone
+doing anything quite
+
+486
+00:22:28,360 --> 00:22:30,860
+like it so let's just
+go here I'll show you
+
+487
+00:22:30,860 --> 00:22:34,380
+what the data looks
+like there we go so in
+
+488
+00:22:34,380 --> 00:22:37,760
+this case we have a
+folder called fact demo
+
+489
+00:22:38,280 --> 00:22:41,960
+and this is a SQLite,
+so let's look at
+
+490
+00:22:41,960 --> 00:22:44,060
+what the data
+looks like. So I'm
+
+491
+00:22:44,060 --> 00:22:47,140
+inserting the data into
+a sort of a persistent
+
+492
+00:22:47,140 --> 00:22:49,870
+structure. So in
+this case, I did
+
+493
+00:22:49,870 --> 00:22:52,740
+financial records,
+just as a good example.
+
+494
+00:22:52,740 --> 00:22:54,400
+So these are like
+test companies.
+
+495
+00:22:54,640 --> 00:22:57,580
+Then these are the
+records. So these
+
+496
+00:22:57,580 --> 00:22:59,440
+would be data
+relating to it, just
+
+497
+00:22:59,440 --> 00:23:02,500
+simple quarterly data.
+And then I've got
+
+498
+00:23:02,500 --> 00:23:04,580
+a sequence that
+basically just tells
+
+499
+00:23:04,580 --> 00:23:08,280
+you the results. I'm
+using this in place
+
+500
+00:23:08,280 --> 00:23:09,900
+of what would
+normally be a vector
+
+501
+00:23:10,420 --> 00:23:13,480
+and I'm essentially
+running structured SQL
+
+502
+00:23:13,760 --> 00:23:16,380
+as part of the
+RAG process itself
+
+503
+00:23:16,620 --> 00:23:21,460
+rather than a vector
+similarity search.
+
+504
+00:23:22,220 --> 00:23:24,660
+Let's go back
+to the diagram
+
+505
+00:23:24,660 --> 00:23:26,260
+which illustrates it.
+
+506
+00:23:27,760 --> 00:23:29,080
+Here we go.
+
+507
+00:23:30,200 --> 00:23:31,940
+Where is it? Here we go.
+
+508
+00:23:34,680 --> 00:23:37,460
+So it's this layer
+here in the middle.
+
+509
+00:23:37,640 --> 00:23:40,040
+And then I'm passing
+the information
+
+510
+00:23:40,040 --> 00:23:43,680
+from the database
+to a prompt cache.
+
+511
+00:23:43,680 --> 00:23:45,580
+And that's what
+gives it the speed.
+
+512
+00:23:49,100 --> 00:23:51,640
+Cool. So you're
+using the caching API
+
+513
+00:23:51,640 --> 00:23:54,380
+of the LLM vendor
+to inject it? Yes,
+
+514
+00:23:54,540 --> 00:23:56,220
+exactly what I'm doing.
+And then I'm using
+
+515
+00:23:56,220 --> 00:23:59,000
+TLS and pinging it
+every now and then I'm
+
+516
+00:23:59,000 --> 00:24:02,120
+having multiple concurrent
+prompt caches running.
+
+517
+00:24:02,120 --> 00:24:04,960
+And then this works
+best for things at
+
+518
+00:24:04,960 --> 00:24:07,060
+scale where, you know,
+you were trying to save
+
+519
+00:24:07,060 --> 00:24:08,600
+money, you know,
+because you're doing a
+
+520
+00:24:08,600 --> 00:24:10,140
+lot of the same sort
+of stuff. Let's say you
+
+521
+00:24:10,140 --> 00:24:13,100
+have like a finance
+bot or something and
+
+522
+00:24:13,100 --> 00:24:15,680
+people are asking what
+their, you know, latest
+
+523
+00:24:15,680 --> 00:24:17,700
+stock portfolio looks
+like or whatever. And
+
+524
+00:24:17,700 --> 00:24:19,700
+then I'm just keeping
+that cashed or, you
+
+525
+00:24:19,700 --> 00:24:21,960
+know, so if you're if
+you're working at scale,
+
+526
+00:24:21,960 --> 00:24:25,500
+you know, 33 cents
+adds up quite quickly.
+
+527
+00:24:25,980 --> 00:24:29,400
+What happens if
+somebody asks a
+
+528
+00:24:29,400 --> 00:24:31,940
+question that's
+not in the cash?
+
+529
+00:24:32,500 --> 00:24:35,400
+it will then make it
+in the same way that
+
+530
+00:24:35,400 --> 00:24:37,660
+you instantiate the
+tools, it'll make the
+
+531
+00:24:37,660 --> 00:24:40,040
+request update the
+cache and subsequently
+
+532
+00:24:40,040 --> 00:24:41,640
+anyone else that makes
+that request will
+
+533
+00:24:41,640 --> 00:24:44,680
+then get that if they're
+approved, that is.
+
+534
+00:24:46,840 --> 00:24:48,760
+So you can, it's
+all the same
+
+535
+00:24:48,760 --> 00:24:51,560
+general concepts
+of a sort of rag
+
+536
+00:24:51,560 --> 00:24:53,080
+style approach
+without the vector.
+
+537
+00:24:53,360 --> 00:24:56,320
+So I'm using as a
+key for the cache?
+
+538
+00:24:58,480 --> 00:24:59,920
+The prompt?
+
+539
+00:25:00,520 --> 00:25:02,160
+it's a yeah
+it's prompt yeah
+
+540
+00:25:02,160 --> 00:25:03,900
+it's data i'm
+just static data
+
+541
+00:25:05,500 --> 00:25:08,380
+i'm just injecting the
+data directly in the
+
+542
+00:25:08,380 --> 00:25:09,840
+in the prompt i'm
+using the prompt cache
+
+543
+00:25:10,020 --> 00:25:12,400
+so you're saying that
+you take that entire
+
+544
+00:25:12,400 --> 00:25:15,380
+sqlite database and
+you dump that into the
+
+545
+00:25:15,380 --> 00:25:18,300
+cache and then flooded
+that into the into the
+
+546
+00:25:18,300 --> 00:25:21,260
+cache of the model
+yeah and then and then
+
+547
+00:25:21,260 --> 00:25:23,220
+every so every subsequent
+request at that
+
+548
+00:25:23,220 --> 00:25:26,840
+point is free yeah
+because you overloaded the
+
+549
+00:25:26,840 --> 00:25:29,380
+model's token cache
+with the entire database
+
+550
+00:25:29,380 --> 00:25:31,860
+of data and then and
+then if it's beyond
+
+551
+00:25:31,860 --> 00:25:33,980
+the 200k limit i just
+i just chunk it into
+
+552
+00:25:33,980 --> 00:25:37,420
+multiple prompt caches
+okay yeah so so this
+
+553
+00:25:37,420 --> 00:25:40,360
+is a this is a known
+strategy where model
+
+554
+00:25:40,360 --> 00:25:43,080
+vendors say yeah just
+put all your data we
+
+555
+00:25:43,080 --> 00:25:45,280
+have a million million
+token cache or two
+
+556
+00:25:45,280 --> 00:25:47,680
+million token uh you
+know you know context
+
+557
+00:25:47,680 --> 00:25:49,360
+window so just dump
+all your data into the
+
+558
+00:25:49,360 --> 00:25:54,280
+into the token context
+yeah sort of but i'm
+
+559
+00:25:54,280 --> 00:25:56,800
+because it's cached
+it's not it's not doing
+
+560
+00:25:56,800 --> 00:26:00,560
+the the context
+interpretation it's it's doing
+
+561
+00:26:00,560 --> 00:26:02,340
+the because i'm
+predetermining the output
+
+562
+00:26:02,340 --> 00:26:06,300
+because it's cash so
+what the the issue you
+
+563
+00:26:06,300 --> 00:26:09,000
+have a prompt with
+uh prompt stuffing is
+
+564
+00:26:09,000 --> 00:26:11,200
+you've got the u-shaped
+issue with with the
+
+565
+00:26:11,200 --> 00:26:13,920
+interpretation of the
+data i'm doing zero
+
+566
+00:26:13,920 --> 00:26:16,580
+interpretation i'm
+giving it explicit a
+
+567
+00:26:16,580 --> 00:26:19,760
+deterministic response
+that's what the cache does
+
+568
+00:26:19,760 --> 00:26:21,960
+right i know exactly
+what the response is
+
+569
+00:26:21,960 --> 00:26:24,200
+going to be i've
+explicitly told it and and
+
+570
+00:26:24,200 --> 00:26:26,440
+then measured it so
+and there's no variance
+
+571
+00:26:26,440 --> 00:26:28,980
+like you do with rag
+you and with rag you
+
+572
+00:26:28,980 --> 00:26:31,540
+you can insert the data
+10 times and get 10
+
+573
+00:26:31,540 --> 00:26:33,580
+different variants on
+the output there is
+
+574
+00:26:33,580 --> 00:26:35,620
+no variance that is
+true with rag there's a
+
+575
+00:26:35,620 --> 00:26:38,560
+major problem with
+duplication and that and
+
+576
+00:26:38,560 --> 00:26:41,300
+uh you have to go
+through a lot of the more
+
+577
+00:26:41,300 --> 00:26:43,820
+do you deduplicate the
+data the higher your
+
+578
+00:26:43,820 --> 00:26:46,620
+answer performance
+or your retrieval
+
+579
+00:26:46,620 --> 00:26:50,840
+performance exactly and
+in this scenario i know
+
+580
+00:26:50,840 --> 00:26:52,280
+exactly what the output
+is going to be and
+
+581
+00:26:52,280 --> 00:26:53,960
+i can measure it i
+can it's because it's
+
+582
+00:26:53,960 --> 00:26:56,380
+deterministic i don't
+want any variance on a
+
+583
+00:26:56,380 --> 00:26:58,140
+rag based system that's
+the biggest issue
+
+584
+00:26:58,140 --> 00:27:01,380
+with rag is both speed
+it's generally pretty
+
+585
+00:27:01,380 --> 00:27:03,540
+slow even the most
+optimized systems are
+
+586
+00:27:03,540 --> 00:27:06,380
+pretty slow and there's
+always this kind of
+
+587
+00:27:06,380 --> 00:27:09,240
+variance in the output
+no matter how how much
+
+588
+00:27:09,240 --> 00:27:11,180
+you try to make it not
+vary there's always
+
+589
+00:27:11,180 --> 00:27:13,360
+slight variance and for
+certain applications
+
+590
+00:27:13,360 --> 00:27:15,480
+especially things
+that involve numbers
+
+591
+00:27:15,480 --> 00:27:18,280
+mathematics and code
+there's no room for
+
+592
+00:27:18,280 --> 00:27:21,360
+variation this solves
+that problem true because
+
+593
+00:27:21,360 --> 00:27:24,340
+reg is a semantic
+search not not and not a
+
+594
+00:27:24,340 --> 00:27:28,740
+deterministic search
+so this is really well
+
+595
+00:27:29,220 --> 00:27:33,280
+i'm sorry how do you
+predetermine the you you
+
+596
+00:27:33,280 --> 00:27:36,040
+say by predetermining
+you know what is going
+
+597
+00:27:36,040 --> 00:27:39,000
+to be asked well i know
+i know what's going
+
+598
+00:27:39,000 --> 00:27:40,280
+to be asked and what
+and then i also know
+
+599
+00:27:40,280 --> 00:27:41,700
+what's going to be
+output and i can and i
+
+600
+00:27:41,700 --> 00:27:44,040
+can create recursion
+that allows me to either
+
+601
+00:27:44,040 --> 00:27:46,260
+measure and optimize
+based on it based on
+
+602
+00:27:46,260 --> 00:27:48,160
+the sort of initial
+which is basically going
+
+603
+00:27:48,160 --> 00:27:51,500
+back in here similar
+similar to what i did
+
+604
+00:27:51,500 --> 00:27:53,460
+with the other
+benchmarking tool i've got
+
+605
+00:27:53,460 --> 00:27:55,760
+different different
+approaches that can define
+
+606
+00:27:55,760 --> 00:27:59,720
+you know my my structure
+my my and the sort
+
+607
+00:27:59,720 --> 00:28:02,620
+of output and i can
+optimize that so i get
+
+608
+00:28:02,620 --> 00:28:04,620
+the coherence that i'm
+looking for like it
+
+609
+00:28:04,620 --> 00:28:06,700
+always gives me the same
+answer based on what
+
+610
+00:28:06,700 --> 00:28:10,740
+i need it to be so i can
+i can i can basically
+
+611
+00:28:10,740 --> 00:28:13,060
+benchmark it and
+evaluate and optimize it
+
+612
+00:28:13,060 --> 00:28:15,160
+basically using almost
+exactly the same
+
+613
+00:28:15,160 --> 00:28:17,280
+approach i use with the
+spark benchmarking tool
+
+614
+00:28:17,880 --> 00:28:19,920
+it's a different
+implementation for different
+
+615
+00:28:19,920 --> 00:28:22,140
+purposes but
+conceptually i'm doing
+
+616
+00:28:22,140 --> 00:28:29,100
+reinforcement on it
+yeah and and by the way
+
+617
+00:28:29,100 --> 00:28:30,440
+there's a really
+cool new feature i
+
+618
+00:28:30,440 --> 00:28:33,280
+discovered it's not new
+but new to me live share
+
+619
+00:28:33,280 --> 00:28:36,210
+have you guys seen
+this you can uh you
+
+620
+00:28:36,210 --> 00:28:38,080
+guys can log in and
+take a look at my uh
+
+621
+00:28:38,080 --> 00:28:43,820
+my live running git
+uh code space oh i can
+
+622
+00:28:43,820 --> 00:28:45,460
+i can take control of
+your of your terminal
+
+623
+00:28:45,460 --> 00:28:47,300
+right now yeah here
+i'm gonna let you
+
+624
+00:28:47,300 --> 00:28:49,800
+guys do that share
+read only terminal oh
+
+625
+00:28:49,860 --> 00:28:53,120
+that's pretty funny
+all right rmrf we're
+
+626
+00:28:53,120 --> 00:28:55,160
+gonna have we're gonna
+have 50 50 people
+
+627
+00:28:55,160 --> 00:28:57,460
+hacking on your uh on
+your shell Here we go.
+
+628
+00:28:57,600 --> 00:28:59,800
+Let's do it. I'm going
+
+629
+00:28:59,800 --> 00:29:00,770
+to give you guys access.
+
+630
+00:29:02,960 --> 00:29:04,940
+I'm going to slap
+it in the code.
+
+631
+00:29:06,740 --> 00:29:10,100
+There's nothing too
+worse. There we go.
+
+632
+00:29:12,060 --> 00:29:14,120
+This one's the one. Let's
+
+633
+00:29:14,120 --> 00:29:15,080
+see what I have here.
+
+634
+00:29:19,420 --> 00:29:21,720
+Yeah. This is
+just a feature.
+
+635
+00:29:21,720 --> 00:29:22,980
+Actually, before
+I do, I'm going
+
+636
+00:29:22,980 --> 00:29:24,140
+to stop sharing
+just for a sec,
+
+637
+00:29:25,740 --> 00:29:27,000
+check my biometer
+variables
+
+638
+00:29:27,000 --> 00:29:28,460
+before I do
+that. Yeah, yeah,
+
+639
+00:29:28,460 --> 00:29:29,620
+yeah. I was about
+to say that.
+
+640
+00:29:29,780 --> 00:29:31,100
+It's all right.
+We're here.
+
+641
+00:29:31,200 --> 00:29:32,060
+Thanks for having me.
+
+642
+00:29:32,640 --> 00:29:33,760
+Maybe later.
+
+643
+00:29:33,920 --> 00:29:34,700
+Maybe later.
+
+644
+00:29:35,440 --> 00:29:37,160
+We'll come back
+to that one.
+
+645
+00:29:37,160 --> 00:29:39,840
+I'm like, how long has it
+
+646
+00:29:39,840 --> 00:29:41,020
+been since we've
+been hacked?
+
+647
+00:29:41,460 --> 00:29:43,240
+24 hours. There we go.
+
+648
+00:29:44,940 --> 00:29:47,900
+No. Anyway, how about
+next time I do a live
+
+649
+00:29:47,900 --> 00:29:51,040
+coding session, I
+will share the session
+
+650
+00:29:51,040 --> 00:29:53,140
+using that feature and
+you guys will be able to
+
+651
+00:29:53,140 --> 00:29:56,340
+log in and we can do
+collectively fool around
+
+652
+00:29:56,340 --> 00:29:59,500
+with the coding
+instance or maybe I'll
+
+653
+00:29:59,500 --> 00:30:01,700
+just remove the environmental
+variables and we
+
+654
+00:30:01,700 --> 00:30:04,200
+can do it a little
+later but anyway that's
+
+655
+00:30:05,180 --> 00:30:08,200
+we can do code
+roulette just have code
+
+656
+00:30:08,200 --> 00:30:10,320
+roulette whoever
+gets selected has
+
+657
+00:30:10,320 --> 00:30:11,960
+to write a line and
+we just keep going
+
+658
+00:30:12,540 --> 00:30:14,600
+oh man peer coding
+
+659
+00:30:16,500 --> 00:30:21,040
+vibe peer coding en
+masse I know right it's
+
+660
+00:30:21,040 --> 00:30:25,720
+so fun yeah take a shot
+exactly oh actually
+
+661
+00:30:25,720 --> 00:30:27,380
+know what i'm gonna
+do i'm gonna i'm gonna
+
+662
+00:30:27,380 --> 00:30:30,160
+share the one where
+i don't have any uh
+
+663
+00:30:30,160 --> 00:30:32,360
+environmental variables
+i'm worried about but
+
+664
+00:30:32,360 --> 00:30:34,580
+we'll come back we'll
+come back in the after
+
+665
+00:30:34,580 --> 00:30:37,090
+show we'll we'll uh
+we'll do some collective
+
+666
+00:30:37,260 --> 00:30:40,560
+vibe coding or or
+more like hacking roof
+
+667
+00:30:42,380 --> 00:30:45,220
+anyway the after potty
+man that's really
+
+668
+00:30:45,220 --> 00:30:47,100
+that's really action
+is in the after potty
+
+669
+00:30:48,700 --> 00:30:51,240
+all right i i want
+to go 20 minutes by
+
+670
+00:30:51,240 --> 00:30:52,400
+somehow i managed
+to go half an hour
+
+671
+00:30:52,400 --> 00:30:55,500
+so uh i'm gonna let
+uh braun or whoever
+
+672
+00:30:55,500 --> 00:30:57,260
+else we have going
+here take over
+
+673
+00:30:57,260 --> 00:31:01,800
+yeah we uh uh thanks
+ru oh awesome um
+
+674
+00:31:02,260 --> 00:31:04,620
+we should give uh brad
+a moment here he's
+
+675
+00:31:04,620 --> 00:31:07,020
+got some updates
+for us and then and
+
+676
+00:31:07,020 --> 00:31:10,780
+then uh we'll bring in
+uh ****** v3 uh brad
+
+677
+00:31:10,780 --> 00:31:12,680
+hey thank thanks a
+lot i'll be really
+
+678
+00:31:12,680 --> 00:31:16,120
+quick uh The big, big
+news is we're going
+
+679
+00:31:16,120 --> 00:31:19,200
+to be updating our
+agentics.org website,
+
+680
+00:31:19,200 --> 00:31:21,480
+especially the member
+services portion.
+
+681
+00:31:21,480 --> 00:31:23,400
+So we're calling
+on anyone
+
+682
+00:31:23,400 --> 00:31:24,700
+that wants to help out.
+
+683
+00:31:25,280 --> 00:31:27,260
+We need tons of
+tons of help.
+
+684
+00:31:27,260 --> 00:31:29,620
+We want to make sure
+that we have an amazing
+
+685
+00:31:29,620 --> 00:31:32,780
+site. So when you go
+in, you log in for
+
+686
+00:31:32,780 --> 00:31:35,000
+your free account, paid
+account. We'll have
+
+687
+00:31:35,000 --> 00:31:37,160
+the events, the different
+learning, learning
+
+688
+00:31:37,160 --> 00:31:39,300
+aspects, have these
+videos available,
+
+689
+00:31:39,300 --> 00:31:42,120
+all the committee level
+information, chapter
+
+690
+00:31:42,120 --> 00:31:45,420
+information. So it's
+a big project looking
+
+691
+00:31:45,420 --> 00:31:47,740
+for anyone and everyone
+that wants to be
+
+692
+00:31:47,740 --> 00:31:49,620
+involved. We're just
+starting the process,
+
+693
+00:31:49,620 --> 00:31:52,220
+identifying different
+vendors that should be
+
+694
+00:31:52,220 --> 00:31:54,540
+confirmed next week.
+We're all ready to go.
+
+695
+00:31:54,540 --> 00:31:58,070
+I'll post the link in
+the website and pre
+
+696
+00:31:58,070 --> 00:32:00,000
+-thanks to everyone that
+wants to volunteer.
+
+697
+00:32:00,040 --> 00:32:00,700
+Thank you.
+
+698
+00:32:01,620 --> 00:32:04,880
+And just a reminder,
+now that we have
+
+699
+00:32:04,880 --> 00:32:07,700
+the free GitHub
+and Codespaces, is
+
+700
+00:32:07,700 --> 00:32:11,060
+there's a benefit
+to you get some
+
+701
+00:32:11,060 --> 00:32:13,640
+free GitHub access,
+at the very least.
+
+702
+00:32:15,540 --> 00:32:17,880
+Hopefully, I
+think Martin said
+
+703
+00:32:17,880 --> 00:32:19,080
+he's working on
+potentially getting
+
+704
+00:32:19,080 --> 00:32:21,540
+substantial
+discount on Google
+
+705
+00:32:21,540 --> 00:32:24,960
+-related API and AI
+-related tooling.
+
+706
+00:32:25,100 --> 00:32:28,160
+So 75% off, maybe
+we can do something
+
+707
+00:32:28,160 --> 00:32:30,320
+there to get anyone
+that contributes access
+
+708
+00:32:30,320 --> 00:32:32,920
+to those APIs as
+well so you don't
+
+709
+00:32:32,920 --> 00:32:34,940
+have to work out your
+own money on that.
+
+710
+00:32:34,940 --> 00:32:35,900
+Go, Martin.
+
+711
+00:32:39,520 --> 00:32:42,340
+yeah yeah do we
+have possible
+
+712
+00:32:42,340 --> 00:32:45,480
+to form a company
+oh sorry form
+
+713
+00:32:45,480 --> 00:32:47,300
+a company and
+get a company
+
+714
+00:32:48,100 --> 00:32:52,620
+uh team access to
+codex be a lot cheaper
+
+715
+00:32:52,620 --> 00:32:54,960
+than individual 200
+bucks a month mark do you
+
+716
+00:32:54,960 --> 00:32:56,780
+need me to hire you
+as an intern actually
+
+717
+00:32:57,700 --> 00:33:00,820
+actually funny you
+mentioned that we that's
+
+718
+00:33:00,820 --> 00:33:02,320
+one of the reasons
+why we created a non
+
+719
+00:33:02,320 --> 00:33:05,800
+-profit literally was
+for that reason so the
+
+720
+00:33:05,800 --> 00:33:09,040
+by having a non-profit
+almost all these
+
+721
+00:33:09,040 --> 00:33:11,940
+big companies, Amazons
+and Googles and
+
+722
+00:33:11,940 --> 00:33:14,090
+whatever, all have non
+-profit rates, which are
+
+723
+00:33:14,090 --> 00:33:16,640
+sometimes free, but
+generally it's somewhere
+
+724
+00:33:16,640 --> 00:33:20,880
+between 25% to 75% off.
+So we're leveraging
+
+725
+00:33:20,880 --> 00:33:24,000
+our non-profit status
+to get cheap AI.
+
+726
+00:33:24,800 --> 00:33:25,840
+Right?
+
+727
+00:33:27,980 --> 00:33:31,360
+The other is
+pushing forward
+
+728
+00:33:32,140 --> 00:33:35,380
+democratizing AI,
+right? So I don't want
+
+729
+00:33:35,380 --> 00:33:37,640
+um those entities
+to think that we're
+
+730
+00:33:37,640 --> 00:33:39,560
+not serious about
+our mission we very
+
+731
+00:33:39,560 --> 00:33:41,220
+much are it just
+happens to be that it
+
+732
+00:33:41,220 --> 00:33:43,940
+also you know the
+collective will benefit
+
+733
+00:33:43,940 --> 00:33:45,640
+um the mission
+that we're putting
+
+734
+00:33:45,640 --> 00:33:51,140
+forward all right
+wonderful wonderful
+
+735
+00:33:51,140 --> 00:33:54,980
+okay do we have ******
+hey guys i'm here
+
+736
+00:33:55,200 --> 00:33:58,440
+hey how are you good
+good good good thanks
+
+737
+00:33:58,440 --> 00:34:00,600
+for uh for letting me
+share y'all this is uh
+
+738
+00:34:00,600 --> 00:34:03,820
+super cool to see uh
+what this is turning
+
+739
+00:34:03,820 --> 00:34:07,740
+into you know i just
+like came in uh via a
+
+740
+00:34:07,740 --> 00:34:10,640
+linkedin post you know
+like uh i don't know what
+
+741
+00:34:10,640 --> 00:34:12,700
+was it four or five
+months ago and like
+
+742
+00:34:12,700 --> 00:34:14,880
+it's super cool to just
+see how much this has
+
+743
+00:34:14,880 --> 00:34:16,820
+grown and how much
+it's taken off very
+
+744
+00:34:16,820 --> 00:34:20,240
+validating my recent
+career choices uh anyways
+
+745
+00:34:20,240 --> 00:34:23,700
+guys uh i i did something
+uh like over the
+
+746
+00:34:23,700 --> 00:34:26,460
+last couple of weeks
+kind of silly not as like
+
+747
+00:34:26,460 --> 00:34:28,900
+really serious or like
+groundbreaking and
+
+748
+00:34:28,900 --> 00:34:31,620
+things just uh fun uh
+for me i i've always
+
+749
+00:34:31,620 --> 00:34:36,340
+been into music um and
+um i just got into coding
+
+750
+00:34:36,340 --> 00:34:41,080
+so um you know i
+learned that uh you can
+
+751
+00:34:41,080 --> 00:34:45,120
+write music uh in python
+code with like midi
+
+752
+00:34:45,120 --> 00:34:48,080
+right um and i was
+like hey wait if the AI
+
+753
+00:34:48,080 --> 00:34:52,120
+can write code and the
+AI can execute code.
+
+754
+00:34:53,210 --> 00:34:56,000
+I mean, all I have to
+do is have it play the
+
+755
+00:34:56,000 --> 00:34:59,900
+MIDI file it makes
+afterwards, right? So I
+
+756
+00:34:59,900 --> 00:35:01,980
+like totally vibe coded
+this knowing nothing
+
+757
+00:35:01,980 --> 00:35:06,880
+about like synthesizers
+or anything like
+
+758
+00:35:06,880 --> 00:35:10,780
+that. And what it ended
+up doing was we used
+
+759
+00:35:10,780 --> 00:35:13,740
+an SF2 file. i'm sure
+if you guys know about
+
+760
+00:35:13,740 --> 00:35:17,240
+this but a fluid synth
+is like a like a old
+
+761
+00:35:17,240 --> 00:35:20,100
+school like python
+synthesizer library and
+
+762
+00:35:20,100 --> 00:35:25,540
+what we do here you
+guys hear it no no no i
+
+763
+00:35:25,540 --> 00:35:28,000
+didn't share right
+hold on if you go back
+
+764
+00:35:28,000 --> 00:35:30,840
+there's an option to
+share with audio yeah okay
+
+765
+00:35:30,840 --> 00:35:33,060
+cool all right i'll
+replay that first so
+
+766
+00:35:33,060 --> 00:35:37,200
+so what the agent does
+uh real simply um is
+
+767
+00:35:37,200 --> 00:35:40,460
+she takes your your
+your request uh and then
+
+768
+00:35:40,460 --> 00:35:45,000
+And she starts writing
+iterations of the song,
+
+769
+00:35:45,000 --> 00:35:47,520
+right? So the basic
+one, I just pushed
+
+770
+00:35:47,520 --> 00:35:50,470
+enter on it. And that'll
+give you like a basic
+
+771
+00:35:50,470 --> 00:35:53,980
+sort of electronic
+upbeat music. So here's
+
+772
+00:35:53,980 --> 00:35:56,180
+the first beat. Lays
+down the drums for us.
+
+773
+00:35:57,360 --> 00:35:59,100
+Everybody hears
+that? Yeah.
+
+774
+00:35:59,520 --> 00:36:01,060
+We need a theme tune now.
+
+775
+00:36:01,280 --> 00:36:02,360
+Good to have Friday.
+
+776
+00:36:02,860 --> 00:36:04,560
+Okay, cool. So she threw
+
+777
+00:36:04,560 --> 00:36:06,120
+down the drum
+beat for us.
+
+778
+00:36:06,160 --> 00:36:09,260
+Now it's going to
+take that same code.
+
+779
+00:36:10,260 --> 00:36:12,140
+It looks at it and
+it's like, OK, I need
+
+780
+00:36:12,140 --> 00:36:13,740
+to add another
+instrument layer on
+
+781
+00:36:13,740 --> 00:36:16,540
+top of it. And it
+needs to be cohesive.
+
+782
+00:36:16,540 --> 00:36:17,540
+It needs to like,
+
+783
+00:36:17,680 --> 00:36:19,940
+you know, so you can
+imagine the amount of
+
+784
+00:36:19,940 --> 00:36:22,920
+like prompting like I
+had to go through to
+
+785
+00:36:22,920 --> 00:36:24,860
+like get this thing to
+do this right. So there's
+
+786
+00:36:24,860 --> 00:36:27,100
+like there's the initial
+agent that writes
+
+787
+00:36:27,100 --> 00:36:29,280
+the code. Then there's
+a validator agent
+
+788
+00:36:29,280 --> 00:36:32,220
+that goes through and
+validates the code that
+
+789
+00:36:32,220 --> 00:36:35,140
+the agent wrote for
+musical cohesiveness.
+
+790
+00:36:35,540 --> 00:36:38,080
+Then then it pushes
+it like through and
+
+791
+00:36:38,080 --> 00:36:40,200
+it'll play the music
+for us. The second one
+
+792
+00:36:40,200 --> 00:36:41,660
+usually takes a
+little bit longer to
+
+793
+00:36:41,660 --> 00:36:45,660
+load, and if there's
+an error, if the code
+
+794
+00:36:45,660 --> 00:36:48,520
+hits an error or
+something, it'll actually
+
+795
+00:36:48,520 --> 00:36:52,400
+push it over to a,
+oh, here we go, guys.
+
+796
+00:36:53,060 --> 00:36:54,060
+Oh,
+
+797
+00:36:54,660 --> 00:36:55,480
+right?
+
+798
+00:36:55,500 --> 00:36:56,900
+Not bad.
+
+799
+00:36:57,200 --> 00:36:59,740
+No, we are not
+good hearing.
+
+800
+00:36:59,800 --> 00:37:01,340
+You guys don't hear it?
+
+801
+00:37:01,340 --> 00:37:02,080
+No.
+
+802
+00:37:02,120 --> 00:37:03,540
+The previous one.
+
+803
+00:37:03,840 --> 00:37:04,720
+I understand.
+
+804
+00:37:04,720 --> 00:37:05,240
+Yep.
+
+805
+00:37:07,380 --> 00:37:08,380
+Okay.
+
+806
+00:37:08,380 --> 00:37:09,900
+Here, I'll play
+this. so here was the
+
+807
+00:37:09,900 --> 00:37:14,900
+second run for you
+guys uh yeah i did hear
+
+808
+00:37:14,900 --> 00:37:16,840
+the first one i'm not
+hearing the second one
+
+809
+00:37:16,840 --> 00:37:21,160
+okay here's the
+second one yeah same
+
+810
+00:37:22,080 --> 00:37:26,160
+right same song right
+another layer of uh
+
+811
+00:37:26,160 --> 00:37:29,000
+music on top of it another
+layer of instrument
+
+812
+00:37:29,000 --> 00:37:31,480
+kind of cool right
+still vibing it's
+
+813
+00:37:31,480 --> 00:37:34,320
+a little bit longer
+i had it doubled the
+
+814
+00:37:34,320 --> 00:37:37,220
+length of music with
+each time right um you
+
+815
+00:37:37,220 --> 00:37:38,720
+know that that was
+a real fun thing for
+
+816
+00:37:38,720 --> 00:37:41,120
+our non-deterministic
+AIs to figure out.
+
+817
+00:37:41,900 --> 00:37:44,200
+But I'll give you a
+little peek into the
+
+818
+00:37:44,200 --> 00:37:46,240
+prompting here, guys.
+I'm not blackboxing,
+
+819
+00:37:46,240 --> 00:37:47,560
+and it's open source.
+Y'all can go to it.
+
+820
+00:37:47,560 --> 00:37:50,220
+I'll post the repo
+after this. But we've
+
+821
+00:37:50,220 --> 00:37:52,540
+got an instrument list,
+right? And this has
+
+822
+00:37:52,540 --> 00:37:54,800
+to follow. If you're
+using this SF2 thing,
+
+823
+00:37:54,800 --> 00:37:57,660
+you have to look up
+Weed's GM3, right? And
+
+824
+00:37:57,660 --> 00:37:59,720
+you have to learn
+their instrument list.
+
+825
+00:38:00,480 --> 00:38:02,020
+Oh, we got another one.
+
+826
+00:38:02,260 --> 00:38:03,560
+This is a ******.
+
+827
+00:38:03,680 --> 00:38:06,240
+Wait, I'll play it for
+you guys after it's
+
+828
+00:38:06,240 --> 00:38:13,220
+done playing locally
+actually you're
+
+829
+00:38:13,220 --> 00:38:16,600
+creating waves as well
+can you yeah yeah so
+
+830
+00:38:16,600 --> 00:38:21,260
+it turns the mini into
+a wave file uh let's
+
+831
+00:38:21,260 --> 00:38:24,760
+say it's almost done
+easy integrate pro
+
+832
+00:38:24,760 --> 00:38:26,920
+logic and you and you
+you're now just get
+
+833
+00:38:26,920 --> 00:38:28,880
+the ai to create
+every you know pop hit
+
+834
+00:38:28,880 --> 00:38:32,580
+for spotify yeah right
+um so so it goes to
+
+835
+00:38:32,580 --> 00:38:34,320
+Okay, so here's the
+third version, guys.
+
+836
+00:38:38,760 --> 00:38:41,380
+All right, another
+layer on top of it.
+
+837
+00:38:41,980 --> 00:38:45,640
+So, yeah, that was
+my project this
+
+838
+00:38:45,640 --> 00:38:47,400
+week. It works
+pretty good with O3.
+
+839
+00:38:47,440 --> 00:38:50,000
+It's a lot of
+fun. And then this
+
+840
+00:38:50,440 --> 00:38:51,860
+will just keep
+going. It'll just
+
+841
+00:38:51,860 --> 00:38:53,160
+keep going and
+going and going.
+
+842
+00:38:53,200 --> 00:38:55,860
+And then some improvements
+I want to make.
+
+843
+00:38:55,860 --> 00:38:59,000
+I discovered this
+library called Sonic
+
+844
+00:38:59,000 --> 00:39:00,640
+Pi. I don't know if
+anybody's ever heard
+
+845
+00:39:00,640 --> 00:39:05,040
+of it before, but like
+some dope like some
+
+846
+00:39:07,600 --> 00:39:10,100
+really dope synthesizer
+sounds and stuff
+
+847
+00:39:11,040 --> 00:39:15,140
+william yeah please
+forgive me for asking uh
+
+848
+00:39:15,140 --> 00:39:17,820
+what was the bottom
+line theory on creating
+
+849
+00:39:17,820 --> 00:39:19,960
+this you you said in
+the beginning and please
+
+850
+00:39:19,960 --> 00:39:21,610
+give me i was
+distracted you said you
+
+851
+00:39:21,610 --> 00:39:24,800
+realized something and
+that that was the bottom
+
+852
+00:39:24,800 --> 00:39:27,800
+line theory that led
+to all of this yeah i
+
+853
+00:39:27,800 --> 00:39:30,140
+also said uh as a
+disclaimer that this was
+
+854
+00:39:30,140 --> 00:39:33,620
+not a serious project
+this was like a real
+
+855
+00:39:33,620 --> 00:39:36,060
+creative thing uh like
+everybody knows that's
+
+856
+00:39:36,060 --> 00:39:38,420
+okay my my toddler is
+dancing to your music
+
+857
+00:39:38,420 --> 00:39:40,960
+in the background oh
+okay let's go so yeah
+
+858
+00:39:40,960 --> 00:39:43,740
+no i mean the idea was
+like um we i was at i'm
+
+859
+00:39:43,740 --> 00:39:45,800
+at work and you know
+my nine to five and
+
+860
+00:39:45,800 --> 00:39:48,180
+we're like really pushing
+for like ai adoption
+
+861
+00:39:48,180 --> 00:39:49,700
+all this stuff so we
+put together a little
+
+862
+00:39:49,700 --> 00:39:52,680
+crew of uh people to
+to have a little agent
+
+863
+00:39:52,680 --> 00:39:54,860
+contest right um i
+lost because i couldn't
+
+864
+00:39:54,860 --> 00:39:57,400
+get my midi agent up
+in time but then i took
+
+865
+00:39:57,400 --> 00:39:59,220
+it home and kept building
+it right i was like
+
+866
+00:39:59,220 --> 00:40:02,540
+hey wait if uh if the
+ai like can run code
+
+867
+00:40:02,540 --> 00:40:05,560
+and midi you can write
+that in python then
+
+868
+00:40:05,560 --> 00:40:07,560
+like theoretically
+couldn't my agent sort of
+
+869
+00:40:07,560 --> 00:40:10,160
+write a song for me
+and like be a sequencer
+
+870
+00:40:10,160 --> 00:40:12,360
+and like sort of develop
+this musical thing
+
+871
+00:40:12,360 --> 00:40:14,780
+and i get it it's a
+relationship between
+
+872
+00:40:14,780 --> 00:40:18,040
+midi and python correct
+yeah yeah yeah yeah
+
+873
+00:40:18,040 --> 00:40:20,200
+and that and that i
+could have the ai sort of
+
+874
+00:40:20,200 --> 00:40:22,180
+do that for me right
+like because now it can
+
+875
+00:40:22,180 --> 00:40:24,700
+run code like autonomously
+and execute it
+
+876
+00:40:24,700 --> 00:40:26,320
+so i was like oh well
+i'm gonna make it you
+
+877
+00:40:26,320 --> 00:40:29,420
+play music for me why
+not right so what did
+
+878
+00:40:29,420 --> 00:40:32,860
+you use root code what
+did you use um i i
+
+879
+00:40:32,860 --> 00:40:36,200
+primarily use cursor um
+i'm just a big fan of
+
+880
+00:40:36,200 --> 00:40:39,460
+cursor i keep a uh
+language agnostic system
+
+881
+00:40:39,460 --> 00:40:41,440
+prompt sort of in the
+cursor rules i'm still
+
+882
+00:40:41,440 --> 00:40:43,360
+a little old school on
+that i haven't upgraded
+
+883
+00:40:43,360 --> 00:40:45,780
+to all the other stuff
+but um and i utilize
+
+884
+00:40:45,780 --> 00:40:48,160
+a lot of the the
+custom modes in cursor
+
+885
+00:40:48,160 --> 00:40:50,680
+so i'll make myself
+like a you know python
+
+886
+00:40:50,680 --> 00:40:53,780
+mode a streamlet mode next
+js all these different
+
+887
+00:40:53,780 --> 00:40:56,600
+modes and then um and
+then yeah just kind
+
+888
+00:40:56,600 --> 00:40:59,820
+of vibe out like that
+is is the model picking
+
+889
+00:40:59,820 --> 00:41:01,960
+the key and the
+progressions and everything
+
+890
+00:41:01,960 --> 00:41:05,180
+yeah it picks everything
+um and but you
+
+891
+00:41:05,180 --> 00:41:07,180
+can tell it uh in the
+beginning that there's
+
+892
+00:41:07,180 --> 00:41:09,160
+like a prompt i just
+i clicked enter and
+
+893
+00:41:09,160 --> 00:41:11,780
+it'll give you like
+the the generic sort of
+
+894
+00:41:11,780 --> 00:41:14,580
+style which is just
+upbeat electronic music it
+
+895
+00:41:14,580 --> 00:41:17,980
+never it never makes it
+bad for me that one's
+
+896
+00:41:17,980 --> 00:41:20,340
+always good for demo
+but um you can flip
+
+897
+00:41:20,340 --> 00:41:22,400
+it to classical you
+can say hey play a jazz
+
+898
+00:41:22,400 --> 00:41:24,420
+song in a minor it
+actually does pretty decent
+
+899
+00:41:24,420 --> 00:41:26,680
+with jazz because the
+drums are like you
+
+900
+00:41:26,680 --> 00:41:28,560
+know sort of like the
+same beat and the and
+
+901
+00:41:28,560 --> 00:41:30,480
+the bass line is just
+uh you know walking
+
+902
+00:41:30,480 --> 00:41:32,780
+quarter notes so it does
+pretty decent with jazz
+
+903
+00:41:32,780 --> 00:41:35,190
+it gets a little wonky
+with the uh soloing
+
+904
+00:41:35,190 --> 00:41:37,660
+and stuff and syncopation
+but well you know
+
+905
+00:41:37,660 --> 00:41:40,380
+we all say this not
+country it's not music
+
+906
+00:41:43,060 --> 00:41:46,360
+who said that you
+know back in the 90s
+
+907
+00:41:46,360 --> 00:41:49,420
+i i'm certainly um
+aging myself for a
+
+908
+00:41:49,420 --> 00:41:51,140
+moment but But back
+in the 90s, I used
+
+909
+00:41:51,140 --> 00:41:54,140
+to be a trance DJ,
+like, circa 1996.
+
+910
+00:41:55,940 --> 00:41:59,660
+And my spot was,
+like, 4 a.m. when
+
+911
+00:41:59,660 --> 00:42:00,940
+everyone was kind
+of, you know,
+
+912
+00:42:00,940 --> 00:42:02,860
+drugged out and
+done for the night.
+
+913
+00:42:03,260 --> 00:42:05,840
+My job is to come on
+stage and basically
+
+914
+00:42:05,840 --> 00:42:07,340
+get everyone, you
+know, out of their,
+
+915
+00:42:07,340 --> 00:42:11,000
+you know, ecstasy
+phase, you know,
+
+916
+00:42:11,140 --> 00:42:13,560
+blown out phase
+and do the big drop
+
+917
+00:42:13,560 --> 00:42:14,820
+and get one going
+again. But anyway,
+
+918
+00:42:14,820 --> 00:42:17,280
+this would have been
+amazing back then.
+
+919
+00:42:18,180 --> 00:42:20,900
+Thanks, guys. I
+appreciate it. It was like
+
+920
+00:42:20,900 --> 00:42:22,060
+a silly thing. I
+thought you guys would
+
+921
+00:42:22,060 --> 00:42:24,180
+appreciate it. So, cool.
+I'll post the repo.
+
+922
+00:42:25,180 --> 00:42:27,820
+Hey, thanks, David.
+Thanks, David. David,
+
+923
+00:42:27,820 --> 00:42:30,000
+the archivist, young
+blood. Question.
+
+924
+00:42:31,560 --> 00:42:35,020
+Is LLM listening to
+the music or just
+
+925
+00:42:35,020 --> 00:42:37,700
+working on the code
+and refining the code?
+
+926
+00:42:38,660 --> 00:42:42,760
+Originally, A, I said,
+hey, I need the AI to
+
+927
+00:42:42,760 --> 00:42:44,860
+listen to the music,
+right? and i like and
+
+928
+00:42:44,860 --> 00:42:48,160
+i fiddle around trying
+to get um the audio
+
+929
+00:42:48,160 --> 00:42:51,740
+to pick up on the the
+open ai api like wow
+
+930
+00:42:51,740 --> 00:42:54,600
+like the so my my
+speakers are playing music
+
+931
+00:42:54,600 --> 00:42:56,760
+and the microphone
+listening doesn't work at
+
+932
+00:42:56,760 --> 00:42:58,420
+the same time i don't
+know if anybody else
+
+933
+00:42:58,420 --> 00:43:00,440
+knows how to figure
+that out but i could not
+
+934
+00:43:00,440 --> 00:43:03,400
+figure it out every
+time that the um the
+
+935
+00:43:03,400 --> 00:43:05,960
+music played the
+microphone turned off like
+
+936
+00:43:05,960 --> 00:43:08,870
+it like my system wouldn't
+let it happen have
+
+937
+00:43:09,000 --> 00:43:12,660
+you tried sending
+files have you tried
+
+938
+00:43:12,660 --> 00:43:16,800
+sending like um like
+exported files no no i didn't
+
+939
+00:43:16,800 --> 00:43:18,280
+try sending the wave
+file or anything but
+
+940
+00:43:18,280 --> 00:43:20,500
+dude you guys are like
+super like welcome
+
+941
+00:43:20,500 --> 00:43:25,340
+to contribute i would
+like yeah my son my
+
+942
+00:43:25,340 --> 00:43:29,340
+son vibed a uh an
+interface for you he was
+
+943
+00:43:29,340 --> 00:43:32,580
+working on a very similar
+uh project that he
+
+944
+00:43:32,580 --> 00:43:34,480
+wanted to create like
+a he wanted to create a
+
+945
+00:43:34,480 --> 00:43:36,060
+sequencer that allowed
+him to play his guitar
+
+946
+00:43:36,060 --> 00:43:39,600
+with a kind of band
+yeah so and and what
+
+947
+00:43:39,780 --> 00:43:41,820
+he did he was using
+i don't know what he
+
+948
+00:43:41,820 --> 00:43:44,400
+used actually but what
+he did is he he allowed
+
+949
+00:43:44,400 --> 00:43:46,200
+the system to listen
+and then it would
+
+950
+00:43:46,200 --> 00:43:48,960
+synchronize to how he
+played because he his
+
+951
+00:43:48,960 --> 00:43:52,560
+his uh beat was not
+constant so it would
+
+952
+00:43:52,560 --> 00:43:54,760
+basically much like a
+band sort of changes its
+
+953
+00:43:54,760 --> 00:43:57,340
+tempo as you're playing
+he managed to do
+
+954
+00:43:57,340 --> 00:43:59,640
+that and he's got a
+whole little uh app that
+
+955
+00:43:59,640 --> 00:44:01,660
+does that i should
+i should get him to
+
+956
+00:44:01,660 --> 00:44:03,940
+send it over yeah that
+sounds cool that sounds
+
+957
+00:44:03,940 --> 00:44:06,160
+cool and we have
+that we have this is
+
+958
+00:44:06,160 --> 00:44:09,000
+unrelated but you you
+wrote in the chat you met
+
+959
+00:44:09,000 --> 00:44:11,900
+with the folks at long
+shame and they want
+
+960
+00:44:11,900 --> 00:44:13,860
+to get can you explain
+that a bit more
+
+961
+00:44:13,860 --> 00:44:16,580
+yeah yeah of course so
+um i'm out in new york
+
+962
+00:44:16,580 --> 00:44:20,360
+guys um and um i'm i
+work my nine to five
+
+963
+00:44:20,360 --> 00:44:22,500
+is at a company called
+just works we do like
+
+964
+00:44:22,500 --> 00:44:24,880
+hr payroll and stuff
+and we're doing some
+
+965
+00:44:24,880 --> 00:44:27,260
+things with langsmith
+internally and uh
+
+966
+00:44:27,260 --> 00:44:29,620
+harris and chase was
+in town and they were
+
+967
+00:44:29,620 --> 00:44:31,240
+you know of course
+trying to get us to you
+
+968
+00:44:31,240 --> 00:44:33,600
+know sign the contract
+so um they're like hey
+
+969
+00:44:33,600 --> 00:44:36,600
+come have coffee with
+us and uh harrison's
+
+970
+00:44:36,600 --> 00:44:38,020
+gonna be there and i
+was like hey i'm going
+
+971
+00:44:38,020 --> 00:44:42,240
+too so um yeah i
+asked you know humbly
+
+972
+00:44:42,240 --> 00:44:44,800
+and i was like they let
+me go um and i got to
+
+973
+00:44:44,800 --> 00:44:46,360
+shoot the **** with
+harrison i told them
+
+974
+00:44:46,360 --> 00:44:48,880
+about agentix.org
+everything that we're doing
+
+975
+00:44:48,880 --> 00:44:50,720
+i said hey you know
+google like sponsored
+
+976
+00:44:50,720 --> 00:44:53,540
+the uh the agentix
+.org uh meet up out in
+
+977
+00:44:53,540 --> 00:44:55,280
+london they had a great
+turnout i think it'd
+
+978
+00:44:55,280 --> 00:44:57,900
+be a cool um you know
+opportunity for you
+
+979
+00:44:57,900 --> 00:44:59,500
+guys to kind of, you
+know, get involved
+
+980
+00:44:59,500 --> 00:45:01,800
+into more, you know,
+really lock yourselves
+
+981
+00:45:01,800 --> 00:45:04,800
+into the grassroots,
+open source, you know,
+
+982
+00:45:04,960 --> 00:45:06,700
+nonprofit thing that,
+you know, where real
+
+983
+00:45:06,700 --> 00:45:08,300
+people are coding.
+I also asked him the
+
+984
+00:45:08,300 --> 00:45:12,780
+question, somebody asked
+me to ask him where he
+
+985
+00:45:12,780 --> 00:45:14,980
+thinks that OpenAI
+went wrong in their
+
+986
+00:45:14,980 --> 00:45:18,140
+implementation of agents.
+And I also asked him
+
+987
+00:45:18,140 --> 00:45:19,960
+how he felt about
+getting dissed in their
+
+988
+00:45:19,960 --> 00:45:22,620
+documentation with the
+land graph thing. And
+
+989
+00:45:22,620 --> 00:45:25,760
+he said that OpenAI is
+just a consumer company
+
+990
+00:45:25,760 --> 00:45:27,900
+at this point uh it's
+not really paying
+
+991
+00:45:27,900 --> 00:45:29,940
+that much attention
+to them uh it doesn't
+
+992
+00:45:29,940 --> 00:45:32,140
+think that there's like
+a lot of like developer
+
+993
+00:45:32,140 --> 00:45:34,280
+focus going into like
+the product and this
+
+994
+00:45:34,280 --> 00:45:37,280
+is more so just like
+hype and i disagree
+
+995
+00:45:37,280 --> 00:45:39,300
+he's obviously not
+using the latest models
+
+996
+00:45:39,300 --> 00:45:43,840
+just defending himself
+too so yeah yeah so just
+
+997
+00:45:43,840 --> 00:45:45,440
+it's the third time
+this week i've heard
+
+998
+00:45:45,440 --> 00:45:48,840
+that just a quick just
+a quick update if you
+
+999
+00:45:48,840 --> 00:45:50,860
+guys haven't seen
+the responses api and
+
+1000
+00:45:50,860 --> 00:45:54,260
+their integration with
+their tools and now the
+
+1001
+00:45:54,260 --> 00:45:57,280
+MCP integration
+directly within both the
+
+1002
+00:45:57,280 --> 00:45:59,460
+response and their
+agentic system. Oh, sick.
+
+1003
+00:45:59,500 --> 00:46:01,020
+I'm using it
+all this week.
+
+1004
+00:46:01,020 --> 00:46:02,260
+It's spectacular.
+
+1005
+00:46:02,540 --> 00:46:04,160
+Like anyone telling
+you that they're
+
+1006
+00:46:04,160 --> 00:46:05,340
+not paying attention
+to developers
+
+1007
+00:46:05,340 --> 00:46:07,620
+is not paying
+attention to OpenAI.
+
+1008
+00:46:07,920 --> 00:46:10,480
+Oh, yeah. Let's go.
+So anyways, that's
+
+1009
+00:46:10,480 --> 00:46:12,860
+what he said. But so
+I also mentioned, so
+
+1010
+00:46:12,860 --> 00:46:15,920
+JustWorks, we are open
+to having like events
+
+1011
+00:46:15,920 --> 00:46:18,400
+here, like for this
+AI kind of thing.
+
+1012
+00:46:18,620 --> 00:46:21,060
+So I was thinking it
+would be dope to have,
+
+1013
+00:46:21,060 --> 00:46:23,500
+you know laying chain
+uh with the agent
+
+1014
+00:46:23,500 --> 00:46:26,180
+x.org have their new
+york meet up at the
+
+1015
+00:46:26,180 --> 00:46:27,940
+just works office here
+we got a great space
+
+1016
+00:46:27,940 --> 00:46:30,160
+for it so it's trying
+to set that up we
+
+1017
+00:46:30,160 --> 00:46:34,220
+have folks in new york
+city where they at yeah
+
+1018
+00:46:34,220 --> 00:46:39,520
+so real sorry hang on
+about the background
+
+1019
+00:46:39,520 --> 00:46:43,280
+noise my bad um uh
+real quick sharing a
+
+1020
+00:46:43,280 --> 00:46:46,420
+link just you reminded
+me uh ****** of uh
+
+1021
+00:46:46,420 --> 00:46:48,220
+and great great stuff
+by the way and your
+
+1022
+00:46:48,220 --> 00:46:51,800
+new website updates
+also pretty fly uh with
+
+1023
+00:46:51,800 --> 00:46:55,020
+the bel-air theme on
+it um but there's a
+
+1024
+00:46:55,020 --> 00:46:57,460
+link here there's a
+project somebody did
+
+1025
+00:46:57,460 --> 00:47:00,980
+and they used a an
+old uh library called
+
+1026
+00:47:00,980 --> 00:47:04,420
+jitterbit and they what
+they did was they you
+
+1027
+00:47:04,420 --> 00:47:06,540
+know programmed ai
+to talk to itself and
+
+1028
+00:47:06,540 --> 00:47:08,480
+it started to create
+its own language and
+
+1029
+00:47:08,480 --> 00:47:10,860
+so it's using like
+high frequency sound
+
+1030
+00:47:10,860 --> 00:47:14,640
+yeah to allow ai to
+communicate and it reparses
+
+1031
+00:47:14,640 --> 00:47:17,060
+the sound into, you
+know, its own language
+
+1032
+00:47:17,060 --> 00:47:18,880
+and it's able to
+have a conversation.
+
+1033
+00:47:18,920 --> 00:47:20,880
+And there's like a
+future application
+
+1034
+00:47:20,880 --> 00:47:22,700
+of this where
+AI is going to
+
+1035
+00:47:22,700 --> 00:47:24,660
+be able to
+communicate, you know,
+
+1036
+00:47:24,900 --> 00:47:26,100
+interoperably within
+
+1037
+00:47:26,100 --> 00:47:28,020
+systems through,
+you know,
+
+1038
+00:47:28,660 --> 00:47:31,220
+Internet of Things type
+technology. And you're
+
+1039
+00:47:31,220 --> 00:47:33,780
+like microwave and
+fridge and computer and
+
+1040
+00:47:33,780 --> 00:47:35,560
+watch and phone are
+all going to be able
+
+1041
+00:47:35,560 --> 00:47:37,120
+to help you like get
+through your day. Like
+
+1042
+00:47:37,120 --> 00:47:39,000
+that's that's what's
+coming when people put
+
+1043
+00:47:39,000 --> 00:47:40,680
+this together. but this
+jitter bit's kind of
+
+1044
+00:47:40,680 --> 00:47:44,700
+a preview to how it
+can use like you know
+
+1045
+00:47:44,700 --> 00:47:48,040
+hypersonic frequencies
+to communicate it's it's
+
+1046
+00:47:48,040 --> 00:47:50,940
+absolutely crazy that
+was actually that was
+
+1047
+00:47:50,940 --> 00:47:52,740
+like six months ago
+that thing came out that
+
+1048
+00:47:52,740 --> 00:47:54,980
+jitter bit came out
+and it never really
+
+1049
+00:47:54,980 --> 00:47:58,060
+took off but it was
+pretty impressive like um
+
+1050
+00:47:58,060 --> 00:48:02,800
+i think it took off
+yeah the the demo i saw
+
+1051
+00:48:02,800 --> 00:48:05,740
+i saw was when um some
+guy was on his phone
+
+1052
+00:48:05,740 --> 00:48:08,320
+talking and and an ai
+answered and he was
+
+1053
+00:48:08,320 --> 00:48:10,380
+like they they he
+recognized that there were
+
+1054
+00:48:10,380 --> 00:48:12,180
+the two ais talking so
+they said do you want
+
+1055
+00:48:12,180 --> 00:48:13,560
+to do you want to talk
+jitter and he was like
+
+1056
+00:48:13,560 --> 00:48:15,460
+yeah and so they just
+they just started
+
+1057
+00:48:15,460 --> 00:48:17,520
+talking wasn't that a
+concept piece though i
+
+1058
+00:48:17,520 --> 00:48:19,880
+didn't think it was real
+yeah it's real there's
+
+1059
+00:48:19,880 --> 00:48:23,240
+code i think it's real
+okay there's a link
+
+1060
+00:48:23,240 --> 00:48:26,680
+it's a link it was a
+mock-up demo yeah it's
+
+1061
+00:48:26,680 --> 00:48:30,200
+on gay happen it was
+concept all right um
+
+1062
+00:48:30,200 --> 00:48:32,580
+guys we we we got we
+got we got some we get a
+
+1063
+00:48:32,580 --> 00:48:35,620
+bit of backlog, but
+before we do, I see an
+
+1064
+00:48:35,620 --> 00:48:38,120
+old buddy of mine on
+the call, John Willis,
+
+1065
+00:48:38,120 --> 00:48:40,980
+who is like the
+godfather of DevOps. Hey,
+
+1066
+00:48:40,980 --> 00:48:42,820
+John, hopefully he's
+paying attention because
+
+1067
+00:48:42,820 --> 00:48:44,990
+I'm putting him on the
+spot here. You there?
+
+1068
+00:48:46,120 --> 00:48:47,640
+If he isn't, we'll
+have to come back to
+
+1069
+00:48:47,640 --> 00:48:49,840
+him. But it's always
+amazing the people
+
+1070
+00:48:49,840 --> 00:48:53,580
+we get on these calls.
+And the folks you
+
+1071
+00:48:53,940 --> 00:48:57,600
+don't actually see
+or hear are sometimes
+
+1072
+00:48:57,600 --> 00:49:00,140
+the most interesting
+crew we get here.
+
+1073
+00:49:00,140 --> 00:49:02,220
+Hopefully I'll ping
+John and see if I can
+
+1074
+00:49:02,220 --> 00:49:04,000
+get him. He's about
+to do audio right now.
+
+1075
+00:49:04,480 --> 00:49:05,120
+Yeah.
+
+1076
+00:49:05,300 --> 00:49:06,300
+All right.
+
+1077
+00:49:06,360 --> 00:49:07,880
+I think we have Bron up
+
+1078
+00:49:07,880 --> 00:49:09,160
+next. Yeah, that's right.
+
+1079
+00:49:09,260 --> 00:49:10,280
+Bron. Yeah.
+
+1080
+00:49:10,520 --> 00:49:11,380
+All right.
+
+1081
+00:49:11,600 --> 00:49:13,080
+Let me see here.
+
+1082
+00:49:13,080 --> 00:49:14,180
+Screen share.
+
+1083
+00:49:15,600 --> 00:49:16,480
+Okay.
+
+1084
+00:49:17,580 --> 00:49:18,460
+Desktop.
+
+1085
+00:49:18,840 --> 00:49:20,060
+This one here.
+
+1086
+00:49:20,060 --> 00:49:20,940
+All right.
+
+1087
+00:49:21,920 --> 00:49:24,660
+Okay. So I don't know
+if you guys have been
+
+1088
+00:49:24,660 --> 00:49:27,640
+following NVIDIA. If
+you haven't watched
+
+1089
+00:49:27,640 --> 00:49:30,320
+their last keynote,
+I'd go through it. some
+
+1090
+00:49:30,320 --> 00:49:33,400
+pretty insane stuff these
+guys are saying things
+
+1091
+00:49:33,400 --> 00:49:36,880
+like million parameter
+model on desktops
+
+1092
+00:49:38,100 --> 00:49:40,400
+but video is going
+hard i guess trying to
+
+1093
+00:49:40,400 --> 00:49:42,640
+sell hardware so
+they're also working on
+
+1094
+00:49:42,640 --> 00:49:46,720
+models and if you look
+at the current asr
+
+1095
+00:49:46,720 --> 00:49:51,120
+leaderboard their their
+model is crushing everyone
+
+1096
+00:49:51,120 --> 00:49:55,180
+this parakeet is at
+6.5 word error rate
+
+1097
+00:49:55,180 --> 00:50:00,200
+but its output is 30
+to you know 100 times
+
+1098
+00:50:00,400 --> 00:50:02,900
+faster than anything
+I've ever seen.
+
+1099
+00:50:03,460 --> 00:50:05,020
+And if you, you know,
+when you're coding,
+
+1100
+00:50:05,020 --> 00:50:10,940
+usually it's pretty
+hard to beat the cloud.
+
+1101
+00:50:11,340 --> 00:50:13,960
+So let me see, I got
+to move this out of the
+
+1102
+00:50:13,960 --> 00:50:16,280
+way. But, you know, if
+I looked at, I looked
+
+1103
+00:50:16,280 --> 00:50:19,320
+at, where is it here?
+So these are like
+
+1104
+00:50:19,320 --> 00:50:25,100
+the top current audio
+to transcript systems
+
+1105
+00:50:25,100 --> 00:50:28,640
+you know deep gram open
+ai whisper so right
+
+1106
+00:50:28,640 --> 00:50:32,480
+now i'm hosting that
+nvidia system on my own
+
+1107
+00:50:32,480 --> 00:50:37,160
+uh stack with a commodity
+card rtx 3600 and
+
+1108
+00:50:37,160 --> 00:50:42,680
+this is this is like
+40 to 300 times less
+
+1109
+00:50:42,680 --> 00:50:46,960
+expensive uh than the
+major tiers and you know
+
+1110
+00:50:46,960 --> 00:50:51,220
+their their takeaway
+summary 120 times rtf
+
+1111
+00:50:51,220 --> 00:50:54,680
+and you know this their
+summary is pipeline
+
+1112
+00:50:54,680 --> 00:50:57,940
+currently enterprise
+great accuracy two orders
+
+1113
+00:50:57,940 --> 00:50:59,940
+of magnitude lower cost
+than any mainstream
+
+1114
+00:50:59,940 --> 00:51:04,020
+sas state-of-the-art
+so i took it and i i
+
+1115
+00:51:04,020 --> 00:51:06,320
+talked i got these
+clients that want to build
+
+1116
+00:51:06,320 --> 00:51:11,160
+a transcript system
+for medical dental so
+
+1117
+00:51:11,160 --> 00:51:15,840
+here i'll fire up the
+recording and uh clear
+
+1118
+00:51:15,840 --> 00:51:20,480
+this and let's see
+here i'll try to get uh
+
+1119
+00:51:20,860 --> 00:51:24,320
+some text
+going. So, okay.
+
+1120
+00:51:24,620 --> 00:51:28,240
+All right. We
+are live testing
+
+1121
+00:51:28,240 --> 00:51:31,760
+the speed of
+speech-to-text with
+
+1122
+00:51:31,760 --> 00:51:34,660
+AI Hackerspace
+Friday, May 23rd.
+
+1123
+00:51:35,320 --> 00:51:38,320
+Let's see. This pipeline
+delivers enterprise
+
+1124
+00:51:38,320 --> 00:51:40,840
+-grade accuracy at
+hundreds of times lower
+
+1125
+00:51:40,840 --> 00:51:42,920
+cost than any mainstream
+cloud with state
+
+1126
+00:51:42,920 --> 00:51:45,400
+-of-the-art speed on
+commodity hardware.
+
+1127
+00:51:45,640 --> 00:51:48,440
+I can even do
+timestamping. So,
+
+1128
+00:51:48,440 --> 00:51:50,840
+this will do real
+-time timestamping.
+
+1129
+00:51:50,840 --> 00:51:52,440
+I can turn
+that on or off.
+
+1130
+00:51:53,020 --> 00:51:53,500
+So,
+
+1131
+00:51:53,740 --> 00:51:58,000
+at 6.5% error
+rate, that is super
+
+1132
+00:51:58,000 --> 00:52:00,460
+low, which means
+it's usable. And
+
+1133
+00:52:01,400 --> 00:52:04,440
+after this is
+done, you can
+
+1134
+00:52:04,890 --> 00:52:07,480
+combine your audio
+to make a wave.
+
+1135
+00:52:08,100 --> 00:52:12,240
+You can also go through
+
+1136
+00:52:12,660 --> 00:52:14,960
+transcript editing,
+so you can load up
+
+1137
+00:52:14,960 --> 00:52:17,240
+your old transcripts,
+take a look at them.
+
+1138
+00:52:17,320 --> 00:52:19,500
+These would be
+your audio, so
+
+1139
+00:52:19,500 --> 00:52:21,860
+when you talk,
+it's chunking it,
+
+1140
+00:52:21,860 --> 00:52:24,040
+it'll recombine
+it into these
+
+1141
+00:52:24,240 --> 00:52:28,100
+audio systems, so you
+can replay, you know,
+
+1142
+00:52:28,500 --> 00:52:30,160
+replay your text.
+
+1143
+00:52:30,660 --> 00:52:33,540
+And this will,
+I'll do a one
+
+1144
+00:52:33,540 --> 00:52:36,460
+-up, this thing
+can do a one-hour
+
+1145
+00:52:36,460 --> 00:52:38,720
+audio, so I took
+this podcast,
+
+1146
+00:52:39,140 --> 00:52:43,740
+let's see here I'll
+grab it uh so this is a
+
+1147
+00:52:43,740 --> 00:52:47,180
+one hour podcast because
+I had another guy
+
+1148
+00:52:47,180 --> 00:52:50,740
+that wanted to do um
+podcast summaries so
+
+1149
+00:52:50,740 --> 00:52:53,900
+that's why I was kind
+of in this space but um
+
+1150
+00:52:53,900 --> 00:52:59,720
+this we can do a live
+uh transcribe of a full
+
+1151
+00:52:59,720 --> 00:53:01,780
+hour of audio you
+gotta remember this is
+
+1152
+00:53:01,780 --> 00:53:05,790
+like a regular graphics
+card this RTX 3600.
+
+1153
+00:53:08,600 --> 00:53:14,930
+Okay so we'll fire
+it up and this is
+
+1154
+00:53:14,930 --> 00:53:17,800
+starting the processing.
+What I had to do is
+
+1155
+00:53:18,380 --> 00:53:20,660
+all the audio has
+to be converted
+
+1156
+00:53:20,660 --> 00:53:24,200
+to 16k mono and
+so first what
+
+1157
+00:53:24,200 --> 00:53:26,280
+it'll do is
+it'll convert it
+
+1158
+00:53:26,940 --> 00:53:29,200
+with FFmpeg
+then it'll chunk
+
+1159
+00:53:29,200 --> 00:53:31,200
+it into 30
+second chunks and
+
+1160
+00:53:31,200 --> 00:53:33,180
+then it'll feed
+it into the LM.
+
+1161
+00:53:33,390 --> 00:53:35,820
+so pretty soon
+you'll see the
+
+1162
+00:53:35,820 --> 00:53:39,580
+chunking starting
+up that's how you
+
+1163
+00:53:39,580 --> 00:53:41,820
+can fit it into
+a commodity card
+
+1164
+00:53:42,650 --> 00:53:44,940
+so we're at what
+do we have here 30
+
+1165
+00:53:44,940 --> 00:53:48,940
+seconds so this is
+every you can see it's
+
+1166
+00:53:48,940 --> 00:53:51,420
+going at more than
+one chunk per second
+
+1167
+00:53:51,420 --> 00:53:55,360
+so that's feeding
+um you know i don't
+
+1168
+00:53:55,360 --> 00:53:57,680
+know five minutes
+every half second or
+
+1169
+00:53:57,680 --> 00:54:01,320
+something into this
+thing so we're at 46
+
+1170
+00:54:03,640 --> 00:54:08,360
+so hopefully we can
+break a minute 54 55
+
+1171
+00:54:08,360 --> 00:54:12,360
+getting close okay so
+there we did it we did as
+
+1172
+00:54:12,360 --> 00:54:15,340
+a full hour podcast
+transcribed with time
+
+1173
+00:54:15,340 --> 00:54:20,100
+stamps in one minute
+and this machine cost me
+
+1174
+00:54:20,100 --> 00:54:24,480
+30 cents an hour so
+you can imagine i can
+
+1175
+00:54:24,480 --> 00:54:30,460
+do 120 hours of
+transcribing for 30 cents so
+
+1176
+00:54:30,460 --> 00:54:33,900
+this is pretty insane
+like most like you take
+
+1177
+00:54:33,900 --> 00:54:36,260
+llama or any of these
+regular models and
+
+1178
+00:54:36,260 --> 00:54:39,220
+usually they're getting
+crushed by clod or open
+
+1179
+00:54:39,220 --> 00:54:41,640
+ai but that's why i'm
+saying you know we
+
+1180
+00:54:41,640 --> 00:54:44,200
+gotta pay attention
+to these guys because
+
+1181
+00:54:44,200 --> 00:54:48,700
+these guys are building
+star center 200 billion
+
+1182
+00:54:48,700 --> 00:54:51,320
+dollar data centers
+and looks like they're
+
+1183
+00:54:51,320 --> 00:54:54,240
+saying well how do we
+get more people to buy
+
+1184
+00:54:54,240 --> 00:54:57,900
+nvidia well let's make
+uh models that need
+
+1185
+00:54:57,900 --> 00:55:00,760
+hardware right so um
+i don't know if we're
+
+1186
+00:55:00,760 --> 00:55:03,180
+getting to trillion
+parameter model on a
+
+1187
+00:55:03,180 --> 00:55:05,660
+motherboard in the next
+year i think we're getting
+
+1188
+00:55:05,660 --> 00:55:08,820
+pretty close to you
+know agi or whatever
+
+1189
+00:55:08,820 --> 00:55:11,320
+you want to call it
+but uh you if you are
+
+1190
+00:55:11,320 --> 00:55:16,880
+into uh speech to text
+um like i say you can
+
+1191
+00:55:16,880 --> 00:55:21,300
+you can do a rundown
+with oh three uh this is
+
+1192
+00:55:21,300 --> 00:55:24,240
+pretty nuts you know if
+you look at the costs
+
+1193
+00:55:24,240 --> 00:55:28,940
+like uh these top
+ones would be like you
+
+1194
+00:55:28,940 --> 00:55:32,080
+know three hundred and
+fifty thousand dollars
+
+1195
+00:55:32,080 --> 00:55:36,580
+to do the same thing
+right as opposed to 30
+
+1196
+00:55:36,580 --> 00:55:39,360
+cents yeah it's just
+you can it's almost
+
+1197
+00:55:39,360 --> 00:55:43,340
+free like it's it's you
+know like the it's the
+
+1198
+00:55:43,340 --> 00:55:45,760
+surprising thing is
+the quality right at 6
+
+1199
+00:55:45,760 --> 00:55:50,300
+.5 percent word error
+rate um this is top
+
+1200
+00:55:50,300 --> 00:55:52,920
+level like you you you
+know i can't name one
+
+1201
+00:55:52,920 --> 00:55:58,080
+other uh open source
+commodity runs on your
+
+1202
+00:55:58,080 --> 00:56:01,620
+graphics card lm that
+can totally wipe out the
+
+1203
+00:56:01,620 --> 00:56:03,820
+major players like
+that's that's the first
+
+1204
+00:56:03,820 --> 00:56:05,700
+time i've ever seen it
+and you know usually
+
+1205
+00:56:05,700 --> 00:56:08,940
+you try it like i tried
+the sesame they only
+
+1206
+00:56:08,940 --> 00:56:12,040
+released like the 1b
+version of sesame and
+
+1207
+00:56:12,040 --> 00:56:15,180
+it ****** like it was
+terrible i most of the
+
+1208
+00:56:15,180 --> 00:56:17,440
+things you try when
+you have a guy saying
+
+1209
+00:56:17,440 --> 00:56:21,260
+here you know try my
+try my model out it's
+
+1210
+00:56:21,260 --> 00:56:24,640
+nowhere near enterprise
+grade it's it's sort
+
+1211
+00:56:24,640 --> 00:56:28,400
+of there's you know proven
+there's an interesting
+
+1212
+00:56:28,400 --> 00:56:29,640
+approach that i've
+been doing and you
+
+1213
+00:56:29,640 --> 00:56:30,880
+guys probably can't
+hear it because i've got
+
+1214
+00:56:30,880 --> 00:56:33,280
+my noise canceling going
+on here but it sounds
+
+1215
+00:56:33,280 --> 00:56:34,720
+if you were to step
+into my office right
+
+1216
+00:56:34,720 --> 00:56:37,560
+now it sounds like a
+jet plane and what what
+
+1217
+00:56:37,560 --> 00:56:39,480
+i've been doing is i've
+been daisy-chaining
+
+1218
+00:56:39,480 --> 00:56:45,800
+low-cost mobile GPUs
+using the eGPU enclosures
+
+1219
+00:56:45,800 --> 00:56:48,080
+that I ordered from
+AliExpress in China.
+
+1220
+00:56:48,480 --> 00:56:51,300
+And then what I do is
+I connect that to my
+
+1221
+00:56:51,300 --> 00:56:54,000
+system using
+Thunderbolt. And I can
+
+1222
+00:56:54,000 --> 00:56:58,340
+basically run, I think
+it's six mobile GPUs in
+
+1223
+00:56:58,340 --> 00:57:01,220
+parallel independently
+of my core system.
+
+1224
+00:57:01,220 --> 00:57:02,900
+And I can get all kinds
+of crazy stuff out
+
+1225
+00:57:02,900 --> 00:57:04,740
+of it. And the fact
+that I could probably
+
+1226
+00:57:04,740 --> 00:57:07,760
+use not mobile GPUs,
+but mobile gpus are
+
+1227
+00:57:07,760 --> 00:57:09,300
+cheap out of china
+you can get them for
+
+1228
+00:57:09,300 --> 00:57:12,560
+like 50 bucks and um
+yeah and then then i
+
+1229
+00:57:12,560 --> 00:57:14,160
+just run those in
+parallel but what braun's
+
+1230
+00:57:14,160 --> 00:57:15,920
+showing would be was
+like a perfect sort
+
+1231
+00:57:15,920 --> 00:57:18,260
+of application for
+that kind of thing if
+
+1232
+00:57:18,260 --> 00:57:20,180
+if you're interested
+in that in in those
+
+1233
+00:57:20,180 --> 00:57:23,080
+types of uh structures
+here pick their standard
+
+1234
+00:57:23,080 --> 00:57:28,120
+like uh 3600 um gpu
+do you think that
+
+1235
+00:57:28,520 --> 00:57:31,920
+the performance you
+get out of a higher a
+
+1236
+00:57:31,920 --> 00:57:33,960
+higher price one would
+give you a higher
+
+1237
+00:57:33,960 --> 00:57:36,000
+performance or Or is
+it better today? No,
+
+1238
+00:57:36,000 --> 00:57:40,180
+I'm using the Snapdragon
+or whatever. It's
+
+1239
+00:57:40,180 --> 00:57:42,590
+the GPU you get in
+like an Android device.
+
+1240
+00:57:43,020 --> 00:57:45,300
+And it's dirt cheap.
+I can get them.
+
+1241
+00:57:45,620 --> 00:57:47,620
+I think I can
+get them for less
+
+1242
+00:57:47,620 --> 00:57:49,560
+than 50 bucks,
+which is like $30
+
+1243
+00:57:49,560 --> 00:57:51,420
+American. I'm using
+Canadian money.
+
+1244
+00:57:51,420 --> 00:57:52,960
+Snapdragon's a
+Qualcomm chip.
+
+1245
+00:57:53,280 --> 00:57:54,880
+Yeah, you get them
+super cheap out of
+
+1246
+00:57:54,880 --> 00:57:57,320
+China. And for most
+things, you just need
+
+1247
+00:57:57,320 --> 00:57:59,840
+parallel, right? So
+GPUs, they don't need
+
+1248
+00:57:59,840 --> 00:58:01,420
+to be really
+particularly powerful at
+
+1249
+00:58:01,420 --> 00:58:03,060
+this point. They just
+need to be paralyzable,
+
+1250
+00:58:03,080 --> 00:58:04,280
+right? I need to
+be able to send a
+
+1251
+00:58:04,280 --> 00:58:06,280
+bunch of a bunch of
+things to it and get
+
+1252
+00:58:06,280 --> 00:58:08,900
+it done in sequence
+versus, you know,
+
+1253
+00:58:08,900 --> 00:58:12,580
+my CPU is kind of
+bound by by running
+
+1254
+00:58:12,580 --> 00:58:16,000
+Windows or Mac or
+whatever. Can we share some
+
+1255
+00:58:16,000 --> 00:58:18,460
+actual product things
+like which GPU?
+
+1256
+00:58:18,540 --> 00:58:21,560
+Because I've been
+shopping around. And if
+
+1257
+00:58:21,780 --> 00:58:24,040
+you find what I found
+a reliable supply in
+
+1258
+00:58:24,040 --> 00:58:25,780
+China, I'd be up for
+it. Yeah, I just sent
+
+1259
+00:58:25,780 --> 00:58:28,640
+a I sent a link to the
+site. It's in the text
+
+1260
+00:58:28,640 --> 00:58:31,260
+chat. i just go to
+aliexpress now i i
+
+1261
+00:58:31,260 --> 00:58:32,980
+someone told me i was
+i was telling this to
+
+1262
+00:58:32,980 --> 00:58:34,200
+someone else here this
+week in the united
+
+1263
+00:58:34,200 --> 00:58:36,300
+states apparently
+there's like some kind of
+
+1264
+00:58:36,300 --> 00:58:38,500
+crazy tariff they slap
+on for americans right
+
+1265
+00:58:38,500 --> 00:58:40,840
+now so if it's 50
+dollars it'll end up
+
+1266
+00:58:40,840 --> 00:58:43,520
+being like 100 for you
+but if you're outside
+
+1267
+00:58:43,520 --> 00:58:45,940
+of the u.s it's definitely
+cheap should make
+
+1268
+00:58:45,940 --> 00:58:48,680
+it cheaper for us yeah
+that's right that's
+
+1269
+00:58:48,680 --> 00:58:51,120
+right well just before
+we uh we wrap up
+
+1270
+00:58:51,120 --> 00:58:54,230
+for the main hour uh
+guys we're uh we've got
+
+1271
+00:58:54,230 --> 00:58:56,780
+uh bensa here he's going
+to give us a little
+
+1272
+00:58:56,780 --> 00:59:00,000
+recap about the london
+uk and just a note
+
+1273
+00:59:00,000 --> 00:59:02,120
+for for folks that are
+thinking they would
+
+1274
+00:59:02,120 --> 00:59:05,080
+like to establish a
+local chapter or have
+
+1275
+00:59:05,080 --> 00:59:08,300
+some local events
+there's the agenex.org
+
+1276
+00:59:08,300 --> 00:59:12,180
+slash ambassador page
+that's got the form to
+
+1277
+00:59:12,180 --> 00:59:14,000
+become an ambassador
+and there's the
+
+1278
+00:59:14,000 --> 00:59:17,160
+ambassador's channel in
+the discord uh and in
+
+1279
+00:59:17,160 --> 00:59:19,240
+there all there's all
+the key documents are
+
+1280
+00:59:19,240 --> 00:59:21,900
+pinned as well so please
+feel free to put your
+
+1281
+00:59:21,900 --> 00:59:24,580
+hand up there's about
+uh there was over
+
+1282
+00:59:24,580 --> 00:59:27,680
+60 originally and then
+30 have come through
+
+1283
+00:59:27,680 --> 00:59:29,980
+the process. There's a
+bunch of places around
+
+1284
+00:59:29,980 --> 00:59:32,060
+the world that are
+about to get started.
+
+1285
+00:59:32,060 --> 00:59:36,020
+So we welcome everybody
+to hop onto that.
+
+1286
+00:59:36,440 --> 00:59:38,120
+Bensa, you've
+got some pictures
+
+1287
+00:59:38,120 --> 00:59:41,460
+and a review there
+of the big event
+
+1288
+00:59:41,460 --> 00:59:42,660
+you had at the
+Google office.
+
+1289
+00:59:43,700 --> 00:59:48,160
+Yeah, I'll be quick.
+It is a wonderful
+
+1290
+00:59:48,160 --> 00:59:52,600
+venue at Google, and
+we made a perfect
+
+1291
+00:59:52,600 --> 00:59:56,960
+teamwork with
+Mondrip and rocky and
+
+1292
+00:59:56,960 --> 01:00:00,700
+mark and so on um so
+i'm gonna share my
+
+1293
+01:00:00,700 --> 01:00:08,820
+screen uh yeah can
+you guys see it now
+
+1294
+01:00:10,800 --> 01:00:14,780
+wait the desktop
+yes yeah yeah yeah
+
+1295
+01:00:14,780 --> 01:00:17,220
+so that this is
+the reception with
+
+1296
+01:00:17,220 --> 01:00:19,840
+uh requestee co
+-founder the Tibo.
+
+1297
+01:00:20,280 --> 01:00:23,100
+This is the building
+outside. It's
+
+1298
+01:00:23,100 --> 01:00:26,780
+a very nice area of
+London, very sunny
+
+1299
+01:00:26,780 --> 01:00:28,920
+and summer, real
+summer afternoon.
+
+1300
+01:00:28,920 --> 01:00:31,100
+This is the prep
+before the event.
+
+1301
+01:00:31,580 --> 01:00:36,800
+And then Tibo is
+giving an intro.
+
+1302
+01:00:36,800 --> 01:00:38,700
+The room was
+very interesting.
+
+1303
+01:00:39,140 --> 01:00:43,080
+Mark sponsored us
+the roll-up with the
+
+1304
+01:00:43,080 --> 01:00:47,700
+logo and the message
+then Ruv joined in
+
+1305
+01:00:47,700 --> 01:00:50,960
+via Zoom, that was
+cool as well and then
+
+1306
+01:00:51,280 --> 01:00:53,880
+Chris had a very
+nice lecture
+
+1307
+01:00:54,360 --> 01:00:58,840
+live teaching of Spark
+and other methods
+
+1308
+01:00:58,840 --> 01:01:01,800
+that he found useful
+and people enjoyed it
+
+1309
+01:01:01,800 --> 01:01:05,500
+a lot and we made the
+interviews as well
+
+1310
+01:01:07,880 --> 01:01:10,160
+we're going to
+publish them
+
+1311
+01:01:11,960 --> 01:01:17,060
+in this style you
+know the one-to-one uh
+
+1312
+01:01:17,060 --> 01:01:20,620
+interviews with
+participants wonderful uh
+
+1313
+01:01:20,670 --> 01:01:25,840
+yeah so a lot lots
+of pictures videos uh
+
+1314
+01:01:25,840 --> 01:01:29,500
+it was a incredible
+uh you know like vibe
+
+1315
+01:01:29,500 --> 01:01:32,500
+and feeling uh to to
+do this live there
+
+1316
+01:01:32,500 --> 01:01:35,320
+are some learnings uh
+for other cities we're
+
+1317
+01:01:35,320 --> 01:01:39,640
+gonna uh publish
+them that's cool nice
+
+1318
+01:01:40,380 --> 01:01:42,900
+that's awesome good
+good job on that i i've
+
+1319
+01:01:42,900 --> 01:01:45,120
+got several people
+reach out as well that
+
+1320
+01:01:45,120 --> 01:01:47,580
+said they learned a
+ton and it was a great
+
+1321
+01:01:47,580 --> 01:01:51,580
+uh great time you know
+so thank you um you
+
+1322
+01:01:51,580 --> 01:01:53,720
+know for putting all
+that together well
+
+1323
+01:01:54,000 --> 01:01:58,580
+cool yeah i just wanted
+uh to share recently
+
+1324
+01:01:58,580 --> 01:02:01,800
+i've built a 30 agent
+agent orchestration
+
+1325
+01:02:01,800 --> 01:02:04,430
+in root code that
+basically codes out
+
+1326
+01:02:04,430 --> 01:02:07,060
+anything you could dream
+of and so what I've
+
+1327
+01:02:07,060 --> 01:02:09,680
+got it set with is
+building a better version
+
+1328
+01:02:09,680 --> 01:02:12,400
+of itself and what
+that ends up being is
+
+1329
+01:02:12,400 --> 01:02:15,020
+a symbiotic coder you
+can kind of think of
+
+1330
+01:02:15,070 --> 01:02:17,700
+Venom from Spider-Man
+that's a symbiote but
+
+1331
+01:02:17,700 --> 01:02:19,300
+instead of giving you
+superpowers it turns
+
+1332
+01:02:19,300 --> 01:02:21,060
+you into a super coder
+you know it talks
+
+1333
+01:02:21,060 --> 01:02:22,940
+to you it teaches you
+it guides you on top
+
+1334
+01:02:22,940 --> 01:02:26,600
+of being a coder and
+I've been live streaming
+
+1335
+01:02:26,600 --> 01:02:30,200
+the thing building
+itself on YouTube
+
+1336
+01:02:30,200 --> 01:02:32,680
+and so if you want to
+check out my YouTube
+
+1337
+01:02:32,680 --> 01:02:35,820
+channel or LinkedIn I
+put some links in the
+
+1338
+01:02:35,820 --> 01:02:39,440
+chat and uh cool
+there's like 20 hours
+
+1339
+01:02:39,440 --> 01:02:42,280
+plus of it running so
+far it's quite amazing
+
+1340
+01:02:43,500 --> 01:02:45,780
+yeah so let's you you
+
+1341
+01:02:45,780 --> 01:02:46,940
+have something to show us
+
+1342
+01:02:48,280 --> 01:02:51,400
+put you on the spot
+here yeah sure i mean i
+
+1343
+01:02:51,400 --> 01:02:53,940
+have it running right
+now yeah let's see it
+
+1344
+01:02:54,800 --> 01:02:57,680
+i i love your experiments
+they're always so
+
+1345
+01:02:57,680 --> 01:03:04,480
+exciting yeah so so
+it's got a a shared
+
+1346
+01:03:04,480 --> 01:03:09,500
+memory system that it
+um through that i used
+
+1347
+01:03:09,500 --> 01:03:11,600
+through the super base
+mcp i kind of just set
+
+1348
+01:03:11,600 --> 01:03:14,000
+that up last night but
+what it is building
+
+1349
+01:03:14,000 --> 01:03:16,220
+is actually a neo4j
+knowledge graph it's
+
+1350
+01:03:16,220 --> 01:03:18,300
+already built out the
+brain that was like step
+
+1351
+01:03:18,300 --> 01:03:23,900
+one and essentially it
+it documents everything
+
+1352
+01:03:23,900 --> 01:03:27,760
+right the research sets
+up you know testing
+
+1353
+01:03:27,760 --> 01:03:29,900
+documentation high level
+testing documentation
+
+1354
+01:03:29,900 --> 01:03:31,640
+like architecture
+like everything is
+
+1355
+01:03:31,640 --> 01:03:34,160
+documented out and
+it can access all the
+
+1356
+01:03:34,160 --> 01:03:37,620
+documentation through
+the super base mcp tool
+
+1357
+01:03:37,620 --> 01:03:41,190
+and this is a way of
+being able to share um
+
+1358
+01:03:41,580 --> 01:03:45,560
+like say a 50 plus
+million quote-unquote
+
+1359
+01:03:45,560 --> 01:03:48,780
+synthesized context window
+amongst all 30 agents
+
+1360
+01:03:48,780 --> 01:03:52,020
+and they can just
+and the orchestrators
+
+1361
+01:03:52,020 --> 01:03:54,160
+then have access to this
+and then the orchestrators
+
+1362
+01:03:54,160 --> 01:03:57,160
+there's like 10
+orchestrators and they
+
+1363
+01:03:57,160 --> 01:04:00,600
+all have access to say
+like 20 workers and
+
+1364
+01:04:00,600 --> 01:04:03,820
+these orchestrators
+then can use the the
+
+1365
+01:04:03,940 --> 01:04:07,100
+documentation to be able
+to guide the workers
+
+1366
+01:04:07,100 --> 01:04:10,400
+very very precisely
+with full context and
+
+1367
+01:04:10,400 --> 01:04:13,330
+uh and you can shift
+the entire orchestration
+
+1368
+01:04:13,330 --> 01:04:16,220
+you know you can you
+can you can maneuver
+
+1369
+01:04:16,220 --> 01:04:18,560
+it in any way you want
+because it basically
+
+1370
+01:04:18,560 --> 01:04:21,080
+it follows a memory
+system and a document
+
+1371
+01:04:21,080 --> 01:04:26,060
+registry and like like
+for instance it was uh
+
+1372
+01:04:26,880 --> 01:04:29,060
+it was coding this
+thing out and then i was
+
+1373
+01:04:29,060 --> 01:04:30,580
+like hey let's let's
+see if we can make
+
+1374
+01:04:30,580 --> 01:04:33,020
+this more autonomous
+you know i had it do
+
+1375
+01:04:33,020 --> 01:04:35,400
+research on abstract goal
+understanding creative
+
+1376
+01:04:35,400 --> 01:04:37,700
+problem solving
+ethical reasoning novel
+
+1377
+01:04:37,700 --> 01:04:41,160
+architecture design
+and so then it did a
+
+1378
+01:04:41,160 --> 01:04:44,280
+complete shift reworked
+the prd redid all the
+
+1379
+01:04:44,280 --> 01:04:48,020
+tests and now it's
+um getting this fully
+
+1380
+01:04:48,020 --> 01:04:50,280
+implemented into the
+system as well you know
+
+1381
+01:04:50,280 --> 01:04:52,900
+it's got like a github
+deep researcher um
+
+1382
+01:04:52,900 --> 01:04:55,880
+it searched github for
+templates and that's
+
+1383
+01:04:55,880 --> 01:04:57,640
+how it pulled up
+its front end it's
+
+1384
+01:04:57,640 --> 01:04:59,600
+identified a front end
+that would be suitable
+
+1385
+01:04:59,600 --> 01:05:03,960
+this is essentially an
+ai powered ide but it's
+
+1386
+01:05:03,960 --> 01:05:06,740
+a coding symbiote is
+ultimately what being
+
+1387
+01:05:06,740 --> 01:05:08,500
+goes you know you
+know what you should
+
+1388
+01:05:08,500 --> 01:05:10,620
+consider i love what
+you're doing by the way
+
+1389
+01:05:10,620 --> 01:05:12,160
+but you know what you
+should consider just
+
+1390
+01:05:12,160 --> 01:05:14,780
+to save some money on
+your contacts window
+
+1391
+01:05:14,780 --> 01:05:17,800
+because that all those
+md files likely are
+
+1392
+01:05:17,800 --> 01:05:20,060
+going to be loaded you
+know into the contacts
+
+1393
+01:05:20,060 --> 01:05:22,100
+for um you know it
+looks like you're
+
+1394
+01:05:22,100 --> 01:05:25,180
+using Roo, I think.
+If you switch to like
+
+1395
+01:05:25,180 --> 01:05:29,760
+SQLite or DuckDB, you
+can take all that data,
+
+1396
+01:05:29,760 --> 01:05:33,860
+stuff it into a
+SQLite, and then
+
+1397
+01:05:33,860 --> 01:05:38,680
+create a really small
+Python CLI or MCP
+
+1398
+01:05:38,680 --> 01:05:40,500
+that basically
+queries it. And then
+
+1399
+01:05:40,500 --> 01:05:42,080
+you don't have
+to parse all that
+
+1400
+01:05:42,080 --> 01:05:44,290
+and it'll save you
+probably like 80%.
+
+1401
+01:05:45,330 --> 01:05:47,140
+Yeah, I could. But
+I mean, this is just
+
+1402
+01:05:47,140 --> 01:05:48,740
+temporary because really
+it's just building a
+
+1403
+01:05:48,740 --> 01:05:50,520
+better version of itself
+and the new version
+
+1404
+01:05:50,520 --> 01:05:54,510
+is is being basically
+graphed out in neo4j
+
+1405
+01:05:54,510 --> 01:05:57,400
+in like a multi-dimensional
+graph that graphs
+
+1406
+01:05:57,400 --> 01:06:00,600
+out functions like
+all the relationships
+
+1407
+01:06:00,600 --> 01:06:04,500
+between code in
+different languages um as
+
+1408
+01:06:04,500 --> 01:06:06,820
+well as you know everything
+that you're telling
+
+1409
+01:06:06,820 --> 01:06:09,620
+it gets graphed in
+and uh through like
+
+1410
+01:06:09,620 --> 01:06:11,580
+the multiple layers of
+the graph through like
+
+1411
+01:06:11,580 --> 01:06:13,960
+cosine similarity
+and a bunch of other
+
+1412
+01:06:13,960 --> 01:06:17,620
+stuff it it basically
+brings it to life and
+
+1413
+01:06:17,620 --> 01:06:19,500
+like that's how it's
+like basically sentiment
+
+1414
+01:06:19,500 --> 01:06:22,540
+or is going to be
+sentient to be able to
+
+1415
+01:06:22,540 --> 01:06:25,480
+fully understand your
+code identify security
+
+1416
+01:06:26,120 --> 01:06:30,740
+tech debt like
+everything cool so and uh
+
+1417
+01:06:30,740 --> 01:06:34,020
+what model are you using
+these days i'm using
+
+1418
+01:06:35,060 --> 01:06:38,200
+so for every part of
+my orchestration i'm
+
+1419
+01:06:38,200 --> 01:06:40,620
+using gemini except
+the test writer and the
+
+1420
+01:06:40,620 --> 01:06:44,260
+coder that's the clod
+for clod clod just banks
+
+1421
+01:06:44,260 --> 01:06:46,800
+this stuff out of the
+park i know yeah don't
+
+1422
+01:06:46,800 --> 01:06:50,540
+use don't use opus
+it's it don't use no no
+
+1423
+01:06:50,540 --> 01:06:53,860
+not do it yeah don't
+do that i spent three
+
+1424
+01:06:53,860 --> 01:06:56,300
+hundred dollars so you
+don't have to yeah yeah
+
+1425
+01:06:56,300 --> 01:06:59,600
+thank you but but
+gemini is cool because
+
+1426
+01:06:59,600 --> 01:07:02,120
+you know it can take
+all the context from all
+
+1427
+01:07:02,120 --> 01:07:04,120
+the documents and
+then you know use that
+
+1428
+01:07:04,120 --> 01:07:07,180
+context the larger context
+window to then issue
+
+1429
+01:07:07,180 --> 01:07:09,810
+the commands and then
+you see like the tasks
+
+1430
+01:07:09,810 --> 01:07:12,360
+and and also you know
+the coder and everything
+
+1431
+01:07:12,360 --> 01:07:14,160
+is everything is
+doing self-reflection
+
+1432
+01:07:14,160 --> 01:07:17,160
+everything is doing ai
+verifiable end results
+
+1433
+01:07:17,160 --> 01:07:20,160
+like um so it's being
+specifically told
+
+1434
+01:07:20,160 --> 01:07:22,980
+you know to self-reflect
+and by ai verifiable
+
+1435
+01:07:22,980 --> 01:07:25,320
+end results it means
+that like the end result
+
+1436
+01:07:25,320 --> 01:07:27,920
+is something that ai
+100 knows i've reached
+
+1437
+01:07:27,920 --> 01:07:30,680
+this point there is
+no subjectivity in the
+
+1438
+01:07:30,680 --> 01:07:33,120
+entire 30 agent
+orchestration whatsoever
+
+1439
+01:07:33,120 --> 01:07:35,480
+that is very important
+so that there is never
+
+1440
+01:07:35,480 --> 01:07:38,660
+any miscommunication
+and then like and then
+
+1441
+01:07:38,660 --> 01:07:40,660
+it even tells the modes
+it's like okay i need
+
+1442
+01:07:40,660 --> 01:07:42,640
+you to do this do this
+do this this is the
+
+1443
+01:07:42,640 --> 01:07:44,680
+exact document where
+this is documented these
+
+1444
+01:07:44,680 --> 01:07:46,600
+are the exact files
+where the issue is going
+
+1445
+01:07:46,600 --> 01:07:50,220
+on like my workers
+know have full context
+
+1446
+01:07:50,220 --> 01:07:52,920
+of every move they're
+making right it's like
+
+1447
+01:07:52,920 --> 01:07:55,300
+having the software
+developer giving full
+
+1448
+01:07:55,300 --> 01:07:57,480
+context but my orchestration
+is able to just
+
+1449
+01:07:57,480 --> 01:08:00,260
+autonomously do that
+right it's like Like,
+
+1450
+01:08:00,310 --> 01:08:03,460
+it is the software
+developer, right? That's
+
+1451
+01:08:03,460 --> 01:08:06,160
+pretty much why it took
+10 orchestrators to,
+
+1452
+01:08:06,480 --> 01:08:07,300
+yeah.
+
+1453
+01:08:07,580 --> 01:08:08,400
+All right.
+
+1454
+01:08:08,580 --> 01:08:10,120
+We got with Shep.
+
+1455
+01:08:10,730 --> 01:08:11,940
+We'll have to
+come back to your
+
+1456
+01:08:11,940 --> 01:08:14,240
+sentient thing,
+I'm sure, but I'm
+
+1457
+01:08:14,240 --> 01:08:15,560
+not going to touch
+that just yet.
+
+1458
+01:08:15,560 --> 01:08:17,980
+But Shep, how's it going?
+
+1459
+01:08:18,940 --> 01:08:20,300
+It's going well.
+
+1460
+01:08:20,560 --> 01:08:24,340
+I have a couple things
+that I'm keen to
+
+1461
+01:08:24,340 --> 01:08:25,920
+share here. I know we've
+kind of been working
+
+1462
+01:08:25,920 --> 01:08:28,920
+on the AI Hacker League
+in the background
+
+1463
+01:08:28,920 --> 01:08:30,740
+for a while. it's
+been a minute since i
+
+1464
+01:08:30,740 --> 01:08:35,620
+checked in but um as
+part of my hunt for a cto
+
+1465
+01:08:35,620 --> 01:08:39,760
+for penumbra i'm doing
+a like hyper agent
+
+1466
+01:08:39,760 --> 01:08:43,000
+olympics where it's
+basically a one hour
+
+1467
+01:08:43,000 --> 01:08:47,540
+challenge that is you
+know imagine leak code
+
+1468
+01:08:47,540 --> 01:08:50,540
+but for like an agentic
+engineer so it's a
+
+1469
+01:08:50,540 --> 01:08:53,460
+timed challenge of
+like how much of this
+
+1470
+01:08:53,460 --> 01:08:57,340
+crazy agentic spec can
+you build um and it's
+
+1471
+01:08:57,340 --> 01:08:59,140
+like scored based on
+points and stuff i'll
+
+1472
+01:08:59,140 --> 01:09:01,160
+bring up the uh the
+notion page really
+
+1473
+01:09:01,160 --> 01:09:04,760
+quickly so you guys can
+just see idea neat what
+
+1474
+01:09:04,760 --> 01:09:07,100
+that is but i'm
+mentioning it because like
+
+1475
+01:09:07,100 --> 01:09:08,980
+it's this group right
+this is very much
+
+1476
+01:09:08,980 --> 01:09:10,720
+like our dna thinking
+about this kind of
+
+1477
+01:09:10,720 --> 01:09:13,540
+thing and also it
+could be an interesting
+
+1478
+01:09:13,540 --> 01:09:16,380
+application of like ai
+hacker league collaboration
+
+1479
+01:09:16,380 --> 01:09:22,760
+um let me see can
+you guys see this i
+
+1480
+01:09:27,640 --> 01:09:29,300
+will assume yes it's
+
+1481
+01:09:29,300 --> 01:09:31,140
+warming it's warming up
+
+1482
+01:09:31,620 --> 01:09:35,600
+it'll it'll it'll take
+a sec okay drum roll
+
+1483
+01:09:35,600 --> 01:09:38,400
+if it takes too long
+i'll just uh i'll give
+
+1484
+01:09:38,400 --> 01:09:42,080
+up and i'll talk to
+it i'm not sure why it
+
+1485
+01:09:42,080 --> 01:09:44,960
+uh seems to be it might
+just be my computer
+
+1486
+01:09:46,060 --> 01:09:49,580
+limited bandwidth or
+yeah i don't know i'll
+
+1487
+01:09:49,580 --> 01:09:51,500
+talk you guys through
+it basically it's got
+
+1488
+01:09:51,500 --> 01:09:54,320
+uh four components
+where you know you're
+
+1489
+01:09:54,320 --> 01:09:58,700
+building a specific like
+agent ecosystem called
+
+1490
+01:09:58,700 --> 01:10:01,140
+neuronexus it's like
+a live agentic system
+
+1491
+01:10:01,140 --> 01:10:03,700
+that includes agent
+orchestration so you
+
+1492
+01:10:03,700 --> 01:10:06,060
+implement a multi
+-agent system using your
+
+1493
+01:10:06,060 --> 01:10:09,180
+orchestration library
+of choice you build a
+
+1494
+01:10:09,180 --> 01:10:10,880
+few different like design
+patterns so planner
+
+1495
+01:10:10,880 --> 01:10:15,120
+executor orchestrator
+tool user you have to
+
+1496
+01:10:15,120 --> 01:10:17,780
+demonstrate like an
+mcp integration bonus
+
+1497
+01:10:17,780 --> 01:10:20,560
+points for incorporating
+a2a agent to agent
+
+1498
+01:10:20,860 --> 01:10:23,120
+there's a second section
+for knowledge and
+
+1499
+01:10:23,120 --> 01:10:25,200
+retrieval so So like
+build a knowledge graph
+
+1500
+01:10:25,200 --> 01:10:27,540
+and graph rag into it
+and a vector search.
+
+1501
+01:10:27,840 --> 01:10:29,800
+There's like multi
+-modalities. So can
+
+1502
+01:10:29,800 --> 01:10:31,300
+you integrate more
+than one thing,
+
+1503
+01:10:31,300 --> 01:10:32,720
+like not just text?
+Can you incorporate
+
+1504
+01:10:32,720 --> 01:10:34,320
+vision? Can you
+incorporate audio?
+
+1505
+01:10:34,680 --> 01:10:36,900
+And kind of build out
+some demo pipelines
+
+1506
+01:10:36,900 --> 01:10:40,260
+for searching across
+different modalities. And
+
+1507
+01:10:40,260 --> 01:10:43,440
+then the last two are
+kind of like tool use.
+
+1508
+01:10:43,440 --> 01:10:45,900
+So building like a
+plug-in system, like a
+
+1509
+01:10:45,900 --> 01:10:48,540
+dynamic plug-in tool
+calling suite that you
+
+1510
+01:10:48,540 --> 01:10:51,380
+can hot swap tools in
+and some personalization.
+
+1511
+01:10:51,380 --> 01:10:52,720
+So like build a
+memory graph into it.
+
+1512
+01:10:52,720 --> 01:10:55,860
+it's honestly like the
+full bag of things that
+
+1513
+01:10:55,860 --> 01:10:58,200
+you can do with agents
+but i'm really really
+
+1514
+01:10:58,200 --> 01:11:02,060
+keen to see can
+someone actually build
+
+1515
+01:11:02,060 --> 01:11:06,640
+this thing this crazy
+aspect in one hour and
+
+1516
+01:11:06,640 --> 01:11:09,300
+kind of try and build
+like an elo score for
+
+1517
+01:11:09,300 --> 01:11:12,260
+it right we've got uh
+the lean ai leaderboards
+
+1518
+01:11:12,260 --> 01:11:13,520
+like all these different
+leaderboards and
+
+1519
+01:11:13,520 --> 01:11:15,780
+ai i feel like uh
+this is kind of a cool
+
+1520
+01:11:15,780 --> 01:11:18,320
+thing for agentic engineers
+to sort of try their
+
+1521
+01:11:18,320 --> 01:11:20,300
+hand at try their
+system right because
+
+1522
+01:11:20,300 --> 01:11:22,420
+we're all building our
+own sort of tweaks on
+
+1523
+01:11:22,420 --> 01:11:24,800
+these setups like spark
+and pharaoh mind and
+
+1524
+01:11:24,800 --> 01:11:28,420
+you know the cursor
+agent um so yeah i just
+
+1525
+01:11:28,420 --> 01:11:29,520
+thought i'd share that
+with you guys because
+
+1526
+01:11:29,520 --> 01:11:31,800
+it's it's kind of cool
+and i would love to
+
+1527
+01:11:31,800 --> 01:11:34,380
+you know figure out how
+ai hacker league fits
+
+1528
+01:11:34,380 --> 01:11:37,880
+into this too i think
+the um there's two
+
+1529
+01:11:37,880 --> 01:11:40,780
+two opposing thoughts
+right now in terms of
+
+1530
+01:11:40,780 --> 01:11:43,760
+speed and output you
+know and and as you guys
+
+1531
+01:11:43,760 --> 01:11:45,300
+know a lot of times
+people hire me for an
+
+1532
+01:11:45,300 --> 01:11:47,440
+hour to build some crazy
+idea that they have
+
+1533
+01:11:47,440 --> 01:11:49,220
+and that's all they
+get from month for me.
+
+1534
+01:11:49,360 --> 01:11:52,020
+And so when all
+you have to do
+
+1535
+01:11:52,020 --> 01:11:53,620
+the challenge,
+Reuben. Yeah.
+
+1536
+01:11:53,940 --> 01:11:55,740
+Yeah. Like they literally
+hired me to VibeCo
+
+1537
+01:11:55,740 --> 01:11:57,160
+for an hour. Like
+I get this idea for
+
+1538
+01:11:57,160 --> 01:11:58,480
+a startup that I'm
+going to pitch a VC
+
+1539
+01:11:58,480 --> 01:12:00,120
+tomorrow and I need you
+to build it for me in
+
+1540
+01:12:00,120 --> 01:12:01,240
+an hour. And I'm like,
+all right, let's do
+
+1541
+01:12:01,240 --> 01:12:04,880
+this. But to do an
+hour build means that
+
+1542
+01:12:04,880 --> 01:12:08,720
+I need to skip a lot
+of the upfront planning
+
+1543
+01:12:08,720 --> 01:12:10,760
+and structure, right?
+So when you look
+
+1544
+01:12:10,760 --> 01:12:13,570
+at Spark, it does a
+ton of documentation,
+
+1545
+01:12:14,260 --> 01:12:18,020
+phased implementation
+strategy, the London
+
+1546
+01:12:18,020 --> 01:12:20,340
+School of Test-Driven
+Development, which
+
+1547
+01:12:20,340 --> 01:12:23,420
+is essentially a test
+-driven scaffolding
+
+1548
+01:12:23,420 --> 01:12:25,300
+that basically allows
+for the test to
+
+1549
+01:12:25,300 --> 01:12:27,740
+determine the architecture
+of the application.
+
+1550
+01:12:28,080 --> 01:12:30,920
+That allows me to run
+these things in what I
+
+1551
+01:12:30,920 --> 01:12:33,880
+call a long horizon,
+meaning that hours or
+
+1552
+01:12:33,880 --> 01:12:35,460
+potentially the longest
+one I've done is about
+
+1553
+01:12:35,460 --> 01:12:39,840
+36 hours, but they
+don't want me to run
+
+1554
+01:12:39,840 --> 01:12:44,620
+for 36 hours. So I do
+the inverse i i skip a
+
+1555
+01:12:44,620 --> 01:12:46,840
+lot of that and i i go
+right to the sort of
+
+1556
+01:12:46,840 --> 01:12:49,890
+test strip excuse me
+test room development
+
+1557
+01:12:49,890 --> 01:12:54,700
+and then work from the
+top down so yes you
+
+1558
+01:12:54,700 --> 01:12:56,120
+could totally build
+that an hour but you're
+
+1559
+01:12:56,120 --> 01:12:58,760
+you're going to get to
+a sort of rudimentary uh
+
+1560
+01:12:58,760 --> 01:13:02,960
+you know test output
+um it really depends
+
+1561
+01:13:02,960 --> 01:13:04,780
+what you're building
+but there's a little bit
+
+1562
+01:13:04,780 --> 01:13:07,300
+you know the the demo
+i gave you guys earlier
+
+1563
+01:13:07,300 --> 01:13:10,080
+of that fact system
+you know i was able
+
+1564
+01:13:10,080 --> 01:13:12,440
+after i did the actual
+implementation of the
+
+1565
+01:13:12,440 --> 01:13:14,720
+plan and the structure
+that literally took an
+
+1566
+01:13:14,720 --> 01:13:17,840
+hour and and when i
+ran sec against it they
+
+1567
+01:13:17,840 --> 01:13:19,180
+said it was two minute
+two and a half million
+
+1568
+01:13:19,180 --> 01:13:21,660
+dollars worth of value
+if you believe that
+
+1569
+01:13:21,660 --> 01:13:25,200
+**** yeah i think the
+testing phase obviously
+
+1570
+01:13:25,200 --> 01:13:27,300
+is like super important
+and part of the
+
+1571
+01:13:27,300 --> 01:13:29,420
+challenge with hopping
+in the saddle with like
+
+1572
+01:13:29,420 --> 01:13:31,980
+a one hour challenge
+is you have to already
+
+1573
+01:13:31,980 --> 01:13:34,700
+be opinionated a little
+bit about how you'd
+
+1574
+01:13:34,700 --> 01:13:37,160
+like to approach it
+and like designate
+
+1575
+01:13:37,160 --> 01:13:41,540
+those things up front
+you know it's i think uh
+
+1576
+01:13:42,340 --> 01:13:45,600
+you have to have
+your your mileage
+
+1577
+01:13:45,600 --> 01:13:48,000
+on the road to
+actually sit down
+
+1578
+01:13:48,000 --> 01:13:50,040
+and build something
+that's like
+
+1579
+01:13:50,480 --> 01:13:56,020
+effective in an hour
+uh system yeah exactly
+
+1580
+01:13:56,020 --> 01:13:58,580
+can i have a quick
+question yeah go ahead
+
+1581
+01:13:58,580 --> 01:14:02,080
+yeah so the speed uh
+maybe in europe is a
+
+1582
+01:14:02,080 --> 01:14:03,680
+little bit different
+but you know close seven
+
+1583
+01:14:03,680 --> 01:14:07,620
+and now close four 3
+.7 and now four uh is
+
+1584
+01:14:07,620 --> 01:14:09,640
+a little bit slow
+you know you you chef
+
+1585
+01:14:09,640 --> 01:14:12,720
+you mentioned an hour
+and ru was speaks about
+
+1586
+01:14:12,720 --> 01:14:16,320
+speed but i i'm at
+least personally on my
+
+1587
+01:14:16,320 --> 01:14:18,800
+side i i limited by
+time you know that as
+
+1588
+01:14:18,800 --> 01:14:21,060
+the as the code is
+streaming is extremely
+
+1589
+01:14:21,060 --> 01:14:24,080
+slow that uh you know
+stop and go stop and go
+
+1590
+01:14:24,080 --> 01:14:26,940
+uh how do you handle
+that oh well there's
+
+1591
+01:14:26,940 --> 01:14:29,140
+if you're using ru
+just make sure you here
+
+1592
+01:14:29,140 --> 01:14:31,980
+let me you're talking
+probably klein or
+
+1593
+01:14:31,980 --> 01:14:34,840
+cursor which is doing
+a sort of line by line
+
+1594
+01:14:34,840 --> 01:14:37,700
+writing in rue make
+sure you turn this on
+
+1595
+01:14:37,700 --> 01:14:40,380
+and i i i try all of
+my times i kind of want
+
+1596
+01:14:40,380 --> 01:14:42,220
+to try other ones that
+are but i can't find
+
+1597
+01:14:42,220 --> 01:14:44,400
+anything that's as
+good but if you go in
+
+1598
+01:14:44,400 --> 01:14:48,100
+here into where is it
+so i keep mass precision
+
+1599
+01:14:48,100 --> 01:14:50,640
+somewhere in this
+general ballpark that
+
+1600
+01:14:50,640 --> 01:14:52,860
+that speeds it up but
+editing through dips
+
+1601
+01:14:52,860 --> 01:14:56,660
+that this right here
+is the most important
+
+1602
+01:14:56,660 --> 01:15:00,600
+thing so and what i
+noticed with um sonnet
+
+1603
+01:15:00,600 --> 01:15:03,560
+three four it's now
+able to do dips that
+
+1604
+01:15:03,560 --> 01:15:05,300
+are i did a dip earlier
+this morning that was
+
+1605
+01:15:05,300 --> 01:15:09,940
+800 lines in a single
+in a single go so
+
+1606
+01:15:09,940 --> 01:15:13,020
+this is this is if
+anything else other than
+
+1607
+01:15:13,020 --> 01:15:14,860
+like the orchestration
+capabilities this is
+
+1608
+01:15:14,860 --> 01:15:19,120
+huge make sure that's
+on cool thanks and
+
+1609
+01:15:19,120 --> 01:15:21,340
+and precision so so
+the lower the position,
+
+1610
+01:15:21,340 --> 01:15:23,840
+the larger the depth.
+So if you want to do
+
+1611
+01:15:23,840 --> 01:15:27,690
+like a 1500 line dip,
+pop that down to 80%.
+
+1612
+01:15:29,920 --> 01:15:31,780
+Yeah. And by the way,
+and by the way, guys,
+
+1613
+01:15:31,780 --> 01:15:33,620
+there's eight people
+currently logged in.
+
+1614
+01:15:34,070 --> 01:15:36,120
+Let's see. Oh, can
+we, we can chat here.
+
+1615
+01:15:36,120 --> 01:15:38,020
+Let's, we should sort
+of figure out how to
+
+1616
+01:15:38,020 --> 01:15:40,320
+do some live coding
+with this approach.
+
+1617
+01:15:44,340 --> 01:15:46,260
+Maybe next week
+we could do a,
+
+1618
+01:15:46,260 --> 01:15:48,420
+use this live
+option here to
+
+1619
+01:15:48,420 --> 01:15:50,960
+do like a like
+a collaborative
+
+1620
+01:15:52,280 --> 01:15:54,740
+vibe that would be
+a real hackathon
+
+1621
+01:15:54,740 --> 01:15:56,780
+how do you open
+the chat window
+
+1622
+01:15:57,420 --> 01:16:00,260
+I just found
+it a second ago
+
+1623
+01:16:00,800 --> 01:16:02,140
+let's see here
+
+1624
+01:16:02,480 --> 01:16:04,120
+is it shared? no
+
+1625
+01:16:04,900 --> 01:16:07,520
+I guess I'm in now I can
+
+1626
+01:16:07,520 --> 01:16:09,160
+see what you
+guys are doing
+
+1627
+01:16:09,360 --> 01:16:11,300
+by the way you may
+want to rotate that
+
+1628
+01:16:11,300 --> 01:16:15,640
+Composio link later
+I rotate it every day
+
+1629
+01:16:17,160 --> 01:16:21,100
+yeah a quick question
+on um aliexpress do
+
+1630
+01:16:21,100 --> 01:16:23,560
+you only buy enclosures
+on aliexpress or
+
+1631
+01:16:23,560 --> 01:16:26,100
+graphics cards as well
+oh i buy the i buy
+
+1632
+01:16:26,100 --> 01:16:28,340
+the graphics card
+i um the cheapest
+
+1633
+01:16:28,340 --> 01:16:32,500
+graphic card you can
+get is actually in a uh
+
+1634
+01:16:32,500 --> 01:16:36,480
+one of those desktop
+tv boxes you buy you
+
+1635
+01:16:36,480 --> 01:16:39,740
+can buy like a tv box
+with android 15 and
+
+1636
+01:16:39,740 --> 01:16:42,220
+inside of that comes
+a little snapdragon
+
+1637
+01:16:42,300 --> 01:16:44,740
+25 bucks okay so i
+should look for a
+
+1638
+01:16:44,740 --> 01:16:47,940
+snapdragon No, you
+should look for a, like,
+
+1639
+01:16:48,260 --> 01:16:51,310
+what the **** they call
+it, Android TV box.
+
+1640
+01:16:53,900 --> 01:16:57,560
+Okay. And the great
+news is now that the
+
+1641
+01:16:57,560 --> 01:16:59,380
+U.S. has banned China,
+you can get these
+
+1642
+01:16:59,380 --> 01:17:00,840
+things in, like,
+three days in Canada.
+
+1643
+01:17:01,280 --> 01:17:03,880
+So the best thing ever
+for, like, AliExpress
+
+1644
+01:17:03,880 --> 01:17:06,300
+was when they stopped
+shipping to the U.S.
+
+1645
+01:17:07,340 --> 01:17:09,440
+It went from,
+like, two or three
+
+1646
+01:17:09,440 --> 01:17:10,900
+weeks to two
+or three days.
+
+1647
+01:17:11,840 --> 01:17:13,780
+Thank you. Would
+that give us a big
+
+1648
+01:17:13,780 --> 01:17:17,700
+enough RAM on the
+graphics card?
+
+1649
+01:17:17,700 --> 01:17:19,400
+Because Brian was
+saying like 20 gig.
+
+1650
+01:17:19,780 --> 01:17:21,140
+Or do you disagree?
+
+1651
+01:17:21,420 --> 01:17:23,260
+Yeah, it depends what
+you're doing. It's
+
+1652
+01:17:23,260 --> 01:17:25,440
+like if you don't
+mind running parallel
+
+1653
+01:17:25,440 --> 01:17:27,360
+processes, you're going
+to have to probably
+
+1654
+01:17:27,360 --> 01:17:29,480
+create a – you can
+vibe your own driver.
+
+1655
+01:17:29,540 --> 01:17:31,560
+Like, you know,
+I'm building
+
+1656
+01:17:31,560 --> 01:17:33,140
+custom stuff. One can.
+
+1657
+01:17:33,140 --> 01:17:35,900
+Not necessarily I
+can, nor does that –
+
+1658
+01:17:35,900 --> 01:17:38,260
+should be that my
+priority. So it comes,
+
+1659
+01:17:38,260 --> 01:17:42,700
+like, for $36, I see
+here, 8 gigs and 128
+
+1660
+01:17:42,700 --> 01:17:46,420
+gigabytes of storage
+and a Snapdragon.
+
+1661
+01:17:46,660 --> 01:17:49,300
+Here, I just randomly
+found one while I was
+
+1662
+01:17:49,300 --> 01:17:51,200
+on the site. You
+can do all kinds of
+
+1663
+01:17:51,200 --> 01:17:53,300
+hacking with this stuff.
+And it's Android. It's
+
+1664
+01:17:53,300 --> 01:17:55,540
+literally just a
+mobile phone in a box.
+
+1665
+01:17:55,700 --> 01:17:56,240
+Sure.
+
+1666
+01:17:57,060 --> 01:18:01,040
+Those are good for,
+like, any cloud. But if
+
+1667
+01:18:01,040 --> 01:18:02,980
+you don't have NVIDIA,
+CUDA, you can't do
+
+1668
+01:18:02,980 --> 01:18:04,780
+nothing with it. That's
+what I was saying.
+
+1669
+01:18:04,780 --> 01:18:07,480
+nvidia is only building
+stuff for their
+
+1670
+01:18:07,480 --> 01:18:09,800
+hardware with and they
+don't yeah that's how
+
+1671
+01:18:09,800 --> 01:18:11,720
+they crushed amd and
+everyone because if
+
+1672
+01:18:11,720 --> 01:18:14,600
+you don't have cuda
+you can't run lms yeah
+
+1673
+01:18:14,600 --> 01:18:17,800
+you can and you you
+could but you can't run
+
+1674
+01:18:17,800 --> 01:18:20,920
+enterprise crushing
+lms with when you're
+
+1675
+01:18:20,920 --> 01:18:22,660
+not going to run in
+you're not going to run
+
+1676
+01:18:22,660 --> 01:18:25,580
+the enterprise crushing
+on on a 25 android
+
+1677
+01:18:25,580 --> 01:18:28,700
+box so if you want to
+do what i was saying
+
+1678
+01:18:29,200 --> 01:18:32,800
+just to clear but i
+won't do what bram was
+
+1679
+01:18:32,800 --> 01:18:34,560
+saying so what i'm
+looking for is a graphics
+
+1680
+01:18:34,560 --> 01:18:36,580
+card that needs that
+criteria oh you'd have
+
+1681
+01:18:36,580 --> 01:18:39,600
+to go i mean i wouldn't
+buy one uh martin
+
+1682
+01:18:39,600 --> 01:18:42,040
+i can i can show you how
+you could just borrow
+
+1683
+01:18:42,040 --> 01:18:44,020
+them from the cloud
+you get them on google
+
+1684
+01:18:44,020 --> 01:18:46,900
+amazon anywhere like
+you've done you can
+
+1685
+01:18:46,900 --> 01:18:49,760
+get you let's i mean
+the 35 cents include is
+
+1686
+01:18:49,760 --> 01:18:52,240
+basically the cost to
+rent the card that's
+
+1687
+01:18:52,240 --> 01:18:55,800
+it so like you that's
+how because it's it'll
+
+1688
+01:18:55,800 --> 01:18:58,020
+be like if you want
+to rent uh high-end
+
+1689
+01:18:58,020 --> 01:19:01,260
+graphics card it's
+about let's say 150 of a
+
+1690
+01:19:01,260 --> 01:19:04,540
+a month but you can
+borrow you can rent them
+
+1691
+01:19:04,540 --> 01:19:07,900
+per minute literally
+or per hour right okay
+
+1692
+01:19:07,900 --> 01:19:10,460
+well i don't have
+enough load to justify
+
+1693
+01:19:10,460 --> 01:19:12,960
+uh purchasing it but i
+have you look at yeah
+
+1694
+01:19:12,960 --> 01:19:16,170
+well okay i'll put it
+up i'll put up the api
+
+1695
+01:19:16,180 --> 01:19:19,280
+per minute api and give
+you an api then you
+
+1696
+01:19:19,280 --> 01:19:22,500
+can run it it'll it
+costs nothing and it'll
+
+1697
+01:19:22,500 --> 01:19:26,680
+just spin up the vm
+fire up the app and
+
+1698
+01:19:26,680 --> 01:19:32,300
+then run for 30 seconds
+and die simple perfect
+
+1699
+01:19:32,300 --> 01:19:36,300
+yeah yeah it's you
+guys i'm just hacking
+
+1700
+01:19:36,300 --> 01:19:38,380
+for the sake of hacking
+i'm not looking to
+
+1701
+01:19:38,380 --> 01:19:40,900
+you know i just want to
+see if i can you know
+
+1702
+01:19:40,900 --> 01:19:44,780
+throw out a a daisy
+chain series of android
+
+1703
+01:19:44,780 --> 01:19:47,940
+boxes that i can do
+various you know tasks
+
+1704
+01:19:47,940 --> 01:19:50,840
+with like i'm well
+those are cool those are
+
+1705
+01:19:50,840 --> 01:19:54,120
+like the raspberry pi
+and all those small
+
+1706
+01:19:54,120 --> 01:19:57,100
+hardware boxes can
+do like i used to use
+
+1707
+01:19:57,100 --> 01:20:01,140
+those for pcs you can
+put ubuntu on those or
+
+1708
+01:20:01,140 --> 01:20:03,260
+sometimes even windows
+and now you've got a
+
+1709
+01:20:03,260 --> 01:20:08,020
+25 desktop eight gigs
+is enough for i mean i
+
+1710
+01:20:08,020 --> 01:20:11,540
+used to do that on
+four gig four gig four
+
+1711
+01:20:11,540 --> 01:20:15,440
+gig ram boxes and they
+could run windows so
+
+1712
+01:20:15,440 --> 01:20:18,940
+yeah exactly it's it's
+sometimes you're just
+
+1713
+01:20:18,940 --> 01:20:21,510
+doing stuff because
+you can there's no real
+
+1714
+01:20:21,510 --> 01:20:24,000
+reason other than
+just to see what what
+
+1715
+01:20:24,000 --> 01:20:27,420
+you can do uh scott you
+you got a comment hey
+
+1716
+01:20:30,270 --> 01:20:32,900
+yeah so i've been
+trying to do a lot of um
+
+1717
+01:20:33,120 --> 01:20:35,360
+like automated builds
+but like the one
+
+1718
+01:20:35,360 --> 01:20:37,980
+thing i keep running
+into is documentation
+
+1719
+01:20:37,980 --> 01:20:42,880
+is like usually behind
+where like if i'm
+
+1720
+01:20:42,880 --> 01:20:44,980
+like say hey i want
+to make an open ai
+
+1721
+01:20:44,980 --> 01:20:47,800
+calling app and it'll
+like try to use the
+
+1722
+01:20:47,800 --> 01:20:51,280
+wrong api do you
+guys have any like oh
+
+1723
+01:20:51,280 --> 01:20:53,940
+yeah bulletproof ways
+to handle that because
+
+1724
+01:20:53,940 --> 01:20:58,340
+yes always limits
+context context seven
+
+1725
+01:20:58,340 --> 01:21:01,460
+context seven is
+probably the best mcp
+
+1726
+01:21:01,960 --> 01:21:05,560
+bar none for just
+massive amounts of up-to
+
+1727
+01:21:05,560 --> 01:21:08,760
+-date documentation what
+i do i use a combination
+
+1728
+01:21:08,760 --> 01:21:12,100
+of context seven
+and perplexity and
+
+1729
+01:21:12,100 --> 01:21:13,960
+then i just point at
+that and see before i
+
+1730
+01:21:13,960 --> 01:21:15,840
+even start i'm like
+give me all the most up
+
+1731
+01:21:15,840 --> 01:21:18,520
+-to-date information
+on whatever API SDK or
+
+1732
+01:21:18,520 --> 01:21:20,740
+whatever and then I
+pointed at context seven
+
+1733
+01:21:20,740 --> 01:21:23,880
+and I said go go create
+a docs folder with
+
+1734
+01:21:23,880 --> 01:21:25,680
+everything I need to
+know or whatever the
+
+1735
+01:21:25,680 --> 01:21:28,300
+API needs to know and
+then I combine that
+
+1736
+01:21:28,300 --> 01:21:30,420
+with the other
+components and then I let
+
+1737
+01:21:30,420 --> 01:21:32,260
+spark or whatever I'm
+using go do its thing
+
+1738
+01:21:32,260 --> 01:21:35,560
+context seven that'll
+is that like pulling
+
+1739
+01:21:35,560 --> 01:21:37,420
+all the latest
+documentation throwing them
+
+1740
+01:21:37,420 --> 01:21:40,720
+into like dot md files
+for you and then yeah
+
+1741
+01:21:40,720 --> 01:21:42,580
+here let me it'll go
+read that as you fun
+
+1742
+01:21:42,580 --> 01:21:46,440
+yeah it's it's it's
+spectacular okay cool
+
+1743
+01:21:46,440 --> 01:21:49,060
+that's great um and
+then like for like stuff
+
+1744
+01:21:49,060 --> 01:21:52,960
+where it's like very
+specific i guess i so
+
+1745
+01:21:52,980 --> 01:21:55,860
+like if you have like
+a very specific like
+
+1746
+01:21:56,580 --> 01:21:59,000
+scientific library
+that you need to throw
+
+1747
+01:21:59,000 --> 01:22:01,820
+in so you can do special
+stuff can contact
+
+1748
+01:22:01,820 --> 01:22:04,320
+seven do that too
+or is it worth just
+
+1749
+01:22:04,320 --> 01:22:06,500
+grabbing the docs
+themselves and throwing in
+
+1750
+01:22:06,500 --> 01:22:09,040
+their manually a lot
+of my projects are
+
+1751
+01:22:09,040 --> 01:22:12,100
+ridiculously complicated
+scientific work right
+
+1752
+01:22:12,100 --> 01:22:15,980
+i you know i demoed
+that uh multiplexing
+
+1753
+01:22:15,980 --> 01:22:19,500
+5g uh you know asic
+chip thing you know
+
+1754
+01:22:19,500 --> 01:22:22,760
+and now i'm working
+on a drug a drug trial
+
+1755
+01:22:22,760 --> 01:22:28,060
+there's no limit yeah
+yeah it's it's uh you
+
+1756
+01:22:28,060 --> 01:22:30,800
+can do anything good
+cool awesome thanks
+
+1757
+01:22:30,800 --> 01:22:33,160
+for that i appreciate
+it yep context seven
+
+1758
+01:22:33,160 --> 01:22:36,300
+is the way to go it's
+the i think 12 000
+
+1759
+01:22:36,300 --> 01:22:43,160
+different docs is pay
+attention to the version
+
+1760
+01:22:43,160 --> 01:22:45,080
+or be specific about
+the version of the
+
+1761
+01:22:45,080 --> 01:22:46,920
+library you're using
+with context seven.
+
+1762
+01:22:47,820 --> 01:22:51,330
+Okay. Yeah. Well,
+here's what I do. It
+
+1763
+01:22:51,330 --> 01:22:54,040
+brings up a really good
+point. Point context
+
+1764
+01:22:54,040 --> 01:22:56,360
+seven at your
+requirements.txt or your
+
+1765
+01:22:56,360 --> 01:22:58,820
+package.json or whatever
+and say basically
+
+1766
+01:22:58,820 --> 01:23:01,160
+create the documentation
+based on that.
+
+1767
+01:23:01,760 --> 01:23:04,580
+Inversely, if you're
+vibing it and you're
+
+1768
+01:23:04,580 --> 01:23:07,160
+using like deep research
+or something get it
+
+1769
+01:23:07,160 --> 01:23:09,760
+to you know suggest
+the most recent package
+
+1770
+01:23:09,760 --> 01:23:12,280
+and then point it at
+that you just ask it
+
+1771
+01:23:12,280 --> 01:23:16,520
+hey what's the latest
+yeah exactly and and
+
+1772
+01:23:16,520 --> 01:23:20,020
+the if you if you're
+vibing the member when
+
+1773
+01:23:20,020 --> 01:23:22,240
+you're vibing it's likely
+going to vibe based
+
+1774
+01:23:22,240 --> 01:23:24,520
+on the stat that what
+it was trained on a
+
+1775
+01:23:24,520 --> 01:23:27,020
+year and a half ago so
+when you add context
+
+1776
+01:23:27,020 --> 01:23:29,100
+seven or even perplexity
+as part of your
+
+1777
+01:23:29,100 --> 01:23:31,900
+initial sort of research
+phase it'll it'll give
+
+1778
+01:23:31,900 --> 01:23:33,620
+you the most recent
+version and what a
+
+1779
+01:23:33,620 --> 01:23:35,880
+perfect example of that
+is is when you are using
+
+1780
+01:23:35,880 --> 01:23:38,080
+like open ai it has
+a tendency to give
+
+1781
+01:23:38,080 --> 01:23:40,460
+you the chat completion
+or chat completions
+
+1782
+01:23:40,460 --> 01:23:43,000
+plural which is also
+right no one's building
+
+1783
+01:23:43,000 --> 01:23:44,440
+with chat completions
+unless you don't know
+
+1784
+01:23:44,440 --> 01:23:46,020
+what you're doing if
+you're building right
+
+1785
+01:23:46,020 --> 01:23:47,680
+now you're going to
+build responses because
+
+1786
+01:23:47,680 --> 01:23:49,280
+it's better it's
+faster it's got better
+
+1787
+01:23:49,280 --> 01:23:52,500
+tooling but basically
+it was invented after it
+
+1788
+01:23:52,500 --> 01:23:54,260
+was trained so these
+language models don't
+
+1789
+01:23:54,260 --> 01:24:01,250
+even know that it
+exists okay oh yeah all
+
+1790
+01:24:01,250 --> 01:24:03,640
+right we're almost at
+a time and i've got a
+
+1791
+01:24:03,640 --> 01:24:05,140
+hard stop at the bottom
+of the hour because
+
+1792
+01:24:05,140 --> 01:24:07,460
+you know non-stop calls
+today one of those
+
+1793
+01:24:07,460 --> 01:24:09,840
+days um anything else
+you guys want to cover
+
+1794
+01:24:09,840 --> 01:24:13,520
+any comments any anyone
+want to this is this
+
+1795
+01:24:13,520 --> 01:24:15,080
+is the open mic
+portion we got a couple
+
+1796
+01:24:15,080 --> 01:24:17,760
+more minutes that's
+going to be so fast okay
+
+1797
+01:24:17,760 --> 01:24:21,340
+can i yeah go for it
+okay uh i just want to
+
+1798
+01:24:21,340 --> 01:24:24,660
+ask about uh what has
+been written in the
+
+1799
+01:24:24,660 --> 01:24:28,260
+whatsapp about cloud
+with sonnet plus oppos
+
+1800
+01:24:28,260 --> 01:24:31,760
+for not using the api
+which is you know you
+
+1801
+01:24:31,760 --> 01:24:34,000
+are confirming that
+oppos is so expensive
+
+1802
+01:24:34,000 --> 01:24:36,960
+but i think there is a
+way that i think pascal
+
+1803
+01:24:36,960 --> 01:24:39,360
+wrote it wrote it down
+in the whatsapp to
+
+1804
+01:24:39,360 --> 01:24:43,660
+link club code with uh
+you know with the pro
+
+1805
+01:24:43,660 --> 01:24:47,120
+or max account with
+cloud you know something
+
+1806
+01:24:47,120 --> 01:24:49,740
+about this how you
+can save it you know
+
+1807
+01:24:49,740 --> 01:24:51,980
+on use i've done that
+it's definitely saved
+
+1808
+01:24:51,980 --> 01:24:54,740
+me a ton of money i'm
+starting to hit rate
+
+1809
+01:24:54,740 --> 01:24:57,540
+limits now uh but it's
+been absurd how much
+
+1810
+01:24:57,540 --> 01:24:59,580
+i can get away with
+with just the hundred
+
+1811
+01:24:59,580 --> 01:25:03,980
+dollar a month planning
+cloud code uh so it's
+
+1812
+01:25:03,980 --> 01:25:06,200
+that what pascal wrote
+down right how to do
+
+1813
+01:25:06,200 --> 01:25:08,580
+it uh you link like
+the two accounts and
+
+1814
+01:25:08,580 --> 01:25:10,640
+then you can use it and
+you save a lot right
+
+1815
+01:25:11,080 --> 01:25:13,420
+yeah when you set up
+cloud code for the
+
+1816
+01:25:13,420 --> 01:25:14,720
+first time it'll ask
+you do you want to
+
+1817
+01:25:14,720 --> 01:25:16,240
+use the api or do you
+want to hook it up
+
+1818
+01:25:16,240 --> 01:25:18,020
+to your account but
+you do need a max
+
+1819
+01:25:18,020 --> 01:25:20,540
+one of the max accounts
+to do that. Okay,
+
+1820
+01:25:20,660 --> 01:25:22,280
+fine. Thanks a lot.
+
+1821
+01:25:23,280 --> 01:25:25,560
+Now that it's
+confirmed. And by
+
+1822
+01:25:25,560 --> 01:25:27,120
+the way, I did
+the same thing
+
+1823
+01:25:27,120 --> 01:25:29,140
+with the Codex
+project last week.
+
+1824
+01:25:29,340 --> 01:25:32,500
+And Codex is unlimited.
+So what I ended
+
+1825
+01:25:32,500 --> 01:25:33,820
+up doing was jumping
+back and forth
+
+1826
+01:25:33,820 --> 01:25:36,960
+between Codex and a
+sort of code space
+
+1827
+01:25:36,960 --> 01:25:38,700
+that was connected
+to the same GitHub.
+
+1828
+01:25:38,700 --> 01:25:40,740
+And then for certain
+things, I just get
+
+1829
+01:25:40,740 --> 01:25:42,700
+Codex to do it because
+it was cheaper,
+
+1830
+01:25:42,880 --> 01:25:46,780
+like run the tests or
+whatever and uh i i
+
+1831
+01:25:46,780 --> 01:25:49,520
+was able to greatly
+reduce my costs by having
+
+1832
+01:25:49,520 --> 01:25:52,320
+codecs do some of the
+grunt work now certain
+
+1833
+01:25:52,320 --> 01:25:54,660
+things it's just better
+to get you know kind
+
+1834
+01:25:54,660 --> 01:25:56,600
+of the spark approach
+but what once you've
+
+1835
+01:25:56,600 --> 01:25:58,840
+got the roof of files
+in codecs it kind of
+
+1836
+01:25:58,840 --> 01:26:01,120
+picks up on your
+preferred development
+
+1837
+01:26:01,120 --> 01:26:03,220
+methodology and kind of
+adopts the same general
+
+1838
+01:26:03,220 --> 01:26:08,780
+structure uh guy no i
+was just gonna say joseph
+
+1839
+01:26:08,780 --> 01:26:12,140
+if she if he knows
+uh what is the amount
+
+1840
+01:26:12,140 --> 01:26:15,300
+like 2x or 4x you know
+between using or not
+
+1841
+01:26:15,300 --> 01:26:18,560
+using it how how much
+is saving you i mean
+
+1842
+01:26:18,560 --> 01:26:21,080
+how percentage i just
+started using it this
+
+1843
+01:26:21,080 --> 01:26:22,940
+month so i'll tell
+you at the end of this
+
+1844
+01:26:22,940 --> 01:26:25,320
+month but you know again
+the drawback right is
+
+1845
+01:26:25,320 --> 01:26:27,760
+like i'm not using
+klein or rue which you
+
+1846
+01:26:27,760 --> 01:26:30,940
+know has a little more
+control over things but
+
+1847
+01:26:30,940 --> 01:26:32,320
+i don't know i've been
+really enjoying cloud
+
+1848
+01:26:32,320 --> 01:26:33,960
+code it's actually
+doing most of what i
+
+1849
+01:26:33,960 --> 01:26:35,680
+need to do but if you're
+trying to do stuff
+
+1850
+01:26:35,680 --> 01:26:37,240
+like rubs doing right
+where you just like
+
+1851
+01:26:37,240 --> 01:26:39,740
+leave it and let it go
+forever that's not what
+
+1852
+01:26:39,740 --> 01:26:42,190
+this is for this is more
+for like refactoring
+
+1853
+01:26:42,980 --> 01:26:45,520
+existing things or
+kind of working on
+
+1854
+01:26:45,520 --> 01:26:47,600
+existing things not like
+starting from scratch
+
+1855
+01:26:47,600 --> 01:26:49,780
+yeah which is what i'm
+doing yeah okay thanks
+
+1856
+01:26:49,780 --> 01:26:54,420
+a lot yeah and keep
+in mind you know i i'm
+
+1857
+01:26:54,660 --> 01:26:57,980
+i've got to a point
+after years of trial and
+
+1858
+01:26:57,980 --> 01:27:00,200
+error to be able to
+run things for 36 hours
+
+1859
+01:27:00,200 --> 01:27:02,420
+generally speaking
+i'm not running for 36
+
+1860
+01:27:02,420 --> 01:27:04,160
+hours as i pointed out
+earlier i'm running
+
+1861
+01:27:04,160 --> 01:27:07,100
+for a couple hours maybe
+three hours testing
+
+1862
+01:27:07,100 --> 01:27:10,680
+fixing adapting you
+know if if you're if
+
+1863
+01:27:10,680 --> 01:27:12,580
+you're thinking you're
+going to run this for 36
+
+1864
+01:27:12,580 --> 01:27:14,640
+hours and build the
+next biggest app ever
+
+1865
+01:27:14,640 --> 01:27:17,460
+you're probably not
+you know there's most
+
+1866
+01:27:17,460 --> 01:27:19,420
+things don't need to run
+more than three hours
+
+1867
+01:27:21,260 --> 01:27:23,880
+on opening as acquisition
+
+1868
+01:27:23,880 --> 01:27:25,220
+of johnny ives company
+
+1869
+01:27:30,520 --> 01:27:33,840
+nothing nothing
+positive it was such a
+
+1870
+01:27:33,840 --> 01:27:36,460
+nothing video like there
+was there was nothing
+
+1871
+01:27:36,460 --> 01:27:38,640
+that they said that
+was worthwhile in
+
+1872
+01:27:38,640 --> 01:27:41,780
+that video it reminds
+me of like my daughter
+
+1873
+01:27:41,780 --> 01:27:44,300
+her best friends
+video where they have
+
+1874
+01:27:44,300 --> 01:27:46,660
+little hearts coming
+out and oh it's a love
+
+1875
+01:27:46,660 --> 01:27:50,420
+fest okay great good
+good for you guys.
+
+1876
+01:27:50,560 --> 01:27:52,440
+I guess it's
+who you know.
+
+1877
+01:27:53,580 --> 01:27:55,220
+There, that's all I got.
+
+1878
+01:27:58,620 --> 01:28:00,640
+Yeah, OpenAI is
+like a love-hate
+
+1879
+01:28:00,640 --> 01:28:03,100
+relationship. Generally,
+they're freaking
+
+1880
+01:28:03,100 --> 01:28:05,160
+evil, but they do
+some really nice tech.
+
+1881
+01:28:05,300 --> 01:28:09,920
+I know to willie's
+point earlier, they're
+
+1882
+01:28:09,920 --> 01:28:11,800
+doing some great
+stuff with their API,
+
+1883
+01:28:11,800 --> 01:28:13,760
+without question, but
+they're also doing
+
+1884
+01:28:13,760 --> 01:28:16,960
+some bonkers stuff
+with their partnerships
+
+1885
+01:28:16,960 --> 01:28:18,840
+with the Middle East
+and government and
+
+1886
+01:28:18,840 --> 01:28:20,400
+stuff that really
+rubs me the wrong way.
+
+1887
+01:28:21,780 --> 01:28:23,300
+Yeah, that's it.
+That's all I'm
+
+1888
+01:28:23,300 --> 01:28:24,200
+willing to say
+at this point
+
+1889
+01:28:24,200 --> 01:28:26,100
+before I end up
+in a foreign jail.
+
+1890
+01:28:28,200 --> 01:28:30,920
+So just as a quick
+snippet while it's there
+
+1891
+01:28:30,920 --> 01:28:32,880
+and before you close
+it, there's two files,
+
+1892
+01:28:32,880 --> 01:28:34,680
+actually three, Shep
+threw one up too, but
+
+1893
+01:28:34,680 --> 01:28:37,200
+there's two files that
+are tools that I've
+
+1894
+01:28:37,200 --> 01:28:40,080
+created with AI. They're
+drafts. You can, you
+
+1895
+01:28:40,080 --> 01:28:42,180
+know, refactor them
+all you want. But
+
+1896
+01:28:42,180 --> 01:28:45,600
+basically just wanted a
+streamlined, unified way
+
+1897
+01:28:45,600 --> 01:28:48,120
+to, regardless of
+project, regardless of
+
+1898
+01:28:48,120 --> 01:28:50,280
+library, regardless of
+languages, et cetera,
+
+1899
+01:28:50,440 --> 01:28:53,380
+create a universal
+source of truth as a
+
+1900
+01:28:53,380 --> 01:28:56,680
+catalog of technology,
+libraries, versions that
+
+1901
+01:28:56,680 --> 01:28:59,460
+can be pointed to when
+prompting the AI to
+
+1902
+01:28:59,460 --> 01:29:01,840
+make sure we're going
+for the latest docs via
+
+1903
+01:29:01,840 --> 01:29:05,040
+Context 7 or other
+things. So those two
+
+1904
+01:29:05,040 --> 01:29:09,420
+files are simple little
+tools as file to insert
+
+1905
+01:29:09,420 --> 01:29:11,560
+to your repo that can
+help out with that.
+
+1906
+01:29:15,790 --> 01:29:17,920
+all right oh by the
+way for all the people
+
+1907
+01:29:17,920 --> 01:29:19,740
+that are logged into
+that session i only
+
+1908
+01:29:19,740 --> 01:29:25,660
+enable read only um
+just as an fyi all right
+
+1909
+01:29:25,660 --> 01:29:28,580
+so we next week let's
+maybe on thursday
+
+1910
+01:29:28,580 --> 01:29:31,760
+we can do a joint uh
+hacking session using
+
+1911
+01:29:31,760 --> 01:29:35,420
+the live options see
+what we can collectively
+
+1912
+01:29:35,420 --> 01:29:38,090
+create together when
+is your o'reilly
+
+1913
+01:29:38,090 --> 01:29:40,860
+uh oh uh yeah i should
+probably promote
+
+1914
+01:29:40,860 --> 01:29:42,940
+that i think it's on
+29 i'm doing a i'm
+
+1915
+01:29:42,940 --> 01:29:45,940
+doing a live data
+science um session with
+
+1916
+01:29:45,940 --> 01:29:47,960
+o'reilly next week and
+it's pretty cool i'm
+
+1917
+01:29:47,960 --> 01:29:49,280
+just going to show you
+how to do basically
+
+1918
+01:29:49,280 --> 01:29:52,440
+vibe data science
+and i created some of
+
+1919
+01:29:52,440 --> 01:29:54,000
+the guys tuned in
+yesterday you saw the
+
+1920
+01:29:54,000 --> 01:29:56,740
+presentation and like so
+there's a whole system
+
+1921
+01:29:56,740 --> 01:29:59,160
+i've devised to do
+that if you're in the
+
+1922
+01:29:59,160 --> 01:30:01,860
+afternoon what's the
+time of it i have no
+
+1923
+01:30:01,860 --> 01:30:04,860
+idea i'm a robot it's
+um it's 11 eastern
+
+1924
+01:30:06,040 --> 01:30:07,840
+well that's the
+whole session
+
+1925
+01:30:08,160 --> 01:30:10,840
+but Ruv's just one
+of the speakers
+
+1926
+01:30:11,700 --> 01:30:14,280
+I think I'm like
+I'm middle of the
+
+1927
+01:30:14,280 --> 01:30:15,440
+pack, I think it's
+three hours I'm
+
+1928
+01:30:15,440 --> 01:30:16,420
+a couple hours
+in or something
+
+1929
+01:30:16,420 --> 01:30:18,840
+I'll post it to the
+chat and also to
+
+1930
+01:30:18,980 --> 01:30:19,860
+Discord
+
+1931
+01:30:19,960 --> 01:30:22,040
+gotta go guys,
+I'm late for my
+
+1932
+01:30:22,040 --> 01:30:23,820
+next call thanks
+everyone again
+
+1933
+01:30:24,440 --> 01:30:27,140
+thanks Martin,
+Robert, everybody
+
+1934
+01:30:27,500 --> 01:30:29,320
+alright, till next time
+
+1935
+01:30:29,560 --> 01:30:32,100
+thank you, bye thank you

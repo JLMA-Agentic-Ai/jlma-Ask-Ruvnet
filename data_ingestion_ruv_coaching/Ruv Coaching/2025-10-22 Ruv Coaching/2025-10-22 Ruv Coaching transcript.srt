@@ -1,0 +1,5011 @@
+1
+00:00:00,000 --> 00:00:01,017
+<v Mark Allen>How's
+
+2
+00:00:01,018 --> 00:00:02,779
+<v rUv>it going? Going
+
+3
+00:00:02,780 --> 00:00:03,513
+<v Mak Allen>well.
+
+4
+00:00:04,026 --> 00:00:04,271
+<v Mark Allen>How
+
+5
+00:00:04,272 --> 00:00:06,029
+<v rUv>you doing? Good. I'm good.
+
+6
+00:00:06,969 --> 00:00:07,299
+<v Mark Allen>Very
+
+7
+00:00:07,300 --> 00:00:09,458
+<v rUv>cool. Alright, so, what's, uh,
+
+8
+00:00:09,469 --> 00:00:12,236
+what's, what's happening today?
+
+9
+00:00:12,237 --> 00:00:15,355
+<v Mark Allen>So, Mac, what, what do you got? And we'll talk about some other things,
+
+10
+00:00:15,356 --> 00:00:16,954
+but I wanted to give you the floor first.
+
+11
+00:00:16,955 --> 00:00:19,037
+<v Mak Allen>Uhm, I, I,
+
+12
+00:00:19,147 --> 00:00:21,508
+I still have a lot of. Work, uh,
+
+13
+00:00:21,518 --> 00:00:24,485
+to do on my end before I come back with some,
+
+14
+00:00:24,630 --> 00:00:28,311
+some big questions for roof, I'm kind of just plugging away.
+
+15
+00:00:28,312 --> 00:00:30,614
+Um, nothing really,
+
+16
+00:00:30,615 --> 00:00:32,640
+uh, outstanding for me to go, right.
+
+17
+00:00:32,641 --> 00:00:35,106
+There were a couple of questions I had, but I figured it out.
+
+18
+00:00:36,038 --> 00:00:38,483
+<v Mark Allen>Okay. So, um,
+
+19
+00:00:38,494 --> 00:00:41,549
+I think that it, that makes sense to just, just talk through,
+
+20
+00:00:41,550 --> 00:00:44,401
+through the next steps that we're going to be.
+
+21
+00:00:44,402 --> 00:00:47,259
+Uhm, and, you know, what, what we want to deploy first,
+
+22
+00:00:47,260 --> 00:00:51,235
+uh, in the app. So,
+
+23
+00:00:51,236 --> 00:00:54,222
+uh, so, so Ruv, what, what, what, what. We decided as a business,
+
+24
+00:00:54,223 --> 00:00:56,643
+and just, you know, getting this thing,
+
+25
+00:00:56,644 --> 00:00:58,685
+uh, working,
+
+26
+00:00:58,686 --> 00:01:03,243
+our top priority is. Is one of the features of
+
+27
+00:01:03,244 --> 00:01:07,495
+the overall app, so, so, Mako is working on a bunch of stuff,
+
+28
+00:01:07,777 --> 00:01:10,786
+but, uh. . . He basically built out,
+
+29
+00:01:11,065 --> 00:01:14,135
+effectively, a lot of the, of the user,
+
+30
+00:01:14,477 --> 00:01:16,561
+the UI, UX.
+
+31
+00:01:16,562 --> 00:01:19,227
+Uh, for the, the, what the patient uses,
+
+32
+00:01:19,228 --> 00:01:21,301
+that the practice manager uses,
+
+33
+00:01:21,568 --> 00:01:24,111
+that a treatment coordinator uses. There's a whole bunch that,
+
+34
+00:01:24,112 --> 00:01:27,862
+that's built out. And he's, you know, he's tying all that to supabase.
+
+35
+00:01:28,609 --> 00:01:33,047
+But there is, kind of, one feature that uses a subset,
+
+36
+00:01:33,048 --> 00:01:36,596
+doesn't use the patient portal, only uses a bit of the practice.
+
+37
+00:01:36,597 --> 00:01:39,415
+Manager portal, uhm,
+
+38
+00:01:39,426 --> 00:01:41,627
+that is this AI scheduling agent.
+
+39
+00:01:42,415 --> 00:01:45,320
+And so that's what we want to release first, and then we want to
+
+40
+00:01:46,032 --> 00:01:49,349
+add on, and so go through the entire deployment process,
+
+41
+00:01:49,496 --> 00:01:54,186
+and then add on all these additional features that Mac's been working on.
+
+42
+00:01:54,187 --> 00:01:56,696
+Uh, so.
+
+43
+00:01:56,697 --> 00:01:59,250
+You know, so we want to kind of take,
+
+44
+00:01:59,251 --> 00:02:03,792
+and there's, there's other technical problems that we got to work through
+
+45
+00:02:04,208 --> 00:02:06,351
+to get that work working. So, for example,
+
+46
+00:02:06,352 --> 00:02:11,008
+one technical problem is, is actually connecting the app
+
+47
+00:02:11,356 --> 00:02:16,258
+to the API bridge that's called Next Health that
+
+48
+00:02:16,259 --> 00:02:20,424
+allows us to. Connect through Next Health multiple different patient management systems.
+
+49
+00:02:21,176 --> 00:02:23,655
+So, like, how,
+
+50
+00:02:23,896 --> 00:02:27,198
+how do we go about doing that? Uhm,
+
+51
+00:02:27,209 --> 00:02:29,613
+that's, that's one thing. And then the,
+
+52
+00:02:29,614 --> 00:02:31,701
+the, for the AI scheduling agent,
+
+53
+00:02:32,015 --> 00:02:34,769
+right? It only needs, you know, that, that API,
+
+54
+00:02:34,770 --> 00:02:36,896
+the Next Health API.
+
+55
+00:02:36,897 --> 00:02:40,139
+That links to the PMS has a huge amount of functionality in there.
+
+56
+00:02:40,552 --> 00:02:44,116
+We need a teeny subset of it to support that AI scheduling agent.
+
+57
+00:02:44,263 --> 00:02:49,692
+Basically we need. To determine calendar availability and
+
+58
+00:02:49,693 --> 00:02:51,915
+we need to post back,
+
+59
+00:02:51,916 --> 00:02:54,062
+uh. Uh, when,
+
+60
+00:02:54,246 --> 00:02:57,588
+when the appointment has been confirmed, uh,
+
+61
+00:02:57,598 --> 00:03:01,011
+and then, uh, also to send back on.
+
+62
+00:03:01,012 --> 00:03:03,975
+A little bit of information that's collected during that call.
+
+63
+00:03:03,976 --> 00:03:07,281
+So what we're thinking about doing is so,
+
+64
+00:03:07,282 --> 00:03:10,801
+so now there's, there's effectively the. App that max working on.
+
+65
+00:03:11,022 --> 00:03:14,873
+Okay, then there is the PMS system,
+
+66
+00:03:14,874 --> 00:03:16,190
+which connects through the API
+
+67
+00:03:16,191 --> 00:03:17,091
+<v rUv>bridge.
+
+68
+00:03:17,092 --> 00:03:20,055
+<v Mark Allen>And then there's the AI scheduling agent.
+
+69
+00:03:20,056 --> 00:03:22,886
+So the first thing that we were thinking about doing just to get something
+
+70
+00:03:22,907 --> 00:03:25,131
+up and working was before we even.
+
+71
+00:03:25,132 --> 00:03:27,284
+Build the AI scheduling agent.
+
+72
+00:03:27,413 --> 00:03:31,166
+We have the app working so that a person can take the call.
+
+73
+00:03:31,838 --> 00:03:35,048
+A front desk person can take the call, put in the information,
+
+74
+00:03:35,239 --> 00:03:37,766
+you know, and through the app check availability,
+
+75
+00:03:37,767 --> 00:03:41,216
+uh, you know, so it connects through the API.
+
+76
+00:03:41,217 --> 00:03:43,956
+I layer, so that's kind of solve that problem,
+
+77
+00:03:44,223 --> 00:03:46,526
+and then we add the AI scheduling agent,
+
+78
+00:03:46,729 --> 00:03:49,251
+and so that the AI scheduling agent.
+
+79
+00:03:49,252 --> 00:03:53,719
+Our thought is that that would not connect directly to the PMS through the
+
+80
+00:03:53,720 --> 00:03:55,742
+API bridge, but would connect to the app,
+
+81
+00:03:56,184 --> 00:04:00,090
+which connects to the PMS. Does that make sense? So the API bridge is
+
+82
+00:04:00,718 --> 00:04:03,859
+<v rUv>sorry, a service you're using,
+
+83
+00:04:03,860 --> 00:04:06,648
+or you're using. Using some secondary API,
+
+84
+00:04:06,649 --> 00:04:11,378
+<v Mark Allen>what do you mean It's a third-party service that we license that basically
+
+85
+00:04:11,621 --> 00:04:13,630
+has connected. To,
+
+86
+00:04:15,191 --> 00:04:18,737
+you know, a dozen different separate PMS systems,
+
+87
+00:04:19,339 --> 00:04:21,405
+and they, they manage that testing.
+
+88
+00:04:21,406 --> 00:04:24,392
+And those connections, so that we only have to connect to one,
+
+89
+00:04:26,107 --> 00:04:28,891
+and not all these individual ones.
+
+90
+00:04:29,178 --> 00:04:32,410
+And, at some point, I mean, there is additional cost that we have to
+
+91
+00:04:32,411 --> 00:04:34,809
+pay associated with that. So, at some point,
+
+92
+00:04:34,810 --> 00:04:37,491
+maybe we would connect directly to somebody.
+
+93
+00:04:37,492 --> 00:04:39,863
+Some of them, so to avoid that cost,
+
+94
+00:04:39,917 --> 00:04:44,587
+but it, it's, we know other companies that have used that,
+
+95
+00:04:44,588 --> 00:04:48,622
+<v rUv>that. Sure. Sure. Show me the API docs for that service.
+
+96
+00:04:51,802 --> 00:04:54,061
+I get what you're trying to do. And. It should,
+
+97
+00:04:54,062 --> 00:04:57,500
+it shouldn't be too bad, but I just want to understand,
+
+98
+00:04:57,501 --> 00:05:01,611
+like, show me their website and whatever it is that they're doing.
+
+99
+00:05:01,612 --> 00:05:05,638
+So this is like a critical feature is what you're saying?
+
+100
+00:05:06,082 --> 00:05:07,344
+<v Mark Allen>This is a critical feature, yeah.
+
+101
+00:05:07,884 --> 00:05:10,860
+<v rUv>Okay, so there's two, two critical features. There's something that some sort of agent
+
+102
+00:05:10,883 --> 00:05:13,153
+that will do scheduling, and then there's some,
+
+103
+00:05:13,250 --> 00:05:17,685
+some sort of system, the agent will work against this POS system.
+
+104
+00:05:17,686 --> 00:05:17,848
+P,
+
+105
+00:05:18,855 --> 00:05:22,212
+<v Mark Allen>PMS, they call it, patient management system. It's like an electronic medical record.
+
+106
+00:05:22,213 --> 00:05:25,731
+So it's the, it's the system of record for,
+
+107
+00:05:25,732 --> 00:05:27,767
+or the, Mac,
+
+108
+00:05:27,768 --> 00:05:28,770
+you want to just share your screen?
+
+109
+00:05:28,771 --> 00:05:33,771
+<v rUv>Uh, yeah, just share the screen and walk, walk me through this.
+
+110
+00:05:33,772 --> 00:05:36,250
+And you haven't done any integration against this,
+
+111
+00:05:36,251 --> 00:05:37,916
+but you do have the API keys.
+
+112
+00:05:37,917 --> 00:05:42,608
+<v Mak Allen>And there's probably a sandbox of some sort? It
+
+113
+00:05:42,609 --> 00:05:45,204
+is, uh, when I was testing APIs previously,
+
+114
+00:05:45,205 --> 00:05:46,148
+it was the only API that, I think it was be- had to do
+
+115
+00:05:46,382 --> 00:05:50,218
+with not setting up the sandbox properly in the NexHealth portal,
+
+116
+00:05:50,219 --> 00:05:52,743
+but it was the one API that wasn't connected,
+
+117
+00:05:52,744 --> 00:05:55,455
+even though we have an API key. Uhm,
+
+118
+00:05:55,476 --> 00:06:02,042
+and I uploaded these into context 7, uhm.
+
+119
+00:06:02,043 --> 00:06:07,042
+<v rUv>Uuuh.
+
+120
+00:06:10,071 --> 00:06:12,742
+And what do you need context 7 for?
+
+121
+00:06:12,743 --> 00:06:14,730
+Like, why not just point it at this website?
+
+122
+00:06:16,096 --> 00:06:18,116
+<v Mak Allen>Oh, just in case it was, it was useful, just in case.
+
+123
+00:06:18,117 --> 00:06:18,717
+Store it
+
+124
+00:06:18,805 --> 00:06:23,048
+<v rUv>somewhere. Oh, I gotcha. Okay. So you,
+
+125
+00:06:23,049 --> 00:06:25,222
+you're saying you haven't been able to get this to work for some reason?
+
+126
+00:06:25,971 --> 00:06:28,369
+<v Mak Allen>Well, well, I, I went through it quickly.
+
+127
+00:06:28,370 --> 00:06:32,010
+Um, it was just a very quick testing.
+
+128
+00:06:32,106 --> 00:06:34,988
+Not, uh, I didn't, it was not a full deep dive.
+
+129
+00:06:35,631 --> 00:06:39,750
+<v rUv>And, and are there specific features of this API you want to use,
+
+130
+00:06:40,116 --> 00:06:40,954
+or?
+
+131
+00:06:41,736 --> 00:06:44,699
+<v Mark Allen>Yeah, it's a, it's a teeny subset for this first,
+
+132
+00:06:45,112 --> 00:06:47,406
+for the first thing we're doing. It's a teeny subset.
+
+133
+00:06:47,407 --> 00:06:50,205
+And then as we add some additional features to it,
+
+134
+00:06:50,206 --> 00:06:53,222
+presented the product in the future, we'll use other parts of
+
+135
+00:06:53,223 --> 00:06:55,780
+<v rUv>the, what's, no, I mean, just be specific.
+
+136
+00:06:55,853 --> 00:06:58,316
+What parts of this would you like to use?
+
+137
+00:07:03,103 --> 00:07:06,356
+<v Mak Allen>I need to, there's a spreadsheet that I have that has a list of.
+
+138
+00:07:06,031 --> 00:07:08,696
+Of all the features,
+
+139
+00:07:08,697 --> 00:07:12,136
+uhm, I need to find that real
+
+140
+00:07:13,466 --> 00:07:16,335
+<v rUv>Okay. And, and as for the,
+
+141
+00:07:16,472 --> 00:07:18,691
+so the, the explain,
+
+142
+00:07:18,692 --> 00:07:22,311
+better explain to me the agent and how and what it's exactly it's doing.
+
+143
+00:07:29,260 --> 00:07:31,252
+<v Mark Allen>Okay, so today, like to, okay, so the, the, the. The, the, the problem
+
+144
+00:07:31,253 --> 00:07:36,014
+of this feature, okay, is patients call in and
+
+145
+00:07:36,566 --> 00:07:39,656
+if somebody answers the question. The phone today,
+
+146
+00:07:40,100 --> 00:07:44,021
+they, they can use their PMS system and,
+
+147
+00:07:44,022 --> 00:07:48,029
+uhm, you know, basically look at the calendar inside the PMS system.
+
+148
+00:07:48,030 --> 00:07:51,621
+The PMS system has, it has the full calendar of,
+
+149
+00:07:51,961 --> 00:07:54,285
+of the providers, it has. It has, you know,
+
+150
+00:07:54,286 --> 00:07:56,481
+payment system in it, it has, it,
+
+151
+00:07:57,218 --> 00:08:01,867
+it has the, the- So
+
+152
+00:08:01,868 --> 00:08:03,783
+it's, that's basically what the PMS is. So, it's their system of record. So,
+
+153
+00:08:03,801 --> 00:08:06,107
+if somebody calls in, then,
+
+154
+00:08:06,392 --> 00:08:09,694
+the, the front desk will have that, they'll have it always open.
+
+155
+00:08:09,695 --> 00:08:12,405
+Uh, and they'll just book the appointment in it.
+
+156
+00:08:12,772 --> 00:08:15,628
+So, what we want to do is to be able to, book the appointment
+
+157
+00:08:15,840 --> 00:08:19,999
+with an automated agent that can answer the phone 24-7,
+
+158
+00:08:20,000 --> 00:08:22,676
+even when they're busy. Okay? Okay.
+
+159
+00:08:21,822 --> 00:08:24,857
+Okay. So, the,
+
+160
+00:08:25,454 --> 00:08:29,484
+so, so the idea is that that agent would,
+
+161
+00:08:30,135 --> 00:08:33,887
+in, in, in. We, we actually have an agent that works quite well as
+
+162
+00:08:33,888 --> 00:08:37,567
+a simulated conversation. It just doesn't have the tools connected to it.
+
+163
+00:08:37,954 --> 00:08:38,153
+To
+
+164
+00:08:38,295 --> 00:08:38,459
+<v rUv>be.
+
+165
+00:08:38,460 --> 00:08:38,811
+<v Mark Allen>Okay.
+
+166
+00:08:40,527 --> 00:08:42,906
+<v rUv>That's great. That's exactly what you, that's exactly what you need to do.
+
+167
+00:08:43,032 --> 00:08:46,349
+We simulate it, then we make it real. And so,
+
+168
+00:08:46,350 --> 00:08:48,710
+a year white. What you're missing is, like, tool invocation.
+
+169
+00:08:48,711 --> 00:08:51,089
+Like, doing, updating,
+
+170
+00:08:51,530 --> 00:08:53,774
+editing, whatever, update it somewhere else.
+
+171
+00:08:54,001 --> 00:08:56,320
+<v Mark Allen>And, Getting calendar availability,
+
+172
+00:08:56,550 --> 00:08:58,593
+and then, um,
+
+173
+00:08:58,604 --> 00:09:02,414
+once it has a calendar availability, then it, it's capable of negotiating that conversation.
+
+174
+00:09:01,971 --> 00:09:04,498
+conversation. Uh, and then,
+
+175
+00:09:04,499 --> 00:09:08,998
+um, it would, would update back the appointment,
+
+176
+00:09:09,233 --> 00:09:12,032
+and the idea is that we would, have this,
+
+177
+00:09:12,033 --> 00:09:14,452
+instead of the AI agent,
+
+178
+00:09:14,453 --> 00:09:17,836
+just connecting directly to the PMS,
+
+179
+00:09:18,457 --> 00:09:21,295
+instead- we'd have this intermediate layer,
+
+180
+00:09:21,898 --> 00:09:25,233
+which is the app itself, because the app itself can say,
+
+181
+00:09:25,234 --> 00:09:29,178
+here's how many we've booked, you know. And if you need to follow up,
+
+182
+00:09:29,179 --> 00:09:31,598
+if there's any to do anything else you need to do,
+
+183
+00:09:31,599 --> 00:09:35,101
+so, so the app has some additional functionality.
+
+184
+00:09:35,102 --> 00:09:39,028
+Uhm, you know, that Mako has been working on. Does that make sense?
+
+185
+00:09:39,332 --> 00:09:43,003
+<v rUv>Yeah. Uhm,
+
+186
+00:09:43,013 --> 00:09:46,205
+oop. Okay. So, in terms of use of our time today,
+
+187
+00:09:46,206 --> 00:09:47,985
+what would you like to do? You want to set, you want to get
+
+188
+00:09:47,986 --> 00:09:50,058
+this API working? Sounds like the,
+
+189
+00:09:50,059 --> 00:09:53,939
+uh, next, uhh, uhh, uh, API thing that you're describing is what you need
+
+190
+00:09:53,940 --> 00:09:54,792
+next to help.
+
+191
+00:09:54,793 --> 00:09:56,871
+<v Krysta Fox>Uh, Mark,
+
+192
+00:09:56,872 --> 00:09:59,271
+I do have the repost setup. It's my first club.
+
+193
+00:10:01,977 --> 00:10:03,867
+I just sent you the link,
+
+194
+00:10:03,868 --> 00:10:06,297
+<v Mark Allen>but I can share in visual, uh, VS code. I think that, that we'll
+
+195
+00:10:06,298 --> 00:10:08,749
+have, so there's- actually two projects that are very,
+
+196
+00:10:08,750 --> 00:10:11,266
+very similar to this. So, the question is,
+
+197
+00:10:11,605 --> 00:10:14,199
+Mac, are you ready to work on the API?
+
+198
+00:10:15,018 --> 00:10:20,123
+The next- Yeah, I have a cursor to start.
+
+199
+00:10:20,375 --> 00:10:21,251
+<v Mak Allen>Okay.
+
+200
+00:10:21,252 --> 00:10:23,331
+<v Krysta Fox>Uh.
+
+201
+00:10:23,332 --> 00:10:25,473
+<v Mark Allen>Let me explain. This is a different project,
+
+202
+00:10:25,474 --> 00:10:27,968
+uh, and I'm going to orient you to it.
+
+203
+00:10:27,969 --> 00:10:30,051
+Uh, this one's a pretty fast and easy one,
+
+204
+00:10:30,052 --> 00:10:32,764
+but it's also a com- sational voice AI.
+
+205
+00:10:33,075 --> 00:10:37,670
+In this case, the conversation voice AI is connecting to
+
+206
+00:10:37,671 --> 00:10:40,805
+a calendar. I wonder. Inside of Go High Level.
+
+207
+00:10:40,806 --> 00:10:43,033
+Uhh, you're familiar with Go High Level,
+
+208
+00:10:43,034 --> 00:10:46,211
+it's like a CRM suite. Umm,
+
+209
+00:10:46,222 --> 00:10:50,114
+and Go High Level. Umm, Go has the ability to see,
+
+210
+00:10:50,115 --> 00:10:52,961
+it has an mcp, umm,
+
+211
+00:10:52,971 --> 00:10:55,703
+it has the ability to set the calendar- it's,
+
+212
+00:10:55,956 --> 00:10:58,074
+in the inside of Go High level. Okay,
+
+213
+00:10:58,075 --> 00:11:00,853
+so let me, let me explain a little bit more detail. So, so basically,
+
+214
+00:11:01,180 --> 00:11:06,439
+the client has a list of lee- We eads that they've collected with
+
+215
+00:11:06,440 --> 00:11:09,318
+opt-in information. Um,
+
+216
+00:11:09,329 --> 00:11:11,867
+and this, the, the company is. is. They,
+
+217
+00:11:11,868 --> 00:11:15,424
+they put down flooring, like cement flooring in your garage and stuff.
+
+218
+00:11:15,741 --> 00:11:19,379
+So they've got a list of leads. They want to use an AI agent
+
+219
+00:11:19,380 --> 00:11:24,226
+that- It calls those leads, so the contacts are already in high level,
+
+220
+00:11:25,024 --> 00:11:29,461
+and we'll have the AI- I agents basically make these calls,
+
+221
+00:11:29,780 --> 00:11:32,233
+and again, we've already built, uh,
+
+222
+00:11:32,244 --> 00:11:35,565
+a template agent that, that understands the business.
+
+223
+00:11:35,566 --> 00:11:38,780
+And, so they can talk about the business. Their primary job is just to
+
+224
+00:11:38,781 --> 00:11:40,781
+book an appointment. That's it.
+
+225
+00:11:41,322 --> 00:11:43,611
+So, they that,
+
+226
+00:11:43,612 --> 00:11:46,955
+The calendar, though, of record is in high level.
+
+227
+00:11:47,293 --> 00:11:51,651
+And high level, basically, it connects to your Google calendar.
+
+228
+00:11:51,652 --> 00:11:54,165
+Or your Outlook calendar. Uh,
+
+229
+00:11:54,176 --> 00:11:57,074
+so, but it has some additional features there.
+
+230
+00:11:57,287 --> 00:11:59,316
+So the idea is that we would connect to that calendar.
+
+231
+00:11:59,317 --> 00:12:03,265
+calendar. We would take the, take the list from Go High level somehow,
+
+232
+00:12:03,266 --> 00:12:05,844
+um, to kick off the agent and,
+
+233
+00:12:05,845 --> 00:12:09,074
+um, then, uh,
+
+234
+00:12:09,096 --> 00:12:13,851
+have it work its tool is gonna be connecting with that calendar and
+
+235
+00:12:13,852 --> 00:12:18,420
+then, uh, it, It'll pass back just a couple pieces of
+
+236
+00:12:18,421 --> 00:12:20,541
+information. It's basically the booking. And then,
+
+237
+00:12:20,939 --> 00:12:23,699
+from that go-high level,
+
+238
+00:12:23,700 --> 00:12:25,714
+ha as workflow automation. So go-high level,
+
+239
+00:12:25,715 --> 00:12:28,940
+it's going to send a follow-up email and send a text message,
+
+240
+00:12:28,941 --> 00:12:30,058
+confirm it.
+
+241
+00:12:30,274 --> 00:12:34,090
+<v rUv>So go-high level has some mechanism to do,
+
+242
+00:12:34,091 --> 00:12:36,319
+uh, bilateral, uh,
+
+243
+00:12:36,329 --> 00:12:39,891
+you know, at, you know, appointment scheduling of some sort.
+
+244
+00:12:39,892 --> 00:12:39,860
+. . .
+
+245
+00:12:39,891 --> 00:12:42,098
+<v Mark Allen>It does. Yeah,
+
+246
+00:12:42,099 --> 00:12:44,348
+so it has a calendaring system that's kind of like,
+
+247
+00:12:44,349 --> 00:12:47,925
+it, it, it, it, one of the f****** audience is just like calendaring.
+
+248
+00:12:47,926 --> 00:12:49,056
+Just like calendaring,
+
+249
+00:12:49,057 --> 00:12:49,200
+<v rUv>you
+
+250
+00:12:49,201 --> 00:12:50,749
+<v Mark Allen>can give it a link. Show me that
+
+251
+00:12:50,774 --> 00:12:54,206
+<v rUv>API for that. How, how we interact with that.
+
+252
+00:12:54,207 --> 00:12:55,940
+And I'll see you
+
+253
+00:12:55,971 --> 00:12:56,653
+<v Mark Allen>the
+
+254
+00:12:56,654 --> 00:12:59,250
+<v rUv>API. So it sounds, it sounds like you guys have done a good job
+
+255
+00:12:59,251 --> 00:13:01,531
+of sort of finding the services.
+
+256
+00:13:01,532 --> 00:13:04,016
+And now it's just a matter of connecting up the APIs that- it.
+
+257
+00:13:04,017 --> 00:13:05,218
+To use those services
+
+258
+00:13:05,565 --> 00:13:10,175
+<v Mark Allen>correctly. I haven't- we haven't played with the API of high level yet.
+
+259
+00:13:10,176 --> 00:13:12,798
+We just found out that it's gotta- in MCP,
+
+260
+00:13:12,799 --> 00:13:15,410
+uuh, but we haven't played with the APIs at all.
+
+261
+00:13:15,411 --> 00:13:17,834
+Uhh. That's okay.
+
+262
+00:13:17,835 --> 00:13:18,766
+That's kind of an exciting
+
+263
+00:13:18,771 --> 00:13:19,174
+<v rUv>event. So,
+
+264
+00:13:19,175 --> 00:13:22,479
+<v Mark Allen>uh, yeah, Matt, now it's- can tell you what a calendar looks like if
+
+265
+00:13:22,480 --> 00:13:23,284
+you want to see, like, the
+
+266
+00:13:23,285 --> 00:13:26,025
+<v rUv>settings. No, no, we- We don't want us- we want to just make sure
+
+267
+00:13:26,026 --> 00:13:30,429
+we can do it programmatically. Yeah. And I assume that you can do it
+
+268
+00:13:30,430 --> 00:13:33,100
+programmatically, but, you know, we never want to- really assume anything.
+
+269
+00:13:33,376 --> 00:13:35,489
+<v Mark Allen>So we just need to make- we just need to confirm that
+
+270
+00:13:35,690 --> 00:13:40,160
+<v rUv>whatever, you know, cal- the calendar capabilities are actually- .
+
+271
+00:13:40,185 --> 00:13:41,509
+accessible through the API.
+
+272
+00:13:41,890 --> 00:13:42,256
+<v Mark Allen>Yep.
+
+273
+00:13:42,871 --> 00:13:46,322
+<v rUv>So just go to the API docs where those happen to be and find
+
+274
+00:13:46,323 --> 00:13:49,233
+the API calls for- That particular feature.
+
+275
+00:13:49,234 --> 00:13:54,233
+Uhh,
+
+276
+00:13:55,183 --> 00:13:59,715
+you should be some doc somewhere- this looks like it's some- where
+
+277
+00:13:59,716 --> 00:14:01,044
+they're- where they're main docs.
+
+278
+00:14:02,523 --> 00:14:04,316
+<v Krysta Fox>Non-age-based. Please.
+
+279
+00:14:04,317 --> 00:14:06,053
+<v rUv>Good.
+
+280
+00:14:07,804 --> 00:14:09,136
+<v Krysta Fox>This is the first time I'm looking
+
+281
+00:14:09,137 --> 00:14:12,281
+<v rUv>at- Yeah, that's fine. I would do the same thing.
+
+282
+00:14:12,282 --> 00:14:14,505
+and I just gotta- we gotta figure it out. Now,
+
+283
+00:14:14,506 --> 00:14:17,235
+uhh, there's- there's a couple ways to do this.
+
+284
+00:14:17,501 --> 00:14:19,826
+I'm a lot lazier than you guys are. Uh,
+
+285
+00:14:19,836 --> 00:14:22,553
+I see doctor- just click on the docs. I- I would've just asked,
+
+286
+00:14:22,554 --> 00:14:24,737
+like, chat GPT or something. But, yeah,
+
+287
+00:14:24,738 --> 00:14:27,992
+just click on the- yeah. Yeah. Click on the docs. Just click on
+
+288
+00:14:27,993 --> 00:14:28,615
+<v Krysta Fox>the calendar
+
+289
+00:14:28,616 --> 00:14:30,822
+<v rUv>events. Yeah, there we go. Yeah,
+
+290
+00:14:30,823 --> 00:14:32,456
+it's- it's most likely, uh, get- Get it.
+
+291
+00:14:32,457 --> 00:14:34,220
+<v Mark Allen>Okay, put three slots.
+
+292
+00:14:34,637 --> 00:14:36,631
+<v rUv>Yep. Perfect. So click on that.
+
+293
+00:14:36,632 --> 00:14:38,539
+<v Krysta Fox>Uh, this guy.
+
+294
+00:14:38,732 --> 00:14:41,918
+<v rUv>Yep. Yep. You Okay.
+
+295
+00:14:41,919 --> 00:14:44,459
+Perfect. So, let's get.
+
+296
+00:14:45,312 --> 00:14:48,476
+Now, how does it handle,
+
+297
+00:14:48,477 --> 00:14:50,871
+. I guess. I guess.
+
+298
+00:14:50,872 --> 00:14:53,009
+It got to put here. Get
+
+299
+00:14:53,034 --> 00:14:54,459
+<v Krysta Fox>update. Get
+
+300
+00:14:54,707 --> 00:14:57,605
+<v rUv>delete. Perfect. Okay. So, so. You I'm thinking through this logically.
+
+301
+00:14:57,606 --> 00:15:01,417
+If it's like calendary, then what it's going to do is it's going to
+
+302
+00:15:01,652 --> 00:15:05,325
+basically tell you, like, when you register and try to get- a time slot
+
+303
+00:15:05,326 --> 00:15:08,311
+for me, and to be honest, I should probably use this for- for my
+
+304
+00:15:08,312 --> 00:15:09,340
+own system. I should-
+
+305
+00:15:09,585 --> 00:15:10,070
+<v Krysta Fox>it's- and there
+
+306
+00:15:10,071 --> 00:15:12,277
+<v rUv>you go. Yeah, yeah, but, uh,
+
+307
+00:15:12,288 --> 00:15:14,527
+I get a- exactly what you're trying to do. You're- you're basically trying to
+
+308
+00:15:14,528 --> 00:15:19,154
+do kind of negotiation between a patient and the availability of the-
+
+309
+00:15:19,155 --> 00:15:20,660
+of the actual, uh. And that's it
+
+310
+00:15:20,691 --> 00:15:23,965
+<v Mark Allen>This one's not a patient, it's just a- it's a customer of this- this
+
+311
+00:15:24,145 --> 00:15:26,876
+concrete pouring service, this- this flooring service.
+
+312
+00:15:28,378 --> 00:15:30,410
+So. up. It's- it's different than max app.
+
+313
+00:15:30,411 --> 00:15:32,756
+So this is max- max app into high level,
+
+314
+00:15:32,757 --> 00:15:35,070
+max connecting to the
+
+315
+00:15:35,071 --> 00:15:35,678
+<v rUv>app. Oh, yeah,
+
+316
+00:15:35,679 --> 00:15:35,956
+<v Mark Allen>this-
+
+317
+00:15:36,306 --> 00:15:38,375
+<v rUv>this would also- It doesn't work really well for max app as well,
+
+318
+00:15:38,376 --> 00:15:41,228
+right? If anything involves any kind of calendar negotiation.
+
+319
+00:15:41,229 --> 00:15:44,405
+<v Mark Allen>Uhh,
+
+320
+00:15:44,416 --> 00:15:48,916
+yeah. Except for we have to, we're forced in that environment to work with
+
+321
+00:15:48,917 --> 00:15:51,149
+the PMS that the orthodontist has.
+
+322
+00:15:51,524 --> 00:15:52,781
+So, if
+
+323
+00:15:52,782 --> 00:15:54,658
+<v Krysta Fox>we, We hit, they don't have an API.
+
+324
+00:15:54,988 --> 00:15:57,228
+<v Mark Allen>In, in this case, the client,
+
+325
+00:15:57,259 --> 00:16:00,891
+this is a totally different project and the client is using high level and,
+
+326
+00:16:00,892 --> 00:16:05,236
+high levels calendar system. This is where they have their contacts is inside a
+
+327
+00:16:05,237 --> 00:16:05,825
+high level.
+
+328
+00:16:07,409 --> 00:16:10,314
+<v rUv>Okay. Okay. Well, looks- You sold me.
+
+329
+00:16:10,416 --> 00:16:12,041
+I'm totally checking out my level later.
+
+330
+00:16:12,772 --> 00:16:13,233
+<v Mark Allen>I mean, I'm
+
+331
+00:16:13,234 --> 00:16:13,686
+<v rUv>not going to
+
+332
+00:16:13,687 --> 00:16:16,256
+<v Mark Allen>reflect- High level is calendar. Yeah.
+
+333
+00:16:16,257 --> 00:16:18,282
+Yeah. Yeah. High, high level is awesome.
+
+334
+00:16:18,624 --> 00:16:19,306
+<v rUv>Yeah. It's good.
+
+335
+00:16:19,413 --> 00:16:22,201
+<v Stuart Kerr>And instruct me that you would be the last guy in the world wrote
+
+336
+00:16:22,202 --> 00:16:24,403
+to use high level, because you would look at this and go,
+
+337
+00:16:24,414 --> 00:16:25,704
+I could build this- in an hour.
+
+338
+00:16:26,301 --> 00:16:27,756
+<v Mark Allen>I, you know, I use- I
+
+339
+00:16:27,757 --> 00:16:28,466
+<v Stuart Kerr>use-
+
+340
+00:16:28,935 --> 00:16:32,262
+<v rUv>I use- I use- I build what I have to.
+
+341
+00:16:32,400 --> 00:16:36,318
+I prefer- blue for- for for- for most things.
+
+342
+00:16:36,661 --> 00:16:40,584
+And, uh, if- if it exists and it's cheap and easy and someone else's
+
+343
+00:16:40,585 --> 00:16:43,748
+problem- problem. Especially when it comes to, like, money-related activities,
+
+344
+00:16:44,394 --> 00:16:46,872
+I- I- I like- I'm gonna just use whatever is available.
+
+345
+00:16:46,900 --> 00:16:49,131
+Like- Yeah. Assuming this isn't crazy.
+
+346
+00:16:49,132 --> 00:16:52,665
+<v Mark Allen>Well, I'll tell you what, it- it would be a hundred dollars a month,
+
+347
+00:16:52,666 --> 00:16:55,365
+but I'll give you a sub account. So,
+
+348
+00:16:55,500 --> 00:16:55,880
+you know,
+
+349
+00:16:55,881 --> 00:16:56,783
+<v rUv>it'll
+
+350
+00:16:56,897 --> 00:16:57,171
+<v Mark Allen>be-
+
+351
+00:16:57,172 --> 00:16:59,313
+<v rUv>But yeah, that's, you know,
+
+352
+00:16:59,870 --> 00:17:00,812
+you know what I charge, it's
+
+353
+00:17:00,813 --> 00:17:01,392
+<v Mark Allen>not a huge.
+
+354
+00:17:01,629 --> 00:17:04,192
+<v rUv>Alright, umm. Alright, so,
+
+355
+00:17:04,193 --> 00:17:06,418
+yeah, so- You Are you guys signed up for this?
+
+356
+00:17:08,300 --> 00:17:12,915
+<v Mark Allen>Yeah, yeah, so we have, we have what's called a high level agency
+
+357
+00:17:12,936 --> 00:17:17,756
+I didn't see it. So we have many clients underneath us
+
+358
+00:17:17,757 --> 00:17:20,752
+that have their own businesses in high level.
+
+359
+00:17:20,753 --> 00:17:25,709
+So. So, It's like an individual business high levels like a whole CRM system
+
+360
+00:17:25,819 --> 00:17:29,331
+plus work law. So think of Salesforce plus HubSpot.
+
+361
+00:17:29,332 --> 00:17:30,565
+For small business. Okay.
+
+362
+00:17:31,487 --> 00:17:31,973
+<v rUv>And
+
+363
+00:17:33,182 --> 00:17:35,385
+<v Mark Allen>you can put up your websites there, like,
+
+364
+00:17:35,603 --> 00:17:38,394
+you know, you can host them there, like, uhh, like a Netlify.
+
+365
+00:17:38,395 --> 00:17:40,442
+Umm, it's got a website builder in it.
+
+366
+00:17:40,443 --> 00:17:43,326
+Uhh, so it's got a whole bunch of really cool functionality.
+
+367
+00:17:43,327 --> 00:17:46,248
+It's got the calendar functionality is a nice one. I use this instead of
+
+368
+00:17:46,249 --> 00:17:49,836
+calendly. You can very, and you can sell products on your website.
+
+369
+00:17:49,837 --> 00:17:51,887
+It's kind of a cool thing or products or services.
+
+370
+00:17:52,274 --> 00:17:54,634
+So it's got a lot of capability. Uhh,
+
+371
+00:17:54,645 --> 00:17:56,932
+so yeah, so this is inside,
+
+372
+00:17:56,933 --> 00:18:01,491
+so what we're doing is we're connecting a calendar inside of-
+
+373
+00:18:01,492 --> 00:18:05,463
+a sub account, and so you see that it's got a token type of
+
+374
+00:18:05,464 --> 00:18:10,026
+sub- sub account token, so we- so that's what would change be- from one
+
+375
+00:18:10,027 --> 00:18:13,273
+client to another. Uhm.
+
+376
+00:18:13,284 --> 00:18:17,491
+But, uh, yeah, the idea is that- that we'll have this AI agent- it.
+
+377
+00:18:17,492 --> 00:18:22,230
+1 And it can easily be plugged from one sub-account to another
+
+378
+00:18:22,391 --> 00:18:24,443
+by just changing that sub-account token.
+
+379
+00:18:24,444 --> 00:18:24,360
+Okay.
+
+380
+00:18:24,361 --> 00:18:28,890
+<v rUv>So what do you want to
+
+381
+00:18:28,891 --> 00:18:31,411
+get? What do you guys want to build? You've given me several ideas.
+
+382
+00:18:31,412 --> 00:18:32,940
+So what do you want to do today? Okay.
+
+383
+00:18:33,651 --> 00:18:36,871
+<v Mark Allen>So what we want to build is we want to actually take,
+
+384
+00:18:36,872 --> 00:18:38,950
+um, the existing,
+
+385
+00:18:38,951 --> 00:18:41,536
+uh, 11 labs age.
+
+386
+00:18:41,537 --> 00:18:44,059
+aid. And see if we can connect it.
+
+387
+00:18:45,006 --> 00:18:45,648
+To this.
+
+388
+00:18:46,029 --> 00:18:46,693
+<v rUv>So, so,
+
+389
+00:18:47,192 --> 00:18:47,694
+<v Mark Allen>so you need
+
+390
+00:18:47,695 --> 00:18:49,731
+<v rUv>it. So before, before you do.
+
+391
+00:18:49,732 --> 00:18:54,742
+That you need, you'll need to create probably an abstraction,
+
+392
+00:18:54,743 --> 00:18:56,816
+uh, for this API. I would,
+
+393
+00:18:56,817 --> 00:18:58,911
+like an edge. Thank much. Function, most likely,
+
+394
+00:18:59,344 --> 00:19:01,538
+that will authenticate,
+
+395
+00:19:01,539 --> 00:19:05,905
+so. So, When you, when you make the request,
+
+396
+00:19:05,977 --> 00:19:09,956
+you're using an anonymous key.
+
+397
+00:19:09,957 --> 00:19:12,263
+With some form of, of user validation.
+
+398
+00:19:12,264 --> 00:19:14,491
+So, when you are, when the,
+
+399
+00:19:14,530 --> 00:19:17,931
+when there's a call between the two, how you handling user settings.
+
+400
+00:19:17,932 --> 00:19:20,790
+Like,
+
+401
+00:19:20,791 --> 00:19:22,258
+is there, how do you know who's who? Alright, I haven't thought
+
+402
+00:19:23,818 --> 00:19:25,940
+<v Mark Allen>that far. For more information, website at www.beadaholique.com
+
+403
+00:19:25,976 --> 00:19:29,356
+<v rUv>Well it's explain the- explain the workflow.
+
+404
+00:19:29,357 --> 00:19:32,902
+So, uh, is someone- someone's getting a phone call it sounds like and then
+
+405
+00:19:32,903 --> 00:19:36,543
+you're- your v- validating somehow or other that they are who they- who they
+
+406
+00:19:36,544 --> 00:19:38,895
+say they are and then they're- and then they're
+
+407
+00:19:39,150 --> 00:19:42,051
+<v Mark Allen>scheduling- Oh, Okay, so for this one, we're calling.
+
+408
+00:19:42,052 --> 00:19:44,098
+out. Uh,
+
+409
+00:19:44,119 --> 00:19:48,795
+so- so we're- we'll we'll have a list of contacts with phone
+
+410
+00:19:48,796 --> 00:19:51,133
+numbers and we're gonna call. . . out to that list.
+
+411
+00:19:51,981 --> 00:19:54,361
+<v rUv>And you're just kind of assuming that if you call them,
+
+412
+00:19:54,362 --> 00:19:56,409
+they answer and they agree to schedule,
+
+413
+00:19:56,410 --> 00:19:58,136
+then they are who they say they're.
+
+414
+00:19:58,137 --> 00:20:01,531
+<v Mark Allen>Yeah, yeah, because they've given us their contact information.
+
+415
+00:20:01,736 --> 00:20:05,177
+And, you know, if they hang up on the agent or so forth,
+
+416
+00:20:05,778 --> 00:20:09,068
+we'll- You know, we'll collect all that, but the,
+
+417
+00:20:09,436 --> 00:20:09,999
+you know, we'll know
+
+418
+00:20:10,000 --> 00:20:14,601
+<v rUv>they're not- So you're- How do you separate their- their kid or- or
+
+419
+00:20:14,717 --> 00:20:18,316
+someone that happens to answer the phone, which is unlikely given the nature of
+
+420
+00:20:18,317 --> 00:20:20,369
+the mobile environment we live in today,
+
+421
+00:20:20,688 --> 00:20:25,343
+but there's no secondary- questions or validations of identity
+
+422
+00:20:25,344 --> 00:20:25,833
+or anything.
+
+423
+00:20:25,834 --> 00:20:28,478
+<v Mark Allen>Uhh, that's a good point.
+
+424
+00:20:28,479 --> 00:20:30,834
+I, we, we hadn't- It's,
+
+425
+00:20:31,347 --> 00:20:34,476
+it's, it's actually when you're, when you're calling out, it actually makes sense to
+
+426
+00:20:34,477 --> 00:20:36,539
+do that in your first message. So let me,
+
+427
+00:20:37,339 --> 00:20:40,334
+<v rUv>anyone that's calling- any call center validates identity,
+
+428
+00:20:40,345 --> 00:20:42,903
+even if it's rudimentary, which usually involves me saying,
+
+429
+00:20:42,904 --> 00:20:44,927
+no, you, you prove that you're real. No, I'm real,
+
+430
+00:20:44,928 --> 00:20:48,205
+you're real. Or whatever. And, and then there's a back and forth between me
+
+431
+00:20:48,206 --> 00:20:52,794
+and whatever random person happened to- Try to convince me that they're calling
+
+432
+00:20:52,795 --> 00:20:56,963
+on behalf of a company. So I'm, I'm probably the worst person to call
+
+433
+00:20:56,964 --> 00:20:58,371
+because I assume everyone's trying to scam- And
+
+434
+00:20:58,372 --> 00:21:00,951
+<v Mark Allen>me. But, you know, they always
+
+435
+00:21:00,952 --> 00:21:03,702
+<v rUv>are, they're always asking for proof of my identity,
+
+436
+00:21:03,703 --> 00:21:06,453
+which I don't, which I don't give ever on a
+
+437
+00:21:06,454 --> 00:21:08,767
+<v Mark Allen>phone call. But you can just do, do the name.
+
+438
+00:21:08,768 --> 00:21:11,113
+Yeah. Um, you know, hi. Uh,
+
+439
+00:21:11,124 --> 00:21:13,981
+is this, is this so-and-so? This is,
+
+440
+00:21:13,982 --> 00:21:16,370
+um, you know, blah from,
+
+441
+00:21:16,371 --> 00:21:19,084
+uh, Spartan floor
+
+442
+00:21:19,085 --> 00:21:21,227
+<v rUv>covering. Okay, so let's, let's, let's,
+
+443
+00:21:21,228 --> 00:21:23,727
+let's, let's, let's keep it simple. So we're gonna do a multi,
+
+444
+00:21:23,728 --> 00:21:25,858
+a multi-step implementation here.
+
+445
+00:21:25,859 --> 00:21:28,023
+<v Mark Allen>The first thing and the easiest thing we're gonna do,
+
+446
+00:21:28,024 --> 00:21:29,631
+and, uh, and this is, this is
+
+447
+00:21:30,241 --> 00:21:31,433
+<v rUv>Krista's screen we're looking at?
+
+448
+00:21:31,787 --> 00:21:32,264
+<v Krysta Fox>Yes.
+
+449
+00:21:32,885 --> 00:21:36,253
+<v rUv>Okay, and you've got the- the API key for this,
+
+450
+00:21:36,254 --> 00:21:37,245
+uh, service?
+
+451
+00:21:38,545 --> 00:21:40,369
+<v Krysta Fox>I don't know.
+
+452
+00:21:40,656 --> 00:21:43,935
+<v rUv>So let's- let's create a .env. Maybe. Let's grab-
+
+453
+00:21:43,936 --> 00:21:44,111
+<v Mark Allen>let's
+
+454
+00:21:44,112 --> 00:21:46,633
+<v rUv>get- let's sign in and get the- and get the key.
+
+455
+00:21:47,943 --> 00:21:49,949
+So it looks like there's a bearer token that's required.
+
+456
+00:21:50,437 --> 00:21:52,682
+We're going to use a, a,
+
+457
+00:21:52,683 --> 00:21:55,230
+um, an- an- anonymous key. We'll see you in the approach,
+
+458
+00:21:55,231 --> 00:21:58,822
+which is going to be, uh, the- the best since most secure way for
+
+459
+00:21:58,823 --> 00:22:01,731
+you guys to sort of ham, sort of, uh,
+
+460
+00:22:01,742 --> 00:22:05,239
+interaction with this. We'll- If you guys are comfortable with Superbase,
+
+461
+00:22:05,240 --> 00:22:06,421
+we'll just use an edge function.
+
+462
+00:22:06,723 --> 00:22:07,232
+<v Mark Allen>Sure.
+
+463
+00:22:08,514 --> 00:22:10,741
+<v rUv>So we're going to need your Superbase- Peace.
+
+464
+00:22:10,742 --> 00:22:12,402
+Uh, access token as well.
+
+465
+00:22:13,442 --> 00:22:16,444
+<v Krysta Fox>Oh, me? I don't, I do not have that.
+
+466
+00:22:17,056 --> 00:22:17,251
+I
+
+467
+00:22:17,252 --> 00:22:17,459
+<v rUv>think,
+
+468
+00:22:17,460 --> 00:22:18,552
+<v Stuart Kerr>Mac, that you shared,
+
+469
+00:22:18,553 --> 00:22:18,771
+<v Mark Allen>right? Bye.
+
+470
+00:22:18,772 --> 00:22:21,830
+<v Krysta Fox>Okay,
+
+471
+00:22:21,831 --> 00:22:22,465
+I have. For some
+
+472
+00:22:22,466 --> 00:22:25,639
+<v Mark Allen>reason. I can give her a super-vince who creates access token.
+
+473
+00:22:25,861 --> 00:22:28,408
+<v rUv>And what are you guys- What guys using for a password vault?
+
+474
+00:22:29,233 --> 00:22:33,230
+<v Mark Allen>Mac. You're on mute.
+
+475
+00:22:33,231 --> 00:22:37,517
+<v Mak Allen>Uh. you I'm I'm looking for the access key right now.
+
+476
+00:22:37,959 --> 00:22:42,431
+<v rUv>Okay, just to so if we're gonna have a multi developer agent development.
+
+477
+00:22:42,432 --> 00:22:44,543
+Helpman. Plan here. We,
+
+478
+00:22:44,816 --> 00:22:47,965
+we can, we can do it quick and easy by using a .env.
+
+479
+00:22:48,696 --> 00:22:50,931
+We can do it right if we want to have.
+
+480
+00:22:50,819 --> 00:22:53,607
+Have a, uh, a shared password vault.
+
+481
+00:22:53,608 --> 00:22:55,910
+Uhm.
+
+482
+00:22:55,921 --> 00:22:58,096
+We can do a little bit of both to get, to just, to get
+
+483
+00:22:58,097 --> 00:23:00,943
+it working quick and then- secure it. Uhm,
+
+484
+00:23:00,954 --> 00:23:02,980
+but if-if you, me, and Mac,
+
+485
+00:23:02,981 --> 00:23:05,650
+and some agents are-are-are gonna collaborate,
+
+486
+00:23:06,174 --> 00:23:09,794
+dotty and these are- hard to go away for collaborative use of tokens,
+
+487
+00:23:09,795 --> 00:23:13,480
+uh, and-and-and you can buy keys because you literally we're going to create a
+
+488
+00:23:13,881 --> 00:23:16,512
+file and share that which is terrible. Yep.
+
+489
+00:23:16,513 --> 00:23:19,684
+Uhm, oh, I'm sorry, you guys don't have access to share?
+
+490
+00:23:19,685 --> 00:23:23,096
+There you go. Uhm.
+
+491
+00:23:23,097 --> 00:23:26,409
+. . I just want you guys to be,
+
+492
+00:23:26,410 --> 00:23:28,007
+I want you guys to be secure, and I'm I'm . . . know,
+
+493
+00:23:28,008 --> 00:23:31,492
+this isn't the, uh, HIPAA compliant platform like the other,
+
+494
+00:23:31,724 --> 00:23:36,205
+but we should just build with SOC 2 and HIPAA compliance in mind for
+
+495
+00:23:36,206 --> 00:23:37,108
+anything we're building.
+
+496
+00:23:37,444 --> 00:23:39,369
+<v Mark Allen>I totally agree. You Yeah,
+
+497
+00:23:39,370 --> 00:23:44,369
+<v rUv>uhh,
+
+498
+00:23:46,663 --> 00:23:48,681
+okay, so. So. So, this is a couple things.
+
+499
+00:23:49,145 --> 00:23:53,093
+When working with these access tokens, there's a- the reason why you choose never
+
+500
+00:23:53,094 --> 00:23:55,119
+expire and never choose, man,
+
+501
+00:23:55,120 --> 00:23:57,134
+ever. . . because if there's leakage,
+
+502
+00:23:57,135 --> 00:24:00,555
+you'll never know, right? The drawback is,
+
+503
+00:24:00,908 --> 00:24:03,540
+to using never, to using 30 day or 90 day,
+
+504
+00:24:03,702 --> 00:24:06,094
+is inevitably in 90 days,
+
+505
+00:24:06,095 --> 00:24:08,929
+it's gonna stop working. And you're really like, why the hell doesn't it work?
+
+506
+00:24:08,930 --> 00:24:12,788
+And then you're gonna spend 20 minutes to realize that the token expired.
+
+507
+00:24:13,192 --> 00:24:16,758
+The benefit to that is, if you have any token leak- the worst case
+
+508
+00:24:16,759 --> 00:24:19,125
+scenario is 30 days,
+
+509
+00:24:19,126 --> 00:24:22,804
+90 days, however long that the token is available for expired.
+
+510
+00:24:22,805 --> 00:24:25,737
+It's expired. For any kind of sock too,
+
+511
+00:24:25,738 --> 00:24:27,480
+you're never going to choose never.
+
+512
+00:24:29,453 --> 00:24:30,498
+<v Krysta Fox>Yeah, that makes sense.
+
+513
+00:24:30,818 --> 00:24:32,987
+<v Mark Allen>Okay. So. What should we choose? 30?
+
+514
+00:24:32,988 --> 00:24:37,541
+<v rUv>Uh, what, how long you guys plan to take to develop
+
+515
+00:24:37,542 --> 00:24:41,148
+this? Yes. I usually do 90 cause I'm lazy,
+
+516
+00:24:41,472 --> 00:24:42,971
+<v Mark Allen>but. Yeah. Yeah.
+
+517
+00:24:43,423 --> 00:24:45,725
+<v rUv>Yeah. And I never lay in 90 days,
+
+518
+00:24:45,726 --> 00:24:48,675
+I forget. And I go th- the whole rigameral every time.
+
+519
+00:24:48,767 --> 00:24:52,332
+I-I happens enough now that I almost instinctively know that the token's expired.
+
+520
+00:24:52,808 --> 00:24:53,111
+But,
+
+521
+00:24:53,299 --> 00:24:55,556
+<v Krysta Fox>uhm- You can line them up all the same time.
+
+522
+00:24:55,557 --> 00:24:57,794
+<v rUv>Yeah, it's-yeah, exactly.
+
+523
+00:24:57,988 --> 00:25:00,669
+It's-it's always a random Tuesday. Okay.
+
+524
+00:25:00,670 --> 00:25:04,721
+Uh, yeah. So, give it a-give it a name that- It's usually specific to
+
+525
+00:25:04,722 --> 00:25:05,352
+the project.
+
+526
+00:25:06,041 --> 00:25:10,950
+<v Krysta Fox>Interesting. Okay. So, this is my first day using this application
+
+527
+00:25:11,042 --> 00:25:15,834
+and- we're trying to generate a token from
+
+528
+00:25:15,835 --> 00:25:18,066
+inside of my account with,
+
+529
+00:25:18,067 --> 00:25:20,997
+uh. Um,
+
+530
+00:25:21,008 --> 00:25:24,563
+high level, right? So I actually don't know how to do that.
+
+531
+00:25:25,823 --> 00:25:30,659
+<v rUv>Okay, no worries. The way that I do it is I'm,
+
+532
+00:25:30,806 --> 00:25:33,090
+I'm also lazy. Lazy in a good way,
+
+533
+00:25:33,141 --> 00:25:35,158
+I hope. And I, I use umm.
+
+534
+00:25:35,168 --> 00:25:37,413
+and I use an agent browser and
+
+535
+00:25:37,414 --> 00:25:37,631
+<v Krysta Fox>just
+
+536
+00:25:37,632 --> 00:25:38,292
+<v rUv>go, and I,
+
+537
+00:25:38,293 --> 00:25:38,436
+<v Krysta Fox>and
+
+538
+00:25:38,437 --> 00:25:40,829
+<v rUv>I, and I tell, I tell it to go figure it out.
+
+539
+00:25:41,333 --> 00:25:42,712
+Yeah. Exactly. It's
+
+540
+00:25:42,713 --> 00:25:43,864
+<v Stuart Kerr>actually, I
+
+541
+00:25:43,865 --> 00:25:46,588
+<v rUv>haven't tried the new,
+
+542
+00:25:46,589 --> 00:25:48,876
+uh, OpenAI one,
+
+543
+00:25:48,877 --> 00:25:50,923
+which came out yesterday, but, uh, I, I,
+
+544
+00:25:50,924 --> 00:25:53,409
+I like the, I've, uh, browser extension,
+
+545
+00:25:53,641 --> 00:25:55,819
+but it looks like you're using something similar. What,
+
+546
+00:25:55,933 --> 00:25:56,297
+<v Mark Allen>which one are you
+
+547
+00:25:56,298 --> 00:25:57,866
+<v Stuart Kerr>using? I'm using a comment, right?
+
+548
+00:25:58,343 --> 00:25:59,811
+<v Krysta Fox>Probably Gemini, I guess.
+
+549
+00:25:59,812 --> 00:26:01,832
+<v rUv>Yeah, they all,
+
+550
+00:26:02,172 --> 00:26:04,732
+<v Stuart Kerr>they all kinda get older.
+
+551
+00:26:05,169 --> 00:26:06,571
+<v rUv>They're all kinda clones of the same
+
+552
+00:26:06,572 --> 00:26:10,596
+<v Mark Allen>idea. Gemini is the worst. group. Actually, Gemini is really
+
+553
+00:26:10,597 --> 00:26:12,972
+<v rUv>bad. Does Gemini control your browser?
+
+554
+00:26:13,627 --> 00:26:15,352
+<v Mark Allen>Yeah, not very well. That's the problem. Don't. Don't.
+
+555
+00:26:15,896 --> 00:26:18,876
+<v rUv>Claud, I, my opinion, Claud is the best,
+
+556
+00:26:18,877 --> 00:26:22,905
+<v Mark Allen>uh, and they've only released it to a few thousand people.
+
+557
+00:26:23,037 --> 00:26:25,775
+So, it's not available yet. So, uh,
+
+558
+00:26:25,786 --> 00:26:26,787
+perplexity Internet. Okay, use- use- use
+
+559
+00:26:27,812 --> 00:26:30,356
+<v rUv>comm- and- or- or we'll just click around. Go- go to settings.
+
+560
+00:26:31,687 --> 00:26:33,214
+It's always under settings, generally.
+
+561
+00:26:33,798 --> 00:26:34,967
+<v Mak Allen>Personally, I sent you the super
+
+562
+00:26:34,968 --> 00:26:38,259
+<v rUv>basic. And then. And then go to API keys in the left hand side.
+
+563
+00:26:38,265 --> 00:26:38,614
+Yep.
+
+564
+00:26:39,707 --> 00:26:41,338
+<v Krysta Fox>Uhh, uhh,
+
+565
+00:26:41,339 --> 00:26:42,762
+<v Mark Allen>So, sure you set
+
+566
+00:26:42,763 --> 00:26:43,002
+<v rUv>up
+
+567
+00:26:43,003 --> 00:26:44,282
+<v Mark Allen>your- Yeah.
+
+568
+00:26:44,632 --> 00:26:48,548
+<v rUv>Make sure I set up your- Your two factor off at some point.
+
+569
+00:26:48,599 --> 00:26:49,593
+Again, suck too. Thank you
+
+570
+00:26:49,868 --> 00:26:52,071
+<v Krysta Fox>so much.
+
+571
+00:26:52,072 --> 00:26:52,716
+Umm, hmmm, hmmm,
+
+572
+00:26:52,717 --> 00:26:57,716
+<v rUv>And
+
+573
+00:27:04,565 --> 00:27:06,895
+while you're doing that, uh, Mac,
+
+574
+00:27:07,017 --> 00:27:10,199
+you might want- think about which vault service you could use.
+
+575
+00:27:10,570 --> 00:27:13,760
+There's one by Hat Hashi Corp.
+
+576
+00:27:14,078 --> 00:27:16,836
+Probably cheap and easy and probably most of- effective for you
+
+577
+00:27:16,837 --> 00:27:17,780
+<v Mak Allen>guys. Or
+
+578
+00:27:17,789 --> 00:27:22,728
+<v rUv>if you prefer web- like web-based
+
+579
+00:27:22,812 --> 00:27:25,051
+and mobile and all that stuff. I I- I use one
+
+580
+00:27:25,052 --> 00:27:27,628
+<v Krysta Fox>password. Oh my god. Okay.
+
+581
+00:27:30,265 --> 00:27:32,300
+<v rUv>Whatever you use, make sure it has a CLI. I'll see
+
+582
+00:27:32,336 --> 00:27:35,338
+<v Mark Allen>One pass and uh,
+
+583
+00:27:35,348 --> 00:27:37,886
+last pass, but I've used both of those,
+
+584
+00:27:37,887 --> 00:27:39,933
+but let's just use one pass if Rufus uses
+
+585
+00:27:39,934 --> 00:27:43,008
+<v rUv>it. Yeah, whatever you're, if you're, if you're currently using one,
+
+586
+00:27:43,009 --> 00:27:44,188
+use that, but
+
+587
+00:27:45,399 --> 00:27:48,471
+<v Mark Allen>I'm only using the free version of it. Uhh, so.
+
+588
+00:27:48,472 --> 00:27:50,501
+<v rUv>Yeah, the, the,
+
+589
+00:27:51,154 --> 00:27:55,711
+<v Stuart Kerr>the, don't use free software for the stuff that is the keys to your
+
+590
+00:27:55,712 --> 00:27:58,983
+entire kingdom. And that, that's not the place you save money.
+
+591
+00:28:01,353 --> 00:28:04,551
+<v Mark Allen>I actually don't have it. I'm not using it in there other than to.
+
+592
+00:28:04,380 --> 00:28:07,292
+To, to do something with a client
+
+593
+00:28:07,293 --> 00:28:09,466
+<v rUv>every day. The benefit, just,
+
+594
+00:28:09,587 --> 00:28:13,849
+just to stray a benefit to using one pass over last pass is the,
+
+595
+00:28:14,035 --> 00:28:16,582
+the, uh, one pass word is Canadian company.
+
+596
+00:28:16,583 --> 00:28:19,861
+So you don't have the NSA introspection that you have the last
+
+597
+00:28:19,862 --> 00:28:20,576
+<v Krysta Fox>pass.
+
+598
+00:28:20,577 --> 00:28:23,347
+<v Mark Allen>Not that it really matters for you guys at the end of the day.
+
+599
+00:28:23,592 --> 00:28:25,814
+But if, if you are more, you know,
+
+600
+00:28:25,815 --> 00:28:30,029
+uh, security conscious, you generally avoid American security companies.
+
+601
+00:28:30,530 --> 00:28:31,420
+Oh, interesting.
+
+602
+00:28:31,421 --> 00:28:32,816
+<v Krysta Fox>Okay. So
+
+603
+00:28:33,947 --> 00:28:35,658
+<v Stuart Kerr>we can go with Russian security
+
+604
+00:28:35,659 --> 00:28:36,292
+<v Krysta Fox>companies.
+
+605
+00:28:36,666 --> 00:28:37,897
+<v rUv>No, Russian's the
+
+606
+00:28:37,898 --> 00:28:39,230
+<v Mark Allen>worst. Chinese. I
+
+607
+00:28:39,231 --> 00:28:40,803
+<v rUv>was gonna say, Yeah,
+
+608
+00:28:41,026 --> 00:28:42,797
+<v Stuart Kerr>we're all Chinese.
+
+609
+00:28:43,041 --> 00:28:44,482
+<v Mark Allen>Maybe North Korea.
+
+610
+00:28:45,056 --> 00:28:47,232
+<v rUv>Yeah, but generally speaking,
+
+611
+00:28:47,233 --> 00:28:49,024
+the Canadian one is your safest. his back. You're
+
+612
+00:28:49,269 --> 00:28:49,546
+<v Stuart Kerr>not
+
+613
+00:28:49,547 --> 00:28:50,973
+<v rUv>getting the NSA back to her.
+
+614
+00:28:53,157 --> 00:28:55,453
+<v Krysta Fox>She shared me my little bias there, Ruth.
+
+615
+00:28:55,454 --> 00:28:55,380
+I love you.
+
+616
+00:28:56,631 --> 00:28:58,764
+<v rUv>That's a bias. It's more matter of fact.
+
+617
+00:28:58,901 --> 00:28:59,579
+It's more matter of
+
+618
+00:28:59,580 --> 00:29:00,939
+<v Krysta Fox>fact. I'm kidding. I'm kidding.
+
+619
+00:29:01,311 --> 00:29:02,037
+<v rUv>I'm joking.
+
+620
+00:29:02,038 --> 00:29:07,014
+<v Krysta Fox>Um, so, so all that said- How should I
+
+621
+00:29:07,541 --> 00:29:11,282
+log in this super bass? I should create my own account.
+
+622
+00:29:11,283 --> 00:29:11,756
+Krista,
+
+623
+00:29:11,757 --> 00:29:15,305
+<v rUv>you're a boy. Uhh, you s- You should an organization,
+
+624
+00:29:15,715 --> 00:29:20,114
+and then, well, whoever has the master,
+
+625
+00:29:20,364 --> 00:29:22,755
+you know. You know, uh,
+
+626
+00:29:22,766 --> 00:29:23,886
+you know, uh, credit cards. You create an
+
+627
+00:29:23,887 --> 00:29:26,311
+<v Mark Allen>org. Mack and I are admins to it,
+
+628
+00:29:26,312 --> 00:29:28,743
+<v rUv>so. And add, add Krista and myself.
+
+629
+00:29:28,744 --> 00:29:31,547
+So. As, as, uh, users, and then when you,
+
+630
+00:29:31,761 --> 00:29:34,895
+when you don't want me around anymore, you can just delete my user.
+
+631
+00:29:35,418 --> 00:29:35,620
+Yeah.
+
+632
+00:29:36,122 --> 00:29:37,164
+<v Mark Allen>Mack, can you do that? Yeah.
+
+633
+00:29:37,564 --> 00:29:39,209
+<v Krysta Fox>Let me see something here.
+
+634
+00:29:39,210 --> 00:29:42,816
+<v Mak Allen>Uh, to add him in to this.
+
+635
+00:29:43,567 --> 00:29:44,840
+<v Mark Allen>Krista and Ru. . . .
+
+636
+00:29:47,359 --> 00:29:48,816
+<v rUv>Yeah, and, yeah, that's probably your best bet.
+
+637
+00:29:48,817 --> 00:29:49,797
+<v Mak Allen>Uh. I
+
+638
+00:29:52,911 --> 00:29:55,713
+<v Mark Allen>I can do it if you got,
+
+639
+00:29:56,096 --> 00:29:58,270
+if it's, you're having trouble. But,
+
+640
+00:29:58,515 --> 00:29:59,550
+you're an admin, so. you.
+
+641
+00:30:00,891 --> 00:30:03,219
+<v rUv>Alright,
+
+642
+00:30:03,222 --> 00:30:05,949
+so you can take that key that we saw earlier, pop that into your
+
+643
+00:30:05,973 --> 00:30:06,553
+.env. Can be?
+
+644
+00:30:08,936 --> 00:30:10,244
+<v Krysta Fox>Or, is that for me?
+
+645
+00:30:10,923 --> 00:30:11,213
+<v Mak Allen>Of course
+
+646
+00:30:11,214 --> 00:30:13,580
+<v rUv>I think I saw it. I'm not sure screen is on,
+
+647
+00:30:13,581 --> 00:30:15,117
+but whoever was sharing a minute ago.
+
+648
+00:30:15,646 --> 00:30:17,668
+<v Mak Allen>That was a key for next. Oh, hold
+
+649
+00:30:20,048 --> 00:30:23,149
+<v Krysta Fox>on one sec.
+
+650
+00:30:24,015 --> 00:30:26,176
+<v rUv>Oh, sorry, I thought we- No, I thought.
+
+651
+00:30:26,508 --> 00:30:28,893
+<v Krysta Fox>Oh, this is what you probably remembered.
+
+652
+00:30:29,002 --> 00:30:31,909
+So this is an old key in amazing-
+
+653
+00:30:31,910 --> 00:30:35,417
+<v rUv>Sorry. I'm confused. Are we doing next to Daniel or are we doing the
+
+654
+00:30:35,418 --> 00:30:35,619
+high
+
+655
+00:30:35,620 --> 00:30:37,987
+<v Mark Allen>level? We're doing the high level right now.
+
+656
+00:30:39,884 --> 00:30:43,980
+<v Krysta Fox>This is high level- and we would have to create to,
+
+657
+00:30:44,106 --> 00:30:48,825
+I believe we would want to generate a new API
+
+658
+00:30:48,826 --> 00:30:54,167
+key. Specifically for the Spartan Flooring Company.
+
+659
+00:30:54,979 --> 00:30:59,582
+So this looks like an old API key. I that was generated in
+
+660
+00:30:59,583 --> 00:31:01,692
+Go High level by this person,
+
+661
+00:31:01,693 --> 00:31:04,585
+Ian, uh, over a year ago.
+
+662
+00:31:04,586 --> 00:31:04,691
+I'll
+
+663
+00:31:04,872 --> 00:31:05,572
+<v rUv>do it. You
+
+664
+00:31:06,017 --> 00:31:07,011
+<v Mark Allen>gotta it. You
+
+665
+00:31:07,019 --> 00:31:07,560
+<v Krysta Fox>gotta Okay.
+
+666
+00:31:11,457 --> 00:31:14,533
+<v rUv>I, I, I, I, it's, it's. So, He inside on the call and it's
+
+667
+00:31:14,534 --> 00:31:15,828
+the first I've heard of Ian. So
+
+668
+00:31:15,829 --> 00:31:18,206
+<v Mark Allen>let's go. Oh, he was. He, he, he, he was a.
+
+669
+00:31:18,207 --> 00:31:21,171
+Uh, very short time.
+
+670
+00:31:21,172 --> 00:31:22,943
+I'm contractor that.
+
+671
+00:31:23,547 --> 00:31:23,892
+<v Krysta Fox>Guess
+
+672
+00:31:24,336 --> 00:31:26,033
+<v Mark Allen>what. I didn't know what he was
+
+673
+00:31:26,034 --> 00:31:28,651
+<v rUv>doing back. This is exactly why you want to use password bolts.
+
+674
+00:31:28,652 --> 00:31:31,978
+results. 7 So, in the password vault,
+
+675
+00:31:31,979 --> 00:31:34,844
+you would've toasted Ian and he would've lost access to everything.
+
+676
+00:31:35,136 --> 00:31:37,359
+In the meantime, Ian's had access to- No,
+
+677
+00:31:37,360 --> 00:31:38,235
+because he had
+
+678
+00:31:38,236 --> 00:31:43,308
+<v Mark Allen>a- I gave him a hero forage email that-
+
+679
+00:31:43,908 --> 00:31:47,694
+<v rUv>You have the API He gives- gives- gives him access to everything.
+
+680
+00:31:47,865 --> 00:31:50,795
+<v Mark Allen>Yeah, yeah. Wow. Uhh,
+
+681
+00:31:50,806 --> 00:31:51,505
+<v rUv>this pretty- And
+
+682
+00:31:51,506 --> 00:31:56,060
+<v Krysta Fox>that's the regular capability seems
+
+683
+00:31:56,061 --> 00:31:59,313
+to be grayed out. It says it's part of the advanced API that is
+
+684
+00:31:59,314 --> 00:32:00,580
+available in the pro plan. and
+
+685
+00:32:01,376 --> 00:32:03,345
+<v Mark Allen>Which we have.
+
+686
+00:32:03,694 --> 00:32:05,567
+<v Krysta Fox>Okay, interesting. I wonder if it's-
+
+687
+00:32:06,999 --> 00:32:09,792
+<v rUv>Me. Who's- Who's the primary u- You I'm
+
+688
+00:32:09,793 --> 00:32:12,474
+<v Mark Allen>the owner, so. Let's switch to-
+
+689
+00:32:12,703 --> 00:32:14,881
+<v rUv>Let's switch to your account.
+
+690
+00:32:14,882 --> 00:32:16,696
+Let's- You share your screen. You go here.
+
+691
+00:32:17,011 --> 00:32:17,916
+<v Krysta Fox>Let's stop. I'm sharing.
+
+692
+00:32:18,486 --> 00:32:21,529
+<v rUv>Yeah, it looks- Looks like you probably have an- We need to probably- Thank
+
+693
+00:32:21,530 --> 00:32:23,802
+you. Allocate access.
+
+694
+00:32:23,803 --> 00:32:25,175
+<v Mark Allen>What would the URL there?
+
+695
+00:32:26,342 --> 00:32:28,947
+<v Krysta Fox>Oh, sorry. Umm,
+
+696
+00:32:28,958 --> 00:32:32,604
+let me put this in- e what's app chat so you can click on
+
+697
+00:32:32,605 --> 00:32:37,147
+it easily. That should
+
+698
+00:32:37,148 --> 00:32:39,855
+prompt you to- I'll bit. log in with your go high level account and
+
+699
+00:32:39,856 --> 00:32:42,300
+take you right to the API key page.
+
+700
+00:32:42,301 --> 00:32:43,380
+iform.
+
+701
+00:32:45,891 --> 00:32:49,721
+<v rUv>And Mac,
+
+702
+00:32:49,727 --> 00:32:52,923
+while Krista is doing that, can you sign up for the one password?
+
+703
+00:32:52,924 --> 00:32:57,535
+That's word. And
+
+704
+00:32:57,536 --> 00:33:02,408
+add all of us. Yes. And
+
+705
+00:33:02,409 --> 00:33:04,482
+we're gonna use the one password CLI mostly,
+
+706
+00:33:04,483 --> 00:33:04,775
+but,
+
+707
+00:33:04,776 --> 00:33:09,200
+<v Mark Allen>um, I don't see if you put anything in the chat.
+
+708
+00:33:09,201 --> 00:33:10,016
+I don't see it.
+
+709
+00:33:10,017 --> 00:33:13,155
+<v Krysta Fox>Oh, hmmm, I almost I can't.
+
+710
+00:33:14,330 --> 00:33:14,798
+But,
+
+711
+00:33:14,927 --> 00:33:18,051
+<v Mark Allen>I got in there anyway. Uh.
+
+712
+00:33:18,052 --> 00:33:21,970
+<v Krysta Fox>It's in the team chat.
+
+713
+00:33:22,865 --> 00:33:23,707
+Or Mac or
+
+714
+00:33:23,708 --> 00:33:26,091
+<v Mark Allen>something. Yeah. Yeah,
+
+715
+00:33:26,213 --> 00:33:29,002
+it looks like we're making, we might not, we might not broke that.
+
+716
+00:33:29,609 --> 00:33:32,782
+So, subscription.
+
+717
+00:33:32,783 --> 00:33:35,426
+description. Yeah, it's account.
+
+718
+00:33:37,932 --> 00:33:42,176
+<v Stuart Kerr>Is there anything you use, you don't have a CLI tied to?
+
+719
+00:33:42,177 --> 00:33:47,188
+. . . Is that, is that a principle valuation that
+
+720
+00:33:47,189 --> 00:33:49,390
+you think about when you conceive of tools?
+
+721
+00:33:49,391 --> 00:33:53,287
+I want to be able to write You should
+
+722
+00:33:53,288 --> 00:33:56,209
+<v rUv>follow me on LinkedIn.
+
+723
+00:33:56,210 --> 00:33:58,261
+I literally wrote a post on that yesterday. day.
+
+724
+00:33:58,262 --> 00:34:00,666
+<v Stuart Kerr>Umm, if you haven't,
+
+725
+00:34:00,667 --> 00:34:01,852
+I haven't included you,
+
+726
+00:34:01,985 --> 00:34:04,443
+<v rUv>bug me and I will. I'm really bad at like, adding people.
+
+727
+00:34:04,662 --> 00:34:07,320
+But, um, yeah, basically. easily. For the longest time,
+
+728
+00:34:07,321 --> 00:34:09,586
+people would mock me for saying, you know,
+
+729
+00:34:09,595 --> 00:34:11,730
+oh my god, you-you get another CLI.
+
+730
+00:34:11,995 --> 00:34:14,752
+Now, CLI's are the hottest thing in the world, and every- I'm not on
+
+731
+00:34:14,753 --> 00:34:16,751
+the planet using a CLI. Um,
+
+732
+00:34:16,762 --> 00:34:16,936
+<v Stuart Kerr>but
+
+733
+00:34:17,067 --> 00:34:19,378
+<v rUv>essentially, it's-it's-I think programmatic.
+
+734
+00:34:19,509 --> 00:34:21,607
+Whenever I'm trying to interact with services,
+
+735
+00:34:21,962 --> 00:34:25,394
+I like- I interact with them programmatically, so that's-that means one of three,
+
+736
+00:34:25,395 --> 00:34:30,380
+you know, points of access. As, uh, as Mark mentioned, M-s-s
+
+737
+00:34:30,411 --> 00:34:34,389
+C-P usually is a pretty good indication that I can interact with programmatically.
+
+738
+00:34:34,643 --> 00:34:39,485
+Two is an API, preferably an API that has- both get
+
+739
+00:34:39,486 --> 00:34:41,522
+post and other sort of,
+
+740
+00:34:41,523 --> 00:34:43,843
+uh, crud-style components,
+
+741
+00:34:44,105 --> 00:34:48,453
+you know, create update and so on. And- and the- and the last would
+
+742
+00:34:48,454 --> 00:34:53,096
+be a data-centric API, which usually is like a graph QL-style
+
+743
+00:34:53,097 --> 00:34:55,416
+approach. Those are- I my preferences.
+
+744
+00:34:55,417 --> 00:34:59,612
+Now, I can abstract any of the other previous ones to do kind of
+
+745
+00:34:59,613 --> 00:35:02,571
+what I want, um, and lately MCP- people.
+
+746
+00:35:02,572 --> 00:35:04,746
+E is kind of in my go-to because it's kind of a nice,
+
+747
+00:35:04,747 --> 00:35:07,396
+clean, any abstraction, and it's hot.
+
+748
+00:35:07,397 --> 00:35:10,333
+So, a lot of companies don't even have a decent API,
+
+749
+00:35:10,334 --> 00:35:12,526
+but they'll, have an MCP, and I'll just use that.
+
+750
+00:35:15,680 --> 00:35:18,992
+So that, those are the things I look for. So if you're- looking at
+
+751
+00:35:18,993 --> 00:35:23,428
+services, you know, that's- those are things you keep in IO4.
+
+752
+00:35:23,429 --> 00:35:26,631
+The UI is almost secondary for me at this point.
+
+753
+00:35:26,632 --> 00:35:28,739
+<v Mak Allen>Uh, Ruf,
+
+754
+00:35:28,740 --> 00:35:30,761
+which email? Uh, what do you like to- A
+
+755
+00:35:30,762 --> 00:35:32,380
+<v rUv>Ruf- Yeah, R-E-V at R-E-V.net.
+
+756
+00:35:34,731 --> 00:35:35,717
+<v Mark Allen>You know what I mean?
+
+757
+00:35:35,718 --> 00:35:35,968
+<v rUv>This,
+
+758
+00:35:35,969 --> 00:35:40,809
+<v Mark Allen>uh, to our account as I think that- that our- our billing,
+
+759
+00:35:40,810 --> 00:35:43,709
+like, my credit card has- how to issue with it,
+
+760
+00:35:43,710 --> 00:35:46,455
+is I think what's going on with it, because we had this account,
+
+761
+00:35:46,456 --> 00:35:46,798
+so I'm-
+
+762
+00:35:46,816 --> 00:35:47,672
+<v Mak Allen>I'd like to serve
+
+763
+00:35:47,775 --> 00:35:48,557
+<v Mark Allen>that right now.
+
+764
+00:35:49,503 --> 00:35:52,613
+<v rUv>We can, uh, if you wanna- switch to the other,
+
+765
+00:35:52,614 --> 00:35:54,937
+in the next, uh, health stuff,
+
+766
+00:35:54,938 --> 00:35:57,992
+we can do that instead. We don't have a whole lot of time,
+
+767
+00:35:57,993 --> 00:36:00,535
+so I just wanna- make the most of our time today,
+
+768
+00:36:00,536 --> 00:36:02,199
+if you wanna get some stuff done.
+
+769
+00:36:02,753 --> 00:36:06,901
+<v Mark Allen>Yeah, yeah, I just, it's kind of where, where Makoah is and- You
+
+770
+00:36:06,902 --> 00:36:09,029
+<v Mak Allen>Umm, yeah,
+
+771
+00:36:09,030 --> 00:36:11,327
+Ruv, I'm just, uhh, yeah, making sure,
+
+772
+00:36:11,328 --> 00:36:13,619
+umm, I have test data, uhh,
+
+773
+00:36:13,630 --> 00:36:15,912
+setup, process. Properly, uhh,
+
+774
+00:36:15,922 --> 00:36:20,822
+this is a good point. Umm, just. Let's just
+
+775
+00:36:20,823 --> 00:36:22,496
+take a break.
+
+776
+00:36:22,497 --> 00:36:24,501
+<v rUv>Okay,
+
+777
+00:36:24,502 --> 00:36:28,066
+so you've got your, you have the API key for this service.
+
+778
+00:36:30,084 --> 00:36:31,288
+In the Any of these somewhere?
+
+779
+00:36:31,289 --> 00:36:36,288
+<v Mak Allen>Umm,
+
+780
+00:36:37,590 --> 00:36:46,216
+ehh, yeah. that. Should we? Uh,
+
+781
+00:36:46,227 --> 00:36:46,908
+yeah. Yeah. It is.
+
+782
+00:36:47,923 --> 00:36:49,628
+<v rUv>And this is Sandbox?
+
+783
+00:36:49,629 --> 00:36:52,230
+<v Mak Allen>Uh,
+
+784
+00:36:52,241 --> 00:36:53,760
+yes, it is, it is, it is the Sandbox. And you today. Thank you
+
+785
+00:36:53,761 --> 00:36:54,620
+We at the Okay, next
+
+786
+00:36:54,656 --> 00:36:57,585
+<v rUv>Okay, so let's do a quick test.
+
+787
+00:36:57,719 --> 00:37:00,944
+So what's the most important feature of the system?
+
+788
+00:37:01,750 --> 00:37:04,104
+It's connecting to it. So, let's,
+
+789
+00:37:04,253 --> 00:37:06,284
+let's open up a new, uhh,
+
+790
+00:37:06,295 --> 00:37:08,411
+a new, uhh, cloth instance.
+
+791
+00:37:08,966 --> 00:37:10,700
+Remember, always, always start. . .
+
+792
+00:37:10,731 --> 00:37:15,731
+<v Mak Allen>Umm,
+
+793
+00:37:16,060 --> 00:37:18,602
+well, I'm kind of at a critical point, right here,
+
+794
+00:37:18,603 --> 00:37:20,921
+where. . . I was, uh, just making sure,
+
+795
+00:37:20,922 --> 00:37:25,581
+um, I'm using correct mock data for testing on the
+
+796
+00:37:26,134 --> 00:37:28,491
+main. Umm, uh,
+
+797
+00:37:28,502 --> 00:37:29,361
+which, which main
+
+798
+00:37:29,362 --> 00:37:31,636
+<v rUv>platform? . .
+
+799
+00:37:31,637 --> 00:37:33,417
+<v Mak Allen>Next to dental. . .
+
+800
+00:37:33,418 --> 00:37:36,666
+<v rUv>Okay, cray new, cray new. Leave that and do whatever you want with that,
+
+801
+00:37:36,749 --> 00:37:40,662
+but let's, let's create a new terminal. .
+
+802
+00:37:40,663 --> 00:37:43,638
+Okay. . . You can work it, no, no, just Brand new terminal.
+
+803
+00:37:43,639 --> 00:37:46,135
+Just leave that where it is. You can continue with that later.
+
+804
+00:37:46,666 --> 00:37:48,789
+And, uh, just, you know, DSP.
+
+805
+00:37:48,790 --> 00:37:53,774
+Yep. And You tell it to
+
+806
+00:37:53,775 --> 00:37:58,466
+research the, whatever the name of that API was and confirm that your API
+
+807
+00:37:58,467 --> 00:38:01,099
+key works with With the basic authorization,
+
+808
+00:38:01,100 --> 00:38:05,812
+authentication or whatever. And use
+
+809
+00:38:05,813 --> 00:38:10,664
+the, whatever the name is. So that key is next health API
+
+810
+00:38:10,665 --> 00:38:12,184
+from the .env local. Go
+
+811
+00:38:22,238 --> 00:38:24,018
+Yeah. Not the exam, but the local, yeah. So. Let's Sometimes it strips out,
+
+812
+00:38:24,019 --> 00:38:28,470
+uh, yeah, there we go. Uh, research latest version of the next LAPI confirm
+
+813
+00:38:28,471 --> 00:38:31,131
+that we are able to authenticate using.
+
+814
+00:38:31,132 --> 00:38:35,988
+Uh, you know, put, put in a set folder slash scripts,
+
+815
+00:38:35,989 --> 00:38:40,148
+maybe? You got scripts? Yeah. Slash scripts slash- Same with the API.
+
+816
+00:38:40,410 --> 00:38:41,846
+What about next help?
+
+817
+00:38:41,847 --> 00:38:45,832
+<v Mak Allen>Uhm,
+
+818
+00:38:45,842 --> 00:38:47,240
+sorry, can you say that one more time? them. .
+
+819
+00:38:47,276 --> 00:38:49,980
+<v rUv>Put in .slash scripts.
+
+820
+00:38:53,166 --> 00:38:55,316
+Slash next. Next.
+
+821
+00:38:55,317 --> 00:38:57,753
+Help.
+
+822
+00:38:57,754 --> 00:39:01,704
+No, no spaces. Yeah.
+
+823
+00:39:02,449 --> 00:39:05,420
+you Health,
+
+824
+00:39:05,421 --> 00:39:07,935
+and let's make this as a,
+
+825
+00:39:08,065 --> 00:39:10,452
+this will be, this will be used,
+
+826
+00:39:10,453 --> 00:39:13,433
+umm. on you uhh,
+
+827
+00:39:13,434 --> 00:39:15,661
+uhh, uhh, uhh, uhh, uhh, uhh,-n-o,
+
+828
+00:39:15,662 --> 00:39:22,104
+tight script. Good. Yeah.
+
+829
+00:39:22,105 --> 00:39:25,117
+So the reason we're using Deno-Tag Script is because we- our intention is to
+
+830
+00:39:25,118 --> 00:39:28,608
+use this as an edge function on Superbase and- and those edge functions are
+
+831
+00:39:28,609 --> 00:39:33,203
+built using Deno. So, might as well kill two birds with one stone
+
+832
+00:39:33,204 --> 00:39:35,565
+and do it in the right form from the start. All right.
+
+833
+00:39:35,566 --> 00:39:39,164
+What really testing right now is the fact that we can connect correctly.
+
+834
+00:39:39,165 --> 00:39:43,616
+Umm, and then for this,
+
+835
+00:39:43,617 --> 00:39:46,590
+Yeah, yeah, we're good. Just do that.
+
+836
+00:39:46,591 --> 00:39:46,340
+That's it.
+
+837
+00:39:51,651 --> 00:39:54,969
+So, so, remember, step one always is,
+
+838
+00:39:55,285 --> 00:39:58,097
+before you build all this crazy stuff, we just want to make sure that
+
+839
+00:39:58,098 --> 00:40:02,751
+the API works, right? So there's, There's no point of building this whole convoluted,
+
+840
+00:40:02,752 --> 00:40:07,496
+uh, edge function and finding out that the API
+
+841
+00:40:07,497 --> 00:40:09,797
+doesn't, work and then debugging the wrong thing.
+
+842
+00:40:10,058 --> 00:40:12,737
+So step one is just, does it work? Step two,
+
+843
+00:40:12,738 --> 00:40:15,771
+once it works, then, then the question is, what's the most important API,
+
+844
+00:40:15,772 --> 00:40:18,586
+And points that we're gonna wanna, we're gonna wanna do.
+
+845
+00:40:18,820 --> 00:40:21,444
+Most likely you're gonna wanna query and you're gonna wanna,
+
+846
+00:40:21,731 --> 00:40:23,816
+wanna post, right? So there's a get.
+
+847
+00:40:23,817 --> 00:40:27,537
+And there's a post. Gets are easy cause they're non-destructive,
+
+848
+00:40:27,538 --> 00:40:29,579
+right? That means we can just check what's already there,
+
+849
+00:40:29,580 --> 00:40:31,851
+if anything. Posts are good.
+
+850
+00:40:31,852 --> 00:40:34,872
+We'll create something new, assuming this is a sandbox,
+
+851
+00:40:34,873 --> 00:40:37,334
+and there's no worry about it. And then once we have that,
+
+852
+00:40:37,335 --> 00:40:39,951
+then we can literally say build all the various functionality.
+
+853
+00:40:39,952 --> 00:40:42,514
+As needed based on some spec that you,
+
+854
+00:40:42,516 --> 00:40:46,386
+that you'll create. Now,
+
+855
+00:40:46,387 --> 00:40:47,940
+do you have, you said you had context 7? 7
+
+856
+00:40:47,991 --> 00:40:50,537
+<v Mak Allen>Uhm,
+
+857
+00:40:50,548 --> 00:40:53,233
+it may or may not be authenticated.
+
+858
+00:40:53,234 --> 00:40:54,447
+Uhm, right.
+
+859
+00:40:54,448 --> 00:40:56,562
+<v rUv>Don't worry about it. Don't, you don't need to- contact seven.
+
+860
+00:40:56,563 --> 00:41:00,372
+That- that- it's- it's contact seven went out of style as soon as the,
+
+861
+00:41:00,373 --> 00:41:03,660
+uh, the they included, you know, the web search capability.
+
+862
+00:41:03,661 --> 00:41:05,990
+ability. Now,
+
+863
+00:41:05,991 --> 00:41:09,978
+<v Stuart Kerr>what do you use to make sure you always have the latest and greatest
+
+864
+00:41:10,650 --> 00:41:13,380
+information on a- ei's tools,
+
+865
+00:41:13,381 --> 00:41:14,091
+et cetera?
+
+866
+00:41:14,897 --> 00:41:15,715
+<v rUv>I, they've
+
+867
+00:41:15,716 --> 00:41:19,586
+<v Stuart Kerr>been pointing off towards contact seven and then I've heard there's other things that
+
+868
+00:41:19,587 --> 00:41:24,037
+are- that are leaner. I bet,
+
+869
+00:41:24,038 --> 00:41:24,673
+well,
+
+870
+00:41:25,748 --> 00:41:28,089
+<v rUv>six months ago, I was using contact seven.
+
+871
+00:41:28,090 --> 00:41:32,627
+and then Claude, then Claude Code came out with built
+
+872
+00:41:32,628 --> 00:41:36,087
+in, you know, web, web searching and fetching capability and now.
+
+873
+00:41:36,088 --> 00:41:39,139
+now. I just do, I'm doing exactly what Max is doing.
+
+874
+00:41:39,142 --> 00:41:41,878
+Go look at these dogs. That's why I don't socks. Yes. Don't need context
+
+875
+00:41:41,879 --> 00:41:44,826
+seven. Context seven has a tendency to be overly verbose.
+
+876
+00:41:45,486 --> 00:41:48,913
+It's, it's, it's not, it's not- optimal.
+
+877
+00:41:49,087 --> 00:41:51,905
+So, if, if I need a lot of,
+
+878
+00:41:51,906 --> 00:41:56,690
+uh, documentation, I've got my AgentDB system now and- and- and
+
+879
+00:41:57,216 --> 00:41:59,868
+as well as the SwarmDB that's built in the cloud flow,
+
+880
+00:42:00,076 --> 00:42:03,246
+that I can use to sort of- sort of get the bits and pieces
+
+881
+00:42:03,247 --> 00:42:05,753
+that I specifically need. Relating to the project.
+
+882
+00:42:05,982 --> 00:42:10,523
+So I'll actually use my own SQL DB structure and- and basically say,
+
+883
+00:42:10,524 --> 00:42:14,015
+go get the most important parts. of the documentation,
+
+884
+00:42:14,173 --> 00:42:18,663
+put it in the DB, and then that's- that's our- that's semantically relevant,
+
+885
+00:42:18,664 --> 00:42:21,537
+it's lighter weight, and it- and it gets- what it needs when it needs
+
+886
+00:42:21,538 --> 00:42:25,661
+it, versus this idea of going and getting everything and parsing it,
+
+887
+00:42:25,773 --> 00:42:29,401
+which inevitably adds this kind of- compacting,
+
+888
+00:42:29,402 --> 00:42:31,452
+and it just takes a lot longer.
+
+889
+00:42:31,594 --> 00:42:34,363
+Now, what you're doing is fine. This is exactly the first step,
+
+890
+00:42:34,760 --> 00:42:38,602
+but then I might say take the- information and save it using the reasoning
+
+891
+00:42:38,603 --> 00:42:40,739
+bank. That kind of thing.
+
+892
+00:42:40,740 --> 00:42:44,939
+Time. Well,
+
+893
+00:42:44,940 --> 00:42:47,130
+hopefully I wasn't too, uhh,
+
+894
+00:42:47,140 --> 00:42:50,068
+often the weeds on that, but what max do you
+
+895
+00:42:50,069 --> 00:42:50,553
+<v Stuart Kerr>have percents?
+
+896
+00:42:52,616 --> 00:42:55,802
+<v rUv>Now the,
+
+897
+00:42:55,827 --> 00:43:00,475
+the benefits of using my reasoning bank is the reasoning bank is semantically relevant.
+
+898
+00:43:00,476 --> 00:43:02,514
+of in ... to the project in which you're working in.
+
+899
+00:43:03,895 --> 00:43:08,016
+Where the web search parses the entire page,
+
+900
+00:43:08,214 --> 00:43:11,666
+or It fetches the entire page. You really only need the bits and pieces
+
+901
+00:43:11,667 --> 00:43:15,131
+that are most relevant to what you're working on, which that doesn't particularly do
+
+902
+00:43:15,132 --> 00:43:19,876
+well a good job of. I'm also battling
+
+903
+00:43:19,877 --> 00:43:22,851
+against, like, running out of, uh,
+
+904
+00:43:22,862 --> 00:43:27,586
+my weekly limit on clods. I'm trying to- reduce my amount of requests.
+
+905
+00:43:27,587 --> 00:43:31,552
+Uh,
+
+906
+00:43:31,563 --> 00:43:34,580
+Mac, have you reached? Have you? Thank you. Have reached your weekly limit at
+
+907
+00:43:34,581 --> 00:43:34,940
+all?
+
+908
+00:43:35,307 --> 00:43:38,979
+<v Mak Allen>I, uh, not in the past few weeks.
+
+909
+00:43:39,900 --> 00:43:40,548
+I've hit-
+
+910
+00:43:40,549 --> 00:43:40,692
+<v rUv>I'll
+
+911
+00:43:40,693 --> 00:43:43,767
+<v Mak Allen>be. I've hit five hour limit, probably ten times.
+
+912
+00:43:45,028 --> 00:43:45,197
+Yeah,
+
+913
+00:43:45,198 --> 00:43:48,192
+<v rUv>I'm I'm reaching the weekly limit, which stresses me out,
+
+914
+00:43:48,377 --> 00:43:48,951
+but-
+
+915
+00:43:48,952 --> 00:43:49,292
+<v Stuart Kerr>Yeah.
+
+916
+00:43:49,313 --> 00:43:49,750
+<v Mak Allen>I guess,
+
+917
+00:43:49,751 --> 00:43:53,498
+<v rUv>uh, I could just spend an extra two hundred bucks and have more than
+
+918
+00:43:53,499 --> 00:43:54,559
+one count. Like, it's-
+
+919
+00:43:54,848 --> 00:43:55,194
+<v Mark Allen>Yeah.
+
+920
+00:43:55,195 --> 00:43:55,711
+<v rUv>I'm cheap,
+
+921
+00:43:55,797 --> 00:43:56,084
+<v Mark Allen>what can I
+
+922
+00:43:56,085 --> 00:43:56,991
+<v rUv>say?
+
+923
+00:44:02,368 --> 00:44:06,173
+I'm cheap. Alright, so uhh, update local, I'm using mock. It's- Okay,
+
+924
+00:44:06,174 --> 00:44:08,417
+it looks like it's building the Dino.
+
+925
+00:44:09,431 --> 00:44:12,475
+Dino is a nice, this is mostly for Krista and Mack,
+
+926
+00:44:12,476 --> 00:44:14,681
+but- The Dino is a nice runtime.
+
+927
+00:44:14,682 --> 00:44:17,051
+It uses explicit, uh,
+
+928
+00:44:17,073 --> 00:44:19,713
+network and runtime access privileges,
+
+929
+00:44:19,984 --> 00:44:23,393
+so it's particularly- well suited for sort of secure,
+
+930
+00:44:23,401 --> 00:44:26,654
+edge-based sort of functions, and that's why it's popular for,
+
+931
+00:44:26,673 --> 00:44:29,221
+you know, super-based functions and things like that.
+
+932
+00:44:29,222 --> 00:44:31,455
+Umm, so you can define specifically,
+
+933
+00:44:31,701 --> 00:44:35,955
+you know, what-what it has access to in the file system or the network,
+
+934
+00:44:36,190 --> 00:44:38,850
+and you can see it there where it's- that allow read and stuff like
+
+935
+00:44:38,851 --> 00:44:43,078
+that. So it's- it's- it's an allowed net which allows network access,
+
+936
+00:44:43,079 --> 00:44:45,291
+that kind of thing. So it's not- it's- So.
+
+937
+00:44:45,200 --> 00:44:48,985
+So for agents and things like that, it's well suited because you can- you
+
+938
+00:44:48,986 --> 00:44:51,017
+can have it, you know, work against,
+
+939
+00:44:51,018 --> 00:44:53,331
+like, uh, like a active mandate.
+
+940
+00:44:53,332 --> 00:44:56,188
+Which- which the, uh,
+
+941
+00:44:56,199 --> 00:44:59,051
+my agent DB and other tools can- can utilize. I'll see you guys in
+
+942
+00:44:59,052 --> 00:44:59,083
+the
+
+943
+00:45:01,376 --> 00:45:05,535
+<v Krysta Fox>so that effectively define the permissions in a sense.
+
+944
+00:45:05,536 --> 00:45:09,885
+<v rUv>Yeah, cryptographically defined. So you can think- you can think of- like if you're
+
+945
+00:45:09,886 --> 00:45:12,881
+familiar with the ideas of a smart contract in the blockchain world.
+
+946
+00:45:13,181 --> 00:45:17,451
+Yeah. So- so smart contractor are cryptographically defined-
+
+947
+00:45:22,062 --> 00:45:22,542
+and it says, you know, where what it can do and how it can
+
+948
+00:45:22,543 --> 00:45:25,885
+access information. It's essentially doing that without- All the,
+
+949
+00:45:25,886 --> 00:45:27,136
+uh, crypto BS.
+
+950
+00:45:27,492 --> 00:45:29,076
+<v Krysta Fox>Okay, that makes sense.
+
+951
+00:45:31,054 --> 00:45:33,541
+<v rUv>Alright, so- But.
+
+952
+00:45:33,542 --> 00:45:35,657
+Uh, I've successfully API. Okay,
+
+953
+00:45:35,658 --> 00:45:39,051
+complete. Great. Perfect. Okay. So now we have that,
+
+954
+00:45:39,052 --> 00:45:41,636
+uh, test the answer. Real API temporary set.
+
+955
+00:45:41,637 --> 00:45:46,033
+No, use the real API. I've tested against,
+
+956
+00:45:46,220 --> 00:45:48,497
+to test, yeah, why would we want to test against a fake one?
+
+957
+00:45:48,498 --> 00:45:49,616
+Like, come on.
+
+958
+00:45:49,617 --> 00:46:03,685
+<v Mark Allen>Heh. You But
+
+959
+00:46:03,686 --> 00:46:05,691
+<v rUv>what it did is, is the- God Bless.
+
+960
+00:46:05,692 --> 00:46:09,679
+It's logical for a step. It mocked it, then it needs to create it.
+
+961
+00:46:09,680 --> 00:46:14,211
+But we don't want mock. We want real. You need- Control-O
+
+962
+00:46:14,212 --> 00:46:18,753
+at any time to sort of see what's happening on their covers. Uhh,
+
+963
+00:46:18,764 --> 00:46:21,771
+looks like it was successful. Perfect. Okay. Control-O will get back.
+
+964
+00:46:21,772 --> 00:46:26,506
+<v Stuart Kerr>You do if there's two above that
+
+965
+00:46:26,507 --> 00:46:29,329
+had a control-O and you missed it. Can you click on something?
+
+966
+00:46:29,330 --> 00:46:30,065
+There's- Yeah,
+
+967
+00:46:30,066 --> 00:46:30,321
+<v rUv>and do
+
+968
+00:46:30,322 --> 00:46:31,300
+<v Stuart Kerr>a control-O?
+
+969
+00:46:31,730 --> 00:46:36,394
+<v rUv>Yep, hit control-O again. And you see that
+
+970
+00:46:36,395 --> 00:46:38,505
+there's an option of scroll down. Hello, I forgot,
+
+971
+00:46:38,506 --> 00:46:41,350
+uh, scroll down slightly. Uhh,
+
+972
+00:46:41,361 --> 00:46:44,031
+there is an option, I forget what you control button, scroll there is I
+
+973
+00:46:44,032 --> 00:46:46,493
+forget what you control button, scroll up a little bit. Umm. We'll see what,
+
+974
+00:46:47,741 --> 00:46:50,086
+scroll away, yeah. Keep keep going, keep going.
+
+975
+00:46:50,684 --> 00:46:53,477
+I think it's like control axe or something. You gotta go faster,
+
+976
+00:46:53,478 --> 00:46:55,909
+just go to the- Hurry top. Hurry. Oh, slow,
+
+977
+00:46:55,910 --> 00:46:56,087
+slow.
+
+978
+00:46:58,588 --> 00:47:00,846
+<v Stuart Kerr>Okay. And not that big a deal.
+
+979
+00:47:00,847 --> 00:47:03,657
+I just, uhh, uhh, uhh, I'm still trying to get my head around.
+
+980
+00:47:03,949 --> 00:47:04,158
+Yeah,
+
+981
+00:47:04,620 --> 00:47:04,821
+<v rUv>the
+
+982
+00:47:04,822 --> 00:47:07,440
+<v Stuart Kerr>waves to dial through the CLI like you do.
+
+983
+00:47:07,998 --> 00:47:10,831
+<v rUv>Yeah, it looks like this one's showing everything. But sometimes,
+
+984
+00:47:10,840 --> 00:47:14,888
+after a compact, there's the ability to sort of see what happened before.
+
+985
+00:47:14,889 --> 00:47:17,223
+I think it's like Control X or something. It tells you what the,
+
+986
+00:47:17,224 --> 00:47:19,985
+uh, command- Okay. Yeah.
+
+987
+00:47:20,005 --> 00:47:22,309
+It only really affects after the compact where you kind of,
+
+988
+00:47:22,310 --> 00:47:22,475
+we
+
+989
+00:47:22,476 --> 00:47:25,285
+<v Stuart Kerr>care about compact anymore in the world of plug flow.
+
+990
+00:47:25,294 --> 00:47:27,481
+Haven't you? I figured out how to,
+
+991
+00:47:27,482 --> 00:47:29,331
+<v rUv>uh, well, probably take it
+
+992
+00:47:29,332 --> 00:47:30,808
+<v Stuart Kerr>all the good stuff and
+
+993
+00:47:31,010 --> 00:47:31,762
+<v rUv>pack it in
+
+994
+00:47:31,763 --> 00:47:32,514
+<v Stuart Kerr>an evergreen.
+
+995
+00:47:33,025 --> 00:47:35,083
+<v rUv>Yeah, exactly. I have. Actually,
+
+996
+00:47:35,298 --> 00:47:37,302
+you're my new sales guy. But, uh,
+
+997
+00:47:37,312 --> 00:47:37,450
+that's
+
+998
+00:47:39,030 --> 00:47:41,466
+<v Stuart Kerr>exactly what I'm doing with the Agent DB capability.
+
+999
+00:47:41,467 --> 00:47:41,660
+So. you
+
+1000
+00:47:42,111 --> 00:47:45,393
+<v rUv>There's all kinds of crazy in that Agent DB system I've devised.
+
+1001
+00:47:45,674 --> 00:47:48,386
+But basically, in, in, in, in simple terms,
+
+1002
+00:47:48,387 --> 00:47:50,492
+I've got the ability to have semantic relevance. So,
+
+1003
+00:47:51,131 --> 00:47:53,659
+regardless of whether or not it's compact or not,
+
+1004
+00:47:53,660 --> 00:47:56,453
+it stays, it has all the information in the DB.
+
+1005
+00:47:56,751 --> 00:48:00,387
+And then, after comp- ax that can refer to that at any given point.
+
+1006
+00:48:01,102 --> 00:48:03,544
+Alright, click control, oh, it looks like there's some kind of,
+
+1007
+00:48:03,545 --> 00:48:07,697
+uhh, it looks like you're having some trouble with- Actually,
+
+1008
+00:48:07,698 --> 00:48:12,170
+control it one more time. Uhh,
+
+1009
+00:48:12,181 --> 00:48:15,982
+doo-doo-doo session phase. You Low-kunette-lobe.
+
+1010
+00:48:16,331 --> 00:48:18,507
+Looks like you might have a sequel issue.
+
+1011
+00:48:19,410 --> 00:48:21,473
+I'm not sure what's going on there.
+
+1012
+00:48:21,474 --> 00:48:22,465
+Umm. Oh,
+
+1013
+00:48:23,080 --> 00:48:25,042
+<v Mak Allen>it's doing something with supervision. super bass.
+
+1014
+00:48:30,241 --> 00:48:32,619
+<v rUv>Uhh, yeah, you may have to reinstall,
+
+1015
+00:48:32,620 --> 00:48:35,280
+uh, Cloudflow. Go,
+
+1016
+00:48:35,281 --> 00:48:38,271
+go into another terminal session for a second, just, let's just invoke Cloudflow.
+
+1017
+00:48:38,272 --> 00:48:40,519
+And just, no, no, go, go,
+
+1018
+00:48:40,520 --> 00:48:43,108
+go into a regular old fashioned terminal. Oh,
+
+1019
+00:48:43,109 --> 00:48:45,239
+uh, actually, sorry,
+
+1020
+00:48:45,240 --> 00:48:47,717
+go, go back to the MCP. Sorry, I'm jumping around a little bit.
+
+1021
+00:48:48,549 --> 00:48:50,692
+Yeah. MCP.
+
+1022
+00:48:51,268 --> 00:48:53,571
+Agentic payments fail. I think I might fit myself dead.
+
+1023
+00:48:53,710 --> 00:48:56,070
+No, that's- It's working. I don't know why it's giving you that error.
+
+1024
+00:48:56,071 --> 00:48:57,880
+Umm, different. Mmm.
+
+1025
+00:48:58,979 --> 00:49:00,054
+<v Mark Allen>Superbase failed.
+
+1026
+00:49:01,643 --> 00:49:03,646
+<v rUv>Yes. Just, just, just go to,
+
+1027
+00:49:03,647 --> 00:49:07,053
+like, open up a new terminal session. Yeah,
+
+1028
+00:49:07,054 --> 00:49:07,959
+authenticate, try that. Sure.
+
+1029
+00:49:07,960 --> 00:49:10,280
+<v Mak Allen>2 3 4 5
+
+1030
+00:49:17,016 --> 00:49:20,819
+<v rUv>Yeah, uh, your team. Yeah, open that up. Good. Good. It's a nice,
+
+1031
+00:49:20,820 --> 00:49:24,337
+neat new feature. It's- it- you didn't- you just need to authenticate.
+
+1032
+00:49:24,424 --> 00:49:26,572
+You're not using a token, you're using the- yeah,
+
+1033
+00:49:26,573 --> 00:49:31,216
+log in authentication, which expires. The- the
+
+1034
+00:49:31,466 --> 00:49:35,924
+using access token is- this- this approach is probably more secure,
+
+1035
+00:49:35,925 --> 00:49:38,551
+just straight up. So just- yeah, just go ahead and do that.
+
+1036
+00:49:39,790 --> 00:49:42,476
+Okay. Okay.
+
+1037
+00:49:42,477 --> 00:49:45,429
+Go back to the other terminal session,
+
+1038
+00:49:47,776 --> 00:49:50,511
+control-o, go back. I'm not- I'm not sure why you're getting this.
+
+1039
+00:49:50,512 --> 00:49:52,601
+It's an error, but that's a different problem. You're,
+
+1040
+00:49:52,602 --> 00:49:56,173
+Umm.
+
+1041
+00:49:56,183 --> 00:49:58,556
+Alright. So now you've got all the errors.
+
+1042
+00:49:58,557 --> 00:50:03,312
+You're connected to that. Now you can start using adding more API
+
+1043
+00:50:03,313 --> 00:50:05,658
+endpoints. Um, you're enabled.
+
+1044
+00:50:05,659 --> 00:50:08,724
+You're connected. So, what do you want to do with it?
+
+1045
+00:50:09,032 --> 00:50:11,362
+What are the most important uh, API endpoints?
+
+1046
+00:50:11,363 --> 00:50:11,320
+Alright.
+
+1047
+00:50:14,631 --> 00:50:19,131
+<v Mak Allen>The, umm.
+
+1048
+00:50:19,141 --> 00:50:21,500
+I have them in a, uhh. that's the So,
+
+1049
+00:50:21,501 --> 00:50:22,640
+we'll take Thank you. We're going
+
+1050
+00:50:27,075 --> 00:50:29,569
+I mean, in a somewhat organized spreadsheet,
+
+1051
+00:50:29,570 --> 00:50:31,691
+uhm, I need to- I think I have- I have that in a document
+
+1052
+00:50:31,692 --> 00:50:34,837
+somewhere in here. I don't have that readily off the top of my head.
+
+1053
+00:50:34,842 --> 00:50:35,207
+Oh, here
+
+1054
+00:50:35,208 --> 00:50:37,287
+<v rUv>we'll just- let's just wing it then. Choose one,
+
+1055
+00:50:37,569 --> 00:50:42,060
+choose some- ask- What the, what the most useful API endpoints are for this
+
+1056
+00:50:42,061 --> 00:50:44,913
+application. For next help,
+
+1057
+00:50:44,914 --> 00:50:45,158
+API scheduling.
+
+1058
+00:50:45,159 --> 00:50:47,305
+<v Mark Allen>followed COVID-19. Agent.
+
+1059
+00:50:49,718 --> 00:50:52,189
+Should we just do it like one feature at a time?
+
+1060
+00:50:52,416 --> 00:50:54,440
+Yes. That's gonna be way easier.
+
+1061
+00:50:54,441 --> 00:50:56,229
+Yeah. A For
+
+1062
+00:50:56,245 --> 00:51:00,886
+<v rUv>now, one at a time. We work- you work your way up to everything
+
+1063
+00:51:00,887 --> 00:51:04,458
+at a time when you're- when you're- comfortable and confident that you can build
+
+1064
+00:51:04,459 --> 00:51:06,480
+things and understand when things break.
+
+1065
+00:51:06,819 --> 00:51:09,977
+But, where- now as you're getting going,
+
+1066
+00:51:10,050 --> 00:51:14,918
+you're- you just need to ensure that the thing you're working on in
+
+1067
+00:51:14,919 --> 00:51:17,631
+order of most of the least important works. works.
+
+1068
+00:51:17,632 --> 00:51:19,787
+Yeah. Simple, narrow,
+
+1069
+00:51:20,422 --> 00:51:23,566
+and, A lot of
+
+1070
+00:51:23,567 --> 00:51:23,667
+<v Mark Allen>the
+
+1071
+00:51:23,668 --> 00:51:26,751
+<v rUv>problems- a lot of the problems we were running into previously was trying to
+
+1072
+00:51:26,752 --> 00:51:35,480
+like- B-B-B-B So, as soon as we went to a more structured section-by-section-of-a-a-a-a-a-a-a-a-a-a-a
+
+1073
+00:51:35,516 --> 00:51:38,347
+approach, you know, Mac was able to crank out that,
+
+1074
+00:51:38,348 --> 00:51:40,416
+uh, patient portal and, like, you know,
+
+1075
+00:51:40,417 --> 00:51:44,585
+a day, right? Now, that was a more targeted- approach.
+
+1076
+00:51:47,176 --> 00:51:47,688
+Do you have
+
+1077
+00:51:47,689 --> 00:51:50,210
+<v Mark Allen>in Doc's Mac the details of this?
+
+1078
+00:51:50,211 --> 00:51:50,348
+And I'll see you
+
+1079
+00:51:51,596 --> 00:51:53,985
+<v Mak Allen>Definitely,
+
+1080
+00:51:53,986 --> 00:51:58,031
+it was there, um.
+
+1081
+00:51:58,042 --> 00:52:00,126
+When we- ehm,
+
+1082
+00:52:00,127 --> 00:52:02,979
+started this code base, umm,
+
+1083
+00:52:02,990 --> 00:52:03,208
+under
+
+1084
+00:52:03,209 --> 00:52:05,037
+<v Mark Allen>product requirements. Yeah. Uh, you cleaned
+
+1085
+00:52:05,038 --> 00:52:07,671
+<v rUv>it up. You probably- you probably cleaned up into a subfolder.
+
+1086
+00:52:07,672 --> 00:52:10,251
+Also why- yeah,
+
+1087
+00:52:10,252 --> 00:52:14,938
+there it is. Also why- why you want to use a reasoning system.
+
+1088
+00:52:14,939 --> 00:52:17,321
+them. 8 So,
+
+1089
+00:52:17,322 --> 00:52:20,077
+okay, so let's just- now that you have that,
+
+1090
+00:52:20,078 --> 00:52:22,437
+let's just- let's do a different prompt.
+
+1091
+00:52:22,494 --> 00:52:24,737
+So, in this one we're gonna- So, to clear,
+
+1092
+00:52:24,738 --> 00:52:27,110
+clear that out, just hit Control C once. And,
+
+1093
+00:52:27,111 --> 00:52:30,170
+and tell it to refer to the uh,
+
+1094
+00:52:30,181 --> 00:52:32,318
+next health API. I mean, Boulder,
+
+1095
+00:52:32,319 --> 00:52:34,470
+you, you, you, you've just shown?
+
+1096
+00:52:37,269 --> 00:52:40,833
+Yep. Yeah.
+
+1097
+00:52:40,834 --> 00:52:43,085
+Hit, uh, hit tab. Remember,
+
+1098
+00:52:43,326 --> 00:52:46,079
+remember not to use spaces in your file,
+
+1099
+00:52:46,080 --> 00:52:49,411
+uh, in your file names, or if- It's nothing good.
+
+1100
+00:52:49,519 --> 00:52:51,981
+Comes from spaces. Um, don't worry about it right now.
+
+1101
+00:52:52,291 --> 00:52:54,919
+Let's, uh, and-and let's, uhm,
+
+1102
+00:52:54,930 --> 00:52:59,483
+tell it to update- Make the reasoning bank to include details of the,
+
+1103
+00:52:59,484 --> 00:53:03,529
+uh, next health API for the implementation.
+
+1104
+00:53:03,530 --> 00:53:07,215
+Thank for being here today. I'm not of the API at a later stage.
+
+1105
+00:53:07,216 --> 00:53:07,340
+1
+
+1106
+00:53:11,996 --> 00:53:14,024
+Okay, yep,
+
+1107
+00:53:14,042 --> 00:53:16,050
+do that. Next thing we're gonna do, once we've,
+
+1108
+00:53:16,068 --> 00:53:19,881
+once we've sort of, uhm, put the information to the reasoning bank,
+
+1109
+00:53:19,882 --> 00:53:22,047
+then- What we're gonna do is we're gonna create a skill.
+
+1110
+00:53:22,130 --> 00:53:24,340
+Scroll up into your dot cloud folder for a moment.
+
+1111
+00:53:26,374 --> 00:53:28,766
+Yep. You get sk- skills perfect.
+
+1112
+00:53:29,018 --> 00:53:32,336
+So what we're gonna do after this, we're gonna create a skill that's gonna
+
+1113
+00:53:32,337 --> 00:53:34,948
+be your next health, uh,
+
+1114
+00:53:34,959 --> 00:53:39,651
+API implementer. . . That's gonna use a combination of the reasoning components
+
+1115
+00:53:39,652 --> 00:53:42,587
+that we just- that we're certainly feeding into the system,
+
+1116
+00:53:42,588 --> 00:53:46,527
+and- and implement- 7 8 that's gonna help us implement that API.
+
+1117
+00:53:47,084 --> 00:53:49,609
+So that's- that's gonna be more efficient,
+
+1118
+00:53:49,835 --> 00:53:53,699
+and that'll also avoid compacting issues that you- It might run into where,
+
+1119
+00:53:53,700 --> 00:53:56,802
+you know, so it'll, it'll, it'll stop it from hallucinating.
+
+1120
+00:53:59,501 --> 00:54:03,506
+It'll be ground. I'm assuming that that document is correct,
+
+1121
+00:54:03,534 --> 00:54:06,165
+but assuming that the document is correct,
+
+1122
+00:54:06,166 --> 00:54:10,441
+it'll use the information within the- that document to ground it and guide it
+
+1123
+00:54:10,442 --> 00:54:13,438
+in-in-in-in the appropriate mechanism.
+
+1124
+00:54:15,771 --> 00:54:20,309
+Oh, what's the- doing? I hit escape. Tell it
+
+1125
+00:54:20,310 --> 00:54:22,335
+to, uh, tell it to use the,
+
+1126
+00:54:22,336 --> 00:54:24,351
+uh, reasoning bank using the quad code.
+
+1127
+00:54:24,352 --> 00:54:27,080
+Uh, if you clock flow,
+
+1128
+00:54:27,081 --> 00:54:30,087
+uh, uh,
+
+1129
+00:54:30,098 --> 00:54:32,396
+MPX CLI or something. Thank you very much for us today.
+
+1130
+00:54:32,397 --> 00:54:36,906
+And, and PX. Yeah,
+
+1131
+00:54:38,311 --> 00:54:40,431
+Yeah, I don't know what it was trying to do there.
+
+1132
+00:54:40,432 --> 00:54:42,679
+It gives going down a wrong path.
+
+1133
+00:54:45,838 --> 00:54:46,477
+How did you
+
+1134
+00:54:46,478 --> 00:54:48,577
+<v Mark Allen>know that? It's not making- A
+
+1135
+00:54:48,578 --> 00:54:50,699
+<v rUv>directory when there's no directory we needed.
+
+1136
+00:54:51,179 --> 00:54:51,803
+Ah, for
+
+1137
+00:54:51,804 --> 00:54:52,768
+<v Mark Allen>the reasoning bag. See,
+
+1138
+00:54:53,056 --> 00:54:56,521
+<v rUv>you see how it's now it's creating, and now it's using the actual,
+
+1139
+00:54:56,522 --> 00:54:58,969
+uh, reasoning bank, emcee,
+
+1140
+00:54:58,970 --> 00:55:01,399
+you know, uh, guidance.
+
+1141
+00:55:03,715 --> 00:55:08,581
+Unknown. you Okay, it's acting dumb.
+
+1142
+00:55:09,189 --> 00:55:18,099
+It should have started with the help, but anyway. I'll see Here
+
+1143
+00:55:18,100 --> 00:55:21,164
+we go. Now it's- now it's going down the right- direction.
+
+1144
+00:55:21,280 --> 00:55:25,206
+So it- it- it needed to understand what the- the- the correct.
+
+1145
+00:55:27,636 --> 00:55:30,515
+Now it probably- Probably. I could have asked it to use the Reasonic Bank,
+
+1146
+00:55:30,516 --> 00:55:32,525
+um, the Reasonic Bank skill,
+
+1147
+00:55:32,526 --> 00:55:36,716
+but whatever. This is again, we'll get in the same spot.
+
+1148
+00:55:36,717 --> 00:55:38,198
+Okay, now we're
+
+1149
+00:55:38,199 --> 00:55:41,470
+<v Mark Allen>good. Got a rea- reasoning bank agent DB and intelligence?
+
+1150
+00:55:42,689 --> 00:55:43,183
+Yeah, we got all
+
+1151
+00:55:43,184 --> 00:55:46,078
+<v rUv>kinds of stuff. Yeah, all kinds of- stuff. So,
+
+1152
+00:55:46,079 --> 00:55:48,387
+what we're using right now is my default reasoning bank,
+
+1153
+00:55:48,388 --> 00:55:50,509
+which is my state-of-the-art, as of, like,
+
+1154
+00:55:50,510 --> 00:55:52,631
+a week and a half ago. But, uh,
+
+1155
+00:55:52,641 --> 00:55:54,635
+it's- It's for what you're doing, it's more than adequate.
+
+1156
+00:55:59,871 --> 00:56:02,292
+I'm, I'm moving. You guys are skills. Like,
+
+1157
+00:56:02,293 --> 00:56:03,726
+I know that Claude, the
+
+1158
+00:56:03,727 --> 00:56:08,324
+<v Mark Allen>Claude, uh, basically- that you
+
+1159
+00:56:08,325 --> 00:56:10,936
+need. First, when to use skills.
+
+1160
+00:56:10,937 --> 00:56:14,149
+Or you can call them by name. Umm,
+
+1161
+00:56:14,160 --> 00:56:17,231
+do we need to know your skills and call them by name or- Or
+
+1162
+00:56:17,347 --> 00:56:19,267
+will they be inferred? They're
+
+1163
+00:56:19,268 --> 00:56:21,667
+<v rUv>inferred. So yeah,
+
+1164
+00:56:21,794 --> 00:56:24,098
+that's a whole other, uhh,
+
+1165
+00:56:24,108 --> 00:56:27,750
+you can- Once we start getting to the point of using the AgentDB capabilities,
+
+1166
+00:56:27,751 --> 00:56:30,970
+then we've got all kinds of things we can do in terms of training,
+
+1167
+00:56:30,971 --> 00:56:32,996
+inferring, and optimizing.
+
+1168
+00:56:32,997 --> 00:56:35,470
+But for what you need to do right now, this is the approach,
+
+1169
+00:56:35,471 --> 00:56:37,709
+this is the better approach. Yeah.
+
+1170
+00:56:38,573 --> 00:56:39,133
+<v Mark Allen>Looks like
+
+1171
+00:56:39,134 --> 00:56:41,777
+<v rUv>your, looks like your tool hooks are failing. Two for some reason,
+
+1172
+00:56:41,778 --> 00:56:46,186
+control-o. Mmm,
+
+1173
+00:56:46,187 --> 00:56:48,426
+it's taking a while. Okay,
+
+1174
+00:56:48,427 --> 00:56:50,628
+control-o back. back. I can get you to get back. But you can see,
+
+1175
+00:56:50,638 --> 00:56:52,813
+it's like, so uhh, uhh, actually,
+
+1176
+00:56:52,814 --> 00:56:55,074
+control-o one more time. You can,
+
+1177
+00:56:55,075 --> 00:56:58,128
+uhh, you can see what it's doing. So this is what's happening- this is,
+
+1178
+00:56:58,407 --> 00:57:03,151
+this is the sort of reasoning bank structure that defines critical limitations,
+
+1179
+00:57:03,152 --> 00:57:07,720
+the PMS. So this is all the- information that's important to the system
+
+1180
+00:57:07,774 --> 00:57:10,648
+as it- as it will go and sort of start implementing.
+
+1181
+00:57:10,649 --> 00:57:13,191
+I'm going to be using a scroll up.
+
+1182
+00:57:13,192 --> 00:57:15,643
+Yeah, you're- there's something wrong with your cloud flow,
+
+1183
+00:57:15,644 --> 00:57:19,818
+uhm, I can see it failing. I'm not sure why.
+
+1184
+00:57:19,819 --> 00:57:23,167
+It looks like you're a sequel light. It's, It's not installed correctly.
+
+1185
+00:57:25,330 --> 00:57:25,816
+I don't think
+
+1186
+00:57:25,817 --> 00:57:25,997
+<v Mark Allen>it'll-
+
+1187
+00:57:25,998 --> 00:57:28,983
+<v rUv>I probably won't. It probably won't,
+
+1188
+00:57:28,984 --> 00:57:31,270
+uhh. But, really, you probably won't notice because I've got a whole bunch of
+
+1189
+00:57:31,271 --> 00:57:34,583
+fail-safes. But there is- there looks like there is a sequel light issue.
+
+1190
+00:57:35,549 --> 00:57:36,330
+How do- how do you see
+
+1191
+00:57:36,331 --> 00:57:38,494
+<v Mark Allen>that? Where do you see that? Control-O?
+
+1192
+00:57:38,495 --> 00:57:43,494
+<v rUv>Uhh,
+
+1193
+00:57:43,645 --> 00:57:46,412
+I'm seeing- I'm seeing these air. I'll see in the Yeah, I'm seeing your
+
+1194
+00:57:46,413 --> 00:57:46,818
+<v Mark Allen>errors.
+
+1195
+00:57:47,083 --> 00:57:49,217
+<v rUv>Yeah, those are errors. It's,
+
+1196
+00:57:49,866 --> 00:57:51,924
+yeah, it's not working. Looks
+
+1197
+00:57:51,925 --> 00:57:52,564
+<v Mark Allen>like, looks like
+
+1198
+00:57:52,565 --> 00:57:55,078
+<v rUv>you need to reinstall. Cloud, uh, Cloudflow.
+
+1199
+00:57:57,621 --> 00:57:58,192
+You wanna just
+
+1200
+00:57:58,208 --> 00:58:00,588
+<v Mark Allen>exit and reinstall? Yeah,
+
+1201
+00:58:00,589 --> 00:58:00,727
+I
+
+1202
+00:58:00,728 --> 00:58:03,409
+<v rUv>gotta jump in my next call- Oh, guys, I apologize. But what,
+
+1203
+00:58:03,410 --> 00:58:07,901
+what, what, you're, you do, you do have next health API working.
+
+1204
+00:58:08,172 --> 00:58:12,600
+So now I'm- The Reasing Bank isn't working because there looks like there- it
+
+1205
+00:58:12,601 --> 00:58:16,786
+looks like Cloudflow isn't installed correctly. Umm,
+
+1206
+00:58:16,796 --> 00:58:19,999
+just good. Okay, go quick, a new to new terminal.
+
+1207
+00:58:21,217 --> 00:58:24,431
+Type MPX, plug,
+
+1208
+00:58:24,432 --> 00:58:26,473
+blow. Hello. Okay, no,
+
+1209
+00:58:26,474 --> 00:58:29,176
+no, no, no, no terminal. Just, I, I don't have a lot of time.
+
+1210
+00:58:29,177 --> 00:58:31,621
+Just close this, go, go to new terminal. And,
+
+1211
+00:58:31,829 --> 00:58:35,267
+and MPX, clod- Oh gosh. Let's flow.
+
+1212
+00:58:36,712 --> 00:58:38,741
+Add alpha. Uhh, space-help.
+
+1213
+00:58:38,742 --> 00:58:44,510
+Help. Uhh,
+
+1214
+00:58:44,520 --> 00:58:48,231
+replace. Hit up. Do memory. Uhh,
+
+1215
+00:58:48,242 --> 00:58:48,807
+I'm pressing,
+
+1216
+00:58:48,808 --> 00:58:50,785
+<v Mak Allen>uhh. you Yeah, you replace
+
+1217
+00:58:50,786 --> 00:58:55,173
+<v rUv>help with memory. And let-lose the dashes.
+
+1218
+00:58:55,174 --> 00:58:57,711
+Uh, uhh.
+
+1219
+00:58:57,712 --> 00:59:02,804
+. . . Yeah.
+
+1220
+00:59:02,805 --> 00:59:05,751
+Alright, copy and paste the error that you saw in control and when you-
+
+1221
+00:59:05,752 --> 00:59:09,363
+do the control-o into a new DSP and just tell to fix it.
+
+1222
+00:59:11,607 --> 00:59:12,114
+Okay.
+
+1223
+00:59:12,716 --> 00:59:13,135
+<v Mak Allen>Can I still
+
+1224
+00:59:13,136 --> 00:59:13,625
+<v rUv>control-o?
+
+1225
+00:59:13,626 --> 00:59:13,540
+<v Mak Allen>you
+
+1226
+00:59:13,541 --> 00:59:18,540
+<v rUv>You
+
+1227
+00:59:19,142 --> 00:59:21,170
+know, copy and paste that.
+
+1228
+00:59:21,171 --> 00:59:23,318
+Alright. . Yeah. Oh no,
+
+1229
+00:59:23,319 --> 00:59:25,477
+not all, it's just the air. Good, a little lower.
+
+1230
+00:59:26,246 --> 00:59:28,746
+Yeah, right there. At the top. Yeah, right there. Reasoning bank.
+
+1231
+00:59:28,747 --> 00:59:31,571
+All the way to the top. Keep going. Keep. Keep going.
+
+1232
+00:59:31,572 --> 00:59:36,647
+Right there. Copy that. Yeah.
+
+1233
+00:59:36,648 --> 00:59:39,190
+Yep, copy that. Peace. . Paste it in there and tell it to,
+
+1234
+00:59:39,191 --> 00:59:41,516
+uh, move that thing out of the way.
+
+1235
+00:59:41,663 --> 00:59:43,866
+And, uh, and then tell it to fix that.
+
+1236
+00:59:43,867 --> 00:59:51,166
+Alright. Okay,
+
+1237
+00:59:51,167 --> 00:59:56,618
+it looks like an SQLite error. error. Okay.
+
+1238
+00:59:56,834 --> 00:59:57,003
+Where
+
+1239
+00:59:57,004 --> 00:59:58,537
+<v Mak Allen>did this? What?
+
+1240
+00:59:58,838 --> 00:59:59,679
+<v rUv>How would you get rid of
+
+1241
+00:59:59,680 --> 01:00:01,444
+<v Mak Allen>this thing? Uhm, yeah, I'm
+
+1242
+01:00:01,445 --> 01:00:03,513
+<v rUv>not sure where that- I came from. Uhm,
+
+1243
+01:00:03,524 --> 01:00:06,123
+just click, uh, shh, just click ok or something.
+
+1244
+01:00:07,802 --> 01:00:10,071
+I gotta go guys. Uhm.
+
+1245
+01:00:10,072 --> 01:00:12,521
+. ? But once you've got that error, the bindings weren't right.
+
+1246
+01:00:12,728 --> 01:00:16,149
+I'll double check that it wasn't something I did, but umm,
+
+1247
+01:00:16,159 --> 01:00:18,415
+once you've got that, it'll, uhh, uhh, uhh, uhh, you should be able to
+
+1248
+01:00:18,416 --> 01:00:21,278
+use the reasoning bank correctly. That, and that's why you keep an eye on
+
+1249
+01:00:21,279 --> 01:00:23,606
+the, the controller. Alright,
+
+1250
+01:00:24,185 --> 01:00:26,475
+I gotta jump. Okay.
+
+1251
+01:00:26,625 --> 01:00:26,912
+<v Stuart Kerr>Thank
+
+1252
+01:00:26,913 --> 01:00:28,276
+<v Mark Allen>you. Okay. Take care.
+
+1253
+01:00:28,682 --> 01:00:29,100
+<v Mak Allen>Okay. No problem. Come.

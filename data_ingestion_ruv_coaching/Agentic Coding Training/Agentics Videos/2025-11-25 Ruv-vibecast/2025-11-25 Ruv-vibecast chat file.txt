@@ -1,0 +1,170 @@
+00:19:23	Paul Ascenzi:	grabbing lunch 😅
+00:20:07	Fireflies.ai Notetaker Lyle:	Lyle invited Fireflies.ai here to record & take notes. View Security & Privacy info: https://fireflies.ai/policy
+
+Type:
+'/ff leave' - Remove Fireflies
+
+View Realtime notes here: https://app.fireflies.ai/live/01KAC54BVEEVMTRAETV2G6MT7Y?ref=live_chat
+00:25:50	Danelle Almaraz:	Did Charlie Puth do a demo of this on late night TV? Curious.
+00:26:20	rUv:	https://github.com/ruvnet/musicai
+00:26:39	rUv:	https://claude.ai/code/
+00:31:31	mondweep:	here is my work so far on the voice cloning and song translation project https://github.com/mondweep/vibe-cast/tree/song-translation-working?tab=readme-ov-file 
+
+still work in progress
+00:32:21	John O'Hare (He/Him):	so on registration type individual vs team we should organise something as tribes or as a meta tribe collective with a new mission?
+00:32:23	rUv:	https://agentics.org/hackathon
+00:44:24	John O'Hare (He/Him):	https://github.com/DreamLab-AI/VisionFlow
+00:44:33	John O'Hare (He/Him):	https://github.com/DreamLab-AI/knowledgeGraph/blob/gh-pages/api/markdown/AI%20Deployment.md
+00:46:15	John Messing:	Hi, I’m transcribing this call with my Tactiq AI Extension: https://tactiq.io/r/transcribing
+00:50:32	Govinda Fichtner:	@Farshid: Cool stuff, I came across something similar to what you presented at hackathon I was at last week in Berlin: https://aivory.net/
+00:52:15	TAG.VOTE O-GOV.com DecisionCall.com aka Shahrooz Bhopti:	AG times out multiple times a day
+00:53:05	TAG.VOTE O-GOV.com DecisionCall.com aka Shahrooz Bhopti:	Gemini3 quota
+01:01:11	Jonathan McGuinness:	https://antigravity.google/
+01:03:12	John O'Hare (He/Him):	my knowledge graph is here if anyone wants to kick the tyres
+https://narrativegoldmine.com/
+01:06:42	John O'Hare (He/Him):	https://narrativegoldmine.com/notes/#/page/speech%20and%20voice
+01:08:56	Dmitry:	cool
+01:10:31	Camila:	Same happened to me, I just prompted "Create a math tutor" and now I have a whole math platform :)
+01:16:50	John O'Hare (He/Him):	oops got punted from the chat
+01:17:18	John O'Hare (He/Him):	https://github.com/lucasjinreal/Kokoros
+this is the TTS i use locally (ONNX etc) and i know it can clone and is very fast
+01:18:13	John O'Hare (He/Him):	can you force mermaid diagrams as code across your agents ruv, they are so much better for the LLMs and humans to understand
+01:19:09	Danelle Almaraz:	Don’t remove the productive struggle and adjust learning based on their preferred learning style.
+01:21:48	rUv:	https://video.agentics.org/
+01:22:38	rUv:	https://video.agentics.org/?mid=90e4bdbb-f8a6-45ba-b37b-60ba9720899b
+01:23:34	Danelle Almaraz:	Camilla I’d love to assist with the your math tutor.
+01:23:58	Camila:	Reacted to "Camilla I’d love to ..." with 👍
+01:24:08	Danelle Almaraz:	It’s like UDL for adults. =)
+01:24:12	Camila:	@Danelle Almaraz I'll add you to my repo
+01:24:17	rUv:	https://video.agentics.org/homepage?mid=f90d34d7-fa57-45f5-84b8-867ef6dba970
+01:24:18	Danelle Almaraz:	Reacted to "@Danelle Almaraz I'l..." with 👍
+01:24:42	Camila:	team, I have a call with doctor, will need to drop
+01:24:47	Camila:	talk to you soon
+01:24:53	Kara Prado:	Reacted to "team, I have a call ..." with ❤️
+01:27:57	Ofer Shaal:	@Danelle Almaraz notebookLM has a great feature for converting knowledge into podcast / slides / videos / etc
+01:28:13	Danelle Almaraz:	Reacted to "@Danelle Almaraz not..." with 👍
+01:28:35	Jonathan McGuinness:	echo chamber?
+01:28:41	Danelle Almaraz:	Reacted to "echo chamber?" with 👍
+01:28:44	John O'Hare (He/Him):	lol, getting thrown out repeatedly sorry! My emergency laptop is OLD
+01:31:06	Jan Lafko:	I just had an idea remembering about run creating Agentic catalog … some kind of sort of thing?
+01:31:51	John O'Hare (He/Him):	Reacted to "I just had an idea..." with 👍
+01:32:28	John O'Hare (He/Him):	of course! keys
+01:32:33	John O'Hare (He/Him):	i hadn't thought about that one
+01:32:36	Danelle Almaraz:	Replying to "@Danelle Almaraz not..."
+
+I train schools on NotebookLM often.
+01:32:46	John O'Hare (He/Him):	Reacted to "I train schools on..." with 👍
+01:34:12	Jonathan McGuinness:	echo chamber?
+Shouldn't we clearly have principles beyond projects etc?
+
+if a principle was, "engage in life promoting activities", the rabbit hole that you mentioned could be prevented.
+
+It becomes philosophical
+01:38:00	Danelle Almaraz:	Reacted to "echo chamber?
+Should..." with 👍
+01:38:33	John O'Hare (He/Him):	I like having a bunch of north stars for this stuff, it's possibly existentially important, in a way that a lot of product develop work isn't, -because- of the tooling
+01:39:10	John O'Hare (He/Him):	i'd love to do a bit of shaping toward the hack competition today, see what the tribe(s) structure is for that so we can self organise
+01:39:22	John O'Hare (He/Him):	we do need quite a bit of runway to get going
+01:39:44	Jonathan McGuinness:	Reacted to "I like having a bunc..." with 👍
+01:46:25	John O'Hare (He/Him):	what was the UI / AI partner on this one? Very nice consistency and feature set
+01:46:35	mondweep:	https://tribemind.netlify.app/
+01:49:39	John O'Hare (He/Him):	Replying to "https://tribemind...."
+
+this is ace thanks
+01:49:57	Scott McMillan:	Curious - what everyone's strategy is, including yours rUv for: Preventing agents from causing more problems or unwanted changes when you want to fix a bug or add a new feature. For me, I try to manage it with a dev branch and just try to set boundaries in a prompt or swarm task. Any other tips?
+01:50:00	mondweep:	Replying to "https://tribemind.ne..."
+
+I am trying to build a chat feature in it for remote collaboration
+01:50:13	John O'Hare (He/Him):	Replying to "https://tribemind...."
+
+you tried doubleclicking?
+01:50:35	mondweep:	Replying to "https://tribemind.ne..."
+
+just done it :-)
+01:50:37	mondweep:	Replying to "https://tribemind.ne..."
+
+did not realise it
+01:50:55	John O'Hare (He/Him):	Replying to "https://tribemind...."
+
+can I hook the code for that off you please? it's actually MUCH smoother than what I have for the front en
+01:50:59	John O'Hare (He/Him):	Reacted to "just done it :-)" with ❤️
+01:51:15	mondweep:	of course
+01:51:16	mondweep:	here it is
+01:51:28	rUv:	Reacted to "https://tribemind.ne..." with ❤️
+01:51:37	John O'Hare (He/Him):	Replying to "https://tribemind...."
+
+it's got directions and everything. This is always the issue is building a complex system from existing stuff gets it too locked in, so I miss out on all this candy
+01:51:56	mondweep:	Replying to "https://tribemind.ne..."
+
+https://github.com/mondweep/vibe-cast/tree/tribe-knowledgeGraph
+01:52:07	John O'Hare (He/Him):	Reacted to "https://github.com..." with ❤️
+01:52:33	Dmitry:	Reacted to "https://tribemind.ne..." with ❤️
+01:54:07	John O'Hare (He/Him):	holy hell this stuff is so powerful. Every time I isee something I stop being impressed by the things that are happening in my coding cotext and pick my jaw up off the floor. This is ONLY happening in this community, nobody else seems to have any idea it's going on
+01:54:19	John O'Hare (He/Him):	and it's been like this for MONTHS
+01:54:45	mondweep:	Reacted to "and it's been like t..." with 👏
+01:54:53	Jordi Izquierdo:	Reacted to "holy hell this stu..." with 💯
+01:55:02	Ignacio Carrasco Ortega:	Reacted to "holy hell this stuff..." with ❤️
+02:01:13	Jonathan McGuinness:	Love Dark Mode!
+02:01:18	Dmitry:	me too
+02:01:22	Jordi Izquierdo:	Dark +1 here
+02:02:00	rUv:	heroui.chat
+02:02:05	John O'Hare (He/Him):	great tip thanks
+02:02:14	John O'Hare (He/Him):	this is something i have been meaning to sort
+02:05:42	John O'Hare (He/Him):	i think this is what we get to sort out here!?
+02:05:54	John O'Hare (He/Him):	PR's and feature adds seems a good system
+02:10:13	John O'Hare (He/Him):	3001 now!
+02:12:22	Jan Lafko:	Replying to "heroui.chat"
+
+What is this used for?
+02:13:07	Fireflies.ai Notetaker Lyle:	The meeting schedule is about to end.
+Action Items for this meeting:
+- Create the database for the math tutoring application and keep it updated based on children's challenges. @Camila Kamarad
+02:15:09	John O'Hare (He/Him):	is this dashboard open source?
+02:15:32	Ofer Shaal:	I want this dashboard...!
+02:15:36	John O'Hare (He/Him):	yeah
+02:15:36	Jan Lafko:	Looks like ruv find his other half xd
+02:15:48	Jordi Izquierdo:	We all want it 😅
+02:16:13	Jordi Izquierdo:	Replying to "Looks like ruv fin..."
+
+the user friendly one or .... ? ;D
+02:16:26	Jordi Izquierdo:	Reacted to "Looks like ruv fin..." with 👍
+02:16:46	John O'Hare (He/Him):	Reacted to "We all want it 😅" with ❤️
+02:17:44	John O'Hare (He/Him):	jaw on floor - lost under couch
+02:17:50	John O'Hare (He/Him):	YES
+02:17:54	TAG.VOTE O-GOV.com DecisionCall.com aka Shahrooz Bhopti:	Organize around products, product types, portfolio types, skill types, role types, …?
+02:18:24	Scott McMillan:	yes, would be nice to have a workshop section to each of these meetings
+02:18:28	Anatole Norland:	incredible session as always
+02:20:05	Jonathan McGuinness:	What about a SKILL PATHWAY?Collecting the skills everyone form the tribe?
+02:20:21	John O'Hare (He/Him):	gurgle
+02:20:38	Danelle Almaraz:	Reacted to "What about a SKILL P..." with 👍
+02:20:49	Ofer Shaal:	Yes, thank you RUV!
+02:21:09	John O'Hare (He/Him):	yep
+02:21:16	Jonathan McGuinness:	Reacted to "Yes, thank you RUV!" with 🎉
+02:21:18	Jordi Izquierdo:	absolutelly agree!
+02:21:25	Eva Draganova:	Thank you Ruv!
+02:21:30	Jordi Izquierdo:	Thanks mr rUv  !
+02:24:53	Kara Prado:	Theranos I think.
+02:25:43	Paul Ascenzi:	Ancestory.com 21andMe. Pretty much every company that collects DNA on large scale then sells your DNA data 😅
+02:26:34	Scott McMillan:	Interesting, I had a joint venture doing something similar for wearables, with an AI edge comptuiing chip
+02:27:47	DM:	That’s so sci fi 👌
+02:29:43	John O'Hare (He/Him):	YIKES
+02:34:59	John O'Hare (He/Him):	this is the "works for me" first mile problem
+02:35:46	John O'Hare (He/Him):	super sweet
+02:36:11	John O'Hare (He/Him):	ironically this is far more useful than my 2 years of work
+02:36:14	John O'Hare (He/Him):	agentics for you
+02:39:08	rUv:	https://github.com/agenticsorg/hackathon-tv5
+02:39:15	rUv:	npx agentics-hackathon init
+02:39:18	John O'Hare (He/Him):	i'll tidy my stuff and get it on npm too
+02:39:54	John O'Hare (He/Him):	great idea, this starts to make more sense through this lens
+02:40:30	Jonathan McGuinness:	Love Telegram 
+02:41:29	John O'Hare (He/Him):	platform exhaustion is real
+02:41:36	John O'Hare (He/Him):	this has been great thanks all
+02:41:39	Jan Lafko:	Too many tools but aint no tool like ruvnet tools
+02:41:43	Kara Prado:	I vote for Discord haha.
+02:41:43	Jordi Izquierdo:	you missed MS Teams , lol XDD
+02:41:47	Scott McMillan:	discord vote
+02:41:54	Kara Prado:	Reacted to "discord vote" with 👍
+02:42:09	Kara Prado:	Reacted to "platform exhaustion ..." with 💯
+02:42:16	Jonathan McGuinness:	Reacted to "platform exhaustion ..." with ❤️
+02:43:21	Jordi Izquierdo:	Thanks you Colby, great great stuff
+02:43:48	Jonathan McGuinness:	Cheers RuV!

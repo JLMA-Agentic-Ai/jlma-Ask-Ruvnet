@@ -1,0 +1,575 @@
+Ruv Coaching
+Mon, Dec 1, 2025
+
+0:02 - Unidentified Speaker
+All right. So, Stuart, I know you tuned in last week. So, you saw some of the new crazy stuff I've built, right?
+
+0:11 - Stuart Kerr
+I was working with Rue Vector till 3.30 Wednesday night, 2.30 Friday night and 1 a.m. Or so Saturday night. I've been cranking with that magentic flow all weekend pouring into it. I have a million questions. None of them are going to get answered today. Today's about Mark and Mak and their your application, but I definitely want to book time with you afterwards.
+
+0:34 - rUv
+Yeah, you can see it's crazy. It's breaking off the hook. Yeah, it is crazy, right? I built something crazy.
+
+0:42 - Stuart Kerr
+You built something amazing and I need to figure out how to use the thing without wrapping myself around the tree with the new Lamborghini that you built.
+
+0:51 - rUv
+Yeah, yeah, exactly. All right, so let's What's new?
+
+1:00 - Mark Allen
+So we thought that the most efficient thing to do here would actually be to have you drive from your side and us watch, and you could just talk as you're doing things. So if Matt can share, we talked about this amongst the three of us and we're thinking that that's going to be the most efficient way for us to move forward and learn at the same time. We take a few minutes to just get you into this repo and get set up.
+
+1:36 - Mak Allen
+I did send you an invite, Ruth, as a collaborator.
+
+1:42 - rUv
+Let me go take a look here.
+
+1:45 - Mak Allen
+I'm not sure if you accepted it in the past. It does say pending invite. Is it okay to copy and paste the invite here in the chat?
+
+1:53 - rUv
+I get a lot of invites. Let me see. It might just be my inbox. Let me take a look here. All right, let's see here. This is the Nexadental MVP? I got it. All right. So let's take a look what we got here. Nexadental MVP repo to create a MVP edition of Nexadental centered on the ASA scheduling agent. Is the scheduling agent in here in the database?
+
+2:36 - Mak Allen
+The scheduling agent is in retail.
+
+2:44 - rUv
+All right. Good job. Credentials are loaded as secret.
+
+2:50 - Mak Allen
+And if you recall where we left off last week, it was successfully booking the call, but it was repeating back the variable names. That has since been fixed. And tools for extracting dynamic variables have been added as a fix. And it is working perfectly.
+
+3:14 - rUv
+That looks good. I can tell already. All right. So I'm going to I'm just gonna up my core count just so I can give a little more beef and let's create this. All right, well, that does its thing.
+
+3:29 - Stuart Kerr
+You never do more than eight, Ruth?
+
+3:32 - rUv
+No, I do. I do. Depending on, I still think that what I'm doing with you guys required more than eight because it's not that heavy an app. Yeah, so sometimes I do. I pull out the big guns. If really need a lot of capacity, I'll go to the cloud and use like Google or AWS or something.
+
+3:48 - Mak Allen
+What kind of capacity would you say is maximally necessary for this project when I'm working within it?
+
+3:57 - rUv
+What I just chose, probably the eight core one, probably is pretty good. In terms of local development capacity, is that what you're asking?
+
+4:08 - Mak Allen
+Yeah, in a code space. So, you know, if we're running around 10 agents in in a certain event, it wouldn't crash it. Crashed code spaces quite a few times.
+
+4:25 - rUv
+I don't know. I never use the lowest one. I never use that, to be honest. I don't have the crash problem. Works for me. Yeah, classic, right? Let's go back here. I'm just getting everything set up. All right, we'll leave that while that's going. I should use my setup script I wrote, but I'm lazy. All right, let's put that in there. And we've got, you've already got the got.cloud. I probably didn't need to do the init, but whatever.
+
+5:03 - rUv
+All right.
+
+5:08 - rUv
+Now, I've got two different cloud accounts. I'm going to put you guys on my other one. We'll log out of that. I max, I built so much crap that I literally have to have multiple cloud accounts, but it's still cheaper than the 10,000. It used to cost me a month.
+
+5:26 - Stuart Kerr
+With your stuff. I maxed out on my max account and I'm 80% of the way through my second max account in five days.
+
+5:34 - rUv
+Yeah, there you go. So you're, I'm not feeling so bad. Oops, I logged in the wrong account.
+
+5:40 - Mak Allen
+Dude, is that because you're running Opus the entire time?
+
+5:43 - Stuart Kerr
+It's because I'm sure I'm doing something wrong and that's why I'm just here to look and listen today to figure out the right way to do things. Because yes, I'm always running Opus.
+
+5:52 - rUv
+Yeah, I'm running Opus too. Like, it's pretty good. It's a good model. I'm exactly the same as you. All right, so I logged into my different one. Now I'm going to go here and I'm going to I'm going to log in with that. Now go to my cloud subscription. Should probably not be using the web version. It's kind of slow. First time never works. I'm going to go back. All right, we'll go here. I'm moving too quickly or something. All right. And I'm going to add a new folder. Docs folder. All right. If you start messy, you'll only get messier. So generally speaking, good idea to just keep it nice and clean. All right.
+
+7:29 - Stuart Kerr
+We keep waiting for you to build that cleanup skill.
+
+7:32 - rUv
+Yeah, I know I should, it'd be easy to do. Straight integration, then executive summary. Okay, before I do anything, confirm the, do you have any, do you have ENVs for where the end points are? Point is for this function that's been deployed, and you have super base and all that?
+
+8:01 - Mak Allen
+Yes, everything is a code base secret.
+
+8:06 - Mark Allen
+Although we deployed one of the keys to super base, right?
+
+8:15 - rUv
+I just want to make sure I know what you have. The drawback to the code space secrets is it's hard. I could go to the code space and see it, I guess. Secrets and variables. All right. I could have just done this, I guess. But we're going to see that it actually works just so you can see how I would do. If I didn't see that, how I would do it. So what I'm asking for now is to basically kind of just take a look at what secrets and then this is probably secondary. I probably don't need to create an ENV. But the benefit to creating the ENV is I can see the secrets nice and quick. Now, you can see I just created the secrets. Now, the other benefit to this as well is I can, as long as I get rid of these lines here, and here, here, and whatever, I can do this. So I'm going to just quickly copy this into another folder, our new file. Call it temp.txt. And I'm going to paste this in. And then what I'm going to quickly do is get rid of these. And these. And these. Why are you getting rid of those? Because they don't work in Cloud Code Web. And I'm going to go here. And I'm going to go with this.
+
+9:59 - Mark Allen
+You copied an extra bold sign line. Are you deleted? Did you see that?
+
+10:04 - rUv
+Oh, I did? Was it even? What did I delete?
+
+10:12 - Mark Allen
+I thought there was an extra line. It just looked weird to me.
+
+10:16 - rUv
+All right. No worries. All right. So now we're going to go here and I'm going to go and I'm going to create a new environment. Sometimes it's just easy to do prototyping here because I'm on my phone or I just want to and this is using it uses the capacity, a little bit less so. So I'm going to call this Nexadental, I guess.
+
+10:38 - Stuart Kerr
+Why switch from the code space that's all set up to Cloud Code?
+
+10:43 - rUv
+Because I can create branches, and I can create branches and work on multiple things at the same time. So let's say I want to do A, B, and C things. I could try to get Cloud Code to work on A, B, and C using a swarm, or I could just go here and do each as a branch and then combine So it's just it's just it's faster. So I'm so I'm creating it. So now I get the environmental variables here.
+
+11:07 - Mark Allen
+So I can use the call it next accidental next dental.
+
+11:15 - rUv
+All right. And all right, it's full. So we'll go there. Create environment. Failed to create environment. What did I do wrong? Let's try again. Failed to create environment. Try again. That's weird. Maybe it doesn't like the spaces? It's a little beta, I guess. Usually this works. I think I know the problem. I'm going to refresh. I logged into a different account and never refreshed it. Let's try it one more time. Yeah, that was the problem. There we go. And now we'll choose next dental MVP. All right. We're just going to make sure that install. So let's run this. All right, we're just gonna do a quick confirmation that works, similar to what I did over here. And then we're gonna go back here, and I'm gonna delete this, don't need it. All right, so let's go back to Claude while that's doing its thing. It created, all right, so now, I'm basically doing the same thing twice, but I'm showing you how to do the same thing twice in two different places. What I'm doing before I ever start, I'm just confirming everything you've got works. Never assume when it comes to the initial state. If it doesn't work at the beginning, then I'm going to regret it later because I'm going to be stuck with something that doesn't work. I'm pretty sure it does work because I saw it working last week, but better safe than sorry. All right. That's doing that. Move this over here so I can jump between the two. It's doing exactly the same thing.
+
+14:06 - Mark Allen
+Superbase CLI not found on the web.
+
+14:13 - rUv
+It wasn't found here. It installed it. It probably doesn't need it, but let's just see what it's going to do regardless. It's exploring the demo, that's good.
+
+14:33 - Stuart Kerr
+Sorry, are you just using Cloud Code now or using Cloud Flow?
+
+14:37 - rUv
+Cloud Flow was already initialized in the repo. Again, it's like a, I don't know the right word, it's like a virus. I take over your Cloud Cloud.
+
+14:54 - Mark Allen
+Any skills or agents that are needed inferred Yeah, exactly.
+
+15:00 - rUv
+Alright, so it does the environmental variable check here and click control. Oh, see what we can see. It looks looks good. So this is this stuff is important as a kind of prerequisite to feed the system a little bit. So again, I'm feeding the context before I start. Now it's doing this agent. Looks like the agent works. Nice work Mak. By the way, it looks like everything in this repo is working any effort whatsoever. So we can, I can, I got confirmation here, which is right here. It's using GPG 4.0 Mini, which is kind of a shitty model. I'm not really sure what's going on there, but that's a problem for another time. Here's the webhook, looks like that's defined. All right.
+
+15:56 - Mak Allen
+This is great for sanity checking.
+
+15:58 - rUv
+Yes, yeah, yeah, exactly. Unless you put the sanity clause in your, in your contract, then there ain't sanity clause. All right, nevermind that. Test the webhook, create details, create, create, I don't know. I don't know. Something like that. All right. While that's happening, we just go back here. Now, the benefit of this is I'll be able to go and I can concurrently do things here but I really just want to show you guys how to do it. This is just convenient. Oftentimes you're going to be running something here on a dedicated branch and then you're like oh well actually I want to do this other thing and now you can do many things all at once. Every time you spin up a new one of these, this creates a new branch essentially. And then you just do a PR on it and you can combine them later. Let's say I want to do the front-end, I want to do the back-end, I want to do the middleware, and I want to do them all at the same time. I can just spin up here three different Cloud Code instances doing whatever I need to do.
+
+17:36 - Mark Allen
+Very cool. It automatically creates the branches. You don't have to do that in the web.
+
+17:40 - rUv
+Yeah, it does automatically. You see here, it hasn't created the branch yet but it will, it'll be this is the name of the branch. It has a last step, it'll create it, and then you can create PRs off it by clicking the Create PR. It's really convenient.
+
+17:57 - Mak Allen
+When you're working on different parts, how do you, especially between Cloud Code Web and a code space, how do you ensure that the file structure doesn't conflict before you create those pull requests to merge?
+
+18:12 - rUv
+Well, it's a great, great question. Usually a conflict component in the PR if there are different versions. Now, generally speaking, those conflicts are things like config files and readmes. So, you know, you can literally just either ask Claw to fix it or take a quick look through it and manually fix whatever issues. It's usually like a version number or some random bit of text that needs to be updated. And the other thing I've been doing a lot of, and maybe I can show you guys this in a minute, because I'm about to push my update simulator, is you can simulate your entire business operation from soup to nuts, from sign up all the way to sort of the operational elements of the company itself and what you're doing. And that also helps you find and fix bugs that might exist in a way that's more difficult when you're manually going to your website and clicking around. And so I'm creating a complex middleware simulation of the system and then getting it to essentially do whatever it needs to do. All right.
+
+19:39 - Mark Allen
+It's interesting that it takes a lot longer in the web to do the same thing.
+
+19:44 - rUv
+It does. You're right. It does seem to, a lot of the stuff I do in the web, I kind of just get it to do and then I check back in an hour or two.
+
+19:56 - Mark Allen
+Have you found the Opus 4.5 to basically cloud flow?
+
+20:04 - rUv
+No, I haven't. I've not really noticed a difference. It's I think I think I've kind of plateaued on as far as I can push these models a little bit. Like I can build anything right? It's as long as you're asking the right questions and guiding it the right way. It's it's I've been pretty much as good as it's gonna get since July. All the problems you're running into are just generally things you don't know what to ask. That that's not a that's not a problem of Claude co or Claude flow or or Opus. That's a problem of the operator just not knowing what to ask.
+
+20:38 - Stuart Kerr
+Is there a way to build the system in a way that it's got some guardrails to help ensure that the right things happen or obvious things don't get missed? I mean, you're building agentic systems. Could you make this an agentic tool to help say, nope, you don't want to do that. The next thing you want to do is hook up the database and then this and then this as opposed to us flailing around. That would be extraordinarily helpful to bring a whole lot of other people into the level where they could leverage and utilize agentic flow and RooVector.
+
+21:10 - rUv
+Yeah, those are my skills and agents, essentially. So when you're using it, you might want to invoke my skill for Mark and other things. And you also need to give it a little bit of guidance in terms of the tech that you want to use. And the selection of tech is generally you researching and finding out what the pros and cons of different things are. All right. So now we've got the architecture. This is what you currently have, right? And this is important because this was missing. I didn't really know what it was that we were building against. And this is just as important for me as it is for the AI. All right. Now that we have that, I'm going to quickly commit that back. So we're just going to go here. And I'm working on your main. Is that OK if I commit directly to main? Okay, so I'm gonna commit that, push that. And then we're gonna go back to where, which one do I, which one is that? I think it's, do I have that?
+
+22:10 - Mark Allen
+So you just committed that folder, the architecture folder that you just created?
+
+22:14 - rUv
+Yeah, I did. I think I might have lost where, oh, maybe it's, what was it called?
+
+22:24 - Mak Allen
+Accidental, yeah, that's the organization. And then it's an accidental MVP.
+
+22:31 - rUv
+This one? Still checking docs. Yeah, looks good. All right, we got docs folder, we get the arc, we get plans, services. This is what this is what you have currently. As a starting point. And now what you want is your plans. Functional requirements. All right, so we're going to go back to functional requirements. Next to that is the ground up multi-tenant voice AI system. The build a HIPAA compliant multi, okay. This is not. This is. Architecture, build item on okay. Super base. Key features. Do you want any self-learning in here or you just want minimal viable?
+
+23:31 - Stuart Kerr
+How would we make that decision? Obviously, the answer is, would you like it to be smart and agentic? Of course. But do we want to add a lot of extra weight to do that? Honestly, what would you recommend? How should we think about it?
+
+23:46 - Mark Allen
+Let's do that as a next step. The core working without it, and then we'll add that later.
+
+23:54 - rUv
+Call forwarding. We'll call coordination. This looks pretty good, actually. We got the Twillow API keys in there?
+
+24:06 - Mak Allen
+Is it reset?
+
+24:15 - Mark Allen
+Our next step is to hook this up with the super base with the PMS so that we can populate the back and forth.
+
+24:29 - rUv
+So confirm all the various API keys. Function, I guess, not very functional with details. So now what I'm doing again, I'm just confirming all these keys work. You may have already done that, but I've got no I've got no place or proof that any of these keys actually work other than the super base one, which I just did. So now I need to do the same thing for every other key and then document it. That's the basis of how we're going to do the integration here in a minute. And I don't want to be in a situation where we find out when I'm dealing with a bug that, well, the key just doesn't work.
+
+25:48 - Stuart Kerr
+Didn't you do that before where you had to go through and check every key?
+
+25:53 - rUv
+Oh, no. I only did the super base key. I only got the keys. I didn't actually test whether they actually worked.
+
+26:00 - Stuart Kerr
+I thought you did.
+
+26:05 - rUv
+We can see my soup base one here. That worked. And I created a .env. So I just took all your secrets and stuck it in a .env so I could more easily use them. I don't see it. Where's your gitignore in here?
+
+26:22 - Unidentified Speaker
+Right there.
+
+26:30 - rUv
+Looks good.
+
+26:32 - Mark Allen
+So Mak, you have in the keys, the key to next health is.
+
+26:38 - Mak Allen
+Yeah, it's there.
+
+26:41 - rUv
+Alright, this is still. This is still doing whatever it's doing. OK, some current it's doing this on your hand is doing the full test of all So I'm basically, I'm repeating myself a little bit here, but basically you can see here that to Stuart's point, yes, I did. It's right here. So here's testing the Twillow count. Testing these. I'm doing a little bit repetitive, but that's okay.
+
+27:27 - Stuart Kerr
+That's fine. Does the Cloud Code have a Cloud Flow in it?
+
+27:32 - rUv
+Yes, I can see it right here.
+
+27:34 - Stuart Kerr
+No, well, this one does. Does the one on the web?
+
+27:38 - rUv
+Yes, it does because we can see right here that it has Cloud right here. So, all you really need for Cloud Flow, well, because this refers to the MPX, as soon as this hook is called, then it would have installed CloudFlow automatically in the hook. That's why I use AMPX. It's super easy to install and it would just magically work. The same thing with this Cloud folder, CloudFile right here. This is also telling it how to work.
+
+28:13 - Mark Allen
+It installs it in your repo. Anybody else who uses your repo is getting CloudFlow. They don't need to reinstall it.
+
+28:23 - rUv
+using Clod in my repo. Or hypothetically using Clod Agent SDK, one of the two. I've made it a way where I'm doing a, I think sometimes the security guys would call it an injection attack, but I'm injecting my stuff whether you want it or not.
+
+28:49 - Mark Allen
+That's cool that you don't have to reinsert Yeah, I didn't realize that.
+
+28:54 - rUv
+But to Stuart's point, though, you can see how much more quickly stuff happens in Cloud Code versus Cloud Web. Is the sandbox key, but their API structure has changed? OK, see, this is exactly what I want to know. I want to make sure that when I do the architecture and implement that any of these sort of weird things, like the next health key is in the sandbox, isn't correct because their API structure is different. I don't want that to be a bug that we have to fix later. I want that to be something we know before we ever start. So now we've got this API verification doc.
+
+29:34 - Stuart Kerr
+So did it fix it? Because the thing changed? I know it told us, hey, the thing changed, but has it adapted to the change?
+
+29:49 - rUv
+But that's okay. Bold, bold signs, super slow. I'm not sure what's up with that, but that's a different problem. Next health. So now that we see the next health, research and fix. There we go. While that does that, I'm going to commit that for you.
+
+30:10 - Mak Allen
+That's a sandbox test API key. I can generate a production.
+
+30:16 - rUv
+According to this, the issue, if we scroll down a little bit, was the API that it was trying to use wasn't correct. I don't know, maybe it's just a bad key. I don't know. It's hard to say. Does the key work for you when you tried it?
+
+30:34 - Mak Allen
+It was working, but I also, that was a key that I was using in the previous You want to check if they have an updated key, maybe?
+
+30:47 - rUv
+Well, we're going to find out here in a sec.
+
+30:50 - Mak Allen
+I can rotate the sandbox API key.
+
+30:52 - rUv
+Hang on a sec. Let's let it do its thing first. What's going on here? Sometimes it gets messed up. Reload window. I might switch to VS Code here in a minute, but we'll see how far I can take it in the web-based version. All right, while that's happening, I can also go back here and we can go to the main next And No, this branch hasn't been published yet. This is still doing whatever it's going to do. This is independently doing the same check, but if we have similar problems, then we'll know that there's, you know, the issues are related or the same in two different places. Different environments doing the same thing. All right, so let's go back here. All right, this has figured itself out. So now it's looking for Next Health API v2 authentication. The base URL is wrong. It uses a weird URL. All right. Looks like that worked. A lot of hooks. Where is it? Token, error, no errors. Looks like it worked. Problem solved.
+
+32:47 - Mak Allen
+OK, sweet.
+
+32:48 - rUv
+The issue was the wrong one.
+
+32:49 - Stuart Kerr
+What did it do? Just search for the right URL?
+
+32:53 - rUv
+Search for the correct URL. It hallucinated the URL, I think. I don't know. Nexthealth.com isn't a thing. All right. Now that we've got that, it's going to update the documentation. So now we've got a really nice starting point to implement This is your current architecture. These are your current webhooks. This is what we got as it is right now. This is all the stuff the system has to use, which is good. Then we have your plans. Multi-location architecture. All right. Multi-location architecture enables digital practices to operate multiple physical offloads while maintaining unified key design principles, three-tiered data model, organization practice location, tenant isolation. Looks good. Nice work. You've got MVP, looks really good. Three tier data model. This is basically your multi-tenancy, which is a smart way to handle it. This is your data structure. This is your agent structure. Tenant scope, it's your RLS. Okay, now what we need is a functional implementation. You've done the first step really well for a technical implementation. Trust5gate model. That's smart. Authentication check. What we could do, let's get the first version working. But there's lots we can do to improve, like make it after we've done it to improve further. But I think what you've done here is actually really good. All It's creating some scripts. So this is your verification script. This is a nice one because this will basically tell if all your Vitamo variables are still working. Seven services are now active. Now what we're going to do is we're going to create a detail phase. Implementation plan. All right, I guess it didn't want me to type. We'll let it flicker for a few minutes or do whatever it's going to do. Create detailed implementation plan. Indox plans. V1. Let's see. All right. So do you see how much time I've spent on the sort of validation of your keys? This is what makes it work. This is how I can let this thing just run and build whatever it needs to do. All right, create a detail including test. And what do we have open router and all that in there as well? What's your LLM you got in here? I don't think you have an LLM. No, you're missing an LLM.
+
+38:02 - Stuart Kerr
+Um, Ruv, I think we just lost them for some reason. I'm looking and I realized that I don't know if they had an internet dropout or something, but they just dropped out of here.
+
+38:14 - rUv
+I'm talking to myself. All right.
+
+38:16 - Stuart Kerr
+Well, now you're not, I'm listening, but I'm just letting you know, if you want to know why they're not asking where the LLM API key is, I think it's because they're not on.
+
+38:30 - rUv
+What I'm doing is I'm going to include a simulator. Yeah, you guys back?
+
+38:38 - Stuart Kerr
+No, I'm asking them. I'm guessing they had a power failure or something because they wouldn't have both dropped out. They're on different computers. Either that or they had an internet dropout.
+
+39:04 - rUv
+All right, I'm going to create the implementation plan. So they created a functional implementation. What they didn't do is... All right, so what we're going to do... All right, so we've got to go back here.
+
+39:25 - Stuart Kerr
+Hey, are you guys coming back? We lost you. Yeah, their Wi-Fi is down. Should we keep going? I don't think you're going to be able to record if your Wi-Fi is down.
+
+39:43 - rUv
+I'm recording. Oh, got it.
+
+39:48 - Stuart Kerr
+They're logging. Back in via cellular.
+
+39:52 - rUv
+It's like Murphy's Law, right?
+
+39:55 - Stuart Kerr
+And he needs your LLM API key. Yeah, he said keep going.
+
+40:07 - rUv
+Functional requirements. No, Mak did a great job here, actually. It was tailored, it was structured nicely.
+
+40:20 - Stuart Kerr
+He's working really, really hard to take your lessons and make sure he's learning the right way.
+
+40:31 - rUv
+You can't become an expert overnight in anything, right?
+
+40:33 - Stuart Kerr
+You can't, even though I spent three all-nighters with your stuff just in this past week. And it's unbelievably cool, but I'm not running it correctly, which is why I need to talk. Cause I got four different applications going and building, including that ultimate travel agent and all kinds of things that I think would be really amazing uses of Rue Vector.
+
+40:57 - rUv
+It is. I think there's all kinds, anything that needs to learn and get better.
+
+41:01 - Stuart Kerr
+That's it. And I'll give you one that was interesting is I built a website for a buddy who runs a hair salon. And I said, would it make sense to Rue Vector for this and it said sure I'll use it to do all of his SEO behind the scenes automatically linking in all the page rank and all the Google information and I'll automatically build a system that revisits and creates new pages for him on a weekly basis and takes him up the stack ranks against all his competitors.
+
+41:37 - rUv
+Take it a step further, you can simulate and monitor all the competitors in real time. So not only can you optimize for your competitors, so let's say you've got a list of your top 100 competitors. It can then say every night, every hour, all the time, monitor those competitors for any changes in their site rankings, in their site tree, XML or whatever. Whatever it needs to do and constantly improve, copy. If they do a blog post on a certain topic, create a blog post on that certain topic. If they suddenly rank in a new category, well, do whatever you need to do to rank in that same category.
+
+42:20 - Stuart Kerr
+Okay, that's what I need to talk to you about doing, because that's exactly the kind of stuff I want to do. I did the poor man's version of that with PageRank, updating on a daily basis, all the Google information, the keywords, and set it in and said, go to town. It built three microsites. It queued up 30 other pages to add to the microsites on a weekly basis via GitHub issues that'll ping up and add the microsites and also point back to him. So I did everything I could think of, but you obviously know 10 times more.
+
+42:54 - rUv
+Operationalize it. Knowing is great. Yeah, and have it so it executes.
+
+43:00 - Stuart Kerr
+Yeah, I think that's what I, I tried to do and I got most of the way through, but didn't quite. Hey, he's back.
+
+43:07 - Mak Allen
+Mark and I are Wi-Fi on the whole property.
+
+43:10 - Stuart Kerr
+Matt, he needs your LLM API key.
+
+43:15 - Mak Allen
+What do you mean by LLM?
+
+43:18 - Stuart Kerr
+Open router, Grok, whatever you're using.
+
+43:21 - rUv
+Anthropic, whatever. There's no LLMs in here. You're basically limited to some of the things you can do, especially with agents. You have no way to operate operationalize your agent.
+
+43:33 - Mak Allen
+Ah, um, okay, let me set that up. I don't have an open router.
+
+43:38 - Stuart Kerr
+At least give them your Anthropic.
+
+43:43 - Mark Allen
+I do here. Let me let me get let me open router one.
+
+43:46 - rUv
+Yeah, just just add it to the secrets. And I can grab that later. But this is your, you You did a good job here. So what I did while you guys were away, just to recap, I validated all the API keys and make sure that works. Then I took your functional specification and now I'm making a technical specification. So just functional means what does it need to do, right? And you've kind of amalgamated a lot of technical specs along with it, but now I'm doing an implementation plan that basically says, here's what I need to build. And then at the very end, I added a simulation component that would allow us to functionally simulate the entire environment. And what that'll do is that'll find us the bugs. So it'll operationalize the sort of agents. So as it goes through the process, it won't just say, hey, we're done. It'll actually run the damn thing in a very granular form and say, not only is it done, here are your benchmarks for how good it is and how fast it operates. And what it can do. Here's your quality, gates, unit tests, here's your tech stack. Tech stack's pretty straightforward because we gave it all the API keys. So...
+
+45:09 - Mak Allen
+The open router API key has been added.
+
+45:11 - rUv
+Yeah, I saw it right here. See, it says reload to apply. I'm not going to do that just yet. All right. Success Criteria, 95%, I prefer Why 95? And there's no plus on 100%, we'll do that.
+
+45:33 - Stuart Kerr
+What's P95
+
+45:38 - rUv
+P95 is the latency in the top 95 percentile for latency for that particular API. It means it needs to be as fast as you can possibly get.
+
+45:48 - Stuart Kerr
+Got it.
+
+45:50 - rUv
+Zero HIPAA compliance. We could create a HIPAA compliance tool of some sort as well, but this looks pretty good for our spec specification, voice scheduling system.
+
+46:01 - Stuart Kerr
+Is there a lot of extra weight to make this HIPAA by design up front, or is it not worth doing in an MVP?
+
+46:07 - rUv
+It is HIPAA compliant up front. And Mak did a great job of outlining the requirements on that. So we get that immediately.
+
+46:16 - Mak Allen
+architecture was baked into the functional requirement.
+
+46:19 - Stuart Kerr
+So zero trust makes it HIPAA compliant?
+
+46:24 - rUv
+Compliance is kind of like GDPR. It's the way you handle private information. But zero compliance, zero trust is a really good stance for it. It's just not a requirement of This looks really good. You did a really good job here, man.
+
+46:47 - Mak Allen
+This is exactly, this is, this made my specifications way easier to build because you've done really functional requirements by through clarification questions.
+
+47:01 - rUv
+This is much better. Now, once we have the MVP V1, then we'll do V2 and, and then we can start layering each and everything that we want to do on top of what we have as a solid foundation. And this, this This is going to create a really nice solid foundation. All right, so we have architecture. And if you can tell, the foundation is all the stuff you put in as keys, right? So it knew exactly what you wanted because I validated it and know that all that stuff works. Now, while that's running, I'm going to go back here. And I'm just doing a... I'm just doing a quick simulation. So I'm creating synthetic retail webhooks. I'm faking your entire environment.
+
+47:55 - Mak Allen
+What do you mean by faking the entire environment?
+
+47:58 - rUv
+Well, I'm not using actual real webhooks. I'm kind of simulating it in a local environment. Yeah, so this is basically creating a sort of synthetic test to an operational test. Like we don't have Gemini or anything like that here, but this would allow us to sort of see how it would work without having any real web access.
+
+48:20 - Stuart Kerr
+Has the simulation always been here? Is that new functionality you've recently added to Cloud?
+
+48:24 - rUv
+No, I literally published that this morning. It's this. So what this does is generate synthetic data. So the synthetic data allows me to fake it, right? And it'd be complex synthetic data.
+
+48:51 - Stuart Kerr
+And that's already built into Cloud Code.
+
+48:55 - rUv
+No, I told it to use it.
+
+48:59 - Mark Allen
+I missed where, yeah, we were off for a little bit. I missed where you said to add. How do you add, what's the command to add a gentic synth?
+
+49:07 - rUv
+I said include, I told it to include it in the last step somewhere rather. Here it is.
+
+49:17 - Stuart Kerr
+Using NPMR vector gentic synth.
+
+49:21 - rUv
+That's also a nice first step for getting you guys to start thinking about using some of the self-learning capabilities. We're not directly using it, but we're using it specifically for the synth. The simulation components and then it'll be trivial to start adding more. Then once we simulate it, then we operationalize it, then we can have self-learning integrated relatively easy.
+
+49:42 - Stuart Kerr
+That might be a B2 thing.
+
+49:45 - rUv
+B2 as in tomorrow, yes. This is phase 8 simulation and system simulating. It generates synthetic data, simulates multi-agent interactions, validates system behavior, and identifies edge cases. So this is essentially allowing, okay, so now what we're going to do is, okay, so now we're going to say something, spawn swarm using ReasoningBank and implement the MVP v1 fully, test, fix, bench.
+
+50:29 - Mak Allen
+initialize the reasoning bank? Why wouldn't we use AgentDB here?
+
+50:40 - rUv
+You are using it. It's integrated into Clubflow.
+
+50:49 - Stuart Kerr
+Will it automatically use the coding agents?
+
+50:55 - Mark Allen
+You don't need to tell it to use AgentDB anymore?
+
+50:58 - rUv
+It never acts. You can, if you want to use more advanced features, but I don't need, this is relatively simple.
+
+51:06 - Stuart Kerr
+And what is telling it to use the reasoning bank do?
+
+51:09 - rUv
+Gives it structured reasoning. So it just makes it think better. Before I do, what I'm going to do is I'm going to, I'm going to go here and I'm going to go here and just get, give you the, give you the file. All right, commit and push. Now, what I would normally do here is create a new branch.
+
+51:37 - Mark Allen
+Sorry, real quick, Ruv. Using these source controls, so use that source control instead of Cloud Code to commit and push. When you do it, there are two different things that you were pressing that I haven't used this way of doing source control. Can you just show that again a little slower?
+
+51:55 - rUv
+This button generates a description of the commit. I'm just too lazy to type the description. You can never do a commit without doing a message. That created the message, then I just committed it directly to the main branch. I'm using the main branch here because there's no other branches, and I just want to get you guys rolling quick. Now, Reasoning Bank skill. I told it to use the skill. I didn't say directly, but the Reasoning Bank Skill basically allows it to understand how the Reasoning Bank system works under Skills, Reasoning Bank, AgentDB. So rather than telling it to use AgentDB, the Skill just knows how to use it. This is a rudimentary version of RooVector. RooVector is better, but I haven't upgraded Cloud Flow to use it yet. So this is a good starting point. This basically improves the coding quality. All right, now it's a relatively small project, so you notice it only decided to do, how is it gonna do? Four agents, I guess. So yeah, it only needed four agents in this scenario, because it's a tiny little project. So any more than that would probably be an overkill. So it did an agent for Next Health, it did SMS, Stripe, and the other two. Does this make sense?
+
+53:18 - Mak Allen
+I believe it decided to call 10.
+
+53:21 - Unidentified Speaker
+Oh, 10.
+
+53:22 - Mak Allen
+Where do you see that? When he spawned it? Claude flow gave a message saying it was hierarchical. And yeah, 10.
+
+53:30 - rUv
+Okay, even better. So yeah, this is where he saw it. Okay, nevermind my small agents, it's gonna do a lot of them. This will this will be done in literally 15 minutes.
+
+53:49 - Stuart Kerr
+And it'll be done with the application and tested and ready and simulated and good to go.
+
+53:56 - rUv
+So this is how I do autopilot. We just spent 58 minutes of prep to get to the autopilot.
+
+54:08 - Stuart Kerr
+No sweat. That was brilliant.
+
+54:10 - Mark Allen
+Yeah, because you can't do autopilot if it's all those Those things aren't connected and work and validated.
+
+54:17 - rUv
+So now you've got a really nice structure to follow. We started with the plans that Matt gave me, which were these four or five files here. And then once I had those plans, then I went and I created a architecture based on what I know we need, and I proved that it works. I don't want to get in the point where I discover later it doesn't work and then the thing chugs away on a bad API key. So we know those all work. Once I knew everything worked, I created the architecture that it could refer to functionally, the API verification, so it knows how to make the request. Then once I did that, then I create MVP2. This is this functional implementation that uses my Mark protocol, and this is what guides the autopilot. So it looks like the seven agents are the implementation agents. Then it'll go and probably do a few more agents later for simulation near the end. But yeah, it...
+
+55:24 - Mark Allen
+Hey Ruf, was there a reason why we didn't go through and like last session, we actually with retail, while we built the agent, were you not concerned about that with the Next Health API, that it was actually gonna be able to work properly here?
+
+55:44 - rUv
+We did that. I was concerned. That's why I tested it. Yes, 100% was concerned that it wasn't gonna work.
+
+55:49 - Mark Allen
+You just tested the call to the API, but you didn't...
+
+55:52 - Stuart Kerr
+Yeah, you didn't hook it up and wire it in and do what you did last time when you tested adding the car to the... No, no, no, I didn't.
+
+56:02 - rUv
+The system will do that later. I wanted to know that I could connect to it and that the API was functional. The nuance of the specifics, I'm going to let the swarm figure that out.
+
+56:12 - Mark Allen
+It's going to figure out of that whole API, which is this huge API, which ones to use for this system.
+
+56:19 - rUv
+That's exactly what's going to happen. Here's the architecture. This is made mostly for the AI to figure out later.
+
+56:31 - Stuart Kerr
+Can you tell it to auto push when it's done? So that way, because you're gonna log off and they're gonna wanna make sure that I'm finished, right? And you're not pushing, right?
+
+56:46 - rUv
+The detail. There we go. So when, so now the swarm is still running, but once the swarm is done, it'll, it'll make sure everything's functional and it'll create a GitHub issue. And, uh, you should see that. So I'm going to let this run for awhile and, and, uh, yeah, I got to jump my next call, but this is absolutely amazing. This will, this, this will run for probably an hour or whatever it needs to maybe less than an hour. This is not complicated, but, um, I've included self-testing a complete simulation of the entire environment.
+
+57:50 - Mark Allen
+Just absolutely magical, incredible. Thank you. We have a session tomorrow.
+
+57:58 - rUv
+Keep an eye on it. Once you see the GitHub issue, you'll know that it's done. I'm using main. Going forward, create branches most likely. But for now, since there is no code, I'm going to use the main. But you can see it's already cranked out 21 files. It's blasting its way through this.
+
+58:17 - Mak Allen
+When you're kicking off the swarm, sorry, sorry, last question. How do you make sure that it's not creating a bloated looking file structure?
+
+58:27 - rUv
+I gave it my Mark specification and skills.
+
+58:33 - Stuart Kerr
+And Mark will keep it clean and keep the directory tidy?
+
+58:37 - rUv
+Some of it does, but also you need to come back in and just clean it up sometimes. This is the first thing I did when I went into your repos. I moved it into some subfolders.
+
+58:51 - Mark Allen
+See you tomorrow.
+
+58:54 - rUv
+It's what you want, I think. I'll make sure that it works to your specification. You'll have something you can see here in the next hour or two, and you can play with it. Because you're using those secrets, It should just magically work. But this is a good, this is your template for autopilot going forward.
+
+59:15 - Mak Allen
+This is a super.
+
+59:18 - Stuart Kerr
+And Ruv, I reach out to you at BC at Ruv.net.
+
+59:21 - rUv
+That's my wife. My schedule is crazy over the next few weeks. Everyone wants to apparently meet before Christmas, but she could figure something out.
+
+59:34 - Unidentified Speaker
+Thank you.

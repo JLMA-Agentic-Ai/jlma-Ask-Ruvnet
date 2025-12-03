@@ -1,0 +1,274 @@
+00:20:34	Patrick's Day AI Assistant:	With permission from the meeting host, Day AI will capture notes and action items. To remove, type:
+
+/day leave
+00:20:38	agent's Loom Notetaker:	This meeting is being recorded by agent  using Loom AI. Loom will store the recording and generate a recap and transcript, learn more at the help center.
+
+To start recording your meetings, connect your calendar at https://loom.com/meetings.
+
+Use chat commands /stop, /pause, or /resume to manage the meeting recording, /delete to delete the recording, or /help for more commands.
+00:20:38	agent's Loom Notetaker:	View the AI-powered notes generated from this meeting here:  https://agentics.atlassian.net/wiki/spaces/~7120203441d4dcce544a798d96ae198155a12a/pages/33882127/Agentics+Live+Vibe+Coding+2025-08-21?amn-referral-source=meeting-zoom
+00:22:24	Fireflies.ai Notetaker Peter:	Talk to Fireflies: (Web-search enabled) • Say: Hey Fireflies how can you help? • Type: /ff help to get started.  View real-time notes and transcription for this meeting here: https://app.fireflies.ai/live/01K31NJVS02WNBNECTEK5Z2ZPE?ref=live_chat
+00:25:32	read.ai meeting notes:	Mondweep added read.ai meeting notes to the meeting.
+
+Read provides AI generated meeting summaries to make meetings more effective and efficient. View our Privacy Policy at https://www.read.ai/pp
+
+Type "read stop" to disable, or "opt out" to delete meeting data.
+00:25:33	Nick Ruest:	It's Hackerleague !!!!
+00:25:43	Robert Ranson:	Reacted to "It's Hackerleague !!..." with ❤️
+00:25:43	Dragan Spiridonov:	Reacted to "It's Hackerleague !!..." with ❤️
+00:27:22	Jed Arden:	Something to potentially adopt: http://ants.aichallenge.org/
+00:28:32	Martin Gross:	So many AI notetakers, maybe we should have one centralized one for everyone to use.
+00:28:42	mondweep:	Reacted to "So many AI notetaker..." with 👍
+00:29:26	francy:	Reacted to "So many AI notetaker..." with 👍
+00:29:45	Jed Arden:	Replying to "So many AI notetaker..."
+
+Add it to flow arena.
+00:29:47	Michael Arnold:	joined late - what was this for? A gamified way to do hackathons using claude flow?
+00:30:01	Jed Arden:	Replying to "joined late - what w..."
+
+Or coordinate amongst multiple participants.
+00:30:18	Michael Arnold:	Replying to "joined late - what w..."
+
+cool!
+00:31:17	Gregg Coppen:	Looks cool!
+00:31:41	Gregg Coppen:	Reacted to "It's Hackerleague !!..." with ❤️
+00:32:54	Fred:	This could be used as a dashboard to see the swarm status
+00:33:37	Michael Arnold:	I have been working on a dashboard for swarm status using lovable and claude flow
+00:34:10	Fred:	I have been working on a dashboard for swarm status using lovable and claude flowcool
+00:34:18	francy:	Reacted to "I have been working ..." with 👍
+00:34:55	Fred:	Replying to "I have been working ..."
+
+any GitHub?
+00:35:12	Michael Arnold:	I was just going to ask if any of the regular folks here pair program with new users. I feel like I'm not using claude flow to it's fullest potential. Any takers want to pair up on building out this swarm dashboard ? 😅
+00:35:35	Michael Arnold:	Replying to "I have been working ..."
+
+ya, I'll send it out in the discord later today and tag everyone
+00:35:47	Jed Arden:	Replying to "I was just going to ..."
+
+Maybe not this specific dashboard, but can hop on a call to build stuff in parallel
+00:36:20	Jed Arden:	Time to register Seraphina.
+00:37:08	Fred:	Replying to "I was just going to ..."
+
+I think this a cool feature definitely
+00:37:49	Jed Arden:	Replying to "I was just going to ..."
+
+https://github.com/jedarden/pose-detectionExample repo implementing computer vision in-browser. Prompt at the bottom.
+00:38:46	Michael Arnold:	Reacted to "I was just going to ..." with ❤️
+00:39:29	Michael O'Boyle - fractional cto - oboyle.co:	Reacted to "{B9397C16-ED65-42DA-B8CE-F4244CEB61F7}.png" with 😎
+00:39:30	Fred:	Reacted to "https://github.com/j..." with 👍
+00:39:33	Dragan Spiridonov:	Reacted to "{B9397C16-ED65-42DA-B8CE-F4244CEB61F7}.png" with 👍
+00:39:51	Fred:	Reacted to "{B9397C16-ED65-42DA-B8CE-F4244CEB61F7}.png" with 👏
+00:40:18	Michael Arnold:	@Jed Arden - this is what I need help with atm ^ It looks cool, I think. Just having issues with getting it live and not using Mock. My scrum master brain can only do so much lol
+00:40:18	Jed Arden:	Ohh this looks fun: https://battlecode.org/
+00:40:38	Jed Arden:	Replying to "@Jed Arden - this is..."
+
+I provide the prompt in the repo so you can deconstruct and repurpose for your needs.
+00:40:45	Michael Arnold:	Reacted to "I provide the prompt..." with ❤️
+00:41:10	Michael Arnold:	Replying to "@Jed Arden - this is..."
+
+I'll give it a shot! Cool if ping you on discord if I'm having issues?
+00:41:18	Jose Luis Martinez:	@rUv Have you compare the benefits of DAG vs HOLO Chains? Why DAG?
+00:41:39	Ocean Li:	Siblings
+00:41:39	Jed Arden:	Replying to "@Jed Arden - this is..."
+
+It's two-step: 1) Research -> Build the corpus that is used for generating the code2) Execute -> Use the contents of research to build the thing.
+00:41:44	Ocean Li:	Not brothers : )
+00:41:50	Saleem Bhatti:	Sistas
+00:42:09	Jed Arden:	Replying to "@Jed Arden - this is..."
+
+And sure, can ping me. I'm also not the only one with the answers. Place your question openly in the discord so others can also learn from or answer themselves.
+00:42:25	Michael Arnold:	Replying to "@Jed Arden - this is..."
+
+you're the man. Thank you!
+00:45:49	Dragan Spiridonov:	Count me in for Beta testing @rUv
+00:46:11	Gregg Coppen:	Reacted to "Count me in for Beta..." with 👍
+00:46:29	mondweep:	‘Swarm’ master is probably the evolution of the ‘Scrum Master’? :-) I am up for Beta testing too .
+00:48:39	Gregg Coppen:	Also be up for beta testing - this looks sweet
+00:51:42	Antoaneta Vladimirova:	I can try beta testing as well
+00:54:31	Nick Ruest:	I need Queen Saraphina to tell me if I'm making spaghetti lol
+00:54:39	Diego:	Reacted to "I can try beta testi…" with 👍
+00:54:45	Robert Ranson:	Reacted to "I need Queen Saraphi..." with 😂
+00:54:46	mondweep:	can we look at one of the active challenges or apps?
+00:55:17	Diego:	Will be happy to help with beta testing.
+00:56:29	Chris Barlow:	What did I miss?
+00:57:22	Jed Arden:	Replying to "What did I miss?"
+
+Seraphina Onlyfans /s
+00:57:40	Chris Barlow:	Reacted to "Seraphina Onlyfans /..." with 😯
+00:58:17	Chris Barlow:	flow-cloud?
+01:01:54	Diego:	“Flow Nexus”
+01:02:32	Martin Gross:	Reacted to "Seraphina Onlyfans /..." with 😁
+01:05:57	Macaulan:	Could you set up primary and back up models to use?
+01:06:12	Diego:	Agentic team-mates connect-up!
+
+https://www.linkedin.com/in/d-r-dison
+
+What’s your LinkedIn?
+01:06:42	Dan Lipsy:	http://linkedin.com/in/danlipsy
+01:06:55	Diego:	Reacted to "http://linkedin.com/…" with ❤️
+01:06:59	Diego:	Reacted to "Agentic team-mates c…" with ❤️
+01:07:06	Chris Barlow:	https://www.linkedin.com/in/cgbarlow/
+01:07:11	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:07:18	Fahad Arshad:	https://www.linkedin.com/in/faarshad/
+01:07:29	Nick Spisak:	https://www.linkedin.com/in/nicholasspisak/
+01:07:33	Dragan Spiridonov:	https://www.linkedin.com/in/dragan-spiridonov/
+01:07:59	Yemalin Godonou:	https://www.linkedin.com/in/yemalin-godonou-286076139/
+01:08:05	Ocean Li:	https://www.linkedin.com/in/quantoceanli/
+01:08:09	Jose Luis Martinez:	https://www.linkedin.com/in/jose-luis-martinez-abreu/
+01:08:32	Antoaneta Vladimirova:	https://www.linkedin.com/in/antoanetavladimirova/
+01:08:36	Michael C:	https://www.linkedin.com/in/michael-c-65a8167
+01:09:03	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:09:03	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:09:08	Bennie Reddin:	www.linkedin.com/in/bennett-reddin
+01:09:14	markruddock:	https://www.linkedin.com/in/markruddock/
+01:09:16	Diego:	Reacted to "www.linkedin.com/in/…" with ❤️
+01:09:21	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:09:52	Gregg Coppen:	https://www.linkedin.com/in/greggcoppen/
+01:09:58	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:10:18	Ocean Li:	Reacted to "{436E00ED-0ECC-4221-AFE8-11B3015172C3}.png" with 👍
+01:10:39	Imad Ez-zejjari:	https://www.linkedin.com/in/imad-ez-zejjari-data-scientist
+01:10:53	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:11:32	Chris Barlow:	Replying to "https://www.linkedin..."
+
+what's your email?
+01:12:02	Cornelius George:	Reacted to "{436E00ED-0ECC-4221-AFE8-11B3015172C3}.png" with 👍
+01:12:03	Jed Arden:	Replying to "https://www.linkedin..."
+
+@Michael C
+01:13:27	Cornelius George:	https://www.linkedin.com/in/corneliusmgeorge/
+01:13:51	Ryan Lisse:	https://ii.inc/web
+01:14:30	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:14:31	Michael O'Boyle - fractional cto - oboyle.co:	https://ii.inc/web/whitepaper
+01:15:20	Gregg Coppen:	Reacted to "https://ii.inc/web/w..." with 👍
+01:15:31	Chris Barlow:	there are several of these out there
+01:16:04	Chris Barlow:	Morpheus
+01:16:20	Ocean Li:	I will work on ruv-swarm again in the next few days, I want to add these to khive.
+01:16:28	Chris Barlow:	Reacted to "I will work on ruv-s..." with ❤️
+01:16:32	Jed Arden:	For anyone else: https://www.linkedin.com/in/jed-arden/
+01:16:41	Jed Arden:	I think I'm connected to many of you already..
+01:16:50	Martin Gross:	https://www.linkedin.com/in/martingrossfluxum/
+01:16:51	Imad Ez-zejjari:	Reacted to "I will work on ruv-s..." with ❤️
+01:17:03	Diego:	Reacted to "For anyone else: htt…" with ❤️
+01:17:12	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:20:17	Guy Bieber:	https://nanda.media.mit.edu
+01:20:28	Chris Barlow:	Replying to "I will work on ruv-s..."
+
+what are the pieces that interest you?
+01:20:45	Yemalin Godonou:	Use the paper from the nanda website
+01:20:49	mondweep:	In Sanskrit, "Nanda" (नन्द) primarily means joy, happiness, or delight. It can also signify prosperity, abundance, or a great achiever.
+01:21:02	Dragan Spiridonov:	Reacted to "In Sanskrit, "Nanda"..." with ❤️
+01:22:18	rvanrijn:	Reacted to "In Sanskrit, "Nanda"..." with ❤️
+01:22:22	Jonas Jaatinen:	Let's connect:
+https://se.linkedin.com/in/jonas-jaatinen-01158b131
+01:22:32	Diego:	Reacted to "Let's connect:
+https…" with ❤️
+01:23:28	Guy Bieber:	And not know what features it has or how it works.
+01:23:47	Nick Ruest:	But Ai can't write code lmao
+01:23:51	mondweep:	https://www.linkedin.com/in/mondweepchakravorty/
+01:23:56	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:24:01	Diego:	Reacted to "But Ai can't write c…" with 😂
+01:25:12	Ocean Li:	Replying to "I will work on ruv-s..."
+
+@Chris Barlow topology, as orchestration structure and real time pattern composition
+01:25:21	Ethan Allen:	https://www.linkedin.com/in/ethaneallen/
+01:25:40	Diego:	Reacted to "https://www.linkedin…" with ❤️
+01:27:24	Ocean Li:	Replying to "I will work on ruv-s..."
+
+@Chris Barlow the main point is  that swarm improves quality, and since now I can get khive go forever, doing quality improvements makes sense
+01:27:33	Jose Luis Martinez:	@rUv  Does Seraphena have Scarlett Johansson's voice?
+01:28:47	Ocean Li:	Lion is way easier to call 🙂, than seraphena, I call lion my brain child and AI CEO for my one human + agentic organization
+01:29:38	Jose Luis Martinez:	Reacted to "17e161a90b188cdd8e4caffc82f9ba79.gif" with 😂
+01:30:26	Guy Bieber:	Choices for technology used to be hard to undo. Now you can just tell it to rebuild it with an entirely different technology.
+01:30:37	Guy Bieber:	The cost of change is extremely low
+01:31:03	Jed Arden:	That also means we don't need meetings about tech stack.
+01:31:21	Fahad Arshad:	MCP is STANDARD! 
+
+But maybe open standard
+01:31:22	Jed Arden:	Cheaper to spend tokens vs take 8 people 2 hours at $100/hr/person
+01:31:40	Guy Bieber:	Reacted to "Cheaper to spend tok..." with 👍
+01:31:47	Ocean Li:	MCP is pretty flawed to be honest…
+01:31:51	Guy Bieber:	Reacted to "MCP is STANDARD! 
+
+B..." with ❤️
+01:32:07	mondweep:	Replying to "Lion is way easier t..."
+
+we want to have an AI CEO for the London chapter @Ocean Li - Rocky has been a big votary of it. We would love to deploy one for the London chapter
+01:32:07	Diego:	Replying to "MCP is pretty flawed…"
+In what ways?
+01:32:17	Guy Bieber:	But it is a minimum standard that got rid of custom tool integration with LLMs.
+01:32:30	Ocean Li:	Security and control, mainly. Maybe a lot better now, but that was my assessment of the protocols in November
+01:32:50	Guy Bieber:	I think LLMs have created a world of fuzzy interfaces. They can understand how to use practically anything.
+01:32:52	Diego:	Reacted to "Security and control…" with 👍
+01:33:27	Guy Bieber:	This is why we don’t need lots of standards
+01:33:35	Sergio Morais:	Reacted to "In Sanskrit, "Nanda"..." with ❤️
+01:33:55	Ocean Li:	One thing with MCP that makes me feel most fuzzy about is
+01:33:55	James Urquhart:	@Guy Bieber I wonder if that is true for discovery, but otherwise I think we are going that way, for sure.
+01:33:58	Ocean Li:	Prompt injection
+01:34:09	Guy Bieber:	Smart MCP = an MCP that uses a model
+01:34:25	Ocean Li:	Like, third party prompt is literally  part of design....
+01:34:48	Guy Bieber:	Replying to "@Guy Bieber I wonder..."
+
+We already have discovery, because the AI can find things on the internet.
+01:36:06	Guy Bieber:	Replying to "@Guy Bieber I wonder..."
+
+AI can’t easily discover services. Which was the idea ruv had with a web file that exposed your services.
+01:36:08	Diego:	Parallel Evolution
+01:36:11	Mathew Beane:	This is not uncommon, look at the radio two people invented independently, same with calculus.
+01:36:24	Dan Lipsy:	ChatGPT becomes the story spinner
+01:36:38	Guy Bieber:	We have a seed of an idea, that someone has expressed better and then the AI grabs it.
+01:36:50	Bennie Reddin:	Social Media Echo Chambers...
+01:36:56	Guy Bieber:	Reacted to "Social Media Echo Ch..." with 👍
+01:37:13	Mathew Beane:	There is interesting thought around this that ideas may not be ours, that the information which allows the conclusions is objectively always shared.
+01:37:26	Michael O'Boyle - fractional cto - oboyle.co:	Reacted to "There is interesting..." with 💡
+01:37:28	Dan Lipsy:	“There is nothing new under the sun”
+01:37:46	Diego:	Reacted to "“There is nothing ne…" with ❤️
+01:38:08	Guy Bieber:	Imagination = Temperature 2.0
+01:38:18	Robert Ranson:	Reacted to "Imagination = Temper..." with ❤️
+01:38:19	Antoaneta Vladimirova:	Reacted to "Imagination = Temper..." with ❤️
+01:38:26	Chris Barlow:	Replying to "MCP is pretty flawed..."
+
+feature not a bug?
+01:38:30	James Urquhart:	Replying to "@Guy Bieber I wonder..."
+
+That’s what I am saying. AI will need some predictable information shared in order to properly discover and ascertain whether it should use an external agent. Ruv shared his reviews page that he mentioned could be used by agents, for example, but what about stream volumes, etc.? I’m just expressing what my gut tells me, I could be wrong, but I think agents will generate pages that answer frequently asked questions from other agents, and that will start to look more “standard” to new agents.
+01:38:31	Jed Arden:	@David Brace https://www.searchenginejournal.com/google-revisits-15-unseen-queries-statistic-in-context-of-ai-search/543160/
+01:38:46	Scott Kennedy:	execution
+01:39:06	Guy Bieber:	Replying to "@Guy Bieber I wonder..."
+
+We kind of don’t even have that for open REST interfaces.
+01:39:19	Mathew Beane:	LLM does not know anything until you ask for it it is just an almost random matrix of signed numbers between -1 and 1.
+01:39:20	Chris Barlow:	Reacted to "This is not uncommon..." with 👍
+01:39:43	James Urquhart:	Replying to "LLM does not know an..."
+
+That’s true.
+01:39:53	Mathew Beane:	In the same way a marionette cannot move, an LLM cannot think.
+01:40:05	Jed Arden:	Replying to "@David Brace https:/..."
+
+Google PM I know explained to me that ~80-85% of search queries are served results. The implication being that the search index is precomputed, no longer created live.
+01:40:35	Nick Ruest:	Ruv once said we'll just "Hallucinate it into reality" funny at the time, but it's a real thing
+01:40:49	Tiberius Dourado:	Reacted to "Ruv once said we'll ..." with 😂
+01:40:53	Diego:	Everything has already been discovered. (The standard model.) Except for integrating Gravity, of course.
+01:41:04	Guy Bieber:	Reacted to "Everything has alrea..." with 🤣
+01:41:11	Guy Bieber:	Gravity is overrated.
+01:41:16	James Urquhart:	By, all. Another interesting session.
+01:41:37	Diego:	Reacted to "Everything has alrea…" with 🤣
+01:41:43	Diego:	Reacted to "Everything has alrea…" with 🤣
+01:41:49	Diego:	Reacted to "Gravity is overrated…" with 😂
+01:42:11	Guy Bieber:	“My camera/brush is the internet” - Ruv
+01:42:40	Dan Lipsy:	Oh, but wouldn’t that be cool? I just might find an extra organ or embedding that it dreams up on the spot 😄
+01:42:46	Mathew Beane:	A diffusion model is literally built on mutation(ie hallucination).
+01:42:50	Antoaneta Vladimirova:	Reacted to "“My camera/brush is ..." with ❤️
+01:43:03	Mathew Beane:	Training also often follows a mutate and quantify pattern.
+01:43:08	Guy Bieber:	While I was in there I replaced 3 other organs with a more efficient system. You are welcome.
+01:43:22	Dan Lipsy:	Reacted to "While I was in there..." with ❤️
+01:43:34	Ocean Li:	Gotta hop, today is cool
+01:43:49	Dan Lipsy:	Yeah, I think there are red lines. But theoretically I wanted bluetooth capability to monitor my heart if it had an MCP server
+01:43:52	Guy Bieber:	Oh and by the way I changed your DNA. Your are immortal and sterile now. Enjoy that.
+01:44:19	Chris Barlow:	Reacted to "Oh and by the way I ..." with 😂
+01:44:52	Mathew Beane:	your limbic system has been 1-shot, sorry about that.
+01:46:49	Macaulan:	500 for 2hrs ya?
+01:47:05	Aaron Uitenbroek:	9/9 and 9/23.   I’m in already for 9/9 Ruv.  Looking forward to it.
+01:47:43	Diego:	Beta Testing!
+01:47:46	Macaulan:	I'd be interested in beta testing
+01:48:05	Nick Ruest:	@Jed Arden I'd like to participate in the beta group ... Thanks
+01:48:18	Diego:	discord.agentics.org

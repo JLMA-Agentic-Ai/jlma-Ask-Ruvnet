@@ -1,0 +1,629 @@
+Ruv Coaching
+Mon, Nov 10, 2025
+
+0:00 - Mark Allen
+that we had invited you to. And we took people on an AI app building adventure. So we started out doing some vibe coding, and then we went into Claude Flow. And these are non-technical people here that, effectively, they're all business leaders. And five out of five people, we got their agentic swarms going and ran them overnight. So we basically Basically we built a spec and then built an implementation plan. In each case had the goalie agent do that and build the implementation plan using the advanced swarm skill. They all ran overnight. They all produced something pretty darn good. Stuart was there. He did quite a bit during the retreat. And yeah, it was awesome. So it was a really, really cool experience. So today we have not, so because we were there basically, and then had some other client work for a week, we haven't made a ton of progress in Mak's app. I'm not sure if he's got anything, but we've got a couple other things that we were thinking about. But first of all, Mak, I want to give you an option to ask questions. Any questions or pass.
+
+1:29 - rUv
+I have nothing right now. Pass. Actually, it's, you know, I'm like a machine. So, you know, the week, the week you've been gone, I probably created like 15 projects. And I'm not even, I'm not even like exaggerating. There's, there's a really, there's a really cool new feature that I've been mildly obsessed with that you you guys would probably be all over. Yeah, it's the new cloud code web capability. And so, you know, like a big part of what we do is having to use VS Code and Codespaces and this and that. That's now all completely built directly in, and they're giving you $1,000 free for the next week or so. So, you know, just so you can see here, like I'm doing my various builds and tests, but in this case, so I created a new system, it's called agentic jiu-jitsu, but that's not the important part. Now, if you want to go in here and you want to run something. So, I've got different environmental variables. So, these would be like Open Router, Google Gemini, you know, those types of services you're doing. You can go in here and you can do something like install npx agentic flow and the mpx-agent-db and create a self-learning, I don't know, research system. In this case, let's use my research agent as well. We're going to go in here and we're going to add the mpx-research-swarm and use the new K2Kimi model our model from Open Router. That's it, right? So we'll click that. So now it's going to use my agentics swarm, it's going to use my integration with Open Router, it's going to do self-learning. I gave it a really quick little description, not a whole lot, but it's going to do all that. This used to have to happen in Cloud Code on your VS Code. Now, you just go here and do it and it's spectacular. Like, it's just crazy what you can do. So just while that does this thing, let me show you what like how crazy it actually is.
+
+3:56 - Stuart Kerr
+So just to back up for a second. So you're saying this is using cloud code web and you've loaded?
+
+4:04 - Mark Allen
+No, it's something different. It's what it's not called code chatbot.
+
+4:09 - Stuart Kerr
+It's it's no, no, I understand that this is cloud code web. Yeah.
+
+4:15 - Mark Allen
+How do you how do you get to cloud code web, you go to the cloud slash code.
+
+4:21 - rUv
+So in if you go to cloud AI, and you go on the left hand side, you should see the option for code. Yeah. So you can do like your deep research. And right now for me anyway, it's free. I think it's free for anyone that's on a pro max account. Which is which is great. So it doesn't count against your resources. Then And you can build just the craziest things with it, right? So in this case, it's gonna do its thing. I'll let it run for a while like anything else. It's searching for the models. Then it'll install the, because I've already got different components, it can use my cloud flow. Or in this case, I'm using the agentic flow because it uses alternate models, like open router models, which work great. And I've got my research. Which will do the deep research. This sort of might enhance version of Goalie. And it does it all within this. So I can do all kinds of crazy things. Like I can do, I did a DNA analysis system the other day just for the hell of it.
+
+5:27 - Mark Allen
+Wait, so you just, pause for a second. You just created a new version of Goalie called Research Swarm?
+
+5:33 - rUv
+Yeah, I did. Yeah, so that's, again, it's like Research Swarm. So Research Swarm is, is basically doing various types of grounded research. You can verify, you can do the encryption, all that kind of stuff. But this runs essentially directly in here. So in this case, I asked if you use- Are these in flow or are these separate GitHub instances? Well, I created a generic GitHub. Nothing in it is really required. Then I chose that. So in this case, I can choose of my GitHubs I've got. But in this case, I created just basically an empty GitHub that I use just for this sort of thing. Then I told it to install my packages. You can get to install any packages you want. And here, I'll just copy and paste that into the text area for you guys. Oops, I hit the wrong button. Let's go back up.
+
+6:32 - Mark Allen
+I'll copy this. Did you install Cloud Flow into this already? Or this is just an empty GitHub that you're just installing?
+
+6:38 - rUv
+I installed nothing. This is an empty GitHub.
+
+6:42 - Stuart Kerr
+And is that what you would recommend us to do, not install Cloud Flow?
+
+6:47 - rUv
+No, I'd recommend you install Agentic Flow. Let me copy this for some reason. But yeah, just tell it what you want to install. And like this, I put it in the text area. And it'll install it. Make sure you set up your environmental variables. So you can go and create a new environment, choose the full network access, that's what I'm using, and you can add your keys here. So you probably want to include your open router API key equals, whatever, and you put them on different lines. You can call it your keys. Once you've got your keys in, specifically open router, Google, whatever it is you want to use. And you pop those in there. And then that gives it access to those keys. And then you're basically saying, use these tools and go figure it out. Wow.
+
+7:47 - Mark Allen
+OK.
+
+7:48 - Stuart Kerr
+And we should be using this.
+
+7:50 - Stuart Kerr
+What's the use case for when we instantiate Cloud Flow and when we try to use this alternative approach?
+
+7:59 - rUv
+When you did that demo the other day, this would have been more accessible for those folks. If you're not familiar with VS Code and the complexities of code spaces, no VS Code or code space is required here. But if you're doing front-end related things, things where you need to run a web server or another, you probably want to use VS Code. But if you're looking at doing complex deep research or creating middleware or algorithms, Here, let me show you some of the things I build in NPM.
+
+8:33 - Stuart Kerr
+You're saying if there's a UI on it, this isn't the right environment?
+
+8:37 - rUv
+No. You wouldn't want to use a UI. But let's be honest.
+
+8:40 - Stuart Kerr
+Realistically, Mark, that's not applicable to most of our clients, right? Because 99% of them have a supply-based solution.
+
+8:49 - Mark Allen
+A lot of things we do day-to-day, it might be.
+
+8:51 - rUv
+Yeah. Most things don't need a UI, right? UIs are rudimentary. You can crank those out in minutes. Every logic, for anything that's valuable, like logic, middleware data, you know, things like that, that's where you'd want to use it. Like you can just use lovable or something to crank out a UI, right? That's there's not a lot of value there. But if you're looking to create a self learning version control system for AI agents that uses quantum based encryption, that's the sort of stuff that I'm building with it. Right. So I built this almost entirely using that system. Now I had existing code, so I plug in stuff I've already had, but in this case, I completely re-imagined how a coding system works, and I built it all just in here.
+
+9:42 - Stuart Kerr
+So right now, your stuff requires Cloud Code to run underneath, right? No, no question. You mentioned...
+
+9:50 - Mark Allen
+Not that it's built, just to build it.
+
+9:55 - rUv
+Sorry, I'm not sure I understand the question. This, this is cloud code web, it just doesn't require like, like a code space or...
+
+10:02 - Stuart Kerr
+Right. Sorry, let me finish the question. Yeah. Cloud flow requires cloud code underneath, because it acts as the orchestration layer, cloud code acts as the doer layer, and cloud flow tells it what to do. You mentioned a minute ago, Kimi K2, I was going to ask you about that, because I was playing with that last night. And would you ever take that, you know, Claude flow, and try to get it to run on top of something like a Kimi K2?
+
+10:34 - rUv
+That's literally what you're looking at. Okay, that's specifically what I asked it to do. So I'm not using cloud flow. I'm using agentic flow, which allows me to use alternate models. But yes, 100% That's exactly what it's doing.
+
+10:52 - Stuart Kerr
+OK, then let me clarify the other question. Is a Gentic Flow 100% of what Cloud Flow has, but it has other capabilities because it works with other things? Or is it a subset basically equal to the goalie agent on Cloud Flow that you have now enabled to work with Open Router and other underlying LLMs?
+
+11:13 - rUv
+So a Gentic Flow is essentially where Cloud Flow is Cloud specific. Works with Cloud Code CLI, Agentic Flow is independent of Cloud Code and works with any router and adds all the benefits and then a whole lot of other systems. So it allows you to run things perpetually. So where Cloud Code is you interacting with it kind of like what you're seeing here, back and forth, you're chatting with it and doing it. What the Agentic Flow system does is allows you to create an agent that runs and does basically the same things you're doing in cloud code independently of cloud code forever. So if I have, let's say a trading bot or something that I need to run perpetually, then I can set up these agents and get it to just to run and whatever it needs to do, it needs to do. So if someone does a phone call and an agent needs to be spawned and it needs to go figure out and do a series of steps, you're going to use agentic flow to do that. If you're using, if you want to just build something and kind of interact with it back and forth, you know, kind of chat like experience, flow for that.
+
+12:17 - Stuart Kerr
+Okay, and are they basically one-for-one swaps?
+
+12:21 - Mark Allen
+Do they include all the same libraries, is what you're saying? Yeah, that's what I'm asking.
+
+12:26 - rUv
+Yes, so the structure is, I use agentic flow in Cloud Flow, but it's separated so you can use it independently of Cloud Flow. So in this case, you can do federated agents that spin up for five seconds or forever. You have self-learning systems, you can use local rewrite edits to make fast code changes, all kinds of stuff, right? You can use different models, Google, whatever, local models if you want to save a buck. So you get different providers, you can create different agents, you can use cloud-based agents.
+
+13:04 - Mark Allen
+All the same agents in both.
+
+13:06 - rUv
+Or you can create your own, yeah, exactly. So you can create agents that are specifically tailored to whatever task it is you want to do.
+
+13:15 - Mark Allen
+Yep. But out of the gate, it has the same agents, the same pre-built agents in both systems.
+
+13:22 - rUv
+Yes. Correct.
+
+13:24 - Unidentified Speaker
+Okay.
+
+13:25 - rUv
+There's a lot of stuff I know. It's a little bit overwhelming, to be honest.
+
+13:29 - Stuart Kerr
+Listen, it's all very cool. It's just sometimes it takes a minute for us to wrap our head around what it is you're looking to tell us so we understand the implications and the opportunity of this. Because this This is very powerful, but I confess I don't have a clear sense of how or where to use just yet, but I think I'm excited by the possibility of it.
+
+13:50 - Mark Allen
+Let me try to summarize it as I'm understanding it, is we want to build an app that is just like a standard app or any standard stuff. Formally, we would use Cloud Flow, but now he's showing us a different way with Cloud Code, web and some of these other components where we can use the agent swarms and so forth to even build apps now. Let me say middleware sorts of stuff, maybe not the front end of apps.
+
+14:23 - Stuart Kerr
+That was my question. How do you build the front end using this agent flow scenario on top of, say, Google Gemini or something else so that it leverages? Can you point it at something and say, Use this to build the front end.
+
+14:38 - Mark Allen
+We've done several examples of that, right?
+
+14:41 - rUv
+Yeah, so that's what I'm showing you, right?
+
+14:43 - Mark Allen
+You go into Lovable. This was built in Lovable, this front end, right?
+
+14:46 - rUv
+Yeah, you go into Lovable, you do whatever you want it to do, and you get it looking. Lovable and the one you guys are using, like Dream, something or other, those are fairly rudimentary when it comes to actual capability. It looks good, but it doesn't do anything, right? Which is the fundamental flaw of these types of front-end builders. So you can mock it up, get it looking the way you want it. Then you'd it to your GitHub, and then you'd open up that GitHub called whatever it is, and then you'd say, basically, make it work. Use agentic DB, here's some hosting keys, deploy it to Google, whatever.
+
+15:26 - Mark Allen
+A couple of things to interrupt you right there, just to understand. So number one is in lovable, you don't connect it to supabase.
+
+15:33 - rUv
+your approach you do that inside I would I would connect it to base exactly and then I'd include the super base in the environmental variables here you know sorry you would connect it to super base and lovable or you would not I wouldn't I wouldn't use the cloud option but I would definitely click connected super base then I then I would then I would include the variables here yep yeah the base the super basic yeah okay okay whatever equals and that now now this is system's got access to your database. Now, if I wanted to deploy it, let's say, to Google Gemini, I might include my Google Gemini key here. And let's say I want to use a voice system, I might include 11 labs, and I might include it there. And then it's all connected, right? Yep.
+
+16:20 - Mark Allen
+OK. OK. So rather than, so you still have to, you just find lovable to be a little bit faster and easier to do the super connection at the front end.
+
+16:35 - rUv
+Actually, if you want, we can just do it quick and I can show you what that looks like if you want, unless there's something you want to cover.
+
+16:46 - Mark Allen
+Well, there's a couple of other things definitely to cover. Let's come back to that. You would connect it to SuperBasin level, then you move it over, and then when you move it over, there's two approaches, right? We could basically pull down the code as a zip file, put it into the project, or we can connect it to the GitHub repository. But which one is better because either the doesn't have Cloud Flow installed in it. So you'd pull down that GitHub repository and then you'd install Cloud Flow. No, you can call it Gentic Flow.
+
+17:22 - rUv
+And you'd basically tell it to use that for learning and swarms and things like that. And that would likely use open router for the requests. So rather than using the cloud code, which you sort of kind of using here, but it's separate. It's not, it doesn't work exactly the same way as the CLI does. So you have to invoke it as a secondary step.
+
+17:47 - Stuart Kerr
+So you just use a cheap model like Kimi K2, which is- if we already have an all-you-can-eat paid solution with Macs, isn't it easier to just...
+
+17:58 - Mark Allen
+Oh, for the end-user app.
+
+18:00 - Stuart Kerr
+Yeah, for the end-user. Even for the building part.
+
+18:03 - Unidentified Speaker
+The building part is separate. Yeah, you just use Cloud Flow for that, but you've got to build an app that most likely needs agents. I understand.
+
+18:15 - Stuart Kerr
+You're talking about deployment of the app, the AI architecture within the deployed app. Not the AI architecture in the building of the app, which we will then deploy.
+
+18:26 - rUv
+Yeah, you can build it here as well. You know, just do whatever you do in cloud flow here, but it's a little more sequential, but it'll work. What I'm talking about is like the logic. You've got an agent that's answering the phone. You need, cloud code isn't going to, you're not even allowed to use cloud code for that. It's against the terms of service. Not that you would anyway, because it doesn't work for that kind of thing.
+
+18:47 - Stuart Kerr
+Yeah. He'd use 11 Labs or something like that.
+
+18:51 - rUv
+Or one of the other voice agents. Yeah.
+
+18:56 - Unidentified Speaker
+Okay.
+
+18:56 - Mark Allen
+So there are a couple other questions that I had. First of all, when I'm looking at some of your older stuff, we've been kind of going through some of your older Vibecasts. Some of the things that you do, you don't seem to do anymore. Like for example, do you use commands at all anymore?
+
+19:21 - rUv
+Sometimes I still include them. The commands are good for when you're when you're manually invoking something like do this explicit thing, you know, deploy to a cloud or do this particular task. Now the skills I find are a lot easier and better because they're more malleable and they can be discovered as part of the process. Would be, you know, you see, I got my swarm skills and other skills. So I might say something like, using the advanced swarm skill, deploy a five agent swarm. Now, previously, I would have had them done slash command, you know, swarm. And then I would say something like create a five agent swarm. That's okay. But the problem with that is once you've done it, it doesn't discover any other skills. The skills can be are kind of like, you know, in the matrix where the guy downloads the skill and suddenly knows jiu jitsu or whatever. It can discover that it has a jiu-jitsu skill while it's doing whatever it's doing, get it, use it, deploy it, and that all happens magically as part of the flow. Commands have to be explicitly defined and then there's no discovery.
+
+20:33 - Mark Allen
+That makes sense. Basically, the way for us to leverage the newest, greatest things that you're building that we don't even necessarily know about is to use the skills because those skills will just use the latest things that you've added, right? Yeah. So the next thing that I had a question, I saw in your GitHub repo, are you rebranding calling instead of Swarms legions? Are you in the process of doing that complete rebranding or was that somebody else doing that?
+
+21:05 - rUv
+Most of me. Okay. Swarms is kind of my thing. I see other people adopting Swarms all the time.
+
+21:10 - Mark Allen
+Yeah. Yeah.
+
+21:12 - Unidentified Speaker
+Okay.
+
+21:13 - Mark Allen
+I was confused by that. I saw some, but some something, uh, that I'm subscribed to talking about rebranding everything.
+
+21:20 - rUv
+Um, so, uh, the wasn't me.
+
+21:24 - Mark Allen
+Yep. Yep. Okay. So the next question that I have is as we are adding things to our Claude flow, there's, there's kind of two ways that we're adding things. Like for example, one of the ones that, that people had trouble with. With is just installing the super base MCP server, Claude code and Claude flow. We're having trouble doing it, so I built a skill to do it. That is one shot, and so that's really easy to just include a skill into your project, right? You drag and drop it to your folder. Super easy. OK, there's another example of something that. You know that it Claude flow, as you've mentioned, is a bit light on its UI stuff, so we were doing some UI development work, as well as testing work. And so I built out a whole functionality that uses Puppeteer and to do automated testing and can do that sequentially in a loop, do more of what the user would do, like looking at the console errors, feeding it back to the code, like that thing, and I built that out. So how would I basically build that into something that I can more easily share as part of our internal, our team's use of Clawed Flow. And when we take clients through building things in Clawed Flow. Is it, do I?
+
+22:50 - rUv
+Take a step back for a moment. What are you building exactly? You're like some sort of puppeteer testing framework?
+
+23:00 - Mark Allen
+Exactly. So a testing framework that, so I, I got annoyed because I'm spending my time finding console errors that I want Claude Flow to figure out how to find. And so I had a conversation with it about how to do this and come up with a plan. And so it came up with a couple of different options and ways to do this with MCPs. And I didn't install the MCPs. And then it just figured out how to do it without MCPs with the Puppeteer CLI. And it said, this is actually a better implementation anyway. Exactly.
+
+23:35 - rUv
+It is a better implementation.
+
+23:37 - Mark Allen
+Built it out, and so now I'm like, how do I share that with somebody else? Okay, perfect.
+
+23:42 - rUv
+Let's see it. Show me what you got. I was thinking of doing the same project you were doing. For all the same reasons you just outlined. I'm sick of having to go back and forth between the web version, copy and paste the console, and just go figure it out.
+
+23:59 - Stuart Kerr
+It's great for that.
+
+24:03 - rUv
+So you've got a couple of different options. If you want to share your screen, I'll walk you through how pull this up. Let me see what it does first. In the CLI, I always start with CLIs, and if you've looked at my Cloud Flow stuff, it's mostly CLIs. I added the MCP stuff for certain integrations, but it's a little heavy on the contacts window. So CLI is a smart way to do it.
+
+24:27 - Mark Allen
+Cool.
+
+24:30 - Unidentified Speaker
+Students become the teacher here. You're definitely heading down the right path.
+
+24:35 - Mark Allen
+Yeah, I'm doing some really cool stuff that's been blowing my mind with just the very, very simple approach. I'm going to start this back up.
+
+24:47 - Stuart Kerr
+The goalie feature does some pretty cool stuff. That's what I want to share with you, what June and I were doing for the three days in Mexico after you guys left. Then unfortunately, we had one big issue where I need your help. Then Mark, tying into what you're talking about now, you remember I sent you all of my Cloud commands, if you will, that right after I initiate, I'm loading those in anytime it's a new repo and saying, do versioning this way, come up with a review agent doing just what you're talking about, where it's remembering the console and it's figuring out it's working with coding agent that's doing that. But I want to make sure they're all working correctly, because I'm seeing some things that are a little squirrely, and I'm not sure how they're instantiated. And so I'm hoping that's what we're going to show us now.
+
+25:39 - rUv
+And my research form, most likely, takes it to a whole new level. Like, I basically took everything I did in Goalie and made it for, I have a client that needed to do deep medical research. And so they had no, they have no room in another client that's doing legal stuff that probably is there as well but this was specifically built for like cancer research so I needed to to handle anti-hallucination and various forms of citation of the reason like where and how the the research was being found and what was being done and then in cryptographically verifying each step so it basically takes all the stuff you were seeing with goalie and like takes it to a whole other level is that now our of Cloud Flow and Agentic Flow, did you already? No, it's built on Agentic Flow. It's a project that uses Agentic Flow, but you can, and I can walk you through how to use that. I briefly showed you that basically when I was doing that, the Cloud Code web demo here a few minutes ago. I basically told it to use that service. And then what's cool about it is it can learn. So when you're doing deep research, what Cloud, you know, deep research in Cloud and others don't do is they don't learn what works and what doesn't over time, so it doesn't get better. So the system actually has reinforcement learning that allows it to train over an extended period of time. So you could point it at like, I don't know, stock information or medical information or whatever, patient information, and then it will, you know, obfuscate any personal identifiable information and learn what's good, what's bad, where the hidden intersections are, that kind of thing. I can show you that as well here in a minute. But it It probably is perfect for what Stuart's mentioned.
+
+27:23 - Mark Allen
+OK, so let me share here. So I haven't been working on this for a little bit, but let me see where.
+
+27:31 - Stuart Kerr
+Yeah, you walk away for two days, you get thoroughly lost.
+
+27:34 - Unidentified Speaker
+Yeah.
+
+27:35 - Mark Allen
+So I was asking. So I'm a whole bunch of stuff here. OK.
+
+27:43 - rUv
+All right. So what did you build it in? I see shells.
+
+27:55 - Mark Allen
+Yeah, the front-end tester. I just asked it to explain it right here. I didn't build this current conversation. Let me say, however, found an existing front-end testing suite that was created in a previous conversation. This is a comprehensive front-end testing script for Flowforge. Here's what it It does.
+
+28:25 - rUv
+It's built in TypeScript. You're saying you want to make this available to others. Let me just ask, does it work?
+
+28:35 - Mark Allen
+I don't even know if this works. Actually, I haven't used it.
+
+28:40 - Stuart Kerr
+That's our question is, you can do a lot of these things in minutes or spin them off and we're trying to figure out is it worth it for us to be building around what you're doing or are you just going to go do it and therefore our time is better spent utilizing whatever tools you give us. Like for example, since right now up until now we've only been using cloud flow, should we assume any enhancements you're making and an agent are going to go into cloud flow and therefore we'll assume we're going to get them or do we need to fork our whole thought process and start using the agentic solution versus the cloud flow solution to make sure that we're getting the latest and greatest thinking and tools?
+
+29:25 - rUv
+You are getting, well, some of the stuff that's really pushing the boundaries, like my agentic jujitsu system is, I'm not sure if I'm going to include that because it's powerful, but it might cause dependency issues in because of my compilation of Rust. But that said, everything I do, I give away, you know, basically. So you'll know it's there, you could use it. But in this particular scenario, what you're building is something I've been thinking about building, not that that matters particularly. So I'll guide you through how I would go about validating. So there's two things that you're going to want to look at here. One is the simple question.
+
+30:07 - Mark Allen
+There's an even easier one, I should ask you this, because you maybe even built this. So there's another project that I just created where I'm like, you know what? I want something that keeps a record of my entire conversation, all the prompts that I do and all the responses and puts that all into .md files so that I can go back and look at it.
+
+30:31 - rUv
+You don't need .md and I've already built that. That's my agent DB system.
+
+30:35 - Mark Allen
+Okay. How do you get that as an output of the agent DB?
+
+30:41 - rUv
+So there's an Well, there's a couple different ways. One it's saved as an as a DB file, both with sort of sort of namespace JSON. So structured input and then then you can query that so you could literally just create, you know, create a script or dashboard or UI, whatever that allows you to query the database like you would any other database. You create an MCP for it, you create a CLI for it, you could create hooks for it within Cloud Code, depending on how you want to interact with it. So the answer, unfortunately, is it depends. How do you want to interact with that data? When I create this system, I'm essentially creating a system that's learning, adapting, and taking all the information that you're entering in terms of prompts, edits, updates, post to GitHub, whatever, and then putting it into a data structure, and then learning what's good and what's bad. In the simple sense. What you're asking for is a way to use that data to say, what did I do last week? And what's good. Yeah.
+
+31:44 - Mark Allen
+So that all of us as we're doing it, we're like, this way that I approached this project really worked really well. Let me show you the prompts and what it did.
+
+31:53 - rUv
+I built that. And it's AgentDB, it's already integrated in the Cloud flow. You just need to point the system and tell it to use it in a way that's meaningful to you.
+
+32:02 - Stuart Kerr
+So that would be good for you to show us how, because I understand the words you just said, but I couldn't do it without seeing you do it. And then I'd realize, oh, I get it. All right.
+
+32:11 - rUv
+So let's do that first. Let's do both. Yeah. So let's open up a new terminal session, middle right. Let's leave this one. And yeah. And let's do your DSP or Claw Dangerously Skip Permissions. Now, what you have to do is you have to tell the system how to use the system. So if you go to the skills, scroll up, let's see what we got here for skills that I've created. We've got the agent DB learning, we got agent DB advanced, and we got agent DB memory path. So we get a bunch of agent DB features. So first thing you're going to do is you always want to instantiate the sort of memory contextually to the system. So ask an open-ended question like, how can I use the various skills? And what do they do?
+
+33:00 - Mark Allen
+How can I use the various agent DB skills and what do they do?
+
+33:07 - rUv
+Yeah. So. These skills, as I said before, are discover discoverable versus commands which are explicit, so we can see here that we've got several skills and artifacts and things like that. And then you can. You can look at those skills by expanding the skills folder and just looking at Yep. Yep. Right. And that'll tell you as well, right? This is a, this includes blah, blah, blah. All right. But we, we want the system to know. So scroll up a little bit. I see six race skills available, semantic search, document retrieval. Now describe what it is you want to do. Okay. Like you, you just gave me a sort of explanation of what you're, I'll show it here.
+
+33:55 - Mark Allen
+I'd like to use AgentDB to keep a record of all of my prompts and the Claude responses to all of those prompts so that I can go back after I finish a project at any point in time and look at it and also share it with others. How do I do that?
+
+34:19 - rUv
+Now you also want to say using the settings.json file in .cloud. Setting.json file hooks. Yeah.
+
+34:33 - Mark Allen
+This first one setting.json? Yeah.
+
+34:35 - rUv
+Hooks. Yeah. Add the word hooks afterwards. Hooks and this will, yeah, I think we're going to start with a hook because these are things that are going to happen automatically. Give me a plan, don't implement.
+
+34:54 - Mark Allen
+Give me a plan, don't implement.
+
+34:57 - rUv
+Yeah, start with that. So step one, what what capabilities exist? Step two, how do I how do I achieve the thing I want to achieve? Don't do it. I want to plan. Step three is let's look at the plan and then we'll decide how we're going to implement the plan.
+
+35:16 - Mark Allen
+Yep, yep.
+
+35:17 - rUv
+So there's there's questions like Do you care about learning? Do you care about optimization scaling? You know, so you can see that if you scroll up, like there's different options that said available in focus, you know, it says that you.
+
+35:30 - Mark Allen
+Stateful enable self-improvement when scaling up distributed coordination. So.
+
+35:36 - rUv
+Yeah. So depending, you want a little bit of learning, you want the system to get smarter, but you also want this system to be able to be queried, which you kind of automatically get.
+
+35:43 - Mark Allen
+Vector search.
+
+35:46 - rUv
+Plus learning and memory patterns probably. Okay. All right, so now it's giving you a plan. Just Read through the plan quick. All right, so it says here, create a hook-based system that captures all the prompts, plot responses, stores them in AgentDB with vector embedding through semantic search, enables layer overview architecture, stop hook primary, the entire conversation transcript when the session ends. So yeah, that makes sense. Post hook, supplementary, captain's log, supplementary, capture the incremental responses and tools, real-time backup, new hook, post, yeah, that makes sense. So it's basically telling you how to use the system. Notify, yeah, looks good, can you, Can you build, test, and validate the following? Using, yeah.
+
+36:56 - Mark Allen
+Can you build, test, and validate the following?
+
+36:59 - rUv
+Using just the settings.json with bash commands. The bash commands, no scripts, just the CLI. Now you could, it'll want to create bash scripts and things. I'm trying to keep this light for you. It's not like you can't, like I noticed in your last one, it would create a bunch of bash scripts and stuff. You can go down that road, but that's just more to maintain. And I've already done most of the heavy lifting. So all you really need to do is call the CLI. Can you build, test and validate the following? About the following, I guess it was the previous. Let's go back and see, it should know. It should know that, but So you guys were on the beach doing agentics?
+
+38:06 - Mark Allen
+We were, we were. It was so cool.
+
+38:10 - Unidentified Speaker
+Nice.
+
+38:11 - Stuart Kerr
+We even have a song, Coding in the Sand.
+
+38:15 - rUv
+With a pina colada.
+
+38:18 - Mark Allen
+Is this it? Should I hit enter?
+
+38:19 - rUv
+Yeah, hit enter. All right. The key here is always test and validate. Absolutely. If you can't prove it, it doesn't I don't know, and that's a problem. When you change the .Cloud settings, you're going to have to restart the Cloud instance for it to take effect. That's why you want it to test and validate, hopefully independently. You're in the lovable killer.
+
+38:58 - Mark Allen
+Now that I've built this, how do I share it with others and not have to rebuild it again on my next project.
+
+39:07 - rUv
+Well, it depends if we make a skill or you're going to share probably the hooks.settings.json and probably if we create a skill at some point after this, we might share that as well. Right now, all we're doing is updating the settings.json. So really all you need to do is just copy and pacesettings.json.
+
+39:34 - Mark Allen
+That's the only thing. All the hooks implemented in that, they're not implemented anywhere else.
+
+39:41 - rUv
+Well, not where we're doing at the moment.
+
+39:44 - Mark Allen
+Where is that settings.json file?
+
+39:46 - rUv
+In .cloud folder.
+
+39:49 - Stuart Kerr
+In .cloud.
+
+39:51 - rUv
+You can just click it there.
+
+39:52 - Mark Allen
+Before you had told us to make a copy of when we do make a change to it.
+
+40:01 - rUv
+Yeah, I can always roll it back. All right, so now it's testing. You can see it's testing the memory space. And you can click Control-O in there to see what it's doing. Click in there and click Control-O.
+
+40:18 - Mark Allen
+Oh, I have to click in here.
+
+40:19 - Mark Allen
+Yeah, OK.
+
+40:22 - rUv
+So because we told it test and validate, you can see it testing and validating. It's doing lovable killer, it's doing namespace, conversation archive. You can see that it's trying the various pattern. You can scroll up a little bit, you can see it's doing some of the stuff. It's using my system, rudimentary. You can do Control-O again. So the value is valid. And will the value be passed or failed? It will. So far it's passing, they're green. It's basically just using my memory bank system. Okay.
+
+41:14 - Mark Allen
+When we have an existing project and you've made some updates to Cloud Flow and we want to get the newest version of Cloud Flow into that project, what's there?
+
+41:31 - rUv
+You're automatically getting it when you use MPX, Cloud Flow, and Alpha. You automatically get whatever the latest version is. If you don't want the most latest version, you would either do Cloud Flow without Alpha, No, I'm talking about when I'm in them.
+
+41:44 - Mark Allen
+I'm already in a Codespace, I've already installed CloudFlow.
+
+41:49 - rUv
+It's not a global installation, it's an MPX.
+
+41:53 - Mark Allen
+Every single time I reopen the Codespace, it's cool.
+
+41:57 - rUv
+Not just reopen, every single time you make a request. If I update CloudFlow right now, you'd automatically get it in seconds.
+
+42:08 - Mark Allen
+Oh my God. You add Wait, wait, wait. Oh, it'll just pop right in. Yes.
+
+42:13 - rUv
+Well, not a skill. You have to instantiate the skills, but you would get the capabilities of the core system.
+
+42:21 - Stuart Kerr
+I think that's Mark's question is, we want to make sure that it's all there. Let's say we worked on a code base for three weeks. We initially did the, you know, NPX, CloudFlow, AdAlpha, and NetForce. Now it's three weeks later, we're working. You said, hey, I rolled out a bunch of new stuff. Is when we open that code space, what, if anything, do we need to do once we've run the DSP to make sure we have all the latest and greatest there and available for us and already in this repo?
+
+42:53 - Mark Allen
+Like, for example, your new Reasoner agent, or is that a skill? How do we get that?
+
+43:01 - rUv
+It's a MPX. You just run it. You just tell it to use it, go into Go into a new terminal and do DSP. And type, tell me about MPX. What did I call it, Researcher Swarm? I create too much stuff. I have it written down right here. I think it's Researcher Swarm. No, Research. Research swarm. Yeah, research swarm. Yeah, research swarm. So yeah, tell me, tell me about Read MPS research swarm. Yeah.
+
+43:43 - Stuart Kerr
+And that's not in the cloud flow.
+
+43:47 - rUv
+No, not right now. It's, it's, it's built on a genetic flow, but it's separate.
+
+43:54 - Mark Allen
+But if you added this, let's say you, you, you added it, or you change the skill, then would I need to reinstall in the middle of my project a new version?
+
+44:07 - rUv
+You just tell me about XYZ. If you know it exists, I guess. Okay. Right.
+
+44:13 - Stuart Kerr
+And that's his point. What if we don't know it exists? How do we make sure we always have the latest and greatest stuff in there and available so that Flo can use it?
+
+44:23 - rUv
+You call me or follow me on social media, I guess.
+
+44:27 - Stuart Kerr
+No, no, no, no. Sorry.
+
+44:28 - Mark Allen
+I mean, if you up with a major update of Claude Flow, how do you update the project that has the older Claude Flow in it?
+
+44:38 - rUv
+Like I said, it auto-updates. It does? Okay. Instantaneously. Now the drawback to that is if I give you a bug, you're going to get the bug instantaneously too. So yeah, so scroll up. You can see that it's telling you all about this. Now you can say it's a research agent designed for automated research. And Intelligent Coordination. It's got the GOAP AgentDB self-learning anti-hallucination controls. Now you're probably going to want to use a like open router or Google Gemini or something along with it, but you know.
+
+45:20 - Mark Allen
+Why is that?
+
+45:21 - rUv
+Because it uses secondary services. Do the research. It's an agent.
+
+45:30 - Mark Allen
+So the goal planner just uses Claude and it does the same thing, right, with Claude.
+
+45:34 - rUv
+Yeah, it's just a more rudimentary version. But yeah, if you're looking to save a buck, just use the goal planner. If you're looking to do deep scientific research that has to be grounded and verified and cryptographically certified, then you're going to use this. If you're just doing quick research and you just wanted to ask the question, just use the one that I've already given you in Cloud Flow. If you want to build a service that you make available and it's HIPAA compliant and won't get you sued, then you'd use this.
+
+46:04 - Mark Allen
+This is more of if I want to deploy a research component into our app, we would use this.
+
+46:17 - rUv
+This could run perpetually forever. Let's say you want something that continually researches and learns and never ends, like a deep research that runs for a year. You're going to use this. The cloud code is going to end eventually. It might take an hour, but it's going to end eventually. This is going to just run. Study the patterns of a certain investor and learn what they're doing and optimize for it and just run forever. You're gonna use this.
+
+46:49 - Stuart Kerr
+Wow, that's cool. So how about a simplified version, Mark? What if you had a little bit of information on a customer potentially coming to an orthodontist and you wanted this to be able to research more information on that person, economic capacity, this, that, et cetera, then decide how attractive that person is to decide how much energy you wanted to spend going after them. I'm not saying you would or wouldn't do that, but is that something where you could use this as the research agent to do that? I'm sure that's a very low level research request for it to do, but could you implement it for something like that?
+
+47:31 - Mark Allen
+That's such a short thing. This is for something where you need to continue to research. Stay up to date on all of the latest research findings of this type of cancer and notify me when anything new comes out, do an analysis. More like that, right?
+
+47:46 - Unidentified Speaker
+Yeah.
+
+47:49 - Stuart Kerr
+And then where would the outcome of those things all be? Would it just be maintaining a giant database and it would be the Oracle and you would ask it?
+
+47:57 - rUv
+Yeah, basically. That's exactly what you would do. You'd use some form of persistence. So you would use SuperBase or something or some place where you could query it like an API. Or you'd have some kind of mechanism to trigger if you wanted to be notified when some criteria was met, let's say, let's use the stock trading one as an example. The criteria for a certain stock trade is certainly has been learned and now met and it might ask for approval or might do the thing and tell you that it just made the stock trade. Yeah.
+
+48:35 - Mark Allen
+That's really cool.
+
+48:36 - rUv
+So, uh, yeah. Where are we? Where are we at here? Yeah.
+
+48:42 - Mark Allen
+There we go. All requirements are met.
+
+48:45 - Stuart Kerr
+Okay. So if it's done, then the question is besides your JSON, how do you get to do a new project?
+
+48:55 - rUv
+Last step, you have to test it. So exit So control C a couple of times and do the DSP dash C to choose to continue where you left off. Yeah.
+
+49:08 - Unidentified Speaker
+DSPC.
+
+49:10 - rUv
+Yeah. Or you can just resume. Yeah, just resume. All right. Scroll up. Now I say something like I restarted, validate the hooks work.
+
+49:26 - Mark Allen
+Do something. Restarted, validate that the hooks work.
+
+49:32 - rUv
+Yeah. Books are tricky because sometimes they're not done quite right. They create breakage. You'll see errors and things on pre-post or whatever. So we just want to make sure that it all works. And I wasn't paying particularly close attention. So I just want to make sure that everything's working as expected. So it's doing some test hook file. Click Control-O. There you go. We can see it. Just make that bigger. You can do the full expanse. All right. Scroll up a little. Control-O again, I think, maybe?
+
+50:18 - Unidentified Speaker
+Control-O.
+
+50:23 - rUv
+It looks like the hooks are working.
+
+50:29 - Stuart Kerr
+What can he do now that that's live?
+
+50:33 - rUv
+Whatever he asked it to do. I'm not sure exactly what he asked, but based on whatever he asked, yeah.
+
+50:39 - Mark Allen
+What I want is for it to now generate me a .md file that I can share this entire conversation.
+
+50:48 - rUv
+Yeah. Ask it to do that. Wait till it's done here, but because it's testing the components. You know, like anything, it might take a little trial and error to get exactly what you want, but you're essentially using the reasoning bank system to store the information through hooks.
+
+51:17 - Mark Allen
+and namespaces. Assuming that this works, I might have to tweak it and get it to work, but assuming that it works, all I just can share this settings.json file as long as we haven't made any other changes to it. But yeah, this is something that I want in every project right now. Because I go back and I'm like, I did something really cool, I want to share it.
+
+51:37 - rUv
+Yeah. You might to make some adjustments to get to that point, but generally, yeah.
+
+51:47 - Mark Allen
+Yeah. Okay. Okay. So in that other one where I'm trying to create the broader piece of software that does the, and you know, probably with your help, we could implement something way, way, way better, but that basically does that, what I was explaining, you know, uses Puppeteer CLI, you know, comes up with test scenario, fake data, presses all the buttons, finds the console errors, feeds that back to the coder agent, loops through that. That functionality, that's actually going to build code and things like that. How do you share that from one project to another?
+
+52:33 - rUv
+Well, there's a couple of different ways to do it. You could create an MPM file or MPM install like how I showed you the MPX and have a shared repo that's only available to your development team. And then they can just do MPM install, you know, Dash G or MPX. And then you're creating your own distribution and your own development environment. And the first stage of any repo that's set up is run MPX, you know, lovable killer. Yep.
+
+53:03 - Stuart Kerr
+Mark, given that we've only got about five minutes left, can I just throw a couple of questions in here? Because I did get hit with some whammies over the weekend. Yep. Yep.
+
+53:10 - Mark Allen
+Go ahead.
+
+53:12 - Stuart Kerr
+OK. Can I share? Yeah. OK, great. First question. Along the lines of what Mark just said, so these are some commands I've come up with that I've been giving to Claude Flo. They're not the right way. They're just what I ended up doing. The first is, hey, I had this big confusion where Cloud Code kept taking over instead of Cloud Flow taking over and Cloud Code got horribly confused, basically hooked me up to two different GitHub repos and three different Vercel projects and completely screwed up my project in the middle of it. Cloud Flow wouldn't have made that mistake. So I've now kind of gone in and said, you should know that whenever I'm talking, even though I'm in Cloud Code and Cloud Flow is instantiated, I'm only talking to Cloud Flow and I want Cloud flow to interpret all the answers.
+
+54:05 - rUv
+No, that's sort of what you're saying. Remember, Cloud Flow acts as a kind of intelligent memory and orchestration layer. So it's Cloud Code that's doing the sort of, you know, invocation itself. And my system is guiding it to a better outcome. So you're kind of getting, you're using it whether you know it or not. So the issue most likely is your specification. The reason why, it ended up doing something that wasn't right is because it was a poorly described spec, or you were just vibing it, going back and forth. So to get around that, what you need to do is create a more detailed spec that it can follow. Here's what I need, here's how I need it, and here's the optimal final outcome of it. If you have that, then you're not going to have a sort of mishmash of output. My guess, is it was a combination of, and I don't mean to pick on you or anything, it's a combination of poor prompting and not an adequate specification. Both are easily overcome. Don't ever separate your planning from your implementation. Don't do the two at the same time. Review your implementation plan, revise it, make sure you understand it, then implement it. Separately. Okay, step one, step two.
+
+55:39 - Stuart Kerr
+That's a discipline that you've been teaching. And I know Matt and Mark have picked up and I'm sure coming from my vibe world, I keep thinking I can go back to it. But you're right, that's hurting. And then the testing to either build the skill or the review agent that's similar to what Mark's been trying to do is, you know, listen, test everything like an end user. I don't care that it works in headless mode, as soon as I try to bring it up on my screen, it breaks. So your testing is all breaking. Your testing is not meaningful, and as soon as a user tries to use it, it doesn't work. So that's where I'm trying to come up with the right equation.
+
+56:16 - rUv
+You're talking about front-end breakage?
+
+56:20 - Stuart Kerr
+I'm talking about, yes. Principally, this app needs to be tested from the front end to make sure the entire user experience, beginning to end, is perfect, clear, seamless, etc.
+
+56:34 - rUv
+Are you co-mingling your middleware and data architecture with your user experience?
+
+56:43 - Stuart Kerr
+Honestly, I don't know. I've had it do it, so I don't know how it implemented it.
+
+56:48 - rUv
+Yeah, so the fact you answered it that way indicates that that's probably the case. So what you want to do is is that when you develop, there's essentially three different ways to develop an application. You can develop from the top down, you create a user interface, and then you attempt to make it work. And you're not really sure why or how, but it kind of works. The other is in the bottom up, you create an infrastructure based on the components you need and how you're going to scale it, the data structures and everything that sort of underpins the platform and the infrastructure that supports the platform. And then you work your way up and eventually you'll create an interface that makes it all look good and you can interact with. The way that's probably optimal is to build from the middle. The middle says I've got components that will form the basis of a UI, but I also have components that will form the basis of the infrastructure itself. So I'm building that middle ground that sits in between the top and the bottom, middleware, it's referred to. Getting the middleware right is probably the most important part of any application. Because you've got your user authentication, you've got your data, you've got the way that the system interacts with other parts of the system. Once you know that the core logic of the system works and is functional from the point of view of like, does it do the things it needs to do? Then you can say, okay, here's the user interface, make this middleware that I know work, work with the user interface. And it's much more likely to achieve and work in the way that you expect it to work. If you start from the top, it's going to be like, oh, it looks great, but doesn't do anything. You start from the bottom, it has a great infrastructure, but doesn't do anything. You're most likely starting from the top, and that's your problem.
+
+58:33 - Mark Allen
+Yeah, because that's what we understand and think about. But you're saying to start with the middleware? Middleware.
+
+58:38 - Stuart Kerr
+How do we actually do that?
+
+58:44 - rUv
+This is something Mak and I discussed the length of where we started. And a lot of what we were doing in what Mak was working on was doing specific middleware specifications that said, here's how the system needs to logically work rather than functionally work. Functional is good for demos and sort of understanding how it's supposed to look for the end user, but it's actually quite difficult to develop in, right? Because there's a lot of fudging of how that sort of functional specification will actually be implemented if you're just saying, make it work in this way. But you need to fundamentally understand not like how it's functionally supposed to work, but how it's technically supposed to be implemented. That's actually more important for most things. So separating a functional specification from a technical specification. So you might start with a functional specification. Here's what the client wants. But then before you actually implement it, you need a technical specification. Here's how we're going to do it.
+
+59:46 - Stuart Kerr
+And that's, and what agent should I ask for it to build out that, that technical spec?
+
+59:52 - rUv
+Unfortunately, that's, you can't vibe it. You need to, you need to be a tech, you need to be an engineer to understand how to write, how to ask the right questions. And that's where most likely Krysta comes into play. Okay.
+
+1:00:05 - Mark Allen
+But right now it's a goal planner agent to create an, create an implementation plan using, this is what I do, create an implementation plan using the advanced?
+
+1:00:16 - rUv
+That's an open-ended question, assuming that the system knows the answer. You have to guide it to the right answer. You can't just say, build me this thing and tell me what the best options are. If you don't understand what the ramifications of each of the options are, you're going to end up with something that's haphazardly thrown together that you don't fully understand. And that'll open up a whole other series of problems, because you're being guided to solve problems that are architectural, and you don't even know that they're architectural.
+
+1:00:47 - Unidentified Speaker
+Okay.
+
+1:00:48 - rUv
+Right? It's like, I, you know, you can't blindly assume the system knows the answer to your problems if you don't understand what the problem is. And I'm personally guys, I got to jump my next call.
+
+1:01:01 - Stuart Kerr
+Okay, thank you.
+
+1:01:04 - rUv
+But, you know, Mak, I think, you know, you and I spent some time in this, right? This is something that you're getting a lot better at. Anyway, I gotta jump. But we got it. When's our next call?
+
+1:01:16 - Unidentified Speaker
+On Wednesday.
+
+1:01:18 - rUv
+Okay. Yeah, fool around with that research form. You point get a open router key in there and get the Gemini key and basically just say, create me the world's best research agents or something. And as as for what you're working on with the, the end-user testing, just tell it to prove that it actually works. Do something that's broken and tell it to fix it and prove that it can fix it.
+
+1:01:46 - Mark Allen
+Yep. Yep. I can do that. Okay. Thank you.
+
+1:01:51 - Unidentified Speaker
+No problem.

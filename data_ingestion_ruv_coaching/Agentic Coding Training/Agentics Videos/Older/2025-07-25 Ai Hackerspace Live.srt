@@ -1,0 +1,9331 @@
+1
+00:00:16,270 --> 00:00:17,550
+There we are.
+
+2
+00:00:17,950 --> 00:00:19,690
+July 25th.
+
+3
+00:00:19,810 --> 00:00:24,380
+We're another episode
+underway here. And
+
+4
+00:00:24,380 --> 00:00:26,360
+before we start, though,
+I want to just quickly
+
+5
+00:00:26,380 --> 00:00:29,850
+apologize for last
+week. That wasn't really
+
+6
+00:00:29,850 --> 00:00:32,250
+a hack so much as I
+needed to do a better
+
+7
+00:00:32,250 --> 00:00:34,670
+job of using the host
+tools. So this week,
+
+8
+00:00:34,670 --> 00:00:37,450
+we're a little bit more
+locked down. So if you
+
+9
+00:00:37,450 --> 00:00:38,790
+want to share your
+screen, I'm going to have
+
+10
+00:00:38,790 --> 00:00:41,970
+to manually allow you
+to share your screen
+
+11
+00:00:41,970 --> 00:00:44,850
+um there's no white
+boarding or anything like
+
+12
+00:00:44,850 --> 00:00:47,230
+that enabled hopefully
+and uh hopefully that
+
+13
+00:00:47,230 --> 00:00:49,910
+doesn't happen again
+but again thanks for
+
+14
+00:00:49,910 --> 00:00:51,510
+everyone that presented
+last week and i
+
+15
+00:00:51,510 --> 00:00:53,570
+apologize it just because
+it's a little bit uh
+
+16
+00:00:53,570 --> 00:00:57,750
+a little bit yeah a
+little wasn't wasn't a
+
+17
+00:00:57,750 --> 00:01:00,000
+good way to end the week
+but stuff happens i'm
+
+18
+00:01:00,000 --> 00:01:01,510
+to be honest i'm
+surprised it took as long
+
+19
+00:01:01,510 --> 00:01:04,670
+as it did for for that
+to be a problem for us
+
+20
+00:01:04,670 --> 00:01:09,110
+um but onward and
+upward the the who do we
+
+21
+00:01:09,110 --> 00:01:12,470
+have today uh rob we
+got uh so we got uh
+
+22
+00:01:12,470 --> 00:01:16,230
+braun field walker and
+chris barlow this is uh
+
+23
+00:01:16,230 --> 00:01:19,890
+this is the week of
+dashboards abstraction
+
+24
+00:01:19,890 --> 00:01:22,890
+layers over swarm
+orchestration so lots of
+
+25
+00:01:22,890 --> 00:01:26,230
+really cool variations
+and ideas about about
+
+26
+00:01:26,230 --> 00:01:28,510
+how to accomplish that
+and what the visual
+
+27
+00:01:28,510 --> 00:01:31,470
+priorities are so uh
+really looking forward to
+
+28
+00:01:31,470 --> 00:01:33,190
+that i was on with
+the nvidia guys this
+
+29
+00:01:33,190 --> 00:01:35,790
+morning about about the
+production support too
+
+30
+00:01:35,790 --> 00:01:38,250
+roof so there should
+uh there should be some
+
+31
+00:01:38,250 --> 00:01:42,220
+some good stuff coming
+from that and um uh
+
+32
+00:01:43,130 --> 00:01:48,530
+yes and just a note uh
+we had indianapolis last
+
+33
+00:01:48,530 --> 00:01:52,690
+week cornelius and
+brad um were there and
+
+34
+00:01:52,690 --> 00:01:55,380
+uh good turnout great
+great bunch of folks
+
+35
+00:01:55,380 --> 00:01:59,790
+denver is up for august
+13th and then uh august
+
+36
+00:01:59,790 --> 00:02:02,990
+12th uh the next
+toronto event so lots of
+
+37
+00:02:02,990 --> 00:02:05,490
+stuff going on there
+and i know someone said
+
+38
+00:02:05,490 --> 00:02:06,750
+they ordered a ton
+of t-shirts make sure
+
+39
+00:02:06,750 --> 00:02:09,150
+you use the right font
+guys this this is not
+
+40
+00:02:09,150 --> 00:02:12,310
+the right font for
+agentics every time i put
+
+41
+00:02:12,310 --> 00:02:14,930
+on my shirt i'm like
+ah i'm a font guy what
+
+42
+00:02:14,930 --> 00:02:17,930
+can i say just let's
+let's just make sure uh
+
+43
+00:02:17,960 --> 00:02:20,050
+let's let's make sure
+we we stay on brand
+
+44
+00:02:20,050 --> 00:02:22,590
+for that i'm probably
+the only person in the
+
+45
+00:02:22,590 --> 00:02:26,810
+world that cares about
+fonts but the only
+
+46
+00:02:26,810 --> 00:02:29,850
+fonts i i dislike are
+comic sans and that one
+
+47
+00:02:29,850 --> 00:02:31,790
+from avatar whatever
+that that font's called
+
+48
+00:02:31,790 --> 00:02:34,870
+but otherwise we're
+good to go um all right
+
+49
+00:02:34,870 --> 00:02:37,210
+so yeah lots going
+this week have you guys
+
+50
+00:02:37,210 --> 00:02:40,770
+noticed that the cloud
+code has been uh down
+
+51
+00:02:40,770 --> 00:02:43,210
+a lot with the 529
+errors i'm getting that
+
+52
+00:02:43,210 --> 00:02:46,010
+almost uh now actually
+most of the morning and
+
+53
+00:02:46,010 --> 00:02:47,630
+what was interesting.
+I was doing a call
+
+54
+00:02:47,630 --> 00:02:49,990
+with some folks out of
+the Netherlands earlier
+
+55
+00:02:49,990 --> 00:02:53,070
+and watching their
+screen, they didn't have
+
+56
+00:02:53,070 --> 00:02:56,210
+any issue at all, yet
+I was getting 529. So
+
+57
+00:02:56,210 --> 00:02:58,080
+I think it has something
+to do with like the
+
+58
+00:02:58,080 --> 00:03:00,690
+geography of where
+the API is making the
+
+59
+00:03:00,690 --> 00:03:03,290
+request. So one of the
+things I noticed quickly
+
+60
+00:03:03,290 --> 00:03:06,090
+is if I switch to a
+different geo, like I
+
+61
+00:03:06,090 --> 00:03:08,730
+spin up another code
+space or I spin up a fly
+
+62
+00:03:08,730 --> 00:03:10,590
+.io or whatever in a
+different part of the
+
+63
+00:03:10,590 --> 00:03:12,950
+world, it actually
+sometimes resolves it.
+
+64
+00:03:12,950 --> 00:03:15,570
+It's a pain because then
+I got to sync the GitHub
+
+65
+00:03:15,570 --> 00:03:18,430
+or whatever. But if
+it's a long-term outage
+
+66
+00:03:18,430 --> 00:03:20,070
+or you're giving a
+demo or something, that
+
+67
+00:03:20,070 --> 00:03:22,870
+might be a quick, easy
+way to resolve it.
+
+68
+00:03:23,260 --> 00:03:25,370
+So a few things to
+cover. I want to go
+
+69
+00:03:25,370 --> 00:03:27,090
+quickly because I know
+we got a lot of folks
+
+70
+00:03:27,090 --> 00:03:29,110
+that want to present
+today. And by the
+
+71
+00:03:29,110 --> 00:03:31,890
+way, if you do want
+to present, we do like
+
+72
+00:03:31,890 --> 00:03:34,910
+the idea of folks being
+able to jump in and
+
+73
+00:03:34,910 --> 00:03:37,370
+show what they're
+working on. I've locked
+
+74
+00:03:37,370 --> 00:03:39,270
+down the screen a
+little bit, as you can
+
+75
+00:03:39,270 --> 00:03:41,490
+tell, just ask and
+raise your hand or
+
+76
+00:03:41,490 --> 00:03:43,750
+whatever, and we'll try
+to make that happen.
+
+77
+00:03:43,750 --> 00:03:46,430
+um some new features
+as well that came out
+
+78
+00:03:46,430 --> 00:03:49,470
+this week in cloud
+code which was cool the
+
+79
+00:03:49,470 --> 00:03:51,170
+the agent feature came
+out yesterday which
+
+80
+00:03:51,170 --> 00:03:53,190
+i want to explore a
+little bit and maybe
+
+81
+00:03:53,190 --> 00:03:54,950
+later if we get time
+we'll i'll jump in and
+
+82
+00:03:54,950 --> 00:03:58,430
+take a look at github's
+spark good good naming
+
+83
+00:03:58,430 --> 00:04:01,150
+convention they use
+a k though so i'm no
+
+84
+00:04:01,150 --> 00:04:03,550
+homage to sun microsystems
+like like mine
+
+85
+00:04:03,550 --> 00:04:05,490
+all right so let's
+let's jump in i want to
+
+86
+00:04:05,490 --> 00:04:06,680
+show you guys so i'm
+going to start with my
+
+87
+00:04:06,680 --> 00:04:08,610
+dashboard i'll show
+you how i built it but
+
+88
+00:04:08,610 --> 00:04:10,730
+i'm really curious
+really how how everyone
+
+89
+00:04:10,730 --> 00:04:12,330
+else is building their
+dashboards i know
+
+90
+00:04:12,330 --> 00:04:14,770
+ocean's done really cool
+sort of uh dashboard
+
+91
+00:04:14,770 --> 00:04:16,910
+you should share the
+link to your uh your
+
+92
+00:04:16,910 --> 00:04:19,710
+latest dashboard which
+looks amazing um mine
+
+93
+00:04:19,710 --> 00:04:23,110
+is is a little bit
+more retro okay a lot
+
+94
+00:04:23,110 --> 00:04:25,330
+more retro this is
+like if you see the do
+
+95
+00:04:25,330 --> 00:04:26,930
+you see the game war
+games back in like the
+
+96
+00:04:26,930 --> 00:04:30,230
+80s i think it's it's
+it's similar to that
+
+97
+00:04:30,540 --> 00:04:32,310
+so let's let's take
+a look here i'm
+
+98
+00:04:32,310 --> 00:04:33,930
+gonna i'm gonna
+hopefully i'm gonna
+
+99
+00:04:33,930 --> 00:04:36,250
+refresh my page here
+You realize that
+
+100
+00:04:36,250 --> 00:04:38,810
+that computer was
+called Whopper.
+
+101
+00:04:38,850 --> 00:04:40,110
+Oh, nice.
+
+102
+00:04:40,390 --> 00:04:41,310
+Whopper.
+
+103
+00:04:41,450 --> 00:04:43,890
+What? W-O-P-R,
+man. The Whopper.
+
+104
+00:04:43,910 --> 00:04:45,550
+Okay, like Burger King.
+
+105
+00:04:45,750 --> 00:04:48,050
+I don't know,
+but it's a name.
+
+106
+00:04:48,570 --> 00:04:49,830
+It's a thing.
+
+107
+00:04:49,830 --> 00:04:52,330
+All right. So as you
+can tell, I might do
+
+108
+00:04:52,330 --> 00:04:54,590
+another version of this
+that's a little less
+
+109
+00:04:54,590 --> 00:04:57,710
+Wargames Whopper
+-like. But for now, the
+
+110
+00:04:57,710 --> 00:05:00,070
+important part of
+this user interface is
+
+111
+00:05:00,070 --> 00:05:02,370
+probably the web services
+that underpins it. So
+
+112
+00:05:02,370 --> 00:05:04,430
+what I've done is I've
+essentially connected
+
+113
+00:05:04,490 --> 00:05:07,250
+all the various
+Claude-flow-related
+
+114
+00:05:07,250 --> 00:05:10,990
+capabilities and Cloudcode
+-related capabilities
+
+115
+00:05:10,990 --> 00:05:13,090
+through WebSockets.
+So you get a little
+
+116
+00:05:13,090 --> 00:05:15,350
+dashboard. You can see
+what's happening here.
+
+117
+00:05:15,630 --> 00:05:18,590
+There's a swarm
+capability. This is a work
+
+118
+00:05:18,590 --> 00:05:20,210
+in progress. And for
+anyone that's actually
+
+119
+00:05:20,210 --> 00:05:22,890
+interested in trying
+it, you can go to the
+
+120
+00:05:22,890 --> 00:05:26,490
+Claude-flow GitHub and
+take a look for the
+
+121
+00:05:26,490 --> 00:05:30,370
+agentic flow branch.
+And you get what you
+
+122
+00:05:30,370 --> 00:05:34,010
+currently see here. it's
+it's it's totally alpha
+
+123
+00:05:34,010 --> 00:05:36,530
+so i haven't published
+it beyond the fact
+
+124
+00:05:36,530 --> 00:05:38,770
+that that i do do all
+my development in in
+
+125
+00:05:38,770 --> 00:05:41,950
+sort of a live environment
+so now i can i can
+
+126
+00:05:41,950 --> 00:05:44,870
+choose different tasks
+to submit we can we
+
+127
+00:05:44,870 --> 00:05:47,190
+can submit them you can
+see details here i i
+
+128
+00:05:47,190 --> 00:05:49,830
+can spawn additional
+uh components i'm going
+
+129
+00:05:49,830 --> 00:05:52,250
+to add more i'm still
+early i can add it i
+
+130
+00:05:52,250 --> 00:05:55,010
+can add that now i
+can close this and you
+
+131
+00:05:55,010 --> 00:05:57,400
+can see different
+different components here
+
+132
+00:05:57,400 --> 00:05:59,850
+um but the the part
+that's probably most
+
+133
+00:05:59,850 --> 00:06:02,150
+interesting is how I'm
+handling the Claude-flow
+
+134
+00:06:02,150 --> 00:06:03,670
+integration. One of
+the things that really
+
+135
+00:06:03,670 --> 00:06:05,930
+drives me nuts when
+doing a lot of these
+
+136
+00:06:05,930 --> 00:06:08,570
+swarms is the flicker
+you get. And I have no
+
+137
+00:06:08,570 --> 00:06:11,350
+idea, I've got no real
+introspection of how
+
+138
+00:06:11,350 --> 00:06:13,430
+the system's working.
+So what I wanted to do
+
+139
+00:06:13,430 --> 00:06:15,270
+is one, be able to create
+multiple swarms and
+
+140
+00:06:15,270 --> 00:06:17,030
+have them run
+concurrently. So there's a
+
+141
+00:06:17,030 --> 00:06:19,470
+little plus button here.
+I can add swarm one,
+
+142
+00:06:19,470 --> 00:06:21,370
+swarm two, and I might
+add the ability to
+
+143
+00:06:21,370 --> 00:06:23,770
+rename it here later
+this afternoon. We can
+
+144
+00:06:23,770 --> 00:06:25,970
+choose the different
+commands and I might add
+
+145
+00:06:25,970 --> 00:06:28,130
+the agent, some more
+agent capabilities and
+
+146
+00:06:28,130 --> 00:06:30,330
+so on later. But this
+is, the first step
+
+147
+00:06:30,330 --> 00:06:32,250
+was just getting this to
+work. So in this case,
+
+148
+00:06:32,250 --> 00:06:35,610
+I can select this
+particular option. I can
+
+149
+00:06:35,610 --> 00:06:39,450
+see the actual prompt
+that makes it work
+
+150
+00:06:39,450 --> 00:06:42,710
+here. So I, and I can
+potentially edit that.
+
+151
+00:06:42,930 --> 00:06:45,570
+Some of the other various
+options, I can clap
+
+152
+00:06:45,570 --> 00:06:48,090
+that. So now I can go
+further, I can actually
+
+153
+00:06:48,090 --> 00:06:50,210
+start it up. Let's
+fingers crossed that
+
+154
+00:06:50,210 --> 00:06:52,690
+Cloud Code is actually
+functioning now. So
+
+155
+00:06:52,690 --> 00:06:55,490
+now you see here that
+the initial system is
+
+156
+00:06:55,660 --> 00:06:58,170
+initializing. We can see
+which tools it's using.
+
+157
+00:06:58,170 --> 00:07:01,610
+so it's using the
+glob and the task and
+
+158
+00:07:01,610 --> 00:07:03,650
+all these various other
+things i can actually
+
+159
+00:07:03,650 --> 00:07:06,670
+search through those
+so if i want to go here
+
+160
+00:07:06,670 --> 00:07:10,090
+and i want to see
+different options i can
+
+161
+00:07:10,090 --> 00:07:12,650
+see the system or the
+assistant so if i click
+
+162
+00:07:12,650 --> 00:07:14,930
+assistant we can see
+here that the different
+
+163
+00:07:14,930 --> 00:07:18,110
+messages so i can see
+my token uses i can
+
+164
+00:07:18,110 --> 00:07:21,110
+see details of it i
+can copy and paste the
+
+165
+00:07:21,110 --> 00:07:23,950
+json if i want to so i
+can click the copy button
+
+166
+00:07:23,950 --> 00:07:26,610
+and and then i can do
+like a sort of dump
+
+167
+00:07:26,610 --> 00:07:28,970
+if i want to do that
+i can automatically
+
+168
+00:07:28,970 --> 00:07:31,800
+show all the jasons as
+well by clicking that so
+
+169
+00:07:32,330 --> 00:07:35,090
+you can see all the
+jason outputs now i can
+
+170
+00:07:35,090 --> 00:07:37,590
+also search as well
+so i can go here and
+
+171
+00:07:37,590 --> 00:07:39,290
+let's say i'm just looking
+for a certain thing
+
+172
+00:07:39,290 --> 00:07:40,810
+so let's scroll down
+and see what's actually
+
+173
+00:07:40,810 --> 00:07:42,710
+happening here so
+we've got different
+
+174
+00:07:42,710 --> 00:07:46,130
+assistants so again
+we're not we're i'm not
+
+175
+00:07:46,130 --> 00:07:47,870
+concerned about the tab
+i'm going to scroll back
+
+176
+00:07:47,870 --> 00:07:49,410
+up and just turn off
+the assistant to show
+
+177
+00:07:49,410 --> 00:07:51,530
+everything so i'm going
+to scroll down to the
+
+178
+00:07:51,530 --> 00:07:53,890
+bottom here you can see
+that there's different
+
+179
+00:07:53,890 --> 00:07:57,250
+tool results task
+ids so this allows me
+
+180
+00:07:57,250 --> 00:07:59,210
+to keep track of what's
+happening so if i want
+
+181
+00:07:59,210 --> 00:08:01,370
+to go back or i want
+to do a rollback i'm
+
+182
+00:08:01,370 --> 00:08:02,950
+going to add a button
+that basically allows
+
+183
+00:08:02,950 --> 00:08:04,590
+you to roll back to a
+certain point where it
+
+184
+00:08:04,590 --> 00:08:07,090
+might have broke so
+this gives me a lot more
+
+185
+00:08:07,090 --> 00:08:09,750
+visibility right so i
+can i can see what's
+
+186
+00:08:09,750 --> 00:08:12,110
+happening in in real
+time the other thing
+
+187
+00:08:12,110 --> 00:08:15,330
+that i'm doing is i'm
+using the json or the
+
+188
+00:08:15,330 --> 00:08:18,370
+stream JSON output from
+Cloud Code, which is
+
+189
+00:08:18,370 --> 00:08:20,310
+really a really cool
+feature. So under the
+
+190
+00:08:20,310 --> 00:08:23,270
+covers, I'm not actually
+invoking directly the
+
+191
+00:08:23,270 --> 00:08:26,070
+interactive UI. I'm
+actually streaming the
+
+192
+00:08:26,070 --> 00:08:28,890
+output from the system
+itself, which allows
+
+193
+00:08:28,890 --> 00:08:33,270
+me to pause and sort
+of redirect the output.
+
+194
+00:08:33,270 --> 00:08:36,910
+So if I wanted to go
+to the bottom here and
+
+195
+00:08:36,910 --> 00:08:39,450
+say, stop and then do
+something else, I could
+
+196
+00:08:39,450 --> 00:08:41,890
+actually click the
+pause button and then
+
+197
+00:08:41,890 --> 00:08:44,790
+redirect it to do something,
+fix something alter
+
+198
+00:08:44,790 --> 00:08:47,710
+something in real time
+so again i'm getting
+
+199
+00:08:47,710 --> 00:08:50,070
+a real-time view of
+what's happening here
+
+200
+00:08:51,960 --> 00:08:55,870
+so and now i for it
+looks like i might have
+
+201
+00:08:55,870 --> 00:08:57,670
+broke the auto scroll
+option i'll fix that
+
+202
+00:08:57,670 --> 00:09:00,090
+later but it's kind of
+cool so now i'm going
+
+203
+00:09:00,090 --> 00:09:01,530
+to go back to the top
+of the page here i'm
+
+204
+00:09:01,530 --> 00:09:03,590
+just going to stop that
+for a moment now i can
+
+205
+00:09:03,590 --> 00:09:07,050
+i can i'm in uh swarm
+two so now if i go
+
+206
+00:09:07,050 --> 00:09:09,550
+back to swarm one oh i
+guess i'm swarm i gotta
+
+207
+00:09:09,550 --> 00:09:10,830
+do a better job of
+showing what's what's
+
+208
+00:09:10,830 --> 00:09:12,890
+happening here so now
+can spawn up a different
+
+209
+00:09:12,890 --> 00:09:15,070
+swarm in swarm one or
+i can i can create a
+
+210
+00:09:15,070 --> 00:09:17,110
+couple more swarms
+here and have them all
+
+211
+00:09:17,110 --> 00:09:20,030
+working together now we
+can see a little icon
+
+212
+00:09:20,030 --> 00:09:22,150
+indicating that this
+one's running that this
+
+213
+00:09:22,150 --> 00:09:26,210
+this one isn't early
+days now you can i also
+
+214
+00:09:26,210 --> 00:09:30,130
+have mcp tools the mcp
+tools allows for all
+
+215
+00:09:30,130 --> 00:09:32,430
+the various uh tools
+in the system i think
+
+216
+00:09:32,430 --> 00:09:34,750
+there's like 87 of them
+and you can you can
+
+217
+00:09:34,750 --> 00:09:36,370
+interact with it so
+if i go here and just
+
+218
+00:09:36,370 --> 00:09:38,930
+choose the in it as an
+example i can execute the
+
+219
+00:09:38,930 --> 00:09:42,510
+tool now you can see the
+success so everything
+
+220
+00:09:42,510 --> 00:09:44,070
+that exists within
+the structure of the
+
+221
+00:09:44,070 --> 00:09:46,030
+system that is generally
+automated can also
+
+222
+00:09:46,030 --> 00:09:48,710
+be invoked manually or
+through apis so if i
+
+223
+00:09:48,710 --> 00:09:50,570
+want to go to like my
+github integration i
+
+224
+00:09:50,570 --> 00:09:53,250
+can see all my github
+options or my dynamic
+
+225
+00:09:53,250 --> 00:09:56,110
+agent allocation
+workflows all that sort of
+
+226
+00:09:56,110 --> 00:09:59,070
+stuff so i click that
+we can we can set that
+
+227
+00:09:59,070 --> 00:10:04,470
+up uh two steps we can
+say i don't know task
+
+228
+00:10:04,810 --> 00:10:09,310
+execute tool and then
+we execute that we
+
+229
+00:10:09,310 --> 00:10:12,850
+can we can view the
+memory so this shows all
+
+230
+00:10:12,850 --> 00:10:14,550
+the things happening
+within so this one's
+
+231
+00:10:14,550 --> 00:10:17,810
+got a hundred and i
+guess 12 i guess that's
+
+232
+00:10:17,810 --> 00:10:20,950
+12 715 tasks so i
+can go in here i can
+
+233
+00:10:20,950 --> 00:10:24,110
+search through that i
+can i can type in task
+
+234
+00:10:24,110 --> 00:10:26,480
+i guess there's
+something for that one um
+
+235
+00:10:26,660 --> 00:10:31,550
+hope maybe and then we
+click on that we can
+
+236
+00:10:31,550 --> 00:10:33,750
+see what what's
+happening at each step i
+
+237
+00:10:33,750 --> 00:10:36,050
+can visualize all these
+components we'll go
+
+238
+00:10:36,050 --> 00:10:38,610
+for those who like
+terminals i stuck a terminal
+
+239
+00:10:38,610 --> 00:10:40,110
+in here just to show
+you how to interact
+
+240
+00:10:40,110 --> 00:10:41,830
+with the terminal
+programmatically mostly
+
+241
+00:10:41,910 --> 00:10:44,170
+so if you go in here
+you can do that you
+
+242
+00:10:44,170 --> 00:10:46,750
+know i can go to cd
+oop i gotta test like
+
+243
+00:10:46,750 --> 00:10:49,270
+that right so i could
+whatever i need i want
+
+244
+00:10:49,270 --> 00:10:52,850
+to do and here are
+the api docs so if you
+
+245
+00:10:52,850 --> 00:10:54,370
+want to interact with
+the system you can
+
+246
+00:10:54,370 --> 00:10:57,530
+see that as well so so
+this is if for anyone
+
+247
+00:10:57,530 --> 00:10:59,230
+building dashboards
+that wants to interact
+
+248
+00:10:59,230 --> 00:11:01,930
+with either cloud
+flow or cloud code all
+
+249
+00:11:01,930 --> 00:11:04,810
+you need to do is use
+my my web services so
+
+250
+00:11:04,810 --> 00:11:06,910
+you can see my examples
+here's some some
+
+251
+00:11:06,910 --> 00:11:09,210
+endpoints so if I want
+to check the system
+
+252
+00:11:09,210 --> 00:11:11,050
+health which is the
+most simple one I can
+
+253
+00:11:11,050 --> 00:11:15,730
+click here and then I
+can execute and this
+
+254
+00:11:15,730 --> 00:11:19,030
+is running you can see
+the headers raw the
+
+255
+00:11:19,030 --> 00:11:21,750
+raw information I can
+see the web sockets I
+
+256
+00:11:21,750 --> 00:11:23,970
+still do some work
+on this one I think I
+
+257
+00:11:23,970 --> 00:11:26,350
+think I need to change
+this to my my actual
+
+258
+00:11:26,350 --> 00:11:28,210
+IP address but we'll
+see what happens here
+
+259
+00:11:30,090 --> 00:11:32,190
+Oh, yeah, it's trying
+to connect to a
+
+260
+00:11:32,190 --> 00:11:34,750
+local host. I'm actually
+on an IP address,
+
+261
+00:11:34,750 --> 00:11:35,990
+so that's probably
+not going to work
+
+262
+00:11:35,990 --> 00:11:38,570
+in the moment. But
+you get the idea.
+
+263
+00:11:38,570 --> 00:11:40,130
+So I'm just going to
+
+264
+00:11:40,130 --> 00:11:41,450
+stop that for a moment.
+
+265
+00:11:42,290 --> 00:11:43,810
+And I'm going to add
+an authentication
+
+266
+00:11:43,810 --> 00:11:46,170
+system. So lots of
+cool features here.
+
+267
+00:11:47,630 --> 00:11:51,240
+Yeah, so that's
+my dashboard.
+
+268
+00:11:52,370 --> 00:11:54,010
+Thank you for putting
+this together. I
+
+269
+00:11:54,010 --> 00:11:57,210
+feel like it helps me
+personally appreciate
+
+270
+00:11:57,520 --> 00:11:59,950
+the depth and scale
+of like the tool that
+
+271
+00:11:59,950 --> 00:12:01,310
+you've created and
+seeing it visually
+
+272
+00:12:01,310 --> 00:12:03,470
+is so helpful. It's
+like, wow, there's all
+
+273
+00:12:03,470 --> 00:12:05,250
+these nooks and
+crannies. And so just
+
+274
+00:12:05,250 --> 00:12:06,410
+thank you for putting
+this together. It was
+
+275
+00:12:06,410 --> 00:12:08,470
+awesome. Oh yeah.
+There's, there's a ton
+
+276
+00:12:08,470 --> 00:12:09,890
+of stuff happening
+here. And actually I
+
+277
+00:12:09,890 --> 00:12:11,070
+skipped some of the,
+some of the features
+
+278
+00:12:11,070 --> 00:12:13,270
+here and I need to,
+I need to add sort
+
+279
+00:12:13,270 --> 00:12:16,360
+of another option to
+keep it persistent.
+
+280
+00:12:18,290 --> 00:12:20,730
+I haven't done that
+yet, but check this out.
+
+281
+00:12:20,730 --> 00:12:22,090
+I've got another, I
+get a visual system
+
+282
+00:12:22,090 --> 00:12:24,810
+here so we can go, we
+can see the hierarchy.
+
+283
+00:12:25,190 --> 00:12:26,830
+We can change
+the hierarchy
+
+284
+00:12:26,830 --> 00:12:28,630
+as new instances
+are added.
+
+285
+00:12:28,670 --> 00:12:32,270
+It adjusts, you
+know, you can, you
+
+286
+00:12:32,270 --> 00:12:34,250
+can connect one
+to another kind of
+
+287
+00:12:34,250 --> 00:12:36,030
+thing. Oops. Where,
+where's that?
+
+288
+00:12:36,070 --> 00:12:37,770
+This is, I think I, yeah,
+
+289
+00:12:39,450 --> 00:12:41,930
+that isn't, is that,
+that's not working
+
+290
+00:12:41,930 --> 00:12:43,350
+at the moment for
+whatever reason, but.
+
+291
+00:12:43,410 --> 00:12:46,690
+Hey Roof, I got a
+question about trimming
+
+292
+00:12:46,690 --> 00:12:50,770
+different tasks out
+of, out of the context.
+
+293
+00:12:51,210 --> 00:12:54,910
+Are you able to do
+that with this? Yes,
+
+294
+00:12:55,030 --> 00:12:56,550
+exactly.
+
+295
+00:12:56,830 --> 00:12:58,050
+Yeah, exactly.
+
+296
+00:12:58,050 --> 00:13:01,170
+So that is that's I'm
+sorry, I'm not sure
+
+297
+00:13:01,170 --> 00:13:03,410
+who asked that, but
+that is a really
+
+298
+00:13:03,410 --> 00:13:05,610
+interesting. So what I'm
+able to do, I'm using
+
+299
+00:13:05,610 --> 00:13:09,570
+the stream output. So
+now I am able to in
+
+300
+00:13:09,570 --> 00:13:12,650
+real time monitor the
+stream of the output
+
+301
+00:13:12,650 --> 00:13:15,370
+from cloud code and
+then adjust, adapt,
+
+302
+00:13:15,370 --> 00:13:18,680
+and change what it needs
+to do in real time.
+
+303
+00:13:18,680 --> 00:13:21,050
+Before, I had no
+ability to see what was
+
+304
+00:13:21,050 --> 00:13:23,650
+happening, right? So it
+was kind of a mystery
+
+305
+00:13:23,650 --> 00:13:26,330
+when I went, I didn't
+know when a tool was
+
+306
+00:13:26,330 --> 00:13:28,770
+done or what was
+happening. Now I can see
+
+307
+00:13:28,770 --> 00:13:31,520
+exactly what's happening.
+I can see the full
+
+308
+00:13:31,520 --> 00:13:33,550
+JSON response or
+whatever I need to see
+
+309
+00:13:33,550 --> 00:13:36,310
+from it. And then I can
+have sort of a secondary
+
+310
+00:13:36,310 --> 00:13:38,470
+agent sort of
+monitoring. What I'm not
+
+311
+00:13:38,470 --> 00:13:40,610
+showing you in the
+system is I've actually
+
+312
+00:13:40,610 --> 00:13:43,810
+integrated the Mastra
+AI agent system. So I
+
+313
+00:13:43,810 --> 00:13:46,130
+can have secondary
+agents that are actually
+
+314
+00:13:46,130 --> 00:13:50,610
+manipulating the stream
+to improve, to train,
+
+315
+00:13:50,610 --> 00:13:53,710
+to alter, to spin
+secondary components.
+
+316
+00:13:54,150 --> 00:13:57,270
+And this is
+basically a real
+
+317
+00:13:57,270 --> 00:13:58,530
+-time view of the stream.
+
+318
+00:14:00,330 --> 00:14:03,970
+It's kind of cool. And
+you can also better
+
+319
+00:14:03,970 --> 00:14:06,870
+see when there's an
+error, if there is one.
+
+320
+00:14:07,430 --> 00:14:11,130
+Why did you choose
+Mastra Agents? Light
+
+321
+00:14:11,130 --> 00:14:14,570
+and I like Mastra
+because it's TypeScript.
+
+322
+00:14:14,570 --> 00:14:16,450
+It's light. It works
+in a serverless
+
+323
+00:14:16,450 --> 00:14:19,970
+environment. It has
+native MCP integration
+
+324
+00:14:19,970 --> 00:14:23,490
+input and output.
+And LankChain *****.
+
+325
+00:14:23,990 --> 00:14:27,190
+Sorry, LankChain.
+
+326
+00:14:31,260 --> 00:14:33,230
+LankChain JS is
+actually okay, but
+
+327
+00:14:33,230 --> 00:14:36,010
+the Python one.
+And, you know, I
+
+328
+00:14:36,010 --> 00:14:37,590
+don't get why people
+build in Python.
+
+329
+00:14:37,590 --> 00:14:38,930
+I know people
+like it, but
+
+330
+00:14:38,930 --> 00:14:39,890
+it's just not my thing.
+
+331
+00:14:41,100 --> 00:14:42,510
+And as you
+guys know, I've
+
+332
+00:14:42,510 --> 00:14:43,400
+built a lot in Python.
+
+333
+00:14:43,590 --> 00:14:45,740
+It's just, this
+is all TypeScript.
+
+334
+00:14:49,650 --> 00:14:53,310
+And I, yeah, here's
+an issue I see.
+
+335
+00:14:53,970 --> 00:14:55,010
+Tool result.
+
+336
+00:14:55,010 --> 00:14:56,630
+So this is a
+perfect example
+
+337
+00:14:56,630 --> 00:14:57,590
+of something
+I need to fix.
+
+338
+00:14:57,590 --> 00:14:59,330
+It's spawning,
+it's using the
+
+339
+00:14:59,330 --> 00:15:00,890
+wrong tool. Now
+I can actually
+
+340
+00:15:00,890 --> 00:15:02,170
+see when there's
+a problem.
+
+341
+00:15:02,490 --> 00:15:05,450
+so now i could go to
+the tool id later on
+
+342
+00:15:05,450 --> 00:15:07,930
+and i'll i can do a
+review and fix whatever
+
+343
+00:15:07,930 --> 00:15:10,810
+whatever it was trying
+to do here so it looks
+
+344
+00:15:10,810 --> 00:15:12,430
+like it was trying to do
+a command notification
+
+345
+00:15:13,060 --> 00:15:15,790
+so error i need to
+fix so now at least
+
+346
+00:15:15,790 --> 00:15:19,230
+i can a lot of these
+errors were hidden in
+
+347
+00:15:19,230 --> 00:15:21,690
+the context of the clod
+flow system when it's
+
+348
+00:15:21,690 --> 00:15:23,150
+flickering and doing
+all kinds of crazy
+
+349
+00:15:23,150 --> 00:15:25,370
+stuff and i had a really
+hard time to see when
+
+350
+00:15:25,370 --> 00:15:26,910
+there was a problem
+like this now all i
+
+351
+00:15:26,910 --> 00:15:29,910
+need to do is is do a
+filter for you know you
+
+352
+00:15:29,910 --> 00:15:32,090
+know whenever the word
+unknown shows up i
+
+353
+00:15:32,090 --> 00:15:35,550
+can try to find and
+i'll fix that as a a new
+
+354
+00:15:35,550 --> 00:15:39,920
+ticket so in this case
+i could spawn here i
+
+355
+00:15:40,570 --> 00:15:43,730
+can go here i'll choose
+i need to do a filter
+
+356
+00:15:43,730 --> 00:15:45,270
+i need to do a better
+filter here i'll do
+
+357
+00:15:45,270 --> 00:15:47,070
+i'll add that later
+but there's a github
+
+358
+00:15:47,070 --> 00:15:53,150
+option so i i could do
+i could choose uh one
+
+359
+00:15:53,150 --> 00:15:55,930
+of these options p you
+know a pr manager or
+
+360
+00:15:55,930 --> 00:15:58,290
+maybe an issue release
+manager whatever needs
+
+361
+00:15:58,290 --> 00:16:00,690
+whatever makes the
+most sense and then i
+
+362
+00:16:00,690 --> 00:16:02,430
+i would say you know
+create a new issue or
+
+363
+00:16:02,430 --> 00:16:04,910
+something relating to
+that so here i might
+
+364
+00:16:04,910 --> 00:16:09,310
+do issue tracker and
+this one i might say uh
+
+365
+00:16:12,610 --> 00:16:16,450
+review and fix
+you know and
+
+366
+00:16:16,450 --> 00:16:17,570
+i'll paste that in there
+
+367
+00:16:20,850 --> 00:16:23,110
+and then i spawn it
+so this this would
+
+368
+00:16:23,110 --> 00:16:26,210
+be in a different
+swarm and that's it
+
+369
+00:16:27,370 --> 00:16:30,030
+oh another another
+thing to note for those
+
+370
+00:16:30,030 --> 00:16:31,730
+who are who are might
+be interested in
+
+371
+00:16:31,730 --> 00:16:34,190
+helping me with
+development i'm outputting
+
+372
+00:16:34,190 --> 00:16:38,410
+everything in the
+console so not only can
+
+373
+00:16:38,410 --> 00:16:40,930
+you see and actually
+a whole lot more here
+
+374
+00:16:41,080 --> 00:16:45,310
+so let's go here for
+a moment and i'm going
+
+375
+00:16:45,310 --> 00:16:47,030
+to i'm just going
+to refresh the whole
+
+376
+00:16:47,030 --> 00:16:51,750
+entire interface this
+is a work in progress
+
+377
+00:16:51,750 --> 00:16:53,790
+you're seeing bugs
+but you see here i've
+
+378
+00:16:53,790 --> 00:16:56,130
+got my my console so
+this this will tell you
+
+379
+00:16:56,130 --> 00:16:59,110
+all the various checks
+right now the the
+
+380
+00:16:59,110 --> 00:17:01,390
+the uh issue you're
+seeing websockets is
+
+381
+00:17:01,390 --> 00:17:03,450
+it's trying to connect
+a local host i need
+
+382
+00:17:03,450 --> 00:17:06,910
+to have a fallback to
+127.0.01 or something
+
+383
+00:17:06,910 --> 00:17:10,030
+but that's a relatively
+minor problem
+
+384
+00:17:10,030 --> 00:17:13,230
+yeah so that's that's
+it that's my dashboard
+
+385
+00:17:13,450 --> 00:17:17,030
+hi quick question on
+the architecture of
+
+386
+00:17:17,030 --> 00:17:20,670
+this so this front
+end um is calling the
+
+387
+00:17:20,670 --> 00:17:23,770
+api as well as getting
+data directly from
+
+388
+00:17:23,770 --> 00:17:27,450
+the memory files and
+getting from the cloud
+
+389
+00:17:27,830 --> 00:17:32,590
+cloud control logs are
+these three okay so
+
+390
+00:17:33,230 --> 00:17:36,870
+i'm doing yeah i'm
+doing it from several
+
+391
+00:17:36,870 --> 00:17:38,910
+so in the most simple
+sense in the most
+
+392
+00:17:38,910 --> 00:17:42,890
+simple sense i'm i've
+created a ppt why i
+
+393
+00:17:42,890 --> 00:17:45,090
+think they call it that
+allows me to interact
+
+394
+00:17:45,090 --> 00:17:47,150
+directly with the
+console of the server
+
+395
+00:17:47,150 --> 00:17:50,890
+using WebSockets and
+or API endpoints.
+
+396
+00:17:51,030 --> 00:17:53,070
+And once I've got
+that, I can then
+
+397
+00:17:53,070 --> 00:17:56,210
+query the Claude
+code, Claude flow,
+
+398
+00:17:56,290 --> 00:17:58,630
+or just straight
+up the SQLite or
+
+399
+00:17:58,630 --> 00:18:00,550
+whatever else I want
+from the terminal
+
+400
+00:18:00,550 --> 00:18:03,310
+itself in a structured
+and streaming
+
+401
+00:18:03,310 --> 00:18:05,230
+fashion. So it
+streams the output
+
+402
+00:18:05,230 --> 00:18:09,470
+using WebSockets to
+the web interface.
+
+403
+00:18:10,180 --> 00:18:11,370
+Perfect, thank you.
+
+404
+00:18:12,290 --> 00:18:15,030
+that's probably the
+best way to to to do
+
+405
+00:18:15,030 --> 00:18:16,810
+this sort of thing and
+i think i think ocean
+
+406
+00:18:16,810 --> 00:18:18,470
+you mentioned you
+were doing a similar
+
+407
+00:18:18,470 --> 00:18:22,010
+approach with with web
+sockets if i i think you
+
+408
+00:18:22,010 --> 00:18:23,750
+mentioned before the
+call started anyway
+
+409
+00:18:25,830 --> 00:18:27,650
+i'm excited to see how
+what other people are
+
+410
+00:18:27,650 --> 00:18:29,970
+doing with dashboards
+we can compare notes
+
+411
+00:18:29,970 --> 00:18:33,230
+quick question so uh
+you're running the
+
+412
+00:18:33,230 --> 00:18:35,130
+dashboard on local host
+but you're connecting
+
+413
+00:18:35,130 --> 00:18:37,610
+to github workspaces
+that's running cloud
+
+414
+00:18:37,610 --> 00:18:40,230
+flow in order to
+make sure that's in a
+
+415
+00:18:40,230 --> 00:18:43,410
+containerized environment
+is that correct not
+
+416
+00:18:43,410 --> 00:18:46,450
+exactly so i am using
+i'm using uh the
+
+417
+00:18:46,450 --> 00:18:49,150
+various types of containers
+and i like github
+
+418
+00:18:49,150 --> 00:18:51,570
+because it's it's easy
+but you you could you
+
+419
+00:18:51,570 --> 00:18:53,070
+could hypothetically
+run this anywhere
+
+420
+00:18:53,070 --> 00:18:57,710
+and the drawback to uh
+using uh github code
+
+421
+00:18:57,710 --> 00:19:00,930
+spaces is it doesn't
+use local host it uses
+
+422
+00:19:00,930 --> 00:19:04,970
+the ip address and it's
+just the way they've
+
+423
+00:19:04,970 --> 00:19:07,310
+got it set up and
+most things expect
+
+424
+00:19:07,310 --> 00:19:09,790
+localhost but so what
+i what i'm doing is i'm
+
+425
+00:19:09,790 --> 00:19:15,310
+using a 127.0.01 fallback
+so if if localhost
+
+426
+00:19:15,310 --> 00:19:17,850
+fails then i just
+basically say okay go
+
+427
+00:19:17,850 --> 00:19:20,740
+try the same thing
+using the ip address but
+
+428
+00:19:20,810 --> 00:19:23,410
+you said that Claude-flow
+shouldn't be run
+
+429
+00:19:23,410 --> 00:19:25,910
+locally because it can
+wreak havoc and cause
+
+430
+00:19:25,910 --> 00:19:29,050
+kernel panics so how
+are you able to get
+
+431
+00:19:29,050 --> 00:19:32,810
+around that issue well
+i use docker i use
+
+432
+00:19:32,810 --> 00:19:36,070
+ubuntu docker and
+generally i don't bother.
+
+433
+00:19:36,070 --> 00:19:37,930
+It takes up too much
+space in my hard drive
+
+434
+00:19:37,930 --> 00:19:39,540
+to have all these
+Docker images running.
+
+435
+00:19:39,540 --> 00:19:41,590
+So I just, you know,
+I usually either
+
+436
+00:19:41,590 --> 00:19:44,710
+use GitHub code
+spaces or some cheap
+
+437
+00:19:44,710 --> 00:19:47,490
+provider like
+Railway or, you know,
+
+438
+00:19:47,730 --> 00:19:49,870
+I like Fly.io. There's
+a bunch of them,
+
+439
+00:19:49,870 --> 00:19:50,850
+right? They all kind
+of work the same
+
+440
+00:19:50,850 --> 00:19:51,790
+way. They're all
+basically Docker
+
+441
+00:19:51,790 --> 00:19:53,530
+instances running in
+the cloud somewhere.
+
+442
+00:19:53,890 --> 00:19:57,350
+Okay. So you're
+running the Claude-flow
+
+443
+00:19:57,910 --> 00:20:00,810
+in a Fly.io,
+Dockerized environment,
+
+444
+00:20:00,810 --> 00:20:02,270
+and you're
+connecting that with
+
+445
+00:20:02,270 --> 00:20:06,370
+local host IDE in
+order to connect to
+
+446
+00:20:06,370 --> 00:20:08,430
+your back end, which
+is on the floor.
+
+447
+00:20:08,430 --> 00:20:09,690
+No IDE. I'm not
+using an IDE.
+
+448
+00:20:09,950 --> 00:20:14,690
+So there is no
+IDE. It's a command
+
+449
+00:20:14,690 --> 00:20:17,430
+line or Node.js
+application to the
+
+450
+00:20:17,430 --> 00:20:19,030
+command line, but
+there's no IDE.
+
+451
+00:20:20,870 --> 00:20:22,630
+Is there at least
+authentication
+
+452
+00:20:22,630 --> 00:20:24,390
+between the
+public IP address
+
+453
+00:20:24,390 --> 00:20:26,490
+and that
+WebSocket client?
+
+454
+00:20:27,360 --> 00:20:28,870
+Sorry, I missed the
+first part of your
+
+455
+00:20:28,870 --> 00:20:31,390
+question. Is there at
+least authentication
+
+456
+00:20:31,390 --> 00:20:33,630
+between the public
+IP address of the
+
+457
+00:20:33,630 --> 00:20:36,190
+FlyIO instance and
+your WebSocket client?
+
+458
+00:20:37,170 --> 00:20:38,470
+There could be.
+
+459
+00:20:38,470 --> 00:20:39,450
+Currently, no.
+
+460
+00:20:40,690 --> 00:20:43,570
+This is a work
+in progress.
+
+461
+00:20:43,630 --> 00:20:46,270
+So if you're
+volunteering to do that,
+
+462
+00:20:46,270 --> 00:20:47,730
+it probably wouldn't
+take a lot of time.
+
+463
+00:20:47,730 --> 00:20:49,010
+I haven't gotten
+there yet. I was
+
+464
+00:20:49,010 --> 00:20:51,610
+more focused on the
+core functionality.
+
+465
+00:20:52,110 --> 00:20:53,870
+Once I've got the
+core functionality
+
+466
+00:20:53,870 --> 00:20:55,330
+working, then
+I secure it.
+
+467
+00:20:55,730 --> 00:20:58,470
+If you're going to
+run my super alpha
+
+468
+00:20:58,470 --> 00:21:00,530
+version of this,
+just make sure
+
+469
+00:21:00,530 --> 00:21:02,060
+you don't make it
+publicly available.
+
+470
+00:21:02,130 --> 00:21:03,550
+It should be fine.
+
+471
+00:21:04,790 --> 00:21:07,340
+It's the same
+question, Jed, with
+
+472
+00:21:07,340 --> 00:21:09,010
+Codespaces. With
+Codespaces, you open
+
+473
+00:21:09,010 --> 00:21:12,380
+a port, and once
+it's open to your
+
+474
+00:21:12,380 --> 00:21:14,630
+Codespace, anyone
+can get to it if they
+
+475
+00:21:14,760 --> 00:21:17,770
+know that you are
+our IP address.
+
+476
+00:21:17,910 --> 00:21:21,770
+Yes. It's not
+exclusive to your...
+
+477
+00:21:22,490 --> 00:21:24,950
+It's not over SSH or
+something like that?
+
+478
+00:21:24,950 --> 00:21:29,210
+it could be it should
+be but it isn't
+
+479
+00:21:29,210 --> 00:21:31,450
+by default they
+just forward it just
+
+480
+00:21:31,450 --> 00:21:33,190
+forwards a port you
+can set it up in code
+
+481
+00:21:33,190 --> 00:21:34,590
+spaces and you forward
+a port and then
+
+482
+00:21:34,590 --> 00:21:37,150
+that port is open
+for your code space
+
+483
+00:21:37,610 --> 00:21:39,930
+which is a docker
+container running in
+
+484
+00:21:39,930 --> 00:21:44,270
+github's uh compute
+environment yeah it's
+
+485
+00:21:44,270 --> 00:21:46,500
+the same that that
+goes for any like the
+
+486
+00:21:46,500 --> 00:21:48,810
+aws would be the same
+thing if if you open
+
+487
+00:21:48,810 --> 00:21:50,310
+a port you don't
+put any security on
+
+488
+00:21:50,310 --> 00:21:52,570
+it then it's not
+going to be secured so
+
+489
+00:21:52,570 --> 00:21:54,810
+same idea now what
+i'll probably end up
+
+490
+00:21:54,810 --> 00:21:57,720
+doing is I'll probably
+add like a JWT token
+
+491
+00:21:57,730 --> 00:22:01,530
+and like to the API
+and something similar
+
+492
+00:22:01,530 --> 00:22:04,410
+for the web socket
+and I'll secure it.
+
+493
+00:22:04,510 --> 00:22:06,990
+And so there's two forms
+of security I would
+
+494
+00:22:06,990 --> 00:22:08,670
+likely add. If I was
+actually going to do
+
+495
+00:22:08,670 --> 00:22:10,050
+this in production,
+like let's say I wanted
+
+496
+00:22:10,050 --> 00:22:11,330
+to deploy this on a
+serverless function
+
+497
+00:22:11,330 --> 00:22:13,950
+somewhere, I'd probably
+use an anonymous key,
+
+498
+00:22:14,490 --> 00:22:17,650
+like some kind of
+cores policy that locks
+
+499
+00:22:17,650 --> 00:22:19,810
+it to a particular
+domain. And then I would
+
+500
+00:22:19,810 --> 00:22:22,330
+use some other secondary
+form of user auth,
+
+501
+00:22:22,610 --> 00:22:25,210
+JWT or something.
+And getting past
+
+502
+00:22:25,210 --> 00:22:27,450
+all three levels
+would be pretty
+
+503
+00:22:27,450 --> 00:22:29,550
+difficult at that
+point. You could fake
+
+504
+00:22:29,550 --> 00:22:32,090
+the cores, I suppose,
+but faking the
+
+505
+00:22:32,090 --> 00:22:33,690
+other two would
+be very difficult.
+
+506
+00:22:34,810 --> 00:22:37,550
+Do you think you can
+do something similar to
+
+507
+00:22:37,550 --> 00:22:39,630
+Supabase, where they
+have both anonymous
+
+508
+00:22:39,630 --> 00:22:43,770
+and API keys? So you
+have the anonymous key,
+
+509
+00:22:43,770 --> 00:22:46,230
+and then you have the
+API key on the server.
+
+510
+00:22:46,560 --> 00:22:48,290
+Dead on. That's
+exactly what I'm doing.
+
+511
+00:22:49,990 --> 00:22:52,790
+That model is what
+I was describing.
+
+512
+00:22:53,530 --> 00:22:55,610
+So the anonymous
+key is what you
+
+513
+00:22:55,610 --> 00:22:57,950
+can see essentially
+in your browser
+
+514
+00:22:57,950 --> 00:22:59,290
+if you were sniffing
+the network.
+
+515
+00:22:59,470 --> 00:23:02,830
+And something somewhere
+needs to communicate,
+
+516
+00:23:02,830 --> 00:23:04,410
+right? So the
+anonymous key is a good
+
+517
+00:23:04,410 --> 00:23:06,270
+way to do that. And
+then the second part
+
+518
+00:23:06,270 --> 00:23:08,410
+is the cores. Is it
+coming from a trusted
+
+519
+00:23:10,130 --> 00:23:11,910
+domain, whatever.com?
+
+520
+00:23:12,030 --> 00:23:13,890
+Now, again,
+hypothetically, depending
+
+521
+00:23:13,890 --> 00:23:15,630
+on how your domain's
+set up, that could
+
+522
+00:23:15,630 --> 00:23:17,210
+be faked. But if
+you're using the
+
+523
+00:23:17,210 --> 00:23:19,290
+latest CloudFlare
+setup, that's going
+
+524
+00:23:19,290 --> 00:23:20,790
+to be really difficult
+or impossible.
+
+525
+00:23:21,870 --> 00:23:24,890
+And then lastly, once
+you've got past those
+
+526
+00:23:24,890 --> 00:23:29,270
+two, I'm using the
+OAuth components from
+
+527
+00:23:29,350 --> 00:23:31,810
+Supabase or whatever
+my OAuth provider is as
+
+528
+00:23:31,810 --> 00:23:34,570
+a user authentication.
+So you basically are
+
+529
+00:23:34,570 --> 00:23:37,990
+having three levels
+of security, the least
+
+530
+00:23:37,990 --> 00:23:40,770
+of the security being
+the anonymous token.
+
+531
+00:23:41,230 --> 00:23:45,730
+And I have just one
+more question. So you
+
+532
+00:23:45,730 --> 00:23:48,430
+mentioned that there's
+GitHub code spaces for
+
+533
+00:23:48,430 --> 00:23:50,930
+containerized environments
+with Docker, but
+
+534
+00:23:50,930 --> 00:23:53,370
+there's also Fly for
+Dockers. Now, if you
+
+535
+00:23:53,370 --> 00:23:55,550
+look at some of the
+Fly promotional YouTube
+
+536
+00:23:55,550 --> 00:23:58,370
+videos, they say that
+the Fly Docker is
+
+537
+00:23:58,370 --> 00:24:01,710
+different than an actual
+Docker. But I'm having
+
+538
+00:24:01,710 --> 00:24:04,370
+difficulty understanding
+that because when
+
+539
+00:24:04,370 --> 00:24:07,430
+you define how the
+FlyVM is constructed,
+
+540
+00:24:07,430 --> 00:24:10,350
+you basically use
+commands similar to Docker
+
+541
+00:24:10,350 --> 00:24:12,870
+Compose. So I was just
+wondering, in your
+
+542
+00:24:12,870 --> 00:24:15,370
+experience, how is the
+Fly Docker different
+
+543
+00:24:15,370 --> 00:24:18,590
+than normal Docker?
+It isn't different. If
+
+544
+00:24:18,590 --> 00:24:21,710
+it works in my local
+Docker, it will work in
+
+545
+00:24:21,710 --> 00:24:24,670
+Fly or Railway or
+Vercel or whatever. They
+
+546
+00:24:24,670 --> 00:24:26,450
+all work the same.
+I never noticed any
+
+547
+00:24:26,450 --> 00:24:29,130
+difference. I do a local
+Docker test just to
+
+548
+00:24:29,130 --> 00:24:32,250
+ensure it builds correctly
+and do a quick run.
+
+549
+00:24:32,250 --> 00:24:34,890
+And once I know it
+runs locally, and
+
+550
+00:24:34,890 --> 00:24:36,210
+when I say locally,
+I'm probably running
+
+551
+00:24:36,210 --> 00:24:38,810
+in like a GitHub
+code space. But once
+
+552
+00:24:38,810 --> 00:24:40,090
+I know it works
+there, then I just
+
+553
+00:24:40,090 --> 00:24:42,250
+deploy it. And
+generally, it just works.
+
+554
+00:24:43,110 --> 00:24:45,290
+And I just want to add,
+
+555
+00:24:45,550 --> 00:24:48,630
+Fly.io used to have
+their own system for
+
+556
+00:24:48,630 --> 00:24:51,110
+Dockers. They don't
+use the standards.
+
+557
+00:24:51,230 --> 00:24:54,530
+but they i think a
+couple of months ago they
+
+558
+00:24:54,530 --> 00:24:56,950
+had to open a little
+bit and implement the
+
+559
+00:24:56,950 --> 00:24:59,970
+standard dockers so
+maybe you're looking on
+
+560
+00:24:59,970 --> 00:25:03,010
+the wrong videos or all
+videos old it sounds
+
+561
+00:25:03,010 --> 00:25:05,710
+like old ones till
+the old so yeah they
+
+562
+00:25:05,710 --> 00:25:07,410
+they've resolved it was
+i think they resolved
+
+563
+00:25:07,410 --> 00:25:10,870
+that like in january
+so last year it was
+
+564
+00:25:10,870 --> 00:25:12,910
+the biggest issue with
+fly.io was they had
+
+565
+00:25:12,910 --> 00:25:15,750
+like these weird build
+system and you had to
+
+566
+00:25:15,750 --> 00:25:18,170
+and and then you had
+to try to use the they
+
+567
+00:25:18,170 --> 00:25:20,570
+had a local option to
+do the build on your
+
+568
+00:25:20,570 --> 00:25:22,730
+machine and then you'd
+have to do the same
+
+569
+00:25:22,730 --> 00:25:24,810
+build remotely but they
+get they went away from
+
+570
+00:25:24,810 --> 00:25:26,480
+that and then now
+they're more traditional
+
+571
+00:25:26,600 --> 00:25:28,830
+there's still a few
+quirks but they all
+
+572
+00:25:28,830 --> 00:25:31,670
+like if you use like um
+any any of these ones
+
+573
+00:25:31,670 --> 00:25:33,350
+that uses docker as a
+deployment model they
+
+574
+00:25:33,350 --> 00:25:34,790
+all have sort of little
+quirks you have to
+
+575
+00:25:34,790 --> 00:25:36,690
+try to work around like
+versell is the same
+
+576
+00:25:36,690 --> 00:25:38,410
+way they've got a few
+interesting things
+
+577
+00:25:38,410 --> 00:25:44,870
+they've chosen hey thank
+you yeah um so who so
+
+578
+00:25:44,870 --> 00:25:47,690
+who wants to show their
+dashboard next we've
+
+579
+00:25:47,690 --> 00:25:53,030
+got braun mr field
+walker hey og hey how's
+
+580
+00:25:53,030 --> 00:25:56,680
+it going good man how
+are you yeah good um
+
+581
+00:25:56,680 --> 00:26:00,670
+yeah when i was working
+on swarm i was trying
+
+582
+00:26:00,670 --> 00:26:03,450
+to figure out what
+exactly these things
+
+583
+00:26:03,450 --> 00:26:08,250
+are doing so here uh oh
+host disabled i can't
+
+584
+00:26:08,250 --> 00:26:12,350
+share i can't share
+pornographic images i
+
+585
+00:26:12,840 --> 00:26:16,070
+think i think you have
+to request uh let's
+
+586
+00:26:16,070 --> 00:26:19,410
+see it just says
+disabled i don't know how
+
+587
+00:26:19,410 --> 00:26:23,230
+to request uh let's see
+i think you should be
+
+588
+00:26:23,230 --> 00:26:26,350
+able to grant him
+access through if you
+
+589
+00:26:26,350 --> 00:26:31,190
+select on him yeah
+let's see here sorry i i
+
+590
+00:26:31,190 --> 00:26:34,890
+locked it down yeah now
+when you click share
+
+591
+00:26:34,890 --> 00:26:38,030
+it just says host
+disabled there's nothing
+
+592
+00:26:38,030 --> 00:26:40,760
+there at all like it
+should say send request
+
+593
+00:26:40,760 --> 00:26:44,310
+now it says okay is all
+i got all right if i
+
+594
+00:26:44,310 --> 00:26:48,850
+see **** and and you
+know really offensive
+
+595
+00:26:48,850 --> 00:26:50,730
+things i'm gonna i'm
+gonna have to flip out
+
+596
+00:26:50,730 --> 00:26:52,450
+but i'm gonna turn it
+back on here one sec
+
+597
+00:26:52,450 --> 00:26:56,550
+guys allow turn it on
+turn it off yeah join
+
+598
+00:26:56,650 --> 00:27:00,650
+later that's yeah
+yeah okay keep keep uh
+
+599
+00:27:00,650 --> 00:27:02,930
+keep all inappropriate
+things to yourself today
+
+600
+00:27:02,930 --> 00:27:04,210
+all right you should
+you should be good
+
+601
+00:27:04,210 --> 00:27:06,470
+all right let's see you
+should see a sparkly
+
+602
+00:27:06,470 --> 00:27:12,550
+screen great nice okay
+so yeah as everyone
+
+603
+00:27:12,550 --> 00:27:15,850
+knows swarm and all this
+gets kind of confusing
+
+604
+00:27:15,850 --> 00:27:18,450
+so i first started
+just trying to say
+
+605
+00:27:18,450 --> 00:27:20,650
+okay what the **** are
+swarms there what are
+
+606
+00:27:20,650 --> 00:27:25,730
+they doing so i i i got
+this uh sort of drag
+
+607
+00:27:25,730 --> 00:27:28,530
+and drop you can move
+them around if you
+
+608
+00:27:28,530 --> 00:27:31,410
+hover over them you can
+see what's inside how
+
+609
+00:27:31,410 --> 00:27:34,750
+many agents are there
+what their agents are
+
+610
+00:27:34,750 --> 00:27:37,870
+doing i didn't spend
+too much time it's like
+
+611
+00:27:37,870 --> 00:27:40,090
+the first thing i got
+up just to sort of
+
+612
+00:27:40,090 --> 00:27:43,190
+figure out because if
+you ask ai what it'll
+
+613
+00:27:43,190 --> 00:27:45,730
+do is he'll start
+drawing all these lines
+
+614
+00:27:45,730 --> 00:27:48,930
+between everything but
+they don't exist so it
+
+615
+00:27:48,930 --> 00:27:51,810
+took me a while to
+sort of decompose okay
+
+616
+00:27:51,810 --> 00:27:55,490
+what is this warm how
+are the agents connected
+
+617
+00:27:55,490 --> 00:27:58,850
+uh are there any hard
+rules or are they
+
+618
+00:27:58,850 --> 00:28:02,310
+only rules inside cloud
+code sort of virtual
+
+619
+00:28:02,310 --> 00:28:05,450
+brain but i'm seeing
+that the screen sharing
+
+620
+00:28:05,450 --> 00:28:07,750
+has been paused does
+anyone else see that
+
+621
+00:28:07,750 --> 00:28:13,090
+no i don't know you
+can't see anything yeah
+
+622
+00:28:13,090 --> 00:28:16,090
+you still see the i
+can still see it no i
+
+623
+00:28:16,090 --> 00:28:18,590
+don't see it at the
+moment screen sharing has
+
+624
+00:28:18,590 --> 00:28:21,630
+been paused. Did I do
+that? You know, I, I,
+
+625
+00:28:22,050 --> 00:28:23,550
+It looks frozen.
+
+626
+00:28:25,810 --> 00:28:27,790
+Stop share, re
+-share. Yeah.
+
+627
+00:28:30,230 --> 00:28:32,110
+Braun has paused
+screen sharing.
+
+628
+00:28:32,250 --> 00:28:32,730
+Uh,
+
+629
+00:28:33,170 --> 00:28:34,510
+paused. I don't, okay.
+
+630
+00:28:34,570 --> 00:28:35,110
+Uh,
+
+631
+00:28:35,790 --> 00:28:36,610
+resume?
+
+632
+00:28:36,610 --> 00:28:38,710
+Maybe? I can
+check on. Yeah,
+
+633
+00:28:38,710 --> 00:28:40,170
+there we go.
+Now it's moving.
+
+634
+00:28:40,170 --> 00:28:41,830
+Can you back up?
+I don't know.
+
+635
+00:28:42,130 --> 00:28:44,310
+I didn't touch it,
+but it went off.
+
+636
+00:28:44,310 --> 00:28:45,750
+Anyways, okay. So,
+
+637
+00:28:46,490 --> 00:28:53,250
+um yeah this is 3d js
+i think so um again
+
+638
+00:28:53,250 --> 00:28:55,660
+like what i want to do is
+figure out relationships
+
+639
+00:28:56,190 --> 00:28:58,950
+and if i'm going to
+build relationships
+
+640
+00:28:58,950 --> 00:29:02,850
+later i want to see
+i want to see how and
+
+641
+00:29:02,850 --> 00:29:06,350
+if agents are connected
+or do they talk so
+
+642
+00:29:06,350 --> 00:29:08,450
+if you when i first
+did it if you just ask
+
+643
+00:29:08,450 --> 00:29:11,430
+ai it'll draw lines
+all over the place but
+
+644
+00:29:11,430 --> 00:29:13,670
+when you actually dig
+down they don't exist
+
+645
+00:29:13,670 --> 00:29:16,530
+like none of the swarms
+are connected at the
+
+646
+00:29:16,530 --> 00:29:19,750
+moment they're all
+independent and these i
+
+647
+00:29:19,750 --> 00:29:23,090
+i'd have to update the
+actual agents but the
+
+648
+00:29:23,090 --> 00:29:28,590
+whole like mesh ring
+star this is a let's
+
+649
+00:29:28,590 --> 00:29:31,290
+call it a mental map for
+cloud code it's there
+
+650
+00:29:31,290 --> 00:29:35,810
+are no hard rules that
+it cannot break out
+
+651
+00:29:35,810 --> 00:29:39,970
+of so whether cloud
+code adheres to these
+
+652
+00:29:39,970 --> 00:29:44,130
+is up to cloud code
+but anyways this was
+
+653
+00:29:44,130 --> 00:29:46,410
+just the start then i
+thought okay you know
+
+654
+00:29:46,410 --> 00:29:49,030
+this at least tells me
+i can figure out you
+
+655
+00:29:49,030 --> 00:29:52,190
+know which one is which
+one's up which one's
+
+656
+00:29:52,190 --> 00:29:55,570
+working and you know
+what the agents in it.
+
+657
+00:29:56,150 --> 00:30:00,370
+This was for the
+server you're on or
+
+658
+00:30:00,370 --> 00:30:02,950
+container. I'm on
+localhost, but I wanted to
+
+659
+00:30:02,950 --> 00:30:05,130
+know, okay, if I'm
+running a whole bunch
+
+660
+00:30:05,130 --> 00:30:07,390
+of cloud codes, you
+know, how much CPU am
+
+661
+00:30:07,390 --> 00:30:10,530
+I using, how much
+RAM, actual disk space
+
+662
+00:30:10,530 --> 00:30:13,610
+and everything, because
+sometimes you're,
+
+663
+00:30:13,610 --> 00:30:15,790
+I have quite a bit of
+resource on this, but
+
+664
+00:30:15,790 --> 00:30:18,670
+you know, I can see
+my RAM is almost
+
+665
+00:30:18,670 --> 00:30:22,250
+tapped out. So just in
+case I need to scale
+
+666
+00:30:22,250 --> 00:30:24,310
+something or change
+it i needed actual
+
+667
+00:30:24,310 --> 00:30:28,310
+stats for this and then
+i got to the swarms
+
+668
+00:30:29,310 --> 00:30:33,410
+most of the swarm are
+fire up destroy fire
+
+669
+00:30:33,410 --> 00:30:36,710
+up destroy fire up
+destroy so um it's kind
+
+670
+00:30:36,710 --> 00:30:39,430
+of hard to benchmark
+and figure out what
+
+671
+00:30:39,430 --> 00:30:41,770
+are the best swarms
+what kind of hierarchies
+
+672
+00:30:41,770 --> 00:30:44,970
+work well what what
+about your agent so i
+
+673
+00:30:44,970 --> 00:30:49,510
+keep the swarms and i
+record them and these
+
+674
+00:30:49,510 --> 00:30:52,830
+are like this is what's
+up right now so you
+
+675
+00:30:52,830 --> 00:30:54,950
+know this swarm's got
+eight agents these
+
+676
+00:30:54,950 --> 00:30:58,970
+are the names of you
+know the title again
+
+677
+00:30:58,970 --> 00:31:03,670
+all of this stuff is
+cloud code mental map
+
+678
+00:31:03,670 --> 00:31:08,090
+so these are sort of
+made up but you know
+
+679
+00:31:08,090 --> 00:31:10,190
+that's the whole thing
+about prompting prompting
+
+680
+00:31:10,190 --> 00:31:13,270
+things like cloud
+md everything it's
+
+681
+00:31:13,270 --> 00:31:16,990
+the cloud code tries to
+follow it but you get
+
+682
+00:31:16,990 --> 00:31:20,810
+quite a bit of
+different configs if you
+
+683
+00:31:20,810 --> 00:31:23,340
+just run a bunch of
+swarms you'll see you're
+
+684
+00:31:23,340 --> 00:31:26,580
+getting all sorts of
+different configs um
+
+685
+00:31:27,160 --> 00:31:29,910
+so you know i can clean
+these up i can delete
+
+686
+00:31:29,910 --> 00:31:31,810
+them i can clean all
+of them i can keep
+
+687
+00:31:31,810 --> 00:31:34,710
+them so if i like a
+swarm i can keep it i
+
+688
+00:31:34,710 --> 00:31:40,090
+modified route swarm to
+I can reinstate swarm
+
+689
+00:31:40,090 --> 00:31:44,410
+so if I use this
+ID I can say reload
+
+690
+00:31:44,410 --> 00:31:48,730
+swarm that and that'll
+boot up this with all
+
+691
+00:31:48,730 --> 00:31:53,530
+the agents inside then
+I got this agent panel
+
+692
+00:31:53,530 --> 00:31:56,910
+so I was gonna make
+it haven't quite got
+
+693
+00:31:56,910 --> 00:31:59,590
+there but I'm gonna
+add let's call it
+
+694
+00:31:59,590 --> 00:32:04,730
+building swarm so I've
+run 94 agents here I don't
+
+695
+00:32:04,730 --> 00:32:07,150
+really need to make
+thousands more. So I
+
+696
+00:32:07,150 --> 00:32:09,750
+can start to go, okay,
+I like these ones,
+
+697
+00:32:09,930 --> 00:32:13,190
+I can drag them
+and drop them into
+
+698
+00:32:13,190 --> 00:32:15,430
+a swarm or modify
+the swarm. So then
+
+699
+00:32:15,430 --> 00:32:17,530
+what I can eventually
+get is, okay,
+
+700
+00:32:17,710 --> 00:32:20,150
+I only need, you know,
+maybe four or five
+
+701
+00:32:20,150 --> 00:32:22,750
+swarms for my workflows,
+I don't need to
+
+702
+00:32:22,750 --> 00:32:24,710
+keep building them
+and destroying them, I
+
+703
+00:32:24,710 --> 00:32:27,370
+just going to be like,
+run swarm one, which
+
+704
+00:32:27,370 --> 00:32:29,920
+will be like, coding
+swarm. And these
+
+705
+00:32:30,530 --> 00:32:34,230
+agents, I'll just keep
+customizing them until
+
+706
+00:32:34,230 --> 00:32:37,570
+I have exactly the
+best combo of, let's
+
+707
+00:32:37,570 --> 00:32:40,210
+say, capabilities.
+And again, I haven't
+
+708
+00:32:40,210 --> 00:32:45,010
+had time to totally bench
+all these topologies,
+
+709
+00:32:45,010 --> 00:32:50,490
+but what's better
+is the star ring,
+
+710
+00:32:50,490 --> 00:32:54,630
+or which of these
+topologies is the best.
+
+711
+00:32:55,910 --> 00:32:58,430
+Then I'm getting
+into these tasks.
+
+712
+00:32:59,030 --> 00:33:00,470
+For my, I don't know, for
+
+713
+00:33:00,470 --> 00:33:02,010
+my Linux system, if I run
+
+714
+00:33:02,230 --> 00:33:05,430
+the slash P, I got
+to pay with API. So I
+
+715
+00:33:05,430 --> 00:33:07,170
+haven't been running
+this, but I do keep
+
+716
+00:33:07,170 --> 00:33:10,930
+track of the major tasks
+I'm doing. And then
+
+717
+00:33:10,930 --> 00:33:12,890
+as you know, the
+flickering is a totally
+
+718
+00:33:12,890 --> 00:33:17,020
+annoying. So I got the
+events on the right
+
+719
+00:33:17,020 --> 00:33:20,530
+here and I can filter
+it. I haven't done
+
+720
+00:33:20,530 --> 00:33:22,610
+any in a while, but
+last night I did some.
+
+721
+00:33:23,090 --> 00:33:24,470
+And right now I'm
+also trying to
+
+722
+00:33:24,470 --> 00:33:27,070
+figure out what I
+want to see because
+
+723
+00:33:27,070 --> 00:33:29,570
+I don't really
+care about file
+
+724
+00:33:29,570 --> 00:33:31,310
+reads and all that
+kind of stuff.
+
+725
+00:33:31,740 --> 00:33:33,870
+You get a lot
+of sort of junk.
+
+726
+00:33:33,990 --> 00:33:36,670
+So, I'm trying to
+filter out the junk,
+
+727
+00:33:36,670 --> 00:33:38,810
+you know, the
+different types, how
+
+728
+00:33:38,810 --> 00:33:41,210
+long it took,
+whether I've seen it.
+
+729
+00:33:41,210 --> 00:33:44,090
+I can nuke these. These
+are not very interesting
+
+730
+00:33:44,090 --> 00:33:45,830
+anyway. So, I can
+just blast all the
+
+731
+00:33:45,830 --> 00:33:48,350
+events. This is whether
+I want to, you know,
+
+732
+00:33:48,350 --> 00:33:50,770
+I could turn off the
+refresh, turn it on.
+
+733
+00:33:51,550 --> 00:33:54,230
+And then I did a
+Claude history.
+
+734
+00:33:54,230 --> 00:33:57,910
+So if you want to
+get the full history,
+
+735
+00:33:57,910 --> 00:34:01,110
+they are in your root
+folder under JSON.
+
+736
+00:34:01,230 --> 00:34:04,410
+So I port them
+over and then I
+
+737
+00:34:04,410 --> 00:34:06,490
+can grab one
+here. So if I grab
+
+738
+00:34:06,490 --> 00:34:08,270
+like this one
+and hit load,
+
+739
+00:34:08,950 --> 00:34:11,310
+oops, this one loaded up.
+
+740
+00:34:12,310 --> 00:34:14,410
+I can pick the
+conversation
+
+741
+00:34:14,410 --> 00:34:15,930
+and then I get my full.
+
+742
+00:34:16,030 --> 00:34:19,050
+history so if you
+want to go back a
+
+743
+00:34:19,050 --> 00:34:22,110
+week and go hey what
+did i do and what
+
+744
+00:34:22,110 --> 00:34:24,310
+prompts did i use
+what did i ask you
+
+745
+00:34:24,310 --> 00:34:26,890
+can get like the
+full history and you
+
+746
+00:34:26,890 --> 00:34:28,730
+can search through
+it because sometimes
+
+747
+00:34:28,930 --> 00:34:31,970
+you know your cloud
+code crashes and you
+
+748
+00:34:31,970 --> 00:34:34,350
+don't have the you don't
+hit continue you can
+
+749
+00:34:34,350 --> 00:34:37,910
+just go back and find
+out what was going on
+
+750
+00:34:38,100 --> 00:34:42,190
+um and then i got so
+that's this is all
+
+751
+00:34:42,190 --> 00:34:46,710
+going back to the ha
+pools like when you when
+
+752
+00:34:46,710 --> 00:34:49,650
+i first ran it a lot
+of the tasks were
+
+753
+00:34:49,650 --> 00:34:54,470
+finishing in milliseconds
+so on the front end
+
+754
+00:34:54,470 --> 00:34:56,890
+it's kind of pointless
+to be i'm like why i
+
+755
+00:34:56,890 --> 00:34:59,290
+got a live stream but
+i can't see anything
+
+756
+00:34:59,290 --> 00:35:02,390
+that's because i'm
+polling at let's say one
+
+757
+00:35:02,390 --> 00:35:05,250
+second and this stuff is
+finishing in milliseconds
+
+758
+00:35:05,250 --> 00:35:07,590
+so i was like forget
+it uh right now
+
+759
+00:35:07,590 --> 00:35:10,370
+i just dump everything
+to the database space
+
+760
+00:35:10,370 --> 00:35:13,630
+and then it's it's
+live like these forms
+
+761
+00:35:13,630 --> 00:35:15,870
+will appear in half a
+second it's good enough
+
+762
+00:35:15,870 --> 00:35:19,250
+for me so then i i
+got this other thing
+
+763
+00:35:19,250 --> 00:35:21,910
+here which is let's call
+it the swarm showcase
+
+764
+00:35:21,910 --> 00:35:25,510
+so i a quick quick
+quick question are you
+
+765
+00:35:25,510 --> 00:35:29,090
+using the uh the roof
+swarm or clod uh flow
+
+766
+00:35:29,090 --> 00:35:33,390
+just all swarm yeah
+just pure swarm there's
+
+767
+00:35:33,390 --> 00:35:36,860
+nice this is yeah
+because i found because
+
+768
+00:35:36,860 --> 00:35:38,910
+everything is right
+now since we're using
+
+769
+00:35:38,910 --> 00:35:43,090
+cloud code everything
+is going into cloud ram
+
+770
+00:35:43,090 --> 00:35:45,250
+let's call it right
+it you know we compile
+
+771
+00:35:45,250 --> 00:35:47,890
+as many orchestration
+layers as we want on
+
+772
+00:35:47,890 --> 00:35:51,290
+top but so far i've
+found swarm is more than
+
+773
+00:35:51,290 --> 00:35:53,790
+enough i can you
+know because i can if
+
+774
+00:35:53,790 --> 00:35:56,490
+you've got the hierarchy
+you you know you've
+
+775
+00:35:56,490 --> 00:35:59,790
+got the agent and the
+and the hierarchy and
+
+776
+00:35:59,790 --> 00:36:03,630
+the prompt i don't really
+need more layers on
+
+777
+00:36:03,630 --> 00:36:05,250
+top of that right it's
+good enough for me
+
+778
+00:36:05,250 --> 00:36:11,020
+anyways um and then
+yeah so then i gave um
+
+779
+00:36:11,020 --> 00:36:13,630
+this this what i'm trying
+to get is i'm trying
+
+780
+00:36:13,630 --> 00:36:18,110
+to add the neural
+net and then add the
+
+781
+00:36:18,110 --> 00:36:22,150
+ability to connect some
+of these right i mostly
+
+782
+00:36:22,150 --> 00:36:25,710
+as i've been buried
+in the architecture
+
+783
+00:36:25,710 --> 00:36:32,170
+of the events and also
+for the agents um you
+
+784
+00:36:32,170 --> 00:36:34,950
+see how these are all
+there, there's eight
+
+785
+00:36:34,950 --> 00:36:37,390
+agents, but they're
+not active. It's the
+
+786
+00:36:37,390 --> 00:36:39,890
+agents are only active
+for very short amounts
+
+787
+00:36:39,890 --> 00:36:42,070
+of time. So it's
+pretty tricky to track
+
+788
+00:36:42,070 --> 00:36:45,470
+which actual agent is
+doing it because again,
+
+789
+00:36:45,470 --> 00:36:49,270
+cloud code executes
+the agent is another
+
+790
+00:36:49,740 --> 00:36:52,910
+framework for cloud code,
+but it isn't, it isn't
+
+791
+00:36:52,910 --> 00:36:55,390
+like an agent with
+an LLM in it. It's,
+
+792
+00:36:55,390 --> 00:36:58,530
+it's cloud code goes,
+Hey, I'm going to be the
+
+793
+00:36:58,830 --> 00:37:01,510
+fact checker for a
+little bit, But then
+
+794
+00:37:01,510 --> 00:37:05,910
+Cloud Code does the
+work. So if I look at the
+
+795
+00:37:05,910 --> 00:37:09,310
+logs, it's like the
+agent has one prompt
+
+796
+00:37:09,310 --> 00:37:11,550
+and then Cloud Code
+has six. The agent has
+
+797
+00:37:11,550 --> 00:37:13,890
+one, Cloud Code has six.
+So it gets tricky to
+
+798
+00:37:13,890 --> 00:37:16,610
+go, who finished it?
+You know, who did it?
+
+799
+00:37:16,610 --> 00:37:20,850
+Anyway, so I asked, I
+took, well, first one
+
+800
+00:37:20,850 --> 00:37:22,870
+of the things I did
+with this swarm is I
+
+801
+00:37:22,870 --> 00:37:26,770
+said, okay, give me a
+front end for this repo.
+
+802
+00:37:26,770 --> 00:37:29,110
+That's it. It's a one
+-shot prompt. and this
+
+803
+00:37:29,110 --> 00:37:34,570
+was the what the swarm
+made for itself i
+
+804
+00:37:34,570 --> 00:37:37,310
+again i didn't give it
+three prompts i gave it
+
+805
+00:37:37,310 --> 00:37:41,530
+a ****** one line make
+me a website so this
+
+806
+00:37:41,530 --> 00:37:45,270
+crazy thing was all
+by itself this is like
+
+807
+00:37:45,270 --> 00:37:48,290
+an interactive swarm
+builder and i think this
+
+808
+00:37:48,290 --> 00:37:51,710
+one actually looks
+better than mine but um
+
+809
+00:37:51,710 --> 00:37:53,930
+i haven't figured out
+how to get spinning
+
+810
+00:37:53,930 --> 00:37:59,750
+uh animations into the
+3dgs yet but um this
+
+811
+00:37:59,750 --> 00:38:02,370
+is a full like you know
+this would be i don't
+
+812
+00:38:02,370 --> 00:38:04,390
+know a 5 grand 10 grand
+website if you had
+
+813
+00:38:04,390 --> 00:38:07,170
+to make it and this
+thing just cranked this
+
+814
+00:38:07,170 --> 00:38:12,340
+out the whole thing
+uh i got features core
+
+815
+00:38:12,870 --> 00:38:19,210
+features i've got mcp
+tools these are all the
+
+816
+00:38:19,210 --> 00:38:23,590
+tools i've got this
+is nuts the topologies
+
+817
+00:38:23,590 --> 00:38:27,070
+look at this thing
+so this is made all a
+
+818
+00:38:27,070 --> 00:38:33,610
+graphic for each topology
+hierarchy star you
+
+819
+00:38:33,610 --> 00:38:38,110
+know ring um and then
+it's got performance
+
+820
+00:38:38,110 --> 00:38:41,370
+even look at this crazy
+performance metric thing
+
+821
+00:38:41,370 --> 00:38:44,330
+so like i don't think
+i could have made
+
+822
+00:38:44,330 --> 00:38:47,310
+this myself it would
+taken me like i don't
+
+823
+00:38:47,310 --> 00:38:50,290
+know a day or two days
+you know like to think
+
+824
+00:38:50,290 --> 00:38:54,370
+about it make it um
+and this thing's just
+
+825
+00:38:54,370 --> 00:38:57,990
+cranked this out one
+you just pointed it you
+
+826
+00:38:57,990 --> 00:39:01,970
+just pointed it uh it at
+the repo i did nothing
+
+827
+00:39:01,970 --> 00:39:05,090
+i i have the repo
+i said make use you
+
+828
+00:39:05,090 --> 00:39:07,250
+make me a website about
+the repo that's that's
+
+829
+00:39:07,250 --> 00:39:10,630
+the prompt nothing else
+zero that's that is
+
+830
+00:39:10,630 --> 00:39:14,130
+that is amazingly cool
+like look out this
+
+831
+00:39:14,130 --> 00:39:17,590
+has got a little bar here
+right for the different
+
+832
+00:39:17,590 --> 00:39:21,190
+mcp tools and it so
+it's it's done like
+
+833
+00:39:21,190 --> 00:39:25,210
+a pretty awesome job
+of building this out
+
+834
+00:39:25,210 --> 00:39:28,020
+and it's not you know
+it doesn't have ******
+
+835
+00:39:28,020 --> 00:39:30,670
+fonts and you know like
+it doesn't look like
+
+836
+00:39:30,670 --> 00:39:33,590
+if you would not believe
+that ai made it by
+
+837
+00:39:33,590 --> 00:39:35,930
+itself with no help
+right just organization
+
+838
+00:39:35,930 --> 00:39:38,730
+of content interactive
+features like
+
+839
+00:39:38,730 --> 00:39:42,790
+especially these uh the
+showcase things right like
+
+840
+00:39:42,790 --> 00:39:47,570
+these these like i i
+it's pretty crazy that
+
+841
+00:39:47,570 --> 00:39:52,250
+it could make this ah
+itself right it read
+
+842
+00:39:52,250 --> 00:39:54,610
+through the code base
+it goes huh what would
+
+843
+00:39:54,610 --> 00:39:57,550
+a mesh look like and
+it makes it right it's
+
+844
+00:39:57,550 --> 00:39:59,350
+what's cool is that
+it actually figured
+
+845
+00:39:59,350 --> 00:40:01,850
+out that there are these
+four topologies which
+
+846
+00:40:01,850 --> 00:40:04,230
+are core to the product
+and that it needed
+
+847
+00:40:04,230 --> 00:40:06,370
+to accentuate those
+and then like this is
+
+848
+00:40:06,370 --> 00:40:09,070
+better than mine like
+i can build you want to
+
+849
+00:40:09,070 --> 00:40:10,970
+build swarms sure
+here's a swarm builder
+
+850
+00:40:10,970 --> 00:40:14,990
+right like it doesn't
+it's it looks way cooler
+
+851
+00:40:14,990 --> 00:40:17,790
+than my one which i
+probably spent a week
+
+852
+00:40:17,790 --> 00:40:21,830
+on it's like huh so
+we're getting pretty this
+
+853
+00:40:21,830 --> 00:40:23,830
+is where i was like
+okay we're hitting a new
+
+854
+00:40:23,830 --> 00:40:27,370
+level of ai builder
+right when when you can
+
+855
+00:40:27,370 --> 00:40:30,390
+build this with one
+prompt and it's sort
+
+856
+00:40:30,390 --> 00:40:32,590
+of scary because i've
+been web dev for 20 30
+
+857
+00:40:32,590 --> 00:40:35,870
+years like if someone
+said make this this
+
+858
+00:40:35,870 --> 00:40:38,190
+you know probably take
+a week in the old days
+
+859
+00:40:38,190 --> 00:40:42,570
+so to do that in 10
+or 15 minutes with one
+
+860
+00:40:42,570 --> 00:40:46,730
+prompt i'm like this is
+pretty amazing showcase
+
+861
+00:40:46,730 --> 00:40:50,950
+man oh what's possible
+yeah yeah so that's
+
+862
+00:40:50,950 --> 00:40:53,210
+it that's fantastic
+long story short is
+
+863
+00:40:53,210 --> 00:40:56,790
+i'm i'm still on swarm
+and that's i'm just
+
+864
+00:40:56,790 --> 00:41:00,270
+trying to try to get
+basically like agent garden
+
+865
+00:41:00,270 --> 00:41:04,790
+and permanent swarm
+and then add the what's
+
+866
+00:41:04,790 --> 00:41:06,830
+called the neural
+net and then sort of
+
+867
+00:41:06,830 --> 00:41:09,750
+connect them up so so
+on this topology though
+
+868
+00:41:09,750 --> 00:41:13,510
+bron um but the when
+you imagine the neural
+
+869
+00:41:13,510 --> 00:41:15,990
+net where are the
+connections the connections
+
+870
+00:41:15,990 --> 00:41:18,250
+from the center of
+the nodes to each node
+
+871
+00:41:18,250 --> 00:41:20,650
+or from the from the
+agents to the to the
+
+872
+00:41:20,650 --> 00:41:23,770
+agents that's a kind of
+a complicated yeah well
+
+873
+00:41:23,770 --> 00:41:26,270
+that's the thing
+figuring out what should
+
+874
+00:41:26,270 --> 00:41:28,410
+connect should you
+connect a whole swarm
+
+875
+00:41:28,410 --> 00:41:31,550
+should yeah and then
+should you connect agents
+
+876
+00:41:31,550 --> 00:41:35,010
+from your swarm to other
+agents or but that's
+
+877
+00:41:35,010 --> 00:41:37,930
+where you kind of need
+like the other layer
+
+878
+00:41:37,930 --> 00:41:40,990
+right this is sort
+of the playground but
+
+879
+00:41:41,690 --> 00:41:44,370
+and like you're saying
+right the Claude engine
+
+880
+00:41:44,370 --> 00:41:46,850
+itself is actually
+gets delegated and
+
+881
+00:41:46,850 --> 00:41:49,730
+actually does the work
+so you you there's a
+
+882
+00:41:49,730 --> 00:41:52,710
+there's a mini to one
+mapping yeah well that's
+
+883
+00:41:52,710 --> 00:41:55,510
+the thing cloud code
+is really cloud code
+
+884
+00:41:55,510 --> 00:41:58,070
+is doing everything
+you got to understand
+
+885
+00:41:58,070 --> 00:42:02,530
+right that these are
+one sub millisecond one
+
+886
+00:42:02,530 --> 00:42:05,510
+kilobyte frameworks
+for it they're not this
+
+887
+00:42:05,510 --> 00:42:07,890
+is not a whole bunch
+of heavy duty code this
+
+888
+00:42:07,890 --> 00:42:10,990
+is like a prompt that
+says you're literally
+
+889
+00:42:10,990 --> 00:42:13,750
+it's like saying you're
+a ring and that's
+
+890
+00:42:13,750 --> 00:42:17,490
+it right so it's it's
+not what's nuts is that
+
+891
+00:42:17,490 --> 00:42:20,850
+cloud code can follow
+it you know like if
+
+892
+00:42:20,850 --> 00:42:23,750
+you gave this to most
+llms you think they just
+
+893
+00:42:23,750 --> 00:42:26,810
+forget and you know
+it does occasionally
+
+894
+00:42:26,810 --> 00:42:30,570
+cloud code will do too
+much let's say it'll
+
+895
+00:42:30,570 --> 00:42:33,690
+it'll do half of it
+in swarm and then and
+
+896
+00:42:33,690 --> 00:42:36,070
+then when it gets to a
+bunch of tasks it'll go
+
+897
+00:42:36,070 --> 00:42:38,170
+yeah i've had enough
+of swarm i'm doing it
+
+898
+00:42:38,170 --> 00:42:40,930
+myself and you know
+it's it'll just because
+
+899
+00:42:40,930 --> 00:42:44,150
+it's doing it anyways
+so it and yeah you
+
+900
+00:42:44,150 --> 00:42:46,890
+know cloud code isn't
+dumb like you can do
+
+901
+00:42:46,890 --> 00:42:49,950
+what's called batch tool
+so batch tool would be
+
+902
+00:42:49,950 --> 00:42:53,850
+like no mesh no agents
+version of swarm
+
+903
+00:42:53,850 --> 00:42:57,570
+it'll do right five things
+at once but when you
+
+904
+00:42:57,570 --> 00:43:00,750
+give it it's like you
+know in the end we're
+
+905
+00:43:00,750 --> 00:43:02,630
+all going back to
+prompt engineering you
+
+906
+00:43:02,630 --> 00:43:04,610
+know what what was
+what is the difference
+
+907
+00:43:04,610 --> 00:43:07,830
+what is the system prompt
+for anthropic right
+
+908
+00:43:07,830 --> 00:43:11,450
+it's all it's all
+prompt it's so this this
+
+909
+00:43:11,450 --> 00:43:15,850
+is like prompt builder
+for batch tool and the
+
+910
+00:43:15,850 --> 00:43:18,110
+best way to build a
+prompt builder is to
+
+911
+00:43:18,110 --> 00:43:21,890
+use mathematical systems
+and swarm topologies
+
+912
+00:43:21,890 --> 00:43:24,870
+and so i i think this
+is great man because
+
+913
+00:43:24,870 --> 00:43:27,490
+this this really helps
+people understand what
+
+914
+00:43:27,490 --> 00:43:29,750
+what claude swarm
+and claude flow and
+
+915
+00:43:29,750 --> 00:43:32,290
+claude are you know this
+is Mentally, getting
+
+916
+00:43:32,290 --> 00:43:35,730
+your head around it
+takes a while. And as I,
+
+917
+00:43:35,730 --> 00:43:38,750
+let's say, as I prove
+it's more than one-to
+
+918
+00:43:38,750 --> 00:43:42,190
+-one, I'll connect it.
+But I don't want to
+
+919
+00:43:42,190 --> 00:43:44,710
+start with, like, if
+I, when I first did it,
+
+920
+00:43:44,710 --> 00:43:47,990
+like I say, this had
+roadmaps all over. And
+
+921
+00:43:47,990 --> 00:43:49,870
+then when I actually
+grill it, it's like,
+
+922
+00:43:49,870 --> 00:43:53,350
+yeah, no, these are
+just made-up rules. So I
+
+923
+00:43:53,350 --> 00:43:55,790
+need to see, okay, yes,
+if you stick to the
+
+924
+00:43:55,790 --> 00:43:57,910
+rules consistently,
+you know, on a regular
+
+925
+00:43:57,910 --> 00:44:00,930
+basis, I'll give you a
+connection. but until
+
+926
+00:44:00,930 --> 00:44:03,170
+i could prove that
+it's more than you know
+
+927
+00:44:03,170 --> 00:44:08,170
+giant these one-to-ones
+then um i can't just
+
+928
+00:44:08,170 --> 00:44:11,190
+randomly appear this
+is what it's like yeah
+
+929
+00:44:11,190 --> 00:44:13,210
+a bunch of yeah this
+is you had a hundred
+
+930
+00:44:13,210 --> 00:44:15,510
+swarms but they're all
+just hanging out doing
+
+931
+00:44:15,510 --> 00:44:19,310
+nothing right yeah so
+braun was this created
+
+932
+00:44:19,310 --> 00:44:20,450
+with one prompt what
+we're seeing here
+
+933
+00:44:20,450 --> 00:44:23,830
+visually was this what
+the the output no this
+
+934
+00:44:23,830 --> 00:44:27,010
+this is the one prompt
+see this swarm showcase
+
+935
+00:44:27,010 --> 00:44:32,390
+website this this was
+the one shot right
+
+936
+00:44:32,890 --> 00:44:35,790
+is it like it actually
+would work right now
+
+937
+00:44:35,790 --> 00:44:39,930
+or is it just the ui
+no no okay this one is
+
+938
+00:44:39,930 --> 00:44:44,450
+uh live real time
+interactive what is your
+
+939
+00:44:44,450 --> 00:44:47,270
+swarm doing how many
+swarms you got how many
+
+940
+00:44:47,270 --> 00:44:50,110
+agents you have are
+what are what's inside
+
+941
+00:44:50,110 --> 00:44:53,010
+them you know what what
+tasks are they doing
+
+942
+00:44:53,010 --> 00:44:56,130
+this is this warm like
+what did it do this
+
+943
+00:44:56,130 --> 00:44:59,610
+is the i nuked them but
+you know events that
+
+944
+00:44:59,610 --> 00:45:02,250
+are happening so like
+when you like rube
+
+945
+00:45:02,250 --> 00:45:04,090
+said with everyone
+okay when you use cloud
+
+946
+00:45:04,090 --> 00:45:06,990
+code your screen goes
+ballistic you can't even
+
+947
+00:45:06,990 --> 00:45:09,890
+read it so if you you
+know i don't really
+
+948
+00:45:09,890 --> 00:45:13,310
+need to do more than
+see what the **** was
+
+949
+00:45:13,310 --> 00:45:16,310
+my swarm doing you know
+literally and i can't
+
+950
+00:45:16,310 --> 00:45:21,350
+yeah And, Ron, are
+you using that output
+
+951
+00:45:21,350 --> 00:45:24,790
+format stream JSON
+verbose to get the output?
+
+952
+00:45:24,790 --> 00:45:26,270
+Or are you just, like,
+what are you querying
+
+953
+00:45:26,270 --> 00:45:31,270
+exactly? No, I use
+hooks to push a whole
+
+954
+00:45:31,270 --> 00:45:36,490
+bunch of the stuff.
+And then all of my, not
+
+955
+00:45:36,490 --> 00:45:38,870
+even hooks, but, like,
+the NCP server itself
+
+956
+00:45:38,870 --> 00:45:41,850
+and the other actual
+files that get run, I
+
+957
+00:45:41,850 --> 00:45:45,850
+dump into the SQLite
+database. because SQLite
+
+958
+00:45:45,850 --> 00:45:52,070
+is a pooled instant
+local database pool.
+
+959
+00:45:52,150 --> 00:45:55,910
+So because you can only
+log, most swarms are
+
+960
+00:45:55,910 --> 00:45:58,570
+going so fast, you
+can't, even if you
+
+961
+00:45:58,570 --> 00:46:00,870
+stream that, you're just
+going to get a mess,
+
+962
+00:46:00,870 --> 00:46:03,570
+right? It's a lot
+easier to just dump. I
+
+963
+00:46:03,570 --> 00:46:07,070
+realized with some
+millisecond process, I just
+
+964
+00:46:07,070 --> 00:46:09,350
+dumped to the database
+because I don't care
+
+965
+00:46:09,350 --> 00:46:11,870
+if I'm getting, my
+brain isn't going that
+
+966
+00:46:11,870 --> 00:46:15,170
+fast. I one second is
+fast enough for me I
+
+967
+00:46:15,170 --> 00:46:18,400
+just need to see it in
+a clean organized you
+
+968
+00:46:18,400 --> 00:46:21,570
+know easy to digest
+format and right now
+
+969
+00:46:21,570 --> 00:46:23,490
+what I'm trying to do
+like when I ran this
+
+970
+00:46:23,490 --> 00:46:27,290
+I have a thousand events
+in like five minutes
+
+971
+00:46:27,290 --> 00:46:29,010
+so I'm like okay I
+don't want to see I
+
+972
+00:46:29,010 --> 00:46:30,650
+don't want to I don't
+want to see all the
+
+973
+00:46:30,650 --> 00:46:33,890
+events so right now it's
+more okay I can get it
+
+974
+00:46:33,890 --> 00:46:36,430
+all but it's like a
+tidal wave so I gotta
+
+975
+00:46:36,670 --> 00:46:39,590
+I'm like did you have
+to yeah spin up I was
+
+976
+00:46:39,590 --> 00:46:40,790
+going to say do you
+spend a bunch of time
+
+977
+00:46:40,790 --> 00:46:43,550
+actually developing
+code to to filter the
+
+978
+00:46:43,550 --> 00:46:46,690
+events that you're
+actually most interested
+
+979
+00:46:46,690 --> 00:46:49,030
+in yeah the big headache
+is that when you
+
+980
+00:46:49,030 --> 00:46:52,710
+get the cloud code hook
+it's empty right it's
+
+981
+00:46:52,710 --> 00:46:56,150
+like give you a hook
+okay it's a post hook
+
+982
+00:46:56,150 --> 00:47:00,690
+tool and it's on a
+keyword uh you know file
+
+983
+00:47:00,690 --> 00:47:02,550
+write or whatever but
+that that's kind of
+
+984
+00:47:02,550 --> 00:47:05,770
+it like you you have
+to build every single
+
+985
+00:47:05,840 --> 00:47:08,730
+hook you want an event
+you want you have
+
+986
+00:47:08,730 --> 00:47:12,670
+to make a custom output
+for it right so you
+
+987
+00:47:12,670 --> 00:47:14,890
+then it's like well
+i got and then i have
+
+988
+00:47:14,890 --> 00:47:18,850
+like 80 custom hooks
+but but then i realized
+
+989
+00:47:18,850 --> 00:47:21,370
+i i don't really want
+to bother wasting the
+
+990
+00:47:21,370 --> 00:47:24,730
+time resource or energy
+on file read do i
+
+991
+00:47:24,730 --> 00:47:26,590
+really care about file
+read maybe not maybe
+
+992
+00:47:26,590 --> 00:47:29,350
+i just want file
+right only and so yeah
+
+993
+00:47:29,350 --> 00:47:32,070
+that you know it's all
+about figuring out what
+
+994
+00:47:32,070 --> 00:47:35,390
+do you want to see
+does it help you at all
+
+995
+00:47:35,390 --> 00:47:38,690
+you know is it is it
+that mean you can you
+
+996
+00:47:38,690 --> 00:47:41,190
+can get it all it's
+just what do you yeah
+
+997
+00:47:41,190 --> 00:47:43,760
+how does it help what
+is it good good is it
+
+998
+00:47:43,760 --> 00:47:46,790
+and then yeah yeah if
+you want to control
+
+999
+00:47:47,650 --> 00:47:50,910
+um you know i haven't
+got to more control
+
+1000
+00:47:50,910 --> 00:47:54,510
+because i have no
+problem sort of launching
+
+1001
+00:47:54,510 --> 00:47:57,350
+stuff and again my my
+account gets disconnected
+
+1002
+00:47:57,350 --> 00:47:59,950
+for some reason but
+mostly i'm interested
+
+1003
+00:47:59,950 --> 00:48:04,270
+in the connections like
+this area here like
+
+1004
+00:48:04,270 --> 00:48:08,150
+how in order in order
+to go from we already
+
+1005
+00:48:08,150 --> 00:48:10,310
+got swarms right let's
+say we can make eight
+
+1006
+00:48:10,310 --> 00:48:13,870
+or ten that's done
+right so the next is how
+
+1007
+00:48:13,870 --> 00:48:17,510
+do i get you know this
+how does this whole
+
+1008
+00:48:17,510 --> 00:48:19,970
+swarm work on something
+the whole thing not
+
+1009
+00:48:19,970 --> 00:48:23,410
+this one or this one
+but you know how do we
+
+1010
+00:48:23,410 --> 00:48:28,050
+get to let's say mass
+or yeah because the
+
+1011
+00:48:28,050 --> 00:48:31,770
+the the single swarm is
+great but if the next
+
+1012
+00:48:31,770 --> 00:48:35,230
+level is i can say
+yeah use every swarm
+
+1013
+00:48:35,230 --> 00:48:41,530
+here you know this whole
+swarm goes nuts so um
+
+1014
+00:48:41,530 --> 00:48:45,010
+really really that's
+sort of the and then
+
+1015
+00:48:45,010 --> 00:48:49,150
+and then we need the
+we need the um we need
+
+1016
+00:48:49,150 --> 00:48:53,190
+the the neural net right
+we gotta have Yeah,
+
+1017
+00:48:53,530 --> 00:48:55,370
+my Swarm connected
+to your Swarm.
+
+1018
+00:48:55,670 --> 00:48:57,110
+And then who knows?
+
+1019
+00:48:57,110 --> 00:48:59,310
+Yeah, this is awesome
+work, by the way,
+
+1020
+00:48:59,310 --> 00:49:01,330
+Brian. I'm really
+impressed. Are you going
+
+1021
+00:49:01,330 --> 00:49:02,710
+to open source this?
+Can we integrate this
+
+1022
+00:49:02,710 --> 00:49:06,110
+with the Swarm project?
+Yeah, I mean, my
+
+1023
+00:49:06,110 --> 00:49:10,320
+stuff is a mask. That's
+like my repo would.
+
+1024
+00:49:11,470 --> 00:49:16,330
+You need a filter for
+my repo. So once I
+
+1025
+00:49:17,410 --> 00:49:19,310
+finish it to like, you
+know, I'm kind of one
+
+1026
+00:49:19,310 --> 00:49:21,490
+of those it's never
+done guys. But once I
+
+1027
+00:49:21,490 --> 00:49:25,950
+get it to 100% works,
+the filters are clean
+
+1028
+00:49:25,950 --> 00:49:28,450
+and everything else,
+then I release stuff.
+
+1029
+00:49:29,020 --> 00:49:31,090
+Yeah, so keep in
+mind, there's a couple
+
+1030
+00:49:31,090 --> 00:49:33,370
+things that you might
+want to consider adding
+
+1031
+00:49:33,370 --> 00:49:36,050
+that would give this
+really cool feed function.
+
+1032
+00:49:36,050 --> 00:49:38,250
+We've got the DAG
+capability, which
+
+1033
+00:49:38,250 --> 00:49:40,690
+would allow for a sort
+of federated approach
+
+1034
+00:49:40,690 --> 00:49:43,560
+to the swarms. So that
+means that collectively
+
+1035
+00:49:43,560 --> 00:49:45,810
+we could all connect
+to your swarm securely
+
+1036
+00:49:45,810 --> 00:49:49,270
+and collaborate,
+which gives you a sort
+
+1037
+00:49:49,270 --> 00:49:51,810
+of multidimensional
+structure for tracking
+
+1038
+00:49:51,810 --> 00:49:54,450
+all that information.
+So rather than using
+
+1039
+00:49:54,450 --> 00:49:56,650
+SQLite, you use SQLite
+as a local sort of
+
+1040
+00:49:56,650 --> 00:50:00,150
+cache. But if you write
+it to the QDAG, then
+
+1041
+00:50:00,150 --> 00:50:03,150
+you've got, you know,
+you can create a share
+
+1042
+00:50:03,150 --> 00:50:05,810
+button essentially and
+say, you know, hey,
+
+1043
+00:50:05,810 --> 00:50:07,770
+Jed, you can contribute
+to the capacity
+
+1044
+00:50:07,770 --> 00:50:10,610
+or the project or
+whatever. and the and the
+
+1045
+00:50:10,610 --> 00:50:12,110
+other part that would
+be interesting here
+
+1046
+00:50:12,110 --> 00:50:15,290
+would be using a kind
+of hive mind structure
+
+1047
+00:50:15,290 --> 00:50:18,670
+which allows it to uh
+stay on point for more
+
+1048
+00:50:18,670 --> 00:50:21,110
+complex applications
+where you notice
+
+1049
+00:50:21,110 --> 00:50:23,210
+after like 10 minutes it
+sometimes forgets that
+
+1050
+00:50:23,210 --> 00:50:25,110
+it needs to be in a
+swarm it would solve
+
+1051
+00:50:25,110 --> 00:50:29,410
+that problem yeah i
+mean as ocean said how
+
+1052
+00:50:29,410 --> 00:50:31,230
+long are we going to
+stay with cloud code
+
+1053
+00:50:31,230 --> 00:50:33,850
+because all of us know
+we're working around
+
+1054
+00:50:33,850 --> 00:50:37,010
+cloud code due to the
+financial benefits but
+
+1055
+00:50:37,010 --> 00:50:39,750
+not long i i've been
+working on open code
+
+1056
+00:50:39,750 --> 00:50:41,930
+all week to be honest
+uh to get away from
+
+1057
+00:50:41,930 --> 00:50:44,650
+cloud code but it's
+cheap and easy for now
+
+1058
+00:50:44,650 --> 00:50:48,330
+yeah exactly so long
+forward to that nvidia
+
+1059
+00:50:48,330 --> 00:50:53,610
+three thousand dollar
+uh well tensor computer
+
+1060
+00:50:53,610 --> 00:50:57,490
+well it's a little too
+soon to say but our
+
+1061
+00:50:57,490 --> 00:51:00,850
+nvidia is is offered
+us uh some serious
+
+1062
+00:51:00,850 --> 00:51:03,590
+horsepower to test our
+swarms on you know it's
+
+1063
+00:51:03,590 --> 00:51:04,970
+not three thousand
+it's probably three
+
+1064
+00:51:04,970 --> 00:51:08,470
+million but the um their
+infrastructure they're
+
+1065
+00:51:08,470 --> 00:51:10,010
+going to let us borrow
+looks substantial
+
+1066
+00:51:10,010 --> 00:51:12,330
+and then we can point
+the swarm at it so if
+
+1067
+00:51:12,330 --> 00:51:14,550
+anyone from nvidia
+is on the call let's
+
+1068
+00:51:14,550 --> 00:51:16,570
+let's hope they uh they
+come through on that
+
+1069
+00:51:17,090 --> 00:51:19,790
+um braun this is this
+is amazing really
+
+1070
+00:51:19,790 --> 00:51:21,570
+good work i love
+what you're doing
+
+1071
+00:51:21,570 --> 00:51:23,410
+and if you need help
+and or contributors
+
+1072
+00:51:23,410 --> 00:51:26,030
+i'm happy to jump
+in and work on a
+
+1073
+00:51:26,030 --> 00:51:29,910
+branch thanks yep
+yeah this is awesome
+
+1074
+00:51:30,450 --> 00:51:32,250
+has anyone awesome
+work bra man
+
+1075
+00:51:32,250 --> 00:51:34,170
+it's super
+fantastic i love it
+
+1076
+00:51:35,270 --> 00:51:37,500
+has brown have you
+thought about open
+
+1077
+00:51:37,500 --> 00:51:39,670
+telemetry or any of those
+kind of hooks or existing
+
+1078
+00:51:39,670 --> 00:51:42,910
+observability tool
+tool chains i haven't
+
+1079
+00:51:42,910 --> 00:51:46,090
+got past any of this
+like between all the
+
+1080
+00:51:46,090 --> 00:51:48,970
+other stuff i'm doing
+um you know i just
+
+1081
+00:51:48,970 --> 00:51:50,770
+debated i was debating
+how much time should
+
+1082
+00:51:50,770 --> 00:51:54,280
+i spend but i'm trying
+to the main goal is
+
+1083
+00:51:54,280 --> 00:51:58,450
+um getting let's call
+the next level of
+
+1084
+00:51:58,450 --> 00:52:01,530
+say swarm which is actual
+swarm like you know
+
+1085
+00:52:01,530 --> 00:52:05,350
+like we you want to
+get to 100 or 200 or
+
+1086
+00:52:05,350 --> 00:52:07,490
+a million or whatever
+because when i first
+
+1087
+00:52:07,490 --> 00:52:10,990
+loaded up swarm i
+could instance 20 000
+
+1088
+00:52:10,990 --> 00:52:14,590
+agents on you know it
+was like maybe 10 megs
+
+1089
+00:52:14,590 --> 00:52:17,550
+of ram and it took a
+minute but then i'm like
+
+1090
+00:52:17,550 --> 00:52:20,510
+okay i can i can
+initiate 20 000 agents
+
+1091
+00:52:20,510 --> 00:52:23,130
+but what could i get
+them to do and who's
+
+1092
+00:52:23,130 --> 00:52:25,490
+gonna manage how you're
+gonna get you know
+
+1093
+00:52:25,490 --> 00:52:28,160
+who's gonna manage
+those that's you just So
+
+1094
+00:52:28,160 --> 00:52:32,090
+we're almost there, but
+you know, like right
+
+1095
+00:52:32,090 --> 00:52:34,770
+now we're constrained
+by the LLM cloud
+
+1096
+00:52:34,770 --> 00:52:37,870
+code has a definite
+max at around eight is
+
+1097
+00:52:37,870 --> 00:52:41,530
+about its max efficiency.
+So again, but once
+
+1098
+00:52:41,530 --> 00:52:45,570
+the cloud code is down
+and we have unlimited
+
+1099
+00:52:45,570 --> 00:52:49,730
+API resource, then
+it's just the framework
+
+1100
+00:52:49,730 --> 00:52:52,530
+and the system. and
+then you get into
+
+1101
+00:52:52,530 --> 00:52:54,310
+there's an you know
+there's definitely another
+
+1102
+00:52:54,310 --> 00:52:56,950
+level of swarm
+orchestration when you get
+
+1103
+00:52:56,950 --> 00:52:59,790
+into it's it's like
+a flock of a thousand
+
+1104
+00:52:59,790 --> 00:53:01,970
+birds or whatever you
+get in that kind of
+
+1105
+00:53:01,970 --> 00:53:04,910
+thing right there's
+other you know i don't
+
+1106
+00:53:04,910 --> 00:53:09,230
+think mesh or whatever
+is the right one for
+
+1107
+00:53:09,610 --> 00:53:12,310
+thousands or millions
+right you're getting
+
+1108
+00:53:12,310 --> 00:53:16,070
+into uh i haven't even
+researched like what's
+
+1109
+00:53:16,070 --> 00:53:20,730
+the best way to control
+a it's like ants
+
+1110
+00:53:20,730 --> 00:53:23,310
+right and probably
+that's the best animal i
+
+1111
+00:53:23,310 --> 00:53:25,010
+can relate it back to
+but when you have a
+
+1112
+00:53:25,010 --> 00:53:27,870
+million ants you know
+what are they all doing
+
+1113
+00:53:27,870 --> 00:53:30,330
+and how do they work
+together to achieve their
+
+1114
+00:53:30,330 --> 00:53:34,110
+goal so uh we got a
+little tiny high but
+
+1115
+00:53:34,110 --> 00:53:37,330
+you know again once we
+hook up if we can hook
+
+1116
+00:53:37,330 --> 00:53:41,890
+up to if we can hook
+up the whole agentex
+
+1117
+00:53:41,890 --> 00:53:46,390
+.org everyone brings
+their 20 30 even even if
+
+1118
+00:53:46,390 --> 00:53:48,470
+we each have a cloud
+code but we hook up
+
+1119
+00:53:48,470 --> 00:53:52,230
+80 cloud codes you know
+so there are we there's
+
+1120
+00:53:52,230 --> 00:53:55,870
+a lot of configurations
+and um but it's
+
+1121
+00:53:55,870 --> 00:53:58,710
+cool that we kind of
+broke open the box let's
+
+1122
+00:53:58,710 --> 00:54:02,250
+say right now we're
+all thinking about it
+
+1123
+00:54:02,250 --> 00:54:05,610
+and you know we maybe
+will be the first million
+
+1124
+00:54:05,610 --> 00:54:08,550
+first million agents
+form you know who
+
+1125
+00:54:08,550 --> 00:54:12,710
+knows but uh i think
+uh we have the toolbox
+
+1126
+00:54:12,710 --> 00:54:16,750
+um and i also took the
+because it's called
+
+1127
+00:54:16,750 --> 00:54:19,790
+rube fan right so i i
+actually got the fan
+
+1128
+00:54:19,790 --> 00:54:23,790
+working right now i
+can build my own fast
+
+1129
+00:54:23,790 --> 00:54:27,170
+artificial neural networks
+on the fly with cpu
+
+1130
+00:54:27,170 --> 00:54:31,190
+or gpu and they can
+um you know that's an
+
+1131
+00:54:31,190 --> 00:54:34,450
+actual neural network
+so i'm going to try to
+
+1132
+00:54:34,450 --> 00:54:37,890
+integrate these with
+the neural net and then
+
+1133
+00:54:37,890 --> 00:54:42,910
+the mass mass agent so
+because you know the
+
+1134
+00:54:43,770 --> 00:54:46,890
+anyways there's there's
+a lot of layers but
+
+1135
+00:54:47,370 --> 00:54:50,510
+it's just round one
+i don't talk to me in
+
+1136
+00:54:50,510 --> 00:54:53,300
+two weeks or something
+when i've had more
+
+1137
+00:54:53,320 --> 00:54:56,530
+time i think i think
+i think we got to move
+
+1138
+00:54:56,530 --> 00:54:59,230
+on to the next uh
+demo here i uh i think
+
+1139
+00:54:59,230 --> 00:55:00,710
+someone else has a
+dashboard they want to
+
+1140
+00:55:00,710 --> 00:55:03,770
+show as well we have
+a few today we had we
+
+1141
+00:55:03,770 --> 00:55:05,750
+had chris barlow but
+he's in new zealand and
+
+1142
+00:55:05,750 --> 00:55:07,670
+i think i think he's
+falling off the call
+
+1143
+00:55:07,670 --> 00:55:12,410
+so um we had a open
+session there was a
+
+1144
+00:55:12,410 --> 00:55:14,870
+comment in there i saw
+john petty had mentioned
+
+1145
+00:55:14,870 --> 00:55:18,030
+that he's uh that
+he has the agents
+
+1146
+00:55:18,030 --> 00:55:20,630
+compete with each other
+so he'll have a swarm
+
+1147
+00:55:20,630 --> 00:55:22,870
+compete with another
+swarm and then and i
+
+1148
+00:55:22,870 --> 00:55:26,070
+just wanted to hear
+that's that's just fyi
+
+1149
+00:55:26,070 --> 00:55:28,590
+that there's a consensus
+component within
+
+1150
+00:55:28,590 --> 00:55:31,730
+the hive mind capability
+within cloud flow
+
+1151
+00:55:31,730 --> 00:55:34,030
+that that does that
+wasn't that does that
+
+1152
+00:55:34,030 --> 00:55:36,710
+so and you can monitor
+how the consensus
+
+1153
+00:55:36,710 --> 00:55:38,970
+within the agents and
+how they collaborate
+
+1154
+00:55:38,970 --> 00:55:41,430
+with each other and it
+basically stores that
+
+1155
+00:55:41,430 --> 00:55:45,480
+information in the
+hive mind db yeah but
+
+1156
+00:55:45,480 --> 00:55:47,530
+i'm curious to hear
+what others are doing
+
+1157
+00:55:47,930 --> 00:55:51,390
+Yeah, so I took
+essentially that function
+
+1158
+00:55:51,390 --> 00:55:56,110
+and spawn five different
+examples of how
+
+1159
+00:55:56,110 --> 00:55:58,090
+they would solve that
+problem, have them
+
+1160
+00:55:58,090 --> 00:56:00,690
+look at the problem
+and propose solutions,
+
+1161
+00:56:00,690 --> 00:56:03,590
+as well as the models
+will create what
+
+1162
+00:56:03,590 --> 00:56:05,090
+they're doing from a
+score and prediction
+
+1163
+00:56:05,090 --> 00:56:08,690
+standpoint, and then
+Claude evaluates them.
+
+1164
+00:56:09,150 --> 00:56:11,430
+And then the one
+that ends up on top,
+
+1165
+00:56:11,430 --> 00:56:14,230
+pretty much the top
+two come out as the
+
+1166
+00:56:14,230 --> 00:56:16,690
+win. And then it sort
+of will go through,
+
+1167
+00:56:16,690 --> 00:56:18,850
+depending on what
+setting I have it on,
+
+1168
+00:56:19,030 --> 00:56:21,250
+three iterations of
+that. So it'll be
+
+1169
+00:56:21,250 --> 00:56:23,770
+like two win, those
+two stay, three
+
+1170
+00:56:23,770 --> 00:56:25,750
+more come in, they
+all compete again.
+
+1171
+00:56:26,150 --> 00:56:28,070
+And then that'll
+happen where like
+
+1172
+00:56:28,070 --> 00:56:30,130
+three will stay and
+then all the way until
+
+1173
+00:56:30,130 --> 00:56:31,790
+there's, you know,
+five that are all
+
+1174
+00:56:31,790 --> 00:56:33,490
+scoring relatively
+high, but in
+
+1175
+00:56:33,490 --> 00:56:35,070
+different areas with
+different approaches.
+
+1176
+00:56:35,070 --> 00:56:36,550
+And then that
+swarm will go
+
+1177
+00:56:36,550 --> 00:56:38,030
+after solving
+the problem.
+
+1178
+00:56:38,540 --> 00:56:40,910
+I've found pretty good
+success with that.
+
+1179
+00:56:41,840 --> 00:56:45,430
+We're all learning
+as we go here, by the
+
+1180
+00:56:45,430 --> 00:56:48,740
+way. And we created
+this system that
+
+1181
+00:56:48,740 --> 00:56:51,340
+allows for a kind of
+collaborative approach
+
+1182
+00:56:51,430 --> 00:56:55,690
+to these sort of
+ephemeral processes.
+
+1183
+00:56:55,890 --> 00:56:58,710
+And I don't think any
+of us fully understands
+
+1184
+00:56:59,070 --> 00:57:01,350
+exactly how they
+work, why they work,
+
+1185
+00:57:01,350 --> 00:57:04,810
+or what the real power
+of them is just yet.
+
+1186
+00:57:04,810 --> 00:57:08,650
+I think we have made
+the conclusion that
+
+1187
+00:57:08,650 --> 00:57:12,170
+using these kind of
+temporary ephemeral
+
+1188
+00:57:12,170 --> 00:57:14,910
+processes makes these
+systems work a lot
+
+1189
+00:57:14,910 --> 00:57:17,890
+better at solving really
+complicated things.
+
+1190
+00:57:17,890 --> 00:57:20,430
+And in Bron sort of
+set and forget sort of
+
+1191
+00:57:20,430 --> 00:57:21,930
+example that he was
+showing, he pointed out
+
+1192
+00:57:21,930 --> 00:57:23,890
+a repo and create
+me a web page, is a
+
+1193
+00:57:23,890 --> 00:57:25,970
+perfect example of
+this, right? If we had
+
+1194
+00:57:25,970 --> 00:57:29,510
+tried doing that a few
+months ago using Roo,
+
+1195
+00:57:29,780 --> 00:57:31,970
+it probably would have
+failed. It would have
+
+1196
+00:57:31,970 --> 00:57:34,360
+taken a whole lot of
+sort of finagling of
+
+1197
+00:57:34,360 --> 00:57:37,130
+prompts and guidance
+and back and forth. And
+
+1198
+00:57:37,130 --> 00:57:39,270
+maybe eventually the
+boomerangs might have
+
+1199
+00:57:39,270 --> 00:57:42,950
+worked, but it would
+have taken 30 hours.
+
+1200
+00:57:42,950 --> 00:57:45,490
+Now what took 30 hours
+is now happening in
+
+1201
+00:57:45,490 --> 00:57:48,610
+a matter of a couple
+hours or less. Yeah.
+
+1202
+00:57:48,610 --> 00:57:51,940
+Hey, Rube, I'm actually
+working on – it's
+
+1203
+00:57:51,940 --> 00:57:53,090
+theoretical right
+now. I don't have
+
+1204
+00:57:53,090 --> 00:57:56,450
+anything to show as
+everything is theoretical.
+
+1205
+00:57:56,450 --> 00:58:00,290
+uh is a communication
+protocol that
+
+1206
+00:58:00,290 --> 00:58:03,260
+for those different
+agents to somewhat
+
+1207
+00:58:04,150 --> 00:58:08,890
+trim and evolve uh so
+more of a long-term
+
+1208
+00:58:09,000 --> 00:58:12,910
+agentic uh so so say
+you have persistent
+
+1209
+00:58:12,910 --> 00:58:15,030
+agents that are that
+are doing different
+
+1210
+00:58:15,030 --> 00:58:17,390
+automations and things
+like that actually
+
+1211
+00:58:17,390 --> 00:58:19,910
+communicating back and
+forth with an orchestrator
+
+1212
+00:58:19,910 --> 00:58:26,190
+and if they are less
+um i want to say this
+
+1213
+00:58:26,190 --> 00:58:30,090
+less um efficient
+than another one or or
+
+1214
+00:58:30,090 --> 00:58:32,070
+full of errors or
+something like that then
+
+1215
+00:58:32,070 --> 00:58:34,350
+the orchestrator can
+cut that out of the
+
+1216
+00:58:34,350 --> 00:58:37,150
+out of the system or
+combine or combine two
+
+1217
+00:58:37,150 --> 00:58:40,230
+agents into one system
+um into another agent
+
+1218
+00:58:40,230 --> 00:58:43,370
+so it's it's sort of
+an evolutionary um
+
+1219
+00:58:43,370 --> 00:58:47,410
+process so it's not
+exactly in that same vein
+
+1220
+00:58:47,410 --> 00:58:51,530
+but but it it still
+has that how do we how
+
+1221
+00:58:51,530 --> 00:58:53,490
+do we select which ones
+are actually working
+
+1222
+00:58:53,490 --> 00:58:55,530
+how do we you know
+track that and how
+
+1223
+00:58:55,530 --> 00:58:58,100
+do we you know have them
+challenge each other
+
+1224
+00:58:58,100 --> 00:59:00,080
+i think it's just a
+different perspective
+
+1225
+00:59:00,090 --> 00:59:04,070
+a different angle for
+that amazing that's
+
+1226
+00:59:04,070 --> 00:59:06,950
+that's so i love this
+this is so i think i
+
+1227
+00:59:06,950 --> 00:59:09,830
+like the way Watching
+you and the rest of
+
+1228
+00:59:09,830 --> 00:59:12,290
+the crew building these
+things, I think it
+
+1229
+00:59:12,290 --> 00:59:14,830
+just inspires me to
+take it further. It's
+
+1230
+00:59:14,830 --> 00:59:16,750
+really cool to see you
+guys doing this stuff.
+
+1231
+00:59:16,750 --> 00:59:18,570
+Here's a thought that
+I would throw out,
+
+1232
+00:59:18,810 --> 00:59:21,630
+Reuven, and the team,
+right, is that currently
+
+1233
+00:59:21,850 --> 00:59:23,970
+what we're building
+here is all about
+
+1234
+00:59:23,970 --> 00:59:26,950
+building apps, building
+code, code development,
+
+1235
+00:59:26,950 --> 00:59:29,650
+software coding
+assist. but when we
+
+1236
+00:59:29,650 --> 00:59:32,590
+start connecting swarms
+together you're it
+
+1237
+00:59:32,590 --> 00:59:35,070
+feels like we're
+actually building it
+
+1238
+00:59:35,070 --> 00:59:37,710
+becomes a really modern
+framework for building
+
+1239
+00:59:37,710 --> 00:59:40,070
+applications and
+that actually you can
+
+1240
+00:59:40,070 --> 00:59:41,550
+build an app and they
+just it's just running
+
+1241
+00:59:41,550 --> 00:59:43,630
+you know it's like a
+really it's the ultimate
+
+1242
+00:59:43,630 --> 00:59:46,290
+crew right or or
+lang chain it's the
+
+1243
+00:59:46,290 --> 00:59:49,090
+ultimate application
+framework rather just
+
+1244
+00:59:49,090 --> 00:59:52,670
+a decoding development
+app yeah so I use a
+
+1245
+00:59:52,670 --> 00:59:55,430
+similar backbone to
+have it do marketing.
+
+1246
+00:59:55,430 --> 00:59:58,520
+So research marketing,
+go out, grab
+
+1247
+00:59:58,520 --> 01:00:00,740
+information, bring it
+in, run that across
+
+1248
+01:00:00,910 --> 01:00:03,330
+intelligence, look for
+viral content, all that
+
+1249
+01:00:03,330 --> 01:00:06,230
+kind of stuff. And then
+it creates a 90-day
+
+1250
+01:00:06,230 --> 01:00:08,870
+roadmap of content. And
+it's really powerful
+
+1251
+01:00:08,870 --> 01:00:11,250
+for how much content
+it can create. So
+
+1252
+01:00:11,250 --> 01:00:14,530
+like, and it will live
+update your roadmap.
+
+1253
+01:00:14,530 --> 01:00:19,150
+So 90 days of content,
+about 1,552 pieces
+
+1254
+01:00:19,150 --> 01:00:21,510
+of social media content
+across all channels
+
+1255
+01:00:21,510 --> 01:00:25,230
+and even builds your
+dialogue for your
+
+1256
+01:00:25,230 --> 01:00:28,630
+videos and shorts and
+TikToks and everything.
+
+1257
+01:00:28,980 --> 01:00:32,710
+And each day it goes
+in and looks at content
+
+1258
+01:00:32,710 --> 01:00:34,610
+based off of what's
+happening in the
+
+1259
+01:00:34,610 --> 01:00:36,590
+environment and what
+viral content is out there
+
+1260
+01:00:36,590 --> 01:00:40,370
+and rebaselines and
+moves that content.
+
+1261
+01:00:40,990 --> 01:00:43,530
+There's so many
+applications from
+
+1262
+01:00:43,530 --> 01:00:46,070
+a, like this is
+a foundational
+
+1263
+01:00:46,070 --> 01:00:49,290
+framework and you can
+apply it, you know,
+
+1264
+01:00:49,290 --> 01:00:51,070
+probably to, I
+think, anything.
+
+1265
+01:00:51,410 --> 01:00:55,430
+So how does that
+work in a, how does
+
+1266
+01:00:55,430 --> 01:00:56,730
+the feedback loop
+for that work?
+
+1267
+01:00:56,730 --> 01:00:58,070
+Are you tracking
+the metrics for what
+
+1268
+01:00:58,070 --> 01:00:59,750
+amounts to the
+earned media? Yeah.
+
+1269
+01:00:59,750 --> 01:01:01,130
+Because putting out
+a lot of content is
+
+1270
+01:01:01,130 --> 01:01:04,830
+great. Yeah. Google,
+Google ads, like all the
+
+1271
+01:01:04,830 --> 01:01:06,790
+normal things that you
+would be like *******
+
+1272
+01:01:06,790 --> 01:01:08,910
+in from a metrics
+perspective, go into a
+
+1273
+01:01:08,910 --> 01:01:11,370
+dashboard and well,
+this is speed traffic.
+
+1274
+01:01:11,800 --> 01:01:13,260
+Yeah. I mean, it's
+a whole website
+
+1275
+01:01:13,710 --> 01:01:16,290
+and has, I can
+probably demo it for
+
+1276
+01:01:16,290 --> 01:01:18,510
+folks next week or
+something, But yeah,
+
+1277
+01:01:18,510 --> 01:01:20,830
+it's like a whole
+website has like
+
+1278
+01:01:20,830 --> 01:01:22,710
+multiple dashboards,
+has a whole admin
+
+1279
+01:01:22,710 --> 01:01:25,270
+center. Admins can
+steer, reprompt,
+
+1280
+01:01:25,390 --> 01:01:28,010
+you know, push, make,
+create, or remove
+
+1281
+01:01:28,010 --> 01:01:30,470
+content. There's a
+budget section, how much
+
+1282
+01:01:30,470 --> 01:01:31,490
+money you're putting
+in, what are you
+
+1283
+01:01:31,490 --> 01:01:35,970
+getting out, your CAC,
+LTV, like all the,
+
+1284
+01:01:35,970 --> 01:01:37,930
+you know, fun marketing
+terms that I'm
+
+1285
+01:01:37,930 --> 01:01:40,350
+not a market person.
+So I just, you know,
+
+1286
+01:01:40,590 --> 01:01:42,330
+listen to people
+and see what I
+
+1287
+01:01:42,330 --> 01:01:43,730
+can make. This may
+be a worthwhile
+
+1288
+01:01:43,730 --> 01:01:46,490
+expansion of
+actual demonstrable
+
+1289
+01:01:46,490 --> 01:01:49,410
+use cases of
+agentic engineering.
+
+1290
+01:01:49,410 --> 01:01:50,330
+Yes.
+
+1291
+01:01:50,510 --> 01:01:52,090
+So breaking out
+from app building
+
+1292
+01:01:52,090 --> 01:01:54,430
+and breaking into
+creative spaces.
+
+1293
+01:01:54,430 --> 01:01:57,530
+That was my point,
+Jed, is that we're
+
+1294
+01:01:57,530 --> 01:01:59,250
+potentially going
+beyond building apps
+
+1295
+01:01:59,250 --> 01:02:01,410
+to a framework where
+your applications
+
+1296
+01:02:01,410 --> 01:02:04,170
+are just running all
+the time in this.
+
+1297
+01:02:04,440 --> 01:02:05,930
+And one of the things
+you guys might want
+
+1298
+01:02:05,930 --> 01:02:08,300
+to take a look at is
+the neurodivergent
+
+1299
+01:02:09,570 --> 01:02:12,250
+component we created
+a few weeks ago. that
+
+1300
+01:02:12,250 --> 01:02:14,990
+is made for time
+series data. So the
+
+1301
+01:02:14,990 --> 01:02:16,990
+reason I created that
+was initially for some
+
+1302
+01:02:16,990 --> 01:02:18,420
+of the work I was
+doing with the neural
+
+1303
+01:02:18,420 --> 01:02:20,090
+trading systems where
+I was getting the
+
+1304
+01:02:20,090 --> 01:02:22,290
+real-time stock data,
+but that can be applied
+
+1305
+01:02:22,290 --> 01:02:25,490
+to anything that has
+time series data,
+
+1306
+01:02:25,490 --> 01:02:27,670
+whether real-time
+or historical.
+
+1307
+01:02:27,670 --> 01:02:30,470
+And then you can train
+the neural network
+
+1308
+01:02:30,470 --> 01:02:32,830
+based on that information
+to make decisions.
+
+1309
+01:02:32,830 --> 01:02:35,930
+So rather than the
+decision being sent to,
+
+1310
+01:02:35,930 --> 01:02:37,970
+let's say the hive
+queen and then being
+
+1311
+01:02:37,970 --> 01:02:40,010
+interpreted by the
+LLM, you're basically
+
+1312
+01:02:40,010 --> 01:02:43,090
+saying, make the
+determination and then send
+
+1313
+01:02:43,090 --> 01:02:45,440
+that to the LLM to
+execute upon. And
+
+1314
+01:02:45,440 --> 01:02:47,830
+that's going to be
+faster and more targeted.
+
+1315
+01:02:47,830 --> 01:02:50,190
+And then the only other
+thing Claude's doing
+
+1316
+01:02:50,190 --> 01:02:52,790
+is basically being
+told what to do, not
+
+1317
+01:02:52,790 --> 01:02:55,470
+how to understand why
+it needs to do it.
+
+1318
+01:02:58,970 --> 01:03:01,390
+Sorry, I got a
+question for John.
+
+1319
+01:03:01,630 --> 01:03:04,870
+And how you managed
+to do the competition
+
+1320
+01:03:04,870 --> 01:03:09,560
+between the answers?
+did you actually hard
+
+1321
+01:03:09,570 --> 01:03:13,190
+code it somewhere yeah
+there's I have a couple
+
+1322
+01:03:13,190 --> 01:03:15,330
+different versions of
+this like uh I forgot
+
+1323
+01:03:15,330 --> 01:03:17,730
+who was speaking
+earlier but the current
+
+1324
+01:03:17,730 --> 01:03:19,650
+code base is a mess
+because I've been doing
+
+1325
+01:03:19,650 --> 01:03:21,170
+so many different
+things in it just to
+
+1326
+01:03:21,170 --> 01:03:23,550
+explore it more and more
+and then like strapping
+
+1327
+01:03:23,550 --> 01:03:26,450
+a lot of our code
+into it too um just to
+
+1328
+01:03:26,450 --> 01:03:30,190
+see like you know what
+can you apply but uh
+
+1329
+01:03:30,190 --> 01:03:32,490
+I have one version
+where it's directly ML.
+
+1330
+01:03:32,530 --> 01:03:36,030
+It's just ML models
+that are trained based
+
+1331
+01:03:36,030 --> 01:03:38,550
+off of like specific
+outcome that I want to
+
+1332
+01:03:38,550 --> 01:03:41,650
+see. And that's like a
+more benchmark direct
+
+1333
+01:03:41,650 --> 01:03:45,350
+approach. And then
+there's an LLM evaluation,
+
+1334
+01:03:45,350 --> 01:03:50,950
+the sort of like
+using an O3 call and
+
+1335
+01:03:50,950 --> 01:03:53,930
+an anthropic call using
+those two judges and
+
+1336
+01:03:53,930 --> 01:03:56,350
+then having those
+judges evaluate outcome.
+
+1337
+01:03:56,670 --> 01:03:59,330
+And then the other
+one I've been playing
+
+1338
+01:03:59,330 --> 01:04:02,270
+around with is like
+the just straight
+
+1339
+01:04:02,270 --> 01:04:05,890
+neural nets in
+combination with the LLMs
+
+1340
+01:04:05,890 --> 01:04:09,310
+using a similar
+orchestration as the app
+
+1341
+01:04:09,310 --> 01:04:12,330
+itself is doing. So
+sort of like as you
+
+1342
+01:04:12,330 --> 01:04:15,930
+have topical or changes
+in subject matter,
+
+1343
+01:04:15,930 --> 01:04:18,910
+the machine learning
+is scoring and
+
+1344
+01:04:18,910 --> 01:04:22,070
+applying that. That
+goes into an index. That
+
+1345
+01:04:22,070 --> 01:04:24,710
+index is feeding
+input into the LLMs.
+
+1346
+01:04:24,710 --> 01:04:27,390
+And then the LLMs
+are reacting based
+
+1347
+01:04:27,390 --> 01:04:30,130
+off of essentially
+like engineered prompts
+
+1348
+01:04:34,390 --> 01:04:36,110
+but you're not
+training the model in
+
+1349
+01:04:36,110 --> 01:04:39,450
+real time right
+um i so i have an
+
+1350
+01:04:39,450 --> 01:04:40,990
+experiment for that
+that's actually in the
+
+1351
+01:04:40,990 --> 01:04:43,190
+background right now
+running on my 50 90
+
+1352
+01:04:43,870 --> 01:04:48,270
+on hierarchical neural
+nets and i used so
+
+1353
+01:04:48,270 --> 01:04:49,930
+i haven't been able to
+use the whole framework
+
+1354
+01:04:49,930 --> 01:04:51,790
+yet i'm kind of like
+still just starting
+
+1355
+01:04:51,790 --> 01:04:55,230
+to piece this together
+but i i created a
+
+1356
+01:04:55,230 --> 01:04:58,050
+similar tool to what
+Reuven created in this
+
+1357
+01:04:58,050 --> 01:05:00,890
+that we that I called
+nano agents and it
+
+1358
+01:05:00,890 --> 01:05:04,190
+was actually for our
+product um so I took
+
+1359
+01:05:04,190 --> 01:05:06,190
+sort of like the nano
+agents and combined it
+
+1360
+01:05:06,190 --> 01:05:09,290
+with what Reuven did
+and with the ML models
+
+1361
+01:05:09,290 --> 01:05:14,610
+and ran that as
+essentially like semantic
+
+1362
+01:05:14,610 --> 01:05:18,930
+scoring on the front
+end and that semantic
+
+1363
+01:05:18,930 --> 01:05:23,390
+scoring um helps
+steer the hierarchical
+
+1364
+01:05:23,390 --> 01:05:26,270
+neural net at its chunking
+layer at the first
+
+1365
+01:05:26,270 --> 01:05:31,630
+input and then uh
+i'm sorry at the
+
+1366
+01:05:31,630 --> 01:05:35,250
+tokenization level level
+essentially like at the
+
+1367
+01:05:35,250 --> 01:05:36,830
+but well because
+hierarchical neural nets
+
+1368
+01:05:36,830 --> 01:05:40,670
+work off of uh bytes um
+so smaller than tokens
+
+1369
+01:05:40,670 --> 01:05:43,030
+sure yes yes yeah
+so it actually makes
+
+1370
+01:05:43,030 --> 01:05:46,740
+it easier and also it
+also makes it inherently
+
+1371
+01:05:46,740 --> 01:05:48,890
+multimodal because it
+works at that level
+
+1372
+01:05:48,890 --> 01:05:51,950
+so yes um but mainly
+my experiment was
+
+1373
+01:05:51,950 --> 01:05:55,670
+to see can i in real
+time influence a model
+
+1374
+01:05:55,910 --> 01:05:59,510
+as input is coming
+in it added about 0.5
+
+1375
+01:05:59,510 --> 01:06:03,090
+seconds of delay with
+the model scoring but i
+
+1376
+01:06:03,090 --> 01:06:05,590
+was able to see anywhere
+between 15 to 23
+
+1377
+01:06:05,590 --> 01:06:08,230
+percent depending on the
+topic improvement i'm
+
+1378
+01:06:08,230 --> 01:06:10,450
+sure with like some
+tuning so actually i have
+
+1379
+01:06:10,450 --> 01:06:15,390
+a 249 million wait is
+that the right size
+
+1380
+01:06:15,390 --> 01:06:18,870
+yeah um model that's
+fine tuning it in the
+
+1381
+01:06:18,870 --> 01:06:20,990
+background right now
+and it's kind of fine
+
+1382
+01:06:20,990 --> 01:06:24,750
+tuning itself based off
+of hella swag so it's
+
+1383
+01:06:24,750 --> 01:06:26,550
+just recursively running
+through a thousand
+
+1384
+01:06:26,550 --> 01:06:29,310
+questions from hella
+swag and benchmarking
+
+1385
+01:06:29,310 --> 01:06:32,070
+itself that using the
+ml to score it the ml
+
+1386
+01:06:32,070 --> 01:06:35,570
+then re-steers it and
+then it informs the
+
+1387
+01:06:35,660 --> 01:06:38,960
+essentially the the
+models that are instantly
+
+1388
+01:06:38,960 --> 01:06:45,990
+fine tuning like at the
+top layer okay got it
+
+1389
+01:06:47,710 --> 01:06:50,750
+that's a really good
+architecture and and
+
+1390
+01:06:50,750 --> 01:06:53,030
+what you're doing is
+you're you can by using
+
+1391
+01:06:53,030 --> 01:06:55,750
+a kind of secondary
+i'm calling a
+
+1392
+01:06:55,750 --> 01:06:59,470
+microscopic neural neck
+attached to low cost
+
+1393
+01:06:59,470 --> 01:07:02,730
+local models maybe low
+performance models like
+
+1394
+01:07:02,730 --> 01:07:06,210
+um you know any smaller
+model you can get
+
+1395
+01:07:06,210 --> 01:07:08,290
+substantially better
+performance from them
+
+1396
+01:07:08,290 --> 01:07:10,250
+because you're you're
+not limiting yourself
+
+1397
+01:07:10,250 --> 01:07:12,910
+to whatever that
+small model needs to
+
+1398
+01:07:12,910 --> 01:07:16,610
+do right so that that's
+essentially I think
+
+1399
+01:07:16,610 --> 01:07:18,490
+what you've articulated
+is a kind of
+
+1400
+01:07:18,490 --> 01:07:23,910
+implementation of that
+strategy yeah it it I'll
+
+1401
+01:07:24,150 --> 01:07:25,710
+I'll try to have it
+in the place where
+
+1402
+01:07:25,710 --> 01:07:27,510
+I can present it right
+now it's like very
+
+1403
+01:07:27,510 --> 01:07:30,050
+raw code but I actually
+have a dashboard
+
+1404
+01:07:30,050 --> 01:07:32,290
+that I watch while it's
+doing fine tuning so
+
+1405
+01:07:32,290 --> 01:07:33,970
+I can keep track of
+it and see if it's
+
+1406
+01:07:33,970 --> 01:07:36,190
+going off the first
+couple batches actually
+
+1407
+01:07:36,190 --> 01:07:38,530
+ended up with negative
+results where the
+
+1408
+01:07:38,530 --> 01:07:41,470
+model degraded but
+I'm starting to see it
+
+1409
+01:07:41,470 --> 01:07:44,150
+actually be able to
+improve and re-steer. And
+
+1410
+01:07:44,150 --> 01:07:46,810
+what's fascinating
+is sort of topically,
+
+1411
+01:07:47,370 --> 01:07:50,890
+the way I've built
+it, or I've actually
+
+1412
+01:07:50,890 --> 01:07:52,530
+gone backwards. The
+first time I was
+
+1413
+01:07:52,530 --> 01:07:54,510
+doing it was just
+with one medium-sized
+
+1414
+01:07:54,510 --> 01:07:56,940
+model. Then I started
+moving into three MOE,
+
+1415
+01:07:56,940 --> 01:07:59,450
+and then I moved
+into a 20-layer MOE.
+
+1416
+01:08:00,290 --> 01:08:04,770
+That MOE, even on my
+5090, was outputting
+
+1417
+01:08:04,770 --> 01:08:08,010
+similar benchmarks
+to like GPT 3.5, all
+
+1418
+01:08:08,010 --> 01:08:10,590
+running locally, only
+using 30% of my 5090.
+
+1419
+01:08:11,910 --> 01:08:13,290
+Quick question,
+though. You're
+
+1420
+01:08:13,290 --> 01:08:14,730
+not doing
+distillation, right?
+
+1421
+01:08:16,130 --> 01:08:17,410
+Currently, no.
+
+1422
+01:08:17,410 --> 01:08:18,750
+I am not doing
+distillation.
+
+1423
+01:08:19,230 --> 01:08:20,310
+Okay, yes.
+
+1424
+01:08:23,230 --> 01:08:25,030
+I'm looking
+forward to seeing
+
+1425
+01:08:25,030 --> 01:08:26,690
+this demo next
+week, John.
+
+1426
+01:08:29,730 --> 01:08:30,830
+I'm sorry.
+
+1427
+01:08:31,980 --> 01:08:34,910
+We need to see a demo.
+We need to see a demo
+
+1428
+01:08:34,910 --> 01:08:37,570
+next week. yeah i'll
+try to have i'll try
+
+1429
+01:08:37,570 --> 01:08:39,690
+to have something
+demoable by next week for
+
+1430
+01:08:39,690 --> 01:08:43,910
+you i think jade was
+uh jade jade was uh uh
+
+1431
+01:08:43,910 --> 01:08:46,190
+putting you in line
+for the demo nick for
+
+1432
+01:08:46,190 --> 01:08:48,930
+next week yeah and and
+just fyi you guys are
+
+1433
+01:08:48,930 --> 01:08:51,230
+more obviously more
+welcome to continue i'm
+
+1434
+01:08:51,230 --> 01:08:54,290
+going on vacation
+starting next friday and
+
+1435
+01:08:54,290 --> 01:08:57,310
+uh if if i if i attempt
+to tell my wife that
+
+1436
+01:08:57,310 --> 01:08:59,450
+i'm gonna do this
+while doing a road trip
+
+1437
+01:08:59,450 --> 01:09:02,570
+i'll be in trouble
+trouble so uh i i will i
+
+1438
+01:09:02,570 --> 01:09:05,250
+will be away the next
+few weeks are the kids
+
+1439
+01:09:05,870 --> 01:09:08,750
+age that well they've
+got what they call the
+
+1440
+01:09:08,750 --> 01:09:12,170
+g1 license my 16 year
+old which means he
+
+1441
+01:09:12,170 --> 01:09:15,710
+probably can't go on a
+highway but uh right um
+
+1442
+01:09:15,710 --> 01:09:18,630
+next year then next
+next year for sure but
+
+1443
+01:09:18,630 --> 01:09:21,070
+yeah so i i won't be
+back until i think the
+
+1444
+01:09:21,070 --> 01:09:23,830
+uh whatever the week
+of the 12th is so like
+
+1445
+01:09:23,830 --> 01:09:27,450
+the 15th so two weeks
+of demos demos demos
+
+1446
+01:09:27,450 --> 01:09:29,070
+demos you guys are
+more than welcome to do
+
+1447
+01:09:29,070 --> 01:09:32,270
+whatever just just watch
+out for for uh weirdos
+
+1448
+01:09:32,270 --> 01:09:34,660
+and crazies to take
+over this thing yeah
+
+1449
+01:09:34,660 --> 01:09:38,770
+well i have that production
+so we can probably
+
+1450
+01:09:38,770 --> 01:09:41,690
+hold office hours rob
+on thursday then or
+
+1451
+01:09:41,690 --> 01:09:45,070
+thursday following right
+that's a great idea
+
+1452
+01:09:46,450 --> 01:09:49,230
+very cool no but it's
+been it's been a wild
+
+1453
+01:09:49,230 --> 01:09:52,090
+month though this well
+actually month and a
+
+1454
+01:09:52,090 --> 01:09:53,770
+half i guess you know
+the the swarm stuff
+
+1455
+01:09:53,770 --> 01:09:57,930
+only came out june 15th
+right so we we've been
+
+1456
+01:09:57,930 --> 01:10:01,110
+just five weeks crazy
+yeah it's been crazy
+
+1457
+01:10:03,090 --> 01:10:04,790
+anyone else have
+anything they
+
+1458
+01:10:04,790 --> 01:10:06,270
+want to show
+present discuss
+
+1459
+01:10:06,270 --> 01:10:08,390
+this is this is
+your chance to
+
+1460
+01:10:09,170 --> 01:10:11,290
+this is the
+open mic portion
+
+1461
+01:10:13,630 --> 01:10:16,810
+sure I just put
+a little summary
+
+1462
+01:10:16,810 --> 01:10:20,290
+of the webinars
+we had I posted
+
+1463
+01:10:20,290 --> 01:10:22,130
+it let me can I
+share my screen
+
+1464
+01:10:26,210 --> 01:10:27,170
+Confluence
+
+1465
+01:10:28,150 --> 01:10:31,070
+yeah you know um
+only because i
+
+1466
+01:10:31,070 --> 01:10:31,990
+couldn't do it
+elsewhere but
+
+1467
+01:10:31,990 --> 01:10:34,260
+that's how i knew
+how to do it so
+
+1468
+01:10:35,790 --> 01:10:37,690
+uh can you see
+my screen i think
+
+1469
+01:10:37,690 --> 01:10:41,110
+you can yeah
+um so all i did
+
+1470
+01:10:41,110 --> 01:10:43,670
+was pull in um
+some recordings
+
+1471
+01:10:44,950 --> 01:10:48,170
+it pulls together um has
+
+1472
+01:10:48,170 --> 01:10:49,610
+has the recording itself
+
+1473
+01:10:51,710 --> 01:10:57,110
+it summarizes it
+takes a summary and
+
+1474
+01:10:57,110 --> 01:11:00,990
+then pushes that up
+into top level table
+
+1475
+01:11:03,630 --> 01:11:06,680
+so you can see
+week by week what
+
+1476
+01:11:06,680 --> 01:11:10,530
+was discussed nice
+that's awesome
+
+1477
+01:11:13,190 --> 01:11:15,430
+it'd be it'd be good
+if we can put it
+
+1478
+01:11:15,430 --> 01:11:17,450
+on a url so that
+it's easier to find
+
+1479
+01:11:18,810 --> 01:11:21,650
+and what yeah all
+those recordings that's
+
+1480
+01:11:21,650 --> 01:11:24,590
+all yeah we want them
+to live in the member
+
+1481
+01:11:24,590 --> 01:11:29,050
+site right the
+community uh agenics.org
+
+1482
+01:11:29,050 --> 01:11:33,030
+yeah so yeah i'm in
+there great fantastic is
+
+1483
+01:11:33,030 --> 01:11:35,310
+it yeah it's not a
+problem and um you know
+
+1484
+01:11:35,310 --> 01:11:37,990
+loom will actually
+compress them so yeah
+
+1485
+01:11:37,990 --> 01:11:42,570
+yeah it it will shorten
+a given recording um
+
+1486
+01:11:42,570 --> 01:11:44,430
+taking out the ums and
+ahs and all the rest
+
+1487
+01:11:44,430 --> 01:11:47,970
+of that as well okay
+Then on the member
+
+1488
+01:11:47,970 --> 01:11:50,130
+site, we can convert
+this into either a
+
+1489
+01:11:50,130 --> 01:11:52,890
+course or a tutorial based
+on whatever information
+
+1490
+01:11:52,890 --> 01:11:54,470
+you have. This is
+awesome. Thank you.
+
+1491
+01:11:54,630 --> 01:11:57,670
+Yeah, actually,
+Loom, which is an
+
+1492
+01:11:57,670 --> 01:11:59,590
+Alassian tool, as you
+know, actually does
+
+1493
+01:11:59,590 --> 01:12:02,390
+have a whole bunch of
+ways of manipulating
+
+1494
+01:12:02,390 --> 01:12:06,370
+video. So if you
+go to up here,
+
+1495
+01:12:07,050 --> 01:12:08,330
+Loom itself,
+
+1496
+01:12:09,370 --> 01:12:14,550
+and then you can
+edit by transcript.
+
+1497
+01:12:16,260 --> 01:12:17,790
+How do we do that? Edit.
+
+1498
+01:12:23,730 --> 01:12:26,960
+And as we're a nonprofit,
+
+1499
+01:12:27,230 --> 01:12:30,210
+users for this
+cost them about
+
+1500
+01:12:30,210 --> 01:12:32,230
+$6. So it is
+practically nothing.
+
+1501
+01:12:34,250 --> 01:12:36,400
+This is taking a
+little while to upload.
+
+1502
+01:12:36,400 --> 01:12:40,590
+But as you can imagine,
+you can do things
+
+1503
+01:12:40,590 --> 01:12:42,530
+like remove silences,
+all that kind
+
+1504
+01:12:42,530 --> 01:12:44,610
+of stuff. It's pretty
+standard nowadays.
+
+1505
+01:12:45,510 --> 01:12:50,830
+um but it is useful
+and we can um if
+
+1506
+01:12:50,830 --> 01:12:52,890
+anyone's working on
+building our content
+
+1507
+01:12:52,890 --> 01:12:55,910
+we can give them
+um a license to
+
+1508
+01:12:56,350 --> 01:13:00,870
+um six bucks a seat
+that's really good
+
+1509
+01:13:00,870 --> 01:13:09,930
+okay um yeah um
+that's it we have so
+
+1510
+01:13:09,930 --> 01:13:12,270
+much content over
+the last year yeah
+
+1511
+01:13:14,570 --> 01:13:17,190
+and uh no thank martin
+thanks for putting
+
+1512
+01:13:17,190 --> 01:13:18,590
+that together that's
+awesome i'm sure
+
+1513
+01:13:18,590 --> 01:13:20,170
+we'll figure out a
+way to use it even
+
+1514
+01:13:20,170 --> 01:13:22,410
+if it's just a link
+to that it's very
+
+1515
+01:13:22,410 --> 01:13:25,290
+uh we very useful
+one of the other
+
+1516
+01:13:25,290 --> 01:13:26,530
+things people have
+been asking about is
+
+1517
+01:13:26,530 --> 01:13:31,310
+like our like
+accreditation uh do we how
+
+1518
+01:13:31,310 --> 01:13:33,890
+are we looking on
+on that front, Brad?
+
+1519
+01:13:34,610 --> 01:13:36,390
+What's that
+process look like?
+
+1520
+01:13:37,050 --> 01:13:39,930
+Yeah, so, yeah, we're
+just getting started.
+
+1521
+01:13:39,930 --> 01:13:41,100
+There's two
+accreditations.
+
+1522
+01:13:41,190 --> 01:13:42,730
+We're looking
+for a sponsor to
+
+1523
+01:13:42,730 --> 01:13:44,910
+help with our
+not-for-profit.
+
+1524
+01:13:44,910 --> 01:13:47,730
+So if there's any
+sponsors out there,
+
+1525
+01:13:48,210 --> 01:13:51,670
+a couple of bucks would
+help to be able to
+
+1526
+01:13:51,670 --> 01:13:55,140
+go be essentially a
+learning institution. So
+
+1527
+01:13:55,140 --> 01:13:57,450
+that will give us the
+ability to get grants.
+
+1528
+01:13:57,450 --> 01:14:00,090
+And then we're just
+starting the accreditation
+
+1529
+01:14:00,090 --> 01:14:03,690
+process for the
+different levels. So I
+
+1530
+01:14:03,690 --> 01:14:06,230
+think we're going to
+be forming a group and
+
+1531
+01:14:06,230 --> 01:14:09,110
+actually let's get
+it done as quickly as
+
+1532
+01:14:09,110 --> 01:14:12,330
+possible. And I'll
+probably be talking to the
+
+1533
+01:14:12,330 --> 01:14:14,130
+people that would probably
+be passing the level
+
+1534
+01:14:14,130 --> 01:14:16,470
+four or whatever we
+call it, the top level
+
+1535
+01:14:16,870 --> 01:14:18,470
+that we're helping
+out with the
+
+1536
+01:14:18,470 --> 01:14:21,670
+RUFAN as kind
+of the leaders,
+
+1537
+01:14:21,670 --> 01:14:24,190
+including RUF and Jed
+and Braun and Ocean
+
+1538
+01:14:24,190 --> 01:14:28,010
+and some of the other
+top elite people to
+
+1539
+01:14:28,010 --> 01:14:29,450
+make sure that we have
+the accreditation.
+
+1540
+01:14:30,130 --> 01:14:33,310
+Is that about a three
+-month process or so?
+
+1541
+01:14:34,730 --> 01:14:36,170
+So two different
+things. If
+
+1542
+01:14:36,170 --> 01:14:37,260
+we want the
+accreditation,
+
+1543
+01:14:38,030 --> 01:14:41,270
+before we get too
+much further, it
+
+1544
+01:14:41,270 --> 01:14:43,330
+does cost some
+money. It's by course
+
+1545
+01:14:43,330 --> 01:14:45,430
+I've gone through
+to make sure that we
+
+1546
+01:14:45,430 --> 01:14:48,750
+qualify, need like
+100 hours of actual
+
+1547
+01:14:48,750 --> 01:14:50,510
+real content and
+all that kind of,
+
+1548
+01:14:51,070 --> 01:14:53,450
+essentially the same
+as what a college would
+
+1549
+01:14:53,450 --> 01:14:56,070
+be at a high level.
+There's different
+
+1550
+01:14:56,070 --> 01:14:59,010
+programs in the U.S. and
+there's one in Canada
+
+1551
+01:14:59,010 --> 01:15:01,490
+that that we would like
+to go ahead with. So
+
+1552
+01:15:01,490 --> 01:15:04,230
+we do need some some
+sponsors for that. And
+
+1553
+01:15:04,230 --> 01:15:06,290
+then that's that's
+on the one side that
+
+1554
+01:15:06,290 --> 01:15:08,910
+opens up a whole lot,
+a lot of money for us
+
+1555
+01:15:09,880 --> 01:15:11,810
+for government grants.
+And then for the
+
+1556
+01:15:11,810 --> 01:15:13,790
+accreditation process,
+we're just starting that.
+
+1557
+01:15:14,130 --> 01:15:17,010
+So but I know we need
+to get it going. We
+
+1558
+01:15:17,010 --> 01:15:19,470
+just started a
+WhatsApp, restarted it,
+
+1559
+01:15:19,470 --> 01:15:22,490
+I think, yesterday for
+the masterclass one.
+
+1560
+01:15:22,490 --> 01:15:26,650
+uh one so uh initial
+steps hopefully by
+
+1561
+01:15:26,650 --> 01:15:28,920
+the time Reuven comes
+back from vacation
+
+1562
+01:15:28,920 --> 01:15:31,330
+uh we'll we'll have
+a fair bit done so
+
+1563
+01:15:31,330 --> 01:15:33,750
+if uh anyone wants
+to get involved reach
+
+1564
+01:15:33,750 --> 01:15:36,210
+out to me and uh we'll
+get we'll get the
+
+1565
+01:15:36,210 --> 01:15:39,790
+actual coursework done
+well i'm gonna design
+
+1566
+01:15:39,790 --> 01:15:41,910
+that i won't i will
+not be able to at
+
+1567
+01:15:41,910 --> 01:15:44,410
+this point be able
+to pass the the final
+
+1568
+01:15:44,410 --> 01:15:46,390
+accreditation i'll
+need some training so
+
+1569
+01:15:46,770 --> 01:15:50,490
+yeah we can also be
+yes we'll all do the
+
+1570
+01:15:50,490 --> 01:15:53,290
+course and then we'll
+credit ourselves and
+
+1571
+01:15:53,290 --> 01:15:55,830
+then we'll and and
+once we're accredited
+
+1572
+01:15:55,830 --> 01:15:59,430
+agentic engineers we'll
+uh spread the uh you
+
+1573
+01:15:59,430 --> 01:16:01,790
+know the the curriculum
+far and wide or
+
+1574
+01:16:01,790 --> 01:16:03,830
+something but i i
+think i think our best
+
+1575
+01:16:03,830 --> 01:16:07,210
+bet is to get get a crew
+of us that are doing
+
+1576
+01:16:07,210 --> 01:16:10,230
+this like what we
+saw today and all
+
+1577
+01:16:10,230 --> 01:16:13,010
+review each other's
+work and and let that be
+
+1578
+01:16:13,010 --> 01:16:17,150
+the first step yeah uh
+scott you you've got
+
+1579
+01:16:17,150 --> 01:16:21,650
+your hand up how you
+doing hey um i wanted
+
+1580
+01:16:21,650 --> 01:16:23,590
+to do a presentation
+if we had a few
+
+1581
+01:16:23,590 --> 01:16:27,900
+minutes yeah scott that's
+right yeah cool cool
+
+1582
+01:16:27,900 --> 01:16:29,670
+i'll share um so i
+wanted to kind of
+
+1583
+01:16:29,670 --> 01:16:34,250
+cover um the new stuff
+in like the vllm space
+
+1584
+01:16:34,250 --> 01:16:38,790
+um the lms are pretty
+good at uh looking
+
+1585
+01:16:38,790 --> 01:16:41,710
+at pictures now and
+analyzing them and I
+
+1586
+01:16:41,710 --> 01:16:43,630
+kind of wanted to step
+through that and show
+
+1587
+01:16:43,630 --> 01:16:47,890
+we can do now let me
+share my screen so
+
+1588
+01:16:54,690 --> 01:16:58,590
+to give a quick example
+can you guys see
+
+1589
+01:16:58,590 --> 01:17:04,670
+yep cool so if you
+throw like a picture
+
+1590
+01:17:04,670 --> 01:17:08,430
+into something like
+oh three it'll start
+
+1591
+01:17:08,430 --> 01:17:12,350
+digesting this image
+agentically you can see
+
+1592
+01:17:12,350 --> 01:17:14,570
+I say inspect this
+photo deeply and tell
+
+1593
+01:17:14,570 --> 01:17:16,690
+me the details about
+the buildings start
+
+1594
+01:17:18,030 --> 01:17:22,310
+thinking do a little
+description and then
+
+1595
+01:17:22,310 --> 01:17:25,070
+it'll start zooming
+in on the image which
+
+1596
+01:17:25,070 --> 01:17:27,930
+is actually pretty
+cool and as it cuts
+
+1597
+01:17:27,930 --> 01:17:31,630
+the image down it'll
+start doing its image
+
+1598
+01:17:31,630 --> 01:17:34,130
+description and then
+reasoning about this
+
+1599
+01:17:36,190 --> 01:17:38,330
+so in the foreground
+you can see a tree
+
+1600
+01:17:38,330 --> 01:17:40,410
+you've got the mountains
+in the background
+
+1601
+01:17:40,410 --> 01:17:43,810
+it's describing the
+yellow buildings etc get
+
+1602
+01:17:49,400 --> 01:17:53,100
+a little faster start
+looking at the sky
+
+1603
+01:17:54,660 --> 01:17:58,040
+start looking at this
+building on the hill
+
+1604
+01:17:59,050 --> 01:18:01,880
+and it actually does
+a pretty good job at
+
+1605
+01:18:01,880 --> 01:18:05,260
+describing the scene
+and telling you a little
+
+1606
+01:18:05,260 --> 01:18:11,700
+bit about the location
+and i asked it to
+
+1607
+01:18:12,010 --> 01:18:16,150
+figure out the location
+at some point and
+
+1608
+01:18:16,150 --> 01:18:17,900
+it was able to guess
+somewhere in northern
+
+1609
+01:18:17,900 --> 01:18:20,600
+italy um in the mountains
+and it was completely
+
+1610
+01:18:20,600 --> 01:18:25,680
+right so that's pretty
+cool um so around
+
+1611
+01:18:25,680 --> 01:18:27,800
+that we can start
+building some software
+
+1612
+01:18:30,060 --> 01:18:33,040
+um in response to
+the palisade fires
+
+1613
+01:18:33,040 --> 01:18:34,950
+i wanted to build
+like an automated
+
+1614
+01:18:35,440 --> 01:18:37,320
+***** inspector
+which is like
+
+1615
+01:18:37,320 --> 01:18:39,160
+the area around
+your house that
+
+1616
+01:18:39,160 --> 01:18:42,800
+comes up to the
+wildlife areas
+
+1617
+01:18:43,860 --> 01:18:45,940
+So I built an inspector,
+
+1618
+01:18:46,000 --> 01:18:51,340
+prompt engineered
+it, and this
+
+1619
+01:19:03,230 --> 01:19:04,920
+is for, like, an
+urban environment.
+
+1620
+01:19:07,250 --> 01:19:08,390
+Let's see.
+
+1621
+01:19:09,570 --> 01:19:11,530
+See a minimal risk.
+
+1622
+01:19:11,670 --> 01:19:14,590
+It will tell you a little
+
+1623
+01:19:14,590 --> 01:19:15,290
+bit of recommendations.
+
+1624
+01:19:16,250 --> 01:19:18,290
+There's not much
+for the urban
+
+1625
+01:19:18,290 --> 01:19:19,770
+environment.
+There's no hazards.
+
+1626
+01:19:21,650 --> 01:19:27,790
+if we look at a more
+rural environment with
+
+1627
+01:19:32,960 --> 01:19:34,640
+like a wooden
+house amongst
+
+1628
+01:19:34,640 --> 01:19:37,920
+trees so it's
+processing this
+
+1629
+01:19:44,050 --> 01:19:45,230
+is a little
+broken right here
+
+1630
+01:19:45,230 --> 01:19:47,930
+but it finds
+hazards gives you
+
+1631
+01:19:47,930 --> 01:19:49,560
+a description
+of those hazards
+
+1632
+01:19:49,970 --> 01:19:53,230
+sees the grass it
+sees the trees gives
+
+1633
+01:19:53,230 --> 01:19:56,830
+some recommendations
+and will tell
+
+1634
+01:19:56,830 --> 01:19:59,400
+you quite a lot
+about actually your
+
+1635
+01:19:59,400 --> 01:20:04,290
+wildfire hazard
+risk um this is a
+
+1636
+01:20:04,290 --> 01:20:05,870
+job i kind of used
+to do in the past
+
+1637
+01:20:05,990 --> 01:20:08,290
+and i thought i'd
+automate it and it does
+
+1638
+01:20:08,290 --> 01:20:11,050
+a pretty good job with
+off-the-shelf parts
+
+1639
+01:20:11,460 --> 01:20:13,240
+so i thought that
+was really cool
+
+1640
+01:20:13,240 --> 01:20:14,570
+that we can get
+to that point
+
+1641
+01:20:14,570 --> 01:20:18,230
+with these
+foundational models and
+
+1642
+01:20:18,510 --> 01:20:20,120
+kind of want to
+open up the floor
+
+1643
+01:20:20,120 --> 01:20:24,730
+to to you guys
+to ask about
+
+1644
+01:20:24,810 --> 01:20:27,110
+what ways we can
+kind of improve
+
+1645
+01:20:28,110 --> 01:20:31,230
+agentic vision kind
+of reasoning if you
+
+1646
+01:20:31,230 --> 01:20:34,870
+guys had any ideas what
+do you mean by improved
+
+1647
+01:20:34,870 --> 01:20:37,810
+accuracy of the
+context of the image
+
+1648
+01:20:37,810 --> 01:20:40,610
+yeah just anything
+that would make it more
+
+1649
+01:20:40,610 --> 01:20:45,490
+reliable keep in mind
+that most of these
+
+1650
+01:20:45,490 --> 01:20:47,870
+image models are
+actually just converting
+
+1651
+01:20:47,870 --> 01:20:52,050
+the image to text right
+when behind the scenes
+
+1652
+01:20:52,050 --> 01:20:54,300
+so when you send an
+image it's describing
+
+1653
+01:20:54,430 --> 01:20:57,590
+it so to get a better
+output you just
+
+1654
+01:20:57,590 --> 01:20:59,470
+need to add a better
+prompt that tells it
+
+1655
+01:20:59,470 --> 01:21:03,650
+to describe it better
+it's also nice that
+
+1656
+01:21:03,650 --> 01:21:07,950
+it's segmented and
+tag it the other um at
+
+1657
+01:21:07,950 --> 01:21:10,170
+least with open ai
+they accept images
+
+1658
+01:21:10,170 --> 01:21:12,650
+represented in base 64
+so let's assume they're
+
+1659
+01:21:12,650 --> 01:21:15,130
+tokenizing against base
+64 to represent the
+
+1660
+01:21:15,130 --> 01:21:17,290
+image and then run
+inference against that
+
+1661
+01:21:17,290 --> 01:21:19,970
+knowing that you
+need to remember that
+
+1662
+01:21:19,970 --> 01:21:23,570
+the image that's submitted
+to OpenAI is shrunk
+
+1663
+01:21:23,570 --> 01:21:27,930
+to the smallest of
+2000 by 768. So if
+
+1664
+01:21:27,930 --> 01:21:29,910
+your image is bigger
+than that resolution,
+
+1665
+01:21:29,910 --> 01:21:31,290
+it will be shrunk
+to that resolution
+
+1666
+01:21:31,290 --> 01:21:33,470
+one. And then if the
+subject that you're
+
+1667
+01:21:33,470 --> 01:21:35,930
+asking questions about
+does not materially
+
+1668
+01:21:35,930 --> 01:21:38,330
+fill out the viewport
+of the image,
+
+1669
+01:21:38,330 --> 01:21:40,650
+it will not describe
+that image well.
+
+1670
+01:21:41,870 --> 01:21:45,010
+And I assume other
+image-to-text models
+
+1671
+01:21:45,010 --> 01:21:48,090
+operate in a similar way.
+that's why like doing
+
+1672
+01:21:48,090 --> 01:21:49,930
+something like
+segmenting it and pulling
+
+1673
+01:21:49,930 --> 01:21:52,540
+the segments out
+and passing it for
+
+1674
+01:21:52,540 --> 01:21:55,950
+identification would be
+very helpful and also you
+
+1675
+01:21:55,950 --> 01:21:58,380
+could tag it so
+think about you know
+
+1676
+01:21:58,380 --> 01:22:02,010
+terminators type image
+of what you're seeing in
+
+1677
+01:22:02,010 --> 01:22:06,230
+real time the other
+side of this is also to
+
+1678
+01:22:06,230 --> 01:22:10,330
+use lower level models
+at a higher temperature
+
+1679
+01:22:10,330 --> 01:22:12,630
+to increase randomness
+and use a higher
+
+1680
+01:22:12,630 --> 01:22:14,550
+level model to summarize
+the lower level
+
+1681
+01:22:14,550 --> 01:22:17,890
+models outputs to
+coalesce where they agree
+
+1682
+01:22:18,110 --> 01:22:20,520
+yeah there's a whole
+category of vision
+
+1683
+01:22:20,520 --> 01:22:22,750
+language action models
+that are starting to
+
+1684
+01:22:22,750 --> 01:22:26,890
+appear in robotics
+that are really cool i
+
+1685
+01:22:27,170 --> 01:22:30,290
+just i just dropped a
+spatial lm in the in
+
+1686
+01:22:30,290 --> 01:22:32,910
+the chat and it's it's
+actually looking at
+
+1687
+01:22:32,910 --> 01:22:37,070
+3d point data um on
+different different
+
+1688
+01:22:37,070 --> 01:22:40,190
+objects so it'll actually
+give you the dimensions
+
+1689
+01:22:40,190 --> 01:22:45,710
+of the object as
+terministic data. So
+
+1690
+01:22:45,970 --> 01:22:49,490
+models like this are
+coming out and might
+
+1691
+01:22:49,490 --> 01:22:52,250
+look at something
+similar to that that can
+
+1692
+01:22:52,700 --> 01:22:54,070
+structure it a
+little bit better
+
+1693
+01:22:54,070 --> 01:22:55,390
+so that you can identify
+
+1694
+01:22:55,390 --> 01:22:57,270
+just based off
+the point data.
+
+1695
+01:22:57,490 --> 01:22:59,930
+And that spatial LM,
+
+1696
+01:23:00,050 --> 01:23:03,190
+there's the one
+on hugging face.
+
+1697
+01:23:03,750 --> 01:23:08,170
+you can run it like
+on local real easy on
+
+1698
+01:23:08,170 --> 01:23:12,150
+like small hardware and
+it is real time like
+
+1699
+01:23:12,150 --> 01:23:15,370
+it is actually assessing
+in real time and
+
+1700
+01:23:15,370 --> 01:23:18,170
+if you stream what
+it's doing with like
+
+1701
+01:23:18,170 --> 01:23:21,420
+camera it can actually
+draw those lines over
+
+1702
+01:23:21,500 --> 01:23:26,050
+your output if you
+do it right it is it
+
+1703
+01:23:26,050 --> 01:23:30,090
+is mind-blowingly good
+But there's even a
+
+1704
+01:23:30,090 --> 01:23:32,710
+pocket LLM that runs
+on your phone that does
+
+1705
+01:23:32,710 --> 01:23:35,610
+that. You can send
+it your video feed,
+
+1706
+01:23:35,610 --> 01:23:38,050
+and it'll basically
+give you an annotation.
+
+1707
+01:23:38,790 --> 01:23:42,090
+And it can probably
+leverage the LiDAR point
+
+1708
+01:23:42,120 --> 01:23:46,990
+3D stuff, too. Yeah,
+it'll take in LiDAR.
+
+1709
+01:23:47,150 --> 01:23:48,570
+Spatial will. Yep.
+
+1710
+01:23:48,870 --> 01:23:49,670
+Yeah.
+
+1711
+01:23:50,950 --> 01:23:53,070
+I was going to say,
+the other cool thing
+
+1712
+01:23:53,070 --> 01:23:55,050
+is if you take
+that and you record
+
+1713
+01:23:55,050 --> 01:23:58,150
+the Gaussian blur
+from it, and you can
+
+1714
+01:23:58,150 --> 01:24:01,770
+actually go back
+in 3D space and see
+
+1715
+01:24:01,770 --> 01:24:04,010
+what it assessed and
+how it assessed it
+
+1716
+01:24:04,010 --> 01:24:07,850
+with the boxes over
+it. It's awesome.
+
+1717
+01:24:08,570 --> 01:24:09,090
+Yeah.
+
+1718
+01:24:09,790 --> 01:24:12,330
+John, do you have a
+name of the model,
+
+1719
+01:24:12,330 --> 01:24:15,030
+the Hugging Face
+model you mentioned?
+
+1720
+01:24:15,570 --> 01:24:16,810
+Somebody dropped it in
+
+1721
+01:24:16,810 --> 01:24:18,450
+chat, but it's
+Spatial LM.
+
+1722
+01:24:19,470 --> 01:24:22,630
+They have demos and
+stuff, but I mean, I
+
+1723
+01:24:22,630 --> 01:24:25,010
+have to say I played
+with it and for the
+
+1724
+01:24:25,010 --> 01:24:28,290
+size it is I my mind
+is blown like it I
+
+1725
+01:24:28,290 --> 01:24:30,830
+think this is probably
+one of the most
+
+1726
+01:24:30,830 --> 01:24:33,370
+impactful like
+developments of the last
+
+1727
+01:24:33,370 --> 01:24:36,090
+six months from a what
+can like the power
+
+1728
+01:24:36,090 --> 01:24:38,110
+and the demos that
+I've seen of this like
+
+1729
+01:24:38,110 --> 01:24:40,570
+in apps is just
+it's it's incredible
+
+1730
+01:24:40,570 --> 01:24:43,910
+so what what's happening
+in like NVIDIA's
+
+1731
+01:24:43,910 --> 01:24:47,270
+edge devices like Thor
+and you know that's
+
+1732
+01:24:47,270 --> 01:24:48,890
+going to be the
+next gen or more and
+
+1733
+01:24:49,850 --> 01:24:52,410
+google is putting out
+they're taking a gemini
+
+1734
+01:24:52,410 --> 01:24:54,650
+model and they're
+reducing it to run on
+
+1735
+01:24:54,650 --> 01:24:58,590
+a robot to do real-time
+bla because you you
+
+1736
+01:24:58,590 --> 01:25:00,590
+can't afford the event
+loops have it step
+
+1737
+01:25:00,590 --> 01:25:02,670
+on the baby before it
+realizes there's a baby
+
+1738
+01:25:02,670 --> 01:25:06,330
+there right so it's
+really i signed up for
+
+1739
+01:25:06,330 --> 01:25:07,690
+it but they haven't
+you know they haven't
+
+1740
+01:25:07,690 --> 01:25:09,930
+gone public with it
+you can sign up to get
+
+1741
+01:25:09,930 --> 01:25:12,090
+access to that model
+but they're trying to
+
+1742
+01:25:12,090 --> 01:25:15,470
+pare down the model
+to do exactly what a
+
+1743
+01:25:15,470 --> 01:25:18,170
+robot would need to to
+be able to do in real
+
+1744
+01:25:18,170 --> 01:25:20,350
+time and that's a lot
+of that vision language
+
+1745
+01:25:20,350 --> 01:25:22,610
+action stuff so really
+cool stuff coming
+
+1746
+01:25:22,610 --> 01:25:27,470
+on right now yeah it's
+i it's really impressive
+
+1747
+01:25:27,470 --> 01:25:30,150
+the ability for the
+spatially reason
+
+1748
+01:25:30,150 --> 01:25:33,470
+within the llm itself
+that's kind of impressed
+
+1749
+01:25:33,470 --> 01:25:35,470
+me the most the fact
+that i can kind of
+
+1750
+01:25:35,470 --> 01:25:38,290
+determine this is like
+10 feet away and it
+
+1751
+01:25:38,290 --> 01:25:41,690
+gets it pretty right
+i'm there's a lot less
+
+1752
+01:25:41,690 --> 01:25:43,770
+hallucinations than i
+thought there would be
+
+1753
+01:25:44,680 --> 01:25:46,930
+um i'm curious where
+we'll be in like six
+
+1754
+01:25:46,930 --> 01:25:49,430
+months or so but so
+this is a fun topic i
+
+1755
+01:25:49,430 --> 01:25:51,670
+don't know if you saw
+the white paper by uh
+
+1756
+01:25:51,670 --> 01:25:55,150
+yale and mit specifically
+on physics and
+
+1757
+01:25:55,150 --> 01:25:59,230
+math uh and llm so if
+you take an llm and you
+
+1758
+01:25:59,230 --> 01:26:02,130
+leverage it to predict
+uh like an astral
+
+1759
+01:26:02,130 --> 01:26:05,150
+body where it'll be
+it will get very very
+
+1760
+01:26:05,150 --> 01:26:07,530
+close it will predict
+very very accurately
+
+1761
+01:26:07,530 --> 01:26:10,450
+and it's sort of this
+the nature of prediction
+
+1762
+01:26:10,450 --> 01:26:12,610
+right is kind of
+built into what an llm
+
+1763
+01:26:12,610 --> 01:26:16,010
+does and and language
+right the fabric of
+
+1764
+01:26:16,010 --> 01:26:18,370
+our reality is how we
+process information and
+
+1765
+01:26:18,370 --> 01:26:20,470
+we start to create
+predictions of where
+
+1766
+01:26:20,470 --> 01:26:22,350
+these things exist but
+if you tell it to or
+
+1767
+01:26:22,350 --> 01:26:25,170
+ask it to do the math
+it will do horrible
+
+1768
+01:26:25,170 --> 01:26:27,910
+math right it has to
+have tools or it has to
+
+1769
+01:26:27,910 --> 01:26:29,390
+use something but like
+if you just directly
+
+1770
+01:26:29,390 --> 01:26:30,930
+tell it like hey
+cool do the math for
+
+1771
+01:26:30,930 --> 01:26:33,090
+this like you're not
+you know if you're an
+
+1772
+01:26:33,090 --> 01:26:34,850
+astronaut stuck in space
+you're going to die
+
+1773
+01:26:34,990 --> 01:26:38,390
+so it it's it's
+fascinating it's a really
+
+1774
+01:26:38,390 --> 01:26:40,550
+good paper i highly
+recommend it i'll go look
+
+1775
+01:26:40,550 --> 01:26:42,950
+for it and try to drop
+it in the group um
+
+1776
+01:26:42,950 --> 01:26:47,330
+feed but like it it it
+gets back to this whole
+
+1777
+01:26:47,330 --> 01:26:50,450
+like um digital twin
+side of things the
+
+1778
+01:26:50,450 --> 01:26:53,390
+prediction like and
+creating these sort of
+
+1779
+01:26:53,390 --> 01:26:55,990
+synthetic spaces similar
+to what we're doing with
+
+1780
+01:26:55,990 --> 01:26:58,830
+the like swarms but
+if you take that and
+
+1781
+01:26:58,830 --> 01:27:01,650
+you think about um
+computer hardware like in
+
+1782
+01:27:01,650 --> 01:27:05,590
+software um what's
+interesting is i have one
+
+1783
+01:27:05,590 --> 01:27:07,230
+code base that i've
+been playing around with
+
+1784
+01:27:07,230 --> 01:27:10,510
+essentially like using
+an llm to simulate
+
+1785
+01:27:10,510 --> 01:27:13,430
+an entire operating
+system and it like
+
+1786
+01:27:13,430 --> 01:27:18,850
+generates the ui like in
+like as you're asking it
+
+1787
+01:27:18,850 --> 01:27:20,930
+or you know using commands
+now there's layers
+
+1788
+01:27:20,930 --> 01:27:22,590
+and a whole bunch of
+other stuff but it's
+
+1789
+01:27:22,590 --> 01:27:25,650
+fascinating that you
+can get almost like
+
+1790
+01:27:25,650 --> 01:27:28,810
+an operational computer
+just through prompts
+
+1791
+01:27:29,780 --> 01:27:33,750
+interesting crazy so
+that that's actually an
+
+1792
+01:27:33,750 --> 01:27:36,890
+interesting concept if
+we did a just-in-time
+
+1793
+01:27:36,890 --> 01:27:41,330
+os where we use some
+kind of uh you know
+
+1794
+01:27:41,330 --> 01:27:44,490
+real-time compilation
+as you make the requests
+
+1795
+01:27:44,490 --> 01:27:46,150
+and it creates like
+windows and things like
+
+1796
+01:27:46,150 --> 01:27:49,370
+that yeah so i give
+it you know i give it
+
+1797
+01:27:49,370 --> 01:27:52,350
+indexes and formats
+right so it's not jumping
+
+1798
+01:27:52,350 --> 01:27:54,630
+all over the place and
+doing crazy but But
+
+1799
+01:27:54,630 --> 01:27:57,330
+it's essentially able
+to, you know, you want
+
+1800
+01:27:57,330 --> 01:28:03,530
+an inbox and it
+creates an inbox and it
+
+1801
+01:28:03,530 --> 01:28:06,050
+looks at what the API,
+you know, that it's
+
+1802
+01:28:06,050 --> 01:28:07,970
+calling, whether it's
+Google or Outlook and
+
+1803
+01:28:07,970 --> 01:28:12,350
+reforms its, you know,
+input data to that API.
+
+1804
+01:28:13,730 --> 01:28:16,070
+And it works like,
+but, you know, it's not
+
+1805
+01:28:16,070 --> 01:28:17,990
+the fastest thing in
+the world, but to what
+
+1806
+01:28:17,990 --> 01:28:19,750
+Reuven was saying,
+like, you do something
+
+1807
+01:28:19,750 --> 01:28:22,350
+with like what he's
+built for that backbone
+
+1808
+01:28:22,350 --> 01:28:25,190
+and and give it better
+frameworks. And I bet
+
+1809
+01:28:25,190 --> 01:28:27,030
+you could probably
+come out with something
+
+1810
+01:28:27,030 --> 01:28:29,770
+that's pretty crazy
+below people's minds.
+
+1811
+01:28:31,090 --> 01:28:31,970
+Yeah.
+
+1812
+01:28:32,050 --> 01:28:33,350
+Well, we're almost out
+
+1813
+01:28:33,350 --> 01:28:34,930
+of time. I got to jump.
+
+1814
+01:28:34,970 --> 01:28:37,450
+Appreciate it. This
+week went a lot
+
+1815
+01:28:37,450 --> 01:28:39,410
+better than the
+last. So thanks for
+
+1816
+01:28:39,410 --> 01:28:41,150
+everyone who showed
+up. I'm going
+
+1817
+01:28:41,150 --> 01:28:43,550
+to be away over
+the next few weeks.
+
+1818
+01:28:43,550 --> 01:28:46,110
+So just to Martin's
+point earlier,
+
+1819
+01:28:46,290 --> 01:28:47,910
+someone other than me
+is going to have to
+
+1820
+01:28:47,910 --> 01:28:51,850
+create the zoom for
+the next few weeks uh
+
+1821
+01:28:51,850 --> 01:28:55,930
+and share it to uh who
+has the um the control
+
+1822
+01:28:55,930 --> 01:28:57,710
+do we have who has
+the the team has the
+
+1823
+01:28:57,710 --> 01:29:00,130
+control for that ruben
+i have control of
+
+1824
+01:29:00,130 --> 01:29:03,570
+the agent's accounts
+so it makes sense if
+
+1825
+01:29:03,570 --> 01:29:06,680
+i do it we're we're
+going to be uh having
+
+1826
+01:29:06,710 --> 01:29:09,270
+the production run
+through new nvidia next
+
+1827
+01:29:09,270 --> 01:29:11,810
+week let's let's let's
+maybe hold off until
+
+1828
+01:29:11,810 --> 01:29:13,830
+i'm back on that it
+makes no sense to start
+
+1829
+01:29:13,830 --> 01:29:16,590
+when i'm away yeah
+okay well we've got
+
+1830
+01:29:16,590 --> 01:29:18,650
+access to that we've
+got access to it when
+
+1831
+01:29:18,650 --> 01:29:20,310
+you when you do get
+back or what have you
+
+1832
+01:29:21,500 --> 01:29:22,870
+you know what we could
+
+1833
+01:29:22,870 --> 01:29:24,770
+do I'm leaving on Friday
+
+1834
+01:29:25,120 --> 01:29:27,130
+but what we could do
+maybe if I could fit
+
+1835
+01:29:27,130 --> 01:29:29,980
+in on Thursday is we
+could use our live
+
+1836
+01:29:29,980 --> 01:29:32,790
+you know vibe coding
+session as a test
+
+1837
+01:29:32,790 --> 01:29:35,330
+run of sorts using
+whatever it is that we're
+
+1838
+01:29:35,330 --> 01:29:37,230
+deciding to use
+riverside or whatever
+
+1839
+01:29:38,590 --> 01:29:41,090
+but yeah I think
+it just makes more
+
+1840
+01:29:41,090 --> 01:29:43,290
+sense to maybe start
+that when I'm back
+
+1841
+01:29:44,510 --> 01:29:45,990
+you've got two weeks
+
+1842
+01:29:47,670 --> 01:29:50,650
+I think the way
+it falls, it
+
+1843
+01:29:50,650 --> 01:29:52,070
+sort of unfortunately
+falls over.
+
+1844
+01:29:52,490 --> 01:29:56,350
+I won't be back until
+the 12th of August.
+
+1845
+01:29:56,350 --> 01:29:58,750
+So whatever that
+week is. So I think
+
+1846
+01:29:58,750 --> 01:30:00,050
+there's two weeks that
+I won't be around.
+
+1847
+01:30:00,400 --> 01:30:02,130
+But we will see
+you next Thursday.
+
+1848
+01:30:03,380 --> 01:30:04,970
+Thursday I should
+be able to do. Yeah.
+
+1849
+01:30:05,430 --> 01:30:06,130
+Awesome.
+
+1850
+01:30:07,130 --> 01:30:08,610
+So excited.
+
+1851
+01:30:08,610 --> 01:30:13,090
+And shout out to
+NVIDIA for helping
+
+1852
+01:30:13,090 --> 01:30:16,830
+sponsor and providing
+us some resources
+
+1853
+01:30:16,830 --> 01:30:19,150
+to make it happen
+is that a longer
+
+1854
+01:30:19,150 --> 01:30:21,260
+term a long-term
+thing guys we'll
+
+1855
+01:30:21,410 --> 01:30:25,030
+see or just a one
+-off sort of deal
+
+1856
+01:30:25,670 --> 01:30:27,630
+we're still we're still
+working through the
+
+1857
+01:30:27,630 --> 01:30:29,410
+details but they're
+they're currently
+
+1858
+01:30:29,410 --> 01:30:31,350
+happy to help and we're
+happy to accept that
+
+1859
+01:30:31,350 --> 01:30:34,050
+help that's right yes
+of course that's great
+
+1860
+01:30:34,200 --> 01:30:36,590
+and while we're while
+i'm saying it and
+
+1861
+01:30:36,590 --> 01:30:39,050
+if anyone else you
+know knows of you know
+
+1862
+01:30:39,050 --> 01:30:41,510
+corporations or people
+with money who are
+
+1863
+01:30:41,510 --> 01:30:44,370
+looking to uh support
+a non-profit you know
+
+1864
+01:30:44,370 --> 01:30:47,670
+we're happy to have
+that conversation and
+
+1865
+01:30:47,670 --> 01:30:49,470
+obviously because
+we're non-profit there
+
+1866
+01:30:49,470 --> 01:30:53,050
+are tax benefits
+apparently for folks who
+
+1867
+01:30:53,050 --> 01:30:57,230
+are looking to use that
+approach I guess if
+
+1868
+01:30:57,230 --> 01:31:00,090
+you've got a ton of
+really valuable AI stock
+
+1869
+01:31:00,090 --> 01:31:03,390
+we're happy to help
+you need to take a
+
+1870
+01:31:03,390 --> 01:31:06,290
+donation through a
+charity for them to get
+
+1871
+01:31:06,290 --> 01:31:09,030
+the tax benefit that's
+right so we're happy
+
+1872
+01:31:09,030 --> 01:31:12,930
+to explore that but
+otherwise you know we
+
+1873
+01:31:12,930 --> 01:31:16,030
+can just do a great
+uh financial uh
+
+1874
+01:31:16,440 --> 01:31:18,790
+engagement of some sort
+that helps keep the lights
+
+1875
+01:31:18,790 --> 01:31:20,990
+on that's probably
+a conversation for
+
+1876
+01:31:20,990 --> 01:31:23,390
+david and others to
+figure out exactly what
+
+1877
+01:31:23,390 --> 01:31:27,450
+that means but uh yeah
+so i decided to see
+
+1878
+01:31:27,450 --> 01:31:32,050
+where this all goes
+until next time super
+
+1879
+01:31:32,050 --> 01:31:35,930
+jack i think so all
+right peace everybody

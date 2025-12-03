@@ -1,0 +1,9 @@
+00:10:24	Fireflies.ai Notetaker Agent:	Talk to Fireflies: (Web-search enabled) • Say: Hey Fireflies how can you help? • Type: /ff help to get started.  View real-time notes and transcription for this meeting here: https://app.fireflies.ai/live/01K397CGXXXT576NBAA38JMKTM?ref=live_chat
+00:22:21	Guy Bieber:	I ask for demos at the end of each phase.
+00:22:29	Guy Bieber:	In addition to tests.
+00:22:42	Marcus Patman:	Hi, I’m transcribing this call with my Tactiq AI Extension: https://tactiq.io/r/transcribing
+00:22:59	agent's Loom Notetaker:	This meeting is being recorded by agent  using Loom AI. Loom will store the recording and generate a recap and transcript, learn more at the help center.
+
+To start recording your meetings, connect your calendar at https://loom.com/meetings.
+
+Use chat commands /stop, /pause, or /resume to manage the meeting recording, /delete to delete the recording, or /help for more commands.

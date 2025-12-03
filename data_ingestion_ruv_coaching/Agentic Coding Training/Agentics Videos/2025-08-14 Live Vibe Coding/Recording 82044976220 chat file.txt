@@ -1,0 +1,445 @@
+00:20:46	David Youngblood:	hilarious Android App.
+00:21:15	john:	i'll post it here
+00:21:21	Brad Ross:	Doctor Who actor on Black Mirror
+00:21:27	Imad Ez-zejjari:	Replying to "i'll post it here"
+
+Was great demo John
+00:21:28	David Gratton:	Ycombinator
+00:21:42	Brad Ross:	Great work on Friday Jed
+00:21:54	john:	Reacted to "Was great demo John" with ❤️
+00:21:54	Imad Ez-zejjari:	Reacted to "Great work on Friday..." with 👍
+00:21:59	john:	Replying to "i'll post it here"
+
+thanksDreamLab-AI/VisionFlow: Logseq Spring Thing Immersive & Agentic Knowledge Development Engine
+00:22:05	Jed Arden:	Reacted to "Great work on Friday..." with ❤️
+00:22:05	Robert Ranson:	Reacted to "i'll post it here" with ❤️
+00:22:08	Robert Ranson:	Reacted to "Was great demo John" with 👍
+00:22:12	Robert Ranson:	Reacted to "thanks
+
+DreamLab-AI/..." with 👍
+00:22:38	john:	Replying to "i'll post it here"
+
+I have added clustering and... so much stuff.... since
+00:23:08	Trevor Bowman:	Have you seen NATS.io – Cloud Native, Open Source, High-performance Messaging, curious your thoughts on using nats vs sqlite3.
+00:23:45	Guy Bieber:	Human review becomes impractical at a certain rate of generated code.
+00:24:02	Jed Arden:	Replying to "Human review becomes..."
+
+That's why we do UAT.
+00:24:12	Guy Bieber:	Replying to "Human review becomes..."
+
+meh.
+00:24:16	Fahad Arshad:	50 years ago assembly code was valuable. Who looks at assembly code now.
+
+Warm take: Expect same to happen to high level programing languages
+00:24:23	Guy Bieber:	Replying to "Human review becomes..."
+
+That does not provide real trust.
+00:24:31	Guy Bieber:	Replying to "Human review becomes..."
+
+How do we automate trust in code.
+00:24:58	Guy Bieber:	Replying to "Human review becomes..."
+
+A blackhat AI that judges the code.
+00:25:13	Brad Ross:	Replying to "50 years ago assembl..."
+
+Haha . I saw a related post on Linked - I used claude code to reply to the post:  1) in assembly  2) binary and 3) morse code
+00:25:14	Mathew Beane:	Totally possible, I've had a couple sessions where my output was past that. The planning and task delegation is easier than with humans, build fast and break things can go badly.
+00:25:47	Nick Ruest:	Finally a verdict on Gif lol
+00:26:58	Mathew Beane:	WSL is fine on windows. Anyone need help, ping me on discord I am happy to walk through it.
+00:26:59	Guy Bieber:	Replying to "Human review becomes..."
+
+I don’t trust the automated test cases. I have found the AI misses many things.
+00:27:14	Fahad Arshad:	Reacted to "Haha . I saw a relat..." with 😁
+00:27:20	Guy Bieber:	Replying to "Human review becomes..."
+
+Using node there are often vulnerable libraries included.
+00:27:35	Mathew Beane:	I've got several distros running and working properly in different ways. (some can even pop X windows into windows haha)
+00:27:41	Brad Ross:	Replying to "Human review becomes..."
+
+@Guy Bieber I'm working on these types of agents now.
+00:27:45	Guy Bieber:	Replying to "Human review becomes..."
+
+This is a real challenge for mass AI code generation.
+00:27:50	Jed Arden:	Replying to "Human review becomes..."
+
+For something like payment rails, I agree. Need human eyeballs. When building "Anteroids" YOLO.
+00:27:52	Guy Bieber:	Reacted to "@Guy Bieber I'm work..." with 👍
+00:27:53	john:	Replying to "Human review becomes..."
+
+nix? verifiable code frameworks?
+00:28:00	Michael Arnold:	dsp -c has been a game changer!
+00:28:10	Chris Barlow:	Reacted to "Haha . I saw a relat..." with 😁
+00:28:16	Viktor Nagy:	Replying to "Human review becomes..."
+
+I prefer using Gherkin syntax feature descriptions. I make AI write the feature files based on my issues, and then to write the tests for them too. Gherkin is good for feature-level testing, and as an “end user” of a service, that’s what I care about.
+00:28:40	john:	Replying to "dsp -c has been a ga..."
+
+what's this now?
+00:29:15	Brad Ross:	ask claude code - create a bash shortcut "___" for "____" e.g. "dsp" "claude --dangerously-skip-permissions" ..  
+00:29:16	john:	Reacted to "I prefer using Gherk..." with 👍
+00:30:31	Brad Ross:	Replying to "ask claude code - cr..."
+
+this is a shortcut where you type dsp in the terminal and the full command is prompted
+00:30:50	Nate Aune:	Is there a way to turn off the .claude-flow/metrics/*.json file changes?
+00:31:11	Trevor Bowman:	add to gitignore
+00:32:01	Christopher Mack:	The issue with Claude auth from Github Codespace is that the default callback URL is wrong in that first URL (tries to use localhost). I just click the copy button which dismisses the dialog (I don’t even bother opening that link to the first login) and then I copy and open the link provided in the console which does not require a callback. After logging in with this 2nd URL, copy and paste the token back to Claude. This works 100% of the time for me.
+00:32:53	Michael Arnold:	Replying to "dsp -c has been a ga..."
+
+@john - dangerously skip permissions for continuous flow and the -c pulls context from the last session you had. Quite literally brings up your last query results. Amazing
+00:33:15	Dragan Spiridonov:	Reacted to "The issue with Claud..." with 👍
+00:33:48	Dragan Spiridonov:	Reacted to "@john - dangerously ..." with 👍
+00:34:40	Jed Arden:	Ahem, not a go "getter" 😇
+00:34:53	Nate Aune:	Reacted to "add to gitignore" with 👍
+00:34:57	Michael Arnold:	Go vs Rust? Not sure what they are at all
+00:35:05	Jed Arden:	Replying to "Go vs Rust? Not sure..."
+
+Programming languages.
+00:35:15	Chris Barlow:	Replying to "dsp -c has been a ga..."
+
+echo "alias dsp='claude --dangerously-skip-permissions'" >> ~/.bashrc && source ~/.bashrc
+00:35:19	Nick Ruest:	I like where this is going
+00:35:25	Guy Bieber:	Rust is better than go.
+00:35:29	Guy Bieber:	safety and performance
+00:35:32	rUv:	https://gist.github.com/ruvnet/fc979c4e581c254bad17372f0d018702
+00:35:49	Nick Ruest:	I went to vibecast and talked with aliens lol
+00:36:07	Chris Barlow:	Replying to "dsp -c has been a ga..."
+
+echo "alias dsp-c='claude -c --dangerously-skip-permissions'" >> ~/.bashrc && source ~/.bashrc
+00:36:32	Christopher Mack:	Reacted to "dsp -c has been a ga..." with ➕
+00:36:40	Guy Bieber:	WebUI = typescript
+Backends = rust
+00:37:01	Chris Barlow:	Replying to "dsp -c has been a ga..."
+
+These will add  dsp  and  dsp-c  to your aliases and save it permanently
+00:37:41	Dragan Spiridonov:	Reacted to "WebUI = typescript
+B..." with 👍
+00:37:43	Bence Csernak:	this is the convo: https://chatgpt.com/share/689e0c84-f9c4-8001-88d8-d120e2692749
+00:37:53	Guy Bieber:	I found GPT5 sucks at UI design.
+00:37:56	Imad Ez-zejjari:	Reacted to "this is the convo: h..." with 👍
+00:38:30	Bence Csernak:	Replying to "I found GPT5 sucks a..."
+
+agree. claude still is the best
+00:39:24	Guy Bieber:	Replying to "I found GPT5 sucks a..."
+
+I was going do to a “ruv” and start with lovable then move to autonomous coding.
+00:40:31	Nate Aune:	Replying to "I found GPT5 sucks a..."
+
+https://kombai.com is an interesting alternative to AI-powered UI/UX.
+00:40:45	Nate Aune:	Replying to "I found GPT5 sucks a..."
+
+Touted as “The AI Agent Built for Frontend Development”
+00:41:04	Fahad Arshad:	Did anyone tested the cursor-agent experience?
+00:41:22	Fireflies.ai Notetaker Michael:	Talk to Fireflies: (Web-search enabled) • Say: Hey Fireflies how can you help? • Type: /ff help to get started.  View real-time notes and transcription for this meeting here: https://app.fireflies.ai/live/01K2MP7BFWQAK4KZKZ9DPTDS0R?ref=live_chat
+00:41:49	Chris Barlow:	Can anyone else find the  trust  parameter?
+00:42:26	Nate Aune:	Yes, I see them in the latest alpha.
+00:42:43	David Gratton:	Personally I use swarm for research but a single agent write PRD and dev plan.
+00:43:05	Chris Barlow:	Replying to "Yes, I see them in t..."
+
+Oh, verify, thanks!
+00:43:09	Christopher Mack:	Key point here: Swarm agents work independently in parallel — which it FAST, but not ideal for all tasks. Writing unified tech docs is a great example.
+00:43:29	Guy Bieber:	Replying to "I found GPT5 sucks a..."
+
+https://github.com/nextify-limited/libra
+00:43:36	Guy Bieber:	Replying to "I found GPT5 sucks a..."
+
+open source might try
+00:43:54	Nate Aune:	Anyone try ChatPRD.com for writing product requirement docs (PRDs)?
+00:44:07	Chris Barlow:	No slash command for verify though that I can see
+00:44:32	i5:	It's Free as a part of Lenny’s Newsletter sub.. trying this week.
+00:46:15	Nate Aune:	Replying to "Anyone try ChatPRD.c..."
+
+Yup, that’s how I got a sub too.
+00:46:17	Bence Csernak:	Replying to "Anyone try ChatPRD.c..."
+
+https://prd.kjeldager.io/
+00:46:28	Chris Barlow:	Its worth mentioning that you can create new claude.md on a per directory basis
+00:46:30	Christopher Mack:	Neat. I built my own version of tech spec writing tool. I will check that out!
+00:46:57	Dragan Spiridonov:	Reacted to "Its worth mentioning..." with 👍
+00:47:32	Christopher Mack:	Reacted to "Its worth mentioning..." with 👍
+00:47:44	john:	Reacted to "@john - dangerously ..." with 👍
+00:48:38	john:	Replying to "dsp -c has been a ga..."
+
+gotcha, I have been using /resume and selecting. Having those labelled better would be great
+00:49:09	john:	Replying to "i'll post it here"
+
+one interface to rule all muhaha etc
+00:49:36	Robert Ranson:	Reacted to "one interface to rul..." with 😂
+00:52:32	Joseph Young:	Is concurrency and parallelism the same thing?
+00:54:11	Marcus Patman:	Hi, I’m transcribing this call with my Tactiq AI Extension: https://tactiq.io/r/transcribing
+00:54:17	Trevor Bowman:	I've noticed a good number of packages used in claude-flow are older versions.  While you are vibing can you add always use current packages (n, n-1, n-2)
+00:54:42	David Gratton:	being explicit on a specific workflow
+00:54:44	Joseph Young:	Invoking a specific "module"
+00:55:01	Chris Barlow:	Reacted to "being explicit on a ..." with 👍
+00:55:40	Jed Arden:	Replying to "Is concurrency and p..."
+
+concurrency: Tasks can start, run and complete in overlapping time periods.Parallelism: tasks execute in the same instants.
+00:56:18	Joseph Young:	Replying to "Is concurrency and p..." 
+
+ Correct. Not the same thing.
+00:57:33	Joseph Young:	Replying to "Is concurrency and p..." 
+
+ The terms seem to be used interchangeably in this project. For better or worse.
+00:58:15	john:	I based mine off the agentic swarm branch
+00:59:21	Joseph Young:	So many branches
+00:59:59	Chris Barlow:	Replying to "I based mine off the..."
+
+Does it work?
+01:00:24	Chris Barlow:	Reacted to "So many branches" with 🎄
+01:00:44	Joseph Young:	Replying to "I based mine off the..." 
+
+ Magic 8 ball says...
+01:01:43	Chris Barlow:	Reacted to "Magic 8 ball says..." with 😂
+01:02:16	Mario Rodriguez:	It created intangible love
+01:02:21	Chris Barlow:	Replying to "I based mine off the..."
+
+100% success everything works mission accomplished! 🚀
+01:02:44	Joseph Young:	Reacted to It created intangibl... with "😂"
+01:02:52	Michael O'Boyle - fractional cto - oboyle.co:	Lovable IP protections tripping things up.
+01:02:57	Joseph Young:	Reacted to 100% success everyth... with "🎯"
+01:04:00	Joseph Young:	The Karate Adult
+01:04:05	Guy Bieber:	alienator
+01:04:13	Fatih Erarslan:	KODOS
+01:04:14	Daniel Gomez:	Johnny 5000 😂
+01:04:17	Christopher Mack:	Reacted to "alienator" with ❤️
+01:04:20	Dani Zuniga:	Reacted to "Johnny 5000 😂" with 😂
+01:04:21	Joseph Young:	Boy With The Dragon Tattoo
+01:04:24	David Gratton:	Reacted to "Johnny 5000 😂" with 😂
+01:04:30	David Youngblood:	E.T.-Phone
+01:05:16	Joseph Young:	Nobody watches Family Guy anymore?
+01:06:32	Guy Bieber:	ET Finder
+01:06:58	Guy Bieber:	Intelligent Life Finder (since we are lacking earth intelligence)
+01:07:13	Guy Bieber:	ILF
+01:08:40	Guy Bieber:	Extraterrestrial Life Finder
+01:08:42	Guy Bieber:	ELF
+01:09:29	Guy Bieber:	Need this in place for the latest interstellar visitor
+01:09:32	Joseph Young:	Alf?
+01:09:32	john:	Replying to "I based mine off the..."
+
+@Chris Barlow MOSTLY... no
+01:09:42	Dani Zuniga:	Reacted to "ELF" with 😂
+01:09:42	Guy Bieber:	Reacted to "Alf?" with 😆
+01:09:53	john:	Replying to "I based mine off the..."
+
+I actually took out most of it and made a TCP docker to docker connection
+01:09:54	Dani Zuniga:	Replying to "Alf?"
+
+Alien Life Finder!
+01:09:55	Chris Barlow:	Reacted to "@Chris Barlow MOSTLY..." with 😂
+01:10:13	john:	Replying to "I based mine off the..."
+
+the gif of it running is up top of the chat there
+01:10:23	Guy Bieber:	Replying to "Alf?"
+
+Naice. Keeps the cat population under control too
+01:10:28	john:	Replying to "I based mine off the..."
+
+and the link. use the new bra... aw hang on
+01:10:38	Joseph Young:	Reacted to I actually took out ... with "💯"
+01:10:49	Ocean Li:	Exclify
+01:10:54	john:	Replying to "I based mine off the..."
+
+this branch almost worksDreamLab-AI/VisionFlow at knowledge-graph-rebuild
+01:11:14	Nate Aune:	Is this new swarm running in parallel with the existing swarm?
+01:11:18	Joseph Young:	Reacted to this branch almost w... with "👍"
+01:11:29	Joseph Young:	Reacted to Naice. Keeps the cat... with "😂"
+01:12:08	john:	Replying to "I based mine off the..."
+
+it's hellish to get running though, 10-12 dockers. Good luck!??
+01:12:11	Joseph Young:	Sonnet has been decreasing in IQ since the release of 4.0
+01:12:12	Chris Barlow:	Replying to "I based mine off the..."
+
+Vision flow is pretty crazy
+01:12:19	Dylan Tullberg:	so adding additional swarm with observability into the previous swarm - that’s one way?  the previous swarms will remain oblivious.
+01:12:26	Nick Ruest:	This is the issue I was running into the other night
+01:12:26	john:	Reacted to "Vision flow is prett..." with 👍
+01:12:45	Joseph Young:	Reacted to This is the issue I ... with "👆"
+01:13:33	john:	Replying to "I based mine off the..."
+
+I didn't write a damn line of it!
+01:13:40	john:	Replying to "I based mine off the..."
+
+AI ftw
+01:13:42	Guy Bieber:	https://medium.com/@CodeCoup/libra-ai-the-open-source-alternative-to-v0-lovable-1789822943d3
+01:14:01	Macaulan:	Hasn't been working for me either.
+01:14:19	Raoul:	Reacted to "https://medium.com..." with ❤️
+01:14:41	Joseph Young:	I see similar issues and not using the extra complexity. I don't think it's entirely related to Ruv's code. Maybe partially, but I think Anthropic changed something or changes something. No clear pattern has emerged.
+01:14:45	Guy Bieber:	Reacted to "Alien Life Finder!" with 👍
+01:14:50	Joseph Young:	It's driving me nuts too!
+01:15:01	Imad Ez-zejjari:	Reacted to "https://medium.com/@..." with ❤️
+01:15:35	Chris Barlow:	Anthropic “fixing things”?
+01:15:38	john:	INSUFFICIENT SACRIFICES TO THE DEMO GODS DETECTED - EJECT RUV
+01:16:17	Blue Thunder Somogyi:	I had to step away for a few minutes - what is the `dsp` command?  Havent' seen that before...
+01:16:30	Guy Bieber:	Reacted to "INSUFFICIENT SACRIFI..." with 😆
+01:16:38	Blue Thunder Somogyi:	Reacted to "INSUFFICIENT SACRIFI..." with 😁
+01:16:39	john:	Replying to "I had to step away f..."
+
+Alias to --danger.... etc
+01:16:51	Bence Csernak:	Reacted to "INSUFFICIENT SACRIFI..." with 😆
+01:16:54	Joseph Young:	I have to do this same iterative loop. Go back to known good solution and force models to see they are able to do XYZ successfully.
+01:16:54	john:	Replying to "I had to step away f..."
+
+saves on typing -c for resume
+01:17:06	Blue Thunder Somogyi:	Reacted to "Alias to --danger......" with 👍
+01:18:20	Joseph Young:	Environment matters, too. Great suggestion
+01:19:29	Blue Thunder Somogyi:	Reacted to "Guy Bieber has sent ..." with 😁
+01:19:35	Trevor Bowman:	can you share that prompt please?
+01:19:53	Dylan Tullberg:	Replying to "can you share that p..."
+
+seconded - sounds sweet
+01:20:32	Joseph Young:	It's a reinforcement loop, it's necessary in all the latest frontier models.
+01:20:51	d.o.:	https://github.com/anthropics/claude-code/issues/4623#issuecomment-3187221181 
+
+https://github.com/anthropics/claude-code/issues/5185 
+01:21:00	Joseph Young:	Reacted to https://github.com/a... with "💯"
+01:21:12	Michael Arnold:	ya, this is the reddit I found the other dya
+01:21:23	Michael Arnold:	thank you!
+01:22:05	Joseph Young:	Ripgrep is notoriously problematic
+01:22:16	Dylan Tullberg:	Reacted to "It's a reinforcement..." with 👍
+01:22:33	Michael Arnold:	Here’s the fix from the highlighted comment:Update ripgrep to the latest version.Remove USE_BUILTIN_RIPGREP from both settings.json and settings.local.json.Ensure agent frontmatter YAML uses only single-line values (don’t use multi-line/indented descriptions); multi-line values can silently break detection for all agents and slash commands.If issues persist, check for other YAML parsing problems. As a last resort, move out all agent and slash command definitions, reintroducing one simple agent first, then add others back one by one to find the problematic file.
+01:22:58	David Gratton:	I actually love this tangent I ran into this error myself
+01:23:13	Michael Arnold:	brought to you by Comet ^
+01:23:39	rUv:	npm install -g @anthropic-ai/claude-code@1.0.72
+01:24:31	Dragan Spiridonov:	So, version issue
+01:25:02	Chris Dukes:	Replying to "can you share that p..."
+
+Yeah! I’ll have to spin up a project and look at the memory, but I’ll copy and paste it in the chat for everyone.
+01:25:14	Michael Arnold:	Reacted to "So, version issue" with 👍
+01:25:39	Fahad Arshad:	Hmm I guess we need to maybe maintain a Claude-code to Claude-flow version compatibility matrix 🙂
+01:25:55	Dragan Spiridonov:	Reacted to "Hmm I guess we need ..." with 👍
+01:26:06	Michael Arnold:	lol we shold totally build something together
+01:26:23	Martin Gross:	https://github.com/anthropics/claude-code/issues/5715
+01:26:27	Joseph Young:	It breaks because it's all agile beta software 
+01:26:31	Trevor Bowman:	I'm on 1.0.81 and agents works
+01:26:53	Martin Gross:	There is already an issue open for this, see above
+01:27:08	Dragan Spiridonov:	Reacted to "I'm on 1.0.81 and ag..." with 👍
+01:27:13	Joseph Yelle:	Reacted to "I'm on 1.0.81 and ag..." with 👍
+01:27:18	Joseph Young:	Reacted to There is already an ... with "💯"
+01:27:42	Chris Dukes:	Here’s the prompt I was referring to: (PART I)
+
+As queen coordinator, command and control the complete 64-agent swarm ecosystem with ultra-critical thinking and tree-of-thought methodology. The hive-mind reminds the queen coordinator that ALL 64 available valid agent types are: coder, reviewer, tester, planner, researcher, hierarchical-coordinator, mesh-coordinator, adaptive-coordinator, collective-intelligence-coordinator, consensus-builder, swarm-memory-manager, byzantine-coordinator, raft-manager, gossip-coordinator, security-manager, crdt-synchronizer, performance-benchmarker, quorum-manager, load-balancer, performance-monitor, topology-optimizer, resource-allocator, benchmark-suite, github-modes, pr-manager, code-review-swarm, issue-tracker, release-manager, workflow-automation, project-board-sync, repo-architect, multi-repo-swarm, release-swarm, swarm-issue, swarm-pr, sync-coordinator, specification, pseudocode, architecture, refinement, backend-dev, mobile-dev,
+01:27:55	Chris Dukes:	PART II
+
+ml-developer, cicd-engineer, api-docs, system-architect, code-analyzer, base-template-generator, tdd-london-swarm, production-validator, automation-smart-agent, coordinator-swarm-init, github-pr-manager, implementer-sparc-coder, memory-coordinator, migration-plan, orchestrator-task, performance-analyzer, sparc-coordinator, analyze-code-quality, arch-system-design, data-ml-model, ops-cicd-github, docs-api-openapi, spec-mobile-react-native. Working under guidance of CLAUDE.md, .claude-flow tools, .claude directory, and persistent memory, assign ONLY valid agents to complete comprehensive project development: Core authentication and user management systems, such as (your project details)
+01:28:03	Chris Barlow:	Anthropic has a mole on this call clearly they are just messing with us
+01:28:36	Martin Gross:	Reacted to "Anthropic has a mole..." with 😁
+01:28:48	Joseph Young:	Reacted to Anthropic has a mole... with "😂"
+01:28:56	Trevor Bowman:	oof...just be aware of the 64 agent!!
+01:29:18	Chris Dukes:	Yeah it definitely needs to be updated and I segment based on the worker-types; I have the prompt saved in Msty and just alter it there whenever I need to copy/paste over to Claude-flow.
+01:29:21	Joseph Young:	Replying to "Here’s the prompt I ..." 
+
+ Only 64? I thought there are 80+?
+01:29:25	Guy Bieber:	Reacted to "Anthropic has a mole..." with 😂
+01:29:27	David Gratton:	100%
+01:29:38	Joseph Young:	Reacted to oof...just be aware ... with "👆"
+01:29:38	john:	100 % well said
+01:29:45	john:	I am learning really good things
+01:29:49	Michael Arnold:	Where will the above be shared @Chris Dukes?
+01:29:49	Guy Bieber:	It’s like watching ChiveTV
+01:29:49	John Messing:	Reacted to "I am learning really..." with 👍
+01:29:55	Michael Arnold:	Reacted to "It’s like watching C..." with ❤️
+01:30:06	Guy Bieber:	Sometimes epic fails and sometimes epic wins
+01:30:07	Martin Gross:	Always learning a lot if something breaks.
+01:30:07	Nick Ruest:	It's true ... watching Ruv troubleshoot is super useful training !!
+01:30:12	Chris Dukes:	Replying to "Here’s the prompt I ..."
+
+Old version; I’m not keeping up as fast due to client biz 🤣😅 I gots some work to do! hahahaha
+01:31:06	Guy Bieber:	Either way it’s epic.
+01:31:59	Guy Bieber:	claude code:
+01:31:59	Joseph Young:	Ask Claude Code to fix itself.
+01:32:09	Joseph Young:	Reacted to Screenshot2025_08_14_101351.jpg with "😅"
+01:32:10	john:	try 77 was it again/
+01:32:13	Bennie Reddin:	Reacted to "Screenshot2025_08_14_101351.jpg" with 😂
+01:32:17	john:	I want to see which one works now
+01:32:21	Martin Gross:	It is breaking now as some of the main developers of CC left Anthropic ;-)
+01:32:42	Mondweep Chakravorty:	So to clarify - agents are spawned by Claude Code as the execution engine. But doesn't claude-flow determine what agents are created - in terms of their role, goal and tools allocated (Eg MCP). 
+
+From what I hear, we are using agents defined in claude-code. Why are we not defining agents through claude-flow and have claude-code to execute them?
+01:32:44	Joseph Young:	They just "flipped the switch"
+01:32:55	Nick Ruest:	The way I've got it running is by telling Claude code in natural language to look at the specific file and invoke claude-flow swarm etc. then it shows the same structure as I saw using claude-flow cli prior to the updates
+01:33:32	Trevor Bowman:	control + R
+01:33:40	Trevor Bowman:	you can see the full log and scroll
+01:34:52	Michael Arnold:	this session is so relatable
+01:34:57	Chris Dukes:	Btw, ignore my comments on the LinkedIn; I had been commenting there before I could pull up Zoom; but if anyone has answers that’d be dope
+01:35:05	Guy Bieber:	Tool Rot.
+01:35:10	Nick Ruest:	Reacted to "this session is so r..." with 🤣
+01:35:16	Guy Bieber:	or progress?
+01:35:27	Guy Bieber:	progressive tool rot
+01:36:18	Joseph Young:	Reacted to progressive tool rot with "👆"
+01:37:12	Guy Bieber:	lovable, GitHub spark, Google Opal
+01:37:28	Guy Bieber:	Feel like trying them all to build the same thing.
+01:37:41	Joseph Young:	These capabilities are built into Claude by default. See their Deep Research multi-agent diagram.
+01:38:11	Joseph Young:	Anthropic recommends using Opus as the orchestration model and Sonnet 4 to run the tools
+01:40:02	Michael Arnold:	Claude Code = the car (individual development tool) Claude Flow = the fleet management system
+01:40:26	Guy Bieber:	I feel like we need to simplify claude flow
+01:40:50	Guy Bieber:	There is a path that works and many that are alleys.
+01:41:34	David Gratton:	Replying to "lovable, GitHub spar..."
+
+I generally work from loveable to create the UI and surface functionality. 
+Then I move to GitHub and then deploy on Vercel. From there I break the project into micro services. Then build from there.
+
+This approach means I have a decent working product at all times. And I dont have an front end to backend integration challenge after (Which is a HUGE PIA)
+01:41:48	Joseph Young:	Reacted to I feel like we need ... with "💯"
+01:41:52	Imad Ez-zejjari:	Replying to "pic-5b8baec2-52cc-4a11-b38d-126cbbf083c5.png"
+
+Good diagram, interested to know the source
+01:41:59	Joseph Young:	Reacted to There is a path that... with "🎯"
+01:42:08	Fahad Arshad:	Some type of regression testing I guess
+01:42:09	Joseph Young:	Replying to "[Full message cannot be displayed on this version]" 
+
+ Anthropic
+01:42:18	Joseph Young:	Replying to "[Full message cannot be displayed on this version]" 
+
+ Official doc
+01:42:31	Joseph Young:	Replying to "[Full message cannot be displayed on this version]" 
+
+ This is how they do it
+01:42:40	Imad Ez-zejjari:	Reacted to "This is how they do ..." with ❤️
+01:42:42	Chris Dukes:	Reacted to "pic-5b8baec2-52cc-4a11-b38d-126cbbf083c5.png" with ❤️
+01:42:43	Guy Bieber:	Reacted to "I generally work fro..." with 👍
+01:42:50	Michael Arnold:	I tried spinning up my own agents in claude code and often found they were missing things, wouldn't work together, etc. Claude flow seems to be exactly what I was doing but a future version of orchestration with useful MCP tools.
+01:43:01	Jed Arden:	One-Shot prompt vibe-coded a "flight sim"
+01:43:16	i5:	Reacted to "{D51E8CEC-490B-471B-9035-424125D1E061}.png" with ❤️
+01:43:17	Jed Arden:	Took ~80 mins to get to this point.
+01:43:24	Imad Ez-zejjari:	Reacted to "{D51E8CEC-490B-471B-9035-424125D1E061}.png" with ❤️
+01:43:33	john:	for avoidance of doubt was 81 fine or did it take some pushing?
+01:43:43	Jed Arden:	Replying to "{D51E8CEC-490B-471B-9035-424125D1E061}.png"
+
+Prompt to reproduce
+01:43:45	Jed Arden:	Replying to "{D51E8CEC-490B-471B-9035-424125D1E061}.png"
+
+create a new folder flying-sim/ create a browser-based game that can run entirely on the       ││   client that simulates a plane flying game. It should rely on keyboard inputs (WASD) to handle  ││   pitch and yaw, and ijkl to handle yaw and thrust. Provide simple missions to fly from          ││   waypoint to waypoint. Use test driven development to ensure all inputs and feature work. Keep  ││   iterating until the application is completely built and ready to run. Create a docker          ││   container image to host the application. All testing is done against the docker image. Use     ││   playwright to conduct the testing. If stuck, conduct deep research to find solutions to the    ││   problem. All changes go into the flying-sim/ folder. Spawn 7 agents to work on this project    ││   in parallel, each agent using the available mcp servers.
+01:43:57	Imad Ez-zejjari:	Reacted to "create a new folder ..." with ❤️
+01:44:10	Joseph Young:	Workflow: Parallelization
+LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically. This workflow, parallelization, manifests in two key variations:
+01:44:29	Joseph Young:	https://www.anthropic.com/engineering/building-effective-agents
+01:44:49	Teemu Linna:	Reacted to "Took ~80 mins to get..." with 😅
+01:44:53	Joseph Young:	😆
+01:45:02	Joseph Young:	I want fries!
+01:45:19	Chris Dukes:	https://gist.github.com/clduab11/62c16fc3cc9c2d57228c2b227a2283ad
+01:45:20	Trevor Bowman:	Reacted to "I want fries!" with 🎉
+01:45:20	Nick Ruest:	Vibe Airfry
+01:45:26	Jed Arden:	Reacted to "https://gist.github...." with ❤️
+01:45:27	Chris Dukes:	Here’s the gist updated with the current agent and worker types for Claude-flow
+01:45:28	Imad Ez-zejjari:	Reacted to "https://gist.github...." with ❤️
+01:45:28	Alexander Gross:	Reacted to "Vibe Airfry" with 😂
+01:45:31	Joseph Young:	Put the fries in the bag!
+01:45:35	Joseph Young:	Reacted to Vibe Airfry with "😂"
+01:45:41	Nick Ruest:	Reacted to "Put the fries in the..." with 🤣
+01:46:10	Jed Arden:	Reacted to "I want fries!" with 🍟
+01:46:11	Michael Arnold:	I missed that part of the vibe cast, chris. Can you give me like a ELI5 version of what it's for in gist please @Chris Dukes?
+01:46:15	Teemu Linna:	https://www.linkedin.com/in/teemulinna - join me with the first Agentics meeting in Finland on September 2nd!
+01:46:18	Joseph Young:	It works when I follow the Anthropic docs
+01:46:53	Trevor Bowman:	Thanks!
+01:46:58	Chris Dukes:	Replying to "I missed that part o..."
+
+It’s a Gist that I use Claude-Flow to steer agent-types and worker-types to keep the Queen from hallucinating bad worker/agent-types
+01:47:04	Teemu Linna:	Replying to "https://www.linkedin..."
+
+Registration is full, but join the waiting list - we’re working on to getting more room
+01:47:41	Michael Arnold:	can someone point me to all the sessions rUv is doing?
+01:47:54	Bence Csernak:	thanks
+01:47:55	Nick Ruest:	That is awesome !!!
+01:48:01	Imad Ez-zejjari:	Thanks
+01:48:05	Dragan Spiridonov:	Thanks, it was great
+01:48:06	David Gratton:	I actually felt this was one of the best
+01:48:07	Bence Csernak:	look forward

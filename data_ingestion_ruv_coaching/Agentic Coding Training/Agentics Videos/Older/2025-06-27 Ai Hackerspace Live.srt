@@ -1,0 +1,10468 @@
+1
+00:00:20,410 --> 00:00:22,410
+All right. Here we
+are. Top of the hour.
+
+2
+00:00:22,450 --> 00:00:25,470
+The end of June,
+six months into the
+
+3
+00:00:25,470 --> 00:00:26,850
+year. I don't know
+how we managed to get
+
+4
+00:00:26,850 --> 00:00:28,950
+through half the
+year so quickly. This
+
+5
+00:00:28,950 --> 00:00:30,790
+week, I always say
+this almost every week.
+
+6
+00:00:30,790 --> 00:00:33,110
+This week was crazy,
+but this week was
+
+7
+00:00:33,470 --> 00:00:36,750
+incredibly crazy.
+We had a variety of
+
+8
+00:00:36,750 --> 00:00:39,850
+events. We had the
+Toronto meetup where we
+
+9
+00:00:39,850 --> 00:00:42,530
+had 100 people and I
+think, what was that?
+
+10
+00:00:42,530 --> 00:00:45,330
+450 people registered
+for it. We had
+
+11
+00:00:45,330 --> 00:00:48,170
+Paris on Monday, which
+went really well.
+
+12
+00:00:48,490 --> 00:00:50,190
+There's so much
+happening. I I don't
+
+13
+00:00:50,190 --> 00:00:51,610
+even know where to
+start, but I'm going
+
+14
+00:00:51,610 --> 00:00:53,210
+to start with Rob.
+How's it going, Rob?
+
+15
+00:00:53,470 --> 00:00:55,590
+Good, good, good. Yeah,
+it was a really busy
+
+16
+00:00:55,590 --> 00:00:58,950
+week, and lots of
+folks are excited about
+
+17
+00:00:58,950 --> 00:01:01,810
+holding events all
+over the place. Berlin,
+
+18
+00:01:01,930 --> 00:01:04,690
+Stockholm, next one's
+up, and Indianapolis,
+
+19
+00:01:07,070 --> 00:01:09,370
+boy,
+
+20
+00:01:09,570 --> 00:01:11,290
+Belgium.
+
+21
+00:01:11,290 --> 00:01:12,610
+They're all
+over the place.
+
+22
+00:01:13,010 --> 00:01:14,450
+So it's wonderful.
+
+23
+00:01:15,270 --> 00:01:16,770
+And, yeah, I'm
+looking forward to
+
+24
+00:01:16,770 --> 00:01:18,510
+seeing this trading
+platform today.
+
+25
+00:01:18,510 --> 00:01:19,770
+That's going to
+be interesting.
+
+26
+00:01:19,970 --> 00:01:23,740
+The ability to build
+out complex systems more
+
+27
+00:01:23,740 --> 00:01:27,420
+and more becomes
+available to more people
+
+28
+00:01:27,420 --> 00:01:29,730
+more quickly. So that's
+what it's all about.
+
+29
+00:01:29,730 --> 00:01:32,270
+We have a great lineup
+today this week,
+
+30
+00:01:32,480 --> 00:01:36,310
+too, Roof and folks.
+We've got Chris Poulter,
+
+31
+00:01:36,690 --> 00:01:38,650
+part of the UK group.
+
+32
+00:01:38,670 --> 00:01:41,850
+And Chris, he's a
+serial entrepreneur, and
+
+33
+00:01:41,850 --> 00:01:45,630
+he's working on the
+platforms to orchestrate
+
+34
+00:01:45,630 --> 00:01:48,070
+and optimize the
+eugenic coding flow.
+
+35
+00:01:48,630 --> 00:01:51,310
+So right on target.
+And then Everett
+
+36
+00:01:51,310 --> 00:01:54,090
+Clavin is back.
+He's, again, he's the
+
+37
+00:01:54,090 --> 00:01:56,390
+founder of Evangelist
+Technologies.
+
+38
+00:01:57,150 --> 00:02:00,290
+I think he qualifies
+as a rocket
+
+39
+00:02:00,290 --> 00:02:02,610
+scientist. He's got his
+master's in aeronautical
+
+40
+00:02:02,650 --> 00:02:04,490
+engineering or
+aerospace engineering.
+
+41
+00:02:04,490 --> 00:02:07,550
+And again, working
+on multi-agent
+
+42
+00:02:07,550 --> 00:02:08,830
+orchestration,
+right, which is what
+
+43
+00:02:08,830 --> 00:02:10,970
+it's all about. And
+then we're happy to
+
+44
+00:02:10,970 --> 00:02:14,150
+welcome the celebrated
+Alistair Kroll.
+
+45
+00:02:14,150 --> 00:02:16,710
+So Alistair,
+he's from product
+
+46
+00:02:16,710 --> 00:02:18,790
+management and telecom.
+He built and sold
+
+47
+00:02:19,260 --> 00:02:22,530
+Coradiant to BMC,
+and he launched
+
+48
+00:02:22,530 --> 00:02:25,850
+Year One Labs.
+That's an incubator.
+
+49
+00:02:26,690 --> 00:02:29,210
+Chaired O'Reilly's
+Strata and UBM's Cloud
+
+50
+00:02:29,210 --> 00:02:32,690
+Connect. He founded the
+FWD50, and he's taught
+
+51
+00:02:32,690 --> 00:02:34,690
+at Stanford, at
+Harvard. he's co-written
+
+52
+00:02:34,690 --> 00:02:37,750
+three books including
+lean analytics which
+
+53
+00:02:37,750 --> 00:02:40,250
+is pretty much required
+reading for startups
+
+54
+00:02:40,250 --> 00:02:43,290
+these days yes it's a
+happy to have alistair
+
+55
+00:02:43,290 --> 00:02:45,250
+it's the bible and
+his latest book which
+
+56
+00:02:45,250 --> 00:02:47,830
+is a really good one
+is just evil enough
+
+57
+00:02:47,830 --> 00:02:49,610
+which i just kind of
+love that name because
+
+58
+00:02:49,610 --> 00:02:51,910
+it sort of summarizes
+kind of everyone's
+
+59
+00:02:51,910 --> 00:02:55,350
+methodology these days
+so let's let's not let's
+
+60
+00:02:55,350 --> 00:02:57,510
+let's get to it there's
+a lot to cover uh
+
+61
+00:02:57,510 --> 00:02:59,990
+again thanks and
+thanks rob and brad and
+
+62
+00:02:59,990 --> 00:03:01,970
+the whole team in toronto
+for putting together
+
+63
+00:03:01,970 --> 00:03:04,970
+an amazing event on
+Tuesday, and the Tribal
+
+64
+00:03:04,970 --> 00:03:07,210
+Scale team for
+sponsoring it, as well as
+
+65
+00:03:07,210 --> 00:03:09,570
+Vincent and the crew
+in Paris. I wish I was
+
+66
+00:03:09,570 --> 00:03:11,370
+there with you guys,
+but I could see the
+
+67
+00:03:11,370 --> 00:03:13,860
+Eiffel Tower in the
+background. Very jealous,
+
+68
+00:03:13,860 --> 00:03:16,310
+but I don't have time
+to travel these days.
+
+69
+00:03:16,310 --> 00:03:18,230
+I'm way too busy for
+that sort of thing.
+
+70
+00:03:18,230 --> 00:03:21,510
+All right, so let's
+get into it. I think a
+
+71
+00:03:21,510 --> 00:03:23,450
+lot of people today are
+really excited about
+
+72
+00:03:23,450 --> 00:03:27,890
+this idea of an MCP or
+Claude Code generated
+
+73
+00:03:28,130 --> 00:03:30,910
+and managed trading
+system, But before
+
+74
+00:03:30,910 --> 00:03:33,050
+I go there, I've got
+to give you a kind of
+
+75
+00:03:33,050 --> 00:03:36,530
+step-by-step to where
+and how I got to where
+
+76
+00:03:36,530 --> 00:03:39,430
+we are today since
+Monday, which is, this
+
+77
+00:03:39,430 --> 00:03:41,930
+is a lot to cover. So
+I'm going to, I'm going
+
+78
+00:03:41,930 --> 00:03:43,010
+to go, I'm going to
+go fast. You might
+
+79
+00:03:43,010 --> 00:03:46,550
+have to watch this and
+in slow motion later.
+
+80
+00:03:46,910 --> 00:03:48,890
+But so I start
+with the week,
+
+81
+00:03:48,890 --> 00:03:50,530
+I've been on a rust kick.
+
+82
+00:03:50,530 --> 00:03:53,130
+The rust has been
+particularly good. And so
+
+83
+00:03:53,130 --> 00:03:55,590
+I started this week
+was creating a platform
+
+84
+00:03:55,590 --> 00:03:57,230
+that essentially
+allows me to create a
+
+85
+00:03:57,230 --> 00:04:01,030
+kind of quantum proof
+series of tools that
+
+86
+00:04:01,030 --> 00:04:03,310
+allow me to manage
+agents in a kind of
+
+87
+00:04:03,310 --> 00:04:06,150
+decentralized fashion.
+So I created an SDK and
+
+88
+00:04:06,150 --> 00:04:08,730
+it's super fast, super
+secure. It allows for
+
+89
+00:04:08,730 --> 00:04:10,870
+in the most simple
+terms, it's a dark net
+
+90
+00:04:10,870 --> 00:04:13,730
+for agents. I know
+it sounds scary. It
+
+91
+00:04:13,730 --> 00:04:17,010
+probably is. Basically,
+it's hyper, hyper fast
+
+92
+00:04:17,010 --> 00:04:19,230
+and hyper secure
+communication channel. It
+
+93
+00:04:19,230 --> 00:04:23,550
+handles things like the
+use of passwords and
+
+94
+00:04:23,550 --> 00:04:26,430
+secrets and communications.
+It has a built
+
+95
+00:04:26,430 --> 00:04:29,770
+-in economy system. So
+as agents collaborate,
+
+96
+00:04:29,770 --> 00:04:31,690
+they can generate
+value and share those
+
+97
+00:04:31,690 --> 00:04:35,210
+in the form of resource
+utility vouchers.
+
+98
+00:04:35,210 --> 00:04:38,450
+Yes, REVs. They're
+called roofs, whatever.
+
+99
+00:04:38,670 --> 00:04:41,070
+And then I've
+included anonymous
+
+100
+00:04:41,070 --> 00:04:43,070
+onion routing components,
+
+101
+00:04:43,350 --> 00:04:46,650
+quantum-resistant
+dark domain system. so
+
+102
+00:04:46,650 --> 00:04:49,880
+you can use it to create
+sort of whatever.dark
+
+103
+00:04:49,880 --> 00:04:51,730
+.com and I like dark
+because it doesn't
+
+104
+00:04:51,730 --> 00:04:54,400
+exist as a domain so
+you can create your own
+
+105
+00:04:54,400 --> 00:04:56,790
+secondary darknet you
+can change the dark
+
+106
+00:04:56,790 --> 00:04:58,750
+with whatever you
+really want it to be and
+
+107
+00:04:58,750 --> 00:05:02,000
+you can plug that in
+also to DNS services
+
+108
+00:05:02,000 --> 00:05:04,130
+like Cloudflare and
+others if you want it to
+
+109
+00:05:04,130 --> 00:05:07,010
+sort of sit between
+the dark world and the
+
+110
+00:05:07,010 --> 00:05:09,770
+real world it's all
+managed through an MCP
+
+111
+00:05:09,990 --> 00:05:11,870
+everything I'm
+about to show you is
+
+112
+00:05:11,870 --> 00:05:15,530
+kind of a cascading
+sort of um you know
+
+113
+00:05:15,530 --> 00:05:18,470
+series of components
+that uh connect
+
+114
+00:05:18,470 --> 00:05:21,030
+to each other
+through imcp so this
+
+115
+00:05:21,270 --> 00:05:23,710
+facilitates the next
+and the next thing was
+
+116
+00:05:23,710 --> 00:05:25,430
+sort of interacts with
+the previous thing
+
+117
+00:05:25,430 --> 00:05:27,070
+so they're all kind
+of building on each
+
+118
+00:05:27,070 --> 00:05:28,770
+other like one of those
+russian dolls where
+
+119
+00:05:28,770 --> 00:05:30,850
+you're kind of peeling
+each layer off and then
+
+120
+00:05:30,850 --> 00:05:32,860
+the next layer and
+inside this and that
+
+121
+00:05:32,860 --> 00:05:34,610
+so it's really
+interesting so you can see
+
+122
+00:05:34,610 --> 00:05:36,730
+i've got pop your
+passwords i'm not going to
+
+123
+00:05:36,730 --> 00:05:38,010
+go in the demo this
+because we just don't
+
+124
+00:05:38,010 --> 00:05:40,290
+have time to show you
+everything i've built
+
+125
+00:05:40,290 --> 00:05:41,770
+so you can see here
+i've got my resource
+
+126
+00:05:41,770 --> 00:05:44,450
+uh and so on but this
+led to another component.
+
+127
+00:05:44,450 --> 00:05:46,240
+So then I needed a
+practical application
+
+128
+00:05:46,410 --> 00:05:50,710
+of the SDK. So I
+created a, what I called
+
+129
+00:05:50,710 --> 00:05:53,450
+a decentralized
+autonomous agent structure
+
+130
+00:05:53,450 --> 00:05:56,490
+to essentially build
+businesses on top of
+
+131
+00:05:56,490 --> 00:05:58,410
+the previous platform
+that could operate
+
+132
+00:05:58,410 --> 00:06:02,430
+autonomously using
+agents as a kind of core
+
+133
+00:06:02,430 --> 00:06:06,890
+worker in the
+infrastructure that provides
+
+134
+00:06:06,890 --> 00:06:09,050
+things like an AI
+power decision-making,
+
+135
+00:06:09,050 --> 00:06:12,550
+economic self-sustainability.
+So these systems
+
+136
+00:06:12,550 --> 00:06:15,410
+can not only build and
+interact and adapt,
+
+137
+00:06:15,410 --> 00:06:17,470
+but they can make their
+own value, whether
+
+138
+00:06:17,470 --> 00:06:20,550
+that's real money or
+crypto or their own
+
+139
+00:06:20,550 --> 00:06:23,010
+invented currencies,
+whatever. They have
+
+140
+00:06:23,010 --> 00:06:25,610
+autonomous governance.
+There's also the ability
+
+141
+00:06:25,610 --> 00:06:28,530
+for it to be sort of
+self-determining. I
+
+142
+00:06:28,530 --> 00:06:31,690
+can put in guidelines.
+It's quantum safe.
+
+143
+00:06:32,040 --> 00:06:34,660
+Again, it's kind of
+the implementation of
+
+144
+00:06:34,660 --> 00:06:37,370
+the previous also has
+an MCP on top of it.
+
+145
+00:06:37,370 --> 00:06:39,570
+So if you want to create
+your own autonomous
+
+146
+00:06:39,570 --> 00:06:42,090
+agents that live in
+sort of the world of
+
+147
+00:06:42,090 --> 00:06:43,570
+the kind of, I don't
+know what you want to
+
+148
+00:06:43,570 --> 00:06:46,410
+call it, kind of latent
+space darknet, if
+
+149
+00:06:46,410 --> 00:06:49,070
+you will, you can do
+that. It has the ability
+
+150
+00:06:49,070 --> 00:06:51,390
+to be, again, completely
+autonomous loops.
+
+151
+00:06:51,390 --> 00:06:55,230
+It even has the ability
+to share computational
+
+152
+00:06:55,230 --> 00:06:57,730
+resources. So
+these systems can
+
+153
+00:06:57,730 --> 00:07:01,450
+actually create their
+own network that then
+
+154
+00:07:01,450 --> 00:07:05,490
+shares the capacity of
+GPUs and CPUs, networks
+
+155
+00:07:05,490 --> 00:07:09,470
+with each other or
+other people all on the
+
+156
+00:07:09,470 --> 00:07:11,570
+fly, which, again,
+is just mind-blowing.
+
+157
+00:07:11,570 --> 00:07:13,770
+So between these
+two projects, we're
+
+158
+00:07:13,770 --> 00:07:15,930
+looking at about 100
+hours of continuous
+
+159
+00:07:15,930 --> 00:07:18,910
+swarm development
+across 30 swarm
+
+160
+00:07:19,130 --> 00:07:21,630
+agents. So we're
+sitting around 3
+
+161
+00:07:21,630 --> 00:07:24,130
+,500 hours of
+continuous development.
+
+162
+00:07:24,490 --> 00:07:27,250
+and roughly two to
+three million lines of
+
+163
+00:07:27,250 --> 00:07:29,630
+code, two or three
+million lines of code. And
+
+164
+00:07:29,630 --> 00:07:31,890
+this is just since
+fricking Monday. Anyway,
+
+165
+00:07:31,890 --> 00:07:33,830
+you can look at that
+DAA. So that led to
+
+166
+00:07:33,830 --> 00:07:35,570
+the next thing. I'm
+like, okay, so, so this
+
+167
+00:07:35,570 --> 00:07:38,190
+is all built in rust.
+So then I came up, well,
+
+168
+00:07:38,290 --> 00:07:39,770
+we know that this
+is interesting. Why
+
+169
+00:07:39,770 --> 00:07:41,430
+don't, and this is
+something we did yesterday.
+
+170
+00:07:42,110 --> 00:07:44,310
+Well, I'm looking
+at sort of porting
+
+171
+00:07:44,310 --> 00:07:46,730
+some of these Python
+tools that are optimized
+
+172
+00:07:46,730 --> 00:07:48,470
+for creating neural
+networks. And
+
+173
+00:07:48,470 --> 00:07:50,070
+one of the more popular
+ones is something
+
+174
+00:07:50,070 --> 00:07:53,770
+called FAST. So the
+FAST is the FAST
+
+175
+00:07:53,770 --> 00:07:56,490
+Artificial Neural
+Network, which is built
+
+176
+00:07:56,490 --> 00:07:58,510
+in C. It's one of
+the most popular C
+
+177
+00:07:58,510 --> 00:08:00,630
+-based neural networks.
+It's complicated,
+
+178
+00:08:00,630 --> 00:08:02,590
+doesn't have really
+good memory management,
+
+179
+00:08:02,590 --> 00:08:06,130
+it's verbose and slow.
+So on yesterday's
+
+180
+00:08:06,130 --> 00:08:08,750
+live coding session,
+I'm like, why don't we
+
+181
+00:08:09,020 --> 00:08:12,450
+see if we can implement
+this in 90 minutes
+
+182
+00:08:12,450 --> 00:08:15,350
+in Rust, which we
+managed to do fully
+
+183
+00:08:15,350 --> 00:08:17,250
+functional. Again, a
+couple hundred thousand
+
+184
+00:08:17,250 --> 00:08:19,870
+lines of code. And then
+it created something
+
+185
+00:08:19,870 --> 00:08:22,230
+called neurodivergent,
+which I love. I
+
+186
+00:08:22,230 --> 00:08:23,950
+kind of love that name
+because I think I might
+
+187
+00:08:23,950 --> 00:08:27,950
+be neurodivergent.
+But anyway, what this
+
+188
+00:08:27,950 --> 00:08:31,390
+does is allows you
+to create hyper fast
+
+189
+00:08:31,390 --> 00:08:33,790
+and hyper targeted
+neural networks that you
+
+190
+00:08:33,790 --> 00:08:36,210
+can embed in just about
+anything. And they're
+
+191
+00:08:36,210 --> 00:08:38,930
+super small, super
+fast. You can see I've
+
+192
+00:08:38,930 --> 00:08:42,850
+got different types
+of models I can
+
+193
+00:08:42,850 --> 00:08:45,670
+implement and neural
+forecasting capabilities.
+
+194
+00:08:45,910 --> 00:08:48,850
+And here's the stats
+that are crazy. If
+
+195
+00:08:48,850 --> 00:08:50,650
+you look at traditional
+Python implementation
+
+196
+00:08:50,650 --> 00:08:53,850
+of neural forecast,
+we're looking at
+
+197
+00:08:53,850 --> 00:08:57,190
+a 200 to 400%
+improvement in terms of
+
+198
+00:08:57,190 --> 00:08:59,050
+speed. And this is just
+me quickly doing it
+
+199
+00:08:59,050 --> 00:09:03,830
+on some ****** GPUs
+that I got up. What
+
+200
+00:09:03,830 --> 00:09:07,430
+was it? Fly.io. My
+inference speed increased
+
+201
+00:09:07,430 --> 00:09:12,110
+500%. On the crappiest
+GPUs, memory went
+
+202
+00:09:12,110 --> 00:09:15,570
+down 75%, which is
+just crazy. But look
+
+203
+00:09:15,570 --> 00:09:17,510
+at this. The binary
+size dropped from
+
+204
+00:09:17,510 --> 00:09:20,850
+500 megabytes down to
+five. So I can embed
+
+205
+00:09:20,850 --> 00:09:23,300
+this in browsers. I
+can put this on IoT.
+
+206
+00:09:23,330 --> 00:09:26,890
+I can embed this in
+just random objects.
+
+207
+00:09:27,410 --> 00:09:31,410
+Cold start times went
+from 10 seconds to
+
+208
+00:09:31,410 --> 00:09:34,110
+50 milliseconds. Just
+mind boggling. And I
+
+209
+00:09:34,110 --> 00:09:36,210
+built this in freaking
+90 minutes. So all
+
+210
+00:09:36,210 --> 00:09:38,610
+these tools are leading
+towards the thing
+
+211
+00:09:38,610 --> 00:09:40,930
+you're probably most
+excited by is this
+
+212
+00:09:40,930 --> 00:09:44,370
+idea of a, where did
+I put it? Here it is.
+
+213
+00:09:44,610 --> 00:09:45,950
+A training system.
+
+214
+00:09:46,580 --> 00:09:49,850
+So I'm like, oh, I've
+got these tools. This
+
+215
+00:09:49,850 --> 00:09:51,370
+is built in Python,
+by the way, because I
+
+216
+00:09:51,370 --> 00:09:55,090
+built it quick. But this
+is essentially playing
+
+217
+00:09:55,090 --> 00:09:57,290
+on top of what I built
+previously in the
+
+218
+00:09:57,290 --> 00:10:01,730
+cloud flow system. So
+I'm using swarms as a
+
+219
+00:10:01,730 --> 00:10:03,590
+combination of all the
+neural components you
+
+220
+00:10:03,590 --> 00:10:06,650
+saw before built in
+those various components.
+
+221
+00:10:06,650 --> 00:10:08,570
+And then I implemented
+it. I get basically
+
+222
+00:10:08,570 --> 00:10:10,770
+an interface in Python.
+I might do a Rust if
+
+223
+00:10:10,770 --> 00:10:13,190
+I get time. But basically
+what this does is
+
+224
+00:10:13,190 --> 00:10:17,830
+creates an MCP power
+trading system, which I
+
+225
+00:10:17,830 --> 00:10:21,410
+ran most of the week.
+I had a previous one.
+
+226
+00:10:21,410 --> 00:10:26,770
+and the results are at
+some of the stats you
+
+227
+00:10:26,770 --> 00:10:30,710
+can see here i'm using
+momentum trading i'm
+
+228
+00:10:30,710 --> 00:10:33,850
+using mean revision
+swing trading and mirror
+
+229
+00:10:33,850 --> 00:10:35,270
+trading mirror
+trading is interesting
+
+230
+00:10:35,270 --> 00:10:38,130
+basically i just pointed
+it at the u.s senators
+
+231
+00:10:38,130 --> 00:10:40,630
+and congress people
+and said buy whatever
+
+232
+00:10:40,630 --> 00:10:43,930
+they're buying but the
+crazy part of this is
+
+233
+00:10:43,930 --> 00:10:46,350
+the time it takes me to
+do it i was looking at
+
+234
+00:10:46,350 --> 00:10:49,770
+a kind of temp, I'm
+going to make this up,
+
+235
+00:10:50,090 --> 00:10:52,730
+temporal intelligence.
+So when you look at
+
+236
+00:10:52,730 --> 00:10:55,650
+traditional investment
+platforms, a lot of
+
+237
+00:10:55,650 --> 00:10:57,930
+it's based on latency.
+How fast can I trade
+
+238
+00:10:57,930 --> 00:11:00,230
+based on predetermined
+sort of procedural
+
+239
+00:11:00,230 --> 00:11:02,990
+components? Like I'm
+doing these certain types
+
+240
+00:11:02,990 --> 00:11:04,670
+of investments and I
+just need to do it faster
+
+241
+00:11:04,670 --> 00:11:07,010
+than the next guy. But
+what it's not doing
+
+242
+00:11:07,010 --> 00:11:09,890
+is adapting to whatever
+it needs to do based
+
+243
+00:11:09,890 --> 00:11:12,210
+on the information
+that's coming to it. So
+
+244
+00:11:12,210 --> 00:11:15,410
+it could be like a random
+tweet from a leader
+
+245
+00:11:15,410 --> 00:11:18,130
+of a country or a
+senator or some other
+
+246
+00:11:18,130 --> 00:11:22,010
+information. And I need
+to make the determination
+
+247
+00:11:22,010 --> 00:11:24,570
+and understand the
+ramifications of that
+
+248
+00:11:24,570 --> 00:11:27,510
+as fast as I possibly
+can, rather than just
+
+249
+00:11:27,510 --> 00:11:29,750
+basing on the speed
+of light and latency.
+
+250
+00:11:30,050 --> 00:11:33,730
+So I ran this on,
+again, the cheapest GPU
+
+251
+00:11:33,730 --> 00:11:36,530
+cluster I could
+possibly find and ran it
+
+252
+00:11:36,530 --> 00:11:39,530
+for several days.
+And the results were
+
+253
+00:11:39,530 --> 00:11:47,250
+astronomical. I saw a
+6500x, 65x, not percent,
+
+254
+00:11:47,250 --> 00:11:50,490
+but x speed up in
+terms of capability.
+
+255
+00:11:50,690 --> 00:11:53,110
+Actually, I've increased
+this to 21 tools
+
+256
+00:11:53,110 --> 00:11:55,730
+now, but the stats
+that you're doing is
+
+257
+00:11:55,730 --> 00:11:58,470
+mind blowing. So when you
+look at my traditional
+
+258
+00:11:58,470 --> 00:12:00,470
+environment, I, you
+know, I'm seeing
+
+259
+00:12:00,470 --> 00:12:04,150
+now a 1.8 millisecond
+response time for
+
+260
+00:12:04,150 --> 00:12:07,610
+complex types of decisions.
+So those are like,
+
+261
+00:12:07,610 --> 00:12:09,630
+you know, taking
+in A, B, and C and
+
+262
+00:12:09,630 --> 00:12:12,130
+deciding whether that's
+a good sort of decision
+
+263
+00:12:12,130 --> 00:12:14,310
+to be made, you know,
+rather than taking
+
+264
+00:12:14,580 --> 00:12:17,090
+sometimes, you know,
+two minutes, I can
+
+265
+00:12:17,090 --> 00:12:20,170
+do the same result
+in 1.8 milliseconds.
+
+266
+00:12:20,170 --> 00:12:23,110
+We're almost at the point
+of doing nanoseconds
+
+267
+00:12:23,110 --> 00:12:25,850
+in terms of that.
+And this is on a A100
+
+268
+00:12:25,850 --> 00:12:29,410
+with 80 gigs of RAM,
+this cheap hardware.
+
+269
+00:12:29,410 --> 00:12:30,550
+I can't even imagine what
+
+270
+00:12:30,550 --> 00:12:32,030
+an H100 would look like.
+
+271
+00:12:32,050 --> 00:12:34,190
+Batch processing is
+interesting too. So
+
+272
+00:12:34,190 --> 00:12:36,870
+batch processing is
+the concept of taking
+
+273
+00:12:36,870 --> 00:12:39,590
+multiple assets,
+stocks, bonds, whatever,
+
+274
+00:12:39,590 --> 00:12:42,090
+and then making sort
+of a graph structure
+
+275
+00:12:42,090 --> 00:12:44,090
+to determine how that
+all interconnects
+
+276
+00:12:44,090 --> 00:12:46,470
+to each other. I
+can look at 128
+
+277
+00:12:46,470 --> 00:12:49,050
+different assets and
+I can get a response
+
+278
+00:12:49,050 --> 00:12:51,550
+time in 24
+milliseconds, seconds,
+
+279
+00:12:51,710 --> 00:12:53,970
+which is again, just
+bonkers in terms of
+
+280
+00:12:53,970 --> 00:12:56,190
+capability, of
+capability. In terms of
+
+281
+00:12:56,190 --> 00:12:58,390
+high frequency trading,
+I'm seeing similar
+
+282
+00:12:58,390 --> 00:13:00,910
+things. I can, in
+traditional research,
+
+283
+00:13:00,910 --> 00:13:02,710
+which would take five
+minutes, I can do
+
+284
+00:13:02,710 --> 00:13:05,690
+in 47 milliseconds,
+which is, which is
+
+285
+00:13:05,690 --> 00:13:07,330
+crazy. So I'm, I'm
+not going to spend too
+
+286
+00:13:07,330 --> 00:13:08,390
+much more time on
+this. I'm going to
+
+287
+00:13:08,390 --> 00:13:09,670
+jump in and actually
+show you what this
+
+288
+00:13:09,670 --> 00:13:11,530
+actually looks like,
+which is probably the
+
+289
+00:13:11,530 --> 00:13:13,690
+more exciting part
+of this whole thing.
+
+290
+00:13:13,910 --> 00:13:14,870
+All right.
+
+291
+00:13:15,010 --> 00:13:17,050
+So I haven't published
+this guys, cause
+
+292
+00:13:17,050 --> 00:13:18,690
+I'm, I don't, I'm
+worried about getting
+
+293
+00:13:18,690 --> 00:13:20,810
+in trouble with
+regulators and maybe
+
+294
+00:13:20,810 --> 00:13:22,290
+someone smarter than
+me can tell me if I'm
+
+295
+00:13:22,290 --> 00:13:23,390
+even worried, should
+be worried about
+
+296
+00:13:23,390 --> 00:13:26,130
+that. But let's just
+go back here. So
+
+297
+00:13:26,130 --> 00:13:27,970
+there's a couple of
+components that exist.
+
+298
+00:13:27,970 --> 00:13:31,510
+So it's an MCP. So for
+the most simple part
+
+299
+00:13:31,510 --> 00:13:34,870
+of the MCP, we can
+go here and we'll go
+
+300
+00:13:34,870 --> 00:13:37,170
+and look at Roo because
+it's got a nice sort
+
+301
+00:13:37,170 --> 00:13:39,530
+of interface. So we
+can see here that here
+
+302
+00:13:39,530 --> 00:13:41,550
+are all my endpoints,
+but this isn't actually
+
+303
+00:13:41,550 --> 00:13:43,270
+how I'm using it. I've
+actually integrated
+
+304
+00:13:43,270 --> 00:13:46,580
+with my Cloudflow
+Swarm, but just to
+
+305
+00:13:46,580 --> 00:13:48,100
+visualize it, you can
+see here, I've got ping,
+
+306
+00:13:48,100 --> 00:13:49,670
+this basically tells
+me if it's working.
+
+307
+00:13:49,790 --> 00:13:51,300
+I've got the ability
+to list different
+
+308
+00:13:51,300 --> 00:13:53,950
+strategies, get strategies,
+do a quick analysis.
+
+309
+00:13:53,950 --> 00:13:55,790
+You can see the symbol
+that I'm looking
+
+310
+00:13:55,790 --> 00:13:57,450
+at, whether or not
+I want to use a GPU.
+
+311
+00:13:57,590 --> 00:13:58,810
+Sometimes I don't use
+
+312
+00:13:58,810 --> 00:14:00,150
+GPUs because I'm cheap.
+
+313
+00:14:01,140 --> 00:14:02,970
+Simulated trades.
+So I can do a whole
+
+314
+00:14:02,970 --> 00:14:04,890
+simulated series
+of trades. I can do
+
+315
+00:14:04,890 --> 00:14:07,240
+a billion simulated
+trades in roughly
+
+316
+00:14:07,240 --> 00:14:09,850
+a hundred, I think
+it was a hundred.
+
+317
+00:14:09,890 --> 00:14:11,090
+I don't know the
+exact number.
+
+318
+00:14:11,090 --> 00:14:12,130
+I'm not going to
+say how long it
+
+319
+00:14:12,130 --> 00:14:13,610
+was, but it
+wasn't very long.
+
+320
+00:14:14,230 --> 00:14:16,290
+Get portfolio
+status. Like how's my
+
+321
+00:14:16,290 --> 00:14:18,050
+portfolio actually
+doing? I can do
+
+322
+00:14:18,050 --> 00:14:20,410
+real-time news
+analysis. I can plug in
+
+323
+00:14:20,410 --> 00:14:23,050
+Bloomberg. I can
+plug in available.
+
+324
+00:14:23,470 --> 00:14:25,230
+I can use fire crawl,
+whatever I need to
+
+325
+00:14:25,230 --> 00:14:27,570
+get. I can get sentiment
+analysis in real
+
+326
+00:14:27,570 --> 00:14:30,330
+time. Is this good? Is
+this bad? So all the
+
+327
+00:14:30,330 --> 00:14:32,230
+different parts of the
+swarm are looking at
+
+328
+00:14:32,230 --> 00:14:34,790
+all these different
+parts of the equation.
+
+329
+00:14:34,790 --> 00:14:38,350
+So if I have a 50
+agent swarm, one agent
+
+330
+00:14:38,350 --> 00:14:41,370
+might be geared towards
+backtesting. The other
+
+331
+00:14:41,370 --> 00:14:43,140
+agent might be looking
+at the optimization
+
+332
+00:14:43,140 --> 00:14:45,410
+strategy. Another might
+be looking at risk
+
+333
+00:14:45,410 --> 00:14:46,810
+analysis. And this
+is all happening
+
+334
+00:14:46,810 --> 00:14:49,430
+concurrently with them
+all kind of collaborating
+
+335
+00:14:49,430 --> 00:14:51,870
+to figure out what and
+how it should work.
+
+336
+00:14:52,110 --> 00:14:55,890
+Then I can, using
+Cloud Code, I can plug
+
+337
+00:14:55,890 --> 00:14:58,670
+this directly into
+any existing trading,
+
+338
+00:14:58,670 --> 00:15:00,830
+whether it's stock
+trading, bond trading,
+
+339
+00:15:00,830 --> 00:15:03,760
+crypto, it doesn't
+matter. And it'll actually
+
+340
+00:15:03,760 --> 00:15:05,550
+facilitate that. So
+all you need to do
+
+341
+00:15:05,550 --> 00:15:07,980
+is point Cloud Code at
+it and say, implement
+
+342
+00:15:07,980 --> 00:15:11,130
+this against ABC
+API for trading and
+
+343
+00:15:11,130 --> 00:15:12,710
+it's done. It'll just
+build it on the fly.
+
+344
+00:15:13,690 --> 00:15:15,630
+Here's the performance
+report, similar
+
+345
+00:15:15,630 --> 00:15:17,330
+to what I was
+showing a minute ago.
+
+346
+00:15:17,530 --> 00:15:19,590
+Correlation
+analysis. Here's my
+
+347
+00:15:19,590 --> 00:15:21,590
+benchmarking. I built
+a completely separate
+
+348
+00:15:21,590 --> 00:15:23,450
+benchmarking tool
+just to prove
+
+349
+00:15:23,450 --> 00:15:24,790
+that I wasn't
+hallucinating this whole
+
+350
+00:15:24,790 --> 00:15:26,170
+thing and this was
+actually working.
+
+351
+00:15:26,430 --> 00:15:28,910
+Then I've got a neural
+forecasting system.
+
+352
+00:15:28,910 --> 00:15:30,810
+So back to the other
+system, I said, I
+
+353
+00:15:30,810 --> 00:15:33,810
+can create custom
+neural networks that
+
+354
+00:15:33,810 --> 00:15:35,550
+are built explicitly
+for a certain kind
+
+355
+00:15:35,550 --> 00:15:37,690
+of trade. And then they
+learn and adapt and
+
+356
+00:15:37,690 --> 00:15:40,270
+get better as you
+use it more. Then you
+
+357
+00:15:40,270 --> 00:15:42,770
+can train those on
+the information. So
+
+358
+00:15:42,770 --> 00:15:45,810
+as it's trading, the
+system gets better.
+
+359
+00:15:46,070 --> 00:15:49,290
+It's self-optimizing
+and deterministic.
+
+360
+00:15:49,290 --> 00:15:52,390
+Then it can do a
+self-evaluation,
+
+361
+00:15:53,010 --> 00:15:55,710
+neural backtesting
+as well.
+
+362
+00:15:56,270 --> 00:15:59,490
+It's crazy. And I built
+all this stuff this
+
+363
+00:15:59,490 --> 00:16:02,810
+week. So taking it
+further, because I don't
+
+364
+00:16:02,810 --> 00:16:04,430
+have a lot of time,
+and this demo would
+
+365
+00:16:04,430 --> 00:16:06,030
+literally be several
+hours if I showed you
+
+366
+00:16:06,030 --> 00:16:08,570
+everything. but the the
+first part i built here
+
+367
+00:16:08,570 --> 00:16:13,750
+was something called
+claude flow neural now
+
+368
+00:16:13,750 --> 00:16:16,950
+we'll do help on that
+so the clock flow
+
+369
+00:16:16,950 --> 00:16:20,390
+neural essentially is
+allowing you to essentially
+
+370
+00:16:20,390 --> 00:16:22,650
+execute similar to the
+original cloud flow
+
+371
+00:16:22,650 --> 00:16:25,450
+but based but
+specifically optimized for
+
+372
+00:16:25,450 --> 00:16:28,990
+trading these stocks
+so we can go to claude
+
+373
+00:16:28,990 --> 00:16:31,190
+let's go to claude md
+and see if we can see
+
+374
+00:16:31,190 --> 00:16:32,950
+some details so this
+is the core guidance
+
+375
+00:16:32,950 --> 00:16:37,410
+system all right let's
+go here so we can see
+
+376
+00:16:37,410 --> 00:16:39,810
+that i've defined sort
+of the the mcp which
+
+377
+00:16:39,810 --> 00:16:42,470
+i'll show you in a
+moment and these are the
+
+378
+00:16:42,470 --> 00:16:44,810
+different guidance
+tools we have different
+
+379
+00:16:44,810 --> 00:16:46,950
+you know availabilities
+lots and lots of stuff
+
+380
+00:16:46,950 --> 00:16:48,370
+so this is basically
+guiding it in this
+
+381
+00:16:48,370 --> 00:16:51,870
+and then we have p tool
+directory here that
+
+382
+00:16:51,870 --> 00:16:54,170
+tells it how to how
+to operate and here at
+
+383
+00:16:54,170 --> 00:16:57,330
+the neural trader
+components as well so we so
+
+384
+00:16:57,330 --> 00:16:59,470
+a lot of stuff right
+you can see that you
+
+385
+00:16:59,470 --> 00:17:01,790
+know the parameters
+and strategy. There's a
+
+386
+00:17:01,790 --> 00:17:03,270
+lot of, there's a lot
+of code underpinning
+
+387
+00:17:03,270 --> 00:17:06,590
+this. So let's go back
+here and I'm going to
+
+388
+00:17:06,590 --> 00:17:08,230
+just, I'm just going
+to straight up run it.
+
+389
+00:17:08,410 --> 00:17:10,110
+Uh, right. So we,
+yeah, we've got
+
+390
+00:17:10,110 --> 00:17:11,810
+different neural
+forecasting options
+
+391
+00:17:11,810 --> 00:17:14,270
+here. What do I have?
+Did I include an
+
+392
+00:17:14,270 --> 00:17:15,970
+example? Yeah, here
+it, here it is.
+
+393
+00:17:16,250 --> 00:17:18,210
+Uh, yeah, let's,
+let's just run, let's
+
+394
+00:17:18,210 --> 00:17:21,160
+just run this one for
+a cloud flow neural.
+
+395
+00:17:22,050 --> 00:17:23,970
+Oh, I get, I see an
+error I need to fix.
+
+396
+00:17:23,970 --> 00:17:25,310
+I haven't, I haven't
+published this publicly,
+
+397
+00:17:25,310 --> 00:17:27,670
+so it's not that
+big a deal uh for
+
+398
+00:17:27,670 --> 00:17:30,630
+neuro we're going
+to do forecast apple
+
+399
+00:17:30,630 --> 00:17:33,050
+horizon 24 i'm not
+going to use the gpu on
+
+400
+00:17:33,050 --> 00:17:37,010
+this because i'm on a
+code space oops did i
+
+401
+00:17:37,010 --> 00:17:39,060
+what did i do wrong
+it was just come in
+
+402
+00:17:39,060 --> 00:17:41,770
+let's go let's go into
+the actual tool i'm
+
+403
+00:17:41,770 --> 00:17:42,510
+not going to worry
+about that at the
+
+404
+00:17:42,510 --> 00:17:44,290
+moment so we're going
+to go i'm just going
+
+405
+00:17:44,290 --> 00:17:47,450
+to run claude uh
+code dangerously skip
+
+406
+00:17:47,450 --> 00:17:51,330
+permissions and i'll
+show you how this looks
+
+407
+00:17:51,330 --> 00:17:53,610
+So in, let's
+make this bigger
+
+408
+00:17:53,610 --> 00:17:54,890
+so you guys can see it.
+
+409
+00:17:55,250 --> 00:17:57,450
+We'll go here.
+So I've got
+
+410
+00:17:57,450 --> 00:17:58,810
+all these
+commands, right?
+
+411
+00:17:58,810 --> 00:18:00,590
+So I've got, you
+can see here that
+
+412
+00:18:00,590 --> 00:18:01,990
+I've got all the
+commands for running
+
+413
+00:18:01,990 --> 00:18:03,330
+it. So we can
+have the memory
+
+414
+00:18:03,330 --> 00:18:05,750
+system, the neural
+forecasting, system
+
+415
+00:18:05,750 --> 00:18:07,930
+orchestration,
+trading strategies,
+
+416
+00:18:08,710 --> 00:18:11,050
+correlation
+analysis. So these
+
+417
+00:18:11,050 --> 00:18:13,050
+are all now
+different commands.
+
+418
+00:18:14,150 --> 00:18:16,850
+So get new sentiment,
+whatever it is. So
+
+419
+00:18:16,850 --> 00:18:19,350
+it integrates directly
+with Cloudflow
+
+420
+00:18:19,350 --> 00:18:21,650
+as the orchestrator.
+So you can see here
+
+421
+00:18:21,650 --> 00:18:23,710
+I get MCP direct
+uses direct tool and,
+
+422
+00:18:23,710 --> 00:18:25,170
+you know, using
+Project Neural Trader.
+
+423
+00:18:25,170 --> 00:18:26,510
+Let's just do that
+and see what happens.
+
+424
+00:18:28,230 --> 00:18:30,350
+And now I'm doing
+it singly, but
+
+425
+00:18:30,350 --> 00:18:32,290
+I can do this
+again as a swarm.
+
+426
+00:18:32,290 --> 00:18:35,550
+So at this point,
+you know, it
+
+427
+00:18:35,550 --> 00:18:37,130
+should execute.
+It's going to
+
+428
+00:18:37,130 --> 00:18:38,410
+do a little bit
+of thinking.
+
+429
+00:18:38,470 --> 00:18:42,070
+So now, you know,
+yeah, let's, you know,
+
+430
+00:18:42,230 --> 00:18:45,670
+analyze, analyze the
+
+431
+00:18:45,670 --> 00:18:49,050
+Apple and I don't know,
+
+432
+00:18:51,610 --> 00:18:56,110
+Microsoft stock
+using the MCP.
+
+433
+00:18:57,930 --> 00:18:59,370
+Now, again, all this
+can be automated
+
+434
+00:18:59,370 --> 00:19:01,170
+because I've got command
+line tools, right?
+
+435
+00:19:01,170 --> 00:19:02,850
+So this can just
+run autonomously. I
+
+436
+00:19:02,850 --> 00:19:04,210
+don't have to, I don't
+have, I'm doing it
+
+437
+00:19:04,210 --> 00:19:06,470
+manually just to
+sort of show what's
+
+438
+00:19:06,470 --> 00:19:09,030
+happening. So now it's
+spinning up a cluster.
+
+439
+00:19:09,070 --> 00:19:11,310
+And each of
+those is running
+
+440
+00:19:11,310 --> 00:19:12,610
+as an autonomous swarm.
+
+441
+00:19:14,490 --> 00:19:16,870
+So these are all
+happening in, oops.
+
+442
+00:19:19,750 --> 00:19:21,270
+Now, it's looking at
+
+443
+00:19:21,270 --> 00:19:22,220
+the different horizons.
+
+444
+00:19:22,630 --> 00:19:23,830
+It's trying to figure out
+
+445
+00:19:23,830 --> 00:19:25,410
+what the confidence
+level is.
+
+446
+00:19:25,410 --> 00:19:27,270
+And now it's going
+to quickly do
+
+447
+00:19:27,270 --> 00:19:29,770
+an analysis. And
+it's going to
+
+448
+00:19:29,770 --> 00:19:30,950
+look at the neural
+forecasting.
+
+449
+00:19:31,510 --> 00:19:33,490
+This is all autonomous.
+
+450
+00:19:33,810 --> 00:19:35,570
+Literally, once I
+point it at it and say,
+
+451
+00:19:35,570 --> 00:19:38,630
+go do it, it'll go
+figure it all out
+
+452
+00:19:38,630 --> 00:19:40,910
+for me. And I can then
+say, based on this,
+
+453
+00:19:40,910 --> 00:19:43,210
+it'll give me a
+synopsis, the current
+
+454
+00:19:43,210 --> 00:19:45,270
+and predictive values.
+use, I think in this
+
+455
+00:19:45,270 --> 00:19:47,830
+case, I might be
+using static data on
+
+456
+00:19:47,830 --> 00:19:49,260
+this because this is my
+training environment,
+
+457
+00:19:49,310 --> 00:19:53,230
+but you're coming
+from static data
+
+458
+00:19:53,230 --> 00:19:56,260
+that I imported to
+do the training, but
+
+459
+00:19:56,590 --> 00:19:59,970
+I can import Bloomberg,
+whatever it's, it
+
+460
+00:19:59,970 --> 00:20:02,170
+can be, it's live. I
+can use the web search
+
+461
+00:20:02,170 --> 00:20:04,130
+capabilities. You
+know, for example, I
+
+462
+00:20:04,130 --> 00:20:08,670
+can say, uh, use the
+web search to get late.
+
+463
+00:20:08,670 --> 00:20:09,910
+And this is the
+cheapest way to do it to
+
+464
+00:20:09,910 --> 00:20:13,890
+me the slowest but in
+the latest data and
+
+465
+00:20:14,290 --> 00:20:22,130
+do a deep and analysis
+so basically all
+
+466
+00:20:22,130 --> 00:20:24,390
+you're doing is
+pointing this thing at
+
+467
+00:20:24,390 --> 00:20:26,350
+the problem or whatever
+it is you want to
+
+468
+00:20:26,350 --> 00:20:28,490
+do or trade and it
+goes and figures it
+
+469
+00:20:28,490 --> 00:20:31,110
+all out for you that's
+it it creates the
+
+470
+00:20:31,110 --> 00:20:33,290
+swarm it does the
+it does the analysis
+
+471
+00:20:33,290 --> 00:20:35,430
+it does a search it
+does the trade it
+
+472
+00:20:35,430 --> 00:20:37,990
+can it can do this it
+can do the trades in
+
+473
+00:20:37,990 --> 00:20:41,990
+1.8 milliseconds.
+So just to put that
+
+474
+00:20:41,990 --> 00:20:44,450
+in context for a
+moment, when you blink,
+
+475
+00:20:44,810 --> 00:20:47,390
+that's 100 milliseconds
+for a blink.
+
+476
+00:20:47,390 --> 00:20:50,870
+I can do that at 1
+.50th, I guess, of
+
+477
+00:20:50,870 --> 00:20:52,890
+the time it takes
+you to blink. I can
+
+478
+00:20:52,890 --> 00:20:56,570
+make the decision
+across multiple vectors
+
+479
+00:20:56,570 --> 00:20:59,210
+and then make the
+trade repeatedly
+
+480
+00:20:59,310 --> 00:21:00,790
+forever and
+let this thing
+
+481
+00:21:00,790 --> 00:21:02,350
+run, which I
+did for a week.
+
+482
+00:21:03,290 --> 00:21:05,370
+It's just crazy. And
+you've got all these
+
+483
+00:21:05,370 --> 00:21:06,670
+different options
+you know here you can
+
+484
+00:21:06,670 --> 00:21:09,450
+see the mcp let me
+run this let me let
+
+485
+00:21:09,450 --> 00:21:10,940
+me let that continue
+over here because that
+
+486
+00:21:10,940 --> 00:21:12,650
+the web search is
+actually the slowest
+
+487
+00:21:12,650 --> 00:21:14,320
+way to do it but
+i'm going to go here
+
+488
+00:21:14,320 --> 00:21:16,170
+and i'm just going to
+run cloud again and
+
+489
+00:21:16,390 --> 00:21:17,830
+this time i'm just
+going to show you what
+
+490
+00:21:17,830 --> 00:21:19,830
+the mcp integration
+looks like so you
+
+491
+00:21:19,830 --> 00:21:25,670
+see here mcp yeah oh
+no i did the wrong one
+
+492
+00:21:25,670 --> 00:21:27,750
+and i guess i might
+have to change the
+
+493
+00:21:27,750 --> 00:21:30,810
+naming convention.
+Let's try to add MCP.
+
+494
+00:21:32,720 --> 00:21:34,720
+Yeah, I think I
+might have named
+
+495
+00:21:34,720 --> 00:21:37,430
+my MCP commands
+too closely.
+
+496
+00:21:37,650 --> 00:21:40,310
+But let's go back.
+
+497
+00:21:41,330 --> 00:21:43,410
+Basically, you've
+got Claude.
+
+498
+00:21:43,970 --> 00:21:47,670
+And just I haven't, I
+might write script or
+
+499
+00:21:47,670 --> 00:21:50,640
+something, but MCP.
+Basically, you can add
+
+500
+00:21:50,640 --> 00:21:53,670
+MCPs to Claude. And
+you can see here that
+
+501
+00:21:53,670 --> 00:21:57,450
+i've added that mcp
+so it's basically i've
+
+502
+00:21:57,450 --> 00:21:59,570
+created a wrapper for
+it i didn't bother
+
+503
+00:21:59,570 --> 00:22:01,810
+creating a remote
+mcp for it because i
+
+504
+00:22:01,810 --> 00:22:03,850
+didn't really need that
+but i guess i could i
+
+505
+00:22:03,850 --> 00:22:06,590
+suppose but basically
+it it'll run against
+
+506
+00:22:06,590 --> 00:22:08,170
+all these different
+vectors you can see
+
+507
+00:22:08,170 --> 00:22:11,250
+automation examples
+tool combinations and
+
+508
+00:22:11,250 --> 00:22:13,450
+you're just invoking
+these these options
+
+509
+00:22:15,000 --> 00:22:17,010
+correlation analysis
+whatever it is you want to
+
+510
+00:22:17,010 --> 00:22:19,930
+do or and you could
+say do it all give me
+
+511
+00:22:19,930 --> 00:22:22,430
+the world's best
+trading algorithm and go
+
+512
+00:22:22,430 --> 00:22:24,410
+figure it out and I'm
+going to go to bed
+
+513
+00:22:24,410 --> 00:22:26,550
+and tomorrow morning
+it would have done it.
+
+514
+00:22:27,530 --> 00:22:29,250
+So now you see it
+thinking through the
+
+515
+00:22:29,250 --> 00:22:31,570
+process. I completed
+searches for both stocks.
+
+516
+00:22:31,570 --> 00:22:33,670
+It's doing the
+analysis and then it'll
+
+517
+00:22:33,670 --> 00:22:35,790
+dream up the optimal
+arbitrage in this
+
+518
+00:22:35,790 --> 00:22:37,710
+scenario for maybe
+trading Apple against
+
+519
+00:22:37,710 --> 00:22:39,710
+Microsoft or something.
+Whatever it is I
+
+520
+00:22:39,710 --> 00:22:41,170
+want to do, it'll
+literally go and figure it
+
+521
+00:22:41,170 --> 00:22:43,730
+out in the most
+optimized way possible.
+
+522
+00:22:44,290 --> 00:22:45,710
+Options up next?
+
+523
+00:22:45,850 --> 00:22:48,510
+It does options. It
+does crypto. It does
+
+524
+00:22:48,510 --> 00:22:50,770
+anything that I can
+get, anything that
+
+525
+00:22:50,770 --> 00:22:53,350
+has a publicly
+available or privately
+
+526
+00:22:53,350 --> 00:22:56,470
+available trading
+API, all you need to
+
+527
+00:22:56,470 --> 00:22:59,070
+do is basically say,
+go use that API.
+
+528
+00:22:59,430 --> 00:23:02,730
+So name a, what
+was that one that's
+
+529
+00:23:02,730 --> 00:23:05,270
+popular for like
+day traders?
+
+530
+00:23:06,050 --> 00:23:08,450
+Robin, ***** trade.
+
+531
+00:23:08,950 --> 00:23:10,430
+Yeah, there's an API.
+
+532
+00:23:10,430 --> 00:23:11,610
+Think or swim.
+
+533
+00:23:11,850 --> 00:23:12,870
+Polymarket.
+
+534
+00:23:12,950 --> 00:23:13,990
+The prediction market.
+
+535
+00:23:14,510 --> 00:23:15,150
+What?
+
+536
+00:23:15,630 --> 00:23:17,270
+Oh, prediction market.
+
+537
+00:23:17,590 --> 00:23:19,550
+yeah what's what's
+thinking about
+
+538
+00:23:19,550 --> 00:23:21,950
+polymarket polymarket
+has they've got a
+
+539
+00:23:21,950 --> 00:23:23,710
+github repository
+from november with
+
+540
+00:23:23,710 --> 00:23:25,390
+their own agents
+on it okay let's do
+
+541
+00:23:25,390 --> 00:23:30,310
+this um add polymarket
+ap polymarket
+
+542
+00:23:31,950 --> 00:23:37,830
+api to the uh trading
+system now i'm going
+
+543
+00:23:37,830 --> 00:23:39,790
+to switch to a
+different plan here i'm
+
+544
+00:23:39,790 --> 00:23:41,560
+going to I'm gonna
+call this PolyMarket.
+
+545
+00:23:43,580 --> 00:23:45,050
+And this gives
+me a branch
+
+546
+00:23:45,050 --> 00:23:46,650
+to the trading system.
+
+547
+00:23:46,910 --> 00:23:52,250
+Create as a
+modular extension
+
+548
+00:23:55,550 --> 00:24:05,030
+and spawn a five-agent
+swarm in parallel
+
+549
+00:24:05,280 --> 00:24:07,690
+using batch tool.
+
+550
+00:24:10,350 --> 00:24:17,550
+continue TDD and continue
+until complete with
+
+551
+00:24:17,550 --> 00:24:24,850
+100% coverage that's
+it that's all you need
+
+552
+00:24:24,850 --> 00:24:26,770
+to do to create anything
+you can possibly
+
+553
+00:24:26,770 --> 00:24:29,130
+want to add to this and
+and now I'll just sit
+
+554
+00:24:29,130 --> 00:24:31,790
+back and it'll go and
+it'll add the poly
+
+555
+00:24:31,790 --> 00:24:35,110
+it'll research the
+polymarket system figure out
+
+556
+00:24:35,110 --> 00:24:37,850
+how the api works and
+see now it's creating
+
+557
+00:24:37,850 --> 00:24:40,410
+the to-do list i just
+sit back and watch
+
+558
+00:24:40,410 --> 00:24:42,170
+it do its thing and then
+i'll have polymarket
+
+559
+00:24:42,170 --> 00:24:45,390
+integration probably
+before this call is even
+
+560
+00:24:45,390 --> 00:24:49,270
+done roof i mean um
+this is obviously you
+
+561
+00:24:49,270 --> 00:24:51,750
+are on the base cloud
+cloud code interface
+
+562
+00:24:51,750 --> 00:24:55,610
+right you're not really
+using spark no i am i
+
+563
+00:24:55,630 --> 00:24:58,530
+am so yeah so i've got
+to integrate it with
+
+564
+00:24:58,530 --> 00:25:01,290
+right here so you see
+these clod commands
+
+565
+00:25:01,550 --> 00:25:05,150
+and and i've got the
+source so and there's a
+
+566
+00:25:05,150 --> 00:25:07,190
+couple hundred thousand
+lines of code that
+
+567
+00:25:07,190 --> 00:25:09,950
+underpins the mcp but i
+you can see here i got
+
+568
+00:25:09,950 --> 00:25:12,130
+my gpu acceleration
+here i got my memory
+
+569
+00:25:12,130 --> 00:25:14,490
+systems neural models
+these are different neural
+
+570
+00:25:14,490 --> 00:25:17,190
+models i've created
+uh but the what what
+
+571
+00:25:17,190 --> 00:25:20,130
+makes it all work is
+the this trading system
+
+572
+00:25:21,790 --> 00:25:25,210
+and there's a question
+as well yeah can you
+
+573
+00:25:26,460 --> 00:25:29,150
+yeah yeah i wanted to
+ask so you mentioned
+
+574
+00:25:29,150 --> 00:25:31,830
+earlier that you're
+you're currently running
+
+575
+00:25:31,830 --> 00:25:34,970
+like some training test
+data are you running
+
+576
+00:25:34,970 --> 00:25:37,550
+this in production
+with actual real-time
+
+577
+00:25:37,550 --> 00:25:40,690
+sources i'm not showing
+you guys that because
+
+578
+00:25:40,690 --> 00:25:43,910
+i'm again i don't
+want to get uh on the
+
+579
+00:25:43,910 --> 00:25:46,820
+sec's radar if i can
+help it so i'm just
+
+580
+00:25:46,820 --> 00:25:48,370
+voiding things that i
+think might get me in
+
+581
+00:25:48,370 --> 00:25:51,090
+trouble but you can
+you guys can tell the
+
+582
+00:25:51,090 --> 00:25:52,910
+making you know the
+difference between the
+
+583
+00:25:52,910 --> 00:25:56,670
+reason i asked that
+specifically is because
+
+584
+00:25:56,670 --> 00:25:58,850
+obviously these models
+have been trained on
+
+585
+00:25:58,880 --> 00:26:01,570
+ungodly amounts of data
+which i'm not using
+
+586
+00:26:01,570 --> 00:26:04,870
+includes i'm not using
+i'm not using those
+
+587
+00:26:04,870 --> 00:26:07,250
+models so this this
+is not using llm based
+
+588
+00:26:07,250 --> 00:26:10,230
+inference for the data
+i'm using custom custom
+
+589
+00:26:10,230 --> 00:26:13,490
+uh neural network so
+this is 100% neural
+
+590
+00:26:13,490 --> 00:26:16,590
+network based on the
+the neural forecast
+
+591
+00:26:16,590 --> 00:26:20,910
+system so this is not
+a language model like
+
+592
+00:26:20,910 --> 00:26:22,410
+the language model is
+doing like the swarm
+
+593
+00:26:22,410 --> 00:26:25,590
+orchestration but it's
+actually using this
+
+594
+00:26:25,590 --> 00:26:27,990
+approach so basically
+what i'm doing is i'm
+
+595
+00:26:27,990 --> 00:26:33,310
+using a a it builds
+its own neural models
+
+596
+00:26:33,310 --> 00:26:35,210
+specifically for what
+i need it to build for
+
+597
+00:26:35,650 --> 00:26:38,930
+so it's not biased
+from whatever it's
+
+598
+00:26:38,930 --> 00:26:41,970
+trained on i'm i'm you
+know you're kind of
+
+599
+00:26:41,970 --> 00:26:43,730
+training your own like
+custom time series
+
+600
+00:26:43,730 --> 00:26:46,950
+models locally and then
+running those in real
+
+601
+00:26:46,950 --> 00:26:50,590
+time exactly i'm using
+n beats and i think
+
+602
+00:26:50,590 --> 00:26:52,790
+my the best model i
+found was this nti
+
+603
+00:26:52,790 --> 00:26:56,450
+you know h model um
+which basically gives
+
+604
+00:26:56,450 --> 00:27:00,150
+me time series neural
+network and now i i
+
+605
+00:27:00,150 --> 00:27:01,590
+probably can't even
+describe it because
+
+606
+00:27:01,590 --> 00:27:03,430
+it's probably beyond
+my comprehension to
+
+607
+00:27:03,430 --> 00:27:05,090
+describe so i'm just
+going to pop back in the
+
+608
+00:27:05,090 --> 00:27:06,910
+cloud here and get
+it to describe it i'm
+
+609
+00:27:06,910 --> 00:27:08,050
+gonna we're almost
+out of time i'm going
+
+610
+00:27:08,050 --> 00:27:10,990
+like hyper speed here
+but we need to come
+
+611
+00:27:10,990 --> 00:27:13,610
+back at the end and to
+see uh the integration
+
+612
+00:27:13,610 --> 00:27:18,710
+yeah so tell me
+about the uh you know
+
+613
+00:27:18,710 --> 00:27:22,830
+model and how it
+works are you setting
+
+614
+00:27:22,830 --> 00:27:25,250
+limits what are you
+using to set the limits
+
+615
+00:27:25,570 --> 00:27:29,110
+i i've got a guidance
+system there it's part
+
+616
+00:27:29,110 --> 00:27:32,090
+of the it's part of
+the mcp so when we go
+
+617
+00:27:32,090 --> 00:27:34,290
+when we go back to the
+mcp you'll see that
+
+618
+00:27:34,290 --> 00:27:36,910
+uh i've got i've got
+different options for
+
+619
+00:27:36,910 --> 00:27:39,370
+that as well again
+it's hard to show you
+
+620
+00:27:39,370 --> 00:27:40,870
+everything because there's
+just so much going on
+
+621
+00:27:40,870 --> 00:27:44,310
+here but yeah there it
+does it does everything
+
+622
+00:27:44,310 --> 00:27:47,630
+you know like that's
+what you know in i
+
+623
+00:27:47,630 --> 00:27:50,330
+i really believe it
+and you're putting on
+
+624
+00:27:50,330 --> 00:27:52,520
+full display rube that
+in the next six months
+
+625
+00:27:52,520 --> 00:27:54,950
+there just won't be
+a day trader on the
+
+626
+00:27:54,950 --> 00:27:59,010
+planet that is manually
+looking at graphs and
+
+627
+00:27:59,010 --> 00:28:02,810
+uh you know handles
+and waiting for the
+
+628
+00:28:02,810 --> 00:28:05,210
+perfect moment for them
+to manually jump into
+
+629
+00:28:05,210 --> 00:28:08,930
+a position yeah so
+it's gone you're you're
+
+630
+00:28:08,930 --> 00:28:13,090
+right so this so this
+uh h hits is a natural
+
+631
+00:28:13,090 --> 00:28:15,250
+hierarchical interpolation
+for time series
+
+632
+00:28:15,250 --> 00:28:17,050
+if you're going to do
+this this is the model
+
+633
+00:28:17,050 --> 00:28:19,110
+you want to use i've
+tried i tried 27 different
+
+634
+00:28:19,110 --> 00:28:21,230
+models this is by
+far the best and what
+
+635
+00:28:21,230 --> 00:28:23,250
+this is a multi-stage
+signal processing
+
+636
+00:28:23,250 --> 00:28:25,850
+uses multiple stacks
+that process data at
+
+637
+00:28:25,850 --> 00:28:28,310
+different frequencies
+through pooling layers with
+
+638
+00:28:28,310 --> 00:28:31,250
+various kernel sizes
+decent to be honest
+
+639
+00:28:31,250 --> 00:28:34,290
+this is beyond my
+comprehension all i all i
+
+640
+00:28:34,290 --> 00:28:36,730
+really know is all the
+things i tried or the
+
+641
+00:28:36,730 --> 00:28:39,730
+swarm tried this was
+by far the best one
+
+642
+00:28:39,730 --> 00:28:42,230
+hierarchical stacks
+you got interpolation
+
+643
+00:28:42,230 --> 00:28:44,710
+mechanisms and then you
+know i can explain it
+
+644
+00:28:44,710 --> 00:28:46,720
+to me like an idiot i
+might want to say but
+
+645
+00:28:47,370 --> 00:28:50,210
+basically it's it's
+creating its own model
+
+646
+00:28:50,210 --> 00:28:53,240
+on the fly in literally
+milliseconds is
+
+647
+00:28:53,470 --> 00:28:56,170
+all you really need
+to know fantastic hey
+
+648
+00:28:56,170 --> 00:29:00,150
+sorry use the news
+feeds to influence
+
+649
+00:29:00,150 --> 00:29:04,030
+the the model so is it
+just purely on numerical
+
+650
+00:29:04,030 --> 00:29:06,570
+data yeah no i'm
+using news feeds so
+
+651
+00:29:06,570 --> 00:29:10,550
+uh i i've so much
+bird i'm not showing
+
+652
+00:29:10,550 --> 00:29:12,590
+that because i don't
+have rights to do that
+
+653
+00:29:12,590 --> 00:29:15,370
+but yeah i'm using
+real-time news feeds
+
+654
+00:29:15,730 --> 00:29:19,490
+sentiment analysis
+yeah and so all of
+
+655
+00:29:19,490 --> 00:29:21,810
+it i can then and
+then one one of
+
+656
+00:29:21,810 --> 00:29:23,770
+the swarms is doing
+simulation like in
+
+657
+00:29:23,770 --> 00:29:25,320
+the simulation
+again is happening
+
+658
+00:29:25,320 --> 00:29:28,890
+faster than you can
+blink right and so
+
+659
+00:29:29,230 --> 00:29:32,850
+yeah it's it's craziness
+um i don't know
+
+660
+00:29:32,850 --> 00:29:34,970
+i i think everybody
+wants this i'm just
+
+661
+00:29:34,970 --> 00:29:36,310
+trying to figure out
+exactly how to make this
+
+662
+00:29:36,310 --> 00:29:37,610
+available without
+getting in too much
+
+663
+00:29:37,610 --> 00:29:39,930
+trouble i think we i
+think i might need a
+
+664
+00:29:39,930 --> 00:29:41,470
+lawyer or someone to
+tell me that i'm not
+
+665
+00:29:41,470 --> 00:29:45,130
+going to go to jail for
+this but uh yeah this
+
+666
+00:29:45,130 --> 00:29:47,590
+is this is It's the
+last call to draft
+
+667
+00:29:47,590 --> 00:29:51,030
+yourself the appropriate
+liability release.
+
+668
+00:29:51,590 --> 00:29:53,150
+Yeah, that's right.
+
+669
+00:29:53,730 --> 00:29:56,510
+You know, doing
+my AI hackerspace
+
+670
+00:29:56,510 --> 00:29:58,170
+live from jail isn't
+really up in my
+
+671
+00:29:58,170 --> 00:29:59,510
+list of things I
+want to be doing.
+
+672
+00:29:59,650 --> 00:30:00,730
+No, that's right.
+
+673
+00:30:00,930 --> 00:30:02,850
+You're right.
+So anyway, for
+
+674
+00:30:02,850 --> 00:30:03,890
+those who are interested,
+
+675
+00:30:04,110 --> 00:30:07,970
+I am giving, you
+know, access, if you
+
+676
+00:30:07,970 --> 00:30:10,350
+can convince me, on
+a case-by-case basis
+
+677
+00:30:10,350 --> 00:30:15,410
+to my GitHub. um you
+you're gonna have
+
+678
+00:30:15,410 --> 00:30:17,150
+to convince me that
+you're capable and
+
+679
+00:30:17,150 --> 00:30:20,690
+and worthy if you will
+um but i have given
+
+680
+00:30:20,690 --> 00:30:22,450
+a few people access
+including some
+
+681
+00:30:22,450 --> 00:30:24,950
+notable investors who
+have reached out so
+
+682
+00:30:25,270 --> 00:30:27,790
+we'll see maybe if i
+get the courage maybe
+
+683
+00:30:27,790 --> 00:30:29,130
+i'll release it next
+week i don't know
+
+684
+00:30:29,860 --> 00:30:31,110
+we'll do a ton of
+
+685
+00:30:31,110 --> 00:30:32,700
+research for
+us right yeah
+
+686
+00:30:34,790 --> 00:30:37,310
+that was a lot of
+information i apologize
+
+687
+00:30:37,310 --> 00:30:40,030
+i went longer than i
+usually do today but
+
+688
+00:30:40,210 --> 00:30:42,730
+But yeah, someone
+mentioned the Millennium
+
+689
+00:30:42,730 --> 00:30:44,820
+Prize. I did the
+Reitman hypothesis
+
+690
+00:30:45,940 --> 00:30:48,350
+there last year. I had
+no way to prove it.
+
+691
+00:30:49,370 --> 00:30:51,950
+I can just comment on the
+
+692
+00:30:51,950 --> 00:30:53,530
+regulation part of it.
+
+693
+00:30:53,710 --> 00:30:57,250
+If you charge money,
+you will be liable.
+
+694
+00:30:57,410 --> 00:30:59,610
+If you don't charge
+money, it's kind
+
+695
+00:30:59,610 --> 00:31:02,330
+of gray area from
+SEC perspective.
+
+696
+00:31:02,810 --> 00:31:03,610
+So gray.
+
+697
+00:31:03,950 --> 00:31:06,570
+Yeah, gray makes
+me feel great.
+
+698
+00:31:06,590 --> 00:31:07,410
+Yeah, yeah.
+
+699
+00:31:07,550 --> 00:31:11,050
+Thank you, Ulas. confirm
+the requirement for
+
+700
+00:31:11,050 --> 00:31:14,330
+good uh good you can
+charge money you just
+
+701
+00:31:14,330 --> 00:31:16,650
+have to position it
+yeah you'd have to
+
+702
+00:31:16,650 --> 00:31:18,810
+position it correctly
+if you say this is an
+
+703
+00:31:18,810 --> 00:31:21,830
+idea generator this is
+not a trade executor
+
+704
+00:31:21,830 --> 00:31:26,050
+then you know it's
+it's more that you've
+
+705
+00:31:26,050 --> 00:31:28,330
+you've exited one legal
+domain and entered
+
+706
+00:31:28,330 --> 00:31:31,430
+into another yeah i'm
+going to call it sbf and
+
+707
+00:31:31,430 --> 00:31:34,950
+then open source
+license and in general
+
+708
+00:31:34,950 --> 00:31:37,870
+the open source license
+i don't know guys i
+
+709
+00:31:37,870 --> 00:31:42,010
+i see sam bankman
+free yeah open source
+
+710
+00:31:42,010 --> 00:31:44,730
+license and let the users
+you know install and
+
+711
+00:31:44,730 --> 00:31:48,370
+run by their own is
+it's not your concern
+
+712
+00:31:48,370 --> 00:31:51,870
+basically i mean don't
+supersede the local
+
+713
+00:31:51,870 --> 00:31:53,770
+governmental authority
+no it doesn't it's
+
+714
+00:31:53,770 --> 00:31:56,130
+the problem i i just
+want to say i think
+
+715
+00:31:56,130 --> 00:31:58,870
+everybody here is assuming
+i think everybody is
+
+716
+00:31:58,870 --> 00:32:02,390
+here nope here's
+alistair you you You take
+
+717
+00:32:02,390 --> 00:32:04,590
+it away, Alistair.
+You're up next anyway.
+
+718
+00:32:04,670 --> 00:32:05,190
+Yeah.
+
+719
+00:32:06,450 --> 00:32:09,310
+Oh, we lost your
+sound, Alistair.
+
+720
+00:32:10,810 --> 00:32:13,430
+There are no norms.
+We don't live in
+
+721
+00:32:13,430 --> 00:32:15,490
+a time of compliance.
+I don't think
+
+722
+00:32:15,490 --> 00:32:17,830
+you can trust the
+SCT to do anything.
+
+723
+00:32:17,830 --> 00:32:21,670
+The reality is that the
+reason that the stock
+
+724
+00:32:21,670 --> 00:32:24,010
+market exists and
+derivatives exist,
+
+725
+00:32:24,010 --> 00:32:27,350
+according to capitalism,
+has always been to find
+
+726
+00:32:27,350 --> 00:32:29,430
+efficiencies and
+maximize the efficiency
+
+727
+00:32:29,430 --> 00:32:32,310
+of capital as a way of
+directing our resources.
+
+728
+00:32:32,310 --> 00:32:35,130
+If we now have a
+thing that can extract
+
+729
+00:32:35,130 --> 00:32:38,630
+the efficiencies of
+the system and there's
+
+730
+00:32:38,630 --> 00:32:40,950
+no more profit to be
+made other than, you
+
+731
+00:32:40,950 --> 00:32:45,010
+know, essentially a
+machine allocating capital
+
+732
+00:32:45,010 --> 00:32:46,130
+algorithms. If you get
+into the philosophy
+
+733
+00:32:46,130 --> 00:32:49,110
+of capitalism, what
+you have is the sort of
+
+734
+00:32:49,110 --> 00:32:51,870
+Adam Smith's perfect
+machine for market
+
+735
+00:32:51,870 --> 00:32:54,790
+liquidity. And once
+enough of these machines
+
+736
+00:32:54,790 --> 00:32:57,890
+get hooked up, there
+ceases to be any profit
+
+737
+00:32:57,890 --> 00:33:00,790
+margin. Because what
+you have essentially is
+
+738
+00:33:00,790 --> 00:33:03,430
+this AI is using its
+information to do
+
+739
+00:33:03,430 --> 00:33:06,590
+perfect capital allocation
+in the market. Like
+
+740
+00:33:06,590 --> 00:33:08,930
+the whole reason that
+we allowed derivatives
+
+741
+00:33:08,930 --> 00:33:11,810
+and future trading to
+exist was to figure
+
+742
+00:33:11,810 --> 00:33:14,890
+out inefficiencies in
+the market. This company
+
+743
+00:33:14,890 --> 00:33:16,530
+is not running as
+well as it could be.
+
+744
+00:33:16,530 --> 00:33:19,210
+This capital is being
+invested somewhere it
+
+745
+00:33:19,210 --> 00:33:22,630
+shouldn't be. This
+savings should be put into
+
+746
+00:33:22,850 --> 00:33:27,750
+productive use. And
+in theory, there was
+
+747
+00:33:27,750 --> 00:33:29,610
+a whole class of people
+called traders whose
+
+748
+00:33:29,610 --> 00:33:32,150
+job it was to find
+those inefficiencies and
+
+749
+00:33:32,150 --> 00:33:34,910
+tax them so they would
+go away. That's kind
+
+750
+00:33:34,910 --> 00:33:36,910
+of how capitalism is
+supposed to work if
+
+751
+00:33:36,910 --> 00:33:39,310
+you're a classical
+economist. We now have a
+
+752
+00:33:39,310 --> 00:33:42,130
+system that RUV is
+building, which looks like
+
+753
+00:33:42,130 --> 00:33:44,110
+trading, but what it's
+actually doing under
+
+754
+00:33:44,110 --> 00:33:46,550
+the covers is finding
+market inefficiencies
+
+755
+00:33:46,550 --> 00:33:49,550
+and extracting revenue
+from them and so
+
+756
+00:33:49,550 --> 00:33:51,850
+if you want to get like
+i'm talking to a lot
+
+757
+00:33:51,850 --> 00:33:53,630
+of companies these
+days that want to talk
+
+758
+00:33:53,630 --> 00:33:55,790
+about how to make their
+employees do ai better
+
+759
+00:33:55,790 --> 00:33:59,430
+but if you want to
+take a step back we no
+
+760
+00:33:59,430 --> 00:34:02,470
+longer need the trading
+system to make capital
+
+761
+00:34:02,470 --> 00:34:04,590
+allocation efficient
+is what we're really
+
+762
+00:34:04,590 --> 00:34:09,150
+talking about yeah
+well said and what i'm
+
+763
+00:34:09,150 --> 00:34:10,650
+doing is looking for
+inefficiencies that's
+
+764
+00:34:10,650 --> 00:34:12,590
+100% what i'm doing and
+i'm trying i'm doing
+
+765
+00:34:12,590 --> 00:34:15,790
+that using a gpu a
+billion times a second
+
+766
+00:34:16,910 --> 00:34:20,370
+which is and which i
+built overnight while
+
+767
+00:34:20,370 --> 00:34:25,270
+i slept amazing so
+alistair we might um we're
+
+768
+00:34:25,270 --> 00:34:27,590
+in that segment the
+guest segment so uh
+
+769
+00:34:27,590 --> 00:34:31,650
+and you're one of our
+our three uh lightning
+
+770
+00:34:31,650 --> 00:34:35,430
+talk guests so welcome
+alistair and uh hey
+
+771
+00:34:35,430 --> 00:34:39,470
+the floor is yours
+hey uh hi i'll keep it
+
+772
+00:34:39,470 --> 00:34:41,970
+quick uh roof how long
+have I known you for?
+
+773
+00:34:42,410 --> 00:34:45,150
+We met Alistair back
+when I was trying
+
+774
+00:34:45,150 --> 00:34:46,890
+to pitch the concepts
+of cloud computing.
+
+775
+00:34:46,890 --> 00:34:49,230
+I met Steven Pollack
+and said, you got
+
+776
+00:34:49,230 --> 00:34:51,830
+to meet Alistair.
+He's the guy. I think
+
+777
+00:34:51,830 --> 00:34:53,570
+it was Steven Pollack
+and who was famous
+
+778
+00:34:53,570 --> 00:34:54,990
+for being one of the
+first virtualization
+
+779
+00:34:54,990 --> 00:34:59,250
+company founders.
+It was 2004, 2003.
+
+780
+00:34:59,510 --> 00:35:02,990
+So more than 20 years
+ago. Yeah. Back when
+
+781
+00:35:02,990 --> 00:35:05,050
+once upon a time,
+the internet was as
+
+782
+00:35:05,050 --> 00:35:06,970
+cool as AI is. And then
+cloud computing was
+
+783
+00:35:06,970 --> 00:35:08,810
+as cool as AI is. And
+then big data was as
+
+784
+00:35:08,810 --> 00:35:10,670
+cool as AI is. And
+I think we've been
+
+785
+00:35:10,670 --> 00:35:12,510
+involved for at least a
+couple of those things.
+
+786
+00:35:12,510 --> 00:35:14,310
+I also wrote a book
+called Lean Analytics
+
+787
+00:35:14,310 --> 00:35:17,450
+that shows startup
+founders how to use
+
+788
+00:35:17,450 --> 00:35:19,270
+data to make a better
+business faster.
+
+789
+00:35:19,350 --> 00:35:21,330
+And I just wrote a
+book called Just Evil
+
+790
+00:35:21,330 --> 00:35:23,710
+Enough about subversive
+go-to-market strategy
+
+791
+00:35:23,710 --> 00:35:25,680
+that's pretty
+funny. So if you're
+
+792
+00:35:25,680 --> 00:35:27,650
+interested in go-to
+-market, you can grab that.
+
+793
+00:35:27,650 --> 00:35:29,230
+But what I wanted
+to talk about very
+
+794
+00:35:29,230 --> 00:35:32,350
+briefly, I spent a lot
+of my time talking to
+
+795
+00:35:32,350 --> 00:35:34,550
+all kinds of interesting
+people. I was in
+
+796
+00:35:34,550 --> 00:35:36,130
+Dubai talking to the
+heads of policing
+
+797
+00:35:36,130 --> 00:35:38,730
+from 60 countries a
+couple of weeks ago about
+
+798
+00:35:38,730 --> 00:35:40,670
+how to maintain
+legitimacy in an era
+
+799
+00:35:40,670 --> 00:35:44,010
+of technological
+asymmetry. So kind of ADHD
+
+800
+00:35:44,010 --> 00:35:46,470
+as a career. The thing
+that I'm thinking
+
+801
+00:35:46,470 --> 00:35:48,650
+about right now, Ruv,
+and I'll give you
+
+802
+00:35:48,650 --> 00:35:50,310
+a very quick framing
+of it, and then maybe
+
+803
+00:35:50,310 --> 00:35:53,170
+we can chat about
+it, is every major
+
+804
+00:35:53,170 --> 00:35:57,150
+technology shift has
+a before and an after.
+
+805
+00:35:57,630 --> 00:36:00,730
+And we allocated our
+capital, our energy,
+
+806
+00:36:00,730 --> 00:36:02,430
+our resources, our
+staffing, and then some
+
+807
+00:36:02,430 --> 00:36:04,590
+technology happened,
+and then we allocated
+
+808
+00:36:04,590 --> 00:36:05,650
+it again. So there's
+a misallocation
+
+809
+00:36:05,830 --> 00:36:07,990
+beforehand, right we had
+lamp lighters then we
+
+810
+00:36:07,990 --> 00:36:09,530
+got electricity the
+lamp lighters went away
+
+811
+00:36:11,190 --> 00:36:13,470
+um it is a career
+and i'm not
+
+812
+00:36:13,470 --> 00:36:15,030
+a billionaire
+chris so i'm not
+
+813
+00:36:15,030 --> 00:36:17,110
+sure about that
+one uh so uh
+
+814
+00:36:17,510 --> 00:36:20,460
+we now have with major
+technologies have a
+
+815
+00:36:20,460 --> 00:36:22,710
+misallocation problem
+and i would argue in
+
+816
+00:36:22,710 --> 00:36:25,210
+tech there's been four
+big misallocations
+
+817
+00:36:25,210 --> 00:36:27,870
+in recent years uh the
+first one was the move
+
+818
+00:36:27,870 --> 00:36:29,770
+from desktop software
+to software as a
+
+819
+00:36:29,770 --> 00:36:32,770
+service where a company
+was built to like send
+
+820
+00:36:32,770 --> 00:36:34,750
+out discs and floppies
+once a year and
+
+821
+00:36:34,750 --> 00:36:37,150
+there were big updates
+and now it's just you're
+
+822
+00:36:37,150 --> 00:36:39,070
+using an app and it's
+software as a service
+
+823
+00:36:39,070 --> 00:36:41,370
+and you and the entire
+structure of your
+
+824
+00:36:41,370 --> 00:36:42,990
+sales and your
+organization is different.
+
+825
+00:36:44,030 --> 00:36:47,250
+There was the move
+from hardware to cloud
+
+826
+00:36:47,250 --> 00:36:49,530
+computing. I founded a
+company that needed a
+
+827
+00:36:49,530 --> 00:36:53,170
+lot of hardware back in
+2001 and we were making
+
+828
+00:36:53,170 --> 00:36:54,840
+appliances but you
+know the economics
+
+829
+00:36:54,840 --> 00:36:56,970
+changed a lot if you just
+use clouds. Why would
+
+830
+00:36:56,970 --> 00:36:59,370
+you spend money on
+permanent hardware where
+
+831
+00:36:59,370 --> 00:37:01,650
+you can pay for it as
+an operating expense.
+
+832
+00:37:01,810 --> 00:37:03,990
+The next big one I'd
+say is social media,
+
+833
+00:37:03,990 --> 00:37:07,470
+where companies were
+structured in order
+
+834
+00:37:07,470 --> 00:37:09,990
+to deal with paid
+media instead of earned
+
+835
+00:37:09,990 --> 00:37:12,030
+impressions. And so
+if you were a company
+
+836
+00:37:12,030 --> 00:37:15,350
+that set itself up
+to use paid media and
+
+837
+00:37:15,350 --> 00:37:17,450
+traditional channels,
+you were obsolete
+
+838
+00:37:17,450 --> 00:37:19,220
+when social media came
+along. And obsolete
+
+839
+00:37:19,220 --> 00:37:20,730
+doesn't happen
+overnight. It takes a few
+
+840
+00:37:20,730 --> 00:37:22,710
+years. But obviously,
+we're in what I
+
+841
+00:37:22,710 --> 00:37:24,590
+would call the fourth
+big miscapitalization
+
+842
+00:37:24,590 --> 00:37:27,380
+of tech, which is that
+we are now allocating
+
+843
+00:37:27,890 --> 00:37:29,530
+money to developers
+when we can't have
+
+844
+00:37:29,530 --> 00:37:34,530
+agents. And that's a
+big problem that most
+
+845
+00:37:34,530 --> 00:37:36,750
+people haven't realized.
+Most people are
+
+846
+00:37:36,750 --> 00:37:38,470
+looking at the first
+order consequences,
+
+847
+00:37:38,470 --> 00:37:40,850
+like how do I do my
+job better with AI?
+
+848
+00:37:41,190 --> 00:37:42,930
+Some people are
+looking at the second
+
+849
+00:37:42,930 --> 00:37:44,670
+order consequences. Do
+I need to hire another
+
+850
+00:37:44,670 --> 00:37:47,510
+person or can I
+use an AI? And what
+
+851
+00:37:47,510 --> 00:37:49,270
+we really need to be
+doing is thinking of
+
+852
+00:37:49,270 --> 00:37:51,650
+the third order
+consequences. Does this
+
+853
+00:37:51,650 --> 00:37:54,650
+business continue to
+exist when something
+
+854
+00:37:54,650 --> 00:37:56,390
+else can do this
+function. Like I just
+
+855
+00:37:56,390 --> 00:38:00,130
+pointed out where,
+if the goal of the
+
+856
+00:38:00,130 --> 00:38:02,810
+financial industry
+is to, or the trading
+
+857
+00:38:02,810 --> 00:38:06,910
+industry is to make
+capital liquid by, by
+
+858
+00:38:06,910 --> 00:38:08,990
+identifying and
+removing inefficiencies.
+
+859
+00:38:09,210 --> 00:38:10,490
+And there's a system
+
+860
+00:38:10,490 --> 00:38:11,770
+that can do that better.
+
+861
+00:38:12,290 --> 00:38:14,830
+Maybe we don't need
+trading. Like that's
+
+862
+00:38:14,830 --> 00:38:16,090
+a weird thing, you
+know, speculative
+
+863
+00:38:16,090 --> 00:38:17,370
+trading. That's a
+weird way to look at
+
+864
+00:38:17,370 --> 00:38:18,970
+it, but I don't think
+we're thinking weird
+
+865
+00:38:18,970 --> 00:38:20,050
+enough. So I want
+to share a couple
+
+866
+00:38:20,050 --> 00:38:22,270
+of thoughts, uh, just
+off the cuff here.
+
+867
+00:38:23,480 --> 00:38:24,990
+I spent a lot of
+time working with
+
+868
+00:38:24,990 --> 00:38:26,030
+startups. I run
+a big conference
+
+869
+00:38:26,030 --> 00:38:27,310
+called Startup
+Fest in Montreal.
+
+870
+00:38:27,590 --> 00:38:33,150
+And we talk about
+unicorns in the startup
+
+871
+00:38:33,150 --> 00:38:35,670
+world. The whole venture
+capital, commercial
+
+872
+00:38:35,670 --> 00:38:38,030
+capital world is
+structured on this idea
+
+873
+00:38:38,030 --> 00:38:40,110
+of one in a thousand
+doing really well.
+
+874
+00:38:40,270 --> 00:38:42,850
+And I think we're
+going to go from
+
+875
+00:38:42,850 --> 00:38:45,770
+unicorns to millions
+of tiny horses.
+
+876
+00:38:45,990 --> 00:38:48,210
+What I mean by that is,
+imagine you're making
+
+877
+00:38:48,210 --> 00:38:50,010
+a scheduling and CRM
+software platform.
+
+878
+00:38:50,010 --> 00:38:54,190
+You could make that
+very, very generic and
+
+879
+00:38:54,190 --> 00:38:56,330
+then it becomes complex
+to customize it to
+
+880
+00:38:56,330 --> 00:38:58,430
+lots of things like the
+salesforce.com model.
+
+881
+00:38:58,510 --> 00:39:00,470
+But in that category,
+there's a company
+
+882
+00:39:00,470 --> 00:39:03,490
+called Talk, T-O
+-C-K, that's used
+
+883
+00:39:03,490 --> 00:39:06,430
+for restaurants
+who want to charge
+
+884
+00:39:06,430 --> 00:39:07,850
+people for the meal
+before they arrive.
+
+885
+00:39:07,850 --> 00:39:09,430
+High cost restaurants
+where people will
+
+886
+00:39:09,430 --> 00:39:11,070
+book a reservation
+and then cancel.
+
+887
+00:39:11,130 --> 00:39:14,350
+And so Talk is a
+sales CRM scheduling
+
+888
+00:39:14,350 --> 00:39:17,430
+platform that's very,
+very specific to the needs
+
+889
+00:39:17,430 --> 00:39:19,150
+of high end restaurants.
+there's another
+
+890
+00:39:19,150 --> 00:39:22,950
+one um called studio
+.inc I think that's
+
+891
+00:39:22,950 --> 00:39:26,260
+a for tattoo parlors
+and in many cases the
+
+892
+00:39:26,260 --> 00:39:27,370
+tattoo artist doesn't
+want you to know
+
+893
+00:39:27,370 --> 00:39:29,110
+where they live until
+you've agreed to do the
+
+894
+00:39:29,110 --> 00:39:31,730
+tattoo so there's a
+whole negotiation on
+
+895
+00:39:31,730 --> 00:39:33,690
+the artwork before you
+confirm the appointment
+
+896
+00:39:33,690 --> 00:39:36,090
+it'd be very hard
+to make one CRM that
+
+897
+00:39:36,090 --> 00:39:38,030
+can be configured in
+all those ways but
+
+898
+00:39:38,030 --> 00:39:40,570
+you have like no CRM
+that's better than the
+
+899
+00:39:40,570 --> 00:39:43,450
+studio for tattoo
+parlors no CRM that's
+
+900
+00:39:43,450 --> 00:39:46,310
+better than uh talk for
+high-end restaurants
+
+901
+00:39:46,310 --> 00:39:47,710
+And so I think
+that's what I mean by
+
+902
+00:39:47,710 --> 00:39:49,530
+millions of tiny horses.
+But the thing that
+
+903
+00:39:49,530 --> 00:39:52,630
+I'm really interested
+in right now is I
+
+904
+00:39:52,630 --> 00:39:54,590
+mentioned one of the
+miscapitalizations was
+
+905
+00:39:54,590 --> 00:39:56,270
+the introduction of
+software as a service.
+
+906
+00:39:56,470 --> 00:40:00,250
+And the SaaS world,
+in many cases, is
+
+907
+00:40:00,250 --> 00:40:02,910
+referred to as shadow
+IT because once upon a
+
+908
+00:40:02,910 --> 00:40:05,570
+time, the CIO had
+software licenses. They'd
+
+909
+00:40:05,570 --> 00:40:07,310
+stick a disc in a
+computer once a year.
+
+910
+00:40:07,310 --> 00:40:08,910
+That was your new
+software. And then all
+
+911
+00:40:08,910 --> 00:40:11,330
+of a sudden, some sales
+guy put in his credit
+
+912
+00:40:11,330 --> 00:40:13,010
+card, and now you're
+using Salesforce.
+
+913
+00:40:13,450 --> 00:40:17,000
+This was horrible
+for enterprise IT. It
+
+914
+00:40:17,000 --> 00:40:19,510
+bypassed their immune
+system. They lost
+
+915
+00:40:19,510 --> 00:40:23,010
+control. I talked to
+CFOs that were looking at
+
+916
+00:40:23,250 --> 00:40:26,950
+Amex bills and finding
+50 rogue Amazon
+
+917
+00:40:26,950 --> 00:40:30,020
+accounts. And so this
+idea of shadow IT meant
+
+918
+00:40:30,020 --> 00:40:33,030
+that an employee
+could install software
+
+919
+00:40:33,030 --> 00:40:34,890
+without the approval
+of the organization.
+
+920
+00:40:35,290 --> 00:40:37,630
+But I think that we're
+about to find a much
+
+921
+00:40:37,630 --> 00:40:39,230
+bigger problem, which
+is shadow workforce,
+
+922
+00:40:39,230 --> 00:40:42,250
+where I don't install
+SaaS as a tool so
+
+923
+00:40:42,250 --> 00:40:45,250
+humans can work. I
+install SaaS as a console
+
+924
+00:40:45,250 --> 00:40:47,750
+so agents can work. And
+so I'm not installing
+
+925
+00:40:47,750 --> 00:40:51,990
+a CRM. I'm installing
+a direct inside sales
+
+926
+00:40:51,990 --> 00:40:54,290
+department. And so
+that's not a case of
+
+927
+00:40:54,290 --> 00:40:56,090
+shadow IT. That's
+shadow workforce. That's
+
+928
+00:40:56,090 --> 00:40:57,630
+not the CIO's problem.
+That's the head of
+
+929
+00:40:57,630 --> 00:41:01,190
+HR's problem. And I think
+that this is something
+
+930
+00:41:01,190 --> 00:41:03,090
+we have not properly
+thought about that
+
+931
+00:41:03,090 --> 00:41:06,350
+is going to be *******
+up every major company
+
+932
+00:41:06,350 --> 00:41:08,770
+in the next six
+months is this idea of
+
+933
+00:41:08,770 --> 00:41:11,730
+any employee can install
+a shadow workforce
+
+934
+00:41:11,730 --> 00:41:13,440
+and they don't even
+know whether they should
+
+935
+00:41:13,440 --> 00:41:16,180
+give that guy a bonus
+or fire him. So that's
+
+936
+00:41:16,180 --> 00:41:18,030
+what I'm currently
+thinking about, Ruv.
+
+937
+00:41:18,390 --> 00:41:21,230
+You hit it dead on.
+And when you look at
+
+938
+00:41:21,230 --> 00:41:24,690
+how I work with the
+biggest companies,
+
+939
+00:41:24,910 --> 00:41:28,270
+I'm a lucky guy. And
+what's happening is
+
+940
+00:41:29,170 --> 00:41:31,450
+I've reduced the
+friction for them to
+
+941
+00:41:31,450 --> 00:41:32,990
+hire me. All they need
+to do is go into my
+
+942
+00:41:32,990 --> 00:41:34,430
+little booking site,
+put in their corporate
+
+943
+00:41:34,430 --> 00:41:36,810
+card, and they're
+like, hey, Ruv,
+
+944
+00:41:36,810 --> 00:41:38,950
+how do I create the
+Swarm today? And I've
+
+945
+00:41:38,950 --> 00:41:41,110
+got this idea that
+my company said it's
+
+946
+00:41:41,110 --> 00:41:43,170
+going to take two
+years and $5 million.
+
+947
+00:41:43,290 --> 00:41:46,130
+What can you do? And
+literally within the
+
+948
+00:41:46,130 --> 00:41:48,690
+hour, we built it
+completely. And I did
+
+949
+00:41:48,690 --> 00:41:52,810
+a presentation to
+probably the largest, I
+
+950
+00:41:52,810 --> 00:41:54,030
+won't say who it is,
+you'll guess if I
+
+951
+00:41:54,030 --> 00:41:56,390
+say what it is, but a
+very, very, very large
+
+952
+00:41:56,390 --> 00:41:58,030
+company. And they're
+like, we had this
+
+953
+00:41:58,030 --> 00:42:00,210
+idea, and they said,
+we were quoted $2.5
+
+954
+00:42:00,210 --> 00:42:03,050
+million yesterday to
+build this thing, and
+
+955
+00:42:03,050 --> 00:42:04,540
+you just built it
+for us in 45 minutes.
+
+956
+00:42:04,730 --> 00:42:06,730
+I didn't really build
+it, though. I took
+
+957
+00:42:06,730 --> 00:42:08,390
+what they said, popped
+it into my little
+
+958
+00:42:08,390 --> 00:42:10,630
+swarm, and said, go
+build me that. And then I
+
+959
+00:42:10,630 --> 00:42:13,030
+showed them some
+PowerPoints and gave them
+
+960
+00:42:13,030 --> 00:42:15,320
+the code at the end of
+the call. and that's
+
+961
+00:42:15,320 --> 00:42:17,910
+like a leading sort
+of indicator probably
+
+962
+00:42:17,910 --> 00:42:20,070
+where we're going to
+be and imagine when
+
+963
+00:42:20,070 --> 00:42:22,470
+everyone else catches
+up what the world looks
+
+964
+00:42:22,470 --> 00:42:28,570
+like yeah it's it's
+crazy yeah yeah weird
+
+965
+00:42:28,570 --> 00:42:31,510
+i had this same
+conversation i'm i was at
+
+966
+00:42:31,510 --> 00:42:33,990
+a a function in san
+francisco last week
+
+967
+00:42:33,990 --> 00:42:37,810
+alistair and um you
+know you know this is
+
+968
+00:42:37,810 --> 00:42:39,910
+exactly we were talking
+about puppet masters
+
+969
+00:42:39,910 --> 00:42:44,370
+and in bits and um i
+couldn't agree with
+
+970
+00:42:44,370 --> 00:42:47,810
+you more that uh it's
+certainly frontier and
+
+971
+00:42:47,810 --> 00:42:49,970
+i think the other
+thing is we talk about
+
+972
+00:42:49,970 --> 00:42:52,430
+who's impacted like you
+think about how much
+
+973
+00:42:52,430 --> 00:42:54,910
+of um our work is
+outsourced to a third
+
+974
+00:42:54,910 --> 00:42:57,670
+world country like as
+as much as people talk
+
+975
+00:42:57,670 --> 00:43:00,570
+about you know like
+the fear of what's
+
+976
+00:43:00,570 --> 00:43:03,030
+happening i'm like well
+it's already a mess
+
+977
+00:43:03,030 --> 00:43:05,650
+like it's already
+smoke and mirrors and
+
+978
+00:43:05,650 --> 00:43:08,950
+gamification of a process.
+I think it's going
+
+979
+00:43:08,950 --> 00:43:12,870
+to be rough, but I
+anticipate a better future
+
+980
+00:43:12,870 --> 00:43:16,010
+because we're just
+doing better things.
+
+981
+00:43:18,030 --> 00:43:19,590
+This is the
+conversation I've been
+
+982
+00:43:19,590 --> 00:43:21,110
+having with the
+government. So again, with
+
+983
+00:43:21,110 --> 00:43:22,890
+the ADHD thing, I
+also run the world's
+
+984
+00:43:22,890 --> 00:43:24,350
+largest conference
+on public sector
+
+985
+00:43:24,350 --> 00:43:25,950
+modernization and
+digital government.
+
+986
+00:43:26,210 --> 00:43:30,030
+And those guys, most
+of them are very much
+
+987
+00:43:30,030 --> 00:43:31,130
+like, I don't know
+what I'm going to do. I
+
+988
+00:43:31,130 --> 00:43:32,430
+don't know what I'm
+going to do. But when
+
+989
+00:43:32,430 --> 00:43:34,910
+you can do $8,000 of
+legal work for $3 of
+
+990
+00:43:34,910 --> 00:43:36,570
+tokens, the taxpayer
+is not going to put up
+
+991
+00:43:36,570 --> 00:43:39,370
+with a three order of
+magnitude, more expensive
+
+992
+00:43:39,370 --> 00:43:43,130
+human. And so the way
+I see this is, um,
+
+993
+00:43:43,590 --> 00:43:46,530
+right now, if you are
+trying to do claims
+
+994
+00:43:46,570 --> 00:43:49,010
+benefits for our most
+vulnerable humans,
+
+995
+00:43:49,010 --> 00:43:52,990
+that stuff's hard.
+Uh, if we can get 99%
+
+996
+00:43:52,990 --> 00:43:56,350
+of those claims benefits
+to be done for one
+
+997
+00:43:56,350 --> 00:43:59,370
+hundredth of the
+costs, then as a human,
+
+998
+00:43:59,370 --> 00:44:02,720
+I am a hundred percent
+fine with the 1%
+
+999
+00:44:02,720 --> 00:44:05,650
+being a social worker,
+government employee
+
+1000
+00:44:05,650 --> 00:44:08,090
+who goes and does a
+safety check on them,
+
+1001
+00:44:08,090 --> 00:44:09,840
+health check, maybe
+brings them some food.
+
+1002
+00:44:09,840 --> 00:44:11,670
+Like that's the world
+I want to live in.
+
+1003
+00:44:13,790 --> 00:44:17,250
+Like right now, I
+firmly believe that a
+
+1004
+00:44:17,250 --> 00:44:18,950
+fundamental human right
+in the digital age should
+
+1005
+00:44:18,950 --> 00:44:20,410
+be that nobody should
+know more about you
+
+1006
+00:44:20,410 --> 00:44:22,910
+than you do. It just
+seems like a very good
+
+1007
+00:44:22,910 --> 00:44:25,990
+tenet. But if we were
+to enforce that, the
+
+1008
+00:44:25,990 --> 00:44:27,230
+government already
+knows tons of things
+
+1009
+00:44:27,230 --> 00:44:29,550
+about you, it just
+doesn't make it easy for
+
+1010
+00:44:29,550 --> 00:44:31,510
+you to look at them.
+So imagine that now,
+
+1011
+00:44:31,510 --> 00:44:34,980
+because the government,
+um, has AI running the
+
+1012
+00:44:34,980 --> 00:44:37,910
+bureaucratic stuff,
+um, that it can focus
+
+1013
+00:44:37,910 --> 00:44:39,590
+on the good things
+like a cradle to grave
+
+1014
+00:44:39,590 --> 00:44:41,770
+timeline where you can
+see all your tax history,
+
+1015
+00:44:41,770 --> 00:44:43,050
+your vaccinations,
+your medical history,
+
+1016
+00:44:43,050 --> 00:44:45,450
+whatever else, right.
+We can now build these
+
+1017
+00:44:45,450 --> 00:44:48,790
+amazing things. The
+real risk is that um
+
+1018
+00:44:48,790 --> 00:44:54,050
+the reason fascists
+lose is bureaucracy is
+
+1019
+00:44:54,050 --> 00:44:58,410
+hard and if we make
+a system that makes
+
+1020
+00:44:58,410 --> 00:45:02,490
+bureaucracy unthinkably
+easy it may be impossible
+
+1021
+00:45:02,490 --> 00:45:05,090
+to install a fascist
+state that's that's
+
+1022
+00:45:05,090 --> 00:45:06,950
+that we cannot counter
+as free-thinking
+
+1023
+00:45:06,950 --> 00:45:10,810
+citizens so there's this
+bet we're making that
+
+1024
+00:45:10,810 --> 00:45:13,510
+we can get well-aligned
+ai in the hands of
+
+1025
+00:45:13,510 --> 00:45:17,190
+well-aligned humans
+and and improve quality
+
+1026
+00:45:17,190 --> 00:45:19,910
+of living and give
+people dignified jobs and
+
+1027
+00:45:19,910 --> 00:45:22,350
+more meaningful human
+interactions faster
+
+1028
+00:45:22,350 --> 00:45:25,850
+than we can give a few
+people the ability to
+
+1029
+00:45:25,850 --> 00:45:29,230
+surveil us so much
+that no form of dissent
+
+1030
+00:45:29,230 --> 00:45:32,870
+is possible that's the
+alistair you're spot
+
+1031
+00:45:32,870 --> 00:45:35,690
+on we have to come
+back to that we've two
+
+1032
+00:45:35,690 --> 00:45:37,190
+other guests we want
+to try and sneak in
+
+1033
+00:45:37,190 --> 00:45:39,170
+before the top of the
+hour but then we'll have
+
+1034
+00:45:39,170 --> 00:45:41,770
+an open session as
+well uh after the one o
+
+1035
+00:45:41,770 --> 00:45:44,670
+'clock thank you alistair
+there's uh bang on
+
+1036
+00:45:44,670 --> 00:45:46,730
+some uh incredible
+insights and thinking
+
+1037
+00:45:46,730 --> 00:45:49,430
+and conversations and
+before we leave where
+
+1038
+00:45:49,430 --> 00:45:51,670
+can folks follow alistair
+maybe get get his
+
+1039
+00:45:51,670 --> 00:45:53,570
+book i'm sure it's on
+amazon alistair this
+
+1040
+00:45:53,570 --> 00:45:55,990
+is your chance for a
+little bit oh it's way
+
+1041
+00:45:55,990 --> 00:45:58,090
+better if you go to
+justevilenough.com and
+
+1042
+00:45:58,090 --> 00:45:59,770
+buy it directly from
+us because then i have
+
+1043
+00:45:59,770 --> 00:46:01,070
+your email address and
+i can send you stuff
+
+1044
+00:46:01,070 --> 00:46:04,250
+yeah perfect all right
+and alistair thank
+
+1045
+00:46:04,250 --> 00:46:07,130
+thank you again for for
+coming on and if you
+
+1046
+00:46:07,130 --> 00:46:08,450
+want to stick around
+we do it we have an
+
+1047
+00:46:08,450 --> 00:46:10,990
+after show where we
+usually go into crazy
+
+1048
+00:46:10,990 --> 00:46:15,070
+philosophy yeah for sure
+all right um yeah i i
+
+1049
+00:46:15,070 --> 00:46:17,150
+I'd highly suggest
+getting Alistair's book.
+
+1050
+00:46:17,150 --> 00:46:18,310
+Lean Analytics
+is actually
+
+1051
+00:46:18,310 --> 00:46:19,070
+one of my favorites.
+
+1052
+00:46:19,270 --> 00:46:20,750
+I've got a signed
+copy. Thank
+
+1053
+00:46:20,750 --> 00:46:21,670
+you for that, by the way,
+
+1054
+00:46:22,190 --> 00:46:24,110
+from like 10 years ago.
+
+1055
+00:46:24,110 --> 00:46:25,380
+You and Ben are amazing.
+
+1056
+00:46:25,530 --> 00:46:28,250
+If you don't know
+Ben as well, he does
+
+1057
+00:46:28,250 --> 00:46:30,250
+some amazing work
+with his startup work.
+
+1058
+00:46:30,750 --> 00:46:31,810
+All right. Super.
+
+1059
+00:46:31,990 --> 00:46:33,610
+Chris Bolter. Moving
+on to the next.
+
+1060
+00:46:33,610 --> 00:46:34,370
+All right, Chris.
+
+1061
+00:46:34,370 --> 00:46:36,250
+Hey, Chris from the UK
+
+1062
+00:46:36,250 --> 00:46:37,130
+group. How are you doing?
+
+1063
+00:46:37,490 --> 00:46:39,810
+Hello, hello. Very
+good, very good. I was
+
+1064
+00:46:39,810 --> 00:46:41,150
+getting a bit confused
+there because I
+
+1065
+00:46:41,150 --> 00:46:42,990
+kept turning around
+behind me. I'm like,
+
+1066
+00:46:42,990 --> 00:46:44,990
+yeah, it's that book,
+isn't it? So, yeah.
+
+1067
+00:46:44,990 --> 00:46:47,230
+I've got a copy of
+the book on my shelf.
+
+1068
+00:46:47,230 --> 00:46:48,450
+That was very unexpected.
+
+1069
+00:46:48,450 --> 00:46:49,350
+Thanks, Ballester.
+
+1070
+00:46:50,330 --> 00:46:52,990
+Cool. So, yeah, a
+bit of a tricky one
+
+1071
+00:46:52,990 --> 00:46:54,970
+to follow up with.
+I'll be very brief.
+
+1072
+00:46:55,430 --> 00:46:57,890
+And like I say, change
+your tone, really.
+
+1073
+00:46:58,430 --> 00:47:01,970
+I've been working on
+production code bases
+
+1074
+00:47:01,970 --> 00:47:04,750
+with the Gentic tools
+for at least 12 months
+
+1075
+00:47:04,750 --> 00:47:07,250
+now. and one of the
+toughest things i
+
+1076
+00:47:07,250 --> 00:47:11,690
+found was how do you
+actually um make sure
+
+1077
+00:47:11,690 --> 00:47:15,390
+that what uh what
+actually makes it into
+
+1078
+00:47:15,390 --> 00:47:17,830
+production is not going
+to break stuff that
+
+1079
+00:47:17,830 --> 00:47:22,250
+kind of generally helps
+right so the first
+
+1080
+00:47:22,250 --> 00:47:25,170
+thing we tried to do
+really was go okay how
+
+1081
+00:47:25,170 --> 00:47:29,570
+can you treat an agent
+like a junior engineer
+
+1082
+00:47:29,570 --> 00:47:31,750
+right a very talented
+one but just someone
+
+1083
+00:47:31,750 --> 00:47:33,350
+who needs your
+guidance here and there
+
+1084
+00:47:33,410 --> 00:47:35,870
+So the first thought
+was, well, let them
+
+1085
+00:47:35,870 --> 00:47:38,010
+go away and do the
+research and then come
+
+1086
+00:47:38,010 --> 00:47:39,750
+back and be like, okay,
+here's what I want
+
+1087
+00:47:39,750 --> 00:47:41,830
+to do. Here's a detailed
+plan. And you can
+
+1088
+00:47:41,830 --> 00:47:43,690
+look at it and go,
+yeah, that's all great.
+
+1089
+00:47:43,690 --> 00:47:45,750
+We don't want you
+to lose that library
+
+1090
+00:47:45,750 --> 00:47:48,030
+there because
+actually we're using a
+
+1091
+00:47:48,030 --> 00:47:49,550
+different library
+somewhere else in the code
+
+1092
+00:47:49,550 --> 00:47:52,210
+base. So can you reuse
+that stuff, please?
+
+1093
+00:47:52,570 --> 00:47:54,690
+And where that
+brought us to was
+
+1094
+00:47:54,690 --> 00:47:57,670
+actually creating
+these YAML task files.
+
+1095
+00:47:57,690 --> 00:47:59,950
+Yeah, and all this
+really is, is like a
+
+1096
+00:47:59,950 --> 00:48:04,230
+runbook. it's a very
+detailed way of describing
+
+1097
+00:48:04,230 --> 00:48:07,110
+exactly what's going
+to happen when the
+
+1098
+00:48:07,110 --> 00:48:10,170
+agent starts coding. So
+it's very much aligned
+
+1099
+00:48:10,170 --> 00:48:13,230
+with that kind of think
+left thinking from
+
+1100
+00:48:13,230 --> 00:48:15,610
+the DevOps world, where
+it's like, hey, if
+
+1101
+00:48:15,610 --> 00:48:18,090
+we can make all our
+engineering decisions up
+
+1102
+00:48:18,090 --> 00:48:21,670
+front, then we can
+work with absolute
+
+1103
+00:48:21,670 --> 00:48:23,810
+confidence that whatever
+it builds is going to
+
+1104
+00:48:23,810 --> 00:48:26,400
+be in line with the
+rest of production base
+
+1105
+00:48:26,400 --> 00:48:29,690
+right so this was my
+starting point uh we've
+
+1106
+00:48:29,690 --> 00:48:32,290
+all started using Claude
+code probably over
+
+1107
+00:48:32,290 --> 00:48:34,530
+the last month few
+months that kind of thing
+
+1108
+00:48:34,530 --> 00:48:37,290
+um and a couple of
+things triggered a step
+
+1109
+00:48:37,290 --> 00:48:39,250
+change in this
+because first of all i
+
+1110
+00:48:39,250 --> 00:48:42,910
+watched a podcast i think
+it was every guys and
+
+1111
+00:48:42,910 --> 00:48:45,170
+they were talking
+about how they use uh
+
+1112
+00:48:45,170 --> 00:48:47,870
+github projects and
+that sounded really cool
+
+1113
+00:48:47,870 --> 00:48:50,370
+it's like okay i need
+to check that out uh and
+
+1114
+00:48:50,370 --> 00:48:52,870
+then i was also looking
+at uh github actions
+
+1115
+00:48:52,870 --> 00:48:55,250
+and how you can run
+Claude code was in
+
+1116
+00:48:55,250 --> 00:48:57,910
+GitHub Actions so it
+started to kind of trigger
+
+1117
+00:48:57,910 --> 00:48:59,770
+some thoughts for
+me like hang on how
+
+1118
+00:48:59,770 --> 00:49:02,410
+could you actually kind
+of automate a system
+
+1119
+00:49:02,410 --> 00:49:06,830
+around this where you
+could start using uh
+
+1120
+00:49:06,830 --> 00:49:09,370
+the GitHub issues and
+projects to actually
+
+1121
+00:49:09,370 --> 00:49:12,030
+manage the workflow of
+your work previously
+
+1122
+00:49:12,030 --> 00:49:14,090
+I'd had it in the code
+base and that's a bit
+
+1123
+00:49:14,090 --> 00:49:16,450
+clunky when you've got
+teams working on stuff
+
+1124
+00:49:16,450 --> 00:49:19,510
+um and it turns out
+it's actually really
+
+1125
+00:49:19,510 --> 00:49:23,430
+easy to do because
+Claude code is very well
+
+1126
+00:49:23,430 --> 00:49:25,670
+specified. It can
+work very easily with
+
+1127
+00:49:25,670 --> 00:49:28,930
+GitHub, GitHub issues,
+GitHub projects, everything
+
+1128
+00:49:28,930 --> 00:49:33,070
+else. So you can tell
+it to create issues
+
+1129
+00:49:33,070 --> 00:49:35,550
+very easily. This is
+a custom command we
+
+1130
+00:49:35,550 --> 00:49:38,620
+created and all it
+needs to do is kind of
+
+1131
+00:49:38,620 --> 00:49:40,630
+somewhere down here, I
+think it has, yeah, it
+
+1132
+00:49:40,630 --> 00:49:43,610
+just executes on the
+command band GH and
+
+1133
+00:49:43,610 --> 00:49:46,410
+whatever things it needs
+so we can then create
+
+1134
+00:49:46,410 --> 00:49:50,410
+issues from within
+code code then we just
+
+1135
+00:49:50,410 --> 00:49:52,830
+think about kind of
+what workflow do we want
+
+1136
+00:49:52,830 --> 00:49:55,650
+where we maximize the
+agentic ability so
+
+1137
+00:49:55,650 --> 00:49:57,570
+that we don't do the
+legwork but we still have
+
+1138
+00:49:57,570 --> 00:50:00,970
+these approval steps
+right and so for me
+
+1139
+00:50:00,970 --> 00:50:04,210
+it kind of came down
+to two steps which can
+
+1140
+00:50:04,210 --> 00:50:07,150
+be very brief when the
+agents are good like
+
+1141
+00:50:07,150 --> 00:50:09,770
+code code but nonetheless
+quite important
+
+1142
+00:50:09,770 --> 00:50:13,630
+so So first of all,
+when we create an issue,
+
+1143
+00:50:13,630 --> 00:50:16,210
+then we can use
+automations to
+
+1144
+00:50:16,210 --> 00:50:18,050
+trigger Claude
+code and we can
+
+1145
+00:50:18,050 --> 00:50:20,390
+execute our kind
+of research task,
+
+1146
+00:50:20,430 --> 00:50:22,990
+which if it's a bug,
+then we'll want to
+
+1147
+00:50:22,990 --> 00:50:24,770
+recreate the bug.
+We'll want to see if
+
+1148
+00:50:24,770 --> 00:50:26,770
+there's adjacent
+bugs around it. What
+
+1149
+00:50:26,770 --> 00:50:28,670
+happens if we change
+the parameters a bit,
+
+1150
+00:50:28,670 --> 00:50:31,310
+et cetera. If it's a
+feature, then we might
+
+1151
+00:50:31,310 --> 00:50:33,030
+want to understand
+how we're implementing
+
+1152
+00:50:33,030 --> 00:50:35,130
+similar features,
+et cetera, right?
+
+1153
+00:50:35,130 --> 00:50:38,510
+But the first stage
+after that then is doing
+
+1154
+00:50:38,510 --> 00:50:40,230
+the research, coming
+back with a report and
+
+1155
+00:50:40,230 --> 00:50:42,190
+go right here's all the
+technical information
+
+1156
+00:50:42,190 --> 00:50:44,030
+that you need to know
+here's the approach
+
+1157
+00:50:44,030 --> 00:50:46,330
+that we're likely to
+take with it and that
+
+1158
+00:50:46,330 --> 00:50:48,710
+gives you a really
+early stage to say yes
+
+1159
+00:50:48,710 --> 00:50:51,450
+that's great or actually
+we should be going in
+
+1160
+00:50:51,450 --> 00:50:53,490
+a slightly different
+direction there yeah
+
+1161
+00:50:53,490 --> 00:50:56,190
+once you've then approved
+that then again Claude
+
+1162
+00:50:56,190 --> 00:50:58,210
+code can do its thing
+and it can go and
+
+1163
+00:50:58,210 --> 00:50:59,830
+write one of these
+yaml tasks which we're
+
+1164
+00:50:59,830 --> 00:51:03,110
+looking at yeah now this
+is really cool for a
+
+1165
+00:51:03,110 --> 00:51:05,990
+few reasons first of
+all we are forcing it to
+
+1166
+00:51:05,990 --> 00:51:08,890
+load the context that
+we want claude code's
+
+1167
+00:51:08,890 --> 00:51:11,250
+actually very good
+at context but cursor
+
+1168
+00:51:11,250 --> 00:51:13,950
+wasn't so this is much
+more important as cursor
+
+1169
+00:51:13,950 --> 00:51:17,010
+but just like with
+a junior engineer if
+
+1170
+00:51:17,010 --> 00:51:19,470
+they're working on a
+particular part of the code
+
+1171
+00:51:19,470 --> 00:51:21,810
+base it might not be
+obvious they actually
+
+1172
+00:51:21,810 --> 00:51:25,170
+impact stuff in other
+places that they haven't
+
+1173
+00:51:25,170 --> 00:51:27,270
+seen therefore what
+we can do from the
+
+1174
+00:51:27,270 --> 00:51:29,830
+outset is go okay you
+have to load these files
+
+1175
+00:51:29,830 --> 00:51:32,510
+into context so that
+you understand the
+
+1176
+00:51:32,510 --> 00:51:34,530
+broader implications of
+what you're doing here.
+
+1177
+00:51:34,930 --> 00:51:36,950
+Then we can take it
+through the steps
+
+1178
+00:51:36,950 --> 00:51:38,790
+that we want and be
+very specific about
+
+1179
+00:51:38,790 --> 00:51:40,950
+the files and the
+functions being edited.
+
+1180
+00:51:41,030 --> 00:51:44,050
+And finally, we can
+enforce our checks.
+
+1181
+00:51:44,050 --> 00:51:45,530
+So we can say, hey,
+you have to run
+
+1182
+00:51:45,530 --> 00:51:47,730
+these tests. They
+have to pass. If
+
+1183
+00:51:47,730 --> 00:51:49,470
+not, you need to loop
+through until they
+
+1184
+00:51:49,470 --> 00:51:51,270
+work or until you
+kind of give up.
+
+1185
+00:51:51,830 --> 00:51:54,060
+So again, that
+gives us just a nice
+
+1186
+00:51:54,060 --> 00:51:56,330
+runbook task, which
+we can have a look at.
+
+1187
+00:51:56,330 --> 00:51:58,590
+Nine times out of 10,
+we can approve it.
+
+1188
+00:51:58,590 --> 00:52:00,050
+Occasionally, we'll
+need to kind of make
+
+1189
+00:52:00,050 --> 00:52:02,990
+some tweaks. But from
+there, we can be pretty
+
+1190
+00:52:02,990 --> 00:52:05,910
+much guaranteed that
+what we produce in the
+
+1191
+00:52:05,910 --> 00:52:08,750
+PR is going to be
+good too much, because
+
+1192
+00:52:08,750 --> 00:52:11,050
+actually there's very
+little chance it's gone
+
+1193
+00:52:11,050 --> 00:52:12,810
+off, done something
+that we didn't want.
+
+1194
+00:52:12,810 --> 00:52:15,790
+And ultimately, my aim
+is always that if I'd
+
+1195
+00:52:15,790 --> 00:52:19,190
+sat there and written
+the code by hand, that
+
+1196
+00:52:19,190 --> 00:52:21,050
+the end result from
+the agent is exactly
+
+1197
+00:52:21,050 --> 00:52:23,610
+the same as what I've
+written. And so far,
+
+1198
+00:52:23,610 --> 00:52:26,210
+this is the best way
+I've found of doing it.
+
+1199
+00:52:26,950 --> 00:52:30,210
+Interesting, Chris.
+I like your approach.
+
+1200
+00:52:30,350 --> 00:52:31,990
+The one thing
+you might want to
+
+1201
+00:52:31,990 --> 00:52:35,090
+consider, I also
+integrate projects.
+
+1202
+00:52:35,090 --> 00:52:36,730
+I've been doing that
+for a while. You
+
+1203
+00:52:36,730 --> 00:52:38,370
+might want to
+consider using Claude
+
+1204
+00:52:38,370 --> 00:52:40,510
+in the form of the
+Swarm approach.
+
+1205
+00:52:40,770 --> 00:52:43,550
+Make sure you reference
+Batch Tool and
+
+1206
+00:52:43,550 --> 00:52:46,310
+use the WorkTree
+option within GitHub
+
+1207
+00:52:46,310 --> 00:52:48,270
+and you can create
+multiple trees that
+
+1208
+00:52:48,270 --> 00:52:50,350
+each part of the
+Swarm can work on
+
+1209
+00:52:50,350 --> 00:52:53,210
+separate but concurrently
+so it doesn't
+
+1210
+00:52:53,210 --> 00:52:55,550
+necessarily conflict
+with one another.
+
+1211
+00:52:55,680 --> 00:52:57,610
+And then at the end
+of the Swarm process,
+
+1212
+00:52:57,610 --> 00:52:58,850
+that brings it
+all back together.
+
+1213
+00:52:59,730 --> 00:53:01,950
+Your structure would
+be well suited to
+
+1214
+00:53:01,950 --> 00:53:05,030
+that. But nice work.
+Looks really good.
+
+1215
+00:53:06,410 --> 00:53:08,310
+We don't have a
+lot of time. I
+
+1216
+00:53:08,470 --> 00:53:09,990
+apologize. But we can
+come back to Chris
+
+1217
+00:53:09,990 --> 00:53:11,330
+if you want to stick
+around at the top
+
+1218
+00:53:11,330 --> 00:53:14,110
+of the hour and
+we can dive into
+
+1219
+00:53:14,110 --> 00:53:15,990
+some other things.
+Just as an update,
+
+1220
+00:53:15,990 --> 00:53:18,170
+I think I've
+created about 60,000
+
+1221
+00:53:18,170 --> 00:53:20,770
+lines of code so far
+for that poly market
+
+1222
+00:53:20,770 --> 00:53:23,110
+addition to the
+grading platform.
+
+1223
+00:53:23,630 --> 00:53:26,350
+So I'm hoping by the
+end of the session,
+
+1224
+00:53:26,350 --> 00:53:28,070
+we'll have a fully
+functioning polymarket
+
+1225
+00:53:28,070 --> 00:53:30,890
+component as well. So for
+whomever mentioned that,
+
+1226
+00:53:30,890 --> 00:53:32,590
+thank you. That's a
+cool addition, by the
+
+1227
+00:53:32,590 --> 00:53:34,550
+way. So I'm excited
+to see how that works.
+
+1228
+00:53:34,970 --> 00:53:36,130
+Who's up next?
+
+1229
+00:53:36,370 --> 00:53:37,610
+We have Everett.
+
+1230
+00:53:37,610 --> 00:53:38,990
+Hey, welcome
+back, Everett.
+
+1231
+00:53:39,210 --> 00:53:41,070
+Did I get that
+right? Master's
+
+1232
+00:53:41,070 --> 00:53:42,230
+in aerospace engineering?
+
+1233
+00:53:42,750 --> 00:53:43,850
+Yeah, yeah.
+
+1234
+00:53:43,850 --> 00:53:44,590
+Thank you.
+
+1235
+00:53:45,170 --> 00:53:47,170
+It is great to be back.
+
+1236
+00:53:48,710 --> 00:53:52,490
+You know, I really
+appreciate, you know,
+
+1237
+00:53:52,490 --> 00:53:56,670
+Alistair's take earlier.
+I think it's easy
+
+1238
+00:53:56,670 --> 00:54:00,770
+to try to have a lot
+of positive spins
+
+1239
+00:54:00,770 --> 00:54:02,390
+on a lot of the
+technical innovations,
+
+1240
+00:54:02,390 --> 00:54:04,750
+particularly if you're
+technically minded.
+
+1241
+00:54:06,370 --> 00:54:10,010
+And I'm going to, I
+had something working
+
+1242
+00:54:10,010 --> 00:54:12,830
+and then I made a few
+edits trying to get the,
+
+1243
+00:54:12,860 --> 00:54:16,050
+because I've had some
+success in the past
+
+1244
+00:54:16,050 --> 00:54:19,310
+of vibe coding, a debugging
+update within like
+
+1245
+00:54:19,310 --> 00:54:21,270
+30 minutes of a
+presentation before. because
+
+1246
+00:54:21,270 --> 00:54:23,350
+i feel like that's
+where we're always at
+
+1247
+00:54:23,350 --> 00:54:27,110
+but um i want to give
+a quick update on a
+
+1248
+00:54:27,110 --> 00:54:29,810
+project that i presented
+on last week um and
+
+1249
+00:54:29,810 --> 00:54:31,430
+then also just kind of
+share a couple of things
+
+1250
+00:54:31,430 --> 00:54:35,270
+that are going on
+um break breakage is
+
+1251
+00:54:35,270 --> 00:54:37,790
+like our specialty if if
+the demo doesn't break
+
+1252
+00:54:37,790 --> 00:54:39,250
+halfway through you're
+not doing it right
+
+1253
+00:54:39,250 --> 00:54:45,290
+yeah um you know so um
+for those of you that
+
+1254
+00:54:45,290 --> 00:54:49,650
+don't know um uh two
+weeks ago I presented
+
+1255
+00:54:49,680 --> 00:54:52,550
+a project that I've
+been working on for a
+
+1256
+00:54:52,550 --> 00:54:55,530
+long time called
+Archetype. And Archetype is
+
+1257
+00:54:55,530 --> 00:54:59,010
+a simulation engine,
+which is intended to
+
+1258
+00:54:59,010 --> 00:55:02,340
+handle all the state
+management so that LLMs
+
+1259
+00:55:02,850 --> 00:55:05,640
+can then go and generate
+simulation scripts.
+
+1260
+00:55:06,250 --> 00:55:10,090
+And the goal there
+being that once I get
+
+1261
+00:55:10,090 --> 00:55:13,070
+like a Gemini CLI or like
+a cloud code integrated
+
+1262
+00:55:13,070 --> 00:55:15,390
+with this type of
+a system that then
+
+1263
+00:55:15,390 --> 00:55:18,510
+those agents can then
+like generate simulations
+
+1264
+00:55:18,510 --> 00:55:20,710
+themselves recursively,
+potentially
+
+1265
+00:55:20,710 --> 00:55:22,810
+perform some sort of
+Monte Carlo tree search
+
+1266
+00:55:22,810 --> 00:55:26,310
+to effectively explore
+different realities.
+
+1267
+00:55:26,650 --> 00:55:30,330
+And then they're only
+concerned with like
+
+1268
+00:55:30,330 --> 00:55:33,080
+on the token side and
+usage side, declaratively
+
+1269
+00:55:33,560 --> 00:55:36,430
+describing like
+what simulation they
+
+1270
+00:55:36,430 --> 00:55:41,010
+want to have. And so
+prior to this, I had
+
+1271
+00:55:41,010 --> 00:55:44,190
+shown everybody just
+the toy examples, which,
+
+1272
+00:55:44,210 --> 00:55:47,210
+you know, in
+traditional physics, you
+
+1273
+00:55:47,210 --> 00:55:49,040
+know, I come from the
+aerospace background,
+
+1274
+00:55:49,130 --> 00:55:51,510
+worked at Boeing Phantom
+Works for a couple
+
+1275
+00:55:51,510 --> 00:55:53,620
+of years straight out
+of college and then
+
+1276
+00:55:53,620 --> 00:55:55,750
+moved into the big data
+space and big tech.
+
+1277
+00:55:55,750 --> 00:55:58,110
+So that's that's the
+area that I live in.
+
+1278
+00:55:58,530 --> 00:56:01,010
+And so, you know, I
+talked about some of
+
+1279
+00:56:01,010 --> 00:56:02,850
+the technologies that
+I use and everything,
+
+1280
+00:56:02,850 --> 00:56:05,310
+but effectively,
+we've got this naive
+
+1281
+00:56:05,310 --> 00:56:10,230
+simulation here that just
+updates a position of
+
+1282
+00:56:10,230 --> 00:56:14,790
+entities after each
+simulation step. and
+
+1283
+00:56:14,790 --> 00:56:17,080
+then eventually you'll
+just see the lines
+
+1284
+00:56:17,080 --> 00:56:20,430
+that move from point A
+to point B each step.
+
+1285
+00:56:21,200 --> 00:56:23,150
+But that's not
+really interesting
+
+1286
+00:56:23,150 --> 00:56:24,810
+and it's particularly not
+
+1287
+00:56:24,810 --> 00:56:26,650
+interesting to the
+HMTX community.
+
+1288
+00:56:27,370 --> 00:56:28,530
+So the thing
+that I've been
+
+1289
+00:56:28,530 --> 00:56:31,730
+working on is
+integrating the ECS
+
+1290
+00:56:31,730 --> 00:56:35,150
+processors with
+an OpenAI client.
+
+1291
+00:56:35,400 --> 00:56:39,990
+And this gets into
+key bottlenecks
+
+1292
+00:56:39,990 --> 00:56:43,330
+in like batch inference,
+
+1293
+00:56:44,150 --> 00:56:46,030
+trying to test different
+
+1294
+00:56:46,030 --> 00:56:47,290
+concurrency models.
+
+1295
+00:56:47,330 --> 00:56:49,430
+As of right now,
+Archetype supports
+
+1296
+00:56:49,430 --> 00:56:51,870
+running multiple
+worlds in parallel.
+
+1297
+00:56:52,250 --> 00:56:57,090
+And so there's a
+couple add-on modules
+
+1298
+00:56:57,090 --> 00:56:58,830
+that are going to
+take that from just
+
+1299
+00:56:58,830 --> 00:57:00,100
+being able to run
+this locally on your
+
+1300
+00:57:00,100 --> 00:57:02,670
+laptop to being able
+to run this on Array.
+
+1301
+00:57:02,750 --> 00:57:06,130
+And then the goal
+there is this is
+
+1302
+00:57:06,130 --> 00:57:08,030
+effectively, as much
+compute as you can
+
+1303
+00:57:08,030 --> 00:57:10,290
+throw at this, you
+can generate more and
+
+1304
+00:57:10,290 --> 00:57:12,350
+more worlds, more
+and more simulations,
+
+1305
+00:57:12,650 --> 00:57:13,890
+more and more entities.
+
+1306
+00:57:14,240 --> 00:57:16,370
+And this automates
+a lot of the data
+
+1307
+00:57:16,370 --> 00:57:18,730
+engineering and
+state management
+
+1308
+00:57:18,730 --> 00:57:20,710
+for these large
+-scale simulations.
+
+1309
+00:57:21,030 --> 00:57:25,070
+So the thing that's
+not working right
+
+1310
+00:57:25,070 --> 00:57:29,030
+now is this experiment
+that I'd like to
+
+1311
+00:57:29,030 --> 00:57:33,180
+run. And I think it
+captures the overall
+
+1312
+00:57:33,910 --> 00:57:36,470
+orchestration that
+I think maybe a
+
+1313
+00:57:36,470 --> 00:57:38,030
+lot of us use when
+we're chatting with
+
+1314
+00:57:38,030 --> 00:57:40,570
+OpenAI or any of
+these LLMs where we
+
+1315
+00:57:40,570 --> 00:57:42,750
+like to explore
+different perspectives,
+
+1316
+00:57:43,010 --> 00:57:45,290
+just evaluate a bunch
+of different options.
+
+1317
+00:57:45,290 --> 00:57:47,660
+And this is kind of
+your classic ensembling
+
+1318
+00:57:48,190 --> 00:57:49,590
+use case.
+
+1319
+00:57:49,890 --> 00:57:54,070
+I've got a worker
+and a judge, and then
+
+1320
+00:57:54,070 --> 00:57:57,590
+the worker can go and
+generate a bunch of
+
+1321
+00:57:57,590 --> 00:57:59,790
+answers, and then
+the judge will go and
+
+1322
+00:57:59,790 --> 00:58:03,810
+evaluate those answers.
+And so then the thing
+
+1323
+00:58:03,810 --> 00:58:06,010
+that I was going to
+present to you guys
+
+1324
+00:58:06,010 --> 00:58:15,570
+today was that this
+nested semifore-based
+
+1325
+00:58:15,570 --> 00:58:19,510
+concurrency model
+for this processor is
+
+1326
+00:58:19,510 --> 00:58:21,890
+not optimal. And so I
+was going to actually
+
+1327
+00:58:21,890 --> 00:58:25,790
+use my own simulation
+to come up with new
+
+1328
+00:58:25,790 --> 00:58:30,750
+concurrency processing
+mechanisms. You're
+
+1329
+00:58:30,750 --> 00:58:32,730
+a super intelligent
+AI, You'll be asked
+
+1330
+00:58:32,730 --> 00:58:34,690
+to provide a code
+snippet that implements
+
+1331
+00:58:34,690 --> 00:58:37,590
+the prompt. The prompt
+is, hey, I've got
+
+1332
+00:58:37,590 --> 00:58:40,370
+this processor. It's
+really freaking slow.
+
+1333
+00:58:40,930 --> 00:58:43,930
+Make it faster,
+you know, and
+
+1334
+00:58:43,930 --> 00:58:45,410
+then it's instrumented
+with that.
+
+1335
+00:58:45,410 --> 00:58:50,190
+So the simulation
+scripting semantics of
+
+1336
+00:58:50,190 --> 00:58:52,410
+this are actually
+still a little bit in
+
+1337
+00:58:52,410 --> 00:58:56,250
+flux. But the long
+-term goal is that we're
+
+1338
+00:58:56,250 --> 00:58:58,530
+operating with, you
+know, millions of
+
+1339
+00:58:58,530 --> 00:59:02,850
+entities in parallel.
+and that they can work.
+
+1340
+00:59:03,410 --> 00:59:08,130
+And the entire
+backend is built with
+
+1341
+00:59:08,130 --> 00:59:10,110
+big data like
+OpenTable technologies.
+
+1342
+00:59:10,110 --> 00:59:12,010
+So reading and writing
+
+1343
+00:59:12,010 --> 00:59:14,050
+from storage is cheap
+
+1344
+00:59:14,690 --> 00:59:17,890
+and has like
+minimal overhead. So
+
+1345
+00:59:17,890 --> 00:59:20,430
+zero copy reads
+and writes if
+
+1346
+00:59:20,430 --> 00:59:22,330
+you're a big data
+nerd like I am.
+
+1347
+00:59:22,330 --> 00:59:23,110
+All right.
+
+1348
+00:59:23,110 --> 00:59:25,550
+So we're almost
+at time in the
+
+1349
+00:59:25,550 --> 00:59:27,750
+first hour, but
+it's just quickly,
+
+1350
+00:59:27,750 --> 00:59:28,990
+what are the practical
+applications?
+
+1351
+00:59:28,990 --> 00:59:30,770
+Like, where
+would I use this?
+
+1352
+00:59:30,910 --> 00:59:35,550
+Yeah, so for Archetype,
+this is effectively
+
+1353
+00:59:35,550 --> 00:59:38,190
+going to give your AI
+agents superpowers.
+
+1354
+00:59:38,810 --> 00:59:41,810
+You have some sort of,
+if you've got a system
+
+1355
+00:59:41,810 --> 00:59:44,390
+like Cloud Code or,
+you know, Cloud Flow,
+
+1356
+00:59:44,710 --> 00:59:47,090
+instead of the agents
+being concerned
+
+1357
+00:59:47,090 --> 00:59:49,190
+with, like, going
+and generating
+
+1358
+00:59:49,190 --> 00:59:53,030
+all these simulations
+and, like,
+
+1359
+00:59:53,030 --> 00:59:56,050
+running it itself,
+it is effectively
+
+1360
+00:59:56,050 --> 00:59:57,990
+simply operating
+as an orchestrator.
+
+1361
+00:59:58,790 --> 01:00:01,290
+And what this ends
+up looking like,
+
+1362
+01:00:01,290 --> 01:00:02,930
+particularly for
+code generation,
+
+1363
+01:00:03,060 --> 01:00:04,970
+is that you can begin to
+
+1364
+01:00:04,970 --> 01:00:10,630
+declaratively define
+your evaluations,
+
+1365
+01:00:10,770 --> 01:00:15,210
+your benchmarks,
+your code generation.
+
+1366
+01:00:15,550 --> 01:00:17,950
+And it means that you
+don't have to compromise
+
+1367
+01:00:18,370 --> 01:00:22,110
+on like or stick
+to just one answer.
+
+1368
+01:00:22,150 --> 01:00:24,590
+You're going to go
+and explore the entire
+
+1369
+01:00:24,590 --> 01:00:28,010
+solution space. So it's
+great for exploring
+
+1370
+01:00:28,190 --> 01:00:30,890
+open-ended questions,
+scientific discovery,
+
+1371
+01:00:31,510 --> 01:00:34,090
+financial
+modeling, anything
+
+1372
+01:00:34,090 --> 01:00:35,220
+that you want
+to run at scale.
+
+1373
+01:00:35,350 --> 01:00:38,790
+Cool. So is there
+an MCP interface for
+
+1374
+01:00:38,790 --> 01:00:41,230
+it? Can I just add
+it to Cloud Code?
+
+1375
+01:00:41,330 --> 01:00:42,910
+That would be,
+
+1376
+01:00:43,700 --> 01:00:46,230
+it's in the roadmap.
+It's in the roadmap.
+
+1377
+01:00:46,840 --> 01:00:48,500
+You'll have it in,
+what, 10 minutes?
+
+1378
+01:00:48,540 --> 01:00:50,490
+MCPs are so easy
+to play, right?
+
+1379
+01:00:50,490 --> 01:00:52,050
+Yeah, that's,
+
+1380
+01:00:52,230 --> 01:00:55,850
+you know, swarm it up.
+i i expect to see it
+
+1381
+01:00:55,850 --> 01:00:59,170
+by by the end of the
+hour okay okay it's
+
+1382
+01:00:59,170 --> 01:01:01,730
+actually like i'm not
+even kidding mcps are
+
+1383
+01:01:01,730 --> 01:01:05,170
+super thing and anything
+that can have an
+
+1384
+01:01:05,170 --> 01:01:07,570
+interface like whether
+it's a cli should have
+
+1385
+01:01:07,570 --> 01:01:10,610
+an mcp interface
+and the ability for
+
+1386
+01:01:10,610 --> 01:01:12,730
+everything that i'm
+building to interact with
+
+1387
+01:01:12,730 --> 01:01:14,130
+everything that i
+previously built through an
+
+1388
+01:01:14,130 --> 01:01:16,550
+mcp makes makes it all
+kind of like a lego
+
+1389
+01:01:16,550 --> 01:01:18,950
+building block sort
+of approach right so
+
+1390
+01:01:18,950 --> 01:01:22,270
+i like i like what you're
+doing um i'm excited
+
+1391
+01:01:22,270 --> 01:01:24,460
+to see so it's like
+a world model system
+
+1392
+01:01:24,460 --> 01:01:26,310
+simulation. It's,
+it's, it's pretty cool.
+
+1393
+01:01:27,970 --> 01:01:29,810
+All right. This is,
+this is the open
+
+1394
+01:01:29,810 --> 01:01:31,720
+part of the show
+guys. And Everett
+
+1395
+01:01:31,720 --> 01:01:33,090
+really appreciate
+you taking the time
+
+1396
+01:01:33,090 --> 01:01:34,890
+before, before we
+go any, where can
+
+1397
+01:01:34,890 --> 01:01:36,130
+people follow you
+learn about what
+
+1398
+01:01:36,130 --> 01:01:38,390
+you're doing, social
+company, whatever.
+
+1399
+01:01:38,950 --> 01:01:40,670
+Yeah. You can
+follow me on,
+
+1400
+01:01:40,670 --> 01:01:42,390
+on Twitter, on LinkedIn.
+
+1401
+01:01:43,810 --> 01:01:45,650
+Definitely. Those are
+the places where I'm
+
+1402
+01:01:45,650 --> 01:01:47,270
+posting the most
+content. I've also got a
+
+1403
+01:01:47,270 --> 01:01:49,270
+YouTube channel and
+I'm adding more videos,
+
+1404
+01:01:49,290 --> 01:01:51,370
+updating folks on
+my progress here.
+
+1405
+01:01:51,970 --> 01:01:55,770
+Awesome. And share, if
+anyone wants to connect,
+
+1406
+01:01:55,770 --> 01:01:58,490
+share your LinkedIn
+in the text area and
+
+1407
+01:01:58,490 --> 01:02:01,110
+we can all connect.
+And you notice that a
+
+1408
+01:02:01,110 --> 01:02:03,270
+lot of us have our
+little infinity logos
+
+1409
+01:02:03,270 --> 01:02:06,590
+because we're of the
+foundation, the Agentex
+
+1410
+01:02:06,590 --> 01:02:08,430
+Foundation, which we're
+trying to spread globally.
+
+1411
+01:02:08,430 --> 01:02:11,210
+We've got, what, 60
+cities where we have
+
+1412
+01:02:11,210 --> 01:02:12,750
+ambassadors and things
+happening all over
+
+1413
+01:02:12,750 --> 01:02:15,730
+the globe. So hopefully
+if you can't meet
+
+1414
+01:02:15,730 --> 01:02:17,830
+online, you can meet in
+person or vice versa.
+
+1415
+01:02:18,430 --> 01:02:20,270
+But this is the
+point of this is
+
+1416
+01:02:20,270 --> 01:02:22,090
+the open part of
+the show, meaning
+
+1417
+01:02:22,090 --> 01:02:24,150
+that's the open mic.
+So if anyone has
+
+1418
+01:02:24,150 --> 01:02:25,950
+something you want
+to share, say,
+
+1419
+01:02:26,190 --> 01:02:28,190
+whatever, this
+is your chance.
+
+1420
+01:02:28,190 --> 01:02:30,090
+We got Dennis.
+
+1421
+01:02:30,490 --> 01:02:31,450
+Take it away.
+
+1422
+01:02:32,670 --> 01:02:35,310
+Hey, I need to leave
+in a second going for
+
+1423
+01:02:35,310 --> 01:02:38,750
+dinner with the family.
+So but I just want
+
+1424
+01:02:38,750 --> 01:02:40,190
+to follow some of the
+stuff that Alice that
+
+1425
+01:02:40,190 --> 01:02:42,550
+we're talking about.
+And I have to say that
+
+1426
+01:02:42,550 --> 01:02:44,730
+I also share a little
+bit of optimism. I
+
+1427
+01:02:44,730 --> 01:02:47,250
+think we can make this
+work for the best. I
+
+1428
+01:02:47,250 --> 01:02:49,890
+do think that Europe
+needs to play a big part
+
+1429
+01:02:49,890 --> 01:02:51,550
+in Canada, actually,
+because I think we
+
+1430
+01:02:51,550 --> 01:02:53,970
+are a lot more aligned
+where we need to go.
+
+1431
+01:02:54,090 --> 01:02:56,910
+The thing I want just
+to comment is that I
+
+1432
+01:02:56,910 --> 01:02:59,530
+feel if you follow
+this sort of swarm and
+
+1433
+01:02:59,530 --> 01:03:01,010
+in a way, you know,
+Ruvn is doing some
+
+1434
+01:03:01,010 --> 01:03:02,670
+ridiculous, crazy
+stuff, right? But if you
+
+1435
+01:03:02,670 --> 01:03:04,150
+follow this idea that
+what we're going to be
+
+1436
+01:03:04,150 --> 01:03:05,890
+doing is empowering
+a lot more of the
+
+1437
+01:03:05,890 --> 01:03:08,970
+smaller entity, I think
+we will see a lot more
+
+1438
+01:03:08,970 --> 01:03:12,050
+distribution, right,
+of that power and not
+
+1439
+01:03:12,050 --> 01:03:14,470
+that centralized top
+-down model. And one
+
+1440
+01:03:14,470 --> 01:03:16,610
+of the things that I
+remember saying that
+
+1441
+01:03:16,610 --> 01:03:18,190
+people thought I was
+absolutely crazy when
+
+1442
+01:03:18,190 --> 01:03:20,210
+I was in the corporate
+world is I used to
+
+1443
+01:03:20,210 --> 01:03:22,910
+say that every dev
+team, every team in the
+
+1444
+01:03:22,910 --> 01:03:25,080
+building, every part
+of the organization
+
+1445
+01:03:25,080 --> 01:03:27,700
+needs to have a
+developer, an engineering
+
+1446
+01:03:27,700 --> 01:03:29,530
+function, right? By
+the way, I used to do
+
+1447
+01:03:29,530 --> 01:03:31,270
+that in security. In my
+teams, I used to build
+
+1448
+01:03:31,270 --> 01:03:33,270
+engineering teams
+inside cybersecurity.
+
+1449
+01:03:33,290 --> 01:03:36,480
+And I think what we're
+going to see is that
+
+1450
+01:03:36,480 --> 01:03:39,010
+I think, yes, there's
+a place for the crazy
+
+1451
+01:03:39,010 --> 01:03:40,770
+stuff that Ruvn is
+doing. But I think
+
+1452
+01:03:40,770 --> 01:03:43,390
+in a more realistic
+world, we're going to
+
+1453
+01:03:43,390 --> 01:03:46,400
+start seeing a lot of
+development, engineering
+
+1454
+01:03:46,400 --> 01:03:49,350
+and experience being
+hired by every single
+
+1455
+01:03:49,350 --> 01:03:51,370
+function in the
+business. Because every
+
+1456
+01:03:51,370 --> 01:03:54,090
+function in the business,
+and yes, some will
+
+1457
+01:03:54,090 --> 01:03:55,590
+be made redundant,
+but I think others
+
+1458
+01:03:55,590 --> 01:03:57,210
+will actually be able
+to execute a lot better.
+
+1459
+01:03:57,210 --> 01:03:59,570
+So I think the dev
+world is going to move
+
+1460
+01:03:59,570 --> 01:04:02,560
+to that sort of packaging
+and productizing
+
+1461
+01:04:02,560 --> 01:04:04,090
+and everything in my
+world is a worldly
+
+1462
+01:04:04,090 --> 01:04:06,670
+map where you basically
+have a lot of Genesis
+
+1463
+01:04:06,670 --> 01:04:08,290
+stuff and then you
+need to bring the devs
+
+1464
+01:04:08,290 --> 01:04:10,710
+or the engineers and
+the architects to
+
+1465
+01:04:10,710 --> 01:04:12,890
+actually glue things
+together and to make it
+
+1466
+01:04:12,890 --> 01:04:15,650
+work, you know, like
+the other guy that was
+
+1467
+01:04:15,650 --> 01:04:17,330
+presenting that
+making something work
+
+1468
+01:04:17,330 --> 01:04:19,490
+reliable at enterprise
+level is very difficult.
+
+1469
+01:04:19,490 --> 01:04:21,890
+So I think there's a
+huge opportunity to
+
+1470
+01:04:21,890 --> 01:04:24,270
+actually bring a lot of
+engineering excellence
+
+1471
+01:04:24,270 --> 01:04:25,990
+and a lot of practices
+that in the past
+
+1472
+01:04:25,990 --> 01:04:29,210
+never scaled into a
+lot of these other
+
+1473
+01:04:29,210 --> 01:04:32,170
+business functions that
+didn't exist before.
+
+1474
+01:04:32,290 --> 01:04:35,210
+I get it. And I get
+a lot of pushback
+
+1475
+01:04:35,210 --> 01:04:36,630
+on the crazy
+things I've built.
+
+1476
+01:04:36,750 --> 01:04:39,130
+I'm building these
+things not because
+
+1477
+01:04:39,130 --> 01:04:41,750
+they're necessarily
+impractical. I'm building
+
+1478
+01:04:41,750 --> 01:04:44,250
+them just because I
+can. Right. And if
+
+1479
+01:04:44,250 --> 01:04:45,730
+there's no practical
+application, that's
+
+1480
+01:04:45,730 --> 01:04:49,070
+almost secondary for me,
+for all the pushback.
+
+1481
+01:04:49,070 --> 01:04:50,990
+I mean, oh, why
+would anyone actually
+
+1482
+01:04:50,990 --> 01:04:52,630
+want to use that thing?
+Well, I don't know.
+
+1483
+01:04:52,630 --> 01:04:53,970
+It doesn't even
+matter, really.
+
+1484
+01:04:54,070 --> 01:04:57,610
+But I appreciate
+the insights. Oh,
+
+1485
+01:04:57,610 --> 01:04:59,850
+and we've got
+Chris, our friendly
+
+1486
+01:04:59,850 --> 01:05:01,330
+neighborhood
+vibe coder. What
+
+1487
+01:05:01,330 --> 01:05:03,390
+crazy things are
+you building today?
+
+1488
+01:05:04,270 --> 01:05:07,270
+Well, I was messing
+around with that cognitive
+
+1489
+01:05:07,270 --> 01:05:09,270
+triangulation architecture
+with the agents,
+
+1490
+01:05:09,270 --> 01:05:11,010
+with having them
+analyze different
+
+1491
+01:05:11,010 --> 01:05:13,370
+viewpoints. And
+that's been really
+cool. But recently
+
+1492
+01:05:13,490 --> 01:05:18,510
+I've put out Fairmine
+and you can go to
+
+1493
+01:05:18,510 --> 01:05:20,770
+fairmine.ai and you
+can get access to it.
+
+1494
+01:05:20,770 --> 01:05:22,790
+It's essentially an
+agentic dev team follows
+
+1495
+01:05:22,790 --> 01:05:26,870
+your Spark architecture
+roof. And the dev
+
+1496
+01:05:26,870 --> 01:05:28,750
+team basically walks
+through the whole process
+
+1497
+01:05:28,750 --> 01:05:31,310
+and it has, you know,
+a shared memory system.
+
+1498
+01:05:31,310 --> 01:05:33,270
+And not only does
+it just build things
+
+1499
+01:05:33,270 --> 01:05:35,290
+from scratch, but it
+works with you. It moves
+
+1500
+01:05:35,290 --> 01:05:37,150
+with you. Like when you
+want to make adjustments
+
+1501
+01:05:37,150 --> 01:05:38,950
+or improvements to
+the program, you
+
+1502
+01:05:38,950 --> 01:05:41,290
+know, it manages the whole
+thing. and it's super
+
+1503
+01:05:41,290 --> 01:05:43,250
+cool and if you'd
+like to try it out it
+
+1504
+01:05:43,250 --> 01:05:45,470
+works with you know
+claude max you can use
+
+1505
+01:05:45,470 --> 01:05:47,940
+claude flow with it you
+know it's model agnostic
+
+1506
+01:05:48,080 --> 01:05:49,950
+um so if you want to
+check that out you
+
+1507
+01:05:49,950 --> 01:05:51,830
+can go to fairmind.ai
+and check that out as
+
+1508
+01:05:51,830 --> 01:05:55,490
+well the link in the
+channel yeah absolutely
+
+1509
+01:05:56,040 --> 01:06:00,550
+oh there's cool i i
+love this stuff you're
+
+1510
+01:06:00,550 --> 01:06:02,710
+you're cooking up chris
+you've always got some
+
+1511
+01:06:02,710 --> 01:06:05,730
+something that that's
+making me you know
+
+1512
+01:06:05,730 --> 01:06:08,250
+ponder what i should
+build these events like
+
+1513
+01:06:08,250 --> 01:06:10,530
+the reason i create so
+much stuff on monday
+
+1514
+01:06:10,530 --> 01:06:13,270
+and is because of
+this right every every
+
+1515
+01:06:13,270 --> 01:06:16,490
+friday i get way too
+many ideas and then i you
+
+1516
+01:06:16,490 --> 01:06:18,230
+know the swarm builds
+it all weekend and i've
+
+1517
+01:06:18,230 --> 01:06:20,290
+got something to show
+and i think uh chris
+
+1518
+01:06:20,290 --> 01:06:23,950
+is a big part of of
+that um i'm you know
+
+1519
+01:06:23,950 --> 01:06:26,910
+again we're open here
+to any discussions uh
+
+1520
+01:06:26,910 --> 01:06:29,490
+we've we've got alistair
+who's one of the best
+
+1521
+01:06:29,490 --> 01:06:32,750
+thinkers i i think
+i've ever met on so you
+
+1522
+01:06:32,750 --> 01:06:34,450
+know alistair how's what
+what are you thinking
+
+1523
+01:06:34,450 --> 01:06:36,670
+about our show by
+the way are we crazy
+
+1524
+01:06:36,670 --> 01:06:41,030
+or what uh there's an
+old adage that most
+
+1525
+01:06:41,030 --> 01:06:43,850
+technologies start out
+as toys when the car was
+
+1526
+01:06:43,850 --> 01:06:46,010
+first invented it was
+for rich dilettantes
+
+1527
+01:06:46,210 --> 01:06:48,440
+and once some
+little kid hand
+
+1528
+01:06:48,440 --> 01:06:49,590
+cranked the front
+of it he had to
+
+1529
+01:06:49,590 --> 01:06:51,400
+walk in front of
+you with a flag
+
+1530
+01:06:51,760 --> 01:06:53,770
+it was a toy no one
+ever thought it was
+
+1531
+01:06:53,770 --> 01:06:56,430
+going to change the
+world if you want to get
+
+1532
+01:06:56,430 --> 01:07:00,270
+inside the OODA loop
+of any technology, you
+
+1533
+01:07:00,270 --> 01:07:03,530
+need to play with it
+before its purpose is
+
+1534
+01:07:03,530 --> 01:07:06,550
+obvious. Uh, not just
+because that gives
+
+1535
+01:07:06,550 --> 01:07:09,310
+you fluency in it,
+but because you find
+
+1536
+01:07:09,310 --> 01:07:12,230
+these weird use cases,
+the problems of today
+
+1537
+01:07:12,230 --> 01:07:14,040
+can never be solved
+with the systems that,
+
+1538
+01:07:14,040 --> 01:07:17,210
+uh, created them. And
+so I think the, the,
+
+1539
+01:07:17,650 --> 01:07:21,130
+I think play is
+underrated, underrated. And
+
+1540
+01:07:21,130 --> 01:07:22,950
+Ruv, I think I've always
+known you to be the
+
+1541
+01:07:22,950 --> 01:07:25,990
+guy who likes to play
+um i think you you
+
+1542
+01:07:25,990 --> 01:07:28,330
+you may want to talk
+to someone about it
+
+1543
+01:07:28,330 --> 01:07:30,130
+because you kind of have
+a compulsion man like
+
+1544
+01:07:30,130 --> 01:07:32,830
+like you may want to you
+know you're compelled
+
+1545
+01:07:32,830 --> 01:07:34,650
+to play with technology
+whether that's
+
+1546
+01:07:34,650 --> 01:07:38,660
+like cloud containers
+or or the latest agents
+
+1547
+01:07:38,660 --> 01:07:42,050
+but i think what's
+interesting is tolerance
+
+1548
+01:07:42,050 --> 01:07:46,610
+for play at technology
+inflection points is
+
+1549
+01:07:46,610 --> 01:07:50,150
+um what is necessary
+and just the fact that
+
+1550
+01:07:50,150 --> 01:07:51,290
+you got you know you're
+building things with
+
+1551
+01:07:51,290 --> 01:07:53,410
+your kids too uh so i
+think it's important
+
+1552
+01:07:53,410 --> 01:07:55,670
+just to remember cars
+started out as toys
+
+1553
+01:07:55,670 --> 01:07:58,350
+for the rich and the
+sooner we play with
+
+1554
+01:07:58,350 --> 01:08:00,030
+things the sooner we
+figure out what they're
+
+1555
+01:08:00,030 --> 01:08:02,910
+for but alistan you
+mentioned the loop right
+
+1556
+01:08:02,910 --> 01:08:06,770
+so you know about worldly
+maps right uh yeah
+
+1557
+01:08:06,770 --> 01:08:09,010
+simon and i are buddies
+although when he
+
+1558
+01:08:09,010 --> 01:08:10,790
+does the worldly maps
+in the room i'm like
+
+1559
+01:08:10,790 --> 01:08:12,510
+that's obvious and then
+he leaves and i'm like
+
+1560
+01:08:12,510 --> 01:08:15,390
+what it i can never
+sustain it it's like a
+
+1561
+01:08:15,390 --> 01:08:17,510
+reality distortion
+field but yes i like
+
+1562
+01:08:17,510 --> 01:08:20,050
+simon's way of looking
+at the world so so reuben
+
+1563
+01:08:20,050 --> 01:08:21,570
+and i think i just
+hear now i call it i
+
+1564
+01:08:21,570 --> 01:08:25,610
+think he's the typical
+explorer right so you
+
+1565
+01:08:25,610 --> 01:08:28,070
+try things out you go
+out there you create
+
+1566
+01:08:28,070 --> 01:08:30,690
+things you fail and
+success is almost measured
+
+1567
+01:08:30,690 --> 01:08:32,580
+not by he works all
+the time but did you
+
+1568
+01:08:32,580 --> 01:08:34,710
+did you move the needle
+and then you feed on
+
+1569
+01:08:34,710 --> 01:08:37,090
+each other right and
+that's that's key part
+
+1570
+01:08:37,090 --> 01:08:38,530
+of it that's a key
+part evolution and then
+
+1571
+01:08:38,530 --> 01:08:40,470
+you need the villagers
+who take that and
+
+1572
+01:08:40,470 --> 01:08:43,150
+start to sort of make
+it work repeatable so
+
+1573
+01:08:43,150 --> 01:08:45,070
+it's sort of like it's
+usable by others and
+
+1574
+01:08:45,070 --> 01:08:46,670
+then eventually becomes
+a commodity and that's
+
+1575
+01:08:46,670 --> 01:08:48,830
+when you've got the
+town plans yeah right
+
+1576
+01:08:48,890 --> 01:08:51,910
+it's i just like to
+experiment and push the
+
+1577
+01:08:51,910 --> 01:08:54,230
+boundaries of where
+i'm and what's possible
+
+1578
+01:08:54,230 --> 01:08:56,770
+just because i don't
+you know is there a
+
+1579
+01:08:56,770 --> 01:08:59,310
+reason beyond just
+creating because you can is
+
+1580
+01:08:59,310 --> 01:09:00,740
+that and that's a good
+enough reason i think
+
+1581
+01:09:00,740 --> 01:09:03,150
+for most of the things
+i create you know
+
+1582
+01:09:03,150 --> 01:09:05,870
+and and keep in mind
+i'm doing that in in the
+
+1583
+01:09:05,870 --> 01:09:08,030
+midst of my actual
+job as a consultant so
+
+1584
+01:09:08,030 --> 01:09:09,630
+i'm actually you guys
+don't even see all the
+
+1585
+01:09:09,630 --> 01:09:11,050
+crazy stuff i'm
+building for like people
+
+1586
+01:09:11,050 --> 01:09:12,690
+actually pay me you're
+just seeing the stuff
+
+1587
+01:09:12,690 --> 01:09:16,870
+i'm doing in adjacent
+to that who else we got
+
+1588
+01:09:16,870 --> 01:09:21,440
+here um i'd just like
+to just add it um uh
+
+1589
+01:09:21,440 --> 01:09:24,610
+an aspect there when
+alistair's talking
+
+1590
+01:09:24,610 --> 01:09:30,290
+about you know um the
+myriad of of solutions i
+
+1591
+01:09:30,290 --> 01:09:32,130
+can't remember the
+name of the uh of the
+
+1592
+01:09:32,130 --> 01:09:34,390
+paradox when the price
+of a commodity comes
+
+1593
+01:09:34,390 --> 01:09:38,430
+down its usage that
+picks up right jevin's
+
+1594
+01:09:38,430 --> 01:09:42,070
+paradox jevin's paradox
+right okay so as code
+
+1595
+01:09:42,070 --> 01:09:46,670
+begins to move towards
+zero plus energy uh
+
+1596
+01:09:46,670 --> 01:09:52,110
+gets faster gets cheaper
+um the i know this
+
+1597
+01:09:52,110 --> 01:09:57,050
+sort of uh i understand
+it as um the uncovering
+
+1598
+01:09:57,050 --> 01:09:58,910
+or removing of market
+efficiencies as a
+
+1599
+01:09:58,910 --> 01:10:03,150
+as a type of triage
+where more and more firms
+
+1600
+01:10:03,150 --> 01:10:07,290
+can more quickly become
+aware of more things
+
+1601
+01:10:07,290 --> 01:10:10,010
+and even on the
+procurement side supply
+
+1602
+01:10:10,010 --> 01:10:12,090
+lines and all those
+kinds of things well
+
+1603
+01:10:12,210 --> 01:10:15,810
+there's a weird tension
+there if you live in a
+
+1604
+01:10:15,810 --> 01:10:18,500
+world where everybody
+uses salesforce it's
+
+1605
+01:10:18,650 --> 01:10:22,070
+imperfect but salesforce
+is doing its debugging
+
+1606
+01:10:22,070 --> 01:10:24,350
+and maintenance once
+if you move to a
+
+1607
+01:10:24,350 --> 01:10:26,310
+world where now everyone
+has their own crm that
+
+1608
+01:10:26,310 --> 01:10:28,610
+they built themselves
+now everybody's doing
+
+1609
+01:10:28,610 --> 01:10:30,310
+maintenance on all
+their own stuff so you
+
+1610
+01:10:30,310 --> 01:10:32,490
+no longer get the
+economies of scale and so
+
+1611
+01:10:32,490 --> 01:10:34,080
+there's always this
+tipping point about
+
+1612
+01:10:34,080 --> 01:10:36,410
+economies of scale versus
+the efficiency right
+
+1613
+01:10:36,410 --> 01:10:37,970
+is it more efficient
+to run the stuff to
+
+1614
+01:10:37,970 --> 01:10:41,010
+manage those so there's
+always the one lesson
+
+1615
+01:10:41,010 --> 01:10:43,290
+that i keep coming
+back to in looking at
+
+1616
+01:10:43,290 --> 01:10:47,310
+like civilization like
+at all of civilization
+
+1617
+01:10:47,450 --> 01:10:51,350
+is that civilization
+is a tension between
+
+1618
+01:10:51,350 --> 01:10:53,470
+the individual and the
+collective there are
+
+1619
+01:10:53,470 --> 01:10:55,310
+times when it makes
+sense for the rogue
+
+1620
+01:10:55,310 --> 01:10:57,530
+coder to go off and
+build their own thing for
+
+1621
+01:10:57,530 --> 01:10:59,870
+the thief to steal
+something for the individual
+
+1622
+01:10:59,870 --> 01:11:02,510
+to speak out against
+the tyrant um and
+
+1623
+01:11:02,510 --> 01:11:03,650
+then there are times
+when it makes sense
+
+1624
+01:11:03,650 --> 01:11:05,790
+for us to get together
+and buy an mri or
+
+1625
+01:11:05,790 --> 01:11:08,590
+build a road or you know
+fix the barn or what
+
+1626
+01:11:08,590 --> 01:11:11,190
+defend ourselves and
+if you have too much
+
+1627
+01:11:11,190 --> 01:11:14,310
+uh collectivism then you
+don't have innovation
+
+1628
+01:11:14,310 --> 01:11:17,150
+and you have the
+possibility for stagnation
+
+1629
+01:11:17,150 --> 01:11:19,050
+if you have too much
+individualism then
+
+1630
+01:11:19,050 --> 01:11:20,530
+you don't get the
+efficiencies that come
+
+1631
+01:11:20,530 --> 01:11:24,310
+with economies of
+scale and all societies
+
+1632
+01:11:24,310 --> 01:11:26,550
+and all political
+parties and even all
+
+1633
+01:11:26,550 --> 01:11:30,150
+relationships are an
+attempt to find, and it's
+
+1634
+01:11:30,150 --> 01:11:32,650
+always changing, the
+optimal balance between
+
+1635
+01:11:33,310 --> 01:11:35,490
+individualism and
+collectivism. And so you're
+
+1636
+01:11:35,490 --> 01:11:37,030
+going to see the rise
+of like incredibly
+
+1637
+01:11:37,030 --> 01:11:39,410
+personal individual,
+I've got my own AI stack,
+
+1638
+01:11:39,410 --> 01:11:41,790
+but then I'm burning
+so much extra energy
+
+1639
+01:11:41,790 --> 01:11:43,490
+trying to maintain
+that stack that maybe
+
+1640
+01:11:43,490 --> 01:11:45,270
+I'm okay with using
+one that's not exactly
+
+1641
+01:11:45,270 --> 01:11:47,630
+tailored to me. I think
+there's going to be a
+
+1642
+01:11:47,630 --> 01:11:49,610
+negotiation in society
+between those two
+
+1643
+01:11:49,610 --> 01:11:52,590
+things. For the Jevons
+paradox problem, It
+
+1644
+01:11:52,590 --> 01:11:54,370
+doesn't happen for
+every market. Jevons was
+
+1645
+01:11:54,370 --> 01:11:56,890
+specifically studying the
+use of coal in England
+
+1646
+01:11:56,890 --> 01:11:59,530
+in an 1890 paper called
+The Coal Question
+
+1647
+01:11:59,750 --> 01:12:01,530
+because the British
+were trying to figure
+
+1648
+01:12:01,530 --> 01:12:04,210
+out James Watt's engine
+was four times as
+
+1649
+01:12:04,210 --> 01:12:06,490
+efficient as Newcomen's
+atmospheric engine.
+
+1650
+01:12:06,570 --> 01:12:09,900
+And the British were
+like, okay, how much
+
+1651
+01:12:09,950 --> 01:12:12,370
+time do we have left?
+And the reality was
+
+1652
+01:12:12,370 --> 01:12:13,890
+that cheaper stuff
+makes people use it
+
+1653
+01:12:13,890 --> 01:12:15,910
+more. So I'll shut up
+after this one point.
+
+1654
+01:12:15,910 --> 01:12:17,990
+There's a guy I love
+to think about named
+
+1655
+01:12:17,990 --> 01:12:20,250
+Herbert Simon. He
+was a Nobel laureate,
+
+1656
+01:12:20,250 --> 01:12:23,130
+invented the economic
+term uh, satisficing,
+
+1657
+01:12:23,130 --> 01:12:25,770
+which is sort of
+sufficient optimization.
+
+1658
+01:12:26,750 --> 01:12:29,610
+And Simon, uh, is the
+guy who coined the
+
+1659
+01:12:29,610 --> 01:12:33,690
+term, the attention
+economy. Um, back in the
+
+1660
+01:12:33,690 --> 01:12:34,670
+seventies, everyone
+was talking about the
+
+1661
+01:12:34,670 --> 01:12:36,310
+information economy.
+He said, economies are
+
+1662
+01:12:36,310 --> 01:12:39,350
+driven by what's scarce.
+We have to ask to our,
+
+1663
+01:12:39,350 --> 01:12:40,750
+we have to, thank you
+very much. You can
+
+1664
+01:12:40,750 --> 01:12:42,190
+listen to me for hours
+if you're interested.
+
+1665
+01:12:42,250 --> 01:12:44,870
+Um, we have, I do, by
+the way, um, I do have
+
+1666
+01:12:44,870 --> 01:12:46,510
+a sub stack. I'll
+paste a link to it in
+
+1667
+01:12:46,510 --> 01:12:48,010
+here because I read stuff
+on it some from time
+
+1668
+01:12:48,010 --> 01:12:51,320
+to time um so herbert
+simon said look the
+
+1669
+01:12:51,320 --> 01:12:55,030
+reality is that um
+economies are driven by
+
+1670
+01:12:55,030 --> 01:12:56,990
+what's scarce and we
+have to ask ourselves
+
+1671
+01:12:56,990 --> 01:12:59,870
+what does this thing
+consume so information
+
+1672
+01:12:59,870 --> 01:13:02,350
+consumes our attention
+therefore we live in
+
+1673
+01:13:02,350 --> 01:13:04,530
+the attention economy
+and so the best lens
+
+1674
+01:13:04,530 --> 01:13:06,150
+i've found for looking
+at ai is to say what
+
+1675
+01:13:06,150 --> 01:13:08,250
+does this thing consume
+because that's what
+
+1676
+01:13:08,250 --> 01:13:11,230
+will become scarce
+and that's a very good
+
+1677
+01:13:11,230 --> 01:13:13,170
+model i like that better
+than jevin's paradox
+
+1678
+01:13:14,990 --> 01:13:19,010
+yeah those are really
+good points one thing
+
+1679
+01:13:19,010 --> 01:13:21,750
+the economy of scale
+is interesting now
+
+1680
+01:13:21,750 --> 01:13:24,970
+when i can let's assume
+this evolves quite a
+
+1681
+01:13:24,970 --> 01:13:27,010
+bit further than we
+are today and we're on
+
+1682
+01:13:27,010 --> 01:13:29,790
+the cusp of what we
+want to call it agi asi
+
+1683
+01:13:29,890 --> 01:13:32,270
+i i have the ability
+to create anything
+
+1684
+01:13:32,270 --> 01:13:34,370
+that pops in my mind
+right by just you know
+
+1685
+01:13:34,370 --> 01:13:37,470
+thinking when when we
+get to a point where
+
+1686
+01:13:37,470 --> 01:13:40,550
+there's you know it's
+their fidelity means
+
+1687
+01:13:40,550 --> 01:13:44,070
+that there's no
+exploitation, the bugs are
+
+1688
+01:13:44,070 --> 01:13:46,730
+limited, and I can
+create things that are as
+
+1689
+01:13:46,730 --> 01:13:49,730
+capable as any commercial
+-grade software,
+
+1690
+01:13:49,730 --> 01:13:51,890
+you know, instantly,
+which we're probably
+
+1691
+01:13:51,890 --> 01:13:54,830
+not that far from,
+maybe a few years away,
+
+1692
+01:13:54,830 --> 01:13:57,030
+probably at the most.
+You know, what does that
+
+1693
+01:13:57,030 --> 01:13:58,830
+say to economies of
+scale? I don't need
+
+1694
+01:13:58,830 --> 01:14:01,230
+the 10,000 Google
+developers anymore, do I?
+
+1695
+01:14:02,790 --> 01:14:05,210
+Right? And that's their
+competitive advantage.
+
+1696
+01:14:05,210 --> 01:14:07,690
+They've got the ability
+to spend $2 billion
+
+1697
+01:14:07,690 --> 01:14:10,810
+or $20 billion on their
+their ai infrastructure
+
+1698
+01:14:10,810 --> 01:14:12,850
+yet i can compete
+with any of the
+
+1699
+01:14:12,850 --> 01:14:16,030
+largest companies using
+the cheapest low-end
+
+1700
+01:14:16,030 --> 01:14:20,010
+stuff and and out and
+outbuild them by and it's
+
+1701
+01:14:20,010 --> 01:14:21,870
+pretty clearly i maybe
+it's not production
+
+1702
+01:14:21,870 --> 01:14:23,630
+ready it doesn't it
+doesn't have to be it's
+
+1703
+01:14:23,630 --> 01:14:25,730
+it's it's ready enough
+that you can take
+
+1704
+01:14:25,730 --> 01:14:27,630
+cloud code point at
+and say you know fix it
+
+1705
+01:14:27,630 --> 01:14:31,330
+up for me or change it
+right it just changes
+
+1706
+01:14:31,330 --> 01:14:33,530
+the the uh the structure
+a little bit i think
+
+1707
+01:14:33,530 --> 01:14:37,250
+yeah roof but prevents
+google like hiring
+
+1708
+01:14:37,250 --> 01:14:40,490
+like 10 000 of you
+and giving them like
+
+1709
+01:14:40,490 --> 01:14:43,650
+billion dollar of like
+token costs like and just
+
+1710
+01:14:43,650 --> 01:14:46,630
+scaling here let's
+look let's take let's
+
+1711
+01:14:46,630 --> 01:14:48,570
+take a quick look at the
+poly market just just
+
+1712
+01:14:48,570 --> 01:14:52,050
+as a 10 000 versions
+of me approach so while
+
+1713
+01:14:52,050 --> 01:14:54,190
+while we were talking
+it built the poly
+
+1714
+01:14:54,190 --> 01:14:57,250
+market component and i
+just ran sec on it you
+
+1715
+01:14:57,250 --> 01:15:01,190
+know the our favorite
+uh code analysis tool
+
+1716
+01:15:01,320 --> 01:15:03,290
+and let's just go down
+to the bottom here
+
+1717
+01:15:03,290 --> 01:15:05,910
+and it and in the last
+what it was basically
+
+1718
+01:15:05,910 --> 01:15:10,370
+an hour it it's uh it's
+generated 24 000 lines
+
+1719
+01:15:10,370 --> 01:15:14,290
+of code uh 17 000 of
+which were python uh
+
+1720
+01:15:14,290 --> 01:15:16,530
+it estimates this is
+totally a bs number
+
+1721
+01:15:16,530 --> 01:15:18,670
+and this is to this
+is to alistair's point
+
+1722
+01:15:18,670 --> 01:15:21,450
+about sort of the value
+and the more and and
+
+1723
+01:15:21,450 --> 01:15:23,230
+rob's point about the
+more you create the less
+
+1724
+01:15:23,230 --> 01:15:25,870
+it's worth possibly
+but anyway it's saying
+
+1725
+01:15:25,870 --> 01:15:27,770
+it's worth a half a
+million bucks 11 months
+
+1726
+01:15:27,770 --> 01:15:30,410
+of effort and four and
+a half developers you
+
+1727
+01:15:30,410 --> 01:15:33,630
+know and and literally
+i just you guys gave
+
+1728
+01:15:33,630 --> 01:15:35,550
+me an idea to build
+it and it's it's not
+
+1729
+01:15:35,550 --> 01:15:37,830
+quite done i don't think
+yeah it's still doing
+
+1730
+01:15:37,830 --> 01:15:39,910
+the last sort of you
+know testing phase but
+
+1731
+01:15:39,910 --> 01:15:41,550
+it's pretty much there
+i'll have this ready
+
+1732
+01:15:41,550 --> 01:15:43,050
+to go here probably
+in the next 20 minutes
+
+1733
+01:15:43,050 --> 01:15:47,310
+and it was just this
+is a this thing alone
+
+1734
+01:15:47,370 --> 01:15:50,330
+you know would have
+been a year's worth of
+
+1735
+01:15:50,330 --> 01:15:53,770
+work for a team of five
+people a month and a
+
+1736
+01:15:53,770 --> 01:15:56,690
+half ago right that's
+how fast things are
+
+1737
+01:15:56,690 --> 01:15:59,470
+going we're in this kind
+of exponential curve
+
+1738
+01:15:59,470 --> 01:16:01,730
+of capability and it's
+really hard to see
+
+1739
+01:16:01,730 --> 01:16:03,950
+when you're in it but
+it's pretty clearly we're
+
+1740
+01:16:03,950 --> 01:16:06,630
+in some kind of massive
+transformation in
+
+1741
+01:16:06,630 --> 01:16:08,530
+the in our ability to
+to build and create
+
+1742
+01:16:08,530 --> 01:16:12,210
+things all right i'm
+gonna stop allister said
+
+1743
+01:16:12,210 --> 01:16:16,390
+earlier about that um
+it's hr's problem and
+
+1744
+01:16:16,390 --> 01:16:19,250
+it made me think about
+the future of work.
+
+1745
+01:16:19,750 --> 01:16:23,320
+And I wanted a question
+for Alistair in
+
+1746
+01:16:23,320 --> 01:16:26,350
+trying to figure out
+if, so if I'm the widget
+
+1747
+01:16:26,350 --> 01:16:28,890
+man and I make five
+widgets and I figure
+
+1748
+01:16:28,890 --> 01:16:32,910
+out how to make 10
+widgets without the
+
+1749
+01:16:32,910 --> 01:16:35,620
+same amount of work,
+wouldn't the criticality
+
+1750
+01:16:35,620 --> 01:16:40,110
+to the org be to
+educate the organization
+
+1751
+01:16:40,110 --> 01:16:44,190
+on um the value for
+that individual to
+
+1752
+01:16:44,190 --> 01:16:48,490
+the organization
+rather than looking at
+
+1753
+01:16:48,490 --> 01:16:51,650
+it from standpoint of
+that person is maybe
+
+1754
+01:16:51,650 --> 01:16:55,610
+cheating his job cheating
+his work and just
+
+1755
+01:16:55,610 --> 01:16:57,810
+re-educating or
+because it seems very
+
+1756
+01:16:57,810 --> 01:17:01,210
+much similar to the
+whole devops process and
+
+1757
+01:17:01,210 --> 01:17:04,210
+yeah if i was a ceo
+now i'd be like look
+
+1758
+01:17:04,210 --> 01:17:06,380
+anybody who can figure
+out how to efficiently
+
+1759
+01:17:06,730 --> 01:17:10,630
+replace their current
+job with an ai
+
+1760
+01:17:11,170 --> 01:17:14,810
+will get 20 of their
+current salary for
+
+1761
+01:17:14,810 --> 01:17:17,290
+the next two years
+you don't have to do
+
+1762
+01:17:17,290 --> 01:17:18,750
+that work anymore
+but if it breaks it's
+
+1763
+01:17:18,750 --> 01:17:20,470
+your job to fix it
+and so then you can go
+
+1764
+01:17:20,470 --> 01:17:22,210
+do another thing like
+that would be the
+
+1765
+01:17:22,210 --> 01:17:23,690
+best way to incentivize
+because then i
+
+1766
+01:17:23,690 --> 01:17:26,350
+can like go replace 10
+jobs and make myself
+
+1767
+01:17:26,350 --> 01:17:28,760
+an annuity right
+but i don't see
+
+1768
+01:17:28,760 --> 01:17:30,150
+companies trying to
+incentivize them like oh
+
+1769
+01:17:30,150 --> 01:17:32,050
+how dare you use that
+tool or whatever.
+
+1770
+01:17:32,170 --> 01:17:33,830
+There's a whole other
+way of thinking about
+
+1771
+01:17:33,830 --> 01:17:35,090
+it, which is like,
+I'm going to give you
+
+1772
+01:17:35,090 --> 01:17:37,850
+an annuity, a cut of
+the profits for some
+
+1773
+01:17:37,850 --> 01:17:40,570
+foreseeable window for
+replacing that job.
+
+1774
+01:17:40,770 --> 01:17:43,210
+I, I, I would, I,
+I might be a little
+
+1775
+01:17:43,210 --> 01:17:45,090
+biased because I,
+I'm the energetic
+
+1776
+01:17:45,090 --> 01:17:46,690
+engineer and probably
+one of a small
+
+1777
+01:17:46,690 --> 01:17:48,010
+group of people
+even call themselves
+
+1778
+01:17:48,010 --> 01:17:49,750
+that globally,
+but the, you know,
+
+1779
+01:17:49,750 --> 01:17:51,630
+out of my hundred
+or so customers,
+
+1780
+01:17:51,850 --> 01:17:55,150
+I think 17 or fortune
+500 companies,
+
+1781
+01:17:55,150 --> 01:17:56,050
+these are companies
+that probably
+
+1782
+01:17:56,050 --> 01:17:57,750
+north of $20
+billion in revenue.
+
+1783
+01:17:57,930 --> 01:18:01,550
+And of those, which
+is a sampling, a
+
+1784
+01:18:01,550 --> 01:18:03,290
+small sampling of a
+much larger group,
+
+1785
+01:18:03,290 --> 01:18:05,790
+mind you, they're all
+looking at ways to
+
+1786
+01:18:05,790 --> 01:18:07,370
+do exactly what,
+Alistair, you just
+
+1787
+01:18:07,370 --> 01:18:09,870
+said. They're saying,
+you know, how can
+
+1788
+01:18:09,870 --> 01:18:12,350
+we sort of augment
+our existing people?
+
+1789
+01:18:13,070 --> 01:18:15,730
+And how can we sort
+of, you know, I don't
+
+1790
+01:18:15,730 --> 01:18:17,510
+want to use the word
+replace, but I'm going
+
+1791
+01:18:17,510 --> 01:18:19,330
+to talk plainly for
+a moment. How can we
+
+1792
+01:18:19,330 --> 01:18:21,350
+replace a certain
+portion of our workforce
+
+1793
+01:18:21,350 --> 01:18:24,490
+with autonomous things
+that do to do these
+
+1794
+01:18:24,490 --> 01:18:27,290
+things better faster
+and cheaper and that
+
+1795
+01:18:27,290 --> 01:18:29,630
+part is scary to me
+it's like i don't want
+
+1796
+01:18:29,630 --> 01:18:31,430
+to be the guy coming
+in and replacing you
+
+1797
+01:18:31,430 --> 01:18:34,290
+know 15 000 people in
+an afternoon which i
+
+1798
+01:18:34,290 --> 01:18:37,510
+kind of can you know
+what happens to those 15
+
+1799
+01:18:37,510 --> 01:18:41,450
+000 people right that's
+the nose are yeah
+
+1800
+01:18:41,450 --> 01:18:44,530
+the thing that's missing
+in the conversations
+
+1801
+01:18:44,530 --> 01:18:46,750
+that i'm hearing is
+what alistair just
+
+1802
+01:18:46,750 --> 01:18:49,770
+said is the incentive
+that incentive to say
+
+1803
+01:18:49,770 --> 01:18:53,750
+how can you your job
+is five widgets if
+
+1804
+01:18:53,750 --> 01:18:56,770
+you can figure out a
+way to make 10 and with
+
+1805
+01:18:56,770 --> 01:18:59,850
+one hour versus 40
+hours then you can have
+
+1806
+01:18:59,850 --> 01:19:01,470
+the same money or
+you can go sit on the
+
+1807
+01:19:01,470 --> 01:19:04,610
+beach that part is not
+in the conversation
+
+1808
+01:19:04,610 --> 01:19:07,190
+that i'm hearing i'm
+off what i'm hearing is
+
+1809
+01:19:07,190 --> 01:19:11,170
+how can we replace the
+person with ai what
+
+1810
+01:19:11,170 --> 01:19:14,390
+you said so i'm sure
+there are a number of
+
+1811
+01:19:14,390 --> 01:19:16,210
+people here who are
+further along in their
+
+1812
+01:19:16,210 --> 01:19:18,810
+careers than i am and
+i'm curious if you
+
+1813
+01:19:18,810 --> 01:19:21,010
+get more work if you
+finish your work for
+
+1814
+01:19:21,010 --> 01:19:23,090
+the day and there's
+still time left what is
+
+1815
+01:19:23,090 --> 01:19:26,510
+the reward for me it's
+been more work yeah
+
+1816
+01:19:29,230 --> 01:19:31,710
+i just i want to
+offer a different
+
+1817
+01:19:31,710 --> 01:19:35,570
+perspective so instead
+of thinking about um
+
+1818
+01:19:35,570 --> 01:19:38,650
+jobs being replaced
+think about the problems
+
+1819
+01:19:38,650 --> 01:19:41,110
+you would solve if
+you had the time
+
+1820
+01:19:43,130 --> 01:19:45,810
+so that makes
+my point exactly
+
+1821
+01:19:45,810 --> 01:19:49,190
+yeah yeah and
+sandy i think
+
+1822
+01:19:49,190 --> 01:19:50,810
+we're looking
+there's more work
+
+1823
+01:19:52,850 --> 01:19:54,710
+right i think we are
+really looking in
+
+1824
+01:19:54,710 --> 01:19:56,830
+the territory of
+intrinsic motivation being
+
+1825
+01:19:56,830 --> 01:19:58,570
+more than a theory
+it's become a reality
+
+1826
+01:19:58,570 --> 01:20:00,850
+for me and for many
+here i think like
+
+1827
+01:20:00,850 --> 01:20:02,530
+we are not doing
+this for money right
+
+1828
+01:20:02,530 --> 01:20:04,710
+it is basically
+helping us create and
+
+1829
+01:20:04,710 --> 01:20:06,650
+solve problems and
+money therefore follows
+
+1830
+01:20:07,410 --> 01:20:09,930
+effectively um yeah
+that's how i look
+
+1831
+01:20:09,930 --> 01:20:11,890
+at but i mean this
+point about like how
+
+1832
+01:20:11,890 --> 01:20:14,450
+do you organizations
+reward people for
+
+1833
+01:20:14,450 --> 01:20:16,550
+creating this and
+create a sustainable
+
+1834
+01:20:16,550 --> 01:20:19,110
+kind of nvd that's
+a great great great
+
+1835
+01:20:19,110 --> 01:20:24,750
+thought actually
+actually yeah i was
+
+1836
+01:20:24,750 --> 01:20:26,650
+just thinking about
+this you know um
+
+1837
+01:20:27,090 --> 01:20:29,550
+and this kind of
+gets into sort of
+
+1838
+01:20:29,550 --> 01:20:31,850
+global issues but
+like you know we
+
+1839
+01:20:31,850 --> 01:20:33,470
+have all these
+things happening.
+
+1840
+01:20:33,750 --> 01:20:35,590
+You know, we have a
+lot of weather changes,
+
+1841
+01:20:35,590 --> 01:20:37,910
+we have microplastics
+in the air and
+
+1842
+01:20:37,910 --> 01:20:39,650
+the water and all
+these different things.
+
+1843
+01:20:39,830 --> 01:20:42,930
+And, you know, with
+these capabilities,
+
+1844
+01:20:42,930 --> 01:20:46,190
+you can actually
+start, you know, the
+
+1845
+01:20:46,190 --> 01:20:47,850
+conversations always
+are, how do we
+
+1846
+01:20:47,850 --> 01:20:50,550
+monetize this, right?
+And getting plastics
+
+1847
+01:20:50,550 --> 01:20:52,770
+out of water, it's
+not very lucrative.
+
+1848
+01:20:52,930 --> 01:20:55,730
+But with these capabilities,
+you can actually
+
+1849
+01:20:55,730 --> 01:20:58,350
+do this now. And
+once we apply these
+
+1850
+01:20:58,350 --> 01:21:01,530
+capabilities to robotics,
+then we can do so much
+
+1851
+01:21:01,530 --> 01:21:04,670
+more. And I think what
+we're seeing is this
+
+1852
+01:21:04,670 --> 01:21:07,650
+sort of dawning of this
+capability where we
+
+1853
+01:21:07,650 --> 01:21:11,370
+can actually, like, I
+always feel like all
+
+1854
+01:21:11,370 --> 01:21:14,230
+innovation is driven
+by the ability to see.
+
+1855
+01:21:14,630 --> 01:21:20,030
+and this technology
+gives us the capability
+
+1856
+01:21:20,030 --> 01:21:22,890
+to build tools
+to see better and
+
+1857
+01:21:22,890 --> 01:21:25,430
+to understand better
+and then once we
+
+1858
+01:21:25,430 --> 01:21:27,670
+can do that we can
+actually build things
+
+1859
+01:21:27,670 --> 01:21:29,610
+that we can't even
+imagine and I don't
+
+1860
+01:21:29,610 --> 01:21:32,190
+know I think that's
+kind of so exciting
+
+1861
+01:21:32,190 --> 01:21:35,250
+and also big fan,
+Ru, this amazing
+
+1862
+01:21:35,610 --> 01:21:38,390
+Yeah, I think
+that's awesome
+
+1863
+01:21:38,990 --> 01:21:41,810
+Sorry, I think that
+I'm detecting a theme
+
+1864
+01:21:41,810 --> 01:21:44,250
+I think we're all saying
+very similar things
+
+1865
+01:21:44,250 --> 01:21:48,870
+in a different way,
+which is that these
+
+1866
+01:21:48,870 --> 01:21:52,410
+AI tools are allowing
+us not to be just
+
+1867
+01:21:52,410 --> 01:21:55,970
+incrementally better
+software engineers or
+
+1868
+01:21:55,970 --> 01:21:59,250
+product managers or
+whatever, but orders of
+
+1869
+01:21:59,250 --> 01:22:02,310
+magnitude better. because
+they're like all the
+
+1870
+01:22:02,310 --> 01:22:05,050
+things that we thought
+would be nice to
+
+1871
+01:22:05,050 --> 01:22:07,810
+do but way too difficult
+whether it be fuzzy
+
+1872
+01:22:07,810 --> 01:22:09,950
+searching whether it
+be massive data and
+
+1873
+01:22:09,950 --> 01:22:13,730
+analytics suddenly it's
+within our grasp um
+
+1874
+01:22:13,730 --> 01:22:18,090
+and that's that's pretty
+exciting yeah mark
+
+1875
+01:22:18,090 --> 01:22:21,590
+but even think about
+yeah go ahead well
+
+1876
+01:22:21,590 --> 01:22:23,470
+i was just going to say
+to mark's point there
+
+1877
+01:22:23,470 --> 01:22:26,350
+was a a young lady
+we just met on the
+
+1878
+01:22:26,350 --> 01:22:30,190
+meeting earlier this
+week. She has a son who
+
+1879
+01:22:30,190 --> 01:22:32,490
+has a, you know, I'm
+not going to say a
+
+1880
+01:22:32,490 --> 01:22:35,200
+business or whatever,
+but has a difficult
+
+1881
+01:22:35,200 --> 01:22:39,590
+disease. And now with the
+ability to have access
+
+1882
+01:22:39,590 --> 01:22:42,170
+to these tools to
+where, you know, you're
+
+1883
+01:22:42,170 --> 01:22:44,250
+looking at where one,
+you would used to
+
+1884
+01:22:44,250 --> 01:22:46,310
+be able to be a deep
+developer to make a
+
+1885
+01:22:46,310 --> 01:22:49,990
+webpage. Now access
+to these tools, she is
+
+1886
+01:22:49,990 --> 01:22:53,190
+able to go out and create
+something that could
+
+1887
+01:22:53,190 --> 01:22:55,890
+actually save not
+only her son's lives,
+
+1888
+01:22:55,890 --> 01:22:57,920
+but others' lives. So
+it's really, really
+
+1889
+01:22:57,920 --> 01:23:00,210
+exciting and I apologize,
+Sandy, too. Yeah.
+
+1890
+01:23:00,570 --> 01:23:04,070
+No, no problem. So again,
+like when I started
+
+1891
+01:23:04,070 --> 01:23:05,750
+thinking about it,
+I mean, like, why do
+
+1892
+01:23:05,750 --> 01:23:08,250
+we have governments?
+Why do we have, like,
+
+1893
+01:23:08,390 --> 01:23:11,090
+we, maybe we,
+
+1894
+01:23:11,350 --> 01:23:13,480
+you know, these type of
+tools give individuals
+
+1895
+01:23:13,480 --> 01:23:16,870
+enough capabilities
+that some of the
+
+1896
+01:23:16,870 --> 01:23:20,430
+things that um we typically
+have relied on for
+
+1897
+01:23:20,430 --> 01:23:23,790
+um local you know
+public policy and stuff
+
+1898
+01:23:23,790 --> 01:23:27,430
+maybe that goes away
+i think there's don't
+
+1899
+01:23:27,510 --> 01:23:30,850
+this is much bigger
+just being able to code
+
+1900
+01:23:30,850 --> 01:23:34,170
+faster so but we have
+things if i can yeah if
+
+1901
+01:23:34,170 --> 01:23:35,890
+i can point a point
+one thing does anybody
+
+1902
+01:23:35,890 --> 01:23:37,530
+here has anybody here
+heard of the term
+
+1903
+01:23:37,530 --> 01:23:42,170
+moloch m-o-l-o-c-h uh it
+comes from alan ginsburg
+
+1904
+01:23:42,170 --> 01:23:46,910
+poem um so moloch is
+the god of perverse
+
+1905
+01:23:46,910 --> 01:23:50,370
+outcomes uh humans have
+coordination problems
+
+1906
+01:23:50,370 --> 01:23:52,170
+no country wants an
+army but we all have
+
+1907
+01:23:52,170 --> 01:23:53,390
+armies because someone
+else might have an
+
+1908
+01:23:53,390 --> 01:23:56,270
+army things like tragedy
+of the commons right
+
+1909
+01:23:56,270 --> 01:23:58,910
+in a world without
+perverse outcomes where
+
+1910
+01:23:58,910 --> 01:24:01,570
+there is perfect knowledge
+of all participants
+
+1911
+01:24:01,570 --> 01:24:03,500
+game theory says
+you can have that
+
+1912
+01:24:03,500 --> 01:24:05,180
+idealized world we
+don't need governments
+
+1913
+01:24:05,180 --> 01:24:07,650
+governments and before
+them and i'm an atheist
+
+1914
+01:24:07,650 --> 01:24:09,650
+pretty proudly so so i
+apologize if offending
+
+1915
+01:24:09,650 --> 01:24:11,130
+anyone but governments
+and before them
+
+1916
+01:24:11,130 --> 01:24:14,550
+religions were excellent
+ways to get people to
+
+1917
+01:24:14,550 --> 01:24:18,290
+behave without
+surveillance when a law
+
+1918
+01:24:18,290 --> 01:24:20,770
+enforcement is legitimate
+we pay a ticket because
+
+1919
+01:24:20,770 --> 01:24:23,030
+we believe that it is
+for the greater good
+
+1920
+01:24:23,030 --> 01:24:24,790
+for people not to
+speed or whatever right
+
+1921
+01:24:24,790 --> 01:24:29,170
+um so governments exist
+to fight moloch and
+
+1922
+01:24:29,170 --> 01:24:31,360
+there's i'm going to
+find it there's a liv
+
+1923
+01:24:31,360 --> 01:24:34,910
+bori one of my favorite
+thinkers uh did an
+
+1924
+01:24:34,910 --> 01:24:38,650
+amazing explanation of
+what is moloch um it
+
+1925
+01:24:38,650 --> 01:24:44,710
+is uh it's it's the
+dangerous part of competition
+
+1926
+01:24:44,710 --> 01:24:47,300
+it's necessary that
+we are all constantly
+
+1927
+01:24:47,300 --> 01:24:48,650
+optimizing for stuff
+because otherwise
+
+1928
+01:24:48,650 --> 01:24:51,630
+we go grow complacent
+but as soon as i'm trying
+
+1929
+01:24:51,630 --> 01:24:54,830
+to get the better
+of you um the system
+
+1930
+01:24:54,830 --> 01:24:57,410
+that we're in benefits
+but you and i don't
+
+1931
+01:24:57,410 --> 01:24:59,270
+necessarily benefit i
+win you lose because i
+
+1932
+01:24:59,270 --> 01:25:01,770
+cheated and then you
+get tragedy the commons
+
+1933
+01:25:01,770 --> 01:25:03,910
+problems the pond gets
+overfished or whatever
+
+1934
+01:25:03,910 --> 01:25:05,790
+and so i think we need
+to look at government
+
+1935
+01:25:05,790 --> 01:25:08,730
+as a coordination
+problem the real risk
+
+1936
+01:25:08,730 --> 01:25:11,770
+here is do we want to
+abdicate coordination
+
+1937
+01:25:11,770 --> 01:25:14,490
+to a system that
+thinks it knows best
+
+1938
+01:25:14,490 --> 01:25:18,570
+because then the
+coordination for the greater
+
+1939
+01:25:18,570 --> 01:25:21,010
+good is defined by you
+know what peter thinks
+
+1940
+01:25:21,010 --> 01:25:23,210
+greater good is or
+whatever and that's
+
+1941
+01:25:23,210 --> 01:25:29,070
+obviously the issue so
+what about so let so um
+
+1942
+01:25:29,330 --> 01:25:32,650
+do i train it myself
+you know like i i think
+
+1943
+01:25:32,650 --> 01:25:35,770
+there is a danger if
+we're you know i don't
+
+1944
+01:25:35,770 --> 01:25:39,030
+want to turn over
+my morality code to
+
+1945
+01:25:39,030 --> 01:25:42,990
+open ai google or some
+else like i don't want
+
+1946
+01:25:42,990 --> 01:25:45,610
+them telling me what's
+offensive not offensive
+
+1947
+01:25:45,610 --> 01:25:48,230
+but and you know who
+knows what's ahead
+
+1948
+01:25:48,230 --> 01:25:52,910
+of us but could i
+then And so do I build
+
+1949
+01:25:52,910 --> 01:25:57,970
+my own group of puppets
+that are based on my
+
+1950
+01:25:57,970 --> 01:25:59,990
+view of the world
+and my morals and my
+
+1951
+01:25:59,990 --> 01:26:03,010
+ethics and how I think
+and what's important to
+
+1952
+01:26:03,010 --> 01:26:06,270
+me? That's where my
+brain went, Alistair.
+
+1953
+01:26:06,640 --> 01:26:08,920
+I don't think we
+can have a society,
+
+1954
+01:26:09,130 --> 01:26:14,070
+functioning society,
+as in not pure anarchy,
+
+1955
+01:26:14,820 --> 01:26:18,110
+unless we do two
+things. One is we're
+
+1956
+01:26:18,110 --> 01:26:19,310
+going to need to be
+able to distinguish
+
+1957
+01:26:20,310 --> 01:26:22,650
+generative speech
+from real speech. So
+
+1958
+01:26:22,650 --> 01:26:24,830
+there's going to have
+to be essentially the
+
+1959
+01:26:24,830 --> 01:26:26,830
+equivalent of chain
+of evidence for facts.
+
+1960
+01:26:27,930 --> 01:26:30,770
+So this picture was
+taken and there's a
+
+1961
+01:26:30,770 --> 01:26:32,850
+person making a claim
+whose identity I can
+
+1962
+01:26:32,850 --> 01:26:35,150
+verify. And mathematically,
+it has not been
+
+1963
+01:26:35,150 --> 01:26:36,730
+tampered with. So
+chain of evidence, like
+
+1964
+01:26:36,730 --> 01:26:39,210
+in law enforcement, is
+going to be necessary
+
+1965
+01:26:39,210 --> 01:26:41,250
+for all forms of
+information. That's
+
+1966
+01:26:41,250 --> 01:26:43,170
+the first thing. And
+then the second thing
+
+1967
+01:26:43,170 --> 01:26:45,570
+is, uh, there will
+have to be regulation
+
+1968
+01:26:45,570 --> 01:26:48,890
+on what is allowed
+because any runaway
+
+1969
+01:26:48,890 --> 01:26:52,610
+technology like biotech,
+which can self-perpetuate
+
+1970
+01:26:52,610 --> 01:26:55,010
+has always been
+regulated. Otherwise
+
+1971
+01:26:55,010 --> 01:26:57,650
+it will just self
+-perpetuate. And so I
+
+1972
+01:26:57,650 --> 01:26:59,750
+think we're going to
+see strong regulation on
+
+1973
+01:26:59,750 --> 01:27:01,210
+self-perpetuation.
+I don't know how we
+
+1974
+01:27:01,210 --> 01:27:02,590
+will enforce that, but
+I think we're going
+
+1975
+01:27:02,590 --> 01:27:04,590
+to have to see it.
+And unfortunately that
+
+1976
+01:27:04,590 --> 01:27:06,630
+may be fairly draconian.
+Like it may even
+
+1977
+01:27:06,630 --> 01:27:08,950
+be to the point of
+there's a monitor on
+
+1978
+01:27:08,950 --> 01:27:11,510
+every processor sold
+that can do this stuff.
+
+1979
+01:27:11,580 --> 01:27:13,310
+Like, I don't know
+what it is, but I do
+
+1980
+01:27:13,310 --> 01:27:16,390
+think that society will
+not function if there
+
+1981
+01:27:16,390 --> 01:27:20,170
+isn't chain of evidence,
+probably some kind
+
+1982
+01:27:20,170 --> 01:27:23,750
+of distributed ledger
+and some kind of
+
+1983
+01:27:23,750 --> 01:27:26,170
+very strong regulation.
+Now, I want to leave
+
+1984
+01:27:26,170 --> 01:27:28,170
+you with one scary
+thought, which is that
+
+1985
+01:27:28,910 --> 01:27:33,050
+when a crime is easy
+to commit and has
+
+1986
+01:27:33,050 --> 01:27:37,710
+widespread consequences,
+the punishment is always
+
+1987
+01:27:37,710 --> 01:27:41,650
+incredibly strong.
+horse thievery in the
+
+1988
+01:27:41,650 --> 01:27:43,950
+old west was punishable
+by death because
+
+1989
+01:27:43,950 --> 01:27:46,070
+it was super easy to
+take someone's horse
+
+1990
+01:27:46,150 --> 01:27:48,950
+but you left the person
+to die in the in the
+
+1991
+01:27:48,950 --> 01:27:51,570
+desert right and so
+stealing a horse was
+
+1992
+01:27:51,570 --> 01:27:53,870
+punishable by death
+because they had to make
+
+1993
+01:27:53,870 --> 01:27:56,250
+the punishment so
+draconian people would
+
+1994
+01:27:56,250 --> 01:28:00,050
+not take it um when
+people um used to shave
+
+1995
+01:28:00,050 --> 01:28:01,830
+coins if you're
+familiar with coins they
+
+1996
+01:28:01,830 --> 01:28:03,450
+used not to have these
+ridges on the side
+
+1997
+01:28:03,450 --> 01:28:05,510
+right and isaac newton
+figured out how to
+
+1998
+01:28:05,510 --> 01:28:07,810
+ridge them people would
+shave a little bit
+
+1999
+01:28:07,810 --> 01:28:09,950
+of gold off, not enough
+to be noticed, and
+
+2000
+01:28:09,950 --> 01:28:11,350
+the currency of the
+realm will diminish. So
+
+2001
+01:28:11,350 --> 01:28:13,630
+coin shaving was
+punishable by death because
+
+2002
+01:28:13,630 --> 01:28:15,830
+it was easy to do and
+hard to prosecute.
+
+2003
+01:28:15,870 --> 01:28:19,630
+I suspect we are going
+to see certain things
+
+2004
+01:28:19,630 --> 01:28:21,570
+that are easy to do
+and hard to prosecute
+
+2005
+01:28:21,570 --> 01:28:24,090
+around AI having
+incredibly draconian
+
+2006
+01:28:24,090 --> 01:28:28,990
+punishments, outlandishly
+unbalanced, asymmetric
+
+2007
+01:28:28,990 --> 01:28:31,410
+punishments because
+of that potential.
+
+2008
+01:28:31,530 --> 01:28:34,570
+All right, guys, we're
+almost out of time
+
+2009
+01:28:34,570 --> 01:28:37,590
+here. I got to jump,
+but this is one of my
+
+2010
+01:28:37,590 --> 01:28:40,510
+favorite uh episodes
+yet i think i really
+
+2011
+01:28:40,510 --> 01:28:44,090
+appreciate alistair
+and chris and everett
+
+2012
+01:28:44,090 --> 01:28:46,490
+and rob and everyone
+vlad everyone that
+
+2013
+01:28:46,490 --> 01:28:49,870
+that's that's uh
+sandy's your we this
+
+2014
+01:28:49,870 --> 01:28:51,870
+community is amazing
+and i really appreciate
+
+2015
+01:28:51,870 --> 01:28:53,610
+that everything that
+you guys bring to to
+
+2016
+01:28:53,610 --> 01:28:56,070
+this um just a quick
+note you know we've
+
+2017
+01:28:56,070 --> 01:28:58,590
+got the agentics
+foundation and uh the the
+
+2018
+01:28:58,590 --> 01:29:00,170
+crew always tells me
+i need to promote it
+
+2019
+01:29:00,170 --> 01:29:02,770
+more we we are a bunch
+of volunteers that
+
+2020
+01:29:02,770 --> 01:29:05,070
+come together for a
+shared passion for
+
+2021
+01:29:05,070 --> 01:29:07,770
+making agentic
+engineering a thing. It's
+
+2022
+01:29:07,770 --> 01:29:10,310
+becoming a thing. We
+see other companies, big
+
+2023
+01:29:10,310 --> 01:29:12,650
+and small, adopting
+the terminology all of
+
+2024
+01:29:12,650 --> 01:29:16,370
+a sudden. So we're
+in the midst of that.
+
+2025
+01:29:16,550 --> 01:29:18,270
+We've got a number
+of events coming
+
+2026
+01:29:18,270 --> 01:29:20,130
+up. I think Ocean,
+you mentioned
+
+2027
+01:29:20,130 --> 01:29:21,390
+you're, I'm not sure
+if you're still on
+
+2028
+01:29:21,390 --> 01:29:23,150
+the call or not,
+but him, the crew,
+
+2029
+01:29:23,150 --> 01:29:24,750
+****** V and the
+crew in New York
+
+2030
+01:29:24,750 --> 01:29:25,550
+are going to be
+doing it on the
+
+2031
+01:29:25,550 --> 01:29:27,110
+10th for anyone
+that's in New York.
+
+2032
+01:29:27,110 --> 01:29:29,270
+I think we've got
+Indianapolis coming up as
+
+2033
+01:29:29,270 --> 01:29:32,890
+well for those in the
+middle there who want
+
+2034
+01:29:32,890 --> 01:29:35,050
+to help out and if you
+if you're interested
+
+2035
+01:29:35,050 --> 01:29:38,790
+in doing an agentix
+meetup we we're happy
+
+2036
+01:29:38,790 --> 01:29:41,550
+to help um basically
+putting this on luma
+
+2037
+01:29:41,550 --> 01:29:43,010
+and you get 100 people
+showing up these
+
+2038
+01:29:43,010 --> 01:29:46,030
+days so really easy to
+do we've got materials
+
+2039
+01:29:46,030 --> 01:29:47,630
+for you we can get
+you a t-shirt we get
+
+2040
+01:29:47,630 --> 01:29:51,090
+some shirts come in um
+rob have i forgotten
+
+2041
+01:29:51,090 --> 01:29:55,250
+anything probably yeah
+just um if uh if in
+
+2042
+01:29:55,250 --> 01:29:56,950
+your city you want to
+start what up go to
+
+2043
+01:29:56,950 --> 01:30:00,570
+egenics.org slash
+ambassador fill out that
+
+2044
+01:30:00,570 --> 01:30:04,890
+form that kicks off
+the process and then um
+
+2045
+01:30:06,050 --> 01:30:08,570
+we got a new website
+coming brad's been
+
+2046
+01:30:08,570 --> 01:30:11,730
+working yeah so we
+we're going to be fixing
+
+2047
+01:30:11,730 --> 01:30:14,190
+all that all up i know
+you those are paying
+
+2048
+01:30:14,190 --> 01:30:15,730
+what am i getting
+i don't know you're
+
+2049
+01:30:15,730 --> 01:30:17,330
+helping us keep this
+thing up the lights on
+
+2050
+01:30:17,330 --> 01:30:19,580
+right now but we're
+going to be better
+
+2051
+01:30:19,580 --> 01:30:21,930
+organized it's again
+we none of us are be
+
+2052
+01:30:21,930 --> 01:30:25,030
+paid to do this we're
+all volunteers and we
+
+2053
+01:30:25,030 --> 01:30:27,610
+can actually use a
+volunteer coordinator
+
+2054
+01:30:29,230 --> 01:30:32,270
+very quick question uh
+do you have somebody
+
+2055
+01:30:32,270 --> 01:30:35,030
+in boston because last
+week i am discovered
+
+2056
+01:30:35,030 --> 01:30:37,190
+there is a alternative
+group it was like
+
+2057
+01:30:37,190 --> 01:30:39,860
+200 people meeting and
+they're kind of doing
+
+2058
+01:30:39,860 --> 01:30:42,190
+very similar with what
+we're doing but there
+
+2059
+01:30:42,190 --> 01:30:46,950
+can be only one
+yeah do you have any
+
+2060
+01:30:46,950 --> 01:30:49,250
+ambassador in boston
+like or should i not yet
+
+2061
+01:30:49,250 --> 01:30:51,410
+yes not yet no okay i
+know that we have some
+
+2062
+01:30:51,410 --> 01:30:53,650
+folks that'd be great
+yeah we have a number
+
+2063
+01:30:53,650 --> 01:30:55,130
+of uh yeah we have
+lots of people there
+
+2064
+01:30:55,130 --> 01:30:57,510
+we we need someone
+that's willing to sort of
+
+2065
+01:30:57,510 --> 01:30:59,390
+take on the responsibility
+of saying let's
+
+2066
+01:30:59,390 --> 01:31:02,490
+do this thing next
+tuesday you're right so
+
+2067
+01:31:02,760 --> 01:31:05,790
+are you in boston blind
+yeah i'm in boston
+
+2068
+01:31:05,790 --> 01:31:07,710
+yeah and i just
+discovered the group like
+
+2069
+01:31:07,710 --> 01:31:10,770
+it was very similar and
+actually they charged
+
+2070
+01:31:10,770 --> 01:31:12,990
+20 bucks like to attend
+and there was 200
+
+2071
+01:31:12,990 --> 01:31:16,930
+people i don't want
+to charge i don't know
+
+2072
+01:31:16,930 --> 01:31:19,630
+guys i don't charge
+they just charge they
+
+2073
+01:31:19,630 --> 01:31:21,830
+get better food like
+in the beer so that's
+
+2074
+01:31:21,830 --> 01:31:24,130
+right maybe we can maybe
+we get a sponsor to
+
+2075
+01:31:24,130 --> 01:31:26,070
+pay for the pizza or
+something but i i don't
+
+2076
+01:31:26,070 --> 01:31:27,700
+know about charging
+i that's that's a
+
+2077
+01:31:27,700 --> 01:31:29,170
+that's a different thing
+that i don't i don't
+
+2078
+01:31:29,170 --> 01:31:31,930
+want to go down that
+road but um if but if
+
+2079
+01:31:31,930 --> 01:31:33,670
+you're willing to
+volunteer to help organize
+
+2080
+01:31:33,670 --> 01:31:35,830
+in boston we could we
+should totally do it
+
+2081
+01:31:35,830 --> 01:31:39,130
+there's so much going
+on there yeah yeah i
+
+2082
+01:31:39,190 --> 01:31:43,190
+can all right nope if
+you're in chicago ping
+
+2083
+01:31:43,190 --> 01:31:46,150
+me um and maybe we
+should be setting up
+
+2084
+01:31:46,150 --> 01:31:47,590
+coordination over
+there i'm not sure if
+
+2085
+01:31:47,590 --> 01:31:49,520
+there's somebody else
+already that's out there
+
+2086
+01:31:49,520 --> 01:31:52,700
+not chicago ever would
+that be great yeah
+
+2087
+01:31:52,750 --> 01:31:57,030
+let's talk all right
+guys i gotta jump i'm
+
+2088
+01:31:57,030 --> 01:31:58,770
+gonna be late all right
+thanks for everyone
+
+2089
+01:31:58,770 --> 01:32:00,950
+this this has been
+an amazing episode uh
+
+2090
+01:32:00,950 --> 01:32:03,430
+alistair i love your
+insights you're you're
+
+2091
+01:32:03,430 --> 01:32:05,250
+such an interesting guy i
+really really appreciate
+
+2092
+01:32:05,250 --> 01:32:06,950
+it thanks for
+having me this was i
+
+2093
+01:32:06,950 --> 01:32:09,390
+really enjoyed this this
+is awesome all right
+
+2094
+01:32:09,490 --> 01:32:10,550
+Thanks, Al.
+
+2095
+01:32:10,610 --> 01:32:13,070
+Nice meeting you. Next
+week, 4th of July.
+
+2096
+01:32:13,750 --> 01:32:15,770
+There's no AI
+Hackerspace next
+
+2097
+01:32:15,770 --> 01:32:18,050
+week. So I might
+do Thursday, the
+
+2098
+01:32:18,050 --> 01:32:19,370
+live coding
+session, because I'm
+
+2099
+01:32:19,370 --> 01:32:20,810
+probably going to
+be coding anyway.
+
+2100
+01:32:20,810 --> 01:32:23,710
+But there won't be
+a Hackerspace. And
+
+2101
+01:32:23,710 --> 01:32:25,070
+so anyone that's
+interested in having
+
+2102
+01:32:25,070 --> 01:32:26,590
+something to present
+or you want to
+
+2103
+01:32:26,590 --> 01:32:29,510
+show, get in touch
+with Rob, and we'll
+
+2104
+01:32:29,510 --> 01:32:30,890
+get you on and
+get your segment.
+
+2105
+01:32:30,890 --> 01:32:32,330
+You can show off
+what you're building.
+
+2106
+01:32:32,730 --> 01:32:33,370
+All right.
+
+2107
+01:32:33,370 --> 01:32:35,270
+Till next time.
+Thanks, everyone.
+
+2108
+01:32:35,590 --> 01:32:36,270
+Bye-bye.
+
+2109
+01:32:36,410 --> 01:32:37,690
+Thank you. Sure.
+

@@ -1,0 +1,848 @@
+Mark Allen and Reuven Cohen
+Wed, Oct 15, 2025
+
+0:01 - rUv
+Oh, how's it going?
+
+0:02 - rUv
+Hey, Ruth.
+
+0:04 - Mak Allen
+I wanted to introduce you to a new team member of mine. This is Krysta.
+
+0:10 - rUv
+Nice. Nice to meet you.
+
+0:12 - Krysta Fox
+Great to meet you. I've heard fantastic things and I have had the opportunity to check in on some of your content. I really love it.
+
+0:19 - rUv
+No, appreciate that. You know, what you and what you guys are up to is looks really amazing as well. So excited to. Yeah. Excited to collaborate.
+
+0:29 - Unidentified Speaker
+Likewise.
+
+0:32 - rUv
+So last we spoke, I think we had a bit of a breakthrough. I juggle a lot of projects. So I'm like what they call context switching. I got an hour here and then I got, you know, and so the part of the problem is- Rube has his own context window. Yeah, yeah. My context window gets filled and then I'm like compacting, which is AKA sleeping. And it's all jumbled up. But I think we did make we did make progress yesterday, right?
+
+1:02 - Mak Allen
+So the so we because we needed to separate the patient portal project and the accidental main platform project because of you mentioned needing to separate the databases due to HIPAA issues. So you hadn't because the the patient portal already had a lot and for whatever reason, there's no longer a component for the login page for the main platform. You started off by rewiring the patient portal and you had me go through each of the tabs except for messages and make sure as much functionality as possible was working how I wanted it to.
+
+1:51 - rUv
+Okay, so I think, let's pull up where we kind of are based on yesterday. OK.
+
+2:09 - Mak Allen
+So what I'm fixing right now is there's, for the records page, we're unable to view the record because there's not a super base URL. So I just pasted the debug. Info into the console. On the form side of things, there's some things that I need to do inside of BoltSign, inside of that platform to get this working, to actually upload test documents. And I'll need to work with one of our other partners, who isn't orthodontist, to get the exact documents for testing okay but besides that everything is I mean it's all it's it's working I tested the changing passwords updating this this is something that I will because we're not gonna allow online payment initially that'll be a future feature We'll kind of like out or something like that. Something to let people know that, hey, this is a feature that's coming, but we're not going to be using it now. And payments will be done in clinic. For example, if you click make a payment, it'll say your provider is not currently accepting it. Gotcha. These work. If you try to reschedule, it's actually a reschedule now and lets you know it's pending approval.
+
+3:56 - rUv
+Right click on the page. Oh, okay. You know you did. Okay. I just got to make my browser bigger. One sec. Let me take a look here. So we see some errors, nothing major. We see row violations. Let's start fresh and let's fix those up quick. So yeah, Okay, scroll up. And we're gonna Yep, no on the console. Alright, so we've got a super base connection error relating to not sure what that is. But the next year is a row level policy. So copy both those errors. Just highlight. Yeah, there you go. Copy that. All right, minor errors looks like a fetch related thing. So we're going to just pop that in there? OK. Just it in there, yeah. Yeah, you can get DSP, exactly. We should, whenever you see an error, generally speaking, just fix it right away. No MCP required. Just paste it in. Well, I guess the super base MCP is required, but it should work.
+
+5:10 - Mak Allen
+Yeah, I keep having it keep running into Claude wanting to use the NPX command for it.
+
+5:17 - rUv
+Yeah, it does. I guess maybe the MCP isn't working. I thought it was.
+
+5:23 - Mak Allen
+Oh, the super base MCP is working. But for whatever reason, even if I specified it in my prompt to use the super base MCP a few times I had to escape.
+
+5:33 - rUv
+Yeah, it's it's what doing right now. Escape. Tell it to use the ASU base MCP to fix the issue.
+
+6:05 - Mak Allen
+Is your mind blown yet Krysta?
+
+6:07 - rUv
+I will refer commenting but yeah no I love it you guys are rocking and rolling all right is it yeah okay it's working looks good try run that in the background what's it It's just, yeah, in background, that's running. Well, actually, I think it might already be running. We don't have to actually need to run it. Okay, Airfix, scroll up just to confirm. Yeah, we fixed that. Just double check that everything works quickly, like, you know, just make something, make an edit or something. Yeah, whatever it is.
+
+6:57 - rUv
+you OK.
+
+7:20 - Mak Allen
+Yeah, that's still going. This math all checks out.
+
+7:39 - rUv
+Yeah, so you just needed a little bit of a helping hand, and you ran with it really nicely. So that's good. Developer mode looks good. Look at you on the right. Oh, found an error. Click OK. Copy console. What did you do to make that error happen? Yeah, copy that. I clicked complete form. Is that just because we haven't built that yet?
+
+8:10 - Mak Allen
+That's definitely part of it, yeah. Well, it's telling me this. And bold sign dashboard, get the real document ID.
+
+8:19 - rUv
+Yeah, so that just might be something we haven't built yet. So the error is actually an error from omission, not an actual error.
+
+8:29 - Mak Allen
+Yeah. The only thing I didn't touch was the messages, like you said. This all works and saves. And this saves even if state is changed.
+
+9:04 - rUv
+Oh, look at you. Yeah, that's good. Now, you see how useful this is? That side console is, though, for this stuff. You see everything that's happening. I love this workflow.
+
+9:13 - Mak Allen
+I was enjoying myself a lot.
+
+9:18 - rUv
+It's almost like you see what's happening on the site, but you also see what's happening under the covers. So that's an important part of this structure. And when we saw that error, we fixed it in seconds. And the second error was just an error because we haven't built it yet. Yeah, so now we better basically do the same thing for the other site.
+
+9:42 - Unidentified Speaker
+Yes, sir.
+
+9:46 - rUv
+And when you log in as other users, can you register as other users? Forgot my password? All that stuff?
+
+9:54 - Mak Allen
+You can do forgot my password. Or no, you can't. Oh, no, I need to. That on me, I need to do the I need to do the sign up and the Uh, forgot password. There is an account deletion workflow. Um, you can change the password, but yeah, I needed to do forgot password in the signup page. It might already be done.
+
+10:31 - rUv
+And what about mobile version? What does it look like when you make it small?
+
+10:42 - Mak Allen
+Oh, so you can, you can sign up.
+
+10:46 - rUv
+You're getting a bunch of errors here.
+
+10:48 - Mak Allen
+So I needed, I was supposed to enter a code that's supposed to be provided by the clinic and generated in the platform by the clinic staff.
+
+10:59 - rUv
+Yeah, but you shouldn't be able to, need a more elegant go back to the dashboard. You can't just have a whole bunch of stuff broken. You need something, rather say, unable to load data dashboard, you need something finish or do or get or whatever it is that needs to do to finish it. It just shouldn't be a big black error. I think it, I mean, correct me if I'm wrong or if there's a better way to approach it, this but it wouldn't I shouldn't the remedy for this be not allowing the user to sign up because they haven't provided a clinic access code yeah exactly that's I'm saying so you it's oh you know if there's some kind of access required they should never get to beyond this point so if you like right there if you don't have the clinic provided signup code then you should be able to create the account so I haven't we that feature in the in. But that said, you might want to allow people in to get a feel for how the system works as a kind of demo of sorts. So what you hypothetically could do is if if you wanted to is basically when you if you don't have a clinic sign up code, then you can get into the site, but you're in a demo mode. Okay, that would then then you get a sales tool. Otherwise, you've got a blank, you know, I don't know, it sounds cool, but I have no idea what it does. In a demo mode, you at least can show what the heck it can potentially do. And then there's a screen or an option to put in your clinic provided signup code and you go from demo to real.
+
+12:46 - Mak Allen
+Sorry, could you say that last part one more time? You want to go from demo to real, right?
+
+12:51 - rUv
+Yeah. So if you don't, you're going you're logging in and getting demo content. If you do, you're getting real database content. I guess what I'm asking is, when you sign up with a provided sign-up code, does it work?
+
+13:12 - Mak Allen
+There's not something to support that. There isn't a generator for generating sign-up codes yet.
+
+13:21 - rUv
+That's something you're going to building.
+
+13:24 - Mak Allen
+Yeah.
+
+13:37 - rUv
+It sounds rather trivial to probably fix, to be honest. Yeah, it seems a It's still fun. I'm not sure that was a previous error, but OK, so yeah, I think that was your previous error. Never mind. No, it's looking pretty good. So what happens, there's no payment? That's going to be coming soon?
+
+14:08 - Mak Allen
+So our CEO for Nexadental, this is how he does it in his clinic and this is how he'd like to do it to start. That way we don't have to add more complexity and this is how he does it in his clinic currently.
+
+14:26 - rUv
+What do you mean?
+
+14:30 - Mak Allen
+There's not a pay online feature.
+
+14:35 - Unidentified Speaker
+How do they pay?
+
+14:36 - Mak Allen
+They pay over the phone or they walk into the clinic.
+
+14:45 - rUv
+Why not just use Stripe? The question is, is it because there's some kind of legal requirement or he just doesn't know that Stripe exists?
+
+14:59 - Mak Allen
+He just doesn't want to do it yet because he doesn't do it in his practice. But he wants it to be a feature soon, but it's very low on the priority list.
+
+15:10 - rUv
+Taking payments would be the most important thing. As someone that goes to a dentist.
+
+15:17 - Mak Allen
+I agree, but that's kind of the stance of Mark and Marcy.
+
+15:25 - Krysta Fox
+Okay.
+
+15:26 - Mak Allen
+Yeah, it's this is kind of a placeholder. I would prefer it was.
+
+15:31 - rUv
+I would lose Yeah, you don't want to show things that don't work. It's like, what's the point of aggravating your users to say you couldn't do payments, but we're not going to do it because the 10 minutes it takes us to set it up is too much, right? It's not a good approach. It just aggravates your users. Now, it's trivial. You're going to set up a strike account and you can have this working literally in the time it takes us to get this call finished. So it's not hard. Okay, then. Right. It sounds like it sounds like it's a matter of someone doesn't know how hard it is or not to do.
+
+16:06 - Mak Allen
+So what I would suggest and our CEO So on accidental NIC, they feel like it's unnecessary complexity right now.
+
+16:16 - Unidentified Speaker
+To make it useful?
+
+16:18 - Mak Allen
+Yeah, I would like to do it. If it's as simple as you say, and I think it is, I'd like to just do it. And if we need to block the ability for certain accounts.
+
+16:34 - rUv
+Well, I would just... At very least, you don't wanna show online payments not available and show that it make a payment. It's just weird, right? And it's not a nice user experience. So one way or another, I'd either hide it, add it later, or make it work.
+
+16:57 - Krysta Fox
+If we added the component now for Stripe, because you mentioned we could actually do it in this call, is there a way kind of add that in let these guys demo and see oh wow it's already working yeah that's what I would do and then if you change your mind like if they're like no we don't want money this is ridiculous then they turn it off yes exactly so what what do you guys have a stripe account we do not right okay let's go sign let's go sign up for a stripe account and we'll use the test mode. This is the wildest thing I've ever seen. We don't want it.
+
+17:38 - Unidentified Speaker
+I know, I know. We want the money.
+
+17:40 - rUv
+Like we, well, it's just, it's, yeah.
+
+17:44 - Mak Allen
+The users are going to be turned off massively, like,
+
+17:48 - Krysta Fox
+Yeah, yeah.
+
+17:49 - rUv
+We have AI, but we can't pay online. Yeah.
+
+17:56 - Unidentified Speaker
+Wait, what?
+
+17:57 - rUv
+It kind of, it's exactly what it is. And you, Let's be honest, it's way more convenient to pay with like my Apple Pay than it is to go and dig through my credit card or whatever. Now it could be insurance related. Maybe that's his issue. Maybe people have like insurance that's paying for their dental stuff and that's a whole other can of worms. I wish I can get and maybe he makes more money if the insurance guy maybe charges more to insurance companies than he does to credit cards. Now these are all logical things that are potentially the reason. It might be more than just I don't want to do it because I think it's hard. It might be I make more money from an insurance company.
+
+18:38 - Krysta Fox
+That would make a lot more sense
+
+18:41 - Mak Allen
+I know Nick wanted Stripe to be for sure integrated by January, but it's not something that he cared to test or anything like that. Mark wasn't super He didn't think it was priority, but I say let's do it.
+
+18:59 - Mak Allen
+I agree.
+
+19:01 - Krysta Fox
+Yeah, we always hide it. We can always hide it.
+
+19:04 - Mak Allen
+There's some perception of complexity issues.
+
+19:07 - Krysta Fox
+You guys familiar with Peter Thiel?
+
+19:09 - Unidentified Speaker
+Yeah.
+
+19:10 - Krysta Fox
+He says never assume that the timeline that you think's in your head has anything to do with reality. So in this case for the doctor, he's like, oh, I think it's going to be this. I think it's going to be hard. Peter Thiel is like always like do it now.
+
+19:24 - Unidentified Speaker
+Yeah.
+
+19:25 - rUv
+That's the least crazy thing Peter Thiel said, but yes.
+
+19:29 - Krysta Fox
+He said crazy things. Oh yeah, I'm not going to quote him in other life areas.
+
+19:33 - Krysta Fox
+It's that one specific point of his life.
+
+19:39 - rUv
+I think he also said anything a woman can do, a man can do better.
+
+19:43 - Krysta Fox
+No, no, no. I'm just saying, if you just look at his PayPal influence and specific payments here and his entrepreneurial mindset, that's all. I'm gonna zoom in.
+
+19:56 - rUv
+One pixel. Yeah, exactly. We'll the misogyny and other problems. All right, let's build a platform or marketplace. I don't think we want a marketplace, do we? Or do we? I don't know. Maybe a marketplace, enable, connect. Yeah, let's do all those.
+
+20:13 - Mak Allen
+Well, but it says build a platform, because I'm thinking we'll have to pass the money to the- Okay, yeah.
+
+20:19 - rUv
+Okay, perfect. Connect, continue.
+
+20:21 - Krysta Fox
+Multiple parties that I mean it'd be interesting if later he distributes like payments Back and forth with insurance companies.
+
+20:32 - Krysta Fox
+I don't know We'd have to ask him how that works with the insurance payments So This is just just skip it like it doesn't mean they're just collecting your personal information.
+
+20:54 - rUv
+Just get through this as quickly as you can.
+
+20:56 - Unidentified Speaker
+Change it later.
+
+20:57 - rUv
+Yeah, it doesn't do anything it. Yeah, there we go. OK, so. Now what we're going to do. We're going to get the your key. Uh. API key somewhere. Yeah, there it is, API keys. And we're in sandbox mode, I think. Standard keys, publishable keys, secret. Yeah, grab those. Let's back into the .env file. And we're gonna add And we're going to add that to the bottom. Let's give it, you know, stripe information. Yeah. Yeah. Tap that. You can hit tab when you start to see it. Okay. Yeah. Paste it in. Hit enter. Grab the other one. Paste that in. And we should probably add the Stripe. Go to Created Apps at the top. Build an app for this team. Go on the left hand side, go to product catalog. All right, catalog. Well, I'm not sure exactly what you're billing. So you're billing on behalf of the user. So this is actually a community payment system, right? I think we should use the Stripe MCP. Let's go back in. Let's go back in to tell it to ask it to research how to install. Right MC. Pee. We might need that restricted key for that. I'm not sure. So this is going to make it easier for us to figure out exactly what we want to do. What I'm showing you guys now, we're kind of vibing a bit of research. We may or may not use this, but it's just interesting to see the process. That we go through to sort of discover how to do it. So Krysta, what's your background?
+
+24:17 - Krysta Fox
+I've actually been using Claude code since around April. So I just came off of a two-year stint with a FinTech company that's local here in Austin, Texas. I started using these tools, wanted to go fast and far and really don't like organizational corporate structure of the company. I built some applications on my local machine personally, integrating with Alpaca API. I'm doing some coding to build out trading models and options and stuff like that.
+
+24:55 - rUv
+You'll like my NeuroTrader then.
+
+24:58 - Krysta Fox
+A million percent. I already joined your Discord. I'm already reading, watching some of the videos that Mak and Mark recorded already. I'm drinking from a massive fire. I was bragging to my friends about yesterday. I sent them your Twitter account. I'm like, look at this guy.
+
+25:13 - rUv
+I should probably post more on Twitter, but I'm mostly LinkedIn. Download. Yeah. Download. Yeah. The NeuralTrader stuff, I'm using Alpaca. You should see my latest thing I published this morning. I created a self-learning reasoning bank system, which basically allows you to make the system learn without having to retrain models. So basically I just use a semantic vector and then I correlate that. The agents basically will check that before doing any tasks.
+
+25:44 - Krysta Fox
+Are you doing a bunch of backtesting too?
+
+25:45 - rUv
+Yeah, I'm doing backtesting. I do nanostructure loops so I can make the decision in sub milliseconds on batches of stocks. So faster than the system can make the request to the LLM, I could already made the decision, which is the optimal stock or crypto or whatever to invest in. And I've got that down to sub one millisecond.
+
+26:13 - Krysta Fox
+Have you run into any issues on the SLAs with Alpaca for like volume and frequency? Yes, I have. That's the number one thing. Yep.
+
+26:22 - rUv
+Yeah. So I use secondary sources. So I use like Gemini. For grounding and I can use a variety of other sources that are less stringent and then I can do like kind of round robin depending on which one's timed out or if I'm making too many requests.
+
+26:43 - Krysta Fox
+The weird stuff that you might run into down the line, you might have already considered this, is like there are tax implications and regulatory implications on your volume and frequency and then there's something down the line if you're doing a lot of frequency you might consider an omni where you like batch process trades but that's like a whole nother world um but yeah you it's it's interesting because like if you're making profits on certain trades and obviously uh you have to pay taxes on the gains like you want to make sure your profits too much.
+
+27:28 - rUv
+Yeah. I have an approach to that as well. What I have is a tax loss harvesting protocol. What it does is it arbitrages the loss. It says at a certain point of the year, I might actually be better off to take some losses to reduce my tax burden. Then I can carry those losses forward depending on the structure and what I'm doing. Depending on the jurisdiction I'm working within, there's different sort of tax loss harvesting approaches.
+
+27:59 - Krysta Fox
+Yeah, because you're out of Canada, right?
+
+28:01 - rUv
+Yeah, Canada sucks, by the way. Canada's the worst. But, yeah, in the U.S., there's... Moving to the Caymans. Yeah, Caymans. Caymans used to be better, but... Puerto Rico. Yeah, you've got different options. All right, so it's saying here, after... So, we've got some instructions. Scroll, tool, API, test. Okay, so... Tell it to use, scroll up a little bit. I've created a comprehension document. We can look at that document quickly. Your secrets. Okay, we got the secret. Specific tools only. We want, I think we want all the tools for now. Okay, tell it to use the stripe key from the .env in root, whatever the env.local. Which already done, good, good. To set up Stripe using, remember these things stupid, so in a new tab, go and add, you're good, just in a new tab, a new terminal, type clod mcp. Yep, and now copy that. All the way to the top, yep, there you go, copy that. And tell it to, it just doesn't know how to add MCPs to itself. Use the stripe credentials in it to do to use it up using and yeah, and then paste that in space space it in. You don't need to get it. It's smart enough to use. You figure that out. Yeah, just paste it. Alright, hit enter. So now we're adding. So now when we have that, then we can use the the stripe MCP and we since it's a nice fresh environment we can just get it to go and set everything up based on what we need for a community what would they call it a platform community payment system or whatever go set it all up for me basically is what we're gonna do okay all right we're gonna have to hit remember when you add an MCP you're going to have to restart clod to initialize the MCP so this give to finish whatever it's doing and then dsp again yep hit escape yep hit escape and ctrl c you just exit yeah ctrl c a couple times or slash exit whatever just just exit ctrl c usually works just hit ctrl c a few times oh yeah list. So remember all these MCPs add your context. You might want to get rid of my flow nexus and my genetic payments. You probably want to use the genetic payments at some point but for now if you want to speed things up you can remove some of them. So let's get rid of flow nexus for now. It's probably overkill. That's me up trying to upsell my services and fill your context window. Clause mcp remove flow dash nexus yep hit enter and do it again hit up do dash c local all right and I guess it's no dash c project okay why doesn't this tell us what it is but you just hit up. Okay, and do project. All right, I think we're good. Now, do dsp-c. I restarted. Give me a plan to implement, what the heck do they call the Stripe community? I don't know. Give me a plan to to implement the Stripe community components within the payment system for whatever you want to describe it. Put it in slash plan slash Stripe. Remember, always plan before doing. You never want to do a plan and do nothing good.
+
+32:40 - Mak Allen
+What is the the slash is a flag, right?
+
+32:44 - rUv
+It's a folder dot slash represents relative to the root. So dot slash plan slash stripe is the folder structure. No spaces in a dot and press plan. Yeah, it's just it's the So no, dot in front.
+
+33:04 - Krysta Fox
+Dot means here and then slashes like you're double clicking into a folder.
+
+33:09 - rUv
+Yeah, dot plan. Yeah, get rid of that. Yeah, get rid of the second dot.
+
+33:16 - Krysta Fox
+So basically like, yeah, sorry, go ahead.
+
+33:20 - rUv
+Yeah, exactly. Keep the space or so get rid of space. There you go. Okay, so now we're as a detailed, implementation plan. Use the Stripe MCP. Yep. So the Stripe MCP is an abstraction. So all those things, one of the drawbacks to Stripe is it's convoluted and there's all these hidden places and things you got to click and discover. And unless you're like an expert in using the Stripe dashboard, it's a pain. This MCP goes and just does it. It's an expert in Stripe, if you will. And what we're trying to do is we want to create a community-style payment system that allows you to act as a facilitator for payments for all the people who use your platform. Now, the benefit to that is you can take a piece of the action. So back to your Mark and CEO, why would you want to do this? Well, if you're pulling millions of dollars to the system and taking half a percentage point, then that's a significant amount of money that you're potentially leaving on the table for no reason.
+
+34:40 - Mak Allen
+Good point.
+
+34:40 - rUv
+I like that. Right? And it's convenient. Let's be honest. The most convenient part of this thing is anyone that uses Stripe can now go and use their Apple Pay, scan a QR code, double-click their Apple Pay on the side of their phone and they've paid, which is convenient for anyone under the age of 30. Right?
+
+35:06 - Krysta Fox
+I've never seen any client in my whole life be like, pay later.
+
+35:12 - rUv
+I don't want your money.
+
+35:15 - Krysta Fox
+Yeah, this would be like... Let's make it more harder.
+
+35:18 - rUv
+Yeah, this is the key. The most important thing in your platform The thing you don't want to launch with doesn't make any sense. Now, I wouldn't say that so bluntly. I might position that a little more. But at the very least, we're going to go through the process. You can just hide it for the launch if they're dead set against the payments. So you see how we're doing here. The system looked at the existing database schema. It's looking at the code in the payments plan slider. And some other things, and then it's looking at the Stripe documentation, and that's key. See how it can query the Stripe documentation and get exactly what it needs to do for subscription billing, for healthcare payment plans and installments and things like that, and it's coming up with an implementation plan. Now control click the plan, 01, we'll take a look at what it's done there. Right there, yep. A little lower, a little lower. Control click that. No, keep going. Keep going. The plan.md. Keep going. There you go. Click on that. Control-click. All right, let's Control-Shift-V. Click in there and Control-Shift-V to render it, because I don't like reading markdown. All right, so scroll to the top. Database. I'll Read. A plan outlines a co-optimized integration and Stripe payment processing into the next end of portal leveraging. Let me see. Development. Project scope. Implement. Power payment for payment in full. Installment plans and subscriptions. I don't know if subscriptions would be, it depends. We're trying to do two different things. Are we doing this for the doctors who are subscribing to your service? Or are we doing this for the patients of the doctors? Because those are two different problems. And I'm not clear which problem we're solving here.
+
+37:10 - Mak Allen
+The one that is preferred by Mark and Nick first is payment by doctors to use the platform.
+
+37:19 - rUv
+Okay, so in a second we're going to have those because it looks like the payment transaction with Stripe Integration Payment Plans is geared more towards the end user than it is for the doctor itself. And that was us not guiding it effectively. So what we're going to do once this is done flickering or doing whatever it's doing, we're going to tell it that we need to have two different approaches. One for the doctor who are subscribing to the next dental plan and in automatically being billed every month. And what was the plan there? How are you? How are they going to? How are you going to build those doctors, dentists, whatever?
+
+37:56 - Mak Allen
+How are we going to build the build?
+
+38:00 - rUv
+Well, you said you said you weren't going to have payments. How are you going to charge for this when you launched?
+
+38:05 - Mak Allen
+Oh, no, not have payments for the patients. So so Nick wanted the wants the patients to have to either call.
+
+38:15 - rUv
+No, I'm talking about how you charge the doctors.
+
+38:18 - Mak Allen
+Oh yeah, that would be with Stripe.
+
+38:21 - rUv
+So that is or isn't a requirement for launch.
+
+38:23 - Mak Allen
+That is a requirement for launch.
+
+38:25 - rUv
+OK, so we didn't guide. We didn't guide it well enough. We didn't tell it specifically that we told it to go take a look at MCP and Stripe, but we didn't tell it that we needed. We needed the doctors or dentists or whomever to be able to subscribe. That's a key missing piece, right? So we're going to have to let it finish. Then we're going to revise the plan.
+
+38:49 - Mak Allen
+At what point would we separate the because we talked about you had me hold off from starting on rewiring the the main platform because we needed to do a super base migration. So the platform and the patient portal didn't share the same the same super base.
+
+39:12 - rUv
+So I'm not clear if there is a distinction, but so is there or is there not a distinction between the two? You made it sound like the two things were separate and different.
+
+39:23 - Mak Allen
+So, uh, so right now they're attached to the same super.
+
+39:30 - rUv
+No, I got that. I got that. But as a service, they're related somehow. They're they're data from both.
+
+39:37 - Mak Allen
+The main platform is effectively what the doctors are using, and then the patient portal is what represents everything that's going on.
+
+39:46 - rUv
+Okay, so then what we are doing is correct. So if this is the end portal for essentially what you're selling the doctors and what their end users see, then what we've just described as the payment structure is correct, because they aren't subscribing here. The doctors are subscribing in the other platform, which we have to configure. So we're starting from the end user point of view, which is probably the better place to start. So in that scenario, having a mechanism to do exactly what they've outlined in this, excuse me, in this document makes sense. You might have installment plans, you might have payment plans. The payment plans is probably the best, right? You address a much broader audience if you can, rather than having to pay the $2,000 for my dentist bill, I can spread it over the next 10 months, it's a much better way to do it for a lot of lower income people. So that right there is a major selling point for every dentist around.
+
+40:49 - Krysta Fox
+The other platform or there's other services too like Klarna and like microfinancing that you could add in like later down the line. I wouldn't do it for the first launch.
+
+41:01 - rUv
+Yeah, exactly. Klarna would be a perfect use case here. Now, I think some of the Klarna stuff is actually now directly, like they co-opted it in the Stripe and you can just do it directly with Stripe. So yeah, it's, but having deferred and installment plans is for expensive things, like your kid's teeth is definitely useful. Compliant RLS policy, that makes sense. Stripe integration columns, customer ID, that makes sense.
+
+41:30 - Mak Allen
+Subscription ID, do you think that makes sense? Because... The subscription is genius.
+
+41:37 - rUv
+If I could subscribe to a dentist and it's a deferred payment structure. Right now, I'm self-employed. So, I buy, you know, I'm a Canadian. So, medical is covered by the government, but dentist isn't. So, I have supplemental insurance to cover, you know, dental stuff. In essence, what I'm doing for supplemental insurance is I'm subscribing, and I get a certain amount of coverage based on paying X amount every month. So in essence, it is a subscription plan. It's just presented as insurance. It's not really insurance in that regard. But the cool thing about this would be, rather than buying this BS supplemental insurance, I could literally go to my dentist and say, I'm happy to pay $100 a month for each of my kids, and they can see you every six months. That's a nice deferred payment structure for any dentist, and it's a value upsell that you can offer as something that no one else offers that I'm aware of
+
+42:39 - Mak Allen
+I love that, actually. That's great.
+
+42:41 - rUv
+Right? So the payment parts and the deferred payments and the subscriptions and all that sort of stuff becomes a differentiator of your platform beyond just the fact that you can see what's happening and when your appointments are. I love that. All right. So that makes sense. So let's implement, let's review it in a little more detail. You gotta Read through it, make sure it makes sense. Look at all the documents, that's one. You've got several others apparently, so look at those. I think O2 component specification. Always Read and review exactly what you're doing. That's a problem. Never hard code even test keys in documents. That's a security hole. It's not a major one given the fact that it's a test key, but never do that. Keep scrolling. Patient payment flow. Select pay in full. Select pay in full credit card. Patient configure plan. Now that I understand the difference between your primary and secondary dashboards, This actually is perfect.
+
+43:55 - Mak Allen
+I mean, can we point it at the treatment plan side tab just so it understands the math that's baked into this?
+
+44:04 - Unidentified Speaker
+It did. It looks like it already did that.
+
+44:06 - rUv
+Okay.
+
+44:07 - rUv
+Or just tell it to review the treatment plan math and make sure – point it to whatever the page is, the treatment plan slash whatever the URL is. Yeah, there is. I saw it. Just go to the treatment plan folder. I saw it at the bottom there. Keep going. You scroll by it. There you go. Just payment plan summary. Just at.
+
+44:47 - Unidentified Speaker
+Yeah, there you go.
+
+44:49 - rUv
+Hit tab. That's the component. Yeah, you're good. Review the method and remind it to never hard code variables in documents. Now, it's a private repo, but just for HIPAA compliance, for SOCKS2, that's going to set off a lot No, no, you're not telling it that, just for your own benefit. No, no, you're not typing that. I'm telling you to remember that for future reference. We saw it, you can go edit it manually. Okay, click enter. Now go edit those files and get rid of the hard-coded stuff in 01. Yeah, just double-click that. Just obfuscate it, add a couple dots.
+
+45:55 - Mak Allen
+What do you mean, add a couple dots?
+
+45:57 - rUv
+It means get rid of the variable and just add some dots or something to indicate that there's value there. But you need the name. You just don't need the variable.
+
+46:07 - Mak Allen
+So just Stripe or Publishable Key?
+
+46:10 - rUv
+You need Stripe, and you need your key, you just don't need the actual key.
+
+46:14 - Unidentified Speaker
+OK.
+
+46:15 - rUv
+Just add some dots or something. Indicate that it's dot, dot, dot. Yeah. There And now go to your Claw.md. Yeah. I saw it. You were there. Just click it. Claw.md. Yeah. Here you go. OK. Now edit that file at the very end. Go and at the very end, just hit end or whatever, or scroll to the very end, and say never hard code any, yeah, never hard code any envs into files. Which I thought I already put in there, but whatever, we're gonna remind it again. All right. It's pet peeve. Now keep in mind, you're probably, it's HIPAA, is that what you guys are bound to or SOX too?
+
+47:13 - Unidentified Speaker
+Both.
+
+47:17 - Krysta Fox
+Yeah, HIPAA is for medical and then SOX is like, I think it's regulatory body for maybe like accounting or something.
+
+47:25 - rUv
+Yeah, both. It's probably information data, yeah. We're some work we're gonna have to do to get up to speed on on both those here, but you've already taken a nice step towards being more compliant.
+
+47:41 - Krysta Fox
+I think that's going to happen for both, or not just both, but many of the applications that we're going to be building.
+
+47:52 - rUv
+Yeah, we can do deep security analysis too. I've got all kinds of tools for ethical hacking of ourselves.
+
+48:02 - Krysta Fox
+The SOC review? Are they something that happened annually where external third-party audits come into the owner of the software?
+
+48:10 - rUv
+Yeah, there is. Do you guys have a company that's going to do the audit?
+
+48:18 - Krysta Fox
+I have no idea.
+
+48:19 - rUv
+You probably won't be able to launch, at least not with SOX2, if you don't have an audit. All right, so treatment plan, math. Okay, let's throw up, let's review this for quick keep going yeah all right uh status calculations all components centralized uh single oh you're moving too fast for me to Read it uh single source of truth prevents inconsistencies proper separation of concerns logic versus presentation mathematical accuracy patient responsibility configuration okay this is good Ask it if it's using, what the heck's that called? There's a, the Stripe community, what the heck's that Stripe service called? Stripe. I forget what it's called.
+
+49:36 - rUv
+Community SDK.
+
+49:45 - Mak Allen
+Start connect.
+
+49:45 - Unidentified Speaker
+Connect.
+
+49:50 - Krysta Fox
+It's funny, I have a couple of buddies who work over there.
+
+49:55 - rUv
+Where are you based anyway?
+
+49:57 - Krysta Fox
+I'm Austin, Texas. Oh, okay.
+
+50:00 - rUv
+Yeah, I've got a nice crew of my agentics guys in Austin. You should meet Matt who runs my agentics meetups down there.
+
+50:06 - Krysta Fox
+I'm there. You tell me where to go, I will be there.
+
+50:10 - rUv
+Yeah, Matt's the guy. He's awesome. And he's in Austin. And yeah, we've got a whole crew of agentic engineers, you know, whatever. All right, so what we jump back to the other screen for a sec. Confirm that the system is using the Stripe Connect components, or the plan is using Stripe Connect. Stripe Connect, use the Stripe MCP to research.
+
+50:43 - Mak Allen
+Should I do it in plan mode?
+
+50:46 - rUv
+Nope, we want to update the plans. Now we could have done this as GitHub issues, but for now, whatever, we're kind of vibe researching. We know that the Stripe Connect is probably how we're going to handle the marketplace and how we facilitate the transactions on behalf of our customers. So we need the system to basically utilize that capability.
+
+51:17 - Krysta Fox
+I'm new and I'm going to ask a silly question. Is that GOAP interface that you have just a GUI for cloud flow?
+
+51:28 - rUv
+It's a Gentic flow and so a Gentic flow I get to I get to flow systems. So what you're looking at right now is essentially cloud flow and that's my sort of reimagination of cloud code with. They totally stole and they took my sub-agents and everything, but anyway, and yeah, billion dollar company, at least give me a bone. They copied it in terminology and everything, and then called me out for using too much capacity. But anyway, the agentic flow system allows you to take those agents and commands that you have in cloud flow, .cloud slash agents and whatnot, and then deploy those a standalone sort of recurring agents that you can deploy using different models. So you don't have to, you're not stuck using the Claude, you know, Sonnet 4.5 and whatnot, which is really expensive. You can deploy using cheaper models or local models and they can run perpetually. So that UI essentially is me using my sort of agent system to show what's possible. So I create, everyone's like, why don't you create a, website, you know, you love CLIs or whatever. So just to prove that I could, I'm like, here, look, I'm not, yeah.
+
+52:47 - Krysta Fox
+Behind the scenes, it can use, you know, any different models that, so it's not, you know, anthropic dependent or something.
+
+52:55 - rUv
+No, I can use any model and I've got an AST. So I, you know, most of the, what's happening right now when you're watching this, these edits happen are basically requests going to LLM saying, edit this file between line X and Y with this content. What I've done is, I don't think the right word is hijack, but I hijack the request using a proxy. I subvert, I subvert Peter Thiel style. And then I go and basically reroute that request to a local editor of sorts that doesn't require the LLM to do that request, which saves like 70, 80% of your usage. It's way cheaper. Way cheaper and way faster. So what takes 500 milliseconds minimum to like several seconds for an edit now happens in under one millisecond because I'm using a Rust-based compilation. So under the hood, you're a programmer?
+
+53:51 - Krysta Fox
+I've been coding since I was like 14, but I have worn many hats in my career.
+
+53:56 - Krysta Fox
+All right.
+
+53:58 - rUv
+So under the hood.
+
+54:00 - Krysta Fox
+It's very comforting to me to look at.
+
+54:03 - rUv
+Yeah. I'm compiling using Rust. Rust is super fast. It sits really close to the CPU itself, and I can get great performance increases by sort of using a crate. And then I take that and I compile it as a WASM. The WASM also is way faster. So I put all the sort of complex, you know, architecture, algorithms, whatnot, into the WASM. Then I deliver that as an NPM. So when you're using Cloud Flow, or agentic flow or any of my other crazy things I've concocted, I'm actually doing most of the complex sort of work in the WASM itself, which I'm then distributing in the MPX or MPM.
+
+54:44 - Unidentified Speaker
+Gotcha.
+
+54:46 - rUv
+So like a micro neural nets, all that kind of stuff. All right, so what's it saying here? Connect this for marketplaces like Airbnb, connecting independent sellers. Why it's not needed. It doesn't know you're business model. Tell it to review the, what's the other folder we created? It's dumb. It doesn't think it's needed because it hasn't looked at the other marketplace. Tell it to look at the primary, look at the primary, whatever the folder's called. You know, we've got two folders.
+
+55:25 - Mak Allen
+For the components?
+
+55:26 - rUv
+The part we haven't built yet. Close up the docs and show me the other folder.
+
+55:38 - Unidentified Speaker
+This one?
+
+55:39 - Mak Allen
+I guess. You tell me.
+
+55:41 - Mak Allen
+Underscore platform?
+
+55:42 - rUv
+Yeah. Look at the product and figure out a way that we can integrate. You got to explain what it's doing. Again, I didn't even know that until today that the two systems were connected. So it's making the same wrong assumptions that I made. I thought there were two completely different systems that were unrelated to one another. Now what you're telling me is the Nexidental platform is kind of the parent and that's where doctors sign up and use and then this other platform called whatever is going to be the sort of end user for the patients of the doctors who signed up for the other. You got to explain that.
+
+56:16 - Mak Allen
+Yeah, so there's Nexidental and then there's the Nexidental patient portal.
+
+56:20 - rUv
+So type all that in there and explain Not that part, but how the system actually functions, like logically. You might also want to do a business plan or something that outlines this, so you can refer to that as part of your plan.
+
+56:40 - Krysta Fox
+For one of the next projects, I'm actually starting to develop the requirements and I have relatively thorough experience in doing that. My question is, when you set up like users, user interactions, Is there a good way to kind of format that to get it ready for Cloud Code or for Cloud Flow? Like what's the preferred kind of ingestion method to develop like the user roles, interactions, permissions, that kind of thing?
+
+57:15 - rUv
+In this case, I would probably do a functional technical requirements. So what basically we've been doing so far we've been vibing the thing, which has caused us some problems. But don't worry, we're moving in the right direction. I don't mean that as a negative. It's a great way to learn, explore, and whatever. But the reality is now we're getting to a more tactical sort of implementation. So you need to be explicit. So for example, in this particular prompt, you're not explicit. Dental is the platform at dental, or always point to where and what. Don't expect it to just magically know what you're talking about. Point it. Yeah, there you go. Yeah, okay, and then the next one. Yeah, and point it to the patient portal. There you go, okay. Back, go a little further. No, you can leave it, yeah, patient portal or whatever. And then say that, you know, the doctors will sign up for a monthly subscription using the next, dental platform and the end users or patients of those doctors will use the patient portal to, you know, manage, you know, whatever and whatever, however you describe it and handle end user and payments. We're looking at how we can use the connect system to facilitate the payments to the doctor. Update the plan accordingly. Yeah, so. Exactly, so this is really quickly. The next dental platform is for doctors to use to help manage their practice. The patient portal is for use by patients of the doctors, orthodontists. The doctors will sign up for monthly subscription using Next Single Platform, and end users or patients of the doctors will use the patient portal to manage forms, records, handle payments, and works with the treatment plan side tabs. Yeah, this is good. And then update the plan accordingly. You mentioned to use the various stripe connect market plan and other features to facilitate the entire life cycle or something like that. The more you can offload to Stripe, the less potential liability you face basically in HIPAA and SOX compliance. For example, you can use Stripe as a KYC tool if you wanted to and then you do all kinds of stuff just off because they are compliant. So the more can offload to them, the cheaper it is for you. So I want to use the Stripe Connect Market Plan to support the full life cycle and any other useful tools within the Stripe ecosystem.
+
+1:00:25 - Krysta Fox
+That's super smart.
+
+1:00:29 - rUv
+Now, use the Stripe MCP and think ultra hard.
+
+1:00:37 - Krysta Fox
+Yeah, Matt, KYC stands for Know Your Customer, which basically Basically is a requirement that you have to. Yeah, sorry, go ahead.
+
+1:00:46 - rUv
+Just think is the keyword. Actually think ultra hard. It invokes the thinking model. In the ultra ultra hard two words and tells it to think for awhile. You just think ultra hard. Think think you need to work. Think ultra hard three words. Yeah, there you go, OK. Yeah, we're good. So see how you invoke the portal. So it gives a reference to what to look at and we gave it context. See, I need to completely reconsider this architecture. No shit. That's right. That's why we Read the plan, right? If we had just blindly said, go do it, we would have been way down the wrong direction. You're not using, it doesn't look like you're in cloud or maybe hit tab by mistake. I don't know. Go back to the dangerously skip permissions.
+
+1:01:39 - Mak Allen
+Just press three?
+
+1:01:43 - rUv
+No, just go number two. And then hit tab and make sure you, there you
+
+1:01:57 - Mak Allen
+Should I repaste this prompt?
+
+1:01:59 - rUv
+No, just say continue. Here we go. I think you might have hit tab by mistake or something, or alt tab or whatever it was. All right, so this is, see, this is why the Stripe MCP is so useful, because it has contextual awareness. It's able to research the documentation it needs to answer all the problems and questions. So when we Read through the plan, we realized it was a half-baked plan. It didn't take in consideration the other part of the story, which was the portal, the sort of doctor portal, if you will, the primary site. So now we're giving a contextual awareness that it's not just working on just the patient portal, but it needs to facilitate subscriptions to the doctors and allow them to opt into the Stripe Connect capabilities. And that opens up a whole variety of, ways for you guys to monetize, including subscriptions and deferred payment plans and all kinds of stuff. And if you can give that to the doctors, the doctors can then get creative in how they offer new patients a discount for the first time they come in or deferred payments over the run of a year with auto every six months or every three months they get the ability to come in for a checkup. You can automate all that stuff, right? And that's all just different ways to facilitate payment. They could hypothetically even offer a pseudo insurance if they wanted to and you could have multiple customers paying into a subscription which creates an insurance pool and auto allocates based on the certain prerequisites. There's all kinds of stuff you can do here and you're just giving the tools to these doctors or the orthodontist or whatever to be able to leverage these different you know, economic structures.
+
+1:03:54 - Mak Allen
+I love it. Exciting.
+
+1:03:56 - rUv
+That's a business. That takes you from a minor little SaaS business to a billion dollar, you know, reinventing the nature of, you know, dental economics or whatever. All right, let's take a look at the Stripe Connect Architecture MD. Control click that and also put it in a weird folder. I don't know why it does that, but we'll clean that up later. All right, control, shift V to render that in a way it's a little easier to Read. All right, executive summary. Okay, now we're cooking. So now we've got two different platform, practice, paid, extended, monthly, SAS, subscription, patient portals, classic. So you're moving a little too fast for me to Read. Practices, paid, monthly, subscription, Stripe integration, for connected accounts. That makes sense. Purpose patient facing portal users, patients of the orthodontic practices pay flow, patients pay practice, Stripe integration, Stripe Connect. Yes, this is now correct. When Stripe Connect is required, billing. Yep. This is what we're going to start building. Looking good. Now, once you've done that, we need We need to reorganize all that. It didn't put all that stuff in a Stripe subfolder. Actually, let's I've got a few minutes for my next call, luckily. Let me just double check that I'm not skipping out here. Yeah, we're good. Yeah, we'll let that continue here.
+
+1:05:48 - Krysta Fox
+When's the next meetup, rUv?
+
+1:05:51 - Unidentified Speaker
+Yeah, I should...
+
+1:05:55 - rUv
+I should Matt. Are you in our WhatsApp and Discord and all that?
+
+1:06:00 - rUv
+I am.
+
+1:06:03 - rUv
+Want to you want to invite Krysta?
+
+1:06:06 - Krysta Fox
+Yeah, is that I okay.
+
+1:06:08 - Mak Allen
+I'll keep my mouth shut for a sec Hey, no, go ahead I'm only in the flow Nexus one the the other one as Mark pointed out was you hit the max number of members People are joining that how the hell are they joining it?
+
+1:06:22 - rUv
+Yeah, it's guess I see people joining and leaving. Like where are these people coming from Yeah, I got, I had another people join this morning. Add members. Maybe I manually add you. Mak. It's not finding any Macs. Maybe I didn't add you as a friend. Send me a text message on WhatsApp quick. I get hundreds of messages. It's like crazy to try to keep up. Here it is, 650? Yes. I'm going to see if I can just manually add you. WhatsApp kind of sucks for community management. Unfortunately.
+
+1:07:24 - Krysta Fox
+I have my phone number in the chat for the Zoom.
+
+1:07:41 - rUv
+I sat at your Mak. Were you able to join?
+
+1:07:46 - Mak Allen
+Oh, yes. Perfect. Amazing.
+
+1:07:49 - Mak Allen
+All right.
+
+1:07:50 - rUv
+I'll add. Looks like I can directly include people because I'm like the admin or whatever. All right. There we go. And you see there's subgroups. Couldn't, uh, community announcement groups. So they're not added, uh, couldn't add community users. They're not, you can, you can invite them privately to join this group. That's weird. Oh, cause we're not connected possibly.
+
+1:08:34 - Krysta Fox
+Is this in WhatsApp?
+
+1:08:36 - Unidentified Speaker
+Yeah.
+
+1:08:37 - Krysta Fox
+I mean, I guess you could just send me, Oh, it's coming. Something's coming.
+
+1:08:42 - rUv
+Send me a message. I think because. Wow, chat rooms are fantastic. There's a lot of stuff in there. Wow. This was the first one I created. Discord's got more people, but this one's more active.
+
+1:08:57 - Unidentified Speaker
+Yeah.
+
+1:09:02 - rUv
+All right, what's it doing now? Yeah, it's rewriting it, to be correct. I'll be right back. I've been on call for six hours. I need a quick bathroom break. I'll be back in a couple minutes. Okay. Was it was you have a comment?
+
+1:09:17 - Unidentified Speaker
+Oh, just wondering just in case you were tight on time. Just about super base in the main portal. What when?
+
+1:09:26 - rUv
+Well, I, I think the what I didn't realize is the two things were the were two parts of the same puzzle. That changes my that changes my suggestion. I thought they were two completely different applications unrelated. To one another. So now that I know that they're basically one is for like the doctors and the other is the end user, I don't think we should separate those. It makes no sense. It's only going to make it more complicated for us.
+
+1:09:51 - Mak Allen
+I was wondering why it would be a HIPAA issue to separate.
+
+1:09:54 - rUv
+Well, I didn't realize that the two were related to one another. So now that I know that, no, we're not going to do that. But the good news is it was smart of us to start with the end user. So because we're working sort of from the bottom up. So we're working from the product. That makes building the management tool for the product way easier because we have essentially made the product work. Then we just need a mechanism to allow doctors to go and buy the product and subscribe to it every month, which is going to be trivial. So we unknowingly chose the right path. Or maybe knowingly. I don't know. But it's good. We're well on our way. So what we'll do, once we've got that, then we're gonna just basically start and implement the signup and probably some kind of rudimentary payment process. Scroll down a little bit. It's still doing something?
+
+1:10:53 - Mak Allen
+Yeah, it looks like it.
+
+1:10:57 - rUv
+Control O, unless you accidentally hit escape. No, it looks like it's done. Control-O. Continue with your tools, yeah. Remember, this thing can do, we can get to a point where this will manage your entire business. I could get it to optimize your accounting, your business, your integration with all your back office stuff. So what you're probably gonna wanna do at some point is create a detailed operational plan and business plan based on what we've built. And then we can sort of create agents for all the things you might want to hire people to do. Specifically around like money management and other operational aspects. All right, I'll be back in a sec.
+
+1:12:48 - Unidentified Speaker
+Super cool stuff, huh?
+
+1:12:50 - Unidentified Speaker
+Oh, this is awesome.
+
+1:12:51 - Krysta Fox
+Yeah.
+
+1:12:52 - Krysta Fox
+This is fantastic.
+
+1:12:53 - Mak Allen
+This is the shot of espresso on my Mondays, Wednesdays, and Fridays.
+
+1:12:59 - Krysta Fox
+Oh, do you work with him that often? Yeah. Can I come?
+
+1:13:04 - Krysta Fox
+Oh, yeah.
+
+1:13:06 - Krysta Fox
+I would come to all of this. Yes, please.
+
+1:13:12 - Mak Allen
+Yeah, it's... It's a lot of fun.
+
+1:13:16 - Krysta Fox
+He's fantastic.
+
+1:13:18 - Krysta Fox
+I'm so excited.
+
+1:13:19 - Mak Allen
+I'd love to talk with you about the trading stuff that you've developed. Because I used to trade, before I started working with Mark, I was trading options heavily for several years, trading spy options, scalping.
+
+1:13:35 - Krysta Fox
+That's awesome. Yeah. I mean, a hundred percent open to all that. Let me think for a sec. Where are you in Vermont right now?
+
+1:13:47 - Unidentified Speaker
+Yes.
+
+1:13:48 - Mak Allen
+OK. OK, got you. Where did you trade?
+
+1:13:50 - Mak Allen
+I used to trade when I was in Texas. I went to SMU and OK.
+
+1:14:01 - Krysta Fox
+No, I mean, say what you want. I totally up to you. I just I think that's awesome. Yeah, this whole world's quite wild.
+
+1:14:12 - Mak Allen
+Yeah, I was a finance major, so I was originally going into investment banking. It wasn't creative enough in the, it was hard for me to balance sleep and work life balance. It was so skewed, it was unhealthily skewed that I needed to switch into something else.
+
+1:14:32 - Krysta Fox
+It's not healthy. I have many friends area. I grew up in New Jersey, I went to high school in New Jersey. And I worked for PWC for eight years out of the New York office. So I have like, a lot of friends and networking's of people all in the finance industry. At one point, I had my seven and 66. This was a while back. Um, and you know, there's like a a couple influencers I'll follow with respect to trading, and it's, yeah, it's not a healthy lifestyle, what they put people through, and it breaks people, but- I wasn't in trading, but I was in- Investment banking itself.
+
+1:15:20 - Mak Allen
+Yeah, so I, it was a lot of long drawn out projects and a lot of just staying in the office till, there were times where I had to be in the office till 6 a.m. Making these books and and then having to be in the office at 6 a.m. When I was there till 3 a.m.
+
+1:15:38 - Krysta Fox
+is that's really bad. Yeah.
+
+1:15:42 - Mak Allen
+But working, you know, 14 hours on this, this is a lot easier than just mentally. It's it feels more like painting.
+
+1:15:51 - Krysta Fox
+Yes, I agree with that. Million percent. Wow, yeah, there's so much to unpack there. I'm trying to make sure I stay focused and deliver to you guys what I need to do too. And I think one of the most interesting pieces to all the work and ideas and everything that's coming together is your ability to kind of organize and execute into chunks. Talk through that with you, too, because we're going to start to see some repeatable modules with this project. And then I'm sure you have your own pet projects, and I do, too. And it's all about the balance and the focus.
+
+1:16:41 - rUv
+Yeah. All right. How are we looking here?
+
+1:16:44 - Mak Allen
+Here's where we're at. It's successfully.
+
+1:16:56 - rUv
+It doesn't like it's completed. Scroll to the bottom. It looks like it's updated. It looks like it's... The document provides a complete technical specification. There's still three... Okay, yeah, it hasn't done that. Okay, never mind. All right, so... Let's Read through it and make sure it makes sense. Go to the docs. Ask it to organize those docs into a subfolder stripe. I'm not sure why it's put them all in a root folder for it. Tell it to reorg the docs files into subfolders. Yeah, there you go. I just don't like seeing a folder full of files. It just kind of makes my OCD go off.
+
+1:17:52 - Mak Allen
+Same.
+
+1:17:57 - rUv
+We could also update. Oh, it's compacting again. All right, so let's just look at it. Take a look at some of these. The straight ones.
+
+1:18:19 - Krysta Fox
+I'm really curious, since there's a couple more like brand new fresh projects that are coming in the pipeline. If it makes sense for you, rUv, to basically just tell me up front, like, okay, here's what I want you to start with the business plan, user requirements, outline them like this, we can like, dump them right into Claude flow. I don't know if there's documentation on that. Or if you just want to type up an outline, there's whatever's like the facts.
+
+1:18:51 - rUv
+There's a few things. Yeah, you're, you're, you're gonna be the genetic engineer on this. Is that is that so your, your spot?
+
+1:19:00 - Krysta Fox
+You're kind of that loosely titled my so I'm like, I mentioned I've worn many hats. I have experience across the board. I was just mentioning to Mak, I was a consultant with PwC for eight years. So I have eight years of management tech consulting. Also have a finance background. I have my 766. I've built web applications in LAMP stack, but that was like over 10 years ago. And then most recently in my work with Apex, I was using, well, first they started out with Roo code, atrocious, but I'm familiar with GitHub by and large, and I use Terminal on my computer with cloud code. I use a CLI. In my role at Apex, I was product manager, but I believe Mark mentioned something such as agentic engineer. I don't really put a role on my head, tend to look no matter what problem I'm looking at it's a system right so it's it's multi-tiered like I'm thinking about the economics of the platform I'm thinking about the user interactions I'm thinking about the experience I'm thinking about okay well how restoring their data like like across the board I mean we were even talking a little bit about regression testing devops deployment I have a million questions platforms launched, like, how do they, where are they going to run it off of Like, is it going to be in AWS? Is it going to be in Google Cloud? Like, I know here you mentioned, because you dangerously, you know, ignore permissions, you got to have this cloud flow running in a container and GitHub, but like the end application that gets packaged up where the real live use words in production, like I don't even know where that's going to I have a bazillion questions all the time.
+
+1:21:02 - rUv
+And those are all great questions. And the reason I suggested, you know, code spaces versus like dev pods or something, which is just to make it just make it cheaper and easier. Well, not cheaper, easier. It's not cheaper. It's actually more expensive. But I wanted to get them up and running quickly in a way that I knew would just work. As for deployment, you know, it's either what you're what you're familiar and comfortable with or what's cheap and easy. Now, their application is relatively rudimentary. We've got a super base sort of infrastructure for data persistence, edge functions, and some real-time stuff that we probably aren't using. So the vast majority of the application is fairly rudimentary. So the runtime could be something like a Google, what is it, Cloud Run service, or it could be fly IO or Railway or Vercel depending what you're they're all basically are docker versions of the same thing um yeah and I guess my other questions that you're just like generally hanging out there is like who's managing who's giving support like who's I don't even know who's doing that who's gonna like data dog logs who's doing observability like if the server crashes like who's Yeah, well, right now we were focused on just getting something to start But, you know, operational DevOps is, you know, is going to be just as important. You know, wherever possible, we're going to have agents monitor and manage and do whatever we can. You know, there's an MCP too. Yeah, there's a lot of questions that marks that I think is probably going to be like what you're comfortable in terms of infrastructure. It really makes no difference to me. I do enough of these projects that every time someone shows up, they've got some other crazy infrastructure they're using. So I go with whatever's easiest and whatever you're familiar with. Looks like it's reorganizing the documents. All right. Well, it looks like it reorganized the strike once, take a look at the strike folder. Now, it's up to you guys if you actually want to do it or not, but this is a solid plan for how you do it. So, if you're looking at creating legitimate payment capabilities, both in the front end for the doctor, dentist, whatever, you've a structure that you could potentially implement on the Stripe Connect platform and Stripe billing and whatnot to do off until later and get the other part of this application working, like the doctor portal. But this is how we're going to eventually do it.
+
+1:24:08 - Krysta Fox
+Does Cloudflare do deployment?
+
+1:24:11 - rUv
+Yep. For example, what we were doing Earlier, we were using the MCP to do these super-based deployments and edge functions. For example, if you want to use something simple like fly.io for deploying, you could basically get it to install the fly.io MCP and CLI and log into it and then say deploy it to fly or deploy it in a multi-server deployment pattern that scales. Not that this app would have a lot of traffic. I don't really think we're really concerned about scalability so much as just failover. The more likely problem is an availability issue in a certain region and the ability for it to fail from east to west kind of thing. I guess with some of the MCPs that you've been working with, have you come across any that are related to web 3 you know just either token economics or content ownership or smart contracts or anything like that yeah there's there's I have a tendency to build my own MCPs because they're trivial at this point to build okay fair enough fair enough right that's good so yeah occasionally like I like I'll use the stripe or I'll use maybe the github or MCPs and obviously I get 50 plus thousand downloads of them a week but the reality is you could literally create what you just described in minutes. Now it's just a matter of understanding how to interact with the testnet or the production environment for a given blockchain but it's relatively straightforward to do any of that sort of stuff and you're doing the same thing right you're just creating an MCP abstraction of whatever services you want the clod code or whatever to interact with.
+
+1:26:09 - Krysta Fox
+So would we have to pick an existing blockchain technology?
+
+1:26:14 - rUv
+Well, it depends on the library you're using. If you're using some sort of library that abstracts many, then just use that and create an MCP against it.
+
+1:26:23 - Krysta Fox
+Okay, NRS too.
+
+1:26:26 - rUv
+It depends what you're trying to do, what problem you're trying solve. Like trading cryptos, for example, in a decentralized environment whatever, you know, DeFi or whatever, then you might want to create a interface to that API or whatever it is that the service you're trying to interact with.
+
+1:26:47 - Krysta Fox
+Oh, that makes sense. That's awesome. Now, one of the pipeline projects has basically this concept of content ownership tokenizing. I'm still trying to understand exactly what they want at this point.
+
+1:27:01 - rUv
+Oh, I got one minute left but don't use smart contracts use the ED2551 specification and you can get all the benefits of like the the sort of smart contracts without any of the bullshit blockchain crypto stuff that has that cost money yeah I've got I've got a project that actually implements that and it's MPX which one is MPX agentic payments Oh, that's okay.
+
+1:27:33 - Krysta Fox
+You just put it in a couple weeks ago.
+
+1:27:35 - rUv
+Yeah, I put it in, but this one in particular, I'm using, you can use it for different purposes, but I'm using a cryptographic verification of the intent. So you'll see here and it's under the active mandate. That's the way you're going to do it. Okay. So specifically see the active mandate component and it's the ED25519 cryptography. Look that up okay and you don't need you get all the benefits of like a smart contract without having to use some BS blockchain blockchains are really that useful they're so cumbersome right and they're like stupid expensive on energy and expensive for ridiculous cryptos to do transactions or things that don't need any transactions yeah like so yeah so the only drawback to the ed255 one 9 cryptography is it's not quantum safe, but we'll worry about quantum.
+
+1:28:34 - Krysta Fox
+I don't think this particular project needs quantum anything.
+
+1:28:40 - rUv
+Yeah, I think for what you just described, I didn't say a lot, but I would explore using that particular cryptography. Pop it into Clod and ask it how you can use that for active mandates. Okay, awesome. All right, I got to jump to my next call. And looking good, you know, I don't know if we're on our next call.
+
+1:29:02 - Mak Allen
+Should I hold off on this until Friday?
+
+1:29:05 - rUv
+Yeah, I would. Okay. But you're in a good spot to actually functionally implement the entire payment system at this point. I would start looking at you doing the same thing you did for the patient portal in your front end. Start with the login. Okay. The login and registration working and everything flows from that.
+
+1:29:27 - Mak Allen
+Okay, so I can start working on the full platform.
+
+1:29:30 - rUv
+Yeah, it looks like you're cooking. Make sure you create new branches every day. I see 15th, which I guess is today. So just create a new branch if you're going to start on the new portal part.
+
+1:29:46 - Mak Allen
+Okay, sounds good.
+
+1:29:48 - rUv
+It looks like you're doing well. Remember, plan, Read, review, revise, implement.
+
+1:29:54 - Mak Allen
+We'll do.
+
+1:29:55 - rUv
+Yeah, don't blindly do it. And then each time you do one thing, check that thing. Can I log in? Use the same super base. We're good. The two are combined. One should work for both. Just make sure you have some sort of role-based access that defines the difference between a doctor and a patient.
+
+1:30:14 - Unidentified Speaker
+Okay.
+
+1:30:15 - rUv
+So review the data architecture closely before you actually go and do it.
+
+1:30:19 - Mak Allen
+Okay. Sounds good.
+
+1:30:22 - rUv
+All right. You made all those other areas work. So that's exciting.
+
+1:30:28 - Mak Allen
+At this rate, we should be in a very good spot by Monday next week.
+
+1:30:32 - rUv
+Yeah, you should be. You're cooking.
+
+1:30:34 - Mak Allen
+All right, rUv, I'll let you go. Thank you so much. OK, no problem.
+
+1:30:37 - Unidentified Speaker
+I'll talk to you soon.
+
+1:30:39 - Unidentified Speaker
+Take care.

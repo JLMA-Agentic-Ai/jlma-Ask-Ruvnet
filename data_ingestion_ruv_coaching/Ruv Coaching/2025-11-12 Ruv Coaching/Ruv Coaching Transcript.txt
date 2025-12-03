@@ -1,0 +1,794 @@
+Ruv Coaching
+Wed, Nov 12, 2025
+
+0:03 - rUv
+Hey.
+
+0:11 - Unidentified Speaker
+Hey, Ruv.
+
+0:13 - Mark
+Hey. Good to see you guys.
+
+0:16 - rUv
+I'm off video. I'm driving, but Mak's going to be running this meeting. Mak, you're on mute.
+
+0:22 - rUv
+OK. My camera's a little wonky. My whole setup fell over earlier. There we go.
+
+0:31 - Unidentified Speaker
+How goes it, Ruv?
+
+0:34 - rUv
+Good, yeah, it's going well. Had our meetup last night in Toronto, had a nice turnout. It's always fun to see the community. I'm kind of a recluse, I don't get out of my office very often, as you guys discovered when you offered me to go to Mexico, but I got out last night.
+
+0:54 - Mark
+How many people ended up coming?
+
+0:57 - rUv
+It was a smaller event, it was a holiday yesterday too. Might have also played into we had a we had about 120 registered, which is actually about half of what we usually get. And we have probably at around 5060 people. Yeah, it's hard. It's hard to tell. It's a big room. So it's it's hard. I think we scanned everyone at the door. So I probably have the exact number.
+
+1:18 - Mark
+But and what did you cover there? Was it recorded?
+
+1:25 - rUv
+Yes, it was recorded. I just don't know where that recording is. Martin it. I got it. I did the I actually, there was a few talks we didn't unpanel, but my I showed people how to use the new cloud code web, which I've been sort of really into lately. So a lot of people are the idea of using cloud code from like CLI point of view is a little bit much. So using the web edition makes it a lot easier.
+
+1:57 - Stuarst Kerr
+The question was, what do we need to do to load Cloud Flow into that scenario? Do you need to load it in each time? Do you need, when you're doing it with the web, when we push things to GitHub, does it push all the Cloud Flow stuff with it? Is that ever going to get ignored? Because that's the stuff I've been getting a little jammed up in trying to use local code space, web code space, or the GitHub code space.
+
+2:28 - rUv
+So keep in mind, there's two parts. So some of the stuff is being pushed to your repo, and I can see it, like the .clod folder, and the agents, and skills, and things like that are being included. Now remember, there's a runtime, the MPX, or MPM, depending on how you're running it. But the MPX command is installed, right? So if you're doing a new environment, let's say Cloud Code Web, you're to have to tell the system to install a particular runtime. Generally, for the web edition, I'm using the agentic flow and agent DB components for the most part. I'm not depending as much on the sort of VS code style swarm because it's a sort of different operating environment, but I'm telling it to install and use those components. Now, once you've done it once in that particular runtime, you don't have to tell it to do it again. Unless you create a new instance.
+
+3:21 - Stuart Kerr
+So I guess two questions on that. So if I'm in Cloud Code, it opens up, I open a repo, I do the work with the repo, sorry, I load either Cloud Flow or in your case, Agent, is it Agent Swarm, was it?
+
+3:39 - rUv
+Yeah, Agentic Flow. When you say Cloud Code, are you talking about Cloud Code that sits on the CLI or are you talking about cloud code web, which is the web edition from cloud.
+
+3:50 - Stuart Kerr
+In this case, you're right. The example is the cloud code web, right? Cloud.ai.
+
+3:57 - rUv
+Right?
+
+3:58 - Unidentified Speaker
+You showed us last time.
+
+4:00 - rUv
+Yeah, just to recap. And remember, the the most important thing you're going to do is you got to tell it to have web app full network access. Otherwise, you basically doesn't do anything. And that's it. That's it. Sort of element.
+
+4:19 - Stuart Kerr
+Okay. Yeah. Have you tried that Mak?
+
+4:22 - rUv
+I mean, like, yeah, so right now, right now I'm rebuilding, I'm rebuilding my neural trader in Rust.
+
+4:29 - Mak Allen
+I have not tried the web version. Okay.
+
+4:33 - rUv
+This is, this is my, this is my PRD. And then it creates all the things So I'm creating a plan. So I create a plan to create a plan. But the key part here, you can see I created my NeuralTrader environmental variables. Now, what you're going to want to do also is you're going to want to make sure when you create at least the default one, you're going to want to make sure you have full network access defined. This is really important. Otherwise, it's not going to do anything.
+
+5:01 - Stuart Kerr
+OK. So where do we set up full access, Scott? So not default. OK.
+
+5:09 - rUv
+Yeah. Well, you want default. So you're going here. You probably don't have any environmental variables. There's a little icon here. You're going to click that. And then you're going to choose full access. Hit Save. And then the next time you go, it should remember. Got it. OK. And then your keys, these are like third party services. So in this case, what I'm doing right now is I'm creating a stock trading and crypto trading system that'll run specifically within cloud code. So for when that's ready, what you're gonna do is you're gonna put your environmental variables here for your stock trading. So if you wanna trade stocks or whatever, you could just go in here and do it kind of stuff.
+
+6:00 - Stuart Kerr
+So that's a good question. Am I putting in the environmental variables for generally using cloud code where am I putting in the environmental variables for the neural trader GitHub repo that we're working with?
+
+6:14 - rUv
+You're doing it specifically for the app in which you're working with. So in this case, I would put in my like my alpaca API key or my interactive brokers or whatever I'm using to do my trading. I put those keys in there and then then the system has the ability to use those services through Claude code directly, which is for a lot of people who don't know and don't care, then this is way easier. All they need to do is go in here and say, create me a trading algo or something using all the tools available, and then they're good to go. Got it. All right. I'll probably end up publishing it as something like NeuralTrader. In this case, you might say, create trading algo using NeuralTrader and I might put in agent DB or something, right? I might put in MPX agent DB and that sort of thing, so it's just easier for people.
+
+7:10 - Stuart Kerr
+OK, and then the other question.
+
+7:13 - Mark
+If we're comfortable using. Code and cloud code in the terminal. When would you suggest using this this in the web versus in? In VS code.
+
+7:28 - rUv
+What can well I I've been using it for like oh, and some issues I need to take care of, you know, fix some bugs, or I don't have a code space set up and I don't want to go through the rigmarole of going and installing Cloud Flow and Cloud Code and all that stuff, and I just want it quick and dirty, or I'm doing some research and I want to, you know, figure, like, here's one. Here's, like, exotic product ideas, right? I'm just messing around here. I want to create some interesting ideas. So in this case, I basically said, you know, create me some interesting ideas. And and it does, it looks at my tools and does whatever it's, you know, and then I created a bunch of different things, you know, in this case I created high-frequency trading, because I love doing that with my stuff, anti-hallucination, self-evolving games, and this was part of my presentation I gave last night. So ultimately I'm like, okay, this looks interesting, go build some of that stuff. Go build it. And I ended up building a protein folding system with Byzantine consensus, which is cool. And it went and built it and built all that stuff for me. And I went and got in the morning, it was done.
+
+8:36 - Stuart Kerr
+So in this case, you didn't even do BS code at all.
+
+8:39 - Mark
+You just did it entirely.
+
+8:41 - Stuart Kerr
+And you did it with agent flow.
+
+8:46 - rUv
+Yeah, I'm using agentic flow because I can spawn sub-secondary agents using E2B sandbox. So where flood flow can do that as well, but, you know, Agenic Flow allows you to create not just, you know, five or 10 agents. This, I could spawn 10,000 agents all at once. So it's more scalable. It's more costly, but it's way more scalable.
+
+9:17 - Stuart Kerr
+Is there a way to control the cost so we don't accidentally do something stupid?
+
+9:22 - rUv
+Yes. You can, on an open router, you can put up a budget that doesn't go beyond X. You can also tell it to use cheaper models. Like right now, Kimi K2 is really popular. It's cheap, way cheaper than Anthropic. That's like 0.10 of the price, right? Yeah, like 98% cheaper or something.
+
+9:42 - Stuart Kerr
+And are you finding it good enough?
+
+9:44 - rUv
+Yeah, so here I can, what did I do? I did a benchmark earlier, let's see. What do we got here? Is this it? No, this isn't it. The Vibecast code implementation. The only thing, it doesn't give you good titles. No, is this it? No, I got too much. That's not it either. I did a robotic system and someone asked me to build a robot system. It's really crappy for figuring out. Here we go. This is the one I did for looking at the different capabilities and how my system would be benchmarked. Let's see if I can find the benchmarks. 50% reduction. Yeah, so basically I benchmarked it. I gotta find the actual benchmark here somewhere. But basically I'm using Kimi K2 Moonshot or whatever. And where is it? Yeah, so I can see it. I can see how well it performs. Based on this, I'm the best models in the world based on my platform by several points.
+
+10:57 - Stuart Kerr
+In what respect? On the SWE benchmark?
+
+11:00 - rUv
+And this is human eval, this is MMB, this is SWE bench. I'm basically number one for all of them. Now, my approach is quite a bit different than everybody else's, so I'm creating these sort of self-learning components. This is how I verify it. So I can see that, you know, I beat pretty much everybody.
+
+11:21 - Stuart Kerr
+So what's your latest SWE number?
+
+11:24 - rUv
+I'm around 94% according to this.
+
+11:28 - Stuart Kerr
+For the SWE benchmark?
+
+11:30 - rUv
+Yeah. Wow. And if we do, well, human, sorry, human eval is Sorry, SWE is this 65 particular one.
+
+11:39 - Stuart Kerr
+Is 65, okay. Now wait a minute, I thought you were at 84.
+
+11:44 - rUv
+Well, I'm using here. I'm trying to use older, cheaper models. It would be 84 if I was using like Sonnet 4.5 or something.
+
+11:57 - Unidentified Speaker
+Okay.
+
+11:57 - rUv
+Yeah, I'm using old models here.
+
+11:59 - Stuart Kerr
+And what does Kimi K2 end up with?
+
+12:03 - Unidentified Speaker
+That's a good question.
+
+12:05 - rUv
+That's what I was reading over the weekend.
+
+12:06 - Stuart Kerr
+A whole bunch of people were coding it and saying price for performance, it's than 3.5 Sonnet and a 10th the price.
+
+12:16 - rUv
+Well, it's better after you do my training, but by default it isn't. And a lot of the benchmarks are bullshit. Like you can see here that I'm only getting 31 on GPT-4 and they're claiming that they did better than that. So I think a lot of these models are overstated. Like I'm also doing comparisons of like other models. Just to see where I land. But I'm able to get, depending, if I'm able to do recursive training, I can get up to about 90, 94 on SWE Bench. I wasn't doing it here. I was just doing it like a basic benchmark. But these are the sorts of things you'd probably want to do. Run this to benchmark and optimize, that kind of thing.
+
+13:02 - Stuart Kerr
+And how would we do that, I guess is the question. And Matt, I'm sorry, if you've got... Other stuff that you wanna... Mark, if you've got other stuff you wanna take it to, by all means, go. I don't mean to derail.
+
+13:17 - Mark
+Yeah, Mak got a bunch of stuff, but maybe we can just wrap up the questions.
+
+13:21 - Unidentified Speaker
+Yeah, go ahead.
+
+13:23 - Mak Allen
+That's all right. Stuart, I'll let you keep rolling. I'm finishing up a prompt real quick. Okay.
+
+13:29 - Stuart Kerr
+So, rUv, I'd love to be able to do this, and I'd like to be able to experiment with the Kimi K2 stuff. And I caught most of what you said, but unfortunately I don't, I remember the agentic flow at what the command was, how to load it and what you're saying.
+
+13:47 - rUv
+No worries. Never, never need to apologize. That's what you guys keep me around for. Um, you've want to share your screen. I can walk you through it.
+
+13:55 - Stuart Kerr
+Um, sure. So here's, here's, uh, sharing the screen here is, uh, where the heck is it? Um, Okay.
+
+14:07 - rUv
+Let's start, let's start simple. Do you have your open route? You have, you've got an open router key?
+
+14:13 - Stuart Kerr
+Yeah. So, so here's, here's, here's the cloud code open and I'm just going to pick a, a simple repo that I've got that I was kind of messing with.
+
+14:26 - rUv
+Exactly. Simple blank repo. Now go to your default. Yeah. Yeah. Click on the pen on the little star. Yeah, choose full access, I guess that's what you're using. Add your key there, so open router underscore API underscore key equals.
+
+14:46 - Stuart Kerr
+All right, hang on.
+
+14:49 - rUv
+If you don't want us to see it, you can stop sharing.
+
+14:51 - Stuart Kerr
+Guys, if I'm hiding shit from you, I got problems. It's not like you can figure it out if you wanted to.
+
+14:59 - Unidentified Speaker
+I it, you know, but
+
+15:03 - Stuart Kerr
+What the hell? Open matter perplexity. Shit. I got everything.
+
+15:06 - rUv
+And where do you do, do, do perplexity as well. Do you pop in all your keys you got in there? If you've got a bunch.
+
+15:14 - Stuart Kerr
+Wow. Then let's, uh, can I just load it in this way?
+
+15:20 - rUv
+Uh, it looks like you got any line that starts with a hash. You has to be removed as they don't like, okay. Yeah. So Get rid of all the comment lines. Yeah, exactly. Okay. All right. Looks like you're good.
+
+15:43 - Unidentified Speaker
+React. Perplexity.
+
+15:47 - Stuart Kerr
+Yeah. Hit save.
+
+15:51 - Unidentified Speaker
+Save.
+
+15:51 - rUv
+Got it. Okay. All right. Now we're going to do a basic test. So as a test, we're going to say something something like verify that the open router key from the secrets works using KimmyK2.
+
+16:12 - Stuart Kerr
+Verify that the open router key from the secrets works using KimmyK2. I think that's the only one I didn't have in there.
+
+16:22 - rUv
+Yeah, so just make sure you spell Kimmy correctly. You'll get confused if you don't. Oops, it looks like an auto editor or something. Yeah, it's Kimmy, I think with an I.
+
+16:31 - Unidentified Speaker
+Yeah, it is, it is, sorry.
+
+16:34 - rUv
+And you also need it, yeah, open router from the secret, yeah, that should be fine. Let's see what happens. You generally, since it's a new model, it's not gonna know what it is, so you basically gave it the wrong instructions.
+
+16:45 - Stuart Kerr
+Yeah, I understand, but to be clear, we're just in Cloud Code. I haven't loaded any of your stuff. Like, is this where, I would say NPX agentic code?
+
+16:57 - Unidentified Speaker
+Yeah.
+
+16:57 - rUv
+Or agentic flow?
+
+16:59 - rUv
+You can do it in the bottom right.
+
+17:03 - Unidentified Speaker
+Really?
+
+17:04 - rUv
+Yeah, so as it goes. Now you can say, just say something like it's Kimi, K-I-M-M-I-K-2.
+
+17:12 - Stuart Kerr
+Right, but I guess my question is, do I not need to load the agentic flow?
+
+17:20 - rUv
+Well, we're just testing it. But yes, I would have loaded it first.
+
+17:23 - Stuart Kerr
+So I would do that up here, right?
+
+17:25 - rUv
+Or you can do it down. Now, once you've verified the OpenRouter works, then you can go do it as a reply. OK, now install the agentic flow system and use the OpenRouter capabilities. We're playing around, right? So you don't have to do it. You can do it sequentially.
+
+17:46 - Mak Allen
+You have a very nice display, Stuart.
+
+17:47 - Stuart Kerr
+Oh, thanks. I have 14 going on because I got...
+
+17:55 - Mark
+Can you do the effective equivalent of multiple terminal windows with Claude code in the web?
+
+18:01 - rUv
+Yeah, although you see all the sessions on the left-hand side. Those are all different terminals.
+
+18:06 - Mark
+So you can have multiple on the same project?
+
+18:09 - rUv
+No, those are all, well, they'll be multiple branches. No, so no, not exactly the way, not in the way you're describing.
+
+18:16 - Mark
+Yeah, not like you can't with VS code.
+
+18:18 - Stuart Kerr
+Yeah, so I realized for all of my stuff here what I don't have is my open router key. So you're telling me I need the open router key. So let me just go to that real quick.
+
+18:27 - rUv
+OK, you're going to you're going to once you set the ENV. I don't know if you might have to start a new session. I don't know.
+
+18:35 - Stuart Kerr
+Oh, that's interesting. So those those environmental variables only stay for the session. They're not written in some way contextually. To Cloud Code knowing that whenever I pull up that repo, these are the ones that go with it?
+
+18:49 - rUv
+Well, you need to restart the session, and sometimes that's tricky, because there's no obvious restart. So you basically let it time out and restart it.
+
+18:59 - Stuart Kerr
+Understood. OK. All right. Mak, at any time you're ready to jump in, jump in. I don't want to be stealing time here.
+
+19:07 - Mak Allen
+No worries. I'm ready to jump in.
+
+19:11 - Mak Allen
+All right.
+
+19:13 - Stuart Kerr
+You jump in, I think I understand the premise of that. I just want to make sure here, the only question I had was it just install a Gentik flow and then start talking to a Gentik flow? Basically, yeah.
+
+19:26 - rUv
+And the benefits to that is you get all the various, it's got a ton of tools in it, as you guys are aware, and that allows you to start trying different patterns, deployments, and learning, and whatever it is you want to do. What's great here is you can just have a chat with it, and it works on your phone. So you can sit in front of the TV and fool around with that kind of thing.
+
+19:51 - Stuart Kerr
+Got it. Okay. So let's try one more thing, and then I will give it back. So I can go back in here and then say, now, the OpenRouterKey, can I call it anything I want?
+
+20:10 - rUv
+No, you should generally try to use the standard key structure. So in this case, open router key, there might be an extra T in there. And yeah, and then there you go. You can call it anything, but it's going to confuse the AI if it's something that's not obvious.
+
+20:31 - Stuart Kerr
+That I understand. OK, so and then I would stop this and say try again or something like that.
+
+20:36 - rUv
+I would say I just updated the secrets, check if you can see them, it might require a restart, I don't know. And then tell it what the key is. Like you got to tell it specifically that it's open router underscore key.
+
+20:55 - Stuart Kerr
+Oh, it wouldn't check the secrets and say, Oh, I figured that out. I see that you've added the why not?
+
+21:00 - rUv
+Why not give it a helping hand and tell it what you called it? Yes, it could probably do that. But you go from something that takes 10 seconds to It takes two minutes of it fooling around.
+
+21:08 - Stuart Kerr
+Okay, all right, let me shoot it back. Mak, back to you. Thank you.
+
+21:19 - rUv
+Yeah, you should be able to, and you can try, and the other thing you could do is you could point it at my website, roov.io slash projects and say, what kind of crazy stuff can I create with rUv's projects? And it'll look at my stuff and it'll figure it all out.
+
+21:34 - Mak Allen
+Mark's about to go crazy with that one.
+
+21:37 - Stuart Kerr
+Groove.io slash projects?
+
+21:39 - rUv
+Yeah. And then it'll discover all my projects and it'll say, oh, I can do this, that, and the other thing. And you'll just have a conversation with it.
+
+21:49 - Unidentified Speaker
+OK.
+
+21:49 - Stuart Kerr
+Got it.
+
+21:51 - Unidentified Speaker
+Thanks.
+
+21:53 - Mark
+Warning on that one, Stuart. You might want to constrain it to for this application because you're going to start getting into crazy consciousness and extraterrestrial identification and like all kinds of crazy stuff. Yes.
+
+22:08 - Stuart Kerr
+I'm not going to have to like change religions.
+
+22:13 - rUv
+Why do people always ask me about God lately? Anyway, I have no comment.
+
+22:20 - Stuart Kerr
+I'm back to you, brother.
+
+22:23 - Mak Allen
+All right. OK, so I got the 11 labs agent working. I'm I got. I have a test right here. I was able to successfully book two appointments into the calendar. We got Mark set up for 4 a.m. The reason why his was 4 a.m. Is because I told the 11 Labs agent that he wanted 12 p.m. Noon, Eastern Standard Time, but that converted to 4 a.m. UTC, so what I'm doing right now is adding a time zone specification right here as well as a clock right here that shows what the current time is for the clinic.
+
+23:08 - rUv
+That's good. It makes sense to store your time in UTC, but it also makes sense to update the calendar based on the current user's location.
+
+23:21 - Mak Allen
+How should we do that? Right now, I have that in the middle of implementing. Okay.
+
+23:30 - rUv
+Yeah, it's just I you might have already done that. And the system might be smart enough to figure out that's the optimal way to do it. But just to be clear, you know, storing time using UTC is is good standard practice, because then you're, you're, there's no conversion, the conversion is a is a one to many versus many to one. Well, before you say let's store, you need confirmation. It may have that. So what you really want to know is, are you storing the time using UTC?
+
+24:09 - Mak Allen
+I know it was. I guess we'll have to find out here in a second.
+
+24:14 - rUv
+Yeah. Now the question is, and then the second part is, are you using the local user location within the browser, which you can expose.
+
+24:25 - Unidentified Speaker
+That's what it was also doing that.
+
+24:30 - rUv
+Yeah, so it might have already been doing it. So let's let's just before you go and change anything, just need confirmation on how it currently works. And then based on that, make any modifications, making asking it to make changes to something that already works is just going to confuse it and might take it down the wrong path.
+
+24:45 - Unidentified Speaker
+Okay.
+
+24:47 - rUv
+Yeah. And you When it comes to this sort of stuff, it looks like you're doing a lot of client-side logic. I would probably do a lot of this scheduling and these sorts of things as edge functions versus client-side, which is apparently what you're doing, it would seem.
+
+25:14 - Mak Allen
+How would we convert this to edge functions?
+
+25:19 - rUv
+Well, I'm not sure exactly how you've defined your logic. I'm just looking at briefly. I see pages and schedules. Now, the you're doing it is it's almost entirely putting the logic in the structure of the page. And that means that, let's say you want to have a secondary agent that interacts with your scheduler, you're going to have to repeat the logic twice. You're going to have to build that logic into something else that the agent can interact with. The agent's not going to interact with the page to do the scheduling. It's going to interact with most likely a super base and an edge function, or possibly a trigger, and then do the scheduling. In this scenario, it's built essentially for people only. So it's going to be difficult to say, I need a voice agent to interact with my scheduler. It'd be pretty much impossible in that scenario.
+
+26:12 - Mak Allen
+How can we audit this?
+
+26:14 - rUv
+to figure out how would you prompt it to bring up your bring up your issue that you use to define whatever it is you build. And let's look at that.
+
+26:26 - Mak Allen
+For this part, I don't I don't have a GitHub issue.
+
+26:30 - rUv
+So you shouldn't if you're doing any new feature, you should always start with an issue. How do you do? How do you implement this? Like you create an MD or you just it? What are you doing to guide this?
+
+26:44 - Mak Allen
+Well, it was partially working and I pretty much vibed the schedule into finally working.
+
+26:51 - rUv
+Yeah, so the problem with that is I've got no insight into what you did or how you did it. And neither will anyone else going forward. So if there's an error, for example, we see an error, it's not going to be clear what changed and how you got to where you are to make those changes. So What I do when I'm setting up any kind of change, even minimal changes, is I'll start with create a GitHub issue using the CLI to update the scheduling system to do X, Y, Z. Don't implement, but create me a detailed plan. Then I review that plan, I'll be like, okay, that plan looks good or I'll make modifications to the plan. Then I'll say, go, implement that and update the GitHub issue each step of the way, then I can go back in a month and when we look at the scheduling system and realize that there's a problem or wasn't created correctly, we've got a working history of what was changed and why it was changed. The issue that you're facing right now is there's a tendency to vibe this stuff, which makes it really hard to go back and look at it later.
+
+28:09 - Stuart Kerr
+So how do we do it instead?
+
+28:12 - Mak Allen
+Yeah, I broke my internal voice of best practice for the sake of rushing.
+
+28:18 - rUv
+And you're suffering because of it. I can already tell. Yeah. You've got a bunch of errors. I'm even clear what you just did.
+
+28:31 - Mak Allen
+settings remoto what I did a lot I all I asked for was to add a clock up here and to add a time zone indicator button here okay so it's not broken it looks like it's fixed again yeah I think I need to refresh is there is there a Is that there? The clock is not. Oh no, the clock is there, yeah.
+
+29:07 - Unidentified Speaker
+Where's the time zone?
+
+29:11 - Mak Allen
+Right here.
+
+29:13 - rUv
+So let me ask you an obvious question. Why would you want to change that time zone?
+
+29:22 - Mak Allen
+Just to set it.
+
+29:27 - rUv
+Why not just use the local browser or location? Kind of like how Google works. Google automatically detects where you are and adjusts your calendar automatically based on if you're on your phone, whatever your phone time is.
+
+29:42 - Mak Allen
+In the moment, I thought of maybe if they're using a VPN, I don't know.
+
+29:49 - rUv
+Well, that is a legitimate reason. Sometimes messes with the location information. Your application isn't the type of application that really would necessarily require a VPN.
+
+30:04 - Mark
+Well, they might have VAs in the Philippines using it.
+
+30:11 - rUv
+Yeah, but the UTC would solve that problem. Right. I guess I can see. Leave it. I'm so this is. I mean, I'm actually not really sure what what you're trying to do beyond the UI, so you're you have. You've got calendaring system. And how does that? How does the database and how's that all that all that information actually stored?
+
+30:45 - Mak Allen
+It's stored in in tables. I mean, I mean, I'd have to throw in a prompt to give you a Great answer on that.
+
+30:54 - Mark
+Matt, why don't you just explain to him what you've built with the AI scheduling agent and how you've integrated it.
+
+31:02 - rUv
+I'm trying to get to speed. I'm going to turn my video off for a second. I'm grabbing a bite here, but you don't want to see me chomping away here.
+
+31:13 - Mak Allen
+There's a calendar tied to each user. Unique ID of each clinic and there's only one for our test clinic and each has a table calendar, a master one, but also one for each of the providers.
+
+31:37 - rUv
+And this is in Superbase?
+
+31:43 - Mak Allen
+Yeah, in Superbase.
+
+31:45 - rUv
+All right, let's go to Superbase. Let's just take a look at what of what it's built. All right, go there. And then there's, we can go, there's a couple of ways we can look at the database structure. We can just go to the table itself and see what we can see. And you said you've got a 11 labs agent. Is that what you guys said? And that's interacting directly with Superbase? Or is that client-side?
+
+32:23 - Mak Allen
+It is interacting directly with Superbase. For authorization, it uses a Superbase Anon key for authorization for each of the tool calls.
+
+32:49 - rUv
+And how is it securing it? So it's anonymous. What's stopping random person from posting? Is it locked just to 11 labs? I believe so.
+
+33:07 - Mak Allen
+I'm not totally Can we do an audit on this?
+
+33:13 - rUv
+I'm just worried that it looks like they're using an anon key. That might be a major security exploit if it's not locked down.
+
+33:31 - Stuart Kerr
+Don't the security agents kind of go through at the end and figure that out if you have architecture challenges?
+
+33:37 - rUv
+This would appear to be on 11 labs. So this is operating independently of your environment. So I don't think it would have any insight into that. OK.
+
+34:05 - Mak Allen
+So it's using an edge function for this, a bearer token.
+
+34:12 - rUv
+So 11 labs is, what exactly is happening on 11 labs?
+
+34:28 - Mak Allen
+What would you like me to show? How do I answer that?
+
+34:35 - rUv
+I'm just trying to figure out what the workflow is. So McCullough, you built a tool.
+
+34:39 - Mark
+You have to show them the tool that you built. And then you've added the tool into 11 Labs. See all the components.
+
+34:51 - rUv
+So I see that's checking availability. It's making a post to an edge function, right? Yeah. It's using an Anon key. So the Anon key is basically a form of identification, anonymous identification. What happens if tries to do that that isn't 11 Labs with the Anon key? Are they going to have full access to all the information?
+
+35:20 - Mak Allen
+Should we just ask that as a question?
+
+35:29 - rUv
+I know the answer, but yes. Does anyone who uses the Anon key get access to check, was it check availability?
+
+35:52 - Mak Allen
+Yeah.
+
+35:54 - Stuart Kerr
+Well, that makes sense. You kind of have to, wouldn't you? Because it's open to the general public.
+
+36:02 - rUv
+Well, so is all the information. Anon keys are based on the concept of an authorization that's happening, so you need a combination of an authorized user and the Anon If you don't have the requirement of the authorized user, then anyone, regardless of authentication will be able to make the request.
+
+36:27 - Mark
+So absolutely, we need authorization to be able to write, Read and write from the system.
+
+36:42 - rUv
+This is the right question. This is the right thing to look up. So now what's looking at is row level access Is the user authenticated? Yes, then the row level access would enable access to the system. If there is no row level access, then anyone could be able to access the system with reads and writes and that kind of thing. You should also tell it to use the super base MCP, not whatever it's doing. I did. Okay. I'm not sure why it's not using the Subase MCP, but it's looking at a bunch of random files, it looks like, It's... Yeah, you gotta be careful with the Anon keys and the fact that it works without the 11 labs being authorized in any way indicates that there's potentially a security vulnerability. Remember, Anon keys are transmitted within the package generally that's made available in the website, so you can see it if you know where to look. Once you've got the Anon key, then I was a bad actor, I could potentially use that Anon key against your database and potentially exploit you. Wow.
+
+38:29 - Mak Allen
+Geez. That's scary.
+
+38:33 - Stuart Kerr
+Listen, that's why we're learning.
+
+38:35 - rUv
+Yeah. But the RLS policy essentially is the policy within the database that defines how and what is actually within your database. Oh, you're jumping around too much for me to be able to tell what's happening. All right, there you go there. Let's look at that doc. Is 11 configured with the Super Base Anon key, which bypasses row level security policies through the use of a service rule with service role key and edge functions. Creates a sub that I would own you in about five seconds with this.
+
+39:10 - Stuart Kerr
+Why?
+
+39:12 - rUv
+You've given full access to your database in the edge function, unrestricted data access.
+
+39:18 - Stuart Kerr
+That's what a service row key does?
+
+39:20 - rUv
+No, it's way worse than that. You've service row key available in the edge function with no authorization.
+
+39:33 - Mak Allen
+Got it.
+
+39:35 - Stuart Kerr
+So basically you inadvertently stored a key to unlock admin level to the super base function?
+
+39:41 - rUv
+Yeah, not just admin level, but full, yeah, full access to everything. Okay. And then you transmit that unsecured over the internet.
+
+39:52 - Stuart Kerr
+Okay. But I guess the question is, how could he have used Cloud Flow to discover that so that it would not have let him do that? I'm sure Mak didn't intend to do that. None of us do this I'm from a lack of knowledge.
+
+40:10 - rUv
+Yeah that's what you that's why you that's what comes with being you know an engineer you you learn you you you learn the processes of security and that that's why.
+
+40:24 - Stuart Kerr
+Right but I guess what I'm asking is is there something that Mak or I could do for our own applications to say hey run a full sweep including all the edge stuff and reactions with other internal helper systems to make sure I'm not leaking, you know, major security stuff out the side. How do we phrase that? How could you do it?
+
+40:46 - rUv
+You're why you're gonna you're gonna adopt a zero trust security architecture.
+
+40:55 - Stuart Kerr
+Yeah, and my question, I thought we did that a couple of weeks ago.
+
+40:58 - Stuart Kerr
+We already did that.
+
+40:59 - Mak Allen
+So we somehow do you have the and you can't sell this as an issue.
+
+41:06 - rUv
+Yeah, of course you do. That's what you as the engineer needs to, you're assuming the system knows and doing everything correctly, but you're not guiding it to do those things, right? So when you're setting up these components, it should always use a zero trust architecture. And now it looks like you, and I'm not trying to be critical here, I'm just pointing it out the way I see it. You just vibed it. You just get, you went and said, go, go, go do this. And it took the little path of least resistance to get it done, which made it work. But, but in, in, in the, in the process of making it work, you basically exposed your entire database to the internet and made it completely vulnerable to exploit. Not to mention massive HIPAA issues and SOC other 2 compliance related problems that, that would have come from it. What you need to do is review the GitHub issues that you create for each of the features that you're going to create, and then make sure that as part of that specification, you always remind it that this has to be HIPAA compliant, zero trust, and absolutely secure with of security parameters. So now the good news is it works, right? And so what you built isn't necessarily bad, it just needs to be secure.
+
+42:37 - Stuart Kerr
+And is that an easy thing to say at this point, now make it zero trust secure level?
+
+42:46 - rUv
+Yeah, now it's likely going to break it looks like there's several problems I see here that are likely likely going to break it. One, you've got this idea of an anon key that you're using within, with, are you sure that's an anon key or is that a JWT that you're using in 11 labs? Which, I see a bearer, but I'm not sure what the bearer token is on the right hand window that's on, that's sort of covered.
+
+43:19 - Mak Allen
+That's an anon key.
+
+43:21 - rUv
+Okay. Just so, so your own benefit, you're only ever going to use an Anon key you're using in conjunction with a row-level security policy. In simple terms, whenever someone actively has to log into something and then be authorized, user and password, think that. If it involves a user and password, then you can use an Anon key because you're essentially shifting your security to the row-level policy within the database. In this case, 11Labs is never going to log into anything, so you're not going to use an anon key there. You're going to use a JWT, which is an explicit token that's being passed from 11Labs to your edge function. Two different use cases here. One use case is someone in your website is accessing an edge function to do some scheduling or something. Is a request is being made from some secondary service to that and there's no way for them to log in, then you're going to use a JWT for that. You're possibly co-mingling two different access approaches. What you might want to do in this scenario is start with a secure version of your Edge, go back to 11labs and scroll down to where the URL or wherever it's making the request to. All right, so you've got a function called 11labs. Are you using that anywhere else? 11labs availability. So that's smart, you made it specifically for 11labs, so it's probably an easy fix. Are you using that within the website anywhere? Or just in 11 labs? Just in 11 labs. OK, so let's jump back in the soup base. All right, go to your edge functions. And go to your 11 labs availability. Now go to your details. And endpoint URLs. OK, so scroll up slightly, sorry. Name require JWT legacy. Where is the JWT for this? Tane anki used to satisfy. Go down a little bit. It's. Let's see, Base Anon. You should be okay if you don't use this in your website.
+
+46:35 - Stuart Kerr
+So if it's just a back running process that the voice agent uses, that's okay. If it's in the website, that's different because somebody could go to the developer code and hunt for the Anon key. Is that it?
+
+46:51 - rUv
+Exactly. If it's in your website, that means that it would be, you could do introspection in the requests being made from the client and potentially get your Anon key. So in this case, you can use your Anon key like a JWT. The JWT in this case, they're both bearer tokens. Just keep in mind where and how you use those tokens. If it's only being used in 11 labs and the 11 components, then you're probably okay. What you don't want to do likely is put that in your .env in your VJS.
+
+47:32 - Stuart Kerr
+What happens if you put it in your .env? Don't you have a .gitignore?
+
+47:36 - rUv
+No, it's not the gitignore. That only keeps it out of git. But this potentially is being used in a website and can potentially be exposed.
+
+47:49 - Unidentified Speaker
+Okay.
+
+47:52 - rUv
+You notice that the service, that's fine. This isn't going to get your website. What we don't want is these keys to be used directly in the website, which it isn't, I can tell already. See, there's no Vite prefix, so the website wouldn't pick it up. So this is a secondary issue you face with security. Notice how it acted as a kind of echo rather than an independent observation. Told us it's a secure security issue, but it actually isn't as bad as we thought, because as far as I can tell, we're not actually using it in the website, so there's no way for the introspection of the token within the website, and it's only being securely passed from labs in the form of a JWT-style request, which means it's not being exposed there either. So now it's basically saying, oh my god, it's the worst thing in the world, but it actually isn't. It was kind of reflecting the question back to us in a way that was more dramatic than it needed to be. So now what we want to do is try to explain to it that are we actually using that anon key anywhere in the website, or is it only being used in 11 labs, and therefore is it actually an exploit? And they'll be, oh yeah, Yeah, I'm wrong. Levin Labs API requests from their service or something.
+
+49:38 - Mak Allen
+From their service?
+
+49:40 - Unidentified Speaker
+Yeah.
+
+49:41 - Stuart Kerr
+Thanks, where do those go? Lynn, can you please revise? And send it back.
+
+49:52 - Mark
+And while we're waiting for that answer, Mak, do you want to talk through what we need to do for staging?
+
+49:59 - Mak Allen
+Yeah, I have a feeling that Ruv is going to say, though, that we need to have security fortified. Ruv, what Mark was trying to get me to talk about is what we need to do to get this to the point we're ready to have a staging site?
+
+50:21 - rUv
+Staging site isn't necessarily a bad idea for exactly the reason you just You probably to separate your development environment from your production environment for accidental security problems or just accidentally trashing your production site while people are using it. So in that case, what you're probably going to want to do is you're going to want to to duplicate your super-based environment, and then have two different versions that you run, and then some form of synchronization between the two, which is a CI-CD pipeline. So step one, you need to create a second. This is going to be a GitHub issue, just to be clear. But step one, what you're going to do is you're going to create a new GitHub, probably a new, I'm sorry, a new Superbase project. Step two, you're gonna need a mechanism to basically duplicate the environment as it currently is.
+
+51:28 - Mak Allen
+Would it be, would I use like middleware, like Railway?
+
+51:32 - rUv
+You'd probably use an MCP to do some of the heavy lifting on that. Which one? And then the Superbase MCP. Would probably be the one to go with. Once you've got the duplicate environment, then we need some mechanism to push and update changes between the development environment in the production environment. When you're ready to do a push, which is probably some kind of CI CD pipeline that basically says I'm pushing the updates to main branch. When that happens, push the corresponding, if there are changes, corresponding data related to changes as well, and then verify that it works. Now, the first step might be doing that manually and having some kind of skill or agent that helps with that process. It's probably how I'd probably start with you guys. Then once you're comfortable with the process of just saying, go push it to production, then we automate it. What are you seeing now?
+
+52:37 - Mak Allen
+Yeah, check it out. It says your website is secure.
+
+52:50 - rUv
+Yeah, do you notice what happened there? Did you see how quickly it tried to pull you down a rabbit hole?
+
+52:58 - Mak Allen
+Yeah, wow.
+
+53:00 - rUv
+Right, and that was two parts of the problem. One, you weren't aware of the structure of your system. So I had to sort of, you know, through dramatic, you know, just, you know, discussion, you know, figure out where and how it was made, right. And, and so we sort of stepped, we reverse engineered it a little bit. But back to the back to the issues. That's the issue should have had all that information. And so we had to go and kind of do so now that we know that create an issue that I outlines exactly how the 11 Edge functions are built, deployed, and secured. But here's the good part. You see where it says bottom line? Your website authentication is secure, your 11 Labs integration needs improvement, practice specific tokens, yes, but it's not a major. If the ANI key is in the client bundle, which is basically the packaging that I was telling you about, the beat underscore API key, whatever. And so it came up with the same answer that I gave you independently, which acts as a kind of confirmation of what I just said.
+
+54:17 - Mak Allen
+OK, so.
+
+54:21 - Mak Allen
+It's not in the client bundle.
+
+54:24 - rUv
+It doesn't appear to be, unless I didn't see it when I look quickly at your .env. OK.
+
+54:31 - Mak Allen
+Should we have it include details on how to implement the practice-specific tokens?
+
+54:54 - rUv
+Yeah, the practice-specific token It's not a bad like we need to start thinking about HIPAA compliance and SOC 2 and with a specific with a specific focus on zero trust. Then we probably need to update your claud.md file to more explicitly remind it to do to take a zero trust stance. But we'll do that after. Oh man, 56 minutes went by so quick with you guys.
+
+55:22 - Stuart Kerr
+Yeah. Hey, well, While we're waiting on that, Ruv, would it make sense for him to create a HIPAA compliant agent of some kind or skill and say, your job is to always go through and before I ever push a version of this into production, run it through that additional HIPAA verification?
+
+55:45 - rUv
+Yeah, I think that that is actually a really good idea. So your HIPAA compliant skill is going to be an auditor of sorts and it's going to audit for HIPAA compliance, zero trust, and other security-related stance, points of view, whatever. You need to really start trying to use GitHub issues as the basis for how you document and define and execute, and start moving away from doing a bunch of MD files. They're hard to manage and they're not particularly, they lose context easily.
+
+56:29 - Stuart Kerr
+So- What does the GitHub issues solve?
+
+56:32 - rUv
+It gives you a ability to track what's happening.
+
+56:38 - Stuart Kerr
+Okay. And Mak, do you know how to do that? Did I miss that session?
+
+56:43 - Mark
+By the way, it's Stuart, it's for you, it's for others and it's for the agents, all.
+
+56:50 - rUv
+Yeah, yeah, exactly.
+
+56:55 - Mark
+And yeah, we went through this in one of the early lessons how to create the GitHub issues, but yeah, I mean Yeah, so we're gonna do one together right here So right now we're backing into it because we've already done the work, but we're just gonna populate it as a GitHub issue Is that the idea Ruth?
+
+57:20 - rUv
+Yeah, that's exactly what we're doing. We're just kind of back, we're just trying to get back up to speed. It wasn't as bad as we thought. It kind of, unfortunately, did one of those things AI does. But it's so it wasn't as bad as we thought it was. So this is good news now. And but this was a good lesson for us regardless. So now that we know what we're looking for, and hopefully you understand the basis of what an anon key is, and how to how to use it in correlation with user authentication and what a JWT is and how to use that specifically with third party sort of communication systems that are interacting with your data. And lastly, your RLS, which is how you secure, you know, based on Anon keys. There we go. It's tons of MDs. Like, I don't understand why it's creating to update the GitHub, but OK.
+
+58:23 - Unidentified Speaker
+Yeah.
+
+58:28 - rUv
+Weird. I don't know why it's doing that, but anyway. We should ask you, do you have a little bit more time to extend this? I've got to jump to another call, unfortunately.
+
+58:40 - Mark
+OK, so I think we'll reach out to Brenda to get some help doing this. I think we're going to need some Coaching in setting up the staging environment properly.
+
+58:53 - rUv
+The site is looking amazing. With a minor hiccup here today, I think you're moving down the right path, for sure.
+
+59:05 - Mak Allen
+Do you think I'd be ready, based on the directions that you gave me, to go ahead and tweak that or improve? Bit and create a staging site?
+
+59:17 - rUv
+Just Stuart's point, you should probably do a security audit. Okay. Don't get it to fix anything. Get do a detailed security audit, save it to a GitHub issue. And you know, that's then we need to be we need to be HIPAA compliant at the very least.
+
+59:33 - Unidentified Speaker
+Okay.
+
+59:35 - Stuart Kerr
+So does that mean he should be creating a HIPAA agent or skill?
+
+59:41 - rUv
+I'd just start with just run a, I think you already have a security analyzer as part of my cloud flow system. Use that, start with that and do a detailed analysis. And then let's figure out what the worst things are. The security should include both the database using the SuperBase MCP, because most of your security problems likely going to be database related.
+
+1:00:14 - Mark
+Once we do that, can he go forward to create a GitHub issue and use?
+
+1:00:19 - rUv
+It looks like you've already started the process. I can see several security issues right now. Yeah, you've already did the first step towards what we need to do to fix it. Now, keep in mind, there's likely going to be some breakage when you make the security updates because the that work may work because they're insecure. As soon secure it, there's a tendency for the securing of a data infrastructure to actually make things stop working because it's now secure. Then you got to go back and make all the things that worked previously work again, but securely. And that's gonna be a little bit of pain and suffering.
+
+1:01:06 - Stuart Kerr
+So how do you test for that piece to find out if the security broke things?
+
+1:01:12 - rUv
+You need to create a regression system to check for regressions, right? And that's the problem with the current setup is the obvious things you'll notice, like I can't log in or something, but it's not the obvious things that are gonna be the problem, it's the thing hitting on some random page, some subsection of that page, that's like a corner case when you click this button in a certain way, that makes it difficult to find. And you currently have no, I don't think you have any real regression tests to check for what breaks when you make a change, like a data type change. So the second part would be, how I, you know, create me a plan for, regression testing?
+
+1:02:01 - Mark
+Yeah, we went through that process, remember, and then we had to back out. But we have all the prompts. You walked us through creating the regression system. Mak, have you recreated the regression system?
+
+1:02:13 - Mak Allen
+I have not. I remember there was some reason I was supposed to hold off on that.
+
+1:02:18 - rUv
+Probably because of breakage. Yeah, I would guess. And guys, I'm late for my call. I gotta jump. But yeah. Keep going where you're going. Our next call, maybe get me some access and maybe I can just help you walk through it if I've got access.
+
+1:02:36 - Mak Allen
+Sorry, one last thing before our next call. What do you think I should get done between now and then? Make it work.
+
+1:02:41 - rUv
+Just focus on making it work. Don't worry about the securing stuff. Don't worry about the database stuff just yet. You focus on making it work. Then I'll come in and I'll clean it up for you.
+
+1:02:51 - Unidentified Speaker
+Perfect.
+
+1:02:53 - Mak Allen
+Right? Thank you, man. Yeah.
+
+1:02:55 - Stuart Kerr
+Don't, don't, like, keep in mind- Matt Mark, you wanna get together for a few minutes after?
+
+1:03:00 - Mark
+Yeah, yeah, so Ruv, is it okay, we wanna give access to our client, is it okay that he puts up an insecure staging site for right now?
+
+1:03:10 - Mak Allen
+Uh, it's your call, but you- I think I should pull up on the staging site until the next call, Ruv.
+
+1:03:18 - rUv
+You see the security problems outlined right now. Single shared credential, no practice isolation, and service role key bypasses RLS and HIPAA. But there's no patient data. It's just, there's no patient data. If there's no patient. It's just for testing. Yeah, you should be, if it's just testing, you're probably fine. I'm in some ways I'm nitpicking. So if there's no personal private information, you're probably okay.
+
+1:03:48 - Mark
+Yeah.
+
+1:03:49 - Mak Allen
+Perfect.
+
+1:03:51 - Mak Allen
+All right. Thank you so much for your time, Ruv.
+
+1:03:53 - rUv
+Keep focusing on making it work. That's the key thing here. Don't worry about the cleanup stuff. Make it work. And then we'll worry about securing it in the last step.
+
+1:04:02 - Mark
+Perfect. Sounds good, Ruv. All right.
+
+1:04:05 - Unidentified Speaker
+Thank you.

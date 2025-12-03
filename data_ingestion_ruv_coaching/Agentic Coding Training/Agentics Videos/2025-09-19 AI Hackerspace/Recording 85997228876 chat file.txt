@@ -1,0 +1,147 @@
+00:23:12	Fireflies.ai Notetaker Dragan:	Dragan invited Fireflies.ai here to record & take notes. View Security & Privacy info: https://fireflies.ai/policy
+
+Type:
+'/ff leave' - Remove Fireflies
+
+View Realtime notes here: https://app.fireflies.ai/live/01K5HB8J38W6HTNJKSAS6BMJZ6?ref=live_chat
+00:24:58	John Messing:	Hi, I’m transcribing this call with my Tactiq AI Extension: https://tactiq.io/r/transcribing
+00:26:49	agent's Loom Notetaker:	This meeting is being recorded by agent  using Loom AI. Loom will store the recording and generate a recap and transcript, learn more at the help center.
+
+To start recording your meetings, connect your calendar at https://loom.com/meetings.
+
+Use chat commands /stop, /pause, or /resume to manage the meeting recording, /delete to delete the recording, or /help for more commands.
+00:27:08	Nick Ruest:	@Brad Ross Sounds familiar to one of your client projects around permits
+00:28:58	Brad Ross:	Yep  thanks @Nick Ruest  this paid many bills for me.  Had a pre-AI (used old school ML and data) where users jumped on a plane to lock in leases using my software based on changes in permits ;)
+00:31:41	Guy Bieber:	D* is better
+00:34:19	Guy Bieber:	Great way to visualize what flow is doing
+00:35:06	Robert Lee:	I've integrated signal for similar
+00:35:16	sniej:	Reacted to "I've integrated sign..." with 👍
+00:35:25	Guy Bieber:	https://chatgpt.com/share/68cd8107-0ee0-8000-a6dd-3bd4609bcda9
+00:36:16	Nick Ruest:	This is sweet. I'm definitely setting this up ... Already have n8n running on render
+00:36:31	Guy Bieber:	Reacted to "This is sweet. I'm d..." with ❤️
+00:36:52	Guy Bieber:	I run it local. I like local containers in VS code a lot too.
+00:37:04	Nick Ruest:	Reacted to "I run it local. I li..." with 🫡
+00:37:31	Mario Rodriguez:	Reacted to "This is sweet. I'm d..." with ❤️
+00:37:31	Dmitry Zhechkov:	amazing
+00:37:36	Mat:	Reacted to "This is sweet. I'm d..." with ❤️
+00:38:39	RTriad:	Thanks
+00:39:56	RTriad:	Transpearncy
+00:40:39	Mario Rodriguez:	Reacted to "I run it local. I li..." with 🫡
+00:41:35	Guy Bieber:	so military
+00:41:47	Guy Bieber:	OODA Observe Orient Decide Act
+00:41:58	Guy Bieber:	Used in Desert Storm
+00:42:18	Mat:	https://en.wikipedia.org/wiki/OODA_loop
+00:42:51	RTriad:	Yep, we did that
+00:42:56	Nick Ruest:	Reacted to "OODA Observe Orient ..." with 🙌
+00:42:57	Martin Gross:	https://en.wikipedia.org/wiki/PDCA
+00:43:28	Robert Ranson:	Reacted to "OODA Observe Orient ..." with 👍
+00:45:28	Nick Ruest:	This is cool Joe!
+00:47:01	Guy Bieber:	Is this a jupyter notebook?
+00:49:29	Guy Bieber:	KNN
+00:51:07	Guy Bieber:	The complexity ladder:
+Basic data analysis 
+Machine Learning
+Generative AI
+Agents
+00:51:51	Guy Bieber:	Use the simplest tool to solve the problem..
+00:53:01	Guy Bieber:	The N8N integration is really going to help drive adoption of claude-flow. Well done.
+00:53:03	Brad Ross:	Nice project Joe !
+00:53:12	Dmitry Zhechkov:	Reacted to "The N8N integration ..." with 💯
+00:53:17	Guy Bieber:	Reacted to "Nice project Joe !" with 👍
+00:55:11	John Messing:	Very helpful demo. Many thanks Joe.
+00:57:17	RTriad:	https://www.linkedin.com/company/semanticbrains/
+00:59:09	Guy Bieber:	That’s our policy on MCPs too.
+00:59:30	Guy Bieber:	A locally hosted evil MCP is still bad.
+00:59:33	Mark Duenas:	Reacted to "Very helpful demo. M..." with 👍
+00:59:33	Guy Bieber:	maybe worse
+01:00:13	Guy Bieber:	Long lived agents
+01:03:40	Joe Anandarajah:	Reacted to "Nice project Joe !" with 🙏
+01:03:41	RTriad:	Everyday AI (EP 613: AI Agents), advised me to start my agent jorny with ChatGPT Agent Mode: For widespread, low-barrier entry with persistent, easy traceability—best for busy professionals seeking quick deliverables. SOURCE:  https://www.youreverydayai.com/ep-613-ai-agents-from-automation-to-super-agents-10-ai-agents-you-should-know-in-2025/
+01:03:56	RTriad:	Thoughts?
+01:04:25	Ajay Subramanian:	Great approach to compile down to WASM. How do we compare maintainability across Go vs Rust?
+01:04:37	Joe Anandarajah:	Reacted to "Very helpful demo. M..." with 🙏
+01:04:44	Joe Anandarajah:	Reacted to "https://www.linkedin..." with 🙏
+01:04:58	Guy Bieber:	Reacted to "Great approach to co..." with 👍
+01:08:29	Gideon Marken:	what... the fox has been unveiled?! 🙂
+01:09:38	Alex de Bold:	i can show you guys something new
+01:11:30	Jed Arden:	Last week's research, can discuss live: https://jedarden.github.io/transformers-predictions/
+01:14:27	RTriad:	The fox has been unveiled! Yes, I wore underpants today (smile)
+01:14:44	Ajay Subramanian:	+4 for correct and -1 for wrong was the score when I was in high school 🙂. Had to think about guessing.
+01:14:44	Gideon Marken:	Reacted to "The fox has been unv..." with 🙂
+01:15:03	Fahad Arshad:	Replying to "Last week's research..."
+
+@Jed Arden - is this from korons lib experiment?
+01:15:09	Jed Arden:	Replying to "Last week's research..."
+
+Yes
+01:15:15	Fahad Arshad:	Reacted to "Yes" with 👍
+01:15:48	RTriad:	@Alex has something new …
+01:15:48	Guy Bieber:	Reacted to "+4 for correct and -..." with 👍
+01:16:05	Rizwan Khan:	Which company are we talking about ?
+01:16:14	Rizwan Khan:	I missed that part
+01:16:17	Ajay Subramanian:	Mira Murati’s Thinking Machines
+01:16:36	Rizwan Khan:	Reacted to "Mira Murati’s Thinki..." with 🙏
+01:19:11	RTriad:	Yes, Inwas a Verizon Business PM
+01:21:05	Vlad Korolev:	https://willpatrick.xyz/technology/2025/04/23/teaching-llms-how-to-solid-model.html
+01:21:36	Dmitry Zhechkov:	Reacted to "https://willpatrick...." with 🔥
+01:22:36	RTriad:	Permissions make me think about Microsoft’s Copilot in Businnes
+01:25:52	Guy Bieber:	one of the articles on WASM for backend: https://users.cs.northwestern.edu/~robby/pubs/papers/mplr2025-sf.pdf
+01:26:46	Guy Bieber:	iphone
+01:27:46	Ajay Subramanian:	Amazing.
+01:27:51	Dan:	Awesome!
+01:27:53	Gregg Coppen:	Nice work Alex
+01:27:53	Jed Arden:	Sounds like a practical use of this: https://face.jedarden.com/
+01:27:54	Ajay Subramanian:	This PD thing is such a pain.
+01:28:00	Gideon Marken:	very cool
+01:28:23	Nate Aune:	@Alex de Bold (Varai) is this relevant to what you’re doing?
+01:28:52	Gregg Coppen:	Reacted to "Sounds like a practi..." with 👍
+01:29:32	Guy Bieber:	Replying to "one of the articles ..."
+
+Another article: https://dev.to/dimshat/the-rise-of-webassembly-wasm-in-full-stack-web-development-2025-and-beyond-1d9i
+01:29:55	Nate Aune:	the eyeglass measuring app reminds me of this one to estimate your age based on your face: https://echoage.gladyshevlab.org/
+01:32:28	Guy Bieber:	Smaller components
+01:32:33	Guy Bieber:	interfaces
+01:32:34	RTriad:	Feel free to connect on LinkedIn . https://www.linkedin.com/in/dennislinux/
+01:32:53	Igor:	Jed, pls show the demo
+01:35:07	Guy Bieber:	https://github.com/Tencent-Hunyuan/Hunyuan3D-2 image to 3d
+01:35:19	sniej:	OpenSCAD is amazing
+01:35:31	Jed Arden:	Replying to "Jed, pls show the de..."
+
+What demo?
+01:35:58	Igor:	Of the process you mentioned
+01:36:13	Saksham Adhikari:	Reacted to "Of the process you m..." with ❤️
+01:36:28	Igor:	Replying to "Jed, pls show the de…"
+The grounding the tester
+01:37:00	Jed Arden:	Replying to "Jed, pls show the de..."
+
+Not much of a demo. I explicitly explain how testing is conducted in prompt.
+01:37:05	Alejandro Castellanos:	It would be cool to connect a Snapmaker to agents!
+01:37:57	Alex de Bold (Varai):	https://varai-design-platform-1006208575101.us-central1.run.app/solutions/design-teams
+01:38:32	Jed Arden:	Quote: Could I know more about your testing approach?---applications are always built as docker images. (Makes deployment easy in my infra)Tests are run against running docker images. (If Web front end) Playwright is run against the docker image to test functionality. This includes regular screenshots showing before and after element change, and console log is piped to a log file which the llm can tail periodically.
+01:38:55	Martin Cleaver:	Reacted to "https://chatgpt.com/..." with 👍
+01:39:08	Martin Cleaver:	Reacted to "Quote: Could I know ..." with 👍
+01:41:09	Igor:	Reacted to "Not much of a demo. …" with 👌
+01:41:13	Igor:	Replying to "Jed, pls show the de…"
+Will try
+01:41:59	Nick Ruest:	Do what Ruv says ... A great strategy lol
+01:42:18	Guy Bieber:	Physical AI is moving fast too. Vision Language Action models. https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/  https://arxiv.org/html/2501.03575v1
+01:42:21	Guy Bieber:	and many others
+01:43:05	Martin Gross:	Reacted to "Quote: Could I know ..." with 🙏
+01:44:53	Guy Bieber:	distribution channel
+01:48:03	Guy Bieber:	Replying to "Physical AI is movin..."
+
+https://github.com/manycore-research/SpatialLM
+01:48:45	Guy Bieber:	Point AI at the patent and propose a workaround.
+01:49:02	Joe Anandarajah:	Reacted to "Point AI at the pate..." with 👍
+01:49:51	Rizwan Khan:	Anyone has experience with z.ai .. is there coding model good >
+01:49:52	Rizwan Khan:	?
+01:50:36	Rizwan Khan:	GLM-4.5
+01:51:26	Guy Bieber:	gitlab and GitHub can put in license rules
+01:51:49	Guy Bieber:	They have license scanners and you can list acceptable licenes.
+01:52:13	Saksham Adhikari:	Replying to "GLM-4.5"
+
+I use it with Claude code - I pay $3 a month with Claude-flow in my VM. So worth it. https://github.com/Tar-ive/claude-code-switcher
+01:52:42	Rizwan Khan:	Reacted to "I use it with Claude..." with 🙏
+01:52:55	Gregg Coppen:	Thanks All
+01:53:22	Nate Aune:	replicating MATLAB: https://x.com/nabeelallana/status/1963018277019672652?s=61
+01:53:58	Guy Bieber:	Reacted to "replicating MATLAB: ..." with 😀

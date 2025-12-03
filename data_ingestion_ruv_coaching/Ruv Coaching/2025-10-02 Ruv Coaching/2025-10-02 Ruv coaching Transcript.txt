@@ -1,0 +1,671 @@
+Claude Flow coaching. 
+Thu, Oct 2, 2025
+
+0:01 - rUv
+Yeah, you need a beefier machine, so you can change that. You're probably on a free plan or the most basic. Yeah, so you were getting shitty machines.
+
+0:11 - Mark Allen
+So I upgraded, but I'm having some issue in being able to, even with the upgrade. Let me just share my screen and you can walk us through this. So I've been getting some clawed coaching of setting up our GitHub. And everything. So what it's basically told me is that I need to move the repository under the organization. The organization has now been set up with a very large budget. But even when I move it, so this isn't the current one he's working on, but when I move it here, so I have here, it's running on that machine. When I go to change machine type, it's still only giving me the free machine types.
+
+0:55 - rUv
+Go back for a sec. I'm not really sure. Let's create a new code space for a sec and see if those options are available straight up for any of them. Choose machine Yeah, I'm going to select repository.
+
+1:23 - Mark Allen
+So yeah, actually, here's his main one. So let's see if we can do that. And this is this is the one you're paying for, right? Yeah, no, no, I'm paying for the organization.
+
+1:33 - rUv
+Yeah, so HF team dev is your organization, right?
+
+1:36 - Mark Allen
+No, no, no. Is the organization. OK, choose that one then.
+
+1:41 - rUv
+OK, now choose the machine type. Probably settings.
+
+1:48 - Mark Allen
+So yeah, if we look under settings here.
+
+1:52 - rUv
+Organizational settings. So go to your org. Billing and licensing. Go to the code space option. General, yeah. And scroll down. Sounds like a question for Google or something. What's the bigger option? And you're saying the bigger of the two options crashes as well?
+
+2:29 - Mark Allen
+Right now? Well, he hasn't even tried that yet.
+
+2:31 - rUv
+I obviously got a whole lot more options. I'm not sure why you are limited in your options, but what's the bigger option?
+
+2:39 - Mark Allen
+There's something that I set for budgets and alerts. Oh, you know what? I just did it on, this is actually the problem, so Codespace is right here.
+
+2:50 - rUv
+I don't know. The budget looks good enough. I don't you have so many less options than I do. Let's see here. Let's look at mine for a second. Although, go back and show me the bigger of the two options. Just go back to the Codespace tab.
+
+3:11 - Mark Allen
+uh, code space tab. Yeah, you've got it open. Just go to that. You know, I, this is actually the problem I got. There we are.
+
+3:19 - rUv
+And just do, do the new code space again. I just want to see what the bigger option was. Oh, you could have just switched it. But okay. Choose the one that's paid that money you've paid for. Is this the paid one?
+
+3:33 - Mark Allen
+No, uh, this one. It's only up for.
+
+3:39 - rUv
+16 gigs of RAM and 32. Yeah, that's weird. Mine, what do I got? Let's see here. I'm going to select a repo. I'm going to do Cloud Flow. And yeah, here, let me share my screen. I got 16 core, eight core. So I generally choose the eight core because it's got 32 gigs of RAM and 64 gigs of space.
+
+4:18 - Mark Allen
+You only have up to 64K, so 64 gigabyte of RAM. So you usually select 32 and that's enough?
+
+4:28 - rUv
+That's unless I'm doing some hardcore, like, you know, temporal analysis, but general, I'm just using this one. And hmm, US East. Let's see what happens if I choose a different location. No, same. Sounds like a question for Google. Why do I not do I I don't see any larger code space options. When should we see the two core and four core? 16, and only 16, see two and four. Two and four. Or options or okay several factors organizational policies you're working with an organization organization or may have configured policies that restrict available machine types billing and spending limits which we which was which we saw was not the case capacity limitation in some cases especially for high high machines now we know we know that's not an I see it for me. Repository-specific requirements, while less common in certain repository configures, check organizational settings. It's a setting somewhere.
+
+6:09 - Mark Allen
+So I'll go through that. Yeah, I definitely set a team organization, and I have billing.
+
+6:16 - Mark Allen
+I'll go through that.
+
+6:17 - Stuart Kerr
+Well, let's take a second and find it, though, because you should be able to find it. You're not going to do much without it.
+
+6:25 - rUv
+One second. Let me show what was in Microsoft's training in the code space. There are other options you can use other than code space. There's a bunch of services that are complementary that basically work the same way that are maybe even more, even potentially cheaper. Using Codespaces quick.
+
+7:03 - Stuart Kerr
+Rob, I think the goal here is you're a guru at doing this. We're trying to come up to speed and build the right infrastructure so that we have the right habits, the right layout, minimal amount of things that we need to change to do in a market, if I'm saying.
+
+7:21 - Mark Allen
+You know what I think might be happening? It says maximum running Codespaces reached. Have too many running code spaces, you'll need to stop some before you start something.
+
+7:29 - rUv
+Yeah, that's a different problem though. That doesn't speak to not having the option at all to even choose the right one. I get the same problem where I try to create five running code spaces or whatever and it stops me. You don't need to run five code spaces. I've got dozens of code spaces, most of them are even running.
+
+7:48 - Mark Allen
+How do you turn off the code spaces when they're running? You choose to stop.
+
+7:53 - rUv
+Just click Stop on that Codespace page.
+
+7:59 - Mark Allen
+Stop Codespace. Yeah, I see it.
+
+8:01 - rUv
+Yeah, Stop Codespace. And Change Machine Type is how you change it. I would say, yeah, the crashing thing, you're a lot. We're doing multi-threaded coding. So I can see why that might crash a low-end Codespace. Yeah, I'm running 64 and 32. I'm running pretty much the highest end code spaces.
+
+8:29 - Mark Allen
+They do have a 128 gigabyte as well, 32 core. I don't know why it's not available for you, but that's- Yeah, I'm running it. You are?
+
+8:39 - rUv
+Yeah, I've got several running on the 16 core, 128, 64 gigs of RAM.
+
+8:42 - Mark Allen
+How many can you run at the same time?
+
+8:51 - rUv
+Five, but you can have dozens that aren't running. You switch between them.
+
+8:56 - Stuart Kerr
+So how do you make sure to have something deemed as not running when you close it?
+
+9:02 - rUv
+You stop it.
+
+9:04 - Mark Allen
+You see it.
+
+9:04 - Stuart Kerr
+And Mark, you're not sharing anymore, so we're not seeing your screen.
+
+9:09 - rUv
+So here, this is what mine looks like, So we've got, in my case, we've seen, see, I'm running my agenda catalog, which is like doing my, demo earlier on. I get cloud flow, so we're currently the only one running is this one. The other ones are kind of paused, but if I want to start something that I was working on a while ago, I just go here and choose my synaptic math.
+
+9:30 - Stuart Kerr
+How do we know if it's running versus not?
+
+9:32 - Mark Allen
+It says active. Yeah, where?
+
+9:35 - Stuart Kerr
+Oh, on the right. I'm sorry. Thank you.
+
+9:37 - rUv
+Yeah, and if I and then if I want to stop it, I'll just use stop code space. And if I want to switch to a different machine type, I'll go here and I'll use change machine type. And then I've got these other options available to me.
+
+9:52 - Mark Allen
+Yeah, so I don't know why those aren't. I'll yeah, I'll figure that out. It's it.
+
+9:59 - rUv
+Use the bigger the two options for sure.
+
+10:02 - Mark Allen
+Right now. So Mak, did you switch to the bigger the two? You're on mute.
+
+10:11 - Mak Allen
+I messaged you that it was ready to switch.
+
+10:14 - rUv
+So, um, switching will take about 10, 15 minutes. Just FYI. Well, it does take that long.
+
+10:22 - Mark Allen
+A while. It's one of those things you get.
+
+10:25 - rUv
+It's, it's, if you've already committed it, it's actually faster just to commit it and start a new and create a new code space. But the drawback to that is then you had to take 10 minutes to set up all the, all the, uh, configurations for Claude and, and MCPs. Either way, you're gonna spend 10 minutes waiting for it.
+
+10:43 - Mark Allen
+So let me just switch it. I'll update it right now.
+
+10:47 - rUv
+So now it's at least I would I would suggest not doing that right now. Because we're doing that. Then we're not doing anything for the next 1520 minutes.
+
+10:56 - Unidentified Speaker
+It takes 1520 minutes.
+
+10:58 - rUv
+So it's slower machine longer takes. Yeah, so I might say she's just don't do that. At least so. Well, I already do it. Yeah, it's not a particularly good use of our time, I don't think.
+
+11:10 - Mark Allen
+Should we create a new code space from it?
+
+11:13 - rUv
+Well, that's going to take you 15 minutes to set up as well, right? Because then you have to install Cloud and do everything. So at this point, either way, you're waiting 15 minutes then. But by the time you finish setting up the new code space, your old code space would have switched. So you know.
+
+11:32 - Mark Allen
+Sorry, I already kicked that off.
+
+11:36 - rUv
+Okay, well, maybe let's use Maxon What's that? We'll just use one of the other like Mak will use Mak his code space in That is in his code space Are you guys still sharing one account?
+
+11:53 - Mark Allen
+Right now we are I'm in his account not in my account.
+
+11:57 - rUv
+You did just migrate it Yeah before before you start a migration make sure you you commit it to the branch, sometimes it fails. And if it fails and you haven't committed, you'll lose everything just as an FYI. So step one, commit to the branch so you're not losing any data.
+
+12:21 - Mark Allen
+Sorry, figure out where we are for right now because I kicked off the migration.
+
+12:27 - rUv
+No, I got that. I'm just giving you guidance for future.
+
+12:31 - Mak Allen
+Oh, I have a commit now.
+
+12:33 - Mak Allen
+running to root branch.
+
+12:35 - Stuart Kerr
+Well, that's why I share your screen so we can see what's going on.
+
+12:43 - rUv
+And you guys, you guys are sharing a single only to get this set up, right?
+
+12:49 - Mark Allen
+Mak is going to have this account moving forward. But right now we're in the same account.
+
+12:56 - rUv
+So where is this running? So this, this It doesn't look like it's migrating.
+
+13:00 - Mark Allen
+So it says right here, your Codespace effective lamp has been updated to use machine. Changes will take place next time your Codespace restarts.
+
+13:08 - Stuart Kerr
+We're seeing somebody's VS code. Is that Max or yours, Mark? Because we're not seeing.
+
+13:14 - Mark Allen
+I'm sharing my screen.
+
+13:16 - Mak Allen
+Oh, I'm sharing my screen.
+
+13:18 - Stuart Kerr
+Yeah, guys, I think we're seeing Max's screen.
+
+13:21 - Unidentified Speaker
+OK, I'll stop.
+
+13:23 - rUv
+Mark, now we're seeing something.
+
+13:25 - rUv
+Whoever is working is what we want to see.
+
+13:29 - Mark Allen
+Do you see my screen? So the project that Mak, the repository that Mak's working on is this one called Effective Lamp Codespace.
+
+13:38 - Stuart Kerr
+OK, yeah.
+
+13:39 - Mark Allen
+And it says, has been updated. Changes will take effect the next time your Codespace restarts.
+
+13:46 - rUv
+OK, there you go. It didn't take 10 minutes. Even better.
+
+13:51 - Mark Allen
+Mak, why don't you go ahead and open it up and see. We'll just stop my share, start your share.
+
+13:59 - rUv
+And make sure you guys all have different accounts. What you don't want to do is have one shared account. That's just, nothing good can come from that.
+
+14:07 - Stuart Kerr
+And rUv, quick question. So I happen to have a 128 gig M3 Max laptop. Any reason I should be using all these code spaces versus just doing it on my laptop?
+
+14:24 - rUv
+If you don't mind the potential for a kernel panic and having to reinstall everything and losing all your data, then you're probably okay. If it's something that is meaningful, like a laptop you use frequently for things other than this, then I wouldn't go there. If it's just a dev laptop where you don't care and you don't mind the occasional complete reinstall, then it's probably okay.
+
+14:49 - Stuart Kerr
+And I mean, just because I've been at it for a year and a half now, and I haven't had anything like that happen. And it's my daily driver. It's the thing I use all day long, every day. It is my main laptop. It's certainly not a throwaway.
+
+15:03 - rUv
+It's the dangerously, the dangerously, skip permissions that potentially could cause problems. You're giving full, complete access to an autonomous swarm in your local environment. That means it can see, files, your passwords, your banking information, your whatever you have stored on that computer and you're giving it free reign to do whatever it wants with that.
+
+15:29 - Stuart Kerr
+Howard Baetjer And how is that the case because you said cloud code was basically only in my one local slash code directory.
+
+15:37 - rUv
+Brian No not as you run dangerously skip commissions you're giving a full control of your computer. It might be building in that directory, but it's got full access to everything. Now, you might be okay, but I've seen numerous people totally their laptop and they're like, well, what the hell, man? Your swarm made my laptop do this kernel panic and now it won't start. And I'm like, it's the first step is dash dangerously skip permissions. And so after several people their computers, I'm like, don't use it locally. Yeah, you know, you might be okay. Out of out of, you know, 160,000 downloads, only three people have mentioned it. Three out of 150,000 is probably not that bad, I guess. If you're one of the three, it sucks.
+
+16:34 - Stuart Kerr
+I, I get it. I'm wondering if there's any simple thing I can do to use it locally safely just by, you know, do something or say something or...
+
+16:44 - rUv
+Yeah, so go to go to dev, go to devpod.sh. And so here, go here.
+
+16:54 - rUv
+Yeah, share.
+
+16:56 - rUv
+Yeah, so you can, you can go and you can use dev pods. And so there's a Mak version, depending on which, which Mak you're And you can run the DevPod and this is much more safe.
+
+17:17 - Stuart Kerr
+That's how I should be doing all of the VS code on my computer?
+
+17:22 - rUv
+If you're comfortable with some basic Linux administration and GitHub setup, yes, 100 percent. Once you've got that, then just make sure you set up your DevPods with the GitHub integration for the environment. Use your key. And set up the environment to appropriately sync with GitHub, and you're good to go. The benefit to using Codespaces is it does all that setup for you, and it just kind of magically works. But if you're comfortable with the sort of initial setup, once you've set up this sort of template, if you will, you're just going to use the same template every time and maybe make a few modifications to the repo that it's connecting to. But it's pretty forward at that point. So there's a little more technical setup. It's not quite as easy, but it definitely would work locally.
+
+18:12 - Stuart Kerr
+Okay, got it. Let's move on. I'm, I don't know how to do any of that Linux setup. So I'm gonna leave that alone right now. And I'm sure we'll get it.
+
+18:21 - rUv
+So yeah, it's, I was giving you guys the simplest solution.
+
+18:27 - Stuart Kerr
+I appreciate it. I thought the simplest solution was run the thing in VSCode on your Mak.
+
+18:33 - rUv
+No, that's kind of the worst solution. I just don't want you guys to go down a path where it screws up your computer.
+
+18:41 - Mark Allen
+Yeah, I totally appreciate that. Okay, so another question on this regard is, I saw that you have Docker.
+
+18:49 - rUv
+Is there a way to use Docker so that you have to do all those steps every time you do it? That's what DevPod's doing. Yeah, so DevPod is essentially setting up a Docker style code space locally on your machine.
+
+19:06 - Mark Allen
+I'm talking about for using a code space, like how we did a couple of code spaces last call and we had to basically install Claude, install Claude Flow. Is there a way to have that already pre-configured?
+
+19:24 - rUv
+You can create template and then you save that as a template You know when you go and go back to your code spaces for a second.
+
+19:31 - Mark Allen
+Max share screen.
+
+19:39 - rUv
+Yeah, so go and create a new code space and you'll see an option or. I think it's code space. Let me just double check. Create a new.
+
+19:51 - Mark Allen
+Actually, if you went back there was a template option.
+
+19:55 - rUv
+Yeah, so. You can create your own. You can create your own templates. Go to templates on the left-hand side, I think. Templates, yeah. Scroll down. First one's blank. No, you don't want blank. You are using blank. Go to new repo. Click on the new repo by the top. Plus sign. New repo, yeah, repository.
+
+20:25 - Mark Allen
+And then you see under- You owner MAMDV from now on.
+
+20:31 - rUv
+Importer repo, I'm trying to, yours looks different than mine. Let me just check on mine, one sec. New repo. Changes visibility.
+
+20:44 - Stuart Kerr
+So you're trying to come up with a way, Mark, so that every time you set it up, it automatically has the latest cloud code downloaded the latest cloud flow downloaded and some other configurations, right?
+
+20:58 - rUv
+Yeah, yeah, that's a dev. Yeah, that's a dev container. So what you're what you're basically doing, you see, you're going to, you're going to, you're going to import a repository. So you're going to create a repository, that's essentially just a template. And then you're going to use that as the basis for creating new ones. So you're going to spend a bit of time in that Configuration it's it's your it's your call. It's literally just installing two different things which is Rather than spending a couple hours messing around with creating a template. It's your call, but it's called a dev dev container Okay.
+
+21:36 - Mark Allen
+Okay, we can do that on our own.
+
+21:38 - Mak Allen
+Let's yeah and Ruth what is your advice for not? Allowing dev containers to Corrupt your code space environment on another project I was working on a cloud flow guide and that was one of the things that happened to me.
+
+21:58 - rUv
+There were some it was Yeah, there was an issue with the dev container What not really sure what the problem was your you what did it corrupt exactly?
+
+22:10 - Mak Allen
+so The the container was unsure of who the main user was, Docker or Cloud Flow? That's what it was telling me.
+
+22:23 - rUv
+Neither of those two are users. Well, Docker might be, but neither should be a user. So it's just an odd question for it to even ask. Cloud Flow is just a CLI. An MCP server. It's not a user, right? It's just another piece of software that happens to run on that machine.
+
+22:42 - Mak Allen
+Is there any best practices that you recommend just to mitigate any issues across the board when setting up the Dev Containers?
+
+22:53 - rUv
+I'm not really sure what the problem was. The Dev Container, it was not starting up after you made changes to the Dev Container?
+
+23:05 - Mak Allen
+At some point, I was running in a final phase of a project and it kept telling me that I needed to reload You did a dev container at the end of a project?
+
+23:20 - rUv
+So, never do a dev container other than the very, very, very beginning of a project. There is literally no reason to ever do it beyond that. Anything else that would ever happen would not be at zero value beyond the initial sort of configuration phase of the environment. Well, by the time you've got to that phase, is why add more stuff to it, right? Anything you're going to do after initial, the dev container basically says how it's supposed to start up and what it needs to install on the initial startup. So if you've already been using it and building, adding a dev container, it's like saying, I'm going to reimagine this container after I've already set it up and it's already working, which will result in nothing good. Like it'll make it panic, most likely. And then you're going to have to reset it. So ultimately, the only time you ever need it on the initial start of the first time it runs. Otherwise, there's no point to doing it. Like if you do it later, it's going to restart. And then hypothetically, it might get you in a panic or error of some sort. And then you're going to either lose the entire repo or have to revert to like a debug mode and try to solve the problem, which ultimately is pointless. Like, why bother?
+
+24:35 - Mak Allen
+Another question for you, rUv. When would you use use a GitHub code? Why use fly.io?
+
+24:43 - rUv
+Fly.io is hosting. Yeah, deploying. It's cheaper and easier than using like AWS or something. But you can use Railway, you can use Vercel, you could use a whole bunch of different services that kind of do the same thing. But in the most simple terms, it's Docker style deployment. So what if you want to sort of mimic what will happen in the remote environment, you can essentially set up a Docker instance locally in your code space or whatever, deploy it to that, see it working, running locally, then you deploy it to the code, the fly.io, and that runs forever. So like, if you need a website, you know, whatever.com, you're going to deploy to that. And then, or if you need instances to do like agents that are going to run perpetually, you're going to deploy to that. And they could run and do whatever it needs to do without worrying about the code space shutting off after five minutes when you leave. So persistence. Yeah, persistence is the answer. And it's, there's lots of different hosting services ranging from complicated like AWS or Google or Azure to more simple like fly.io.
+
+25:57 - Mark Allen
+Sounds good.
+
+25:57 - Mark Allen
+So, so, so Matt, to start this project and get it going, because we changed the machine, you need to close it and reopen it.
+
+26:07 - rUv
+I did. That one. Okay, cool. Okay, yeah. It looks like you guys were lucky. It seems to have worked really, really fast, probably because it was a relatively small machine. So disregard my 10 minutes. Thank goodness. You committed, looks good. Create a new branch every time we start. Create a new branch so you don't overwrite. Yeah, basically every day I create a new branch. And then worst case scenario, Go back to yesterday.
+
+26:33 - Mak Allen
+Create new branch from
+
+26:36 - rUv
+No, just click on, go back to where you were a second ago. Click on there, click on the root branch, type in today's date or something, no spaces. Create new branch.
+
+26:58 - Mak Allen
+And this will carry over everything from the root branch.
+
+27:02 - rUv
+It's just like copying a new folder. I do this every day. And worst case scenario, you did something today that messed everything up that was working yesterday. You're like, look at what, look at yesterday's branch and tell me what I, what works and why this one doesn't. And you're, you're, you'll be in a much better spot. And given, given your familiarity with GitHub. That's going to protect you from unknowingly breaking it and stuff breaks. It's just part of high velocity development that you're doing. If it's not breaking, then you're probably not doing much.
+
+27:37 - Mark Allen
+Not moving fast enough.
+
+27:39 - rUv
+Yeah, the faster you move, the more things break. So that's where things are currently at.
+
+27:45 - Mak Allen
+It's the issues are in a very nice spot right now. And definitely ready to begin development.
+
+27:52 - rUv
+Okay, so let's let Let's do that. So let's, which one are you running? You want to start with phase 1.1?
+
+28:01 - Mak Allen
+So there's a whole implementation guide because I made multiple updates to all of these. The numbers, the phase numbers don't exactly dictate the order. They're just labels. So this actually guides the implementation order.
+
+28:18 - rUv
+OK, nice. Do you have any coordination? In this using the memory system?
+
+28:27 - Mak Allen
+I am not sure.
+
+28:28 - rUv
+OK, let's let's set that up quickly and then we'll give it. We'll start phase one. So so MD here called implementation order and then there's secondary issues. OK, so what we're going to do is we're going to, you know, implementation order.md. The two at implementation order.md file.
+
+28:59 - Mark Allen
+We use at or drag and drop Mak. Don't type.
+
+29:05 - rUv
+Implementation order. I'm decent stuff. Yeah, and to include a cloud flow. Memory coordination using the available MCP tools to allow for concurrent development.
+
+29:41 - Mak Allen
+The guide actually tells me which worked gone in parallel.
+
+29:47 - rUv
+Yeah, no, you did a great job. This looks amazing. This is exactly what I would have done. It's perfect. So the only thing I'm adding is allowing, so my memory system adds persistent coordination and context engineering. Now, the context engineering essentially allows it to understand what other parts have previously been worked on, what's currently being worked on, and hypothetically, coordination on others that currently doing things, right? And that's gonna improve the awareness of the system while it does whatever it needs to do and keep it more on track. Better than that, it's perfect. This is exactly what you needed to do.
+
+30:30 - Mak Allen
+I'd love to hear it.
+
+30:33 - rUv
+Yeah, you're dead on here. The timeframe stuff is all BS. Don't worry about that. It's gonna take six weeks. It'll take like 20 minutes. All right, so let's review the additions. So in that document, scroll down to the memory coordination. Looks like it's, yeah. You can just control F, there it is. Okay, maybe make that a little bigger so we can see it. Maybe, yeah, there you go. All right. So, sorry, it's using MPX. Tell to use the, mcp not the mpx. I assume we've got the mcp installed. So do slash mcp. Let's confirm the cloud. It's weird that it chose to use the mpx. So yeah, just do. Cloud flow. Yeah, it's a solid escape. Tell it to not use the mpx but use the mcp Sorry, what is MPX? It's a remote instantiation of my cloud flow system. It would work, but it's less efficient. The MCP is directly integrated. Back up.
+
+31:47 - Stuart Kerr
+We're asking, in general, what is it? Why would you use one versus the other? We're just trying to catch up. We know you know it.
+
+31:55 - Mak Allen
+Is a CLI.
+
+32:00 - rUv
+So, you can, so I use MPX for remote and remote.
+
+32:04 - Mark Allen
+Sorry, N is in Nancy or M is in Mary.
+
+32:07 - rUv
+It's the N, N PX that we saw earlier in the, when we were reading through it. So now we're telling it to use the MCP tools in the memory corner. Yeah, there you go. Tell it to do that. It's more efficient. If the other worked, this is just going to work better. You might as well do it right, since this is your template. Yeah, this is good. Don't worry about minor spelling mistakes.
+
+32:39 - Mark Allen
+Have you updated Cloud Flow so that it's using the newest Cloud Context Management where- Yes.
+
+32:51 - rUv
+I published that earlier this week. So it's, I don't know why sometimes it struggles to know what you told it to use the MCP yet it still uses the MPX. So this is why you review stuff, right? Just because it sometimes has a life of its own, you know. Just because you tell it to do something doesn't mean it actually did it. This is a prime example. I know it's a little weird. Yeah, but back to Stuart's question. So when you look at an MPM library, MPM libraries is a node package management, I think is what it stands for. And so a node package, there's two mechanisms, probably more than two, but let's just say there's two mechanisms to actually run these. One is a global install. So MPM install-g, and that would allow you to run that globally. Claw-flow is the command that would run on the environment. The drawback to global installation is that it's sort of installed and doesn't auto update. When you use an MPX, it's a remote instantiation, meaning that it runs in a kind of ephemeral state, not fully installed. So if I push an update, you automatically get my most recent update without having to manually install it every time. The drawback is it's not a global installation. You have to prefix it with an MPX command, which essentially improves the update capability, but it means you're potentially using updates that might have problems and blah, blah, blah. Now, the MCP is a studio form, which means input output is directly integrated into the CloudFlow system, not a separate process, meaning in simple it operates way faster and it's directly integrated into the system versus a secondary tool which needs to be executed independently of the system. Hopefully that made sense. All right, so scroll back down in the text and let's go back to that section and make sure that that's using MCP. Keep going down. Does the text in these text windows Going a little too fast for me to Read it. All right. So you were asking a question?
+
+35:21 - Mark Allen
+Do the text in these text windows automatically update when they're updated by Claude? But when they're updated by you, you need to manually save.
+
+35:33 - rUv
+You should have autosaving turned on. Click on the hamburger menu in the top left corner next to Explorer. Yeah, at the very top. Yeah, click that. And no, it looks like you're, yeah, auto saves on. You're good. It automatically saves. All right, and it auto updates as well. So now you see the mcp underscore cloud dash flow memory. It's using the MCP tools. It's just a more efficient way to handle that. So now what we're looking at is the coordination. So the first part is basically telling it the instantiation of the key. So you're using a namespace. The namespace is kind of like a URL, slash whatever represents the structure of how the system is storing the information for further and future reference. So you've got a key, think of it like a URL, value, the value, and the namespace, the overall sort of structure of where and how it's finding the information. So it might be in this case, it's relating to next dental, scroll down a little bit. So that's the general project. And then you have different specific issues for memory and this would call things like, you know, relating to like usage and structures of APIs and things it needs to build. So it's giving it contextual awareness to artifacts that exist within the code that you're trying to build, a function, a capability, an API, whatever it is. So this is giving it the guidance to how it needs to sort of understand all the things that needs to build broadly. Issues, reference, teams, swarms, all that information. As the system executes, it's then able to draw on that to more efficiently and effectively implement what you want to do without hallucinating the wrong thing or going into the weeds on things that don't matter. All right, this looks good.
+
+37:29 - Mark Allen
+This memory is outside of context window. In SQLite?
+
+37:34 - rUv
+Yes, correct. And you can, if you're interested, I can show you how to review that quickly. Did we do this last time? I don't remember. Go to your extensions. Yep, go to your extensions and yeah, click there. None of the extensions. Yeah, you had it. Yep, there you go. And then type in SQLITE viewer. Okay, and you're choosing, yep, that one, choose, yep, install that. Okay, trust this publisher. I use it so I trust it. Go to the file explorer on the left hand side and go up to this .swarm folder. Click choose memory DB. This memory system. So this is how I'm coordinating all the internal tasks of the system. So you haven't been really effectively using it, but you are using it because I kind of force it on you. So you're using a kind of rudimentary version I give everybody. But now I've given you a hyper-optimized version specifically for your repo and your issues and your implementation plan, which is going to guide the system way better. But can see all the tasks, and this is kind of the internal thinking in processes. So I've given it a secondary memory, and I use short-term, episodic, long-term, and other interconnected relationships through that namespacing structure that I was just describing. It's bonkers. I did a call a few weeks ago with the guy that did the tech for the Matrix movies in the 90s. He's like literally a random dude shows up. I don't know who I'm going to do calls with. I just show up and who knows who it is. He's like, I'm the guy that did, I've worked for Warner Brothers and I'm the tech advisor. For Warner Brothers, and he's like, your swarms are literally what we were thinking of when we were creating the Matrix movies, but you've actually built it. I'm like, how cool is that, right? I'm a 90s guy. It doesn't get any better than that. I'm going to start doing bullet movements and stuff. That's how I'm doing the swarm coordination. It's a hive mind or swarm coordination. The hive mind is a collective intelligence. The swarm are independent entities that are being guided through a sort of hierarchy or mesh or other sort of guidance principles. So there's two different directions, but it's all happening in these files.
+
+40:04 - Stuart Kerr
+And how do you know which one to use?
+
+40:07 - rUv
+Use Swarm. For you guys, use Swarm. I think for most of the stuff you're going to do. So we're going to do that right now. So now we're going to do implement. So now we have that. We're going to say use Yep, just type, type in there.
+
+40:23 - Mak Allen
+I just wanna find the implementation guide real quick.
+
+40:36 - rUv
+I think you were, yeah. We're gonna do all phase one elements. So just show me phase one for a sec, all the elements for phase one.
+
+40:46 - Mak Allen
+Well, the thing is, it's before we updated this document, it, uh, memory it originally had that, uh, uh, like links to, uh, Oh, here it is. This is what I was looking for.
+
+41:07 - rUv
+Oh, and is there any ENVs or services we need for phase one that might need to be included in, in your ENV file?
+
+41:15 - Mak Allen
+So to my knowledge, I have all of them. I have the recent key 11 lab super base. Yeah, I believe that's everything.
+
+41:28 - rUv
+Okay, so before we do, just ask Claude to give you an overview of the phase one implementation. Don't do it kind of thing.
+
+41:39 - Mark Allen
+Switch to planning.
+
+41:41 - rUv
+Yeah, you can switch to planning. Yeah, you can tab it. Could I give me an overview?
+
+41:48 - Mak Allen
+copy the name of it?
+
+41:49 - rUv
+No, we wanted to see what you yeah, implementation plan. You've got it connected, you've got it selected, I can see in the blue text, so should see the file. Give me a brief overview of the phase one implementation plan and how I can spawn a five agent swarm to implement concurrently or something like that. Implement concurrently using Cloud Code agents.
+
+42:28 - Mark Allen
+Implement concurrently, not incrementally.
+
+42:31 - rUv
+Oh, sorry. Incrementally is the exact opposite of what we want. Incrementally would do We want 5 all at once. And maybe even be redundant and in parallel, using cloud code agents in parallel at the end. I know we're redundant, but redundancy and concurrency and parallelism are basically synonyms, but you're forcing the concept of doing it at the same time versus incrementally. Yeah, you can expand that up. So what we're doing is we're both feeding the context of the system, as well as creating a, and we may actually want to update the implementation order to include this, depending on what it says, and then we're going to do it. So we spend a lot of time doing planning, then we take the guardrails off and we get it to go do it. But what you don't want to do is kind of like wing it. I don't know what it's doing, go do it. That'll result in, it could result in in the right thing, but you're not gonna understand why or how it got to the right thing.
+
+43:40 - Stuart Kerr
+So that's an interesting question. When do you know if when you're planning is done and when do you know that you have an overplanned or underplanned for what you're looking for? Because that's an issue I run into a lot. I don't know, Mark and Mak, if you guys.
+
+43:55 - rUv
+Yeah, you totally run into it. And it's it's like it's not the answer you're looking for, I don't think. Like anything, you get a feel for it. You get good at it. After a while, you just kind of know. It's between a green belt and a black belt in karate. You just learn and you understand by practice and doing until you get a sixth sense for the moves and the processes that you need to do. Unfortunately, the only way to really get good at it is just to practice and build and understand. You're hiring me because I built the system and I know that stuff. But yeah, unfortunately, you're just going to know it after a while.
+
+44:42 - rUv
+All right.
+
+44:45 - Stuart Kerr
+When he looks at this, is it done? Is it the right phase? Is it too much? Is it too little? When you look at it with your eyes, how do you evaluate, hey, this is ready to go?
+
+44:56 - rUv
+We're almost ready to go. I'm giving you guys the full sort of approach. All going to switch out of planning to keep scrolling, keep scrolling execution, five agent swarm. That's the namespace I was telling you about the five agent concurrence. That's the tasks, looks good. All right, we're going to update the implementation order to include this. Okay, this is great. See how this is giving you the internal guidance? Would you like to proceed? Approval edits. No, keep planning. Number three. And okay, now tell it to update the implementation order at the end to include the swarm implementation instructions. It should know that, to be honest. It's switched from planning mode. Hit tab or whatever.
+
+45:59 - rUv
+Hit tab.
+
+46:04 - rUv
+And add it to the end of the document or MD or whatever.
+
+46:18 - Mark Allen
+Per the plan above or?
+
+46:21 - rUv
+The Swarm implementation plan outlined previously. Just be explicit. Doesn't work with ambiguity.
+
+46:31 - Mark Allen
+So add the plan that it just described above to that document.
+
+46:41 - rUv
+Yeah, that's good. I think it's close enough. It's going to get off after it adds it? Remember, always review before executing. Never combine the two. You're job is to engineer the process. And what that really means is understanding the process, reviewing the process, then saying, okay, I'm happy. This is what I wanted to do. Everything makes sense to me. And if it doesn't make sense to you, you ask more questions. Why is it doing it this way? How is it doing it? What are the ramifications of this versus the other thing. What you don't wanna be is in a situation where it's like, I have no idea why it did it or what it did or all I know is it works. That's just a recipe for disaster. So think of yourself as an engineer, not as a vibe coder. Vibe coders are creating things without direct purpose broadly, but not understanding how they got to the result. An engineer is saying, I know exactly how and what and why I'm doing it and I'm guiding the system to go to the outcome that I want through a known specific process that I've described in a way that's meaningful to me. Now, you don't need to use all the technical jargon and crap that I'm saying. The benefit to this is this thing acts as an interpreter to complicated things to the way you understand those complicated things, but you still have to understand them.
+
+48:16 - Mark Allen
+Hey, quick question for you, and Mak, have you updated the issues in GitHub to this implementation plan?
+
+48:25 - rUv
+He doesn't necessarily need to. His implementation document that relates to it. Now, the only other thing I might suggest is after each step of the implementation.
+
+48:39 - Mak Allen
+There's a rule in my Cloud MD that whenever a GitHub issue is updated, that is reflected in the implementation.
+
+48:51 - rUv
+So it's updating the GitHub issues as replies after every step is completed.
+
+48:59 - Mak Allen
+Is it bi-directional like that?
+
+49:02 - rUv
+Yeah, as long as you define it, yes.
+
+49:05 - Mak Allen
+Yeah, it is.
+
+49:16 - rUv
+mandatory update implementation or whenever github issues are created close to reopen issue dependencies change copy and paste copy and paste that into the end of that uh implementation order doc remember you're losing this context every time it compresses right so just add that to the very end it'll work the first time and it may not work the 15th time so just this yeah there you go all right I think Ready to execute. Spawn the five agent swarm concurrently based on the implementation order instructions and continue until complete. Start mission, something like that. There we go. Let's do this. All right. So, so click, click control O and that'll take it to give you a little view of what's happening inside the brains. So it's starting the memory usage. So that means it's working. Control O to toggle back. Control O toggle again. Wait, wait, wait, wait. So now what we're looking for, this is sometimes like starting a boat motor. What we're looking for is the concurrency The agents are represented by colors. I've color-coded all of them. And then the reason I said five is that I thought it was the right balance between the complexity of what you're building in the phase and the optimal amount of agents. Odd numbers work better. Generally, I avoid even numbers. Prime numbers are best. I don't know why. It's just the way the world works, I guess. Click Control-O. So we want 3.1415.
+
+51:08 - Stuart Kerr
+nine agents.
+
+51:10 - rUv
+That's exactly. Pi is great. And Pi works for a reason. This is already doing this crazy. So it means it's working. And the more agents you have, the more flickers and goes nuts. It'll sort itself out here in a minute. Yeah, here we go. So this is giving you the, scroll up a little bit. This is giving you an internal view of what's happening for each of the agents. You could review it, but we've already determined the guidance to be in that original document. And it looks so it's essentially using that guidance. So you see it's saying pulling memory five minutes to check if the agent is completed. So this is creating the coordination. So you are now a swarm master. This sounds like a 1985 movie.
+
+51:55 - Stuart Kerr
+Look at the smile on Mak's face. He's so jacked.
+
+51:59 - rUv
+You're like, I picture- It's amazing what it works, Rob.
+
+52:03 - Stuart Kerr
+It really is. It's a thing of beauty.
+
+52:06 - rUv
+I picture like Arnold Schwarzenegger in a bad 80s movie, you know, the swarm master. But yeah, you're doing it. You're doing it. And just in the nick of time, too. But so yeah, you're cooking. Hit Control-O to jump back. It's going to flicker and flicker and do whatever.
+
+52:30 - Mark Allen
+But trivial I think, for you group, is there a way that you can go back and see this whole flow of what's happened prompt to prompt?
+
+52:42 - rUv
+Control-O and Control-E when you're in Control-O lets you go and scroll up and see everything.
+
+52:48 - Mark Allen
+I think there's a certain way to save this because when you leave the session, I'd love to save this so I can go and review what worked and what I the the memory persistence system that we were using is storing quite a bit of this.
+
+53:08 - rUv
+So if you go to the swarm dot, you know, the dot swarm plot file, look at the memory dynamic DB, you're gonna see some of this stuff. You know, it's, I should probably create a dashboard or something. I don't know. Yeah, it's the reason it's flickering so much is you're in a web based view. And it's, we got five concurrent agents running. But it is, I could tell based on the control you did earlier that it is actually working. This particular flickering thing is annoying Cloud Code thing that I don't know why they don't fix it, but it's nothing. It's out of my control.
+
+53:41 - Mark Allen
+So another big question that I have is, and I think we'll have to get to this next lesson, is really understanding how to work in parallel against multiple GitHub issues. And then when we do a pull request, I know you've built these agents that do this sort of thing. How do they do conflict resolution to bring everything back into the main?
+
+54:08 - rUv
+Yeah, there's a consensus algorithm that I'm using. Byzantine is the one by default. And essentially that provides a mechanism for consensus that generally is used in the Hivemind component for sort of creating a kind of agreement between the agents. You're currently using a swarm approach where each agent is kind of looking at what the other agents are doing, but they're not asking for coordination and agreement from those agents. So the hive mind thing is a whole other can of worms. It's sci-fi. There's emergent properties and conscious constructs and all kinds of craziness happening in there. So the drawback to it is you're giving it a level of self-determination, which sometimes results in really novel outputs, but also sometimes guides it into things you didn't necessarily want. Swarm, for what you're doing, definitely a go-to.
+
+55:07 - Mark Allen
+When we're experimenting, is it fine to create two different branches and try one development approach? Oh, yeah.
+
+55:16 - rUv
+It's called a work tree, and you can tell it And you don't even necessarily have to create separate branches. Within the single branch, you can create multiple work trees. And you can tell the system to create concurrently five different work trees and try five different variables to find the optimal algorithm to solve whatever problem and choose the best of the five or 10 or 50.
+
+55:40 - Mark Allen
+Super cool. How do you create a work tree?
+
+55:42 - rUv
+You tell it to. Tell it to create a work tree. Yeah, I wouldn't do it for this. This is not the type of app that would do it, but let's say you're creating an analysis algorithm looking at dental records or something, and you're trying to figure out what the optimal approach to solve to find dental problems might be. You might use computer vision to do analysis of the different dental records, and you want to figure out which one is going to be the most reliable, which ones might be the fastest, which one is the cheapest, whatever the algorithm, the metric or algorithm you're looking for, then you're going to do several work trees and say, concurrently using three or five or 10 different work trees, run these separately and tell me which is the best.
+
+56:33 - Mark Allen
+Super cool. So that's actually a feature inside of GitHub, the work tree?
+
+56:38 - rUv
+And it spawn up a new cloud instance and say, tell me about how I can use work trees. So spin up a new DSP and then and just tell it to, in a new terminal.
+
+56:50 - Stuart Kerr
+Sorry, GSP.
+
+56:51 - Mark Allen
+So it wouldn't be, you don't think it would be a good use for him to experiment in a hive mind here and a swarm in another one?
+
+57:01 - rUv
+Not this app, but depending on what problem you're trying to solve, for sure. This app is very deterministic. You've got a web-based dashboard, you just want it to work. But for certain things, yeah, declarative, approaches work really well. Find the best algorithm to solve the problem. Here's another example.
+
+57:20 - Mark Allen
+So for the AI, the conversational voice AI agent, we were trying to determine whether to use 11 labs or to use retail for that. So kind of thinking about developing it in parallel.
+
+57:35 - rUv
+Oh, for that? No, you're just going to use open AI real time. It's cheap and easy, and it's best to use.
+
+57:41 - Mark Allen
+You think, oh, you think that would be better to use than and 11 OpenAI?
+
+57:47 - rUv
+It's cheaper.
+
+57:48 - Mak Allen
+You can do that with retail.
+
+57:53 - rUv
+Everyone else is using OpenAI Realtime. Yeah, so go back to the other terminal.
+
+57:59 - Stuart Kerr
+OpenAI Realtime?
+
+58:03 - rUv
+And then ask it why use a wrapper when you just use a real Ask it about, like, how can I use WorkTrees within Cloud Code?
+
+58:22 - Stuart Kerr
+So can I ask you a question right now? How does it know who's responding? Cloud Flow or Cloud Code 2?
+
+58:31 - rUv
+It doesn't. It doesn't think like a human. It just is.
+
+58:37 - Stuart Kerr
+But in the is, how do we know we're talking to Cloud Flow, or by definition, if Cloud Flow's in the same directory and in the same element, then you're talking to Cloud Flow and it's intercepting, you're not talking to Cloud Code?
+
+58:52 - rUv
+You'll see the MCP or MPX being executed. Cloud Flow is an orchestrator. You're not really talking to it, it's orchestrating. So it's manipulating Cloud Code in its thought and reasoning and logic structures. So it's yeah, it's so unless you it's using a combination of my prompts to guide it, scroll up a little bit using Yeah, So GitHub, work trees, isolation per branch. How can I use it for? Oh, I'm late for my next call. Ask it how you can use it for like concurrent optimization or something. Alright, guys, I gotta jump. Thank you very much. But the other is When you're done, validate. Prove that everything's working. Run it. Show me it. Run the application. In right here. Just tell it to run it. And then fix any errors. There could be potentially errors. Run it and tell it to fix it. And then you look at it and see if there's any errors.
+
+59:59 - Mak Allen
+What do you use the tester agent to come with tests?
+
+1:00:04 - rUv
+Yeah, that's a whole other can of worms we can get into. That's a different day. I got to jump, guys. Right now, you're just going to go to the site and see if it works. Mark, stay on for a second.
+
+1:00:15 - Mark Allen
+We'll have to open up a new Zoom. This is his.
+
+1:00:21 - rUv
+I'll send you. All right. Sorry, guys. Got to go. But you're making good progress. Your swarm is running. All right.

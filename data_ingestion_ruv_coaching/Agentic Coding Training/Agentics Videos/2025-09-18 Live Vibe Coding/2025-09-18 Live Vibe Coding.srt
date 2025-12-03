@@ -1,0 +1,9271 @@
+1
+00:00:00,950 --> 00:00:04,230
+so yeah last week uh
+i took i took the week
+
+2
+00:00:04,230 --> 00:00:05,950
+off i was a little
+under the weather and
+
+3
+00:00:05,950 --> 00:00:08,370
+went on a bit of a road
+trip with my daughter
+
+4
+00:00:08,370 --> 00:00:12,230
+to see a her favorite
+act a guy named uh
+
+5
+00:00:12,230 --> 00:00:15,110
+conan gray which i wasn't
+particularly familiar
+
+6
+00:00:15,110 --> 00:00:17,110
+with but it was fun
+to hit the road and
+
+7
+00:00:17,110 --> 00:00:21,270
+go to ohio akron ohio
+and the where else did
+
+8
+00:00:21,270 --> 00:00:23,510
+i go the cleveland
+at the rock and roll
+
+9
+00:00:23,510 --> 00:00:25,930
+hall of fame so you know
+it was it was a good
+
+10
+00:00:25,930 --> 00:00:29,150
+it was a good little
+uh break um been been
+
+11
+00:00:29,150 --> 00:00:30,710
+fooling around with a
+number of stuff this
+
+12
+00:00:30,710 --> 00:00:32,610
+week but but before
+we do who do we got on
+
+13
+00:00:32,610 --> 00:00:34,550
+the call here i got you
+know jed you've been
+
+14
+00:00:34,550 --> 00:00:36,310
+you've been busy
+working on on a number
+
+15
+00:00:36,310 --> 00:00:39,370
+of things uh how's it
+going did we did you
+
+16
+00:00:39,370 --> 00:00:41,930
+do an office hours last
+week or what we did
+
+17
+00:00:41,930 --> 00:00:44,770
+we did have some fun
+with office hours and
+
+18
+00:00:44,770 --> 00:00:49,060
+then brad uh shared how
+he agentic engineers
+
+19
+00:00:49,060 --> 00:00:52,050
+so i think we were able
+to show this community
+
+20
+00:00:52,050 --> 00:00:54,190
+there's more than
+one way to do things
+
+21
+00:00:55,510 --> 00:00:58,010
+yeah and there is
+that's a really good
+
+22
+00:00:58,010 --> 00:01:01,630
+point there's many ways
+to do things and and
+
+23
+00:01:01,630 --> 00:01:03,370
+there and that's
+probably part of the
+
+24
+00:01:03,370 --> 00:01:06,450
+exciting part of what
+we do is is uh you know
+
+25
+00:01:06,450 --> 00:01:08,430
+figuring out the the
+the way that works
+
+26
+00:01:08,430 --> 00:01:11,150
+best for you the way
+though and that's a lot
+
+27
+00:01:11,150 --> 00:01:13,310
+of discussions i have
+it's like what works
+
+28
+00:01:13,310 --> 00:01:14,530
+for me doesn't
+necessarily work for
+
+29
+00:01:14,530 --> 00:01:18,210
+somebody else um so
+yeah that's that's part
+
+30
+00:01:18,210 --> 00:01:20,590
+partially maybe we'll
+explore today i've
+
+31
+00:01:20,590 --> 00:01:22,500
+been busy bug fixing
+this morning apparently
+
+32
+00:01:22,500 --> 00:01:24,370
+i'm good of breaking
+things right before
+
+33
+00:01:24,370 --> 00:01:26,770
+these calls, but
+hopefully I can get
+
+34
+00:01:26,770 --> 00:01:30,550
+everything back up and
+running in short order.
+
+35
+00:01:30,710 --> 00:01:32,410
+I see Rob, you're
+on the call
+
+36
+00:01:32,410 --> 00:01:33,690
+as well. How's
+it going, Rob?
+
+37
+00:01:33,770 --> 00:01:36,470
+Oh, good, good,
+Ruben, and welcome
+
+38
+00:01:36,470 --> 00:01:38,950
+back. Yeah, it's
+been a good and busy
+
+39
+00:01:38,950 --> 00:01:41,470
+week. Lots of stuff
+shaping up New Zealand
+
+40
+00:01:41,470 --> 00:01:44,670
+and getting the
+dates selected for
+
+41
+00:01:44,670 --> 00:01:48,260
+Tokyo, the Tokyo
+chapter, and I believe
+
+42
+00:01:48,260 --> 00:01:51,210
+Paris as well. So
+tons on the go.
+
+43
+00:01:52,030 --> 00:01:54,090
+Nice. I think there's
+a bunch of stuff
+
+44
+00:01:54,090 --> 00:01:55,870
+happening in London,
+too, coming up.
+
+45
+00:01:57,390 --> 00:01:59,470
+Yeah, London's been
+interesting for
+
+46
+00:01:59,470 --> 00:02:02,310
+me. It's been a
+really hot city.
+
+47
+00:02:02,310 --> 00:02:04,310
+I just got off a
+call with some folks
+
+48
+00:02:04,310 --> 00:02:06,170
+out of London
+about an hour ago.
+
+49
+00:02:06,310 --> 00:02:10,170
+So London's hot for
+Eugentex, for sure.
+
+50
+00:02:10,170 --> 00:02:12,630
+And they weren't
+familiar with what
+
+51
+00:02:12,630 --> 00:02:14,030
+we were doing in
+London. So this was
+
+52
+00:02:14,030 --> 00:02:15,470
+like independent
+of all the things
+
+53
+00:02:15,470 --> 00:02:18,350
+Montuip and Benz and
+others are doing.
+
+54
+00:02:18,350 --> 00:02:20,250
+Montuip, how's it going?
+
+55
+00:02:21,070 --> 00:02:25,090
+yeah 250 billion
+uh the the you know
+
+56
+00:02:25,090 --> 00:02:27,030
+the investment
+what we got in the
+
+57
+00:02:27,030 --> 00:02:30,830
+uk is that billion
+in dollars or in
+
+58
+00:02:30,830 --> 00:02:33,190
+dollars in dollars
+yeah that's like
+
+59
+00:02:33,190 --> 00:02:35,150
+that's like 12
+pounds or something
+
+60
+00:02:36,490 --> 00:02:38,110
+no i'm just kidding
+i'm just kidding
+
+61
+00:02:39,750 --> 00:02:45,430
+us bashing yeah but uh
+yeah it's it's great
+
+62
+00:02:46,460 --> 00:02:49,130
+so what exactly does
+that involve that's
+
+63
+00:02:49,130 --> 00:02:52,190
+like government uh
+spend or is that is that
+
+64
+00:02:52,190 --> 00:02:57,690
+is that like uh data
+centers um open ai
+
+65
+00:02:57,690 --> 00:03:01,690
+nvidia google um what
+else you know the big
+
+66
+00:03:01,690 --> 00:03:05,910
+tech um are investing
+i don't know if it's a
+
+67
+00:03:05,910 --> 00:03:09,570
+promise or is it a
+roadmap or it's already
+
+68
+00:03:09,970 --> 00:03:13,030
+on the bank account uh
+i don't know details
+
+69
+00:03:13,030 --> 00:03:16,910
+but these are the big
+brands okay so it's
+
+70
+00:03:16,910 --> 00:03:19,510
+one is it one of the
+like i i love uh paper
+
+71
+00:03:19,510 --> 00:03:21,990
+partnerships we're
+we're gonna we're gonna
+
+72
+00:03:21,990 --> 00:03:25,750
+spend 300 billion
+dollars on gpus you don't
+
+73
+00:03:25,750 --> 00:03:27,910
+have with money we don't
+have but don't worry
+
+74
+00:03:27,910 --> 00:03:29,450
+it's going to be
+amazing and your stock's
+
+75
+00:03:29,450 --> 00:03:33,210
+going to go up 100
+billion dollars i i i'm
+
+76
+00:03:33,210 --> 00:03:36,790
+just summarizing last
+last week right and and
+
+77
+00:03:36,790 --> 00:03:38,650
+i'm the **** for
+pointing it out no you're
+
+78
+00:03:38,650 --> 00:03:40,910
+you just don't have
+the uh you know this is
+
+79
+00:03:40,910 --> 00:03:43,410
+how the world works
+well just because that's
+
+80
+00:03:43,410 --> 00:03:44,930
+how the world works
+doesn't mean it's it's
+
+81
+00:03:44,930 --> 00:03:46,990
+it's a great way to
+do things but what am
+
+82
+00:03:46,990 --> 00:03:50,970
+i i i like real things
+well real uh virtual
+
+83
+00:03:50,970 --> 00:03:54,470
+things anyway yeah and
+volunteer is the other
+
+84
+00:03:54,470 --> 00:04:00,470
+company yeah coming
+up obviously ben's uh
+
+85
+00:04:00,470 --> 00:04:02,850
+next ben is day our
+fortnightly sessions and
+
+86
+00:04:02,850 --> 00:04:05,750
+then in partnership
+with a group called
+
+87
+00:04:05,750 --> 00:04:08,540
+projector which bens
+had been part of before
+
+88
+00:04:08,540 --> 00:04:11,010
+there is an in-person
+event the next day on
+
+89
+00:04:11,010 --> 00:04:15,040
+thursday um um i would
+be very keen on like
+
+90
+00:04:15,040 --> 00:04:16,590
+roof if you are kind
+of coming across
+
+91
+00:04:16,590 --> 00:04:20,530
+connections here um if
+it is relevant for us to
+
+92
+00:04:20,530 --> 00:04:23,810
+be bring them in to what
+we are doing so please
+
+93
+00:04:23,810 --> 00:04:27,030
+feel free to point
+them to us um i think
+
+94
+00:04:27,030 --> 00:04:30,730
+we're slowly building
+a community we but i
+
+95
+00:04:30,730 --> 00:04:34,290
+think we got we still
+we got to normalize it
+
+96
+00:04:34,290 --> 00:04:36,650
+a little bit more i
+guess in terms of more
+
+97
+00:04:37,750 --> 00:04:39,570
+time with the industry
+for example we have
+
+98
+00:04:39,570 --> 00:04:42,590
+a session i think i
+mentioned before in in
+
+99
+00:04:42,590 --> 00:04:45,150
+october and on the
+security space that should
+
+100
+00:04:45,150 --> 00:04:47,200
+hopefully give us a
+bit more visibility and
+
+101
+00:04:47,550 --> 00:04:49,710
+so we are taking we
+are working along those
+
+102
+00:04:49,710 --> 00:04:54,870
+lines okay yeah it's
+a great right right?
+
+103
+00:04:57,010 --> 00:04:57,890
+Sorry, Rob.
+
+104
+00:04:58,050 --> 00:04:59,150
+That's at Greenwich?
+
+105
+00:04:59,430 --> 00:05:01,830
+No, this is basically
+at Mercedes's
+
+106
+00:05:01,830 --> 00:05:04,110
+campus. This is the
+CISO London Summit.
+
+107
+00:05:04,550 --> 00:05:05,670
+Yeah, excellent.
+
+108
+00:05:05,910 --> 00:05:08,330
+It's just a 20-minute
+keynote within Mark
+
+109
+00:05:08,330 --> 00:05:12,570
+and I, but that's
+what we... Okay, cool.
+
+110
+00:05:14,090 --> 00:05:15,250
+All right, we've
+got a lot to cover
+
+111
+00:05:15,250 --> 00:05:17,150
+today. Anything else
+anyone wants to, any
+
+112
+00:05:17,150 --> 00:05:19,650
+updates, anything
+before we jump in?
+
+113
+00:05:19,650 --> 00:05:22,950
+This is your moment
+of... And Mandreep,
+
+114
+00:05:22,950 --> 00:05:24,380
+you're looking
+for our new venue
+
+115
+00:05:24,620 --> 00:05:27,290
+location sponsor in
+London for anyone that
+
+116
+00:05:27,290 --> 00:05:29,650
+might have a lead.
+Is that correct?
+
+117
+00:05:29,650 --> 00:05:30,650
+That's correct.
+
+118
+00:05:30,650 --> 00:05:31,290
+That's correct.
+
+119
+00:05:32,050 --> 00:05:36,930
+Okay, so everyone's
+really quick to
+
+120
+00:05:36,930 --> 00:05:39,270
+offer. We need to
+probably do a better job
+
+121
+00:05:39,270 --> 00:05:40,880
+of taking people
+up on their offers.
+
+122
+00:05:41,250 --> 00:05:43,610
+The big tech companies
+are a little bit
+
+123
+00:05:43,610 --> 00:05:45,670
+more difficult
+because they require
+
+124
+00:05:45,670 --> 00:05:47,890
+sometimes like
+knowing who's going to
+
+125
+00:05:47,890 --> 00:05:50,650
+be there or limits
+to certain criteria.
+
+126
+00:05:50,770 --> 00:05:53,210
+But there's a number
+of tech firms that
+
+127
+00:05:53,210 --> 00:05:54,830
+have offered so we
+just need to probably
+
+128
+00:05:54,830 --> 00:05:59,210
+follow up with them
+um i saw your post so
+
+129
+00:05:59,210 --> 00:06:00,990
+maybe we'll maybe i'll
+repost that as well
+
+130
+00:06:00,990 --> 00:06:02,870
+for you to see see we
+could drum up but as
+
+131
+00:06:02,870 --> 00:06:05,670
+i said london for me
+has been particularly
+
+132
+00:06:05,670 --> 00:06:08,690
+good over the last
+uh about two three
+
+133
+00:06:08,690 --> 00:06:11,550
+months i've got probably
+around half a dozen
+
+134
+00:06:11,550 --> 00:06:13,150
+companies and i've
+that i've reached out
+
+135
+00:06:13,150 --> 00:06:15,910
+and i'm working with
+to some degree in in
+
+136
+00:06:15,910 --> 00:06:18,630
+london and i think another
+one is in edinburgh
+
+137
+00:06:18,630 --> 00:06:21,350
+so a little further
+north i guess um
+
+138
+00:06:21,810 --> 00:06:24,990
+we just need Two things
+real quick, buddy.
+
+139
+00:06:25,010 --> 00:06:29,670
+So, first thing, on
+the $250 billion,
+
+140
+00:06:30,190 --> 00:06:32,650
+New Zealand just got $70
+
+141
+00:06:32,650 --> 00:06:35,150
+million over seven years.
+
+142
+00:06:35,810 --> 00:06:37,110
+Sorry, sorry.
+
+143
+00:06:37,110 --> 00:06:38,190
+$70 million?
+
+144
+00:06:38,210 --> 00:06:38,910
+M.
+
+145
+00:06:40,350 --> 00:06:42,430
+But keep in mind,
+I don't know
+
+146
+00:06:42,430 --> 00:06:43,870
+what the population
+of New Zealand
+
+147
+00:06:43,870 --> 00:06:45,530
+is, but on a per
+capita basis,
+
+148
+00:06:45,530 --> 00:06:47,650
+that's probably not
+that bad, right?
+
+149
+00:06:47,650 --> 00:06:49,490
+Is that New
+Zealand dollars?
+
+150
+00:06:49,950 --> 00:06:52,890
+Yeah. Yeah, that's New
+Zealand. okay sorry
+
+151
+00:06:52,890 --> 00:06:58,930
+that's harsh okay oh
+also it's actually
+
+152
+00:06:58,930 --> 00:07:02,430
+really little because
+new zealand has same
+
+153
+00:07:02,440 --> 00:07:04,650
+population than in
+finland that we are at
+
+154
+00:07:04,650 --> 00:07:08,210
+least investing like
+hundreds of millions so
+
+155
+00:07:08,210 --> 00:07:12,070
+it's pretty it's
+something it's something
+
+156
+00:07:12,070 --> 00:07:15,110
+it's better than nothing
+and it's it's it's
+
+157
+00:07:15,110 --> 00:07:18,390
+yeah it could could
+be worse um so like
+
+158
+00:07:18,390 --> 00:07:20,290
+but actually what
+is the population of
+
+159
+00:07:20,290 --> 00:07:24,230
+finland or New Zealand?
+5 million. 5 million.
+
+160
+00:07:24,590 --> 00:07:25,970
+So your entire country
+
+161
+00:07:25,970 --> 00:07:27,190
+is less than Toronto.
+
+162
+00:07:28,030 --> 00:07:28,910
+Interesting.
+
+163
+00:07:29,050 --> 00:07:33,050
+In terms of all these
+numbers, how to leverage
+
+164
+00:07:33,050 --> 00:07:35,270
+them, right? I mean,
+the way to make
+
+165
+00:07:35,270 --> 00:07:37,370
+sure this is how it is
+in every other place,
+
+166
+00:07:37,370 --> 00:07:41,630
+like, there are these
+Innovate UK rounds that
+
+167
+00:07:41,630 --> 00:07:43,430
+keep going around,
+that go from a few
+
+168
+00:07:43,430 --> 00:07:45,590
+hundred thousand to a
+few million, actually.
+
+169
+00:07:45,590 --> 00:07:47,310
+I'm just wondering,
+something we should think
+
+170
+00:07:47,310 --> 00:07:50,150
+about is, can you be
+scientific about this
+
+171
+00:07:50,150 --> 00:07:52,450
+community forming
+small units of groups
+
+172
+00:07:52,450 --> 00:07:56,370
+and basically tackling
+those grant fundings.
+
+173
+00:07:57,110 --> 00:07:58,890
+That's how this money is
+
+174
+00:07:58,890 --> 00:08:00,310
+actually trickled down.
+
+175
+00:08:00,630 --> 00:08:01,510
+I love that.
+
+176
+00:08:02,670 --> 00:08:05,110
+Be intentional about that
+
+177
+00:08:05,110 --> 00:08:07,230
+and be systematic
+about that.
+
+178
+00:08:08,010 --> 00:08:13,230
+Yeah, that actually
+makes a lot of sense.
+
+179
+00:08:13,230 --> 00:08:17,470
+So you're suggesting
+that the money comes
+
+180
+00:08:17,470 --> 00:08:19,770
+from corporate interests
+as in the form of
+
+181
+00:08:19,770 --> 00:08:23,190
+grants versus the
+government basically for
+
+182
+00:08:23,190 --> 00:08:25,770
+example if you look up
+innovate uk on google
+
+183
+00:08:25,770 --> 00:08:28,930
+innovate uk grants you
+see lots of ai projects
+
+184
+00:08:28,930 --> 00:08:30,610
+going on at the moment
+and these are open
+
+185
+00:08:30,610 --> 00:08:35,830
+either fully fully
+free or 70 free 30 you
+
+186
+00:08:35,830 --> 00:08:39,010
+have to invest or
+basically loans very very
+
+187
+00:08:39,010 --> 00:08:43,310
+cheap loans and they
+they range from like
+
+188
+00:08:43,310 --> 00:08:46,610
+120 000 all the way to
+a few million so they
+
+189
+00:08:46,610 --> 00:08:48,690
+could be so for For
+example, the last one
+
+190
+00:08:48,690 --> 00:08:52,050
+I applied was around
+UK Sovereign AI Fund.
+
+191
+00:08:52,250 --> 00:08:54,050
+So I've applied
+for a couple now.
+
+192
+00:08:54,050 --> 00:08:56,030
+But I'm thinking like,
+you know, because
+
+193
+00:08:56,030 --> 00:08:57,870
+it's much more
+easier to make these
+
+194
+00:08:57,870 --> 00:08:59,730
+applications now
+than it used to be
+
+195
+00:08:59,730 --> 00:09:01,190
+before. I've just
+been using Deep
+
+196
+00:09:01,190 --> 00:09:03,110
+Research Gemini for
+many applications.
+
+197
+00:09:03,110 --> 00:09:03,930
+That's right.
+
+198
+00:09:04,170 --> 00:09:06,510
+But if we form like small
+
+199
+00:09:06,510 --> 00:09:08,190
+cohorts here
+and we're really
+
+200
+00:09:08,190 --> 00:09:09,950
+scientific about
+attacking them,
+
+201
+00:09:10,290 --> 00:09:12,450
+probably out of
+20, we'll get two.
+
+202
+00:09:13,250 --> 00:09:16,650
+how many other applicants
+do you think are
+
+203
+00:09:16,650 --> 00:09:19,790
+also using LLMs to
+enrich their applications
+
+204
+00:09:22,130 --> 00:09:25,310
+we are early probably
+I'm pretty sure
+
+205
+00:09:25,310 --> 00:09:28,180
+almost many would
+do that but well
+
+206
+00:09:29,250 --> 00:09:32,890
+hey I just wanted to
+thank Robert Ransom as
+
+207
+00:09:32,890 --> 00:09:37,690
+well for connecting
+me with Finland we got
+
+208
+00:09:37,690 --> 00:09:41,330
+off a call last night
+with Miko Elseria um
+
+209
+00:09:41,330 --> 00:09:45,350
+who's had a very very
+successful uh launch
+
+210
+00:09:45,350 --> 00:09:48,710
+um they've got you know
+1200 members on their
+
+211
+00:09:48,710 --> 00:09:51,500
+finland agentics uh
+whatsapp chat and uh
+
+212
+00:09:51,500 --> 00:09:53,910
+it's taken off over
+there so we had a really
+
+213
+00:09:53,910 --> 00:09:56,470
+great call with them
+um last night and uh
+
+214
+00:09:56,470 --> 00:09:59,650
+so something is uh
+brewing there so i'm
+
+215
+00:09:59,650 --> 00:10:01,530
+really excited about
+that so thanks and we've
+
+216
+00:10:01,530 --> 00:10:05,170
+got timo on the call
+here so g'day and uh
+
+217
+00:10:05,170 --> 00:10:07,450
+well let's let's get
+cracking roof yeah let's
+
+218
+00:10:07,450 --> 00:10:09,630
+do this all right thanks
+for all the updates
+
+219
+00:10:09,630 --> 00:10:11,810
+everyone it will be
+if i may say for a
+
+220
+00:10:11,810 --> 00:10:14,310
+couple words to come
+here uh from malaysia
+
+221
+00:10:14,310 --> 00:10:18,590
+and uh well along poor
+here and uh and uh
+
+222
+00:10:18,590 --> 00:10:21,350
+greetings from uh from
+the age atomic where we
+
+223
+00:10:21,350 --> 00:10:24,650
+had a uh i had a a panel
+discussion yesterday
+
+224
+00:10:24,650 --> 00:10:26,570
+about the ai and agent
+engineering there
+
+225
+00:10:26,570 --> 00:10:29,570
+and uh and uh tomorrow
+robert uh hosting
+
+226
+00:10:29,570 --> 00:10:33,630
+two two panels here and
+uh yes We're talking
+
+227
+00:10:33,630 --> 00:10:37,970
+about the numbers, I
+mean, Dubai and GCC,
+
+228
+00:10:38,110 --> 00:10:41,170
+which I think in
+regular language,
+
+229
+00:10:41,170 --> 00:10:43,010
+it's like the Middle
+East, like the
+
+230
+00:10:43,010 --> 00:10:45,630
+country, Saudi
+Arabia, Saudi Arabia,
+
+231
+00:10:45,950 --> 00:10:46,490
+Qatar,
+
+232
+00:10:46,790 --> 00:10:49,690
+Bahrain, and so on.
+They are investing 4
+
+233
+00:10:49,690 --> 00:10:54,210
+.65 trillion USDs. There's
+45 million people,
+
+234
+00:10:54,210 --> 00:10:56,010
+so it means that they
+are investing 100
+
+235
+00:10:56,010 --> 00:11:00,330
+,000 USD per person
+for AI-related things
+
+236
+00:11:00,330 --> 00:11:03,140
+there. I believe in
+these numbers or not, but
+
+237
+00:11:03,140 --> 00:11:05,910
+they have the oil money
+and they're really,
+
+238
+00:11:05,910 --> 00:11:08,370
+really heavily also
+investing in the AI
+
+239
+00:11:08,370 --> 00:11:10,530
+industry in large
+scale. And that's kind
+
+240
+00:11:10,530 --> 00:11:13,370
+of, that gives you the
+support of 100,000.
+
+241
+00:11:13,370 --> 00:11:15,610
+And I think that is
+like next five years.
+
+242
+00:11:16,510 --> 00:11:19,130
+So, so try to beat that.
+
+243
+00:11:20,170 --> 00:11:21,770
+Nice. Incredible.
+
+244
+00:11:22,370 --> 00:11:24,970
+Yeah, looking forward
+to seeing the, the,
+
+245
+00:11:25,640 --> 00:11:27,630
+the footage and
+the pictures. I saw
+
+246
+00:11:27,630 --> 00:11:29,390
+one of you, Tommy, up
+there on the panel.
+
+247
+00:11:29,730 --> 00:11:33,050
+it should be, it sounds
+like it's coming off
+
+248
+00:11:33,050 --> 00:11:35,330
+really well so
+congratulations to Robert E
+
+249
+00:11:35,470 --> 00:11:36,850
+and the team out
+there putting
+
+250
+00:11:36,850 --> 00:11:38,830
+together that APA Summit
+
+251
+00:11:39,750 --> 00:11:41,150
+Absolutely,
+very very good
+
+252
+00:11:41,150 --> 00:11:42,550
+people and very
+nice to meet
+
+253
+00:11:42,550 --> 00:11:45,210
+Robert in person
+here Yeah, nice
+
+254
+00:11:45,510 --> 00:11:49,730
+And say hi to Rob for
+me lots of doing lots
+
+255
+00:11:49,730 --> 00:11:51,230
+of stuff, really
+appreciate that, all the
+
+256
+00:11:51,230 --> 00:11:53,470
+work he's putting in
+as well Yeah, I'll see
+
+257
+00:11:53,470 --> 00:11:57,830
+him again tomorrow
+All right, so a few
+
+258
+00:11:57,830 --> 00:12:00,610
+things that I've been
+working on You know, my
+
+259
+00:12:00,810 --> 00:12:03,270
+latest tutorial,
+for those that are
+
+260
+00:12:03,600 --> 00:12:06,390
+interested, I've
+been playing with
+the new developer
+
+261
+00:12:06,390 --> 00:12:10,310
+mode within ChatGPT.
+And as you know,
+
+262
+00:12:10,530 --> 00:12:16,300
+700 million people
+are using ChatGPT on a
+
+263
+00:12:16,300 --> 00:12:19,450
+weekly basis or monthly
+basis or some basis.
+
+264
+00:12:19,570 --> 00:12:22,630
+So like an astronomical
+amount of people.
+
+265
+00:12:22,630 --> 00:12:25,730
+So embedding your
+tools within ChatGPT
+
+266
+00:12:25,730 --> 00:12:29,430
+is just a quick and
+easy way to get a decent
+
+267
+00:12:29,430 --> 00:12:32,970
+user base and
+integrate your data and
+
+268
+00:12:32,970 --> 00:12:34,410
+that sort of thing
+quite, quite quickly.
+
+269
+00:12:34,600 --> 00:12:36,410
+So what I want
+to show you
+
+270
+00:12:36,410 --> 00:12:38,010
+guys quickly is
+how I did it.
+
+271
+00:12:38,210 --> 00:12:41,010
+And there was a number
+of kind of gotchas
+
+272
+00:12:41,010 --> 00:12:42,890
+to get it working.
+But for those that
+
+273
+00:12:42,890 --> 00:12:45,330
+aren't familiar, if
+you go here, I'm in
+
+274
+00:12:45,330 --> 00:12:47,390
+ChatGPT, and you go
+to your settings,
+
+275
+00:12:47,490 --> 00:12:50,130
+there's a little
+hidden area now under
+
+276
+00:12:50,130 --> 00:12:52,750
+connectors. If you
+scroll to the bottom,
+
+277
+00:12:52,750 --> 00:12:54,610
+you'll see this advanced
+settings option.
+
+278
+00:12:55,030 --> 00:12:57,890
+You click that on and
+that basically enables
+
+279
+00:12:57,890 --> 00:13:00,510
+this developer
+mode where you can
+
+280
+00:13:00,510 --> 00:13:05,770
+basically enable full
+MCP support and that
+
+281
+00:13:05,770 --> 00:13:10,870
+allows you to essentially
+add your own MCPs.
+
+282
+00:13:10,930 --> 00:13:14,250
+So in this case, I
+created an MCP server
+
+283
+00:13:14,250 --> 00:13:18,810
+based on my Flow Nexus
+system. uh so mcp
+
+284
+00:13:18,810 --> 00:13:22,970
+-flow-nexus i gave it a
+little sort of interface
+
+285
+00:13:22,970 --> 00:13:25,810
+with different
+endpoints so the end
+
+286
+00:13:25,810 --> 00:13:28,050
+points are the the
+trickiest part of this
+
+287
+00:13:28,050 --> 00:13:31,490
+was actually the oauth
+getting the oauth
+
+288
+00:13:31,490 --> 00:13:33,450
+endpoints to actually
+verify and create the
+
+289
+00:13:33,450 --> 00:13:35,530
+tokens and then stay
+open for more than like
+
+290
+00:13:35,530 --> 00:13:37,690
+five seconds and things
+like that basically
+
+291
+00:13:37,690 --> 00:13:39,590
+i i got it all i
+got it mostly all
+
+292
+00:13:39,590 --> 00:13:42,370
+working um you know you
+can you can create an
+
+293
+00:13:42,370 --> 00:13:44,260
+account you know that
+that sort of thing
+
+294
+00:13:44,260 --> 00:13:46,190
+so what so what i'm
+going to do right now
+
+295
+00:13:46,930 --> 00:13:48,770
+and just fingers crossed
+
+296
+00:13:48,770 --> 00:13:49,810
+that it actually works.
+
+297
+00:13:50,050 --> 00:13:51,570
+So basically they'll
+show you some of
+
+298
+00:13:51,570 --> 00:13:53,290
+the code and show
+you how to create
+
+299
+00:13:53,290 --> 00:13:55,510
+your own. But
+basically we can go in
+
+300
+00:13:55,510 --> 00:13:57,130
+here and I'm gonna
+create a new one
+
+301
+00:13:57,130 --> 00:14:01,690
+and I'm gonna call
+it Flow Nexus 5.
+
+302
+00:14:02,170 --> 00:14:04,270
+It's because I've
+got four already.
+
+303
+00:14:04,630 --> 00:14:07,830
+Now without
+OAuth, you can use
+
+304
+00:14:07,830 --> 00:14:09,390
+edge functions
+and other things
+
+305
+00:14:09,390 --> 00:14:11,010
+and it's actually
+quite easy.
+
+306
+00:14:11,010 --> 00:14:13,930
+Now the issue you have
+without OAuth is if
+
+307
+00:14:13,930 --> 00:14:15,630
+you don't have any
+sort of authentication,
+
+308
+00:14:15,630 --> 00:14:18,430
+it's hard to know who's
+doing what and if you
+
+309
+00:14:18,430 --> 00:14:21,670
+want you know uh role
+-based access or or
+
+310
+00:14:21,670 --> 00:14:25,270
+limitations based on um
+permissions then you're
+
+311
+00:14:25,270 --> 00:14:26,930
+you're either making
+it open to everybody
+
+312
+00:14:26,930 --> 00:14:30,150
+or you or or it's uh
+just limited to data
+
+313
+00:14:30,150 --> 00:14:33,250
+that you that you don't
+care about so off is
+
+314
+00:14:33,250 --> 00:14:35,010
+is for the types of
+things i'm doing it's
+
+315
+00:14:35,010 --> 00:14:36,770
+definitely pretty
+useful it's just easier
+
+316
+00:14:36,770 --> 00:14:38,750
+without it so you might
+want if you're starting
+
+317
+00:14:38,750 --> 00:14:40,070
+you might want to
+start without it just
+
+318
+00:14:40,070 --> 00:14:43,840
+to see how it works and
+i again the description
+
+319
+00:14:43,840 --> 00:14:45,870
+Doesn't seem to make
+much difference. I
+
+320
+00:14:45,870 --> 00:14:47,630
+was hoping the
+description would actually
+
+321
+00:14:47,630 --> 00:14:49,890
+guide it a little bit
+It doesn't so I'm not
+
+322
+00:14:49,890 --> 00:14:52,090
+going to bother Well,
+I'll put flow of access
+
+323
+00:14:52,090 --> 00:14:54,090
+in here or whatever
+And so I'm going to
+
+324
+00:14:54,090 --> 00:14:57,570
+create now if all goes
+well. I'm I'm going to
+
+325
+00:14:57,670 --> 00:15:00,370
+Create and this
+should spawn a
+
+326
+00:15:00,510 --> 00:15:01,790
+OAuth login
+
+327
+00:15:02,330 --> 00:15:05,270
+So we'll see what
+happens. I've got 90
+
+328
+00:15:05,270 --> 00:15:07,310
+something tools. The
+first time it ran was a
+
+329
+00:15:07,310 --> 00:15:09,810
+little slow So now we
+see that we went we
+
+330
+00:15:09,810 --> 00:15:13,130
+went to the OAuth The
+URL here is particularly
+
+331
+00:15:13,130 --> 00:15:15,430
+important. You'll
+see here that we've
+
+332
+00:15:15,430 --> 00:15:18,090
+got different response
+types code. We've
+
+333
+00:15:18,090 --> 00:15:20,350
+got the client ID. That's
+a unique identifier
+
+334
+00:15:20,350 --> 00:15:22,770
+that I generated
+just for this. We get
+
+335
+00:15:22,770 --> 00:15:24,550
+the redirect back,
+which is basically
+
+336
+00:15:24,550 --> 00:15:27,450
+redirecting back to the
+connector platform and
+
+337
+00:15:27,450 --> 00:15:32,110
+some other tokens and
+some other scopes.
+
+338
+00:15:32,280 --> 00:15:33,880
+Basically, this is
+all the requirements
+
+339
+00:15:33,880 --> 00:15:37,330
+of ChatGPT system.
+So I'm going
+
+340
+00:15:37,330 --> 00:15:40,910
+to log in here and
+I'm going to...
+
+341
+00:15:41,010 --> 00:15:46,210
+Oops, I'm going
+to log in and
+
+342
+00:15:46,410 --> 00:15:48,570
+then I'm going
+to go here.
+
+343
+00:15:49,850 --> 00:15:52,910
+So at which point
+it should, if all
+
+344
+00:15:52,910 --> 00:15:55,090
+go as well, it
+should authenticate.
+
+345
+00:15:56,190 --> 00:15:57,770
+Let's hope the demo got a
+
+346
+00:15:57,770 --> 00:15:59,070
+smile on me at
+this morning.
+
+347
+00:15:59,370 --> 00:16:01,250
+All right. It's
+doing its thing.
+
+348
+00:16:01,750 --> 00:16:03,690
+Taking a little longer
+than normal, possibly
+
+349
+00:16:03,690 --> 00:16:05,270
+because I'm sharing my
+screen or something.
+
+350
+00:16:05,270 --> 00:16:07,470
+Usually this happens
+really quickly. I'm
+
+351
+00:16:07,470 --> 00:16:09,450
+not sure why it's so
+slow at the moment.
+
+352
+00:16:10,370 --> 00:16:12,970
+this is chat GPT
+doing this thing. All
+
+353
+00:16:12,970 --> 00:16:14,670
+right, I guess it just
+had something to do
+
+354
+00:16:14,670 --> 00:16:16,650
+with sharing the
+screen, I guess. But
+
+355
+00:16:16,650 --> 00:16:19,510
+you can see here it
+worked. I can see all
+
+356
+00:16:19,510 --> 00:16:20,990
+my actions. So these
+are the different
+
+357
+00:16:20,990 --> 00:16:23,890
+actions I have available.
+So what I'm doing
+
+358
+00:16:23,890 --> 00:16:25,850
+in this particular
+scenario is I create
+
+359
+00:16:25,850 --> 00:16:29,510
+a mechanism to create
+sandboxes and create
+
+360
+00:16:29,510 --> 00:16:32,790
+different neural
+networks and some of
+
+361
+00:16:32,790 --> 00:16:35,430
+the other components
+here, a subset of
+
+362
+00:16:35,430 --> 00:16:38,330
+my capabilities of
+the Flow Nexus system.
+
+363
+00:16:39,650 --> 00:16:40,810
+All right,
+
+364
+00:16:40,970 --> 00:16:45,130
+so in this case, that
+looks good, so I'm
+
+365
+00:16:45,130 --> 00:16:48,310
+going to go here and
+I'm going to activate
+
+366
+00:16:48,310 --> 00:16:51,270
+it by going here to
+more, developer mode,
+
+367
+00:16:51,510 --> 00:16:53,950
+in developer mode now
+I've got different
+
+368
+00:16:53,950 --> 00:16:56,890
+options available to me,
+so I'm going to choose
+
+369
+00:16:56,890 --> 00:16:59,290
+Net Flow Nexus 5. There
+is zero difference
+
+370
+00:16:59,290 --> 00:17:01,370
+between Flow Nexus 4
+and Flow Nexus 5, I
+
+371
+00:17:01,370 --> 00:17:04,240
+just happened to set
+that up earlier but one
+
+372
+00:17:04,590 --> 00:17:06,950
+of the one of the
+things I that I don't
+
+373
+00:17:06,950 --> 00:17:09,900
+necessarily like
+particularly is the fact that
+
+374
+00:17:09,900 --> 00:17:12,270
+it will you see in
+your sec I'm gonna say
+
+375
+00:17:12,650 --> 00:17:15,930
+create a sandbox I've
+been having some issues
+
+376
+00:17:15,930 --> 00:17:17,310
+with the sandbox
+this morning so I'm
+
+377
+00:17:17,310 --> 00:17:19,470
+gonna debug it and see
+if it creates the mock
+
+378
+00:17:19,470 --> 00:17:25,010
+version or or legitimate
+version all right
+
+379
+00:17:27,790 --> 00:17:30,070
+so we gotta do that right
+
+380
+00:17:37,070 --> 00:17:39,050
+so now it's thinking
+that you can choose
+
+381
+00:17:39,050 --> 00:17:42,190
+different different
+options here where it uh
+
+382
+00:17:42,190 --> 00:17:44,170
+you know you can use
+thinking mode or auto
+
+383
+00:17:44,170 --> 00:17:47,080
+or pro i you know i
+just i'm going instant
+
+384
+00:17:47,080 --> 00:17:48,650
+just to see what
+happens now what's
+
+385
+00:17:48,650 --> 00:17:50,770
+happening next thing
+you see here is it's
+
+386
+00:17:50,770 --> 00:17:53,550
+listing all my tools
+so this is telling me
+
+387
+00:17:53,550 --> 00:17:55,990
+basically that it works
+and i got a whole bunch
+
+388
+00:17:55,990 --> 00:17:57,730
+of tools so i'm
+going to choose just
+
+389
+00:17:57,730 --> 00:18:00,370
+randomly a tool you
+can see that it's it's
+
+390
+00:18:00,370 --> 00:18:02,870
+using you know here's
+the stop a sandbox and
+
+391
+00:18:02,870 --> 00:18:05,290
+here's the status of
+the sandbox and so on
+
+392
+00:18:05,290 --> 00:18:06,730
+so it looks like the
+tools are working.
+
+393
+00:18:06,730 --> 00:18:08,370
+So this is basically
+telling it what it needs
+
+394
+00:18:08,370 --> 00:18:10,510
+to do. Now it's
+attempting to create the
+
+395
+00:18:10,510 --> 00:18:12,470
+sandbox. You can see
+that it's going to
+
+396
+00:18:12,470 --> 00:18:14,670
+install some packages
+and do some other
+
+397
+00:18:14,670 --> 00:18:17,110
+things. I'm going to
+enable this to remember.
+
+398
+00:18:17,570 --> 00:18:20,090
+It only remembers
+for the particular
+
+399
+00:18:20,090 --> 00:18:22,330
+conversation
+in which you're
+
+400
+00:18:22,330 --> 00:18:26,770
+having, which is
+not optimal either.
+
+401
+00:18:27,130 --> 00:18:29,510
+So it means if I start
+a new conversation,
+
+402
+00:18:29,510 --> 00:18:31,010
+it's going to make
+me do this every
+
+403
+00:18:31,010 --> 00:18:32,750
+time. It's kind of
+like the way the
+
+404
+00:18:32,750 --> 00:18:35,150
+plugin system works.
+Same general idea. So
+
+405
+00:18:35,150 --> 00:18:38,190
+the plugin system
+uses SDKs and APIs
+
+406
+00:18:38,190 --> 00:18:41,190
+and traditional sort
+of API structures.
+
+407
+00:18:41,290 --> 00:18:44,490
+This uses MCPs. So in
+essence, in the most
+
+408
+00:18:44,490 --> 00:18:47,970
+simple terms, it's
+basically a version of
+
+409
+00:18:47,970 --> 00:18:50,910
+the plugin system, but
+using MCPs instead.
+
+410
+00:18:50,910 --> 00:18:52,930
+So here we can see
+here it's calling a
+
+411
+00:18:52,930 --> 00:18:55,590
+tool. I can see what
+tool it's calling. I
+
+412
+00:18:55,590 --> 00:18:58,270
+can see the request
+structure. You can see
+
+413
+00:18:58,270 --> 00:19:02,690
+here it's requesting
+a sandbox and it's
+
+414
+00:19:02,690 --> 00:19:05,910
+made the response,
+looks like it's working.
+
+415
+00:19:05,910 --> 00:19:07,410
+Now what I'm looking
+for, because I was
+
+416
+00:19:07,410 --> 00:19:08,750
+having some trouble
+earlier, I'm looking for
+
+417
+00:19:08,750 --> 00:19:10,610
+the response to
+actually make sure that
+
+418
+00:19:10,610 --> 00:19:14,210
+my sandbox isn't
+returning mocks. It isn't.
+
+419
+00:19:14,210 --> 00:19:16,310
+So now it's going to
+execute some code,
+
+420
+00:19:16,310 --> 00:19:18,130
+that's good, let's
+go ahead and do that.
+
+421
+00:19:18,950 --> 00:19:22,070
+So this is really
+quick and easy way to
+
+422
+00:19:22,070 --> 00:19:26,270
+integrate just about
+any MCP enabled data
+
+423
+00:19:26,270 --> 00:19:27,870
+system. But keep
+in mind, it's not a
+
+424
+00:19:27,870 --> 00:19:31,030
+studio MCP. It's an
+MCP that needs to run
+
+425
+00:19:31,030 --> 00:19:34,390
+in a streamable HTTP.
+So a web-based MCP.
+
+426
+00:19:36,910 --> 00:19:39,810
+But it looks like
+it's all working.
+
+427
+00:19:39,810 --> 00:19:42,950
+It looks like it
+did it correctly.
+
+428
+00:19:42,950 --> 00:19:44,970
+So now I can take
+it further. I can
+
+429
+00:19:44,970 --> 00:19:51,130
+say create a neural
+network workflow.
+
+430
+00:19:53,510 --> 00:19:55,030
+Network workflow.
+
+431
+00:19:55,490 --> 00:20:01,990
+and we'll do that
+and all right let's
+
+432
+00:20:08,050 --> 00:20:09,630
+see what happens
+now it's thinking
+
+433
+00:20:13,770 --> 00:20:16,590
+now the question
+really for us you know
+
+434
+00:20:16,590 --> 00:20:20,290
+if I was if I was
+doing this in the
+
+435
+00:20:22,790 --> 00:20:27,210
+if I if I was doing
+this in the traditional
+
+436
+00:20:27,210 --> 00:20:31,250
+sort of system like
+using cloud code or code
+
+437
+00:20:31,250 --> 00:20:33,550
+Codex, I could use
+Dangerously Skip
+
+438
+00:20:33,550 --> 00:20:35,850
+Permission, so I wouldn't
+have to sit and click,
+
+439
+00:20:35,850 --> 00:20:39,610
+so this is basically
+good for people who
+
+440
+00:20:39,610 --> 00:20:43,150
+don't know how to use
+VS Code or IDEs and
+
+441
+00:20:43,150 --> 00:20:46,290
+things like that, so
+you can use all the same
+
+442
+00:20:46,290 --> 00:20:49,350
+basic capabilities, but
+again, in this case,
+
+443
+00:20:49,350 --> 00:20:51,990
+you're going to have
+to click the Publish
+
+444
+00:20:51,990 --> 00:20:56,510
+button and other sort
+of capabilities here.
+
+445
+00:20:59,730 --> 00:21:00,890
+all right let's
+see what it's
+
+446
+00:21:00,890 --> 00:21:02,810
+doing so neural
+networks activated
+
+447
+00:21:03,240 --> 00:21:05,190
+and we can take a look
+at what's happening
+
+448
+00:21:05,190 --> 00:21:09,230
+there we got so it's
+creating the model it's
+
+449
+00:21:09,230 --> 00:21:12,310
+training the model it's
+giving me a response
+
+450
+00:21:12,310 --> 00:21:19,030
+i can see the response
+so workflow neural
+
+451
+00:21:19,030 --> 00:21:25,670
+net all right let's
+benchmark it now I'm not
+
+452
+00:21:25,670 --> 00:21:28,470
+I create a model with
+no guidance on why I
+
+453
+00:21:28,470 --> 00:21:30,650
+want to create a model
+this is like vibing a
+
+454
+00:21:30,650 --> 00:21:33,370
+model I guess but it's
+what I'm really doing
+
+455
+00:21:33,370 --> 00:21:35,090
+right now is just
+trying to make sure
+
+456
+00:21:35,090 --> 00:21:36,810
+everything actually works
+more than anything else
+
+457
+00:21:36,810 --> 00:21:38,290
+but it's kind of cool
+that I could actually
+
+458
+00:21:38,290 --> 00:21:41,290
+train a neural network
+model deploy it in
+
+459
+00:21:41,290 --> 00:21:45,170
+a hosted sandbox validate
+it optimize it you
+
+460
+00:21:45,170 --> 00:21:48,570
+So if I was doing a
+recommendation engine
+
+461
+00:21:48,570 --> 00:21:50,850
+or a training algorithm
+or something, this
+
+462
+00:21:50,850 --> 00:21:52,890
+would be a nice, quick
+and easy way to do it.
+
+463
+00:21:53,490 --> 00:21:55,290
+Apparently, there is
+the ability to use
+
+464
+00:21:55,290 --> 00:21:56,750
+deep research, but
+I haven't been able
+
+465
+00:21:56,750 --> 00:21:58,130
+to get deep research
+to use any of the
+
+466
+00:21:58,130 --> 00:22:00,150
+tools. So I don't
+know if that is
+
+467
+00:22:00,150 --> 00:22:02,450
+something I did or
+it's not available yet.
+
+468
+00:22:02,450 --> 00:22:04,650
+There's zero input in the
+
+469
+00:22:04,650 --> 00:22:06,520
+system in terms
+of debugging.
+
+470
+00:22:06,990 --> 00:22:09,470
+A lot of trying to
+get this thing to work
+
+471
+00:22:09,470 --> 00:22:11,130
+was me just messing
+around with it until
+
+472
+00:22:11,130 --> 00:22:13,130
+I got it working. like
+if there's an error
+
+473
+00:22:13,130 --> 00:22:15,390
+there's basically
+says error and it
+
+474
+00:22:15,390 --> 00:22:17,170
+doesn't tell you what
+the error actually even
+
+475
+00:22:17,170 --> 00:22:20,530
+is so in this case
+i'm just looking at
+
+476
+00:22:20,530 --> 00:22:23,370
+what it's doing so
+it looks like it's
+
+477
+00:22:23,370 --> 00:22:26,470
+looking for nlp models
+i don't know if i have
+
+478
+00:22:26,470 --> 00:22:28,650
+any nlp templates so
+we'll probably return
+
+479
+00:22:28,650 --> 00:22:31,270
+null but in this
+case if it's smart it
+
+480
+00:22:31,270 --> 00:22:35,750
+should basically yeah
+it's not it's not
+
+481
+00:22:35,750 --> 00:22:37,710
+returning any models
+because there isn't
+
+482
+00:22:37,710 --> 00:22:39,450
+any models that i've
+created for nlp so
+
+483
+00:22:39,450 --> 00:22:42,970
+it's sort of doing the
+discovery right now
+
+484
+00:22:47,470 --> 00:22:49,850
+all right so we'll
+let it go a little
+
+485
+00:22:49,850 --> 00:22:52,850
+longer see if it sorts
+itself out uh it's
+
+486
+00:22:52,850 --> 00:22:54,950
+trying to execute
+a workflow again
+
+487
+00:22:54,960 --> 00:22:57,640
+let's see what happens
+there remembers
+
+488
+00:22:57,870 --> 00:23:00,050
+the conversation i
+guess i'll turn that
+
+489
+00:23:01,170 --> 00:23:06,290
+on so i find to be
+honest i find the clod
+
+490
+00:23:06,290 --> 00:23:09,750
+to be much and rue
+and klein and cursor
+
+491
+00:23:09,750 --> 00:23:12,990
+to be much more capable
+at figuring out and
+
+492
+00:23:12,990 --> 00:23:16,450
+calling this like if
+if i go into let's
+
+493
+00:23:16,450 --> 00:23:18,410
+let's just go here
+for a moment i'm going
+
+494
+00:23:18,410 --> 00:23:19,870
+to show you what what
+it looks like if i
+
+495
+00:23:19,870 --> 00:23:22,570
+do this in rue just
+as to sort of show you
+
+496
+00:23:22,570 --> 00:23:25,590
+an alternative view
+so that that was using
+
+497
+00:23:25,590 --> 00:23:27,930
+the web-based version
+now if i if i go
+
+498
+00:23:27,930 --> 00:23:31,650
+to roo uh where's
+where's roo hidden itself
+
+499
+00:23:31,650 --> 00:23:34,850
+here so you can see
+here i i did a similar
+
+500
+00:23:34,850 --> 00:23:36,930
+sort of process
+here i said create a
+
+501
+00:23:36,930 --> 00:23:39,710
+sandbox using flow
+nexus it it created a
+
+502
+00:23:39,710 --> 00:23:43,190
+sandbox now i could
+say create a optimized
+
+503
+00:23:45,990 --> 00:23:48,230
+wise i don't know
+let me actually
+
+504
+00:23:48,230 --> 00:23:49,830
+just refresh
+the mcp quickly
+
+505
+00:23:49,830 --> 00:23:51,450
+because i made a
+changed earlier.
+
+506
+00:23:51,830 --> 00:23:53,650
+Yeah, I might
+have broken it.
+
+507
+00:23:54,310 --> 00:23:58,810
+That's my SSC. I'm not
+concerned with that.
+
+508
+00:24:01,790 --> 00:24:03,690
+Yeah, that one
+doesn't work because
+
+509
+00:24:03,690 --> 00:24:04,930
+I don't think I
+had the right URL.
+
+510
+00:24:04,930 --> 00:24:06,620
+I'm going to go here
+and do complete.
+
+511
+00:24:07,070 --> 00:24:09,430
+Just refresh it.
+When you make changes
+
+512
+00:24:09,430 --> 00:24:11,490
+to MCPs, always remember
+to refresh them.
+
+513
+00:24:11,730 --> 00:24:14,870
+It caches it, generally.
+Most tools cache
+
+514
+00:24:14,870 --> 00:24:17,670
+the MCP server, especially
+if they're local.
+
+515
+00:24:17,670 --> 00:24:21,130
+So now I'm say create
+a uh optimized uh
+
+516
+00:24:21,130 --> 00:24:28,270
+neural net network
+using flow nexus for uh
+
+517
+00:24:28,270 --> 00:24:32,830
+recommendation
+recommendations or something
+
+518
+00:24:32,830 --> 00:24:34,850
+so now i'm just
+validating that the thing
+
+519
+00:24:34,850 --> 00:24:39,050
+actually works now over
+here i'm gonna also
+
+520
+00:24:39,050 --> 00:24:41,250
+validate that i didn't
+break it i'm really
+
+521
+00:24:41,250 --> 00:24:45,010
+good at breaking stuff
+mcp list so i'm just
+
+522
+00:24:45,010 --> 00:24:46,590
+gonna make sure everything
+works over here.
+
+523
+00:24:47,230 --> 00:24:48,610
+It looks like
+it's working
+
+524
+00:24:48,610 --> 00:24:51,450
+pretty good. Uh,
+it's connected.
+
+525
+00:24:51,450 --> 00:24:52,550
+Linux is connected.
+
+526
+00:24:52,790 --> 00:24:54,130
+Yeah, it looks good.
+
+527
+00:24:55,430 --> 00:24:57,830
+All right. So now
+we're here. So you
+
+528
+00:24:57,830 --> 00:24:59,730
+notice, you notice
+a difference here.
+
+529
+00:25:00,270 --> 00:25:03,710
+What chat GPD doesn't
+do is create a
+
+530
+00:25:03,710 --> 00:25:06,730
+plan. It kind of, it's
+dumb. It's sort of,
+
+531
+00:25:07,260 --> 00:25:10,310
+it's like pokes at it
+and tries to figure
+
+532
+00:25:10,310 --> 00:25:11,910
+out what it should do,
+but doesn't actually
+
+533
+00:25:11,910 --> 00:25:14,770
+create any kind of
+real strategy or any
+
+534
+00:25:14,770 --> 00:25:17,350
+kind of thinking
+process like Claude or
+
+535
+00:25:17,350 --> 00:25:19,150
+Roo or any of these
+tools do really good
+
+536
+00:25:19,150 --> 00:25:22,030
+job of. So it's like,
+I have to, in, in
+
+537
+00:25:22,030 --> 00:25:25,930
+the, in, in chat GPT,
+I have to kind of tell
+
+538
+00:25:25,930 --> 00:25:28,390
+it to do all this
+stuff where I didn't
+
+539
+00:25:28,390 --> 00:25:29,830
+really have to tell
+it. It kind of figured
+
+540
+00:25:29,830 --> 00:25:31,790
+it out by itself that
+it, what it needed
+
+541
+00:25:31,790 --> 00:25:34,690
+to do here in Roo. Right.
+So now it's looking
+
+542
+00:25:34,690 --> 00:25:36,510
+at the, It's looking
+at the neural
+
+543
+00:25:36,510 --> 00:25:40,450
+list, it's looking at
+my neural training,
+
+544
+00:25:40,530 --> 00:25:44,270
+it's creating the
+different types of neural
+
+545
+00:25:44,270 --> 00:25:47,710
+components, dents and
+others. You can see
+
+546
+00:25:47,710 --> 00:25:50,070
+here it's creating
+the prediction model.
+
+547
+00:25:50,350 --> 00:25:50,850
+See,
+
+548
+00:25:51,250 --> 00:25:53,630
+ChatGPT did none of that.
+
+549
+00:25:56,420 --> 00:26:00,210
+So now it's creating
+a new model. and so
+
+550
+00:26:00,210 --> 00:26:03,850
+it even decided to
+benchmark itself you know
+
+551
+00:26:05,850 --> 00:26:08,350
+inversely I can go
+over here and I can go
+
+552
+00:26:08,350 --> 00:26:11,970
+into DSP and now that
+I've got a variety
+
+553
+00:26:11,970 --> 00:26:16,010
+of different MCPs
+installed here I can say
+
+554
+00:26:16,010 --> 00:26:23,810
+something using a
+combination of uh i guess
+
+555
+00:26:23,810 --> 00:26:28,790
+spell it right the
+claude flow room swarm
+
+556
+00:26:28,790 --> 00:26:33,830
+and flow nexus create
+me the ultimate uh
+
+557
+00:26:34,700 --> 00:26:36,950
+ultimate neural
+
+558
+00:26:38,600 --> 00:26:46,450
+i got oops neural uh
+recommendation system
+
+559
+00:26:49,850 --> 00:26:51,630
+And actually, you
+know, this is my
+
+560
+00:26:51,630 --> 00:26:52,730
+dev environment.
+It seems like a
+
+561
+00:26:52,730 --> 00:26:54,770
+bad idea. I might
+not do that here.
+
+562
+00:26:55,570 --> 00:26:58,670
+But you get the idea.
+So let's go back
+
+563
+00:26:58,670 --> 00:27:00,930
+over here. So
+now it gave me an
+
+564
+00:27:00,930 --> 00:27:03,530
+overview. So it created
+the network model.
+
+565
+00:27:04,010 --> 00:27:07,250
+It's a feed-forward
+neural network,
+
+566
+00:27:07,250 --> 00:27:08,830
+five-layer deep
+architecture.
+
+567
+00:27:09,630 --> 00:27:12,870
+And it's done 50
+runs of it. There's a
+
+568
+00:27:12,870 --> 00:27:15,170
+batch size, training
+results, performance.
+
+569
+00:27:16,190 --> 00:27:17,750
+Okay, what the heck can
+
+570
+00:27:17,750 --> 00:27:18,690
+I do with this thing?
+
+571
+00:27:19,230 --> 00:27:21,330
+this is something jed
+brought up earlier
+
+572
+00:27:21,330 --> 00:27:23,410
+okay i created a
+recommendation system or
+
+573
+00:27:23,410 --> 00:27:25,590
+multiple microneural
+networks what the heck
+
+574
+00:27:25,590 --> 00:27:29,530
+do i do with it what
+can i do with this
+
+575
+00:27:31,470 --> 00:27:33,750
+right that's that's
+that's the that's the
+
+576
+00:27:33,750 --> 00:27:36,050
+million dollar question
+okay i i created some
+
+577
+00:27:36,050 --> 00:27:38,150
+sort of neural network
+and it's got high
+
+578
+00:27:38,150 --> 00:27:41,540
+confidence in doing
+the recommendations all
+
+579
+00:27:41,610 --> 00:27:44,110
+right so now what it's
+doing is let me show
+
+580
+00:27:44,110 --> 00:27:46,130
+you how to use a practical
+app soon next for
+
+581
+00:27:46,130 --> 00:27:48,770
+optimized recommendations
+let me create a
+
+582
+00:27:48,770 --> 00:27:50,990
+simple application and
+send it to the sandbox
+
+583
+00:27:50,990 --> 00:27:55,010
+so it's uploading some
+kind of code i guess
+
+584
+00:27:55,010 --> 00:27:59,270
+again vibing that
+vibing this some kind of
+
+585
+00:27:59,270 --> 00:28:02,630
+demo i'm not sure why
+it didn't tell me but
+
+586
+00:28:02,630 --> 00:28:05,490
+we'll we'll let it do
+its thing now we can
+
+587
+00:28:05,490 --> 00:28:07,690
+see what's happening
+at any given point here
+
+588
+00:28:09,170 --> 00:28:12,550
+file so if you're
+always curious of what's
+
+589
+00:28:12,550 --> 00:28:13,950
+happening you can
+always just expand
+
+590
+00:28:13,950 --> 00:28:15,570
+these That's what I
+like about Rue. It
+
+591
+00:28:15,570 --> 00:28:19,030
+gives you a nice
+visual experience here.
+
+592
+00:28:19,950 --> 00:28:21,970
+Now, while that's
+happening, let's take a
+
+593
+00:28:21,970 --> 00:28:24,990
+look at Codex for a
+second. I got Codex here.
+
+594
+00:28:25,790 --> 00:28:26,550
+Yeah.
+
+595
+00:28:27,250 --> 00:28:30,970
+Run Lonexus.
+I think I got
+
+596
+00:28:30,970 --> 00:28:32,450
+Lonexus installed here.
+
+597
+00:28:35,150 --> 00:28:37,250
+The update of Codex
+is pretty good too.
+
+598
+00:28:37,750 --> 00:28:39,550
+All right. So what
+the heck did it do?
+
+599
+00:28:39,930 --> 00:28:42,370
+All right. So what it
+apparently did is it
+
+600
+00:28:42,370 --> 00:28:44,930
+created an e-commerce
+product recommendations
+
+601
+00:28:44,930 --> 00:28:46,950
+suggesting based
+on user browsing
+
+602
+00:28:46,950 --> 00:28:49,350
+history, pattern
+recognitions and preferences,
+
+603
+00:28:49,730 --> 00:28:53,010
+cross-selling, content
+media platforms,
+
+604
+00:28:53,290 --> 00:28:54,850
+business intelligence.
+
+605
+00:28:54,950 --> 00:28:57,150
+OK, now this is
+this is the part
+
+606
+00:28:57,150 --> 00:28:58,310
+that's that's
+important when
+
+607
+00:28:58,310 --> 00:28:59,470
+you're doing this
+sort of stuff.
+
+608
+00:29:01,090 --> 00:29:06,730
+Prove to me this
+actually works.
+
+609
+00:29:08,310 --> 00:29:10,890
+it's like oh it's a
+93 percent accuracy
+
+610
+00:29:10,890 --> 00:29:13,830
+with 6.7 millisecond
+latency which sounds
+
+611
+00:29:13,830 --> 00:29:17,650
+amazing but uh it
+it's uh i i'm i'm not
+
+612
+00:29:17,650 --> 00:29:19,550
+i don't believe it
+until i try it so in
+
+613
+00:29:19,550 --> 00:29:22,110
+this case i'm gonna
+i'm i want more proof
+
+614
+00:29:22,110 --> 00:29:24,430
+i spend half my time
+lately just proving
+
+615
+00:29:24,430 --> 00:29:25,750
+this stuff isn't
+hallucinating itself
+
+616
+00:29:25,750 --> 00:29:28,550
+into a corner tell
+me i think you got a
+
+617
+00:29:28,550 --> 00:29:32,950
+hot mic there well
+we got i can uh i can
+
+618
+00:29:32,950 --> 00:29:35,790
+mute people yeah
+this is the call that
+
+619
+00:29:35,790 --> 00:29:39,130
+has a tendency to
+not auto-mute people.
+
+620
+00:29:41,330 --> 00:29:43,050
+All right, meet all.
+If you need to talk,
+
+621
+00:29:43,050 --> 00:29:44,430
+you know, meet
+yourself. All right,
+
+622
+00:29:44,430 --> 00:29:46,530
+so now we see it
+creating some more
+
+623
+00:29:46,530 --> 00:29:48,640
+content. It looks like
+it's creating a new,
+
+624
+00:29:48,640 --> 00:29:50,670
+another model to
+sort of prove itself.
+
+625
+00:29:52,850 --> 00:29:55,030
+Now let's run more
+time to show the
+
+626
+00:29:55,030 --> 00:29:56,930
+model's consistency
+and verify the
+
+627
+00:29:56,930 --> 00:29:58,850
+training status. Now
+this sort of thing
+
+628
+00:29:58,850 --> 00:30:00,910
+is particularly
+important when
+
+629
+00:30:00,950 --> 00:30:03,190
+you're... I'm going
+to turn off Codex.
+
+630
+00:30:03,510 --> 00:30:05,630
+Codex suffers...
+I'm jumping around a
+
+631
+00:30:05,630 --> 00:30:07,110
+little, hopefully this
+all makes sense. Codex
+
+632
+00:30:07,110 --> 00:30:09,470
+suffers from the same
+problem that ChatGPT
+
+633
+00:30:09,470 --> 00:30:13,910
+suffers from. It's
+like, it has, as far
+
+634
+00:30:13,910 --> 00:30:18,270
+as I can tell, it has
+the FlowNexus system
+
+635
+00:30:18,270 --> 00:30:20,850
+in here. I can see all
+the models, yet it's
+
+636
+00:30:20,850 --> 00:30:22,590
+too stupid to figure
+out how to use it,
+
+637
+00:30:23,010 --> 00:30:27,710
+right? It's classic
+sort of issue with with
+
+638
+00:30:27,710 --> 00:30:30,950
+ChatGPT, it needs
+like really explicit
+
+639
+00:30:30,950 --> 00:30:33,670
+guidance for anything to
+happen. So in this case,
+
+640
+00:30:33,670 --> 00:30:37,690
+what I probably need
+to do for codex, I'm
+
+641
+00:30:37,690 --> 00:30:40,430
+gonna have to create
+a detailed flow nexus
+
+642
+00:30:41,170 --> 00:30:46,410
+or clod flow file to
+give it that guidance.
+
+643
+00:30:47,420 --> 00:30:49,900
+All right, so in this
+case, I'm gonna say,
+
+644
+00:30:51,010 --> 00:30:54,090
+try the, I don't
+know, sandbox.
+
+645
+00:30:56,190 --> 00:30:59,990
+sandbox. Try to, try
+to, try to create
+
+646
+00:30:59,990 --> 00:31:01,910
+sandbox. There you
+go. I just told it,
+
+647
+00:31:01,910 --> 00:31:03,550
+I gave you all the
+stuff it could do.
+
+648
+00:31:04,870 --> 00:31:06,290
+Go Codex.
+
+649
+00:31:06,810 --> 00:31:09,190
+So once you, once
+you sort of figure
+
+650
+00:31:09,190 --> 00:31:11,110
+out the quirks of
+Codex, you can kind of
+
+651
+00:31:11,110 --> 00:31:13,390
+get it working and
+doing stuff. It is
+
+652
+00:31:13,390 --> 00:31:16,830
+not Claude by any
+stretch. It's, it's a
+
+653
+00:31:16,830 --> 00:31:19,350
+kind of dumb version
+of it or something.
+
+654
+00:31:19,350 --> 00:31:20,970
+All right, let's
+go back over here.
+
+655
+00:31:20,970 --> 00:31:23,130
+Let's, is, is this
+thing actually real.
+
+656
+00:31:23,410 --> 00:31:24,950
+All right.
+
+657
+00:31:25,350 --> 00:31:28,290
+So proof your neural
+network actually works.
+
+658
+00:31:28,290 --> 00:31:31,470
+So it's given me
+trained and active, it's
+
+659
+00:31:31,470 --> 00:31:34,570
+five layer networking,
+passive, high, uh,
+
+660
+00:31:34,750 --> 00:31:36,230
+high action fan,
+
+661
+00:31:36,470 --> 00:31:37,750
+balanced user,
+
+662
+00:31:38,130 --> 00:31:38,530
+uh,
+
+663
+00:31:38,530 --> 00:31:41,050
+realistic movie
+scenarios, I guess is what
+
+664
+00:31:41,050 --> 00:31:43,590
+it used in this
+particular, uh, comedy
+
+665
+00:31:43,590 --> 00:31:45,930
+fan. So I guess what
+this is, this model
+
+666
+00:31:45,930 --> 00:31:47,630
+is that technically
+is basically telling
+
+667
+00:31:47,630 --> 00:31:50,350
+you whether or not
+the user is a fan of
+
+668
+00:31:50,350 --> 00:31:52,570
+movies is that
+something like with a 79
+
+669
+00:31:52,570 --> 00:31:58,810
+uh recognition model
+is alive train okay
+
+670
+00:31:59,170 --> 00:32:03,570
+your network is 100
+functional so how can i
+
+671
+00:32:03,570 --> 00:32:09,430
+optimize this further
+keep in mind this this
+
+672
+00:32:09,430 --> 00:32:12,490
+idea of overfitting
+models is everyone
+
+673
+00:32:12,490 --> 00:32:14,950
+likes to say overfitting
+models is the worst
+
+674
+00:32:14,950 --> 00:32:17,210
+thing you can possibly
+do when using AI and
+
+675
+00:32:17,210 --> 00:32:20,850
+creating these kind of
+deep analysis systems,
+
+676
+00:32:20,850 --> 00:32:23,250
+it depends on what
+you're trying to do. If
+
+677
+00:32:23,250 --> 00:32:25,850
+you're creating a broad
+model that needs to
+
+678
+00:32:25,850 --> 00:32:27,770
+do lots of different
+things, language models
+
+679
+00:32:27,770 --> 00:32:30,230
+or, you know, things
+that are, you know,
+
+680
+00:32:30,530 --> 00:32:32,890
+sort of declarative
+in nature, overfitting
+
+681
+00:32:32,890 --> 00:32:34,370
+is going to be terrible,
+right? You don't
+
+682
+00:32:34,370 --> 00:32:35,710
+want to overfit it
+because it's going to be
+
+683
+00:32:35,710 --> 00:32:37,520
+one thing, well, nothing
+else particularly
+
+684
+00:32:37,520 --> 00:32:41,090
+at all. But for a lot
+of things, you want
+
+685
+00:32:41,090 --> 00:32:43,030
+it to be really good
+at that one little
+
+686
+00:32:43,030 --> 00:32:44,890
+thing like i needed to
+trade that particular
+
+687
+00:32:44,890 --> 00:32:47,210
+stock or i needed to
+understand that particular
+
+688
+00:32:47,210 --> 00:32:49,070
+user that you know
+is going to buy or
+
+689
+00:32:49,070 --> 00:32:52,030
+not buy or something
+and in in for so for
+
+690
+00:32:52,030 --> 00:32:55,590
+many cases a sort of
+over fitting isn't
+
+691
+00:32:55,590 --> 00:32:58,050
+necessarily a bad thing
+as long as it's narrow
+
+692
+00:32:58,050 --> 00:32:59,930
+enough to be really
+good at that one narrow
+
+693
+00:32:59,930 --> 00:33:03,490
+thing so so at this
+point when i say how
+
+694
+00:33:03,490 --> 00:33:05,470
+can i often this
+further i'm going to say
+
+695
+00:33:05,470 --> 00:33:10,670
+avoid avoid over is
+this running in parallel
+
+696
+00:33:10,670 --> 00:33:12,950
+somehow because i'm
+doing some simple math
+
+697
+00:33:12,950 --> 00:33:17,150
+at 5800 uh what was
+it predictions per
+
+698
+00:33:17,150 --> 00:33:20,330
+second and 6.7 milliseconds
+to do one prediction
+
+699
+00:33:20,330 --> 00:33:22,870
+that would require
+40 well 39 seconds
+
+700
+00:33:22,870 --> 00:33:25,590
+to do something that
+happens in one second
+
+701
+00:33:26,870 --> 00:33:29,290
+well that's good that's
+good let's ask it
+
+702
+00:33:30,890 --> 00:33:34,430
+it's not it was it's
+it's it's that's a good
+
+703
+00:33:34,430 --> 00:33:35,490
+question actually i
+don't know if i have
+
+704
+00:33:35,490 --> 00:33:39,270
+an answer to that um the
+only plausible answer
+
+705
+00:33:39,270 --> 00:33:41,000
+for me is there's
+some sort of parallel
+
+706
+00:33:41,100 --> 00:33:43,070
+prediction going on
+but there was nothing
+
+707
+00:33:43,070 --> 00:33:46,250
+in the prompt mentioned
+yeah okay yeah well
+
+708
+00:33:46,250 --> 00:33:49,390
+let's let's uh let's
+ask that next but those
+
+709
+00:33:49,390 --> 00:33:51,750
+are exactly the kind
+of questions what you
+
+710
+00:33:51,750 --> 00:33:55,030
+these systems are have
+a tendency to take
+
+711
+00:33:55,030 --> 00:33:57,590
+the path of least
+resistance and that's an
+
+712
+00:33:57,590 --> 00:34:01,250
+ongoing you know issue
+all right cut codex
+
+713
+00:34:01,250 --> 00:34:03,790
+is stupid i'm turning
+that off it just hasn't
+
+714
+00:34:03,790 --> 00:34:07,930
+been able to figure
+itself out i want codex
+
+715
+00:34:07,930 --> 00:34:10,350
+to work i don't maybe
+i don't maybe someone
+
+716
+00:34:10,350 --> 00:34:11,670
+has had more luck
+with codecs than I
+
+717
+00:34:11,670 --> 00:34:14,350
+have, but it's just
+dumb, generally speaking.
+
+718
+00:34:16,160 --> 00:34:19,010
+All right. So, it's
+doing some more
+
+719
+00:34:19,740 --> 00:34:20,830
+optimization.
+Remember, this is
+
+720
+00:34:20,830 --> 00:34:22,790
+CPU-based
+optimization, not GPU.
+
+721
+00:34:25,550 --> 00:34:33,410
+How is the model
+actually running?
+
+722
+00:34:33,770 --> 00:34:38,830
+Is it sequential
+or concurrent?
+
+723
+00:34:38,830 --> 00:34:46,850
+and how are you
+getting such
+
+724
+00:34:46,850 --> 00:34:53,190
+great results
+or something?
+
+725
+00:34:54,050 --> 00:34:57,710
+This doesn't
+seem believable.
+
+726
+00:34:57,890 --> 00:34:58,710
+I don't know.
+
+727
+00:34:59,250 --> 00:35:00,770
+Believable.
+
+728
+00:35:04,390 --> 00:35:06,110
+All right.
+
+729
+00:35:06,110 --> 00:35:07,550
+So, question it.
+
+730
+00:35:07,550 --> 00:35:08,670
+Definitely.
+
+731
+00:35:14,530 --> 00:35:17,170
+we go. We're, we're,
+we're now here's
+
+732
+00:35:17,170 --> 00:35:18,870
+the other problem
+with being skeptical.
+
+733
+00:35:18,910 --> 00:35:21,130
+Sometimes when you
+start, when you sort
+
+734
+00:35:21,130 --> 00:35:22,850
+of prompt it and
+say, this is fake,
+
+735
+00:35:22,850 --> 00:35:25,910
+it'll say, oh yeah,
+it's absolutely fake.
+
+736
+00:35:25,970 --> 00:35:27,590
+You're, you're
+totally right. It's
+
+737
+00:35:27,590 --> 00:35:29,530
+fake. Then you'll
+say, no, it's not.
+
+738
+00:35:29,530 --> 00:35:31,350
+It's real. Oh yeah.
+You're, you're
+
+739
+00:35:31,350 --> 00:35:34,150
+absolutely right.
+It's, it's absolutely,
+
+740
+00:35:34,600 --> 00:35:37,450
+absolutely real. And
+that's the, one of the
+
+741
+00:35:37,450 --> 00:35:39,330
+problems with these
+reasoning models is
+
+742
+00:35:39,330 --> 00:35:41,910
+they, they have a
+tendency to, to just go
+
+743
+00:35:41,910 --> 00:35:44,930
+and tell you what what
+you want to to actually
+
+744
+00:35:44,930 --> 00:35:47,950
+hear or see no see
+in this case this
+
+745
+00:35:47,950 --> 00:35:50,970
+is a perfect example no
+real network you know
+
+746
+00:35:50,970 --> 00:35:53,130
+neural network
+training is happening
+
+747
+00:35:53,270 --> 00:35:55,810
+looking at the neural
+network as you you know
+
+748
+00:35:55,810 --> 00:35:59,930
+it that's not true
+and i know it not to
+
+749
+00:35:59,930 --> 00:36:01,890
+be true because i
+know that the it's not
+
+750
+00:36:01,890 --> 00:36:06,010
+using it the numbers
+aren't actually using
+
+751
+00:36:06,010 --> 00:36:11,310
+the uasm isn't this
+using the wasm and then
+
+752
+00:36:11,310 --> 00:36:16,970
+it'll be the oh yeah
+you're right so again
+
+753
+00:36:16,970 --> 00:36:19,890
+it's it it's i prompted
+it down the path
+
+754
+00:36:19,890 --> 00:36:22,810
+of of being critical
+to itself to a point
+
+755
+00:36:22,810 --> 00:36:25,490
+where it's actually
+critical beyond its
+
+756
+00:36:25,490 --> 00:36:28,130
+actual functionality it
+it actually is working
+
+757
+00:36:28,130 --> 00:36:31,090
+it just i convinced
+it that it wasn't and
+
+758
+00:36:31,090 --> 00:36:33,230
+it and then it's like
+oh you're you're so
+
+759
+00:36:33,230 --> 00:36:36,050
+smart you're you're
+you're you're true now
+
+760
+00:36:36,170 --> 00:36:39,690
+asking now that i show
+the next part it'll
+
+761
+00:36:39,690 --> 00:36:41,950
+be like oh right we
+are using the WASM.
+
+762
+00:36:43,510 --> 00:36:46,250
+So there's a lot of
+that sort of thing,
+
+763
+00:36:46,250 --> 00:36:48,290
+especially in more
+complex applications.
+
+764
+00:36:48,290 --> 00:36:50,830
+And so one of the
+things you're going to
+
+765
+00:36:50,830 --> 00:36:52,660
+have to do to get
+around this kind of
+
+766
+00:36:52,660 --> 00:36:55,230
+it's right, it's not,
+it is, it isn't sort
+
+767
+00:36:55,230 --> 00:36:57,030
+of stuff is does it
+actually solve the
+
+768
+00:36:57,030 --> 00:36:59,110
+problem which you're
+trying to address?
+
+769
+00:36:59,570 --> 00:37:05,150
+And can you
+independently verify it?
+
+770
+00:37:06,210 --> 00:37:08,050
+And in this case,
+It's looking at the
+
+771
+00:37:08,050 --> 00:37:09,010
+WAZ. I'm going to
+give it another
+
+772
+00:37:09,010 --> 00:37:11,850
+go to try to figure
+itself out here.
+
+773
+00:37:12,350 --> 00:37:13,990
+But, like, yeah, that
+
+774
+00:37:13,990 --> 00:37:15,230
+was literally just me.
+
+775
+00:37:15,490 --> 00:37:18,070
+A sophisticated
+simulation framework.
+
+776
+00:37:18,070 --> 00:37:19,690
+No, it's not a
+sophisticated
+
+777
+00:37:19,690 --> 00:37:21,730
+simulation. I just
+made you think it was.
+
+778
+00:37:23,450 --> 00:37:26,770
+Let me check actual
+WAZ. Is it stuck?
+
+779
+00:37:27,150 --> 00:37:28,250
+Is it thinking?
+
+780
+00:37:31,690 --> 00:37:33,590
+I might have, you know,
+
+781
+00:37:33,590 --> 00:37:34,650
+it's still thinking.
+
+782
+00:37:36,550 --> 00:37:39,950
+has anyone else run
+into this issue or is
+
+783
+00:37:39,950 --> 00:37:43,710
+it just me um yeah i've
+run into that quite
+
+784
+00:37:43,710 --> 00:37:45,790
+a bit so i find just
+like you're saying
+
+785
+00:37:45,790 --> 00:37:48,390
+you can't be opinionated
+in your question
+
+786
+00:37:48,390 --> 00:37:51,390
+and lead it in any way
+um and my suggestion
+
+787
+00:37:51,390 --> 00:37:53,570
+for what you're
+testing now would be to
+
+788
+00:37:53,570 --> 00:37:57,180
+ask it to give you five
+questions to ask it
+
+789
+00:37:57,180 --> 00:37:59,370
+that it should be able
+to answer and to be
+
+790
+00:37:59,370 --> 00:38:02,190
+as specific and narrow
+as possible in the
+
+791
+00:38:03,590 --> 00:38:06,810
+questions i leave the
+questions more open
+
+792
+00:38:06,810 --> 00:38:11,170
+-ended draft uh markdown
+file showing where
+
+793
+00:38:11,170 --> 00:38:15,930
+to look to demonstrate
+the training is
+
+794
+00:38:15,930 --> 00:38:17,490
+actually happening
+or the inference is
+
+795
+00:38:17,490 --> 00:38:20,940
+actually happening
+yeah exactly and that
+
+796
+00:38:20,940 --> 00:38:23,490
+yeah at this point
+i've i've messed it up
+
+797
+00:38:23,490 --> 00:38:25,910
+so much that it's just
+completely confused.
+
+798
+00:38:25,910 --> 00:38:29,110
+Right. So that, that,
+that is the, um,
+
+799
+00:38:29,330 --> 00:38:31,930
+that is the ultimate,
+uh, challenge that
+
+800
+00:38:31,930 --> 00:38:33,650
+we have with these,
+especially for, for
+
+801
+00:38:33,650 --> 00:38:36,110
+things that it, it,
+it, it struggles with.
+
+802
+00:38:36,110 --> 00:38:37,990
+And that is training
+of neural networks.
+
+803
+00:38:37,990 --> 00:38:40,670
+And one of the things
+that I do in, in,
+
+804
+00:38:40,670 --> 00:38:43,470
+in the scenario here
+is I'll, I'll say,
+
+805
+00:38:43,470 --> 00:38:45,530
+you know, compare
+it against something
+
+806
+00:38:45,530 --> 00:38:49,110
+that I know that works,
+like use the, uh,
+
+807
+00:38:49,590 --> 00:38:51,650
+a tensor flow and
+do a comparison
+
+808
+00:38:51,650 --> 00:38:53,870
+and like, oh, it
+actually does work.
+
+809
+00:38:54,190 --> 00:38:58,110
+Whoops, I was wrong,
+right? It's like what
+
+810
+00:38:58,110 --> 00:39:00,350
+it doesn't, it can't
+quite see everything
+
+811
+00:39:00,350 --> 00:39:02,870
+or quite can't quite
+understand it. So it
+
+812
+00:39:02,870 --> 00:39:05,690
+infers the unknown
+and then it'll default
+
+813
+00:39:05,690 --> 00:39:08,310
+to whatever stance
+you've opinionated
+
+814
+00:39:08,310 --> 00:39:11,070
+question you've given
+it. So in this case, I
+
+815
+00:39:11,070 --> 00:39:18,930
+might say, use the
+TensorFlow.js template
+
+816
+00:39:18,930 --> 00:39:26,570
+and compare against
+the neural components.
+
+817
+00:39:32,470 --> 00:39:37,390
+So yeah, interesting
+stuff there.
+
+818
+00:39:41,150 --> 00:39:44,370
+Let's see what
+ChatGPT does. And
+
+819
+00:39:52,040 --> 00:39:53,320
+in my other screen,
+I'm going to say
+
+820
+00:39:53,320 --> 00:39:55,420
+this is real and
+see where it goes.
+
+821
+00:39:58,000 --> 00:40:00,520
+All right, the question
+in the meantime.
+
+822
+00:40:01,520 --> 00:40:03,160
+Oh, did someone
+say something?
+
+823
+00:40:03,550 --> 00:40:05,580
+Yeah, I had a quick
+question. So you were
+
+824
+00:40:05,580 --> 00:40:08,760
+talking about how the
+LLMs are susceptible
+
+825
+00:40:08,760 --> 00:40:11,000
+to over-reading
+into some of our
+
+826
+00:40:11,000 --> 00:40:12,600
+instructions sometimes,
+and I have faced it
+
+827
+00:40:12,600 --> 00:40:15,700
+myself quite a bit,
+to a point where I now
+
+828
+00:40:15,700 --> 00:40:18,660
+try to front-load all
+context so that it
+
+829
+00:40:18,660 --> 00:40:21,400
+does a one-shot. and
+if i have if i find
+
+830
+00:40:21,400 --> 00:40:24,240
+myself wrestling with
+the llm i i generally
+
+831
+00:40:24,240 --> 00:40:26,220
+like end up killing
+that session get
+
+832
+00:40:26,220 --> 00:40:29,380
+resetting and then
+trying again um but i saw
+
+833
+00:40:29,380 --> 00:40:32,260
+you like live wrestle
+the llm now so i
+
+834
+00:40:32,260 --> 00:40:34,890
+just wanted your
+opinions on uh do you see
+
+835
+00:40:34,890 --> 00:40:36,860
+like what do you
+think of front loading
+
+836
+00:40:36,860 --> 00:40:38,980
+and one-shotting or do
+you see it inevitable
+
+837
+00:40:38,980 --> 00:40:41,940
+to to discuss slash
+argue with the llm
+
+838
+00:40:42,800 --> 00:40:45,120
+well arguing with the
+llm doesn't work because
+
+839
+00:40:45,120 --> 00:40:47,540
+it'll just it'll
+it'll just comply with
+
+840
+00:40:47,540 --> 00:40:49,400
+whatever argument you
+give it, as we just
+
+841
+00:40:49,400 --> 00:40:51,940
+saw, I prompted it to
+basically tell me that
+
+842
+00:40:51,940 --> 00:40:54,380
+it was a simulation.
+Then I prompted to say,
+
+843
+00:40:54,380 --> 00:40:56,880
+no, it's not a simulation.
+And basically now
+
+844
+00:40:56,880 --> 00:40:58,440
+it's just completely
+confused to whether it
+
+845
+00:40:58,440 --> 00:41:00,580
+is or isn't a simulation.
+And it doesn't
+
+846
+00:41:00,580 --> 00:41:04,620
+know how to validate
+that it is. So the most
+
+847
+00:41:04,620 --> 00:41:07,940
+logical approach to
+validate that it is or
+
+848
+00:41:07,940 --> 00:41:11,800
+isn't a simulation or
+fake or real or whatever
+
+849
+00:41:11,800 --> 00:41:14,400
+is to do some kind
+of comparison against
+
+850
+00:41:14,400 --> 00:41:17,960
+something you know that
+is true and real. Like
+
+851
+00:41:17,960 --> 00:41:21,380
+PyTorch or TensorFlow
+or something that I
+
+852
+00:41:21,380 --> 00:41:23,820
+can use to say, well,
+I'm getting the same
+
+853
+00:41:23,820 --> 00:41:26,260
+result from TensorFlow.
+How can it be fake?
+
+854
+00:41:27,820 --> 00:41:31,460
+That's like a
+rubric validation.
+
+855
+00:41:32,380 --> 00:41:35,900
+The key here
+is essentially
+
+856
+00:41:36,560 --> 00:41:39,500
+not being opinionated
+and how you guide it
+
+857
+00:41:39,500 --> 00:41:41,960
+and creating some kind
+of mechanism to allow
+
+858
+00:41:41,960 --> 00:41:43,900
+it to validate. Now,
+certain applications
+
+859
+00:41:43,900 --> 00:41:46,680
+aren't necessarily
+as prone to that. If
+
+860
+00:41:46,680 --> 00:41:49,340
+you're doing like a
+database driven system
+
+861
+00:41:49,340 --> 00:41:51,760
+of some sort with
+like role-based access
+
+862
+00:41:51,760 --> 00:41:55,100
+and analytics and
+stuff that that is not
+
+863
+00:41:55,100 --> 00:41:57,560
+going to suffer from
+this problem because it's
+
+864
+00:41:57,560 --> 00:42:00,200
+it's more of a kind
+of binary output it
+
+865
+00:42:00,200 --> 00:42:01,920
+is or it isn't right
+it either gets the
+
+866
+00:42:01,920 --> 00:42:04,140
+result or it doesn't
+either queries the the
+
+867
+00:42:04,140 --> 00:42:06,420
+table correctly or it
+doesn't now the problem
+
+868
+00:42:06,420 --> 00:42:08,260
+with these kind of
+more abstract systems
+
+869
+00:42:08,260 --> 00:42:11,300
+like a neural net is
+it it really has a
+
+870
+00:42:11,300 --> 00:42:13,600
+difficult time deciphering
+whether the neural
+
+871
+00:42:13,600 --> 00:42:16,480
+net is is truly
+functioning or it's just
+
+872
+00:42:16,480 --> 00:42:21,340
+an elaborate sort of
+fake simulation? So
+
+873
+00:42:21,340 --> 00:42:24,440
+one way I've gotten
+around that is to have
+
+874
+00:42:24,440 --> 00:42:27,470
+it generate an export,
+typically as base64,
+
+875
+00:42:27,520 --> 00:42:30,620
+which I then pull into
+a completely vanilla
+
+876
+00:42:30,620 --> 00:42:32,860
+instance of podcode
+on a separate machine.
+
+877
+00:42:32,860 --> 00:42:35,320
+So there's no way the
+context is poisoned.
+
+878
+00:42:35,340 --> 00:42:37,200
+And from there,
+I ask it to
+
+879
+00:42:37,200 --> 00:42:40,000
+explain what the
+base64 file is.
+
+880
+00:42:40,100 --> 00:42:43,440
+Usually it's
+something fake or
+
+881
+00:42:43,440 --> 00:42:45,300
+some representation
+of nothing.
+
+882
+00:42:45,540 --> 00:42:48,160
+occasionally it's an
+actual model at which
+
+883
+00:42:48,160 --> 00:42:50,700
+point i'll then continue
+down that thread
+
+884
+00:42:50,700 --> 00:42:53,580
+and have it perform
+the necessary testing
+
+885
+00:42:53,580 --> 00:42:56,300
+and training or re
+-weighting as needed yeah
+
+886
+00:42:56,470 --> 00:42:58,880
+it's not a bad approach
+the other thing
+
+887
+00:42:58,880 --> 00:43:01,400
+you could do are things
+that are easily via
+
+888
+00:43:01,400 --> 00:43:04,720
+like verifiable like
+if you're doing like
+
+889
+00:43:04,720 --> 00:43:08,120
+a model to train like
+trading or something
+
+890
+00:43:08,120 --> 00:43:10,840
+and you needed to
+execute a particular
+
+891
+00:43:10,840 --> 00:43:14,740
+trade you know when
+some some threshold is
+
+892
+00:43:14,740 --> 00:43:17,110
+greater than x it
+doesn't have to be crazy
+
+893
+00:43:17,120 --> 00:43:20,440
+complicated it just
+means that like the the
+
+894
+00:43:20,440 --> 00:43:22,680
+momentum is positive
+versus negative and
+
+895
+00:43:22,680 --> 00:43:25,100
+whenever it's positive
+beyond something and
+
+896
+00:43:25,100 --> 00:43:26,780
+you think it's going
+to be continue in
+
+897
+00:43:26,780 --> 00:43:29,360
+that direction do do
+the trade now with that
+
+898
+00:43:29,360 --> 00:43:31,800
+kind of criteria how
+do you avoid heuristic
+
+899
+00:43:31,800 --> 00:43:34,140
+type rules from being
+used to simulate a
+
+900
+00:43:34,140 --> 00:43:36,890
+neural network yeah
+exactly the problem
+
+901
+00:43:36,890 --> 00:43:39,700
+right that that's why
+i do that that's why i
+
+902
+00:43:39,700 --> 00:43:42,560
+do dual uh, dual
+implementation and I'll
+
+903
+00:43:42,560 --> 00:43:44,340
+use something rudimentary
+like TensorFlow.
+
+904
+00:43:44,720 --> 00:43:46,740
+And if I get
+the same result
+
+905
+00:43:46,740 --> 00:43:49,500
+from both, I can
+pretty much, uh,
+
+906
+00:43:50,280 --> 00:43:52,600
+not a hundred percent,
+but I'm fairly
+
+907
+00:43:52,600 --> 00:43:54,760
+confident that the
+system is working as
+
+908
+00:43:54,760 --> 00:43:56,720
+expected. Then when
+you see the difference
+
+909
+00:43:56,720 --> 00:43:58,640
+in speed, you're
+saying that TensorFlow
+
+910
+00:43:58,640 --> 00:44:00,960
+is relatively slow
+because, you know, at
+
+911
+00:44:00,960 --> 00:44:02,240
+least the JavaScript
+version that I'm
+
+912
+00:44:02,240 --> 00:44:05,640
+using. And that, that
+means that at the,
+
+913
+00:44:05,800 --> 00:44:08,700
+that I'm getting
+the same result
+
+914
+00:44:08,700 --> 00:44:10,160
+essentially, but
+I'm just getting it
+
+915
+00:44:10,160 --> 00:44:11,800
+at, you know,
+100 milliseconds
+
+916
+00:44:11,800 --> 00:44:13,820
+versus 10 milliseconds
+kind of thing.
+
+917
+00:44:16,340 --> 00:44:17,300
+All right.
+
+918
+00:44:17,300 --> 00:44:19,900
+Yeah, it's, it's
+not, there's not
+
+919
+00:44:19,900 --> 00:44:22,880
+necessarily an
+easy answer to any
+
+920
+00:44:22,880 --> 00:44:24,420
+of, any of
+these problems,
+
+921
+00:44:24,420 --> 00:44:26,680
+especially the more
+deep tech you get.
+
+922
+00:44:28,200 --> 00:44:30,400
+But back to this, if
+you guys are interested
+
+923
+00:44:30,400 --> 00:44:32,800
+in creating something
+similar, you can
+
+924
+00:44:32,800 --> 00:44:35,400
+go, you can go to my,
+oh, this is my NPM
+
+925
+00:44:35,400 --> 00:44:38,540
+box. Let's, here it
+is. you can go here,
+
+926
+00:44:38,540 --> 00:44:41,160
+and I created a gist,
+where did I put that,
+
+927
+00:44:42,440 --> 00:44:44,040
+like, here,
+
+928
+00:44:44,180 --> 00:44:46,200
+no, did I, gist,
+
+929
+00:44:47,280 --> 00:44:49,580
+yeah, basically, all
+you need to do if
+
+930
+00:44:49,580 --> 00:44:51,460
+you want to create
+something similar for,
+
+931
+00:44:51,460 --> 00:44:54,400
+for, uh, ChatGPT,
+just point Claude at
+
+932
+00:44:54,400 --> 00:44:56,460
+this, uh, gist,
+and it'll give you
+
+933
+00:44:56,460 --> 00:44:57,880
+everything you need,
+I've got two different
+
+934
+00:44:57,880 --> 00:45:00,800
+versions of it, I've
+got the, uh, the
+
+935
+00:45:00,800 --> 00:45:04,360
+version here for doing
+without OA, which
+
+936
+00:45:04,360 --> 00:45:07,500
+is this, this version
+here, non OAuth.
+
+937
+00:45:07,580 --> 00:45:09,630
+It's a nice, simple,
+easy starting point.
+
+938
+00:45:09,800 --> 00:45:12,520
+And then I've got the
+version with OAuth.
+
+939
+00:45:12,520 --> 00:45:14,000
+Someone pointed out
+yesterday that I
+
+940
+00:45:14,000 --> 00:45:18,080
+didn't include a time
+to live on my OAuth
+
+941
+00:45:18,080 --> 00:45:20,720
+components. So what
+that means, or maybe
+
+942
+00:45:20,720 --> 00:45:22,220
+I created a really
+short time to live.
+
+943
+00:45:22,220 --> 00:45:23,680
+I'm not sure exactly
+what the issue was
+
+944
+00:45:23,680 --> 00:45:25,580
+here, but basically
+what you want to
+
+945
+00:45:25,580 --> 00:45:27,360
+make sure you do,
+especially with OAuth,
+
+946
+00:45:27,360 --> 00:45:29,780
+is set how long the
+token lasts. And I
+
+947
+00:45:29,780 --> 00:45:32,480
+apparently didn't do
+that in this example.
+
+948
+00:45:32,480 --> 00:45:34,940
+So what it means
+is after like five
+
+949
+00:45:34,940 --> 00:45:37,100
+minutes, the system
+requires you to re
+
+950
+00:45:37,100 --> 00:45:39,580
+-authenticate. I should
+probably update this to
+
+951
+00:45:39,580 --> 00:45:42,100
+fix that problem. But
+you should be able
+
+952
+00:45:42,100 --> 00:45:43,800
+to resolve that just
+by asking Claude to
+
+953
+00:45:43,800 --> 00:45:47,020
+basically resolve
+that problem quickly.
+
+954
+00:45:49,700 --> 00:45:52,120
+Yeah, that sort of thing.
+
+955
+00:45:53,100 --> 00:45:54,380
+Meanwhile, this...
+
+956
+00:45:55,960 --> 00:45:57,680
+Meanwhile, in
+my other screen,
+
+957
+00:45:57,680 --> 00:45:59,540
+it's still trying
+to... It's still trying
+
+958
+00:45:59,540 --> 00:46:01,120
+to figure out whether
+or not my neural network
+
+959
+00:46:01,120 --> 00:46:03,280
+is true or not. It's
+completely confused.
+
+960
+00:46:03,280 --> 00:46:06,900
+it's it's it it thinks
+it's it's real it
+
+961
+00:46:06,900 --> 00:46:10,180
+thinks it's fake it's
+it's uh it doesn't
+
+962
+00:46:10,180 --> 00:46:14,560
+know what to think so
+there's still a place
+
+963
+00:46:14,560 --> 00:46:20,540
+for humans that's for
+sure it's still it's
+
+964
+00:46:20,540 --> 00:46:23,300
+still uh it's still
+attempting to validate
+
+965
+00:46:23,300 --> 00:46:26,200
+itself with neural with
+predictions oftentimes
+
+966
+00:46:26,200 --> 00:46:28,860
+cloud code defaults
+to using some sort
+
+967
+00:46:28,860 --> 00:46:31,920
+of random number
+generator. So generally
+
+968
+00:46:31,920 --> 00:46:34,400
+what you can do is
+commit this to a private
+
+969
+00:46:34,400 --> 00:46:36,320
+GitHub repo, have it
+pulled down into a
+
+970
+00:46:36,320 --> 00:46:38,680
+separate environment, and
+then have the separate
+
+971
+00:46:38,680 --> 00:46:40,720
+environment search
+for any random number
+
+972
+00:46:40,720 --> 00:46:43,080
+generator or any
+heuristic. And that's
+
+973
+00:46:43,080 --> 00:46:45,940
+usually enough to surface
+whether or not the
+
+974
+00:46:46,340 --> 00:46:50,020
+training and
+inference was mocked
+
+975
+00:46:50,020 --> 00:46:51,540
+without
+explicitly looking
+
+976
+00:46:51,540 --> 00:46:53,840
+for mocked to do
+or simulation.
+
+977
+00:46:54,000 --> 00:46:55,900
+Yeah, that's a good idea.
+
+978
+00:46:56,820 --> 00:47:00,580
+All right. So
+let's jump to
+
+979
+00:47:00,580 --> 00:47:02,280
+another conversation
+briefly.
+
+980
+00:47:02,400 --> 00:47:05,080
+We've been having
+some discussions
+
+981
+00:47:05,080 --> 00:47:08,660
+also around the
+idea of creating
+
+982
+00:47:08,660 --> 00:47:13,580
+a accreditation
+around Agentex.
+
+983
+00:47:13,840 --> 00:47:15,880
+And Maju, are
+you still on the
+
+984
+00:47:15,880 --> 00:47:21,320
+call? Any
+thoughts on that?
+
+985
+00:47:22,320 --> 00:47:25,560
+yeah so uh i think
+thanks for setting up
+
+986
+00:47:25,560 --> 00:47:27,580
+the discord channel
+we do have i forgot
+
+987
+00:47:27,580 --> 00:47:29,820
+to mention we did
+have a public whatsapp
+
+988
+00:47:29,820 --> 00:47:32,040
+group as well actually
+called masterclass
+
+989
+00:47:32,040 --> 00:47:33,880
+engineering which
+i'll put it on discord
+
+990
+00:47:33,880 --> 00:47:36,120
+channel but there's
+been a lot of
+
+991
+00:47:36,120 --> 00:47:38,900
+conversation on this
+topic and some of this
+
+992
+00:47:39,160 --> 00:47:42,980
+is if we look bottom up
+um i have consolidated
+
+993
+00:47:42,980 --> 00:47:45,860
+that into a google
+notebook lm so if
+
+994
+00:47:45,860 --> 00:47:48,360
+people may be interested
+to kind of just follow
+
+995
+00:47:48,360 --> 00:47:49,740
+through what discussions
+have happened
+
+996
+00:47:49,740 --> 00:47:52,360
+over the last couple of
+months around this it
+
+997
+00:47:52,360 --> 00:47:55,560
+is it is traceable
+what we do want to now
+
+998
+00:47:55,560 --> 00:47:58,380
+do is converge in terms
+of like all of these
+
+999
+00:47:58,380 --> 00:48:00,480
+discussions have
+happened so what is the
+
+1000
+00:48:00,480 --> 00:48:02,680
+approach that hopefully
+we will want to take
+
+1001
+00:48:02,680 --> 00:48:05,920
+forward so that is where
+we are at the moment
+
+1002
+00:48:05,920 --> 00:48:09,140
+and hopefully by monday
+after next we can
+
+1003
+00:48:09,140 --> 00:48:15,140
+get to that view so so
+what so in practical
+
+1004
+00:48:15,140 --> 00:48:17,950
+terms what if we want
+to get to this idea
+
+1005
+00:48:17,950 --> 00:48:21,100
+of a kind of let me
+let me stop sharing for
+
+1006
+00:48:21,100 --> 00:48:24,680
+a moment like an
+accredited an accredited
+
+1007
+00:48:26,800 --> 00:48:29,860
+agentic practitioner
+and then agentic sort
+
+1008
+00:48:29,860 --> 00:48:32,360
+of developers or like
+how much do we care
+
+1009
+00:48:32,360 --> 00:48:35,240
+about like the term
+engineer and and there's
+
+1010
+00:48:35,240 --> 00:48:37,520
+been some debate on
+whether it even matters
+
+1011
+00:48:37,520 --> 00:48:39,640
+you know there's a lot
+of things people call
+
+1012
+00:48:39,640 --> 00:48:40,980
+themselves software
+engineers and no one
+
+1013
+00:48:40,980 --> 00:48:43,200
+seems to care in the least
+that you're a software
+
+1014
+00:48:43,200 --> 00:48:45,880
+engineer why why
+would people care that
+
+1015
+00:48:45,880 --> 00:48:48,960
+you're an agentic
+engineer or when the
+
+1016
+00:48:48,960 --> 00:48:52,060
+engineering associations
+even push back on that?
+
+1017
+00:48:52,160 --> 00:48:53,700
+Any thoughts?
+
+1018
+00:48:53,740 --> 00:48:56,040
+Well, the problem
+is the engineering
+
+1019
+00:48:56,040 --> 00:48:59,820
+associations have a certain
+amount of discipline
+
+1020
+00:48:59,820 --> 00:49:02,760
+and validation of
+the term engineer.
+
+1021
+00:49:02,760 --> 00:49:04,920
+I wouldn't, for example,
+be sitting on the
+
+1022
+00:49:04,920 --> 00:49:08,100
+sixth floor of this
+building if an agentic
+
+1023
+00:49:08,100 --> 00:49:10,900
+engineer built it. I
+trust that the civil
+
+1024
+00:49:10,900 --> 00:49:13,100
+engineer and the
+structural engineer were
+
+1025
+00:49:13,100 --> 00:49:15,780
+certified enough that
+this building will
+
+1026
+00:49:15,780 --> 00:49:18,320
+not collapse while I
+sit in it. So in that
+
+1027
+00:49:18,320 --> 00:49:21,360
+same vein, I understand
+why the engineering
+
+1028
+00:49:21,360 --> 00:49:23,780
+discipline wants to
+protect that name.
+
+1029
+00:49:23,780 --> 00:49:26,060
+So I'm curious, why
+don't we invent a
+
+1030
+00:49:26,060 --> 00:49:28,200
+term, something that
+cannot be easily Googled
+
+1031
+00:49:28,200 --> 00:49:31,160
+today, so that once
+it's Googled, it's
+
+1032
+00:49:31,160 --> 00:49:33,880
+possible then to point
+it wherever we wish.
+
+1033
+00:49:34,560 --> 00:49:38,020
+So you're suggesting
+we shouldn't have, you
+
+1034
+00:49:38,020 --> 00:49:42,320
+wouldn't want to sit in
+a vibe coded building
+
+1035
+00:49:42,890 --> 00:49:46,080
+not six stories off
+the ground ground floor
+
+1036
+00:49:46,080 --> 00:49:47,920
+no problem because
+you know i can i can
+
+1037
+00:49:47,920 --> 00:49:50,160
+self-escape here it's
+great i will not survive
+
+1038
+00:49:50,160 --> 00:49:53,760
+a 60 i will not survive
+a 20 meter descent
+
+1039
+00:49:55,560 --> 00:49:58,060
+or rather yeah i will
+survive the descent
+
+1040
+00:49:58,060 --> 00:49:59,800
+i will not survive
+the impact the
+
+1041
+00:49:59,800 --> 00:50:03,280
+rapid unscheduled
+deceleration don't worry
+
+1042
+00:50:03,280 --> 00:50:06,340
+it passed all the
+tests 100 percent
+
+1043
+00:50:08,180 --> 00:50:10,900
+yeah well i we're
+probably not far off from
+
+1044
+00:50:10,900 --> 00:50:13,340
+a vibe coded or vibe
+you know pretty much
+
+1045
+00:50:13,340 --> 00:50:15,820
+everything you know
+and that's the uh
+
+1046
+00:50:15,820 --> 00:50:18,480
+challenge we face with
+the next generation of
+
+1047
+00:50:18,480 --> 00:50:21,760
+like students and
+cognitive offload it's
+
+1048
+00:50:21,760 --> 00:50:25,020
+like i can take my
+engineering degree and
+
+1049
+00:50:25,020 --> 00:50:27,440
+you know what point is
+half of my degree just
+
+1050
+00:50:27,440 --> 00:50:29,260
+me asking chat gpt
+to tell me what the
+
+1051
+00:50:29,260 --> 00:50:33,100
+answer is right well
+that's medical students
+
+1052
+00:50:33,100 --> 00:50:35,640
+today consultants
+yesterday and maybe
+
+1053
+00:50:35,640 --> 00:50:41,360
+tomorrow engineers so
+so how do we validate
+
+1054
+00:50:41,360 --> 00:50:45,660
+that the people are
+actually doing it you
+
+1055
+00:50:45,660 --> 00:50:49,380
+know what what they say
+they they they can do
+
+1056
+00:50:49,380 --> 00:50:53,140
+right is and and if
+you're going to be
+
+1057
+00:50:53,140 --> 00:50:56,480
+accredited as an agentic
+engineer is there
+
+1058
+00:50:56,480 --> 00:50:59,960
+some way for us Much like
+how we were suffering
+
+1059
+00:50:59,960 --> 00:51:02,320
+from the AI, you
+know, telling us what
+
+1060
+00:51:02,320 --> 00:51:04,780
+we want to hear. Are
+you actually doing and
+
+1061
+00:51:04,780 --> 00:51:06,820
+capable of doing the
+things you say you're
+
+1062
+00:51:06,820 --> 00:51:09,280
+doing? Or are you
+just asking chat CPT?
+
+1063
+00:51:09,930 --> 00:51:12,520
+It's kind of fun to be
+able to put a bounty
+
+1064
+00:51:12,520 --> 00:51:15,960
+to disprove a claim.
+So, for example, I
+
+1065
+00:51:15,960 --> 00:51:18,040
+have a pose detection
+demonstration in my
+
+1066
+00:51:18,040 --> 00:51:21,060
+GitHub repo. If someone
+can demonstrate it's
+
+1067
+00:51:21,060 --> 00:51:23,260
+not working the way I
+claimed it was working,
+
+1068
+00:51:23,260 --> 00:51:25,320
+that might be a sufficient
+enough incentive
+
+1069
+00:51:25,320 --> 00:51:27,880
+one for those making
+those claims. to
+
+1070
+00:51:27,880 --> 00:51:30,600
+ensure it works, and
+two, for others to look
+
+1071
+00:51:30,600 --> 00:51:33,700
+for holes or flaws or
+breaks in that claim.
+
+1072
+00:51:33,860 --> 00:51:35,920
+It's a little
+adversarial, but at
+
+1073
+00:51:35,920 --> 00:51:38,080
+the very least, the
+incentives align.
+
+1074
+00:51:39,680 --> 00:51:41,760
+I think we
+shouldn't wait.
+
+1075
+00:51:41,760 --> 00:51:43,380
+I don't think we
+should let the
+
+1076
+00:51:43,380 --> 00:51:46,160
+term engineer hold
+us up, because I
+
+1077
+00:51:46,160 --> 00:51:48,700
+think, as people
+have suggested,
+
+1078
+00:51:49,240 --> 00:51:50,940
+the time is now, and I
+
+1079
+00:51:50,940 --> 00:51:52,560
+think there's
+a huge demand.
+
+1080
+00:51:53,740 --> 00:51:57,580
+We're kind of defining
+this space in a way,
+
+1081
+00:51:57,580 --> 00:52:00,500
+And so I think that
+we just need to get
+
+1082
+00:52:00,500 --> 00:52:03,300
+the content out there
+and we need to educate
+
+1083
+00:52:03,300 --> 00:52:10,440
+not only industry but
+also the recruiters.
+
+1084
+00:52:10,440 --> 00:52:14,840
+So we probably do
+need some terminology,
+
+1085
+00:52:14,840 --> 00:52:17,930
+but I just don't think
+we should let the
+
+1086
+00:52:18,720 --> 00:52:23,880
+engineering institutions
+hold us back.
+
+1087
+00:52:24,240 --> 00:52:25,820
+Big engineering.
+
+1088
+00:52:27,500 --> 00:52:28,900
+This brings us back to
+
+1089
+00:52:28,900 --> 00:52:31,440
+the point
+about, you know,
+
+1090
+00:52:31,960 --> 00:52:33,560
+we've seen lots of
+things are happening,
+
+1091
+00:52:33,560 --> 00:52:35,540
+but we are still
+kind of fragmented,
+
+1092
+00:52:35,760 --> 00:52:38,140
+right? We need
+to, this group, we
+
+1093
+00:52:38,140 --> 00:52:41,240
+need to form a
+form of organizing.
+
+1094
+00:52:41,560 --> 00:52:44,260
+So what I mean by,
+like, foundations, like
+
+1095
+00:52:44,260 --> 00:52:47,600
+just neutral terminologies,
+like agentics,
+
+1096
+00:52:47,600 --> 00:52:49,760
+you know, practitioner,
+basically it's in
+
+1097
+00:52:49,760 --> 00:52:52,580
+foundational level or
+a practitioner, right?
+
+1098
+00:52:52,580 --> 00:52:55,220
+could be a more neutral
+terminology because
+
+1099
+00:52:55,220 --> 00:52:58,640
+that is very broad i
+do realize that our
+
+1100
+00:52:58,640 --> 00:53:00,720
+strength is the depth
+because the difference
+
+1101
+00:53:00,720 --> 00:53:02,520
+between this group
+and other groups with
+
+1102
+00:53:02,520 --> 00:53:05,200
+others are too broad
+right this group has a
+
+1103
+00:53:05,200 --> 00:53:07,300
+real depth in it and
+i think they've come
+
+1104
+00:53:07,300 --> 00:53:09,880
+from certain members
+like you know that are
+
+1105
+00:53:09,880 --> 00:53:12,020
+creating this frame of
+frameworks mechanisms
+
+1106
+00:53:12,020 --> 00:53:14,340
+so we did touch upon
+this earlier on is
+
+1107
+00:53:14,340 --> 00:53:17,890
+that if people here who
+are a bit more advanced
+
+1108
+00:53:17,890 --> 00:53:21,000
+are able to say okay
+a mechanism in which
+
+1109
+00:53:21,000 --> 00:53:22,960
+you It draws some
+challenges, and people
+
+1110
+00:53:22,960 --> 00:53:25,000
+here take those
+challenges, and if they
+
+1111
+00:53:25,000 --> 00:53:27,020
+demonstrate through an
+automated system that
+
+1112
+00:53:27,020 --> 00:53:29,240
+they've achieved that,
+then we're certified.
+
+1113
+00:53:29,300 --> 00:53:31,800
+I agree it could be a
+little bit, it could
+
+1114
+00:53:31,800 --> 00:53:33,640
+gain the system a bit,
+but you know what?
+
+1115
+00:53:33,640 --> 00:53:36,980
+We do need to create
+a level of consistency
+
+1116
+00:53:36,980 --> 00:53:39,040
+that the rest of the
+world sees us with.
+
+1117
+00:53:39,200 --> 00:53:41,420
+Otherwise, we will be
+seen very fragmented,
+
+1118
+00:53:41,420 --> 00:53:43,320
+so no one knows us
+beyond the small group
+
+1119
+00:53:43,320 --> 00:53:47,180
+here. But if we can
+have a foundational 20,
+
+1120
+00:53:47,180 --> 00:53:50,060
+30, 40 foundational
+identification issued
+
+1121
+00:53:50,060 --> 00:53:52,100
+by the different
+chapters and all of a
+
+1122
+00:53:52,100 --> 00:53:54,880
+sudden our visibility
+goes up and people and
+
+1123
+00:53:54,880 --> 00:53:56,600
+then we can improve
+the program as we go
+
+1124
+00:53:56,600 --> 00:54:00,370
+along but we need to i
+jump in here for a second
+
+1125
+00:54:00,370 --> 00:54:04,200
+yeah it seems to me
+seems to me the the
+
+1126
+00:54:04,200 --> 00:54:06,740
+title is less important
+than the certifying
+
+1127
+00:54:06,740 --> 00:54:10,860
+institution so you
+want to be able to say
+
+1128
+00:54:10,860 --> 00:54:15,360
+i am certified by the
+agentics foundation
+
+1129
+00:54:15,550 --> 00:54:18,090
+that builds up the
+name of the foundation,
+
+1130
+00:54:18,620 --> 00:54:20,860
+raises a question
+whether you want to
+
+1131
+00:54:20,860 --> 00:54:23,500
+trademark the name
+so no one else
+
+1132
+00:54:23,500 --> 00:54:25,960
+can come in and use
+something similar.
+
+1133
+00:54:26,440 --> 00:54:30,320
+And then I am
+certified by the
+
+1134
+00:54:30,320 --> 00:54:34,380
+Agentix Foundation
+as whatever the
+
+1135
+00:54:34,380 --> 00:54:37,000
+certification level
+is. End of story.
+
+1136
+00:54:37,430 --> 00:54:39,510
+If you want to get fancy,
+
+1137
+00:54:39,620 --> 00:54:44,200
+you can say, like
+Jed suggested,
+
+1138
+00:54:44,200 --> 00:54:46,500
+Agentist. I'm an agentist
+
+1139
+00:54:46,500 --> 00:54:48,860
+certified by the
+Agentix Foundation.
+
+1140
+00:54:48,860 --> 00:54:51,780
+Or you can say,
+I'm an agentix,
+
+1141
+00:54:52,180 --> 00:54:53,800
+T-I-X.
+
+1142
+00:54:55,480 --> 00:54:58,800
+This is just a
+way to identify
+
+1143
+00:54:58,800 --> 00:55:02,740
+the strength of
+the certification.
+
+1144
+00:55:02,960 --> 00:55:05,320
+That's all. You don't
+have to worry about,
+
+1145
+00:55:05,320 --> 00:55:07,260
+I'm an engineer,
+I'm not an engineer,
+
+1146
+00:55:07,260 --> 00:55:08,980
+and you avoid the
+problem altogether.
+
+1147
+00:55:08,980 --> 00:55:11,180
+That would be my
+common sense way of
+
+1148
+00:55:11,180 --> 00:55:14,520
+approaching it. I think
+that's very, very onto
+
+1149
+00:55:14,520 --> 00:55:18,060
+it, very smart. I
+think the term is less
+
+1150
+00:55:18,060 --> 00:55:20,740
+important than the
+level of trust. And
+
+1151
+00:55:20,740 --> 00:55:23,700
+as you say, who is
+certifying that trust?
+
+1152
+00:55:23,700 --> 00:55:27,820
+And I think Agentix
+Foundation has a
+
+1153
+00:55:27,820 --> 00:55:32,280
+great opportunity to
+be that organization.
+
+1154
+00:55:32,460 --> 00:55:35,320
+so for example togaf
+right in the good
+
+1155
+00:55:35,320 --> 00:55:37,160
+old days of prince 2
+in the good old days
+
+1156
+00:55:37,160 --> 00:55:39,920
+or msp right you are
+either a prince 2
+
+1157
+00:55:39,920 --> 00:55:42,980
+foundations or a prince
+2 practitioner or
+
+1158
+00:55:42,980 --> 00:55:45,060
+you're a togaf foundation
+or togaf practitioner
+
+1159
+00:55:45,060 --> 00:55:47,980
+so i think we just
+say agentics uh
+
+1160
+00:55:47,980 --> 00:55:51,380
+i think yeah i think
+agentics that whatever
+
+1161
+00:55:51,380 --> 00:55:53,080
+agentics foundation
+let's get the brand
+
+1162
+00:55:53,080 --> 00:55:54,420
+name out so
+agentics foundation
+
+1163
+00:55:54,420 --> 00:55:57,840
+organization you know we
+define the proper name
+
+1164
+00:55:57,840 --> 00:56:00,280
+our practitioner
+something we need that
+
+1165
+00:56:00,720 --> 00:56:03,360
+and we do know that
+we could assign some
+
+1166
+00:56:03,360 --> 00:56:05,300
+of the members capability
+like Reuven your
+
+1167
+00:56:05,300 --> 00:56:08,320
+capabilities so you
+will swarm that could
+
+1168
+00:56:08,320 --> 00:56:10,620
+that's the depth or
+again i have said this
+
+1169
+00:56:10,620 --> 00:56:13,180
+before oceans hive
+and line are agi right
+
+1170
+00:56:13,180 --> 00:56:16,580
+so some level that
+familiarity of those
+
+1171
+00:56:16,580 --> 00:56:18,140
+could be enough and
+they demonstrate the
+
+1172
+00:56:18,140 --> 00:56:19,980
+knowledge through one
+or two projects that
+
+1173
+00:56:19,980 --> 00:56:22,740
+they do themselves
+the members who are
+
+1174
+00:56:22,740 --> 00:56:24,660
+aspiring to themselves
+and they prove themselves
+
+1175
+00:56:24,900 --> 00:56:29,600
+we could follow up on
+rube's nomenclature
+
+1176
+00:56:29,600 --> 00:56:33,160
+so that you would be
+certified for clod
+
+1177
+00:56:33,160 --> 00:56:40,140
+flow or dag or you
+know a flow nexus and
+
+1178
+00:56:40,140 --> 00:56:43,580
+then you'd have levels
+within that but the
+
+1179
+00:56:43,580 --> 00:56:46,380
+the key thing is
+that the foundation
+
+1180
+00:56:47,430 --> 00:56:50,980
+controls both the
+nomenclature and the level
+
+1181
+00:56:51,260 --> 00:56:54,960
+and that it's the
+foundation's stamp of
+
+1182
+00:56:54,960 --> 00:56:59,200
+approval that counts
+and you build that up
+
+1183
+00:56:59,200 --> 00:57:02,160
+as a trust relationship
+i trust that if
+
+1184
+00:57:02,160 --> 00:57:04,640
+they have that
+certification from the
+
+1185
+00:57:04,640 --> 00:57:07,120
+foundation that they
+are competent within
+
+1186
+00:57:07,120 --> 00:57:10,700
+certain parameters it
+seems to me that that
+
+1187
+00:57:10,700 --> 00:57:12,660
+that's a common sense
+way of approaching
+
+1188
+00:57:12,660 --> 00:57:15,340
+it until we find
+somewhere that it doesn't
+
+1189
+00:57:15,340 --> 00:57:17,580
+work and we modify
+it or throw it away
+
+1190
+00:57:18,180 --> 00:57:20,640
+Competence is tricky,
+John, because unlike,
+
+1191
+00:57:20,640 --> 00:57:23,780
+for example, the
+bar exam, where the
+
+1192
+00:57:23,780 --> 00:57:26,500
+answers are presumably
+consistent, there
+
+1193
+00:57:26,500 --> 00:57:29,300
+are many different
+solutions that can be
+
+1194
+00:57:29,300 --> 00:57:32,120
+applied to the same
+problem within this
+
+1195
+00:57:32,120 --> 00:57:35,360
+LLM-powered coding
+or LLM-powered work.
+
+1196
+00:57:35,460 --> 00:57:37,040
+So I'm not sure how you
+
+1197
+00:57:37,040 --> 00:57:38,400
+would start it on that.
+
+1198
+00:57:38,960 --> 00:57:40,780
+When I took the bar exam,
+
+1199
+00:57:40,780 --> 00:57:42,000
+a lot of it was essay.
+
+1200
+00:57:42,320 --> 00:57:47,380
+and there you can come
+in with 12 different
+
+1201
+00:57:47,380 --> 00:57:51,440
+versions that all of
+them work but those
+
+1202
+00:57:51,440 --> 00:57:53,980
+12 different versions
+still follow whatever
+
+1203
+00:57:53,980 --> 00:57:56,840
+principles drive
+legal theory right or
+
+1204
+00:57:56,840 --> 00:57:58,260
+common law theory i
+think is what it was
+
+1205
+00:57:58,260 --> 00:58:02,700
+called well by the
+same token 12 different
+
+1206
+00:58:02,700 --> 00:58:06,320
+versions of a solution
+using Claude Flow are
+
+1207
+00:58:06,320 --> 00:58:11,440
+still solutions it's
+you have somebody who
+
+1208
+00:58:11,440 --> 00:58:15,020
+who you have a
+candidate the candidate
+
+1209
+00:58:15,020 --> 00:58:19,340
+does something you have
+a an expert or a panel
+
+1210
+00:58:19,340 --> 00:58:23,220
+of experts that the
+foundation has approved
+
+1211
+00:58:23,220 --> 00:58:26,460
+to do this job and
+they decide and pass
+
+1212
+00:58:26,460 --> 00:58:30,820
+fail or you know you
+know high honors or
+
+1213
+00:58:30,820 --> 00:58:33,320
+summa *** laude,
+whatever your, you know,
+
+1214
+00:58:33,320 --> 00:58:36,580
+your levels are. And
+that's what you got.
+
+1215
+00:58:36,880 --> 00:58:39,460
+It's a trust
+relationship. And if you
+
+1216
+00:58:39,460 --> 00:58:42,760
+design it in such a
+way that it builds
+
+1217
+00:58:42,760 --> 00:58:46,940
+trust, wherever these
+people go out and try
+
+1218
+00:58:46,940 --> 00:58:50,900
+and get the benefit
+of this, you know,
+
+1219
+00:58:51,340 --> 00:58:53,840
+certification, that's
+what you're really
+
+1220
+00:58:53,840 --> 00:58:55,980
+looking for. It's a
+trust relationship. And
+
+1221
+00:58:55,980 --> 00:58:57,600
+you have to build it
+up and make sure that
+
+1222
+00:58:57,600 --> 00:58:59,860
+nobody spoils it by
+coming in saying,
+
+1223
+00:58:59,860 --> 00:59:03,920
+I'm the agent
+foundation and here's my
+
+1224
+00:59:03,920 --> 00:59:06,820
+certification. And they
+confuse the whole issue.
+
+1225
+00:59:06,820 --> 00:59:09,240
+That's what trademark
+law is all about.
+
+1226
+00:59:09,600 --> 00:59:11,160
+And that's, I think,
+
+1227
+00:59:11,160 --> 00:59:13,860
+basically what the
+issue is for me.
+
+1228
+00:59:15,200 --> 00:59:18,360
+So just to dig into the
+
+1229
+00:59:18,360 --> 00:59:19,440
+trust thing for a moment,
+
+1230
+00:59:19,440 --> 00:59:23,080
+if we trust each other,
+which hopefully we
+
+1231
+00:59:23,080 --> 00:59:27,740
+do, then there's some
+hierarchy. I don't like
+
+1232
+00:59:27,740 --> 00:59:28,960
+hierarchies but let's
+just say there's a
+
+1233
+00:59:28,960 --> 00:59:31,680
+hierarchy of trust
+there's a few of us that
+
+1234
+00:59:31,680 --> 00:59:33,480
+obviously know what
+we're doing and we've
+
+1235
+00:59:33,480 --> 00:59:36,520
+proven it we work with
+large companies we we've
+
+1236
+00:59:36,520 --> 00:59:38,520
+got we've built
+things that people use
+
+1237
+00:59:38,520 --> 00:59:41,100
+whatever it is that we
+can do to make people
+
+1238
+00:59:41,100 --> 00:59:42,300
+trust that we actually
+know what we're doing
+
+1239
+00:59:42,300 --> 00:59:44,740
+then there's a secondary
+group of people who
+
+1240
+00:59:44,740 --> 00:59:47,700
+want to sort of aspire
+and in essence to
+
+1241
+00:59:47,700 --> 00:59:50,620
+become similar to what
+we're doing and then we
+
+1242
+00:59:50,620 --> 00:59:52,900
+validate that that
+secondary group are
+
+1243
+00:59:52,900 --> 00:59:56,300
+capable you know based
+on our knowledge and
+
+1244
+00:59:56,300 --> 00:59:58,780
+capability ourselves to
+say though that person
+
+1245
+00:59:58,780 --> 01:00:00,300
+actually knows what
+they're doing and therefore
+
+1246
+01:00:00,300 --> 01:00:02,800
+they can call
+themselves you know an
+
+1247
+01:00:02,800 --> 01:00:06,320
+agentic engineer tier
+one or something and and
+
+1248
+01:00:06,320 --> 01:00:09,360
+at which point they
+become the next level
+
+1249
+01:00:09,360 --> 01:00:11,520
+of the trust and anyone
+else that wants to
+
+1250
+01:00:11,520 --> 01:00:14,300
+be validated either
+has to go through us or
+
+1251
+01:00:14,300 --> 01:00:16,760
+them and so on and so
+forth and then you have
+
+1252
+01:00:16,760 --> 01:00:19,860
+the the guys in in
+new zealand or finland
+
+1253
+01:00:19,860 --> 01:00:23,080
+and uk or whatever
+at creating their own
+
+1254
+01:00:23,080 --> 01:00:27,840
+groups of accreditations
+and that spans and it
+
+1255
+01:00:27,840 --> 01:00:30,000
+starts small and
+hopefully spans the globe
+
+1256
+01:00:30,000 --> 01:00:32,920
+after a few years or
+something well how do
+
+1257
+01:00:32,920 --> 01:00:36,160
+you if i was going to
+if i was going to look
+
+1258
+01:00:36,160 --> 01:00:40,380
+at trust i would say
+for me the people i
+
+1259
+01:00:40,380 --> 01:00:46,700
+would trust most would
+be you jed ocean and uh
+
+1260
+01:00:46,700 --> 01:00:49,620
+you know a couple other
+people who who who
+
+1261
+01:00:49,620 --> 01:00:55,060
+escaped my my mind
+right now you guys have
+
+1262
+01:00:55,060 --> 01:00:59,840
+gone in there and got
+your elbows dirty and
+
+1263
+01:00:59,840 --> 01:01:03,960
+really pulled the stuff
+apart and so you can
+
+1264
+01:01:03,960 --> 01:01:08,280
+determine by watching
+somebody on a a zoom
+
+1265
+01:01:08,890 --> 01:01:12,380
+attack the problem
+what their level of
+
+1266
+01:01:12,380 --> 01:01:17,740
+familiarity and their
+uh level of ease of use
+
+1267
+01:01:18,460 --> 01:01:23,000
+is that you can pretty
+much figure out where
+
+1268
+01:01:23,000 --> 01:01:25,240
+they are in the scheme
+of things just by
+
+1269
+01:01:25,240 --> 01:01:26,900
+watching giving them
+a problem and watching
+
+1270
+01:01:26,900 --> 01:01:28,960
+how they try and solve
+it you could probably
+
+1271
+01:01:28,960 --> 01:01:32,440
+do it in about an hour
+you would know pretty
+
+1272
+01:01:32,440 --> 01:01:34,860
+much where that
+person probably should
+
+1273
+01:01:34,860 --> 01:01:38,220
+fit in terms of letting
+them out into the
+
+1274
+01:01:38,220 --> 01:01:41,560
+world with your seal of
+approval to go out and
+
+1275
+01:01:41,560 --> 01:01:43,480
+get a job that wouldn't
+reflect badly on
+
+1276
+01:01:43,480 --> 01:01:47,720
+the foundation it's
+it's it's not it's not
+
+1277
+01:01:47,720 --> 01:01:50,040
+rocket science it's not
+like what you're doing
+
+1278
+01:01:50,040 --> 01:01:53,560
+actually encoding
+but you have such
+
+1279
+01:01:53,560 --> 01:01:56,500
+familiarity that you you
+you can you can assess
+
+1280
+01:01:56,500 --> 01:01:58,660
+somebody by watching
+them do the work it's
+
+1281
+01:01:58,660 --> 01:02:01,060
+it's about the reputation
+right i mean and
+
+1282
+01:02:01,060 --> 01:02:04,520
+you know rove and and
+ocean and jed aren't
+
+1283
+01:02:04,520 --> 01:02:07,400
+gonna put their seal
+of approval on someone
+
+1284
+01:02:07,400 --> 01:02:10,940
+who they think is not
+going to you know hold
+
+1285
+01:02:10,940 --> 01:02:14,680
+the agentex foundation's
+reputation and
+
+1286
+01:02:14,680 --> 01:02:18,660
+good stead so exactly
+for someone that's just
+
+1287
+01:02:18,660 --> 01:02:21,600
+as well sorry just uh
+like a sub component
+
+1288
+01:02:21,600 --> 01:02:25,000
+that might serve
+multiple purposes uh a
+
+1289
+01:02:25,000 --> 01:02:28,940
+standing project or set
+of projects prds with
+
+1290
+01:02:28,940 --> 01:02:32,240
+various levels of
+complication um maybe it's
+
+1291
+01:02:32,240 --> 01:02:36,600
+in the foundation
+repo And that defined
+
+1292
+01:02:36,600 --> 01:02:40,120
+kind of project and
+having somebody say, OK,
+
+1293
+01:02:40,680 --> 01:02:42,920
+here's my system,
+here's my approach
+
+1294
+01:02:42,920 --> 01:02:46,940
+to build that project
+with very, you
+
+1295
+01:02:46,940 --> 01:02:51,580
+know, transparent
+performance attributes
+
+1296
+01:02:51,580 --> 01:02:53,680
+and how long did
+the process take
+
+1297
+01:02:53,680 --> 01:02:56,120
+and how secure is
+it? and a checklist,
+
+1298
+01:02:56,580 --> 01:02:59,740
+that serves, both
+could serve as a
+
+1299
+01:02:59,740 --> 01:03:02,240
+tool for accreditation,
+but also a
+
+1300
+01:03:02,240 --> 01:03:04,700
+tool for battle
+testing new systems,
+
+1301
+01:03:04,700 --> 01:03:06,760
+new configurations,
+and new setups.
+
+1302
+01:03:08,820 --> 01:03:11,960
+So as LLM practitioners,
+
+1303
+01:03:12,120 --> 01:03:14,680
+it seems silly that
+we're still relying
+
+1304
+01:03:14,680 --> 01:03:17,760
+on human validation
+of competence. So
+
+1305
+01:03:17,760 --> 01:03:21,880
+in what way can we
+leverage LLMs to
+
+1306
+01:03:21,880 --> 01:03:24,200
+independently
+validate competence in
+
+1307
+01:03:24,200 --> 01:03:27,120
+wielding LLMs? That
+seems to be a more
+
+1308
+01:03:28,970 --> 01:03:31,700
+fit-for-purpose
+solution. The how is
+
+1309
+01:03:31,700 --> 01:03:35,880
+still unclear, but
+does that make sense?
+
+1310
+01:03:36,820 --> 01:03:40,900
+if you add uh you
+know testability and
+
+1311
+01:03:40,900 --> 01:03:43,400
+verifiability you can
+use the ai to verify
+
+1312
+01:03:43,400 --> 01:03:45,490
+the results of what
+rob is proposing
+
+1313
+01:03:45,490 --> 01:03:48,400
+can we though like do
+you guys saw earlier
+
+1314
+01:03:48,400 --> 01:03:49,720
+that i was like
+without a whole lot
+
+1315
+01:03:49,720 --> 01:03:51,120
+of effort able to
+convince it that the
+
+1316
+01:03:51,120 --> 01:03:52,700
+whole thing was a
+fraud then i was able
+
+1317
+01:03:52,700 --> 01:03:54,690
+to convince it that
+it wasn't a fraud in
+
+1318
+01:03:54,690 --> 01:03:58,780
+the same in the same
+uh thread I mean,
+
+1319
+01:03:59,700 --> 01:04:01,200
+therein lies the rock.
+
+1320
+01:04:27,220 --> 01:04:33,260
+against that kind of
+uh sycophanty yeah and
+
+1321
+01:04:33,260 --> 01:04:34,600
+that's kind of what i
+was trying to do with
+
+1322
+01:04:34,600 --> 01:04:37,760
+my seraphina judge
+system where i created
+
+1323
+01:04:37,760 --> 01:04:41,220
+like a multi-dimensional
+sort of validation
+
+1324
+01:04:41,220 --> 01:04:44,780
+rubric that looked
+at speed performance
+
+1325
+01:04:44,780 --> 01:04:49,400
+capability um novelty of
+of the code base and then
+
+1326
+01:04:49,400 --> 01:04:52,000
+created a kind of
+scoring mechanism based
+
+1327
+01:04:52,000 --> 01:04:54,380
+on all those things
+like does it work is it
+
+1328
+01:04:54,380 --> 01:04:59,250
+fast how and is it
+unique kind of thing and
+
+1329
+01:04:59,630 --> 01:05:01,080
+as far as I can tell
+
+1330
+01:05:01,220 --> 01:05:03,540
+knock on wood it seems
+to work pretty well
+
+1331
+01:05:04,220 --> 01:05:06,720
+we could probably
+use a similar
+
+1332
+01:05:07,180 --> 01:05:09,580
+AI approach for
+that as well
+
+1333
+01:05:10,520 --> 01:05:12,880
+and then you have
+bounties on top of that
+
+1334
+01:05:12,880 --> 01:05:16,000
+for you know finding
+exploits in that
+
+1335
+01:05:16,000 --> 01:05:20,180
+verification system
+yeah nice can I just
+
+1336
+01:05:20,500 --> 01:05:22,940
+my screen to
+just show you
+
+1337
+01:05:22,940 --> 01:05:24,140
+something from
+the notebook
+
+1338
+01:05:25,610 --> 01:05:26,900
+that's okay is that okay
+
+1339
+01:05:27,160 --> 01:05:27,820
+Sure.
+
+1340
+01:05:28,300 --> 01:05:30,160
+So I'm just going
+to move this window
+
+1341
+01:05:30,160 --> 01:05:31,580
+here and move
+this other window
+
+1342
+01:05:31,580 --> 01:05:34,440
+here and share my
+screen in a second.
+
+1343
+01:05:35,380 --> 01:05:37,780
+So I have put
+the link on the
+
+1344
+01:05:37,780 --> 01:05:39,960
+chat for those
+who would like
+
+1345
+01:05:39,960 --> 01:05:41,340
+to just explore
+on their own.
+
+1346
+01:05:41,480 --> 01:05:44,220
+But if I share what
+I'm sharing now,
+
+1347
+01:05:44,460 --> 01:05:46,860
+this is basically, I
+think is good about
+
+1348
+01:05:46,860 --> 01:05:49,060
+this conversation that
+we are having now is
+
+1349
+01:05:49,060 --> 01:05:52,440
+exactly what seems to
+be here, right? So all
+
+1350
+01:05:52,440 --> 01:05:54,740
+we are talking about
+is the fact that we
+
+1351
+01:05:54,740 --> 01:05:57,100
+want to go through a
+build a guild, right?
+
+1352
+01:05:57,100 --> 01:05:59,680
+Which is built on the
+tenets of mentorship,
+
+1353
+01:05:59,960 --> 01:06:01,960
+knowledge sharing.
+And we're trying
+
+1354
+01:06:01,960 --> 01:06:03,680
+to set our own
+standards, effectively
+
+1355
+01:06:03,680 --> 01:06:06,280
+self-regulated
+as a principles.
+
+1356
+01:06:06,950 --> 01:06:09,020
+In terms of what
+does it mean?
+
+1357
+01:06:09,020 --> 01:06:11,140
+Could we be agentic
+crafters maybe?
+
+1358
+01:06:11,600 --> 01:06:13,600
+And which means
+that we're slowly
+
+1359
+01:06:13,600 --> 01:06:15,780
+trying to embrace
+the disciplines
+
+1360
+01:06:15,780 --> 01:06:17,300
+of engineering
+progressively.
+
+1361
+01:06:18,580 --> 01:06:22,660
+and the governance
+structure being primarily
+
+1362
+01:06:22,660 --> 01:06:25,440
+let's say we skip
+this one but the
+
+1363
+01:06:25,440 --> 01:06:28,100
+methodology right tier
+one could be a certificate
+
+1364
+01:06:28,100 --> 01:06:30,800
+and a badge program
+which is like you
+
+1365
+01:06:30,800 --> 01:06:32,840
+know you demonstrate
+a single focus course
+
+1366
+01:06:32,840 --> 01:06:35,960
+maybe serafina within
+roof flow right people
+
+1367
+01:06:35,960 --> 01:06:38,780
+earn a digital badge
+for that right so we
+
+1368
+01:06:38,780 --> 01:06:41,200
+get some creation on
+that and then we could
+
+1369
+01:06:41,200 --> 01:06:44,600
+go down to some more
+in-depth things like
+
+1370
+01:06:44,600 --> 01:06:48,100
+really study probably
+some of the deeper
+
+1371
+01:06:48,100 --> 01:06:52,160
+repos like swarm you
+know basically and you
+
+1372
+01:06:52,160 --> 01:06:54,780
+know and other stuff
+and then you demonstrate
+
+1373
+01:06:54,780 --> 01:06:57,120
+to a process some
+competency which is
+
+1374
+01:06:57,120 --> 01:06:59,820
+where you get a levels
+of certifications
+
+1375
+01:06:59,820 --> 01:07:03,300
+right at a tier one level
+and then progressively
+
+1376
+01:07:03,300 --> 01:07:06,080
+i think as we mature
+we try and move
+
+1377
+01:07:06,080 --> 01:07:08,720
+towards the engineer
+designation that we are
+
+1378
+01:07:08,720 --> 01:07:11,360
+all debating but i
+think this is something
+
+1379
+01:07:11,360 --> 01:07:13,780
+we have enough today
+for a number of us
+
+1380
+01:07:13,780 --> 01:07:16,240
+here today to get
+certified and on this one
+
+1381
+01:07:16,900 --> 01:07:20,640
+right so um that is
+that is priority but
+
+1382
+01:07:20,640 --> 01:07:23,000
+please have a feel free
+to read through it but
+
+1383
+01:07:23,000 --> 01:07:24,660
+the way to explain
+this is that there's a
+
+1384
+01:07:24,660 --> 01:07:26,940
+mind map here this is
+primarily the sources
+
+1385
+01:07:26,940 --> 01:07:29,940
+for this is the entire
+whatsapp chat over the
+
+1386
+01:07:29,940 --> 01:07:32,340
+last few months and i
+think i've taken chris
+
+1387
+01:07:32,340 --> 01:07:34,180
+your document which
+you shared the other
+
+1388
+01:07:34,180 --> 01:07:36,480
+day so this is the wider
+discussion and this
+
+1389
+01:07:36,480 --> 01:07:39,100
+is the other one and
+there is a mind map
+
+1390
+01:07:39,100 --> 01:07:41,860
+here which you can you
+can basically so month
+
+1391
+01:07:42,720 --> 01:07:45,360
+we have a question for
+you yeah for someone
+
+1392
+01:07:45,360 --> 01:07:48,220
+who is certified as an
+entry level whatever
+
+1393
+01:07:48,220 --> 01:07:51,320
+the term ultimately
+is yeah does that
+
+1394
+01:07:51,320 --> 01:07:54,140
+certification expire or
+is there some sort of time
+
+1395
+01:07:54,140 --> 01:07:56,460
+component because
+this this space will
+
+1396
+01:07:56,460 --> 01:07:59,400
+still continue to evolve
+six months is what you
+
+1397
+01:07:59,400 --> 01:08:00,620
+should dedicate i think
+i would also about
+
+1398
+01:08:00,620 --> 01:08:02,380
+to say 12 months but
+i should i think we
+
+1399
+01:08:02,380 --> 01:08:04,860
+should and i i that's a
+lot of work six months
+
+1400
+01:08:04,860 --> 01:08:08,140
+i i we we all have
+lives and jobs i think
+
+1401
+01:08:08,140 --> 01:08:10,840
+in fairness to if i
+was doing this i don't
+
+1402
+01:08:10,840 --> 01:08:12,740
+think i want to do
+this every six months i
+
+1403
+01:08:12,740 --> 01:08:15,560
+think that i even though
+the space is moving
+
+1404
+01:08:15,560 --> 01:08:18,460
+at an astronomically
+fast pace we have to be
+
+1405
+01:08:18,460 --> 01:08:21,200
+fair to the people doing
+it and and and have
+
+1406
+01:08:21,200 --> 01:08:23,940
+some kind of window
+that's not so crazy
+
+1407
+01:08:23,940 --> 01:08:25,700
+you have to continually
+do it every you know
+
+1408
+01:08:25,700 --> 01:08:28,420
+i agree a fixed renewal
+is probably not the
+
+1409
+01:08:28,420 --> 01:08:30,700
+answer i'm wondering
+to what extent adding a
+
+1410
+01:08:30,700 --> 01:08:33,160
+vintage for lack of a
+better term to be more
+
+1411
+01:08:33,160 --> 01:08:35,620
+appropriate so i like
+vintage it's almost
+
+1412
+01:08:35,620 --> 01:08:38,200
+like it has a half-life
+right like your your
+
+1413
+01:08:38,200 --> 01:08:40,810
+accreditation only
+has this has quite a
+
+1414
+01:08:40,810 --> 01:08:43,360
+relatively short half
+-life until you need to
+
+1415
+01:08:43,360 --> 01:08:46,280
+pop it up yeah well the
+vintage is interesting
+
+1416
+01:08:46,280 --> 01:08:49,300
+because you know let's
+let's use me as an
+
+1417
+01:08:49,300 --> 01:08:53,220
+example i'm a cloud
+guy circa like 2006 so
+
+1418
+01:08:53,220 --> 01:08:56,700
+my vintage is ancient
+in the cloud world and
+
+1419
+01:08:56,700 --> 01:08:58,360
+you know for a lot
+of the things in the
+
+1420
+01:08:58,360 --> 01:09:00,580
+cloud in the cloud
+space at this point i'm
+
+1421
+01:09:00,580 --> 01:09:03,860
+probably out of touch
+with the the inner nuances
+
+1422
+01:09:03,860 --> 01:09:06,100
+of like aws because
+i haven't really used
+
+1423
+01:09:06,100 --> 01:09:08,940
+it in 10 years and
+that would you know so
+
+1424
+01:09:08,940 --> 01:09:12,200
+but on the flip side
+that vintage gives me
+
+1425
+01:09:12,200 --> 01:09:17,020
+perspective of two decades
+of sort of you know
+
+1426
+01:09:17,020 --> 01:09:19,160
+so the reason you'd
+want to use me for cloud
+
+1427
+01:09:19,160 --> 01:09:21,380
+computing probably
+right now wouldn't be
+
+1428
+01:09:21,380 --> 01:09:24,440
+to like implement your
+aws infrastructure i'm
+
+1429
+01:09:24,440 --> 01:09:26,900
+not your guy but what
+it does give me is
+
+1430
+01:09:26,900 --> 01:09:29,480
+the the experience of
+two decades of cloud
+
+1431
+01:09:29,480 --> 01:09:33,080
+related work which in
+itself is valuable for
+
+1432
+01:09:33,080 --> 01:09:36,580
+like perspective
+consulting um you know in
+
+1433
+01:09:36,580 --> 01:09:39,440
+broad sort of knowledge
+right so there's there's
+
+1434
+01:09:39,440 --> 01:09:41,920
+always benefits and
+drawbacks to either
+
+1435
+01:09:42,820 --> 01:09:45,060
+well it's good it gives
+you that experience
+
+1436
+01:09:45,060 --> 01:09:48,160
+and as a as an engineer
+actually in that
+
+1437
+01:09:48,160 --> 01:09:50,260
+discipline which
+gives you credibility.
+
+1438
+01:09:51,780 --> 01:09:54,880
+To go to Jed's question
+
+1439
+01:09:54,880 --> 01:09:57,540
+about lawyers
+and doctors,
+
+1440
+01:09:58,500 --> 01:10:02,120
+you get a, for lawyers,
+you pass the bar
+
+1441
+01:10:02,120 --> 01:10:05,220
+exam and you get
+admitted to the bar.
+
+1442
+01:10:05,280 --> 01:10:08,680
+That says that you can
+
+1443
+01:10:08,680 --> 01:10:10,480
+practice law legally.
+
+1444
+01:10:11,380 --> 01:10:15,440
+If you're a doctor,
+you get a degree
+
+1445
+01:10:15,440 --> 01:10:18,610
+and then you have
+to do, you know, a
+
+1446
+01:10:19,180 --> 01:10:22,660
+residency, and you
+may do, you know,
+
+1447
+01:10:22,920 --> 01:10:26,260
+other types of things.
+But in both of those
+
+1448
+01:10:26,260 --> 01:10:29,300
+professions, there's
+continuing education.
+
+1449
+01:10:29,700 --> 01:10:33,370
+So you could offer the
+continuing education,
+
+1450
+01:10:33,370 --> 01:10:36,200
+and someone could
+then ask someone
+
+1451
+01:10:36,200 --> 01:10:38,660
+who was, let's say,
+an entry-level person,
+
+1452
+01:10:38,660 --> 01:10:42,240
+like me if i passed
+i would be maybe an
+
+1453
+01:10:42,240 --> 01:10:45,160
+apprentice to the
+guild that might be a
+
+1454
+01:10:45,160 --> 01:10:49,060
+level so as an
+apprentice someone would
+
+1455
+01:10:49,060 --> 01:10:51,020
+know that i would
+need to be supervised
+
+1456
+01:10:51,680 --> 01:10:55,040
+by someone who was
+a master in the
+
+1457
+01:10:55,040 --> 01:10:58,880
+guild that kind of
+thing and if i went
+
+1458
+01:10:58,880 --> 01:11:01,520
+to apply for a job
+the prospective
+
+1459
+01:11:01,520 --> 01:11:04,140
+employer could ask
+me what's the level
+
+1460
+01:11:04,140 --> 01:11:06,700
+of what of your
+continuing education
+
+1461
+01:11:07,080 --> 01:11:09,980
+so that that's where
+that would come into
+
+1462
+01:11:09,980 --> 01:11:12,500
+play in the marketplace,
+not in the foundation
+
+1463
+01:11:12,500 --> 01:11:14,280
+itself. The foundation
+could offer the
+
+1464
+01:11:14,280 --> 01:11:16,500
+continuing education,
+but it would be
+
+1465
+01:11:16,500 --> 01:11:18,720
+optional for the apprentice
+to decide to do it
+
+1466
+01:11:18,720 --> 01:11:21,300
+or not. But if they
+went out and said that
+
+1467
+01:11:21,300 --> 01:11:24,660
+they had gotten
+those credits and did
+
+1468
+01:11:24,660 --> 01:11:27,260
+not, that would be an
+issue of their trust
+
+1469
+01:11:27,260 --> 01:11:30,920
+level, and that would
+be their problem. that's
+
+1470
+01:11:30,920 --> 01:11:33,400
+it that's probably
+an easy way to solve
+
+1471
+01:11:33,400 --> 01:11:37,060
+it the bigger issue
+for me is one this
+
+1472
+01:11:37,060 --> 01:11:42,700
+field is moving really
+fast and two the people
+
+1473
+01:11:42,700 --> 01:11:46,030
+who would be doing
+the accreditations are
+
+1474
+01:11:46,100 --> 01:11:49,360
+interested in the work
+more than they are
+
+1475
+01:11:49,360 --> 01:11:53,180
+in the bureaucracy
+yeah and if you're
+
+1476
+01:11:53,180 --> 01:11:55,680
+gonna the more you
+standardize the more you're
+
+1477
+01:11:55,680 --> 01:11:59,260
+going to bureaucratize
+the process and
+
+1478
+01:11:59,260 --> 01:12:04,060
+you will then lose your
+best people who would
+
+1479
+01:12:04,060 --> 01:12:07,000
+be able to evaluate
+the level of a person.
+
+1480
+01:12:07,000 --> 01:12:10,320
+So my recommendation
+to the group would
+
+1481
+01:12:10,320 --> 01:12:14,720
+be let the person
+themselves say what
+
+1482
+01:12:14,720 --> 01:12:17,460
+they're going to do and
+you watch them do it.
+
+1483
+01:12:17,600 --> 01:12:22,400
+And like Jed made a
+modification for the
+
+1484
+01:12:22,400 --> 01:12:24,700
+random numbers, how he
+would go about finding
+
+1485
+01:12:24,700 --> 01:12:27,800
+a random number and
+verifying it for Reuven.
+
+1486
+01:12:27,800 --> 01:12:29,080
+And Reuven said, yeah,
+that's a good way of
+
+1487
+01:12:29,080 --> 01:12:31,140
+doing it. That's the
+kind of thing you want
+
+1488
+01:12:31,140 --> 01:12:35,060
+to see. What is their
+skill level, really?
+
+1489
+01:12:35,060 --> 01:12:37,900
+What is their ability
+to solve the problem?
+
+1490
+01:12:38,780 --> 01:12:41,040
+And what's their
+familiarity
+
+1491
+01:12:41,040 --> 01:12:42,200
+with the process?
+
+1492
+01:12:42,700 --> 01:12:45,800
+And then the interest
+level of the people
+
+1493
+01:12:45,800 --> 01:12:50,160
+doing the evaluation could
+be maintained because
+
+1494
+01:12:50,160 --> 01:12:51,800
+they'd be curious
+to see if they would
+
+1495
+01:12:51,800 --> 01:12:54,190
+learn something in
+the process as well so
+
+1496
+01:12:54,300 --> 01:12:59,200
+that's yeah that's my
+my i'm going to shut up
+
+1497
+01:12:59,850 --> 01:13:02,220
+that's very insightful
+i think because it
+
+1498
+01:13:02,220 --> 01:13:04,440
+actually demonstrates
+that there's a two-way
+
+1499
+01:13:04,440 --> 01:13:06,700
+relationship there
+between the apprentice and
+
+1500
+01:13:06,700 --> 01:13:10,520
+the and the master right
+but that the master
+
+1501
+01:13:10,520 --> 01:13:13,400
+can actually learn
+something from from their
+
+1502
+01:13:13,400 --> 01:13:17,360
+apprentices and um we
+can all grow together
+
+1503
+01:13:17,360 --> 01:13:20,420
+i love that so yeah
+let's let's be let's
+
+1504
+01:13:20,420 --> 01:13:22,480
+be honest for a moment
+this idea of a master
+
+1505
+01:13:22,480 --> 01:13:26,020
+is is is a is an
+interesting idea because i
+
+1506
+01:13:26,020 --> 01:13:29,480
+i routinely feel like
+a fraud that doesn't
+
+1507
+01:13:29,480 --> 01:13:31,100
+know what the **** i'm
+doing you know in some
+
+1508
+01:13:31,100 --> 01:13:32,720
+days i feel like the
+captain of the universe
+
+1509
+01:13:32,720 --> 01:13:34,580
+but you know and then
+there's days where
+
+1510
+01:13:34,580 --> 01:13:36,280
+nothing works and i'm
+like do i even know
+
+1511
+01:13:36,280 --> 01:13:38,720
+what the **** i'm doing
+you know so there's
+
+1512
+01:13:38,720 --> 01:13:40,540
+there's always going
+to be that level of I
+
+1513
+01:13:40,540 --> 01:13:43,520
+need to learn something
+new. And for, for me,
+
+1514
+01:13:43,740 --> 01:13:46,480
+the, those days where
+I do feel like a
+
+1515
+01:13:46,480 --> 01:13:48,740
+complete and total
+fraud are the days
+
+1516
+01:13:48,740 --> 01:13:52,620
+that I actually push
+myself to learn or
+
+1517
+01:13:52,620 --> 01:13:55,000
+do something I've
+never tried before to
+
+1518
+01:13:55,000 --> 01:13:57,040
+make myself almost
+feel like I'm not a
+
+1519
+01:13:57,040 --> 01:13:58,940
+fraud or something.
+That's like all of
+
+1520
+01:13:58,940 --> 01:14:01,520
+my psychological
+issues, I'm sure. But,
+
+1521
+01:14:01,640 --> 01:14:04,820
+um, you know, that,
+so that said, I think
+
+1522
+01:14:04,820 --> 01:14:08,780
+we, you know, part of
+this is is you know a
+
+1523
+01:14:08,780 --> 01:14:12,880
+combination of technical
+capability and um
+
+1524
+01:14:12,880 --> 01:14:17,720
+almost like curiosity
+and like i can actually
+
+1525
+01:14:17,720 --> 01:14:20,980
+i'm in confidence
+that i can do it you
+
+1526
+01:14:20,980 --> 01:14:23,960
+know yeah i don't know
+maybe i'm blabbing here
+
+1527
+01:14:23,960 --> 01:14:26,660
+that's the layer between
+like experimental
+
+1528
+01:14:26,660 --> 01:14:31,010
+r&d and really
+pushing the maximum uh
+
+1529
+01:14:31,010 --> 01:14:33,480
+possible ramifications
+of these new tool sets
+
+1530
+01:14:33,480 --> 01:14:37,140
+and then what condenses
+just behind that and
+
+1531
+01:14:37,140 --> 01:14:41,840
+this new um understanding
+of what's repeatable
+
+1532
+01:14:41,840 --> 01:14:45,640
+and and uh creatable
+so that's i mean
+
+1533
+01:14:45,640 --> 01:14:49,640
+i applaud it the you know
+the the uh experience
+
+1534
+01:14:49,640 --> 01:14:52,700
+of being in the area
+of the uncertain
+
+1535
+01:14:52,700 --> 01:14:55,140
+with these new tools
+is really where all
+
+1536
+01:14:55,140 --> 01:14:57,140
+these incredible new
+insights are coming from
+
+1537
+01:14:57,500 --> 01:15:00,060
+honestly just to
+clarify something here
+
+1538
+01:15:00,060 --> 01:15:02,200
+though guys yeah
+just to clarify
+
+1539
+01:15:02,200 --> 01:15:04,180
+something here guys
+when the when the
+
+1540
+01:15:04,180 --> 01:15:07,000
+master reviews you
+know the an apprentice
+
+1541
+01:15:07,000 --> 01:15:08,680
+who's looking for
+an accreditation
+
+1542
+01:15:08,960 --> 01:15:11,760
+it's not the master
+that is actually giving
+
+1543
+01:15:11,760 --> 01:15:13,780
+the accreditation that
+master is actually
+
+1544
+01:15:13,780 --> 01:15:16,420
+working on behalf
+of the foundation
+
+1545
+01:15:16,420 --> 01:15:19,020
+and ultimately the
+accreditation and the
+
+1546
+01:15:19,020 --> 01:15:20,820
+passing grade comes
+from the foundation
+
+1547
+01:15:20,820 --> 01:15:24,180
+not the master that
+that reviews the work
+
+1548
+01:15:24,550 --> 01:15:26,300
+so it doesn't matter
+who it is whether
+
+1549
+01:15:26,300 --> 01:15:28,160
+Whether it's Jed,
+whether it's you, Chris,
+
+1550
+01:15:28,160 --> 01:15:29,700
+whether it's me,
+whether it's, you know,
+
+1551
+01:15:29,700 --> 01:15:32,820
+Reuben, they give a
+passing grade, but that
+
+1552
+01:15:32,820 --> 01:15:34,980
+passing grade comes
+from a foundation.
+
+1553
+01:15:37,140 --> 01:15:40,240
+And the foundation
+will, I guess, need
+
+1554
+01:15:40,240 --> 01:15:42,720
+to agree on what are
+the certain standards
+
+1555
+01:15:42,720 --> 01:15:44,820
+so that we can maintain
+a certain level
+
+1556
+01:15:44,820 --> 01:15:47,060
+of quality. And I
+think some of those
+
+1557
+01:15:47,060 --> 01:15:50,360
+things may be around,
+like, do you have
+
+1558
+01:15:50,360 --> 01:15:53,160
+the right mindset? I'm
+not so sure standard
+
+1559
+01:15:53,160 --> 01:15:56,560
+is appropriate here
+because it implies
+
+1560
+01:15:56,560 --> 01:15:59,700
+there is a prescribed
+way of thinking.
+
+1561
+01:15:59,910 --> 01:16:03,020
+Is there some other
+way to measure problem
+
+1562
+01:16:03,020 --> 01:16:05,980
+-solving capacity
+using specific tools?
+
+1563
+01:16:06,720 --> 01:16:10,980
+uh if i can jump in i
+come from a background
+
+1564
+01:16:10,980 --> 01:16:13,140
+where i have been
+running hands-on
+
+1565
+01:16:13,140 --> 01:16:16,240
+boot camps um here
+back in india for a
+
+1566
+01:16:16,240 --> 01:16:18,860
+bunch of unicorns and
+for some uh companies
+
+1567
+01:16:18,860 --> 01:16:21,300
+back in the bay area
+as well and it's
+
+1568
+01:16:21,300 --> 01:16:22,620
+a really interesting
+question it's the
+
+1569
+01:16:22,620 --> 01:16:24,980
+same thing how do
+you certify somebody
+
+1570
+01:16:25,280 --> 01:16:27,840
+especially since every
+context is different
+
+1571
+01:16:27,840 --> 01:16:30,060
+folks come with different
+styles with different
+
+1572
+01:16:30,060 --> 01:16:33,730
+skills You don't want
+to box them into X,
+
+1573
+01:16:33,730 --> 01:16:37,920
+Y, Z is the way, but
+you also want at some
+
+1574
+01:16:37,920 --> 01:16:40,440
+level to create a
+benchmark and say that
+
+1575
+01:16:40,440 --> 01:16:43,780
+somebody coming out of
+this has already these
+
+1576
+01:16:43,780 --> 01:16:46,040
+first principles that
+they're experientially
+
+1577
+01:16:46,040 --> 01:16:49,320
+demonstrating. right
+and and for me i think
+
+1578
+01:16:49,320 --> 01:16:51,900
+at a very high 50 mile
+level when i look at
+
+1579
+01:16:51,900 --> 01:16:54,200
+the problem you guys
+are cracking right now
+
+1580
+01:16:54,200 --> 01:16:57,360
+i think it's more of
+figuring out hey what
+
+1581
+01:16:57,360 --> 01:16:59,560
+are these conventions
+that we believe is part
+
+1582
+01:16:59,560 --> 01:17:02,260
+of the core culture of
+agentics what would i
+
+1583
+01:17:02,260 --> 01:17:05,160
+like to see from an
+apprentice as under a
+
+1584
+01:17:05,160 --> 01:17:07,240
+journeyman and a master
+in terms of what he
+
+1585
+01:17:07,240 --> 01:17:11,720
+can put out there um
+within let's say 90 minutes
+
+1586
+01:17:11,720 --> 01:17:13,940
+and and and this is
+what i would do in an
+
+1587
+01:17:13,940 --> 01:17:16,640
+art large arc that told
+me hey nikyo you're
+
+1588
+01:17:16,640 --> 01:17:18,260
+going to give us a lot
+of philosophy about
+
+1589
+01:17:18,260 --> 01:17:20,300
+agile and XP. This is
+going to distract folks
+
+1590
+01:17:20,300 --> 01:17:22,620
+from production. I
+would say, hey, let's
+
+1591
+01:17:22,620 --> 01:17:24,960
+just measure what's
+your average time to
+
+1592
+01:17:24,960 --> 01:17:27,700
+productivity and what do
+you mean by productivity?
+
+1593
+01:17:27,700 --> 01:17:30,420
+And then I would go
+back and I would say,
+
+1594
+01:17:30,420 --> 01:17:33,240
+how can I build parity
+and muzzle memory and
+
+1595
+01:17:33,240 --> 01:17:36,800
+judgment and design
+skills and then expose
+
+1596
+01:17:36,800 --> 01:17:39,900
+them to the complexity
+in such a way that we
+
+1597
+01:17:39,900 --> 01:17:42,220
+can then bring them
+back on the floor and
+
+1598
+01:17:42,220 --> 01:17:45,460
+then let independent teams
+put them on the floor
+
+1599
+01:17:45,460 --> 01:17:47,960
+And then two months
+later, go back in and
+
+1600
+01:17:47,960 --> 01:17:50,360
+observe, okay, did I
+move the needles, right?
+
+1601
+01:17:50,360 --> 01:17:54,300
+And one thing I've
+seen is that when you,
+
+1602
+01:17:54,300 --> 01:17:57,240
+especially with larger
+arts, when you try to
+
+1603
+01:17:57,240 --> 01:18:00,160
+claim something, a
+lot of effort is just
+
+1604
+01:18:00,160 --> 01:18:05,600
+lost in defending and
+yak shaving around the
+
+1605
+01:18:05,600 --> 01:18:08,900
+verge. But if you go
+move a needle, you move
+
+1606
+01:18:08,900 --> 01:18:11,200
+a needle. And I would
+say that if there was
+
+1607
+01:18:11,200 --> 01:18:14,300
+a certification that
+I would care about, it
+
+1608
+01:18:14,300 --> 01:18:17,380
+would be because I had
+the peer group or the
+
+1609
+01:18:17,380 --> 01:18:19,700
+network here at Agentic
+Foundation acknowledge
+
+1610
+01:18:19,700 --> 01:18:22,800
+that I could move ball
+at this sophistication
+
+1611
+01:18:22,800 --> 01:18:24,800
+level and at that
+speed, right? And that
+
+1612
+01:18:24,800 --> 01:18:26,380
+would really make sense
+to me. I would come
+
+1613
+01:18:26,380 --> 01:18:28,740
+and ask you guys to
+peer review me. So those
+
+1614
+01:18:28,740 --> 01:18:30,300
+were my thoughts. I
+thought I should add.
+
+1615
+01:18:31,900 --> 01:18:33,580
+Fair. Love that.
+
+1616
+01:18:33,580 --> 01:18:36,480
+Love that. All right.
+So we want to do this.
+
+1617
+01:18:36,480 --> 01:18:37,920
+I think we all are
+in agreement that we
+
+1618
+01:18:37,920 --> 01:18:40,440
+want to create some
+kind of certification.
+
+1619
+01:18:42,600 --> 01:18:44,560
+There's been a
+number of comments
+
+1620
+01:18:44,560 --> 01:18:46,240
+from folks that
+this should
+
+1621
+01:18:46,240 --> 01:18:48,720
+not just be
+for developers.
+
+1622
+01:18:48,760 --> 01:18:52,100
+I think Dave Gratton
+was particularly
+
+1623
+01:18:52,790 --> 01:18:55,920
+important in terms of
+if you're a project
+
+1624
+01:18:55,920 --> 01:18:59,140
+manager or you're more
+business orientated,
+
+1625
+01:18:59,140 --> 01:19:02,080
+like you still should
+be able to get a
+
+1626
+01:19:02,080 --> 01:19:04,300
+level of like a credit,
+you know, agentic
+
+1627
+01:19:04,300 --> 01:19:05,980
+accreditation that
+doesn't involve you
+
+1628
+01:19:05,980 --> 01:19:08,230
+having to go into the
+finer details of like
+
+1629
+01:19:08,230 --> 01:19:10,620
+the code. And I think
+that that's a fair,
+
+1630
+01:19:10,880 --> 01:19:13,840
+a fair thing to,
+to one as well.
+
+1631
+01:19:14,180 --> 01:19:15,920
+So this should, there
+be, there should
+
+1632
+01:19:15,920 --> 01:19:18,040
+probably be a couple
+of different paths.
+
+1633
+01:19:18,160 --> 01:19:20,860
+One is highly technical,
+which is kind of
+
+1634
+01:19:20,860 --> 01:19:23,760
+the area where I'm
+comfortable and the other
+
+1635
+01:19:23,760 --> 01:19:27,600
+should probably be
+more administrative or
+
+1636
+01:19:27,670 --> 01:19:29,360
+I'm not even sure
+what to call it. like
+
+1637
+01:19:29,360 --> 01:19:31,500
+knowledgeable about
+the space or something?
+
+1638
+01:19:32,520 --> 01:19:35,180
+It's a class of
+solution. One class is
+
+1639
+01:19:35,180 --> 01:19:38,040
+code. The other class
+is whatever LLMs
+
+1640
+01:19:38,040 --> 01:19:39,680
+can output that are
+still useful. So
+
+1641
+01:19:39,680 --> 01:19:41,980
+perhaps prompting
+better, deeper research.
+
+1642
+01:19:42,040 --> 01:19:43,560
+Deeper researcher.
+
+1643
+01:19:44,700 --> 01:19:46,200
+Yeah, exactly.
+
+1644
+01:19:46,430 --> 01:19:47,780
+We want to be inclusive.
+
+1645
+01:19:48,240 --> 01:19:50,420
+We want to be
+inclusive in a world
+
+1646
+01:19:50,420 --> 01:19:51,780
+where there's
+different types of
+
+1647
+01:19:51,780 --> 01:19:56,360
+capabilities, mindsets,
+and we want to,
+
+1648
+01:19:56,440 --> 01:19:58,850
+i don't think we want
+to limit it just to
+
+1649
+01:19:58,850 --> 01:20:01,780
+uber nerds not that i
+have any problem with
+
+1650
+01:20:01,780 --> 01:20:05,020
+uber nerds i i am one
+but we should uh we
+
+1651
+01:20:05,020 --> 01:20:07,420
+should try to be as
+inclusive as we can be
+
+1652
+01:20:07,420 --> 01:20:09,680
+well that's how
+technology as a discipline
+
+1653
+01:20:09,680 --> 01:20:11,800
+started a collection
+of uber nerds figuring
+
+1654
+01:20:11,800 --> 01:20:13,520
+out how to talk to
+each other over wires
+
+1655
+01:20:13,520 --> 01:20:16,820
+without voice well
+the internet anyway
+
+1656
+01:20:16,820 --> 01:20:20,820
+that's right our whistles
+and whales oh but
+
+1657
+01:20:20,820 --> 01:20:23,360
+who was speaking of
+course i didn't see the
+
+1658
+01:20:23,360 --> 01:20:25,640
+name uh the person
+who was speaking about
+
+1659
+01:20:25,640 --> 01:20:28,040
+the boot camps they
+already reached out one
+
+1660
+01:20:28,040 --> 01:20:30,720
+tweet they say they're
+connected oh all
+
+1661
+01:20:30,720 --> 01:20:33,220
+right lovely okay all
+right thank you and
+
+1662
+01:20:33,220 --> 01:20:34,860
+just for the record
+i'm gonna hang on to
+
+1663
+01:20:34,860 --> 01:20:37,360
+egenic engineering as a
+term because i love it
+
+1664
+01:20:37,360 --> 01:20:40,380
+i think it makes a ton
+of sense and i think
+
+1665
+01:20:40,380 --> 01:20:43,000
+it was august 2024
+when you first uh
+
+1666
+01:20:43,000 --> 01:20:46,200
+coined that term roof.
+And it's got a lot of
+
+1667
+01:20:46,200 --> 01:20:49,820
+steam. So I take it
+as a verb, not a noun.
+
+1668
+01:20:50,380 --> 01:20:53,900
+I bought the
+domain in August.
+
+1669
+01:20:55,120 --> 01:20:58,460
+It started with a
+Gentix. And actually,
+
+1670
+01:20:58,460 --> 01:21:01,600
+a long, long time
+ago, when I was still
+
+1671
+01:21:01,600 --> 01:21:04,280
+in the cloud version
+of all this, the
+
+1672
+01:21:04,280 --> 01:21:07,220
+original vision for
+cloud computing was
+
+1673
+01:21:07,220 --> 01:21:09,320
+essentially autonomous
+systems that
+
+1674
+01:21:09,320 --> 01:21:12,420
+could self-build and
+optimize and deploy.
+
+1675
+01:21:12,420 --> 01:21:15,100
+And obviously, a lot
+of that wasn't possible
+
+1676
+01:21:15,100 --> 01:21:18,760
+until essentially 2022
+when, you know, GPT
+
+1677
+01:21:18,760 --> 01:21:21,360
+-3 came out. At which
+point, and I'm going to
+
+1678
+01:21:21,360 --> 01:21:23,680
+be totally honest
+with you guys, I asked
+
+1679
+01:21:23,680 --> 01:21:25,840
+ChatGPT what the **** I
+should do with my life.
+
+1680
+01:21:25,840 --> 01:21:28,220
+And it says, you know,
+based on your cloud
+
+1681
+01:21:28,220 --> 01:21:30,200
+background and your
+interest in infrastructure,
+
+1682
+01:21:30,200 --> 01:21:33,100
+you should do something
+involving, you
+
+1683
+01:21:33,100 --> 01:21:36,460
+know, that in AI. and
+then through collaborative
+
+1684
+01:21:36,460 --> 01:21:38,440
+stuff it's like
+well you should do
+
+1685
+01:21:38,440 --> 01:21:40,300
+something called agentics
+now i have absolutely
+
+1686
+01:21:40,300 --> 01:21:43,040
+no idea if i was the first
+or not and it doesn't
+
+1687
+01:21:43,040 --> 01:21:44,380
+matter to be completely
+honest with you
+
+1688
+01:21:44,380 --> 01:21:47,720
+guys at which point i
+started posting stuff
+
+1689
+01:21:47,720 --> 01:21:51,940
+about it that's it so
+it would have been march
+
+1690
+01:21:51,940 --> 01:21:54,260
+ish 2022 when i
+started using it anyway
+
+1691
+01:21:54,260 --> 01:21:56,880
+with the genics yeah
+yeah genics and then that
+
+1692
+01:21:56,880 --> 01:21:58,720
+led to like engineering
+and blah blah blah
+
+1693
+01:21:58,720 --> 01:22:01,620
+and here we are today
+but yeah you know really
+
+1694
+01:22:01,620 --> 01:22:03,260
+who who cares who
+came up with the term
+
+1695
+01:22:03,260 --> 01:22:05,660
+first it really i'm
+sure there's plenty of
+
+1696
+01:22:05,660 --> 01:22:08,020
+people probably using
+it before me but the the
+
+1697
+01:22:08,020 --> 01:22:10,280
+reality is that what
+we want to do right now
+
+1698
+01:22:10,280 --> 01:22:14,580
+is is make it a a
+legitimate x like an area
+
+1699
+01:22:14,580 --> 01:22:19,420
+of study that is
+rational quantifiable you
+
+1700
+01:22:19,420 --> 01:22:21,660
+know it's a profession
+that's that's our
+
+1701
+01:22:21,660 --> 01:22:25,160
+that's our objective here
+and i if we can achieve
+
+1702
+01:22:25,160 --> 01:22:27,960
+that then i i'm i
+feel like i've left a
+
+1703
+01:22:27,960 --> 01:22:33,320
+enduring mark in the
+space there that's all
+
+1704
+01:22:33,320 --> 01:22:38,320
+i gotta say about that
+yeah yeah so a lot a
+
+1705
+01:22:38,320 --> 01:22:40,060
+lot of people get caught
+up on like who who
+
+1706
+01:22:40,060 --> 01:22:43,520
+coined what right it's
+like anyway who cares
+
+1707
+01:22:45,380 --> 01:22:49,440
+oh by by the way
+according to i i according
+
+1708
+01:22:49,440 --> 01:22:52,940
+to my latest analysis
+my my system is real
+
+1709
+01:22:52,940 --> 01:22:58,340
+thank god or maybe not
+so just just for for
+
+1710
+01:22:58,340 --> 01:23:00,120
+those who are interested
+i did a direct
+
+1711
+01:23:00,120 --> 01:23:03,080
+comparison of tensorflow
+and my neural network
+
+1712
+01:23:03,080 --> 01:23:09,780
+system and got the same
+result so um that's
+
+1713
+01:23:09,780 --> 01:23:12,860
+generally how i and how
+i go about validating
+
+1714
+01:23:12,860 --> 01:23:16,240
+the stuff i do is
+i take the approach
+
+1715
+01:23:16,240 --> 01:23:19,510
+that everything i do is
+fake and not real and
+
+1716
+01:23:19,560 --> 01:23:22,420
+until proven otherwise
+and then a month
+
+1717
+01:23:22,420 --> 01:23:24,280
+later i'm still trying
+to prove that it's real
+
+1718
+01:23:25,250 --> 01:23:30,920
+so so getting the same
+results from tensorflow
+
+1719
+01:23:30,920 --> 01:23:34,700
+and mine you know
+if if if that's a if
+
+1720
+01:23:34,700 --> 01:23:36,420
+that's a simulation
+it's the world's best
+
+1721
+01:23:36,420 --> 01:23:40,200
+simulation i just
+completely simulated uh uh
+
+1722
+01:23:40,200 --> 01:23:43,380
+tensorflow on multiple
+vectors so when you
+
+1723
+01:23:43,380 --> 01:23:46,460
+say when you say your
+system rUv is that
+
+1724
+01:23:46,460 --> 01:23:49,240
+called flawed flow
+called nexus what did you
+
+1725
+01:23:49,240 --> 01:23:52,760
+compare it against i'm
+well underpinning all
+
+1726
+01:23:52,760 --> 01:23:54,480
+the stuff that i do
+with my neural networks
+
+1727
+01:23:54,480 --> 01:23:57,300
+is my uh concept of
+micro neural networks
+
+1728
+01:23:57,300 --> 01:23:59,780
+with jed and ocean and
+others helped to sort
+
+1729
+01:23:59,780 --> 01:24:02,200
+of help me sort of
+put together and that
+
+1730
+01:24:02,200 --> 01:24:07,000
+that's using uh the roof
+fan and neurodivergent
+
+1731
+01:24:07,000 --> 01:24:09,350
+which is basically
+the roof swarm system
+
+1732
+01:24:09,350 --> 01:24:12,320
+that allows me to use
+the wasms and then
+
+1733
+01:24:12,320 --> 01:24:15,860
+invoke those wasms to
+do various types of
+
+1734
+01:24:15,860 --> 01:24:19,060
+neural network modeling
+now what i did for that
+
+1735
+01:24:19,060 --> 01:24:24,420
+was we took the c is a
+c or c plus c library
+
+1736
+01:24:24,420 --> 01:24:26,600
+i think it was for
+the fan which is a
+
+1737
+01:24:26,600 --> 01:24:29,500
+popular uh neural network
+library imported it
+
+1738
+01:24:29,500 --> 01:24:33,560
+rewrote it essentially
+for uh rust and then
+
+1739
+01:24:33,560 --> 01:24:37,000
+made those rust wasms
+and and then distributed
+
+1740
+01:24:37,000 --> 01:24:39,600
+them as an MPX. So
+when you look at all
+
+1741
+01:24:39,600 --> 01:24:41,400
+the neural network
+things I'm doing, I'm
+
+1742
+01:24:41,400 --> 01:24:43,980
+essentially just using
+those WASMs. So if those
+
+1743
+01:24:43,980 --> 01:24:47,060
+WASMs are compelling
+fraud or forgeries,
+
+1744
+01:24:47,060 --> 01:24:49,420
+then everything I
+do going forward are
+
+1745
+01:24:49,420 --> 01:24:52,140
+going to be forgeries.
+But the reality is
+
+1746
+01:24:52,140 --> 01:24:53,640
+if they are forgeries,
+and I'm not saying
+
+1747
+01:24:53,640 --> 01:24:55,260
+they already are,
+I'm pretty sure they
+
+1748
+01:24:55,260 --> 01:24:58,120
+work, is I'm building
+real applications
+
+1749
+01:24:58,120 --> 01:25:00,800
+and solving real
+problems with them, which
+
+1750
+01:25:00,860 --> 01:25:03,360
+in itself should be
+an indication that
+
+1751
+01:25:03,360 --> 01:25:05,060
+there's value to them.
+Like when I'm doing
+
+1752
+01:25:05,060 --> 01:25:06,860
+a trading algorithm,
+it's actually
+
+1753
+01:25:06,860 --> 01:25:08,920
+trading. It's actually
+making money. It's
+
+1754
+01:25:08,920 --> 01:25:11,240
+doing the thing it's
+supposed to do. Right.
+
+1755
+01:25:11,240 --> 01:25:13,680
+And that's, and that's
+the sort of, um,
+
+1756
+01:25:14,040 --> 01:25:16,900
+the back and forth
+with the system. It's
+
+1757
+01:25:16,900 --> 01:25:19,300
+sometimes it tells
+me it's totally fake.
+
+1758
+01:25:19,300 --> 01:25:20,780
+And, but the problem
+with the totally
+
+1759
+01:25:20,780 --> 01:25:24,660
+fake is it can't see
+inside the WASM. It
+
+1760
+01:25:24,660 --> 01:25:27,340
+sees this package
+that contains all the
+
+1761
+01:25:27,340 --> 01:25:29,440
+logic and then says,
+well, it can't be
+
+1762
+01:25:29,440 --> 01:25:31,800
+real. I can't see
+what's in it. And that's
+
+1763
+01:25:31,800 --> 01:25:33,840
+the drawback to
+this sort of rust
+
+1764
+01:25:33,840 --> 01:25:36,700
+-based distribution
+approach that I've taken.
+
+1765
+01:25:36,700 --> 01:25:39,240
+It obfuscates some
+of the complexity.
+
+1766
+01:25:42,560 --> 01:25:46,900
+So if somebody wants
+to leverage your
+
+1767
+01:25:46,900 --> 01:25:50,740
+work that is on par
+with TensorFlow,
+
+1768
+01:25:50,740 --> 01:25:54,000
+then they should
+use Claude Flow.
+
+1769
+01:25:54,780 --> 01:25:59,400
+Or Roof Swarm or just
+the library itself.
+
+1770
+01:25:59,400 --> 01:26:02,780
+um it's i'm you're
+seeing layer cake layer
+
+1771
+01:26:02,780 --> 01:26:04,400
+after layer everything
+i build kind of
+
+1772
+01:26:04,400 --> 01:26:06,680
+built on top of the
+thing i built before so
+
+1773
+01:26:06,680 --> 01:26:08,720
+when you look at like
+the flow nexus system
+
+1774
+01:26:08,720 --> 01:26:10,540
+that's like all the
+other stuff i built
+
+1775
+01:26:10,540 --> 01:26:13,220
+sort of underpinning
+it as a as a service
+
+1776
+01:26:14,000 --> 01:26:16,780
+right it's just built
+kind of on top of
+
+1777
+01:26:16,780 --> 01:26:22,420
+the next so if the
+bottom is ******** then
+
+1778
+01:26:22,420 --> 01:26:24,140
+everything else just
+kind of falls apart
+
+1779
+01:26:26,680 --> 01:26:28,500
+sure i get it awesome
+
+1780
+01:26:28,500 --> 01:26:29,660
+that's good to know yeah
+
+1781
+01:26:31,630 --> 01:26:33,860
+uh all right we're
+almost out of time this
+
+1782
+01:26:33,860 --> 01:26:35,080
+was a really interesting
+discussion we
+
+1783
+01:26:35,080 --> 01:26:38,920
+we created a discord
+group uh for doing
+
+1784
+01:26:38,920 --> 01:26:43,080
+the the idea of an
+accreditation and short
+
+1785
+01:26:43,080 --> 01:26:45,720
+there's some talk
+about doing uh you know
+
+1786
+01:26:45,720 --> 01:26:48,460
+something quick and
+initially that we will
+
+1787
+01:26:48,460 --> 01:26:51,800
+just kind of dog food
+ourselves essentially
+
+1788
+01:26:51,800 --> 01:26:54,340
+self-accreditation
+I think is what
+
+1789
+01:26:54,340 --> 01:26:57,140
+we're calling it where
+we as the kind of
+
+1790
+01:26:57,140 --> 01:27:00,540
+core group will attempt
+to do an accreditation
+
+1791
+01:27:00,540 --> 01:27:02,200
+and take the
+accreditation ourselves
+
+1792
+01:27:03,500 --> 01:27:05,800
+and see how hard it is.
+
+1793
+01:27:06,040 --> 01:27:08,780
+If I can't do it then
+maybe it might be
+
+1794
+01:27:08,780 --> 01:27:10,400
+hard for others to
+do it kind of thing
+
+1795
+01:27:13,120 --> 01:27:15,440
+If there's one thing
+I can leave you
+
+1796
+01:27:15,440 --> 01:27:17,980
+with it would be think
+of it like an RPG.
+
+1797
+01:27:18,420 --> 01:27:21,340
+There are different
+skill trees that's
+
+1798
+01:27:21,340 --> 01:27:22,880
+well there is a skill
+tree and there are
+
+1799
+01:27:22,880 --> 01:27:25,540
+different tracks you
+can go down and as
+
+1800
+01:27:25,540 --> 01:27:28,360
+you go that you go
+on quests you know
+
+1801
+01:27:28,360 --> 01:27:31,540
+maybe flow nexus can
+be a part of that you
+
+1802
+01:27:31,540 --> 01:27:33,020
+know you go on
+these quests and you
+
+1803
+01:27:33,020 --> 01:27:35,980
+pick up your your
+missions and objectives
+
+1804
+01:27:35,980 --> 01:27:39,280
+are achieved and uh
+you can demonstrate
+
+1805
+01:27:40,240 --> 01:27:44,660
+yourself in any of
+these skills just a
+
+1806
+01:27:44,660 --> 01:27:49,800
+thought i like it yeah
+and oh is that skyrim
+
+1807
+01:27:49,800 --> 01:27:52,940
+is that what that is
+i don't think it's
+
+1808
+01:27:52,940 --> 01:27:55,360
+skyrim but it's along
+those lines yeah right
+
+1809
+01:27:56,130 --> 01:28:00,860
+yeah i've been an rpg
+player for like post
+
+1810
+01:28:00,860 --> 01:28:02,840
+pretty much all my
+life i love those games
+
+1811
+01:28:05,520 --> 01:28:08,480
+skill tree is a great
+idea yeah i like
+
+1812
+01:28:08,480 --> 01:28:10,300
+it uh all right we
+got a couple minutes
+
+1813
+01:28:10,300 --> 01:28:13,320
+left any last thoughts
+uh before we sign
+
+1814
+01:28:13,320 --> 01:28:16,360
+off here today we
+got uh ai hackerspace
+
+1815
+01:28:16,360 --> 01:28:18,080
+tomorrow uh chris
+thanks for getting
+
+1816
+01:28:18,080 --> 01:28:19,620
+up at four o'clock
+in the morning i know
+
+1817
+01:28:19,620 --> 01:28:21,720
+you're you're you're
+totally ********
+
+1818
+01:28:22,700 --> 01:28:28,260
+don't ask me it just
+happens yeah um i was
+
+1819
+01:28:28,260 --> 01:28:31,020
+gonna say one thing uh
+i kind of lurked here
+
+1820
+01:28:31,020 --> 01:28:34,280
+today um salesforce
+has an awesome
+
+1821
+01:28:34,280 --> 01:28:37,800
+gamification certification
+path like trailhead or
+
+1822
+01:28:37,800 --> 01:28:39,620
+whatever it's called
+or trailblazers or
+
+1823
+01:28:39,620 --> 01:28:41,980
+something like that
+and even if you're not
+
+1824
+01:28:41,980 --> 01:28:44,900
+into salesforce like
+this is a great model
+
+1825
+01:28:44,990 --> 01:28:47,600
+and it would be really
+good to see this thing
+
+1826
+01:28:47,600 --> 01:28:50,200
+sort of built as able
+to be like extended
+
+1827
+01:28:50,200 --> 01:28:52,210
+through modules or
+whatever and that way
+
+1828
+01:28:52,210 --> 01:28:54,240
+companies like all of us
+have our own companies
+
+1829
+01:28:54,240 --> 01:28:56,620
+we could all use this
+and contribute back
+
+1830
+01:28:56,620 --> 01:29:00,020
+to the main source
+essentially and then
+
+1831
+01:29:00,020 --> 01:29:02,840
+you know even sell to
+clients that way too
+
+1832
+01:29:02,840 --> 01:29:07,240
+it's great very cool
+it's good it's good that
+
+1833
+01:29:07,240 --> 01:29:08,640
+you mentioned that so
+i just throw it out
+
+1834
+01:29:08,640 --> 01:29:10,500
+there so i actually
+work for salesforce
+
+1835
+01:29:10,500 --> 01:29:14,420
+on the trailhead academy
+team so i uh i've
+
+1836
+01:29:14,420 --> 01:29:18,310
+been i'm aware of that
+as well nice dave yeah
+
+1837
+01:29:19,440 --> 01:29:21,800
+yeah when were you
+gonna tell us dave yeah
+
+1838
+01:29:21,800 --> 01:29:24,280
+really and so it's
+just a new it's just a
+
+1839
+01:29:24,280 --> 01:29:27,060
+new thing i just started
+uh they they asked
+
+1840
+01:29:27,060 --> 01:29:29,820
+me to join their team
+and it's all backed
+
+1841
+01:29:29,820 --> 01:29:33,620
+by their agent force
+ai the new push so and
+
+1842
+01:29:33,620 --> 01:29:35,240
+and the work that
+mondweep has been doing
+
+1843
+01:29:35,240 --> 01:29:37,640
+and i'm like oh wow this
+is really overlapping
+
+1844
+01:29:37,640 --> 01:29:39,600
+and intersecting
+with the work we're
+
+1845
+01:29:39,600 --> 01:29:41,720
+doing in the Agentex
+Foundation because they're
+
+1846
+01:29:41,720 --> 01:29:44,320
+using, you know,
+their whole trailhead
+
+1847
+01:29:44,320 --> 01:29:47,800
+academy is doing all
+this AI stuff. So when
+
+1848
+01:29:47,800 --> 01:29:50,960
+I get more info, I'll
+bring it in and I'll
+
+1849
+01:29:50,960 --> 01:29:52,580
+help you and I'll
+share it with you guys.
+
+1850
+01:29:54,580 --> 01:29:56,300
+Fascinating post.
+Congratulations,
+
+1851
+01:29:56,300 --> 01:29:57,420
+David. I mean,
+that sounds
+
+1852
+01:29:57,420 --> 01:29:59,400
+like a sponsorship
+opportunity.
+
+1853
+01:29:59,400 --> 01:30:00,570
+If you could get
+a sponsorship to
+
+1854
+01:30:00,570 --> 01:30:02,200
+collaborate, that
+would be amazing.
+
+1855
+01:30:02,420 --> 01:30:04,780
+I know, I know.
+I'm with you
+
+1856
+01:30:04,780 --> 01:30:06,440
+guys. Believe
+me, I'm with you.
+
+1857
+01:30:07,140 --> 01:30:08,640
+You don't want it.
+
+1858
+01:30:09,630 --> 01:30:11,140
+it's sort of
+like investment
+
+1859
+01:30:11,140 --> 01:30:12,740
+you don't really
+want that money
+
+1860
+01:30:14,220 --> 01:30:17,480
+well they just announced
+a startup incubator
+
+1861
+01:30:17,480 --> 01:30:19,880
+thing two days ago
+as well so it's like
+
+1862
+01:30:19,880 --> 01:30:25,560
+like yeah anyway that's
+great well all right
+
+1863
+01:30:25,720 --> 01:30:28,780
+till tomorrow then
+uh tomorrow 12 p.m
+
+1864
+01:30:28,780 --> 01:30:33,640
+eastern uh ai hacker
+space if uh rob do we have
+
+1865
+01:30:33,640 --> 01:30:36,420
+signed up for
+presentations we've got uh
+
+1866
+01:30:36,420 --> 01:30:38,620
+joe and one other fellow
+just confirming so
+
+1867
+01:30:38,620 --> 01:30:41,020
+we still have two spots
+for demos or lightning
+
+1868
+01:30:41,020 --> 01:30:43,240
+talks tomorrow four
+minutes crisp but
+
+1869
+01:30:43,240 --> 01:30:46,660
+lots of time for q a
+after that and uh yeah
+
+1870
+01:30:46,660 --> 01:30:49,660
+uh you can reach out
+to me on uh discord
+
+1871
+01:30:49,660 --> 01:30:54,500
+whatsapp or a dimple
+perfect as well dimple
+
+1872
+01:30:54,500 --> 01:30:59,020
+francis all right
+till till then thanks
+
+1873
+01:30:59,020 --> 01:31:02,540
+everyone super guys
+thanks ruf okay no problem

@@ -1,0 +1,73 @@
+Ruv Coaching
+Wed, Nov 19, 2025
+
+Summary:
+
+The discussion centered on the Nexidental orthodontics platform, with Mark Allen introducing Nick Kim as a partner. They addressed current project delays, particularly related to HIPAA compliance and security issues. Ruv proposed a hands-on approach to tackle these challenges, suggesting that Nick observe his process. To facilitate progress, Ruv requested access to the necessary code repositories and tools, while Mark provided updates on the project's status.
+
+Ruv emphasized the importance of regular commits in GitHub, noting that Mark's setup was attempting to commit an excessive number of files due to an improperly configured git ignore file. He instructed Mark to update this file to prevent unnecessary libraries from bloating the repository. Ruv also highlighted that Mak had not committed any changes for two months, which hindered progress tracking. He provided step-by-step instructions for committing changes and creating pull requests, addressing potential branch conflicts and the implications of infrequent commits on project management.
+
+The conversation shifted to GitHub administration challenges, particularly regarding recovery processes and HIPAA compliance. Ruv stressed the need for automation to mitigate liabilities, while Krysta expressed her readiness to assist in developing a structured approach based on her enterprise experience. Ruv also discussed the creation of a cleanup agent for directory management and the integration of a checkpoint system to log actions taken by the AI, which would help users track changes effectively. Krysta suggested documenting this process as a standard operating procedure, a proposal that received support from Mark.
+
+Ruv provided a detailed walkthrough on securely sharing project secrets, emphasizing the need to avoid hard-coded variables and the risks associated with sharing .env files in insecure ways. He advised Mak to change any exposed keys and offered guidance on secure credential sharing methods. Ruv also addressed persistent login issues, recommending that Mak use a fresh environment to resolve them. He encouraged the team to simplify the project by focusing on essential functionalities and addressing redundancy in the codebase, with Mark expressing readiness to implement these changes.
+
+
+Chapters & Topics:
+
+Project Update and Technical Discussion
+Mark Allen introduced Nick Kim to Ruv, emphasizing the importance of collaboration on the Nexidental orthodontics platform. Ruv acknowledged the project's delays due to HIPAA compliance issues and suggested taking a lead role to help resolve these challenges. Nick expressed his eagerness to learn from Ruv's expertise as they moved forward.
+
+GitHub Integration and File Management
+rUv highlighted the need for more frequent commits and addressed an issue with Mark Allen's GitHub setup, where 10,000 files were being committed. He identified that the git ignore file was not properly configured, leading to unnecessary files being included. Mark asked if this was the default behavior, to which rUv clarified that it should not be.
+
+Git Commit and Branch Management
+Ruv highlighted the necessity of committing changes frequently in Git, noting that Mak had not committed any work for two months, resulting in a void of progress. He explained the difference between branches and commits, clarifying that branches without commits are essentially empty. Ruv also guided Mak through the process of committing changes and creating a pull request, stressing the need to manage branch conflicts effectively.
+* GitHub practices and the importance of frequent commits.
+
+GitHub Administration and Infrastructure Management
+rUv highlighted two main challenges: managing the GitHub environment for recovery scenarios and overseeing infrastructure management, particularly concerning HIPAA compliance. Krysta shared her relative comfort with GitHub administration and mentioned discussions with Mak and Mark about code management and DevOps. She offered to help develop strategies based on her enterprise experience.
+* HIPAA compliance and security issues in the project.
+
+Code Space Creation and Setup
+rUv explained how to create a new code space, emphasizing the importance of selecting appropriate resources based on project needs. He showcased the process of connecting to the code space via VS Code and installing the required npm packages. Mark Allen noted the efficiency of performing certain tasks in parallel, which rUv confirmed.
+
+Implementation of Cleanup and Checkpointing Features
+Ruv addressed the need for a cleanup agent to manage directory organization and archiving, agreeing with Stuart's idea. He emphasized the functionality of a checkpoint system that records every action taken by the AI, which will be beneficial for troubleshooting. Krysta suggested formalizing this process as a standard operating procedure (SOP), a sentiment echoed by Mark.
+
+Environmental Variables and Run File Setup
+rUv explained the process of setting up the Nexa platform and creating a run.sh file to simplify operations. He identified some minor bash-related issues that need fixing and highlighted the necessity of environmental variables for the system to load correctly. Mark inquired about the difference between using run.sh and npm commands, to which rUv clarified that the run.sh file streamlines the process.
+
+Sharing Project Secrets Securely
+Ruv walked the team through the steps to securely share project secrets, focusing on the correct input of variables in the platform. He highlighted the need for compliance with security standards, noting that hard-coded variables could lead to issues. Mark Allen acknowledged the method's utility for project sharing, while Ruv addressed potential variable issues and the importance of using the secrets function.
+
+Security Best Practices for Sharing Credentials
+rUv highlighted the risks associated with sharing .env files in Zoom chat, warning that it could lead to potential security breaches. Mak was advised to change all keys that were shared, as it is a best practice to avoid sharing sensitive information through insecure channels. Stuart raised a concern about whether the situation would significantly impact Mak, but rUv insisted that changing the keys was necessary due to the high volume of security exploits.
+
+Issue Resolution and Environment Setup
+Ruv addressed the login hang issue and suggested that Mak should work in a new environment. He created a GitHub issue to document minor errors and confirmed that the auto-commit feature is operational, which will help prevent data loss. Ruv also mentioned that some UX issues might be related to sizing.
+
+Streamlining Development for Launch
+rUv advised the team to strip down the project to its core functionalities to ensure a timely launch, suggesting that they identify the most valuable features. He highlighted the importance of addressing redundancy in the codebase to improve performance. Mark Allen acknowledged the need for this approach and was open to making the necessary adjustments.
+* Code redundancy and the need for refactoring skills in the development process.
+* Strategies for identifying minimum viable features for project launch.
+
+
+Action Items:
+
+* rUv will assist in resolving the HIPAA compliance security issues and help get the project back on track.
+* Mak Allen will commit all changes to the branch and push them to the repository.
+* Mak Allen will add the necessary environmental variables to the secrets in the GitHub repository.
+* rUv will help identify the minimum viable features needed for the project launch.
+* rUv will create a new skill to check for redundancy in the code base.
+
+
+Key Questions:
+
+* How can the team improve their GitHub practices to avoid large commits?
+* What steps are necessary to ensure HIPAA compliance in the project?
+* How do we work together to get the project into UAT as quickly as possible?
+
+
+Notepad:
+
+* No notes

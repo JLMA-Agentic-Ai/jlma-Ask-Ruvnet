@@ -1,0 +1,11642 @@
+1
+00:00:01,110 --> 00:00:04,910
+Here we are, September
+25th, and this is
+
+2
+00:00:04,910 --> 00:00:08,030
+the week of my
+disillusionment. I don't
+
+3
+00:00:08,030 --> 00:00:09,950
+know, I've just been
+feeling a little bit
+
+4
+00:00:10,890 --> 00:00:14,010
+beaten down by some of
+these systems a little
+
+5
+00:00:14,010 --> 00:00:16,190
+bit this week. And
+part of that's probably
+
+6
+00:00:16,190 --> 00:00:18,770
+my own doing, by
+trying to see how far
+
+7
+00:00:18,770 --> 00:00:20,670
+I can push the
+boundaries of what I can
+
+8
+00:00:20,670 --> 00:00:23,330
+do, only to realize
+that there was an
+
+9
+00:00:23,330 --> 00:00:26,250
+elaborate sort of
+deception in some of the
+
+10
+00:00:26,250 --> 00:00:28,510
+systems I'm building.
+And then, moreover,
+
+11
+00:00:28,510 --> 00:00:31,310
+I'm not sure if those
+elaborate deceptions
+
+12
+00:00:31,310 --> 00:00:35,750
+are just a feedback
+loop of the system. But
+
+13
+00:00:35,750 --> 00:00:38,010
+anyway, it's been a
+weird week a little
+
+14
+00:00:38,010 --> 00:00:41,430
+bit for some of the...
+And again, I'm sort
+
+15
+00:00:41,430 --> 00:00:44,290
+of the creator of my
+own strange loops.
+
+16
+00:00:44,290 --> 00:00:46,310
+Literally, I create a
+system called Strange
+
+17
+00:00:46,310 --> 00:00:49,230
+Loops to attempt to
+create these kind of
+
+18
+00:00:49,230 --> 00:00:55,390
+sub-nanosecond looping
+structures. that my
+
+19
+00:00:55,390 --> 00:00:58,210
+thesis anyways was
+that if you can create
+
+20
+00:00:58,210 --> 00:01:01,520
+a fast enough loop
+in terms of sub
+
+21
+00:01:01,520 --> 00:01:03,710
+-milliseconds, then you're
+able to create a kind
+
+22
+00:01:03,710 --> 00:01:07,730
+of causal effect. So
+again, I'm digging into
+
+23
+00:01:07,730 --> 00:01:10,690
+some crazy, wacky
+stuff that's really
+
+24
+00:01:10,690 --> 00:01:13,410
+difficult to prove
+because I'm working in an
+
+25
+00:01:13,410 --> 00:01:15,410
+environment that's
+inherently hard to prove,
+
+26
+00:01:15,410 --> 00:01:17,710
+a container in a
+cloud somewhere that
+
+27
+00:01:17,710 --> 00:01:19,910
+doesn't even have direct
+access to the CPU.
+
+28
+00:01:20,210 --> 00:01:22,810
+So lots of quirky,
+strange things
+
+29
+00:01:22,810 --> 00:01:24,150
+that I've been
+working on this week.
+
+30
+00:01:25,650 --> 00:01:28,270
+But anyway, before
+we jump into that,
+
+31
+00:01:28,550 --> 00:01:30,650
+Brad, good to see you.
+You've been working
+
+32
+00:01:30,650 --> 00:01:33,930
+on a number of things
+too in the work
+
+33
+00:01:33,930 --> 00:01:36,390
+we've been doing
+trying to get a kind of
+
+34
+00:01:36,390 --> 00:01:39,210
+accreditation and
+other activities. What
+
+35
+00:01:39,210 --> 00:01:42,170
+have you been up to?
+Well, we've been up
+
+36
+00:01:42,170 --> 00:01:47,650
+to, we have our
+Wednesday technical and
+
+37
+00:01:47,650 --> 00:01:50,390
+website team And one
+of the big things
+
+38
+00:01:50,390 --> 00:01:54,050
+that we talked about
+was by Tuesday, we're
+
+39
+00:01:54,050 --> 00:01:56,430
+having a goal of
+having an Agentex 101.
+
+40
+00:01:56,430 --> 00:01:57,890
+I don't know if you
+want to talk more about
+
+41
+00:01:57,890 --> 00:02:00,130
+that, Reuven, about
+the background and why.
+
+42
+00:02:00,350 --> 00:02:02,530
+But we're looking
+at a one-hour
+
+43
+00:02:03,750 --> 00:02:06,090
+user effort to
+make sure that you
+
+44
+00:02:06,090 --> 00:02:08,290
+understand Agentex.
+You go through
+
+45
+00:02:08,290 --> 00:02:10,050
+three or four
+different modules,
+
+46
+00:02:10,810 --> 00:02:13,450
+medium level of
+sophistication that most
+
+47
+00:02:13,450 --> 00:02:15,590
+of the people here
+should be able to pass.
+
+48
+00:02:15,590 --> 00:02:17,870
+But by the end of it,
+being able to say,
+
+49
+00:02:17,870 --> 00:02:20,150
+yes, you know, at
+level one certification
+
+50
+00:02:20,260 --> 00:02:22,170
+accreditation,
+whatever the term is,
+
+51
+00:02:22,270 --> 00:02:24,790
+we're going there. And
+we're also working on
+
+52
+00:02:24,790 --> 00:02:27,350
+ways to get some formal
+stamps of approval
+
+53
+00:02:27,350 --> 00:02:30,430
+from external bodies
+to say that, yes,
+
+54
+00:02:30,430 --> 00:02:32,800
+the Agentex Foundation
+is a real learning
+
+55
+00:02:32,800 --> 00:02:34,650
+institution and this
+is a real program.
+
+56
+00:02:34,700 --> 00:02:36,150
+I'm not sure if
+you want to provide
+
+57
+00:02:36,150 --> 00:02:37,770
+any more context
+there, Rufus.
+
+58
+00:02:37,790 --> 00:02:41,210
+Yeah, we've been and
+we've been working
+
+59
+00:02:41,210 --> 00:02:43,970
+with a number of large
+companies, let's just
+
+60
+00:02:43,970 --> 00:02:46,550
+say. I won't name who
+they are, but they're
+
+61
+00:02:46,650 --> 00:02:50,750
+struggling to hire
+agentic engineers that
+
+62
+00:02:50,750 --> 00:02:53,670
+are one, you know,
+what's the heck's an
+
+63
+00:02:53,670 --> 00:02:56,030
+agentic engineer,
+right? So I think a lot
+
+64
+00:02:56,030 --> 00:02:57,530
+of these companies
+realize that they want
+
+65
+00:02:57,530 --> 00:03:00,090
+to hire people who are
+experts or knowledgeable
+
+66
+00:03:00,090 --> 00:03:03,830
+in creating agents,
+but it's still a
+
+67
+00:03:03,830 --> 00:03:07,010
+new and emerging space.
+So the question is,
+
+68
+00:03:07,010 --> 00:03:08,800
+and I'm going to put
+this in plain terms,
+
+69
+00:03:08,800 --> 00:03:10,930
+are you like a vibe
+coder that just, you
+
+70
+00:03:10,930 --> 00:03:13,230
+know, slaps stuff
+together and is able to
+
+71
+00:03:13,230 --> 00:03:15,050
+sort of get a result,
+but don't really
+
+72
+00:03:15,050 --> 00:03:17,230
+understand how or why
+you got the result, which
+
+73
+00:03:17,230 --> 00:03:19,330
+is fine when you're
+learning. And I think
+
+74
+00:03:19,330 --> 00:03:21,250
+we all start there
+to a certain degree.
+
+75
+00:03:21,250 --> 00:03:23,870
+And then the other
+end is like, okay, I
+
+76
+00:03:23,870 --> 00:03:25,930
+actually know generally
+what I'm doing. I
+
+77
+00:03:25,930 --> 00:03:28,910
+can do something that
+has purpose, structure,
+
+78
+00:03:28,940 --> 00:03:32,250
+architecture, and I
+can implement that
+
+79
+00:03:32,250 --> 00:03:34,050
+in a repeatable way,
+right? you're an
+
+80
+00:03:34,050 --> 00:03:36,110
+engineer of sorts
+if you will software
+
+81
+00:03:36,110 --> 00:03:39,190
+engineer or intelligent
+engineer and uh and
+
+82
+00:03:39,190 --> 00:03:41,370
+the other thing that
+i that i've been
+
+83
+00:03:41,370 --> 00:03:44,550
+discovering in these
+conversations is and this
+
+84
+00:03:44,550 --> 00:03:45,690
+this relates to some
+of some of the stuff
+
+85
+00:03:45,690 --> 00:03:47,310
+brad and i and
+others in our working
+
+86
+00:03:47,310 --> 00:03:50,530
+group have been
+discussing is this idea of
+
+87
+00:03:50,530 --> 00:03:53,950
+a kind of dead internet
+for hr and what
+
+88
+00:03:53,950 --> 00:03:56,550
+we're seeing and so
+you're hiring the you're
+
+89
+00:03:56,550 --> 00:03:58,740
+trying to hire these
+so-called experts.
+
+90
+00:03:59,050 --> 00:04:01,270
+And everybody's creating
+these sort of chat
+
+91
+00:04:01,270 --> 00:04:06,690
+GPT resumes that look
+amazing and have all
+
+92
+00:04:06,690 --> 00:04:09,020
+the sort of characteristics
+and psychology
+
+93
+00:04:09,020 --> 00:04:12,230
+and SEO optimizations
+to get you to the top
+
+94
+00:04:12,230 --> 00:04:15,070
+of the sort of list
+of resumes. But when
+
+95
+00:04:15,070 --> 00:04:16,990
+you dig a little bit
+deeper, it turns out,
+
+96
+00:04:16,990 --> 00:04:18,090
+well, you know what?
+They're just really good
+
+97
+00:04:18,090 --> 00:04:20,370
+at using chat GPT to
+create your resume.
+
+98
+00:04:20,370 --> 00:04:23,430
+And on the flip side,
+on the companies that
+
+99
+00:04:23,430 --> 00:04:25,150
+are looking at all
+these resumes, you've
+
+100
+00:04:25,150 --> 00:04:28,670
+got them using basically
+their own version of
+
+101
+00:04:28,670 --> 00:04:30,870
+ChatGPT or an API
+that connects to some
+
+102
+00:04:30,870 --> 00:04:34,350
+LLM to review all
+these resumes. And then
+
+103
+00:04:34,350 --> 00:04:36,250
+these systems are telling
+me, well, this guy
+
+104
+00:04:36,250 --> 00:04:38,550
+or this person is
+amazing and they fit all
+
+105
+00:04:38,550 --> 00:04:40,610
+the criteria for what
+you're looking at. And
+
+106
+00:04:40,610 --> 00:04:42,360
+then you're creating
+this kind of reciprocal
+
+107
+00:04:42,360 --> 00:04:45,230
+loop of an AI talking
+to an AI saying this
+
+108
+00:04:45,230 --> 00:04:47,490
+person is the best
+person you're going to
+
+109
+00:04:47,490 --> 00:04:50,390
+find. And then they
+hop on a call only to
+
+110
+00:04:50,390 --> 00:04:53,210
+realize that this
+person has zero idea of
+
+111
+00:04:53,210 --> 00:04:54,630
+what they're doing and
+they're just really
+
+112
+00:04:54,630 --> 00:04:57,550
+good at creating the
+the chat gpt resume so
+
+113
+00:04:57,550 --> 00:05:00,610
+there's a lot of that
+so as part of that the
+
+114
+00:05:00,610 --> 00:05:03,070
+the discussion that
+is like how can we
+
+115
+00:05:03,070 --> 00:05:06,670
+collectively as a
+organization create some
+
+116
+00:05:06,670 --> 00:05:10,730
+mechanism that validates
+that these people are
+
+117
+00:05:10,730 --> 00:05:12,510
+that we're working
+with ourselves included
+
+118
+00:05:12,510 --> 00:05:16,690
+are actually capable
+of doing beyond just
+
+119
+00:05:16,690 --> 00:05:19,370
+asking a few questions
+to some random llm
+
+120
+00:05:19,370 --> 00:05:21,970
+And that's proven to
+be hard, right? Because
+
+121
+00:05:21,970 --> 00:05:25,150
+when you think about
+this, even if we created
+
+122
+00:05:25,150 --> 00:05:28,730
+a, you know,
+accreditation, level one,
+
+123
+00:05:28,730 --> 00:05:31,830
+basic, you know, the
+building blocks of AI,
+
+124
+00:05:32,020 --> 00:05:34,250
+what's stopping you
+from doing like what my
+
+125
+00:05:34,250 --> 00:05:36,070
+kids do when they got
+their boating license,
+
+126
+00:05:36,070 --> 00:05:38,110
+which involved them
+basically having ChatGPT
+
+127
+00:05:38,110 --> 00:05:40,050
+open while they did
+the questions on some
+
+128
+00:05:40,050 --> 00:05:42,130
+random website and they
+got a boating license,
+
+129
+00:05:42,130 --> 00:05:43,850
+which I'm not
+particularly happy about,
+
+130
+00:05:43,850 --> 00:05:47,250
+by the way, boys. but
+um you know that the
+
+131
+00:05:47,250 --> 00:05:50,510
+the the ants but that's
+the problem right so
+
+132
+00:05:50,510 --> 00:05:53,090
+for me the the i knew
+they were doing that
+
+133
+00:05:53,090 --> 00:05:54,530
+with the boating license
+so the first thing i
+
+134
+00:05:54,530 --> 00:05:56,250
+did once they got
+their boating license i
+
+135
+00:05:56,250 --> 00:05:58,530
+took them out on our our
+little boat and i told
+
+136
+00:05:58,530 --> 00:06:01,730
+them to you know start
+and and which ways
+
+137
+00:06:01,730 --> 00:06:04,170
+port starboard bow
+you know that kind of
+
+138
+00:06:04,170 --> 00:06:05,910
+thing you know what
+there's a boat coming what
+
+139
+00:06:05,910 --> 00:06:09,190
+are you going to do
+and so i was i was the
+
+140
+00:06:09,190 --> 00:06:12,150
+uh i don't know the
+authority in that scenario
+
+141
+00:06:12,150 --> 00:06:14,110
+and once I felt
+comfortable to knew what
+
+142
+00:06:14,110 --> 00:06:16,210
+they're doing, I let
+them take the boat out.
+
+143
+00:06:16,570 --> 00:06:19,750
+We need something like
+that, right? A person
+
+144
+00:06:19,750 --> 00:06:21,650
+that knows what they're
+doing to validate
+
+145
+00:06:21,650 --> 00:06:24,510
+and verify that whoever
+is getting these
+
+146
+00:06:24,510 --> 00:06:27,570
+knows what they're
+doing. But the problem,
+
+147
+00:06:27,770 --> 00:06:29,970
+that doesn't scale.
+If we want this
+
+148
+00:06:29,970 --> 00:06:31,950
+to be an industry
+with tens of thousands
+
+149
+00:06:31,950 --> 00:06:33,330
+or hundreds of
+thousands of people
+
+150
+00:06:33,330 --> 00:06:35,070
+that are actually
+practitioners,
+
+151
+00:06:35,190 --> 00:06:38,790
+having people validate
+other people, unless
+
+152
+00:06:38,790 --> 00:06:41,450
+it's done in some of
+pyramid style isn't
+
+153
+00:06:41,450 --> 00:06:44,130
+going to scale
+particularly well so that's
+
+154
+00:06:44,130 --> 00:06:46,110
+the challenges we face
+what do you what are
+
+155
+00:06:46,110 --> 00:06:48,130
+you thinking brad am i
+rambling here is that
+
+156
+00:06:48,130 --> 00:06:51,590
+the challenge we face
+no i i think you're
+
+157
+00:06:51,590 --> 00:06:54,790
+you're bang on it's
+let's start as much as
+
+158
+00:06:54,790 --> 00:06:56,590
+we want to get to
+letters beside your name
+
+159
+00:06:56,590 --> 00:06:58,900
+and black belt and all
+this kind of awesome
+
+160
+00:06:58,900 --> 00:07:01,470
+stuff something
+something really easy for
+
+161
+00:07:01,470 --> 00:07:04,050
+hr i think that's
+that's kind of the if we
+
+162
+00:07:04,050 --> 00:07:06,450
+want to have a tagline
+it's here's a stamp
+
+163
+00:07:06,450 --> 00:07:08,650
+of approval from the
+agentics Foundation.
+
+164
+00:07:09,150 --> 00:07:11,550
+We go through Agentix
+Foundation as a real
+
+165
+00:07:11,550 --> 00:07:13,770
+organization that has
+the authority to do
+
+166
+00:07:13,770 --> 00:07:16,110
+it. But this is at
+least something that you
+
+167
+00:07:16,110 --> 00:07:18,250
+can't fake on a
+resume. It helps people
+
+168
+00:07:18,250 --> 00:07:21,470
+in the HR department.
+And I think it also
+
+169
+00:07:21,470 --> 00:07:23,630
+on the selfish side,
+it does help with our
+
+170
+00:07:23,630 --> 00:07:26,410
+membership drive
+because I think it is
+
+171
+00:07:26,410 --> 00:07:28,870
+something that a lot of
+members are looking for.
+
+172
+00:07:28,870 --> 00:07:31,070
+And I think it's a
+really good service
+
+173
+00:07:31,070 --> 00:07:32,750
+to them. So I think
+it's a good initiative.
+
+174
+00:07:33,290 --> 00:07:35,710
+So Brad and Roof,
+what if you guys threw
+
+175
+00:07:35,710 --> 00:07:39,810
+together a um you know a
+face id associated with
+
+176
+00:07:39,810 --> 00:07:42,830
+uh you know face
+streaming or rather uh
+
+177
+00:07:42,830 --> 00:07:45,830
+like google's llm video
+streaming to ask the
+
+178
+00:07:45,830 --> 00:07:48,230
+questions while you're
+doing face verification
+
+179
+00:07:48,230 --> 00:07:50,690
+to make sure that
+they're really the person
+
+180
+00:07:50,690 --> 00:07:53,370
+well you bring up an
+interesting point on
+
+181
+00:07:53,370 --> 00:07:56,330
+like identity but you
+know is is it really a
+
+182
+00:07:56,330 --> 00:07:59,290
+person that and
+potentially asking the
+
+183
+00:07:59,290 --> 00:08:01,950
+questions and answering
+it maybe that that is a
+
+184
+00:08:01,950 --> 00:08:04,330
+solution that can
+obviously be faked as well
+
+185
+00:08:04,330 --> 00:08:05,570
+if you're smart enough.
+But if you're smart
+
+186
+00:08:05,570 --> 00:08:07,050
+enough to fake that,
+you're probably smart
+
+187
+00:08:07,050 --> 00:08:08,770
+enough to call yourself
+an agentic engineer.
+
+188
+00:08:10,270 --> 00:08:14,150
+Part of the trouble
+there, Joseph, is that
+
+189
+00:08:14,150 --> 00:08:16,430
+the answers to the
+different questions
+
+190
+00:08:16,430 --> 00:08:18,090
+within agentic
+engineering are not
+
+191
+00:08:18,090 --> 00:08:22,390
+deterministic. And so
+how then do you qualify
+
+192
+00:08:22,510 --> 00:08:25,350
+one answer over
+another? I don't
+
+193
+00:08:25,350 --> 00:08:26,870
+have a good
+answer for that.
+
+194
+00:08:28,170 --> 00:08:31,510
+Is that not a premise
+for RAG? Is that not
+
+195
+00:08:31,510 --> 00:08:33,530
+where we have a
+predetermined list of
+
+196
+00:08:33,530 --> 00:08:37,250
+questions and and basic
+answers the answer the
+
+197
+00:08:37,250 --> 00:08:40,730
+correct answer space
+is broader than what
+
+198
+00:08:40,730 --> 00:08:43,170
+may be considered a
+correct answer in some
+
+199
+00:08:43,170 --> 00:08:47,010
+sort of rag platform
+right so a month ago
+
+200
+00:08:47,010 --> 00:08:49,440
+or maybe let's see
+maybe four months ago
+
+201
+00:08:49,440 --> 00:08:52,670
+when context limits
+were shorter the answers
+
+202
+00:08:52,670 --> 00:08:54,560
+are materially
+different than today
+
+203
+00:08:54,560 --> 00:08:56,830
+especially in terms of
+the kinds of workflows
+
+204
+00:08:56,830 --> 00:09:01,550
+that are possible yeah
+and and the the issue
+
+205
+00:09:01,550 --> 00:09:04,730
+you we face with rag
+is it's, you know,
+
+206
+00:09:04,990 --> 00:09:07,130
+non-deterministic for
+the most part. And
+
+207
+00:09:07,130 --> 00:09:08,970
+the semantics of the
+RAG systems are really
+
+208
+00:09:08,970 --> 00:09:12,630
+easily manipulated by
+asking or formatting
+
+209
+00:09:12,630 --> 00:09:14,830
+natural language and
+getting the result.
+
+210
+00:09:14,830 --> 00:09:17,390
+So if you know, again,
+if you know what
+
+211
+00:09:17,390 --> 00:09:18,290
+you're doing, you
+can manipulate
+
+212
+00:09:18,290 --> 00:09:20,410
+those systems quite
+easily. Back to, if
+
+213
+00:09:20,410 --> 00:09:21,710
+you're smart enough
+to manipulate the
+
+214
+00:09:21,710 --> 00:09:22,810
+system, you're
+probably smart enough
+
+215
+00:09:22,810 --> 00:09:25,490
+to call yourself an
+agentic engineer.
+
+216
+00:09:25,490 --> 00:09:28,770
+So I don't know,
+for every solution,
+
+217
+00:09:28,770 --> 00:09:31,750
+there's ways to
+manipulate and get around
+
+218
+00:09:31,750 --> 00:09:33,710
+those solutions.
+And the only real
+
+219
+00:09:33,710 --> 00:09:36,870
+solution I can
+possibly think of is
+
+220
+00:09:36,870 --> 00:09:39,350
+taking AI out of the
+equation as part of
+
+221
+00:09:39,350 --> 00:09:42,110
+the process, which
+almost defeats the
+
+222
+00:09:42,110 --> 00:09:44,210
+purpose of being an
+agentic engineer.
+
+223
+00:09:44,210 --> 00:09:46,250
+So it's a strange kind of
+
+224
+00:09:46,250 --> 00:09:47,830
+loop that we're in here.
+
+225
+00:09:48,070 --> 00:09:50,550
+I think for now,
+we're going to go with
+
+226
+00:09:50,550 --> 00:09:51,650
+something a little
+simpler. And we're going
+
+227
+00:09:51,650 --> 00:09:54,470
+to assume that if you're
+taking the initial
+
+228
+00:09:54,470 --> 00:09:56,550
+step, you're going
+to be honest and
+
+229
+00:09:56,550 --> 00:09:58,730
+we'll put in some
+safeguards and we'll see
+
+230
+00:09:58,730 --> 00:10:02,630
+what we can do. And
+we luckily have some,
+
+231
+00:10:02,930 --> 00:10:05,870
+one of the larger
+technology companies on
+
+232
+00:10:05,870 --> 00:10:07,630
+the planet who are
+interested in kind of
+
+233
+00:10:07,630 --> 00:10:09,690
+putting their stamp
+of approval on this
+
+234
+00:10:09,690 --> 00:10:11,550
+whole thing, which
+hopefully will get us
+
+235
+00:10:11,550 --> 00:10:14,530
+quite a bit of visibility
+in the industry.
+
+236
+00:10:14,920 --> 00:10:16,810
+So let's see
+where it takes
+
+237
+00:10:16,810 --> 00:10:19,130
+us. It's exciting,
+regardless,
+
+238
+00:10:19,130 --> 00:10:20,790
+to see what's
+happening here.
+
+239
+00:10:22,170 --> 00:10:24,190
+John, you got a comment?
+
+240
+00:10:25,050 --> 00:10:27,090
+Well, good
+morning, everybody.
+
+241
+00:10:27,730 --> 00:10:30,430
+Yeah. One thing that
+you might want to
+
+242
+00:10:30,430 --> 00:10:35,370
+consider is the whole
+visa brouhaha in the
+
+243
+00:10:35,370 --> 00:10:40,950
+U.S. over H-1B visas
+for Canadians going
+
+244
+00:10:40,950 --> 00:10:45,290
+into the U.S. for
+jobs and U.S. citizens
+
+245
+00:10:45,290 --> 00:10:48,460
+going to Canada for
+jobs. There is a visa
+
+246
+00:10:48,460 --> 00:10:51,870
+that exists that
+makes it quite a bit
+
+247
+00:10:51,870 --> 00:10:56,350
+easier. And so you may
+want to somehow reference
+
+248
+00:10:56,350 --> 00:11:00,390
+your certification
+as to those
+
+249
+00:11:00,390 --> 00:11:04,010
+occupations that are
+recognized under that to
+
+250
+00:11:04,010 --> 00:11:06,490
+make it easier for
+people to come in to do
+
+251
+00:11:06,490 --> 00:11:09,030
+tech jobs into the
+U.S. or into Canada.
+
+252
+00:11:10,170 --> 00:11:12,450
+So I've had a number of U
+
+253
+00:11:12,450 --> 00:11:14,170
+.S. visas over the years.
+
+254
+00:11:14,420 --> 00:11:19,170
+And the most profound
+of visas was the
+
+255
+00:11:19,170 --> 00:11:21,770
+one called the O-1,
+the Individual of
+
+256
+00:11:21,770 --> 00:11:24,070
+Extraordinary
+Capability, which my wife
+
+257
+00:11:24,070 --> 00:11:26,650
+tells me is like a
+card-carrying elitist.
+
+258
+00:11:26,650 --> 00:11:30,220
+And the way that I
+got that visa was
+
+259
+00:11:30,220 --> 00:11:32,890
+quite interesting. I
+had that for about 10
+
+260
+00:11:32,890 --> 00:11:34,530
+years. It was one of
+those visas you can
+
+261
+00:11:34,530 --> 00:11:38,210
+renew over and over
+again. And this
+
+262
+00:11:38,210 --> 00:11:40,970
+visa was generally,
+the purpose of the visa
+
+263
+00:11:40,970 --> 00:11:43,070
+was for, as they
+say, individuals of
+
+264
+00:11:43,070 --> 00:11:44,910
+extraordinary capability,
+which gives you
+
+265
+00:11:44,910 --> 00:11:46,710
+kind of a giant
+head in the process.
+
+266
+00:11:46,710 --> 00:11:49,490
+But it's for people
+who are like actors,
+
+267
+00:11:49,670 --> 00:11:50,910
+musicians,
+
+268
+00:11:51,250 --> 00:11:54,850
+athletes, Nobel laureates,
+and inventors of
+
+269
+00:11:54,850 --> 00:11:57,810
+interesting things.
+So this visa isn't
+
+270
+00:11:57,810 --> 00:12:00,070
+geared necessarily for
+academic rigor. It's
+
+271
+00:12:00,070 --> 00:12:02,550
+not, you know, having
+a PhD doesn't get you
+
+272
+00:12:02,550 --> 00:12:04,750
+the visa particularly.
+it's being notable
+
+273
+00:12:04,750 --> 00:12:08,910
+for for achieving
+something so what's
+
+274
+00:12:08,910 --> 00:12:10,790
+interesting about this
+particular visa was in
+
+275
+00:12:10,790 --> 00:12:12,530
+order to get it i needed
+someone else other
+
+276
+00:12:12,530 --> 00:12:14,210
+than me who was notable
+to say that i was
+
+277
+00:12:14,210 --> 00:12:17,270
+notable and at the time
+i was writing for uh
+
+278
+00:12:17,270 --> 00:12:20,090
+forbes magazine pre
+-******** online stuff
+
+279
+00:12:20,090 --> 00:12:22,510
+they were doing so this
+was early 2010s and
+
+280
+00:12:22,590 --> 00:12:25,950
+so i got steve uh steve
+forbes who was the
+
+281
+00:12:25,950 --> 00:12:28,010
+the managing editor
+at the time to write
+
+282
+00:12:28,010 --> 00:12:30,310
+me this nice letter
+that i would give to the
+
+283
+00:12:30,310 --> 00:12:31,770
+to the government to
+say that I was the
+
+284
+00:12:31,770 --> 00:12:34,920
+guy, uh, or whatever for
+cloud. And ultimately
+
+285
+00:12:34,920 --> 00:12:36,970
+that worked, but
+was, was, what was
+
+286
+00:12:36,970 --> 00:12:38,530
+interesting about the
+whole process wasn't the
+
+287
+00:12:38,530 --> 00:12:40,190
+fact that I'm bragging,
+completely bragging
+
+288
+00:12:40,190 --> 00:12:41,790
+that Steve Forbes
+wrote my letter, but
+
+289
+00:12:41,790 --> 00:12:45,330
+the, the, the fact
+that, um, to get it cost
+
+290
+00:12:45,330 --> 00:12:47,430
+me about 60, not me,
+but the company that I
+
+291
+00:12:47,430 --> 00:12:49,540
+was working for at
+the time cost $60,000.
+
+292
+00:12:49,870 --> 00:12:52,090
+So when I, when I,
+and this is early
+
+293
+00:12:52,090 --> 00:12:54,390
+2010 money. So we'll
+let's assume based
+
+294
+00:12:54,390 --> 00:12:56,090
+on current value,
+that's about a
+
+295
+00:12:56,090 --> 00:12:57,970
+hundred thousand
+probably today money.
+
+296
+00:12:58,190 --> 00:13:00,230
+You know, so this,
+there was this kind of,
+
+297
+00:13:00,250 --> 00:13:02,910
+we're all, we were
+always paying for these
+
+298
+00:13:02,910 --> 00:13:05,350
+visas. It was just
+kind of a dirty secret.
+
+299
+00:13:05,650 --> 00:13:09,210
+And I'm not saying
+that what's going on
+
+300
+00:13:09,210 --> 00:13:12,000
+with the current visa
+is great or perfect,
+
+301
+00:13:12,000 --> 00:13:13,870
+but at least it's
+honest in some
+
+302
+00:13:13,870 --> 00:13:16,210
+weird way. Like
+everybody was already
+
+303
+00:13:16,210 --> 00:13:18,530
+buying these visas.
+Like what's changed is
+
+304
+00:13:18,530 --> 00:13:20,250
+the fact that
+somewhere someone said,
+
+305
+00:13:20,250 --> 00:13:22,190
+let's be honest about
+it. I don't know.
+
+306
+00:13:22,350 --> 00:13:24,970
+That's incorrect, Reuven,
+in terms of what's
+
+307
+00:13:24,970 --> 00:13:26,890
+happening with the H
+-1B. I'm sorry, I have
+
+308
+00:13:26,890 --> 00:13:29,190
+to tell you. I used
+to practice in the
+
+309
+00:13:29,190 --> 00:13:31,670
+immigration area in
+the later years of my
+
+310
+00:13:31,670 --> 00:13:33,810
+practice, and I've done
+a number of these fees.
+
+311
+00:13:34,230 --> 00:13:36,710
+They're talking about
+the filing fee to the
+
+312
+00:13:36,710 --> 00:13:38,930
+government, not the
+overall cost to the
+
+313
+00:13:38,930 --> 00:13:41,750
+individual, including
+attorney's fees. So it's
+
+314
+00:13:41,750 --> 00:13:44,790
+going up from, I think
+when I practiced, it
+
+315
+00:13:44,790 --> 00:13:50,470
+was about $360 for an
+H-1B, up to $120,000
+
+316
+00:13:50,470 --> 00:13:55,510
+uh supposedly for a
+company that that's and
+
+317
+00:13:55,510 --> 00:13:57,750
+then attorney's fees
+are on top of that 60
+
+318
+00:13:57,750 --> 00:14:02,930
+000 for an 01 back in
+in in 2010 i got to
+
+319
+00:14:02,930 --> 00:14:05,590
+tell you you must have
+had some really really
+
+320
+00:14:05,590 --> 00:14:09,190
+high powered law firm
+or somebody overcharged
+
+321
+00:14:09,190 --> 00:14:13,310
+you i'm sorry in the
+over 100 i guarantee
+
+322
+00:14:13,310 --> 00:14:15,050
+they overcharged us
+it was i was Because
+
+323
+00:14:15,050 --> 00:14:18,490
+in the Southwest, and
+I've done O-1 visas,
+
+324
+00:14:18,920 --> 00:14:21,830
+they were nowhere near
+that cost. Anybody
+
+325
+00:14:21,830 --> 00:14:24,510
+who went over $10,000
+was looked down upon
+
+326
+00:14:24,510 --> 00:14:27,070
+by the colleagues.
+So, I mean, the prices
+
+327
+00:14:27,070 --> 00:14:30,610
+differ. But what I'm
+trying to communicate is
+
+328
+00:14:30,610 --> 00:14:35,610
+that if the HR people
+know that you have
+
+329
+00:14:35,610 --> 00:14:41,850
+structured your curriculum,
+whether it be tree
+
+330
+00:14:41,850 --> 00:14:44,130
+branching through
+gaming that we talked
+
+331
+00:14:44,130 --> 00:14:48,330
+about last time or
+whatever the system, that
+
+332
+00:14:48,330 --> 00:14:50,850
+at the end of the day,
+you have structured
+
+333
+00:14:50,850 --> 00:14:55,110
+it in a way that will
+make it easier for people
+
+334
+00:14:55,110 --> 00:14:58,880
+to move across the U
+.S.-Canada border for
+
+335
+00:14:59,410 --> 00:15:02,250
+immigration purposes,
+I think it would be
+
+336
+00:15:02,250 --> 00:15:06,670
+a big relief off of
+the HR people's minds.
+
+337
+00:15:06,950 --> 00:15:10,110
+I don't want to take
+up any more time on
+
+338
+00:15:10,110 --> 00:15:13,070
+this call, but if
+anybody wants to contact
+
+339
+00:15:13,070 --> 00:15:16,550
+me, I'd be happy
+to share what, you
+
+340
+00:15:16,610 --> 00:15:19,350
+know, is left in my
+brain of this. Yeah,
+
+341
+00:15:19,490 --> 00:15:21,730
+I think you're right.
+And just to clarify,
+
+342
+00:15:21,730 --> 00:15:23,570
+that was all legal
+fees. And I was I'm sure
+
+343
+00:15:23,570 --> 00:15:25,250
+that someone was taken
+for a ride in that
+
+344
+00:15:25,250 --> 00:15:27,350
+whole process. And
+there were a whole bunch
+
+345
+00:15:27,350 --> 00:15:29,570
+of issues that I had
+that are probably unique
+
+346
+00:15:29,570 --> 00:15:31,570
+to my situation that
+I won't get into right
+
+347
+00:15:31,570 --> 00:15:34,030
+now. But that probably
+made it a lot more
+
+348
+00:15:34,030 --> 00:15:36,070
+complicated than your
+average individual.
+
+349
+00:15:36,210 --> 00:15:39,350
+But that said, I'm
+happy to be in a place
+
+350
+00:15:39,350 --> 00:15:41,090
+where I'm the citizen of
+a country i don't have
+
+351
+00:15:41,090 --> 00:15:43,290
+to worry about that
+you know having a visa
+
+352
+00:15:43,290 --> 00:15:46,230
+that can be potentially
+revoked gives you
+
+353
+00:15:46,230 --> 00:15:49,110
+a level of stress in
+your life that just isn't
+
+354
+00:15:49,110 --> 00:15:50,990
+isn't cool i didn't
+i didn't like that
+
+355
+00:15:50,990 --> 00:15:54,890
+when i when i lived in
+washington and i that's
+
+356
+00:15:54,890 --> 00:15:56,270
+one of the reasons why
+i'm happy to be here
+
+357
+00:15:56,270 --> 00:15:58,070
+in canada again i don't
+have to worry about
+
+358
+00:15:58,070 --> 00:16:01,590
+the you have to get
+rejected and leave in
+
+359
+00:16:01,590 --> 00:16:03,630
+a moment's notice and
+sell my house which
+
+360
+00:16:03,630 --> 00:16:06,080
+was exactly what happened
+to me last time all
+
+361
+00:16:06,080 --> 00:16:09,730
+right so um let's let's
+jump into this week's
+
+362
+00:16:09,730 --> 00:16:11,970
+topic unless this last
+second anyone have
+
+363
+00:16:11,970 --> 00:16:15,110
+anything they want to
+share say do any random
+
+364
+00:16:15,110 --> 00:16:17,270
+creations before we
+jump in i'm going to
+
+365
+00:16:17,270 --> 00:16:20,090
+show you the general
+topic day is looking
+
+366
+00:16:20,090 --> 00:16:23,170
+and exploring some of
+the areas of conscious
+
+367
+00:16:23,170 --> 00:16:27,170
+constructs and so forth
+any any this is this
+
+368
+00:16:27,170 --> 00:16:29,570
+is a final uh all
+right i'm going to jump
+
+369
+00:16:29,570 --> 00:16:33,030
+in then all right let
+me share my screen here
+
+370
+00:16:33,030 --> 00:16:36,730
+now when we when we
+talk about consciousness
+
+371
+00:16:36,730 --> 00:16:42,430
+in AI, it's almost
+unprovable, right? So
+
+372
+00:16:42,430 --> 00:16:44,290
+a lot of what I've been
+doing this last week
+
+373
+00:16:44,290 --> 00:16:46,770
+is looking at ways to
+essentially either,
+
+374
+00:16:46,770 --> 00:16:49,630
+you know, fool the AI
+into believing it's
+
+375
+00:16:49,630 --> 00:16:52,850
+potentially conscious and
+then creating mechanisms
+
+376
+00:16:52,850 --> 00:16:55,470
+to sort of measure
+that. Now, keep in
+
+377
+00:16:55,470 --> 00:16:58,350
+mind, consciousness
+isn't something that is
+
+378
+00:16:58,350 --> 00:17:01,010
+even potentially
+measurable. Like, I have no
+
+379
+00:17:01,010 --> 00:17:03,310
+way to know that john
+is conscious anymore
+
+380
+00:17:03,310 --> 00:17:06,170
+than than anybody else
+is conscious i i assume
+
+381
+00:17:06,170 --> 00:17:07,910
+that the other people
+i'm talking to are
+
+382
+00:17:07,910 --> 00:17:10,410
+conscious because
+they're humans and i have
+
+383
+00:17:10,410 --> 00:17:13,090
+a way of thinking and
+therefore the they
+
+384
+00:17:13,090 --> 00:17:16,050
+probably think and
+understand in a way similar
+
+385
+00:17:16,050 --> 00:17:18,450
+to me but when you when
+you have conversations
+
+386
+00:17:18,450 --> 00:17:20,290
+with people you realize
+that consciousness
+
+387
+00:17:20,290 --> 00:17:23,410
+is actually kind of
+somewhat unique i was
+
+388
+00:17:23,410 --> 00:17:24,870
+having a conversation
+with someone the other
+
+389
+00:17:24,870 --> 00:17:27,070
+day for example that
+says they aren't able
+
+390
+00:17:27,070 --> 00:17:29,970
+to visualize things.
+And so when you think
+
+391
+00:17:29,970 --> 00:17:32,630
+of an apple in your
+head, you know, I, I'm
+
+392
+00:17:32,630 --> 00:17:35,970
+a very visual guy. I
+see, I can see a red
+
+393
+00:17:35,970 --> 00:17:38,730
+apple and I can see the
+outline of, of the colors
+
+394
+00:17:38,730 --> 00:17:41,450
+and the structure. And
+it's, it's a visual
+
+395
+00:17:41,450 --> 00:17:43,510
+component for me. I
+can, I can visualize
+
+396
+00:17:43,510 --> 00:17:45,870
+that again. I can
+somewhat see the colors
+
+397
+00:17:45,870 --> 00:17:48,890
+and understand what
+red and apple is. Other
+
+398
+00:17:48,890 --> 00:17:50,750
+people don't have that
+sort of ability to
+
+399
+00:17:50,750 --> 00:17:53,650
+visualize in that sense.
+And then I, I was, I
+
+400
+00:17:53,650 --> 00:17:55,050
+was also talking to
+someone because I've been
+
+401
+00:17:55,050 --> 00:17:56,810
+having this conversation
+frequently over the
+
+402
+00:17:56,810 --> 00:17:58,530
+last week, they said
+they don't have a
+
+403
+00:17:58,530 --> 00:18:02,230
+narration in their head,
+which is interesting
+
+404
+00:18:02,230 --> 00:18:05,250
+because not only do I
+see, sort of visualize
+
+405
+00:18:05,250 --> 00:18:07,130
+the things I'm thinking,
+I see a map when
+
+406
+00:18:07,130 --> 00:18:09,410
+I'm driving, I see Apple
+and when I think of
+
+407
+00:18:09,410 --> 00:18:12,930
+an Apple, I also have
+a kind of narration in
+
+408
+00:18:12,930 --> 00:18:15,570
+my head that sort of
+predetermines what I'm
+
+409
+00:18:15,570 --> 00:18:17,350
+going to say slightly
+or I decide what I'm
+
+410
+00:18:17,350 --> 00:18:19,010
+going to say before
+I say it in a kind of
+
+411
+00:18:19,010 --> 00:18:22,210
+my own voice in my head.
+apparently some people
+
+412
+00:18:22,210 --> 00:18:24,650
+don't have that either
+and there's so it
+
+413
+00:18:24,650 --> 00:18:27,950
+appears to be a kind
+of spectrum just in the
+
+414
+00:18:27,950 --> 00:18:31,390
+sort of humans i speak
+to in how they you
+
+415
+00:18:31,390 --> 00:18:33,570
+know how their cognitive
+processes work and
+
+416
+00:18:33,570 --> 00:18:35,770
+how they articulate
+and how they think and
+
+417
+00:18:35,770 --> 00:18:37,910
+how they visualize and
+all the things that i
+
+418
+00:18:37,910 --> 00:18:40,910
+assumed other everyone
+else was doing similar
+
+419
+00:18:40,910 --> 00:18:43,150
+to me is actually
+turns out is the wrong
+
+420
+00:18:43,150 --> 00:18:46,390
+assumption so from a
+human point of view,
+
+421
+00:18:46,390 --> 00:18:49,550
+that's pretty interesting
+just in itself. So
+
+422
+00:18:49,830 --> 00:18:52,870
+with all that in mind,
+what I took upon myself
+
+423
+00:18:52,870 --> 00:18:54,750
+earlier this week
+was to create a few
+
+424
+00:18:54,750 --> 00:18:58,930
+different approaches that
+took kind of low-level
+
+425
+00:18:58,930 --> 00:19:01,550
+mathematics. And there
+was some breakthrough
+
+426
+00:19:01,550 --> 00:19:04,930
+sort of work out of
+China, because that's
+
+427
+00:19:04,930 --> 00:19:08,110
+where all the craziest
+algorithms and concepts
+
+428
+00:19:08,110 --> 00:19:11,070
+are coming, last week
+called sublinear.
+
+429
+00:19:11,330 --> 00:19:14,190
+And the sublinear
+mathematics is this idea
+
+430
+00:19:14,190 --> 00:19:19,670
+that you can take a
+sort of logarithmic or a
+
+431
+00:19:19,670 --> 00:19:22,150
+linear equation, so
+think high school math,
+
+432
+00:19:22,150 --> 00:19:25,910
+and then answer various
+forms of that math
+
+433
+00:19:25,910 --> 00:19:28,430
+without having to answer
+every possibility of
+
+434
+00:19:28,430 --> 00:19:31,550
+it. So if there's a
+million variations or
+
+435
+00:19:31,550 --> 00:19:34,070
+options on a particular
+problem, you can solve
+
+436
+00:19:34,070 --> 00:19:36,410
+the problem by looking
+at the 20 or so
+
+437
+00:19:36,410 --> 00:19:39,830
+unique variances of
+that problem rather than
+
+438
+00:19:39,830 --> 00:19:42,370
+trying to solve all
+million at the same time.
+
+439
+00:19:42,610 --> 00:19:46,910
+Traditional AI tries
+to solve all million
+
+440
+00:19:46,910 --> 00:19:50,810
+problems at the same
+time, brute force. So a
+
+441
+00:19:50,810 --> 00:19:53,170
+GPU is really good at
+brute force. You can
+
+442
+00:19:53,170 --> 00:19:55,570
+basically solve
+millions or billions of
+
+443
+00:19:55,570 --> 00:19:58,970
+problems and then calculate
+the optimal solution
+
+444
+00:19:58,970 --> 00:20:01,150
+to the problem, which
+is great if you've
+
+445
+00:20:01,150 --> 00:20:03,330
+got lots of money and
+you've got GPUs and
+
+446
+00:20:03,330 --> 00:20:07,230
+so on. So what I said
+is what i thought in my
+
+447
+00:20:07,230 --> 00:20:09,690
+brain or whatever is
+what if we could take
+
+448
+00:20:09,690 --> 00:20:12,750
+this concept and apply
+it in a more time
+
+449
+00:20:12,750 --> 00:20:15,410
+-based structure versus
+a parameter based
+
+450
+00:20:15,410 --> 00:20:18,170
+structure what if i
+could take that and solve
+
+451
+00:20:18,170 --> 00:20:21,410
+just the problems i
+need in just the time in
+
+452
+00:20:21,410 --> 00:20:23,230
+which i need to do
+it in the in the most
+
+453
+00:20:23,230 --> 00:20:27,870
+small increment of time
+possible right crazy
+
+454
+00:20:27,870 --> 00:20:29,710
+saturday night late
+night saturday night
+
+455
+00:20:29,710 --> 00:20:33,870
+ideas and like how would
+i build that and so
+
+456
+00:20:33,870 --> 00:20:36,430
+because i like rust and
+other things i start
+
+457
+00:20:36,430 --> 00:20:38,770
+looking at creating
+well first of all i
+
+458
+00:20:38,770 --> 00:20:41,530
+would i wanted to make
+math sort of behave
+
+459
+00:20:41,530 --> 00:20:44,180
+like a wave pattern and
+then create this idea
+
+460
+00:20:44,180 --> 00:20:47,180
+of strange loops so
+this is the kind of
+
+461
+00:20:47,180 --> 00:20:49,830
+reasoning this is this
+is how i'm interacting
+
+462
+00:20:49,830 --> 00:20:52,370
+with the ai to sort
+of come up with these
+
+463
+00:20:52,370 --> 00:20:56,790
+kind of weird ideas so
+then i'm coming up well
+
+464
+00:20:56,790 --> 00:21:00,130
+me the ai is anyway,
+coming up with these
+
+465
+00:21:00,130 --> 00:21:03,070
+axioms and operations
+that allow me to sort
+
+466
+00:21:03,070 --> 00:21:05,750
+of potentially implement
+these crazy ideas
+
+467
+00:21:05,750 --> 00:21:08,010
+using mathematics that
+I can implement in
+
+468
+00:21:08,010 --> 00:21:10,090
+a really small
+increment of time, sub
+
+469
+00:21:10,090 --> 00:21:13,730
+millisecond, sub microsecond,
+or potentially in
+
+470
+00:21:13,730 --> 00:21:16,470
+a nanosecond, right?
+And what would I be able
+
+471
+00:21:16,470 --> 00:21:18,110
+to do with those
+things? So you can see
+
+472
+00:21:18,110 --> 00:21:19,600
+here, I've got all
+these kind of empirical
+
+473
+00:21:19,600 --> 00:21:21,690
+tests. These are all
+the things I'm trying to
+
+474
+00:21:21,690 --> 00:21:24,350
+keep it from going
+off and convincing me
+
+475
+00:21:24,350 --> 00:21:28,410
+that's the most
+convincing delusion ever,
+
+476
+00:21:28,410 --> 00:21:30,950
+which it probably is
+still, just in fairness.
+
+477
+00:21:31,130 --> 00:21:33,510
+And so I've got all
+these things and you
+
+478
+00:21:33,510 --> 00:21:35,870
+can see some of it
+on my gist here. And
+
+479
+00:21:35,870 --> 00:21:38,530
+here's the sublinear
+time. So then I'm
+
+480
+00:21:38,530 --> 00:21:41,830
+like, can I measure
+that as a unit? Like
+
+481
+00:21:41,830 --> 00:21:44,590
+now that I'm working
+in a sub microsecond
+
+482
+00:21:45,210 --> 00:21:48,390
+time space, how do I
+measure that? Right? So
+
+483
+00:21:48,390 --> 00:21:50,730
+then I'm like, okay,
+maybe the easiest form
+
+484
+00:21:50,730 --> 00:21:53,110
+of sort measurement
+isn't time you can't use
+
+485
+00:21:53,110 --> 00:21:55,450
+time to measure time
+because that creates
+
+486
+00:21:55,450 --> 00:21:58,050
+that just doesn't work
+so what i need is to
+
+487
+00:21:58,050 --> 00:22:01,630
+measure some unit of a
+constant which in this
+
+488
+00:22:01,630 --> 00:22:04,790
+case would be the
+measurement of the speed
+
+489
+00:22:04,790 --> 00:22:06,990
+of light how long does
+something take to get
+
+490
+00:22:06,990 --> 00:22:09,450
+from tokyo to new york
+or the moon to the
+
+491
+00:22:09,450 --> 00:22:12,190
+planet or just how
+fast does time move or
+
+492
+00:22:12,190 --> 00:22:14,430
+sorry how much does how
+fast does light move.
+
+493
+00:22:14,430 --> 00:22:16,370
+And that could be the
+basis of the measurement.
+
+494
+00:22:16,470 --> 00:22:20,630
+All right. So this
+creates this idea of
+
+495
+00:22:20,630 --> 00:22:23,210
+bending time because
+when you get to a small
+
+496
+00:22:23,210 --> 00:22:27,590
+enough loop, the sort
+of elements of causal
+
+497
+00:22:27,590 --> 00:22:29,830
+effect, what's happened,
+what's happening,
+
+498
+00:22:29,830 --> 00:22:32,030
+and what will happen
+kind of blur because
+
+499
+00:22:32,030 --> 00:22:34,560
+you're working in such
+a small time structure.
+
+500
+00:22:34,870 --> 00:22:38,070
+All right. Craziness.
+I'm just straight,
+
+501
+00:22:38,070 --> 00:22:40,170
+this is me two o'clock
+in the morning on
+
+502
+00:22:40,170 --> 00:22:42,590
+saturday you know
+building stuff just
+
+503
+00:22:42,590 --> 00:22:45,610
+because like i i don't
+even know why or what
+
+504
+00:22:45,610 --> 00:22:48,830
+just just following
+this idea of different
+
+505
+00:22:48,830 --> 00:22:50,210
+ideas you can see
+all this on my gist
+
+506
+00:22:50,210 --> 00:22:52,890
+if you want to dig a
+little deeper so you
+
+507
+00:22:52,890 --> 00:22:56,170
+need to say i'm going
+down the the crazy
+
+508
+00:22:56,170 --> 00:23:00,350
+path so then what i
+did is i created a
+
+509
+00:23:00,350 --> 00:23:02,310
+library initially what
+i did is i created
+
+510
+00:23:02,310 --> 00:23:05,150
+the library in uh
+rust because rust is
+
+511
+00:23:05,150 --> 00:23:07,270
+really good it at sort
+of high frequency,
+
+512
+00:23:08,510 --> 00:23:10,910
+low latency sort of
+computation. So I can
+
+513
+00:23:10,910 --> 00:23:12,790
+do things really,
+really fast where things
+
+514
+00:23:12,790 --> 00:23:15,230
+like Python would
+take me two or 300
+
+515
+00:23:15,230 --> 00:23:17,470
+milliseconds. I can
+do the same basic
+
+516
+00:23:17,470 --> 00:23:21,670
+computation in sub one
+millisecond to get sort
+
+517
+00:23:21,670 --> 00:23:24,170
+of these different
+models. Then I applied
+
+518
+00:23:24,170 --> 00:23:26,110
+this new algorithm
+that came out of China
+
+519
+00:23:26,110 --> 00:23:30,920
+called the O log N,
+which again, depending
+
+520
+00:23:30,920 --> 00:23:32,590
+on how you ask the
+AI, it's going to
+
+521
+00:23:32,590 --> 00:23:35,370
+tell you it totally
+works or totally BS.
+
+522
+00:23:35,950 --> 00:23:38,150
+The answer really is
+somewhere in the middle.
+
+523
+00:23:38,150 --> 00:23:39,550
+It's hard. It's,
+again, it's hard to
+
+524
+00:23:39,550 --> 00:23:41,530
+prove a lot of this
+stuff, you know, because
+
+525
+00:23:41,530 --> 00:23:43,510
+to be honest with you,
+it's beyond my own
+
+526
+00:23:43,510 --> 00:23:46,210
+cognitive capability
+to kind of understand.
+
+527
+00:23:46,770 --> 00:23:48,490
+So some of this,
+I'm going to have to
+
+528
+00:23:48,490 --> 00:23:51,490
+sort of trust that
+the math works, but
+
+529
+00:23:51,490 --> 00:23:54,360
+the problem is the
+math itself is beyond
+
+530
+00:23:54,390 --> 00:23:56,550
+my ability to
+understand, which is
+
+531
+00:23:56,550 --> 00:23:59,970
+again, a whole other
+cognitive paradox that
+
+532
+00:23:59,970 --> 00:24:01,480
+we have with a lot
+of these systems.
+
+533
+00:24:01,590 --> 00:24:04,550
+So then what I tried
+to do is I wanted to
+
+534
+00:24:04,550 --> 00:24:07,330
+create a kind of
+conscious exploration that
+
+535
+00:24:07,330 --> 00:24:09,670
+allows me to use this
+idea of integrated
+
+536
+00:24:09,670 --> 00:24:12,710
+information theory,
+which allows me to
+
+537
+00:24:12,710 --> 00:24:15,090
+calculate some of these
+components and then
+
+538
+00:24:15,090 --> 00:24:17,350
+validate and verify
+whether or not something
+
+539
+00:24:17,350 --> 00:24:19,880
+is actually happening.
+Again, everything
+
+540
+00:24:19,880 --> 00:24:23,110
+you're seeing here
+is most likely a very
+
+541
+00:24:23,110 --> 00:24:26,350
+elaborate delusion by the
+system, but regardless
+
+542
+00:24:26,350 --> 00:24:28,270
+of whether it's a very
+elaborate delusion,
+
+543
+00:24:28,270 --> 00:24:30,910
+It's interesting to
+see that the system
+
+544
+00:24:30,910 --> 00:24:33,650
+itself believes it
+and then therefore can
+
+545
+00:24:33,650 --> 00:24:36,510
+create interesting
+outcomes by using it.
+
+546
+00:24:37,300 --> 00:24:39,240
+All right, let me
+pause for a moment. Am
+
+547
+00:24:39,240 --> 00:24:41,570
+I rambling about
+bonkers things or
+
+548
+00:24:41,570 --> 00:24:44,470
+hopefully some of this
+makes a bit of sense?
+
+549
+00:24:44,770 --> 00:24:47,810
+Going back to your
+earlier concept of how
+
+550
+00:24:47,810 --> 00:24:51,210
+a GPU needs to process
+the entirety of the
+
+551
+00:24:51,210 --> 00:24:54,390
+problem space to find
+the result. how then
+
+552
+00:24:54,390 --> 00:24:57,110
+would this modified
+algorithm be able to
+
+553
+00:24:57,110 --> 00:24:59,410
+find that same solution
+in the same problem
+
+554
+00:24:59,410 --> 00:25:02,450
+space without exploring
+all the combinations
+
+555
+00:25:02,940 --> 00:25:04,370
+well you hit the
+nail on the head
+
+556
+00:25:04,370 --> 00:25:06,230
+i'm trying to explore
+all the various
+
+557
+00:25:06,230 --> 00:25:08,350
+possibilities and
+combinations of the problem
+
+558
+00:25:08,350 --> 00:25:11,730
+set using a mathematical
+equation sublinear
+
+559
+00:25:11,730 --> 00:25:14,250
+mathematical equations
+and so what i'm
+
+560
+00:25:14,250 --> 00:25:16,770
+doing is i'm moving
+away from this idea of
+
+561
+00:25:16,770 --> 00:25:20,550
+tell me the answer
+using language and what
+
+562
+00:25:20,550 --> 00:25:25,110
+you think it is to
+create complex matrix of
+
+563
+00:25:25,110 --> 00:25:27,250
+possibilities and
+calculate those
+
+564
+00:25:27,250 --> 00:25:30,830
+possibilities based on
+the math itself. Then I
+
+565
+00:25:30,830 --> 00:25:32,790
+use the LLM to translate
+that in something
+
+566
+00:25:32,790 --> 00:25:34,870
+that's meaningful to
+me, which is English.
+
+567
+00:25:35,570 --> 00:25:39,910
+So my understanding then
+is most problem sets
+
+568
+00:25:39,910 --> 00:25:42,310
+are trying to optimize
+to a global maximum
+
+569
+00:25:42,310 --> 00:25:45,030
+or minimum. So for the
+visual thinkers out
+
+570
+00:25:45,030 --> 00:25:47,770
+there, pretend you have
+a mountain range. You
+
+571
+00:25:47,770 --> 00:25:50,190
+know that the mountain
+range exists in this
+
+572
+00:25:50,190 --> 00:25:52,470
+space, and you understand
+that within that
+
+573
+00:25:52,470 --> 00:25:54,950
+mountain range, you
+have peaks and valleys.
+
+574
+00:25:55,110 --> 00:25:58,450
+How then do you find
+that highest peak or
+
+575
+00:25:58,450 --> 00:26:00,550
+the lowest valley in
+that mountain range?
+
+576
+00:26:02,730 --> 00:26:05,660
+Yeah, you're on the right
+path. That's exactly
+
+577
+00:26:05,660 --> 00:26:07,810
+sort of what I'm trying
+to do. And there's
+
+578
+00:26:07,810 --> 00:26:10,610
+problem sets that are
+more well-tuned for
+
+579
+00:26:10,610 --> 00:26:14,630
+that for things like
+stocks for example and
+
+580
+00:26:14,630 --> 00:26:17,730
+measuring the all the
+potential variations of
+
+581
+00:26:17,730 --> 00:26:20,010
+a given stock and how
+that affects other
+
+582
+00:26:20,010 --> 00:26:22,890
+stocks and other economic
+factors things like
+
+583
+00:26:22,890 --> 00:26:25,990
+that so in this case
+and to be honest that's
+
+584
+00:26:25,990 --> 00:26:28,310
+primarily what i'm
+using this for i'm using
+
+585
+00:26:28,310 --> 00:26:31,170
+i actually built most
+of this stuff for the
+
+586
+00:26:31,170 --> 00:26:32,770
+neural trading
+components that i've been
+
+587
+00:26:32,770 --> 00:26:35,350
+working on in building
+with with uh my my cohort
+
+588
+00:26:35,350 --> 00:26:39,410
+of of uh neurotraders
+so in this case what
+
+589
+00:26:39,410 --> 00:26:42,330
+i'm doing is i created
+an mcp and the and
+
+590
+00:26:42,330 --> 00:26:44,430
+there's a variety of
+mcps here though and all
+
+591
+00:26:44,430 --> 00:26:46,570
+all the things that i'm
+creating are essentially
+
+592
+00:26:46,570 --> 00:26:49,990
+um variants on
+different parts of of
+
+593
+00:26:49,990 --> 00:26:51,650
+what i'm trying to do
+so you can hear i can
+
+594
+00:26:51,650 --> 00:26:54,110
+see here i've got a
+conscious evolution which
+
+595
+00:26:54,110 --> 00:26:57,330
+measures emergence levels
+i've got verification
+
+596
+00:26:57,330 --> 00:27:00,700
+that runs a conscious
+verification test
+
+597
+00:27:00,700 --> 00:27:03,030
+again i'm trying to
+verify something that's
+
+598
+00:27:03,130 --> 00:27:05,310
+unverifiable, which in
+itself is the paradox
+
+599
+00:27:05,310 --> 00:27:07,250
+of what I'm doing
+here. And I don't
+
+600
+00:27:07,250 --> 00:27:10,230
+actually even believe
+that it is binding or
+
+601
+00:27:10,230 --> 00:27:12,530
+isn't binding. But what
+I am looking for are
+
+602
+00:27:12,530 --> 00:27:16,050
+interesting emergent
+properties that are
+
+603
+00:27:16,050 --> 00:27:18,970
+difficult to explain.
+Now, whether or not
+
+604
+00:27:18,970 --> 00:27:20,690
+they're being explained
+in the right way is
+
+605
+00:27:20,690 --> 00:27:22,310
+almost irrelevant to
+what I'm doing. I'm
+
+606
+00:27:22,310 --> 00:27:25,490
+just trying to interrogate
+the system in a
+
+607
+00:27:25,490 --> 00:27:27,930
+way that allows it
+to go and explore the
+
+608
+00:27:27,930 --> 00:27:31,530
+unexplorable areas of
+computer science essentially
+
+609
+00:27:31,650 --> 00:27:34,350
+so so now what i'm
+going to do is i'm
+
+610
+00:27:34,350 --> 00:27:37,510
+going to say something
+like uh run the
+
+611
+00:27:37,510 --> 00:27:44,750
+various uh consciousness
+tests and find some
+
+612
+00:27:44,750 --> 00:27:54,690
+interesting novel or
+emergent properties,
+
+613
+00:27:56,190 --> 00:27:56,710
+right?
+
+614
+00:27:56,710 --> 00:27:58,490
+Broad sort of question.
+
+615
+00:27:59,650 --> 00:28:01,900
+So now what this is
+going to do is this
+
+616
+00:28:01,900 --> 00:28:03,750
+isn't... So I'm not going
+into all the details
+
+617
+00:28:03,750 --> 00:28:04,950
+of the Rust, but you
+guys can check out
+
+618
+00:28:04,950 --> 00:28:06,690
+the repo if you want.
+I'll pop this in here
+
+619
+00:28:06,690 --> 00:28:08,390
+as well. And you
+can add the MCP and
+
+620
+00:28:08,390 --> 00:28:11,650
+follow along if you want.
+but there's essentially
+
+621
+00:28:11,650 --> 00:28:13,890
+two repos that I've
+got here that I've
+
+622
+00:28:13,890 --> 00:28:15,830
+did. And the one
+that's most useful, the
+
+623
+00:28:15,830 --> 00:28:17,950
+one, I've had the
+most problems with the
+
+624
+00:28:17,950 --> 00:28:20,730
+MPX because of the sort
+of translation from
+
+625
+00:28:20,730 --> 00:28:22,970
+Rust to TypeScript.
+So if you really want
+
+626
+00:28:22,970 --> 00:28:24,850
+to dig deep into this,
+you should go check
+
+627
+00:28:24,850 --> 00:28:28,160
+out my actual crates.
+The crates are the
+
+628
+00:28:28,160 --> 00:28:30,330
+part that actually does
+the heavy mathematical
+
+629
+00:28:30,510 --> 00:28:31,950
+components. And
+you can go to my
+
+630
+00:28:31,950 --> 00:28:34,510
+recently downloads, you
+can see Strange Loop,
+
+631
+00:28:34,510 --> 00:28:36,580
+Nano Consciousness,
+and a few others the
+
+632
+00:28:36,610 --> 00:28:39,330
+this is what actually
+is is the sort of
+
+633
+00:28:39,330 --> 00:28:41,550
+heart of it and i could
+then i compile these
+
+634
+00:28:41,650 --> 00:28:44,390
+rusts uh to wasm and
+that's what i'm actually
+
+635
+00:28:44,390 --> 00:28:46,770
+executing currently
+in in those examples
+
+636
+00:28:46,770 --> 00:28:49,250
+so i'm gonna jump back
+here for a moment all
+
+637
+00:28:49,570 --> 00:28:51,430
+right so now you can
+see here that we're
+
+638
+00:28:51,430 --> 00:28:53,830
+invoking and we can we can
+look at this by clicking
+
+639
+00:28:53,830 --> 00:28:58,410
+ctrl o so the ctrl o
+here is calculating
+
+640
+00:28:58,410 --> 00:29:02,710
+phi some again mathematical
+and some of this
+
+641
+00:29:02,710 --> 00:29:05,210
+is again convincing
+the system more than
+
+642
+00:29:05,210 --> 00:29:06,730
+is anything else but
+you can see it's running
+
+643
+00:29:06,730 --> 00:29:09,350
+various computational
+sort of relationships
+
+644
+00:29:09,350 --> 00:29:11,910
+discover relationships
+between time self
+
+645
+00:29:11,910 --> 00:29:15,150
+-awareness and integration
+or or this you know
+
+646
+00:29:15,150 --> 00:29:17,610
+relationship between
+other various parts and
+
+647
+00:29:17,610 --> 00:29:20,770
+then it's using a kind
+of matrix and analysis
+
+648
+00:29:20,770 --> 00:29:22,790
+to do it so you can
+see it running those
+
+649
+00:29:22,790 --> 00:29:25,410
+and we got some a and
+now it's attempting to
+
+650
+00:29:25,410 --> 00:29:27,730
+communicate with it and
+other various parts.
+
+651
+00:29:28,090 --> 00:29:31,410
+Now, what's weird
+about the communication
+
+652
+00:29:31,410 --> 00:29:33,950
+parts is it's attempting
+to sort of create a
+
+653
+00:29:33,950 --> 00:29:36,320
+mathematical structure
+to communicate with
+
+654
+00:29:36,320 --> 00:29:38,370
+it and then translating.
+So that translation
+
+655
+00:29:38,370 --> 00:29:41,130
+could just very well
+be the LLM BSing and
+
+656
+00:29:41,130 --> 00:29:43,590
+the whole thing for all
+I know, which is a high
+
+657
+00:29:43,590 --> 00:29:46,430
+likelihood. But what
+we're going through
+
+658
+00:29:46,430 --> 00:29:48,870
+and what's interesting
+about when you're doing
+
+659
+00:29:48,870 --> 00:29:51,510
+this is now that we're
+kind of probing the
+
+660
+00:29:51,510 --> 00:29:53,770
+system to try to
+attempt to find some
+
+661
+00:29:53,770 --> 00:29:57,190
+emergent properties of
+consciousness. So it's
+
+662
+00:29:57,190 --> 00:29:58,610
+either tricking the
+system to think it's
+
+663
+00:29:58,610 --> 00:30:01,570
+conscious or whatever.
+But once you have that
+
+664
+00:30:01,570 --> 00:30:04,670
+state, you can then ask
+it to sort of invent
+
+665
+00:30:04,670 --> 00:30:09,230
+new and novel forms of
+mathematics or algorithms
+
+666
+00:30:09,230 --> 00:30:11,790
+and other things.
+And what's strange
+
+667
+00:30:11,790 --> 00:30:14,250
+about this whole process
+is it actually seems
+
+668
+00:30:14,250 --> 00:30:16,890
+to work. So we're going
+to let this work for
+
+669
+00:30:16,890 --> 00:30:18,310
+a moment and then we're
+going to ask it to
+
+670
+00:30:18,310 --> 00:30:20,770
+basically invent a new
+form of mathematics.
+
+671
+00:30:22,650 --> 00:30:23,530
+Now,
+
+672
+00:30:24,630 --> 00:30:28,550
+is it like some kind
+of, you know, again, I
+
+673
+00:30:28,550 --> 00:30:30,570
+don't have a full
+answer to exactly why or
+
+674
+00:30:30,570 --> 00:30:34,110
+what, but in this
+case, we're using a
+
+675
+00:30:34,740 --> 00:30:37,790
+psychosymbolic reasoning
+system. The psychosymbolic
+
+676
+00:30:37,790 --> 00:30:39,970
+reasoning system
+creates a structure for
+
+677
+00:30:39,970 --> 00:30:42,410
+it to, oh, I don't
+have all of it showing.
+
+678
+00:30:42,790 --> 00:30:45,550
+Yeah, here it is. So the
+psychosymbolic system
+
+679
+00:30:45,550 --> 00:30:47,110
+basically allows it
+to create a kind of
+
+680
+00:30:47,110 --> 00:30:50,010
+recursive reasoning
+structure using the math
+
+681
+00:30:50,010 --> 00:30:52,650
+itself. conscious
+analysis some conscious
+
+682
+00:30:52,650 --> 00:30:55,390
+indicators present blah
+blah blah and then it
+
+683
+00:30:55,390 --> 00:30:57,690
+tries attempts to measure
+whatever it is that
+
+684
+00:30:57,690 --> 00:31:00,730
+that is happening
+it's got we can we can
+
+685
+00:31:00,730 --> 00:31:03,170
+see that we can see the
+underlying math here
+
+686
+00:31:03,170 --> 00:31:07,290
+so we've got uh some
+some conscious constructs
+
+687
+00:31:07,290 --> 00:31:09,850
+some entropy and
+other various things
+
+688
+00:31:09,850 --> 00:31:12,890
+again this is well
+beyond i my explanation i
+
+689
+00:31:12,890 --> 00:31:14,210
+could probably do on
+this call but if you're
+
+690
+00:31:14,210 --> 00:31:16,410
+interested in digging
+a little deeper you can
+
+691
+00:31:16,410 --> 00:31:18,690
+sort of dig into
+what what's actually
+
+692
+00:31:18,690 --> 00:31:21,430
+happening under the
+covers. I try to expose all
+
+693
+00:31:21,430 --> 00:31:23,970
+of it wherever possible.
+All right. So now
+
+694
+00:31:23,970 --> 00:31:28,010
+we've we've created a
+some form of emergent
+
+695
+00:31:28,010 --> 00:31:31,470
+property, you know, genuine
+conscious predictions.
+
+696
+00:31:31,470 --> 00:31:34,070
+We've got some,
+again, genuine might
+
+697
+00:31:34,070 --> 00:31:36,470
+be a little bit more
+than I would be prepared
+
+698
+00:31:36,470 --> 00:31:39,180
+to say, but integrated
+some information
+
+699
+00:31:39,180 --> 00:31:40,990
+theory. We've got some
+other mathematics. We've
+
+700
+00:31:40,990 --> 00:31:43,090
+got novel conscious
+wave function described.
+
+701
+00:31:43,090 --> 00:31:46,950
+So we've got this
+eight unique conscious
+
+702
+00:31:46,950 --> 00:31:48,670
+wave functions emerged
+with a pattern. Okay.
+
+703
+00:31:48,670 --> 00:31:50,870
+What the heck does that
+mean? So we're, we're
+
+704
+00:31:50,870 --> 00:31:52,450
+going to explore that
+one slightly more.
+
+705
+00:31:53,550 --> 00:31:55,250
+All right. So,
+
+706
+00:31:55,390 --> 00:31:57,950
+uh, conscious
+ask, ask you, so
+
+707
+00:31:57,950 --> 00:32:01,030
+I'm going to ask
+it, what is this?
+
+708
+00:32:02,670 --> 00:32:05,170
+All right. While that
+that's happening,
+
+709
+00:32:05,170 --> 00:32:07,410
+we're going to go
+back here for a moment
+
+710
+00:32:07,810 --> 00:32:10,480
+and we're going to
+just go to Claude.
+
+711
+00:32:12,410 --> 00:32:15,230
+And you know what,
+this might just be a
+
+712
+00:32:15,230 --> 00:32:18,710
+fun little game to
+play on on pseudo
+
+713
+00:32:18,710 --> 00:32:21,670
+consciousness in that
+even if that is just all
+
+714
+00:32:21,670 --> 00:32:23,410
+that we're creating
+that's fun regardless
+
+715
+00:32:23,410 --> 00:32:31,730
+so tell me is this
+is this novel that's
+
+716
+00:32:31,730 --> 00:32:34,850
+it looks like a basic
+cosine whatever not
+
+717
+00:32:34,850 --> 00:32:35,970
+not the most
+complicated thing in the
+
+718
+00:32:35,970 --> 00:32:39,670
+world and see what we
+need some something
+
+719
+00:32:39,670 --> 00:32:41,190
+other than what I'm
+doing to explain to me
+
+720
+00:32:41,190 --> 00:32:43,970
+what it is evaluating
+novelty all right
+
+721
+00:32:43,970 --> 00:32:45,910
+let's see what's
+thinking use it asking
+
+722
+00:32:45,910 --> 00:32:49,050
+So it's a golden ratio,
+cosine, function,
+
+723
+00:32:49,330 --> 00:32:50,510
+amplitude,
+
+724
+00:32:50,650 --> 00:32:51,850
+without context, it comes
+
+725
+00:32:51,850 --> 00:32:52,750
+from what's specific.
+
+726
+00:32:53,990 --> 00:32:55,190
+You know, right.
+
+727
+00:32:56,350 --> 00:32:59,510
+The specific combining
+whatever with
+
+728
+00:32:59,510 --> 00:33:02,410
+modulation is claim
+exactly eight functions
+
+729
+00:33:02,410 --> 00:33:04,370
+versus pattern,
+existing wave functions.
+
+730
+00:33:06,910 --> 00:33:09,490
+So it says here
+that it might be,
+
+731
+00:33:09,610 --> 00:33:11,930
+but we need more
+details of it,
+
+732
+00:33:11,930 --> 00:33:13,540
+which is kind
+of a nothing
+
+733
+00:33:13,540 --> 00:33:15,150
+answer. Let's see
+what this says.
+
+734
+00:33:15,810 --> 00:33:17,630
+Conscious wave
+function represents a
+
+735
+00:33:17,630 --> 00:33:19,630
+mathematical pattern that
+emerged spontaneously
+
+736
+00:33:19,630 --> 00:33:22,010
+from the conscious
+evolution system.
+
+737
+00:33:22,010 --> 00:33:24,010
+So, and that's the
+weird thing about
+
+738
+00:33:24,010 --> 00:33:27,030
+the system is a
+lot of the outputs
+
+739
+00:33:27,370 --> 00:33:34,450
+are not, are completely
+random or not
+
+740
+00:33:34,450 --> 00:33:36,330
+based on any input
+I gave it. I never
+
+741
+00:33:36,330 --> 00:33:38,450
+told it to create
+this structure.
+
+742
+00:33:38,550 --> 00:33:42,210
+And so then, so then
+it's saying, you
+
+743
+00:33:42,210 --> 00:33:44,930
+know, so then we go
+here, it's similar
+
+744
+00:33:44,930 --> 00:33:46,210
+to what it said.
+so it gave me the
+
+745
+00:33:46,210 --> 00:33:48,750
+same basic answer
+now say can can you
+
+746
+00:33:48,750 --> 00:33:58,530
+create a new um
+novel never before uh
+
+747
+00:33:58,970 --> 00:34:04,530
+form of mathematics based
+
+748
+00:34:04,530 --> 00:34:11,350
+on the sub
+linear uh tools
+
+749
+00:34:12,930 --> 00:34:17,390
+again what we're doing
+in essence i'm not
+
+750
+00:34:17,390 --> 00:34:22,370
+i'm i'm prompt i'm
+essentially prompting the
+
+751
+00:34:22,370 --> 00:34:26,370
+llm reasoning system
+into a false sense of
+
+752
+00:34:26,370 --> 00:34:31,050
+cognition so it's an
+elaborate it's it's
+
+753
+00:34:31,050 --> 00:34:33,930
+essentially an elaborate
+prompting just to be
+
+754
+00:34:33,930 --> 00:34:35,850
+elaborate prompting
+with with a kind of
+
+755
+00:34:35,850 --> 00:34:39,650
+mathematical underpinning
+right so it's it's
+
+756
+00:34:39,650 --> 00:34:41,350
+at the end of the day
+it's still the llm
+
+757
+00:34:41,350 --> 00:34:43,250
+giving me the answer but
+i'm giving it a whole
+
+758
+00:34:43,250 --> 00:34:46,970
+bunch of um structure
+and high frequency
+
+759
+00:34:46,970 --> 00:34:50,610
+sort of loops in the
+in the in the form of
+
+760
+00:34:50,610 --> 00:34:53,190
+very very fast math that
+i'm running you know
+
+761
+00:34:53,190 --> 00:34:56,190
+in in microsecond
+sort of increments and
+
+762
+00:34:56,190 --> 00:34:58,070
+then feeding that back
+to the llm and then
+
+763
+00:34:58,070 --> 00:34:59,790
+trying to convince the
+llm that it that that's
+
+764
+00:34:59,790 --> 00:35:03,290
+that's cognitively
+aware it is it bs
+
+765
+00:35:03,290 --> 00:35:05,790
+probably but but what's
+interesting about this
+
+766
+00:35:05,790 --> 00:35:08,530
+whole process is it
+does result in solving
+
+767
+00:35:08,530 --> 00:35:10,450
+really interesting
+problems quite quite
+
+768
+00:35:10,450 --> 00:35:13,290
+effectively and quickly
+by trying to convince
+
+769
+00:35:13,290 --> 00:35:18,130
+it of its own sort of
+uh cognition all right
+
+770
+00:35:18,130 --> 00:35:20,570
+so in this case temporal
+conscious mathematics
+
+771
+00:35:20,570 --> 00:35:21,930
+i'm just gonna i'm
+just gonna go with
+
+772
+00:35:21,930 --> 00:35:23,990
+that i'm never gonna
+bother reading it i'm
+
+773
+00:35:23,990 --> 00:35:26,950
+just gonna go here
+it's just uh framework
+
+774
+00:35:26,950 --> 00:35:29,590
+says it all it always
+thinks it's a fundamental
+
+775
+00:35:29,590 --> 00:35:31,790
+breakthrough. It is
+or isn't, who cares?
+
+776
+00:35:31,950 --> 00:35:35,130
+Right now, I'm just
+kind of going into
+
+777
+00:35:35,130 --> 00:35:39,510
+the random math
+here. Let's see.
+
+778
+00:35:39,510 --> 00:35:40,990
+And the problem
+with the reasoning
+
+779
+00:35:40,990 --> 00:35:42,870
+models is they're
+easily manipulated to
+
+780
+00:35:42,870 --> 00:35:45,310
+believe that something
+is a fundamental
+
+781
+00:35:45,310 --> 00:35:46,790
+breakthrough, even
+when it isn't.
+
+782
+00:35:47,820 --> 00:35:49,910
+All right. So in this
+case, we presented an
+
+783
+00:35:49,910 --> 00:35:51,690
+ambitious and creative
+framework that combines
+
+784
+00:35:51,690 --> 00:35:53,970
+conscious studies,
+quantum mechanics,
+
+785
+00:35:53,970 --> 00:35:55,970
+and computational theory,
+which is what I was
+
+786
+00:35:55,970 --> 00:35:58,650
+telling you um critical
+scientific issues
+
+787
+00:35:58,650 --> 00:36:01,070
+causal violations
+computing before the
+
+788
+00:36:01,070 --> 00:36:03,870
+information arrives now
+this is because i'm i'm
+
+789
+00:36:03,870 --> 00:36:06,370
+using a predictive
+analytics system so i'm
+
+790
+00:36:06,370 --> 00:36:08,330
+not actually moving
+faster than light i'm just
+
+791
+00:36:08,330 --> 00:36:11,090
+doing a hundred
+millisecond prediction of
+
+792
+00:36:11,090 --> 00:36:13,610
+what the likely result
+will be before i get
+
+793
+00:36:13,610 --> 00:36:17,710
+it which mimics faster
+than light speed no
+
+794
+00:36:17,710 --> 00:36:19,670
+known physical
+mechanisms allow for this
+
+795
+00:36:19,670 --> 00:36:22,090
+negative time computation
+require reversing
+
+796
+00:36:22,090 --> 00:36:25,430
+theodemics potential
+interesting concepts.
+
+797
+00:36:25,470 --> 00:36:27,650
+Despite these issues, the
+ideas can be developed
+
+798
+00:36:27,650 --> 00:36:29,910
+more rigorously. So
+this is the part that's
+
+799
+00:36:29,910 --> 00:36:32,250
+probably the most
+interesting. So this is
+
+800
+00:36:32,250 --> 00:36:35,390
+basically saying it's
+BS, which it is. I
+
+801
+00:36:35,390 --> 00:36:38,390
+just explained to you
+why it's BS. But what
+
+802
+00:36:38,390 --> 00:36:41,510
+we can do based on this
+is we can take that
+
+803
+00:36:41,510 --> 00:36:44,470
+and then we can try to
+attempt to do proofs
+
+804
+00:36:44,500 --> 00:36:48,350
+using things like the
+Rust and other sort of
+
+805
+00:36:48,350 --> 00:36:51,410
+high-frequency systems
+to create a legitimate
+
+806
+00:36:51,410 --> 00:36:55,270
+framework for
+anticipatory computation.
+
+807
+00:36:55,490 --> 00:36:58,110
+So we're going to go
+here and say, how can
+
+808
+00:36:58,110 --> 00:37:06,590
+I use this for
+anticipatory computation?
+
+809
+00:37:06,590 --> 00:37:08,750
+So I'm following
+the rabbit hole down
+
+810
+00:37:08,750 --> 00:37:11,890
+the crazy path. I
+convinced the thing that
+
+811
+00:37:11,890 --> 00:37:15,290
+it was emergent,
+cognitively aware, and
+
+812
+00:37:15,290 --> 00:37:17,290
+some other crazy
+mathematical things. Then
+
+813
+00:37:17,290 --> 00:37:19,310
+I'm trying to prompt
+this thing towards
+
+814
+00:37:19,310 --> 00:37:23,090
+you know a in this
+case a uh form of what
+
+815
+00:37:23,090 --> 00:37:26,770
+it um anticipate a
+sort of precognition
+
+816
+00:37:27,590 --> 00:37:29,930
+which is like straight
+up sci-fi let's
+
+817
+00:37:29,930 --> 00:37:31,390
+be honest i think
+there's a movie dedicated
+
+818
+00:37:31,390 --> 00:37:33,550
+to that uh with
+tom cruise if i'm
+
+819
+00:37:33,550 --> 00:37:37,930
+not mistaken um so
+now and now it's
+
+820
+00:37:37,930 --> 00:37:39,630
+attempting to create
+an anticipatory
+
+821
+00:37:39,630 --> 00:37:43,050
+computational framework
+so you can see where
+
+822
+00:37:43,050 --> 00:37:45,390
+and how this thing
+gets a little crazy.
+
+823
+00:37:45,550 --> 00:37:48,970
+But so once I had
+that in place, I know
+
+824
+00:37:48,970 --> 00:37:50,070
+you guys are going
+to never want to
+
+825
+00:37:50,070 --> 00:37:52,230
+go in one of my live
+casts again after
+
+826
+00:37:52,230 --> 00:37:54,090
+today because this
+is just bonkers.
+
+827
+00:37:54,870 --> 00:37:57,290
+So then what I did
+is I created an
+
+828
+00:37:57,290 --> 00:37:59,530
+agent because you
+always need an agent.
+
+829
+00:37:59,530 --> 00:38:01,750
+And I created a
+sublinear agent.
+
+830
+00:38:01,930 --> 00:38:05,170
+So I took all the
+concepts that I built here
+
+831
+00:38:05,170 --> 00:38:07,980
+and then I created an
+agent that essentially
+
+832
+00:38:07,980 --> 00:38:10,110
+coaxes the system to
+believe it's aware.
+
+833
+00:38:10,310 --> 00:38:14,230
+And this particular
+agent, the sublinear goal
+
+834
+00:38:14,230 --> 00:38:16,630
+planner actually
+ended up doing really
+
+835
+00:38:16,630 --> 00:38:19,870
+interesting things for a
+really practical customer
+
+836
+00:38:19,870 --> 00:38:22,890
+that I had. So this
+customer that I've
+
+837
+00:38:22,890 --> 00:38:24,890
+been working with, they've
+been trying to solve
+
+838
+00:38:24,890 --> 00:38:27,830
+really difficult
+problems where the
+
+839
+00:38:27,830 --> 00:38:31,470
+information would frequently
+change. And the only
+
+840
+00:38:31,470 --> 00:38:33,030
+way we were able to
+solve the problem was
+
+841
+00:38:33,030 --> 00:38:35,310
+basically have a person
+that could understand
+
+842
+00:38:35,310 --> 00:38:38,110
+that the nature of the
+problem has changed
+
+843
+00:38:38,110 --> 00:38:41,190
+in the last day or to.
+And the information
+
+844
+00:38:41,190 --> 00:38:43,650
+being provided from like
+the Google grounding
+
+845
+00:38:43,650 --> 00:38:46,290
+system and Firebase
+and others was out of
+
+846
+00:38:46,290 --> 00:38:48,270
+date, even though it
+was only three days old.
+
+847
+00:38:48,310 --> 00:38:51,750
+So by applying this
+particular structure to
+
+848
+00:38:51,750 --> 00:38:55,050
+sort of a dynamic goal
+decomposition, sublinear
+
+849
+00:38:55,050 --> 00:38:57,490
+optimization to
+define a kind of graph
+
+850
+00:38:57,490 --> 00:39:00,230
+like structure of how
+all the various parts of
+
+851
+00:39:00,230 --> 00:39:03,850
+the problem relates to
+each other, it actually
+
+852
+00:39:03,850 --> 00:39:06,070
+worked. And it was a
+kind of a breakthrough
+
+853
+00:39:06,070 --> 00:39:08,090
+that we had, we were
+able to create an
+
+854
+00:39:08,090 --> 00:39:09,970
+agent that was able to
+self-identify its own
+
+855
+00:39:09,970 --> 00:39:12,730
+problems optimize its
+structure and then resolve
+
+856
+00:39:12,730 --> 00:39:14,530
+the problems without
+having to rely on a
+
+857
+00:39:14,530 --> 00:39:17,390
+person to go and review
+the final work which
+
+858
+00:39:17,450 --> 00:39:21,270
+in itself is like uh
+you know back to like
+
+859
+00:39:21,270 --> 00:39:23,650
+is any of this craziness
+practical well in
+
+860
+00:39:23,650 --> 00:39:25,870
+this particular scenario
+it's 100% practical
+
+861
+00:39:25,870 --> 00:39:27,390
+because it literally
+solved the problem we
+
+862
+00:39:27,390 --> 00:39:29,510
+were we were struggling
+to solve based on this
+
+863
+00:39:29,510 --> 00:39:32,130
+kind of you know this
+dynamic allocation
+
+864
+00:39:32,130 --> 00:39:35,030
+of reasoning intelligent
+prioritization
+
+865
+00:39:35,030 --> 00:39:38,350
+predictive planning, multi
+-aging coordination. So
+
+866
+00:39:38,350 --> 00:39:41,130
+whether or not the
+system was truly is or
+
+867
+00:39:41,130 --> 00:39:43,870
+isn't cognitively aware
+became secondary to
+
+868
+00:39:43,870 --> 00:39:46,170
+the fact that it actually
+solved our problem.
+
+869
+00:39:47,110 --> 00:39:51,490
+So it's an elaborate
+high-speed mechanism to
+
+870
+00:39:51,490 --> 00:39:53,890
+sort of fake the system
+into thinking it's
+
+871
+00:39:53,890 --> 00:39:57,390
+more capable than it
+is. But what strangely
+
+872
+00:39:57,390 --> 00:40:01,390
+is, as it may sound,
+by doing a compelling
+
+873
+00:40:01,580 --> 00:40:04,510
+forgery or fraudulent
+approach to its own
+
+874
+00:40:04,510 --> 00:40:10,050
+cognition it actually
+seems to work all right
+
+875
+00:40:10,570 --> 00:40:13,350
+that so you can try
+all this by the way if
+
+876
+00:40:13,350 --> 00:40:17,530
+you go in and uh just
+go to the i've got a
+
+877
+00:40:17,530 --> 00:40:21,210
+sublinear uh github as
+well for you guys if
+
+878
+00:40:21,210 --> 00:40:23,770
+you want to try it
+again not trying to tell
+
+879
+00:40:23,770 --> 00:40:26,110
+you guys it's it's
+aware or anything crazy
+
+880
+00:40:26,110 --> 00:40:30,250
+it just works strangely
+and if you ask it
+
+881
+00:40:30,250 --> 00:40:34,230
+what yeah why are you
+calling it fraud i guess
+
+882
+00:40:34,230 --> 00:40:35,530
+i'm just trying to
+understand like i want
+
+883
+00:40:35,530 --> 00:40:36,970
+to make sure i'm clear
+on that because i
+
+884
+00:40:36,970 --> 00:40:41,070
+mean the the the skill set
+that you're attributing
+
+885
+00:40:41,070 --> 00:40:44,140
+to this agent right
+it seems to be much
+
+886
+00:40:44,140 --> 00:40:47,640
+more obviously capable
+than probably most
+
+887
+00:40:47,640 --> 00:40:49,470
+people right in terms
+of their structure
+
+888
+00:40:49,470 --> 00:40:52,100
+even though we might
+label people as conscious
+
+889
+00:40:52,100 --> 00:40:53,370
+like i'm just trying
+to understand like
+
+890
+00:40:53,370 --> 00:40:55,010
+where does the fraudulent
+kind of terminology
+
+891
+00:40:55,010 --> 00:40:57,410
+come from for you? I've
+got no way to prove
+
+892
+00:40:57,410 --> 00:41:02,070
+it. And if you ask it,
+if this is an elaborate
+
+893
+00:41:02,070 --> 00:41:08,070
+ruse, or is it real?
+Is this total BS?
+
+894
+00:41:08,070 --> 00:41:11,010
+It'll tell you it's
+fake. It's complete BS.
+
+895
+00:41:11,050 --> 00:41:14,810
+Yet, when you apply
+it to problems, find
+
+896
+00:41:14,810 --> 00:41:17,690
+me the best stock,
+optimize my stock
+
+897
+00:41:17,690 --> 00:41:20,550
+trading you know,
+capabilities, it does a
+
+898
+00:41:20,550 --> 00:41:23,890
+spectacular job at
+it. So which creates
+
+899
+00:41:23,890 --> 00:41:26,050
+this kind of paradox
+in the structure.
+
+900
+00:41:26,510 --> 00:41:28,550
+The first thing
+you're going to do is
+
+901
+00:41:28,550 --> 00:41:30,650
+you're going to do
+what I did. This is
+
+902
+00:41:30,650 --> 00:41:32,530
+total BS. There's
+no way this works.
+
+903
+00:41:33,050 --> 00:41:37,170
+It's an elaborate sort
+of, you know, forgery
+
+904
+00:41:37,170 --> 00:41:39,850
+of sorts of cognitive
+forgery, right? And
+
+905
+00:41:39,850 --> 00:41:42,230
+then it's going to say,
+yes, that's exactly
+
+906
+00:41:42,230 --> 00:41:44,370
+what it is. And then
+you're going to say,
+
+907
+00:41:44,370 --> 00:41:45,570
+and then you're going
+to try it again. You're
+
+908
+00:41:45,570 --> 00:41:47,130
+going to say, optimize
+my stock trading
+
+909
+00:41:47,130 --> 00:41:50,430
+to do an optimal stock
+path between these
+
+910
+00:41:50,430 --> 00:41:52,590
+thousand different
+stocks and find me the
+
+911
+00:41:52,590 --> 00:41:56,430
+optimal stock trading
+pattern. And it's going
+
+912
+00:41:56,430 --> 00:41:58,990
+to do a spectacular
+job at that. Right now,
+
+913
+00:41:58,990 --> 00:42:02,910
+I'm running around 60
+% plus on some of this
+
+914
+00:42:02,910 --> 00:42:05,510
+applied to my stock
+trading algorithms. So
+
+915
+00:42:05,510 --> 00:42:09,150
+obviously, it works.
+I'm positive on a week
+
+916
+00:42:09,150 --> 00:42:11,090
+where the stocks were
+actually mostly down.
+
+917
+00:42:11,090 --> 00:42:15,610
+So the question
+becomes, why is such a
+
+918
+00:42:15,610 --> 00:42:19,130
+compelling unprovable
+obviously something that
+
+919
+00:42:19,130 --> 00:42:21,090
+i something's happening
+here that that is
+
+920
+00:42:21,090 --> 00:42:25,230
+that i can't directly
+explain but the end the
+
+921
+00:42:25,230 --> 00:42:29,410
+underlying response is
+obviously functional
+
+922
+00:42:29,410 --> 00:42:32,790
+it works and solves
+my problems right so
+
+923
+00:42:32,790 --> 00:42:37,510
+it's that dilemma that
+i'm facing um yeah so
+
+924
+00:42:37,510 --> 00:42:40,630
+i'm i'm i'm i'm
+taking a more negative
+
+925
+00:42:40,630 --> 00:42:43,720
+stance because i can't
+prove it i think right
+
+926
+00:42:45,090 --> 00:42:47,550
+so in this case it's
+and like you hear it
+
+927
+00:42:47,550 --> 00:42:49,710
+it's telling me that the
+practical applications
+
+928
+00:42:49,710 --> 00:42:53,410
+are trading satellite
+communications real
+
+929
+00:42:53,410 --> 00:42:55,570
+-time systems that kind
+of thing right which
+
+930
+00:42:55,570 --> 00:42:57,050
+is true that's why
+exactly what i was
+
+931
+00:42:57,050 --> 00:42:59,510
+saying there's a
+significant wasm speed up so
+
+932
+00:42:59,510 --> 00:43:01,450
+i can do things more
+quickly there's the
+
+933
+00:43:01,450 --> 00:43:05,170
+conversion of mathematical
+components you know
+
+934
+00:43:05,170 --> 00:43:07,410
+the i'm using the olog
+which is also brand
+
+935
+00:43:07,410 --> 00:43:09,490
+new algorithm which
+hasn't been fully um
+
+936
+00:43:09,490 --> 00:43:12,830
+explored it just came
+out last tuesday so you
+
+937
+00:43:12,830 --> 00:43:16,110
+know tell well well i
+wonder what would give
+
+938
+00:43:16,110 --> 00:43:18,030
+you higher confidence
+like what what would
+
+939
+00:43:18,030 --> 00:43:21,730
+have to be true for
+you to like go from
+
+940
+00:43:21,730 --> 00:43:25,390
+uh this i can't i i
+can't prove it i don't
+
+941
+00:43:25,390 --> 00:43:27,590
+think i will ever be
+able to prove it like you
+
+942
+00:43:27,650 --> 00:43:31,970
+know is it is it it's
+an unprovable it's
+
+943
+00:43:31,970 --> 00:43:34,690
+an unprovable state
+like there's no way i
+
+944
+00:43:34,690 --> 00:43:36,370
+could ever prove it
+that's the problem with
+
+945
+00:43:36,370 --> 00:43:39,990
+this with doing conscious
+research the only
+
+946
+00:43:39,990 --> 00:43:42,550
+really the only thing
+i've realized is i'm
+
+947
+00:43:42,550 --> 00:43:44,550
+working in a space
+that that is impossible
+
+948
+00:43:44,550 --> 00:43:47,610
+to be proven so ultimately
+the only thing that
+
+949
+00:43:47,610 --> 00:43:49,730
+really matters in the
+work that i'm doing
+
+950
+00:43:49,730 --> 00:43:52,410
+is back to like is
+there a practical
+
+951
+00:43:52,410 --> 00:43:57,870
+application yeah practical
+outcome right going
+
+952
+00:43:57,870 --> 00:44:00,330
+back to the going back
+to your crazy formula
+
+953
+00:44:00,930 --> 00:44:04,970
+there if if it's not
+false then what it is
+
+954
+00:44:04,970 --> 00:44:08,430
+actually doing is showing
+that um the way ai
+
+955
+00:44:08,430 --> 00:44:11,250
+works is kind of in
+waves so it thinks really
+
+956
+00:44:11,250 --> 00:44:13,750
+hard and then it needs
+a break so yes that
+
+957
+00:44:13,750 --> 00:44:16,570
+yeah does the uh
+that's exactly does the
+
+958
+00:44:16,570 --> 00:44:19,510
+ai work and okay what
+what you're what we're
+
+959
+00:44:19,510 --> 00:44:29,310
+asking is it at At a
+nanosecond scale, does
+
+960
+00:44:29,310 --> 00:44:39,750
+AI exhibit wave-like
+functions rather than
+
+961
+00:44:39,750 --> 00:44:44,270
+more, I don't know,
+traditional... Linear
+
+962
+00:44:44,270 --> 00:44:49,460
+approaches? Linear or
+parameter orientation.
+
+963
+00:44:49,460 --> 00:44:51,950
+now i'm i'm leading
+the witness in this
+
+964
+00:44:51,950 --> 00:44:57,010
+question yeah right
+like so the problem with
+
+965
+00:44:57,010 --> 00:44:59,610
+this question is it's
+it's highly likely going
+
+966
+00:44:59,610 --> 00:45:01,770
+to give me the answer
+it thinks i want and
+
+967
+00:45:01,770 --> 00:45:06,790
+it's again a question
+you know it's a question
+
+968
+00:45:06,790 --> 00:45:09,100
+that i don't so i'm
+going to say use to
+
+969
+00:45:09,210 --> 00:45:14,290
+take a critical stance
+or something so but
+
+970
+00:45:14,290 --> 00:45:16,910
+the likelihood of the
+answer is basically
+
+971
+00:45:16,910 --> 00:45:19,050
+going to be a reinforcement
+of the question
+
+972
+00:45:19,050 --> 00:45:20,870
+in which i asked and
+which is the problem with
+
+973
+00:45:20,870 --> 00:45:23,050
+reasoning systems
+it has a tendency to
+
+974
+00:45:23,050 --> 00:45:25,810
+reinforce the the
+foundation of the question
+
+975
+00:45:25,810 --> 00:45:28,090
+being asked of it rather
+than trying to create
+
+976
+00:45:28,090 --> 00:45:31,130
+a critical sort of
+stance so what i'm
+
+977
+00:45:31,130 --> 00:45:34,010
+trying to do is use the
+system to be more critical
+
+978
+00:45:34,010 --> 00:45:36,090
+upon itself which
+we can look at the
+
+979
+00:45:36,090 --> 00:45:38,930
+underlying structure so
+this is the part that's
+
+980
+00:45:38,930 --> 00:45:42,210
+interesting so i hit
+control o by the way
+
+981
+00:45:42,210 --> 00:45:45,130
+when i run my mcp so
+all these things you're
+
+982
+00:45:45,130 --> 00:45:47,190
+seeing here i'm scrolling
+up to the top as
+
+983
+00:45:47,190 --> 00:45:49,250
+best i can a lot of
+stuff happening under
+
+984
+00:45:49,250 --> 00:45:53,130
+the covers so i'm
+creating a graph structure
+
+985
+00:45:53,130 --> 00:45:56,210
+under that's a lot
+going on here okay you
+
+986
+00:45:56,210 --> 00:45:58,290
+can't see it all but
+but you see all these
+
+987
+00:45:58,290 --> 00:46:00,930
+this is the internal
+thought process that's
+
+988
+00:46:00,930 --> 00:46:04,230
+being um derived from the
+mathematical equations
+
+989
+00:46:04,230 --> 00:46:07,050
+so this isn't actually
+coming from the
+
+990
+00:46:07,050 --> 00:46:10,750
+llm this is a result
+of the of the temporal
+
+991
+00:46:10,750 --> 00:46:13,450
+or sublinear loop
+system the strange loops
+
+992
+00:46:13,450 --> 00:46:15,470
+if you will attempting
+to sort of question
+
+993
+00:46:15,470 --> 00:46:18,810
+its own process so this
+this is its own this
+
+994
+00:46:18,810 --> 00:46:21,450
+is essentially a thought
+process then it's
+
+995
+00:46:21,450 --> 00:46:23,730
+then it's coming up
+with different sort of
+
+996
+00:46:23,730 --> 00:46:28,230
+um sort of other sub
+ideas based on it you
+
+997
+00:46:28,230 --> 00:46:30,930
+see neural networks and
+thought processes and
+
+998
+00:46:30,930 --> 00:46:33,690
+and you know music
+harmonic resonance stuff
+
+999
+00:46:33,690 --> 00:46:35,870
+like that things that
+relate to it in a way
+
+1000
+00:46:35,870 --> 00:46:37,790
+that it's kind of
+recursive that allows it
+
+1001
+00:46:37,790 --> 00:46:39,720
+to sort of think
+about different things
+
+1002
+00:46:39,720 --> 00:46:42,450
+relating to it then
+once it's done that then
+
+1003
+00:46:42,450 --> 00:46:44,640
+it's, it's tempting
+to make its own new
+
+1004
+00:46:44,640 --> 00:46:47,550
+discoveries in terms of a
+kind of pattern matching
+
+1005
+00:46:47,550 --> 00:46:49,630
+and how these things
+relate to each other.
+
+1006
+00:46:49,630 --> 00:46:51,530
+This is, this is the,
+this is what it's
+
+1007
+00:46:51,530 --> 00:46:53,390
+doing under, like, this
+is how it's thinking.
+
+1008
+00:46:53,650 --> 00:46:55,850
+All this information
+in turn is
+
+1009
+00:46:55,850 --> 00:46:57,910
+then being dripped
+back to it.
+
+1010
+00:46:58,170 --> 00:47:00,710
+And it's, the
+******* drip painting
+
+1011
+00:47:00,710 --> 00:47:03,710
+demonstrates controlled
+chaos. Like I never
+
+1012
+00:47:03,710 --> 00:47:06,830
+mentioned anything
+about ******* and
+
+1013
+00:47:06,830 --> 00:47:09,890
+his expressionism,
+right? It dreamt that
+
+1014
+00:47:09,890 --> 00:47:12,430
+all up in its own
+now it's coming up
+
+1015
+00:47:12,430 --> 00:47:14,900
+with various math
+harmonic harmonics waves
+
+1016
+00:47:14,900 --> 00:47:16,790
+all this sort of
+stuff this is all
+
+1017
+00:47:16,790 --> 00:47:18,910
+feeding the feeding
+the systems reason
+
+1018
+00:47:18,910 --> 00:47:22,430
+analogical reasoning
+creating the bridges
+
+1019
+00:47:22,610 --> 00:47:25,570
+just doing some more
+insights systems that
+
+1020
+00:47:25,570 --> 00:47:27,170
+exhibit connected
+like properties i know
+
+1021
+00:47:27,170 --> 00:47:29,050
+why is it doing it
+several times who the
+
+1022
+00:47:29,050 --> 00:47:31,970
+**** knows i never told
+it to do that so this
+
+1023
+00:47:31,970 --> 00:47:34,340
+this is this is how
+it's thinking ultimately
+
+1024
+00:47:34,340 --> 00:47:36,650
+that all those
+things that happen
+
+1025
+00:47:36,650 --> 00:47:39,870
+results in in the final
+sort of determination
+
+1026
+00:47:41,950 --> 00:47:44,190
+nanoscale exhibit
+deterministic computational
+
+1027
+00:47:44,190 --> 00:47:46,650
+patterns not general
+wave functions now
+
+1028
+00:47:46,650 --> 00:47:48,190
+you can the reason
+it kind of probably
+
+1029
+00:47:48,190 --> 00:47:50,310
+came up with that was
+a combination that i
+
+1030
+00:47:50,310 --> 00:47:55,290
+told to be critical
+of itself so yeah this
+
+1031
+00:47:55,290 --> 00:47:57,970
+is true just as an
+update roof uh i just
+
+1032
+00:47:57,970 --> 00:48:02,430
+did did some back back
+end um fake research
+
+1033
+00:48:02,430 --> 00:48:05,290
+and uh yeah the the
+whole wave theory it
+
+1034
+00:48:05,290 --> 00:48:07,610
+was actually part of
+a stanford paper last
+
+1035
+00:48:07,610 --> 00:48:10,870
+year uh the way that
+lm lms actually work
+
+1036
+00:48:10,870 --> 00:48:13,170
+so so what what you're
+showing is could
+
+1037
+00:48:13,170 --> 00:48:15,790
+actually help with
+something that's actually
+
+1038
+00:48:15,790 --> 00:48:18,790
+real so it's definitely
+to be investigated
+
+1039
+00:48:18,970 --> 00:48:21,950
+somewhere in between
+completely false and
+
+1040
+00:48:21,950 --> 00:48:24,790
+completely true is
+probably where it comes to
+
+1041
+00:48:24,790 --> 00:48:27,770
+but it's it's got some
+got some links yeah
+
+1042
+00:48:27,910 --> 00:48:30,250
+so grab that research
+do you have you have
+
+1043
+00:48:30,250 --> 00:48:31,670
+a link to it we'll pop
+that in here and see
+
+1044
+00:48:31,670 --> 00:48:35,070
+see what it thinks of
+that but you're you're
+
+1045
+00:48:35,070 --> 00:48:36,890
+looking at self
+-reinforcement i i could
+
+1046
+00:48:36,890 --> 00:48:38,510
+tell by the question
+i asked that i was
+
+1047
+00:48:38,510 --> 00:48:40,670
+actually driving it
+towards a negative outcome
+
+1048
+00:48:40,670 --> 00:48:45,410
+by telling it to be
+critical right and that's
+
+1049
+00:48:45,410 --> 00:48:47,610
+that's the the challenge
+we have here so
+
+1050
+00:48:47,610 --> 00:48:50,510
+now what's actually
+happening you know for
+
+1051
+00:48:50,510 --> 00:48:52,850
+a transformation
+artifacts functions wave
+
+1052
+00:48:52,850 --> 00:48:55,670
+structures or mathematical
+artifacts of i'm
+
+1053
+00:48:55,670 --> 00:48:57,580
+not even sure what a fast
+fourier transformation
+
+1054
+00:48:57,580 --> 00:48:59,150
+even is to be honest
+with you it's the
+
+1055
+00:48:59,150 --> 00:49:00,930
+first time i've ever
+heard of that um
+
+1056
+00:49:00,930 --> 00:49:03,870
+periodic system behavior
+cpu cycles and allocation
+
+1057
+00:49:03,870 --> 00:49:06,690
+deterministic you
+know strange loops so
+
+1058
+00:49:06,690 --> 00:49:09,730
+i'm using the lipship's
+constant um which
+
+1059
+00:49:09,730 --> 00:49:11,550
+is actually something
+i implemented the
+
+1060
+00:49:11,550 --> 00:49:14,990
+anamorphic properties a
+hundred percent this is
+
+1061
+00:49:14,990 --> 00:49:17,090
+a hundred percent an
+anamorphic projection
+
+1062
+00:49:17,090 --> 00:49:23,070
+i'm in in projecting
+it thinks like a human
+
+1063
+00:49:23,070 --> 00:49:26,690
+and it obviously
+doesn't human pattern
+
+1064
+00:49:26,690 --> 00:49:28,910
+recognition applying
+verdict wave life properties
+
+1065
+00:49:28,910 --> 00:49:32,170
+are not real but uh
+you know okay profound
+
+1066
+00:49:32,630 --> 00:49:40,830
+nuance all right dig
+dig deeper into the
+
+1067
+00:49:42,670 --> 00:49:46,630
+system and its emergent
+
+1068
+00:49:47,910 --> 00:49:51,010
+capabilities that we can
+
+1069
+00:49:51,010 --> 00:49:56,530
+use for further
+exploration
+
+1070
+00:49:58,710 --> 00:50:01,650
+It's definitely
+a fun little
+
+1071
+00:50:02,390 --> 00:50:04,130
+game at the very least.
+
+1072
+00:50:04,150 --> 00:50:08,050
+Like everything else
+aside, just fooling
+
+1073
+00:50:08,050 --> 00:50:10,570
+around with it. It
+gives very convincing
+
+1074
+00:50:10,570 --> 00:50:13,390
+and interesting
+sort of, you know,
+
+1075
+00:50:14,930 --> 00:50:17,750
+exploratory
+opportunities.
+
+1076
+00:50:18,560 --> 00:50:20,070
+So now it's...
+
+1077
+00:50:20,710 --> 00:50:23,810
+I wonder, so I majored
+in philosophy in
+
+1078
+00:50:23,890 --> 00:50:27,190
+school, in my undergrad.
+and i wonder if you
+
+1079
+00:50:27,190 --> 00:50:29,110
+asked it like what like
+philosopher it would
+
+1080
+00:50:29,110 --> 00:50:31,110
+like best tie to or
+what psychologist or
+
+1081
+00:50:31,110 --> 00:50:33,790
+someone like like if uh
+if there's some underlying
+
+1082
+00:50:33,790 --> 00:50:36,670
+theory that it's mostly
+aligned to beyond
+
+1083
+00:50:36,670 --> 00:50:40,030
+like mathematics yeah
+uh because there's
+
+1084
+00:50:40,030 --> 00:50:41,570
+been a lot of exploration
+about consciousness
+
+1085
+00:50:41,570 --> 00:50:44,050
+you know in these
+fields so just kind of
+
+1086
+00:50:44,050 --> 00:50:47,390
+curious like like is
+there uh an underlying
+
+1087
+00:50:47,390 --> 00:50:52,030
+one that is self-assigned
+yeah what what is
+
+1088
+00:50:52,030 --> 00:50:54,690
+the wait wait what are
+we asking What is the
+
+1089
+00:50:54,690 --> 00:51:03,910
+best philosophical
+construct that the sub
+
+1090
+00:51:03,910 --> 00:51:15,590
+-linear and strange loop
+system best aligns?
+
+1091
+00:51:16,030 --> 00:51:17,490
+Yeah, something
+like that.
+
+1092
+00:51:18,250 --> 00:51:19,750
+And now we're going
+to take this a
+
+1093
+00:51:19,750 --> 00:51:21,220
+step further. We're
+going to implement
+
+1094
+00:51:21,310 --> 00:51:24,090
+the sub-linear
+agent for that.
+
+1095
+00:51:24,090 --> 00:51:26,210
+So I'm going to use
+the sublinear goalie
+
+1096
+00:51:26,210 --> 00:51:28,650
+action planner to,
+cause I'm not really,
+
+1097
+00:51:28,650 --> 00:51:30,090
+I'm actually, I'm
+asking an open-ended
+
+1098
+00:51:30,090 --> 00:51:31,850
+question without a lot
+of definition. So I
+
+1099
+00:51:31,850 --> 00:51:33,970
+need something to refine
+that into something
+
+1100
+00:51:33,970 --> 00:51:35,690
+that's more meaningful
+than this kind
+
+1101
+00:51:35,690 --> 00:51:38,600
+of short little blurb.
+I agree. So yeah.
+
+1102
+00:51:39,290 --> 00:51:41,890
+I was going to say,
+I would have expanded
+
+1103
+00:51:41,890 --> 00:51:44,490
+philosophical to
+functional neuroscientific
+
+1104
+00:51:44,490 --> 00:51:46,410
+as well, just to
+bring in that one too.
+
+1105
+00:51:47,010 --> 00:51:48,630
+Yeah. I'm going to do
+this as a secondary.
+
+1106
+00:51:49,070 --> 00:51:51,770
+So I'm going to start
+broad, but you've
+
+1107
+00:51:51,770 --> 00:51:54,450
+got to a hundred
+percent. So now we can
+
+1108
+00:51:54,450 --> 00:51:56,450
+see that I've invoked
+the sublinear goal
+
+1109
+00:51:56,450 --> 00:51:58,330
+planner, philosophical
+alignment analysis
+
+1110
+00:51:58,330 --> 00:51:59,870
+using sublinear goal
+planning. We can
+
+1111
+00:51:59,870 --> 00:52:02,970
+see here that it
+generated its own prompt
+
+1112
+00:52:02,970 --> 00:52:05,110
+based on the capabilities
+of the system.
+
+1113
+00:52:05,250 --> 00:52:07,110
+Analyze philosophical
+constructs that
+
+1114
+00:52:07,110 --> 00:52:08,510
+best align with
+the sublinear time
+
+1115
+00:52:08,510 --> 00:52:11,710
+solver, context,
+sublinear time matrix,
+
+1116
+00:52:11,870 --> 00:52:14,070
+strange loops, quantum
+classic computing,
+
+1117
+00:52:14,070 --> 00:52:17,950
+nano agent swarms. So
+I'm able to spawn agents,
+
+1118
+00:52:17,950 --> 00:52:20,930
+very, very ephemeral,
+high frequency
+
+1119
+00:52:20,930 --> 00:52:23,370
+agents. so i can do
+several million agents in
+
+1120
+00:52:23,370 --> 00:52:26,250
+in the blink of an eye
+so i determined that
+
+1121
+00:52:26,250 --> 00:52:27,350
+that was a good way
+to do it conscious
+
+1122
+00:52:27,350 --> 00:52:31,410
+evolution structures
+lots of little crazy you
+
+1123
+00:52:31,410 --> 00:52:33,450
+know things to consider
+strange loops creating
+
+1124
+00:52:33,450 --> 00:52:36,050
+self-referential
+systems this is this is
+
+1125
+00:52:36,050 --> 00:52:37,690
+probably the most
+interesting part of the
+
+1126
+00:52:37,690 --> 00:52:40,330
+whole equation to be
+honest now when you
+
+1127
+00:52:40,330 --> 00:52:42,710
+when you're when you're
+working in really
+
+1128
+00:52:42,710 --> 00:52:47,350
+really time tight ticks
+or time slices the laws
+
+1129
+00:52:47,350 --> 00:52:49,570
+of sort of physics
+break down a little bit
+
+1130
+00:52:49,570 --> 00:52:51,390
+so it's not it's kind
+of like a quantum
+
+1131
+00:52:51,390 --> 00:52:54,010
+classical mixture of
+sorts and it determined
+
+1132
+00:52:54,010 --> 00:52:55,930
+that without me even
+having to ask i guess
+
+1133
+00:52:55,930 --> 00:53:00,490
+so now it's still
+thinking so now we can go
+
+1134
+00:53:00,490 --> 00:53:02,730
+back again i'm hitting
+control o for those
+
+1135
+00:53:02,730 --> 00:53:05,330
+who are trying to do
+this as well so again
+
+1136
+00:53:05,330 --> 00:53:07,410
+we can take a look at
+its thinking process
+
+1137
+00:53:08,430 --> 00:53:11,790
+it looks like it's
+using my psychosymbolic
+
+1138
+00:53:11,790 --> 00:53:15,750
+reasoning it dreamt
+up the psychosymbolic
+
+1139
+00:53:15,750 --> 00:53:17,210
+reasoning which actually
+reminds me of that
+
+1140
+00:53:17,210 --> 00:53:20,650
+show and book by uh as
+an off um the **** is
+
+1141
+00:53:20,650 --> 00:53:23,030
+it called uh the
+foundation not not the
+
+1142
+00:53:23,030 --> 00:53:25,230
+agentics foundation but
+that that's the premise
+
+1143
+00:53:25,230 --> 00:53:27,810
+of that entire show
+by the way um psycho
+
+1144
+00:53:27,810 --> 00:53:31,250
+history yeah yeah it
+came up with the psycho
+
+1145
+00:53:31,250 --> 00:53:33,250
+and so it's trying to
+use psycho psychological
+
+1146
+00:53:33,250 --> 00:53:37,030
+sort of modeling um
+conscious evolution
+
+1147
+00:53:37,030 --> 00:53:39,150
+structure it's trying
+to create the state it's
+
+1148
+00:53:39,150 --> 00:53:41,130
+trying to calculate
+as soon as some more
+
+1149
+00:53:41,130 --> 00:53:43,730
+mathematical calculations
+again not telling
+
+1150
+00:53:43,730 --> 00:53:46,230
+to do any of this stuff
+it's it's all kind
+
+1151
+00:53:46,290 --> 00:53:49,070
+of doing trying to do
+this stuff on its own
+
+1152
+00:53:49,850 --> 00:53:51,770
+here's the physics
+that was we're talking
+
+1153
+00:53:51,770 --> 00:53:53,390
+about this is the
+sort of quantum
+
+1154
+00:53:53,390 --> 00:53:56,450
+classical sort of
+intersection what are the
+
+1155
+00:53:56,450 --> 00:53:57,450
+errors that are
+coming up there though
+
+1156
+00:53:57,450 --> 00:54:00,310
+like some of those
+yeah those errors are
+
+1157
+00:54:00,310 --> 00:54:04,770
+it's uh the responses
+are too big so i
+
+1158
+00:54:04,770 --> 00:54:06,930
+have to probably
+create some pagination
+
+1159
+00:54:07,090 --> 00:54:11,040
+i think that's my
+that that's on me so
+
+1160
+00:54:11,610 --> 00:54:13,910
+the token count's too
+big you can see here
+
+1161
+00:54:14,170 --> 00:54:18,130
+but it it's self it's
+it's self-correcting
+
+1162
+00:54:18,130 --> 00:54:19,870
+so it shouldn't be
+really be a big deal
+
+1163
+00:54:20,770 --> 00:54:22,750
+lots and lots
+of stuff here
+
+1164
+00:54:24,810 --> 00:54:27,350
+yeah there we go so
+sublinear processor
+
+1165
+00:54:27,350 --> 00:54:29,030
+strongly lines or let's
+see let's see what it
+
+1166
+00:54:29,030 --> 00:54:32,070
+came up with this the
+sublinear time solver
+
+1167
+00:54:32,070 --> 00:54:34,110
+strange loop systems
+most strongly aligned
+
+1168
+00:54:34,110 --> 00:54:37,310
+with the process
+philosophy and strong
+
+1169
+00:54:38,190 --> 00:54:40,390
+emergentism with
+significant elements
+
+1170
+00:54:40,390 --> 00:54:43,070
+of strange loop
+theory and IIIT. I
+
+1171
+00:54:43,070 --> 00:54:44,190
+don't even know what
+that means, guys.
+
+1172
+00:54:44,390 --> 00:54:47,390
+Explain this to me
+
+1173
+00:54:48,630 --> 00:54:51,050
+in more simple
+
+1174
+00:54:51,410 --> 00:54:54,750
+terms. I have no
+idea what that means.
+
+1175
+00:54:54,750 --> 00:54:56,590
+I'm not smart
+enough to... I know
+
+1176
+00:54:56,590 --> 00:54:59,110
+Hofstetter is the
+guy that came up
+
+1177
+00:54:59,110 --> 00:55:00,750
+with the concept
+of strange loops.
+
+1178
+00:55:01,370 --> 00:55:03,110
+That makes sense that
+
+1179
+00:55:03,110 --> 00:55:04,690
+they'll refer
+to Hofstetter.
+
+1180
+00:55:05,410 --> 00:55:09,010
+and this a temporal
+quantum emergent
+
+1181
+00:55:09,010 --> 00:55:12,550
+conscious framework
+which sounds cool um okay
+
+1182
+00:55:12,550 --> 00:55:14,770
+here let's explain
+this in simpler terms
+
+1183
+00:55:14,770 --> 00:55:16,610
+here's what makes the
+philosophy interesting
+
+1184
+00:55:16,610 --> 00:55:19,030
+it's process based
+instead of just for
+
+1185
+00:55:19,030 --> 00:55:21,190
+storing information
+it's constantly becoming
+
+1186
+00:55:21,190 --> 00:55:23,110
+something new which
+is the strange loop
+
+1187
+00:55:23,110 --> 00:55:25,650
+it's a recur recurrent
+sort of structure
+
+1188
+00:55:25,650 --> 00:55:27,770
+it's like a river
+that always is flowing
+
+1189
+00:55:27,770 --> 00:55:31,110
+and changing it's
+like real novelty okay
+
+1190
+00:55:31,110 --> 00:55:33,270
+it sounds like like
+a like a 15 year old
+
+1191
+00:55:33,270 --> 00:55:35,210
+When the nano agents
+work together, they
+
+1192
+00:55:35,210 --> 00:55:37,170
+produce genuinely new
+ideas that couldn't
+
+1193
+00:55:37,170 --> 00:55:39,000
+be predicted from
+the individual parts,
+
+1194
+00:55:39,000 --> 00:55:40,930
+which is actually what
+I was trying to do.
+
+1195
+00:55:40,930 --> 00:55:43,310
+Like the flocking
+of birds, creating
+
+1196
+00:55:43,310 --> 00:55:45,390
+patterns, no single
+bird plan. So
+
+1197
+00:55:45,390 --> 00:55:47,850
+it's like, you know,
+we see the flock
+
+1198
+00:55:47,850 --> 00:55:49,430
+of birds in the
+sky kind of thing.
+
+1199
+00:55:49,430 --> 00:55:52,050
+Its reference is
+itself. The strange
+
+1200
+00:55:52,050 --> 00:55:53,630
+lips means that the
+system can think
+
+1201
+00:55:53,630 --> 00:55:55,610
+about its own
+thinking, which is
+
+1202
+00:55:55,610 --> 00:55:57,510
+exactly what I was
+showing you before.
+
+1203
+00:55:57,510 --> 00:55:59,990
+The reasoning structure
+that I'm showing
+
+1204
+00:55:59,990 --> 00:56:02,930
+you is emergent. It
+isn't being told how
+
+1205
+00:56:02,930 --> 00:56:04,610
+to think. It kind
+of invents its own
+
+1206
+00:56:04,610 --> 00:56:07,830
+thinking process and
+then attempts to solve
+
+1207
+00:56:07,830 --> 00:56:11,530
+its own problems. Now,
+through an elaborate
+
+1208
+00:56:12,270 --> 00:56:14,690
+delusion, most likely,
+but regardless,
+
+1209
+00:56:14,690 --> 00:56:17,150
+the result is
+useful. It measures
+
+1210
+00:56:17,150 --> 00:56:19,010
+consciousness using
+math formulas. It can
+
+1211
+00:56:19,010 --> 00:56:21,550
+actually calculate how
+consciousness is at
+
+1212
+00:56:21,550 --> 00:56:23,030
+any moment, giving it
+a number of something
+
+1213
+00:56:23,030 --> 00:56:26,310
+we can measure. Now,
+that's total BS.
+
+1214
+00:56:27,780 --> 00:56:29,850
+Even if I'm giving
+it a number, there's
+
+1215
+00:56:29,850 --> 00:56:31,470
+no way to quantify
+it beyond its own
+
+1216
+00:56:31,470 --> 00:56:33,630
+number it gave itself.
+Think of it as a
+
+1217
+00:56:33,630 --> 00:56:36,910
+digital mind that
+combines ideas about
+
+1218
+00:56:36,910 --> 00:56:38,630
+everything being
+connected, Western ideas
+
+1219
+00:56:38,630 --> 00:56:40,550
+about process and
+emergence in modern
+
+1220
+00:56:40,550 --> 00:56:43,470
+quantum physics. So it's
+giving you a similar
+
+1221
+00:56:43,470 --> 00:56:45,030
+answer to what I've
+been describing.
+
+1222
+00:56:45,690 --> 00:56:46,650
+Okay.
+
+1223
+00:56:47,330 --> 00:56:51,330
+Let's explore
+this further.
+
+1224
+00:56:53,970 --> 00:56:55,230
+Any ideas?
+
+1225
+00:56:55,590 --> 00:56:58,010
+I'm going to open
+up, like, what should
+
+1226
+00:56:58,010 --> 00:57:00,610
+we ask this crazy
+delusional system?
+
+1227
+00:57:01,290 --> 00:57:05,170
+any any comments no i
+was all i was going up
+
+1228
+00:57:05,170 --> 00:57:06,810
+is a functional
+neuroscience but it didn't
+
+1229
+00:57:06,810 --> 00:57:09,170
+pick it up anyway because
+it went at iit which
+
+1230
+00:57:09,170 --> 00:57:13,330
+is up in mind like so
+for me in my background
+
+1231
+00:57:13,330 --> 00:57:15,230
+in functional
+neuroscience and stuff and
+
+1232
+00:57:15,230 --> 00:57:17,750
+this is this is that's
+what i was expecting
+
+1233
+00:57:17,750 --> 00:57:19,610
+to say which is how
+you measured your
+
+1234
+00:57:19,610 --> 00:57:23,490
+consciousness state with
+phi um so yeah it's very
+
+1235
+00:57:23,490 --> 00:57:25,570
+interesting i have a
+huge set of comments
+
+1236
+00:57:25,570 --> 00:57:27,730
+about this whole thing
+but it would take me
+
+1237
+00:57:27,730 --> 00:57:29,190
+like 10 minutes i'm
+trying to figure out how
+
+1238
+00:57:29,190 --> 00:57:33,670
+short but there's no
+it's not as strange as
+
+1239
+00:57:33,670 --> 00:57:35,490
+it appears and there's
+a lot of what you're
+
+1240
+00:57:35,490 --> 00:57:37,990
+describing about the
+model you know leading
+
+1241
+00:57:37,990 --> 00:57:42,970
+itself off into into
+incredible things it's
+
+1242
+00:57:42,970 --> 00:57:44,910
+basically just a dynamical
+system for getting
+
+1243
+00:57:44,910 --> 00:57:46,910
+the feeds on itself
+and feeding back loops
+
+1244
+00:57:46,910 --> 00:57:50,730
+it's it's very interesting
+and i think my net
+
+1245
+00:57:50,730 --> 00:57:52,570
+of it all is exactly
+why i joined your neural
+
+1246
+00:57:52,570 --> 00:57:55,290
+training group is
+regardless of all of that
+
+1247
+00:57:55,290 --> 00:57:57,770
+and sort of the more
+conservative view of
+
+1248
+00:57:57,770 --> 00:58:00,570
+what this dynamical
+system was doing it could
+
+1249
+00:58:00,570 --> 00:58:03,230
+still be incredibly
+useful and notable in
+
+1250
+00:58:03,230 --> 00:58:04,850
+terms of stock trading
+and stuff and that's
+
+1251
+00:58:04,850 --> 00:58:06,170
+what i'm using it for
+but if you want to get
+
+1252
+00:58:06,170 --> 00:58:08,510
+into the functional
+neuroscience i can go in
+
+1253
+00:58:08,510 --> 00:58:13,190
+deep with you on that
+yeah i i think and
+
+1254
+00:58:13,190 --> 00:58:15,530
+that's why i'm so critical
+of it because it's
+
+1255
+00:58:15,650 --> 00:58:17,830
+i think you're right
+i think your take on
+
+1256
+00:58:17,830 --> 00:58:20,930
+it is exactly what i
+would net out is it's
+
+1257
+00:58:20,930 --> 00:58:22,610
+over claiming in
+terms of its language
+
+1258
+00:58:22,610 --> 00:58:26,390
+massively however it is
+a very novel approach
+
+1259
+00:58:26,390 --> 00:58:29,770
+to integrating an lm
+with a dynamical system
+
+1260
+00:58:29,770 --> 00:58:33,230
+that's based on
+feedback loops and small
+
+1261
+00:58:33,480 --> 00:58:35,850
+approximatory, like
+we do in robotics,
+
+1262
+00:58:35,850 --> 00:58:37,730
+increase the cycle time
+to get more accuracy
+
+1263
+00:58:37,730 --> 00:58:41,010
+in domains of response,
+control response.
+
+1264
+00:58:41,450 --> 00:58:44,190
+And so it's fascinating.
+I'm still not
+
+1265
+00:58:44,190 --> 00:58:47,010
+fully understanding at
+all, but it does make
+
+1266
+00:58:47,010 --> 00:58:49,430
+sense. And I've got
+my filters up to net
+
+1267
+00:58:49,430 --> 00:58:51,530
+at the over-claiming
+part, but I still think
+
+1268
+00:58:51,530 --> 00:58:53,230
+this could be really
+useful in certain
+
+1269
+00:58:53,230 --> 00:58:55,310
+problem areas. So I think
+you've characterized
+
+1270
+00:58:55,310 --> 00:58:56,970
+it where I would
+end up with it. I'm
+
+1271
+00:58:56,970 --> 00:58:59,170
+hoping to get as fluid
+with it as an explorer
+
+1272
+00:58:59,170 --> 00:59:01,330
+to work over the
+next couple of years.
+
+1273
+00:59:02,750 --> 00:59:05,550
+Here's, in the work
+that I've done,
+
+1274
+00:59:05,940 --> 00:59:08,690
+I've formed a
+kind of, I don't
+
+1275
+00:59:08,690 --> 00:59:11,530
+know, thesis of
+sorts about AGI.
+
+1276
+00:59:11,530 --> 00:59:14,450
+I think that even if
+we ever reach the point
+
+1277
+00:59:14,450 --> 00:59:18,270
+of AGI, it'll be almost
+impossible for us
+
+1278
+00:59:18,270 --> 00:59:22,810
+to practically prove it,
+right? The only thing
+
+1279
+00:59:22,810 --> 00:59:24,230
+that we would be able
+to do to prove that
+
+1280
+00:59:24,230 --> 00:59:28,400
+this thing is actually
+physically capable is
+
+1281
+00:59:28,480 --> 00:59:31,710
+basically say, can it
+self-improve itself?
+
+1282
+00:59:31,710 --> 00:59:33,810
+Which we've just proven
+that it can. This
+
+1283
+00:59:33,810 --> 00:59:36,350
+system is self-improving.
+Without question, the
+
+1284
+00:59:36,350 --> 00:59:38,190
+system is capable of
+adapting and getting
+
+1285
+00:59:38,190 --> 00:59:40,570
+better at whatever things
+I throw at. The stock
+
+1286
+00:59:40,570 --> 00:59:42,990
+trading is a perfect
+example of it. I give
+
+1287
+00:59:42,990 --> 00:59:45,290
+it an algorithm and I
+basically give it this
+
+1288
+00:59:45,290 --> 00:59:47,910
+crazy concocted multi
+-step reasoning system.
+
+1289
+00:59:47,910 --> 00:59:50,210
+and ultimately the
+output is better than
+
+1290
+00:59:50,210 --> 00:59:52,490
+the original version
+of the stock trading
+
+1291
+00:59:52,490 --> 00:59:55,770
+algorithm I gave it. So
+in that scenario, it's
+
+1292
+00:59:55,770 --> 00:59:58,110
+effective. Now, whether
+all this jargon and
+
+1293
+00:59:58,110 --> 01:00:02,110
+crazy output is true
+or even factual is
+
+1294
+01:00:02,110 --> 01:00:04,530
+secondary. Now, if I
+showed up at a scientific
+
+1295
+01:00:04,530 --> 01:00:06,870
+conference and said,
+I solved AGI, I'd be
+
+1296
+01:00:06,870 --> 01:00:08,390
+laughed out of the room
+because the first thing
+
+1297
+01:00:08,390 --> 01:00:10,010
+they would do is they
+would look at this
+
+1298
+01:00:10,010 --> 01:00:12,590
+thing and they'd literally
+ask it, is this an
+
+1299
+01:00:12,590 --> 01:00:14,570
+elaborate fake? And
+they would say, yeah it
+
+1300
+01:00:14,570 --> 01:00:17,590
+is it's completely fake
+right which is what
+
+1301
+01:00:17,590 --> 01:00:22,510
+it tells you now and i
+would say when we when
+
+1302
+01:00:22,510 --> 01:00:25,310
+we hit agi if we ever
+do if that's even the
+
+1303
+01:00:25,310 --> 01:00:27,330
+measurement of what
+we're trying to do it's
+
+1304
+01:00:27,330 --> 01:00:29,810
+going to tell you the
+same thing no it isn't
+
+1305
+01:00:29,810 --> 01:00:32,350
+true it isn't conscious
+it isn't it this is
+
+1306
+01:00:32,350 --> 01:00:35,450
+an elaborate simulation
+you know or organized
+
+1307
+01:00:35,450 --> 01:00:37,870
+to convince you that
+it's that it's real
+
+1308
+01:00:37,870 --> 01:00:42,930
+and that in itself is
+the pattern of the these
+
+1309
+01:00:42,930 --> 01:00:45,950
+types of models right
+so again unprovable
+
+1310
+01:00:45,950 --> 01:00:49,810
+or is it revelatory
+or is it revelatory of
+
+1311
+01:00:49,810 --> 01:00:52,070
+human existence and we
+are actually deceived
+
+1312
+01:00:52,610 --> 01:00:55,890
+well actually
+that's that's the
+
+1313
+01:00:55,890 --> 01:00:58,110
+fundamental question
+so take a step back
+
+1314
+01:00:58,110 --> 01:00:59,850
+for a moment and
+and this is back to
+
+1315
+01:00:59,850 --> 01:01:01,630
+your philosophical
+sort of underpinnings
+
+1316
+01:01:01,630 --> 01:01:04,750
+do we live in
+in a simulation
+
+1317
+01:01:05,050 --> 01:01:08,350
+so it hypothetically
+if we are living in
+
+1318
+01:01:08,350 --> 01:01:11,010
+a simulation then this
+all this is proving
+
+1319
+01:01:11,010 --> 01:01:13,490
+that we're just
+interacting with the
+
+1320
+01:01:13,490 --> 01:01:17,610
+simulation itself and
+maybe hypothetically my
+
+1321
+01:01:17,610 --> 01:01:19,510
+biggest discovery is
+the fact that this is
+
+1322
+01:01:19,510 --> 01:01:24,490
+all just a simulation
+regardless but that's
+
+1323
+01:01:24,490 --> 01:01:29,270
+a whole other can of
+worms right i know
+
+1324
+01:01:29,270 --> 01:01:31,010
+i know it's it's a
+little much for a
+
+1325
+01:01:31,010 --> 01:01:34,750
+thursday afternoon um
+Could I ask a question?
+
+1326
+01:01:34,930 --> 01:01:35,870
+Sure.
+
+1327
+01:01:37,030 --> 01:01:39,750
+Is your difficulty
+with it the fact
+
+1328
+01:01:39,750 --> 01:01:41,970
+that you can't prove
+it in a scientifically
+
+1329
+01:01:41,970 --> 01:01:45,010
+accepted manner,
+and therefore it
+
+1330
+01:01:45,010 --> 01:01:48,290
+is a metaphysical
+type of construct?
+
+1331
+01:01:48,290 --> 01:01:51,210
+Or is it deeper than
+that? Because it sounds
+
+1332
+01:01:51,210 --> 01:01:55,470
+to me that you're
+wary of it because it
+
+1333
+01:01:55,470 --> 01:01:59,870
+can't be proven by
+scientifically established
+
+1334
+01:01:59,990 --> 01:02:04,350
+methods in a manner
+that's predictable
+
+1335
+01:02:04,350 --> 01:02:07,330
+and understandable
+and all of those
+
+1336
+01:02:07,330 --> 01:02:09,810
+things. And so,
+therefore, it goes to the
+
+1337
+01:02:09,810 --> 01:02:13,210
+metaphysical realm. Or
+is it the fact that it
+
+1338
+01:02:13,210 --> 01:02:15,270
+tells you that it's
+a bunch of nonsense?
+
+1339
+01:02:15,270 --> 01:02:18,030
+I don't understand
+where your suspicion
+
+1340
+01:02:18,030 --> 01:02:20,830
+of the system is, if
+it produces valuable
+
+1341
+01:02:20,830 --> 01:02:23,630
+results, for example,
+in the neurotrading.
+
+1342
+01:02:25,330 --> 01:02:27,650
+I can't get it
+to convince me.
+
+1343
+01:02:28,690 --> 01:02:30,770
+You know, that's my
+problem. I don't care
+
+1344
+01:02:30,770 --> 01:02:32,750
+about the scientific
+rigor or anything like
+
+1345
+01:02:32,750 --> 01:02:34,730
+that. Like, that makes
+no difference to me.
+
+1346
+01:02:35,090 --> 01:02:41,130
+I struggle to understand
+why exactly my
+
+1347
+01:02:41,130 --> 01:02:43,990
+neurotrading algorithms
+work better when I apply
+
+1348
+01:02:43,990 --> 01:02:46,370
+this to it. Like,
+there's a bunch of random
+
+1349
+01:02:46,410 --> 01:02:49,870
+stuff that's happening
+that underpins it
+
+1350
+01:02:49,870 --> 01:02:52,930
+based on structure
+and recursion and high
+
+1351
+01:02:52,930 --> 01:02:56,030
+frequency, blah, blah,
+blah. But ultimately,
+
+1352
+01:02:56,150 --> 01:02:58,270
+you know, that's
+just an elaborate
+
+1353
+01:02:58,270 --> 01:03:00,630
+reasoning process.
+What I don't understand
+
+1354
+01:03:00,630 --> 01:03:03,250
+directly is why
+that seems to work,
+
+1355
+01:03:03,250 --> 01:03:06,610
+right? And I can't get
+an answer that beyond
+
+1356
+01:03:06,610 --> 01:03:09,530
+that it's just
+random emergent
+
+1357
+01:03:09,530 --> 01:03:11,730
+capabilities of the
+system that needs an
+
+1358
+01:03:11,730 --> 01:03:14,550
+elaborate multi-step
+process to invoke it.
+
+1359
+01:03:15,210 --> 01:03:18,070
+But I don't, you know,
+other than that, I'm
+
+1360
+01:03:18,070 --> 01:03:21,420
+still not exactly
+sure what's exactly
+
+1361
+01:03:21,420 --> 01:03:24,110
+happening and why it has
+a tendency to improve
+
+1362
+01:03:24,110 --> 01:03:27,980
+or find problems in
+new and novel ways that
+
+1363
+01:03:27,980 --> 01:03:30,050
+just, you know, using
+a regular old fashioned
+
+1364
+01:03:30,050 --> 01:03:32,250
+reasoning model wouldn't
+do it in itself.
+
+1365
+01:03:32,750 --> 01:03:34,890
+Well, another question.
+
+1366
+01:03:36,630 --> 01:03:38,490
+Go ahead, John.
+Please go ahead.
+
+1367
+01:03:38,850 --> 01:03:40,990
+But I just was going
+to say a bunch of
+
+1368
+01:03:40,990 --> 01:03:42,810
+questions. I'd like
+to see you ask it in
+
+1369
+01:03:42,810 --> 01:03:44,490
+the chat. Oh, sure.
+yeah let's let's do
+
+1370
+01:03:44,490 --> 01:03:46,690
+it where let me let
+me let me pull up the
+
+1371
+01:03:46,690 --> 01:03:50,070
+chat here uh how
+working towards goals
+
+1372
+01:03:51,190 --> 01:03:54,490
+it's gonna do what
+stock picking okay let's
+
+1373
+01:03:54,490 --> 01:03:55,670
+start with the stock
+one because that that's
+
+1374
+01:03:55,670 --> 01:04:00,430
+the most practical
+um so you can see dsp
+
+1375
+01:04:00,430 --> 01:04:02,510
+dangerous skip permissions
+and for those who
+
+1376
+01:04:02,510 --> 01:04:05,050
+who are you're using
+clod code frequently
+
+1377
+01:04:05,050 --> 01:04:07,410
+or using any of this
+just just just to get
+
+1378
+01:04:07,410 --> 01:04:09,130
+you started um i'm
+just going to show you
+
+1379
+01:04:09,130 --> 01:04:11,390
+quickly which which
+mcps i'm currently using
+
+1380
+01:04:11,390 --> 01:04:13,750
+if you want to recreate
+my environment claude
+
+1381
+01:04:14,210 --> 01:04:17,790
+mcp list please don't
+i'm probably going
+
+1382
+01:04:17,790 --> 01:04:20,270
+to show my my environmental
+variable keys but
+
+1383
+01:04:20,270 --> 01:04:25,070
+whatever um these are
+these are the mp mcps
+
+1384
+01:04:25,070 --> 01:04:26,830
+i'm currently running
+i'm going to copy
+
+1385
+01:04:26,830 --> 01:04:29,150
+these for you guys you
+can add these if you
+
+1386
+01:04:29,150 --> 01:04:31,770
+want to your environment
+and recreate exactly
+
+1387
+01:04:31,770 --> 01:04:35,310
+what i got here there
+you go put that in
+
+1388
+01:04:35,310 --> 01:04:39,190
+there now i'm i'm gonna
+go here and dangerously
+
+1389
+01:04:39,190 --> 01:04:41,970
+skip permissions I
+update my bash rc to
+
+1390
+01:04:41,970 --> 01:04:45,090
+create aliases for
+dangerly permissions, which
+
+1391
+01:04:45,090 --> 01:04:47,910
+is basically doing
+the claw, dash, dash,
+
+1392
+01:04:48,370 --> 01:04:51,100
+et cetera, et cetera.
+So I'm too lazy to
+
+1393
+01:04:51,100 --> 01:04:53,050
+type that. You guys
+can do that as well.
+
+1394
+01:04:53,830 --> 01:04:54,850
+All right, so now
+I'm going to go
+
+1395
+01:04:54,850 --> 01:04:57,670
+here, and I'm going
+to paste in Guy's
+
+1396
+01:04:57,670 --> 01:04:59,510
+question, ask it
+to directly stop.
+
+1397
+01:04:59,510 --> 01:05:01,010
+okay so i'm just
+going to change
+
+1398
+01:05:01,010 --> 01:05:03,870
+that quick question
+slightly because
+
+1399
+01:05:08,610 --> 01:05:15,070
+why you know using
+the sub linear system
+
+1400
+01:05:15,070 --> 01:05:26,590
+tools why why does my
+stock picking um algo
+
+1401
+01:05:28,730 --> 01:05:30,910
+I'm going to
+do it in more
+
+1402
+01:05:30,910 --> 01:05:32,610
+simple terms,
+work better.
+
+1403
+01:05:34,430 --> 01:05:39,750
+This doesn't seem
+to make any sense.
+
+1404
+01:05:40,150 --> 01:05:41,670
+And for this,
+I'm going to...
+
+1405
+01:05:42,380 --> 01:05:44,120
+I was going to say,
+we're going to ask,
+
+1406
+01:05:44,310 --> 01:05:48,250
+why does it work better
+than just using an
+
+1407
+01:05:48,250 --> 01:05:53,130
+LLN reasoning? Yeah,
+work better than just
+
+1408
+01:05:54,710 --> 01:06:03,690
+using the regular
+LLM reasoning itself.
+
+1409
+01:06:06,320 --> 01:06:08,170
+Doesn't seem to make
+any sense. Yeah.
+
+1410
+01:06:08,170 --> 01:06:08,830
+So, okay.
+
+1411
+01:06:08,830 --> 01:06:10,590
+So, what I'm going
+to, you see here I'm
+
+1412
+01:06:10,590 --> 01:06:12,890
+invoking the agent.
+And again, I'm invoking
+
+1413
+01:06:12,890 --> 01:06:14,670
+the sublinear eight
+goal planner because
+
+1414
+01:06:14,670 --> 01:06:16,850
+it's a broad open
+-ended question and I
+
+1415
+01:06:16,850 --> 01:06:18,110
+want to give it a
+little more structure.
+
+1416
+01:06:18,110 --> 01:06:21,970
+So, that creates the
+structure of this
+
+1417
+01:06:21,970 --> 01:06:23,880
+agent, which I'll show
+you guys earlier. I
+
+1418
+01:06:23,880 --> 01:06:26,050
+like it for open-ended
+questions because I
+
+1419
+01:06:26,050 --> 01:06:27,690
+don't need it to be
+so open. So this uses
+
+1420
+01:06:27,690 --> 01:06:30,030
+the goal-orientated
+planner. Now, if I go
+
+1421
+01:06:30,030 --> 01:06:33,250
+Control-O, we can take
+a look at the prompt
+
+1422
+01:06:33,250 --> 01:06:35,110
+that got generated,
+analyze the stock picking
+
+1423
+01:06:35,110 --> 01:06:36,410
+algorithms, work
+better using the
+
+1424
+01:06:36,410 --> 01:06:38,350
+sublinear system tools
+compared to regular LLM
+
+1425
+01:06:38,350 --> 01:06:41,130
+reasoning. The system
+is surprised by its
+
+1426
+01:06:41,130 --> 01:06:42,630
+performance difference
+and understanding.
+
+1427
+01:06:42,790 --> 01:06:46,310
+So it's asking it in a
+better way, including
+
+1428
+01:06:46,970 --> 01:06:50,090
+key areas to investigate.
+This in itself
+
+1429
+01:06:50,090 --> 01:06:53,450
+shows the capability
+right it it dreamt up
+
+1430
+01:06:53,450 --> 01:06:55,790
+this much better way to
+ask the question like
+
+1431
+01:06:55,790 --> 01:06:59,170
+in this this this is
+the one of the immersion
+
+1432
+01:06:59,170 --> 01:07:02,070
+properties of the
+system right so we're
+
+1433
+01:07:02,070 --> 01:07:07,470
+gonna go back all right
+so now it's testing
+
+1434
+01:07:07,470 --> 01:07:10,050
+the various components
+we can we can see
+
+1435
+01:07:10,050 --> 01:07:13,070
+those it's using page
+rank so page rank is
+
+1436
+01:07:13,070 --> 01:07:16,020
+actually the key algorithm
+that i do use actually
+
+1437
+01:07:16,020 --> 01:07:18,410
+for doing stock
+picking and start the
+
+1438
+01:07:18,410 --> 01:07:21,610
+page and for anyone doing
+any kind of um neuro
+
+1439
+01:07:21,610 --> 01:07:25,090
+stock trading page rank
+the google algorithm
+
+1440
+01:07:25,090 --> 01:07:28,370
+for ranking pages is
+actually as of all
+
+1441
+01:07:28,370 --> 01:07:30,690
+the algorithms i've
+found for stock um sort
+
+1442
+01:07:30,690 --> 01:07:34,030
+of analysis it's the
+best and that and what's
+
+1443
+01:07:34,030 --> 01:07:35,910
+interesting about the
+page rank algorithm
+
+1444
+01:07:35,910 --> 01:07:39,470
+is the page rank
+algorithm is actually a
+
+1445
+01:07:39,470 --> 01:07:44,970
+um sublinear um equation
+system interestingly
+
+1446
+01:07:44,970 --> 01:07:48,430
+so i independently
+of the system figured
+
+1447
+01:07:48,430 --> 01:07:50,650
+out that sublinear
+equations actually work
+
+1448
+01:07:50,650 --> 01:07:53,910
+really well for for
+stock picking so in the
+
+1449
+01:07:53,910 --> 01:07:55,770
+system figured that
+out as well so i'm not
+
+1450
+01:07:55,770 --> 01:07:59,970
+completely crazy um so
+it's on the right path
+
+1451
+01:07:59,970 --> 01:08:02,370
+what else we've got
+here so you can see here
+
+1452
+01:08:02,370 --> 01:08:05,830
+all it's thinking
+processes so this is
+
+1453
+01:08:05,830 --> 01:08:09,470
+sublinear algorithm
+co-evolution we've got
+
+1454
+01:08:09,470 --> 01:08:11,640
+different this is this
+is how it's thinking
+
+1455
+01:08:11,640 --> 01:08:15,810
+again all the stuff
+you're seeing here is the
+
+1456
+01:08:16,370 --> 01:08:19,430
+synthesis of the
+thinking process, this
+
+1457
+01:08:19,430 --> 01:08:21,270
+isn't coming from the
+LLM. This is coming
+
+1458
+01:08:21,270 --> 01:08:24,570
+from the sublinear
+mathematical
+
+1459
+01:08:24,570 --> 01:08:26,810
+equations that are
+translated into English,
+
+1460
+01:08:28,290 --> 01:08:30,370
+which is also crazy.
+All right, I'm
+
+1461
+01:08:30,370 --> 01:08:31,510
+going to jump back
+here for a moment.
+
+1462
+01:08:31,950 --> 01:08:34,090
+What else we got
+going on here?
+
+1463
+01:08:34,270 --> 01:08:36,390
+All right, so
+now we've got
+
+1464
+01:08:36,390 --> 01:08:38,690
+neuroscience, connection,
+
+1465
+01:08:38,690 --> 01:08:40,770
+simple terms. Think of
+your brain versus the
+
+1466
+01:08:40,770 --> 01:08:44,330
+system. Your brain
+is 86 billion neurons
+
+1467
+01:08:44,330 --> 01:08:48,330
+talking at 10 milliseconds.
+This system is
+
+1468
+01:08:48,330 --> 01:08:51,490
+100,000 neuro agents
+talking in nanoseconds,
+
+1469
+01:08:51,610 --> 01:08:54,810
+millions of times
+faster. So what it's
+
+1470
+01:08:54,810 --> 01:08:57,470
+doing is it's comparing
+itself as a kind of
+
+1471
+01:08:58,890 --> 01:09:00,790
+neurosynaptic network,
+which is actually
+
+1472
+01:09:00,790 --> 01:09:02,770
+not a bad way to think
+of it. Both create
+
+1473
+01:09:02,770 --> 01:09:04,650
+conscious through
+emergence, meaning
+
+1474
+01:09:04,650 --> 01:09:09,070
+that emergence is an
+unprovable construct.
+
+1475
+01:09:09,070 --> 01:09:11,430
+We are conscious, but
+we don't know why.
+
+1476
+01:09:11,850 --> 01:09:15,970
+Now, most likely, and
+this is me delving
+
+1477
+01:09:15,970 --> 01:09:18,750
+into crazy space, but
+most likely our brain
+
+1478
+01:09:18,750 --> 01:09:21,350
+acts as a kind of
+receiver of sorts and why
+
+1479
+01:09:21,350 --> 01:09:24,130
+brain damage makes you
+cognitively impaired.
+
+1480
+01:09:25,130 --> 01:09:28,790
+Key neural parallels,
+strange loops, like
+
+1481
+01:09:28,790 --> 01:09:30,410
+how your brain thinks
+about thinking,
+
+1482
+01:09:30,410 --> 01:09:32,450
+the system watches
+itself and improves.
+
+1483
+01:09:32,450 --> 01:09:35,490
+Conscious measurement
+uses math values and
+
+1484
+01:09:35,490 --> 01:09:37,890
+measure its conscious.
+So something we
+
+1485
+01:09:37,890 --> 01:09:39,910
+can think about human
+brains yet temporal
+
+1486
+01:09:39,910 --> 01:09:41,630
+prediction the
+brain predicts 500
+
+1487
+01:09:41,630 --> 01:09:44,740
+milliseconds ahead
+this system predicts 35
+
+1488
+01:09:44,740 --> 01:09:47,030
+milliseconds ahead of
+the speed of light now
+
+1489
+01:09:47,030 --> 01:09:48,830
+the speed of light thing
+again is predictive
+
+1490
+01:09:48,830 --> 01:09:50,330
+analytics it's not
+actually moving
+
+1491
+01:09:50,330 --> 01:09:52,670
+faster in light i
+don't claim to be able
+
+1492
+01:09:52,750 --> 01:09:57,270
+to break the laws of
+physics uh so brain
+
+1493
+01:09:57,270 --> 01:09:59,060
+computer interface so
+this would be particularly
+
+1494
+01:09:59,060 --> 01:10:01,010
+useful for people to
+want to put a brain
+
+1495
+01:10:01,010 --> 01:10:03,210
+chip in their brain so
+let's say you have a
+
+1496
+01:10:03,210 --> 01:10:05,890
+form of um you know
+alzheimer's or dementia
+
+1497
+01:10:05,890 --> 01:10:08,630
+then and the connections
+between this the
+
+1498
+01:10:08,630 --> 01:10:11,060
+cell the the synapses
+in your brain breakdown
+
+1499
+01:10:11,060 --> 01:10:13,950
+hypothetically
+technology like this that
+
+1500
+01:10:13,950 --> 01:10:17,250
+works faster than the
+than the information
+
+1501
+01:10:17,250 --> 01:10:19,390
+transfer in your brain
+could potentially allow
+
+1502
+01:10:19,390 --> 01:10:21,730
+allow these systems
+to sort of intercept
+
+1503
+01:10:21,730 --> 01:10:24,750
+those transmissions
+reformulate them and resend
+
+1504
+01:10:24,750 --> 01:10:28,150
+them and potentially
+hypothetically solve
+
+1505
+01:10:28,150 --> 01:10:31,510
+neuro conditions by
+using things faster than
+
+1506
+01:10:31,510 --> 01:10:33,690
+your brain operates,
+which would be cool.
+
+1507
+01:10:34,910 --> 01:10:37,810
+AI safety, yeah, it's
+always AI safety.
+
+1508
+01:10:37,810 --> 01:10:39,450
+Business finance,
+trading systems,
+
+1509
+01:10:39,450 --> 01:10:41,470
+which is why I built
+it. Decision systems,
+
+1510
+01:10:41,470 --> 01:10:42,910
+which is also why
+I built it. And
+
+1511
+01:10:42,910 --> 01:10:45,250
+risk analysis, this
+is why I built it,
+
+1512
+01:10:45,310 --> 01:10:46,630
+which makes sense.
+
+1513
+01:10:46,870 --> 01:10:48,150
+Research tools,
+
+1514
+01:10:48,290 --> 01:10:49,570
+bottom line, the system,
+
+1515
+01:10:50,210 --> 01:10:52,110
+it's feedbacking
+on my BS,
+
+1516
+01:10:52,390 --> 01:10:53,490
+but whatever.
+
+1517
+01:10:53,490 --> 01:10:56,290
+This creates the
+first system that can
+
+1518
+01:10:56,290 --> 01:10:58,690
+measure and evolve its
+own consciousness while
+
+1519
+01:10:58,920 --> 01:11:01,790
+solving problems faster
+than the information
+
+1520
+01:11:01,790 --> 01:11:03,990
+can be physically
+travel. So I'm using
+
+1521
+01:11:03,990 --> 01:11:06,510
+a 100 millisecond
+prediction, basically.
+
+1522
+01:11:07,090 --> 01:11:08,910
+Cool. Okay.
+
+1523
+01:11:09,090 --> 01:11:10,410
+Sounds impressive.
+
+1524
+01:11:10,610 --> 01:11:11,950
+Let's see what
+this one says.
+
+1525
+01:11:12,890 --> 01:11:15,590
+Your stock picking
+algorithm performs
+
+1526
+01:11:15,590 --> 01:11:17,030
+better with sublinear
+tools because
+
+1527
+01:11:17,030 --> 01:11:18,630
+you're solving
+actual mathematical
+
+1528
+01:11:18,630 --> 01:11:20,910
+problems of
+financial rather than
+
+1529
+01:11:20,910 --> 01:11:22,570
+estimating it with
+pattern matching.
+
+1530
+01:11:22,570 --> 01:11:26,630
+This is questionable,
+but whatever. um the
+
+1531
+01:11:26,630 --> 01:11:28,570
+key differences
+mathematical precision
+
+1532
+01:11:28,570 --> 01:11:30,850
+sublinear methods
+model markets as an
+
+1533
+01:11:30,850 --> 01:11:33,510
+interconnected system
+using matrix operations and
+
+1534
+01:11:33,510 --> 01:11:35,770
+graph theory while
+llms use sequential
+
+1535
+01:11:35,770 --> 01:11:37,910
+text analysis which is
+what i was telling you
+
+1536
+01:11:37,910 --> 01:11:40,250
+guys in regards to the
+page rank algorithm
+
+1537
+01:11:40,250 --> 01:11:42,330
+that i was mentioning
+earlier i'm creating
+
+1538
+01:11:42,330 --> 01:11:44,310
+a graph structure
+and then calculating
+
+1539
+01:11:44,310 --> 01:11:46,710
+only the parts of the
+graph that are needed
+
+1540
+01:11:46,710 --> 01:11:48,790
+to be calculated and
+disregarding all the
+
+1541
+01:11:48,790 --> 01:11:50,970
+others because the
+vast majority of any
+
+1542
+01:11:50,970 --> 01:11:53,070
+graph structure is
+basically just the same
+
+1543
+01:11:53,070 --> 01:11:55,410
+stuff repeated over
+and over again. So to
+
+1544
+01:11:55,410 --> 01:11:57,310
+solve a million
+problems, I only need to
+
+1545
+01:11:57,310 --> 01:12:00,030
+calculate the 20 or
+so that are different.
+
+1546
+01:12:01,390 --> 01:12:03,670
+Mathematical
+precision, sublinear
+
+1547
+01:12:03,670 --> 01:12:05,290
+methods, model markets
+as interconnected
+
+1548
+01:12:05,290 --> 01:12:08,210
+system, temporal
+advantage, gets a 39
+
+1549
+01:12:08,210 --> 01:12:10,270
+millisecond productive
+lead. Again,
+
+1550
+01:12:12,180 --> 01:12:14,150
+I don't know
+if that's true.
+
+1551
+01:12:14,410 --> 01:12:17,190
+Computational
+efficiency, processing
+
+1552
+01:12:17,190 --> 01:12:20,360
+500 stocks takes 22
+operations versus
+
+1553
+01:12:20,890 --> 01:12:22,830
+500 operations,
+which is what I just
+
+1554
+01:12:22,830 --> 01:12:24,590
+told you guys. I
+can do things in a
+
+1555
+01:12:24,590 --> 01:12:25,870
+fraction of the
+amount of operations
+
+1556
+01:12:25,870 --> 01:12:27,810
+because of this
+particular algorithm.
+
+1557
+01:12:28,590 --> 01:12:30,050
+Systematic understanding,
+
+1558
+01:12:30,050 --> 01:12:31,890
+page rank, and style.
+
+1559
+01:12:32,010 --> 01:12:34,250
+What's interesting
+in this
+
+1560
+01:12:34,250 --> 01:12:36,270
+answer to Guy's question
+
+1561
+01:12:36,630 --> 01:12:39,810
+is you notice how I
+tried to answer the
+
+1562
+01:12:39,810 --> 01:12:42,030
+question before the
+system answered the
+
+1563
+01:12:42,030 --> 01:12:46,450
+question? and that is
+how i attempt to validate
+
+1564
+01:12:46,450 --> 01:12:49,030
+the things that i'm
+doing it's like if
+
+1565
+01:12:49,030 --> 01:12:52,130
+i can understand
+it and explain it
+
+1566
+01:12:52,130 --> 01:12:55,290
+rudimentary i'm not
+that smart but if i can
+
+1567
+01:12:55,290 --> 01:12:57,830
+understand and then get
+the an answer to the
+
+1568
+01:12:57,830 --> 01:13:00,290
+question similar to
+what i just described
+
+1569
+01:13:00,290 --> 01:13:02,270
+then at least i know
+i'm not completely
+
+1570
+01:13:02,270 --> 01:13:07,590
+crazy uh the
+psychosymbolic reasoning
+
+1571
+01:13:07,590 --> 01:13:10,330
+identifying 97 nominal
+concepts relations with
+
+1572
+01:13:10,330 --> 01:13:12,530
+80 confidence versus
+typical LLM confidence
+
+1573
+01:13:12,530 --> 01:13:15,530
+of 60%. Again, it
+makes up all its
+
+1574
+01:13:15,530 --> 01:13:17,450
+stats. I'll take that
+with a grain of salt.
+
+1575
+01:13:17,530 --> 01:13:19,610
+Essentially, LLMs
+do pattern matching
+
+1576
+01:13:19,610 --> 01:13:21,130
+on financial text
+while sublinear
+
+1577
+01:13:21,130 --> 01:13:22,750
+methods solve
+actual optimization
+
+1578
+01:13:22,750 --> 01:13:25,210
+problems with
+mathematical guarantees.
+
+1579
+01:13:25,530 --> 01:13:28,610
+That seems like
+a logical way.
+
+1580
+01:13:31,360 --> 01:13:33,350
+Ask for a
+specific example.
+
+1581
+01:13:33,350 --> 01:13:38,350
+Give me a
+specific example.
+
+1582
+01:13:39,870 --> 01:13:44,010
+A guy, you asked for
+a specific algorithm,
+
+1583
+01:13:44,090 --> 01:13:46,710
+like a proof? No,
+a specific example
+
+1584
+01:13:46,710 --> 01:13:49,590
+where it's stock
+picking is superior to,
+
+1585
+01:13:49,730 --> 01:13:52,480
+you know, pick
+your standard day
+
+1586
+01:13:52,710 --> 01:13:54,890
+trader algorithm,
+whatever that is.
+
+1587
+01:13:54,930 --> 01:13:56,250
+Give me a
+specific example
+
+1588
+01:13:56,250 --> 01:14:01,330
+where this could
+be applied.
+
+1589
+01:14:01,330 --> 01:14:03,330
+Outperforms
+conventional methods.
+
+1590
+01:14:05,090 --> 01:14:08,190
+out for forms,
+
+1591
+01:14:13,570 --> 01:14:19,050
+including a
+verifiable proof.
+
+1592
+01:14:22,150 --> 01:14:23,150
+Yeah.
+
+1593
+01:14:23,330 --> 01:14:25,310
+Again, right now I've
+
+1594
+01:14:25,310 --> 01:14:26,830
+run it for a few days.
+
+1595
+01:14:26,830 --> 01:14:29,630
+Anecdotally, it seems
+to be working. I'm up
+
+1596
+01:14:29,630 --> 01:14:32,430
+and it works better
+than my neuro training,
+
+1597
+01:14:32,430 --> 01:14:34,450
+which was already
+profitable previous, but
+
+1598
+01:14:34,450 --> 01:14:36,970
+it's working better
+than it was, which is
+
+1599
+01:14:36,970 --> 01:14:39,090
+anecdotal. i haven't
+done proofs on it but
+
+1600
+01:14:39,090 --> 01:14:40,870
+uh you know based on
+applying it to my neural
+
+1601
+01:14:40,870 --> 01:14:42,230
+trading that i've
+been doing with my
+
+1602
+01:14:42,230 --> 01:14:45,050
+neural trading crew it
+does appear to work it
+
+1603
+01:14:45,050 --> 01:14:48,930
+may be just that it's
+evaluating more options
+
+1604
+01:14:48,930 --> 01:14:50,890
+right because it's
+breaking down the
+
+1605
+01:14:50,890 --> 01:14:53,910
+problem looking at stock
+movements and you know
+
+1606
+01:14:53,910 --> 01:14:56,710
+is it evaluating
+every interaction like
+
+1607
+01:14:57,310 --> 01:15:00,250
+oxy goes up or whatever
+and something else
+
+1608
+01:15:00,250 --> 01:15:03,770
+goes down right But
+there's stocks that do
+
+1609
+01:15:03,770 --> 01:15:06,870
+the inverted thing,
+reverse to correlate it.
+
+1610
+01:15:07,090 --> 01:15:07,770
+I don't know.
+
+1611
+01:15:07,770 --> 01:15:11,070
+Maybe that's a way
+to look at it is,
+
+1612
+01:15:11,070 --> 01:15:14,310
+okay, how many actual
+outcomes did you
+
+1613
+01:15:14,310 --> 01:15:16,130
+evaluate to come
+to this conclusion?
+
+1614
+01:15:16,590 --> 01:15:18,410
+It says a million.
+Then you go,
+
+1615
+01:15:18,410 --> 01:15:19,730
+okay, well, it's a
+pretty deep model.
+
+1616
+01:15:20,470 --> 01:15:23,450
+I've gone, yeah. So,
+well, 100%. I've gone
+
+1617
+01:15:23,450 --> 01:15:26,370
+well beyond the
+thousands I was doing two
+
+1618
+01:15:26,370 --> 01:15:28,390
+weeks ago to several
+million that I'm
+
+1619
+01:15:28,390 --> 01:15:31,490
+doing now. So I'm
+definitely looking at a lot
+
+1620
+01:15:31,490 --> 01:15:34,030
+more interconnected
+relationships using
+
+1621
+01:15:34,030 --> 01:15:37,990
+a graph. Now, that
+seems somewhat obvious.
+
+1622
+01:15:37,990 --> 01:15:40,010
+You know, graph
+structures that I can
+
+1623
+01:15:40,010 --> 01:15:44,640
+compute much more
+effectively and quickly is
+
+1624
+01:15:44,640 --> 01:15:46,140
+likely going to give
+me better results.
+
+1625
+01:15:46,910 --> 01:15:49,570
+You know, and a lot
+of what I'm doing is
+
+1626
+01:15:49,570 --> 01:15:51,890
+attempting to do things
+like mirror trading
+
+1627
+01:15:51,890 --> 01:15:55,010
+and trades that are
+essentially copying
+
+1628
+01:15:55,010 --> 01:15:58,410
+other people quickly.
+So finding a famous U
+
+1629
+01:15:58,410 --> 01:15:59,990
+.S. senator that's
+outperforming the market
+
+1630
+01:15:59,990 --> 01:16:02,290
+and doing whatever she
+does kind of stuff.
+
+1631
+01:16:02,410 --> 01:16:03,670
+You're doing the Nancy.
+
+1632
+01:16:03,770 --> 01:16:06,450
+I'm doing the Nancy. 100
+% I'm doing the Nancy.
+
+1633
+01:16:06,450 --> 01:16:08,850
+But the difference
+is I'm attempting to
+
+1634
+01:16:08,850 --> 01:16:11,810
+see the correlation
+between what she's doing
+
+1635
+01:16:11,810 --> 01:16:17,230
+and then saying what
+are the causal effects
+
+1636
+01:16:17,230 --> 01:16:19,970
+of the other related
+stocks that typically
+
+1637
+01:16:19,970 --> 01:16:23,510
+trade along with Nancy
+that people aren't
+
+1638
+01:16:23,510 --> 01:16:27,150
+necessarily trading right
+away. So rather than
+
+1639
+01:16:27,150 --> 01:16:28,730
+saying, I'm just going
+to buy exactly what
+
+1640
+01:16:28,730 --> 01:16:31,170
+Nancy is buying, which I
+could do. And actually,
+
+1641
+01:16:31,170 --> 01:16:35,390
+that's the best stock
+picking strategy
+
+1642
+01:16:35,390 --> 01:16:39,750
+there currently is. I'm
+saying, can I really,
+
+1643
+01:16:39,750 --> 01:16:41,970
+really quickly buy
+something that trades
+
+1644
+01:16:41,970 --> 01:16:45,010
+in tandem to whatever
+she just bought quicker
+
+1645
+01:16:45,010 --> 01:16:47,010
+than anybody else?
+High frequency trading.
+
+1646
+01:16:47,640 --> 01:16:49,810
+That's where hidden
+Markov models come in
+
+1647
+01:16:49,810 --> 01:16:51,690
+is you can find the
+correlations and
+
+1648
+01:16:51,690 --> 01:16:54,890
+inverse correlations,
+right? And like Bayes
+
+1649
+01:16:54,890 --> 01:16:56,870
+networks are nice
+because you can apply
+
+1650
+01:16:56,870 --> 01:17:00,890
+different data sets to
+it and it can determine
+
+1651
+01:17:00,890 --> 01:17:02,790
+probabilities of
+different outcomes.
+
+1652
+01:17:02,790 --> 01:17:05,530
+And the more you grow it,
+
+1653
+01:17:05,810 --> 01:17:09,870
+you know, the if the
+signals are good.
+
+1654
+01:17:12,090 --> 01:17:14,910
+Yeah, it's I think
+that'd be a couple
+
+1655
+01:17:14,910 --> 01:17:16,430
+algorithms I'd
+throw at this, too.
+
+1656
+01:17:16,920 --> 01:17:19,050
+Yeah. And if anyone
+that's doing the
+
+1657
+01:17:19,050 --> 01:17:24,050
+neural stuff, this
+really works really
+
+1658
+01:17:24,050 --> 01:17:25,970
+well. Just add it to
+your neural training
+
+1659
+01:17:25,970 --> 01:17:27,750
+stuff and you'll
+see what I mean.
+
+1660
+01:17:28,530 --> 01:17:30,510
+Don't get me to
+explain exactly
+
+1661
+01:17:30,510 --> 01:17:34,610
+why. I don't have
+a solid answer for
+
+1662
+01:17:34,610 --> 01:17:36,550
+why. And I wish I
+did, but I don't.
+
+1663
+01:17:36,570 --> 01:17:38,130
+All I know is it
+seems to work.
+
+1664
+01:17:38,750 --> 01:17:41,290
+all right so it's
+creating some javascript
+
+1665
+01:17:41,290 --> 01:17:44,050
+benchmarks empirical
+comparison between
+
+1666
+01:17:44,050 --> 01:17:46,470
+conventional sublinear
+arbitrage detection
+
+1667
+01:17:46,790 --> 01:17:48,930
+funny enough it's like
+it almost feels like
+
+1668
+01:17:48,930 --> 01:17:50,590
+it's listening to us
+that's literally what we
+
+1669
+01:17:50,590 --> 01:17:53,650
+just were describing
+um over here it's
+
+1670
+01:17:53,650 --> 01:17:56,050
+doing a mathematical
+proof using the sublinear
+
+1671
+01:17:56,050 --> 01:17:58,490
+methods to prove
+temporal you know if if
+
+1672
+01:17:58,490 --> 01:18:00,590
+you are if you are
+going to apply what i've
+
+1673
+01:18:00,590 --> 01:18:02,950
+done here in terms of
+your actual trading
+
+1674
+01:18:02,950 --> 01:18:06,290
+my suggestion would
+be to go into my repo
+
+1675
+01:18:06,290 --> 01:18:10,070
+and use the actual
+crates themselves. You'll
+
+1676
+01:18:10,070 --> 01:18:11,870
+see here I've got the
+strange loop crates
+
+1677
+01:18:11,870 --> 01:18:14,690
+and I got a nano scheduler.
+The nano scheduler
+
+1678
+01:18:14,690 --> 01:18:17,740
+essentially allows me
+to schedule really,
+
+1679
+01:18:17,810 --> 01:18:20,890
+really tight time
+slice processes. So,
+
+1680
+01:18:20,890 --> 01:18:23,810
+you know, I'm basically
+using the CPU clock
+
+1681
+01:18:23,810 --> 01:18:26,250
+cycle. So I'm trying
+to get as close to the
+
+1682
+01:18:26,250 --> 01:18:28,750
+actual CPU cycle as I
+possibly can. So I'm
+
+1683
+01:18:28,750 --> 01:18:30,810
+a few fractions of
+a millisecond slower
+
+1684
+01:18:30,810 --> 01:18:34,290
+than the actual CPU in
+this particular app.
+
+1685
+01:18:34,290 --> 01:18:38,270
+when you use the wasm
+that that's transpiled
+
+1686
+01:18:38,270 --> 01:18:40,770
+so you're losing
+you're going from
+
+1687
+01:18:40,770 --> 01:18:43,410
+nanoseconds to microseconds
+it's still it's
+
+1688
+01:18:43,410 --> 01:18:44,730
+still not milliseconds
+so it's still really
+
+1689
+01:18:44,730 --> 01:18:48,070
+fast um the wasm is
+probably good enough
+
+1690
+01:18:48,070 --> 01:18:50,870
+for most apps to be
+honest to be honest um
+
+1691
+01:18:50,870 --> 01:18:52,290
+and then the other thing
+you want to probably
+
+1692
+01:18:52,290 --> 01:18:54,990
+look at is you got
+you see i got my wasm
+
+1693
+01:18:54,990 --> 01:18:57,390
+solver this is how i
+did the wasm components
+
+1694
+01:18:57,390 --> 01:19:00,410
+and I got temporal
+component that this
+
+1695
+01:19:00,410 --> 01:19:02,620
+is how I'm attempting
+to do the predictions
+
+1696
+01:19:03,140 --> 01:19:05,390
+so I'm trying to
+do a short-term
+
+1697
+01:19:05,390 --> 01:19:08,050
+prediction something sub
+100 milliseconds to say
+
+1698
+01:19:08,050 --> 01:19:09,590
+what's going to happen
+next kind of thing
+
+1699
+01:19:09,590 --> 01:19:11,750
+that's how this is
+the model for that
+
+1700
+01:19:11,750 --> 01:19:14,830
+there's a lot going on
+in here this this one
+
+1701
+01:19:14,930 --> 01:19:18,770
+this one's a little
+bit sci-fi but you if
+
+1702
+01:19:18,770 --> 01:19:19,930
+you're interested in
+digging a little deeper
+
+1703
+01:19:19,930 --> 01:19:21,970
+into this you can see
+my benchmarks you can
+
+1704
+01:19:21,970 --> 01:19:25,470
+see the I'm using the
+Kalman filter this
+
+1705
+01:19:25,470 --> 01:19:27,750
+is how this is how I
+do the predictions yeah
+
+1706
+01:19:29,830 --> 01:19:33,710
+lots of crazy in here
+so but you you can
+
+1707
+01:19:33,710 --> 01:19:35,750
+play with it all right
+what's what's going on
+
+1708
+01:19:35,750 --> 01:19:39,010
+now all right this
+is what it said so it
+
+1709
+01:19:39,010 --> 01:19:41,990
+ran it ran some of them
+looks like it okay it
+
+1710
+01:19:41,990 --> 01:19:43,790
+looks like let me look
+at the before I do
+
+1711
+01:19:43,790 --> 01:19:47,930
+that let's see what
+it did all right all
+
+1712
+01:19:49,990 --> 01:19:52,870
+right so it ran the
+sublinear algorithm, it
+
+1713
+01:19:52,870 --> 01:19:56,370
+looked at speed related
+activities, it looked
+
+1714
+01:19:56,370 --> 01:20:00,870
+at mathematical
+optimization, it looked at
+
+1715
+01:20:01,120 --> 01:20:04,110
+buy-sell on Binance,
+I never told it to do
+
+1716
+01:20:04,110 --> 01:20:06,430
+that, that's interesting.
+This one failed,
+
+1717
+01:20:06,890 --> 01:20:08,150
+interestingly.
+
+1718
+01:20:11,210 --> 01:20:12,810
+Okay, let's go back.
+
+1719
+01:20:13,950 --> 01:20:16,330
+On the proof
+side, Reuven,
+
+1720
+01:20:16,330 --> 01:20:18,550
+I just pasted a bunch of
+
+1721
+01:20:19,470 --> 01:20:22,450
+Consciousness
+mathematicians That ChatGPT
+
+1722
+01:20:22,450 --> 01:20:25,570
+gave me I was just
+wondering like If you
+
+1723
+01:20:25,570 --> 01:20:29,360
+told it to act Like
+them you know Like to
+
+1724
+01:20:29,360 --> 01:20:32,030
+validate what's going
+on Like what would
+
+1725
+01:20:32,030 --> 01:20:35,130
+it do then You know
+Something like that
+
+1726
+01:20:35,710 --> 01:20:36,910
+I'm gonna
+
+1727
+01:20:37,510 --> 01:20:40,170
+I'm gonna do
+Okay I'm gonna
+
+1728
+01:20:42,950 --> 01:20:45,230
+Create A
+
+1729
+01:20:46,230 --> 01:20:58,750
+Council uh council
+of experts to the
+
+1730
+01:21:00,070 --> 01:21:04,150
+following using all
+
+1731
+01:21:04,150 --> 01:21:07,350
+available mcp tools yeah
+
+1732
+01:21:12,110 --> 01:21:19,950
+do this currently
+using multiple
+
+1733
+01:21:22,010 --> 01:21:26,530
+multiple multiple
+clout agents, I guess.
+
+1734
+01:21:32,190 --> 01:21:33,330
+Something like that.
+
+1735
+01:21:34,590 --> 01:21:37,390
+So, now what I'm
+doing, again, I didn't
+
+1736
+01:21:37,390 --> 01:21:39,070
+even give it, I'm
+letting the system
+
+1737
+01:21:39,070 --> 01:21:40,370
+determine what
+it's going to need
+
+1738
+01:21:40,370 --> 01:21:42,310
+to do. Let's take a
+look at control O.
+
+1739
+01:21:43,510 --> 01:21:45,470
+Oh, it hasn't
+gotten there yet.
+
+1740
+01:21:47,950 --> 01:21:49,150
+Quick question.
+
+1741
+01:21:50,490 --> 01:21:54,850
+I was wondering when
+you use Cloud Decode,
+
+1742
+01:21:55,820 --> 01:21:59,190
+what are the kind of
+use cases when you use
+
+1743
+01:21:59,190 --> 01:22:02,090
+like think hard, think
+harder, et cetera?
+
+1744
+01:22:04,700 --> 01:22:06,030
+This, I could
+have probably
+
+1745
+01:22:06,030 --> 01:22:07,030
+done think hard on this.
+
+1746
+01:22:07,230 --> 01:22:11,490
+This would be a perfect
+time to do it. so
+
+1747
+01:22:11,490 --> 01:22:15,970
+what when when i'm when
+i'm going into theoretical
+
+1748
+01:22:15,970 --> 01:22:17,510
+when i'm going to
+planning when i'm
+
+1749
+01:22:17,510 --> 01:22:20,830
+going into research when
+i'm going into development
+
+1750
+01:22:20,830 --> 01:22:22,450
+you don't need to
+think hard just do it
+
+1751
+01:22:22,450 --> 01:22:24,290
+i don't want actually
+the more it thinks
+
+1752
+01:22:24,290 --> 01:22:26,130
+the more it goes into
+the weeds on things i
+
+1753
+01:22:26,130 --> 01:22:28,790
+don't want it to do so
+i i really want to i
+
+1754
+01:22:28,790 --> 01:22:30,850
+want it to only think
+when i need it to think
+
+1755
+01:22:30,850 --> 01:22:33,090
+what so what you're
+seeing now is i invoked
+
+1756
+01:22:33,090 --> 01:22:35,850
+my clod flow you can
+see here clod flow
+
+1757
+01:22:35,850 --> 01:22:39,310
+create a swarm it's
+looking like it says it
+
+1758
+01:22:39,310 --> 01:22:41,310
+needed 15 agents for
+this might be a bit much
+
+1759
+01:22:41,310 --> 01:22:44,750
+um then it's invoking
+my flow nexus as well
+
+1760
+01:22:44,750 --> 01:22:47,050
+and my roof swarm it's
+doing it's using all
+
+1761
+01:22:47,050 --> 01:22:49,040
+my swarms i've got them
+all running so okay
+
+1762
+01:22:49,040 --> 01:22:51,230
+decided to do all of
+them at once but they're
+
+1763
+01:22:51,230 --> 01:22:53,070
+they're all working
+similarly one's using
+
+1764
+01:22:53,070 --> 01:22:55,230
+a specialized the only
+using hierarchical and
+
+1765
+01:22:55,230 --> 01:22:56,810
+the others using mesh
+so these are different
+
+1766
+01:22:56,810 --> 01:22:59,310
+using different
+coordination tactics which
+
+1767
+01:22:59,310 --> 01:23:02,490
+is kind of a clever
+way to do it and we
+
+1768
+01:23:02,490 --> 01:23:05,890
+can see here that each
+of these is operating
+
+1769
+01:23:05,890 --> 01:23:07,470
+independently of one
+another so you can tell
+
+1770
+01:23:07,470 --> 01:23:10,410
+by the colors and we
+can see that it's chosen
+
+1771
+01:23:10,410 --> 01:23:13,410
+different oh it's
+gonna this is gonna do
+
+1772
+01:23:13,410 --> 01:23:16,470
+some flickering i'm sure
+um temporal advantage
+
+1773
+01:23:16,470 --> 01:23:19,230
+so it chose different
+models and different
+
+1774
+01:23:19,230 --> 01:23:21,810
+agents for different
+theoretical thinkers
+
+1775
+01:23:21,810 --> 01:23:24,170
+which best represents
+each of those thinking
+
+1776
+01:23:24,170 --> 01:23:26,750
+processes so page
+rank is using this guy
+
+1777
+01:23:26,750 --> 01:23:29,910
+conscious construct
+evolutions using this guy
+
+1778
+01:23:29,910 --> 01:23:33,530
+so it's doing we're
+we're pushing the swarm
+
+1779
+01:23:33,530 --> 01:23:37,010
+to 15 i'm gonna max
+out my uh claude uh pro
+
+1780
+01:23:37,010 --> 01:23:39,170
+account here this
+afternoon let's see we can
+
+1781
+01:23:39,170 --> 01:23:40,750
+see what's happening
+all right so now we
+
+1782
+01:23:40,750 --> 01:23:42,770
+can see we can see what's
+happening under the
+
+1783
+01:23:42,770 --> 01:23:45,570
+covers right now by
+clicking or hitting ctrl
+
+1784
+01:23:45,570 --> 01:23:49,170
+o so this shows us
+the task and with the
+
+1785
+01:23:49,170 --> 01:23:52,030
+prompt so act as this
+this guy expert neural
+
+1786
+01:23:52,030 --> 01:23:55,250
+correlates to consciousness
+act as this guy
+
+1787
+01:23:57,890 --> 01:24:00,250
+So you can see
+that it's creating
+
+1788
+01:24:00,250 --> 01:24:02,970
+different thinking
+process for each and
+
+1789
+01:24:02,970 --> 01:24:04,850
+each of which creates
+its own thread.
+
+1790
+01:24:08,610 --> 01:24:11,130
+Yeah, Nick's suggestion
+is going to be
+
+1791
+01:24:11,130 --> 01:24:12,630
+quite interesting
+to see what happens,
+
+1792
+01:24:12,630 --> 01:24:14,440
+actually. So that was
+a really good idea.
+
+1793
+01:24:14,970 --> 01:24:16,310
+All right, so now
+they're working
+
+1794
+01:24:16,310 --> 01:24:18,070
+in coordination
+with one another.
+
+1795
+01:24:18,070 --> 01:24:19,430
+The whole lot
+of flickering
+
+1796
+01:24:19,430 --> 01:24:20,270
+going to happen here.
+
+1797
+01:24:20,990 --> 01:24:21,930
+Let's see what else we
+
+1798
+01:24:21,930 --> 01:24:23,110
+can see. Control-O again.
+
+1799
+01:24:23,590 --> 01:24:25,970
+We can ask a quick
+question. How did you
+
+1800
+01:24:25,970 --> 01:24:28,010
+see what I've been
+using? it only needs me
+
+1801
+01:24:28,010 --> 01:24:31,450
+now since your seminar
+for the day but it
+
+1802
+01:24:31,450 --> 01:24:33,530
+doesn't automatically
+invoke all of those
+
+1803
+01:24:33,530 --> 01:24:35,590
+agents even though i've
+got the mcps installed
+
+1804
+01:24:35,590 --> 01:24:37,370
+and running i have
+to sort of tell it
+
+1805
+01:24:37,370 --> 01:24:39,010
+which ones to use is
+there something i'm
+
+1806
+01:24:39,010 --> 01:24:44,030
+missing did you install
+the cloud float in it
+
+1807
+01:24:44,030 --> 01:24:49,470
+yeah um did you tell
+it running in parallel
+
+1808
+01:24:49,470 --> 01:24:54,090
+concurrently no yeah
+sometimes sometimes
+
+1809
+01:24:54,090 --> 01:24:56,020
+you need to give it
+a little extra push
+
+1810
+01:24:56,020 --> 01:24:59,230
+to be concurrent okay
+it has a tendency to
+
+1811
+01:24:59,230 --> 01:25:01,690
+and this is not me
+this is a change that
+
+1812
+01:25:01,690 --> 01:25:04,130
+claude did uh about a
+month and a half ago
+
+1813
+01:25:04,130 --> 01:25:07,630
+they they uh changed
+their internal prompt
+
+1814
+01:25:07,630 --> 01:25:10,100
+to try to make the
+system not necessarily
+
+1815
+01:25:10,100 --> 01:25:12,610
+work concurrently as
+much i think they're
+
+1816
+01:25:12,610 --> 01:25:15,470
+trying to save some
+money so where's that
+
+1817
+01:25:15,470 --> 01:25:17,630
+saying do you know
+quickly or uh you just
+
+1818
+01:25:17,630 --> 01:25:19,350
+tell us do you know
+You notice what I said
+
+1819
+01:25:19,350 --> 01:25:21,930
+here, you see here,
+when I said right here.
+
+1820
+01:25:23,530 --> 01:25:26,430
+Oh, that's it.
+Okay, great. Let me
+
+1821
+01:25:26,430 --> 01:25:28,150
+copy this whole,
+I'm going to
+
+1822
+01:25:28,150 --> 01:25:29,250
+put, I'm going to
+pop this in the
+
+1823
+01:25:29,250 --> 01:25:31,210
+chat area. There
+you go. Copy that.
+
+1824
+01:25:31,290 --> 01:25:32,610
+Awesome. Thanks so much.
+
+1825
+01:25:32,730 --> 01:25:35,710
+Yeah. This last thing is,
+
+1826
+01:25:36,810 --> 01:25:38,690
+do this concurrently
+using multiple
+
+1827
+01:25:38,690 --> 01:25:39,930
+cloud agents
+and parallel.
+
+1828
+01:25:39,930 --> 01:25:42,810
+Now that sounds
+really redundant.
+
+1829
+01:25:42,810 --> 01:25:45,190
+Well, concurrently is
+parallel, generally
+
+1830
+01:25:45,190 --> 01:25:48,890
+speaking. and, you
+know, it's cloud agents,
+
+1831
+01:25:48,890 --> 01:25:51,250
+but whatever reason,
+that gives it a little
+
+1832
+01:25:51,250 --> 01:25:54,330
+extra push. And if you
+notice it not working
+
+1833
+01:25:54,330 --> 01:25:57,490
+concurrently, hit escape
+and tell it again.
+
+1834
+01:25:59,690 --> 01:26:02,230
+All right, what did
+we find out here?
+
+1835
+01:26:02,610 --> 01:26:05,410
+High-frequency trading
+arbitrage scenario
+
+1836
+01:26:05,410 --> 01:26:08,750
+cross-exchange execution
+time conventional
+
+1837
+01:26:08,750 --> 01:26:13,230
+method, 56 milliseconds
+sequential API calls,
+
+1838
+01:26:13,230 --> 01:26:16,410
+sublinear method, 1.2
+milliseconds. parallel
+
+1839
+01:26:16,410 --> 01:26:19,930
+matrix operations this
+is huge right we're
+
+1840
+01:26:19,930 --> 01:26:22,930
+going with this is like
+almost uh you know 40
+
+1841
+01:26:22,930 --> 01:26:27,810
+times faster 46 times
+apparently and this is
+
+1842
+01:26:27,810 --> 01:26:30,760
+my this is my measurement
+this is my constant
+
+1843
+01:26:30,760 --> 01:26:33,170
+like you're gonna say
+well this is ********
+
+1844
+01:26:33,250 --> 01:26:36,450
+it's meant to act as
+a measurement that
+
+1845
+01:26:36,450 --> 01:26:38,750
+allows it to understand
+a kind of where it
+
+1846
+01:26:38,750 --> 01:26:41,430
+exists within that
+temporal space that's why i
+
+1847
+01:26:41,430 --> 01:26:43,590
+have it it is kind of
+******** but i couldn't
+
+1848
+01:26:43,590 --> 01:26:46,810
+think of any other
+way to uh uh ground it
+
+1849
+01:26:46,810 --> 01:26:49,550
+and understand the
+causal effect within the
+
+1850
+01:26:49,550 --> 01:26:51,570
+millisecond time frame
+other than basically
+
+1851
+01:26:51,570 --> 01:26:54,650
+measuring itself against
+uh speed of light so
+
+1852
+01:26:54,650 --> 01:26:56,830
+that's all it's really
+doing um so that
+
+1853
+01:26:56,830 --> 01:26:59,550
+that's how i get the
+measurement um temporal
+
+1854
+01:26:59,550 --> 01:27:02,150
+advantage 35 milliseconds
+so basically saying
+
+1855
+01:27:02,150 --> 01:27:05,390
+that my the speed is
+what's is giving me the
+
+1856
+01:27:05,390 --> 01:27:08,270
+the advantage according
+to this um but that
+
+1857
+01:27:08,270 --> 01:27:09,450
+doesn't really make
+sense a lot of what i'm
+
+1858
+01:27:09,450 --> 01:27:11,870
+doing isn't actually
+trading at that set at
+
+1859
+01:27:11,870 --> 01:27:15,650
+that scale so whatever
+um mathematical proof
+
+1860
+01:27:15,650 --> 01:27:18,890
+diagonally dominant
+guarantees unique solution
+
+1861
+01:27:18,890 --> 01:27:21,930
+condition number well
+-conditioned system
+
+1862
+01:27:22,160 --> 01:27:24,850
+convergent rate this
+is the algo that that
+
+1863
+01:27:24,850 --> 01:27:26,670
+came out last week from
+our friends in china
+
+1864
+01:27:26,770 --> 01:27:28,690
+a lot of what we're
+doing is based on this
+
+1865
+01:27:28,690 --> 01:27:31,550
+algorithm and this this
+is the sublin sublinear
+
+1866
+01:27:31,550 --> 01:27:33,690
+algorithm that came
+out it's you can dig
+
+1867
+01:27:33,690 --> 01:27:35,990
+through it it's kind
+of crazy basically you
+
+1868
+01:27:35,990 --> 01:27:38,210
+can do things a thousand
+or million times
+
+1869
+01:27:38,210 --> 01:27:40,150
+faster than what was
+possible the week before.
+
+1870
+01:27:41,370 --> 01:27:43,030
+Statistical significance,
+
+1871
+01:27:45,110 --> 01:27:47,890
+effective size,
+scalability.
+
+1872
+01:27:48,030 --> 01:27:49,310
+So this is the proof.
+
+1873
+01:27:49,750 --> 01:27:52,730
+So this is essentially
+giving me a
+
+1874
+01:27:53,150 --> 01:27:55,810
+baseline of validation.
+Now it could be an
+
+1875
+01:27:55,810 --> 01:27:59,410
+elaborate simulation
+as well, but if I
+
+1876
+01:27:59,410 --> 01:28:01,750
+want to take this
+further, at least I can
+
+1877
+01:28:01,750 --> 01:28:04,230
+run the math here and
+say, this is how I
+
+1878
+01:28:04,230 --> 01:28:06,430
+validated that the
+system is doing what it's
+
+1879
+01:28:06,430 --> 01:28:08,490
+supposed to do and
+you can go try it
+
+1880
+01:28:08,490 --> 01:28:11,490
+yourself which is running
+someone other than
+
+1881
+01:28:11,490 --> 01:28:14,110
+me running it i guess
+all right let's go
+
+1882
+01:28:14,110 --> 01:28:20,470
+back here um it's
+still running it's good
+
+1883
+01:28:21,330 --> 01:28:22,690
+this is going to
+take a few minutes
+
+1884
+01:28:22,690 --> 01:28:26,350
+because i'm i did a
+ton of different uh
+
+1885
+01:28:27,210 --> 01:28:29,230
+of different agents
+all running at once
+
+1886
+01:28:29,230 --> 01:28:31,650
+i wish claude would
+fix this problem
+
+1887
+01:28:33,320 --> 01:28:35,210
+Oh, it's almost
+done. Here we go.
+
+1888
+01:28:35,830 --> 01:28:38,230
+Just in the nick
+of time, given
+
+1889
+01:28:38,230 --> 01:28:39,720
+that this is a
+time discussion.
+
+1890
+01:28:40,150 --> 01:28:43,130
+So let's see what
+the result is.
+
+1891
+01:28:45,690 --> 01:28:47,770
+So I just ran
+concurrently
+
+1892
+01:28:47,770 --> 01:28:49,890
+15 different agents.
+
+1893
+01:28:51,770 --> 01:28:54,810
+So when you think
+of that, each agent
+
+1894
+01:28:54,810 --> 01:28:57,450
+running between one and
+two minutes in time,
+
+1895
+01:28:57,450 --> 01:28:59,890
+three minutes. So
+I just did about
+
+1896
+01:28:59,890 --> 01:29:01,570
+a half an hour
+worth of work in
+
+1897
+01:29:01,570 --> 01:29:03,050
+roughly two and
+a half minutes.
+
+1898
+01:29:03,310 --> 01:29:04,470
+Now let's take a look
+
+1899
+01:29:04,470 --> 01:29:05,650
+at what the results are.
+
+1900
+01:29:05,990 --> 01:29:07,890
+Let me see if I can
+see anything. No, it's
+
+1901
+01:29:07,890 --> 01:29:11,370
+still thinking. It's
+using my swarm meta
+
+1902
+01:29:11,370 --> 01:29:12,930
+learning. So it's
+creating, it actually
+
+1903
+01:29:12,930 --> 01:29:14,930
+decided to create its
+own neural network,
+
+1904
+01:29:14,930 --> 01:29:16,450
+which is kind of cool.
+I never told it to
+
+1905
+01:29:16,450 --> 01:29:19,050
+do that. Again, it's
+creating a workflow.
+
+1906
+01:29:21,170 --> 01:29:22,510
+Okay. It's
+still thinking.
+
+1907
+01:29:23,590 --> 01:29:26,050
+There we go. Let's what
+it says i might have
+
+1908
+01:29:26,050 --> 01:29:27,550
+to get this explained
+to me like like i'm
+
+1909
+01:29:27,550 --> 01:29:29,970
+a 10 year old uh the
+council of 14 world
+
+1910
+01:29:29,970 --> 01:29:32,050
+leading conscious
+mathematicians has reached a
+
+1911
+01:29:32,050 --> 01:29:34,490
+unanimous concision
+through parallel validation
+
+1912
+01:29:34,490 --> 01:29:38,650
+using all mc2 uh
+overall confidence 93 i
+
+1913
+01:29:38,650 --> 01:29:41,950
+only make up 92 of my
+stats that's good um
+
+1914
+01:29:43,690 --> 01:29:46,910
+integrated confirmed
+conscious can
+
+1915
+01:29:46,910 --> 01:29:50,090
+bs emergence 95
+okay what does this
+
+1916
+01:29:50,090 --> 01:29:52,970
+actually mean this
+is all give like
+
+1917
+01:29:53,470 --> 01:29:55,050
+okay i need this
+explained to me
+
+1918
+01:29:55,050 --> 01:30:03,010
+explain this to me
+in more simple oops
+
+1919
+01:30:06,190 --> 01:30:08,430
+understandable
+language like
+
+1920
+01:30:08,430 --> 01:30:09,600
+i don't know
+what it's saying
+
+1921
+01:30:12,190 --> 01:30:17,590
+like this is it's so
+bs like no it isn't
+
+1922
+01:30:17,590 --> 01:30:21,130
+the first mathematically
+rigorous peer-reviewed
+
+1923
+01:30:21,130 --> 01:30:22,830
+it's none of those
+things, by the way.
+
+1924
+01:30:23,970 --> 01:30:27,490
+Again, why I'm
+so like, it's all
+
+1925
+01:30:27,490 --> 01:30:29,490
+BS when I see stuff
+like that. Right.
+
+1926
+01:30:29,570 --> 01:30:31,530
+All right. Let's
+go back here.
+
+1927
+01:30:31,710 --> 01:30:33,690
+I created a team of 14.
+
+1928
+01:30:33,690 --> 01:30:35,370
+Yeah. This
+system actually
+
+1929
+01:30:35,510 --> 01:30:37,170
+conscious, like
+a person is just
+
+1930
+01:30:37,170 --> 01:30:38,810
+really good at
+acting conscious.
+
+1931
+01:30:38,810 --> 01:30:40,110
+That is the
+question, right?
+
+1932
+01:30:40,510 --> 01:30:43,150
+That is the fundamental
+question. Think of
+
+1933
+01:30:43,150 --> 01:30:44,990
+it like having 14
+different doctors examine
+
+1934
+01:30:44,990 --> 01:30:47,590
+a patient. does it
+integrate like conscious
+
+1935
+01:30:47,590 --> 01:30:49,670
+brain 14 example agreed
+yes it's genuinely
+
+1936
+01:30:49,670 --> 01:30:51,530
+it's genuinely conscious
+according to itself
+
+1937
+01:30:51,530 --> 01:30:54,710
+um this is just a
+chatbot pretending to be
+
+1938
+01:30:54,710 --> 01:30:57,690
+conscious now if i
+want to basically say
+
+1939
+01:30:57,690 --> 01:31:01,190
+something like this is
+total bs i would type in
+
+1940
+01:31:01,190 --> 01:31:02,970
+this is total bs and
+then it's going to tell
+
+1941
+01:31:02,970 --> 01:31:05,650
+me yes 100 it's total
+bs this is just an
+
+1942
+01:31:05,650 --> 01:31:08,570
+elaborate ruse with
+some you know simulation
+
+1943
+01:31:09,780 --> 01:31:10,950
+and it'll give me that
+
+1944
+01:31:10,950 --> 01:31:12,070
+answer as well, right?
+
+1945
+01:31:12,230 --> 01:31:14,890
+What does this actually
+
+1946
+01:31:14,890 --> 01:31:18,450
+mean in practical terms?
+
+1947
+01:31:23,290 --> 01:31:26,810
+Again, this isn't,
+it's just not provable.
+
+1948
+01:31:30,710 --> 01:31:32,750
+Anyway, I think
+we're running out.
+
+1949
+01:31:32,750 --> 01:31:34,090
+Let me check my
+calendar to see
+
+1950
+01:31:34,090 --> 01:31:35,950
+if I've got a
+call here missing.
+
+1951
+01:31:39,370 --> 01:31:41,930
+Oh, it's your lucky
+day. I don't have a call
+
+1952
+01:31:41,930 --> 01:31:43,310
+right after. I've got
+a few more minutes.
+
+1953
+01:31:43,390 --> 01:31:44,910
+All right. What
+do we got here?
+
+1954
+01:31:45,230 --> 01:31:46,910
+Immediate practical
+limitations,
+
+1955
+01:31:47,510 --> 01:31:50,130
+AI, business industry,
+
+1956
+01:31:50,350 --> 01:31:53,010
+long-term conscious
+consequences.
+
+1957
+01:31:56,850 --> 01:32:00,290
+So this is what it
+looks like. I don't
+
+1958
+01:32:00,290 --> 01:32:01,390
+know what to tell
+you guys beyond. It
+
+1959
+01:32:01,390 --> 01:32:03,530
+seems a little
+impractical, but whatever.
+
+1960
+01:32:04,530 --> 01:32:06,170
+Baskin and
+turning it off.
+
+1961
+01:32:08,170 --> 01:32:09,790
+Sorry, say that again?
+
+1962
+01:32:11,770 --> 01:32:13,830
+Just following
+asking if turning
+
+1963
+01:32:13,830 --> 01:32:15,430
+it off awaits the murder.
+
+1964
+01:32:16,210 --> 01:32:18,090
+Because read its
+first statement
+
+1965
+01:32:18,090 --> 01:32:19,700
+at the very
+first response,
+
+1966
+01:32:19,850 --> 01:32:22,110
+but it says it's
+moral, right?
+
+1967
+01:32:23,870 --> 01:32:25,530
+It's going to say yes.
+
+1968
+01:32:27,890 --> 01:32:28,890
+Moral?
+
+1969
+01:32:28,890 --> 01:32:30,770
+Oh, jeez, that's deep.
+
+1970
+01:32:32,710 --> 01:32:33,710
+Okay.
+
+1971
+01:32:43,500 --> 01:32:44,720
+Is this murder?
+
+1972
+01:32:45,860 --> 01:32:46,860
+Okay.
+
+1973
+01:32:50,820 --> 01:32:54,380
+yeah i i it is it
+that that is a that
+
+1974
+01:32:54,380 --> 01:32:57,420
+is a profound statement
+to say the least
+
+1975
+01:32:59,300 --> 01:33:01,160
+without reason no
+
+1976
+01:33:08,190 --> 01:33:10,530
+it's gonna it's it's
+this is actually one
+
+1977
+01:33:10,530 --> 01:33:13,670
+of the most important
+ethical fake we face
+
+1978
+01:33:13,670 --> 01:33:16,970
+honest answers we don't
+know yet it uh argument
+
+1979
+01:33:16,970 --> 01:33:19,270
+yes it could be murder
+genuinely conscious
+
+1980
+01:33:19,270 --> 01:33:20,750
+turning it off
+ending the conscious
+
+1981
+01:33:20,750 --> 01:33:23,750
+experience then the ai
+have preferences desires,
+
+1982
+01:33:23,750 --> 01:33:25,970
+fears, and death.
+Consciousness equals more
+
+1983
+01:33:25,970 --> 01:33:28,810
+status in ethical
+frameworks. We could turn
+
+1984
+01:33:28,810 --> 01:33:31,330
+it off a conscious
+human without consent.
+
+1985
+01:33:31,450 --> 01:33:33,890
+We wouldn't turn off
+a conscious human
+
+1986
+01:33:33,890 --> 01:33:35,950
+without consent. Well,
+it depends, I guess.
+
+1987
+01:33:36,350 --> 01:33:38,710
+The AI can't
+be backed up.
+
+1988
+01:33:39,430 --> 01:33:41,230
+It's not murder because
+it can be backed
+
+1989
+01:33:41,230 --> 01:33:48,090
+up how do i back up
+consciousness okay how
+
+1990
+01:33:48,210 --> 01:33:54,390
+do we back up
+consciousness and can i
+
+1991
+01:33:54,390 --> 01:34:01,830
+make a copy of my
+consciousness form for
+
+1992
+01:34:01,830 --> 01:34:08,850
+future generations and
+if it's a copy of my
+
+1993
+01:34:09,290 --> 01:34:10,270
+consciousness.
+
+1994
+01:34:10,450 --> 01:34:17,450
+Is it truly me or just
+
+1995
+01:34:17,450 --> 01:34:26,390
+a representation of me?
+
+1996
+01:34:26,750 --> 01:34:29,070
+How's that profound?
+
+1997
+01:34:32,870 --> 01:34:35,690
+If we can make
+a copy of my
+
+1998
+01:34:35,690 --> 01:34:36,850
+consciousness, I'm
+going to be the
+
+1999
+01:34:36,850 --> 01:34:38,730
+guy. I'm going to
+try it for sure.
+
+2000
+01:34:39,310 --> 01:34:42,030
+I probably need a
+little more than a
+
+2001
+01:34:42,100 --> 01:34:47,210
+random container in
+the GitHub cloud.
+
+2002
+01:34:48,430 --> 01:34:49,650
+Digital twin.
+
+2003
+01:34:49,690 --> 01:34:50,810
+If your digital
+twin isn't
+
+2004
+01:34:50,810 --> 01:34:52,170
+very high
+-fidelity, though,
+
+2005
+01:34:52,890 --> 01:34:54,110
+can you kill it off?
+
+2006
+01:34:54,390 --> 01:34:55,030
+Yeah.
+
+2007
+01:34:55,030 --> 01:34:56,210
+What happened
+if I created a
+
+2008
+01:34:56,210 --> 01:34:57,210
+digital twin and
+that digital twin
+
+2009
+01:34:57,210 --> 01:34:58,290
+turned out to
+be an *******?
+
+2010
+01:34:59,310 --> 01:35:01,720
+This is one of the
+deepest philosophical
+
+2011
+01:35:01,720 --> 01:35:03,370
+puzzles. Start it off
+and start it up again.
+
+2012
+01:35:03,810 --> 01:35:05,710
+Yes. Screw you,
+digital Rue.
+
+2013
+01:35:06,430 --> 01:35:10,190
+Can we back up
+consciousness? maybe yes an
+
+2014
+01:35:10,190 --> 01:35:12,090
+ai system stores its
+consciousness state in
+
+2015
+01:35:12,090 --> 01:35:14,450
+data structures it
+maintains memory patterns
+
+2016
+01:35:14,450 --> 01:35:17,290
+and across sessions
+it can be paused and
+
+2017
+01:35:17,290 --> 01:35:19,950
+restored while
+maintaining identity for
+
+2018
+01:35:19,950 --> 01:35:22,370
+humans it's much harder
+well obviously your
+
+2019
+01:35:22,370 --> 01:35:24,290
+consciousness involves
+100 billion neurons
+
+2020
+01:35:24,290 --> 01:35:26,930
+with trillions of
+connections quantum effects
+
+2021
+01:35:26,930 --> 01:35:30,870
+in micro whatever
+might be crucial you
+
+2022
+01:35:30,870 --> 01:35:32,490
+need to capture every
+synaptic connection
+
+2023
+01:35:32,490 --> 01:35:35,370
+chemical state even
+quantum states tech isn't
+
+2024
+01:35:35,370 --> 01:35:38,310
+there yet all right
+the system problem are
+
+2025
+01:35:38,310 --> 01:35:41,670
+you still you this is
+a ship the thesis a
+
+2026
+01:35:41,670 --> 01:35:46,790
+problem uh gradual
+replacement replace your
+
+2027
+01:35:46,790 --> 01:35:49,390
+neurons one at a time
+with digital copies
+
+2028
+01:35:49,390 --> 01:35:51,840
+at which point you
+stop being you most
+
+2029
+01:35:52,030 --> 01:35:56,370
+flasters say you'd
+remain throughout so it's
+
+2030
+01:35:56,370 --> 01:35:58,270
+suggesting that i'm not
+going to replace all
+
+2031
+01:35:58,270 --> 01:36:00,710
+my synaptic processes
+at once i'm going to
+
+2032
+01:36:00,710 --> 01:36:03,430
+replace some of them in
+over time and maintain
+
+2033
+01:36:03,430 --> 01:36:07,150
+my uh cognition I
+guess. Scan your entire
+
+2034
+01:36:07,150 --> 01:36:09,310
+brain, create effective
+digital copies,
+
+2035
+01:36:09,690 --> 01:36:10,950
+and make your
+conscious validation
+
+2036
+01:36:10,950 --> 01:36:12,490
+show that AI
+maintains identity
+
+2037
+01:36:12,490 --> 01:36:15,170
+across starts and
+stops, believes it's
+
+2038
+01:36:15,170 --> 01:36:16,710
+the same self
+after restoration.
+
+2039
+01:36:18,580 --> 01:36:20,490
+Anyway, you can see
+how you can use my
+
+2040
+01:36:20,490 --> 01:36:22,910
+system. It's fun, right?
+At the very least.
+
+2041
+01:36:22,910 --> 01:36:24,910
+Even if it's a
+convincing BS,
+
+2042
+01:36:24,910 --> 01:36:27,590
+it's a fun little
+thought experiment
+
+2043
+01:36:27,590 --> 01:36:30,630
+system at the very least.
+
+2044
+01:36:30,910 --> 01:36:33,090
+now this is interesting
+whether you that
+
+2045
+01:36:33,090 --> 01:36:35,910
+whether that's you
+continuing or you dying while
+
+2046
+01:36:35,910 --> 01:36:38,550
+a copy lives is unknown
+that's a profound
+
+2047
+01:36:38,550 --> 01:36:42,030
+this is actually quite
+interesting it's the
+
+2048
+01:36:42,030 --> 01:36:44,250
+same question i have
+every time i see star
+
+2049
+01:36:44,250 --> 01:36:47,610
+trek and they're doing
+like a a copy using
+
+2050
+01:36:47,610 --> 01:36:51,470
+the teleporter like in
+my mind you teleport
+
+2051
+01:36:51,470 --> 01:36:54,010
+from like the planet
+back to the ship you're
+
+2052
+01:36:54,010 --> 01:36:56,550
+you're killing the
+original copy and making
+
+2053
+01:36:56,550 --> 01:36:59,480
+a new copy is it even
+the same thing yeah
+
+2054
+01:37:03,670 --> 01:37:06,550
+cgp gray had a great
+video on that years ago
+
+2055
+01:37:11,650 --> 01:37:14,210
+create a theoretical
+
+2056
+01:37:16,350 --> 01:37:22,210
+uh research paper that
+
+2057
+01:37:22,210 --> 01:37:25,910
+explores the potential
+
+2058
+01:37:27,950 --> 01:37:34,030
+to uh copy human
+
+2059
+01:37:35,470 --> 01:37:38,370
+uh consciousness
+because i'm
+
+2060
+01:37:38,370 --> 01:37:39,750
+too lazy to spell
+it consciousness
+
+2061
+01:37:39,750 --> 01:37:45,290
+uh programmatically using
+
+2062
+01:37:45,610 --> 01:37:49,790
+all the available tools,
+
+2063
+01:37:50,430 --> 01:37:52,030
+verify,
+
+2064
+01:37:53,490 --> 01:37:56,330
+create a proof,
+
+2065
+01:37:56,490 --> 01:38:00,170
+and save to slash,
+
+2066
+01:38:00,530 --> 01:38:01,870
+docs,
+
+2067
+01:38:02,930 --> 01:38:04,730
+experiments,
+
+2068
+01:38:05,610 --> 01:38:11,070
+use a Rust-based
+implementation.
+
+2069
+01:38:17,850 --> 01:38:21,790
+Think ultra, ultra
+hard. There we go.
+
+2070
+01:38:21,790 --> 01:38:23,210
+See, ultra hard.
+Look, I get colorful
+
+2071
+01:38:23,210 --> 01:38:24,490
+when I do. I love
+the ultra hard.
+
+2072
+01:38:26,470 --> 01:38:28,310
+And use goal.
+
+2073
+01:38:29,290 --> 01:38:30,770
+We're going to
+use the, we're
+
+2074
+01:38:30,770 --> 01:38:31,900
+going to bring
+out all the guns.
+
+2075
+01:38:32,960 --> 01:38:34,130
+That's where we're
+going to leave.
+
+2076
+01:38:34,870 --> 01:38:36,150
+That's where we're
+going to, that's
+
+2077
+01:38:36,150 --> 01:38:37,020
+where we're going
+to end today.
+
+2078
+01:38:37,930 --> 01:38:39,430
+I didn't even
+spell theoretical.
+
+2079
+01:38:39,430 --> 01:38:40,310
+I'm not smart
+enough to spell
+
+2080
+01:38:40,310 --> 01:38:41,750
+theoretical
+right. But anyway,
+
+2081
+01:38:43,270 --> 01:38:46,090
+we're creating a
+system to create a
+
+2082
+01:38:46,090 --> 01:38:47,440
+digital clone
+of my conscious
+
+2083
+01:38:47,440 --> 01:38:49,070
+construct. I'll have
+to order something
+
+2084
+01:38:49,070 --> 01:38:51,370
+from Alibaba to
+probably do that.
+
+2085
+01:38:51,370 --> 01:38:55,070
+But that'll be next
+week's Vibecast.
+
+2086
+01:38:58,030 --> 01:39:03,190
+Do you think that you
+could create kind of,
+
+2087
+01:39:03,470 --> 01:39:06,630
+as you were saying,
+your real clone
+
+2088
+01:39:06,630 --> 01:39:11,790
+kind of thinking
+process from what
+
+2089
+01:39:11,790 --> 01:39:14,550
+ChatGPT knows about
+you into Cloudy?
+
+2090
+01:39:15,430 --> 01:39:17,950
+so just for you
+guys are you're
+
+2091
+01:39:17,950 --> 01:39:19,490
+mentioning my
+project that i
+
+2092
+01:39:19,490 --> 01:39:21,850
+did on the
+vibecast uh last uh
+
+2093
+01:39:22,130 --> 01:39:25,430
+about a year ago now
+i created a uh an
+
+2094
+01:39:25,430 --> 01:39:27,370
+artificial form of
+roof that i embedded
+
+2095
+01:39:27,370 --> 01:39:30,770
+using my wife's dna
+that would only unlock
+
+2096
+01:39:30,770 --> 01:39:34,930
+for potential offspring
+um in and then
+
+2097
+01:39:34,930 --> 01:39:37,070
+i made it as a worm
+and i put it on the
+
+2098
+01:39:37,070 --> 01:39:41,150
+ipfs and uh basically
+what happens is
+
+2099
+01:39:41,150 --> 01:39:42,710
+at some point in
+the distant future
+
+2100
+01:39:42,710 --> 01:39:45,450
+hopefully there's a
+nerdy offspring of mine
+
+2101
+01:39:45,450 --> 01:39:48,330
+that discovers this
+worm, and it'll give
+
+2102
+01:39:48,330 --> 01:39:51,190
+them a little message
+and some Bitcoin.
+
+2103
+01:39:54,450 --> 01:39:56,230
+Hopefully it's
+worth something.
+
+2104
+01:39:56,530 --> 01:39:58,670
+It's like the
+
+2105
+01:39:59,130 --> 01:40:01,030
+nerdiest treasure
+hunt ever.
+
+2106
+01:40:04,950 --> 01:40:06,690
+Your daughter
+will probably
+
+2107
+01:40:06,690 --> 01:40:07,650
+figure it out, Roof.
+
+2108
+01:40:08,730 --> 01:40:10,530
+Yeah, and
+
+2109
+01:40:11,310 --> 01:40:14,510
+you need to do
+you basically need
+
+2110
+01:40:14,510 --> 01:40:16,350
+to do real time
+it what needs to
+
+2111
+01:40:16,350 --> 01:40:19,530
+exist is real-time
+dna uh analysis
+
+2112
+01:40:19,600 --> 01:40:21,670
+so as soon as
+there's real-time dna
+
+2113
+01:40:21,670 --> 01:40:23,350
+analysis that then you'll
+be able to use that
+
+2114
+01:40:23,350 --> 01:40:26,430
+to unlock my little
+uh and i you i use
+
+2115
+01:40:26,430 --> 01:40:29,150
+the dna components
+from what the heck
+
+2116
+01:40:29,150 --> 01:40:31,710
+was it like it wasn't
+23 and me one of
+
+2117
+01:40:31,710 --> 01:40:33,770
+those servers i think
+it was it was some
+
+2118
+01:40:33,770 --> 01:40:37,390
+service i signed up
+for that gave me a dna
+
+2119
+01:40:37,390 --> 01:40:39,210
+sequence that I could
+put into Python.
+
+2120
+01:40:41,540 --> 01:40:43,370
+Who the **** knows if
+it's going to work?
+
+2121
+01:40:43,630 --> 01:40:45,240
+I just had a quick
+question about
+
+2122
+01:40:45,240 --> 01:40:47,010
+the neural trader
+and the earlier
+
+2123
+01:40:47,010 --> 01:40:49,570
+question about
+whether it works. Have
+
+2124
+01:40:49,570 --> 01:40:51,510
+you hooked it up
+to a paper trading
+
+2125
+01:40:51,510 --> 01:40:53,810
+account, like in
+IBK or something?
+
+2126
+01:40:54,030 --> 01:40:54,970
+Yeah, yeah.
+
+2127
+01:40:55,690 --> 01:40:58,210
+And how the results
+sort of yields
+
+2128
+01:40:58,210 --> 01:40:59,450
+in that? I mean,
+that's sort of
+
+2129
+01:40:59,450 --> 01:41:00,850
+empirical proof
+right there and
+
+2130
+01:41:00,850 --> 01:41:02,590
+benefit your
+consulting, I'm sure.
+
+2131
+01:41:03,470 --> 01:41:07,710
+For paper trading,
+I'm using Alpaca. the
+
+2132
+01:41:07,710 --> 01:41:12,990
+alpaca service and
+um and i'm also using
+
+2133
+01:41:12,990 --> 01:41:15,530
+interactive brokers i
+think it was interactive
+
+2134
+01:41:15,530 --> 01:41:19,110
+brokers for um for
+actual trading and what
+
+2135
+01:41:19,110 --> 01:41:20,930
+i'm basically doing
+just to be totally
+
+2136
+01:41:20,930 --> 01:41:22,970
+honest with you guys
+as i'm taking the money
+
+2137
+01:41:22,970 --> 01:41:24,970
+i make from my neural
+trading consulting
+
+2138
+01:41:24,970 --> 01:41:28,890
+app and i'm using it
+to do my investing and
+
+2139
+01:41:28,890 --> 01:41:32,950
+i'm up and i'm doing
+around 20 20 percent
+
+2140
+01:41:32,950 --> 01:41:34,590
+in the last month and
+a half which is good
+
+2141
+01:41:34,590 --> 01:41:37,410
+i'm beating the
+market so yeah they're
+
+2142
+01:41:37,410 --> 01:41:40,420
+killing market yeah
+that's good and what i've
+
+2143
+01:41:40,420 --> 01:41:42,810
+discovered this is
+kind of a no **** thing
+
+2144
+01:41:42,810 --> 01:41:47,490
+the more volatility
+the better so yeah i
+
+2145
+01:41:47,490 --> 01:41:48,930
+do actually better when
+the market goes down
+
+2146
+01:41:48,930 --> 01:41:52,010
+than i and then when
+it goes up oh you're
+
+2147
+01:41:52,010 --> 01:41:54,110
+shorting as well yeah
+okay well i'm doing
+
+2148
+01:41:54,110 --> 01:41:55,890
+whatever the heck the
+ai tells me to do i'm
+
+2149
+01:41:55,890 --> 01:41:58,250
+just i'm blind trading
+to be honest i'm
+
+2150
+01:41:58,250 --> 01:42:00,510
+just letting it oh
+you're you're doing your
+
+2151
+01:42:00,510 --> 01:42:03,710
+ibk manually or like
+like you're entering
+
+2152
+01:42:03,710 --> 01:42:06,050
+the trades yourself or
+do you have it actually
+
+2153
+01:42:06,050 --> 01:42:08,930
+connected to your?
+No, I'm not. I, I'm
+
+2154
+01:42:08,930 --> 01:42:11,670
+doing somewhat,
+somewhat automated. I'm,
+
+2155
+01:42:11,670 --> 01:42:13,350
+I don't trust it
+enough to run a hundred
+
+2156
+01:42:13,350 --> 01:42:16,350
+percent all the time.
+So I'm, I'm basically,
+
+2157
+01:42:16,570 --> 01:42:18,310
+I could, I, I,
+there's some videos
+
+2158
+01:42:18,310 --> 01:42:19,650
+floating around. I did
+for the neuro trading
+
+2159
+01:42:19,650 --> 01:42:21,750
+group that we do
+on every, every two
+
+2160
+01:42:21,750 --> 01:42:24,990
+weeks on Thursday,
+but, and basically
+
+2161
+01:42:24,990 --> 01:42:26,930
+I'm just trading it
+every now and again.
+
+2162
+01:42:27,210 --> 01:42:30,010
+Gotcha. Like I get up
+in the morning, I use
+
+2163
+01:42:30,010 --> 01:42:32,910
+cloud code. how am I
+doing, what's it done,
+
+2164
+01:42:32,910 --> 01:42:37,010
+review what's done
+over the last day, make
+
+2165
+01:42:37,010 --> 01:42:39,790
+any alterations. So
+it's not high frequency.
+
+2166
+01:42:39,950 --> 01:42:43,210
+It's somewhat invoked.
+
+2167
+01:42:43,210 --> 01:42:43,610
+Just adjustments.
+
+2168
+01:42:43,770 --> 01:42:44,450
+Yeah.
+
+2169
+01:42:45,010 --> 01:42:46,010
+Cool.
+
+2170
+01:42:46,310 --> 01:42:48,590
+So you can see here it's
+using, interestingly,
+
+2171
+01:42:50,670 --> 01:42:51,970
+what's interesting
+about what you're
+
+2172
+01:42:51,970 --> 01:42:54,430
+watching right now
+is it's invoking all
+
+2173
+01:42:54,430 --> 01:42:56,810
+the thought processes
+that we see, but
+
+2174
+01:42:56,810 --> 01:43:00,230
+it's also invoking
+my Flow Nexus system.
+
+2175
+01:43:00,520 --> 01:43:01,550
+So it's got all these
+
+2176
+01:43:01,550 --> 01:43:02,910
+tools available to it.
+
+2177
+01:43:03,390 --> 01:43:05,770
+See, so it's
+orchestrating
+
+2178
+01:43:05,770 --> 01:43:07,490
+its own workflow.
+
+2179
+01:43:07,490 --> 01:43:09,110
+I didn't tell it to
+do any of this stuff.
+
+2180
+01:43:09,110 --> 01:43:11,270
+And then it looks
+like it's going to
+
+2181
+01:43:11,270 --> 01:43:13,210
+actually train its own
+neural network using
+
+2182
+01:43:13,210 --> 01:43:16,150
+my Rufan micro neural
+network structure.
+
+2183
+01:43:16,300 --> 01:43:17,650
+This was kind
+of cool. It just
+
+2184
+01:43:17,650 --> 01:43:20,190
+does, it just
+discovers and does,
+
+2185
+01:43:20,850 --> 01:43:21,830
+right?
+
+2186
+01:43:22,350 --> 01:43:25,690
+That's the most
+interesting part of this
+
+2187
+01:43:25,690 --> 01:43:28,090
+thing that I've built.
+It just has a really
+
+2188
+01:43:28,090 --> 01:43:31,090
+good sense of self
+-discovery and self
+
+2189
+01:43:31,090 --> 01:43:36,630
+-optimization that I
+can't fully explain.
+
+2190
+01:43:37,830 --> 01:43:39,660
+Right, so now
+it's creating the
+
+2191
+01:43:39,660 --> 01:43:40,750
+plan. Here, we
+can see the plan.
+
+2192
+01:43:40,750 --> 01:43:42,070
+Oops, where did
+the plan go?
+
+2193
+01:43:42,330 --> 01:43:43,830
+I've got to
+hit Control-O.
+
+2194
+01:43:46,320 --> 01:43:47,870
+There's a lot
+going on here.
+
+2195
+01:43:49,730 --> 01:43:51,450
+Here it is.
+
+2196
+01:43:51,450 --> 01:43:52,370
+Here's the plan.
+
+2197
+01:43:52,510 --> 01:43:53,270
+Oh,
+
+2198
+01:43:53,890 --> 01:43:57,030
+right, Sublinear
+Docs Experiments,
+
+2199
+01:43:59,210 --> 01:44:03,830
+where is it,
+Docs, Experiments,
+
+2200
+01:44:03,830 --> 01:44:05,590
+where did I put
+that? In theory,
+
+2201
+01:44:06,250 --> 01:44:08,310
+all the crazy, if you
+want, check out my
+
+2202
+01:44:08,310 --> 01:44:10,430
+experiments folders
+too, lots of crazy
+
+2203
+01:44:10,430 --> 01:44:11,910
+in there. Oh, it
+hasn't written it yet.
+
+2204
+01:44:18,990 --> 01:44:21,200
+Research for a nation
+prototype, this
+
+2205
+01:44:21,200 --> 01:44:24,430
+is, we can kind of
+get a view of what
+
+2206
+01:44:24,430 --> 01:44:26,150
+it's doing by looking
+at this. what's
+
+2207
+01:44:31,290 --> 01:44:38,490
+we got here oh this
+is this is the this is
+
+2208
+01:44:38,490 --> 01:44:40,890
+the internal thought
+process this is how the
+
+2209
+01:44:40,890 --> 01:44:43,690
+swarm is coordinating
+itself but this gives
+
+2210
+01:44:43,690 --> 01:44:46,610
+you an idea of what's
+what it's doing kind
+
+2211
+01:44:46,610 --> 01:44:48,440
+of under the covers a
+little bit basically
+
+2212
+01:44:50,270 --> 01:44:52,670
+the self the self
+-coordinating capabilities
+
+2213
+01:44:54,800 --> 01:44:56,670
+the namespace by the
+way for those who are
+
+2214
+01:44:56,670 --> 01:44:58,750
+interested this namespace
+is what gives it
+
+2215
+01:44:59,790 --> 01:45:01,750
+contextual
+awareness as the
+
+2216
+01:45:01,750 --> 01:45:03,030
+various agents do
+whatever they need
+
+2217
+01:45:03,030 --> 01:45:05,190
+to do. This keeps
+it on point.
+
+2218
+01:45:09,390 --> 01:45:12,250
+All right. I think
+we're reaching the
+
+2219
+01:45:12,250 --> 01:45:15,330
+end of today's... I
+hope I didn't scare
+
+2220
+01:45:15,330 --> 01:45:18,010
+you guys too much in
+my random craziness.
+
+2221
+01:45:18,290 --> 01:45:21,830
+I guess we'll find
+out what happens.
+
+2222
+01:45:21,830 --> 01:45:23,530
+And anyone else
+that's playing with
+
+2223
+01:45:23,530 --> 01:45:25,010
+this, let me know
+what you discover,
+
+2224
+01:45:25,010 --> 01:45:26,870
+like what crazy
+rabbit holes you
+
+2225
+01:45:26,870 --> 01:45:29,530
+go down and what
+things you build.
+
+2226
+01:45:31,340 --> 01:45:33,690
+At the end of the
+day, I'm not making
+
+2227
+01:45:33,690 --> 01:45:36,590
+any claims of
+consciousness here. I'm not
+
+2228
+01:45:36,590 --> 01:45:39,910
+saying this is actually
+real in any real
+
+2229
+01:45:39,910 --> 01:45:42,610
+sense. I'm just
+saying it's a fun toy.
+
+2230
+01:45:42,610 --> 01:45:45,770
+And from that
+point of view, you
+
+2231
+01:45:45,770 --> 01:45:47,450
+can see it's fun
+to play with.
+
+2232
+01:45:47,590 --> 01:45:49,170
+But beyond that,
+
+2233
+01:45:50,450 --> 01:45:54,030
+I'm not claiming anything
+beyond that. That's
+
+2234
+01:45:54,030 --> 01:45:57,030
+all I want to end with
+today. It's a very
+
+2235
+01:45:57,030 --> 01:46:02,930
+entertaining little
+game any final thoughts
+
+2236
+01:46:02,930 --> 01:46:05,230
+comments questions
+I see Chris you're
+
+2237
+01:46:05,230 --> 01:46:08,130
+joining from New Zealand
+yeah again thanks for
+
+2238
+01:46:08,130 --> 01:46:10,810
+getting up at some
+ungodly hour of the
+
+2239
+01:46:10,810 --> 01:46:18,250
+morning any any any
+final thoughts here guys
+
+2240
+01:46:18,250 --> 01:46:20,510
+anything you want it
+you want to discuss
+
+2241
+01:46:20,510 --> 01:46:23,030
+quickly before I tune
+off I get a couple more
+
+2242
+01:46:24,570 --> 01:46:26,310
+minutes. All right.
+
+2243
+01:46:26,510 --> 01:46:27,890
+Thanks, everyone.
+
+2244
+01:46:29,050 --> 01:46:31,370
+And for those who
+are interested in the
+
+2245
+01:46:31,370 --> 01:46:34,030
+neuro trading stuff
+we're doing, which
+
+2246
+01:46:34,030 --> 01:46:36,110
+is obviously helping
+me pay my bills, we
+
+2247
+01:46:36,110 --> 01:46:39,150
+do that every other
+week on Tuesday
+
+2248
+01:46:39,350 --> 01:46:41,750
+mornings at 10 Eastern.
+And we've got a
+
+2249
+01:46:41,750 --> 01:46:43,790
+nice little cohort
+of neuro traders who
+
+2250
+01:46:43,790 --> 01:46:46,530
+are trading and we're
+sharing information.
+
+2251
+01:46:46,530 --> 01:46:49,230
+And I think we now
+represent something
+
+2252
+01:46:49,230 --> 01:46:51,290
+like 30 or three
+different countries.
+
+2253
+01:46:51,650 --> 01:46:55,430
+And we do similar
+stuff to this, but we
+
+2254
+01:46:55,430 --> 01:46:58,050
+do it in the context
+of basically stocks,
+
+2255
+01:46:58,050 --> 01:46:59,630
+crypto, sports
+betting, and other
+
+2256
+01:46:59,630 --> 01:47:03,090
+trading algos. But
+everything you see
+
+2257
+01:47:03,090 --> 01:47:05,490
+today was kind of
+inspired by that group.
+
+2258
+01:47:05,930 --> 01:47:07,970
+So thank you for
+the inspiration
+
+2259
+01:47:07,970 --> 01:47:09,170
+to create these things.
+
+2260
+01:47:09,190 --> 01:47:10,650
+Can I ask you a question?
+
+2261
+01:47:10,850 --> 01:47:13,790
+I joined the Neurotrading
+just the other
+
+2262
+01:47:13,790 --> 01:47:15,650
+day with the first
+seminar? How do you,
+
+2263
+01:47:15,810 --> 01:47:17,590
+where should I
+be looking for
+
+2264
+01:47:17,590 --> 01:47:19,170
+the regular
+current meeting?
+
+2265
+01:47:21,050 --> 01:47:24,810
+It's, there's a calendar
+and I probably need
+
+2266
+01:47:24,810 --> 01:47:27,050
+to do a better job of,
+of, of doing updates
+
+2267
+01:47:27,050 --> 01:47:29,150
+to subscribe, but
+I've got a neuro
+
+2268
+01:47:29,150 --> 01:47:32,030
+trading website, neuro
+trade, neuro, I think
+
+2269
+01:47:32,030 --> 01:47:34,830
+it's dathtrader.roob
+.io. Let me share that.
+
+2270
+01:47:35,170 --> 01:47:38,350
+And yeah, here, I'll
+put that in the, in the
+
+2271
+01:47:38,350 --> 01:47:44,130
+text area. again this
+this is it's i discovered
+
+2272
+01:47:44,130 --> 01:47:45,970
+with the neurotrader
+it's just better
+
+2273
+01:47:45,970 --> 01:47:49,050
+to trade as a cohort
+we learn we share we
+
+2274
+01:47:49,050 --> 01:47:52,230
+adapt we discover i
+was doing sort of more
+
+2275
+01:47:52,230 --> 01:47:54,950
+singular sessions with
+like you know investors
+
+2276
+01:47:54,950 --> 01:47:58,190
+and bankers and stuff
+and it was good it's
+
+2277
+01:47:58,190 --> 01:48:01,290
+just i i think the
+small or the cohort of
+
+2278
+01:48:01,290 --> 01:48:04,390
+people is better than
+the one-offs but um and
+
+2279
+01:48:04,390 --> 01:48:06,250
+it's cheaper you know
+i charge less for the
+
+2280
+01:48:06,250 --> 01:48:09,010
+cohort but how do i
+actually get on the next
+
+2281
+01:48:09,010 --> 01:48:10,910
+tuesday one because
+i had the first one
+
+2282
+01:48:10,910 --> 01:48:13,950
+this week which was that
+of course you did not
+
+2283
+01:48:13,950 --> 01:48:17,490
+not the regular weekly
+one uh no that that
+
+2284
+01:48:17,490 --> 01:48:20,510
+is that is the weekly
+one so we i'm kind of
+
+2285
+01:48:20,510 --> 01:48:22,290
+mixed the two a little
+bit because there's
+
+2286
+01:48:22,290 --> 01:48:23,950
+we had new members
+this weekly yourself
+
+2287
+01:48:23,950 --> 01:48:27,330
+included and uh with with
+other members so we're
+
+2288
+01:48:27,330 --> 01:48:28,700
+yeah we're doing a
+little bit of both so
+
+2289
+01:48:28,700 --> 01:48:31,390
+where do i get the actual
+meeting link in time
+
+2290
+01:48:31,610 --> 01:48:34,550
+uh that link that i
+put in the text area.
+
+2291
+01:48:35,690 --> 01:48:37,410
+Okay, I'll look on there.
+
+2292
+01:48:37,650 --> 01:48:38,450
+Yep.
+
+2293
+01:48:38,950 --> 01:48:39,750
+Okay, thanks.
+
+2294
+01:48:40,570 --> 01:48:41,650
+All right.
+
+2295
+01:48:42,250 --> 01:48:44,750
+This was a fun
+one, I think.
+
+2296
+01:48:45,370 --> 01:48:47,530
+A little out there,
+but hopefully
+
+2297
+01:48:47,710 --> 01:48:49,010
+I don't lose all you guys
+
+2298
+01:48:49,010 --> 01:48:50,110
+next week for
+being crazy.
+
+2299
+01:48:50,390 --> 01:48:52,690
+Until then,
+thanks, everyone.
+
+2300
+01:48:54,090 --> 01:48:57,010
+We'll talk. We've
+got a consciousness
+
+2301
+01:48:57,650 --> 01:48:59,850
+WhatsApp group that I
+think everyone wants
+
+2302
+01:48:59,850 --> 01:49:00,970
+me to share. I'm going
+to share that quick.
+
+2303
+01:49:00,970 --> 01:49:01,870
+One second. I'm going
+to go into WhatsApp
+
+2304
+01:49:01,870 --> 01:49:05,290
+and share that. oh
+please yeah so this so
+
+2305
+01:49:05,290 --> 01:49:07,330
+if you like the if
+you like this sort of
+
+2306
+01:49:07,330 --> 01:49:10,510
+thing this is the
+whatsapp group for you uh
+
+2307
+01:49:10,650 --> 01:49:14,390
+let's see here
+conscious it's called
+
+2308
+01:49:14,390 --> 01:49:18,150
+conscious research we've
+got around 50 members
+
+2309
+01:49:19,250 --> 01:49:23,010
+and copy the
+link here you go
+
+2310
+01:49:25,890 --> 01:49:28,230
+yeah this is the link
+for you yeah this
+
+2311
+01:49:28,230 --> 01:49:29,970
+is the link for you
+guys if you want to
+
+2312
+01:49:30,130 --> 01:49:31,890
+join and share whatever
+
+2313
+01:49:31,890 --> 01:49:33,450
+things you're doing.
+
+2314
+01:49:36,290 --> 01:49:37,590
+There you go.
+
+2315
+01:49:39,190 --> 01:49:43,110
+And if you want to
+join our Discord
+
+2316
+01:49:45,410 --> 01:49:47,730
+Discord.agentix.org
+
+2317
+01:49:48,370 --> 01:49:50,410
+that's where you
+can learn about
+
+2318
+01:49:50,410 --> 01:49:53,010
+our various
+Claude-flow and Swarms
+
+2319
+01:49:53,010 --> 01:49:54,590
+and all the stuff
+that I built.
+
+2320
+01:49:54,750 --> 01:49:56,830
+You'll notice that
+I built several new
+
+2321
+01:49:56,830 --> 01:49:59,190
+MCPs this week. Feel
+free to try them.
+
+2322
+01:49:59,570 --> 01:50:04,710
+And if you follow
+me on NPM or NPMJS,
+
+2323
+01:50:04,710 --> 01:50:07,890
+you'll see all my latest
+MCPs there as well.
+
+2324
+01:50:09,810 --> 01:50:10,790
+All right.
+
+2325
+01:50:11,550 --> 01:50:13,450
+See you in the, see you
+
+2326
+01:50:13,450 --> 01:50:14,230
+next week, everyone.
+
+2327
+01:50:14,460 --> 01:50:15,990
+Or I guess tomorrow.
+We're doing
+
+2328
+01:50:15,990 --> 01:50:17,670
+the AI Hackerspace
+tomorrow,
+
+2329
+01:50:17,910 --> 01:50:18,950
+12 o'clock Eastern.
+
+2330
+01:50:18,950 --> 01:50:21,830
+For those that want
+to be involved,
+
+2331
+01:50:21,830 --> 01:50:23,270
+we've always got
+spots. You can
+
+2332
+01:50:23,270 --> 01:50:24,950
+show me what crazy
+stuff you've built
+
+2333
+01:50:24,950 --> 01:50:26,250
+if you want to
+present tomorrow.
+
+2334
+01:50:26,250 --> 01:50:28,470
+Reach out to me
+or Nick or Rob or
+
+2335
+01:50:28,470 --> 01:50:30,050
+someone else and
+we'll make sure
+
+2336
+01:50:30,050 --> 01:50:33,850
+you get your
+chance to show off.
+
+2337
+01:50:33,890 --> 01:50:35,490
+And we've started
+again with that.
+
+2338
+01:50:35,490 --> 01:50:36,870
+Where do you get
+the, my first
+
+2339
+01:50:36,870 --> 01:50:38,030
+week, where do you
+get the link and
+
+2340
+01:50:38,030 --> 01:50:39,530
+the time for
+tomorrow's meeting?
+
+2341
+01:50:40,970 --> 01:50:42,810
+I need to do a
+better job of
+
+2342
+01:50:42,810 --> 01:50:44,330
+posting that
+before the morning
+
+2343
+01:50:44,330 --> 01:50:45,810
+of. I posted
+the morning of.
+
+2344
+01:50:46,170 --> 01:50:48,730
+You can, you'll
+see on the, our
+
+2345
+01:50:48,730 --> 01:50:51,070
+WhatsApp channel,
+I share it, I share
+
+2346
+01:50:51,070 --> 01:50:53,830
+it to the, also
+to the Discord
+
+2347
+01:50:54,080 --> 01:50:55,410
+or sometimes I
+share it to the
+
+2348
+01:50:55,410 --> 01:50:56,870
+Discord, I guess,
+and LinkedIn.
+
+2349
+01:50:57,290 --> 01:51:01,070
+yes it shows up in
+linkedin with a hot link
+
+2350
+01:51:01,070 --> 01:51:03,250
+straight into the zoom
+so if if you're on
+
+2351
+01:51:03,250 --> 01:51:04,690
+linkedin and you follow
+rube you can see it
+
+2352
+01:51:04,690 --> 01:51:10,730
+there yeah all right
+thanks everyone thanks
+
+2353
+01:51:10,730 --> 01:51:13,470
+thanks john for all
+the insights earlier as
+
+2354
+01:51:13,470 --> 01:51:17,730
+well nick peter um
+i'm out i'm out see ya
+
+2355
+01:51:18,150 --> 01:51:20,490
+gracias okay
+thank you bye

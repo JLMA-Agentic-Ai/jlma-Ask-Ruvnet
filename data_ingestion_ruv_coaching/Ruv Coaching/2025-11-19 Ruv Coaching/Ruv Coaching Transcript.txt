@@ -1,0 +1,497 @@
+Ruv Coaching
+Wed, Nov 19, 2025
+
+0:00 - Krysta Fox
+It's just in my mind. I mean, a lot of these folks, rUv's in a chilly place, Mark's in a chilly place. And I thought, oh, if you're in Chicago, oh, man.
+
+0:08 - Stuart Kerr
+rUv's in Toronto. If you're going to be in a chilly place, that's one of the more kick-ass ones.
+
+0:13 - Krysta Fox
+Fair enough. Where are you, Stuart?
+
+0:16 - Stuart Kerr
+I'm in Delray Beach, Florida, about an hour north of Miami. OK. Yeah. But I managed Canada for a bunch of years for various different software companies when I lived in Chicago, and I came Very close to moving to Toronto. I love it up there.
+
+0:33 - rUv
+I had a small hotel in Madeira Beach, Florida on the Gulf Coast.
+
+0:37 - Unidentified Speaker
+Oh, no kidding.
+
+0:38 - rUv
+Yeah. Brent and I sold it during COVID. Cool. Hey, Nick.
+
+0:43 - Nick Kim
+Good to see you, man. Good to see you.
+
+0:47 - Stuart Kerr
+Mark, good to see you. All right. I'm going to be quiet because I know we got a lot to get through.
+
+0:50 - Unidentified Speaker
+Hey, Nick.
+
+0:53 - Mak Allen
+Mark.
+
+0:54 - Mak Allen
+All right, Ruv. Nick is our partner.
+
+1:01 - Mark Allen
+Do you want to talk?
+
+1:02 - rUv
+Oh, no, Mark, go ahead.
+
+1:05 - Mark Allen
+I wanted to introduce you here to Nick Kim. Nick is our partner on Nexidental, the orthodontics platform that Mak is leading the development on. So as I mentioned, we are a little behind on our timelines here and where we are. So I wanted Nick to be able to join and just be able to ask some questions. And, you know, I had some ideas about, you know, we're kind of stuck in some of this HIPAA compliance security issues, but I wanted to make the intro and figure out how to get this back on track with your help. You know, maybe instead of like guiding Mak and, you know, what to do here, maybe taking the lead in, you know, actually jumping into the project and we could just walk watch what you're doing to help us to get through this hurdle. But wanted to also let Nick ask a couple questions here that he had. So, Nick, welcome.
+
+2:04 - Nick Kim
+It's good to finally get to meet you, Roo. Heard great things about you and appreciate your guidance on our project.
+
+2:10 - rUv
+Yeah, nice to meet you.
+
+2:14 - Unidentified Speaker
+All right.
+
+2:17 - rUv
+So, yeah, ask away. If you've got questions or I'm happy answer best I can?
+
+2:25 - Nick Kim
+I'll let you just get started. I mean, I know we have some things to do. So um, but yeah, I'll let you get started. And, you know, let's see where I'm just, I guess, it's first time for me to kind of see like, you know, how you work, you know, so, but um, yeah.
+
+2:39 - rUv
+Okay, let me see if I've got the code space from I share. It's been a while since I've opened it. So Mak, maybe give me a refresher where everything is.
+
+2:47 - Mak Allen
+So I I am sending you a, uh, I'll send you a link in the zoom chat right now.
+
+3:00 - rUv
+That's a code space. I need, I need your, like your GitHub repo or whatever. Yeah, there we go. Repo as well. All right. Let's see here. I don't actually have setup, so I'm gonna have to go from scratch. But you guys can watch me go from scratch if you want. It's gonna take me, sorry, I didn't realize that you guys wanted me to, so I get to go through the entire installation process? Is that exciting and interesting for you guys?
+
+3:35 - Stuart Kerr
+How fast can you show us how you can do it? You're a whiz kid.
+
+3:38 - rUv
+I don't know, 10 minutes? Okay, yeah, now you're just, you know, wanting me to break my own world record or something. All right. Here we go. Okay. Then we're going to record this and this will be your onboarding for anyone else who needs to do this. All right. So, here we are. Main branch isn't protected. You probably want to protect it. We'll worry about that. Let's take a look quick.
+
+4:03 - Mak Allen
+In code spaces, it's the one named cuddly parakeet.
+
+4:07 - rUv
+I can't access your code spaces. Those are yours. And only you can access a code space. Branch.
+
+4:16 - Mak Allen
+Let me commit everything to a branch.
+
+4:20 - rUv
+I would just go to an error if I tried to click that link. Yeah, like this is totally out of date. Well, the scripts are 20 minutes old, but most of this is two months old. Which branch is yours?
+
+4:44 - Mak Allen
+November NOV19 underscore Mak underscore one.
+
+4:49 - rUv
+I don't think you published that.
+
+4:53 - Mak Allen
+Sorry, it's publishing right now.
+
+4:56 - rUv
+Just push it to me. Okay. The mains is two months old. Matt, do you want to share your screen? Screen maybe here?
+
+5:41 - Unidentified Speaker
+Yeah, sure.
+
+5:54 - rUv
+What you'll see here me do in a minute is 3000 files you're committing, or you should you should do much more frequent commits than I've got a, if you enable my GitHub integration, it would do it in real time.
+
+6:20 - Mark Allen
+How do we do that?
+
+6:22 - rUv
+Well, let's finish what he's doing right now. Now it says 10,000. All right. So let's look at what the heck it's committing. Go back, go to your 10,000 thing on the left-hand side. Let's see what it's actually doing. I can't imagine why there'd be 10,000 files. Scroll down. Node, yeah, node modules. Okay, your git ignore isn't set up. Hit escape on that. Yeah, in a new terminal. Yeah, DSP or whatever. And tell it to update the gitignore to remove the node modules. So you're attempting to commit every single library to the GitHub, which would be ridiculously bloated.
+
+7:29 - Mark Allen
+So, it does that by default?
+
+7:31 - rUv
+No, it doesn't. I don't know why that would be. It doesn't do that by default. If you had chosen node when you created the GitHub originally, it wouldn't have included any of that stuff. Go to your Gitignore. Let's take a look at what's in there. Refresh that. It's also still saying 10,000. No, you're 9,000, no, yeah, refresh. Here we go, 128, perfect. Okay, now click on the, go back up to the top left. Click on the, nope, you were there. Sorry, go back to where you were. Click on the little star icons on the right-hand side of that input box. We'll let, yeah, there we go. We'll do a commit. So what happened is you've been working on it for two months. But you haven't really done any commits. So all the work between then and now has been lost until this point. When you do this sort of work, you should commit, like I commit everything as it happens, and I can roll back to any moment over the last two months. You've essentially got a void between that period and this period for the most part, because you've not done any commits, right? So like hypothetically, say you want to roll back like October 13th. There'd be really no easy way to do that for you.
+
+8:52 - Mak Allen
+For branches.
+
+8:54 - Mark Allen
+It's just a different branch.
+
+8:56 - rUv
+No, well there's branches and there's commits. A branch is just a branch. You still have to commit to it every time you do an update. Like any update. You update a file, you do whatever. So if you go into a new terminal, and then type mpx yeah sorry no DSP just mpx clod at cloud flow at at alpha was a dash in the middle yeah space in it dash dash force don't hit enter yet I'm gonna wait for you commit what you already have before we do any changes. It's taken a while because you've got so many changes.
+
+9:48 - Mark Allen
+So I thought that we didn't have to do this in a project that it automatically updated.
+
+9:55 - rUv
+If you had done this command. No, sorry, you're forgetting the GitHub. After alpha tech GitHub. Yeah, if you had done this, yes. Otherwise, it assumes that you're gonna do it every now and again. Don't hit enter, it'll fuck it up. You don't wanna do that sort of stuff in the middle. No, no, just hit Control C, you're fine. Just don't hit enter. Yeah. What you don't wanna do is, something in the middle of a commit, right? That's like, it's like doing an install, like, you know, when you update your route, your router or something, and you're doing a firmware update, you unplug it in the middle of the firmware update, and it's toast, that kind of stuff happens. Alright, so you don't want to wait longer, just hit this type in it as a message, like I'm like, we're gonna wait all day here. Just type message in it. In your message area. Yeah. And then don't get dropped down. Hit, hit the stop button at the top. Yeah. Stop that now. And then the dropdown commit and push.
+
+11:17 - Mak Allen
+So it's not, it's not stopping.
+
+11:19 - rUv
+I don't know. He committed push. Now we're too lazy to give it a decent commit because we don't have a lot of time. We'll spend 20 minutes waiting for it to do the commit.
+
+11:30 - Mak Allen
+Yes.
+
+11:31 - Unidentified Speaker
+Yeah.
+
+11:40 - Mark Allen
+So Ruv, we didn't know about this, the command here, the GitHub init force. So if we install Cloud Flow that way, then.
+
+11:50 - rUv
+Oh, well, this is a secondary initialization. OK. Your is messed up. All right, go back to your Cloud Code and get it to fix the problem. Cancel that. It's taking a long time because you haven't done a commit in months. Commit everything to branch and push. Fix any issues. Yeah, so basically, for me, I'm committing at least once a day. So when I have a new branch, well, I guess you're branching, which isn't sort of like a commit, it's not a commit. So if you were creating multiple branches, Was that the approach you were taking?
+
+12:51 - Mak Allen
+Yes, just coming down here and creating a new branch.
+
+12:56 - rUv
+But you weren't publishing the commits. So you're creating empty branches. Right, without committing it, you're basically, it's like copying a folder without any files in it. So you were just making a bunch of branches that didn't have anything in them. Or maybe the duplicates of the main branch, but you publishing, you weren't committing your changes, right? I can see them on the left hand side there. So, all right, what the, so once this is done, we'll, I'll share a new PR, then what we'll do is, and then you'll run the, that command I told you, and that will basically set up the environment to auto commit. Every time the system makes an edit or does a successful sort of completion of some sort, it will then commit anything it's done automatically and then that gives you infinite revision. Like, oh yeah, this worked two weeks ago, go look at what I did two weeks ago and then the system will say, okay, I can look at your commits from two weeks ago and say, I see that we changed something, this is why it's broken. Right now you don't have any of Which is kind of the primary reason to use GitHub. Wait a sec, don't do it yet. Let's make sure it's done. Go to the, yeah, go there. It isn't, refresh, yeah, click refresh. Not all the files are committed. Well, it looks like it's trying to commit the ENV, which is weird. Update the, well, I don't know, It seems like an odd thing to do. Tell it to say there's still changes that have been committed and update the git ignore to not include the ENVs. Now the environmental variables you can use in GitHub by going to your settings and setting up code space secrets, which, if you want to share your variables, that's the better way to do it.
+
+15:15 - Mak Allen
+Yeah, we'll have to do that.
+
+15:17 - rUv
+There we go. Those are gone. Now, these are just random, like, I'm not sure what these are. I'm not even sure what these files are. And I committed them. I'll worry about cleaning it up later. All right. Create a PR, ask it to create a PR. Now there's two ways you can create a PR. You can go just to that branch and create a PR, or you can ask this system to do it. I would say going to your GitHub and creating a PR is probably the better approach. And let's see if I can see your branch. November 19th, is that your branch, 11 minutes ago? Yeah. Okay, let me share my screen. I'll take it from here. All right. Now that I can see the branch, it was posted 11 minutes ago. And if I go to the main code page, I should see a notice of some sort that there's a new branch. It isn't, which is weird. I'm going to assume it's correct, but we'll go back here. Usually you do see it there, but I'm not sure why it's not showing up. So we'll go here. And we're going 14 minutes ago. Yeah, that looks good. That means it's most recent. Now I'm going to go to contribute. Open pull request. You can see it all said it was 64 commits ahead. So now we can see that there's a pull request. It's already kind of pre-populated. This is a nice new feature. I'm not even particularly concerned. You have different options. I can draft it if I'm not ready. I'm going to create it. So I'm going to go ahead and create that. 64 commits. 3,161 files changed. That is like You never want to do a PR with 3,000. Usually I'm like, if I see more than 10 files, or maybe a couple hundred if it's a really early part of a project. But 3,000 means we're not committing frequently enough. And we've got branch conflicts. So go to page and tell your system to fix the branch conflicts. Byproduct also of not doing a commit for a long time. Nothing major, mind you. These are just files we recently updated. You can share your screen again if you want. So it's the poll number 63. The fix the branch conflicts in pole 63 and just paste in the complex. Looks like there was a pull request yesterday. What was that?
+
+18:24 - Mak Allen
+This was for one of the side tabs I was working on.
+
+18:36 - rUv
+OK.
+
+18:37 - rUv
+I think you're in a conflict with what you're about to do. You should close that. I'm gonna close it for you. We don't need that Okay, where should I copy the conflicts Just do the conflict area just copy paste. It's like whatever it was Keep going You're going the wrong direction to the bottom Keep going keep going keep going Yep, keep going.
+
+19:06 - Unidentified Speaker
+There you go.
+
+19:07 - rUv
+Copy that. Krysta, how comfortable are you with GitHub administration?
+
+19:26 - Krysta Fox
+Relatively, I'd say.
+
+19:31 - rUv
+I'd say a lot of the challenges we have right now are in two predominant buckets. There's kind of like GitOps, the management of your GitHub environment, your development environment for like worst case scenarios, like when something gets messed up, how do you scroll, how do you recover, right? Which has happened to us a number of times over the last month. And the other is in just kind like infrastructure management, like how we're managing the, you know, potential hosting environment, the super base environment, the user authentication, all that stuff, and, and having a clear idea of how and why the things are operating, you know what I mean?
+
+20:20 - Unidentified Speaker
+Oh, absolutely.
+
+20:24 - rUv
+So we need to figure out a approach that works Because like you said, there's a lot of HIPAA compliance here. Every time we log in, we find several issues that would potentially open up liability for us. So we need to make sure we figure out how to address those in a way that's as automated as possible.
+
+20:49 - Krysta Fox
+Yeah, that makes sense. Mak and Mark and I were actually talking a little bit about this yesterday with respect to code management, environments, DevOps, deployment. And so I follow what I've learned from my enterprise experience and I'm more than happy to help kind of talk through what that could look like, I don't know if this is the right forum for it, but we did get to, I'll leave this up to you and Mark to kind of call out when we want to focus on that. But I a topic that we're actively discussing.
+
+21:37 - rUv
+Perfect. All right, go back to the PR. Looks like you've added a whole bunch of various checks, none of which work. Did you add those or were they They just kind of vibed in there.
+
+21:53 - Mak Allen
+These were, I think these are from when we added in the regression testing and then we got rid of it due to the NPX.
+
+22:02 - rUv
+Um, there was some sort of, well, we didn't, we didn't get rid of it. They're still there and they're executing. So that's a problem for another time. We can merge this without worrying about that, but there's no sense having checks that don't actually check or, or in this case, they're all failing. I'm not sure. Not sure why. Click on merge pull request.
+
+22:25 - Unidentified Speaker
+Yep.
+
+22:26 - rUv
+Confirm. Scroll to the top of the page once that's done. And then go to code. Yep. There we go. Now we should see one from like 20 ago for I think it was scroll down. Keep going. Oh, you went too far. Okay, stop. Scroll up a little bit. Two minutes ago. Here we go, we're good. So you have to-do alerts. The one that's important is probably the index.nl platform from two minutes ago. I think you're, we're good. Okay, so I can, this is how I'm gonna get going. I need to share my screen though. All right, this is the part that, you know, if any of you guys haven't got set up, which I'm assuming by now you probably have. But if you need to, this is the process. So let's assume I'm a new user on the site. I'm going to go here. And I'm going to create a new code space. Now, this is a decision I might make. I might add a more beefy code space to make it run. It's a relatively light site. You don't really have a lot of middleware or heavy compilation things. So RAM isn't going to be that important. Storage might be. So I'm just going to show you just so you know. So I can do new with options. When I do new with options, I can choose different types of locations. I can choose the branch. I can choose east or west coast, Europe, North America, that kind of thing. In this case, depending on the amount of resources, really, the biggest difference for what you're doing is the amount of storage. So you really don't get much more storage until you get to 64 gigs at the 8 core. Or 120 at 16. For what I need to do today, I don't think I need that much storage and I can always upgrade this later, so I'm going to go ahead and create the code space. Alright, so now that now this is, you know, and I could also do this in in my VS code. In VS code I can connect to and then you can see I chose Nick accidental. So in connect to you can do create new code space and then I could choose. Accidental in this case I'm doing it the other way so I don't really so since I'm already creating it now I can connect here so in this case since I just created it I'm gonna go here and choose code space and we can see that just created one 32 seconds ago so we're gonna choose that I prefer to work here it's just where I'm more I'm more comfortable alright so now I go terminal now it's probably going to auto install the npm package. Give that a second to do its thing. While that's doing its thing, I'm going to go back to my browser. And this time, I'm just going to go lazy mode and copy and paste my commands from my Cloud Flow page. So in this case, we're going to go and we're just going to grab the install. I'm going to copy all these. Alright, now I'm on a PC so I've got my power toys installed. The power toys are nice because, ooh, I don't want that, how do I get rid of that, there we go. Alright, now I hit Windows key V, and that gives me my things I just previously copied, so I'm gonna start with this one, pop that in there, and I'm gonna prepare that. Once we do that, this will take a minute. All right. Perfect. Now in this one, I'm just going to install my cloud code quickly while I have it. So I'm going to go here and do, Oh, I copied and pasted the wrong thing. Go back here for a moment. Copy and paste this one. And we'll, oops, I'm in the wrong window. Paste that in, let that do its thing. I'm going to go back here, go back here, and I'm going to choose dangerously skip permissions. All right. All right. We'll do enter with the description.
+
+26:43 - Mark Allen
+That's cool. I didn't realize that's a great that you can do those two in parallel.
+
+26:47 - rUv
+Well, one has to be installed first. Cloud Code has to be installed first.
+
+26:52 - Mark Allen
+But then the shortcuts in Cloud Flow can be done in parallel.
+
+26:56 - Unidentified Speaker
+Yeah. Yeah.
+
+26:59 - Mark Allen
+So everybody's gone through this, but we're, we always learn a little bit new stuff.
+
+27:05 - rUv
+All right. So, so now we're going to, now we're going to do create a bash RC alias or DSP. And then we're going to go here and we're going to do that. And, and DSP, Oops, that just messed me up for a sec. That's a really annoying message. Like, why does it do that? But anyway, I copied it, so we're good. Permissions. All right. We got that going. While that's happening, we're going to check back in here. Oh, I forgot to hit Y. Oops. OK. Watching that do its thing. Let's take a look here. We got a bit of a mess here, so we're going to just quickly clean that up. And so in this case, actually, one sec, I'm going to let that Yeah, do that. So, remember when you create new Bash RCs, you've got to create a terminal to invoke it. All right. Now, in this one, it says I'm on main. I'm just going to go ahead and clean this all up for you. I'm not sure why it's taking so long, but probably because I'm installing some things. There we go. Link this up. All right, so while that's doing that thing, we're going to go back here. This is installed. Next thing I'm going to do, and when I do this, everyone will get this feature, which is nice. So now what I'm going to do is I'm going to invoke my GitHub. And what we're looking at here, just so we can see it, we're going to settings.json. I'm going to make a copy of that for you guys so you have a backup. I'm going to paste that in there. All right. I'm going to call that original. All right. Now I know that I did that. I'm going to hit that. So this is going to initialize my GitHub-specific hooks and checkpointing system. That that's a pretty cool. I use this it's it's a really so basically it's creating your checkpoint manager This checkpoint manager basically creates checkpoints Like what's going on there that's weird. It's missing the content. I don't like this one works checkpoint manager That might be a bug on my side now that I see it. Okay, so I gotta fix that quick.
+
+30:43 - Mark Allen
+I'm gonna do that for So this is the this is the quad flow GitHub system that we're turning on.
+
+30:56 - rUv
+Yes. And there might be a I might have found myself a bug here. Yeah, I'm not sure why it's empty. But that's, oh, that's, that's, that's okay. I might have chosen not a powerful enough machine. It's pretty slow. But anyway, all right. The... Should... I'll let that do its thing here. What's going on here? All right, we did a bit of reorg, looking better already. All right. Sorry, a little bit of cleanup for you guys. I don't know. It's my own quirk, I guess. Yes.
+
+32:36 - Stuart Kerr
+Curiosity, Ruv, have you come up with a cleanup agent that you just turn on and say, go work your magic, go clean up the directory, go move stuff that's old over to archive, go make sure your time and date every markdown document so we know what's current and what's out of touch in prior architecture or stuff like that?
+
+33:01 - rUv
+Yeah, I like the way you think.
+
+33:05 - Mark Allen
+Would you do that as a skill or would you do that?
+
+33:07 - rUv
+Yeah, exactly what I'm doing.
+
+33:17 - Stuart Kerr
+And I'm sorry, I'm not looking to defer this conversation anyway, keep doing what you're doing.
+
+33:21 - rUv
+I was just for the future. That's a good idea and we're gonna do it.
+
+33:43 - Krysta Fox
+I wonder if Claude's going to think Stuart's another AI.
+
+33:45 - rUv
+I don't know. He might be. My wife already does.
+
+33:52 - Mark Allen
+The skill builder.
+
+33:54 - rUv
+All right.
+
+33:58 - rUv
+We're going to create a new skill there. Now we're back over here. We've got the point. All right, now, so that now we've got, we're, I'm gonna have to look at what my I don't, it's a feature I use and customize, but I need to update my plot flow to fix a minor problem, it would have still worked, it just was missing part of the functionality.
+
+34:29 - Stuart Kerr
+No worries. We'll do it a different day. It was just a quick question.
+
+34:33 - rUv
+No, no, no. I'm giving you all the bells and whistles so you won't have to worry. It'll work like magic when I'm done. All right. So now we've committed this. That looks good. Now we can confirm by going back here. And I got to find where the heck I put it, which a two-minute opened. Accidental. Now we should refresh. See a lot less stuff. And we see the hooks, the checkpoint system is working. You can tell the checkpoint system is working because I put little icons in the checkpoints. Cool. Right? Now every Everything that the system does is checkpointed. So this is going to be huge for Mak. Because when inevitably the AI takes you down the wrong road, and it's like, this literally worked yesterday at 3 o'clock, you're going to say, damn you, this worked yesterday at 3 o'clock. Go figure out what you did to break it. And now it's got a really clear picture of everything it did at every moment between now and forever. And you can see here that it's tasked. In this case, it's just initializing the GitHub checkpointing system, but you had files that had changed, so it committed those as part of that initialization.
+
+36:01 - Krysta Fox
+I feel like we might want to make this an SOP.
+
+36:04 - Mark Allen
+Absolutely. I've been taking exactly that note.
+
+36:08 - Krysta Fox
+I can see Mak smiling, but I share the sentiment that's beautiful.
+
+36:13 - Stuart Kerr
+Can you write that in the chat, please, whatever the command was to do the GitHub init?
+
+36:18 - rUv
+You guys get it now. I'm putting it as part of your default. As long as you're running this, you know, you're running Claude code and Claude flow, you just magically get it. Yeah.
+
+36:30 - Unidentified Speaker
+Yeah. I mean, I'll put it in for everyone, Stuart. Yeah.
+
+36:34 - Krysta Fox
+You got to give the Stuart AI some creds.
+
+36:38 - rUv
+Yeah. Well, we were creating Stuart AI right here. That's what this one's doing. So I invoked, you know, some, I'm invoking the skill. Okay. So now that we got that and looks at the GitHub's working, let's Let's confirm that this works. Yep. Successfully organized root folder main, blah, blah, blah. Where did I put the other one?
+
+36:55 - Krysta Fox
+I want this thing, too.
+
+36:59 - rUv
+It's nice. You got it. You can just grab basically all you need, essentially, is this .cloud folder. All right. So, you got that. We already confirmed it's working. We can see that it's auto committing. So, that's good. I haven't done anything to commit since because it's a different So we're going to go back here, and now what we're going to do is we're going to do another DSP. And this one we're going to, well, actually, before we do, this might have already been, install app Nexa platform and create a run.sh in root to get things started. Now you could just run npm run dev, but whatever. As the stack gets more complicated, we can essentially go and fix things up. Now I saw a few problems I want to take care of here quick, so I'm going to go back to another one here. This time I'm going to do doctor. And I see there are some I saw some errors that we need to clean up. There we go. Oops. Bash issues. OK. Stop shaking that. I need to copy this. OK. I'll do it that way. Inbound settings.
+
+38:38 - Krysta Fox
+It's so little.
+
+38:40 - rUv
+Yeah. Here we go.
+
+38:42 - Krysta Fox
+Go back to normal. No, it's fine. I just think it's comical.
+
+38:56 - rUv
+Bash-related issues, it looks like, Nothing major, so I'll just... They've changed their structure, so I'm just going to fix that. It was working, so... These aren't major errors, but I might as well give it to you nice and clean. It looks like problems. My flow is like a virus. It infects your cloud. Once you've installed it, I've effectively taken it over. What's that bacteria that takes over a snail and makes it crazy for birds? And I'm kind of like that. Probably not the analogy I should be using, but whatever. All right, so here Now we've created this, and we've got a run file. OK, let's do that.
+
+39:51 - Mark Allen
+So what's the difference between creating that run.sh and doing run npm It's there's no difference.
+
+40:00 - rUv
+I just made it easier for you guys.
+
+40:02 - Mark Allen
+Oh, so now you can just basically click on that instead of doing the command again.
+
+40:06 - rUv
+Yeah, so I just did I just type this now. Yeah, I could also do install as this as the platform gets more complicated. We might want to do like checks for security and data. You know, are you are you in the dev environment versus the production environment, all those sorts of things. All right. It's not loading.
+
+40:31 - Mak Allen
+We also had the, remember we had scripts for starting.
+
+40:35 - rUv
+I need your, I need your environmental variables. Um, we did, we stripped it out of your cloud, but I don't have it here. So it's not loading because there's no environmental variables. And I could tell that immediately as soon as I said, missing super base environmental variables.
+
+40:59 - Krysta Fox
+Logging is your friend.
+
+41:03 - rUv
+Yeah. So, I need those from you. Now, there's a couple different ways we can handle that. If we're doing this right, what we do is we go to settings, and we go down here to secrets and variables and code spaces, and we create the environmental variables. Each here one at a time. That'll likely solve my problem. And it's the quickest way to get me those things, because we don't want to just copy and paste those, that's security leak. So go there and I'll walk you through that. Matt can share if he wants. No, I, yeah, yeah, here we go. Just click on the link in the text there.
+
+41:49 - Mak Allen
+local.
+
+41:51 - rUv
+No, you don't need to do that. You just got to copy and paste it one at a time into this secrets area. Okay. Go to the, go to the, yeah. Start with super base since that's what I need. Just click on the link I gave you. All right. Yeah. You're right there. Okay. Just go, go, let's scroll on the left. Secrets. Yeah. Variables, code spaces. There you go. Okay. New repository secret. Now, the benefit of this is that we all get the secrets and it's an easy way to sort of transmit them. Let's start with the ones we need, which is super base. So, go, no, don't, yeah, just copy and paste it. There you go. Yep. Yep. There you go. Really equals and pop that into the secret. Okay, now those are probably not going to work because they need to be right. But we'll I guess the French beat. So we're gonna do that. We're gonna do these all twice. I'm fairly certain. I don't think this is actually your scroll down a little bit. There was another Yeah, go to your next dental platform. That's most likely in there. Those don't, I can tell already those aren't correct. Now what you're doing is fine for me sharing with you, but it's just not going to fix anything. Go to EMB. Yeah, there you go. That's going to make it actually work. That's, that's all you need. Just, you need to prefix it with VEET. You can't edit it once you've done it. Just that. Don't delete it. OK, you gotta have both now. We do need that. It's just you needed both. Alright, now add the next beat.
+
+43:59 - Mark Allen
+So this is basically what you're showing us is the way to. To do it so that you can actually share a project.
+
+44:05 - rUv
+Yes. Securely. All right. Don't do anything else for a moment. I'm going to confirm it works. All right. Remember, every time you do it, It's going to refresh my screen, so just hold on one sec. All right. I'm still getting a variable issue. It's looking for the .env, so I'm going to have to fix that. What else is in that? Not a lot. Scroll up. Scroll down. Keep going. Keep going, keep going. It's weird. This one seems to be missing. I'm not sure if you're using, it looks like we've hard-coded which I'm going to fix right now. So let's switch back to me for a sec. The way that you were doing it basically meant that you weren't SOC 2 compliant. All right, so I restarted, so I'm going to do DSP. And actually, I don't want to think this is right. So let me just double check. Oh, it is running. Okay. So I'm going to say something like the two, we're going to go here to next dental platform. And we're going to say something like the, at, doesn't probably even matter particularly. What did it say if you want it again? The E and the local. Now you're going to have to go you're going to have to go through and do every single one of those other EMVs. But the good news is once you do that, anyone else using this environment won't have to worry about the EMV issue any longer. But before I do, I'm going to fix it so it looks for the secrets in the code space rather than explicitly looking for the EMV itself. That gives you essentially the first step towards a more compliant infrastructure for security. Dot ENVs are just bad. It's easy, but it's not secure, particularly.
+
+47:20 - Stuart Kerr
+Doesn't the secrets function have a way to import a dot ENV? I remember seeing that somewhere last month.
+
+47:26 - Unidentified Speaker
+I can't recall.
+
+47:30 - Stuart Kerr
+I did that, or else I had Cloud Code and Cloud Flow push the ENV over to secrets, and it created it, and it basically just put them all in.
+
+47:44 - rUv
+There might be a way to interact with it. All right, here we go. We're good. So now we've got the page loading. Now we're seeing app not authenticated, which means I'm not logged in. That's good. All right, so far, so good. I'm getting some that. So I'm going to sign in. Pop my signing credentials quickly in the text area. Oh, that, Mak, You can't share your .env local in the Zoom chat. Now you have to go and do every single one of your keys again. That's why we did it the way we're The Zoom chat is famous for being insecure. So you potentially leaked all your keys by sharing it there. You did leak all your keys by sharing it there.
+
+48:41 - Mak Allen
+Deleting the message wouldn't help. No, you've got to go.
+
+48:45 - rUv
+Now you have to go and change every single one of your keys at some point. Which you probably have to do anyway, in fairness. Don't share.
+
+48:53 - Mark Allen
+I had no idea that Zoom chat was insecure like that.
+
+48:56 - Mark Allen
+Neither did I.
+
+48:58 - rUv
+Well, it's insecure in the sense that there's a direct line to the NSA and other hackers and things like that. It's just bad form. Don't don't do that.
+
+49:07 - Stuart Kerr
+Okay, but it's unlikely to negatively impact Mak on this one, isn't it? I mean, I understand that theoretically we wouldn't wanna do it, but in this case, is it worth him going through all the extra effort to do it?
+
+49:17 - rUv
+It's a possibility. You're gonna have to do it anyway. Given the large volume of security exploits we found, you're gonna have to do it anyway. But this is just another reason. Just be careful. Like, treat your, never share your EMV. Don't email it, don't text it, certainly don't copy and detect text areas.
+
+49:43 - Mark Allen
+What is the best way to share it? It's just like we're doing.
+
+49:46 - rUv
+Exactly what I showed you.
+
+49:49 - Mark Allen
+Come in here. Yeah, got it.
+
+49:51 - rUv
+Then we just get them and anyone that doesn't have access to the system loses access.
+
+49:56 - Mark Allen
+Yep.
+
+49:59 - rUv
+All right. I still don't have the login information.
+
+50:03 - Mak Allen
+The login is supposed to be the right there, the demo account credentials. And it's issue 62 is entirely regarding the hang issue of logging in, which is still what?
+
+50:19 - rUv
+All right, looks like I wasn't able to log in once today. You know, my kids bought me a hat that says works for me. It's like a curse more than it is a blessing. Like I'll leave the house and the Wi-Fi goes down or someone spends a week on a problem and as soon as I show up, run it and it works the first try. It's like my entire life. It's a weird problem to have, I might add, but there's worse problems and things always work for me.
+
+50:56 - Stuart Kerr
+You think it had to do with the fact that you fixed all those other errors earlier on the bashers?
+
+51:01 - rUv
+No. Okay, it likely has to do with the fact that I get a nice fresh environment and Mak doesn't. He's probably working on an environment he's been working on for months. It's probably time for a new a new environment. That's that's cool. I'm, I'm creating the environment for him. Alright, so that's looking actually pretty good. I'm, you know, I'm seeing some other weird little weirdness. So I'm just gonna go and copy the console. None of these errors are Like, except for maybe this one. This is nothing that's going to dramatically affect the site. So now we're going to go back here. And we're going to go here. And I'm actually going to do a new one. So now we're going to create a detailed GitHub issue with fix the following issue using the CLI, no labels. All right, pop that in here. It might take a second. There's a ton of stuff I'm posting in. While that's doing its thing, I'm going to take a look what we got here.
+
+52:38 - Mark Allen
+Doesn't that just paste as much faster? Why is that taking so long?
+
+52:42 - rUv
+I'm not sure. I pasted several thousand lines, that's probably what we're good. You know, two, 3000 lines of errors takes a minute. Yeah. These are, these are relatively minor errors. I just, I probably should have just chose a few key ones, but I was lazy. All right. But nothing, I'm not seeing any major anything major other than this, this is seems to be loading mock data. Um, And it looks like some of the UX stuff is weird, but that could just be sizing related. Yeah, it's exciting. Your mobile stuff is broken, it looks like, Let's see if the dashboard. Yeah, it's still broken.
+
+53:35 - Unidentified Speaker
+All right.
+
+53:39 - rUv
+Let's take this. While that's happening, Let's go back here. And Sorry, the hour is already over. Sorry, guys. DSP. So what I'm going to do right now is create a new issue. These are issues that Matt can address. Slope. Oh. All right, get that going. This is brand new issue here. This Mak can address that. And while that's happening, I'm just going to double check back here that the commits are working. We can see the commits working here. All right, looking good to do 56. So we see each of each of the commits are It looks like there's a minor issue I'm going to have to address, but generally the commits are working. It looks good. I'm just going to commit the rest of the stuff here just to give you a nice clean.
+
+55:15 - Mark Allen
+So why do you have to manually commit when we...
+
+55:19 - rUv
+Because I got three minutes and I explained it. Oh, okay. It would have done it on its own. Yeah. I can see it committing, like I can see the happening quickly like you see here you know the updates are happening. All right so now you've got a nice clean repo to start with and the good news is it seems to generally work like the problems I'm running into are minor and stuff that could be easily fixed. It looks like the task isn't using the user prompt for some reason which I could address later but the important part here is that you are getting you know you so now it's the latest issue that you need to address so Mak you need to go in and fix these issues that's websocket issue this one's just my one password that's not a major issue this is unchecked run time it's not a major issue minor Minor stuff.
+
+56:26 - Mark Allen
+So what, what, what command would you do to fix all of those issues as quickly as possible? Just that. Yeah. Yeah.
+
+56:40 - rUv
+Well, I'll, I'll do this for you. And, uh, let me analyze it. And then this is the other one. This is, this'll fix the mobile issue that you guys have. Here. I swear I thought this worked before. I don't know what happened. It was somewhere along the lines. This is a classic regression.
+
+57:04 - Krysta Fox
+Where's your hat?
+
+57:07 - Unidentified Speaker
+Doesn't work for me.
+
+57:07 - rUv
+Yeah, we need both hats. I need one of each.
+
+57:15 - rUv
+Yeah, depends on the day. Nothing works for me today. Yeah. Some days, some things, everything doesn't work. All right. So, I don't know if this was helpful, but I did clean up your repo. So, Mak, you got to go into your secrets and add all those secrets. Remember, just remember that anything you're going to use in, yeah, in Vite, specifically, requires a Vite prefix. Vite underscore something or other. If it doesn't have that, it won't be used in the beat runtime. So the question is, do you need it? What's it there for? I don't know. We know generally that this thing works just with the SuperBase. I haven't tried any of your other functionalities.
+
+58:02 - Mak Allen
+It's good to know that there were no SuperBase issues on the login. I did put in one final prompt right before this meeting that I didn't get to test. Glad it looks like it. Got remedied.
+
+58:16 - rUv
+Yeah, so all you need to do is go use my main. So just tell Claude to go and you might just want to create a new code space with my main that I just did for you. Now I'm in the process of Cleaning up your some of your errors, so give it a few minutes, but you know, in about 1520 minutes or whatever, go ahead and oh, it looks like yeah, and and the just one last thing I get your next call. But I can see that the commits the auto-commits are working. Awesome. So as things are happening, it's auto-committing. Seven files changed. You see that? And this one says Forge files changed. So as it makes edits, you can see it. So you're never going to have to worry about losing any data ever again. You're now fully autopilot on the commits. So if you want to say, it worked last Tuesday, Go figure it out, and it'll do that.
+
+59:13 - Mark Allen
+So real quick, Ruv. So to get us on track to get this thing into UAT as quickly as possible, how do we work together?
+
+59:24 - rUv
+Strip out all extraneous capabilities. You're trying to boil the ocean on this site. Yep. Like, there is way too much stuff. Yep. There's got to be some subset of that that is the most valuable thing that you can do. Figure that out and then strip out the other that you don't need.
+
+59:41 - Mark Allen
+And by strip it out, you mean what?
+
+59:44 - rUv
+Like a CSS? Get rid of it. Get, get, get like what we discussed yesterday. Just, just, just get rid of it and then add it gradually over the next six months. But you're never going to launch in your current state.
+
+59:57 - Krysta Fox
+Rube, do you have refactoring skills or refactoring function in your swarms?
+
+1:00:03 - rUv
+Yeah, I do. And that's probably not a bad plan. Of redundancy. So, your best bet, one, figure out what you actually need to launch with. Like, it's not all this stuff. Figure out what you must have. Otherwise, there's no value. Secondly, put in some coming soon sections. Lastly, to Krysta's point, create a skill that checks for redundancy in your code base. Because there's a lot of it. You're doing the same thing, like, five, six, times in a lot of places when you should be doing it once. That makes it run slow, potential exploit. It's just, you know, it's a mess. Clean up that.
+
+1:00:45 - Mark Allen
+Yeah. So part of it was just our approach and having like, you know, basically vibing out the entire UI and trying to do it all at once instead of doing it feature by feature.
+
+1:00:57 - rUv
+Yeah. Well, the UI is easy. The infrastructure is hard. So you with the easy part, making it look like it should work. Then you're like, oh shit, now we gotta make it work, right? Faking it is easy, making it is hard. Those are my last words for you guys.
+
+1:01:16 - Krysta Fox
+I want the hat to move.
+
+1:01:18 - rUv
+Yeah, works for me. All right, I'm late, but I'm fixing your current problems. I think that was already pushed. You should be in pretty good shape if you use this repo at this point. Most of the errors that I'm seeing are trivial. Things people would never notice.
+
+1:01:36 - Mark Allen
+I notice. So it's actually, to be clear, you're actually suggesting pull the stuff out that we don't need.
+
+1:01:44 - rUv
+So you're asking how to get this thing launched. That's how you do it. Otherwise, in your current state, you're not launching this before February. Yeah, yeah. But I think you can launch it in like two weeks if you just said, let's just stick the bare minimum of what needs to work.
+
+1:02:03 - Mark Allen
+Let's go through that effort.
+
+1:02:05 - rUv
+Yeah, I'll help you through it. No worries. That's what you keep me around for. Thank you, rUv.

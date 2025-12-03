@@ -1,0 +1,1723 @@
+1
+00:00:59,070 --> 00:01:00,680
+Testing one, two,
+three, testing
+
+2
+00:01:00,680 --> 00:01:02,470
+one. This is Ruben.
+Test, test, test.
+
+3
+00:04:19,690 --> 00:04:21,690
+Hey, Jed, how am
+I coming through?
+
+4
+00:04:23,550 --> 00:04:24,770
+Softer than usual.
+
+5
+00:04:24,970 --> 00:04:27,290
+Yeah, I'm at
+my lake house.
+
+6
+00:04:27,510 --> 00:04:29,050
+So I'm using my headset.
+
+7
+00:04:29,910 --> 00:04:31,370
+So it won't be,
+
+8
+00:04:31,680 --> 00:04:32,890
+maybe I need to
+get a better mic
+
+9
+00:04:32,890 --> 00:04:34,830
+for the cottage or
+something, but for
+
+10
+00:04:34,830 --> 00:04:36,690
+now, I don't do
+these very often
+
+11
+00:04:36,690 --> 00:04:38,230
+at the cottage.
+That's no big deal.
+
+12
+00:04:41,590 --> 00:04:44,390
+Yeah, I hope yesterday's,
+
+13
+00:04:44,850 --> 00:04:47,690
+yesterday's uh demo
+was okay i kind
+
+14
+00:04:47,690 --> 00:04:49,010
+of spent a lot
+of time on it but
+
+15
+00:04:50,990 --> 00:04:53,710
+anyway i think most
+people don't know
+
+16
+00:04:53,710 --> 00:04:56,170
+where to start so i
+anticipate once the
+
+17
+00:04:56,170 --> 00:04:58,380
+beta group is let
+loose on it they'll
+
+18
+00:04:58,380 --> 00:05:01,230
+just start poking
+holes everywhere it's
+
+19
+00:05:01,330 --> 00:05:03,070
+a cool idea though
+that's it's everything
+
+20
+00:05:03,070 --> 00:05:05,110
+they can it's fun
+building on the
+
+21
+00:05:05,110 --> 00:05:07,330
+things i've already built
+creating applications
+
+22
+00:05:07,330 --> 00:05:09,630
+it's like layer
+cake or something
+
+23
+00:05:12,650 --> 00:05:15,070
+well usually you
+should also be pruning
+
+24
+00:05:15,070 --> 00:05:19,310
+features me never
+pruning features
+
+25
+00:05:19,310 --> 00:05:22,790
+you go crazy well i'm
+i'm like vibing my
+
+26
+00:05:22,790 --> 00:05:25,390
+way into uh you know
+crazy crazy land
+
+27
+00:05:31,650 --> 00:05:34,930
+since vibe coatings
+it's is is terrible
+
+28
+00:05:34,930 --> 00:05:35,930
+and people don't know
+what they're doing
+
+29
+00:05:35,930 --> 00:05:38,770
+but you know whatever
+we know different
+
+30
+00:05:38,770 --> 00:05:44,670
+and i'm happy to caught
+around them you can
+
+31
+00:05:44,670 --> 00:05:46,830
+create all kinds of
+amazing things okay
+
+32
+00:06:04,250 --> 00:06:07,530
+i see fatigue how's
+it going oh he's still
+
+33
+00:06:07,530 --> 00:06:13,670
+connecting maybe um
+yeah so maybe next
+
+34
+00:06:13,670 --> 00:06:15,350
+week or maybe the
+weekend when i get second
+
+35
+00:06:15,350 --> 00:06:19,350
+i'll i'll uh spin up
+a uh whatsapp group
+
+36
+00:06:19,350 --> 00:06:21,210
+and we'll see if we
+can solicit some people
+
+37
+00:06:21,210 --> 00:06:23,630
+to test there's obviously
+quite a bizarreity
+
+38
+00:06:23,630 --> 00:06:26,150
+up there are 12 of
+us oh okay i must
+
+39
+00:06:26,150 --> 00:06:29,170
+have missed i've been
+swamped uh the uh i
+
+40
+00:06:29,170 --> 00:06:31,250
+i have a tendency to
+take too much on like
+
+41
+00:06:31,250 --> 00:06:35,230
+just that's an fyi
+i'm like that that is
+
+42
+00:06:35,230 --> 00:06:37,710
+my specialty is is
+over committing myself
+
+43
+00:06:42,890 --> 00:06:44,970
+so uh today i'm going
+to talk about the
+
+44
+00:06:44,970 --> 00:06:47,930
+uh sort of mcp cli
+centric business
+
+45
+00:06:47,930 --> 00:06:49,850
+models that are
+emerging and i'm using
+
+46
+00:06:49,850 --> 00:06:51,730
+my stuff as an example
+of at least where
+
+47
+00:06:51,730 --> 00:06:53,730
+my thinking is on
+that how and why
+
+48
+00:06:53,730 --> 00:06:57,010
+it's built the way
+it is and i just did
+
+49
+00:06:57,010 --> 00:06:59,550
+a linkedin post on
+the similar subject
+
+50
+00:07:07,820 --> 00:07:09,420
+that desktop app
+seems like it's
+
+51
+00:07:09,420 --> 00:07:10,700
+been an afterthought
+i can never
+
+52
+00:07:10,700 --> 00:07:13,920
+get the link to a
+group yeah it's a
+
+53
+00:07:13,920 --> 00:07:15,070
+bit it's a bit of
+an afterthought
+
+54
+00:07:24,010 --> 00:07:26,790
+drop this in
+your zoom chat
+
+55
+00:07:27,310 --> 00:07:29,650
+so if you want to
+announce to anyone
+
+56
+00:07:32,850 --> 00:07:35,090
+yeah they're announced
+to your beta group
+
+57
+00:07:35,090 --> 00:07:38,430
+it's there yeah still
+yes exactly i'm still
+
+58
+00:07:38,430 --> 00:07:40,150
+thing a beta group
+this is the type of app
+
+59
+00:07:40,150 --> 00:07:42,770
+that needs a decent
+beta group to really
+
+60
+00:07:43,570 --> 00:07:45,130
+figure out the
+competition
+
+61
+00:07:45,130 --> 00:07:47,950
+system right that's
+those are the
+
+62
+00:07:47,950 --> 00:07:52,090
+currently 11 or
+12 volunteers
+
+63
+00:07:53,250 --> 00:07:55,750
+perfect i'm gonna i
+have to publish the
+
+64
+00:07:55,750 --> 00:07:58,810
+um the actual npx
+which is gonna be
+
+65
+00:07:58,810 --> 00:08:00,910
+super simple again
+i'm gonna have a fnx
+
+66
+00:08:01,760 --> 00:08:03,910
+which is three letters
+to get the thing
+
+67
+00:08:03,910 --> 00:08:08,090
+going or you know
+flow nexus but fnx
+
+68
+00:08:08,690 --> 00:08:10,450
+short kind of
+like kate's k
+
+69
+00:08:10,450 --> 00:08:13,310
+k8s for the
+kubernetes crew we
+
+70
+00:08:51,480 --> 00:08:53,210
+need to have a
+discussion on like
+
+71
+00:08:53,590 --> 00:08:56,220
+our like um i don't
+know what you want
+
+72
+00:08:56,220 --> 00:08:58,520
+to call it like a
+service desk for uh
+
+73
+00:08:58,920 --> 00:09:01,560
+uh the genetics
+foundation have you
+
+74
+00:09:01,560 --> 00:09:03,180
+seen any of that
+conversation happening
+
+75
+00:09:03,980 --> 00:09:06,540
+what service desk
+no there's a lot of
+
+76
+00:09:06,540 --> 00:09:08,400
+debate on service
+decks i'm not a big i'm
+
+77
+00:09:08,400 --> 00:09:10,720
+not a huge fan of
+of jira so there's a
+
+78
+00:09:10,720 --> 00:09:12,960
+bit of a debate
+around using atlassian
+
+79
+00:09:13,000 --> 00:09:15,960
+and stuff like that
+buy up another one
+
+80
+00:09:16,340 --> 00:09:19,300
+ticketing systems are
+well defined they're
+
+81
+00:09:19,300 --> 00:09:21,860
+just a database
+let's be honest hey
+
+82
+00:09:54,550 --> 00:09:55,800
+how's it going
+
+83
+00:09:56,060 --> 00:09:57,380
+it's very good
+
+84
+00:09:58,340 --> 00:09:59,980
+the Dubai weather is
+
+85
+00:10:00,400 --> 00:10:01,900
+is what it is but
+
+86
+00:10:03,780 --> 00:10:05,620
+I assume it's hot
+
+87
+00:10:07,060 --> 00:10:08,220
+it is
+
+88
+00:10:08,650 --> 00:10:10,400
+41 or something
+like that and very
+
+89
+00:10:10,400 --> 00:10:16,280
+humid just had a talk
+with Rob and Robert
+
+90
+00:10:16,280 --> 00:10:19,160
+about opening a
+chapter here in Dubai,
+
+91
+00:10:19,160 --> 00:10:20,860
+so we are proceeding
+with that one.
+
+92
+00:10:21,560 --> 00:10:22,560
+Yeah.
+
+93
+00:10:23,290 --> 00:10:24,840
+Let me know. We've got
+
+94
+00:10:24,840 --> 00:10:26,400
+quite a few
+people in Dubai.
+
+95
+00:10:26,520 --> 00:10:27,420
+Yeah.
+
+96
+00:10:27,990 --> 00:10:30,380
+I was talking with
+Rob and Robert, so
+
+97
+00:10:30,380 --> 00:10:35,260
+at least they sent
+me some Jake Nguyen
+
+98
+00:10:35,560 --> 00:10:37,940
+who's also someone.
+
+99
+00:10:40,120 --> 00:10:43,920
+I posted. And we
+might be able to... I
+
+100
+00:10:43,920 --> 00:10:46,620
+think there's a facility
+in Abu Dhabi, 42.
+
+101
+00:10:46,620 --> 00:10:49,720
+have you been there
+yeah yeah so we yeah
+
+102
+00:10:50,120 --> 00:10:52,920
+we've got a new
+relationship uh i'm not
+
+103
+00:10:52,920 --> 00:10:54,540
+sure if we're allowed
+to announce it yet or
+
+104
+00:10:54,540 --> 00:10:58,160
+whatever but we with
+42 i think it's the
+
+105
+00:10:58,160 --> 00:11:01,000
+same org i'm if i'm
+not mistaken and they
+
+106
+00:11:01,000 --> 00:11:03,400
+might it might they're
+a base out of paris
+
+107
+00:11:03,400 --> 00:11:07,200
+i think um but we
+could probably use
+
+108
+00:11:07,200 --> 00:11:12,420
+their facilities yeah
+that'd be nice globally
+
+109
+00:11:12,480 --> 00:11:15,700
+yeah the abu dhabi
+is one and a half
+
+110
+00:11:15,700 --> 00:11:17,940
+hours two hours away
+and Abu Dhabi is like
+
+111
+00:11:18,760 --> 00:11:22,160
+one-fifth of Dubai
+size and usually
+
+112
+00:11:22,160 --> 00:11:23,440
+people don't
+travel that much
+
+113
+00:11:23,440 --> 00:11:25,740
+between these
+cities for events so
+
+114
+00:11:25,860 --> 00:11:28,380
+I will definitely
+be talking with okay
+
+115
+00:11:28,380 --> 00:11:30,380
+Rob and Robert will
+be coordinating that
+
+116
+00:11:30,380 --> 00:11:34,020
+one so yeah well
+you can hop in your
+
+117
+00:11:34,200 --> 00:11:35,820
+friendly neighborhood
+Lamborghini
+
+118
+00:11:35,820 --> 00:11:37,520
+and get there in
+like 20 minutes
+
+119
+00:11:37,720 --> 00:11:39,720
+it has to be a
+Rolls Royce what
+
+120
+00:11:40,440 --> 00:11:42,740
+do you see Rolls
+Royce or Ferrari?
+
+121
+00:11:43,080 --> 00:11:45,440
+I see more Rolls Royce
+where I live because
+
+122
+00:11:45,440 --> 00:11:47,200
+this is one of
+the best places so
+
+123
+00:11:47,200 --> 00:11:50,720
+there's a garage
+downstairs so at least five
+
+124
+00:11:51,980 --> 00:11:55,600
+and once the
+number in the
+
+125
+00:11:55,960 --> 00:11:58,640
+plate is something
+that is meaningful and
+
+126
+00:11:58,640 --> 00:12:00,240
+there was number one
+in front of my building
+
+127
+00:12:00,240 --> 00:12:02,780
+and that's kind of
+super hyper expensive
+
+128
+00:12:02,780 --> 00:12:05,300
+plate that they're
+paying tens of
+
+129
+00:12:05,300 --> 00:12:08,000
+thousands of euros for
+that to get that plate
+
+130
+00:12:08,000 --> 00:12:09,900
+or even more it
+usually means that some
+
+131
+00:12:09,900 --> 00:12:13,080
+their highnesses as
+they call this emirate
+
+132
+00:12:13,240 --> 00:12:14,160
+okay
+
+133
+00:12:16,820 --> 00:12:21,340
+uh yeah it's it sounds
+like a an interesting
+
+134
+00:12:21,340 --> 00:12:26,180
+country yeah and
+very interesting
+
+135
+00:12:27,930 --> 00:12:29,840
+oh by the way you're
+more than welcome to
+
+136
+00:12:29,840 --> 00:12:32,960
+join my uh training
+sessions on the 9th and
+
+137
+00:12:32,960 --> 00:12:36,420
+23rd for the trading
+trading system don't worry
+
+138
+00:12:36,420 --> 00:12:39,100
+about it i'll get you
+in there okay good
+
+139
+00:12:41,040 --> 00:12:48,840
+all right so what are
+we doing for time 10
+
+140
+00:12:48,840 --> 00:12:52,360
+minutes been been busy
+building this week
+
+141
+00:12:52,360 --> 00:12:55,180
+i'm i'm worried that my
+clog code is going to
+
+142
+00:12:55,180 --> 00:12:57,560
+run out of capacity in
+in a week and a half
+
+143
+00:12:57,560 --> 00:13:00,640
+and so i've been
+cranking out lots of new
+
+144
+00:13:00,640 --> 00:13:03,320
+stuff i just can't help
+myself it's just like
+
+145
+00:13:03,790 --> 00:13:05,540
+every time i get an
+idea i'm like oh i
+
+146
+00:13:05,540 --> 00:13:08,100
+just gotta go build that
+so i'm like a kid in
+
+147
+00:13:08,100 --> 00:13:11,350
+a candy store that with
+no self-control but
+
+148
+00:13:11,350 --> 00:13:14,080
+the uh the difference
+is i'm building crazy
+
+149
+00:13:14,080 --> 00:13:17,620
+uh web apps for or
+libraries for no particular
+
+150
+00:13:17,620 --> 00:13:22,580
+purpose may i ask
+Reuven when you're
+
+151
+00:13:22,580 --> 00:13:25,160
+doing this uh these
+different types of projects
+
+152
+00:13:25,160 --> 00:13:27,740
+how much you you
+keep on adjusting the
+
+153
+00:13:27,740 --> 00:13:32,800
+the the agents and their
+their like contents
+
+154
+00:13:32,800 --> 00:13:34,960
+how they behave i think
+that you mentioned
+
+155
+00:13:34,960 --> 00:13:36,440
+something about that
+you have a wiki about
+
+156
+00:13:36,440 --> 00:13:39,240
+it or also but for
+different type of projects
+
+157
+00:13:39,240 --> 00:13:41,600
+are you creating new
+agents perhaps or are
+
+158
+00:13:41,600 --> 00:13:45,000
+you using the same
+same agents for all i'm
+
+159
+00:13:45,000 --> 00:13:47,000
+changing them all i'm
+totally customizing
+
+160
+00:13:47,000 --> 00:13:50,040
+the agents the commands
+and the cloud md one
+
+161
+00:13:50,040 --> 00:13:53,620
+and and it's it's a
+battle with um anthropic
+
+162
+00:13:53,620 --> 00:13:56,280
+so they keep changing
+their internal guidance
+
+163
+00:13:56,280 --> 00:13:58,700
+system so i have to
+keep modifying the
+
+164
+00:13:58,700 --> 00:14:01,520
+way that the system
+you know invocates the
+
+165
+00:14:01,520 --> 00:14:04,160
+agents so I had to do
+an update yesterday
+
+166
+00:14:04,160 --> 00:14:05,900
+that was literally
+nothing more than changing
+
+167
+00:14:05,900 --> 00:14:08,900
+my guidance so it
+would tell it to use uh
+
+168
+00:14:08,900 --> 00:14:13,500
+Claude agents and uh
+tasks so we invoke it
+
+169
+00:14:13,500 --> 00:14:15,460
+correctly and that was
+a change that they made
+
+170
+00:14:15,460 --> 00:14:18,600
+a week or so ago so
+everything I do is
+
+171
+00:14:18,600 --> 00:14:20,300
+customized to the
+particulars of the thing I'm
+
+172
+00:14:20,300 --> 00:14:23,340
+doing and building
+how do you do that are
+
+173
+00:14:23,340 --> 00:14:26,840
+you asking Claude to
+change the behavior yeah
+
+174
+00:14:26,840 --> 00:14:29,580
+exactly what I'm doing
+so once I so there's
+
+175
+00:14:29,580 --> 00:14:31,680
+two parts of it once
+I built the thing I
+
+176
+00:14:31,680 --> 00:14:35,220
+have to optimize it.
+So when I'm using, I'm
+
+177
+00:14:35,220 --> 00:14:38,180
+generally creating
+either CLIs or MCPs for
+
+178
+00:14:38,180 --> 00:14:40,160
+the tools that I'm
+building. Then I integrate
+
+179
+00:14:40,160 --> 00:14:43,800
+those into CLAW
+directly, both as an MCP
+
+180
+00:14:43,800 --> 00:14:46,820
+and I get the commands
+and agents to understand
+
+181
+00:14:46,820 --> 00:14:48,900
+that those MCP tools
+are available for
+
+182
+00:14:48,900 --> 00:14:52,240
+it to use in whatever
+context. Then I get
+
+183
+00:14:52,240 --> 00:14:56,280
+it to sort of run deep
+sort of variants on
+
+184
+00:14:56,280 --> 00:14:59,760
+how to use the whatever
+tool and optimize and
+
+185
+00:14:59,760 --> 00:15:02,540
+check for errors and
+and problems and things
+
+186
+00:15:02,540 --> 00:15:04,280
+like that and that
+creates a reciprocal
+
+187
+00:15:04,280 --> 00:15:07,260
+kind of self-improvement
+of the system once
+
+188
+00:15:07,260 --> 00:15:09,900
+it's built so it ensures
+that it's not fake
+
+189
+00:15:10,200 --> 00:15:13,280
+right are you relying
+solely on on the cloud
+
+190
+00:15:13,280 --> 00:15:15,320
+code on this this one
+or are you using perhaps
+
+191
+00:15:15,320 --> 00:15:18,920
+the gemini cli to
+to like validate or
+
+192
+00:15:18,920 --> 00:15:23,080
+improve those i uh i
+use rue or klein as a
+
+193
+00:15:23,080 --> 00:15:25,980
+secondary validation if
+if there's breakage in
+
+194
+00:15:25,980 --> 00:15:29,710
+the mcp or cli that that
+could cause uh problems
+
+195
+00:15:29,710 --> 00:15:32,360
+um i've been looking
+at you know using
+
+196
+00:15:32,360 --> 00:15:34,440
+open code i just haven't
+had time to really
+
+197
+00:15:34,440 --> 00:15:38,240
+fully implement it okay
+sst open code project
+
+198
+00:15:38,240 --> 00:15:40,540
+yeah so so basically
+all of the projects
+
+199
+00:15:40,540 --> 00:15:43,140
+that you have a different
+types of behavior of
+
+200
+00:15:43,140 --> 00:15:45,400
+these agents uh in
+order to get the best
+
+201
+00:15:45,400 --> 00:15:49,420
+results yeah keep in
+mind i'm doing easily a
+
+202
+00:15:49,420 --> 00:15:53,300
+dozen to some weeks, 20
+different projects on
+
+203
+00:15:53,300 --> 00:15:56,200
+the fly. So, you know,
+between all the random
+
+204
+00:15:56,200 --> 00:15:58,740
+calls I have and
+things I'm building,
+
+205
+00:15:58,740 --> 00:16:01,760
+things I previously built,
+you know, I'm juggling
+
+206
+00:16:01,760 --> 00:16:04,540
+dozens of these things,
+you know, both on
+
+207
+00:16:04,540 --> 00:16:06,720
+the fly. Someone
+calls me up, you know,
+
+208
+00:16:06,720 --> 00:16:08,760
+randomly on a Tuesday and
+says, I need something
+
+209
+00:16:08,760 --> 00:16:10,620
+built. And you've got
+60 minutes to build
+
+210
+00:16:10,620 --> 00:16:14,680
+it to longer term
+engagements right so i'm
+
+211
+00:16:14,680 --> 00:16:18,020
+i'm juggling a lot so
+the way that i the way
+
+212
+00:16:18,020 --> 00:16:21,720
+that i keep organized
+in this sort of high
+
+213
+00:16:21,720 --> 00:16:26,800
+high text shifting which
+is me i um i make sure
+
+214
+00:16:26,800 --> 00:16:29,640
+that my agents and my
+commands are specific
+
+215
+00:16:29,640 --> 00:16:31,840
+to what the thing
+needs to do so when i
+
+216
+00:16:31,840 --> 00:16:34,220
+come back in two weeks
+and forgot totally what
+
+217
+00:16:34,220 --> 00:16:36,700
+i built all i need to
+do is know that my the
+
+218
+00:16:36,700 --> 00:16:38,760
+structure i set up for
+the customer or client
+
+219
+00:16:38,760 --> 00:16:42,540
+in the agents folder
+and commands and clod
+
+220
+00:16:42,540 --> 00:16:44,920
+are set up basically
+correctly unless
+
+221
+00:16:44,920 --> 00:16:46,720
+they've changed them
+but generally they don't
+
+222
+00:16:46,720 --> 00:16:49,280
+mess around with that
+stuff and then i just
+
+223
+00:16:49,280 --> 00:16:51,040
+continue on where i left
+off and the other thing
+
+224
+00:16:51,040 --> 00:16:53,700
+i do is i create
+issues in github with
+
+225
+00:16:53,700 --> 00:16:57,880
+details of whatever it
+is that i built yeah so
+
+226
+00:16:58,380 --> 00:17:01,920
+basically if you're
+updating cloud flow
+
+227
+00:17:01,920 --> 00:17:03,920
+something that you have
+like a backup of these
+
+228
+00:17:03,920 --> 00:17:07,520
+agents and you will
+just uh then then use
+
+229
+00:17:07,520 --> 00:17:10,220
+those yeah the other yeah
+the other part of the
+
+230
+00:17:10,220 --> 00:17:13,360
+equation and depending
+on the clients larger
+
+231
+00:17:13,360 --> 00:17:14,800
+companies don't always
+want me to include
+
+232
+00:17:14,800 --> 00:17:18,280
+my fireflies but the
+fireflies records every
+
+233
+00:17:18,280 --> 00:17:21,020
+single conversation
+i have and stores it
+
+234
+00:17:21,020 --> 00:17:25,700
+into a into my google
+drive and then because
+
+235
+00:17:25,700 --> 00:17:28,080
+chat gpt and claude
+both have integrations
+
+236
+00:17:28,080 --> 00:17:30,560
+with google drive all
+i need to do before my
+
+237
+00:17:30,560 --> 00:17:33,220
+call or or let's be
+honest during my random
+
+238
+00:17:33,220 --> 00:17:36,420
+calls it'll i'll go and
+say you know chat gpt
+
+239
+00:17:36,420 --> 00:17:38,580
+or claude tell me
+everything i need to know
+
+240
+00:17:38,580 --> 00:17:40,380
+about what was previously
+discussed and what
+
+241
+00:17:40,380 --> 00:17:42,500
+i need to do going
+forward and that gives
+
+242
+00:17:42,500 --> 00:17:45,360
+me a kind of long-term
+memory because it's
+
+243
+00:17:45,360 --> 00:17:47,380
+really hard to remember
+everything when you're
+
+244
+00:17:47,380 --> 00:17:50,880
+doing 20 or 30 different
+random calls a week
+
+245
+00:17:50,880 --> 00:17:55,260
+yeah sure that makes
+sense okay thanks that
+
+246
+00:17:55,260 --> 00:17:59,080
+helps a lot hi rob
+yeah hey tommy good to
+
+247
+00:17:59,080 --> 00:18:01,040
+see you again i find it
+really neat roof that
+
+248
+00:18:01,040 --> 00:18:04,140
+you've got uh that
+it's actually rue still
+
+249
+00:18:04,140 --> 00:18:08,120
+has a place in the ide
+to help manage uh mcp
+
+250
+00:18:08,120 --> 00:18:12,300
+servers yeah i right
+yeah i'm using the i'm
+
+251
+00:18:12,300 --> 00:18:14,780
+using the uh cloud
+code integration mind
+
+252
+00:18:14,780 --> 00:18:17,800
+you but uh to save a
+few bucks but yeah works
+
+253
+00:18:17,800 --> 00:18:21,380
+pretty good yeah neat
+they're making and
+
+254
+00:18:21,380 --> 00:18:23,220
+they've We've got an
+agent system coming soon.
+
+255
+00:18:23,320 --> 00:18:27,160
+That's a question
+related to Claude-flow
+
+256
+00:18:27,160 --> 00:18:29,260
+and the
+integration between
+
+257
+00:18:29,260 --> 00:18:31,480
+the user interface
+and the background,
+
+258
+00:18:31,480 --> 00:18:32,840
+the front end and
+the background.
+
+259
+00:18:33,520 --> 00:18:40,080
+I have heard someone
+else also than me having
+
+260
+00:18:40,080 --> 00:18:42,820
+problems with the
+integration from the
+
+261
+00:18:42,820 --> 00:18:45,960
+front end to back end
+because of the Spark
+
+262
+00:18:45,960 --> 00:18:50,080
+methodology or something
+in the agents that
+
+263
+00:18:50,080 --> 00:18:53,900
+tend to fill in with
+a hack or a mock data
+
+264
+00:18:53,900 --> 00:18:56,980
+or a quick fix if they
+run into something.
+
+265
+00:18:57,940 --> 00:18:59,720
+That's a thing.
+
+266
+00:18:59,720 --> 00:19:03,200
+100% it's a thing.
+And I've been working
+
+267
+00:19:03,200 --> 00:19:05,780
+on, if you do the
+latest version to help,
+
+268
+00:19:05,780 --> 00:19:06,980
+you'll see that
+there's a truth of
+
+269
+00:19:06,980 --> 00:19:10,540
+verification and a pair
+programming paradigm.
+
+270
+00:19:10,540 --> 00:19:12,820
+Now, unfortunately, I
+have to spend more time
+
+271
+00:19:12,820 --> 00:19:14,520
+actually showing people
+how to use it. But
+
+272
+00:19:14,520 --> 00:19:17,540
+basically what that does
+is when you integrate
+
+273
+00:19:17,540 --> 00:19:20,060
+that into your
+development flow, So let's
+
+274
+00:19:20,060 --> 00:19:22,640
+say you have a multi
+-phase implementation,
+
+275
+00:19:22,640 --> 00:19:25,670
+you can have a validation
+and verification
+
+276
+00:19:25,670 --> 00:19:27,840
+phase as part of it,
+and you create a series
+
+277
+00:19:27,840 --> 00:19:30,240
+of agents that basically
+are explicit for
+
+278
+00:19:30,240 --> 00:19:32,960
+the project that you
+want to build. And as
+
+279
+00:19:32,960 --> 00:19:35,000
+it progresses through
+the project, it chooses
+
+280
+00:19:35,000 --> 00:19:37,960
+different agents, and
+then it has hooks or
+
+281
+00:19:37,960 --> 00:19:41,300
+explicitly defined in
+the agent prompt when
+
+282
+00:19:41,300 --> 00:19:43,400
+to use the verification
+steps to validate
+
+283
+00:19:43,400 --> 00:19:47,040
+that it's not fake,
+simulated, or BS. Yes.
+
+284
+00:19:47,040 --> 00:19:50,380
+Yeah. Yeah. And I
+actually have tried this
+
+285
+00:19:50,380 --> 00:19:55,860
+trust score 95 or
+something, but still there
+
+286
+00:19:55,860 --> 00:19:59,820
+was the Claude seems
+to try to do something.
+
+287
+00:20:00,080 --> 00:20:04,040
+And you have to be
+really careful. I myself
+
+288
+00:20:04,040 --> 00:20:07,700
+tell to my team and
+other acquaintances that
+
+289
+00:20:08,130 --> 00:20:11,640
+you become a manager
+who is like overseeing
+
+290
+00:20:11,640 --> 00:20:13,420
+what the team has
+done. and you have to
+
+291
+00:20:13,420 --> 00:20:16,200
+sometimes double check
+even if you ask from the
+
+292
+00:20:16,200 --> 00:20:19,000
+court that how did you
+do did did you do any
+
+293
+00:20:19,000 --> 00:20:22,080
+any uh mocks or find
+out something at first
+
+294
+00:20:22,080 --> 00:20:24,800
+no no everything is
+working but then you
+
+295
+00:20:24,800 --> 00:20:28,300
+just don't yeah yeah
+it's it's a challenge and
+
+296
+00:20:28,300 --> 00:20:30,960
+it's getting worse um
+i think getting worse
+
+297
+00:20:30,960 --> 00:20:33,800
+it's getting worse
+yeah not better it was
+
+298
+00:20:33,800 --> 00:20:37,180
+easier a month two
+months ago so it's it's
+
+299
+00:20:37,180 --> 00:20:39,130
+something has that has
+to do with the guidance
+
+300
+00:20:39,130 --> 00:20:42,580
+and brad last week uh
+showed an example of
+
+301
+00:20:42,580 --> 00:20:44,480
+his prompt that he's using
+for sort of grounding
+
+302
+00:20:44,480 --> 00:20:48,000
+so the key is the
+grounding it's how do
+
+303
+00:20:48,000 --> 00:20:50,380
+you you know how you
+define what's real and
+
+304
+00:20:50,380 --> 00:20:53,640
+you explicitly define
+the the output and
+
+305
+00:20:53,640 --> 00:20:57,060
+validation of the output
+that is you know using
+
+306
+00:20:57,060 --> 00:20:59,980
+a database and the
+proper algorithms and
+
+307
+00:20:59,980 --> 00:21:01,700
+whatever it is that
+it's supposed to do and
+
+308
+00:21:01,700 --> 00:21:04,740
+it's not just returning
+some data that indicates
+
+309
+00:21:04,740 --> 00:21:06,540
+that it works the
+way it's it thinks it
+
+310
+00:21:06,540 --> 00:21:10,020
+should and yeah so
+that that all has to do
+
+311
+00:21:10,020 --> 00:21:14,260
+with context engineering
+and and if you don't
+
+312
+00:21:14,260 --> 00:21:17,840
+explicitly define what
+it needs to do in terms
+
+313
+00:21:17,840 --> 00:21:19,780
+of and how to validate
+that it did those
+
+314
+00:21:19,780 --> 00:21:21,680
+things then you're
+gonna get you're gonna
+
+315
+00:21:21,680 --> 00:21:24,320
+likely get a first
+iteration that's basically
+
+316
+00:21:24,320 --> 00:21:27,340
+mocked which is okay
+but then then you want
+
+317
+00:21:27,340 --> 00:21:29,840
+to go from mock to
+real and then that that
+
+318
+00:21:29,840 --> 00:21:33,140
+is a a test driven
+development process that
+
+319
+00:21:33,140 --> 00:21:35,980
+indicates how you tell
+it what's real and what's
+
+320
+00:21:35,980 --> 00:21:38,400
+fake yeah and i i
+think that's just a
+
+321
+00:21:38,400 --> 00:21:40,460
+question related to that
+if you're going to put
+
+322
+00:21:40,460 --> 00:21:44,800
+a hive mind to work on
+the project it tends
+
+323
+00:21:44,800 --> 00:21:47,060
+to get more more of
+the mock data and then
+
+324
+00:21:47,060 --> 00:21:50,540
+later on you will be
+able to if you narrow
+
+325
+00:21:50,540 --> 00:21:54,120
+down the task and give
+more exact prompt then
+
+326
+00:21:54,120 --> 00:21:58,280
+it will produce better
+results do you agree
+
+327
+00:21:58,280 --> 00:22:03,500
+with that yeah i do
+yeah exactly so it's and
+
+328
+00:22:03,500 --> 00:22:05,820
+but to be honest when
+i see that i'm like
+
+329
+00:22:05,820 --> 00:22:08,640
+well that's why we the
+world needs agentic
+
+330
+00:22:08,640 --> 00:22:11,640
+engineers and it all
+it like validates our
+
+331
+00:22:11,640 --> 00:22:14,740
+existence as as
+professionals in the space if
+
+332
+00:22:14,740 --> 00:22:16,640
+you know at a point
+where you just randomly
+
+333
+00:22:16,640 --> 00:22:18,580
+ask a question and it
+magically sort of gives
+
+334
+00:22:18,580 --> 00:22:21,180
+you the answer we
+there's the question of
+
+335
+00:22:21,180 --> 00:22:24,720
+our our valid our value
+becomes less but i
+
+336
+00:22:24,720 --> 00:22:26,860
+don't i don't see that
+happening anytime soon
+
+337
+00:22:27,540 --> 00:22:30,460
+but still it's so much
+faster okay it's it's
+
+338
+00:22:30,460 --> 00:22:32,920
+it's ours thank you
+yeah we're at yeah
+
+339
+00:22:32,920 --> 00:22:34,460
+we're at we're at the
+top of the hour so just
+
+340
+00:22:34,460 --> 00:22:37,200
+as a quick uh a quick
+warning to all this is
+
+341
+00:22:37,200 --> 00:22:43,040
+going to be long oh
+we lost you we've got
+
+342
+00:22:43,040 --> 00:22:47,140
+we got cottage level
+cottage level lag roof
+
+343
+00:22:47,800 --> 00:22:53,020
+yeah okay we go oh
+all right so uh you're
+
+344
+00:22:53,020 --> 00:22:56,360
+back oh yeah i'm i'm
+i'm on the uh i'm
+
+345
+00:22:56,360 --> 00:22:58,080
+i'm on the wi-fi
+at the internet
+
+346
+00:22:58,080 --> 00:23:00,400
+unfortunately so hopefully
+this holds through
+
+347
+00:23:00,640 --> 00:23:03,020
+all right i'm gonna
+broadcast and max
+
+348
+00:23:03,020 --> 00:23:06,020
+out my uh my system
+here all right

@@ -1,0 +1,321 @@
+00:20:14	Guy Bieber:	Model efficiency paper: https://arxiv.org/abs/2509.05276
+00:20:30	Guy Bieber:	modeling the spiking brain to be more efficient.
+00:22:19	Guy Bieber:	It’s about what an AI can do and can’t do. Not whether it is consciousness.
+00:22:26	Murray Kopit:	How about embedded systems. Does the embedded system run and work as expected? That's evidence of truth.
+00:24:13	Nolan Dubeau:	@Brad Ross I still don’t have access to the new community site despite having a subscription on the previous site.  Can you check hello@nolandubeau.com?
+00:25:59	Guy Bieber:	Crazy time:
+00:26:46	Martin Gross:	Reacted to "Screenshot2025_09_26_090857.jpg" with 😁
+00:27:44	Brad Ross:	@Chris McGrath and others - here is our group foced on our community site: https://chat.whatsapp.com/JWDgjuh7FdR2H6qaPlkjyc
+00:30:08	Brad Ross:	Replying to "@Brad Ross I still d..."
+
+i sent you an invite via email. For all members we manually upgrade to make sure you have the proper membership level (from old site for legacy memberships) - please sign up and Nick, me or our website team will make sure your account is upgraded
+00:30:31	Brad Ross:	Replying to "@Brad Ross I still d..."
+
+FYI the invite is from the community site (Disco) directly
+00:30:50	Nolan Dubeau:	Interstellar!
+00:32:22	Gideon Marken:	@Brad Ross - is this related to what you posted yesterday? https://gist.github.com/bar181/fedd25dabc05c21eaad31c1606d3509b
+00:34:43	Vincent Sider:	@Robert Ranson hello, I am in
+00:34:58	Robert Ranson:	Reacted to "@Robert Ranson hello..." with 👍
+00:36:19	Guy Bieber:	Are you doing anything to handle the non-predictability of the operating system. For instance real time linux is limited by the interrupt latency.
+00:37:35	Guy Bieber:	I still believe that randomness is core to consciousness. Just like it is for evolution. Survival of the fittest thought.
+00:37:51	Dmitry Zhechkov:	Reacted to "I still believe it i..." with 💯
+00:39:16	Guy Bieber:	This brain spike model for llms might be interesting to include in this adventure: https://arxiv.org/abs/2509.05276
+00:39:19	rUv:	claude-flow: npx claude-flow@alpha mcp start - ✓ Connectedruv-swarm: npx ruv-swarm mcp start - ✓ Connectedflow-nexus: npx flow-nexus@latest mcp start - ✓ Connectedpsycho-symbolic-reasoner: npx -y psycho-symbolic-reasoner@latest start --transport stdio --quiet - ✓ Connectedconsciousness-explorer: npx consciousness-explorer mcp - ✓ Connectedsublinear-solver-local: node ./dist/mcp/server.js - ✓ Connectedstrange-loops: npx strange-loops@latest mcp start - ✓ Connected
+00:41:51	Guy Bieber:	The strange loop is creating randomness.
+00:42:36	Dmitry Zhechkov:	Replying to "I still believe that..."
+
+I am still amazed how it can derive something completely new, although there is only a small random “mutation” in each micro-loop.
+00:42:50	Guy Bieber:	Reacted to "I am still amazed ho..." with 👍
+00:43:43	doga oztuzun:	I used it for prediction market on FED decision, mind blown
+00:44:10	Dmitry Zhechkov:	Replying to "I used it for predic..."
+
+Did you try it on futures or options ?
+00:44:20	doga oztuzun:	Replying to "I used it for predic..." 
+
+ Polymarket*
+00:44:40	Dmitry Zhechkov:	Reacted to "Polymarket*" with 🤔
+00:44:53	doga oztuzun:	Replying to "I used it for predic..." 
+
+ polymarket.com
+00:44:55	Fahad Arshad:	Replying to "I used it for predic..."
+
+Can you share a bit more on what was “mind blowing” specifically?
+00:45:26	Dmitry Zhechkov:	Reacted to "polymarket.com" with 🔥
+00:45:43	Saad Khan:	Replying to "I used it for predic..."
+
+@doga oztuzun I don't know if you are into prediction market but these guys are doing leveraged on prediction, I think hyperEVMhttps://hyperodd.com/
+00:45:45	Brad Ross:	Replying to "@Brad Ross - is this..."
+
+that was my wacky from Aug - I discontinued this project
+00:46:14	Guy Bieber:	On another topic: It would be interesting to look for unusual concepts/connections in the ai model. Treat it more like a knowledge graph.
+00:46:37	doga oztuzun:	Replying to "I used it for predic..." 
+
+ The research and analysis on Possible FED's decision for the coming announcement.
+It's analyzing of current metrics and making prediction.
++ It's strategy to take your position on investing to options.
+00:46:47	Guy Bieber:	Palantir is playing with ontology graphs.
+00:47:06	doga oztuzun:	Replying to "I used it for predic..." 
+
+ Current metrics= macro economy data
+00:47:34	Dmitry Zhechkov:	Does sub-linear mean that the function in question is growing slower than linear function ?
+00:48:01	Guy Bieber:	Replying to "Palantir is playing ..."
+
+https://www.palantir.com/docs/foundry/ontology/why-ontology/
+00:48:02	doga oztuzun:	Replying to "I used it for predic..." 
+
+ I will check
+hyperodd.
+
+I just wanted to see it to make plans for prediction market.
+00:48:03	Saad Khan:	Reacted to "Current metrics= mac..." with ✅
+00:48:10	doga oztuzun:	Replying to "I used it for predic..." 
+
+ Not really I wanted to invest
+00:48:19	doga oztuzun:	Replying to "I used it for predic..." 
+
+ But I will watch it
+00:48:46	Nolan Dubeau:	Like taking acid and doing work?
+00:48:51	Scott Kennedy:	We so need an effective bs detector.
+00:48:56	Saad Khan:	Replying to "I used it for predic..."
+
+@doga oztuzun ah I see. its a great use case
+00:49:03	Bence Csernak:	Reacted to "Like taking acid and..." with 😃
+00:49:23	Bence Csernak:	Reacted to "We so need an effect..." with 👍
+00:49:32	Dmitry Zhechkov:	Reacted to "Like taking acid and..." with 😃
+00:49:51	Saad Khan:	Reacted to "https://www.palantir..." with 👀
+00:49:58	Scott Kennedy:	Good points, thanks for sharing
+00:50:06	doga oztuzun:	Replying to "I used it for predic..." 
+
+ Sub linear said current economy is in recession and fed can decide 50+bps decrease.
+00:50:23	Chris McGrath:	Reacted to "Like taking acid a..." with 😃
+00:50:24	Dmitry Zhechkov:	Reacted to "Sub linear said curr..." with 👍
+00:50:33	Saad Khan:	Reacted to "Sub linear said curr..." with 👍
+00:50:58	doga oztuzun:	Replying to "I used it for predic..." 
+
+ But it's trading plan was more complex
+00:51:01	Gideon Marken:	Replying to "Like taking acid and..."
+
+first startup I was at - the lead dev vanished and a project was due - the CEO sent me and another dev to his house to find him and he was deeply tripping. We brought him in though, and he finished the project 😄
+00:51:29	Chris McGrath:	Reacted to "first startup I wa..." with 😂
+00:51:36	Liam Helmer:	Replying to "Like taking acid and..."
+
+HAHA, sounds about right
+00:53:29	Guy Bieber:	https://www.youtube.com/watch?v=3fQbxz--nFk&pp=ygUgbmF0ZSBqb25lcyBhaSBwZXJjZXB0aW9uIG9mIHRpbWU%3D  accelerated time with AI
+00:53:39	Saad Khan:	Replying to "I used it for predic..."
+
+oh wow, interesting. It would be interesting to see the prediction for the next 3 decision. September is usually a month for cool down, it would be interesting to see if it predicts taking annual cycle into account.
+00:53:54	Guy Bieber:	Replying to "We so need an effect..."
+
+I point chatgpt or gemini at some of ruv’s repos and have it tell me what is good and questionable.
+00:54:02	Saad Khan:	Reacted to "first startup I was ..." with 😂
+00:54:07	Guy Bieber:	Replying to "We so need an effect..."
+
+It actually does a pretty good job.
+00:55:12	Dmitry Zhechkov:	Reacted to "We so need an effect..." with 👍
+00:56:33	doga oztuzun:	Replying to "I used it for predic..." 
+
+ I can't post screenshots, it gave examples when shit hit, fed made decisions the market was not expecting. 
+
+When they sleep, you are awake, it noted :)
+00:56:54	rUv:	Here's the Temporal Consciousness Mathematics we just created. https://gist.github.com/ruvnet/32dfe569fa552a55cfb32942311450f1
+00:57:11	Bence Csernak:	https://obot.ai/obot-ai-secures-35m-seed-to-build-enterprise-mcp-gateway/
+00:57:21	Antoaneta Vladimirova:	Reacted to "Here's the Temporal ..." with ❤️
+00:57:34	Saad Khan:	Reacted to "I can't post screens..." with ✅
+00:57:45	Saad Khan:	Reacted to "Here's the Temporal ..." with ❤️
+00:58:17	rUv:	340 stars
+00:58:23	Guy Bieber:	Replying to "We so need an effect..."
+
+example https://chatgpt.com/share/68d6c22b-f678-8000-8ba3-7e96296c1107
+01:00:20	rUv:	Replying to "We so need an effect..."
+
+💩
+01:01:15	Guy Bieber:	Reacted to "💩" with 😀
+01:01:52	doga oztuzun:	Replying to " 340 stars" 
+
+ I can introduce the 0g.ai Blockchain network, maybe for grants, not really like VC / investment*.
+
+If it interesting for the organisation
+01:03:02	Fahad Arshad:	Replying to "Here's the Temporal ..."
+
+Can you please share the sublinear paper from last week that you were taking about @rUv
+01:04:55	Brad Ross:	this is outstanding Vincent
+01:04:58	Scott Kennedy:	Very good stuff here Vincent
+01:05:17	Scott Kennedy:	Thank you for sharing today. I’m excited to see you fully execute & launch!
+01:05:19	Dmitry Zhechkov:	Very cool!
+01:05:20	John Messing:	Great Vincent. Thanks!
+01:05:28	Bence Csernak:	amazin
+01:05:30	Gregg Coppen:	Very cool Vincent, thank you
+01:05:38	Antoaneta Vladimirova:	@Vincent Sider what other validation techniques do you use? What’s generalizable?
+01:05:40	Gideon Marken:	meanwhile... mobile carriers.. 😴very cool demo!mobile carries once they see this 🤑
+01:05:42	Nick Ruest:	Love it Vincent ... I'm tired of hearing from these cold callers non stop lol
+01:06:37	Nolan Dubeau:	Anyone else getting an SSL error on @Vincent Sider ’s site?  https://deepblocker.ai/
+01:07:12	Saad Khan:	Replying to " 340 stars"
+
+Solid whitepaper. this is pretty cool
+01:07:13	Gideon Marken:	Replying to "Anyone else getting ..."
+
+loads - no error here - in CA, US
+01:07:34	Brad Ross:	I would pay for my parents and all their friends
+01:08:04	Chris McGrath:	No one should answer the phone ever again
+01:08:14	Scott Kennedy:	Reacted to "No one should answer..." with 😆
+01:08:21	Robert Ranson:	Reacted to "No one should answer..." with 👍
+01:08:23	Guy Bieber:	Try this against a personal clone: Delphi.ai
+01:08:26	René Maldonado Reyes:	Reacted to "No one should answer…" with 👌
+01:08:35	Mondweep Chakravorty:	Check this from O2 https://www.youtube.com/watch?v=RV_SdCfZ-0s
+
+AI Granny
+01:09:09	Dmitry Zhechkov:	You do not use elevenlabs.io ?
+01:09:18	Dmitry Zhechkov:	Reacted to "No one should answer..." with 😆
+01:11:01	Jed Arden:	Lenny, for phone scammers: https://www.youtube.com/watch?v=NUqTkHJj8DU
+01:11:02	Chris Phillips:	what about other AI's being gamed.. prompt injection-esque but by voice.
+01:11:47	Chris McGrath:	I agree
+01:12:56	Nolan Dubeau:	Need to jump off for a work call. Good to see everyone.  Great presentation Vincent.
+01:13:04	Chris McGrath:	I might be able to help as well. I am working with the guys who make Diligence GPT who are working with banks for AI automated approvals etc
+01:13:23	Saad Khan:	Reacted to "No one should answer..." with 😆
+01:14:33	Scott Howard:	Sell to CIC platforms - example Genesys
+01:15:14	Scott Howard:	Banks, telcos etc all run their call centers on platforms like Genesys and will be way behind on AI
+01:15:28	Chris McGrath:	Reacted to "Banks, telcos etc ..." with 👍
+01:16:42	Vincent Sider:	Reacted to "this is outstanding ..." with ❤️
+01:16:45	Vincent Sider:	Reacted to "Very good stuff here..." with ❤️
+01:16:49	Vincent Sider:	Reacted to "Thank you for sharin..." with 👍
+01:16:51	Vincent Sider:	Reacted to "Very cool!" with 👍
+01:16:54	Vincent Sider:	Reacted to "Great Vincent. Thank..." with 👍
+01:16:54	doga oztuzun:	Replying to " 340 stars" 
+
+ I have a friend at the executive level
+01:16:57	Vincent Sider:	Reacted to "amazin" with 👍
+01:16:59	Vincent Sider:	Reacted to "Very cool Vincent, t..." with 👍
+01:17:47	Vincent Sider:	Replying to "@Vincent Sider what ..."
+
+I use 3 models that run their prediction during the call and I use the context of the call to find out intent
+01:17:54	Vincent Sider:	Reacted to "meanwhile... mobile ..." with 👍
+01:17:56	Vincent Sider:	Reacted to "Love it Vincent ... ..." with ❤️
+01:18:02	Vincent Sider:	Reacted to "I would pay for my p..." with ❤️
+01:18:05	Vincent Sider:	Reacted to "No one should answer..." with 👍
+01:18:11	Bence Csernak:	Reacted to "I use 3 models that ..." with 👍
+01:18:13	Vincent Sider:	Replying to "Try this against a p..."
+
+Will do!
+01:18:17	Vincent Sider:	Reacted to "Check this from O2 h..." with 😂
+01:18:38	Vincent Sider:	Replying to "You do not use eleve..."
+
+One of the platform I use to clone voices yes
+01:18:52	Vincent Sider:	Reacted to "Lenny, for phone sca..." with 😂
+01:19:03	Dmitry Zhechkov:	Reacted to "One of the platform ..." with 👍
+01:19:08	John Messing:	As one of the mentioned demographic (respected elder to be protected?) I would be happy to give a testimonial after a demo!
+01:19:28	Gideon Marken:	my last position, the parent company banned AI until they located an AI lead that would define how AI could be used in the 5-7 companies owned by the parent, and that was last year.
+01:19:35	Chris McGrath:	I would say not with the adoption I see from Devs (IMO)
+01:19:53	Vincent Sider:	Replying to "what about other AI'..."
+
+Excellent point, this is what I am working on now, protecting the assistant against prompt injections and other threats listed by owasp
+01:19:59	Vincent Sider:	Reacted to "Need to jump off for..." with 👍
+01:20:01	Mondweep Chakravorty:	Replying to "[Full message cannot be displayed on this version]" 
+
+ I am exploring this using Guided Learning in Gemini at https://g.co/gemini/share/4d393212a39e
+01:20:11	Nick Ruest:	The developers I talk to about this very much give feedback that we're living in the future and that I must be from a different planet
+01:20:22	Vincent Sider:	Replying to "Sell to CIC platform..."
+
+Great advice thanks Scott
+01:20:25	Chris McGrath:	Reacted to "The developers I t..." with 😂
+01:20:41	Bence Csernak:	Reacted to "The developers I tal..." with 😂
+01:20:41	Martin Gross:	Reacted to "The developers I tal..." with 👍
+01:20:43	Chris McGrath:	Replying to "The developers I t..."
+
+I just turn that message around on them and drive the FOMO
+01:20:59	Vincent Sider:	Reacted to "Banks, telcos etc al..." with 👍
+01:21:17	Guy Bieber:	Michael best background ever
+01:21:26	Bence Csernak:	Reacted to "Michael best backgro..." with 👍
+01:21:30	Gideon Marken:	Reacted to "Michael best backgro..." with 👍
+01:21:37	Murray Kopit:	Replying to "I used it for predic..."
+
+I'm using claude-flow to build embedded systems firmware that works in real-time in the real world.
+01:21:48	Bence Csernak:	Reacted to "I'm using claude-flo..." with 👍
+01:22:22	Vincent Sider:	Replying to "As one of the mentio..."
+
+Thank you John. You’ll be the first to know when the app is launched on the play store !
+01:22:31	Scott Howard:	Big time Innovators Dilemma all over the board. AI challenges many vectors of many business models, revenue models, operating budgets, job roles etc.
+01:22:47	Nick Ruest:	@Jed Arden "We're not using stackoverflow" lol
+01:22:53	Bence Csernak:	Replying to "I used it for predic..."
+
+I use it too and all other tools we mentioned in the last 10 months and sold to the code to clients and they still pay for it.
+01:23:17	Vincent Sider:	Replying to "I might be able to h..."
+
+Thank you @Chris McGrath  can you share you linkedin ?
+01:25:02	Bence Csernak:	Replying to "I might be able to h..."
+
+https://openai.com/index/gdpval/
+01:25:26	Guy Bieber:	Replying to "Michael best backgro..."
+
+Thought you were calling from space.
+01:25:39	Guy Bieber:	Replying to "Michael best backgro..."
+
+Are you on 3i/Atlas?
+01:25:44	Martin:	https://agentics.atlassian.net
+01:26:12	Mondweep Chakravorty:	https://github.com/mondweep/spec-kit-tinkering/blob/main/SpecKitTinkering/README.md
+01:27:17	doga oztuzun:	Bmad method, I like for spec dev
+01:27:18	Guy Bieber:	The problem definition and the process is becoming the most important part of development.
+01:27:30	Nate Aune:	Replying to "Big time Innovators ..."
+
+yes, like how will people be compensated in the age of AI? 
+
+this proposes a “pay per task” model of incentives. https://humandata.mercor.com/mercors-approach/incentive-structures
+01:27:38	doga oztuzun:	Reacted to I'm using claude-flo... with "👍"
+01:27:51	doga oztuzun:	Reacted to I use it too and all... with "👍"
+01:29:15	Nate Aune:	garbage in / garbage out
+01:32:04	Nate Aune:	Replying to "Bmad method, I like ..."
+
+do you mean this workflow? https://github.com/bmad-code-org/BMAD-METHOD/blob/main/docs/user-guide.md#the-planning-workflow-web-ui-or-powerful-ide-agents
+01:32:31	Guy Bieber:	Have it build a visual memory graph.
+01:32:50	Gregg Coppen:	This looks like an interesting memory/context management idea https://www.memvid.com
+01:33:35	Guy Bieber:	I was working on a continual memory model and the AI suggested using a KNN during the day and then do fine training on a MOE model at night.
+01:33:44	Guy Bieber:	That way you don’t destroy the core model stability.
+01:34:09	Mat:	Headed to an appointment. Will switch to mobile.
+01:34:50	rUv:	https://github.com/getzep/graphiti
+01:35:18	doga oztuzun:	Replying to "Bmad method, I like ..." 
+
+ Yes. Brainstorming, market research, competitor analysis and rest
+01:35:41	Guy Bieber:	I think detecting when the model is losing the plan and reinfecting it.
+01:35:47	Nate Aune:	this also looks interesting for building stateful agents with advanced memory that can learn over time. https://github.com/letta-ai/letta
+01:35:55	doga oztuzun:	Replying to "Bmad method, I like ..." 
+
+ My non tech friends can build better with it
+01:36:02	Benoit Domingue:	Hi everyone, I’m that vendor that Robert met the Montreal ALL IN show. (Working on kuma.marketing) It was great to get a glimpse of this discussion. I have to go but surely, will be back for more! 🤓
+01:36:22	rUv:	https://github.com/ruvnet/SAFLA/
+01:36:23	Nate Aune:	Replying to "this also looks inte..."
+
+accompanying course on agent memory: https://www.deeplearning.ai/short-courses/llms-as-operating-systems-agent-memory/
+01:37:41	Guy Bieber:	python to rust conversion is a thing.
+01:38:09	Dmitry Zhechkov:	Do you say in prompt “use SAFLA mcp” ?
+01:39:39	Guy Bieber:	Local MCPs and RAG.
+01:39:54	doga oztuzun:	Ethereum core dev lost his money by a mcp
+01:40:27	Vincent Sider:	{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["chrome-devtools-mcp@latest"]
+    }
+  }
+}
+01:40:40	Dmitry Zhechkov:	So the major value in chrome dev mcp is possibility to easily troubleshoot MCP servers?
+01:40:56	Vincent Sider:	No, it access the chrome console
+01:41:02	Chris Phillips:	Replying to "So the major value i..."
+
+you would use the mcp inspector for that ..
+01:41:08	Dmitry Zhechkov:	Reacted to "No, it access the ch..." with 👍
+01:41:15	Vincent Sider:	So your agent just debug from the console info
+01:41:42	Imad Ez-zejjari:	Reacted to "So your agent just d..." with 👍
+01:41:50	Dmitry Zhechkov:	Reacted to "you would use the mc..." with 👍
+01:41:52	Chris Phillips:	BTW, next week/ Oct 2  is MCPdev summit: https://mcpdevsummiteurope2025.sched.com/list/simple
+01:42:00	Vincent Sider:	Replying to "So the major value i..."
+
+https://developer.chrome.com/blog/chrome-devtools-mcp
+01:42:20	Dmitry Zhechkov:	Reacted to "So your agent just d..." with 👍
+01:42:35	Raoul:	Reacted to "{
+  "mcpServers": ..." with 🙏
+01:42:41	Saad Khan:	Link to the reddit link?
+01:42:47	Guy Bieber:	Reacted to "BTW, next week/ Oct ..." with 👍
+01:42:51	John Messing:	Reacted to "Link to the reddit..." with 👍
+01:43:01	Gideon Marken:	https://www.reddit.com/r/aipromptprogramming/
+01:43:51	Saad Khan:	Thank you everyone!
+01:44:12	Mondweep Chakravorty:	https://intelligensi.web.app/
+01:45:07	Nick Ruest:	Reacted to "https://www.reddit.c..." with 🫡

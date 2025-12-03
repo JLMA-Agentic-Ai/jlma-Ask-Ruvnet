@@ -1,0 +1,263 @@
+00:22:39	Kudakwashe's Loom Notetaker:	This meeting is being recorded by Kudakwashe Chinhara using Loom AI. Loom will store the recording and generate a recap and transcript, learn more at the help center.
+
+To start recording your meetings, connect your calendar at https://loom.com/meetings.
+
+Use chat commands /stop, /pause, or /resume to manage the meeting recording, /delete to delete the recording, or /help for more commands.
+00:23:15	Jed Arden:	@Ofer Shaal 
+
+Claude code is launched with the claude flow mcp
+
+Claude code then calls the claude-flow cli to establish stuff.
+
+I set up my prompts so that process and notes are left behind in the /notes folder so that a future invocation of Claude-code can pick up where it’s left off.
+00:24:01	Ofer Shaal:	Reacted to "@Ofer Shaal 
+
+Claude..." with 🙏
+00:24:10	Fireflies.ai Notetaker Dragan:	Dragan invited Fireflies.ai here to record & take notes. View Security & Privacy info: https://fireflies.ai/policy
+
+Type:
+'/ff leave' - Remove Fireflies
+
+View Realtime notes here: https://app.fireflies.ai/live/01K5ERXQN1H3AXYX3Q7K72JZ85?ref=live_chat
+00:24:18	Fireflies.ai Notetaker Peter:	Peter invited Fireflies.ai here to record & take notes. View Security & Privacy info: https://fireflies.ai/policy
+
+Type:
+'/ff leave' - Remove Fireflies
+
+View Realtime notes here: https://app.fireflies.ai/live/01K59RQB76F2HZG2V09TT2WSVK?ref=live_chat
+00:24:41	Chris Barlow:	Gidday @Teemu! 👋
+00:31:18	Guy Bieber:	https://openai.com/index/50-million-fund-to-build-with-communities/
+00:33:57	Guy Bieber:	I was going to apply for that for the abundance corporation concept, but you have to be established and have close to $500K in operations.
+00:34:41	Jed Arden:	Replying to "I was going to apply..."
+
+I mean…
+
+How hard to establish a Letter of interest?
+00:35:10	Chris Barlow:	Reacted to "https://openai.com/i..." with 👍
+00:35:34	Jed Arden:	Replying to "I was going to apply..."
+
+Sorta like how you can sell 1/1-trillionth of your business for $1.
+
+Boom, instant $1T valuation.
+00:35:35	Guy Bieber:	Also Claude Flow made the TLDR Web Dev newsletter.
+00:35:36	Jed Arden:	Replying to "I was going to apply..."
+
+/s
+00:35:37	Guy Bieber:	Congrats
+00:37:47	Julia Naris:	apologies, fellas, have to jump to a meeting, hope to join you next time!
+00:38:48	Guy Bieber:	Reacted to "Sorta like how you c..." with 🤣
+00:41:19	Guy Bieber:	Nexus Flow directly into ChatGPT? Crazy
+00:41:50	Robert Ranson:	Reacted to "Nexus Flow directly ..." with 😵‍💫
+00:42:12	Guy Bieber:	Isn’t the chatgpt instance itself essentially a sandbox.
+00:42:51	Guy Bieber:	Where are the MCPs hosted / running.
+00:43:20	Fahad Arshad:	Hmm…By default a new user seems to have 0 ruv tokens.
+00:46:45	Dmitry Zhechkov:	I missed the part how to connect https://mcp-flow-nexus.ruv.io  to gpt after enabling Developer mode
+00:47:09	Guy Bieber:	Reacted to "I missed the part ho..." with 👆
+00:48:42	Dmitry Zhechkov:	It seems I need to get client credentials or tokens
+But where ?
+00:48:55	Guy Bieber:	Roo continues to get better. Kudos to that team
+00:49:12	Jana Lafkova:	Replying to "I missed the part ho…"
+dont worry
+00:49:22	Fahad Arshad:	How do I get credits for a new user?
+00:50:00	Guy Bieber:	are you using roo and claude code together?
+00:51:09	Jed Arden:	Replying to "are you using roo an..."
+
+Roo + sonnet via claude-code
+00:51:21	Guy Bieber:	Reacted to "Roo + sonnet via cla..." with 👍
+00:51:55	Jana Lafkova:	Replying to "are you using roo an…"
+how?
+00:52:24	Tommi Linna:	Sorry guys
+00:52:31	Michael O'Boyle - fractional cto - oboyle.co:	To make chatgpt todo like claude code.
+00:52:46	Jed Arden:	Replying to "are you using roo an..."
+
+https://www.reddit.com/r/ChatGPTCoding/comments/1lipz7t/claude_max_integration_roo_code_3214_3215_release/
+00:52:52	Guy Bieber:	It looks like it is fabricating data to train a time series model.
+00:54:15	Tommi Linna:	Reacted to "https://www.reddit.c…" with ❤️
+00:58:17	Guy Bieber:	The AI seems to be very happy with its results. Did you see the OpenAI study on hallucinations?
+00:58:32	Puneet Gupta:	lol. Goes wherever it feels you want it to say
+00:58:51	Nikhil Vallishayee:	“Reflective mirroring”
+00:59:04	Dragan Spiridonov:	For me Codex is good for MVPs, it is good with smaller scope. CC + CF will over engineer the MVP solution, but are much better for larger apps scope.
+00:59:36	Fahad Arshad:	Reacted to "For me Codex is good..." with 👍
+00:59:36	Guy Bieber:	The problem is the training reward function gave credit for a correct answer (1) and a demerit for an incorrect answer (-1). It gave it no credit for saying I don’t know (0).
+00:59:39	Puneet Gupta:	Replying to "“Reflective mirrorin…"
+Sounds about right
+00:59:51	Nikhil Vallishayee:	Reacted to "The problem is the t..." with 👍
+00:59:55	Guy Bieber:	They are changing the reward training function to correct this.
+00:59:57	Puneet Gupta:	True
+01:00:11	Nikhil Vallishayee:	Reacted to "They are changing th..." with 👍
+01:00:51	Nikhil Vallishayee:	Replying to "They are changing th..."
+
+They are changing the reward training function to correct this.
+The second gen of LLMs who will be trained for navigation not for passing MCQs.
+01:02:53	Dan:	I like positing some variation of asking for the blind spots in a certain area. Asking for heterodox models. Mapping out with visuals the known to the unknown. "As an interdisciplinary expert who manages oversight for accuracy".. all just steps that might help
+01:02:55	Dmitry Zhechkov:	Replying to "It seems I need to g..."
+
+Found a solution
+I needed to follow exactly the doc from rUv: https://www.linkedin.com/pulse/building-chatgpt-mcp-developer-mode-complete-tutorial-reuven-cohen-efgoc/
+01:07:08	Guy Bieber:	Anyone have thoughts on Grok Code Fast
+01:07:27	Jed Arden:	Replying to "Anyone have thoughts..."
+
+Great for leetcode.
+01:08:42	Guy Bieber:	Reacted to "Great for leetcode." with 👍
+01:09:08	Rajesh (raj):	Replying to "Anyone have thoughts…"
+It’s been superseding CC so far
+01:09:09	Guy Bieber:	I find that the AI overestimates it accomplishments continually.
+01:09:40	Dmitry Zhechkov:	When I call flow-nexus from GPT do I need to see the results also in web https://flow-nexus.ruv.io/  ?
+01:09:45	Guy Bieber:	Replying to "Anyone have thoughts..."
+
+I.e. you think it produces better code than claude code.
+01:10:06	Rajesh (raj):	Replying to "Anyone have thoughts…"
+Not better but quick
+01:10:07	Chris Barlow:	https://www.linkedin.com/feed/update/urn:li:activity:7374469815505166336/
+01:10:19	Guy Bieber:	I don’t know how you accredit on something changing this fast.
+01:10:33	Guy Bieber:	Good for 2 weeks.
+01:10:34	Guy Bieber:	ha
+01:10:35	Rajesh (raj):	Replying to "Anyone have thoughts…"
+I’m able to do stuff faster
+01:11:23	Jed Arden:	Make Agentists Great!
+01:12:12	Nikhil Vallishayee:	Agentineer!\
+01:12:31	Piotr Sienkiewicz:	“Magician” comes to mind
+01:12:39	Nick Ruest:	Vibe architecture lol
+01:12:42	Guy Bieber:	Part of it is understanding the technology. Basic principles on how to use it and various tool stacks that are effective.
+01:13:04	Nikhil Vallishayee:	Vibeverse!
+01:13:05	Guy Bieber:	Swordfish build this under pressure.
+01:13:24	Nick Ruest:	Applause for Chris having jokes before 5 in the morning lol
+01:13:54	Guy Bieber:	Leetcode for agentics.
+01:14:47	Nikhil Vallishayee:	Agentic Pioneer
+01:14:56	Guy Bieber:	Just “Agentics Enabled Developer”
+01:15:00	Dan:	Agentic architecting.   Maybe some variation of Buckminster fuller's term: comprehensive anticipatory design scientist. 
+It should indicate an ongoing iteration and less a fixed identification
+01:15:04	Mark Duenas:	Part of the problem is the terminology and scope of work that is being developed with the AI. As an Android developer I wouldn’t be as proficient at developing a cutting edge website. But knowing the tools and being able to generate a solution within the area of expertise is what an “Agentic Engineer” is able to do.
+01:15:13	Guy Bieber:	This can be more than just software.
+01:15:17	Nikhil Vallishayee:	Agents Apprentice / Agentic Journeyman / Agent Master
+01:15:24	Guy Bieber:	Agentics Creator
+01:15:35	Mark Duenas:	This can be more than just software.
+Right…
+01:15:37	Dani Zuniga:	What about “developer”
+01:15:43	Dani Zuniga:	Agentic Developer
+01:15:48	Nikhil Vallishayee:	Reacted to "Agentic Developer" with 👍
+01:15:59	Mark Duenas:	Agentic Manipulator
+01:16:02	Guy Bieber:	Agentics Maker
+01:16:05	Murray Kopit:	Reacted to "Agentic Developer" with 👍
+01:16:11	Guy Bieber:	Bring back the maker community
+01:16:29	Chris Barlow:	Builder
+01:16:31	Mark Duenas:	Agentic Assembler
+01:16:46	Guy Bieber:	Reacted to "Agentic Assembler" with ❤️
+01:17:15	Dan:	🎯 John
+01:17:18	Dylan Tullberg:	Agentic Artificer
+01:17:19	Jed Arden:	Maybe we adopt a PageRank style system.
+01:17:23	Guy Bieber:	Certifications seem so “square”.
+01:17:43	Jed Arden:	Members validate / sponsor other members
+01:17:55	Dev:	Agentifier
+01:17:57	Piotr Sienkiewicz:	Makes sense!
+01:19:57	Dan:	Integritatis Agentis
+01:21:43	Dan:	The capacity of the agent engineer in one domain doesn't translate to another domain. So the foundation of whatever certification is based on the integrity of the person first and foremost
+01:21:55	mondweep:	here is the Notebook I was referring to about this discussion so far over the last couple of months
+
+https://notebooklm.google.com/notebook/97ec267d-f7ab-4725-a502-717a4f67572a
+01:22:06	mondweep:	this is about Masterclass and Accredition
+01:22:13	mondweep:	there is a Mindmap and a Briefing document
+01:22:53	Nick Ruest:	Think thesis defense in Masters or Doctorate programs
+01:23:10	Jed Arden:	I wonder why human validation is necessary.
+
+Can this be machine-driven?
+01:23:15	mondweep:	"Agentics Guild" Foundations
+
+ "Agentics Guild" Practitioner
+01:23:54	mondweep:	Or Agentic Crafters Foundational Level
+Agentic Crafters Practitioner Level
+01:25:27	Chris Barlow:	Reacted to ""Agentics Guild" Fou..." with ❤️
+01:25:42	Chris Barlow:	Guild term is very good
+01:29:17	Jed Arden:	So..
+
+How are medical doctors certified?
+Lawyers?
+Accountants?
+
+How are other regulated professions certified?
+01:29:23	Jed Arden:	Might as well copy what works.
+01:29:28	Mark Duenas:	Reacted to "So..
+
+How are medica..." with 👍
+01:30:23	Dylan Tullberg:	Risk, assessments may be constantly deprecated due to advancements (in models, frameworks, etc)
+01:34:12	Dev:	Reacted to "Guild term is very g..." with 👍
+01:35:20	Guy Bieber:	Submission of solutions
+01:36:08	Lyle’s iPhone:	Is this approach scalable though ?
+01:36:12	Guy Bieber:	padawan
+01:36:23	Jed Arden:	Replying to "Is this approach sca..."
+
+Human to human, I don’t think so.
+01:36:37	Jed Arden:	Replying to "Is this approach sca..."
+
+Being able to quantify that skill is preferred, but risks bureaucracy.
+01:36:38	Guy Bieber:	portfolio
+01:36:49	Guy Bieber:	your agentics portfolio
+01:37:02	Guy Bieber:	understanding of the technology
+01:39:03	Guy Bieber:	I like the bootcamp idea
+01:39:25	Guy Bieber:	Revenue generator
+01:39:38	Jed Arden:	Needs a believable failure rate
+01:39:51	Jed Arden:	If everyone passes, either the bar is too low, or the requirements are fake.
+01:40:13	Guy Bieber:	There needs to be some kind of test. I will say that using this stuff takes a lot of trial and error.
+01:40:25	Guy Bieber:	Especially at its current rate of change.
+01:41:17	Jed Arden:	I wonder if a ranking could be established. 
+
+Instead of one dimension, establish multiple disciplines similar to how AWS certification is across multiple disciplines.
+01:41:23	mondweep:	https://discord.gg/WPK87NYj  here is the discord channel on this topic
+01:41:39	mondweep:	May I ask who was speaking - I would love to continue the discussion on this
+01:41:45	Jed Arden:	Replying to "May I ask who was sp..."
+
+@Zoom user
+01:42:17	mondweep:	Replying to "May I ask who was sp..."
+
+please connect with me at https://www.linkedin.com/in/mondweepchakravorty
+
+I don’t see your details in the Zoom id
+01:42:38	Guy Bieber:	agentics Creator, agentics Developer, agentics automator
+01:42:49	Zoom user:	Replying to "May I ask who was sp…"
+Connected
+01:43:00	Guy Bieber:	project blue box
+01:43:08	Zoom user:	Reacted to "Needs a believable f…" with ❤️
+01:43:52	Jed Arden:	Agenticsist
+01:43:57	Tommi Linna:	Kudos to @Robert Ranson 🙌
+01:44:12	Zoom user:	Folks just be jealous XD if you really need some kind of university backing + math to call it engineering ; we can arrange for it
+01:44:17	Robert Ranson:	Reacted to "Kudos to @Robert Ran..." with 👍
+01:44:18	Jed Arden:	Deeperer researchererer
+01:45:04	Jed Arden:	Is there a suffix for profession?
+01:45:09	Guy Bieber:	I think there are people that can build stuff with AI, people that can debug stuff with AI, and people that can affectively use it to achieve their goals.
+01:45:15	Jed Arden:	Cooper
+Baker
+Blacksmith
+01:45:27	mondweep:	Apart from the Discord channel, there is a WhatsApp on this topic too at https://chat.whatsapp.com/JBf8NEOJMty6yZpjrsudiU
+01:45:41	mondweep:	this is where the Notebook LM was built from
+01:47:56	Zoom user:	If it quacks like a duck and walks like a duck
+01:48:03	Zoom user:	And tastes like a duck
+01:48:05	Guy Bieber:	Does the trading algo do better than random trading.
+01:48:07	Zoom user:	It’s a duck !
+01:48:14	Jed Arden:	As we eventually wind down expand the agentics network. 
+
+https://linkedin.com/in/jed-arden
+01:48:14	Guy Bieber:	Reacted to "It’s a duck !" with ❤️
+01:49:10	Chris Barlow:	I like to think of it as skill trees - in an RPG, they are different tracks
+01:49:19	Zoom user:	Reacted to "I like to think of i…" with ❤️
+01:49:51	Zoom user:	My bootcamps agenda looks exactly like the tree above - don’t mind sharing over a screenshare privately: design , stack , complexity , impact
+01:49:58	Jed Arden:	Replying to "I like to think of i..."
+
+That’s a lot of dimensions. 
+
+CLI tools
+Different programming concepts / languages
+Networking / technology concepts
+01:50:13	Guy Bieber:	Gamify
+01:50:22	Guy Bieber:	D&D for AI
+01:50:56	Nick Ruest:	Mario RPG ... good times
+01:51:12	Guy Bieber:	Replying to "Screenshot2025_09_18_102741.jpg"
+
+https://www.youtube.com/watch?v=eSijB9-Hw7g
+01:52:30	Zoom user:	Checkout realfast.ai
+01:52:38	Zoom user:	They are the biggest agentic salesforce folks
+01:52:44	Vincent Sider:	Reacted to "Screenshot2025_09_18_102517.jpg" with 👍
+01:52:47	Piotr Sienkiewicz:	;)
+01:52:50	Zoom user:	And I believe Claude-flow can kick ass compared to what they do
+01:53:09	Mark Duenas:	Thanks guys!
+01:53:32	Dmitry Zhechkov:	Thank you!
+01:53:41	Tommi Linna:	Thanks guys, amazing evening!

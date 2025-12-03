@@ -1,0 +1,9383 @@
+1
+00:00:02,540 --> 00:00:04,760
+one and go live so
+
+2
+00:00:13,740 --> 00:00:17,020
+it's been uh i'm just
+gonna let everyone's
+
+3
+00:00:17,020 --> 00:00:20,900
+uh bots in it's been
+an interesting uh
+
+4
+00:00:20,900 --> 00:00:23,900
+week lots lots going
+on one of the things i
+
+5
+00:00:23,900 --> 00:00:25,400
+want to show today
+was the work i've been
+
+6
+00:00:25,400 --> 00:00:28,140
+doing with a number
+of different tools um
+
+7
+00:00:28,140 --> 00:00:30,220
+in particular i've
+been playing with this
+
+8
+00:00:30,220 --> 00:00:33,680
+tool called uh come
+a composio i think is
+
+9
+00:00:33,680 --> 00:00:36,400
+what they call it and
+it it's done a really
+
+10
+00:00:36,400 --> 00:00:39,200
+good uh it's it's
+it's a really a job at
+
+11
+00:00:39,200 --> 00:00:41,720
+sort of connecting
+different uh you know
+
+12
+00:00:41,720 --> 00:00:43,900
+basically building and
+connecting different
+
+13
+00:00:43,900 --> 00:00:47,000
+apps in terms of mcps
+and one of the things
+
+14
+00:00:47,000 --> 00:00:50,320
+i did is i use i use
+that to create a mcp
+
+15
+00:00:50,320 --> 00:00:54,760
+that allows you to
+use perplexity and
+
+16
+00:00:54,760 --> 00:00:57,620
+basically in rue what
+i did is i created a
+
+17
+00:00:57,620 --> 00:01:00,600
+kind of deep research
+system using perplexity
+
+18
+00:01:00,600 --> 00:01:03,120
+that allows it to go
+and and search and
+
+19
+00:01:03,120 --> 00:01:05,300
+find so here you can
+see here i've got my
+
+20
+00:01:06,480 --> 00:01:08,040
+I'm not sure why
+it's not showing
+
+21
+00:01:08,040 --> 00:01:10,380
+my MCP servers,
+but we can
+
+22
+00:01:10,380 --> 00:01:12,600
+go and create,
+I don't think.
+
+23
+00:01:14,460 --> 00:01:16,600
+All right, guys,
+don't forget to
+
+24
+00:01:16,600 --> 00:01:18,140
+mute yourselves.
+And I think there's
+
+25
+00:01:18,140 --> 00:01:19,460
+a setting I can
+use for that.
+
+26
+00:01:20,140 --> 00:01:21,420
+Holy call.
+
+27
+00:01:22,000 --> 00:01:23,700
+All right. So,
+
+28
+00:01:24,100 --> 00:01:25,880
+all right, I'm just gonna
+
+29
+00:01:25,880 --> 00:01:26,900
+mute all, there we go.
+
+30
+00:01:27,640 --> 00:01:30,320
+Yeah, all right.
+So in this case,
+
+31
+00:01:30,320 --> 00:01:31,540
+if you're not
+familiar with
+
+32
+00:01:31,540 --> 00:01:33,640
+Composio, it's a
+pretty cool service.
+
+33
+00:01:33,660 --> 00:01:37,440
+So in essence, what it
+does is it allows you
+
+34
+00:01:37,440 --> 00:01:41,120
+to create these MCP
+servers. So in this
+
+35
+00:01:41,120 --> 00:01:42,920
+case, I can go in here,
+I can create a new MCP
+
+36
+00:01:42,920 --> 00:01:45,020
+server, I can give
+it a name, we'll call
+
+37
+00:01:45,020 --> 00:01:50,220
+it Vibecast, and then
+we'll go in here next.
+
+38
+00:01:50,220 --> 00:01:52,400
+So if you want to
+check it out, Composio
+
+39
+00:01:52,400 --> 00:01:56,280
+.dev, and it connects to
+a whole lot of different
+
+40
+00:01:56,280 --> 00:01:58,240
+options, so I'm
+going to go Composio
+
+41
+00:01:58,240 --> 00:02:00,920
+.dev, here I'm going to
+pop it in the chat as
+
+42
+00:02:00,920 --> 00:02:05,800
+well. So anyone that's
+joining on LinkedIn,
+
+43
+00:02:06,220 --> 00:02:08,080
+you're more than
+welcome to join
+
+44
+00:02:08,080 --> 00:02:10,720
+our chat as well
+here on Zoom.
+
+45
+00:02:11,100 --> 00:02:13,460
+So I'm just, for
+those who are joining,
+
+46
+00:02:13,460 --> 00:02:14,740
+I'm just going to
+copy the Zoom chat
+
+47
+00:02:14,740 --> 00:02:18,640
+and pop that into
+the LinkedIn crew.
+
+48
+00:02:18,640 --> 00:02:20,400
+I know some of the
+folks here watching on
+
+49
+00:02:20,400 --> 00:02:22,420
+LinkedIn, so you're
+more than welcome if
+
+50
+00:02:22,420 --> 00:02:23,780
+you have a question.
+I'll try to keep,
+
+51
+00:02:23,780 --> 00:02:25,280
+I've got both open,
+but there's a lot going
+
+52
+00:02:25,280 --> 00:02:27,280
+on and sometimes it's
+hard to keep track
+
+53
+00:02:27,280 --> 00:02:28,660
+of all these things.
+So what I'm starting
+
+54
+00:02:28,660 --> 00:02:29,540
+off today is I'm
+just going to show
+
+55
+00:02:29,540 --> 00:02:30,820
+you a little bit about
+Composio, So then
+
+56
+00:02:30,820 --> 00:02:33,460
+we'll go into VS Code
+and show how I connect
+
+57
+00:02:33,460 --> 00:02:35,540
+this to Rue Code and
+use the orchestrator
+
+58
+00:02:35,540 --> 00:02:37,280
+and different
+options. But basically
+
+59
+00:02:37,280 --> 00:02:39,940
+what the MCP dashboard
+here allows you to
+
+60
+00:02:39,940 --> 00:02:42,480
+do is connect various
+services as MCPs.
+
+61
+00:02:42,480 --> 00:02:45,220
+So in this case, if
+I wanted to connect
+
+62
+00:02:45,220 --> 00:02:47,540
+Twitter, I guess it's
+called X these days, I
+
+63
+00:02:47,540 --> 00:02:49,460
+could connect it and
+you see there's various
+
+64
+00:02:49,460 --> 00:02:52,180
+tools I can select. Or
+if I wanted to connect
+
+65
+00:02:52,180 --> 00:02:54,660
+Firecrawl, I can
+connect those. You can
+
+66
+00:02:54,660 --> 00:02:57,080
+see I have different
+options for connecting.
+
+67
+00:02:57,360 --> 00:03:00,140
+now i went with a
+super a relatively easy
+
+68
+00:03:00,140 --> 00:03:04,440
+one today i went and
+chose perplexity so in
+
+69
+00:03:04,440 --> 00:03:06,160
+this case i can go here
+and choose perplexity
+
+70
+00:03:06,160 --> 00:03:08,180
+now once once you go
+in here and choose
+
+71
+00:03:08,180 --> 00:03:11,740
+perplexity it'll prompt
+you to go and add your
+
+72
+00:03:11,740 --> 00:03:14,440
+api i'm i'm not going
+to do that because i
+
+73
+00:03:14,440 --> 00:03:16,680
+don't feel like sharing
+my api at this point
+
+74
+00:03:16,680 --> 00:03:18,440
+which i might have
+to in a moment anyway
+
+75
+00:03:18,440 --> 00:03:21,560
+but in in this case i
+i i'm what i'm going do
+
+76
+00:03:21,560 --> 00:03:22,980
+is I'm going to show
+you how to use this as
+
+77
+00:03:22,980 --> 00:03:27,080
+a structured deep deep
+research using the
+
+78
+00:03:27,080 --> 00:03:29,780
+orchestrator and boomerang
+tasks within Rube
+
+79
+00:03:29,780 --> 00:03:31,460
+so for those that
+aren't familiar you
+
+80
+00:03:31,460 --> 00:03:34,720
+essentially have the
+ability in Rube to go and
+
+81
+00:03:34,720 --> 00:03:37,240
+create these kind of
+boomerang tasks now these
+
+82
+00:03:37,240 --> 00:03:38,920
+boomerang tasks kind
+of work in the form
+
+83
+00:03:38,920 --> 00:03:41,220
+of you know it makes
+a request to the mcp
+
+84
+00:03:41,220 --> 00:03:44,380
+server and I've got a
+structured prompt essentially
+
+85
+00:03:44,380 --> 00:03:45,920
+it tells it what I
+want and how I want
+
+86
+00:03:45,920 --> 00:03:48,400
+it to work now in the
+case of Rube you've
+
+87
+00:03:48,400 --> 00:03:50,320
+got two different files
+you need to sort of
+
+88
+00:03:50,320 --> 00:03:53,140
+enable it. You've got
+this RooModes file that
+
+89
+00:03:53,140 --> 00:03:57,400
+sits in your root
+directory of your repo.
+
+90
+00:03:57,540 --> 00:04:01,940
+And you've got a MCP
+folder that sits in the
+
+91
+00:04:01,940 --> 00:04:05,880
+folder called .ru, if
+I'm not mistaken. And
+
+92
+00:04:05,880 --> 00:04:08,670
+then the two basically
+allow you to sort of
+
+93
+00:04:08,670 --> 00:04:11,060
+orchestrate. So what
+I'm going to do is I'm
+
+94
+00:04:11,060 --> 00:04:12,600
+going to walk you
+through that process. So
+
+95
+00:04:12,600 --> 00:04:14,540
+I went ahead and And
+Betty Crocker this
+
+96
+00:04:14,540 --> 00:04:18,740
+beforehand, so you won't
+have to watch me do all
+
+97
+00:04:18,740 --> 00:04:20,360
+the configuration, but
+I'll quickly go and
+
+98
+00:04:20,360 --> 00:04:22,280
+set that up. So I'm
+going to jump into VS
+
+99
+00:04:22,280 --> 00:04:25,480
+Code. So I created a
+VODcast. This is just a
+
+100
+00:04:25,480 --> 00:04:29,580
+blank generic sort of
+repo here on GitHub. You
+
+101
+00:04:29,580 --> 00:04:30,960
+know, I just created
+it a few minutes ago.
+
+102
+00:04:30,960 --> 00:04:33,440
+And what my plan is to
+create each week, I'll
+
+103
+00:04:33,440 --> 00:04:35,800
+just create a new
+branch, and that'll be
+
+104
+00:04:35,800 --> 00:04:38,140
+the branch for that
+week rather than that.
+
+105
+00:04:38,140 --> 00:04:39,720
+It's simple, easy. I
+don't want to create a
+
+106
+00:04:39,720 --> 00:04:41,380
+million different repos
+if I don't have to.
+
+107
+00:04:41,880 --> 00:04:44,680
+So then what I did is
+I went and I created
+
+108
+00:04:44,680 --> 00:04:46,800
+a code space. I like
+code spaces. I find
+
+109
+00:04:46,800 --> 00:04:48,240
+it's a nice way to
+keep everything clean
+
+110
+00:04:48,240 --> 00:04:50,640
+and separate so I don't
+have to mess around
+
+111
+00:04:50,640 --> 00:04:52,880
+with my local
+environment too much. But
+
+112
+00:04:52,880 --> 00:04:54,940
+you can just as easily
+do this locally.
+
+113
+00:04:56,140 --> 00:04:58,240
+The drawback slightly
+is sometimes there's
+
+114
+00:04:58,240 --> 00:05:00,460
+a bit of a delay.
+And if you're doing
+
+115
+00:05:00,460 --> 00:05:03,360
+really long-running
+root code instances,
+
+116
+00:05:03,360 --> 00:05:05,440
+like the other day I
+ran one for 12 hours,
+
+117
+00:05:05,440 --> 00:05:08,460
+it'll crash. It'll
+crash. It'll close
+
+118
+00:05:08,460 --> 00:05:10,460
+after I think about
+eight or nine hours.
+
+119
+00:05:10,480 --> 00:05:12,260
+So it's something
+to keep in mind.
+
+120
+00:05:12,450 --> 00:05:14,120
+But there's also
+a number of other
+
+121
+00:05:14,120 --> 00:05:15,960
+services out there
+that allow you. You
+
+122
+00:05:15,960 --> 00:05:17,820
+could literally run
+your own VS Code
+
+123
+00:05:17,820 --> 00:05:23,040
+space on AWS or other
+services as well.
+
+124
+00:05:23,060 --> 00:05:25,200
+All right. So I
+went ahead and did
+
+125
+00:05:25,200 --> 00:05:26,760
+that. So I'm just
+going to pop that up.
+
+126
+00:05:26,780 --> 00:05:29,820
+Let's jump into
+where I've got that.
+
+127
+00:05:29,820 --> 00:05:31,760
+I've got to find
+which of my various
+
+128
+00:05:31,760 --> 00:05:34,540
+ones I have. I think
+it's right here.
+
+129
+00:05:34,560 --> 00:05:35,700
+All right.
+
+130
+00:05:36,320 --> 00:05:37,200
+Welcome.
+
+131
+00:05:37,400 --> 00:05:39,480
+Why isn't it loading?
+
+132
+00:05:40,900 --> 00:05:42,280
+So I'm going to
+go, I'm going to,
+
+133
+00:05:42,280 --> 00:05:43,670
+it's not, I've got
+too many monitors.
+
+134
+00:05:43,840 --> 00:05:46,000
+Here we go. Bring it
+to the right monitor.
+
+135
+00:05:46,260 --> 00:05:50,540
+All right. So this
+is a basic, you know,
+
+136
+00:05:50,800 --> 00:05:52,940
+code space, nothing
+much running. You can
+
+137
+00:05:52,940 --> 00:05:55,460
+see I've got Roo
+running here. It takes
+
+138
+00:05:55,460 --> 00:05:57,200
+a second for Roo to
+initialize. So I'm
+
+139
+00:05:57,200 --> 00:05:58,980
+just going to let that
+start for a moment.
+
+140
+00:05:58,980 --> 00:06:00,760
+Now I'm going to
+do a new terminal
+
+141
+00:06:00,760 --> 00:06:02,440
+instance. Now this
+is the part that some
+
+142
+00:06:02,440 --> 00:06:03,820
+people are having
+trouble with when
+
+143
+00:06:03,820 --> 00:06:05,680
+using Spark. So I'm
+just going to walk
+
+144
+00:06:05,680 --> 00:06:07,320
+you through sort of
+the initialization.
+
+145
+00:06:08,420 --> 00:06:10,620
+and maybe I need a
+better message or
+
+146
+00:06:10,620 --> 00:06:11,960
+something because
+everyone seems to ask
+
+147
+00:06:11,960 --> 00:06:14,040
+me the same question.
+I got an error.
+
+148
+00:06:14,660 --> 00:06:16,180
+I don't want to
+sound like a ****,
+
+149
+00:06:16,180 --> 00:06:17,940
+but if you read
+the error, it
+
+150
+00:06:17,940 --> 00:06:19,300
+actually tells
+you how to fix it.
+
+151
+00:06:19,520 --> 00:06:21,660
+So now when we do,
+
+152
+00:06:23,320 --> 00:06:25,920
+MPX creates Spark
+init. That basically
+
+153
+00:06:25,920 --> 00:06:29,840
+grabs a, I guess you
+can do a temporary NPM,
+
+154
+00:06:29,840 --> 00:06:31,700
+which is kind of a
+cool feature of the
+
+155
+00:06:31,700 --> 00:06:34,160
+NPM library. And
+assuming you have NPM
+
+156
+00:06:34,160 --> 00:06:35,560
+installed, this
+will just create all
+
+157
+00:06:35,560 --> 00:06:37,500
+the files you want.
+so let's take a look
+
+158
+00:06:37,500 --> 00:06:38,640
+at the folder see
+there's nothing much
+
+159
+00:06:38,640 --> 00:06:40,500
+here but there are
+some files the reason
+
+160
+00:06:40,500 --> 00:06:42,060
+i didn't let it
+just write i didn't
+
+161
+00:06:42,060 --> 00:06:43,840
+want to overwrite
+stuff you already had
+
+162
+00:06:43,960 --> 00:06:46,040
+so when you when
+you do an issue when
+
+163
+00:06:46,040 --> 00:06:47,200
+you first initialize
+it you'll see
+
+164
+00:06:47,200 --> 00:06:48,620
+that there's an error
+if you don't add
+
+165
+00:06:48,620 --> 00:06:50,420
+the force function
+now in this case
+
+166
+00:06:50,420 --> 00:06:53,550
+i didn't add the
+force function so it
+
+167
+00:06:54,120 --> 00:06:58,760
+yeah so you see here
+it failed it says to
+
+168
+00:06:58,760 --> 00:07:02,060
+use the force option
+you that's my that's my
+
+169
+00:07:02,060 --> 00:07:03,820
+shout out to star
+wars a little bit too
+
+170
+00:07:03,820 --> 00:07:07,880
+but anyway um so we go
+in here if you add you
+
+171
+00:07:07,880 --> 00:07:10,540
+the force option and
+maybe i should make
+
+172
+00:07:10,540 --> 00:07:12,180
+it more obvious i
+don't know there's also
+
+173
+00:07:12,180 --> 00:07:14,080
+a help by the way if
+you just type this
+
+174
+00:07:14,080 --> 00:07:16,260
+without it it'll guide
+you through a little
+
+175
+00:07:16,260 --> 00:07:18,640
+wizard and there's
+options for setting up the
+
+176
+00:07:18,640 --> 00:07:22,060
+mcps and other other
+little uh easter eggs
+
+177
+00:07:22,060 --> 00:07:24,020
+that i i put put on
+there i created this
+
+178
+00:07:24,020 --> 00:07:25,800
+on easter so i figured
+it needed an easter
+
+179
+00:07:25,800 --> 00:07:27,840
+egg um all right so
+i'm gonna put that in
+
+180
+00:07:27,840 --> 00:07:29,980
+there and this time
+i'm going to add force.
+
+181
+00:07:30,740 --> 00:07:32,540
+So I'm going to
+use the force.
+
+182
+00:07:32,890 --> 00:07:35,060
+And then we're going
+to go in here. So
+
+183
+00:07:35,060 --> 00:07:36,280
+now you notice
+that it created the
+
+184
+00:07:36,280 --> 00:07:39,000
+files, right? So create
+a Rue modes file.
+
+185
+00:07:39,340 --> 00:07:41,490
+And you see here, I've
+got the architect.
+
+186
+00:07:41,520 --> 00:07:44,420
+Now, if you want to
+replace the generic
+
+187
+00:07:44,420 --> 00:07:47,800
+orchestrator that the
+guys at Rue have added
+
+188
+00:07:47,800 --> 00:07:50,260
+recently, you'll see
+here that you've got
+
+189
+00:07:50,260 --> 00:07:52,500
+different options. I
+noticed they apparently
+
+190
+00:07:52,500 --> 00:07:54,320
+like they like my
+use of emojis and
+
+191
+00:07:54,320 --> 00:07:56,620
+decided to go the
+same way. So props to
+
+192
+00:07:56,620 --> 00:07:58,880
+those guys. But if you
+want to change any of
+
+193
+00:07:58,880 --> 00:08:02,560
+these options, you
+can go here. Now, it
+
+194
+00:08:02,560 --> 00:08:04,340
+takes a second to
+initialize. You notice that
+
+195
+00:08:04,340 --> 00:08:06,280
+my options aren't
+there yet. And you see
+
+196
+00:08:06,280 --> 00:08:08,060
+that I've got a bunch.
+For whatever reason,
+
+197
+00:08:08,060 --> 00:08:09,160
+if you want those
+initialize, you have
+
+198
+00:08:09,160 --> 00:08:11,300
+to click. Oh, usually
+you have to click.
+
+199
+00:08:11,980 --> 00:08:13,080
+Let's go.
+
+200
+00:08:13,360 --> 00:08:16,700
+I guess the demo gods
+don't want to work today
+
+201
+00:08:16,700 --> 00:08:18,420
+for some reason. Oh,
+there we go. See,
+
+202
+00:08:18,480 --> 00:08:21,020
+that's a strange quirk
+of brew. Like you just
+
+203
+00:08:21,020 --> 00:08:24,180
+saw it. It took a second
+for it to kick in.
+
+204
+00:08:24,180 --> 00:08:28,100
+I have absolutely no
+idea why it takes some
+
+205
+00:08:28,100 --> 00:08:30,940
+clicking around to
+initialize, but it does.
+
+206
+00:08:30,940 --> 00:08:33,640
+That's probably a bug
+in Roo, I would guess,
+
+207
+00:08:33,640 --> 00:08:35,300
+that it doesn't
+initialize, or maybe they
+
+208
+00:08:35,300 --> 00:08:37,780
+have like a 30 or 60
+second interval between
+
+209
+00:08:37,780 --> 00:08:40,620
+checks. Who the heck
+knows? But anyway, moral
+
+210
+00:08:40,620 --> 00:08:43,560
+story is I've set up
+the orchestrator here.
+
+211
+00:08:43,740 --> 00:08:45,920
+Now, if you want to
+make it to your default
+
+212
+00:08:45,920 --> 00:08:48,100
+orchestrator, all you
+need to do is change
+
+213
+00:08:48,100 --> 00:08:50,680
+this slug to orchestrator.
+I kind of want to
+
+214
+00:08:50,680 --> 00:08:52,320
+keep it separate so
+I'm not particularly
+
+215
+00:08:52,320 --> 00:08:55,880
+concerned about that now
+this morning I created
+
+216
+00:08:55,880 --> 00:08:59,120
+a new deep research
+and I'm using the MCP
+
+217
+00:08:59,120 --> 00:09:01,800
+to do the research now
+when I installed this
+
+218
+00:09:01,800 --> 00:09:04,840
+you'll notice that I
+included some files for
+
+219
+00:09:04,840 --> 00:09:06,440
+you guys it sort of
+you get up and running
+
+220
+00:09:06,440 --> 00:09:08,660
+quickly now let me just
+show you the ones that
+
+221
+00:09:08,660 --> 00:09:11,680
+are important now when
+you're using models
+
+222
+00:09:11,680 --> 00:09:14,400
+that aren't sonnet
+and are let's just say
+
+223
+00:09:14,400 --> 00:09:16,920
+a little bit more stupid
+you need to be more
+
+224
+00:09:16,920 --> 00:09:19,400
+explicit in telling it
+how it needs to work
+
+225
+00:09:19,400 --> 00:09:22,100
+right so in this case,
+what I discovered,
+
+226
+00:09:22,100 --> 00:09:24,880
+like if I want to use
+like Gemini or some of
+
+227
+00:09:24,880 --> 00:09:27,600
+the other models, I had
+to create rules that
+
+228
+00:09:27,600 --> 00:09:30,240
+basically say that I
+wanted to use, you know,
+
+229
+00:09:30,240 --> 00:09:32,100
+certain structures
+for applying the diff.
+
+230
+00:09:32,380 --> 00:09:34,400
+One of the things I
+hate about Rue is when
+
+231
+00:09:34,400 --> 00:09:38,000
+it sort of defaults
+to this write to file
+
+232
+00:09:38,000 --> 00:09:40,840
+option, which basically
+writes every line. And
+
+233
+00:09:40,840 --> 00:09:42,240
+I don't want to, I
+don't like that. It's
+
+234
+00:09:42,240 --> 00:09:43,760
+inefficient. I don't
+want to, it's like
+
+235
+00:09:43,760 --> 00:09:46,220
+watching paint dry as it
+goes every line. So what
+
+236
+00:09:46,220 --> 00:09:48,520
+I told to do is to
+use apply diff by
+
+237
+00:09:48,520 --> 00:09:51,320
+default and this is how
+i did it basically it
+
+238
+00:09:51,320 --> 00:09:54,520
+it uses that then i
+told it sort of what to
+
+239
+00:09:54,520 --> 00:09:56,260
+do what not to do so
+this basically improves
+
+240
+00:09:56,260 --> 00:09:59,980
+it now the drawback it
+uses more tokens the
+
+241
+00:09:59,980 --> 00:10:02,600
+benefit it works a
+heck of a lot better um
+
+242
+00:10:02,600 --> 00:10:04,160
+so you can see here
+that i've got the core
+
+243
+00:10:04,160 --> 00:10:07,240
+rules file now each
+of these folders are
+
+244
+00:10:07,240 --> 00:10:09,360
+basically the rules for
+each of the modes so
+
+245
+00:10:09,360 --> 00:10:12,140
+you'll notice here that
+i've got a mode for
+
+246
+00:10:12,140 --> 00:10:15,380
+mcps now this mcp mode
+basically gives it
+
+247
+00:10:15,380 --> 00:10:17,660
+and tells it how to work
+with MCPs better than
+
+248
+00:10:17,660 --> 00:10:20,280
+the default Roo mode.
+So we're going to
+
+249
+00:10:20,280 --> 00:10:21,780
+come back to this in a
+moment, but basically
+
+250
+00:10:21,780 --> 00:10:25,420
+when you're using
+MCPs, you've got two
+
+251
+00:10:25,420 --> 00:10:28,180
+options to sort of
+improve the performance of
+
+252
+00:10:28,180 --> 00:10:31,920
+the MCP within Roo.
+You can use the rules
+
+253
+00:10:31,920 --> 00:10:35,060
+directly within the
+Roo mode file here that
+
+254
+00:10:35,060 --> 00:10:37,580
+you'll see, and you
+can basically tell it
+
+255
+00:10:37,580 --> 00:10:40,520
+explicitly how to use
+the MCP. Like I've got a
+
+256
+00:10:40,520 --> 00:10:42,480
+MCP integration option
+here, and I'm basically
+
+257
+00:10:42,480 --> 00:10:45,800
+telling it how it
+needs to use the MCP.
+
+258
+00:10:45,800 --> 00:10:49,040
+Or, in the case of
+the deep research
+
+259
+00:10:49,040 --> 00:10:51,920
+component I created this
+morning, we can create
+
+260
+00:10:51,920 --> 00:10:53,380
+a new mode
+specifically for deep
+
+261
+00:10:53,380 --> 00:10:55,760
+research, which is what
+we're going to do. So
+
+262
+00:10:55,760 --> 00:10:57,980
+in this case, if we
+go to the repo that
+
+263
+00:10:57,980 --> 00:10:59,160
+I created this
+morning, I might, maybe
+
+264
+00:10:59,160 --> 00:11:01,480
+I'll add to Vibcast, I
+don't know. But we'll
+
+265
+00:11:01,480 --> 00:11:04,360
+go here to, where
+is it, a specialized
+
+266
+00:11:04,360 --> 00:11:06,060
+research assistant.
+You'll see here I've
+
+267
+00:11:06,060 --> 00:11:08,460
+got a Rue Modes and
+I've got an MCP. So
+
+268
+00:11:08,460 --> 00:11:10,380
+the first thing I'm
+going to do is I'm going
+
+269
+00:11:10,380 --> 00:11:14,840
+to go here and I'm
+going to add this.
+
+270
+00:11:15,240 --> 00:11:19,520
+all right then i'm
+going to go back here
+
+271
+00:11:19,520 --> 00:11:22,440
+now it's it's json
+so when you're adding
+
+272
+00:11:22,440 --> 00:11:26,820
+it remember the last
+item in a json array
+
+273
+00:11:26,820 --> 00:11:30,560
+doesn't have a comma
+this is like i think
+
+274
+00:11:30,560 --> 00:11:32,960
+that's i know dozens
+of people have emailed
+
+275
+00:11:32,960 --> 00:11:35,660
+me it broke it broke
+because you included
+
+276
+00:11:35,660 --> 00:11:38,740
+a comma so when you
+so i'm i'm going to
+
+277
+00:11:38,740 --> 00:11:40,760
+add a new entry i'm
+going to put go in here
+
+278
+00:11:40,760 --> 00:11:43,640
+and i'm going to
+paste that in now that
+
+279
+00:11:43,640 --> 00:11:45,620
+you notice the last
+one here doesn't have
+
+280
+00:11:45,620 --> 00:11:47,920
+a comma, right? So
+that's how I'm going
+
+281
+00:11:47,920 --> 00:11:49,580
+to indent it because
+I'm I'm an old school
+
+282
+00:11:49,580 --> 00:11:52,240
+Python guy. But now
+we've got deep research
+
+283
+00:11:52,240 --> 00:11:54,920
+and we've got the
+instructions for but
+
+284
+00:11:54,920 --> 00:11:56,740
+we haven't set up
+the MCP just yet, but
+
+285
+00:11:56,740 --> 00:11:58,740
+we've given it
+instructions. So now we're
+
+286
+00:11:58,740 --> 00:12:00,900
+going to go back to
+Rue code for a moment.
+
+287
+00:12:01,440 --> 00:12:03,700
+And again, it takes
+a second for it to
+
+288
+00:12:03,700 --> 00:12:06,340
+initialize. It's
+odd. I don't know why
+
+289
+00:12:06,340 --> 00:12:07,980
+it doesn't show up
+right away. This is
+
+290
+00:12:07,980 --> 00:12:09,940
+this again, this is
+a quirk. It could be
+
+291
+00:12:09,940 --> 00:12:11,500
+because I have too
+many things in here.
+
+292
+00:12:11,700 --> 00:12:15,660
+I'm not really sure
+exactly why, but here
+
+293
+00:12:15,660 --> 00:12:18,200
+we go. It did show
+you click and scroll
+
+294
+00:12:18,200 --> 00:12:20,040
+and whatever.
+Eventually it shows up.
+
+295
+00:12:20,040 --> 00:12:22,260
+So basically whatever
+you see in here is what
+
+296
+00:12:22,260 --> 00:12:24,320
+is being fed from
+here, right? So if you
+
+297
+00:12:24,320 --> 00:12:26,100
+want to see it more
+clearly, all you need to
+
+298
+00:12:26,100 --> 00:12:28,360
+do is go here and you
+can see all my rules
+
+299
+00:12:28,360 --> 00:12:30,220
+and you can customize
+these rules if you don't
+
+300
+00:12:30,220 --> 00:12:32,720
+like it. I, I made
+these rules to sort of
+
+301
+00:12:32,720 --> 00:12:35,760
+act kind of like the
+open AI or Google deep
+
+302
+00:12:35,760 --> 00:12:38,200
+research component where
+it can search and it
+
+303
+00:12:38,200 --> 00:12:40,660
+can go back and forth
+and and find what it
+
+304
+00:12:40,660 --> 00:12:42,900
+needs right so you can
+see here that included
+
+305
+00:12:42,900 --> 00:12:45,540
+the structure of how
+i want the files i
+
+306
+00:12:45,540 --> 00:12:47,920
+wanted it organized i
+don't one of the things
+
+307
+00:12:47,920 --> 00:12:50,060
+rue in particular
+doesn't do well is isn't
+
+308
+00:12:50,060 --> 00:12:52,840
+really really long
+files so i wanted to say
+
+309
+00:12:52,840 --> 00:12:55,020
+basically separate
+them into you know more
+
+310
+00:12:55,020 --> 00:12:57,160
+logical structures right
+and you can customize
+
+311
+00:12:57,160 --> 00:12:58,980
+this if you're if you're
+working with let's
+
+312
+00:12:58,980 --> 00:13:01,980
+say a data data out you
+know a data analysis
+
+313
+00:13:01,980 --> 00:13:04,060
+system or whatever,
+you could change this
+
+314
+00:13:04,060 --> 00:13:05,820
+up and just make it the
+way you like it. And
+
+315
+00:13:05,820 --> 00:13:07,360
+you'll notice that
+anything I type in here,
+
+316
+00:13:07,500 --> 00:13:09,180
+so let's just put in here
+
+317
+00:13:09,180 --> 00:13:11,560
+something like
+one, two, three,
+
+318
+00:13:12,120 --> 00:13:12,780
+will,
+
+319
+00:13:13,080 --> 00:13:14,500
+and I'll click outside,
+
+320
+00:13:15,280 --> 00:13:16,440
+will show up over here.
+
+321
+00:13:16,600 --> 00:13:19,680
+Basically, it's an
+interface to that. So
+
+322
+00:13:20,880 --> 00:13:22,380
+once you've added
+this, you want to
+
+323
+00:13:22,380 --> 00:13:23,860
+customize that. I
+suggest customizing
+
+324
+00:13:23,860 --> 00:13:24,920
+it here. It's
+just a bit easier.
+
+325
+00:13:25,060 --> 00:13:26,400
+All right. Next thing
+we're going to do
+
+326
+00:13:26,400 --> 00:13:28,860
+is we're going to set
+up the MCP server.
+
+327
+00:13:28,880 --> 00:13:31,280
+So to get the ball
+rolling, what I did
+
+328
+00:13:31,280 --> 00:13:34,400
+is, and of course,
+it's not showing
+
+329
+00:13:34,400 --> 00:13:36,780
+up right away because
+it, oh, no, still
+
+330
+00:13:36,780 --> 00:13:38,860
+not showing up.
+Let's go to edit MCP.
+
+331
+00:13:39,840 --> 00:13:42,220
+Now, this is another
+quirk of Rue.
+
+332
+00:13:42,680 --> 00:13:45,620
+Maybe I need to restart
+VS Code. I don't
+
+333
+00:13:45,620 --> 00:13:47,220
+know. Maybe I just need
+to copy and paste it
+
+334
+00:13:47,220 --> 00:13:49,300
+a couple of times.
+It takes up, and this
+
+335
+00:13:49,300 --> 00:13:50,520
+is one of the things
+that when you're getting
+
+336
+00:13:50,520 --> 00:13:52,240
+started with Rue,
+it's the quirk of it.
+
+337
+00:13:52,240 --> 00:13:54,540
+It's because it's
+like, why are my MCP
+
+338
+00:13:54,540 --> 00:13:56,700
+servers not showing
+up? Now, keep in mind,
+
+339
+00:13:56,700 --> 00:13:58,900
+there's two modes. So
+in this case, I'm just
+
+340
+00:13:58,900 --> 00:14:01,850
+going to copy this
+for a sec. This is
+
+341
+00:14:01,850 --> 00:14:04,700
+totally a hack. It's
+not elegant or anything.
+
+342
+00:14:04,700 --> 00:14:06,440
+I'm going to go
+to MCP Global
+
+343
+00:14:06,440 --> 00:14:08,440
+for a moment,
+and I'm going to
+
+344
+00:14:08,440 --> 00:14:09,780
+copy and paste
+this in here.
+
+345
+00:14:11,280 --> 00:14:12,380
+All right.
+
+346
+00:14:13,500 --> 00:14:15,400
+And usually, if
+I go back and
+
+347
+00:14:15,400 --> 00:14:18,030
+forth a few
+times, it works.
+
+348
+00:14:19,380 --> 00:14:23,360
+Apparently, if I'm
+going to do a demo,
+
+349
+00:14:23,360 --> 00:14:25,040
+it's not going to
+work all the time.
+
+350
+00:14:25,040 --> 00:14:27,020
+Oh, it worked. All
+right. So you notice
+
+351
+00:14:27,020 --> 00:14:28,900
+now I have it. Now
+it's redundant.
+
+352
+00:14:28,900 --> 00:14:30,220
+I've got it twice.
+So I'm going to undo
+
+353
+00:14:30,220 --> 00:14:33,340
+this, I think, but
+it should stay. No.
+
+354
+00:14:33,700 --> 00:14:35,880
+Now I don't know why
+the project specific,
+
+355
+00:14:35,880 --> 00:14:38,820
+the project ones do
+work eventually, but
+
+356
+00:14:38,820 --> 00:14:41,220
+the global ones seem
+to show up immediately.
+
+357
+00:14:41,500 --> 00:14:44,320
+So that's good.
+That's fine. I'm going
+
+358
+00:14:44,320 --> 00:14:46,040
+to jump in over
+here for a moment.
+
+359
+00:14:46,600 --> 00:14:49,920
+Most likely you have
+to restart your VS
+
+360
+00:14:49,920 --> 00:14:53,020
+code. I think that solves
+it but global doesn't
+
+361
+00:14:53,020 --> 00:14:55,840
+seem to require a
+restart this used to
+
+362
+00:14:55,840 --> 00:14:57,640
+work by the way about
+a week ago they broke
+
+363
+00:14:57,640 --> 00:14:59,780
+it um so maybe we
+should do a bug report
+
+364
+00:14:59,780 --> 00:15:01,460
+to the routine and
+tell them it's broken
+
+365
+00:15:01,460 --> 00:15:04,780
+but anyway so i'm i'm
+now i'm in global mcp
+
+366
+00:15:04,780 --> 00:15:06,740
+and i've just copy
+and pasted my example
+
+367
+00:15:07,880 --> 00:15:11,040
+so reflects the ai
+search all right
+
+368
+00:15:11,040 --> 00:15:14,640
+now let's give it
+a sec to initialize
+
+369
+00:15:14,640 --> 00:15:16,760
+this does this does
+take a moment to
+
+370
+00:15:16,760 --> 00:15:18,980
+initialize again
+and that's hopefully
+
+371
+00:15:18,980 --> 00:15:21,820
+it will all right
+come come to life
+
+372
+00:15:24,560 --> 00:15:26,740
+uh i'm gonna click
+around i guess
+
+373
+00:15:26,740 --> 00:15:28,620
+i don't know see
+if i can get it to
+
+374
+00:15:29,900 --> 00:15:33,140
+you know you we did
+see it work a second
+
+375
+00:15:33,140 --> 00:15:36,780
+ago well let's let's
+try something else again
+
+376
+00:15:36,780 --> 00:15:39,280
+the mcp integration
+is quirky it's i don't
+
+377
+00:15:39,280 --> 00:15:40,580
+know what to tell
+you if anyone has any
+
+378
+00:15:40,580 --> 00:15:42,500
+suggestions on how
+they can get it to show
+
+379
+00:15:42,500 --> 00:15:44,540
+up more quickly let
+me know i'm not really
+
+380
+00:15:44,540 --> 00:15:46,060
+sure why it's not
+showing up probably
+
+381
+00:15:46,060 --> 00:15:48,270
+because I'm doing a
+demo or something. Maybe
+
+382
+00:15:48,270 --> 00:15:50,220
+that's probably the
+only reason. I don't
+
+383
+00:15:50,220 --> 00:15:52,400
+seem to have that kind
+of issue with Klein.
+
+384
+00:15:52,900 --> 00:15:54,440
+It shows up quickly.
+
+385
+00:15:54,680 --> 00:15:56,820
+Yeah, so Klein does
+
+386
+00:15:56,820 --> 00:15:57,960
+show up quickly as well.
+
+387
+00:15:58,620 --> 00:16:00,080
+It's the same thing.
+
+388
+00:16:00,360 --> 00:16:02,680
+Yeah, if we go
+into Klein. But you
+
+389
+00:16:02,680 --> 00:16:04,280
+guys saw a second
+ago, it was there.
+
+390
+00:16:04,360 --> 00:16:06,040
+Yeah, it was there.
+
+391
+00:16:06,080 --> 00:16:08,980
+And I've got no errors.
+
+392
+00:16:09,160 --> 00:16:10,800
+But you only
+see it with Rue?
+
+393
+00:16:11,240 --> 00:16:12,960
+Yeah, I only see
+it with Rue. So
+
+394
+00:16:12,960 --> 00:16:15,120
+the other thing
+I can do is I'm
+
+395
+00:16:15,120 --> 00:16:16,660
+going to go back
+here for a moment.
+
+396
+00:16:16,940 --> 00:16:19,020
+I'm not sure why
+it's not trying.
+
+397
+00:16:19,020 --> 00:16:20,780
+It doesn't want to
+show me anything.
+
+398
+00:16:20,900 --> 00:16:22,960
+So then I'm going
+to go back here.
+
+399
+00:16:24,660 --> 00:16:26,420
+Oh, it showed up.
+
+400
+00:16:26,420 --> 00:16:27,900
+All right.
+Okay. Let's see.
+
+401
+00:16:27,900 --> 00:16:29,460
+Let's see if
+I can go here.
+
+402
+00:16:29,660 --> 00:16:33,740
+And I'm going to
+paste this in.
+
+403
+00:16:35,060 --> 00:16:36,320
+Apparently it
+wants to only
+
+404
+00:16:36,320 --> 00:16:37,300
+work with global today.
+
+405
+00:16:38,560 --> 00:16:41,020
+All right. So we're
+going with global.
+
+406
+00:16:43,040 --> 00:16:44,720
+I don't know why.
+
+407
+00:16:45,000 --> 00:16:45,760
+All right. We'll go in
+
+408
+00:16:45,760 --> 00:16:47,740
+here and I'm adding this.
+
+409
+00:16:48,400 --> 00:16:50,900
+All right. Now
+I didn't add my
+
+410
+00:16:51,220 --> 00:16:52,020
+endpoint.
+
+411
+00:16:54,240 --> 00:16:57,640
+So I'm going to quickly
+just grab my endpoint.
+
+412
+00:16:57,640 --> 00:17:01,980
+I don't think this
+is like one of those
+
+413
+00:17:01,980 --> 00:17:03,680
+keys that's probably
+okay to share. You
+
+414
+00:17:03,680 --> 00:17:04,860
+guys, if you guys want
+to use that, I don't
+
+415
+00:17:04,860 --> 00:17:07,200
+really care. I might
+just turn it off later.
+
+416
+00:17:07,720 --> 00:17:09,160
+All right. So I'm
+going to go and
+
+417
+00:17:09,160 --> 00:17:10,840
+grab it from
+another repo I
+
+418
+00:17:10,840 --> 00:17:12,580
+already have running
+just because.
+
+419
+00:17:12,960 --> 00:17:15,200
+So I'm going
+to grab that.
+
+420
+00:17:16,500 --> 00:17:19,320
+And all right.
+
+421
+00:17:19,760 --> 00:17:21,800
+So I'm just on
+my other screen.
+
+422
+00:17:21,800 --> 00:17:22,940
+I got too many.
+You guys don't
+
+423
+00:17:22,940 --> 00:17:24,380
+want to see a
+50-inch monitor.
+
+424
+00:17:24,520 --> 00:17:26,620
+Everything would
+be super tiny.
+
+425
+00:17:26,860 --> 00:17:28,560
+Yeah, it looks
+like my other one I
+
+426
+00:17:28,560 --> 00:17:33,000
+actually did as
+well using global.
+
+427
+00:17:33,320 --> 00:17:34,720
+So again.
+
+428
+00:17:37,450 --> 00:17:39,760
+I was going to say
+you can use Cloak
+
+429
+00:17:39,760 --> 00:17:42,080
+to hide the environment
+variable file,
+
+430
+00:17:42,080 --> 00:17:45,180
+but I got to look
+into modifying Cloak
+
+431
+00:17:45,180 --> 00:17:47,940
+so that it works
+with any JSON file.
+
+432
+00:17:48,080 --> 00:17:50,640
+It actually is
+specific to, you know,
+
+433
+00:17:50,640 --> 00:17:52,900
+I showed you that
+before, it'll hide
+
+434
+00:17:52,900 --> 00:17:54,460
+the environment
+variables, but it
+
+435
+00:17:54,460 --> 00:17:56,380
+doesn't work with
+just any JSON yet.
+
+436
+00:17:56,380 --> 00:17:58,660
+Yeah, I think I've
+got Cloak running.
+
+437
+00:17:58,820 --> 00:18:01,380
+Yeah, but it won't
+help with our MCP
+
+438
+00:18:01,380 --> 00:18:03,600
+work because we're
+putting keys in those
+
+439
+00:18:03,600 --> 00:18:05,900
+and it needs to be
+modified to be able
+
+440
+00:18:05,900 --> 00:18:08,480
+to work with specific
+JSON files because
+
+441
+00:18:08,480 --> 00:18:09,800
+it's only going
+to look for your
+
+442
+00:18:09,800 --> 00:18:12,400
+.env file. That's how
+it actually works.
+
+443
+00:18:13,000 --> 00:18:15,600
+Okay, well, I'm not
+using a .env file.
+
+444
+00:18:15,600 --> 00:18:17,940
+I'm going to stop
+just for a moment.
+
+445
+00:18:17,940 --> 00:18:18,760
+Okay.
+
+446
+00:18:19,300 --> 00:18:22,560
+I know you guys love
+to hack my stuff,
+
+447
+00:18:23,300 --> 00:18:25,960
+but all right,
+I'm just going
+
+448
+00:18:25,960 --> 00:18:27,440
+to stop that
+for a moment.
+
+449
+00:18:31,420 --> 00:18:41,640
+What I did a moment
+ago is I went into the
+
+450
+00:18:41,640 --> 00:18:46,260
+Composio system here
+and I just generated
+
+451
+00:18:47,920 --> 00:18:50,360
+a server and
+then I copied the
+
+452
+00:18:50,360 --> 00:18:52,030
+URL from that
+basically, just
+
+453
+00:18:52,030 --> 00:18:53,070
+if you want to
+do it yourself.
+
+454
+00:18:53,320 --> 00:18:55,520
+Okay. So now I went
+in there. So now I'm
+
+455
+00:18:55,520 --> 00:18:57,020
+going to go back
+here. So now I've got,
+
+456
+00:18:57,020 --> 00:18:59,560
+I've got my complaint.
+Oh, now it's twice.
+
+457
+00:19:00,120 --> 00:19:02,660
+Thanks for
+doing it twice.
+
+458
+00:19:03,460 --> 00:19:06,040
+All right. So it, it,
+it worked now. So now
+
+459
+00:19:06,040 --> 00:19:07,620
+I'm, now I'm going
+to go in and remove
+
+460
+00:19:07,620 --> 00:19:12,540
+my, my secondary ones.
+It shows one's global,
+
+461
+00:19:12,540 --> 00:19:14,480
+one's project in the
+settings there on
+
+462
+00:19:14,480 --> 00:19:16,820
+the left. Yeah. But
+it confuses it. Right.
+
+463
+00:19:16,960 --> 00:19:18,560
+Sure. Yeah. You
+can't, you don't want
+
+464
+00:19:18,560 --> 00:19:21,900
+to. Sure. Yeah. So
+I'm just going to do
+
+465
+00:19:21,900 --> 00:19:23,960
+that. Now, I'm just
+going to use global
+
+466
+00:19:23,960 --> 00:19:25,800
+now because I'm too
+lazy. I actually actually
+
+467
+00:19:25,800 --> 00:19:28,020
+use local or whatever
+they call it.
+
+468
+00:19:28,140 --> 00:19:30,860
+But all right. So now
+we get perplexity.
+
+469
+00:19:30,860 --> 00:19:32,840
+Now we've got now
+we can check that
+
+470
+00:19:32,840 --> 00:19:34,320
+it works. We can
+see that it's green.
+
+471
+00:19:34,730 --> 00:19:36,570
+We can see that we
+get the perplexity
+
+472
+00:19:36,570 --> 00:19:40,380
+search. Now, I went and
+set up perplexity before
+
+473
+00:19:40,380 --> 00:19:41,640
+the call. So but
+you're going to have
+
+474
+00:19:41,640 --> 00:19:43,840
+to go get perplexity
+API if you want to use
+
+475
+00:19:43,840 --> 00:19:45,940
+it. But you see there's
+parameters. Now,
+
+476
+00:19:45,940 --> 00:19:47,980
+the key thing here is
+of these parameters
+
+477
+00:19:47,980 --> 00:19:53,460
+is actually looks
+like it's using it's
+
+478
+00:19:53,460 --> 00:19:56,840
+using the wrong one
+puppy yeah it's using the
+
+479
+00:19:56,840 --> 00:19:59,020
+wrong server it's
+really struggling today
+
+480
+00:19:59,020 --> 00:20:01,700
+sorry guys one second
+i'm gonna go back
+
+481
+00:20:01,700 --> 00:20:06,720
+to my file i'm gonna
+i'm gonna stop sharing
+
+482
+00:20:06,720 --> 00:20:08,720
+there looks like
+there's like massive
+
+483
+00:20:08,720 --> 00:20:12,220
+delay in when i make
+changes uh i'm I'm gonna
+
+484
+00:20:12,220 --> 00:20:14,120
+look at my global,
+just to double check.
+
+485
+00:20:15,080 --> 00:20:19,240
+Yeah, well,
+it's, sorry guys.
+
+486
+00:20:19,480 --> 00:20:20,920
+There's like
+a five minute
+
+487
+00:20:20,920 --> 00:20:23,500
+delay on anything
+I do in this.
+
+488
+00:20:24,180 --> 00:20:26,320
+So now I gotta
+do the, I gotta
+
+489
+00:20:26,320 --> 00:20:28,660
+change the global
+one one more time.
+
+490
+00:20:32,000 --> 00:20:32,920
+Work.
+
+491
+00:20:34,420 --> 00:20:38,920
+Yeah, so MCPs
+are a little
+
+492
+00:20:38,920 --> 00:20:41,000
+quirky, not gonna lie.
+
+493
+00:20:43,000 --> 00:20:45,120
+All right. It actually
+worked a lot easier
+
+494
+00:20:45,120 --> 00:20:46,640
+earlier working
+the first try. It
+
+495
+00:20:46,640 --> 00:20:48,300
+probably has something
+to do with me like
+
+496
+00:20:48,300 --> 00:20:50,120
+live casting or
+something that it, you
+
+497
+00:20:50,120 --> 00:20:51,920
+know, it's like Murphy's
+law or something.
+
+498
+00:20:52,220 --> 00:20:55,080
+All right. So now we,
+so now we go back, let
+
+499
+00:20:55,080 --> 00:20:56,620
+me do one more check.
+I'm going to, I'm
+
+500
+00:20:56,620 --> 00:20:59,240
+going to refresh this
+and I'm going to go
+
+501
+00:20:59,240 --> 00:21:02,240
+back here. Now, the
+reason I know it worked is
+
+502
+00:21:02,240 --> 00:21:04,460
+because I see one tool
+and I know that the
+
+503
+00:21:04,460 --> 00:21:06,740
+MCP that I'm using
+only had one tool and
+
+504
+00:21:06,740 --> 00:21:08,700
+I set it up to only
+work with the one tool.
+
+505
+00:21:08,700 --> 00:21:10,900
+So now we see that
+there's parameters that
+
+506
+00:21:10,900 --> 00:21:13,060
+you can pass. Now,
+these parameters are
+
+507
+00:21:13,060 --> 00:21:15,600
+important. These parameters
+are essentially what
+
+508
+00:21:15,600 --> 00:21:18,200
+I'm going to define
+here. So when we go
+
+509
+00:21:18,200 --> 00:21:22,540
+back to my actual area
+here, you'll see here
+
+510
+00:21:22,540 --> 00:21:25,000
+that I gave it guidance,
+right? I told the
+
+511
+00:21:25,000 --> 00:21:27,260
+architecture, I gave
+it all the parameters.
+
+512
+00:21:27,260 --> 00:21:29,500
+It doesn't know what
+the heck the parameters
+
+513
+00:21:29,500 --> 00:21:31,160
+are by default. So
+you have to go and
+
+514
+00:21:31,160 --> 00:21:33,580
+tell it what those
+parameters are. That's what
+
+515
+00:21:33,580 --> 00:21:35,840
+this line is doing.
+It's basically not
+
+516
+00:21:35,840 --> 00:21:37,580
+only telling it what and
+how it needs to operate
+
+517
+00:21:37,580 --> 00:21:38,920
+but it's telling it
+the parameters it
+
+518
+00:21:38,920 --> 00:21:41,460
+needs to operate so if
+we scroll over to the
+
+519
+00:21:41,460 --> 00:21:43,480
+right you'll see here
+that i've got different
+
+520
+00:21:43,480 --> 00:21:45,640
+uh you know structures
+that we saw earlier
+
+521
+00:21:45,640 --> 00:21:47,740
+and and how it needs
+to run again this
+
+522
+00:21:47,740 --> 00:21:51,560
+is way more visible if
+we go we go here and
+
+523
+00:21:51,560 --> 00:21:55,640
+then we go to the uh
+prompts and then we go
+
+524
+00:21:55,640 --> 00:21:58,040
+to deep research we we
+can see exactly what
+
+525
+00:21:58,040 --> 00:22:00,360
+what i fed it but
+basically i'm telling it
+
+526
+00:22:00,360 --> 00:22:04,140
+exactly what how it
+needs to run and more
+
+527
+00:22:04,140 --> 00:22:05,980
+importantly i'm telling
+it what the parameters
+
+528
+00:22:05,980 --> 00:22:08,200
+it needs to know
+so you see here the
+
+529
+00:22:08,200 --> 00:22:12,860
+example usage okay
+tool name and so on so
+
+530
+00:22:12,860 --> 00:22:15,140
+without that it spends
+a lot of time trying to
+
+531
+00:22:15,140 --> 00:22:16,560
+discover the other
+thing you're going to
+
+532
+00:22:16,560 --> 00:22:18,460
+want to do if you're
+creating mcp based
+
+533
+00:22:18,460 --> 00:22:22,120
+workflows don't put read
+read kills it it spends
+
+534
+00:22:22,120 --> 00:22:23,740
+all this time trying
+to read local files
+
+535
+00:22:23,740 --> 00:22:26,420
+and all i really want
+to do is read the mcp
+
+536
+00:22:26,420 --> 00:22:29,740
+so do not put read in
+there you edit edit
+
+537
+00:22:29,740 --> 00:22:31,680
+allows you to edit
+files like to create the
+
+538
+00:22:31,680 --> 00:22:35,040
+research files and mcp
+allows it is it's MCP
+
+539
+00:22:35,040 --> 00:22:37,560
+is basically like a
+replacement for read.
+
+540
+00:22:37,560 --> 00:22:39,660
+So if you don't
+really wanna use
+
+541
+00:22:39,660 --> 00:22:41,420
+read and MCP
+together, if you
+
+542
+00:22:41,420 --> 00:22:43,040
+do want it to
+read local files,
+
+543
+00:22:43,040 --> 00:22:45,260
+use the orchestrator
+and tell it to read
+
+544
+00:22:45,260 --> 00:22:48,100
+local files using like
+some other mode and
+
+545
+00:22:48,100 --> 00:22:50,360
+then to orchestrate and
+switch back and forth,
+
+546
+00:22:50,360 --> 00:22:52,400
+but don't combine
+them, it doesn't work.
+
+547
+00:22:52,400 --> 00:22:55,120
+And I've struggled a
+lot with that as well.
+
+548
+00:22:55,120 --> 00:22:57,120
+All right, so now I
+think we've got it to a
+
+549
+00:22:57,120 --> 00:22:58,220
+point where we're
+working, we're gonna go
+
+550
+00:22:58,220 --> 00:23:00,760
+to deep research mode
+and we're going to go
+
+551
+00:23:00,760 --> 00:23:03,880
+and I'm really interested
+in learning about
+
+552
+00:23:03,880 --> 00:23:07,340
+the new MCP protocol
+from Cloudflare. They
+
+553
+00:23:07,340 --> 00:23:09,640
+came out with a really
+cool MPX library
+
+554
+00:23:09,640 --> 00:23:12,210
+that allows us to build
+and deploy serverless
+
+555
+00:23:12,240 --> 00:23:15,660
+MCP instances, but
+locally and remotely.
+
+556
+00:23:15,660 --> 00:23:17,580
+I figured that would be
+a fun little project.
+
+557
+00:23:17,580 --> 00:23:19,720
+So I'm going to do a
+little research. I'm
+
+558
+00:23:19,720 --> 00:23:32,540
+going to say research
+the latest MCP MPX,
+
+559
+00:23:33,480 --> 00:23:37,220
+library from,
+I don't know, I
+
+560
+00:23:37,220 --> 00:23:38,560
+guess we're going
+to say Cloudflare
+
+561
+00:23:38,560 --> 00:23:47,240
+and create a
+basic research
+
+562
+00:23:49,160 --> 00:23:54,420
+plan in slash plans
+to implement. And
+
+563
+00:23:54,420 --> 00:23:55,320
+I'm not really
+giving a lot of
+
+564
+00:23:55,320 --> 00:23:58,800
+guidance. Now, Now, in
+this case, I'm using
+
+565
+00:23:58,800 --> 00:24:01,020
+Sonnet 3.7 for
+the deep research.
+
+566
+00:24:01,860 --> 00:24:04,200
+Now, there's one of
+the problems with
+
+567
+00:24:04,200 --> 00:24:05,980
+Sonnet 3.7 that you'll
+run into if you're
+
+568
+00:24:05,980 --> 00:24:07,920
+doing really, really
+deep research is it
+
+569
+00:24:07,920 --> 00:24:09,680
+doesn't really
+handle large context
+
+570
+00:24:09,680 --> 00:24:11,520
+windows well. So if
+you think this is going
+
+571
+00:24:11,520 --> 00:24:14,220
+to be more than 200
+,000 tokens, don't
+
+572
+00:24:14,220 --> 00:24:16,200
+use ***** Thinking.
+But if you want it,
+
+573
+00:24:16,360 --> 00:24:18,740
+there's a workaround.
+you can say for each
+
+574
+00:24:18,740 --> 00:24:22,780
+for each part use you
+know use a different
+
+575
+00:24:22,780 --> 00:24:24,740
+model or use a
+different plan and then
+
+576
+00:24:24,740 --> 00:24:26,540
+just change the model
+for that particular
+
+577
+00:24:26,540 --> 00:24:28,060
+use case but in this
+case i don't care
+
+578
+00:24:28,060 --> 00:24:30,020
+i'm just going to let
+it go so research latest
+
+579
+00:24:30,020 --> 00:24:32,300
+i'm choosing
+research mode fingers
+
+580
+00:24:32,300 --> 00:24:34,800
+crossed this worked 10
+times before i started
+
+581
+00:24:34,800 --> 00:24:36,760
+the call this morning
+i'm going to close
+
+582
+00:24:36,760 --> 00:24:38,500
+this and we're going
+to see what happens
+
+583
+00:24:40,660 --> 00:24:43,220
+all right so now we're
+in deep research mode
+
+584
+00:24:43,220 --> 00:24:45,060
+you can see that
+that it's going to do
+
+585
+00:24:45,060 --> 00:24:49,540
+initial check I've got
+MCP and edit now if all
+
+586
+00:24:49,540 --> 00:24:51,660
+is well it should
+automatically determine
+
+587
+00:24:51,660 --> 00:24:55,120
+how to use the MCP
+without me telling it now
+
+588
+00:24:55,120 --> 00:24:56,900
+in the old version
+I would have to like
+
+589
+00:24:56,900 --> 00:24:59,520
+copy and paste it and
+give it examples you can
+
+590
+00:24:59,520 --> 00:25:01,020
+see here it's thinking
+about what it wants
+
+591
+00:25:01,020 --> 00:25:04,300
+to do it's looking at
+the instructions so
+
+592
+00:25:04,300 --> 00:25:06,170
+we can let's see what
+it's thinking about so
+
+593
+00:25:06,360 --> 00:25:08,200
+it's thinking about
+making directories I
+
+594
+00:25:08,200 --> 00:25:10,160
+never gave it the ability
+to make directories
+
+595
+00:25:10,160 --> 00:25:13,500
+so maybe I should add
+the command option
+
+596
+00:25:13,500 --> 00:25:19,000
+but let's let's see what
+happens it it's it's
+
+597
+00:25:19,000 --> 00:25:20,680
+thinking about what
+it needs how it needs
+
+598
+00:25:20,680 --> 00:25:24,140
+to create it this now
+what it will need to
+
+599
+00:25:24,140 --> 00:25:26,260
+do is actually eventually
+research so it's
+
+600
+00:25:26,260 --> 00:25:31,560
+it's doing a lot of
+thinking all right now
+
+601
+00:25:33,760 --> 00:25:35,660
+this is a drawback to
+thinking mode is it
+
+602
+00:25:35,660 --> 00:25:38,120
+sometimes overthinks
+this is a perfect example
+
+603
+00:25:38,120 --> 00:25:42,440
+of an overthinking
+just do it if i had
+
+604
+00:25:42,440 --> 00:25:46,400
+chosen sorry is it
+necessary to have thinking
+
+605
+00:25:46,400 --> 00:25:49,340
+if you're already using
+perplexity does its
+
+606
+00:25:49,340 --> 00:25:52,740
+own thinking well no
+if it ever get if it
+
+607
+00:25:52,740 --> 00:25:54,700
+ever finishes thinking
+you'll see why thinking
+
+608
+00:25:54,700 --> 00:25:57,240
+is important now it
+overthought the initial
+
+609
+00:25:57,240 --> 00:25:59,740
+step i know what i
+could do is i could
+
+610
+00:25:59,740 --> 00:26:01,720
+stop it and tell it
+to just start with a
+
+611
+00:26:01,720 --> 00:26:04,280
+research but I'm gonna
+let it go for a minute.
+
+612
+00:26:04,600 --> 00:26:06,380
+It's really
+thinking here.
+
+613
+00:26:06,500 --> 00:26:08,700
+This is actually
+the most it's
+
+614
+00:26:08,700 --> 00:26:10,140
+thought about it.
+Usually it starts
+
+615
+00:26:10,140 --> 00:26:11,980
+with a research,
+then it thinks.
+
+616
+00:26:15,360 --> 00:26:16,860
+And that's one
+of the drawbacks
+
+617
+00:26:16,860 --> 00:26:18,780
+to thinking as well
+is it sometimes
+
+618
+00:26:18,780 --> 00:26:20,340
+takes on a life
+of its own.
+
+619
+00:26:20,820 --> 00:26:22,060
+All right, keep,
+
+620
+00:26:28,330 --> 00:26:30,370
+all right, that's
+really overthinking it.
+
+621
+00:26:31,210 --> 00:26:32,950
+Okay, I'm gonna cancel
+that for a moment.
+
+622
+00:26:33,270 --> 00:26:34,970
+And we're gonna
+look at what happens
+
+623
+00:26:34,970 --> 00:26:36,190
+when I don't use
+thinking mode.
+
+624
+00:26:36,810 --> 00:26:38,370
+I don't, I don't
+have all day
+
+625
+00:26:38,370 --> 00:26:39,770
+for it to think.
+So I'm going to
+
+626
+00:26:39,770 --> 00:26:41,110
+go, I'm going
+to go back here
+
+627
+00:26:41,550 --> 00:26:42,850
+and I'm going to stop.
+
+628
+00:26:43,170 --> 00:26:45,170
+Oh, it was about to do
+a subtask. Of course
+
+629
+00:26:45,170 --> 00:26:47,590
+it was. I'm going to
+go back here and I'm
+
+630
+00:26:47,590 --> 00:26:50,430
+going to switch to
+a non-thinking mode.
+
+631
+00:26:50,430 --> 00:26:52,530
+So let's choose sign 3
+.5. And let's see what
+
+632
+00:26:52,530 --> 00:26:54,150
+happens when I don't
+do a thinking mode.
+
+633
+00:26:54,810 --> 00:26:56,630
+I can always switch
+to thinking later.
+
+634
+00:26:58,390 --> 00:27:00,810
+Now this isn't an
+orchestrator in the
+
+635
+00:27:00,810 --> 00:27:02,190
+traditional sense,
+because this is
+
+636
+00:27:02,190 --> 00:27:04,550
+an orchestrating
+subtask. it's it's
+
+637
+00:27:04,550 --> 00:27:06,450
+it's basically
+orchestrating the mcp
+
+638
+00:27:08,690 --> 00:27:11,670
+all right so
+
+639
+00:27:14,250 --> 00:27:16,150
+now do do your thing
+
+640
+00:27:20,090 --> 00:27:23,770
+here we go this is a
+perfect example of why
+
+641
+00:27:23,770 --> 00:27:25,890
+thinking mode see
+see how it see how it
+
+642
+00:27:25,890 --> 00:27:27,610
+sort of like needed
+to figure itself out a
+
+643
+00:27:27,610 --> 00:27:29,930
+little bit if you had
+read on it would have
+
+644
+00:27:29,930 --> 00:27:31,810
+tried to read all
+your local files and
+
+645
+00:27:31,810 --> 00:27:33,850
+do all this crazy stuff.
+In this case, because
+
+646
+00:27:33,850 --> 00:27:36,010
+I gave it the exact
+thing it needed, it
+
+647
+00:27:36,010 --> 00:27:37,950
+kind of figured itself
+much more quickly.
+
+648
+00:27:37,950 --> 00:27:40,110
+You can see I've got
+always allow here for
+
+649
+00:27:40,110 --> 00:27:41,950
+the perplexity. You
+can see the request
+
+650
+00:27:41,950 --> 00:27:45,190
+it made. So this to
+the person who just
+
+651
+00:27:45,190 --> 00:27:46,990
+mentioned it, this is
+kind of its thinking as
+
+652
+00:27:46,990 --> 00:27:49,030
+well. You're right. It
+is kind of thinking.
+
+653
+00:27:49,050 --> 00:27:52,270
+Now it made the
+request. Now this is the
+
+654
+00:27:52,270 --> 00:27:54,890
+response it got. You
+can see here that it
+
+655
+00:27:54,890 --> 00:27:57,170
+got a bunch of
+information. It's, it's
+
+656
+00:27:57,170 --> 00:27:59,810
+relating to, you know,
+the MCP information.
+
+657
+00:27:59,830 --> 00:28:02,150
+Now it's going and doing
+
+658
+00:28:02,150 --> 00:28:03,170
+some more thinking.
+
+659
+00:28:06,370 --> 00:28:07,570
+All right.
+
+660
+00:28:07,590 --> 00:28:09,490
+And let's see.
+
+661
+00:28:10,730 --> 00:28:13,830
+Now the, this, this
+will, the, this
+
+662
+00:28:13,830 --> 00:28:15,250
+will take a, this
+could take a while.
+
+663
+00:28:15,250 --> 00:28:17,050
+Now this is really
+good when you
+
+664
+00:28:17,050 --> 00:28:19,210
+integrate it as part
+of like a development
+
+665
+00:28:19,210 --> 00:28:22,370
+flow, especially if
+you have like, you
+
+666
+00:28:22,370 --> 00:28:24,290
+know, problems it's
+trying to solve.
+
+667
+00:28:25,790 --> 00:28:29,210
+oh it's still waiting
+for a response i guess
+
+668
+00:28:29,210 --> 00:28:31,550
+we'll give it a sec
+the other thing is
+
+669
+00:28:31,550 --> 00:28:33,450
+interesting check this
+out i find this really
+
+670
+00:28:33,450 --> 00:28:36,870
+interesting um notice
+that it's changing the
+
+671
+00:28:36,870 --> 00:28:41,310
+the temperature parameters
+automatically it
+
+672
+00:28:41,310 --> 00:28:43,570
+and so based on whatever
+it's searching for
+
+673
+00:28:45,090 --> 00:28:48,910
+it changes and optimizes
+its own temperature
+
+674
+00:28:48,910 --> 00:28:51,890
+which is really a
+unique i never i never
+
+675
+00:28:51,890 --> 00:28:54,130
+saw a model sort of self
+-optimized temperature
+
+676
+00:28:54,130 --> 00:28:56,390
+before that's that's
+a that's a new one
+
+677
+00:28:56,390 --> 00:28:59,430
+um so anyway it's going
+down here and it's
+
+678
+00:28:59,430 --> 00:29:02,050
+continuing now it's
+saying what was it doing
+
+679
+00:29:02,050 --> 00:29:04,290
+now it seems the
+response was cut off let
+
+680
+00:29:04,290 --> 00:29:06,330
+me try again with more
+specific query that
+
+681
+00:29:06,330 --> 00:29:10,330
+now that might be a
+limitation uh yeah here
+
+682
+00:29:10,330 --> 00:29:13,610
+we go that's a limitation
+because it didn't
+
+683
+00:29:13,610 --> 00:29:18,370
+actually include the
+uh token count i think
+
+684
+00:29:18,370 --> 00:29:21,030
+and and it defaults
+to a certain value. So
+
+685
+00:29:21,030 --> 00:29:23,410
+what we might wanna
+do, and I gotta look at
+
+686
+00:29:23,410 --> 00:29:25,590
+the parameters here.
+Let's see if we can see
+
+687
+00:29:25,590 --> 00:29:27,310
+if there's a parameter.
+Yeah, max tokens.
+
+688
+00:29:27,890 --> 00:29:31,290
+So now I know there's
+a potential problem
+
+689
+00:29:31,290 --> 00:29:35,910
+with max tokens, we
+can go here and I can
+
+690
+00:29:35,910 --> 00:29:38,310
+tell it to adjust the
+max tokens as needed.
+
+691
+00:29:38,430 --> 00:29:41,490
+So we go here, we
+go to research mode,
+
+692
+00:29:41,490 --> 00:29:42,810
+and maybe I go at
+the bottom and I
+
+693
+00:29:42,810 --> 00:29:46,200
+say something like,
+you know, adjust,
+
+694
+00:29:46,910 --> 00:29:47,830
+oh.
+
+695
+00:29:51,210 --> 00:29:55,650
+adjust max
+tokens to prevent
+
+696
+00:29:55,650 --> 00:29:59,570
+truncated text
+or something.
+
+697
+00:30:00,030 --> 00:30:00,930
+All right, so that's
+
+698
+00:30:00,930 --> 00:30:02,030
+gonna fix that problem.
+
+699
+00:30:02,030 --> 00:30:03,810
+Guys, I built this
+this morning, so
+
+700
+00:30:03,810 --> 00:30:05,330
+I'm still, I'm
+in for this call,
+
+701
+00:30:05,330 --> 00:30:06,830
+so I'm still sort
+of optimizing it.
+
+702
+00:30:06,830 --> 00:30:08,650
+So you can see here, it's
+
+703
+00:30:08,650 --> 00:30:10,810
+automatically sort
+of tried again.
+
+704
+00:30:10,950 --> 00:30:13,430
+It's making additional,
+you are specified,
+
+705
+00:30:13,470 --> 00:30:14,530
+you know, a specialized
+
+706
+00:30:14,530 --> 00:30:16,790
+technical
+documentation writer.
+
+707
+00:30:17,100 --> 00:30:20,130
+all right now the other
+thing i might want
+
+708
+00:30:20,130 --> 00:30:22,990
+to consider doing is
+limiting the amount
+
+709
+00:30:22,990 --> 00:30:26,850
+of times it asks oh
+here we go it's already
+
+710
+00:30:26,850 --> 00:30:28,670
+uh it looks like it
+looks like it's already
+
+711
+00:30:28,670 --> 00:30:33,350
+figured out the token
+issue all right so
+
+712
+00:30:33,350 --> 00:30:36,020
+now now it's writing
+the documentation now
+
+713
+00:30:36,750 --> 00:30:38,750
+notice it's writing
+the documentation in
+
+714
+00:30:38,750 --> 00:30:40,690
+the structure and format
+that i wanted that
+
+715
+00:30:40,690 --> 00:30:43,270
+matches the requirements
+of the spark
+
+716
+00:30:43,270 --> 00:30:45,710
+specification that we'll
+use later to actually
+
+717
+00:30:45,710 --> 00:30:48,030
+implement whatever
+we're building. Now,
+
+718
+00:30:48,030 --> 00:30:52,770
+this is a crazy detailed
+research, but the
+
+719
+00:30:52,770 --> 00:30:54,950
+more detailed the
+research, the better the
+
+720
+00:30:54,950 --> 00:30:57,390
+result is going to be
+in the complexity of
+
+721
+00:30:57,390 --> 00:30:59,630
+what you want to
+build. So the way that
+
+722
+00:30:59,630 --> 00:31:02,290
+I've set this up, and
+I'm going to turn on
+
+723
+00:31:02,290 --> 00:31:03,990
+the right so it just
+writes automatically.
+
+724
+00:31:04,410 --> 00:31:07,210
+Now, what I'm setting
+this up to do is
+
+725
+00:31:07,210 --> 00:31:10,850
+to do really long
+running complex code
+
+726
+00:31:10,850 --> 00:31:13,810
+development. So what
+this is setting up is
+
+727
+00:31:13,810 --> 00:31:15,310
+the ability for this
+to build something
+
+728
+00:31:15,310 --> 00:31:17,450
+that will likely run
+for several hours.
+
+729
+00:31:17,450 --> 00:31:19,780
+The other day I did
+a test and I ran
+
+730
+00:31:19,780 --> 00:31:22,650
+it for I think 12
+hours, including tests,
+
+731
+00:31:22,650 --> 00:31:24,810
+and it was about 30
+,000 lines of code.
+
+732
+00:31:25,830 --> 00:31:28,350
+I did basically the
+same thing, but I did it
+
+733
+00:31:28,350 --> 00:31:31,170
+manually. I went and
+created a, I used
+
+734
+00:31:31,170 --> 00:31:35,130
+ChatGPT's deep research.
+I did a massive research
+
+735
+00:31:35,130 --> 00:31:37,550
+report. Then I went in
+a room and basically
+
+736
+00:31:37,550 --> 00:31:39,330
+said, take this research
+and structure it
+
+737
+00:31:39,330 --> 00:31:41,810
+basically like what
+you're seeing here. And
+
+738
+00:31:41,810 --> 00:31:44,890
+then once I had the
+plan in place, you'll
+
+739
+00:31:44,890 --> 00:31:46,830
+see here, there's like
+a folder or whatever,
+
+740
+00:31:47,150 --> 00:31:49,450
+you know, then I
+basically, I set it to
+
+741
+00:31:49,450 --> 00:31:52,590
+implement, you know,
+each phase one at a time,
+
+742
+00:31:52,590 --> 00:31:55,130
+testing each phase
+and only testing one
+
+743
+00:31:55,130 --> 00:31:57,450
+function at a time before
+moving on to the next.
+
+744
+00:31:57,450 --> 00:31:59,590
+And then iteratively,
+it basically built
+
+745
+00:31:59,590 --> 00:32:02,630
+out the entire application
+again it took i
+
+746
+00:32:02,630 --> 00:32:05,130
+think just shy of 12
+hours cost about 70
+
+747
+00:32:05,130 --> 00:32:07,830
+dollars but it literally
+ran non-stop for 12
+
+748
+00:32:07,830 --> 00:32:09,970
+hours i got up in the
+morning and it was done
+
+749
+00:32:09,970 --> 00:32:12,270
+and fully functional
+i showed my customer
+
+750
+00:32:12,270 --> 00:32:15,430
+and their their mind
+was blown it was like i
+
+751
+00:32:15,430 --> 00:32:16,750
+thought this was going
+to take you months
+
+752
+00:32:16,750 --> 00:32:20,450
+and you did it in an
+evening i didn't do it
+
+753
+00:32:20,450 --> 00:32:23,690
+in the evening ruko
+did but so when you uh
+
+754
+00:32:23,690 --> 00:32:26,230
+was the research done
+and as you said you
+
+755
+00:32:26,230 --> 00:32:29,170
+have instructed it to
+proceed uh function by
+
+756
+00:32:29,170 --> 00:32:31,430
+function and to when
+before you proceed right
+
+757
+00:32:31,430 --> 00:32:35,270
+where do you specify
+that like is it is
+
+758
+00:32:35,270 --> 00:32:37,450
+it in one of the md
+files that you say that
+
+759
+00:32:37,450 --> 00:32:42,470
+i so i i specified that
+so there's when you're
+
+760
+00:32:42,470 --> 00:32:44,950
+using the orchestrator
+there's two ways
+
+761
+00:32:44,950 --> 00:32:47,670
+to use it one is like
+go do it and go figure
+
+762
+00:32:47,670 --> 00:32:50,270
+it out which is which
+would be kind of vibe
+
+763
+00:32:50,270 --> 00:32:52,970
+coding i call that
+declarative programming
+
+764
+00:32:52,970 --> 00:32:54,670
+you're not really
+telling it so much how or
+
+765
+00:32:54,670 --> 00:32:56,230
+what you want you're
+basically saying go
+
+766
+00:32:56,230 --> 00:32:58,970
+figure it out, which is
+fine. As long as your
+
+767
+00:32:58,970 --> 00:33:02,130
+plans are good enough
+and structured enough,
+
+768
+00:33:02,130 --> 00:33:05,130
+that should generally
+work. My approach
+
+769
+00:33:05,130 --> 00:33:08,770
+involves me giving it a
+bit of initial guidance
+
+770
+00:33:08,770 --> 00:33:09,990
+based on whatever
+it is I'm trying to
+
+771
+00:33:09,990 --> 00:33:12,930
+build. And the initial
+guidance is generally
+
+772
+00:33:12,930 --> 00:33:16,030
+me telling the initial
+orchestrator that I
+
+773
+00:33:16,030 --> 00:33:19,790
+want you to only implement
+each phase one at
+
+774
+00:33:19,790 --> 00:33:23,710
+a time and then test
+or build and test each
+
+775
+00:33:23,710 --> 00:33:26,690
+function one at a
+time as subtasks. So I
+
+776
+00:33:26,690 --> 00:33:28,770
+type in, I basically
+type in exactly what he
+
+777
+00:33:28,770 --> 00:33:30,870
+said. And then at the
+very end, I say, use
+
+778
+00:33:30,870 --> 00:33:33,610
+subtasks. And then I
+say, use new underscore
+
+779
+00:33:33,610 --> 00:33:36,290
+task for each subtask.
+And the new underscore
+
+780
+00:33:36,290 --> 00:33:39,090
+task reminds the
+orchestrator that it
+
+781
+00:33:39,090 --> 00:33:42,470
+needs to use that new
+underscore task for
+
+782
+00:33:42,470 --> 00:33:45,610
+each subtask because
+sometimes it forgets the
+
+783
+00:33:45,610 --> 00:33:47,030
+other thing i would
+know for really long
+
+784
+00:33:47,030 --> 00:33:49,670
+running processes don't
+use the thinking model
+
+785
+00:33:49,670 --> 00:33:51,390
+for the orchestrator
+because you'll run out
+
+786
+00:33:51,390 --> 00:33:53,710
+of uh context after
+about three or four
+
+787
+00:33:53,710 --> 00:33:55,850
+hours and and about
+you but i'm not sitting
+
+788
+00:33:55,850 --> 00:33:57,110
+in front of this thing
+watching it for three
+
+789
+00:33:57,110 --> 00:33:59,550
+or four hours so if
+you if you use just a
+
+790
+00:33:59,550 --> 00:34:03,090
+regular um a regular
+instruct model like sonic
+
+791
+00:34:03,090 --> 00:34:06,770
+3.7 not the uh you
+know the the medium or
+
+792
+00:34:06,770 --> 00:34:09,070
+long or whatever they
+call it it'll it'll
+
+793
+00:34:09,070 --> 00:34:11,110
+work better on a long
+long running process.
+
+794
+00:34:12,190 --> 00:34:14,430
+Is the new
+underscore task
+
+795
+00:34:14,430 --> 00:34:18,110
+enough to try
+to switch modes?
+
+796
+00:34:18,450 --> 00:34:21,210
+Sorry, can you say
+it again? Is the
+
+797
+00:34:21,210 --> 00:34:24,590
+new underscore task
+instruction enough
+
+798
+00:34:24,590 --> 00:34:26,270
+to prevent me from
+trying to switch
+
+799
+00:34:26,270 --> 00:34:29,350
+modes? I find
+roughly after six or
+
+800
+00:34:29,350 --> 00:34:31,910
+seven turns, it tries
+to switch modes.
+
+801
+00:34:32,550 --> 00:34:33,590
+Well,
+
+802
+00:34:34,400 --> 00:34:36,670
+are you using
+subtasks or are you
+
+803
+00:34:36,670 --> 00:34:37,970
+using because those
+are two different
+
+804
+00:34:37,970 --> 00:34:40,570
+approaches. I'm
+trying to use subtasks
+
+805
+00:34:40,570 --> 00:34:42,230
+so I can let this
+run overnight, but
+
+806
+00:34:42,230 --> 00:34:44,150
+it usually stops
+at an hour or two.
+
+807
+00:34:45,070 --> 00:34:48,350
+Yeah, so that stops
+that. So that's
+
+808
+00:34:48,350 --> 00:34:49,710
+exactly the
+problem, it stops.
+
+809
+00:34:49,910 --> 00:34:53,050
+So by explicitly
+saying for all subtasks
+
+810
+00:34:53,170 --> 00:34:55,410
+in your original
+request or prompt
+
+811
+00:34:55,410 --> 00:34:56,410
+or whatever you
+want to call it,
+
+812
+00:34:56,410 --> 00:34:59,410
+always use new
+underscore tasks for
+
+813
+00:34:59,410 --> 00:35:01,870
+each subtask,
+that won't happen.
+
+814
+00:35:02,090 --> 00:35:04,830
+If you don't, sometimes
+it gets confused and
+
+815
+00:35:04,830 --> 00:35:07,010
+it'll start switching
+modes after a while
+
+816
+00:35:07,010 --> 00:35:10,750
+as you discovered and
+the modes is not clean
+
+817
+00:35:10,750 --> 00:35:13,630
+it it's it's more
+expensive because it you
+
+818
+00:35:13,630 --> 00:35:16,910
+it all the context has
+to load the subtasks
+
+819
+00:35:16,910 --> 00:35:19,990
+is substantially cheaper
+because you don't
+
+820
+00:35:19,990 --> 00:35:22,290
+have to load all that
+all all the previous
+
+821
+00:35:22,290 --> 00:35:25,050
+context and then and
+the other thing i did
+
+822
+00:35:25,050 --> 00:35:26,530
+if you're just for
+you guys if you're
+
+823
+00:35:26,530 --> 00:35:30,030
+curious i added a memory
+option in the uh Rue,
+
+824
+00:35:30,290 --> 00:35:31,660
+where did I put it?
+
+825
+00:35:32,650 --> 00:35:36,370
+Yeah, in the
+rules file here.
+
+826
+00:35:36,530 --> 00:35:38,130
+Is this a memory bank?
+
+827
+00:35:38,290 --> 00:35:40,910
+Yes, I had a memory
+bank. It's working
+
+828
+00:35:40,910 --> 00:35:44,250
+pretty good. I think I
+cracked on that. So in
+
+829
+00:35:44,250 --> 00:35:45,910
+this case, we'll see.
+Where did I put it?
+
+830
+00:35:46,410 --> 00:35:47,210
+Memory.
+
+831
+00:35:47,210 --> 00:35:48,470
+Yeah, here it is. Here's
+
+832
+00:35:48,470 --> 00:35:49,650
+the memory bank
+integration.
+
+833
+00:35:50,090 --> 00:35:52,070
+You customize this
+further. I kept it
+
+834
+00:35:52,070 --> 00:35:54,470
+minimal, but it works.
+And it creates a memory
+
+835
+00:35:54,470 --> 00:35:56,250
+bank. Depending on
+what you're doing, it
+
+836
+00:35:56,250 --> 00:36:00,270
+can increase the
+cost quite a bit. you
+
+837
+00:36:00,270 --> 00:36:02,430
+know, because it has to
+update the memory and,
+
+838
+00:36:02,430 --> 00:36:05,730
+and sometimes the
+memory bank will create
+
+839
+00:36:05,730 --> 00:36:09,690
+a sort of, I don't
+know, a confusion at
+
+840
+00:36:09,690 --> 00:36:12,610
+some points. So I made
+it a minimal memory
+
+841
+00:36:12,610 --> 00:36:14,750
+bank. The other thing
+that I did for my
+
+842
+00:36:14,750 --> 00:36:16,070
+memory bank, just for
+you guys, if you're
+
+843
+00:36:16,070 --> 00:36:18,750
+curious, rather than
+using that, I actually,
+
+844
+00:36:18,750 --> 00:36:20,650
+and maybe this is a
+demo for next week.
+
+845
+00:36:21,050 --> 00:36:24,630
+I've got a integration
+here, you'll see
+
+846
+00:36:25,390 --> 00:36:26,350
+Memzero.
+
+847
+00:36:26,850 --> 00:36:30,090
+So the Memzero integration,
+which is pretty
+
+848
+00:36:30,090 --> 00:36:34,130
+cool, this allows
+you to use a Memzero
+
+849
+00:36:34,130 --> 00:36:37,530
+vector style memory
+bank rather than MD. And
+
+850
+00:36:37,530 --> 00:36:40,410
+the benefit to that,
+I find, is it doesn't
+
+851
+00:36:40,410 --> 00:36:43,870
+create a billion files
+in your, I mean, exactly
+
+852
+00:36:43,870 --> 00:36:46,930
+a billion, in your
+repo. Because most
+
+853
+00:36:46,930 --> 00:36:48,670
+of these files you don't
+care about, but you
+
+854
+00:36:48,670 --> 00:36:50,750
+might want to refer to
+it later. So by using
+
+855
+00:36:50,750 --> 00:36:53,470
+Memzero, you can
+actually just do a lookup
+
+856
+00:36:53,470 --> 00:36:55,170
+and then you create
+a and then you just
+
+857
+00:36:55,170 --> 00:36:58,110
+update your prompt to
+say save each of the
+
+858
+00:36:58,110 --> 00:37:01,710
+sort of memory bank
+components to mem zero
+
+859
+00:37:01,710 --> 00:37:03,390
+and then you give it
+the example of how to
+
+860
+00:37:03,390 --> 00:37:04,850
+interact with mem zero
+similar to what i just
+
+861
+00:37:04,850 --> 00:37:08,150
+showed you for the
+perplexity api and for
+
+862
+00:37:08,150 --> 00:37:10,070
+this what i'm doing
+i'm gonna let this run
+
+863
+00:37:10,070 --> 00:37:13,530
+for a minute i'm gonna
+jump back here i i'm
+
+864
+00:37:13,530 --> 00:37:15,430
+actually using composio
+as well composio
+
+865
+00:37:15,430 --> 00:37:17,590
+is actually great for
+this sort of stuff so
+
+866
+00:37:17,590 --> 00:37:20,150
+if we go here to
+composio and we choose i
+
+867
+00:37:20,150 --> 00:37:23,330
+think it's mem zero
+yeah here it is mem zero
+
+868
+00:37:23,720 --> 00:37:27,230
+now i can create mcp
+here that does all
+
+869
+00:37:27,230 --> 00:37:29,910
+this stuff for me all
+in one so i can add you
+
+870
+00:37:29,910 --> 00:37:32,210
+know so i can add
+both the perplexity so
+
+871
+00:37:32,210 --> 00:37:34,970
+i can go here and choose
+30 so i can choose
+
+872
+00:37:34,970 --> 00:37:38,110
+memories i'll just
+select all the memories
+
+873
+00:37:38,110 --> 00:37:41,650
+i get 15 memories
+then i can go here and
+
+874
+00:37:41,650 --> 00:37:44,050
+i'll choose perplexity
+i've been i've been
+
+875
+00:37:44,050 --> 00:37:46,870
+thinking about maybe
+using fire uh fire crawl
+
+876
+00:37:46,870 --> 00:37:50,050
+so let's let's do that
+instead oh i guess
+
+877
+00:37:50,050 --> 00:37:54,570
+spell it right crawl
+there it is down here
+
+878
+00:37:55,510 --> 00:37:58,490
+all right so now i'm
+i'm going to use the
+
+879
+00:37:58,490 --> 00:38:01,110
+extraction option which
+is the best option
+
+880
+00:38:01,110 --> 00:38:05,090
+so i'm going to select
+extract and extract
+
+881
+00:38:05,090 --> 00:38:09,010
+now extract with llm
+is is interesting but
+
+882
+00:38:09,010 --> 00:38:11,260
+i don't need it because
+we're using a in
+
+883
+00:38:11,750 --> 00:38:14,290
+this case we're using
+root which acts as my
+
+884
+00:38:14,290 --> 00:38:16,450
+llm so it's pointless
+so I'm gonna go down
+
+885
+00:38:16,450 --> 00:38:18,730
+here I'm gonna add the
+search option which
+
+886
+00:38:18,730 --> 00:38:22,210
+is basically the same
+as perplexity I can I
+
+887
+00:38:22,210 --> 00:38:24,970
+can crawl and scrape
+and the web tools are
+
+888
+00:38:24,970 --> 00:38:28,210
+kind of cool as well
+so I think we're good
+
+889
+00:38:28,210 --> 00:38:31,170
+I'm gonna I'm gonna
+add those and let's
+
+890
+00:38:31,170 --> 00:38:32,710
+see what else what
+other things do we have
+
+891
+00:38:32,710 --> 00:38:35,530
+here that can add to
+my MCP server we get
+
+892
+00:38:35,530 --> 00:38:37,330
+Supabase so I want to
+save it to Supabase
+
+893
+00:38:37,330 --> 00:38:39,850
+maybe I want to maybe
+I want to integrate a
+
+894
+00:38:39,850 --> 00:38:42,190
+Google Drive which is
+kind of cool like then
+
+895
+00:38:42,190 --> 00:38:46,390
+I could save all to
+a google drive which
+
+896
+00:38:46,390 --> 00:38:48,670
+would be a cool feature
+so in this case i
+
+897
+00:38:48,670 --> 00:38:50,790
+could go and i could
+edit a certain file let's
+
+898
+00:38:50,790 --> 00:38:52,830
+say i want to save
+it to a google sheet
+
+899
+00:38:52,830 --> 00:38:54,870
+or something i could
+do i could add this
+
+900
+00:38:54,870 --> 00:38:58,090
+option google using
+google doc option which
+
+901
+00:38:58,090 --> 00:39:00,390
+allows me to directly
+work with google docs
+
+902
+00:39:01,850 --> 00:39:03,830
+you know so lots
+and lots and lots of
+
+903
+00:39:03,830 --> 00:39:07,470
+options here if i want
+to uh update my client
+
+904
+00:39:07,470 --> 00:39:10,320
+i can go in here and
+i can add slack this
+
+905
+00:39:10,410 --> 00:39:12,670
+is cool i i've got
+my own personal slack
+
+906
+00:39:12,670 --> 00:39:15,890
+bot so as it works
+i'm kind of lazy so
+
+907
+00:39:15,890 --> 00:39:17,810
+what what i was doing
+was i was looking at
+
+908
+00:39:17,810 --> 00:39:21,040
+a way to interact
+with rue through slack
+
+909
+00:39:21,040 --> 00:39:23,370
+which i think i figured
+out and basically
+
+910
+00:39:23,370 --> 00:39:26,750
+what happens is rue will
+then make notifications
+
+911
+00:39:26,750 --> 00:39:29,210
+to my slack channel
+i respond to it
+
+912
+00:39:29,210 --> 00:39:32,160
+and then i can interact
+with Roo independently
+
+913
+00:39:32,210 --> 00:39:34,410
+of being in front
+of my computer so
+
+914
+00:39:34,410 --> 00:39:36,750
+all i need is my phone
+and i use the slack
+
+915
+00:39:36,750 --> 00:39:39,390
+option of my phone
+this is how I do it.
+
+916
+00:39:40,490 --> 00:39:42,510
+Twilio is up next
+then, right, Ruf?
+
+917
+00:39:43,370 --> 00:39:43,890
+Yeah.
+
+918
+00:39:44,190 --> 00:39:46,110
+Twilio is an option
+here, I think.
+
+919
+00:39:47,610 --> 00:39:50,330
+Is it Twilio? I
+think there's options
+
+920
+00:39:50,330 --> 00:39:52,350
+for generic API
+integrations as well.
+
+921
+00:39:52,350 --> 00:39:53,990
+Here's a SERP
+API. It's kind of
+
+922
+00:39:53,990 --> 00:39:55,230
+cool. I'm not
+sure why there's
+
+923
+00:39:55,230 --> 00:39:56,690
+so many mix
+panels coming up.
+
+924
+00:39:57,490 --> 00:39:58,950
+Weird work here.
+
+925
+00:40:00,630 --> 00:40:03,050
+They've got tons of
+them. If you're curious,
+
+926
+00:40:03,050 --> 00:40:05,290
+if you want a better
+UI, here's here's
+
+927
+00:40:05,290 --> 00:40:11,150
+teams Shopify calendary
+all kinds of stuff
+
+928
+00:40:12,220 --> 00:40:13,730
+if you're looking to
+get up and running
+
+929
+00:40:13,730 --> 00:40:16,610
+quickly with different
+types of MCPs this is
+
+930
+00:40:16,610 --> 00:40:21,090
+by far the easiest
+what's that like here's
+
+931
+00:40:21,090 --> 00:40:22,730
+whatsapp that's cool
+let's see what we do
+
+932
+00:40:22,730 --> 00:40:30,650
+whatsapp I can send
+a message how's I my
+
+933
+00:40:30,650 --> 00:40:33,650
+my bot can can have a
+channel or something
+
+934
+00:40:33,650 --> 00:40:37,470
+i don't know meta ads
+anyway anything you
+
+935
+00:40:37,470 --> 00:40:39,490
+can dream up right
+these are all mcps and
+
+936
+00:40:39,630 --> 00:40:42,010
+but this example i'm
+showing you guys running
+
+937
+00:40:42,010 --> 00:40:44,190
+is a perfect is is
+just a really good
+
+938
+00:40:44,190 --> 00:40:46,310
+example of how you do
+it like now now that you
+
+939
+00:40:46,310 --> 00:40:48,330
+see how i did it with
+perplexity you can
+
+940
+00:40:48,330 --> 00:40:50,510
+pretty much replace this
+with any mcp like you
+
+941
+00:40:50,510 --> 00:40:53,750
+know run and you know
+here's a folder full
+
+942
+00:40:53,750 --> 00:40:56,510
+of stuff go figure it
+out kind of approach
+
+943
+00:40:56,580 --> 00:41:00,210
+let's see how far it's
+gotten all right so
+
+944
+00:41:00,210 --> 00:41:03,030
+now we've gotten quite
+far let's close the
+
+945
+00:41:03,030 --> 00:41:05,600
+room I don't want to
+go there, we see plans.
+
+946
+00:41:09,290 --> 00:41:11,790
+So now I separate,
+so what I did is I
+
+947
+00:41:11,790 --> 00:41:16,050
+separated the research
+from the plan.
+
+948
+00:41:16,150 --> 00:41:18,950
+Now the research allows
+for it to really get
+
+949
+00:41:18,950 --> 00:41:20,950
+a deep understanding
+of whatever the heck
+
+950
+00:41:20,950 --> 00:41:23,210
+it is that it's trying
+to do. So let's just
+
+951
+00:41:23,210 --> 00:41:24,890
+look, let's look at the
+executive summary and
+
+952
+00:41:24,890 --> 00:41:27,410
+see what it's actually
+done because I was
+
+953
+00:41:27,410 --> 00:41:30,430
+busy blabbing here while
+it went. All right.
+
+954
+00:41:30,430 --> 00:41:34,090
+So this is basically
+the executive summary.
+
+955
+00:41:34,210 --> 00:41:35,830
+It's a model content.
+
+956
+00:41:36,170 --> 00:41:38,410
+It actually made model
+contacts correct.
+
+957
+00:41:38,410 --> 00:41:41,190
+It always dreams up
+other acronyms for MCP.
+
+958
+00:41:41,710 --> 00:41:43,490
+All right. It's
+still running.
+
+959
+00:41:44,150 --> 00:41:46,350
+All right. So
+back. Come on. All
+
+960
+00:41:46,350 --> 00:41:49,750
+right. So it's
+creating a worker
+
+961
+00:41:49,750 --> 00:41:52,550
+OAuth, MCP agent,
+MCA adapter,
+
+962
+00:41:53,770 --> 00:41:56,070
+WebSocket. So this
+will build, again,
+
+963
+00:41:56,070 --> 00:41:58,330
+whatever crazy things
+I want it to build.
+
+964
+00:41:59,160 --> 00:42:01,390
+And you can see that
+it's got all the
+
+965
+00:42:01,390 --> 00:42:03,530
+detail. So later,
+when it's going to
+
+966
+00:42:03,530 --> 00:42:05,450
+implement all these
+different steps,
+
+967
+00:42:05,450 --> 00:42:06,830
+you can see
+that it's going
+
+968
+00:42:06,830 --> 00:42:08,210
+to do the
+initial queries.
+
+969
+00:42:08,210 --> 00:42:09,890
+It's going to do
+all these things.
+
+970
+00:42:09,890 --> 00:42:11,990
+This will be
+how the system
+
+971
+00:42:11,990 --> 00:42:13,890
+understands what
+it needs to build.
+
+972
+00:42:13,890 --> 00:42:15,370
+So here's the plan.
+
+973
+00:42:15,590 --> 00:42:17,150
+So most likely
+what I'm going
+
+974
+00:42:17,150 --> 00:42:18,650
+to do is I'm going to...
+
+975
+00:42:20,550 --> 00:42:22,090
+No, I want this one.
+
+976
+00:42:22,090 --> 00:42:22,950
+This one I want to show.
+
+977
+00:42:24,810 --> 00:42:27,930
+So the plan that you
+showed, that phases
+
+978
+00:42:27,930 --> 00:42:31,690
+plan, I'm presuming you
+had already asked it
+
+979
+00:42:31,690 --> 00:42:34,410
+to do in your NPX,
+basically, init function.
+
+980
+00:42:34,910 --> 00:42:38,130
+When you define the
+mode definition in the
+
+981
+00:42:38,130 --> 00:42:39,990
+orchestrator mode,
+you'd already specified
+
+982
+00:42:39,990 --> 00:42:41,990
+there, right? So it's
+out of the box kind of.
+
+983
+00:42:42,770 --> 00:42:43,650
+Exactly.
+
+984
+00:42:44,010 --> 00:42:46,430
+So what I, yeah,
+exactly. So
+
+985
+00:42:46,430 --> 00:42:48,630
+what I did here
+in, if you go back
+
+986
+00:42:48,630 --> 00:42:49,810
+to the prompts
+for a moment,
+
+987
+00:42:49,810 --> 00:42:52,370
+you can see the
+logic is here.
+
+988
+00:42:52,450 --> 00:42:55,170
+This is the core logic.
+
+989
+00:42:55,430 --> 00:42:59,550
+Now, you can see
+that I defined the
+
+990
+00:42:59,550 --> 00:43:01,790
+structure and it's
+following that research
+
+991
+00:43:01,790 --> 00:43:04,690
+structure. And I made
+this really deep.
+
+992
+00:43:04,690 --> 00:43:07,110
+The whole point was
+to do deep research.
+
+993
+00:43:07,470 --> 00:43:10,490
+Maybe what I should do
+is shallow research,
+
+994
+00:43:10,490 --> 00:43:13,290
+right? Give me enough
+for an MVP or something.
+
+995
+00:43:13,290 --> 00:43:14,910
+But in this case, I
+wanted to show you
+
+996
+00:43:14,910 --> 00:43:17,510
+that I could basically
+recreate some of the
+
+997
+00:43:17,510 --> 00:43:19,950
+functionality found with
+Google deep research
+
+998
+00:43:19,950 --> 00:43:22,750
+or open AI research,
+but take it a step
+
+999
+00:43:22,750 --> 00:43:26,250
+further and actually
+implement it, you know,
+
+1000
+00:43:26,250 --> 00:43:28,190
+actually implement it.
+So where deep research
+
+1001
+00:43:28,190 --> 00:43:30,310
+will tell you how
+to build something,
+
+1002
+00:43:30,310 --> 00:43:32,670
+it won't actually build
+it. This will research
+
+1003
+00:43:32,670 --> 00:43:35,050
+it and build it, which
+is, which is cool
+
+1004
+00:43:35,350 --> 00:43:37,510
+and potentially
+even optimize,
+
+1005
+00:43:37,510 --> 00:43:39,690
+test it, secure
+it and deploy it.
+
+1006
+00:43:39,810 --> 00:43:43,070
+Like if I want to go
+back here and if I
+
+1007
+00:43:43,070 --> 00:43:46,850
+chose AWS, I think
+there is an AWS, this
+
+1008
+00:43:46,850 --> 00:43:48,710
+is the site, this,
+this, this is a better
+
+1009
+00:43:48,710 --> 00:43:50,310
+site here let's go
+to let's go to this
+
+1010
+00:43:50,310 --> 00:43:53,590
+one so this is an
+easier way to see all
+
+1011
+00:43:53,590 --> 00:43:55,710
+the stuff they have
+and there's you there's
+
+1012
+00:43:55,710 --> 00:43:57,430
+hundreds of other
+mcps you can choose
+
+1013
+00:43:57,430 --> 00:44:00,030
+here but um they've
+got a nice little site
+
+1014
+00:44:00,030 --> 00:44:02,370
+that organizes it
+better so we can see
+
+1015
+00:44:02,370 --> 00:44:05,350
+here we got you know
+ai and collaboration
+
+1016
+00:44:05,450 --> 00:44:07,510
+these are some of the
+tools they have we
+
+1017
+00:44:07,510 --> 00:44:11,370
+you know there's devops
+tools and then or
+
+1018
+00:44:11,370 --> 00:44:13,330
+we can just go to
+the mcp servers that
+
+1019
+00:44:13,330 --> 00:44:15,070
+exist there's like it's
+the highest thing in
+
+1020
+00:44:15,070 --> 00:44:16,490
+the world right now
+so i I thought there
+
+1021
+00:44:16,490 --> 00:44:18,930
+was an AWS one, but
+maybe I was mistaken.
+
+1022
+00:44:19,910 --> 00:44:22,190
+There is an AWS MCP, I
+
+1023
+00:44:22,190 --> 00:44:23,050
+guess they don't have it.
+
+1024
+00:44:23,050 --> 00:44:23,950
+Is there a GitHub?
+
+1025
+00:44:24,590 --> 00:44:25,830
+Yeah, they have a GitHub.
+
+1026
+00:44:29,710 --> 00:44:30,710
+So yeah,
+
+1027
+00:44:31,570 --> 00:44:34,070
+these are the ones that
+they have, I guess.
+
+1028
+00:44:34,250 --> 00:44:36,110
+Let's see what they
+have, data analytics,
+
+1029
+00:44:37,670 --> 00:44:40,250
+they have people labs,
+
+1030
+00:44:41,050 --> 00:44:42,330
+fireflies is cool, they
+
+1031
+00:44:42,330 --> 00:44:43,330
+got that integrated.
+
+1032
+00:44:43,590 --> 00:44:45,190
+whatever
+Microsoft Clarity
+
+1033
+00:44:45,190 --> 00:44:46,950
+is, Google BigQuery.
+
+1034
+00:44:48,070 --> 00:44:49,410
+So yeah,
+
+1035
+00:44:49,690 --> 00:44:50,650
+lots of stuff.
+
+1036
+00:44:52,930 --> 00:44:55,970
+Let me take a pause
+for a moment. This
+
+1037
+00:44:55,970 --> 00:44:57,890
+thing's been running
+for 45 minutes.
+
+1038
+00:44:59,250 --> 00:45:01,390
+You can see it just runs,
+
+1039
+00:45:01,390 --> 00:45:03,070
+right? It just
+goes and goes.
+
+1040
+00:45:03,610 --> 00:45:06,430
+Now, once this is
+complete, and this is
+
+1041
+00:45:06,430 --> 00:45:08,950
+probably my demo for
+tomorrow or something
+
+1042
+00:45:08,950 --> 00:45:10,550
+that I'm going do
+on the AI hacker
+
+1043
+00:45:10,550 --> 00:45:12,750
+space. And, you know,
+basically I want to
+
+1044
+00:45:12,750 --> 00:45:14,410
+build something new.
+So in this case,
+
+1045
+00:45:14,410 --> 00:45:16,450
+I'm going to, I want
+to show maybe how to
+
+1046
+00:45:16,450 --> 00:45:18,490
+build and deploy
+your own, you know,
+
+1047
+00:45:18,490 --> 00:45:20,670
+custom MCPs, you know,
+maybe you want to
+
+1048
+00:45:20,670 --> 00:45:23,210
+want to do an AWS one
+or whatever it is.
+
+1049
+00:45:23,370 --> 00:45:26,490
+This is exactly how,
+how you do that. So
+
+1050
+00:45:26,490 --> 00:45:29,910
+this is just a crazy
+amount of detail.
+
+1051
+00:45:33,070 --> 00:45:36,370
+Once this is done, I'll
+point it, I'll point
+
+1052
+00:45:36,370 --> 00:45:39,810
+it at the implementation
+plan in the Spark
+
+1053
+00:45:39,810 --> 00:45:42,550
+Orchestrator. And then
+the Spark Orchestrator
+
+1054
+00:45:42,550 --> 00:45:44,610
+will then take this
+document and all the
+
+1055
+00:45:44,610 --> 00:45:47,510
+research and then go
+build it iteratively.
+
+1056
+00:45:48,490 --> 00:45:51,050
+Given how much,
+how deep it is, I
+
+1057
+00:45:51,050 --> 00:45:52,190
+would guess it would
+take two or three
+
+1058
+00:45:52,190 --> 00:45:54,510
+hours, but keep in
+mind, I had this
+
+1059
+00:45:54,510 --> 00:45:56,790
+running for several
+hours of 12 hours
+
+1060
+00:45:56,790 --> 00:45:58,330
+the other day and
+that cost me $70.
+
+1061
+00:45:58,970 --> 00:46:01,090
+So two or three
+hours would probably
+
+1062
+00:46:01,090 --> 00:46:02,790
+be about 20 bucks.
+I would guess
+
+1063
+00:46:03,030 --> 00:46:05,930
+it, this isn't the
+cheapest approach. And
+
+1064
+00:46:05,930 --> 00:46:09,450
+I like the analogy of
+like, if using Klein
+
+1065
+00:46:09,450 --> 00:46:12,630
+is like a Fiat, this
+is like a Ferrari,
+
+1066
+00:46:12,690 --> 00:46:16,030
+right? This, this is
+going to go into as
+
+1067
+00:46:16,030 --> 00:46:18,870
+much depth as it
+possibly can and, and,
+
+1068
+00:46:18,870 --> 00:46:22,190
+and organize and so on
+until it, until it's
+
+1069
+00:46:22,190 --> 00:46:24,110
+done. What it hasn't
+actually done here
+
+1070
+00:46:24,110 --> 00:46:26,050
+is done a kind of
+like testing plan and
+
+1071
+00:46:26,050 --> 00:46:28,370
+that's where spark will
+take it and kind of
+
+1072
+00:46:28,370 --> 00:46:30,990
+run with it so this
+would be like how to
+
+1073
+00:46:30,990 --> 00:46:33,290
+set up your initial
+framework to build
+
+1074
+00:46:33,290 --> 00:46:35,250
+whatever crazy thing
+it is that you want to
+
+1075
+00:46:35,250 --> 00:46:37,330
+build the other
+interesting thing i noticed
+
+1076
+00:46:37,390 --> 00:46:39,150
+and i don't know if
+this is i should be
+
+1077
+00:46:39,150 --> 00:46:41,830
+saying this or not
+but this can do
+
+1078
+00:46:41,830 --> 00:46:45,190
+polymorphic versions of
+other people's patents
+
+1079
+00:46:45,390 --> 00:46:48,230
+so you can point
+this at a patent
+
+1080
+00:46:48,230 --> 00:46:50,330
+database like google's
+patent database
+
+1081
+00:46:50,330 --> 00:46:52,950
+for example and
+basically say build
+
+1082
+00:46:52,950 --> 00:46:56,310
+me a polymorphic
+version of a patent
+
+1083
+00:46:56,310 --> 00:46:58,450
+that doesn't infringe
+on that patent
+
+1084
+00:46:58,970 --> 00:47:02,030
+so someone else's
+implementation or you can
+
+1085
+00:47:02,030 --> 00:47:04,690
+point it at some you
+know research report
+
+1086
+00:47:04,690 --> 00:47:07,370
+from a university or
+whatever and say build
+
+1087
+00:47:07,370 --> 00:47:10,510
+me that and it'll go
+and it'll look at it
+
+1088
+00:47:10,510 --> 00:47:12,470
+it'll figure it out
+it'll use perplexity and
+
+1089
+00:47:12,470 --> 00:47:15,150
+fire crawl and aws
+and whatever it is it
+
+1090
+00:47:15,150 --> 00:47:17,330
+needs to do to build
+whatever and it'll just
+
+1091
+00:47:17,330 --> 00:47:20,850
+build it from soup to
+nuts until it's done.
+
+1092
+00:47:21,170 --> 00:47:23,010
+Is there any reason
+why you're not
+
+1093
+00:47:23,010 --> 00:47:25,670
+mentioning GPT-4L
+search preview?
+
+1094
+00:47:27,690 --> 00:47:30,630
+You're talking the
+GPT, sorry, which
+
+1095
+00:47:30,630 --> 00:47:32,570
+one? Is there any
+reason why you're
+
+1096
+00:47:32,570 --> 00:47:35,030
+not suggesting GPT
+-4L search preview,
+
+1097
+00:47:35,030 --> 00:47:37,830
+the web accessing
+model from OpenAI?
+
+1098
+00:47:39,290 --> 00:47:41,170
+That was my demo
+a few weeks ago.
+
+1099
+00:47:41,170 --> 00:47:42,730
+It's great. I like
+it. It's easy.
+
+1100
+00:47:42,810 --> 00:47:44,610
+Perplexity was just easy.
+
+1101
+00:47:45,290 --> 00:47:47,290
+All right. it's
+done. It finished.
+
+1102
+00:47:48,490 --> 00:47:50,870
+So now I've created a
+comprehensive research
+
+1103
+00:47:50,870 --> 00:47:54,610
+plan. And so, sorry,
+to your, just to answer
+
+1104
+00:47:54,610 --> 00:47:57,330
+your question
+quick, you could use
+
+1105
+00:47:57,330 --> 00:48:00,650
+perplexity, use fire
+crawl, you can use the, uh,
+
+1106
+00:48:00,650 --> 00:48:03,550
+open AI, you know,
+web crawler. They all
+
+1107
+00:48:03,550 --> 00:48:05,770
+kind of do the same
+thing at this point. Um,
+
+1108
+00:48:06,110 --> 00:48:07,970
+it really doesn't matter.
+I just happened to
+
+1109
+00:48:07,970 --> 00:48:09,850
+have my perplexity one
+up and running this
+
+1110
+00:48:09,850 --> 00:48:12,330
+morning. So it was
+easy. Um, but it really
+
+1111
+00:48:12,330 --> 00:48:14,670
+makes no difference. So
+now I create that. So
+
+1112
+00:48:14,670 --> 00:48:18,090
+now that I have this,
+it created 53 files.
+
+1113
+00:48:18,810 --> 00:48:22,370
+I'm going to, I'm
+not going to publish
+
+1114
+00:48:22,370 --> 00:48:23,730
+this just yet because
+I think I have to
+
+1115
+00:48:23,730 --> 00:48:26,450
+check for any environmental
+variables, but
+
+1116
+00:48:26,450 --> 00:48:28,030
+I will publish this
+later. What I'm going
+
+1117
+00:48:28,030 --> 00:48:31,410
+to do is I'll create
+a branch for you
+
+1118
+00:48:31,410 --> 00:48:33,710
+guys. And then every
+week we do this, it'll
+
+1119
+00:48:33,710 --> 00:48:35,410
+just be that week's
+branch or something.
+
+1120
+00:48:36,610 --> 00:48:38,690
+Okay. So last
+part, how do you
+
+1121
+00:48:38,690 --> 00:48:41,490
+take 53 files that
+it's created and
+
+1122
+00:48:41,490 --> 00:48:42,990
+create an actual
+implementation.
+
+1123
+00:48:43,350 --> 00:48:45,120
+So now I'm just
+going to go back
+
+1124
+00:48:45,120 --> 00:48:46,050
+here. I'm going
+to show you how to
+
+1125
+00:48:46,050 --> 00:48:47,470
+create a long
+running process with
+
+1126
+00:48:47,470 --> 00:48:48,950
+it. So I'm going
+to close this.
+
+1127
+00:48:49,990 --> 00:48:52,350
+All right. And now
+I'm going to switch
+
+1128
+00:48:52,350 --> 00:48:54,790
+from deep research mode
+and I'm going to go
+
+1129
+00:48:54,790 --> 00:48:58,030
+to, and by the way,
+the guys at Roo have
+
+1130
+00:48:58,030 --> 00:49:00,190
+implemented their own
+orchestrator, which
+
+1131
+00:49:00,190 --> 00:49:02,630
+is basically they
+just took what I did
+
+1132
+00:49:02,630 --> 00:49:04,750
+with this Spark
+orchestrator and called
+
+1133
+00:49:04,750 --> 00:49:08,090
+it orchestrator. Kudos
+to them, I guess.
+
+1134
+00:49:08,590 --> 00:49:10,070
+But I'm going to
+stick with mine.
+
+1135
+00:49:10,430 --> 00:49:11,570
+We're going to go here
+
+1136
+00:49:11,570 --> 00:49:12,970
+to Spark Orchestrator.
+
+1137
+00:49:13,450 --> 00:49:16,870
+And we're going to
+build this thing
+
+1138
+00:49:16,870 --> 00:49:18,350
+that they just told
+us to build. So
+
+1139
+00:49:18,350 --> 00:49:20,310
+this is the part
+where we could be
+
+1140
+00:49:20,310 --> 00:49:21,830
+simple or we could
+be complicated.
+
+1141
+00:49:21,830 --> 00:49:23,390
+I'm going to go
+middle of the road.
+
+1142
+00:49:28,950 --> 00:49:39,170
+phased implementation,
+build each of the,
+
+1143
+00:49:40,090 --> 00:49:42,910
+I guess it's each of
+the phases, I guess,
+
+1144
+00:49:43,420 --> 00:49:47,010
+at what the heck was
+that called? The cloud
+
+1145
+00:49:47,010 --> 00:49:55,150
+player implementation
+plan using a modular
+
+1146
+00:49:55,150 --> 00:49:58,110
+structure. It's kind
+of obvious structure.
+
+1147
+00:49:58,230 --> 00:50:03,090
+Don't create any
+more documentation.
+
+1148
+00:50:04,030 --> 00:50:07,050
+It will if you
+tell it to. It
+
+1149
+00:50:07,050 --> 00:50:08,190
+loves to create
+documentation.
+
+1150
+00:50:08,430 --> 00:50:09,700
+Don't create any
+more documentation.
+
+1151
+00:50:09,870 --> 00:50:18,770
+Just implement
+each file one at a
+
+1152
+00:50:18,770 --> 00:50:28,650
+time. test and fix
+before moving on
+
+1153
+00:50:28,650 --> 00:50:33,750
+to the next feature
+or function.
+
+1154
+00:50:34,390 --> 00:50:39,970
+Then I'm going to
+say, use subtasks
+
+1155
+00:50:40,030 --> 00:50:47,110
+for each step with
+new underscore task.
+
+1156
+00:50:47,990 --> 00:50:52,170
+continue until and
+this is the part
+
+1157
+00:50:52,170 --> 00:50:54,010
+that's important
+because remember this
+
+1158
+00:50:54,010 --> 00:50:56,930
+is the core guidance
+right continue
+
+1159
+00:50:56,930 --> 00:51:02,750
+until complete and
+no and no errors
+
+1160
+00:51:05,170 --> 00:51:06,890
+all right so i get
+orchestrate i'm gonna i
+
+1161
+00:51:06,890 --> 00:51:08,760
+get thinking mode now
+this isn't the most
+
+1162
+00:51:08,760 --> 00:51:10,450
+complicated app in
+the world so i'm gonna
+
+1163
+00:51:10,450 --> 00:51:14,890
+i'm gonna use thinking
+and let's let it go.
+
+1164
+00:51:17,410 --> 00:51:20,050
+Now, this is kind of
+like starting a boat
+
+1165
+00:51:20,050 --> 00:51:22,150
+motor. Sometimes it
+takes a few poles to get
+
+1166
+00:51:22,150 --> 00:51:24,270
+the thing going. So
+we want to watch it
+
+1167
+00:51:24,270 --> 00:51:26,550
+for a minute and make
+sure that one, it
+
+1168
+00:51:26,550 --> 00:51:30,730
+properly creates the new
+subtasks. If it decides
+
+1169
+00:51:30,730 --> 00:51:34,050
+to go and do a sort
+of second, say the
+
+1170
+00:51:34,050 --> 00:51:36,470
+subtasks was created,
+that means it's working.
+
+1171
+00:51:36,490 --> 00:51:38,290
+Notice the bottom,
+it goes and says
+
+1172
+00:51:38,290 --> 00:51:41,270
+autocoder and switch to
+Sonnet 3.7. this means
+
+1173
+00:51:41,270 --> 00:51:44,130
+that I started the
+boat in the first pull.
+
+1174
+00:51:44,550 --> 00:51:45,850
+Doesn't always happen.
+
+1175
+00:51:46,170 --> 00:51:48,010
+Different models will
+perform differently
+
+1176
+00:51:48,010 --> 00:51:50,990
+as well. So if we
+had saw it not going
+
+1177
+00:51:50,990 --> 00:51:52,710
+to auto-coder mode
+or going to like
+
+1178
+00:51:52,710 --> 00:51:54,950
+specification writer
+or something, then we
+
+1179
+00:51:54,950 --> 00:51:56,930
+probably would have
+wanted to stop it and say,
+
+1180
+00:51:56,930 --> 00:51:59,110
+don't do this or that
+or the other thing.
+
+1181
+00:51:59,110 --> 00:52:00,370
+But in this case,
+it looks like it's
+
+1182
+00:52:00,370 --> 00:52:02,530
+actually figured it
+out on the first try.
+
+1183
+00:52:02,830 --> 00:52:04,090
+Now, the other
+interesting
+
+1184
+00:52:04,090 --> 00:52:06,110
+thing to see
+here is the task.
+
+1185
+00:52:06,110 --> 00:52:07,910
+So we can kind
+of take a look
+
+1186
+00:52:07,910 --> 00:52:09,670
+at what tasks it's doing.
+
+1187
+00:52:09,910 --> 00:52:12,170
+So it's creating
+a package for the
+
+1188
+00:52:12,170 --> 00:52:13,690
+necessary dependencies,
+setting up the
+
+1189
+00:52:13,690 --> 00:52:16,050
+TypeScript configuration,
+writing a Wrangler
+
+1190
+00:52:16,050 --> 00:52:18,610
+CIL. Yeah, it looks
+like it's correct.
+
+1191
+00:52:18,610 --> 00:52:19,970
+So I'm going to
+let that continue.
+
+1192
+00:52:20,810 --> 00:52:24,290
+Now, I'm just going
+to let this, I
+
+1193
+00:52:24,290 --> 00:52:26,110
+don't have enough
+time today to let it
+
+1194
+00:52:26,110 --> 00:52:28,370
+run. Maybe I'll
+let this run in the
+
+1195
+00:52:28,370 --> 00:52:30,470
+background when I go
+on to my next call,
+
+1196
+00:52:30,470 --> 00:52:33,110
+but basically this
+will run until done
+
+1197
+00:52:35,250 --> 00:52:37,670
+and we just let it
+let it watch now
+
+1198
+00:52:39,530 --> 00:52:41,890
+again I we could take
+this a step further
+
+1199
+00:52:41,890 --> 00:52:43,930
+and I'm thinking of
+maybe updating the spark
+
+1200
+00:52:43,930 --> 00:52:47,370
+to actually incorporate
+perplexity but the
+
+1201
+00:52:47,370 --> 00:52:49,930
+problem with with that
+is the spark was meant
+
+1202
+00:52:49,930 --> 00:52:52,210
+to be sort of generic
+enough to let people
+
+1203
+00:52:52,210 --> 00:52:54,210
+take it and run with
+it and modify it so
+
+1204
+00:52:54,210 --> 00:52:56,830
+I'm worried if i start
+making it too specific
+
+1205
+00:52:56,830 --> 00:53:01,090
+to like certain mcps
+or certain language
+
+1206
+00:53:01,090 --> 00:53:02,890
+models or technologies
+then it'll be it'll
+
+1207
+00:53:02,890 --> 00:53:05,530
+become too narrow so
+maybe i might just do
+
+1208
+00:53:05,530 --> 00:53:09,330
+like flavors of spark
+that are particular for
+
+1209
+00:53:09,330 --> 00:53:11,630
+different problems or
+verticals or something
+
+1210
+00:53:11,630 --> 00:53:14,850
+i don't know so one
+that mentioned of
+
+1211
+00:53:14,850 --> 00:53:16,710
+making a generic right
+i also noticed maybe
+
+1212
+00:53:16,710 --> 00:53:18,710
+this was there i hadn't
+noticed but cursor
+
+1213
+00:53:18,710 --> 00:53:22,970
+has also introduced the
+custom modes option.
+
+1214
+00:53:23,530 --> 00:53:25,330
+So currently, I think
+
+1215
+00:53:25,610 --> 00:53:28,130
+Spark works only through
+rule code, right?
+
+1216
+00:53:28,610 --> 00:53:32,190
+It can be ported across
+to like the windsurf
+
+1217
+00:53:32,190 --> 00:53:34,330
+of the world and the
+cursors of the world.
+
+1218
+00:53:34,390 --> 00:53:36,450
+Yeah, the one thing
+I haven't done,
+
+1219
+00:53:37,590 --> 00:53:39,480
+what I've struggled
+with Klein, and
+
+1220
+00:53:39,480 --> 00:53:41,870
+you can use my
+Klein rules, I think
+
+1221
+00:53:41,870 --> 00:53:43,010
+I've created some
+Klein rules as
+
+1222
+00:53:43,010 --> 00:53:45,090
+well, or Klein
+and Kursher rules.
+
+1223
+00:53:45,310 --> 00:53:48,030
+They don't have the
+the level of automation
+
+1224
+00:53:48,030 --> 00:53:50,230
+that you're seeing
+right here and
+
+1225
+00:53:50,230 --> 00:53:52,510
+specifically it's this
+let me show you show
+
+1226
+00:53:52,510 --> 00:53:54,010
+you guys you're
+going to want to take
+
+1227
+00:53:54,010 --> 00:53:56,530
+a screenshot of this
+by the way this is
+
+1228
+00:53:56,530 --> 00:53:58,210
+the part that this
+is the magic right
+
+1229
+00:53:58,210 --> 00:54:03,420
+here or where is it
+right here oops until
+
+1230
+00:54:04,450 --> 00:54:09,130
+klein and cursor
+have the ability to
+
+1231
+00:54:09,130 --> 00:54:13,810
+explicit they do okay
+klein does all that
+
+1232
+00:54:14,530 --> 00:54:16,730
+i haven't been able
+to get client to run
+
+1233
+00:54:17,150 --> 00:54:19,990
+autonomously for
+extended periods and it
+
+1234
+00:54:19,990 --> 00:54:22,350
+doesn't I don't think
+I see I think all they
+
+1235
+00:54:22,350 --> 00:54:24,190
+have is the ability
+to switch modes not
+
+1236
+00:54:24,190 --> 00:54:26,450
+subtasks unless they
+had unless they added it
+
+1237
+00:54:26,450 --> 00:54:29,470
+well so subtasks is
+something that I actually
+
+1238
+00:54:29,470 --> 00:54:33,330
+use prompt engineering
+to work with so
+
+1239
+00:54:33,330 --> 00:54:35,370
+I think maybe I'm maybe
+cheating it a little
+
+1240
+00:54:35,370 --> 00:54:37,990
+bit do you know what
+I mean like I'm I'm
+
+1241
+00:54:37,990 --> 00:54:40,950
+I'm doing that but I'm
+using more advanced
+
+1242
+00:54:40,950 --> 00:54:42,310
+prompt engineering
+for it rather than
+
+1243
+00:54:42,310 --> 00:54:44,610
+relying on the tool itself
+or some feature within
+
+1244
+00:54:44,610 --> 00:54:47,510
+the tool the client
+tool does that make
+
+1245
+00:54:47,510 --> 00:54:50,550
+sense yeah yeah and
+so when I looked at it
+
+1246
+00:54:50,550 --> 00:54:53,590
+it was basically
+switching modes which so
+
+1247
+00:54:53,590 --> 00:54:56,890
+like has only plan and
+act modes as far as
+
+1248
+00:54:56,890 --> 00:54:58,870
+I understand unless
+I'm mistaken uh the way
+
+1249
+00:54:58,870 --> 00:55:01,730
+I use it it's only
+plan and act and I can
+
+1250
+00:55:01,730 --> 00:55:06,230
+I like that because
+I'm a bit OCD and I
+
+1251
+00:55:06,230 --> 00:55:08,250
+don't want it to actually
+start writing a bunch
+
+1252
+00:55:08,250 --> 00:55:10,050
+of code that I can't
+afford it to write
+
+1253
+00:55:11,390 --> 00:55:14,870
+so I do act as
+the human in the
+
+1254
+00:55:14,870 --> 00:55:16,770
+loop and turn
+it on to plan
+
+1255
+00:55:16,770 --> 00:55:19,050
+mode when it asks
+but I can also
+
+1256
+00:55:19,250 --> 00:55:21,750
+type to it you know
+use a natural language
+
+1257
+00:55:21,750 --> 00:55:24,970
+to say I approve your
+request to switch to
+
+1258
+00:55:24,970 --> 00:55:27,950
+plan mode or rather
+from plan to act mode
+
+1259
+00:55:27,950 --> 00:55:30,710
+and it'll switch
+automatically but otherwise
+
+1260
+00:55:30,710 --> 00:55:33,170
+everything you
+have there and most
+
+1261
+00:55:33,170 --> 00:55:36,990
+operations on the file
+system I have it doing
+
+1262
+00:55:36,990 --> 00:55:39,470
+that automatically so
+the only thing that
+
+1263
+00:55:39,470 --> 00:55:41,990
+really requires me to
+step in is when it needs
+
+1264
+00:55:41,990 --> 00:55:44,310
+to perform a delete
+operation which i've
+
+1265
+00:55:44,310 --> 00:55:46,690
+specified individually
+that's one thing that
+
+1266
+00:55:46,690 --> 00:55:49,670
+i isolated um and
+you have to do that
+
+1267
+00:55:49,980 --> 00:55:52,350
+yeah you you don't you
+didn't include what i
+
+1268
+00:55:52,350 --> 00:55:55,470
+call i include rm in
+mine yeah i know you
+
+1269
+00:55:55,470 --> 00:55:59,450
+do yeah i i included
+i i p kill i i didn't
+
+1270
+00:55:59,450 --> 00:56:02,610
+include kill i maybe
+i should i the kill
+
+1271
+00:56:02,610 --> 00:56:05,170
+those aren't those aren't
+bad those are a bit
+
+1272
+00:56:05,170 --> 00:56:08,470
+i would use those
+before i used rm i mean
+
+1273
+00:56:08,470 --> 00:56:12,910
+well the reason i i'm
+comfortable with rm
+
+1274
+00:56:12,910 --> 00:56:14,310
+is because each one
+of these that you're
+
+1275
+00:56:14,310 --> 00:56:16,330
+looking at is its own
+code space so who cares
+
+1276
+00:56:16,330 --> 00:56:19,130
+yeah yeah of course
+you've got it isolated
+
+1277
+00:56:19,130 --> 00:56:21,270
+that way and that
+makes it plenty safe
+
+1278
+00:56:21,270 --> 00:56:24,050
+yeah that's understandable
+for sure yeah the
+
+1279
+00:56:24,050 --> 00:56:26,370
+other thing that the
+other so for those
+
+1280
+00:56:26,370 --> 00:56:29,130
+that are using cursor
+i did build something
+
+1281
+00:56:29,130 --> 00:56:32,050
+specifically for cursor
+that that basically
+
+1282
+00:56:32,050 --> 00:56:34,070
+gives you a lot of
+the same functionality
+
+1283
+00:56:34,450 --> 00:56:35,470
+Where the heck did I
+
+1284
+00:56:35,470 --> 00:56:39,530
+put that? NPM packages,
+
+1285
+00:56:39,790 --> 00:56:40,730
+Spark 2.
+
+1286
+00:56:40,930 --> 00:56:43,790
+Spark 2 is kind of
+a cool library that
+
+1287
+00:56:43,790 --> 00:56:46,150
+I built. The Spark
+2 library basically
+
+1288
+00:56:46,150 --> 00:56:48,510
+exposes almost all
+the same functionality
+
+1289
+00:56:48,510 --> 00:56:50,990
+that's now been
+built in the subtask
+
+1290
+00:56:50,990 --> 00:56:57,150
+orientation. But it
+uses the E2B environment
+
+1291
+00:56:57,150 --> 00:57:00,210
+to basically create
+sort of isolated
+
+1292
+00:57:00,490 --> 00:57:03,610
+subtask and code
+interpreters. So basically
+
+1293
+00:57:03,610 --> 00:57:04,990
+what this does,
+rather than running
+
+1294
+00:57:04,990 --> 00:57:08,330
+all the sort of
+subtasks locally, it
+
+1295
+00:57:08,330 --> 00:57:10,230
+runs them remotely
+and then feeds back
+
+1296
+00:57:10,230 --> 00:57:12,310
+into the system,
+which then Cursor can
+
+1297
+00:57:12,310 --> 00:57:15,090
+sort of orchestrate.
+So in that scenario,
+
+1298
+00:57:15,090 --> 00:57:17,150
+Cursor becomes an
+orchestrator of a
+
+1299
+00:57:17,150 --> 00:57:22,070
+secondary sort of
+agentic coding library.
+
+1300
+00:57:22,070 --> 00:57:23,550
+I haven't really
+promoted this too much,
+
+1301
+00:57:23,550 --> 00:57:25,410
+but this is what,
+if anyone's using
+
+1302
+00:57:25,410 --> 00:57:26,970
+Cursor, this is how
+you're going to do it.
+
+1303
+00:57:27,930 --> 00:57:30,150
+And I've got a new
+version too that
+
+1304
+00:57:30,150 --> 00:57:31,390
+takes this even
+further. I haven't
+
+1305
+00:57:31,390 --> 00:57:32,890
+pushed that out
+publicly. I think you
+
+1306
+00:57:32,890 --> 00:57:34,250
+can probably find
+one of my branches.
+
+1307
+00:57:34,670 --> 00:57:39,930
+Is it called
+Spark 2.0 just
+
+1308
+00:57:39,930 --> 00:57:41,370
+because it's
+for a cursor?
+
+1309
+00:57:42,030 --> 00:57:46,370
+No, it's because I
+built this before the
+
+1310
+00:57:46,690 --> 00:57:49,510
+Rue guys came out
+with their subtasks.
+
+1311
+00:57:49,510 --> 00:57:51,690
+So I built this last
+month. And then when
+
+1312
+00:57:51,790 --> 00:57:56,990
+they came out, I just
+ported it over. But
+
+1313
+00:57:56,990 --> 00:57:59,550
+I did Spark last
+year. so my original
+
+1314
+00:57:59,550 --> 00:58:02,090
+spark project was uh
+what the heck where
+
+1315
+00:58:02,090 --> 00:58:04,030
+the heck is that i
+guess it's punk spark
+
+1316
+00:58:04,510 --> 00:58:07,910
+so this this was the
+original so this this
+
+1317
+00:58:07,910 --> 00:58:10,110
+does everything you
+just saw and but it did
+
+1318
+00:58:10,110 --> 00:58:13,470
+it from the cli what took
+place in the security
+
+1319
+00:58:13,470 --> 00:58:18,150
+scanner repo that is
+very similar to spark
+
+1320
+00:58:18,150 --> 00:58:22,110
+um but is called
+something else so the
+
+1321
+00:58:22,110 --> 00:58:25,150
+security scanner that
+you developed you know
+
+1322
+00:58:25,150 --> 00:58:27,370
+i'm talking about yeah
+yeah the yeah if you
+
+1323
+00:58:27,370 --> 00:58:30,490
+go if you look in there
+that's what i started
+
+1324
+00:58:30,490 --> 00:58:32,970
+with you you had
+created this distributed
+
+1325
+00:58:32,970 --> 00:58:36,710
+um development model
+it's the security scanner
+
+1326
+00:58:36,710 --> 00:58:39,990
+yeah um is that it
+there i've built a lot
+
+1327
+00:58:39,990 --> 00:58:41,470
+of stuff like it's
+hard for me to keep up
+
+1328
+00:58:41,470 --> 00:58:45,070
+with all right so uh so
+if you look at the read
+
+1329
+00:58:45,070 --> 00:58:50,090
+yeah the read me uh
+it it describes the
+
+1330
+00:58:50,090 --> 00:58:55,630
+way uh down maybe yeah
+here yeah so was this
+
+1331
+00:58:55,630 --> 00:58:59,030
+before even the spark
+stuff or no no this is
+
+1332
+00:58:59,030 --> 00:59:00,990
+i've been using sparks
+since since last june
+
+1333
+00:59:00,990 --> 00:59:03,690
+so that's what i
+thought so how did this
+
+1334
+00:59:03,690 --> 00:59:05,850
+evolve what what became
+of this way because
+
+1335
+00:59:05,850 --> 00:59:07,790
+this is what i've actually
+been kind of running
+
+1336
+00:59:07,790 --> 00:59:14,190
+with so so everything
+you see is uh you
+
+1337
+00:59:14,190 --> 00:59:16,610
+guys are sort of watching
+my learning in real
+
+1338
+00:59:16,610 --> 00:59:19,250
+time right so of
+course yeah we all are
+
+1339
+00:59:19,250 --> 00:59:23,210
+right yep yes so when
+you go to my the roof net
+
+1340
+00:59:23,210 --> 00:59:25,650
+here and you see like
+a billion freaking
+
+1341
+00:59:25,650 --> 00:59:28,230
+projects you know i
+didn't build this i didn't
+
+1342
+00:59:28,230 --> 00:59:30,030
+build this for any
+reason like this stuff
+
+1343
+00:59:30,030 --> 00:59:32,610
+is not built for any
+reason other than just
+
+1344
+00:59:32,610 --> 00:59:35,830
+for me to figure out
+how to do stuff so if
+
+1345
+00:59:35,890 --> 00:59:38,810
+you look closely you'll
+notice that there's
+
+1346
+00:59:38,810 --> 00:59:41,010
+kind of an evolution of
+how i'm building things
+
+1347
+00:59:41,010 --> 00:59:44,850
+autonomously right
+okay yeah i see yes so
+
+1348
+00:59:44,850 --> 00:59:49,210
+for example the dspy
+ts library you know is
+
+1349
+00:59:49,210 --> 00:59:52,850
+you'll see that in
+this scenario i i also
+
+1350
+00:59:52,850 --> 00:59:54,730
+in this this is a few
+months old at this point
+
+1351
+00:59:54,730 --> 00:59:57,210
+three months so you
+can see that a few
+
+1352
+00:59:57,210 --> 00:59:59,510
+months ago i started
+adopting this kind of
+
+1353
+00:59:59,510 --> 01:00:02,430
+phased approach and i
+remember i remember yeah
+
+1354
+01:00:02,430 --> 01:00:06,570
+it turns out the trick
+was it was combination
+
+1355
+01:00:06,570 --> 01:00:09,210
+of test-driven
+development iteratively
+
+1356
+01:00:09,210 --> 01:00:11,550
+leaning back on itself
+and phase and narrowly
+
+1357
+01:00:11,550 --> 01:00:14,410
+defined phases once i
+determined that i could
+
+1358
+01:00:14,410 --> 01:00:16,830
+create i could get
+really narrow phases and
+
+1359
+01:00:16,830 --> 01:00:20,010
+have each phase
+iteratively test itself i
+
+1360
+01:00:20,010 --> 01:00:22,010
+suddenly was able to
+build anything at any
+
+1361
+01:00:22,010 --> 01:00:25,770
+level of complexity
+okay okay and this like
+
+1362
+01:00:25,770 --> 01:00:28,430
+this this is a perfect
+example this is like a
+
+1363
+01:00:28,430 --> 01:00:30,890
+a fairly complex
+implementation This is like
+
+1364
+01:00:30,890 --> 01:00:33,730
+basically DSPY
+implemented in TypeScript.
+
+1365
+01:00:33,830 --> 01:00:36,950
+Yeah, you've shown
+this, talked about
+
+1366
+01:00:36,950 --> 01:00:38,890
+it before. I've looked
+at that code. So
+
+1367
+01:00:38,890 --> 01:00:41,310
+if I'm starting out
+right now as I am,
+
+1368
+01:00:41,330 --> 01:00:45,150
+I went to Roof
+-Dev to look at
+
+1369
+01:00:45,150 --> 01:00:46,990
+the Create Spark
+code there.
+
+1370
+01:00:47,090 --> 01:00:48,550
+Is that correct?
+
+1371
+01:00:48,570 --> 01:00:50,810
+That's the most current,
+
+1372
+01:00:50,810 --> 01:00:51,730
+I guess you'd say, right?
+
+1373
+01:00:51,730 --> 01:00:56,830
+Yeah, so Roof-Dev is
+basically my initial
+
+1374
+01:00:56,830 --> 01:00:58,930
+starting point for
+generating project that
+
+1375
+01:00:58,930 --> 01:01:02,190
+I'm doing. now because
+i'm lazy i create
+
+1376
+01:01:02,190 --> 01:01:04,650
+the mpx because i
+didn't feel like cloning
+
+1377
+01:01:04,650 --> 01:01:06,890
+every time i started
+so i just create the
+
+1378
+01:01:06,890 --> 01:01:09,230
+mpx create spark and
+that allows me to
+
+1379
+01:01:09,230 --> 01:01:11,970
+basically bootstrap
+my environment and and
+
+1380
+01:01:11,970 --> 01:01:14,510
+there's a few easter
+eggs in there that i use
+
+1381
+01:01:14,510 --> 01:01:16,410
+to sort of you know
+customize it to my
+
+1382
+01:01:16,410 --> 01:01:19,830
+particular needs but
+basically before this
+
+1383
+01:01:19,830 --> 01:01:22,590
+was all python so if
+you go back in time
+
+1384
+01:01:22,590 --> 01:01:25,470
+look the history
+you'll see how my my my
+
+1385
+01:01:25,510 --> 01:01:28,580
+environment has evolved
+over the last year okay
+
+1386
+01:01:29,030 --> 01:01:32,210
+but yeah this so this
+this is basically
+
+1387
+01:01:32,210 --> 01:01:37,650
+how i built and then
+rube uh a quick question
+
+1388
+01:01:37,650 --> 01:01:41,150
+when you are are you
+on a regular basis
+
+1389
+01:01:41,150 --> 01:01:45,930
+now uh spotting um
+vsc or ide instances
+
+1390
+01:01:45,990 --> 01:01:50,350
+for each mode for each
+excuse me for each
+
+1391
+01:01:50,350 --> 01:01:53,730
+module or microservice,
+like breaking into
+
+1392
+01:01:53,730 --> 01:01:56,170
+10 parts and doing
+them at the same time?
+
+1393
+01:01:57,750 --> 01:02:00,230
+I'm not sure if
+I published that.
+
+1394
+01:02:00,990 --> 01:02:02,870
+What was the question?
+
+1395
+01:02:03,730 --> 01:02:05,570
+So yeah, so this
+is how I'm doing
+
+1396
+01:02:05,570 --> 01:02:07,490
+it. I was thinking
+of actually
+
+1397
+01:02:07,490 --> 01:02:09,650
+integrating this
+into my CreateSpark.
+
+1398
+01:02:09,910 --> 01:02:12,430
+What this does,
+
+1399
+01:02:12,710 --> 01:02:15,250
+I'm using that
+too now. That's
+
+1400
+01:02:15,250 --> 01:02:16,950
+a beautiful
+thing. I love it.
+
+1401
+01:02:17,010 --> 01:02:18,850
+Yeah, I haven't really
+promoted this because
+
+1402
+01:02:18,850 --> 01:02:21,230
+it's crazy complicated
+and I get a lot
+
+1403
+01:02:21,230 --> 01:02:23,150
+of hate for things that
+are too complicated.
+
+1404
+01:02:23,150 --> 01:02:26,650
+So I posted a couple
+of stuff about it.
+
+1405
+01:02:27,110 --> 01:02:27,990
+Yeah.
+
+1406
+01:02:27,990 --> 01:02:30,930
+So this creates
+multiple VS Code Docker
+
+1407
+01:02:30,930 --> 01:02:33,110
+instances, both
+locally and remotely,
+
+1408
+01:02:33,110 --> 01:02:35,710
+and then interacts
+with it as a swarm.
+
+1409
+01:02:35,750 --> 01:02:40,230
+So all the stuff you're
+seeing here, I can
+
+1410
+01:02:40,230 --> 01:02:43,530
+create like dozens
+and dozens of VS Code
+
+1411
+01:02:43,530 --> 01:02:45,010
+instances. And what's
+cool is you can
+
+1412
+01:02:45,010 --> 01:02:46,750
+actually log into each
+one of those VS Code
+
+1413
+01:02:46,750 --> 01:02:48,850
+instances through a
+web-based dashboard.
+
+1414
+01:02:49,110 --> 01:02:50,890
+Yeah, I got it to
+work with Windows
+
+1415
+01:02:50,890 --> 01:02:53,670
+and WSL Docker without
+Docker Desktop.
+
+1416
+01:02:53,830 --> 01:02:54,790
+Oh, nice.
+
+1417
+01:02:55,090 --> 01:02:56,450
+100% locally.
+
+1418
+01:02:56,550 --> 01:02:58,530
+So however much
+RAM, like if you
+
+1419
+01:02:58,530 --> 01:02:59,870
+bought a laptop
+with a lot of system
+
+1420
+01:02:59,870 --> 01:03:01,430
+RAM, or you're
+on a workstation
+
+1421
+01:03:01,430 --> 01:03:02,630
+that's got a lot
+of system RAM,
+
+1422
+01:03:03,190 --> 01:03:05,070
+and you want to
+take advantage of
+
+1423
+01:03:05,070 --> 01:03:06,550
+that, you don't have
+to do it remotely.
+
+1424
+01:03:07,070 --> 01:03:08,590
+There's actually,
+the reason I did
+
+1425
+01:03:08,590 --> 01:03:11,050
+it isn't for RAM,
+it was for GPU.
+
+1426
+01:03:11,370 --> 01:03:12,950
+Or that too, yeah.
+
+1427
+01:03:13,030 --> 01:03:14,850
+Yeah, so what I can
+do with this is I can
+
+1428
+01:03:14,850 --> 01:03:18,290
+spawn VS Code instances
+that have GPUs. where
+
+1429
+01:03:18,290 --> 01:03:21,150
+there's gpus on the
+edge yeah yeah and then
+
+1430
+01:03:21,150 --> 01:03:22,990
+then i then i pair and
+then i can go parallel
+
+1431
+01:03:22,990 --> 01:03:25,090
+paralyzation paralyze
+i don't know whatever
+
+1432
+01:03:25,090 --> 01:03:28,430
+concurrent um running
+tasks and then i
+
+1433
+01:03:28,430 --> 01:03:32,050
+can hyper optimize my
+um my language models or
+
+1434
+01:03:32,050 --> 01:03:34,390
+whatever i'm doing
+using the gpu which
+
+1435
+01:03:34,390 --> 01:03:37,150
+basically cuts the dev
+time down by orders of
+
+1436
+01:03:37,150 --> 01:03:41,610
+magnitude and i was using
+uh fly.io gpus which
+
+1437
+01:03:41,610 --> 01:03:43,590
+are super cheap and
+i can spin up in like
+
+1438
+01:03:43,590 --> 01:03:46,670
+seconds do you know if
+they're cheaper than
+
+1439
+01:03:46,670 --> 01:03:48,950
+run pod are you familiar
+with run pod yeah
+
+1440
+01:03:48,950 --> 01:03:52,070
+same thing same okay
+yeah they're the same
+
+1441
+01:03:52,070 --> 01:03:54,210
+they all they all and
+i think railway also
+
+1442
+01:03:54,210 --> 01:03:56,610
+has them versell i think
+is getting into the
+
+1443
+01:03:56,610 --> 01:03:59,350
+game they all kind of
+work the same i i just
+
+1444
+01:03:59,350 --> 01:04:03,070
+i was just familiar
+with fly yeah this thing
+
+1445
+01:04:03,070 --> 01:04:05,170
+is awesome it's just
+when i was looking at
+
+1446
+01:04:05,170 --> 01:04:06,790
+implementing it i was
+like okay you really
+
+1447
+01:04:06,790 --> 01:04:09,850
+have to take a that 50
+000 or whatever foot
+
+1448
+01:04:09,850 --> 01:04:13,090
+view at your project
+structure and if you're
+
+1449
+01:04:13,090 --> 01:04:15,610
+a solo developer it's
+it is a lot like you
+
+1450
+01:04:15,610 --> 01:04:17,410
+described more complicated
+to try and implement
+
+1451
+01:04:17,410 --> 01:04:19,290
+something like this
+it seems like you
+
+1452
+01:04:19,290 --> 01:04:21,850
+know freedom and magic
+when you get it but
+
+1453
+01:04:21,850 --> 01:04:23,790
+then I'm like okay this
+is a lot of effort to
+
+1454
+01:04:23,790 --> 01:04:26,290
+actually try and put
+to use as a single
+
+1455
+01:04:26,290 --> 01:04:29,610
+person like you know what
+I mean you really have
+
+1456
+01:04:29,610 --> 01:04:32,150
+your branching strategy
+you know like how
+
+1457
+01:04:32,150 --> 01:04:34,090
+it's writing code and
+so you don't step all
+
+1458
+01:04:34,090 --> 01:04:35,690
+over yourself like
+you would in a real
+
+1459
+01:04:35,690 --> 01:04:39,430
+software development
+team essentially yes and
+
+1460
+01:04:39,430 --> 01:04:43,810
+this is i think as far
+as far as my state of
+
+1461
+01:04:43,810 --> 01:04:46,380
+the art goes this is
+it this is about sure
+
+1462
+01:04:46,380 --> 01:04:48,530
+this is as far as i
+can push the boundaries
+
+1463
+01:04:48,530 --> 01:04:51,330
+with current tech and
+it's even pushing the
+
+1464
+01:04:51,330 --> 01:04:53,350
+boundaries beyond i
+think where i can even
+
+1465
+01:04:53,350 --> 01:04:56,770
+grok it but you can see
+here that you know here
+
+1466
+01:04:56,770 --> 01:04:59,550
+you know it can do
+the analysis so i can
+
+1467
+01:04:59,550 --> 01:05:03,090
+i can yep yeah i've been
+using and stuff yeah
+
+1468
+01:05:03,090 --> 01:05:04,650
+you can do anything
+and it works and it
+
+1469
+01:05:04,650 --> 01:05:06,710
+works great too it does
+it did look like a bomb
+
+1470
+01:05:06,710 --> 01:05:08,670
+had went off in the
+repo in this in the
+
+1471
+01:05:08,670 --> 01:05:12,370
+directory of the repo
+but uh after i tested it
+
+1472
+01:05:12,370 --> 01:05:14,050
+out and everything
+and uh did made some
+
+1473
+01:05:14,050 --> 01:05:16,670
+modification it worked
+great yeah it does yeah
+
+1474
+01:05:16,670 --> 01:05:20,490
+right out of the box
+too yeah the only the
+
+1475
+01:05:20,490 --> 01:05:22,950
+one issue i have and
+maybe someone else on
+
+1476
+01:05:22,950 --> 01:05:25,370
+this call can help me
+figure out the problem
+
+1477
+01:05:25,370 --> 01:05:31,410
+the mpx yeah i i can't
+get the mpx to work
+
+1478
+01:05:31,410 --> 01:05:36,390
+to use the or i can't
+get the mcp in ru to
+
+1479
+01:05:36,390 --> 01:05:40,330
+see the mpx i have to
+run it using node slash
+
+1480
+01:05:40,330 --> 01:05:42,750
+the command and i don't
+understand why the
+
+1481
+01:05:42,750 --> 01:05:45,170
+mpx would be any different
+than running node
+
+1482
+01:05:45,170 --> 01:05:48,570
+slash you know the
+location i i ran into
+
+1483
+01:05:48,570 --> 01:05:50,730
+that exact same issue
+and it's it's pathing
+
+1484
+01:05:50,730 --> 01:05:53,190
+if you should be able
+to give it the path to
+
+1485
+01:05:53,190 --> 01:05:55,510
+mpx and it should be
+able to work but when
+
+1486
+01:05:55,510 --> 01:05:59,930
+i actually asked the
+the model uh for more
+
+1487
+01:05:59,930 --> 01:06:02,900
+information about that
+issue it said although
+
+1488
+01:06:02,900 --> 01:06:06,890
+npx is popular using node
+is the best practices
+
+1489
+01:06:06,890 --> 01:06:12,490
+so yeah i want it go
+ahead sorry i want
+
+1490
+01:06:12,490 --> 01:06:14,150
+to work with npx because
+i think that'd be
+
+1491
+01:06:14,150 --> 01:06:16,570
+super easy but it does
+but you got to give
+
+1492
+01:06:16,570 --> 01:06:18,890
+it the path you should
+be able to and just
+
+1493
+01:06:18,890 --> 01:06:20,870
+give it the path yeah i
+i went when i gave the
+
+1494
+01:06:20,870 --> 01:06:22,410
+path it works so So
+without the path, I
+
+1495
+01:06:22,410 --> 01:06:25,010
+just can't get to work.
+But if you are going
+
+1496
+01:06:25,010 --> 01:06:27,370
+to use it, where's my
+MCPJ? It's because your
+
+1497
+01:06:27,370 --> 01:06:29,350
+environment that you're
+running in doesn't
+
+1498
+01:06:29,350 --> 01:06:34,450
+have the binary available
+in its path. And
+
+1499
+01:06:34,450 --> 01:06:36,210
+you can check that when
+you're running a VS
+
+1500
+01:06:36,210 --> 01:06:39,590
+Code instance in the
+terminal. If you hover
+
+1501
+01:06:39,590 --> 01:06:41,370
+your mouse over the
+lower right where the
+
+1502
+01:06:41,370 --> 01:06:43,330
+terminal's launched,
+it'll tell you what
+
+1503
+01:06:43,330 --> 01:06:46,450
+environment variables
+are actually available in
+
+1504
+01:06:46,450 --> 01:06:48,610
+the path and everything.
+It's all in there.
+
+1505
+01:06:48,960 --> 01:06:51,030
+Yeah. Oh, and by
+the way, you can
+
+1506
+01:06:51,030 --> 01:06:53,470
+integrate this
+directly into your code
+
+1507
+01:06:53,470 --> 01:06:55,170
+base if you're
+creating an agent or
+
+1508
+01:06:55,170 --> 01:06:58,410
+whatever. So I made
+an SDK as well.
+
+1509
+01:06:58,890 --> 01:06:59,770
+Yeah.
+
+1510
+01:07:00,210 --> 01:07:06,110
+So, yeah, I think I
+need, like, a group of
+
+1511
+01:07:06,110 --> 01:07:08,730
+us to get together and
+sort of hack on this
+
+1512
+01:07:08,730 --> 01:07:11,490
+together. It's like I
+know it can do crazy,
+
+1513
+01:07:11,990 --> 01:07:14,690
+complicated, powerful
+things, but I'm not
+
+1514
+01:07:14,690 --> 01:07:16,250
+even sure where to
+start how to like
+
+1515
+01:07:16,250 --> 01:07:18,930
+articulate in a way
+that people other than
+
+1516
+01:07:18,930 --> 01:07:21,170
+you and I maybe could
+even understand.
+
+1517
+01:07:22,490 --> 01:07:24,370
+Yeah, I mean, the best
+way I could describe
+
+1518
+01:07:24,370 --> 01:07:26,910
+it is like, you know,
+you really do have a
+
+1519
+01:07:26,910 --> 01:07:29,270
+team of software
+developers. So you need to
+
+1520
+01:07:29,270 --> 01:07:33,110
+have a project that is
+already or is ready to
+
+1521
+01:07:33,110 --> 01:07:36,250
+be broken up, you
+know, and branched out.
+
+1522
+01:07:36,250 --> 01:07:38,630
+Maybe you've already got
+issues. Like it would
+
+1523
+01:07:38,630 --> 01:07:40,410
+be great if there's a
+large enough project
+
+1524
+01:07:40,410 --> 01:07:43,130
+that we could actually
+apply it to, to test
+
+1525
+01:07:43,130 --> 01:07:44,950
+it out. You know,
+one that's already in
+
+1526
+01:07:44,950 --> 01:07:46,830
+place like that um i
+could probably come up
+
+1527
+01:07:46,830 --> 01:07:48,670
+with something i just
+haven't got to it got to
+
+1528
+01:07:48,670 --> 01:07:50,630
+that point with it
+yet actually you know
+
+1529
+01:07:50,630 --> 01:07:53,270
+what i was thinking i've
+got so much **** that
+
+1530
+01:07:53,270 --> 01:07:55,490
+i've put together and
+and i mean that in
+
+1531
+01:07:55,490 --> 01:07:58,890
+the nicest way possible
+um that maybe what i
+
+1532
+01:07:58,890 --> 01:08:01,250
+could do is like go back
+in time a little bit
+
+1533
+01:08:01,250 --> 01:08:03,990
+and find something
+that i've already built
+
+1534
+01:08:03,990 --> 01:08:07,450
+but re re-imagine it
+like this onyx agent
+
+1535
+01:08:07,450 --> 01:08:09,630
+for example it's a super
+cool idea it's like
+
+1536
+01:08:09,630 --> 01:08:12,670
+a embedded local uh you
+know a language model
+
+1537
+01:08:12,670 --> 01:08:15,850
+and AI models, you
+know, stuff like that.
+
+1538
+01:08:15,870 --> 01:08:18,630
+Maybe, maybe it uses
+that format. Yep. I'm
+
+1539
+01:08:18,630 --> 01:08:20,870
+familiar. Yeah. Maybe
+add like some kind
+
+1540
+01:08:20,870 --> 01:08:23,430
+of like embedded agent
+system. I don't know
+
+1541
+01:08:23,430 --> 01:08:25,470
+that that'd be
+again, half the stuff
+
+1542
+01:08:25,470 --> 01:08:28,270
+doesn't have like a,
+any practical uses this.
+
+1543
+01:08:28,270 --> 01:08:31,190
+So just basically
+ask it the MCP server
+
+1544
+01:08:31,190 --> 01:08:33,110
+to spin up a VS code
+instance, pointed at
+
+1545
+01:08:33,110 --> 01:08:35,690
+that repo and, and,
+and ask it to try and
+
+1546
+01:08:35,690 --> 01:08:38,610
+do some first and
+analyze analyze it and
+
+1547
+01:08:38,610 --> 01:08:41,190
+then do some development
+on it. Yeah. Yeah.
+
+1548
+01:08:41,470 --> 01:08:43,330
+Like this, this is
+probably a cool idea.
+
+1549
+01:08:43,330 --> 01:08:45,290
+This was like real
+time, you know,
+
+1550
+01:08:45,290 --> 01:08:49,350
+in flight AI. So I
+could, I could operate
+
+1551
+01:08:49,350 --> 01:08:51,630
+within the structure
+of the stream
+
+1552
+01:08:51,630 --> 01:08:55,110
+itself using, this
+is all created rust.
+
+1553
+01:08:56,450 --> 01:09:00,690
+so uh i don't even
+know like so basically
+
+1554
+01:09:00,690 --> 01:09:03,350
+think of like think
+of like a real
+
+1555
+01:09:03,350 --> 01:09:05,010
+-time stream
+processing let's say i
+
+1556
+01:09:05,010 --> 01:09:07,830
+have a million users
+all at once using
+
+1557
+01:09:07,830 --> 01:09:10,430
+my app i could do
+you know real-time
+
+1558
+01:09:10,650 --> 01:09:13,590
+introspection of the
+stream and interact with
+
+1559
+01:09:13,590 --> 01:09:15,250
+the stream itself so
+let's say i was doing
+
+1560
+01:09:15,250 --> 01:09:18,850
+like real-time stock
+trading or information
+
+1561
+01:09:18,850 --> 01:09:22,830
+analysis iot whatever
+this this would where
+
+1562
+01:09:22,830 --> 01:09:25,270
+a lot of the data
+needs to be sort of not
+
+1563
+01:09:25,270 --> 01:09:27,670
+in flight this will allow
+you to operate while
+
+1564
+01:09:27,670 --> 01:09:32,630
+it's you know transacting
+yeah nvidia had
+
+1565
+01:09:32,630 --> 01:09:37,250
+a solution for analyzing
+log information for
+
+1566
+01:09:37,250 --> 01:09:41,580
+cyber security incidents
+so to find um uh
+
+1567
+01:09:41,600 --> 01:09:44,490
+what do you call it
+um like personally
+
+1568
+01:09:44,490 --> 01:09:46,430
+identifiable information
+like social security
+
+1569
+01:09:46,430 --> 01:09:49,030
+numbers and things like
+that within uh network
+
+1570
+01:09:49,030 --> 01:09:51,650
+traffic logs but the
+information had to be
+
+1571
+01:09:51,650 --> 01:09:55,170
+converted to a not just
+a json in particular
+
+1572
+01:09:55,170 --> 01:10:00,090
+but json file or um no
+is it json line json
+
+1573
+01:10:00,090 --> 01:10:02,710
+l uh so i i get around
+you know what i'm
+
+1574
+01:10:02,710 --> 01:10:05,090
+talking about yeah i i
+get around the json l
+
+1575
+01:10:05,090 --> 01:10:08,270
+requirement i don't
+need that i i can i can
+
+1576
+01:10:08,270 --> 01:10:11,570
+do real-time adaptive
+analysis on any data
+
+1577
+01:10:11,570 --> 01:10:14,630
+stream no it can be
+completely unstructured
+
+1578
+01:10:14,630 --> 01:10:18,590
+and because it's rust
+i've got sub millisecond
+
+1579
+01:10:18,590 --> 01:10:23,290
+uh sub second millisecond
+response time so
+
+1580
+01:10:23,450 --> 01:10:27,700
+uh yeah if you're into
+rust this is uh this
+
+1581
+01:10:27,700 --> 01:10:30,650
+is how you know i i
+i how i built it but
+
+1582
+01:10:30,650 --> 01:10:37,090
+yeah it's all all rust
+stuff but i did i just
+
+1583
+01:10:37,090 --> 01:10:39,090
+wanted to play around
+rust that day i guess
+
+1584
+01:10:40,030 --> 01:10:41,970
+so this is still
+building by the way
+
+1585
+01:10:41,970 --> 01:10:43,770
+let's just let's
+see how much it's
+
+1586
+01:10:43,770 --> 01:10:46,030
+built you see that
+it's built we're
+
+1587
+01:10:46,150 --> 01:10:48,330
+up to 67 files
+you can see the
+
+1588
+01:10:48,330 --> 01:10:50,550
+structure it's
+building the resources
+
+1589
+01:10:53,870 --> 01:10:56,650
+right has it tested
+anything do you see
+
+1590
+01:10:56,650 --> 01:10:59,550
+evidence of it
+testing along the way
+
+1591
+01:10:59,690 --> 01:11:02,270
+no it's still building
+the structure okay
+
+1592
+01:11:02,510 --> 01:11:04,330
+so now it's you can
+see that's moving
+
+1593
+01:11:04,330 --> 01:11:06,450
+on to the resources
+section so these are
+
+1594
+01:11:06,450 --> 01:11:09,530
+subtasks so with the
+way spark works is
+
+1595
+01:11:09,530 --> 01:11:11,990
+it builds out the the
+scaffolding first.
+
+1596
+01:11:12,110 --> 01:11:14,210
+And well, if you
+start from scratch,
+
+1597
+01:11:14,210 --> 01:11:15,210
+it would build up
+the pseudo code
+
+1598
+01:11:15,210 --> 01:11:17,050
+first, but I told it
+to skip the pseudo
+
+1599
+01:11:17,050 --> 01:11:18,810
+code when the
+original instruction.
+
+1600
+01:11:18,810 --> 01:11:20,970
+And then what it does
+is it goes and then
+
+1601
+01:11:20,970 --> 01:11:23,090
+builds out all the
+files and structures.
+
+1602
+01:11:23,090 --> 01:11:25,730
+Once all the core
+functionality has
+
+1603
+01:11:25,730 --> 01:11:27,390
+been built based
+on the research,
+
+1604
+01:11:27,390 --> 01:11:29,570
+it'll then build the
+test frame and then
+
+1605
+01:11:29,570 --> 01:11:31,390
+it'll do each test
+one at a time.
+
+1606
+01:11:32,190 --> 01:11:34,250
+But it can't
+test until the
+
+1607
+01:11:34,250 --> 01:11:35,530
+scaffolding is
+done, right?
+
+1608
+01:11:35,530 --> 01:11:36,950
+Otherwise you'll
+just get errors.
+
+1609
+01:11:39,810 --> 01:11:42,570
+so now it's you
+know it's creating
+
+1610
+01:11:42,570 --> 01:11:45,070
+document tree will
+do a little search i
+
+1611
+01:11:45,070 --> 01:11:45,930
+don't know what the
+heck is building
+
+1612
+01:11:45,930 --> 01:11:47,330
+balance i wasn't paying
+that close attention
+
+1613
+01:11:47,330 --> 01:11:50,550
+but uh it's it's
+building something
+
+1614
+01:11:50,870 --> 01:11:54,070
+no i asked basically
+because i have always
+
+1615
+01:11:54,070 --> 01:11:55,890
+been consistently
+stuck in the unit test
+
+1616
+01:11:55,890 --> 01:11:57,930
+part because it keeps
+going on and i think
+
+1617
+01:11:57,930 --> 01:11:59,510
+what i'm missing from
+what you're showing
+
+1618
+01:11:59,510 --> 01:12:02,310
+today is that whole
+perplexity research that
+
+1619
+01:12:02,310 --> 01:12:05,130
+you did first because
+i generally been vive
+
+1620
+01:12:05,130 --> 01:12:08,450
+oh no no no that no
+no that that uh that
+
+1621
+01:12:08,450 --> 01:12:13,050
+um test part could could
+last hours potentially
+
+1622
+01:12:13,050 --> 01:12:18,170
+days so you're you're
+basically expecting
+
+1623
+01:12:18,170 --> 01:12:21,210
+something to to
+result more quickly
+
+1624
+01:12:21,210 --> 01:12:22,850
+than possible and i
+actually did a linkedin
+
+1625
+01:12:22,850 --> 01:12:24,710
+post a couple hours
+ago on this very topic
+
+1626
+01:12:24,710 --> 01:12:28,290
+some things just take
+time to to finish now
+
+1627
+01:12:28,290 --> 01:12:31,510
+the the the real
+question is, are you
+
+1628
+01:12:31,510 --> 01:12:34,910
+willing to wait six days
+for the application to
+
+1629
+01:12:34,910 --> 01:12:37,470
+finish and spend
+several hundred dollars
+
+1630
+01:12:37,470 --> 01:12:40,110
+in the process? Now,
+if the answer is no,
+
+1631
+01:12:40,110 --> 01:12:41,530
+then you're probably
+going to want to create
+
+1632
+01:12:41,530 --> 01:12:44,710
+a more iterative,
+smaller structure to
+
+1633
+01:12:44,710 --> 01:12:46,890
+what you're building.
+Now, if you don't mind
+
+1634
+01:12:46,890 --> 01:12:49,150
+it just running and you
+trust that eventually
+
+1635
+01:12:49,150 --> 01:12:51,810
+it'll finish, it will
+eventually finish.
+
+1636
+01:12:51,810 --> 01:12:54,270
+Now, have you ever
+waited 12 hours or
+
+1637
+01:12:54,270 --> 01:12:57,030
+waited three days for a
+project to finish? And
+
+1638
+01:12:57,030 --> 01:12:59,010
+if the answer is no,
+So then that mostly
+
+1639
+01:12:59,010 --> 01:13:00,970
+has to do with your
+confidence in the system
+
+1640
+01:13:00,970 --> 01:13:02,910
+being able to do what
+you told it to do.
+
+1641
+01:13:04,610 --> 01:13:07,070
+From one instance, it
+did last overnight.
+
+1642
+01:13:07,070 --> 01:13:09,010
+It was keeping on
+thinking. But where
+
+1643
+01:13:09,010 --> 01:13:10,910
+I am, I am more
+focused on the persona
+
+1644
+01:13:10,910 --> 01:13:12,950
+of a product
+manager or a project
+
+1645
+01:13:12,950 --> 01:13:15,190
+manager, a program
+manager. So the intent
+
+1646
+01:13:15,190 --> 01:13:17,310
+being the outcome
+means you got an idea,
+
+1647
+01:13:17,310 --> 01:13:19,110
+you got a validated idea,
+
+1648
+01:13:19,250 --> 01:13:21,730
+say, in 24 hours
+with a view. So not
+
+1649
+01:13:21,730 --> 01:13:25,450
+necessarily a full-blown
+product, but a VP or a
+
+1650
+01:13:25,450 --> 01:13:27,890
+point-of-view app that
+is fully tested and
+
+1651
+01:13:27,890 --> 01:13:29,070
+you're going to
+demonstrate the breadth
+
+1652
+01:13:29,070 --> 01:13:31,530
+and spread of the
+whole thing. So that is
+
+1653
+01:13:31,530 --> 01:13:33,730
+kind of the foundation,
+may I say, the spark
+
+1654
+01:13:33,730 --> 01:13:36,770
+foundational level
+that I'm saying is that
+
+1655
+01:13:36,770 --> 01:13:39,630
+how do we, what is
+the most optimal path
+
+1656
+01:13:39,870 --> 01:13:41,730
+for someone to take along
+
+1657
+01:13:41,730 --> 01:13:42,750
+through that journey?
+
+1658
+01:13:43,850 --> 01:13:46,490
+You want to break
+it up into pieces.
+
+1659
+01:13:46,830 --> 01:13:49,290
+So one of the
+things I did here
+
+1660
+01:13:49,290 --> 01:13:50,710
+is I said to do
+all the phases.
+
+1661
+01:13:50,730 --> 01:13:53,690
+What you probably
+want to do is tell it
+
+1662
+01:13:53,690 --> 01:13:56,890
+to do just one phase,
+then stop, review
+
+1663
+01:13:56,890 --> 01:13:58,770
+the phase, make sure
+it's exactly what
+
+1664
+01:13:58,770 --> 01:14:01,340
+you want and then
+create a new message,
+
+1665
+01:14:03,010 --> 01:14:04,870
+thread, orchestrator,
+whatever the
+
+1666
+01:14:04,870 --> 01:14:07,010
+heck we call it
+and then get it
+
+1667
+01:14:07,010 --> 01:14:09,350
+to the next phase
+and then stop.
+
+1668
+01:14:09,530 --> 01:14:11,050
+What I'm doing
+right now in this
+
+1669
+01:14:11,050 --> 01:14:12,490
+is I told to do
+all the phases.
+
+1670
+01:14:13,670 --> 01:14:17,730
+When I get working into
+more complicated or
+
+1671
+01:14:17,730 --> 01:14:21,150
+technical solutions
+and having the agent
+
+1672
+01:14:21,150 --> 01:14:23,890
+assist writing code,
+I'll actually go all the
+
+1673
+01:14:23,890 --> 01:14:26,430
+way down to individual
+functions so just
+
+1674
+01:14:26,430 --> 01:14:29,190
+like he's describing
+but i'll actually break
+
+1675
+01:14:29,190 --> 01:14:31,190
+it all the way down into
+individual functions
+
+1676
+01:14:31,190 --> 01:14:34,770
+or a couple of
+functions yeah that's
+
+1677
+01:14:34,770 --> 01:14:37,870
+that's a good way to do
+it actually and sometimes
+
+1678
+01:14:37,870 --> 01:14:40,010
+you have to yeah
+and when you look at
+
+1679
+01:14:40,010 --> 01:14:43,170
+what what this is building
+it's it's done this
+
+1680
+01:14:43,170 --> 01:14:45,050
+it's done the same
+thing right these are
+
+1681
+01:14:45,050 --> 01:14:47,430
+functions those are
+functions correct yeah
+
+1682
+01:14:47,430 --> 01:14:50,230
+right so that's what
+it's looking for and it
+
+1683
+01:14:50,230 --> 01:14:51,650
+and if you don't know
+that though about
+
+1684
+01:14:51,650 --> 01:14:53,290
+software development
+you will run into some
+
+1685
+01:14:53,290 --> 01:14:56,590
+difficulties sure well
+what i just gave you
+
+1686
+01:14:56,590 --> 01:14:58,730
+guys today you don't
+need to know that so
+
+1687
+01:14:58,730 --> 01:15:03,010
+i've i've given it the
+structure so a novice
+
+1688
+01:15:03,010 --> 01:15:05,950
+vibe coder who has no
+idea about modular or
+
+1689
+01:15:05,950 --> 01:15:08,310
+you know you know the
+way that it should be
+
+1690
+01:15:08,310 --> 01:15:10,950
+limited in terms of
+size scope you know
+
+1691
+01:15:10,950 --> 01:15:14,330
+length of characters
+those sorts of things i've
+
+1692
+01:15:14,330 --> 01:15:17,030
+told this i've prompted
+the system to do
+
+1693
+01:15:17,030 --> 01:15:21,450
+that so if you go to
+my my my rules folder
+
+1694
+01:15:22,240 --> 01:15:24,670
+that's what this is
+doing this is this is
+
+1695
+01:15:24,670 --> 01:15:26,670
+giving it all the
+guidelines for how it needs
+
+1696
+01:15:26,670 --> 01:15:29,870
+to operate and structure
+it right is the
+
+1697
+01:15:29,870 --> 01:15:32,230
+rules folder only in
+that repo that you're
+
+1698
+01:15:32,230 --> 01:15:34,590
+in right now the vibe
+one a vibe cast one or
+
+1699
+01:15:34,590 --> 01:15:37,410
+or is it another repos
+it's the when you run
+
+1700
+01:15:37,410 --> 01:15:41,770
+the the npx okay it
+creates all right yeah
+
+1701
+01:15:41,770 --> 01:15:45,030
+yeah it does that
+okay i'll i'll do that
+
+1702
+01:15:45,030 --> 01:15:47,350
+when when I ran and
+it's missing commander.
+
+1703
+01:15:47,650 --> 01:15:48,990
+So I actually have to
+
+1704
+01:15:48,990 --> 01:15:51,170
+run in npm install first.
+
+1705
+01:15:52,730 --> 01:15:55,390
+Command, oh,
+that other...
+
+1706
+01:15:55,390 --> 01:15:56,770
+Yeah, the
+commander module.
+
+1707
+01:15:56,970 --> 01:15:59,370
+Yeah, I haven't really
+used that one. It
+
+1708
+01:15:59,370 --> 01:16:01,530
+was a little bit
+outside of the way I
+
+1709
+01:16:01,530 --> 01:16:03,570
+do it. I should
+probably investigate it.
+
+1710
+01:16:03,610 --> 01:16:04,850
+I kind of, you
+know, again, I just
+
+1711
+01:16:04,850 --> 01:16:06,330
+kind of, you guys
+are getting what I
+
+1712
+01:16:06,330 --> 01:16:08,430
+do, like how I
+build my stuff, so.
+
+1713
+01:16:08,430 --> 01:16:10,570
+Do you mean you
+don't really
+
+1714
+01:16:10,570 --> 01:16:11,910
+use the commander module?
+
+1715
+01:16:12,470 --> 01:16:15,550
+yeah well i the yeah
+i don't really use the
+
+1716
+01:16:15,550 --> 01:16:17,510
+commander module at
+all got it i follow you
+
+1717
+01:16:17,510 --> 01:16:20,930
+okay yeah understood
+um i i probably could
+
+1718
+01:16:20,930 --> 01:16:25,190
+um there there there's
+also a command option
+
+1719
+01:16:25,190 --> 01:16:28,830
+within um the Roo system
+which is pretty cool
+
+1720
+01:16:28,830 --> 01:16:30,510
+that allows you to
+sort of bypass using
+
+1721
+01:16:30,510 --> 01:16:33,270
+mcps if you if you
+prefer a more cli driven
+
+1722
+01:16:33,270 --> 01:16:36,630
+approach i've actually
+sort of do you mean like
+
+1723
+01:16:36,630 --> 01:16:39,750
+actually call in
+command prompt yeah yeah
+
+1724
+01:16:39,750 --> 01:16:41,450
+you could do that
+from within and i was
+
+1725
+01:16:41,450 --> 01:16:43,570
+showing you that i think
+you can do that from
+
+1726
+01:16:43,570 --> 01:16:46,430
+within like an mcp
+server is so simple like
+
+1727
+01:16:46,430 --> 01:16:47,750
+you can i was showing
+you how you can just
+
+1728
+01:16:47,750 --> 01:16:51,570
+literally throw in uh
+the vs code cli command
+
+1729
+01:16:51,570 --> 01:16:54,110
+which is code and then
+a period so code space
+
+1730
+01:16:54,110 --> 01:16:57,630
+dot in an mcp configuration
+and it'll launch
+
+1731
+01:16:57,630 --> 01:17:01,510
+a vs code instance
+you can put in command
+
+1732
+01:17:02,190 --> 01:17:04,430
+The issue with
+that is it doesn't
+
+1733
+01:17:04,430 --> 01:17:05,970
+have the correct
+response format.
+
+1734
+01:17:05,970 --> 01:17:10,290
+So to get around the
+response issue, if you
+
+1735
+01:17:10,290 --> 01:17:13,450
+use the command group
+within Rue code, it
+
+1736
+01:17:13,450 --> 01:17:15,270
+bypasses the need to
+use an MCP at all,
+
+1737
+01:17:15,270 --> 01:17:18,030
+which will solve that
+response issue. And then
+
+1738
+01:17:18,030 --> 01:17:19,990
+it just takes the
+response from the...
+
+1739
+01:17:19,990 --> 01:17:23,010
+What's the response
+issue? When you don't use
+
+1740
+01:17:23,010 --> 01:17:27,550
+the Studio or SSE or
+HTTP stream response,
+
+1741
+01:17:27,550 --> 01:17:31,170
+it doesn't see the
+response correctly.
+
+1742
+01:17:32,070 --> 01:17:35,030
+right so it solves that
+it solves that issue
+
+1743
+01:17:35,750 --> 01:17:37,450
+otherwise you you're
+going to have to
+
+1744
+01:17:37,450 --> 01:17:38,920
+think i know what you're
+talking about yeah
+
+1745
+01:17:38,920 --> 01:17:40,430
+yeah otherwise you have
+to format the output
+
+1746
+01:17:40,430 --> 01:17:44,090
+to use this the correct
+studio forms yeah
+
+1747
+01:17:44,150 --> 01:17:47,710
+anyway i don't even
+have to do that yeah i
+
+1748
+01:17:47,710 --> 01:17:49,910
+i haven't had much luck
+with that myself but
+
+1749
+01:17:49,910 --> 01:17:52,450
+um i'm interested to
+see what you did to
+
+1750
+01:17:52,450 --> 01:17:53,830
+dig around that maybe
+i'm just doing it wrong
+
+1751
+01:17:53,830 --> 01:17:58,720
+who knows um or i
+could be mistaken yeah
+
+1752
+01:17:58,720 --> 01:18:00,630
+yeah we're just we're
+kind of making it up
+
+1753
+01:18:00,630 --> 01:18:03,090
+as we go so who knows
+um yeah it's pretty
+
+1754
+01:18:03,090 --> 01:18:05,590
+cutting edge all right
+so looks like this
+
+1755
+01:18:05,590 --> 01:18:10,730
+finished uh so now
+i'm almost out of time
+
+1756
+01:18:10,730 --> 01:18:13,610
+guys but it's now it's
+creating a new sub now
+
+1757
+01:18:13,610 --> 01:18:17,070
+it's setting up the
+tests yeah here we go
+
+1758
+01:18:17,070 --> 01:18:19,130
+this is what i wanted
+to see now it's building
+
+1759
+01:18:19,130 --> 01:18:22,030
+the tests so it's
+built all the core
+
+1760
+01:18:22,030 --> 01:18:26,430
+scaffolding and you so
+you see here all the
+
+1761
+01:18:26,430 --> 01:18:29,050
+core scaffolding for
+tools and resources are
+
+1762
+01:18:29,050 --> 01:18:31,410
+now built now what
+it's going to do is
+
+1763
+01:18:31,410 --> 01:18:33,930
+going to build all the
+tests and now this part
+
+1764
+01:18:34,010 --> 01:18:37,210
+this could run probably
+for another couple
+
+1765
+01:18:37,210 --> 01:18:39,770
+hours to be honest
+it could take a while
+
+1766
+01:18:40,230 --> 01:18:42,350
+but it's going to build
+it's going to review
+
+1767
+01:18:42,350 --> 01:18:44,210
+it's going to build
+all the tests so you
+
+1768
+01:18:44,210 --> 01:18:46,110
+see how it refers to the
+original implementation
+
+1769
+01:18:46,110 --> 01:18:49,270
+so that this is in
+essence the memory
+
+1770
+01:18:50,040 --> 01:18:53,070
+right this tells it what
+it needs to build and
+
+1771
+01:18:53,070 --> 01:18:54,890
+where the files are
+and tells it you know
+
+1772
+01:18:54,890 --> 01:18:57,630
+how it needs to operate
+And then once it does
+
+1773
+01:18:57,630 --> 01:18:59,650
+that, it's going to
+go and it's going to
+
+1774
+01:18:59,650 --> 01:19:01,910
+look at the core files
+and understand what it's
+
+1775
+01:19:01,910 --> 01:19:04,130
+going to do, the MCP
+and all that sort of
+
+1776
+01:19:04,130 --> 01:19:06,150
+stuff. And once it's
+done that, it'll go and
+
+1777
+01:19:06,150 --> 01:19:08,190
+build the test. Once
+all the tests pass
+
+1778
+01:19:08,190 --> 01:19:10,870
+green, now it might take
+another 20, 30 minutes
+
+1779
+01:19:10,870 --> 01:19:12,690
+for the test that'll
+be built. But once they
+
+1780
+01:19:12,690 --> 01:19:16,290
+all pass, this will
+be done. It'll all
+
+1781
+01:19:16,290 --> 01:19:19,070
+work. I'll be good to
+publish it. And I would
+
+1782
+01:19:19,070 --> 01:19:23,030
+have built a comprehensive
+CloudFlare MCP
+
+1783
+01:19:23,030 --> 01:19:25,610
+implementation that I
+can use to build, you
+
+1784
+01:19:25,610 --> 01:19:29,050
+know, and deploy my own
+custom MCPs, which will
+
+1785
+01:19:29,050 --> 01:19:31,810
+probably be next week's
+live coding demo.
+
+1786
+01:19:33,890 --> 01:19:36,690
+I just double checked
+and you're right,
+
+1787
+01:19:36,690 --> 01:19:38,990
+Ruv, on each one of
+them, I am setting
+
+1788
+01:19:38,990 --> 01:19:40,990
+transport type
+standard input output.
+
+1789
+01:19:42,490 --> 01:19:44,050
+Yeah, share
+that. It'll be
+
+1790
+01:19:44,050 --> 01:19:45,350
+interesting to see
+what you're doing.
+
+1791
+01:19:45,450 --> 01:19:47,690
+Okay, yeah, I'll
+copy one here.
+
+1792
+01:19:49,530 --> 01:19:52,010
+one that doesn't have
+it one does doesn't
+
+1793
+01:19:52,010 --> 01:19:55,010
+have my key in it yeah
+you know join the club
+
+1794
+01:19:55,910 --> 01:19:59,270
+if i i i i'm probably
+the guy that's got
+
+1795
+01:19:59,270 --> 01:20:03,050
+the uh the most open
+ai hacks ever but it's
+
+1796
+01:20:03,050 --> 01:20:05,230
+i think it's part of
+the you know one of the
+
+1797
+01:20:05,230 --> 01:20:07,630
+things i added to the
+community when yeah
+
+1798
+01:20:07,630 --> 01:20:12,910
+exactly never hard
+code envs is like in
+
+1799
+01:20:12,910 --> 01:20:16,270
+almost every single one
+of the uh rules folders
+
+1800
+01:20:16,270 --> 01:20:18,330
+you'll see that and
+that's because I've
+
+1801
+01:20:18,330 --> 01:20:20,690
+been burned a million
+times, but whatever.
+
+1802
+01:20:22,270 --> 01:20:24,530
+That's part of being
+early, I guess.
+
+1803
+01:20:24,970 --> 01:20:26,430
+All right, so now
+it's looked at,
+
+1804
+01:20:26,430 --> 01:20:28,270
+now it's creating
+the first test file.
+
+1805
+01:20:28,270 --> 01:20:30,370
+So you're seeing
+the utils tests.
+
+1806
+01:20:33,090 --> 01:20:35,050
+We're watching, I haven't
+
+1807
+01:20:35,050 --> 01:20:36,810
+touched this in
+over an hour.
+
+1808
+01:20:36,810 --> 01:20:38,770
+It's, you're
+watching real-time
+
+1809
+01:20:38,770 --> 01:20:40,750
+automated coding
+at its best.
+
+1810
+01:20:40,750 --> 01:20:42,090
+This is highly
+structured.
+
+1811
+01:20:42,310 --> 01:20:44,970
+It, this ain't
+vibe spaghetti
+
+1812
+01:20:44,970 --> 01:20:47,330
+code. this is
+highly structured.
+
+1813
+01:20:48,550 --> 01:20:50,770
+This is production
+quality.
+
+1814
+01:20:51,190 --> 01:20:52,470
+And eventually,
+
+1815
+01:20:52,610 --> 01:20:54,410
+the Spark system will
+even run security
+
+1816
+01:20:54,410 --> 01:20:56,030
+tests on it before
+it finishes.
+
+1817
+01:20:56,170 --> 01:20:59,930
+So one of the final
+stages is hardening.
+
+1818
+01:21:00,070 --> 01:21:03,270
+So it'll completely
+run and check for
+
+1819
+01:21:03,270 --> 01:21:04,810
+any kind of
+vulnerabilities, SQL
+
+1820
+01:21:04,810 --> 01:21:07,850
+injections, whatever.
+It'll do all those
+
+1821
+01:21:07,850 --> 01:21:10,650
+things for you. So
+when you're done,
+
+1822
+01:21:10,890 --> 01:21:13,370
+am I 100% confident
+that the thing is not
+
+1823
+01:21:13,370 --> 01:21:15,670
+hackable obviously
+not but has it been
+
+1824
+01:21:15,670 --> 01:21:19,490
+thoroughly vetted for
+you know most obvious uh
+
+1825
+01:21:19,490 --> 01:21:22,710
+you know exploits well
+more than than if you
+
+1826
+01:21:22,710 --> 01:21:25,550
+didn't look at it at
+all yeah and that's
+
+1827
+01:21:25,550 --> 01:21:27,210
+something you could i
+actually add that in
+
+1828
+01:21:27,210 --> 01:21:28,890
+as a cyber security
+professional that that
+
+1829
+01:21:28,890 --> 01:21:31,090
+is a step that i don't
+see everybody adding
+
+1830
+01:21:31,090 --> 01:21:33,250
+in but it is one that
+i add in and i can
+
+1831
+01:21:33,250 --> 01:21:35,090
+verify it does actually
+help and it does
+
+1832
+01:21:35,090 --> 01:21:37,790
+work you can ask the
+model to improve the
+
+1833
+01:21:37,790 --> 01:21:39,950
+security posture
+because maybe the first
+
+1834
+01:21:39,950 --> 01:21:42,830
+suggestion isn't the best
+and that's often case
+
+1835
+01:21:42,830 --> 01:21:46,270
+often the case too yeah
+and you can you can
+
+1836
+01:21:46,270 --> 01:21:47,950
+update the security
+rules right here and
+
+1837
+01:21:47,950 --> 01:21:51,530
+if you go to this the
+security review and
+
+1838
+01:21:51,530 --> 01:21:54,330
+you can see you know
+i i've included pretty
+
+1839
+01:21:54,330 --> 01:21:56,030
+broad it basically
+allows it to sort of
+
+1840
+01:21:56,030 --> 01:21:58,470
+figure out what it should
+secure without it's
+
+1841
+01:21:58,470 --> 01:22:03,210
+you know without
+explicitly saying but as
+
+1842
+01:22:03,210 --> 01:22:05,550
+you can see here these
+are the security audit
+
+1843
+01:22:05,550 --> 01:22:08,370
+workflows and things
+like that this these
+
+1844
+01:22:08,370 --> 01:22:11,190
+are the most important
+there's obviously
+
+1845
+01:22:11,190 --> 01:22:14,110
+other ones but i think
+i'm out of time i
+
+1846
+01:22:14,110 --> 01:22:17,290
+gotta prep for my next
+call uh hopefully this
+
+1847
+01:22:17,290 --> 01:22:23,860
+was helpful for you
+guys um yeah thanks
+
+1848
+01:22:24,250 --> 01:22:28,050
+thanks rob um yeah shout
+out to the Roo guys
+
+1849
+01:22:28,050 --> 01:22:30,490
+for creating a great
+product i i i'm very
+
+1850
+01:22:30,490 --> 01:22:32,810
+much enjoying using the
+tool so it's they're
+
+1851
+01:22:32,810 --> 01:22:34,670
+definitely creating
+some good good stuff
+
+1852
+01:22:36,130 --> 01:22:38,270
+Again, if you guys
+are looking to
+
+1853
+01:22:38,270 --> 01:22:39,650
+help support the
+cause, this is
+
+1854
+01:22:39,650 --> 01:22:41,490
+where I'm shamelessly
+plugging us.
+
+1855
+01:22:41,570 --> 01:22:43,770
+The Agentics
+Foundation, there's a
+
+1856
+01:22:43,770 --> 01:22:45,330
+group of us that are
+creating a kind of
+
+1857
+01:22:45,330 --> 01:22:47,350
+non-profit that will
+help support the
+
+1858
+01:22:47,350 --> 01:22:48,730
+sorts of stuff
+you're seeing today.
+
+1859
+01:22:49,530 --> 01:22:51,910
+Keep some of the
+lights running. If
+
+1860
+01:22:51,910 --> 01:22:54,530
+anyone's in Toronto,
+we're doing a live
+
+1861
+01:22:54,530 --> 01:23:00,430
+session, I guess Agentic
+Meetup next Tuesday
+
+1862
+01:23:00,430 --> 01:23:04,830
+at 6.30 at the Tribal
+Scale offices in
+
+1863
+01:23:04,830 --> 01:23:07,050
+Toronto. ping me,
+I'll get you the link.
+
+1864
+01:23:07,190 --> 01:23:09,310
+Otherwise, there's
+interest for
+
+1865
+01:23:09,310 --> 01:23:11,050
+doing meetups all
+over the world.
+
+1866
+01:23:11,250 --> 01:23:14,210
+We've got an ambassador
+page on the Agentex.
+
+1867
+01:23:14,210 --> 01:23:16,110
+I think it's agentex
+.org slash ambassador.
+
+1868
+01:23:16,110 --> 01:23:18,710
+If you want to host
+one of these and kind
+
+1869
+01:23:18,710 --> 01:23:21,710
+of do what I'm doing
+today, feel free and
+
+1870
+01:23:21,710 --> 01:23:24,130
+we can get you some
+support. We're also
+
+1871
+01:23:24,130 --> 01:23:28,050
+looking for corporate
+sponsors. So if you know
+
+1872
+01:23:28,050 --> 01:23:30,370
+a big name somewhere
+that might be interested
+
+1873
+01:23:30,370 --> 01:23:32,430
+in slapping their
+logo on this and
+
+1874
+01:23:32,430 --> 01:23:35,270
+helping us keep the
+lights on. You know, we're
+
+1875
+01:23:35,270 --> 01:23:39,110
+open to any kind of
+corporate sponsorship.
+
+1876
+01:23:39,490 --> 01:23:42,590
+We've got a doc,
+right, Rob, now that
+
+1877
+01:23:42,590 --> 01:23:45,350
+we will – you've
+got your logo on
+
+1878
+01:23:45,350 --> 01:23:46,870
+it. I don't know,
+something like that.
+
+1879
+01:23:47,630 --> 01:23:49,050
+Yeah, the
+companies have done
+
+1880
+01:23:49,050 --> 01:23:50,450
+a really good
+work on putting
+
+1881
+01:23:50,450 --> 01:23:52,070
+together the
+sponsorship deck,
+
+1882
+01:23:52,370 --> 01:23:54,590
+the events kick
+off, the ambassadors
+
+1883
+01:23:54,590 --> 01:23:57,150
+program, for the
+chapter management.
+
+1884
+01:23:57,150 --> 01:23:58,210
+There's a bunch of really
+
+1885
+01:23:58,210 --> 01:23:59,230
+good stuff there coming.
+
+1886
+01:24:00,190 --> 01:24:01,070
+Yeah.
+
+1887
+01:24:01,450 --> 01:24:05,730
+all right thanks
+everyone till tomorrow
+
+1888
+01:24:05,730 --> 01:24:07,990
+we're doing the ai
+hacker space if you have
+
+1889
+01:24:07,990 --> 01:24:10,110
+something you want
+to show or show off
+
+1890
+01:24:10,110 --> 01:24:13,210
+uh reach out to
+spots roof yeah okay
+
+1891
+01:24:13,220 --> 01:24:15,350
+otherwise i'm sure
+we'll we can we can
+
+1892
+01:24:15,350 --> 01:24:19,570
+improvise and i by the
+way i'm broadcasting
+
+1893
+01:24:19,570 --> 01:24:22,530
+this to linkedin so
+there should be a uh
+
+1894
+01:24:22,530 --> 01:24:25,130
+recording there and
+we'll probably get a
+
+1895
+01:24:25,130 --> 01:24:26,770
+copy of this on the
+website somewhere too
+
+1896
+01:24:28,350 --> 01:24:31,710
+all right thanks
+everyone thank
+
+1897
+01:24:31,710 --> 01:24:35,050
+you thank you
+next time okay bye
+
