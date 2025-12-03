@@ -32,3 +32,7 @@ agentdb.db
 
 # Archived files
 archive/
+
+# Allow UI Assets
+!src/ui/public/assets/**/*.pdf
+!src/ui/public/assets/**/*.mp4
