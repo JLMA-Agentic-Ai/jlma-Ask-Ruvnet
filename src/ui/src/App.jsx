@@ -516,6 +516,7 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
                         <PDFPresentation
                           url={canvasContent.content}
                           title={canvasContent.title}
+                          onClose={() => setViewMode('split')}
                         />
                       ) : (
                         <div className="pdf-viewer">
