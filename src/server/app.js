@@ -384,7 +384,12 @@ app.get('/api/knowledge', (req, res) => {
     };
 
     try {
-        if (fs.existsSync(githubDir)) {
+        const repoFile = path.join(rootDir, 'scripts/ingestion/repo_knowledge.json');
+        if (fs.existsSync(repoFile)) {
+            console.log(`   - Loading Repos from: ${repoFile}`);
+            const repoData = JSON.parse(fs.readFileSync(repoFile, 'utf8'));
+            knowledge.repos = Array.isArray(repoData) ? repoData : [repoData];
+        } else if (fs.existsSync(githubDir)) {
             const items = fs.readdirSync(githubDir);
             knowledge.repos = items.filter(file => {
                 try {
@@ -393,11 +398,12 @@ app.get('/api/knowledge', (req, res) => {
             }).map(repo => ({
                 name: repo,
                 type: 'GitHub Repository',
-                status: 'Live Sync 🟢'
+                status: 'Live Sync 🟢',
+                version: 'latest'
             }));
         }
     } catch (e) {
-        console.error("Error reading GitHub dir:", e);
+        console.error("Error reading Repo Knowledge:", e);
     }
 
     try {
