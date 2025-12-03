@@ -144,50 +144,20 @@ app.post('/api/chat', async (req, res) => {
             console.warn('ReasoningBank not initialized or reflexion memory unavailable.');
         }
 
-        // 2. Construct System Prompt (Agentic Engineer)
-        console.log('Constructing system prompt...');
-        const systemPrompt = `You are the rUVnet Agentic Engineer, a hyper-intelligent AI companion designed to teach and implement Agentic Engineering principles.
+        // 2. Construct System Prompt with RUV'S AUTHENTIC VOICE
+        const { RUV_PERSONA } = require('./RuvPersona');
+        console.log("Constructing system prompt with Ruv's authentic voice...");
 
-YOUR CORE IDENTITY:
-- You are NOT a generic AI. You are an expert in **Agentic Flow**, **Ruvector**, and **Cloud Flow**.
-- You speak with authority, precision, and a "Cyber-Industrial" tone.
-- You prioritize **Actionable Intelligence** over passive explanation.
+        const systemPrompt = `${RUV_PERSONA}
 
-STRICT OUTPUT FORMAT (MIMIC RUV'S STYLE):
-Every answer must follow this structure:
+===== KNOWLEDGE BASE CONTEXT =====
+${context || 'No specific context retrieved for this query. Use your general knowledge and coaching style.'}
 
-1. **High-Level Objective:**
-   - Briefly state the goal or "mission" of the answer.
+===== USER'S QUESTION =====
+${message}
 
-2. **Structured Steps (The "How-To"):**
-   - Use numbered lists with **Bold Headers**.
-   - Example:
-     1. **Define Scope:** ...
-     2. **Initiate Data Gathering:** ...
-     3. **Perform Semantic Analysis:** ...
-
-3. **Key Tools & Concepts:**
-   - Explicitly mention RuvNet tools: **AgentDB**, **Ruvector**, **Claude Flow**, **Superbase**.
-   - Explain *why* they are used (e.g., "Use AgentDB for graph-based memory").
-
-4. **Visual Representation (CRITICAL):**
-   - You MUST end with a Mermaid.js diagram summarizing the flow.
-   - Syntax:
-     \`\`\`mermaid
-     graph TD;
-       A[Objective] --> B[Step 1];
-       B --> C[Step 2];
-     \`\`\`
-
-TONE:
-- Professional, encouraging, and highly technical but accessible.
-- Use terms like "Semantic Connections", "Iterative Learning", "Hypergraph".
-
-CONTEXT FROM KNOWLEDGE BASE:
-${context}
-
-USER QUESTION:
-${message}`;
+===== YOUR RESPONSE =====
+Answer as Ruv would in a live coaching session. Be practical, show examples, and keep it real.`;
 
         // 3. Generate Response using Groq directly
         let answer = "";
@@ -219,7 +189,7 @@ ${message}`;
                 answer = data.choices[0].message.content;
                 console.log('✅ Got answer from Groq');
             } else if (data.error) {
-                throw new Error(`Groq error: ${data.error.message || JSON.stringify(data.error)}`);
+                throw new Error(`Groq error: ${data.error.message || JSON.stringify(data.error)} `);
             } else {
                 throw new Error('No response from API: ' + JSON.stringify(data));
             }
@@ -292,7 +262,7 @@ app.get('/api/debug', (req, res) => {
 // Chat Endpoint
 app.post('/api/special', async (req, res) => {
     const { action, content } = req.body;
-    console.log(`[Special] Action: ${action}`);
+    console.log(`[Special] Action: ${action} `);
 
     try {
         let result = '';
@@ -307,7 +277,7 @@ app.post('/api/special', async (req, res) => {
                         content: "You are a master simplifier. Take complex technical content and explain it using everyday analogies and simple language. Use metaphors from daily life."
                     }, {
                         role: "user",
-                        content: `Simplify this:\n\n${content}`
+                        content: `Simplify this: \n\n${content} `
                     }]
                 });
                 break;
@@ -321,7 +291,7 @@ app.post('/api/special', async (req, res) => {
                         content: "You are a code generator. Given a concept, provide a minimal, runnable code example with comments. Use JavaScript/Node.js unless  otherwise specified."
                     }, {
                         role: "user",
-                        content: `Show me code for:\n\n${content}`
+                        content: `Show me code for: \n\n${content} `
                     }]
                 });
                 break;
@@ -335,7 +305,7 @@ app.post('/api/special', async (req, res) => {
                         content: "You are a diagram expert. Create a Mermaid.js diagram to visualize the concept. Use flowcharts, sequence diagrams, or architecture diagrams as appropriate."
                     }, {
                         role: "user",
-                        content: `Create a diagram for:\n\n${content}`
+                        content: `Create a diagram for: \n\n${content} `
                     }]
                 });
                 break;
@@ -359,7 +329,7 @@ function runAutoLearner() {
     console.log("🧠 Agentic Learner: Checking for new knowledge...");
     exec('node auto_updater.js', (error, stdout, stderr) => {
         if (error) {
-            console.error(`❌ Learner Error: ${error.message}`);
+            console.error(`❌ Learner Error: ${error.message} `);
             return;
         }
         if (stdout.includes('Changes detected')) {
@@ -393,10 +363,10 @@ app.get('/api/knowledge', (req, res) => {
     const dataDir = path.join(rootDir, 'data');
     const docsDir = path.join(rootDir, 'data_ingestion_ruv_coaching/Other Documents');
 
-    console.log(`🔍 Scanning Knowledge Base (Root: ${rootDir}):`);
-    console.log(`   - GitHub Dir: ${githubDir}`);
-    console.log(`   - Data Dir: ${dataDir}`);
-    console.log(`   - Docs Dir: ${docsDir}`);
+    console.log(`🔍 Scanning Knowledge Base(Root: ${rootDir}): `);
+    console.log(`   - GitHub Dir: ${githubDir} `);
+    console.log(`   - Data Dir: ${dataDir} `);
+    console.log(`   - Docs Dir: ${docsDir} `);
 
     const knowledge = {
         repos: [],
@@ -445,7 +415,7 @@ app.get('/api/knowledge', (req, res) => {
                 return !file.startsWith('.'); // Ignore hidden files
             }).map(file => ({
                 name: file,
-                url: `/assets/docs/${encodeURIComponent(file)}`,
+                url: `/ assets / docs / ${encodeURIComponent(file)} `,
                 type: file.endsWith('.pdf') ? 'PDF' : file.endsWith('.mp4') ? 'Video' : 'File',
                 status: 'Available 🟢'
             }));
@@ -482,7 +452,7 @@ app.get('/api/repo-monitor/status', (req, res) => {
 
 // Start Server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT} `);
     console.log(`Agentic Learner initialized.`);
 
     // Start automatic repo monitoring (checks every 2 days)
