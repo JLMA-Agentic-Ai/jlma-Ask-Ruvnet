@@ -155,21 +155,27 @@ railway logs
 ## 🔄 Updating Your Deployment
 
 ### After Adding New Knowledge
-
-```bash
-# 1. Re-run ingestion locally
-node ingest_correct.js
-
-# 2. Compress updated database
-tar -czf swarm-db.tar.gz .swarm/
-
-# 3. Commit and push
-git add swarm-db.tar.gz
-git commit -m "Updated knowledge base"
-git push
-
-# Railway automatically redeploys!
-```
+1. **Commit your new data** (e.g., new transcripts in `data_ingestion_ruv_coaching/`).
+2. **Trigger a Rebuild**:
+   Create a file named `FORCE_REBUILD` in the root:
+   ```bash
+   touch FORCE_REBUILD
+   git add FORCE_REBUILD
+   git commit -m "Trigger DB rebuild"
+   git push
+   ```
+3. **Railway will redeploy**:
+   - Detects `FORCE_REBUILD` file.
+   - Deletes old database.
+   - Runs `ingest_correct.js` to rebuild from scratch (ensures 100% freshness).
+   - Starts server.
+4. **Cleanup**:
+   After deployment succeeds, remove the file:
+   ```bash
+   git rm FORCE_REBUILD
+   git commit -m "Cleanup trigger"
+   git push
+   ```
 
 ### Code Changes
 

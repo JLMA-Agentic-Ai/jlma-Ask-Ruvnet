@@ -34,11 +34,16 @@ An advanced AI-powered knowledge base assistant that combines **semantic search*
 - **Voice Input** - Dictation support for hands-free queries
 - **File Upload** - Analyze code snippets and logs
 
+### 🎭 Ruv Persona Engine
+- **Authentic Voice** - Responses modeled after Ruv's actual coaching style ("All right", "Totally doable", "Genius move").
+- **Optimism Factor** - Encouraging, practical, and confidence-building tone.
+- **Live Coding Feel** - Answers sound like a live session ("Let me show you", "I've done this a million times").
+
 ### 🚀 Production-Ready
-- **Railway Deployment** - One-click cloud hosting
-- **Groq LLM** - Fast, reliable responses (llama-3.3-70b-versatile)
-- **Zero Hallucinations** - All answers grounded in knowledge base
-- **24/7 Availability** - No downtime when deployed
+- **Railway Deployment** - One-click cloud hosting with self-healing architecture.
+- **Groq LLM** - Fast, reliable responses (llama-3.3-70b-versatile).
+- **Zero Hallucinations** - All answers grounded in knowledge base.
+- **24/7 Availability** - No downtime when deployed.
 
 ---
 
@@ -174,13 +179,21 @@ See `.env.example` for full list.
 ## 🧪 Testing
 
 ### Verify Knowledge Base
-
 ```bash
 # Run 10-question accuracy test
 node test_full_answers.js
 ```
-
 **Expected:** 10/10 passed, average relevance score ~0.164
+
+### Verify Ruv Persona & Stability
+```bash
+# Run comprehensive voice + technical test
+node test_ruv_voice_comprehensive.js
+```
+**Expected:** 
+- Voice: >70% match
+- Technical: >80% pass
+- Stability: 10/10 requests successful
 
 ### Manual API Test
 
