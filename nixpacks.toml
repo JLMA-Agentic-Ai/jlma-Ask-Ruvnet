@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["nodejs-18_x", "python3", "ffmpeg", "gnumake", "gcc"]
+
+[phases.install]
+cmds = ["npm ci"]
+
+[start]
+cmd = "bash scripts/deployment/start-railway.sh"
