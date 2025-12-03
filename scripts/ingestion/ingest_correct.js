@@ -16,7 +16,7 @@ async function ingest() {
 
     const bank = new bankModule.HybridReasoningBank({
         preferWasm: false,
-        dbPath: path.resolve(__dirname, 'src/server/.swarm/memory.db')
+        dbPath: path.resolve(__dirname, '../../.swarm/memory.db')
     });
 
     console.log('✅ ReasoningBank initialized');
