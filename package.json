@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd src/ui && npm install && npm run build",
     "start": "bash scripts/deployment/start-railway.sh"
   },
   "keywords": [],
