@@ -28,4 +28,4 @@ fi
 
 # Start the server
 echo "🔌 Starting Node.js server..."
-exec node src/server/app.js
+exec node index.js
