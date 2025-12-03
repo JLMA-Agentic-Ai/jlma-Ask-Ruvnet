@@ -363,6 +363,11 @@ body {
   margin-right: auto;
 }
 
+.main-layout.chat .message {
+  max-width: 95%;
+  /* Use full width in chat mode */
+}
+
 .message.user {
   flex-direction: row-reverse;
 }
