@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
 import appVersion from './version.json';
+import PDFPresentation from './PDFPresentation';
 import './App.css';
 
 // Initialize Mermaid
@@ -511,14 +512,21 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
                     {canvasContent.type === 'diagram' ? (
                       <div ref={canvasRef} className="diagram-container"></div>
                     ) : canvasContent.type === 'pdf' ? (
-                      <div className="pdf-viewer">
-                        <h2>{canvasContent.title}</h2>
-                        <iframe
-                          src={`${canvasContent.content}#toolbar=0&navpanes=0&view=Fit`}
+                      viewMode === 'presentation' ? (
+                        <PDFPresentation
+                          url={canvasContent.content}
                           title={canvasContent.title}
-                          style={{ width: '100%', height: 'calc(100vh - 150px)', border: 'none' }}
                         />
-                      </div>
+                      ) : (
+                        <div className="pdf-viewer">
+                          <h2>{canvasContent.title}</h2>
+                          <iframe
+                            src={`${canvasContent.content}#toolbar=0&navpanes=0&view=Fit`}
+                            title={canvasContent.title}
+                            style={{ width: '100%', height: 'calc(100vh - 150px)', border: 'none' }}
+                          />
+                        </div>
+                      )
                     ) : canvasContent.type === 'video' ? (
                       <div className="video-viewer">
                         <h2>{canvasContent.title}</h2>
