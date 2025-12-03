@@ -177,6 +177,19 @@ railway logs
    git push
    ```
 
+### Updating Repository Versions (Dashboard)
+Since `RepoMonitor` is disabled in production for stability, you must manually update version numbers:
+
+1. Edit `scripts/ingestion/repo_knowledge.json`.
+2. Update the `version` and `last_update` fields.
+3. Commit and push.
+   ```bash
+   git add scripts/ingestion/repo_knowledge.json
+   git commit -m "Update repo versions"
+   git push
+   ```
+4. Railway will auto-deploy the changes.
+
 ### Code Changes
 
 ```bash
