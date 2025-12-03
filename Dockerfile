@@ -15,8 +15,11 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Configure npm to use python3
-RUN npm config set python python3
+# Create symlink for python
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
+# Set PYTHON env var for node-gyp
+ENV PYTHON=/usr/bin/python3
 
 # Install dependencies
 RUN npm ci
