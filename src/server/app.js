@@ -91,6 +91,11 @@ app.post('/api/chat', async (req, res) => {
         return res.status(400).json({ error: 'Message is required' });
     }
 
+    if (!process.env.GROQ_API_KEY) {
+        console.error('❌ GROQ_API_KEY is missing!');
+        return res.status(500).json({ error: 'Server configuration error: GROQ_API_KEY missing' });
+    }
+
     try {
         // Check cache first for instant responses (removed as per instruction)
         // const cachedResponse = getCachedResponse(message);
@@ -161,6 +166,7 @@ Answer as Ruv would in a live coaching session. Be practical, show examples, and
 
         // 3. Generate Response using Groq directly
         let answer = "";
+        let errorMsg = null;
         try {
             console.log('Calling Groq API...');
             const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -196,10 +202,12 @@ Answer as Ruv would in a live coaching session. Be practical, show examples, and
         } catch (error) {
             console.error('Error calling Groq:', error.message);
             answer = "I apologize, but I encountered an error generating a response. Please try again.";
+            errorMsg = error.message;
         }
 
         const responseData = {
             answer,
+            error: errorMsg,
             sources: sources.map(s => ({
                 id: s.id,
                 score: s.score,
