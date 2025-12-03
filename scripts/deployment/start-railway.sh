@@ -5,6 +5,7 @@ DB_PATH="/app/.swarm/memory.db"
 INGEST_SCRIPT="scripts/ingestion/ingest_correct.js"
 
 echo "🚀 Starting Ask-Ruvnet on Railway..."
+ls -R /app
 echo "📂 Checking for knowledge base at: $DB_PATH"
 
 # Check if database exists in the persistent volume
