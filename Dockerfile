@@ -1,12 +1,11 @@
 # Use official Node.js image
 FROM node:18-bullseye
 
-# Install system dependencies for node-gyp and ffmpeg
+# Install system dependencies for node-gyp (minimal)
 RUN apt-get update && apt-get install -y \
     python3 \
     make \
     g++ \
-    ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
