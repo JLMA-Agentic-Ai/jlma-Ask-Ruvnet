@@ -110,17 +110,25 @@ async function testVoiceAndTech() {
         console.log('');
 
         try {
+            const startTime = Date.now();
             const response = await axios.post(`${API_URL}/api/chat`, {
                 message: test.question,
                 history: []
-            }, { timeout: 45000 });
+            }, { timeout: 60000 }); // Increased timeout for production
+            const endTime = Date.now();
+            const duration = (endTime - startTime) / 1000;
 
             const answer = response.data.response || response.data.answer || '';
+            const error = response.data.error;
             const sources = response.data.sources || [];
 
+            console.log(`⏱️  Time: ${duration.toFixed(2)}s`);
+            if (error) {
+                console.log(`❌ ERROR from Server: ${error}`);
+            }
             console.log(`📝 Response (${answer.length} chars):`);
             console.log('-'.repeat(80));
-            console.log(answer.substring(0, 500) + (answer.length > 500 ? '...' : ''));
+            console.log(answer);
             console.log('-'.repeat(80));
 
             // Test Voice
@@ -209,6 +217,10 @@ async function testVoiceAndTech() {
                 console.log(`Status: ${error.response.status}`);
             }
         }
+
+        // Wait to avoid rate limits
+        console.log('Waiting 5s...');
+        await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     console.log('\n\n' + '='.repeat(80));

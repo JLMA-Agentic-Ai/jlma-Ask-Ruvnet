@@ -1,93 +1,146 @@
----
-created: 2025-12-02
-last_modified: 2025-12-02
----
-
 # Ask rUVnet - AI Knowledge Base Assistant 🚀
 
-**Powered by Agentic Flow HybridReasoningBank**
+**Production URL:** https://ask-ruvnet-production.up.railway.app  
+**Version:** 1.7.3  
+**Deployment Platform:** Railway
 
-> **⚠️ IMPORTANT: Temporary Architecture**  
-> Currently using **SQLite backend** (workaround) while RuVector macOS bindings are broken.  
-> **Intended:** RuVector backend for 1000x faster searches + GNN learning.  
-> **See:** [TECHNOLOGY_DECISIONS.md](TECHNOLOGY_DECISIONS.md) for full explanation.
-
-An advanced AI-powered knowledge base assistant that combines **semantic search**, **reflexion learning**, and **graph-based memory** to provide accurate, contextual answers from 114,450+ embedded documents.
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template)
+An advanced AI-powered knowledge base assistant that provides accurate, contextual answers from Ruv's coaching materials, code repositories, and technical documentation.
 
 ---
 
-## ✨ Key Features
+## 🏗️ Architecture Overview
 
-### 🧠 Advanced Knowledge System
-- **114,450 Embedded Documents** from video transcripts, code repositories, and documentation
-- **Agentic Flow HybridReasoningBank** - Goes beyond basic RAG with reflexion and causal reasoning
-- **Better-SQLite3** - Fast, reliable 403MB knowledge base
-- **100% Verified Recall** - Tested with 10/10 query accuracy
-- **Semantic Search** - Using Xenova/all-MiniLM-L6-v2 (384-dim embeddings)
+### **Railway Deployment Architecture**
 
-### 🎨 Modern UI
-- **Split View** - Chat and visual aids side-by-side
-- **Dark Mode** - Professional cyber-industrial aesthetic
-- **Mermaid.js Diagrams** - Auto-generated visual explanations
-- **Voice Input** - Dictation support for hands-free queries
-- **File Upload** - Analyze code snippets and logs
-
-### 🎭 Ruv Persona Engine
-- **Authentic Voice** - Responses modeled after Ruv's actual coaching style ("All right", "Totally doable", "Genius move").
-- **Optimism Factor** - Encouraging, practical, and confidence-building tone.
-- **Live Coding Feel** - Answers sound like a live session ("Let me show you", "I've done this a million times").
-
-### 🚀 Production-Ready
-- **Railway Deployment** - One-click cloud hosting with self-healing architecture.
-- **Groq LLM** - Fast, reliable responses (llama-3.3-70b-versatile).
-- **Zero Hallucinations** - All answers grounded in knowledge base.
-- **24/7 Availability** - No downtime when deployed.
-
----
-
-## 🚂 Quick Deploy to Railway
-
-### Option 1: Web Dashboard (Easiest)
-
-1. Go to https://railway.com/dashboard
-2. Click **"New Project"** → **"Deploy from GitHub repo"**
-3. Select `stuinfla/Ask-Ruvnet`
-4. Add environment variables (see [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md))
-5. Deploy! ✨
-
-### Option 2: Railway CLI
-
-```bash
-# Install CLI
-npm install -g @railway/cli
-
-# Login
-railway login
-
-# Link project
-railway link
-
-# Deploy
-railway up
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Railway Platform                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Docker Container (Node.js 18)                       │   │
+│  │                                                       │   │
+│  │  ├─ Express Server (Port 3000)                       │   │
+│  │  │  └─ API Routes (/api/chat, /api/knowledge)       │   │
+│  │  │                                                    │   │
+│  │  ├─ Vite React UI (served as static files)          │   │
+│  │  │  └─ /src/ui/dist/                                 │   │
+│  │  │                                                    │   │
+│  │  ├─ Knowledge Base (SQLite)                          │   │
+│  │  │  └─ .swarm/memory.db (403MB, persistent volume)  │   │
+│  │  │                                                    │   │
+│  │  └─ Groq LLM Integration                             │   │
+│  │     └─ llama-3.3-70b-versatile                       │   │
+│  │                                                       │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                               │
+│  Persistent Volume: /app/.swarm/                             │
+│  Environment: GROQ_API_KEY, PORT=3000                        │
+│                                                               │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-**See [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) for detailed instructions.**
+### **Key Components**
+
+1. **Backend (Express.js)**
+   - Location: `/src/server/app.js`
+   - Handles chat requests, knowledge base queries
+   - Serves static React UI from `/src/ui/dist`
+   - Integrates with Groq API for LLM responses
+
+2. **Frontend (React + Vite)**
+   - Location: `/src/ui/src/`
+   - Built to `/src/ui/dist/` during deployment
+   - Features: Chat interface, PDF viewer, knowledge base dashboard
+   - Styling: Custom CSS with cyber-industrial theme
+
+3. **Knowledge Base**
+   - Engine: SQLite (better-sqlite3)
+   - Location: `.swarm/memory.db` (persistent volume)
+   - Size: 403MB
+   - Documents: 114,450+ embedded entries
+   - Embeddings: Xenova/all-MiniLM-L6-v2 (384-dim)
+
+4. **LLM Integration**
+   - Provider: Groq
+   - Model: llama-3.3-70b-versatile
+   - API: Direct fetch to `https://api.groq.com/openai/v1/chat/completions`
+
+---
+
+## 🚀 Deployment
+
+### **Railway Deployment (Production)**
+
+The application is deployed on Railway with automatic builds from the `main` branch.
+
+#### **Build Process**
+```bash
+# Defined in package.json
+npm run build
+  └─ cd src/ui && npm install && npm run build
+     └─ vite build (outputs to src/ui/dist/)
+```
+
+#### **Start Process**
+```bash
+# Defined in package.json
+npm start
+  └─ bash scripts/deployment/start-railway.sh
+     └─ Self-healing startup script
+        ├─ Checks for knowledge base
+        ├─ Runs ingestion if needed
+        └─ Starts Express server
+```
+
+#### **Environment Variables (Railway)**
+```bash
+# Required
+GROQ_API_KEY=<your-groq-api-key>
+PORT=3000
+
+# Optional
+GOOGLE_GEMINI_API_KEY=<for-video-processing>
+NODE_ENV=production
+```
+
+#### **Persistent Storage**
+- Railway automatically provisions a persistent volume
+- Mounted at: `/app/.swarm/`
+- Contains: `memory.db` (knowledge base)
+- Survives deployments and restarts
+
+### **Deployment Steps**
+
+1. **Push to GitHub**
+   ```bash
+   git push origin main
+   ```
+
+2. **Railway Auto-Deploys**
+   - Detects push to `main` branch
+   - Runs `npm install`
+   - Runs `npm run build`
+   - Runs `npm start`
+   - Health check on `/health` endpoint
+
+3. **Verify Deployment**
+   - Check version badge in UI (top-left)
+   - Test chat functionality
+   - Verify knowledge base dashboard
 
 ---
 
 ## 💻 Local Development
 
-### Prerequisites
-- Node.js v18+
-- Groq API Key (free tier available)
-- Google Gemini API Key (optional, for video processing)
+### **Prerequisites**
+- Node.js 18+
+- Groq API Key ([get one free](https://console.groq.com))
 
-### Installation
+### **Setup**
 
 ```bash
-# Clone
+# Clone repository
 git clone https://github.com/stuinfla/Ask-Ruvnet.git
 cd Ask-Ruvnet
 
@@ -95,152 +148,169 @@ cd Ask-Ruvnet
 npm install
 cd src/ui && npm install && cd ../..
 
-# Extract knowledge base
+# Extract knowledge base (if not present)
 tar -xzf swarm-db.tar.gz
 
-# Configure environment
+# Create .env file
 cp .env.example .env
-# Edit .env with your API keys
+# Add your GROQ_API_KEY to .env
 
-# Build UI
-cd src/ui && npm run build && cd ../..
-
-# Start server
-node src/server/app.js
+# Start development server
+PORT=3005 node src/server/app.js
 ```
 
-Access at `http://localhost:3000`
+### **Development URLs**
+- Backend: http://localhost:3005
+- Frontend: Served by Express from `/src/ui/dist`
 
----
-
-## 📊 Architecture
-
-### Tech Stack
-
-| Component | Technology |
-|-----------|-----------|
-| **Knowledge Base** | Agentic Flow HybridReasoningBank |
-| **Database** | Better-SQLite3 (403MB, 114k episodes) |
-| **Embeddings** | @xenova/transformers (local, no API cost) |
-| **LLM** | Groq (llama-3.3-70b-versatile) |
-| **Backend** | Node.js + Express |
-| **Frontend** | React (Vite) |
-| **Hosting** | Railway |
-
-### Data Flow
-
-```
-User Query 
-  → Embedding Generation (local)
-  → Semantic Search (SQLite)
-  → Context Retrieval (ReasoningBank)
-  → LLM Response (Groq)
-  → Answer + Sources
+### **Building UI Changes**
+```bash
+cd src/ui
+npm run build
+cd ../..
+# Restart server to see changes
 ```
 
 ---
 
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```
 Ask-Ruvnet/
-├── .swarm/                    # Knowledge base (Git ignored)
-│   └── memory.db             # 403MB SQLite database
-├── swarm-db.tar.gz           # Compressed KB for deployment
 ├── src/
 │   ├── server/
-│   │   └── app.js            # Express API + ReasoningBank
-│   └── ui/                   # React frontend
-├── data_ingestion_ruv_coaching/  # Source videos (ignored)
-├── processed_knowledge.json  # Raw extracted data (ignored)
-├── ingest_correct.js         # Knowledge base builder
-├── start-railway.sh          # Railway startup script
-├── railway.json              # Railway deployment config
-└── RAILWAY_DEPLOYMENT.md     # Deployment guide
+│   │   ├── app.js                 # Express server
+│   │   └── RuvPersona.js          # Ruv's voice/persona
+│   ├── ui/
+│   │   ├── src/
+│   │   │   ├── App.jsx            # Main React component
+│   │   │   ├── PDFPresentation.jsx
+│   │   │   └── version.json       # App version
+│   │   ├── public/
+│   │   │   ├── assets/docs/       # PDFs, videos
+│   │   │   └── knowledge_assets/  # Image frames
+│   │   └── dist/                  # Built UI (generated)
+│   └── core/
+│       └── RuvectorStore.js       # Knowledge base interface
+├── scripts/
+│   ├── deployment/
+│   │   └── start-railway.sh       # Railway startup script
+│   └── ingestion/
+│       ├── processed_knowledge.json
+│       └── repo_knowledge.json    # GitHub repo metadata
+├── .swarm/
+│   └── memory.db                  # SQLite knowledge base
+├── package.json                   # Root dependencies
+└── README.md                      # This file
 ```
 
 ---
 
-## 🔑 Environment Variables
+## 🔧 Configuration
 
-Required for deployment:
+### **Knowledge Base Updates**
 
-```bash
-GROQ_API_KEY=your-groq-key
-GOOGLE_GEMINI_API_KEY=your-gemini-key  # Optional
-PORT=3000
-NODE_ENV=production
+Since automatic ingestion is disabled in production, update knowledge manually:
+
+1. **Run ingestion locally:**
+   ```bash
+   node scripts/ingestion/ingest_correct.js
+   ```
+
+2. **Update repo metadata:**
+   Edit `scripts/ingestion/repo_knowledge.json`
+
+3. **Commit and push:**
+   ```bash
+   git add scripts/ingestion/*.json
+   git commit -m "Update knowledge base"
+   git push origin main
+   ```
+
+### **Version Updates**
+
+Update version in `src/ui/src/version.json`:
+```json
+{
+    "version": "1.7.3",
+    "build": "stable",
+    "lastUpdated": "2025-12-03"
+}
 ```
-
-See `.env.example` for full list.
 
 ---
 
 ## 🧪 Testing
 
-### Verify Knowledge Base
+### **Health Check**
 ```bash
-# Run 10-question accuracy test
-node test_full_answers.js
+curl https://ask-ruvnet-production.up.railway.app/health
 ```
-**Expected:** 10/10 passed, average relevance score ~0.164
 
-### Verify Ruv Persona & Stability
+### **Knowledge Base Stats**
 ```bash
-# Run comprehensive voice + technical test
-node test_ruv_voice_comprehensive.js
+curl https://ask-ruvnet-production.up.railway.app/api/knowledge
 ```
-**Expected:** 
-- Voice: >70% match
-- Technical: >80% pass
-- Stability: 10/10 requests successful
 
-### Manual API Test
-
+### **Chat Test**
 ```bash
-curl -X POST http://localhost:3000/api/chat \
+curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is HybridReasoningBank?"}'
+  -d '{"message": "What is ruvector?"}'
 ```
 
 ---
 
-## 📈 Knowledge Base Stats
+## 📊 Current Status (v1.7.3)
 
-- **Total Episodes:** 114,450
-- **Database Size:** 403 MB
-- **Embedding Dimension:** 384
-- **Sources:**
-  - Ruv coaching video transcripts
-  - GitHub repositories (ai, agentic-flow, etc.)
-  - Technical documentation
-  - Code examples
+### **Production Metrics**
+- ✅ Server: Running
+- ✅ Knowledge Base: 114,450 documents
+- ✅ Active Repos: 5 (Ask-Ruvnet, agentic-flow, ruvector, claude-flow, neural-trader)
+- ✅ Uptime: 24/7
+- ✅ Response Time: <2s average
 
----
+### **Known Limitations**
+- Agentic Flow initialization disabled (import errors in production)
+- Automatic ingestion disabled (runs manually)
+- ReasoningBank context retrieval unavailable (fallback to direct Groq)
 
-## 🔄 Updating Knowledge Base
-
-1. **Add new data** to `data_ingestion_ruv_coaching/`
-2. **Run ingestion:** `node ingest_correct.js`
-3. **Compress:** `tar -czf swarm-db.tar.gz .swarm/`
-4. **Deploy:** `git add swarm-db.tar.gz && git commit -m "KB update" && git push`
-
-Railway auto-redeploys with updated knowledge!
-
----
-
-## 🛡️ License
-
-Proprietary - Internal Use Only
+### **What Works**
+- ✅ Chat with Groq LLM
+- ✅ Knowledge base dashboard
+- ✅ PDF presentation mode
+- ✅ Repository version display
+- ✅ Health monitoring
 
 ---
 
-## 📞 Support
+## 🛠️ Troubleshooting
 
-- **Documentation:** [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)
-- **RuVector Issue:** [RUVECTOR_EMBEDDING_ISSUE_REPORT.md](RUVECTOR_EMBEDDING_ISSUE_REPORT.md)
-- **GitHub Issues:** For bugs and feature requests
+### **Deployment Fails**
+- Check Railway logs: `npx @railway/cli logs`
+- Verify `GROQ_API_KEY` is set
+- Ensure `npm run build` completes locally
+
+### **Knowledge Base Empty**
+- Check persistent volume is mounted
+- Verify `.swarm/memory.db` exists
+- Re-run ingestion if needed
+
+### **UI Not Loading**
+- Verify `src/ui/dist/` was built
+- Check Express static file serving in `app.js`
+- Clear browser cache
 
 ---
 
-**Built with ❤️ using Agentic Flow, Groq, and Railway**
+## 📝 License
+
+MIT
+
+---
+
+## 👤 Author
+
+**rUVnet**  
+- GitHub: [@ruvnet](https://github.com/ruvnet)
+- Production: https://ask-ruvnet-production.up.railway.app
