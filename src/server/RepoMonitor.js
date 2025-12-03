@@ -1,4 +1,4 @@
-const { trackRepos } = require('../scripts/ingestion/track_repos');
+const { trackRepos } = require('../../scripts/ingestion/track_repos');
 const { execSync } = require('child_process');
 const path = require('path');
 
@@ -7,8 +7,8 @@ const TWO_DAYS_MS = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
 class RepoMonitor {
     constructor() {
         this.isRunning = false;
-        this.mergeScript = path.resolve(__dirname, '../scripts/ingestion/merge_knowledge.js');
-        this.ingestScript = path.resolve(__dirname, '../scripts/ingestion/ingest_correct.js');
+        this.mergeScript = path.resolve(__dirname, '../../scripts/ingestion/merge_knowledge.js');
+        this.ingestScript = path.resolve(__dirname, '../../scripts/ingestion/ingest_correct.js');
     }
 
     async start() {
