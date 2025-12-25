@@ -1,11 +1,12 @@
 {
   "name": "answerbot-builder",
-  "version": "1.7.14",
+  "version": "1.7.12",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd src/ui && npm install && npm run build",
-    "start": "bash scripts/deployment/start-railway.sh"
+    "start": "bash scripts/deployment/start-railway.sh",
+    "postinstall": "node scripts/fix-agentic-flow.js || true"
   },
   "keywords": [],
   "author": "",
@@ -13,10 +14,13 @@
   "description": "",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@ruvector/agentic-synth": "^0.1.6",
+    "@ruvector/ruvllm": "^0.2.3",
     "@xenova/transformers": "^2.17.2",
-    "agentic-flow": "2.0.1-alpha.5",
+    "agentic-flow": "^2.0.1-alpha.5",
     "axios": "^1.13.2",
     "body-parser": "^2.2.1",
+    "claude-flow": "^2.7.47",
     "csv-parser": "^3.2.0",
     "dotenv": "^17.2.3",
     "express": "^5.2.0",
