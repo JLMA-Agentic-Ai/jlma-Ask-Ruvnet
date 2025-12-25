@@ -240,45 +240,40 @@ function App() {
       const videoCount = data.videoStats?.total || 0;
 
       const report = `
-# 🧠 RUVECTOR INTELLIGENCE STREAM
+# Knowledge Base Status
 
-> *"In the agentic world, nobody moves faster than Ruv. This system is designed to keep pace."*
-
-**SYSTEM STATUS:**
-- **Status:** ONLINE 🟢
-- **Last Sync:** ${timestamp}
-- **Video Intelligence:** ${videoCount} Sessions Indexed (Last 4 Weeks)
-- **Active Repos:** ${data.repos.length} Linked
+**System Status:** Online
+**Last Updated:** ${timestamp}
+**Indexed Videos:** ${videoCount}
+**Tracked Repositories:** ${data.repos.length}
 
 ---
 
-## 🔗 ACTIVE GITHUB REPOSITORIES
-The following codebases are actively monitored for real-time architectural analysis. **Status: SYNCED**
+## Tracked Repositories
 
-${data.repos.length > 0 ? data.repos.map(r => `- **${r.name}** (v${r.version || 'latest'}) ✅ *Synced*`).join('\n') : '_No repositories detected. (Check server paths)_'}
-
----
-
-## 🎥 VIDEO INTELLIGENCE & AGENTIC SESSIONS
-**Total Indexed:** ${videoCount} Videos
-The system has ingested Ruv's meetings, agentic discussions, and weekly sessions, covering:
-- **Agentic Flow & Architecture**
-- **Claude Flow Integration**
-- **Ruvector Implementation**
-- **Neural Trader Strategies**
-- **Sparc & RuvNet Ecosystem**
+${data.repos.length > 0 ? data.repos.map(r => `- **${r.name}** v${r.version || 'latest'} — ${r.description || 'Linked'}`).join('\n') : '_No repositories configured._'}
 
 ---
 
-## 📚 COACHING MATERIALS & RESOURCES
-Access exclusive presentations, video overviews, and audio guides directly:
-${data.docs && data.docs.length > 0 ? data.docs.map(d => `- [**${d.name}**](${d.url}) *(${d.type})*`).join('\n') : '_No coaching materials found._'}
+## Indexed Content
 
-## 📄 DOCUMENTATION & RESEARCH
-${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n') : '_Indexing documentation..._'}
+The knowledge base includes documentation and source code from the following areas:
+- Agentic Flow framework and architecture
+- Claude Flow workflow engine
+- RuVector database implementation
+- Neural Trader analysis tools
+- Video transcripts and presentations
 
 ---
-*Powered by Agentic Flow HybridReasoningBank with Better-SQLite3.*
+
+## Available Resources
+
+${data.docs && data.docs.length > 0 ? data.docs.map(d => `- [${d.name}](${d.url}) (${d.type})`).join('\n') : '_No additional resources available._'}
+
+${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- ${w.name}`).join('\n') : ''}
+
+---
+*Powered by Agentic Flow HybridReasoningBank*
 `;
 
       setCanvasContent({
