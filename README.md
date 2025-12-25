@@ -1,14 +1,14 @@
-# Ask rUVnet - AI Knowledge Base Assistant 🚀
+# Ask rUVnet - AI Knowledge Base Assistant
 
-**Production URL:** https://ask-ruvnet-production.up.railway.app  
-**Version:** 1.7.5  
-**Deployment Platform:** Railway
+**Production URL:** https://ask-ruvnet-production.up.railway.app
+**Version:** 1.7.14
+**Deployment Platform:** Railway (Dockerfile Builder)
 
 An advanced AI-powered knowledge base assistant that provides accurate, contextual answers from Ruv's coaching materials, code repositories, and technical documentation.
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ### **Railway Deployment Architecture**
 
@@ -18,7 +18,7 @@ An advanced AI-powered knowledge base assistant that provides accurate, contextu
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌──────────────────────────────────────────────────────┐   │
-│  │  Docker Container (Node.js 18)                       │   │
+│  │  Docker Container (Node.js 22)                       │   │
 │  │                                                       │   │
 │  │  ├─ Express Server (Port 3000)                       │   │
 │  │  │  └─ API Routes (/api/chat, /api/knowledge)       │   │
@@ -47,6 +47,7 @@ An advanced AI-powered knowledge base assistant that provides accurate, contextu
    - Handles chat requests, knowledge base queries
    - Serves static React UI from `/src/ui/dist`
    - Integrates with Groq API for LLM responses
+   - Professional technical persona: `/src/server/RuvPersona.js`
 
 2. **Frontend (React + Vite)**
    - Location: `/src/ui/src/`
@@ -66,20 +67,57 @@ An advanced AI-powered knowledge base assistant that provides accurate, contextu
    - Model: llama-3.3-70b-versatile
    - API: Direct fetch to `https://api.groq.com/openai/v1/chat/completions`
 
+5. **Core Dependencies**
+   - `agentic-flow@2.0.1-alpha.5` - Multi-agent orchestration with HybridReasoningBank
+   - `ruvector@0.1.35` - Vector database backend for semantic search
+   - `puppeteer@24.31.0` - Headless browser for web scraping
+   - `sharp@0.34.5` - Image processing
+
+### **Railway-Specific Architectural Decisions**
+
+This application is optimized for Railway deployment with the following architectural choices:
+
+| Decision | Rationale |
+|----------|-----------|
+| **Custom Dockerfile** | Railway's Railpack builder uses `npm ci` which requires exact package-lock.json matches. Using a custom Dockerfile allows `npm install --legacy-peer-deps` for alpha package compatibility. |
+| **Node.js 22 Bookworm** | Uses `node:22-bookworm-slim` base image with Debian packages for native module compilation (hnswlib-node requires `build-essential`). |
+| **SQLite over PostgreSQL** | Simplifies deployment with file-based database mounted on Railway's persistent volume. No separate database service required. |
+| **Static UI Serving** | Frontend built at deploy time and served as static files by Express, eliminating need for separate CDN or frontend service. |
+| **Self-Healing Startup** | `start-railway.sh` script handles knowledge base initialization and graceful restarts. |
+| **Groq LLM Integration** | External API for LLM inference avoids GPU requirements on Railway. |
+| **No package-lock.json** | Removed from repository to prevent npm ci failures with alpha package versions. |
+
 ---
 
-## 🚀 Deployment
+## Deployment
 
 ### **Railway Deployment (Production)**
 
-The application is deployed on Railway with automatic builds from the `main` branch.
+The application is deployed on Railway with automatic builds from the `main` branch using a custom Dockerfile.
+
+#### **Build Configuration**
+
+Railway uses a custom Dockerfile builder (configured via `railway.json`) which:
+- Uses `npm install` instead of `npm ci` for alpha package compatibility
+- Installs `build-essential` for native module compilation (hnswlib-node)
+- Includes all Puppeteer and Sharp dependencies
+
+```json
+// railway.json
+{
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "Dockerfile"
+  }
+}
+```
 
 #### **Build Process**
 ```bash
-# Defined in package.json
-npm run build
-  └─ cd src/ui && npm install && npm run build
-     └─ vite build (outputs to src/ui/dist/)
+# Defined in Dockerfile
+npm install --legacy-peer-deps  # Allows alpha versions
+cd src/ui && npm install && npm run build
+  └─ vite build (outputs to src/ui/dist/)
 ```
 
 #### **Start Process**
@@ -119,8 +157,7 @@ NODE_ENV=production
 
 2. **Railway Auto-Deploys**
    - Detects push to `main` branch
-   - Runs `npm install`
-   - Runs `npm run build`
+   - Builds using Dockerfile
    - Runs `npm start`
    - Health check on `/health` endpoint
 
@@ -131,10 +168,10 @@ NODE_ENV=production
 
 ---
 
-## 💻 Local Development
+## Local Development
 
 ### **Prerequisites**
-- Node.js 18+
+- Node.js 22+
 - Groq API Key ([get one free](https://console.groq.com))
 
 ### **Setup**
@@ -173,14 +210,14 @@ cd ../..
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Ask-Ruvnet/
 ├── src/
 │   ├── server/
 │   │   ├── app.js                 # Express server (main entry)
-│   │   └── RuvPersona.js          # Ruv's voice/persona
+│   │   └── RuvPersona.js          # Professional technical persona
 │   ├── ui/
 │   │   ├── src/
 │   │   │   ├── App.jsx            # Main React component
@@ -206,13 +243,15 @@ Ask-Ruvnet/
 │       └── repo_knowledge.json    # Tracked repositories
 ├── .swarm/
 │   └── memory.db                  # SQLite knowledge base
+├── Dockerfile                     # Railway build configuration
+├── railway.json                   # Railway builder settings
 ├── package.json                   # Dependencies + version
 └── README.md                      # This file
 ```
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 ### **Knowledge Base Updates**
 
@@ -253,13 +292,13 @@ MAJOR.MINOR.PATCH
 # Edit package.json
 {
   "name": "answerbot-builder",
-  "version": "1.7.5",  # ← Update this
+  "version": "1.7.14",  # ← Update this
   ...
 }
 
 # Commit with version tag
 git add package.json
-git commit -m "🔖 VERSION: Bump to X.Y.Z - description"
+git commit -m "VERSION: Bump to X.Y.Z - description"
 git push origin main
 ```
 
@@ -270,7 +309,7 @@ git push origin main
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### **Health Check**
 ```bash
@@ -291,31 +330,34 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
 
 ---
 
-## 📊 Current Status (v1.7.5)
+## Current Status (v1.7.14)
 
 ### **Production Metrics**
-- ✅ Server: Running
-- ✅ Knowledge Base: 114,450 documents
-- ✅ Active Repos: 7 (Ask-Ruvnet, agentic-flow, ruvector, ruvllm, claude-flow, neural-trader, agentic-synth)
-- ✅ Uptime: 24/7
-- ✅ Response Time: <2s average
+- Server: Running
+- Knowledge Base: 114,450 documents
+- Active Repos: 7 (Ask-Ruvnet, agentic-flow, ruvector, ruvllm, claude-flow, neural-trader, agentic-synth)
+- Uptime: 24/7
+- Response Time: <2s average
 
 ### **Features**
-- ✅ Chat with Groq LLM (llama-3.3-70b-versatile)
-- ✅ Agentic Flow integration with HybridReasoningBank
-- ✅ Knowledge base dashboard with repo tracking
-- ✅ PDF presentation mode
-- ✅ Repository version display with alpha/latest tracking
-- ✅ Health monitoring
+- Chat with Groq LLM (llama-3.3-70b-versatile)
+- Agentic Flow integration (v2.0.1-alpha.5) with HybridReasoningBank
+- Knowledge base dashboard with repo tracking
+- PDF presentation mode
+- Repository version display with alpha/latest tracking
+- Health monitoring
+- Professional technical assistant persona (formal documentation style)
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### **Deployment Fails**
 - Check Railway logs: `npx @railway/cli logs`
 - Verify `GROQ_API_KEY` is set
 - Ensure `npm run build` completes locally
+- Verify Dockerfile is building correctly (uses `npm install` not `npm ci`)
+- Check `railway.json` specifies `DOCKERFILE` builder
 
 ### **Knowledge Base Empty**
 - Check persistent volume is mounted
@@ -329,14 +371,14 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
 
 ---
 
-## 📝 License
+## License
 
 MIT
 
 ---
 
-## 👤 Author
+## Author
 
-**rUVnet**  
+**rUVnet**
 - GitHub: [@ruvnet](https://github.com/ruvnet)
 - Production: https://ask-ruvnet-production.up.railway.app
