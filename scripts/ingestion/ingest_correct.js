@@ -1,12 +1,23 @@
 const { HybridReasoningBank } = require('agentic-flow/reasoningbank');
 const fs = require('fs');
 const path = require('path');
+const TextChunker = require('../../src/core/TextChunker');
 
 // Force transformers
 process.env.FORCE_TRANSFORMERS = 'true';
 
+// OPTIMIZED: Initialize text chunker for large document splitting
+const chunker = new TextChunker({
+    chunkSize: 2000,   // ~500 tokens per chunk
+    overlap: 200,      // 200 char overlap for context continuity
+    minChunkSize: 100  // Don't create tiny fragments
+});
+
+// Threshold for chunking (documents larger than this get chunked)
+const CHUNK_THRESHOLD = 3000; // Characters
+
 async function ingest() {
-    console.log('🚀 Starting CORRECT ingestion using HybridReasoningBank API...');
+    console.log('🚀 Starting OPTIMIZED ingestion with text chunking...');
 
     // Initialize the bank
     const bankModule = await import('agentic-flow/reasoningbank');
@@ -27,30 +38,63 @@ async function ingest() {
 
     console.log(`📚 Found ${lines.length} knowledge entries`);
 
-    let count = 0;
+    let entryCount = 0;
+    let chunkCount = 0;
+    let chunkedDocs = 0;
+
     for (const line of lines) {
         try {
             const entry = JSON.parse(line);
+            const content = entry.content || '';
 
-            // Use the framework's API
-            await bank.reflexion.storeEpisode({
-                task: entry.metadata?.source || 'Knowledge',
-                input: entry.content,
-                output: '',
-                success: true,
-                metadata: entry.metadata
-            });
+            // OPTIMIZED: Chunk large documents for better granular retrieval
+            if (content.length > CHUNK_THRESHOLD) {
+                const chunks = chunker.chunk(content, entry.metadata);
+                chunkedDocs++;
 
-            count++;
-            if (count % 100 === 0) {
-                console.log(`   Processed ${count}/${lines.length}...`);
+                for (const chunk of chunks) {
+                    await bank.reflexion.storeEpisode({
+                        task: entry.metadata?.source || 'Knowledge',
+                        input: chunk.text,
+                        output: '',
+                        success: true,
+                        metadata: {
+                            ...entry.metadata,
+                            ...chunk.metadata,
+                            originalDocId: entry.metadata?.docId || `doc_${entryCount}`,
+                            isChunk: true
+                        }
+                    });
+                    chunkCount++;
+                }
+            } else {
+                // Small document - store as-is
+                await bank.reflexion.storeEpisode({
+                    task: entry.metadata?.source || 'Knowledge',
+                    input: content,
+                    output: '',
+                    success: true,
+                    metadata: {
+                        ...entry.metadata,
+                        isChunk: false
+                    }
+                });
+                chunkCount++;
+            }
+
+            entryCount++;
+            if (entryCount % 100 === 0) {
+                console.log(`   Processed ${entryCount}/${lines.length} entries (${chunkCount} total chunks)...`);
             }
         } catch (e) {
-            console.error(`Error on entry ${count}:`, e.message);
+            console.error(`Error on entry ${entryCount}:`, e.message);
         }
     }
 
-    console.log(`\n✅ Ingested ${count} entries into ReasoningBank`);
+    console.log(`\n✅ Ingestion complete!`);
+    console.log(`   📄 Original entries: ${entryCount}`);
+    console.log(`   🔪 Documents chunked: ${chunkedDocs}`);
+    console.log(`   📦 Total chunks stored: ${chunkCount}`);
 }
 
 ingest().catch(console.error);
