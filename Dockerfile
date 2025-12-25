@@ -3,8 +3,9 @@
 
 FROM node:22-bookworm-slim
 
-# Install system dependencies for puppeteer and sharp
+# Install system dependencies for puppeteer, sharp, and native module compilation
 RUN apt-get update && apt-get install -y \
+    build-essential \
     ca-certificates \
     fonts-liberation \
     libasound2 \
