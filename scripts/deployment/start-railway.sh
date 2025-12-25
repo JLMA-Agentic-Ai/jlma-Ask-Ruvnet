@@ -6,6 +6,11 @@ INGEST_SCRIPT="scripts/ingestion/ingest_correct.js"
 
 echo "🚀 Starting Ask-Ruvnet on Railway..."
 ls -F src/ui/dist
+
+# ALWAYS check for latest package versions on every deploy
+echo "🔄 Checking for latest package versions..."
+node scripts/ingestion/check_repo_versions.js 2>/dev/null || echo "⚠️ Version check failed (will use cached versions)"
+
 echo "📂 Checking for knowledge base at: $DB_PATH"
 
 # Check if database exists in the persistent volume
