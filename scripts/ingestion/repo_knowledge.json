@@ -68,5 +68,17 @@
         "description": "Market Analysis Agent",
         "npm": null,
         "github": "https://github.com/ruvnet/neural-trader"
+    },
+    {
+        "name": "agentic-synth",
+        "version_latest": "check",
+        "version_alpha": null,
+        "version": "latest",
+        "branch": "main",
+        "last_update": "2025-12-25T18:30:00Z",
+        "status": "LINKED",
+        "description": "Synthetic Data Generator for AI/ML",
+        "npm": "@ruvector/agentic-synth",
+        "github": "https://github.com/ruvnet/ruvector/tree/main/npm/packages/agentic-synth"
     }
 ]

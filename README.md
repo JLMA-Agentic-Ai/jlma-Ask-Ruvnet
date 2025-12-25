@@ -1,7 +1,7 @@
 # Ask rUVnet - AI Knowledge Base Assistant 🚀
 
 **Production URL:** https://ask-ruvnet-production.up.railway.app  
-**Version:** 1.7.4  
+**Version:** 1.7.5  
 **Deployment Platform:** Railway
 
 An advanced AI-powered knowledge base assistant that provides accurate, contextual answers from Ruv's coaching materials, code repositories, and technical documentation.
@@ -179,27 +179,34 @@ cd ../..
 Ask-Ruvnet/
 ├── src/
 │   ├── server/
-│   │   ├── app.js                 # Express server
+│   │   ├── app.js                 # Express server (main entry)
 │   │   └── RuvPersona.js          # Ruv's voice/persona
 │   ├── ui/
 │   │   ├── src/
 │   │   │   ├── App.jsx            # Main React component
 │   │   │   └── PDFPresentation.jsx
-│   │   ├── public/
-│   │   │   ├── assets/docs/       # PDFs, videos
-│   │   │   └── knowledge_assets/  # Image frames
+│   │   ├── public/assets/         # Static assets
 │   │   └── dist/                  # Built UI (generated)
-│   └── core/
-│       └── RuvectorStore.js       # Knowledge base interface
+│   ├── core/                      # RAG enhancement modules
+│   │   ├── RuvectorStore.js       # Knowledge base interface
+│   │   ├── HybridSearch.js        # BM25 + semantic fusion
+│   │   ├── QueryExpander.js       # Query expansion
+│   │   ├── ReRanker.js            # Cross-encoder style reranking
+│   │   ├── ContextCompressor.js   # Context optimization
+│   │   └── MultiHopRetriever.js   # Complex query handling
+│   └── connectors/                # Data source connectors
+│       ├── GoogleDriveConnector.js
+│       └── LocalDirectoryConnector.js
 ├── scripts/
 │   ├── deployment/
 │   │   └── start-railway.sh       # Railway startup script
 │   └── ingestion/
-│       ├── processed_knowledge.json
-│       └── repo_knowledge.json    # GitHub repo metadata
+│       ├── ingest_correct.js      # Main ingestion script
+│       ├── check_repo_versions.js # Version checker utility
+│       └── repo_knowledge.json    # Tracked repositories
 ├── .swarm/
 │   └── memory.db                  # SQLite knowledge base
-├── package.json                   # Root dependencies
+├── package.json                   # Dependencies + version
 └── README.md                      # This file
 ```
 
@@ -246,7 +253,7 @@ MAJOR.MINOR.PATCH
 # Edit package.json
 {
   "name": "answerbot-builder",
-  "version": "1.7.4",  # ← Update this
+  "version": "1.7.5",  # ← Update this
   ...
 }
 
@@ -284,25 +291,21 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
 
 ---
 
-## 📊 Current Status (v1.7.4)
+## 📊 Current Status (v1.7.5)
 
 ### **Production Metrics**
 - ✅ Server: Running
 - ✅ Knowledge Base: 114,450 documents
-- ✅ Active Repos: 5 (Ask-Ruvnet, agentic-flow, ruvector, claude-flow, neural-trader)
+- ✅ Active Repos: 7 (Ask-Ruvnet, agentic-flow, ruvector, ruvllm, claude-flow, neural-trader, agentic-synth)
 - ✅ Uptime: 24/7
 - ✅ Response Time: <2s average
 
-### **Known Limitations**
-- Agentic Flow initialization disabled (import errors in production)
-- Automatic ingestion disabled (runs manually)
-- ReasoningBank context retrieval unavailable (fallback to direct Groq)
-
-### **What Works**
-- ✅ Chat with Groq LLM
-- ✅ Knowledge base dashboard
+### **Features**
+- ✅ Chat with Groq LLM (llama-3.3-70b-versatile)
+- ✅ Agentic Flow integration with HybridReasoningBank
+- ✅ Knowledge base dashboard with repo tracking
 - ✅ PDF presentation mode
-- ✅ Repository version display
+- ✅ Repository version display with alpha/latest tracking
 - ✅ Health monitoring
 
 ---
