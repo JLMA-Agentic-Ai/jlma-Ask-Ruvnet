@@ -110,10 +110,34 @@ app.use('/frames', express.static(path.join(__dirname, '../../data_ingestion_ruv
 // Initialize Agentic Flow Components
 let modelRouter;
 let reasoningBank;
+let nativeVectorStore = null; // NEW: Native RuVector store
 
 async function initAgenticFlow() {
     try {
-        // Dynamic imports for ESM modules
+        // ================================================================
+        // PRIORITY: Initialize Native RuVector Store (if enabled)
+        // ================================================================
+        if (USE_NATIVE_RUVECTOR) {
+            console.log('🚀 Initializing Native RuVector Store...');
+            nativeVectorStore = new NativeRuvectorStore({
+                dimensions: 384,  // MiniLM-L6-v2
+                maxElements: 200000,
+                storagePath: path.resolve(__dirname, '../../data/ruvector.db')
+            });
+
+            try {
+                await nativeVectorStore.initialize();
+                const stats = await nativeVectorStore.getStats();
+                console.log('✅ Native RuVector Store initialized');
+                console.log(`   Backend: ${stats.backend}`);
+                console.log(`   Documents: ${stats.documentCount}`);
+            } catch (ruvectorError) {
+                console.warn('⚠️ Native RuVector failed, falling back to SQLite:', ruvectorError.message);
+                nativeVectorStore = null;
+            }
+        }
+
+        // Dynamic imports for ESM modules (fallback)
         const routerModule = await import('agentic-flow/router');
         const bankModule = await import('agentic-flow/reasoningbank');
 
@@ -127,7 +151,7 @@ async function initAgenticFlow() {
         const { HybridReasoningBank } = bankModule;
         reasoningBank = new HybridReasoningBank({ preferWasm: false });
 
-        console.log('✅ Agentic Flow Initialized (Router + HybridReasoningBank)');
+        console.log('✅ Agentic Flow Initialized (Router + HybridReasoningBank - fallback)');
 
         // ================================================================
         // Initialize RuvLLM Orchestrator for self-learning capabilities
@@ -271,12 +295,16 @@ app.post('/api/chat', async (req, res) => {
         //     return res.json(cachedResponse);
         console.log('Received chat request:', message);
 
-        // 1. Retrieve Context from ReasoningBank (Reflexion Memory)
+        // 1. Retrieve Context - PRIORITY: Native RuVector, fallback to ReasoningBank
         let context = "";
         let sources = [];
 
-        if (reasoningBank && reasoningBank.reflexion) {
-            console.log(`Searching ReasoningBank for: "${message}"`);
+        // Determine which backend to use
+        const useNativeBackend = nativeVectorStore && nativeVectorStore.isInitialized;
+        const useFallbackBackend = reasoningBank && reasoningBank.reflexion;
+
+        if (useNativeBackend || useFallbackBackend) {
+            console.log(`Searching ${useNativeBackend ? '🚀 Native RuVector' : '📦 ReasoningBank (fallback)'} for: "${message}"`);
             try {
                 // ================================================================
                 // STAGE 1: Query Expansion - Generate multiple query variants
@@ -287,21 +315,38 @@ app.post('/api/chat', async (req, res) => {
 
                 // ================================================================
                 // STAGE 2: Define search function for retrieval
+                // PRIORITY: Use Native RuVector if available
                 // ================================================================
                 const semanticSearchFn = async (query, k) => {
-                    const semanticResults = await reasoningBank.reflexion.retrieveRelevant({
-                        task: query,
-                        k: k
-                    });
-                    return semanticResults.map(r => ({
-                        id: r.metadata?.docId || r.id,
-                        content: r.input || r.task || '',
-                        score: r.similarity || 0,
-                        similarity: r.similarity || 0,
-                        source: r.metadata?.source,
-                        metadata: r.metadata,
-                        timestamp: r.metadata?.timestamp
-                    }));
+                    if (useNativeBackend) {
+                        // Use Native RuVector - 1000x faster with HNSW
+                        console.log('⚡ Using Native RuVector HNSW search');
+                        const results = await nativeVectorStore.search(query, k);
+                        return results.map(r => ({
+                            id: r.id,
+                            content: r.content || '',
+                            score: r.score || 0,
+                            similarity: r.score || 0,
+                            source: r.metadata?.source,
+                            metadata: r.metadata,
+                            timestamp: r.metadata?.timestamp
+                        }));
+                    } else {
+                        // Fallback to ReasoningBank
+                        const semanticResults = await reasoningBank.reflexion.retrieveRelevant({
+                            task: query,
+                            k: k
+                        });
+                        return semanticResults.map(r => ({
+                            id: r.metadata?.docId || r.id,
+                            content: r.input || r.task || '',
+                            score: r.similarity || 0,
+                            similarity: r.similarity || 0,
+                            source: r.metadata?.source,
+                            metadata: r.metadata,
+                            timestamp: r.metadata?.timestamp
+                        }));
+                    }
                 };
 
                 // ================================================================
@@ -511,11 +556,17 @@ app.get('/health', async (req, res) => {
         version: '2.0.0-ruvector',
         checks: {
             server: 'ok',
-            vectorStore: reasoningBank ? 'ok' : 'unknown',
+            vectorStore: nativeVectorStore?.isInitialized ? 'native-ruvector' : (reasoningBank ? 'sqlite-fallback' : 'unknown'),
             ruvllm: ruvLLMOrchestrator?.isInitialized ? 'active' : 'fallback'
+        },
+        backend: {
+            primary: nativeVectorStore?.isInitialized ? 'Native RuVector (HNSW)' : 'SQLite (agentic-flow)',
+            ruvectorStats: nativeVectorStore ? await nativeVectorStore.getStats() : null,
+            documentsIndexed: nativeVectorStore?.isInitialized ? await nativeVectorStore.count() : 'unknown'
         },
         features: {
             nativeRuvector: USE_NATIVE_RUVECTOR,
+            nativeRuvectorActive: nativeVectorStore?.isInitialized || false,
             ruvllmEnabled: USE_RUVLLM,
             ruvllmStats: ruvLLMOrchestrator?.getStats() || null,
             ragPipeline: {
