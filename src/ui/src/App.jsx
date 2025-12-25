@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
-import appVersion from './version.json';
+import packageJson from '../../../package.json';
 import PDFPresentation from './PDFPresentation';
 import './App.css';
 
@@ -338,7 +338,7 @@ ${data.websites.length > 0 ? data.websites.map(w => `- **${w.name}**`).join('\n'
           <div className="logo">
             <img src="/assets/ruv.png" alt="RuvNet" className="logo-img" />
             <span className="logo-text">
-              Ask rUVnet <span className="version-tag">v{appVersion.version}</span>
+              Ask rUVnet <span className="version-tag">v{packageJson.version}</span>
             </span>
           </div>
         </div>
