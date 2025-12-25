@@ -1,7 +1,7 @@
 # Ask rUVnet - AI Knowledge Base Assistant 🚀
 
 **Production URL:** https://ask-ruvnet-production.up.railway.app  
-**Version:** 1.7.3  
+**Version:** 1.7.4  
 **Deployment Platform:** Railway
 
 An advanced AI-powered knowledge base assistant that provides accurate, contextual answers from Ruv's coaching materials, code repositories, and technical documentation.
@@ -184,8 +184,7 @@ Ask-Ruvnet/
 │   ├── ui/
 │   │   ├── src/
 │   │   │   ├── App.jsx            # Main React component
-│   │   │   ├── PDFPresentation.jsx
-│   │   │   └── version.json       # App version
+│   │   │   └── PDFPresentation.jsx
 │   │   ├── public/
 │   │   │   ├── assets/docs/       # PDFs, videos
 │   │   │   └── knowledge_assets/  # Image frames
@@ -227,16 +226,40 @@ Since automatic ingestion is disabled in production, update knowledge manually:
    git push origin main
    ```
 
-### **Version Updates**
+### **Version Management**
 
-Update version in `src/ui/src/version.json`:
-```json
-{
-    "version": "1.7.3",
-    "build": "stable",
-    "lastUpdated": "2025-12-03"
-}
+**Single Source of Truth:** `/package.json`
+
+The application version is stored in ONE place only - the root `package.json` file. The UI imports this version directly.
+
+#### **Semantic Versioning (SemVer)**
 ```
+MAJOR.MINOR.PATCH
+  │     │     │
+  │     │     └── Bug fixes, patches, small changes (e.g., 1.7.3 → 1.7.4)
+  │     └──────── New features, backward compatible (e.g., 1.7.x → 1.8.0)
+  └────────────── Breaking changes, major rewrites (e.g., 1.x.x → 2.0.0)
+```
+
+#### **How to Update Version**
+```bash
+# Edit package.json
+{
+  "name": "answerbot-builder",
+  "version": "1.7.4",  # ← Update this
+  ...
+}
+
+# Commit with version tag
+git add package.json
+git commit -m "🔖 VERSION: Bump to X.Y.Z - description"
+git push origin main
+```
+
+#### **Where Version is Used**
+- **package.json** (line 3) - Source of truth
+- **UI Header** - Displays `v{version}` via import from package.json
+- **README.md** - Documentation reference (update manually)
 
 ---
 
@@ -261,7 +284,7 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
 
 ---
 
-## 📊 Current Status (v1.7.3)
+## 📊 Current Status (v1.7.4)
 
 ### **Production Metrics**
 - ✅ Server: Running
