@@ -2,8 +2,6 @@ const express = require('express');
 process.env.FORCE_TRANSFORMERS = 'true';
 const bodyParser = require('body-parser');
 const RuvectorStore = require('../core/RuvectorStore');
-const NativeRuvectorStore = require('../core/NativeRuvectorStore');
-const RuvLLMOrchestrator = require('../core/RuvLLMOrchestrator');
 const HybridSearch = require('../core/HybridSearch');
 const TextChunker = require('../core/TextChunker');
 const QueryExpander = require('../core/QueryExpander');
@@ -14,15 +12,6 @@ const { OpenAI } = require('openai');
 const path = require('path');
 // const repoMonitor = require('./RepoMonitor');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
-
-// ============================================================================
-// RUVECTOR + RUVLLM CONFIGURATION
-// ============================================================================
-const USE_NATIVE_RUVECTOR = process.env.USE_NATIVE_RUVECTOR !== 'false'; // Default: true
-const USE_RUVLLM = process.env.USE_RUVLLM !== 'false'; // Default: true
-
-// Initialize RuvLLM Orchestrator for self-learning LLM capabilities
-let ruvLLMOrchestrator = null;
 
 // ============================================================================
 // OPTIMIZED: Initialize all RAG enhancement modules
@@ -128,24 +117,6 @@ async function initAgenticFlow() {
         reasoningBank = new HybridReasoningBank({ preferWasm: false });
 
         console.log('✅ Agentic Flow Initialized (Router + HybridReasoningBank)');
-
-        // ================================================================
-        // Initialize RuvLLM Orchestrator for self-learning capabilities
-        // ================================================================
-        if (USE_RUVLLM) {
-            console.log('🧠 Initializing RuvLLM Orchestrator...');
-            ruvLLMOrchestrator = new RuvLLMOrchestrator({
-                learningEnabled: true,
-                useRecursiveReasoning: true,
-                fallbackLLM: 'groq'
-            });
-            const ruvllmInitialized = await ruvLLMOrchestrator.initialize();
-            if (ruvllmInitialized) {
-                console.log('✅ RuvLLM Orchestrator ready (SONA + TRM enabled)');
-            } else {
-                console.log('⚠️ RuvLLM not available, using standard LLM pipeline');
-            }
-        }
 
         // OPTIMIZED: Initialize hybrid search index for BM25 + semantic fusion
         await initHybridSearchIndex();
@@ -389,18 +360,6 @@ app.post('/api/chat', async (req, res) => {
                 context = contextCompressor.compress(sources, message);
                 console.log(`📦 Context compressed to ${context.length} chars`);
 
-                // ================================================================
-                // STAGE 9: RuvLLM Context Enhancement (if available)
-                // ================================================================
-                if (ruvLLMOrchestrator && ruvLLMOrchestrator.isInitialized) {
-                    try {
-                        context = await ruvLLMOrchestrator.enhanceContext(message, context);
-                        console.log(`🧠 Context enhanced with SONA learned patterns`);
-                    } catch (enhanceErr) {
-                        // Silent fail - enhancement is optional
-                    }
-                }
-
             } catch (err) {
                 console.error('Error retrieving from ReasoningBank:', err);
                 // Continue without context
@@ -454,22 +413,6 @@ Answer as Ruv would in a live coaching session. Be practical, show examples, and
             if (data.choices && data.choices[0]) {
                 answer = data.choices[0].message.content;
                 console.log('✅ Got answer from Groq');
-
-                // ================================================================
-                // STAGE 10: RuvLLM Learning - Record successful interaction
-                // ================================================================
-                if (ruvLLMOrchestrator && ruvLLMOrchestrator.isInitialized) {
-                    try {
-                        // Let RuvLLM learn from this interaction for future improvement
-                        await ruvLLMOrchestrator.process(message, context, {
-                            response: answer,
-                            success: true
-                        });
-                        console.log('🧠 RuvLLM: Interaction recorded for learning');
-                    } catch (learnErr) {
-                        // Silent fail - learning is optional
-                    }
-                }
             } else if (data.error) {
                 throw new Error(`Groq error: ${data.error.message || JSON.stringify(data.error)} `);
             } else {
@@ -508,24 +451,9 @@ app.get('/health', async (req, res) => {
         status: 'ok',
         uptime: process.uptime(),
         timestamp: new Date(),
-        version: '2.0.0-ruvector',
         checks: {
             server: 'ok',
-            vectorStore: reasoningBank ? 'ok' : 'unknown',
-            ruvllm: ruvLLMOrchestrator?.isInitialized ? 'active' : 'fallback'
-        },
-        features: {
-            nativeRuvector: USE_NATIVE_RUVECTOR,
-            ruvllmEnabled: USE_RUVLLM,
-            ruvllmStats: ruvLLMOrchestrator?.getStats() || null,
-            ragPipeline: {
-                queryExpansion: true,
-                hybridSearch: hybridSearch !== null,
-                multiHopRetrieval: true,
-                reranking: true,
-                contextCompression: true,
-                sonaLearning: ruvLLMOrchestrator?.isInitialized || false
-            }
+            vectorStore: 'unknown'
         }
     };
     res.json(health);
