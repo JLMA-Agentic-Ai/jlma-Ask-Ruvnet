@@ -12,6 +12,9 @@ const { OpenAI } = require('openai');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
+// Version from single source of truth (package.json)
+const { version: APP_VERSION } = require('../../package.json');
+
 // Initialize OpenAI client for special endpoints (if API key available)
 let openai = null;
 if (process.env.OPENAI_API_KEY) {
@@ -645,5 +648,5 @@ app.get('/api/knowledge', (req, res) => {
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`Ask rUVnet v1.7.5 initialized.`);
+    console.log(`Ask rUVnet v${APP_VERSION} initialized.`);
 });
