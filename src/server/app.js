@@ -13,6 +13,12 @@ const path = require('path');
 // const repoMonitor = require('./RepoMonitor');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
+// Initialize OpenAI client for special endpoints (if API key available)
+let openai = null;
+if (process.env.OPENAI_API_KEY) {
+    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+}
+
 // ============================================================================
 // OPTIMIZED: Initialize all RAG enhancement modules
 // ============================================================================
@@ -486,10 +492,17 @@ app.get('/api/debug', (req, res) => {
 });
 
 
-// Chat Endpoint
+// Special Actions Endpoint (simplify, code, diagram)
 app.post('/api/special', async (req, res) => {
     const { action, content } = req.body;
     console.log(`[Special] Action: ${action} `);
+
+    // Check if OpenAI is configured
+    if (!openai) {
+        return res.status(503).json({
+            error: 'OpenAI API not configured. Set OPENAI_API_KEY environment variable.'
+        });
+    }
 
     try {
         let result = '';

@@ -1,4 +1,4 @@
-const { HybridReasoningBank } = require('agentic-flow/reasoningbank');
+// Note: agentic-flow is ESM, use dynamic import in initialize() method
 const { applyRecencyBoost } = require('./RecencyBoost');
 require('dotenv').config();
 
