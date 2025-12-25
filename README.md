@@ -1,7 +1,7 @@
 # Ask rUVnet - AI Knowledge Base Assistant
 
 **Production URL:** https://ask-ruvnet-production.up.railway.app
-**Version:** 1.7.14
+**Version:** 1.7.15
 **Deployment Platform:** Railway (Dockerfile Builder)
 
 An advanced AI-powered knowledge base assistant that provides accurate, contextual answers from Ruv's coaching materials, code repositories, and technical documentation.
@@ -292,7 +292,7 @@ MAJOR.MINOR.PATCH
 # Edit package.json
 {
   "name": "answerbot-builder",
-  "version": "1.7.14",  # ← Update this
+  "version": "1.7.15",  # ← Update this
   ...
 }
 
@@ -330,7 +330,7 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
 
 ---
 
-## Current Status (v1.7.14)
+## Current Status (v1.7.15)
 
 ### **Production Metrics**
 - Server: Running
