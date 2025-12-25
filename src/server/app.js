@@ -4,14 +4,37 @@ const bodyParser = require('body-parser');
 const RuvectorStore = require('../core/RuvectorStore');
 const HybridSearch = require('../core/HybridSearch');
 const TextChunker = require('../core/TextChunker');
+const QueryExpander = require('../core/QueryExpander');
+const ReRanker = require('../core/ReRanker');
+const ContextCompressor = require('../core/ContextCompressor');
+const MultiHopRetriever = require('../core/MultiHopRetriever');
 const { OpenAI } = require('openai');
 const path = require('path');
 // const repoMonitor = require('./RepoMonitor');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-// Initialize hybrid search and chunker
+// ============================================================================
+// OPTIMIZED: Initialize all RAG enhancement modules
+// ============================================================================
 let hybridSearch = null;
 const textChunker = new TextChunker({ chunkSize: 2000, overlap: 200 });
+const queryExpander = new QueryExpander();
+const reRanker = new ReRanker({
+    semanticWeight: 0.35,
+    keywordWeight: 0.25,
+    alignmentWeight: 0.20,
+    recencyWeight: 0.10,
+    diversityWeight: 0.10
+});
+const contextCompressor = new ContextCompressor({
+    maxContextLength: 16000,  // Increased for more context
+    maxPerSource: 4000,
+    preserveCode: true
+});
+const multiHopRetriever = new MultiHopRetriever({
+    maxHops: 2,
+    minConfidence: 0.3
+});
 
 // ============================================================================
 // OPTIMIZED: Diversity Filter to avoid redundant context from similar sources
@@ -129,28 +152,41 @@ async function initHybridSearchIndex() {
         }
 
         hybridSearch = new HybridSearch({
-            semanticWeight: 0.6,  // 60% weight for semantic (embedding) search
-            bm25Weight: 0.4       // 40% weight for keyword (BM25) search
+            semanticWeight: 0.55,  // 55% weight for semantic (embedding) search
+            bm25Weight: 0.45       // 45% weight for keyword (BM25) search
         });
 
-        // Fetch a sample of documents to build the BM25 index
-        // We retrieve a larger set to build a comprehensive keyword index
-        console.log('🔍 Building BM25 hybrid search index...');
+        // OPTIMIZED: Fetch ALL documents for comprehensive keyword index
+        // Using multiple queries to get broader coverage
+        console.log('🔍 Building comprehensive BM25 hybrid search index...');
 
-        const sampleResults = await reasoningBank.reflexion.retrieveRelevant({
-            task: '',  // Empty query to get recent/random documents
-            k: 1000    // Get up to 1000 docs for the keyword index
-        });
+        const allDocuments = new Map();
 
-        if (sampleResults.length > 0) {
-            const documents = sampleResults.map(r => ({
+        // Query 1: Empty query for recent/random docs
+        const batch1 = await reasoningBank.reflexion.retrieveRelevant({ task: '', k: 2000 });
+        batch1.forEach(r => allDocuments.set(r.id, r));
+
+        // Query 2: Common technical terms
+        const technicalQueries = ['code', 'function', 'api', 'install', 'config'];
+        for (const term of technicalQueries) {
+            try {
+                const batch = await reasoningBank.reflexion.retrieveRelevant({ task: term, k: 500 });
+                batch.forEach(r => allDocuments.set(r.id, r));
+            } catch (e) {
+                // Continue on individual query failures
+            }
+        }
+
+        if (allDocuments.size > 0) {
+            const documents = Array.from(allDocuments.values()).map(r => ({
                 id: r.metadata?.docId || r.id,
                 content: r.input || r.task || '',
-                metadata: r.metadata
+                metadata: r.metadata,
+                source: r.metadata?.source
             }));
 
             hybridSearch.buildIndex(documents);
-            console.log(`✅ Hybrid search initialized with ${documents.length} documents`);
+            console.log(`✅ Hybrid search initialized with ${documents.length} documents (comprehensive index)`);
         } else {
             console.log('⚠️ No documents found for hybrid search index');
         }
@@ -213,84 +249,117 @@ app.post('/api/chat', async (req, res) => {
         if (reasoningBank && reasoningBank.reflexion) {
             console.log(`Searching ReasoningBank for: "${message}"`);
             try {
-                let results;
+                // ================================================================
+                // STAGE 1: Query Expansion - Generate multiple query variants
+                // ================================================================
+                const expandedQueries = queryExpander.expand(message);
+                const adaptiveK = queryExpander.getRecommendedK(message);
+                console.log(`📝 Query expanded to ${expandedQueries.length} variants, adaptive k=${adaptiveK}`);
 
-                // OPTIMIZED: Use hybrid search (semantic + BM25) when available
-                if (hybridSearch) {
-                    console.log('🔀 Using hybrid search (semantic + BM25)...');
-
-                    // Define semantic search function for hybrid search
-                    const semanticSearchFn = async (query, k) => {
-                        const semanticResults = await reasoningBank.reflexion.retrieveRelevant({
-                            task: query,
-                            k: k
-                        });
-                        return semanticResults.map(r => ({
-                            id: r.metadata?.docId || r.id,
-                            content: r.input || r.task || '',
-                            score: r.similarity || 0,
-                            similarity: r.similarity || 0,
-                            source: r.metadata?.source,
-                            metadata: r.metadata
-                        }));
-                    };
-
-                    // Perform hybrid search
-                    const hybridResults = await hybridSearch.hybridSearch(message, semanticSearchFn, 10);
-
-                    // Map back to expected format
-                    results = hybridResults.map(r => ({
-                        id: r.id,
-                        input: r.content,
-                        task: r.content,
-                        similarity: r.fusedScore || r.score,
-                        metadata: r.metadata || { docId: r.id, source: r.source }
-                    }));
-
-                    console.log(`Hybrid search returned ${results.length} fused results`);
-                } else {
-                    // Fallback to pure semantic search
-                    console.log('🔍 Using semantic search only (hybrid not initialized)...');
-                    results = await reasoningBank.reflexion.retrieveRelevant({
-                        task: message,
-                        k: 8 // Retrieve more results for comprehensive context
+                // ================================================================
+                // STAGE 2: Define search function for retrieval
+                // ================================================================
+                const semanticSearchFn = async (query, k) => {
+                    const semanticResults = await reasoningBank.reflexion.retrieveRelevant({
+                        task: query,
+                        k: k
                     });
-                }
+                    return semanticResults.map(r => ({
+                        id: r.metadata?.docId || r.id,
+                        content: r.input || r.task || '',
+                        score: r.similarity || 0,
+                        similarity: r.similarity || 0,
+                        source: r.metadata?.source,
+                        metadata: r.metadata,
+                        timestamp: r.metadata?.timestamp
+                    }));
+                };
 
-                console.log(`Retrieved ${results.length} results from search`);
+                // ================================================================
+                // STAGE 3: Multi-hop retrieval for complex queries
+                // ================================================================
+                let allResults = [];
 
-                // OPTIMIZED: Apply similarity threshold to filter low-quality results
-                const SIMILARITY_THRESHOLD = 0.25; // Lowered for hybrid scores (fused scores are different scale)
-                const filteredResults = results.filter(r => (r.similarity || 0) >= SIMILARITY_THRESHOLD);
-                console.log(`After similarity filter (>=${SIMILARITY_THRESHOLD}): ${filteredResults.length} results`);
+                if (multiHopRetriever.needsMultiHop(message)) {
+                    console.log('🔄 Complex query detected - using multi-hop retrieval...');
+                    if (hybridSearch) {
+                        allResults = await multiHopRetriever.retrieve(
+                            message,
+                            async (q, k) => await hybridSearch.hybridSearch(q, semanticSearchFn, k),
+                            adaptiveK
+                        );
+                    } else {
+                        allResults = await multiHopRetriever.retrieve(message, semanticSearchFn, adaptiveK);
+                    }
+                } else {
+                    // Standard retrieval with query expansion
+                    const resultsMap = new Map();
 
-                sources = filteredResults.map(r => {
-                    const timestamp = r.metadata?.timestamp ? new Date(r.metadata.timestamp).getTime() : 0;
-                    const now = Date.now();
-                    const daysOld = (now - timestamp) / (1000 * 60 * 60 * 24);
+                    for (const query of expandedQueries) {
+                        let queryResults;
+                        if (hybridSearch) {
+                            console.log('🔀 Using hybrid search (semantic + BM25)...');
+                            queryResults = await hybridSearch.hybridSearch(query, semanticSearchFn, adaptiveK);
+                        } else {
+                            console.log('🔍 Using semantic search only...');
+                            queryResults = await semanticSearchFn(query, adaptiveK);
+                        }
 
-                    // Recency Boost: Boost score by up to 20% for very recent items (decaying over 30 days)
-                    let recencyBoost = 0;
-                    if (timestamp > 0) {
-                        recencyBoost = Math.max(0, 0.2 * (1 - daysOld / 30));
+                        // Aggregate results (boost for appearing in multiple query variants)
+                        for (const result of queryResults) {
+                            const id = result.id;
+                            if (resultsMap.has(id)) {
+                                const existing = resultsMap.get(id);
+                                existing.score = Math.max(existing.score, result.score) + 0.05; // Small boost for multiple matches
+                                existing.queryMatches = (existing.queryMatches || 1) + 1;
+                            } else {
+                                resultsMap.set(id, { ...result, queryMatches: 1 });
+                            }
+                        }
                     }
 
-                    return {
-                        id: r.metadata?.docId || r.id,
-                        content: (r.input || r.task || "").substring(0, 4000), // OPTIMIZED: Increased from 2000 to 4000
-                        score: (r.similarity || 0) + recencyBoost, // Apply boost
-                        source: r.metadata?.source,
-                        timestamp: r.metadata?.timestamp
-                    };
-                });
+                    allResults = Array.from(resultsMap.values());
+                }
 
-                // Re-sort by boosted score and apply diversity filter
-                sources.sort((a, b) => b.score - a.score);
+                console.log(`Retrieved ${allResults.length} total results from search`);
 
-                // OPTIMIZED: Apply diversity filter to avoid redundant content
-                sources = applyDiversityFilter(sources, 6); // Keep top 6 diverse sources
+                // ================================================================
+                // STAGE 4: Re-ranking with cross-encoder style scoring
+                // ================================================================
+                const rerankedResults = reRanker.rerank(message, allResults, { maxResults: 12 });
+                console.log(`📊 Re-ranked to ${rerankedResults.length} results`);
 
-                context = sources.map(s => `[Source: ${s.source || s.id} | Score: ${s.score.toFixed(2)}]\n${s.content}`).join('\n\n');
+                // ================================================================
+                // STAGE 5: Apply similarity threshold
+                // ================================================================
+                const SIMILARITY_THRESHOLD = 0.15; // Lower threshold since re-ranker normalizes scores
+                const filteredResults = rerankedResults.filter(r => (r.rerankedScore || r.score || 0) >= SIMILARITY_THRESHOLD);
+                console.log(`After threshold filter (>=${SIMILARITY_THRESHOLD}): ${filteredResults.length} results`);
+
+                // ================================================================
+                // STAGE 6: Map to sources with full content
+                // ================================================================
+                sources = filteredResults.map(r => ({
+                    id: r.id,
+                    content: r.content || r.input || '',
+                    score: r.rerankedScore || r.score || 0,
+                    source: r.source || r.metadata?.source,
+                    timestamp: r.timestamp || r.metadata?.timestamp,
+                    scoreBreakdown: r.scoreBreakdown
+                }));
+
+                // ================================================================
+                // STAGE 7: Diversity filter to avoid redundant content
+                // ================================================================
+                sources = applyDiversityFilter(sources, 8); // Keep top 8 diverse sources
+                console.log(`After diversity filter: ${sources.length} sources`);
+
+                // ================================================================
+                // STAGE 8: Context compression for optimal LLM utilization
+                // ================================================================
+                context = contextCompressor.compress(sources, message);
+                console.log(`📦 Context compressed to ${context.length} chars`);
+
             } catch (err) {
                 console.error('Error retrieving from ReasoningBank:', err);
                 // Continue without context
