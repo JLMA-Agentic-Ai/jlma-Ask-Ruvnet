@@ -332,20 +332,20 @@ app.post('/api/chat', async (req, res) => {
             console.warn('ReasoningBank not initialized or reflexion memory unavailable.');
         }
 
-        // 2. Construct System Prompt with RUV'S AUTHENTIC VOICE
+        // 2. Construct System Prompt
         const { RUV_PERSONA } = require('./RuvPersona');
-        console.log("Constructing system prompt with Ruv's authentic voice...");
+        console.log("Constructing system prompt...");
 
         const systemPrompt = `${RUV_PERSONA}
 
 ===== KNOWLEDGE BASE CONTEXT =====
-${context || 'No specific context retrieved for this query. Use your general knowledge and coaching style.'}
+${context || 'No specific context retrieved for this query. Use your general knowledge of these systems.'}
 
 ===== USER'S QUESTION =====
 ${message}
 
 ===== YOUR RESPONSE =====
-Answer as Ruv would in a live coaching session. Be practical, show examples, and keep it real.`;
+Provide a clear, accurate, and helpful response based on the context and your technical knowledge.`;
 
         // 3. Generate Response using Groq directly
         let answer = "";
