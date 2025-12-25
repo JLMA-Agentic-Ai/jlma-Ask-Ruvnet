@@ -10,8 +10,10 @@ const ContextCompressor = require('../core/ContextCompressor');
 const MultiHopRetriever = require('../core/MultiHopRetriever');
 const { OpenAI } = require('openai');
 const path = require('path');
-// const repoMonitor = require('./RepoMonitor');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+
+// Version from single source of truth (package.json)
+const { version: APP_VERSION } = require('../../package.json');
 
 // Initialize OpenAI client for special endpoints (if API key available)
 let openai = null;
@@ -128,22 +130,6 @@ async function initAgenticFlow() {
         await initHybridSearchIndex();
     } catch (error) {
         console.error('❌ Failed to initialize Agentic Flow:', error);
-        // Fallback to OpenAI if Agentic Flow fails to initialize
-        // This part is not in the instruction, but good for robustness
-        // const openai = new OpenAI({
-        //     apiKey: process.env.GROQ_API_KEY || process.env.OPENAI_API_KEY,
-        //     baseURL: process.env.GROQ_API_KEY ? 'https://api.groq.com/openai/v1' : undefined
-        // });
-        // modelRouter = { chat: async ({ messages, model }) => {
-        //     const response = await openai.chat.completions.create({
-        //         model: model === 'auto' ? (process.env.GROQ_API_KEY ? 'llama3-70b-8192' : 'gpt-4o') : model,
-        //         messages: messages,
-        //         temperature: 0.3,
-        //         max_tokens: 4096
-        //     });
-        //     return { content: response.choices[0].message.content };
-        // }};
-        // console.warn('⚠️ Falling back to direct OpenAI calls due to Agentic Flow initialization failure.');
     }
 }
 
@@ -204,30 +190,6 @@ async function initHybridSearchIndex() {
 
 initAgenticFlow();
 
-// Response cache for common queries (removed as per instruction, but keeping for context if needed later)
-// const responseCache = new Map();
-// const CACHE_TTL = 1000 * 60 * 60; // 1 hour
-
-// function getCacheKey(message) {
-//     return message.toLowerCase().trim();
-// }
-
-// function getCachedResponse(message) {
-//     const key = getCacheKey(message);
-//     const cached = responseCache.get(key);
-//     if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-//         console.log('[Cache] Hit:', key);
-//         return cached.response;
-//     }
-//     return null;
-// }
-
-// function setCachedResponse(message, response) {
-//     const key = getCacheKey(message);
-//     responseCache.set(key, { response, timestamp: Date.now() });
-//     console.log('[Cache] Set:', key);
-// }
-
 app.post('/api/chat', async (req, res) => {
     const { message, history } = req.body;
     console.log(`[Chat] Received: ${message}`);
@@ -242,10 +204,6 @@ app.post('/api/chat', async (req, res) => {
     }
 
     try {
-        // Check cache first for instant responses (removed as per instruction)
-        // const cachedResponse = getCachedResponse(message);
-        // if (cachedResponse) {
-        //     return res.json(cachedResponse);
         console.log('Received chat request:', message);
 
         // 1. Retrieve Context from ReasoningBank (Reflexion Memory)
@@ -687,23 +645,8 @@ app.get('/api/knowledge', (req, res) => {
     res.json(knowledge);
 });
 
-// Repo Monitor Status Endpoint
-// app.get('/api/repo-monitor/status', (req, res) => {
-//     res.json({
-//         monitor: repoMonitor.getStatus(),
-//         message: 'Repository monitor checks for updates every 2 days'
-//     });
-// });
-
-
 // Start Server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT} `);
-    console.log(`Agentic Learner initialized.`);
-
-    // Start automatic repo monitoring (checks every 2 days)
-    // TEMPORARILY DISABLED FOR STABILITY
-    // repoMonitor.start().catch(err => {
-    //     console.error('Failed to start repo monitor:', err);
-    // });
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Ask rUVnet v${APP_VERSION} initialized.`);
 });
