@@ -1,4 +1,4 @@
-const { HybridReasoningBank } = require('agentic-flow/reasoningbank');
+// Note: agentic-flow is ESM, use dynamic import in ingest() function
 const fs = require('fs');
 const path = require('path');
 const TextChunker = require('../../src/core/TextChunker');

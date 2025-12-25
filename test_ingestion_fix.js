@@ -1,4 +1,4 @@
-const { HybridReasoningBank } = require('agentic-flow/reasoningbank');
+// Note: agentic-flow is ESM, use dynamic import
 const path = require('path');
 
 async function test() {
