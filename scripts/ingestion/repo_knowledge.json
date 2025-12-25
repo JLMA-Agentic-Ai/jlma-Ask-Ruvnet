@@ -1,42 +1,72 @@
 [
     {
         "name": "Ask-Ruvnet",
-        "version": "ee37f52",
+        "version": "1.7.4",
         "branch": "main",
-        "last_update": "2025-12-03T15:05:00-05:00",
+        "last_update": "2025-12-25T18:17:25Z",
         "status": "ACTIVE",
-        "description": "Production Deployment"
+        "description": "Production Deployment",
+        "npm": null,
+        "github": "https://github.com/stuinfla/Ask-Ruvnet"
     },
     {
         "name": "agentic-flow",
+        "version_latest": "1.10.2",
+        "version_alpha": "check-alpha",
         "version": "1.10.2",
-        "branch": "npm",
-        "last_update": "2025-12-03T15:05:00-05:00",
+        "branch": "alpha",
+        "last_update": "2025-12-25T18:17:25Z",
         "status": "LINKED",
-        "description": "Core Orchestration Framework"
+        "description": "Core Orchestration Framework",
+        "npm": "agentic-flow",
+        "github": "https://github.com/ruvnet/agentic-flow"
     },
     {
         "name": "ruvector",
-        "version": "0.1.26",
-        "branch": "npm",
-        "last_update": "2025-12-03T15:05:00-05:00",
+        "version_latest": "0.1.35",
+        "version_alpha": null,
+        "version": "0.1.35",
+        "branch": "main",
+        "last_update": "2025-12-25T18:17:25Z",
         "status": "LINKED",
-        "description": "Vector Database Backend"
+        "description": "Vector Database Backend",
+        "npm": "ruvector",
+        "github": "https://github.com/ruvnet/ruvector"
+    },
+    {
+        "name": "ruvllm",
+        "version_latest": "0.2.3",
+        "version_alpha": null,
+        "version": "0.2.3",
+        "branch": "main",
+        "last_update": "2025-12-25T18:17:25Z",
+        "status": "LINKED",
+        "description": "Self-Learning LLM Toolkit",
+        "npm": "@ruvector/ruvllm",
+        "github": "https://github.com/ruvnet/ruvector/tree/main/npm/packages/ruvllm"
     },
     {
         "name": "claude-flow",
-        "version": "1.5.0",
-        "branch": "main",
-        "last_update": "2025-12-03T15:05:00-05:00",
+        "version_latest": "2.7.4",
+        "version_alpha": "2.7.0-alpha.14",
+        "version": "2.7.4",
+        "branch": "alpha",
+        "last_update": "2025-12-25T18:17:25Z",
         "status": "SYNCED",
-        "description": "Agentic Workflow Engine"
+        "description": "Agentic Workflow Engine",
+        "npm": "claude-flow",
+        "github": "https://github.com/ruvnet/claude-flow"
     },
     {
         "name": "neural-trader",
+        "version_latest": "2.1.0",
+        "version_alpha": null,
         "version": "2.1.0",
         "branch": "main",
-        "last_update": "2025-12-03T15:05:00-05:00",
+        "last_update": "2025-12-25T18:17:25Z",
         "status": "SYNCED",
-        "description": "Market Analysis Agent"
+        "description": "Market Analysis Agent",
+        "npm": null,
+        "github": "https://github.com/ruvnet/neural-trader"
     }
 ]
