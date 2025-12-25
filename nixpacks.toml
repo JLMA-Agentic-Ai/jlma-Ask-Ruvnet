@@ -1,5 +1,10 @@
 [phases.setup]
 nixPkgs = ["nodejs-18_x", "python3", "ffmpeg", "gnumake", "gcc"]
 
+# Use npm install instead of npm ci to handle alpha versions
+# npm ci requires exact lock file match which fails with alpha dependencies
+[phases.install]
+cmds = ["npm install --legacy-peer-deps"]
+
 [start]
 cmd = "bash scripts/deployment/start-railway.sh"
