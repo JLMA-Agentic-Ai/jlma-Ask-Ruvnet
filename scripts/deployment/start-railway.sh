@@ -17,7 +17,13 @@ fi
 if [ ! -f "$DB_PATH" ]; then
   echo "🚨 CRITICAL: Database not found in persistent volume!"
   echo "🩹 Initiating SELF-HEALING protocol..."
-  
+
+  # First fetch latest repo content (if gh is available)
+  if command -v gh &> /dev/null; then
+    echo "📡 Fetching latest repo content via GitHub API..."
+    node scripts/ingestion/fetch_repos_gh.js || echo "⚠️ Repo fetch failed, using cached knowledge"
+  fi
+
   # Run ingestion to rebuild the brain
   echo "🧠 Rebuilding knowledge base (this may take a few minutes)..."
   node $INGEST_SCRIPT
