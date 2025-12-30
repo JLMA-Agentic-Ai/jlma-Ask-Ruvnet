@@ -1,7 +1,7 @@
-Updated: 2025-12-30 10:12:00 EST | Version 1.1.0
+Updated: 2025-12-30 10:15:00 EST | Version 1.3.0
 Created: 2025-12-30 14:50:00 EST
 
-# Knowledge Base Patterns - MANDATORY READING
+# RuvNet Knowledgebase Patterns - MANDATORY READING
 
 ## ⚠️ CRITICAL: All Documents Must Be Read Together
 
@@ -32,9 +32,9 @@ Agents MUST cite sources in EVERY response.
 
 ## Purpose of This Folder
 
-This folder contains the **DEFINITIVE** architecture for building knowledge-based
-agentic applications using the RuvNet stack. When `/ruvnet-stack` or `/ruvnet-update`
-is run, this entire folder should be copied to the new project.
+This folder (`docs/ruvnet-knowledgebase-patterns/`) contains the **DEFINITIVE** architecture
+for building knowledge-based agentic applications using the RuvNet stack. When `/ruvnet-update`
+is run, this folder is automatically synced from `~/.claude/docs/ruvnet-knowledgebase-patterns/`.
 
 ## Integration Points
 

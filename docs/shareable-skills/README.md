@@ -1,47 +1,65 @@
-Updated: 2025-12-30 10:15:00 EST | Version 2.0.0
+Updated: 2025-12-30 10:45:00 EST | Version 3.0.0
 Created: 2025-12-30 10:05:00 EST
 
 # RuvNet Skills & Commands - Installation Guide
 
 This folder contains everything needed to add RuvNet AI capabilities to your private Claude Code environment.
 
-## 📁 Folder Contents
+## What Changed in v3.0.0
+
+**Skills are now directory-based with YAML frontmatter for maximum power:**
+
+- **Triggers**: Skills auto-activate when you mention related topics
+- **YAML frontmatter**: Name, version, description, triggers defined at top
+- **Directory structure**: `skill-name/SKILL.md` instead of flat `skill-name.md`
+- **Registered in skills-index.json**: Proper indexing with metadata
+
+## Folder Contents
 
 ```
 shareable-skills/
-├── README.md              ← YOU ARE HERE
-├── skills/                ← Claude Code skills (triggers)
-│   ├── ruvnet-stack.md    # /ruvnet-stack - Full ecosystem install
-│   ├── ruvnet-update.md   # /ruvnet-update - Update packages
-│   └── ruvnet-kb-visual.md # /ruvnet-kb-visual - KB visualization
-├── commands/              ← Claude Code commands (if any)
-└── scripts/               ← Supporting scripts (copy to project)
-    ├── kb-universe-data.js      # Generates KB JSON
+├── README.md                    ← YOU ARE HERE
+├── skills/                      ← Claude Code skills (directory-based)
+│   ├── ruvnet-stack/            # /ruvnet-stack - Full ecosystem install
+│   │   └── SKILL.md             # Main skill file with YAML frontmatter
+│   ├── ruvnet-update/           # /ruvnet-update - Update packages
+│   │   └── SKILL.md             # Main skill file with YAML frontmatter
+│   └── ruvnet-kb-visual.md      # /ruvnet-kb-visual - KB visualization
+├── commands/                    ← Claude Code commands (if any)
+└── scripts/                     ← Supporting scripts (copy to project)
+    ├── kb-universe-data.js      # Generates KB JSON with scoring
     ├── build-kb-universe.js     # Build orchestrator
     ├── kb-universe-screenshot.js # Playwright screenshots
-    └── kb-universe-template.html # Visualization template
+    ├── test-kb-universe.js      # Verification test (MANDATORY)
+    ├── test-kb-navigation.js    # Navigation test
+    └── kb-universe-template.html # Visualization template (v3.0.0)
 ```
 
-## 🚀 Quick Installation (5 minutes)
+## Quick Installation (5 minutes)
 
-### Step 1: Install Skills
+### Step 1: Install Skills (Directory-Based)
 
 ```bash
 # Create Claude skills directory (if it doesn't exist)
 mkdir -p ~/.claude/skills
 
-# Copy all skill files
-cp skills/*.md ~/.claude/skills/
+# Copy directory-based skills (preserves structure)
+cp -r skills/ruvnet-stack ~/.claude/skills/
+cp -r skills/ruvnet-update ~/.claude/skills/
+
+# Copy flat skills (older format, still works)
+cp skills/*.md ~/.claude/skills/ 2>/dev/null || true
 
 # Verify
 ls ~/.claude/skills/
-# Should show: ruvnet-stack.md, ruvnet-update.md, ruvnet-kb-visual.md
+# Should show directories: ruvnet-stack, ruvnet-update
+# And files: ruvnet-kb-visual.md
 ```
 
 ### Step 2: Restart Claude Code
 
 ```bash
-# Either close and reopen Claude Code, or run:
+# Either close and reopen Claude Code, or start a new conversation
 claude --version
 ```
 
@@ -52,15 +70,59 @@ In Claude Code, type `/` and you should see:
 - `/ruvnet-update` - Update packages
 - `/ruvnet-kb-visual` - Build KB visualization
 
-## 📋 Detailed Installation
+**Trigger test:** Just mention "update ruvnet packages" and Claude should auto-suggest `/ruvnet-update`.
+
+## Understanding the New Skill Format
+
+### Directory Structure (Recommended)
+
+```
+~/.claude/skills/
+├── ruvnet-update/
+│   └── SKILL.md              # Main skill with YAML frontmatter
+├── ruvnet-stack/
+│   └── SKILL.md              # Main skill with YAML frontmatter
+└── older-skill.md            # Flat file (still works)
+```
+
+### YAML Frontmatter (in SKILL.md)
+
+```yaml
+---
+name: ruvnet-update
+version: 2.1.0
+description: Check for and install the latest RuvNet packages...
+triggers:
+  - update ruvnet
+  - ruvnet update
+  - check packages
+category: ruvnet
+created: 2025-12-29
+updated: 2025-12-30
+---
+
+# Skill Content Below...
+```
+
+### Why Directory-Based?
+
+| Feature | Flat `.md` | Directory-Based |
+|---------|------------|-----------------|
+| Auto-triggers | No | Yes (via YAML) |
+| Supporting files | No | Yes (scripts, templates) |
+| Version tracking | Manual | In frontmatter |
+| Index registration | Optional | Automatic |
+
+## Detailed Installation
 
 ### Understanding Claude Code Locations
 
 | Item | Location | Purpose |
 |------|----------|---------|
-| Skills | `~/.claude/skills/` | Triggered with `/skillname` |
+| Skills | `~/.claude/skills/` | Triggered with `/skillname` or auto-triggered |
 | Commands | `~/.claude/commands/` | Custom slash commands |
 | Knowledge | `~/.claude/knowledge/` | Reference documentation |
+| Skills Index | `~/.claude/skills-index.json` | Skill metadata and triggers |
 | Global config | `~/.claude/CLAUDE.md` | Global instructions |
 
 ### Install All Skills
@@ -69,12 +131,16 @@ In Claude Code, type `/` and you should see:
 # Navigate to this directory
 cd docs/shareable-skills
 
-# Copy all skills
-cp skills/*.md ~/.claude/skills/
+# Copy directory-based skills
+cp -r skills/ruvnet-stack ~/.claude/skills/
+cp -r skills/ruvnet-update ~/.claude/skills/
+
+# Copy flat skills
+cp skills/*.md ~/.claude/skills/ 2>/dev/null || true
 
 # Copy KB pattern documentation (recommended)
-mkdir -p ~/.claude/knowledge/kb-patterns
-cp -r ../kb-patterns/* ~/.claude/knowledge/kb-patterns/
+mkdir -p ~/.claude/docs/ruvnet-knowledgebase-patterns
+cp -r ../ruvnet-knowledgebase-patterns/* ~/.claude/docs/ruvnet-knowledgebase-patterns/
 ```
 
 ### Install Scripts to a New Project
@@ -96,47 +162,58 @@ npm pkg set scripts.kb:visual="node scripts/build-kb-universe.js"
 npm pkg set scripts.kb:visual:screenshot="node scripts/build-kb-universe.js --screenshot"
 ```
 
-## 🔧 What Each Skill Does
+## What Each Skill Does
 
-### `/ruvnet-stack`
+### `/ruvnet-stack` (v2.1.0)
 
 **Installs the complete RuvNet AI ecosystem:**
 
-- ✅ Starts ruvector-postgres Docker container
-- ✅ Creates isolated database schema for your project
-- ✅ Installs claude-flow (enterprise orchestration)
-- ✅ Installs agentic-flow (150+ agents)
-- ✅ Installs ruvector (vector database)
-- ✅ Installs @ruvector/ruvllm (LLM orchestration)
-- ✅ Installs @ruvector/agentic-synth (synthetic data)
-- ✅ Copies KB visualization scripts
-- ✅ Initializes claude-flow
+- Syncs RuvNet Knowledgebase Patterns (MANDATORY)
+- Instructs Claude to READ and INTERNALIZE all KB patterns
+- Starts ruvector-postgres Docker container
+- Creates isolated database schema for your project
+- Installs claude-flow (enterprise orchestration)
+- Installs agentic-flow (150+ agents)
+- Installs ruvector (vector database)
+- Installs @ruvector/ruvllm (LLM orchestration)
+- Installs @ruvector/agentic-synth (synthetic data)
+- Initializes claude-flow with agents and skills
+- Validates KB architecture compliance
+
+**Triggers:** "install ruvnet", "setup agents", "agent orchestration", "ruvnet ecosystem"
 
 **When to use:** Starting any new AI/agent project.
 
-### `/ruvnet-update`
+### `/ruvnet-update` (v2.1.0)
 
 **Checks and updates RuvNet packages:**
 
-- ✅ Verifies Docker containers are running
-- ✅ Compares @latest vs @alpha versions
-- ✅ Shows what's outdated
-- ✅ Installs updates automatically
+- Syncs RuvNet Knowledgebase Patterns
+- Instructs Claude to READ and INTERNALIZE all KB patterns
+- Verifies Docker containers are running
+- Compares @latest vs @alpha versions
+- Shows what's outdated
+- Validates KB architecture compliance
+
+**Triggers:** "update ruvnet", "check packages", "kb patterns", "knowledge base compliance"
 
 **When to use:** Periodically, or when you need latest features.
 
 ### `/ruvnet-kb-visual`
 
-**Builds interactive Knowledge Universe visualization:**
+**Builds interactive Knowledge Universe visualization with quality scoring:**
 
-- ✅ Reads data from ruvector-postgres or local storage
-- ✅ Generates JSON hierarchy
-- ✅ Creates interactive 3D visualization
-- ✅ Optional Playwright screenshots
+- Reads data from ruvector-postgres or local storage
+- Generates JSON hierarchy with KB scoring (v2.1.0)
+- Creates interactive 3D visualization with Bricksmith-inspired navigation
+- **KB Score Dashboard** (1-100 scale across 5 dimensions)
+- **Standard Academic Grading** (67 = D+, not B-)
+- **Enhancement Recommendations** with priority levels
+- **Playwright Verification** - ALWAYS test before reporting success
 
-**When to use:** After populating your KB, to visualize it.
+**When to use:** After populating your KB, to visualize and assess quality.
 
-## 📦 Prerequisites
+## Prerequisites
 
 Before using these skills, ensure you have:
 
@@ -151,27 +228,37 @@ docker --version
 npm --version
 ```
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Skills Not Appearing
 
-1. **Check file location:**
+1. **Check directory structure:**
    ```bash
-   ls ~/.claude/skills/*.md
+   ls -la ~/.claude/skills/ruvnet-update/
+   # Should show: SKILL.md
    ```
 
 2. **Check file permissions:**
    ```bash
-   chmod 644 ~/.claude/skills/*.md
+   chmod -R 644 ~/.claude/skills/
    ```
 
-3. **Verify file format:**
+3. **Verify YAML frontmatter:**
    ```bash
-   head -1 ~/.claude/skills/ruvnet-stack.md
-   # Should show: Updated: YYYY-MM-DD...
+   head -20 ~/.claude/skills/ruvnet-update/SKILL.md
+   # Should show: ---\nname: ruvnet-update...
    ```
 
-4. **Restart Claude Code**
+4. **Start a new conversation** (skills load at session start)
+
+### Triggers Not Working
+
+1. **Check skills-index.json:**
+   ```bash
+   cat ~/.claude/skills-index.json | grep ruvnet
+   ```
+
+2. **Ensure triggers are defined in frontmatter**
 
 ### Docker Not Running
 
@@ -190,35 +277,7 @@ docker run -d --name ruvector-kb \
   ruvnet/ruvector-postgres:latest
 ```
 
-### KB Visualization Empty
-
-1. **Check if KB has data:**
-   ```bash
-   npm run kb:status
-   ```
-
-2. **Ingest content first:**
-   ```bash
-   npm run kb:ingest
-   ```
-
-3. **Manually build visualization:**
-   ```bash
-   node scripts/build-kb-universe.js
-   ```
-
-### Screenshots Failing
-
-```bash
-# Install Playwright
-npm install playwright --save-dev
-npx playwright install chromium
-
-# Then retry
-npm run kb:visual:screenshot
-```
-
-## 🔗 Integration with Global CLAUDE.md
+## Integration with Global CLAUDE.md
 
 Add to your `~/.claude/CLAUDE.md`:
 
@@ -232,29 +291,32 @@ Install complete RuvNet AI ecosystem including:
 - agentic-flow (150+ agents)
 - KB visualization tools
 
+**Triggers:** "install ruvnet", "setup agents", "ruvnet ecosystem"
+
 ### /ruvnet-update
-Check and update RuvNet packages.
+Check and update RuvNet packages, sync KB patterns.
+
+**Triggers:** "update ruvnet", "check packages", "kb patterns"
 
 ### /ruvnet-kb-visual
 Build interactive Knowledge Universe visualization.
 ```
 
-## 📚 Related Documentation
+## Related Documentation
 
-After installation, also copy the KB patterns documentation:
+After installation, the KB patterns documentation should be at:
 
 ```bash
-mkdir -p ~/.claude/knowledge/kb-patterns
-cp -r ../kb-patterns/* ~/.claude/knowledge/kb-patterns/
+~/.claude/docs/ruvnet-knowledgebase-patterns/
 ```
 
 This gives Claude Code reference material on:
 - How to build knowledge bases
-- Anti-simplification patterns
+- Anti-simplification patterns (Golden Rule)
 - Agent integration
 - Production deployment
 
-## 🤝 Support
+## Support
 
 - Repository: https://github.com/ruvnet/ask-ruvnet
 - Claude Flow: https://github.com/ruvnet/claude-flow
@@ -262,4 +324,4 @@ This gives Claude Code reference material on:
 
 ---
 
-**Version 2.0.0** - Added KB visualization, comprehensive installation guide, and troubleshooting.
+**Version 3.0.0** - Directory-based skills with YAML frontmatter, auto-triggers, proper skills-index.json registration. Removed command duplicates.
