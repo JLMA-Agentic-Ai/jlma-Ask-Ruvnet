@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <!--
 KB Universe Visualization Template
-Updated: 2025-12-30 09:50:00 EST | Version 1.0.0
+Updated: 2025-12-30 12:00:00 EST | Version 3.0.0
 Created: 2025-12-30 09:50:00 EST
 
-SAFE RENDERING: This template uses JSON.parse and textContent
-for all dynamic content. No innerHTML = No XSS vulnerabilities.
-
-Load kb-universe-data.json to populate visualization.
+ENHANCED: Bricksmith-inspired navigation
+- All categories remain visible when drilling down
+- Categories sidebar on left
+- Info panel on right with clickable sub-items
+- Persistent view that compresses but never hides
 -->
 <html lang="en">
 <head>
@@ -15,195 +16,473 @@ Load kb-universe-data.json to populate visualization.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Universe</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a2a 100%);
-            min-height: 100vh;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #030508;
+            color: white;
+            height: 100vh;
             overflow: hidden;
-            color: #fff;
         }
 
-        #canvas-container {
+        /* Atmospheric background */
+        .atmosphere {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 120% 80% at 50% 50%, rgba(100, 181, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 60% at 20% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse 60% 80% at 80% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Star field */
+        .stars {
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 50px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 100px 40px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(2px 2px at 150px 150px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 200px 60px, rgba(255,255,255,0.5), transparent);
+            background-size: 550px 550px;
+            animation: twinkle 8s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+
+        #canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+            z-index: 10;
+            width: 100vw;
+            height: 100vh;
+            cursor: grab;
+            background: transparent;
         }
 
-        #universe-canvas {
-            width: 100%;
-            height: 100%;
-        }
+        #canvas:active { cursor: grabbing; }
 
-        #header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: linear-gradient(180deg, rgba(10,10,26,0.95) 0%, rgba(10,10,26,0) 100%);
-            padding: 20px 30px;
-        }
-
-        #title {
-            font-size: 24px;
-            font-weight: 600;
-            color: #64b5f6;
-            text-shadow: 0 0 20px rgba(100, 181, 246, 0.5);
-        }
-
-        #subtitle {
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-            margin-top: 4px;
-        }
-
-        #breadcrumb {
-            display: flex;
-            gap: 8px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .breadcrumb-item {
-            background: rgba(255,255,255,0.1);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .breadcrumb-item:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.3);
-        }
-
-        .breadcrumb-item.active {
-            background: rgba(100, 181, 246, 0.3);
-            border-color: #64b5f6;
-        }
-
-        #info-panel {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            right: 30px;
-            max-width: 600px;
-            background: rgba(20, 20, 40, 0.95);
-            border-radius: 16px;
-            padding: 24px;
-            z-index: 100;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            transform: translateY(150%);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        #info-panel.visible {
-            transform: translateY(0);
-        }
-
-        #info-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        #info-description {
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
-
-        #info-meta {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
-        }
-
-        #info-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-
-        #info-close:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        #stats {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            z-index: 100;
-            text-align: right;
-        }
-
-        .stat-item {
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 4px;
-        }
-
-        .stat-value {
-            color: #64b5f6;
-            font-weight: 600;
-        }
-
-        #search-container {
+        /* Title Bar */
+        #title-bar {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        #title-bar h1 {
+            font-size: 2em;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #64b5f6 0%, #ce93d8 50%, #ffb74d 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        #title-bar p { color: #78909c; font-size: 0.95em; margin-top: 4px; }
+
+        /* Categories Panel - Left Side */
+        #categories-panel {
+            position: fixed;
+            left: 20px;
+            top: 100px;
+            width: 260px;
+            max-height: calc(100vh - 120px);
+            background: linear-gradient(135deg, rgba(10, 20, 40, 0.95), rgba(20, 30, 50, 0.95));
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            border-radius: 14px;
+            padding: 16px;
+            overflow-y: auto;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        #categories-panel h4 {
+            font-size: 0.7em;
+            color: #64b5f6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            margin: 4px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            opacity: 0.7;
+        }
+
+        .category-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            opacity: 1;
+        }
+
+        .category-item.active {
+            background: rgba(100, 181, 246, 0.2);
+            border: 1px solid rgba(100, 181, 246, 0.4);
+            opacity: 1;
+        }
+
+        .category-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .category-name {
+            font-size: 0.85em;
+            color: #94a3b8;
+            flex: 1;
+        }
+
+        .category-item.active .category-name {
+            color: #fff;
+        }
+
+        .category-count {
+            font-size: 0.7em;
+            color: #64748b;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* Info Panel - Right Side */
+        #info-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 400px;
+            max-height: calc(100vh - 40px);
+            background: linear-gradient(135deg, rgba(10, 20, 40, 0.97), rgba(20, 30, 50, 0.97));
+            border: 1px solid rgba(100, 150, 255, 0.25);
+            border-radius: 16px;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        #info-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #64b5f6, #ce93d8, #ffb74d);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: rgba(100, 150, 255, 0.15);
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 14px;
+            font-size: 0.85em;
+            transition: all 0.2s ease;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background: rgba(100, 150, 255, 0.25);
+            transform: translateX(-3px);
+        }
+
+        #info-panel h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff, #b0bec5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 0.7em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .info-desc {
+            color: #b0bec5;
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 3px solid #64b5f6;
+        }
+
+        .data-section {
+            margin-top: 16px;
+        }
+
+        .data-section h3 {
+            font-size: 0.75em;
+            color: #64b5f6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .data-item {
+            padding: 12px 14px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .data-item:hover {
+            background: rgba(100, 181, 246, 0.12);
+            border-color: rgba(100, 181, 246, 0.3);
+            transform: translateX(4px);
+        }
+
+        .data-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .data-item-name {
+            font-size: 0.9em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .data-item-icon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .data-item-meta {
+            font-size: 0.75em;
+            color: #64748b;
+        }
+
+        .data-item-content {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.85em;
+            line-height: 1.7;
+            color: #94a3b8;
+        }
+
+        /* Score Dashboard */
+        .score-dashboard {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .score-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .score-overall {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .score-grade {
+            text-align: right;
+        }
+
+        .grade-letter {
+            font-size: 28px;
+            font-weight: 700;
+            color: #64b5f6;
+        }
+
+        .grade-label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dimension-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.8em;
+        }
+
+        .dimension-label {
+            width: 70px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .dimension-bar-container {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin: 0 10px;
+            overflow: hidden;
+        }
+
+        .dimension-bar {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s ease-out;
+        }
+
+        .dimension-value {
+            width: 30px;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .score-excellent { color: #22c55e; }
+        .score-good { color: #84cc16; }
+        .score-fair { color: #f59e0b; }
+        .score-poor { color: #ef4444; }
+
+        .bar-excellent { background: linear-gradient(90deg, #22c55e, #84cc16); }
+        .bar-good { background: linear-gradient(90deg, #84cc16, #eab308); }
+        .bar-fair { background: linear-gradient(90deg, #f59e0b, #ea580c); }
+        .bar-poor { background: linear-gradient(90deg, #ef4444, #dc2626); }
+
+        .recommendations-list {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .rec-item {
+            display: flex;
+            gap: 8px;
+            padding: 8px 0;
+            font-size: 0.8em;
+        }
+
+        .rec-priority {
+            width: 4px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .rec-priority.high { background: #ef4444; }
+        .rec-priority.medium { background: #f59e0b; }
+
+        .rec-text {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .enhance-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+        }
+
+        .enhance-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Breadcrumb */
+        #breadcrumb {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 20, 40, 0.95);
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            z-index: 100;
+            font-size: 0.85em;
+        }
+
+        .breadcrumb-item { cursor: pointer; color: #78909c; transition: color 0.2s; }
+        .breadcrumb-item:hover { color: #fff; }
+        .breadcrumb-item.current { color: #64b5f6; cursor: default; font-weight: 600; }
+        .breadcrumb-sep { margin: 0 8px; color: #455a64; }
+
+        /* Controls */
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(10, 20, 40, 0.9);
+            border: 1px solid rgba(100, 150, 255, 0.2);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.75em;
             z-index: 100;
         }
 
-        #search-input {
-            width: 300px;
-            padding: 12px 20px;
-            border-radius: 25px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(20, 20, 40, 0.8);
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
+        #controls p { margin: 4px 0; color: #94a3b8; }
+        kbd {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
         }
 
-        #search-input:focus {
-            border-color: #64b5f6;
-            box-shadow: 0 0 20px rgba(100, 181, 246, 0.3);
-        }
-
-        #search-input::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
-
+        /* Loading */
         #loading {
             position: fixed;
             top: 50%;
@@ -227,37 +506,7 @@ Load kb-universe-data.json to populate visualization.
             to { transform: rotate(360deg); }
         }
 
-        #instructions {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(20, 20, 40, 0.8);
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
-            z-index: 50;
-            max-width: 200px;
-        }
-
-        #instructions h4 {
-            color: #64b5f6;
-            margin-bottom: 8px;
-            font-size: 13px;
-        }
-
-        #instructions ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        #instructions li {
-            margin-bottom: 4px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
@@ -266,48 +515,62 @@ Load kb-universe-data.json to populate visualization.
         <div>Loading Knowledge Universe...</div>
     </div>
 
-    <div id="canvas-container">
-        <canvas id="universe-canvas"></canvas>
+    <div class="atmosphere"></div>
+    <div class="stars"></div>
+
+    <div id="title-bar" class="hidden">
+        <h1 id="title">Knowledge Universe</h1>
+        <p id="subtitle">Click to explore knowledge categories</p>
     </div>
 
-    <div id="header" class="hidden">
-        <div id="title">Knowledge Universe</div>
-        <div id="subtitle">Click to explore</div>
-        <div id="breadcrumb"></div>
+    <!-- Categories Panel - Left -->
+    <div id="categories-panel" class="hidden">
+        <h4><span id="category-count">0</span> Categories</h4>
+        <div id="category-list"></div>
     </div>
 
-    <div id="search-container" class="hidden">
-        <input type="text" id="search-input" placeholder="Search knowledge base...">
+    <!-- Info Panel - Right -->
+    <div id="info-panel" class="hidden">
+        <div id="back-container"></div>
+        <h2 id="info-title">Knowledge Base</h2>
+        <div class="info-badge" id="info-badge" style="background: linear-gradient(135deg, #64b5f6, #3b82f6); color: white;">Knowledge Base</div>
+        <div class="info-desc" id="info-desc">Select a category to explore.</div>
+
+        <!-- Score Dashboard -->
+        <div class="score-dashboard" id="score-dashboard">
+            <div class="score-header">
+                <div class="score-overall" id="score-overall">--</div>
+                <div class="score-grade">
+                    <div class="grade-letter" id="grade-letter">-</div>
+                    <div class="grade-label">KB Score</div>
+                </div>
+            </div>
+            <div id="score-dimensions"></div>
+            <div class="recommendations-list" id="recommendations-list"></div>
+            <button class="enhance-btn" id="enhance-btn">Enhance Knowledge Base</button>
+        </div>
+
+        <!-- Data Section -->
+        <div class="data-section" id="data-section">
+            <h3 id="data-section-title">Categories Overview</h3>
+            <div id="data-list"></div>
+        </div>
     </div>
 
-    <div id="stats" class="hidden">
-        <div class="stat-item">Categories: <span class="stat-value" id="stat-categories">0</span></div>
-        <div class="stat-item">Items: <span class="stat-value" id="stat-items">0</span></div>
-        <div class="stat-item">Generated: <span class="stat-value" id="stat-generated">-</span></div>
+    <div id="breadcrumb" class="hidden"><span class="breadcrumb-item current">Home</span></div>
+
+    <div id="controls" class="hidden">
+        <p><kbd>Click</kbd> Select / Drill into</p>
+        <p><kbd>Drag</kbd> Rotate view</p>
+        <p><kbd>Scroll</kbd> Zoom</p>
+        <p><kbd>R</kbd> Reset view</p>
     </div>
 
-    <div id="info-panel">
-        <button id="info-close">×</button>
-        <div id="info-title">Title</div>
-        <div id="info-description">Description</div>
-        <div id="info-meta">Source: -</div>
-    </div>
-
-    <div id="instructions" class="hidden">
-        <h4>Navigation</h4>
-        <ul>
-            <li>🖱️ Click node to expand</li>
-            <li>🔙 Click breadcrumb to go back</li>
-            <li>🔍 Use search to find items</li>
-        </ul>
-    </div>
+    <canvas id="canvas"></canvas>
 
     <script>
-        // Safe DOM manipulation utilities
-        const safeSetText = (element, text) => {
-            if (element) element.textContent = String(text || '');
-        };
-
+        // Safe DOM helpers
+        const safeSetText = (el, text) => { if (el) el.textContent = String(text || ''); };
         const safeCreateElement = (tag, className, text) => {
             const el = document.createElement(tag);
             if (className) el.className = className;
@@ -315,105 +578,199 @@ Load kb-universe-data.json to populate visualization.
             return el;
         };
 
-        // Application state
+        // State
         let knowledgeBase = null;
-        let currentLevel = null;
-        let navigationStack = [];
-        let nodes = [];
-        let selectedNode = null;
-        let animationFrame = null;
-        let stars = [];
+        let selectedCategory = null;
+        let selectedSubItem = null;
+        let navigationPath = [];
+        let isExpanded = true; // Start expanded to show all categories immediately
+        let autoRotate = true;
 
         // Canvas setup
-        const canvas = document.getElementById('universe-canvas');
+        const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
+        let width, height;
+        let rotationX = 0, rotationY = 0;
+        let targetRotationX = 0, targetRotationY = 0;
+        let isDragging = false;
+        let lastX, lastY;
+        let zoom = 1;
+        let pulsePhase = 0;
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth * window.devicePixelRatio;
-            canvas.height = window.innerHeight * window.devicePixelRatio;
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width * window.devicePixelRatio;
+            canvas.height = height * window.devicePixelRatio;
             ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
         }
+        window.addEventListener('resize', resize);
+        resize();
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        // 3D projection
+        function project(x, y, z) {
+            const perspective = 1000;
+            const cosX = Math.cos(rotationX), sinX = Math.sin(rotationX);
+            const cosY = Math.cos(rotationY), sinY = Math.sin(rotationY);
 
-        // Initialize stars
-        function initStars() {
-            stars = [];
-            for (let i = 0; i < 200; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
-                    alpha: Math.random() * 0.5 + 0.2,
-                    speed: Math.random() * 0.5 + 0.1
+            let x1 = x * cosY - z * sinY;
+            let z1 = x * sinY + z * cosY;
+            let y1 = y * cosX - z1 * sinX;
+            let z2 = y * sinX + z1 * cosX;
+
+            const scale = perspective / (perspective + z2) * zoom;
+            return {
+                x: width / 2 + x1 * scale,
+                y: height / 2 + y1 * scale,
+                scale: scale,
+                z: z2
+            };
+        }
+
+        // Calculate positions
+        function calculatePositions() {
+            if (!knowledgeBase || !knowledgeBase.children) return;
+
+            const categories = knowledgeBase.children;
+            const numCats = categories.length;
+            const hasSelection = selectedCategory !== null;
+
+            // Center position shifts left when category selected
+            const centerX = hasSelection ? -150 : 0;
+            knowledgeBase.pos = { x: 0, y: 0, z: 0 };
+            knowledgeBase.targetPos = { x: centerX, y: 0, z: 0 };
+
+            if (!hasSelection) {
+                // No selection - spread evenly in circle
+                const radius = 280;
+                categories.forEach((cat, i) => {
+                    const angle = (i / numCats) * Math.PI * 2 - Math.PI / 2;
+                    cat.targetPos = {
+                        x: Math.cos(angle) * radius,
+                        y: Math.sin(angle) * radius * 0.6,
+                        z: Math.sin(angle) * 100
+                    };
+                    if (!cat.pos) cat.pos = { x: 0, y: 0, z: 0 };
                 });
+            } else {
+                // Selection active - compress unselected to left arc
+                const selectedIndex = categories.indexOf(selectedCategory);
+                const unselected = categories.filter(c => c !== selectedCategory);
+
+                const compressedRadius = 180;
+                const arcSpan = Math.PI * 0.8;
+                const arcStart = Math.PI / 2 + (Math.PI - arcSpan) / 2;
+
+                unselected.forEach((cat, i) => {
+                    const angle = arcStart + (i / (unselected.length - 1 || 1)) * arcSpan;
+                    cat.targetPos = {
+                        x: centerX + Math.cos(angle) * compressedRadius - 100,
+                        y: Math.sin(angle) * compressedRadius * 0.7,
+                        z: -50
+                    };
+                    if (!cat.pos) cat.pos = { ...cat.targetPos };
+                });
+
+                // Selected category moves right with children
+                selectedCategory.targetPos = {
+                    x: centerX + 200,
+                    y: 0,
+                    z: 50
+                };
+                if (!selectedCategory.pos) selectedCategory.pos = { x: 0, y: 0, z: 0 };
+
+                // Children spread vertically
+                if (selectedCategory.children) {
+                    const numChildren = selectedCategory.children.length;
+                    const startX = selectedCategory.targetPos.x + 180;
+                    const spacingY = 80;
+                    const totalHeight = (numChildren - 1) * spacingY;
+                    const startY = -totalHeight / 2;
+
+                    selectedCategory.children.forEach((child, j) => {
+                        child.targetPos = {
+                            x: startX + (j % 2) * 60,
+                            y: startY + j * spacingY,
+                            z: 30 + j * 8
+                        };
+                        if (!child.pos) child.pos = { ...selectedCategory.targetPos };
+                    });
+                }
             }
         }
 
-        // Draw stars
-        function drawStars() {
-            for (const star of stars) {
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-                ctx.fill();
-                star.alpha += (Math.random() - 0.5) * 0.02;
-                star.alpha = Math.max(0.1, Math.min(0.7, star.alpha));
+        // Animate positions
+        function animatePositions() {
+            const lerp = (a, b, t) => a + (b - a) * t;
+            const lerpPos = (pos, target) => {
+                if (!pos || !target) return;
+                pos.x = lerp(pos.x, target.x, 0.08);
+                pos.y = lerp(pos.y, target.y, 0.08);
+                pos.z = lerp(pos.z, target.z, 0.08);
+            };
+
+            if (knowledgeBase) {
+                lerpPos(knowledgeBase.pos, knowledgeBase.targetPos);
+                knowledgeBase.children?.forEach(cat => {
+                    lerpPos(cat.pos, cat.targetPos);
+                    cat.children?.forEach(child => lerpPos(child.pos, child.targetPos));
+                });
             }
+
+            rotationX = lerp(rotationX, targetRotationX, 0.1);
+            rotationY = lerp(rotationY, targetRotationY, 0.1);
         }
 
         // Draw node
-        function drawNode(node, isHovered) {
-            const { x, y, radius, color, name, scale } = node;
-            const r = radius * scale;
+        function drawNode(node, isCenter, dimmed) {
+            if (!node.pos) return;
+
+            const p = project(node.pos.x, node.pos.y, node.pos.z);
+            node.screenPos = p;
+
+            const baseSize = isCenter ? 50 : (node.count ? Math.min(40, 15 + node.count * 0.15) : 25);
+            const radius = baseSize * p.scale * (1 + Math.sin(pulsePhase + (isCenter ? 0 : node.pos.x * 0.01)) * 0.05);
+            node.screenPos.radius = radius;
+
+            const alpha = dimmed ? 0.3 : 1;
+            const color = node.color || '#64b5f6';
 
             // Glow
-            const gradient = ctx.createRadialGradient(x, y, 0, x, y, r * 2);
-            gradient.addColorStop(0, color + '80');
-            gradient.addColorStop(0.5, color + '40');
+            const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 2.5);
+            gradient.addColorStop(0, color + (dimmed ? '40' : '80'));
+            gradient.addColorStop(0.5, color + (dimmed ? '20' : '40'));
             gradient.addColorStop(1, 'transparent');
             ctx.beginPath();
-            ctx.arc(x, y, r * 2, 0, Math.PI * 2);
+            ctx.arc(p.x, p.y, radius * 2.5, 0, Math.PI * 2);
             ctx.fillStyle = gradient;
             ctx.fill();
 
             // Core
             ctx.beginPath();
-            ctx.arc(x, y, r, 0, Math.PI * 2);
-            const coreGradient = ctx.createRadialGradient(x - r * 0.3, y - r * 0.3, 0, x, y, r);
-            coreGradient.addColorStop(0, lightenColor(color, 50));
+            ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+            const coreGradient = ctx.createRadialGradient(p.x - radius * 0.3, p.y - radius * 0.3, 0, p.x, p.y, radius);
+            coreGradient.addColorStop(0, lightenColor(color, 60));
             coreGradient.addColorStop(1, color);
             ctx.fillStyle = coreGradient;
+            ctx.globalAlpha = alpha;
             ctx.fill();
-
-            // Hover effect
-            if (isHovered) {
-                ctx.beginPath();
-                ctx.arc(x, y, r + 5, 0, Math.PI * 2);
-                ctx.strokeStyle = '#fff';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-            }
+            ctx.globalAlpha = 1;
 
             // Label
-            ctx.font = `${Math.max(12, r * 0.3)}px -apple-system, sans-serif`;
-            ctx.fillStyle = '#fff';
+            ctx.font = `${Math.max(11, radius * 0.35)}px 'Segoe UI', system-ui, sans-serif`;
+            ctx.fillStyle = dimmed ? 'rgba(255,255,255,0.4)' : 'white';
             ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
 
-            const label = name.length > 20 ? name.substring(0, 18) + '...' : name;
-            ctx.fillText(label, x, y + r + 20);
+            const label = node.name.length > 18 ? node.name.substring(0, 16) + '...' : node.name;
+            ctx.fillText(label, p.x, p.y + radius + 16);
 
-            // Count badge
-            if (node.count) {
-                ctx.font = '11px -apple-system, sans-serif';
-                ctx.fillStyle = 'rgba(255,255,255,0.7)';
-                ctx.fillText(`(${node.count})`, x, y + r + 35);
+            if (node.count && !dimmed) {
+                ctx.font = '10px system-ui';
+                ctx.fillStyle = 'rgba(255,255,255,0.6)';
+                ctx.fillText(`(${node.count})`, p.x, p.y + radius + 28);
             }
         }
 
-        // Color utilities
         function lightenColor(color, percent) {
             const num = parseInt(color.replace('#', ''), 16);
             const amt = Math.round(2.55 * percent);
@@ -423,252 +780,425 @@ Load kb-universe-data.json to populate visualization.
             return `rgb(${R}, ${G}, ${B})`;
         }
 
-        // Build nodes from data
-        function buildNodes(data) {
-            nodes = [];
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
+        // Draw connections
+        function drawConnections() {
+            if (!knowledgeBase || !isExpanded) return;
 
-            if (!data.children || data.children.length === 0) {
-                // Leaf node - show info panel
-                nodes.push({
-                    id: data.id,
-                    name: data.name,
-                    x: centerX,
-                    y: centerY,
-                    radius: 80,
-                    color: data.color || '#64b5f6',
-                    scale: 1,
-                    targetScale: 1,
-                    data: data
-                });
-            } else {
-                // Parent with children
-                const children = data.children;
-                const angleStep = (Math.PI * 2) / children.length;
-                const radius = Math.min(window.innerWidth, window.innerHeight) * 0.3;
+            const centerP = project(knowledgeBase.pos.x, knowledgeBase.pos.y, knowledgeBase.pos.z);
 
-                for (let i = 0; i < children.length; i++) {
-                    const angle = angleStep * i - Math.PI / 2;
-                    const child = children[i];
+            knowledgeBase.children?.forEach(cat => {
+                if (!cat.pos) return;
+                const catP = project(cat.pos.x, cat.pos.y, cat.pos.z);
 
-                    nodes.push({
-                        id: child.id,
-                        name: child.name,
-                        x: centerX + Math.cos(angle) * radius,
-                        y: centerY + Math.sin(angle) * radius,
-                        radius: 50 + (child.count || 0) * 0.5,
-                        color: child.color || '#64b5f6',
-                        scale: 0,
-                        targetScale: 1,
-                        count: child.count,
-                        data: child
+                ctx.beginPath();
+                ctx.moveTo(centerP.x, centerP.y);
+                ctx.lineTo(catP.x, catP.y);
+                ctx.strokeStyle = selectedCategory === cat ? `${cat.color}60` : `${cat.color}20`;
+                ctx.lineWidth = selectedCategory === cat ? 2 : 1;
+                ctx.stroke();
+
+                if (selectedCategory === cat && cat.children) {
+                    cat.children.forEach(child => {
+                        if (!child.pos) return;
+                        const childP = project(child.pos.x, child.pos.y, child.pos.z);
+                        ctx.beginPath();
+                        ctx.moveTo(catP.x, catP.y);
+                        ctx.lineTo(childP.x, childP.y);
+                        ctx.strokeStyle = `${cat.color}40`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
                     });
                 }
-
-                // Center node
-                nodes.unshift({
-                    id: data.id,
-                    name: data.name,
-                    x: centerX,
-                    y: centerY,
-                    radius: 70,
-                    color: data.color || '#64b5f6',
-                    scale: 1,
-                    targetScale: 1,
-                    isCenter: true,
-                    data: data
-                });
-            }
+            });
         }
 
-        // Animation loop
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawStars();
+        // Main render
+        function render() {
+            ctx.clearRect(0, 0, width, height);
 
-            const mousePos = getMousePos();
+            animatePositions();
+            pulsePhase += 0.03;
 
-            for (const node of nodes) {
-                // Animate scale
-                node.scale += (node.targetScale - node.scale) * 0.1;
-
-                // Check hover
-                const dist = Math.hypot(mousePos.x - node.x, mousePos.y - node.y);
-                const isHovered = dist < node.radius * node.scale;
-
-                drawNode(node, isHovered);
+            if (autoRotate && !isDragging && !selectedCategory) {
+                targetRotationY += 0.002;
             }
 
-            animationFrame = requestAnimationFrame(animate);
-        }
+            drawConnections();
 
-        // Mouse position tracking
-        let mouseX = 0, mouseY = 0;
-        function getMousePos() {
-            return { x: mouseX, y: mouseY };
-        }
+            // Collect and sort nodes by Z
+            const allNodes = [];
+            if (knowledgeBase) {
+                allNodes.push({ node: knowledgeBase, isCenter: true, dimmed: false });
 
-        canvas.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+                if (isExpanded) {
+                    knowledgeBase.children?.forEach(cat => {
+                        const dimmed = selectedCategory && selectedCategory !== cat;
+                        allNodes.push({ node: cat, isCenter: false, dimmed });
+
+                        if (selectedCategory === cat && cat.children) {
+                            cat.children.forEach(child => {
+                                allNodes.push({ node: child, isCenter: false, dimmed: false });
+                            });
+                        }
+                    });
+                }
+            }
+
+            allNodes.sort((a, b) => (b.node.pos?.z || 0) - (a.node.pos?.z || 0));
+            allNodes.forEach(({ node, isCenter, dimmed }) => drawNode(node, isCenter, dimmed));
+
+            requestAnimationFrame(render);
+        }
 
         // Click handling
         canvas.addEventListener('click', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
+            const x = e.clientX, y = e.clientY;
 
-            for (const node of nodes) {
-                const dist = Math.hypot(x - node.x, y - node.y);
-                if (dist < node.radius * node.scale) {
-                    handleNodeClick(node);
-                    break;
+            // Center node click
+            if (knowledgeBase?.screenPos) {
+                const dx = x - knowledgeBase.screenPos.x;
+                const dy = y - knowledgeBase.screenPos.y;
+                if (Math.sqrt(dx * dx + dy * dy) < knowledgeBase.screenPos.radius + 10) {
+                    if (!isExpanded) {
+                        isExpanded = true;
+                        calculatePositions();
+                    } else {
+                        goHome();
+                    }
+                    return;
+                }
+            }
+
+            // Category nodes
+            if (isExpanded && knowledgeBase?.children) {
+                for (const cat of knowledgeBase.children) {
+                    if (!cat.screenPos) continue;
+                    const dx = x - cat.screenPos.x;
+                    const dy = y - cat.screenPos.y;
+                    if (Math.sqrt(dx * dx + dy * dy) < cat.screenPos.radius + 10) {
+                        selectCategory(cat);
+                        return;
+                    }
+                }
+            }
+
+            // Child nodes
+            if (selectedCategory?.children) {
+                for (const child of selectedCategory.children) {
+                    if (!child.screenPos) continue;
+                    const dx = x - child.screenPos.x;
+                    const dy = y - child.screenPos.y;
+                    if (Math.sqrt(dx * dx + dy * dy) < child.screenPos.radius + 10) {
+                        selectSubItem(child);
+                        return;
+                    }
                 }
             }
         });
 
-        function handleNodeClick(node) {
-            if (node.data.children && node.data.children.length > 0) {
-                // Navigate into this node
-                navigationStack.push(currentLevel);
-                currentLevel = node.data;
-                buildNodes(currentLevel);
-                updateBreadcrumb();
-            } else {
-                // Show info panel
-                showInfoPanel(node.data);
+        // Drag rotation
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastX = e.clientX;
+            lastY = e.clientY;
+            autoRotate = false;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            targetRotationY += (e.clientX - lastX) * 0.005;
+            targetRotationX += (e.clientY - lastY) * 0.005;
+            targetRotationX = Math.max(-0.5, Math.min(0.5, targetRotationX));
+            lastX = e.clientX;
+            lastY = e.clientY;
+        });
+
+        canvas.addEventListener('mouseup', () => { isDragging = false; });
+        canvas.addEventListener('mouseleave', () => { isDragging = false; });
+
+        // Scroll zoom
+        canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            zoom = Math.max(0.5, Math.min(2, zoom - e.deltaY * 0.001));
+        });
+
+        // Keyboard
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' || e.key === 'R') {
+                targetRotationX = 0;
+                targetRotationY = 0;
+                zoom = 1;
+                autoRotate = true;
             }
+        });
+
+        // Navigation functions
+        function selectCategory(cat) {
+            selectedCategory = cat;
+            selectedSubItem = null;
+            navigationPath = [knowledgeBase, cat];
+            calculatePositions();
+            updateInfoPanel(cat);
+            updateBreadcrumb();
+            updateCategoryHighlight();
         }
 
-        // Breadcrumb navigation
+        function selectSubItem(item) {
+            selectedSubItem = item;
+            navigationPath = [knowledgeBase, selectedCategory, item];
+            updateInfoPanel(item);
+            updateBreadcrumb();
+        }
+
+        function goBack() {
+            if (navigationPath.length > 2) {
+                navigationPath.pop();
+                selectedSubItem = null;
+                updateInfoPanel(selectedCategory);
+            } else if (navigationPath.length > 1) {
+                goHome();
+            }
+            updateBreadcrumb();
+        }
+
+        function goHome() {
+            navigationPath = [knowledgeBase];
+            selectedCategory = null;
+            selectedSubItem = null;
+            calculatePositions();
+            updateInfoPanel(knowledgeBase);
+            updateBreadcrumb();
+            updateCategoryHighlight();
+        }
+
+        function goToPathIndex(index) {
+            while (navigationPath.length > index + 1) navigationPath.pop();
+            if (index === 0) {
+                goHome();
+            } else if (index === 1) {
+                selectedSubItem = null;
+                updateInfoPanel(selectedCategory);
+            }
+            updateBreadcrumb();
+        }
+
+        function updateCategoryHighlight() {
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.id === selectedCategory?.id);
+            });
+        }
+
         function updateBreadcrumb() {
-            const breadcrumb = document.getElementById('breadcrumb');
-            breadcrumb.replaceChildren();
+            const bc = document.getElementById('breadcrumb');
+            bc.replaceChildren();
+            navigationPath.forEach((n, i) => {
+                const span = safeCreateElement('span', i === navigationPath.length - 1 ? 'breadcrumb-item current' : 'breadcrumb-item', n.name);
+                if (i < navigationPath.length - 1) {
+                    span.onclick = () => goToPathIndex(i);
+                }
+                bc.appendChild(span);
+                if (i < navigationPath.length - 1) {
+                    bc.appendChild(safeCreateElement('span', 'breadcrumb-sep', '›'));
+                }
+            });
+        }
 
-            // Root
-            const rootItem = safeCreateElement('div', 'breadcrumb-item', knowledgeBase.name);
-            rootItem.addEventListener('click', () => navigateToRoot());
-            breadcrumb.appendChild(rootItem);
+        // Info panel update
+        function updateInfoPanel(node) {
+            const back = document.getElementById('back-container');
+            back.replaceChildren();
+            if (navigationPath.length > 1) {
+                const btn = safeCreateElement('div', 'back-btn', '← Back');
+                btn.onclick = goBack;
+                back.appendChild(btn);
+            }
 
-            // Navigation path
-            for (let i = 1; i < navigationStack.length; i++) {
-                const level = navigationStack[i];
-                if (level) {
-                    const item = safeCreateElement('div', 'breadcrumb-item', level.name);
-                    const index = i;
-                    item.addEventListener('click', () => navigateToLevel(index));
-                    breadcrumb.appendChild(item);
+            safeSetText(document.getElementById('info-title'), node.name);
+            safeSetText(document.getElementById('info-desc'), node.description || 'Knowledge category');
+
+            const badge = document.getElementById('info-badge');
+            badge.style.background = `linear-gradient(135deg, ${node.color || '#64b5f6'}, ${node.color || '#3b82f6'})`;
+            safeSetText(badge, node.count ? `${node.count} items` : 'Knowledge Base');
+
+            // Score dashboard visibility
+            const scoreDash = document.getElementById('score-dashboard');
+            if (node.id === 'root' && knowledgeBase.score) {
+                scoreDash.classList.remove('hidden');
+            } else {
+                scoreDash.classList.add('hidden');
+            }
+
+            // Data list
+            const dataSection = document.getElementById('data-section');
+            const dataList = document.getElementById('data-list');
+            const sectionTitle = document.getElementById('data-section-title');
+            dataList.replaceChildren();
+
+            if (node.id === 'root') {
+                safeSetText(sectionTitle, 'Categories Overview');
+                node.children?.forEach(cat => {
+                    const item = safeCreateElement('div', 'data-item');
+                    item.onclick = () => selectCategory(cat);
+                    const header = safeCreateElement('div', 'data-item-header');
+                    const name = safeCreateElement('span', 'data-item-name');
+                    const icon = safeCreateElement('span', 'data-item-icon');
+                    icon.style.background = cat.color;
+                    icon.style.color = cat.color;
+                    name.appendChild(icon);
+                    name.appendChild(document.createTextNode(cat.name));
+                    header.appendChild(name);
+                    const meta = safeCreateElement('span', 'data-item-meta', `${cat.count || 0} items`);
+                    header.appendChild(meta);
+                    item.appendChild(header);
+                    dataList.appendChild(item);
+                });
+            } else if (node.children && node.children.length > 0) {
+                safeSetText(sectionTitle, `${node.children.length} Sub-items`);
+                node.children.forEach(child => {
+                    const item = safeCreateElement('div', 'data-item');
+                    item.onclick = () => selectSubItem(child);
+                    const header = safeCreateElement('div', 'data-item-header');
+                    const name = safeCreateElement('span', 'data-item-name');
+                    const icon = safeCreateElement('span', 'data-item-icon');
+                    icon.style.background = child.color || node.color;
+                    icon.style.color = child.color || node.color;
+                    name.appendChild(icon);
+                    name.appendChild(document.createTextNode(child.name));
+                    header.appendChild(name);
+                    item.appendChild(header);
+                    if (child.description) {
+                        const content = safeCreateElement('div', 'data-item-content', child.description);
+                        item.appendChild(content);
+                    }
+                    dataList.appendChild(item);
+                });
+            } else {
+                safeSetText(sectionTitle, 'Details');
+                if (node.description) {
+                    const desc = safeCreateElement('div', 'data-item');
+                    safeSetText(desc, node.description);
+                    dataList.appendChild(desc);
+                }
+                if (node.source) {
+                    const src = safeCreateElement('div', 'data-item');
+                    safeSetText(src, `Source: ${node.source}`);
+                    dataList.appendChild(src);
                 }
             }
+        }
 
-            // Current level
-            if (currentLevel && currentLevel.id !== 'root') {
-                const current = safeCreateElement('div', 'breadcrumb-item active', currentLevel.name);
-                breadcrumb.appendChild(current);
+        // Build category list
+        function buildCategoryList() {
+            const list = document.getElementById('category-list');
+            list.replaceChildren();
+            knowledgeBase.children?.forEach(cat => {
+                const item = safeCreateElement('div', 'category-item');
+                item.dataset.id = cat.id;
+                item.onclick = () => { isExpanded = true; selectCategory(cat); };
+
+                const color = safeCreateElement('div', 'category-color');
+                color.style.background = cat.color;
+                color.style.color = cat.color;
+                item.appendChild(color);
+
+                const name = safeCreateElement('span', 'category-name', cat.name);
+                item.appendChild(name);
+
+                const count = safeCreateElement('span', 'category-count', cat.count || 0);
+                item.appendChild(count);
+
+                list.appendChild(item);
+            });
+            safeSetText(document.getElementById('category-count'), knowledgeBase.children?.length || 0);
+        }
+
+        // Score dashboard
+        function getScoreClass(score) {
+            if (score >= 90) return 'excellent';
+            if (score >= 70) return 'good';
+            if (score >= 50) return 'fair';
+            return 'poor';
+        }
+
+        function populateScore(score) {
+            if (!score) return;
+
+            const overallEl = document.getElementById('score-overall');
+            safeSetText(overallEl, score.overall);
+            overallEl.className = `score-overall score-${getScoreClass(score.overall)}`;
+
+            const gradeEl = document.getElementById('grade-letter');
+            safeSetText(gradeEl, score.grade);
+            gradeEl.className = `grade-letter score-${getScoreClass(score.overall)}`;
+
+            const dims = document.getElementById('score-dimensions');
+            dims.replaceChildren();
+            const labels = { coverage: 'Coverage', depth: 'Depth', balance: 'Balance', quality: 'Quality', sources: 'Sources' };
+            for (const [key, label] of Object.entries(labels)) {
+                const val = score.dimensions?.[key] || 0;
+                const row = safeCreateElement('div', 'dimension-row');
+                row.appendChild(safeCreateElement('span', 'dimension-label', label));
+                const barContainer = safeCreateElement('div', 'dimension-bar-container');
+                const bar = safeCreateElement('div', `dimension-bar bar-${getScoreClass(val)}`);
+                bar.style.width = '0%';
+                barContainer.appendChild(bar);
+                row.appendChild(barContainer);
+                row.appendChild(safeCreateElement('span', `dimension-value score-${getScoreClass(val)}`, val));
+                dims.appendChild(row);
+                setTimeout(() => { bar.style.width = `${val}%`; }, 100);
             }
+
+            const recList = document.getElementById('recommendations-list');
+            recList.replaceChildren();
+            score.recommendations?.forEach(rec => {
+                const item = safeCreateElement('div', 'rec-item');
+                const priority = safeCreateElement('div', `rec-priority ${rec.priority}`);
+                item.appendChild(priority);
+                const text = safeCreateElement('div', 'rec-text', rec.action);
+                item.appendChild(text);
+                recList.appendChild(item);
+            });
+
+            document.getElementById('enhance-btn').onclick = () => {
+                const plan = score.recommendations?.map(r => `[${r.priority.toUpperCase()}] ${r.action}`).join('\n') || 'No recommendations';
+                navigator.clipboard.writeText(`KB Enhancement Plan:\n\n${plan}\n\nRun: npm run kb:ingest after adding content.`);
+                alert('Enhancement plan copied to clipboard!');
+            };
         }
 
-        function navigateToRoot() {
-            navigationStack = [knowledgeBase];
-            currentLevel = knowledgeBase;
-            buildNodes(currentLevel);
-            updateBreadcrumb();
-            hideInfoPanel();
-        }
-
-        function navigateToLevel(index) {
-            navigationStack = navigationStack.slice(0, index + 1);
-            currentLevel = navigationStack[index];
-            buildNodes(currentLevel);
-            updateBreadcrumb();
-            hideInfoPanel();
-        }
-
-        // Info panel
-        function showInfoPanel(data) {
-            const panel = document.getElementById('info-panel');
-            safeSetText(document.getElementById('info-title'), data.name);
-            safeSetText(document.getElementById('info-description'), data.description || 'No description available.');
-            safeSetText(document.getElementById('info-meta'), `Source: ${data.source || 'Knowledge Base'}`);
-            panel.classList.add('visible');
-        }
-
-        function hideInfoPanel() {
-            document.getElementById('info-panel').classList.remove('visible');
-        }
-
-        document.getElementById('info-close').addEventListener('click', hideInfoPanel);
-
-        // Search functionality
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            if (query.length < 2) {
-                buildNodes(currentLevel);
-                return;
-            }
-
-            const results = searchKB(knowledgeBase, query);
-            if (results.length > 0) {
-                const searchResults = {
-                    id: 'search',
-                    name: `Search: "${query}"`,
-                    color: '#64b5f6',
-                    children: results.slice(0, 12)
-                };
-                buildNodes(searchResults);
-            }
-        });
-
-        function searchKB(node, query, results = []) {
-            if (node.name && node.name.toLowerCase().includes(query)) {
-                results.push(node);
-            }
-            if (node.children) {
-                for (const child of node.children) {
-                    searchKB(child, query, results);
-                }
-            }
-            return results;
-        }
-
-        // Load data and initialize
+        // Initialize
         async function init() {
             try {
-                const response = await fetch('kb-universe-data.json');
+                const response = window.EMBEDDED_KB_DATA
+                    ? { ok: true, json: () => Promise.resolve(window.EMBEDDED_KB_DATA) }
+                    : await fetch('kb-universe-data.json');
                 if (!response.ok) throw new Error('Data file not found');
 
                 knowledgeBase = await response.json();
-                currentLevel = knowledgeBase;
-                navigationStack = [knowledgeBase];
+                navigationPath = [knowledgeBase];
 
-                // Update UI safely
-                safeSetText(document.getElementById('title'), knowledgeBase.name);
-                safeSetText(document.getElementById('subtitle'), 'Knowledge Universe');
-                safeSetText(document.getElementById('stat-categories'), knowledgeBase.metadata?.categories || 0);
-                safeSetText(document.getElementById('stat-items'), knowledgeBase.metadata?.totalItems || 0);
-                safeSetText(document.getElementById('stat-generated'),
-                    knowledgeBase.metadata?.generatedAt
-                        ? new Date(knowledgeBase.metadata.generatedAt).toLocaleDateString()
-                        : '-'
-                );
+                // UI updates
+                safeSetText(document.getElementById('title'), knowledgeBase.name + ' Knowledge Universe');
+                safeSetText(document.getElementById('subtitle'), `Click to explore ${knowledgeBase.metadata?.categories || 0} categories | ${knowledgeBase.metadata?.totalItems || 0} items`);
+
+                buildCategoryList();
+                updateInfoPanel(knowledgeBase);
+                updateBreadcrumb();
+                if (knowledgeBase.score) populateScore(knowledgeBase.score);
+                calculatePositions();
 
                 // Show UI
                 document.getElementById('loading').classList.add('hidden');
-                document.getElementById('header').classList.remove('hidden');
-                document.getElementById('search-container').classList.remove('hidden');
-                document.getElementById('stats').classList.remove('hidden');
-                document.getElementById('instructions').classList.remove('hidden');
+                document.getElementById('title-bar').classList.remove('hidden');
+                document.getElementById('categories-panel').classList.remove('hidden');
+                document.getElementById('info-panel').classList.remove('hidden');
+                document.getElementById('breadcrumb').classList.remove('hidden');
+                document.getElementById('controls').classList.remove('hidden');
 
-                // Initialize visualization
-                initStars();
-                buildNodes(currentLevel);
-                updateBreadcrumb();
-                animate();
+                render();
 
             } catch (err) {
-                safeSetText(document.querySelector('#loading div:last-child'),
-                    `Error: ${err.message}. Run: node scripts/kb-universe-data.js`);
+                safeSetText(document.querySelector('#loading div:last-child'), `Error: ${err.message}`);
                 document.querySelector('.loading-spinner').style.display = 'none';
             }
         }

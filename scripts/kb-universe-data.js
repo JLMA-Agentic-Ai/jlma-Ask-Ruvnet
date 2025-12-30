@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * KB Universe Data Generator
- * Updated: 2025-12-30 10:25:00 EST | Version 1.1.0
+ * Updated: 2025-12-30 15:55:00 EST | Version 2.3.0
  * Created: 2025-12-30 09:45:00 EST
  *
  * Generates JSON data structure from ruvector-postgres KB
@@ -23,21 +23,30 @@ const path = require('path');
 const KB_PORT = process.env.KB_PORT || 5435;
 const KB_PASSWORD = process.env.KB_PASSWORD || 'guruKB2025';
 
-// Get project info
+// Get project info - ALWAYS use repo name (folder name), not package.json name
 function getProjectInfo() {
+    // Get the repo/folder name - this is the authoritative name
+    const repoName = path.basename(process.cwd());
+
+    // Try to get version and description from package.json
     const pkgPath = path.join(process.cwd(), 'package.json');
+    let version = '1.0.0';
+    let description = 'Knowledge Base';
+
     if (fs.existsSync(pkgPath)) {
-        const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
-        return {
-            name: pkg.name || 'Unknown Project',
-            version: pkg.version || '0.0.0',
-            description: pkg.description || 'Knowledge Base'
-        };
+        try {
+            const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+            version = pkg.version || '1.0.0';
+            description = pkg.description || 'Knowledge Base';
+        } catch (e) {
+            // Ignore parse errors
+        }
     }
+
     return {
-        name: path.basename(process.cwd()),
-        version: '1.0.0',
-        description: 'Knowledge Base'
+        name: repoName,  // ALWAYS use repo/folder name
+        version: version,
+        description: description
     };
 }
 
@@ -61,44 +70,153 @@ const CATEGORY_COLORS = [
     '#14b8a6', // teal
 ];
 
+// Extract meaningful category name from file path
+// Groups related items into broader categories for better visualization
+function extractCategoryName(filePath) {
+    if (!filePath) return 'General';
+
+    let relativePath = filePath.toLowerCase();
+
+    // First, check for explicit category folders (highest priority)
+    const categoryFolderPatterns = [
+        { pattern: /claude-skills/, category: 'Claude Skills' },
+        { pattern: /kb-production/, category: 'KB Production' },
+        { pattern: /kb-construction/, category: 'KB Construction' },
+        { pattern: /kb-agent-integration|agent-integration/, category: 'Agent Integration' },
+        { pattern: /kb-powered-applications/, category: 'KB Applications' },
+        { pattern: /knowledge-base-access|access-architecture/, category: 'Access Architecture' },
+        { pattern: /multi-business-vector/, category: 'Multi-Business KB' },
+        { pattern: /api-reference/, category: 'API Reference' },
+        { pattern: /tutorials/, category: 'Tutorials' },
+        { pattern: /best-practices/, category: 'Best Practices' },
+        { pattern: /deployment/, category: 'Deployment' },
+        { pattern: /troubleshooting/, category: 'Troubleshooting' },
+        { pattern: /use-cases/, category: 'Use Cases' },
+        { pattern: /integrations/, category: 'Integrations' },
+        { pattern: /performance/, category: 'Performance' },
+        { pattern: /faq/, category: 'FAQ' },
+        { pattern: /concepts/, category: 'Concepts' },
+        { pattern: /sdk|cli/, category: 'SDK & CLI' },
+    ];
+
+    for (const { pattern, category } of categoryFolderPatterns) {
+        if (pattern.test(relativePath)) {
+            return category;
+        }
+    }
+
+    // Architecture pattern consolidation - ALL architecture/* files go to "Architecture Patterns"
+    // unless they match a more specific pattern above
+    if (relativePath.startsWith('architecture/') && !relativePath.includes('claude-skills')) {
+        return 'Architecture Patterns';
+    }
+
+    // Extract from path if no explicit pattern matched
+    const archMatch = relativePath.match(/\/architecture\/([^/]+)/i);
+    if (archMatch) {
+        const subPart = archMatch[1].replace(/\.md$/i, '');
+        if (subPart && subPart.length > 2) {
+            // Format the sub-part
+            let formatted = subPart.replace(/[-_]/g, ' ');
+            formatted = formatted.replace(/\b\w+/g, word => {
+                const abbreviations = ['kb', 'api', 'ui', 'ux', 'db', 'sql', 'mcp', 'llm', 'ai', 'ml'];
+                if (abbreviations.includes(word.toLowerCase())) return word.toUpperCase();
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            });
+            return formatted.trim();
+        }
+    }
+
+    // Use first meaningful folder from path
+    const parts = filePath.split('/').filter(p => p && !p.startsWith('.'));
+    const skipFolders = ['architecture', 'docs', 'src', 'lib', 'content', 'public'];
+
+    for (const part of parts) {
+        const cleanPart = part.replace(/\.md$/i, '').toLowerCase();
+        if (!skipFolders.includes(cleanPart) && cleanPart.length > 2) {
+            let formatted = cleanPart.replace(/[-_]/g, ' ');
+            formatted = formatted.replace(/\b\w+/g, word => {
+                const abbreviations = ['kb', 'api', 'ui', 'ux', 'db', 'sql', 'mcp', 'llm', 'ai', 'ml', 'sdk', 'cli', 'faq'];
+                if (abbreviations.includes(word.toLowerCase())) return word.toUpperCase();
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            });
+            return formatted.trim();
+        }
+    }
+
+    return 'General';
+}
+
+// Extract item name from title or filename
+function extractItemName(title, filePath) {
+    // If title exists and is meaningful, use it
+    if (title && title !== 'Untitled' && !title.startsWith('/')) {
+        return title;
+    }
+
+    // Extract from filename
+    if (filePath) {
+        const fileName = filePath.split('/').pop() || '';
+        return fileName
+            .replace(/\.md$/, '')
+            .replace(/[-_]/g, ' ')
+            .replace(/\b\w/g, c => c.toUpperCase())
+            .trim() || 'Untitled';
+    }
+
+    return 'Untitled';
+}
+
 // Build knowledge hierarchy from flat KB data
 function buildHierarchy(rows, projectInfo) {
     const categories = {};
 
-    // Group by source/category
+    // Group by intelligently extracted category name
     for (const row of rows) {
-        const source = row.source || 'General';
-        const category = source.replace(/\.md$/, '').replace(/_/g, ' ').replace(/-/g, ' ');
+        const categoryName = extractCategoryName(row.source);
 
-        if (!categories[category]) {
-            categories[category] = {
+        if (!categories[categoryName]) {
+            categories[categoryName] = {
                 items: [],
                 sources: new Set()
             };
         }
 
-        categories[category].items.push({
+        const itemName = extractItemName(row.title, row.source);
+
+        categories[categoryName].items.push({
             id: `item_${row.id}`,
-            title: row.title || 'Untitled',
+            title: itemName,
             content: (row.content || '').substring(0, 200) + '...',
             source: row.source,
             type: row.type || 'document'
         });
-        categories[category].sources.add(row.source);
+        categories[categoryName].sources.add(row.source);
     }
 
     // Build tree structure
     const children = Object.entries(categories).map(([name, data], index) => {
         const color = CATEGORY_COLORS[index % CATEGORY_COLORS.length];
 
-        // Group items into subcategories by first word of title
+        // Group items into subcategories by semantic grouping
         const subgroups = {};
         for (const item of data.items) {
-            const firstWord = (item.title.split(' ')[0] || 'Other').substring(0, 20);
-            if (!subgroups[firstWord]) {
-                subgroups[firstWord] = [];
+            // Use first meaningful word or phrase for subcategory
+            const words = item.title.split(' ');
+            let subKey = words[0] || 'Other';
+
+            // If first word is generic, try to get more context
+            const genericWords = ['the', 'a', 'an', 'how', 'what', 'why', 'when', 'overview', 'introduction'];
+            if (genericWords.includes(subKey.toLowerCase()) && words.length > 1) {
+                subKey = words.slice(0, 2).join(' ');
             }
-            subgroups[firstWord].push(item);
+
+            subKey = subKey.substring(0, 25); // Limit length
+
+            if (!subgroups[subKey]) {
+                subgroups[subKey] = [];
+            }
+            subgroups[subKey].push(item);
         }
 
         const subcategories = Object.entries(subgroups).map(([subName, items]) => ({
@@ -136,6 +254,182 @@ function buildHierarchy(rows, projectInfo) {
             totalItems: rows.length,
             categories: Object.keys(categories).length,
             generatedAt: new Date().toISOString()
+        }
+    };
+}
+
+// Calculate KB Quality Score (1-100) across multiple dimensions
+function calculateKBScore(rows, categories) {
+    const scores = {};
+    const recommendations = [];
+
+    // 1. COVERAGE SCORE (0-100): How much content exists?
+    // Optimal: 500+ items = 100, scales down from there
+    const coverageOptimal = 500;
+    const coverageScore = Math.min(100, Math.round((rows.length / coverageOptimal) * 100));
+    scores.coverage = coverageScore;
+    if (coverageScore < 50) {
+        recommendations.push({
+            category: 'Coverage',
+            priority: 'high',
+            issue: `Only ${rows.length} knowledge items detected`,
+            action: 'Add more documentation, FAQs, and reference materials',
+            impact: '+' + Math.round((coverageOptimal - rows.length) / 5) + ' potential points'
+        });
+    } else if (coverageScore < 80) {
+        recommendations.push({
+            category: 'Coverage',
+            priority: 'medium',
+            issue: `${rows.length} items is good but could be better`,
+            action: 'Consider adding edge cases, troubleshooting guides, and examples',
+            impact: '+' + Math.round((coverageOptimal - rows.length) / 5) + ' potential points'
+        });
+    }
+
+    // 2. DEPTH SCORE (0-100): How well organized is the hierarchy?
+    // Optimal: 8-15 categories with balanced distribution
+    const categoryCount = Object.keys(categories).length;
+    let depthScore = 0;
+    if (categoryCount >= 5 && categoryCount <= 20) {
+        depthScore = 100 - Math.abs(12 - categoryCount) * 5;
+    } else if (categoryCount < 5) {
+        depthScore = categoryCount * 15;
+    } else {
+        depthScore = Math.max(50, 100 - (categoryCount - 20) * 3);
+    }
+    depthScore = Math.max(0, Math.min(100, depthScore));
+    scores.depth = depthScore;
+    if (categoryCount < 5) {
+        recommendations.push({
+            category: 'Organization',
+            priority: 'high',
+            issue: `Only ${categoryCount} categories - knowledge may be poorly organized`,
+            action: 'Break down content into more specific topic areas',
+            impact: '+15-25 potential points'
+        });
+    } else if (categoryCount > 20) {
+        recommendations.push({
+            category: 'Organization',
+            priority: 'medium',
+            issue: `${categoryCount} categories may be too fragmented`,
+            action: 'Consider consolidating related topics',
+            impact: '+10-15 potential points'
+        });
+    }
+
+    // 3. BALANCE SCORE (0-100): Is content evenly distributed?
+    // More forgiving for realistic KBs - some categories naturally larger
+    const categoryValues = Object.values(categories);
+    const avgItems = rows.length / categoryCount;
+    const minItems = Math.min(...categoryValues.map(c => c.items.length));
+    const maxItems = Math.max(...categoryValues.map(c => c.items.length));
+
+    // Balance based on: min category has at least 10% of average, max not more than 5x average
+    let balanceScore = 100;
+
+    // Penalty for categories with very few items (< 3)
+    const tinyCategories = categoryValues.filter(c => c.items.length < 3).length;
+    balanceScore -= tinyCategories * 15;
+
+    // Penalty for very large imbalance (max > 5x min)
+    const ratio = maxItems / Math.max(minItems, 1);
+    if (ratio > 10) balanceScore -= 30;
+    else if (ratio > 5) balanceScore -= 15;
+
+    // Small penalty for variance but not extreme
+    const variance = categoryValues.reduce((sum, cat) => {
+        return sum + Math.pow(cat.items.length - avgItems, 2);
+    }, 0) / categoryCount;
+    const stdDev = Math.sqrt(variance);
+    const coeffOfVariation = (stdDev / avgItems) * 100;
+    if (coeffOfVariation > 80) balanceScore -= 20;
+    else if (coeffOfVariation > 50) balanceScore -= 10;
+
+    balanceScore = Math.max(0, Math.min(100, balanceScore));
+    scores.balance = Math.round(balanceScore);
+    if (balanceScore < 50) {
+        const largest = categoryValues.reduce((max, cat) =>
+            cat.items.length > max.items.length ? cat : max
+        , categoryValues[0]);
+        recommendations.push({
+            category: 'Balance',
+            priority: 'medium',
+            issue: 'Content is unevenly distributed across categories',
+            action: `Consider splitting large categories or expanding smaller ones`,
+            impact: '+10-20 potential points'
+        });
+    }
+
+    // 4. QUALITY SCORE (0-100): Content richness
+    const avgContentLength = rows.reduce((sum, r) => sum + (r.content?.length || 0), 0) / rows.length;
+    // Optimal: 500+ chars average
+    const qualityScore = Math.min(100, Math.round((avgContentLength / 500) * 100));
+    scores.quality = qualityScore;
+    if (qualityScore < 60) {
+        recommendations.push({
+            category: 'Quality',
+            priority: 'high',
+            issue: `Average content length is ${Math.round(avgContentLength)} chars - content may be too brief`,
+            action: 'Expand entries with more detail, examples, and context',
+            impact: '+15-25 potential points'
+        });
+    }
+
+    // 5. SOURCES SCORE (0-100): Diversity of knowledge sources
+    const uniqueSources = new Set(rows.map(r => r.source)).size;
+    // Optimal: 20+ unique sources
+    const sourcesScore = Math.min(100, Math.round((uniqueSources / 20) * 100));
+    scores.sources = sourcesScore;
+    if (sourcesScore < 50) {
+        recommendations.push({
+            category: 'Sources',
+            priority: 'medium',
+            issue: `Only ${uniqueSources} unique sources`,
+            action: 'Add content from more diverse sources (APIs, guides, FAQs)',
+            impact: '+10-15 potential points'
+        });
+    }
+
+    // Calculate overall score (weighted average)
+    const weights = { coverage: 0.25, depth: 0.15, balance: 0.15, quality: 0.30, sources: 0.15 };
+    const overallScore = Math.round(
+        scores.coverage * weights.coverage +
+        scores.depth * weights.depth +
+        scores.balance * weights.balance +
+        scores.quality * weights.quality +
+        scores.sources * weights.sources
+    );
+
+    // Sort recommendations by priority
+    const priorityOrder = { high: 0, medium: 1, low: 2 };
+    recommendations.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+
+    // Grade the KB (standard academic scale)
+    let grade = 'F';
+    if (overallScore >= 97) grade = 'A+';
+    else if (overallScore >= 93) grade = 'A';
+    else if (overallScore >= 90) grade = 'A-';
+    else if (overallScore >= 87) grade = 'B+';
+    else if (overallScore >= 83) grade = 'B';
+    else if (overallScore >= 80) grade = 'B-';
+    else if (overallScore >= 77) grade = 'C+';
+    else if (overallScore >= 73) grade = 'C';
+    else if (overallScore >= 70) grade = 'C-';
+    else if (overallScore >= 67) grade = 'D+';
+    else if (overallScore >= 63) grade = 'D';
+    else if (overallScore >= 60) grade = 'D-';
+    else grade = 'F';
+
+    return {
+        overall: overallScore,
+        grade: grade,
+        dimensions: scores,
+        recommendations: recommendations.slice(0, 5), // Top 5 recommendations
+        rawStats: {
+            totalItems: rows.length,
+            categories: categoryCount,
+            avgContentLength: Math.round(avgContentLength),
+            uniqueSources: uniqueSources
         }
     };
 }
@@ -231,10 +525,38 @@ async function generateKBData(outputPath) {
         }
     }
 
+    // Build categories for scoring using proper category extraction
+    const categories = {};
+    for (const row of rows) {
+        const categoryName = extractCategoryName(row.source);
+        if (!categories[categoryName]) {
+            categories[categoryName] = { items: [], sources: new Set() };
+        }
+        categories[categoryName].items.push(row);
+        categories[categoryName].sources.add(row.source);
+    }
+
+    // Calculate KB Score
+    console.log('');
+    console.log('📊 Calculating KB Quality Score...');
+    const kbScore = calculateKBScore(rows, categories);
+    console.log(`   • Overall Score: ${kbScore.overall}/100 (${kbScore.grade})`);
+    console.log(`   • Coverage: ${kbScore.dimensions.coverage}/100`);
+    console.log(`   • Depth: ${kbScore.dimensions.depth}/100`);
+    console.log(`   • Balance: ${kbScore.dimensions.balance}/100`);
+    console.log(`   • Quality: ${kbScore.dimensions.quality}/100`);
+    console.log(`   • Sources: ${kbScore.dimensions.sources}/100`);
+    if (kbScore.recommendations.length > 0) {
+        console.log(`   • ${kbScore.recommendations.length} enhancement recommendations`);
+    }
+
     // Build hierarchy
     console.log('');
     console.log('🔨 Building knowledge hierarchy...');
     const hierarchy = buildHierarchy(rows, projectInfo);
+
+    // Add scoring to hierarchy
+    hierarchy.score = kbScore;
 
     console.log(`   • Categories: ${hierarchy.metadata.categories}`);
     console.log(`   • Total items: ${hierarchy.metadata.totalItems}`);

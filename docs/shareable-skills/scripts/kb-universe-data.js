@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * KB Universe Data Generator
- * Updated: 2025-12-30 10:25:00 EST | Version 1.1.0
+ * Updated: 2025-12-30 10:50:00 EST | Version 2.0.0
  * Created: 2025-12-30 09:45:00 EST
  *
  * Generates JSON data structure from ruvector-postgres KB
@@ -140,6 +140,161 @@ function buildHierarchy(rows, projectInfo) {
     };
 }
 
+// Calculate KB Quality Score (1-100) across multiple dimensions
+function calculateKBScore(rows, categories) {
+    const scores = {};
+    const recommendations = [];
+
+    // 1. COVERAGE SCORE (0-100): How much content exists?
+    // Optimal: 500+ items = 100, scales down from there
+    const coverageOptimal = 500;
+    const coverageScore = Math.min(100, Math.round((rows.length / coverageOptimal) * 100));
+    scores.coverage = coverageScore;
+    if (coverageScore < 50) {
+        recommendations.push({
+            category: 'Coverage',
+            priority: 'high',
+            issue: `Only ${rows.length} knowledge items detected`,
+            action: 'Add more documentation, FAQs, and reference materials',
+            impact: '+' + Math.round((coverageOptimal - rows.length) / 5) + ' potential points'
+        });
+    } else if (coverageScore < 80) {
+        recommendations.push({
+            category: 'Coverage',
+            priority: 'medium',
+            issue: `${rows.length} items is good but could be better`,
+            action: 'Consider adding edge cases, troubleshooting guides, and examples',
+            impact: '+' + Math.round((coverageOptimal - rows.length) / 5) + ' potential points'
+        });
+    }
+
+    // 2. DEPTH SCORE (0-100): How well organized is the hierarchy?
+    // Optimal: 8-15 categories with balanced distribution
+    const categoryCount = Object.keys(categories).length;
+    let depthScore = 0;
+    if (categoryCount >= 5 && categoryCount <= 20) {
+        depthScore = 100 - Math.abs(12 - categoryCount) * 5;
+    } else if (categoryCount < 5) {
+        depthScore = categoryCount * 15;
+    } else {
+        depthScore = Math.max(50, 100 - (categoryCount - 20) * 3);
+    }
+    depthScore = Math.max(0, Math.min(100, depthScore));
+    scores.depth = depthScore;
+    if (categoryCount < 5) {
+        recommendations.push({
+            category: 'Organization',
+            priority: 'high',
+            issue: `Only ${categoryCount} categories - knowledge may be poorly organized`,
+            action: 'Break down content into more specific topic areas',
+            impact: '+15-25 potential points'
+        });
+    } else if (categoryCount > 20) {
+        recommendations.push({
+            category: 'Organization',
+            priority: 'medium',
+            issue: `${categoryCount} categories may be too fragmented`,
+            action: 'Consider consolidating related topics',
+            impact: '+10-15 potential points'
+        });
+    }
+
+    // 3. BALANCE SCORE (0-100): Is content evenly distributed?
+    const categoryValues = Object.values(categories);
+    const avgItems = rows.length / categoryCount;
+    const variance = categoryValues.reduce((sum, cat) => {
+        return sum + Math.pow(cat.items.length - avgItems, 2);
+    }, 0) / categoryCount;
+    const stdDev = Math.sqrt(variance);
+    const coeffOfVariation = (stdDev / avgItems) * 100;
+    // Lower CV = better balance. CV of 0 = 100 points, CV of 100+ = 0 points
+    const balanceScore = Math.max(0, Math.min(100, 100 - coeffOfVariation));
+    scores.balance = Math.round(balanceScore);
+    if (balanceScore < 50) {
+        const largest = categoryValues.reduce((max, cat) =>
+            cat.items.length > max.items.length ? cat : max
+        , categoryValues[0]);
+        recommendations.push({
+            category: 'Balance',
+            priority: 'medium',
+            issue: 'Content is unevenly distributed across categories',
+            action: `Consider splitting large categories or expanding smaller ones`,
+            impact: '+10-20 potential points'
+        });
+    }
+
+    // 4. QUALITY SCORE (0-100): Content richness
+    const avgContentLength = rows.reduce((sum, r) => sum + (r.content?.length || 0), 0) / rows.length;
+    // Optimal: 500+ chars average
+    const qualityScore = Math.min(100, Math.round((avgContentLength / 500) * 100));
+    scores.quality = qualityScore;
+    if (qualityScore < 60) {
+        recommendations.push({
+            category: 'Quality',
+            priority: 'high',
+            issue: `Average content length is ${Math.round(avgContentLength)} chars - content may be too brief`,
+            action: 'Expand entries with more detail, examples, and context',
+            impact: '+15-25 potential points'
+        });
+    }
+
+    // 5. SOURCES SCORE (0-100): Diversity of knowledge sources
+    const uniqueSources = new Set(rows.map(r => r.source)).size;
+    // Optimal: 20+ unique sources
+    const sourcesScore = Math.min(100, Math.round((uniqueSources / 20) * 100));
+    scores.sources = sourcesScore;
+    if (sourcesScore < 50) {
+        recommendations.push({
+            category: 'Sources',
+            priority: 'medium',
+            issue: `Only ${uniqueSources} unique sources`,
+            action: 'Add content from more diverse sources (APIs, guides, FAQs)',
+            impact: '+10-15 potential points'
+        });
+    }
+
+    // Calculate overall score (weighted average)
+    const weights = { coverage: 0.25, depth: 0.15, balance: 0.15, quality: 0.30, sources: 0.15 };
+    const overallScore = Math.round(
+        scores.coverage * weights.coverage +
+        scores.depth * weights.depth +
+        scores.balance * weights.balance +
+        scores.quality * weights.quality +
+        scores.sources * weights.sources
+    );
+
+    // Sort recommendations by priority
+    const priorityOrder = { high: 0, medium: 1, low: 2 };
+    recommendations.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+
+    // Grade the KB
+    let grade = 'F';
+    if (overallScore >= 90) grade = 'A+';
+    else if (overallScore >= 85) grade = 'A';
+    else if (overallScore >= 80) grade = 'A-';
+    else if (overallScore >= 75) grade = 'B+';
+    else if (overallScore >= 70) grade = 'B';
+    else if (overallScore >= 65) grade = 'B-';
+    else if (overallScore >= 60) grade = 'C+';
+    else if (overallScore >= 55) grade = 'C';
+    else if (overallScore >= 50) grade = 'C-';
+    else if (overallScore >= 40) grade = 'D';
+    else grade = 'F';
+
+    return {
+        overall: overallScore,
+        grade: grade,
+        dimensions: scores,
+        recommendations: recommendations.slice(0, 5), // Top 5 recommendations
+        rawStats: {
+            totalItems: rows.length,
+            categories: categoryCount,
+            avgContentLength: Math.round(avgContentLength),
+            uniqueSources: uniqueSources
+        }
+    };
+}
+
 // Fallback: build from local .ruvector files
 function buildFromLocalKB() {
     const kbPath = path.join(process.cwd(), '.ruvector', 'knowledge-base');
@@ -231,10 +386,39 @@ async function generateKBData(outputPath) {
         }
     }
 
+    // Build categories for scoring
+    const categories = {};
+    for (const row of rows) {
+        const source = row.source || 'General';
+        const category = source.replace(/\.md$/, '').replace(/_/g, ' ').replace(/-/g, ' ');
+        if (!categories[category]) {
+            categories[category] = { items: [], sources: new Set() };
+        }
+        categories[category].items.push(row);
+        categories[category].sources.add(row.source);
+    }
+
+    // Calculate KB Score
+    console.log('');
+    console.log('📊 Calculating KB Quality Score...');
+    const kbScore = calculateKBScore(rows, categories);
+    console.log(`   • Overall Score: ${kbScore.overall}/100 (${kbScore.grade})`);
+    console.log(`   • Coverage: ${kbScore.dimensions.coverage}/100`);
+    console.log(`   • Depth: ${kbScore.dimensions.depth}/100`);
+    console.log(`   • Balance: ${kbScore.dimensions.balance}/100`);
+    console.log(`   • Quality: ${kbScore.dimensions.quality}/100`);
+    console.log(`   • Sources: ${kbScore.dimensions.sources}/100`);
+    if (kbScore.recommendations.length > 0) {
+        console.log(`   • ${kbScore.recommendations.length} enhancement recommendations`);
+    }
+
     // Build hierarchy
     console.log('');
     console.log('🔨 Building knowledge hierarchy...');
     const hierarchy = buildHierarchy(rows, projectInfo);
+
+    // Add scoring to hierarchy
+    hierarchy.score = kbScore;
 
     console.log(`   • Categories: ${hierarchy.metadata.categories}`);
     console.log(`   • Total items: ${hierarchy.metadata.totalItems}`);
