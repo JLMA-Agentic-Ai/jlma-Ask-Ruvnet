@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<!--
+KB Universe Visualization Template
+Updated: 2025-12-30 09:50:00 EST | Version 1.0.0
+Created: 2025-12-30 09:50:00 EST
+
+SAFE RENDERING: This template uses JSON.parse and textContent
+for all dynamic content. No innerHTML = No XSS vulnerabilities.
+
+Load kb-universe-data.json to populate visualization.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Universe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a2a 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #universe-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(10,10,26,0.95) 0%, rgba(10,10,26,0) 100%);
+            padding: 20px 30px;
+        }
+
+        #title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #64b5f6;
+            text-shadow: 0 0 20px rgba(100, 181, 246, 0.5);
+        }
+
+        #subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+
+        #breadcrumb {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb-item {
+            background: rgba(255,255,255,0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .breadcrumb-item:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .breadcrumb-item.active {
+            background: rgba(100, 181, 246, 0.3);
+            border-color: #64b5f6;
+        }
+
+        #info-panel {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            max-width: 600px;
+            background: rgba(20, 20, 40, 0.95);
+            border-radius: 16px;
+            padding: 24px;
+            z-index: 100;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            transform: translateY(150%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #info-panel.visible {
+            transform: translateY(0);
+        }
+
+        #info-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        #info-description {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        #info-meta {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        #info-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        #info-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        #stats {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 100;
+            text-align: right;
+        }
+
+        .stat-item {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            color: #64b5f6;
+            font-weight: 600;
+        }
+
+        #search-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        #search-input {
+            width: 300px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(20, 20, 40, 0.8);
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        #search-input:focus {
+            border-color: #64b5f6;
+            box-shadow: 0 0 20px rgba(100, 181, 246, 0.3);
+        }
+
+        #search-input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 200;
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(100, 181, 246, 0.3);
+            border-top-color: #64b5f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        #instructions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(20, 20, 40, 0.8);
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            z-index: 50;
+            max-width: 200px;
+        }
+
+        #instructions h4 {
+            color: #64b5f6;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        #instructions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #instructions li {
+            margin-bottom: 4px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <div class="loading-spinner"></div>
+        <div>Loading Knowledge Universe...</div>
+    </div>
+
+    <div id="canvas-container">
+        <canvas id="universe-canvas"></canvas>
+    </div>
+
+    <div id="header" class="hidden">
+        <div id="title">Knowledge Universe</div>
+        <div id="subtitle">Click to explore</div>
+        <div id="breadcrumb"></div>
+    </div>
+
+    <div id="search-container" class="hidden">
+        <input type="text" id="search-input" placeholder="Search knowledge base...">
+    </div>
+
+    <div id="stats" class="hidden">
+        <div class="stat-item">Categories: <span class="stat-value" id="stat-categories">0</span></div>
+        <div class="stat-item">Items: <span class="stat-value" id="stat-items">0</span></div>
+        <div class="stat-item">Generated: <span class="stat-value" id="stat-generated">-</span></div>
+    </div>
+
+    <div id="info-panel">
+        <button id="info-close">×</button>
+        <div id="info-title">Title</div>
+        <div id="info-description">Description</div>
+        <div id="info-meta">Source: -</div>
+    </div>
+
+    <div id="instructions" class="hidden">
+        <h4>Navigation</h4>
+        <ul>
+            <li>🖱️ Click node to expand</li>
+            <li>🔙 Click breadcrumb to go back</li>
+            <li>🔍 Use search to find items</li>
+        </ul>
+    </div>
+
+    <script>
+        // Safe DOM manipulation utilities
+        const safeSetText = (element, text) => {
+            if (element) element.textContent = String(text || '');
+        };
+
+        const safeCreateElement = (tag, className, text) => {
+            const el = document.createElement(tag);
+            if (className) el.className = className;
+            if (text) el.textContent = String(text);
+            return el;
+        };
+
+        // Application state
+        let knowledgeBase = null;
+        let currentLevel = null;
+        let navigationStack = [];
+        let nodes = [];
+        let selectedNode = null;
+        let animationFrame = null;
+        let stars = [];
+
+        // Canvas setup
+        const canvas = document.getElementById('universe-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * window.devicePixelRatio;
+            canvas.height = window.innerHeight * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Initialize stars
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < 200; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2,
+                    alpha: Math.random() * 0.5 + 0.2,
+                    speed: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+
+        // Draw stars
+        function drawStars() {
+            for (const star of stars) {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.fill();
+                star.alpha += (Math.random() - 0.5) * 0.02;
+                star.alpha = Math.max(0.1, Math.min(0.7, star.alpha));
+            }
+        }
+
+        // Draw node
+        function drawNode(node, isHovered) {
+            const { x, y, radius, color, name, scale } = node;
+            const r = radius * scale;
+
+            // Glow
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, r * 2);
+            gradient.addColorStop(0, color + '80');
+            gradient.addColorStop(0.5, color + '40');
+            gradient.addColorStop(1, 'transparent');
+            ctx.beginPath();
+            ctx.arc(x, y, r * 2, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Core
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            const coreGradient = ctx.createRadialGradient(x - r * 0.3, y - r * 0.3, 0, x, y, r);
+            coreGradient.addColorStop(0, lightenColor(color, 50));
+            coreGradient.addColorStop(1, color);
+            ctx.fillStyle = coreGradient;
+            ctx.fill();
+
+            // Hover effect
+            if (isHovered) {
+                ctx.beginPath();
+                ctx.arc(x, y, r + 5, 0, Math.PI * 2);
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            // Label
+            ctx.font = `${Math.max(12, r * 0.3)}px -apple-system, sans-serif`;
+            ctx.fillStyle = '#fff';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            const label = name.length > 20 ? name.substring(0, 18) + '...' : name;
+            ctx.fillText(label, x, y + r + 20);
+
+            // Count badge
+            if (node.count) {
+                ctx.font = '11px -apple-system, sans-serif';
+                ctx.fillStyle = 'rgba(255,255,255,0.7)';
+                ctx.fillText(`(${node.count})`, x, y + r + 35);
+            }
+        }
+
+        // Color utilities
+        function lightenColor(color, percent) {
+            const num = parseInt(color.replace('#', ''), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = Math.min(255, (num >> 16) + amt);
+            const G = Math.min(255, ((num >> 8) & 0x00FF) + amt);
+            const B = Math.min(255, (num & 0x0000FF) + amt);
+            return `rgb(${R}, ${G}, ${B})`;
+        }
+
+        // Build nodes from data
+        function buildNodes(data) {
+            nodes = [];
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            if (!data.children || data.children.length === 0) {
+                // Leaf node - show info panel
+                nodes.push({
+                    id: data.id,
+                    name: data.name,
+                    x: centerX,
+                    y: centerY,
+                    radius: 80,
+                    color: data.color || '#64b5f6',
+                    scale: 1,
+                    targetScale: 1,
+                    data: data
+                });
+            } else {
+                // Parent with children
+                const children = data.children;
+                const angleStep = (Math.PI * 2) / children.length;
+                const radius = Math.min(window.innerWidth, window.innerHeight) * 0.3;
+
+                for (let i = 0; i < children.length; i++) {
+                    const angle = angleStep * i - Math.PI / 2;
+                    const child = children[i];
+
+                    nodes.push({
+                        id: child.id,
+                        name: child.name,
+                        x: centerX + Math.cos(angle) * radius,
+                        y: centerY + Math.sin(angle) * radius,
+                        radius: 50 + (child.count || 0) * 0.5,
+                        color: child.color || '#64b5f6',
+                        scale: 0,
+                        targetScale: 1,
+                        count: child.count,
+                        data: child
+                    });
+                }
+
+                // Center node
+                nodes.unshift({
+                    id: data.id,
+                    name: data.name,
+                    x: centerX,
+                    y: centerY,
+                    radius: 70,
+                    color: data.color || '#64b5f6',
+                    scale: 1,
+                    targetScale: 1,
+                    isCenter: true,
+                    data: data
+                });
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawStars();
+
+            const mousePos = getMousePos();
+
+            for (const node of nodes) {
+                // Animate scale
+                node.scale += (node.targetScale - node.scale) * 0.1;
+
+                // Check hover
+                const dist = Math.hypot(mousePos.x - node.x, mousePos.y - node.y);
+                const isHovered = dist < node.radius * node.scale;
+
+                drawNode(node, isHovered);
+            }
+
+            animationFrame = requestAnimationFrame(animate);
+        }
+
+        // Mouse position tracking
+        let mouseX = 0, mouseY = 0;
+        function getMousePos() {
+            return { x: mouseX, y: mouseY };
+        }
+
+        canvas.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Click handling
+        canvas.addEventListener('click', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            for (const node of nodes) {
+                const dist = Math.hypot(x - node.x, y - node.y);
+                if (dist < node.radius * node.scale) {
+                    handleNodeClick(node);
+                    break;
+                }
+            }
+        });
+
+        function handleNodeClick(node) {
+            if (node.data.children && node.data.children.length > 0) {
+                // Navigate into this node
+                navigationStack.push(currentLevel);
+                currentLevel = node.data;
+                buildNodes(currentLevel);
+                updateBreadcrumb();
+            } else {
+                // Show info panel
+                showInfoPanel(node.data);
+            }
+        }
+
+        // Breadcrumb navigation
+        function updateBreadcrumb() {
+            const breadcrumb = document.getElementById('breadcrumb');
+            breadcrumb.replaceChildren();
+
+            // Root
+            const rootItem = safeCreateElement('div', 'breadcrumb-item', knowledgeBase.name);
+            rootItem.addEventListener('click', () => navigateToRoot());
+            breadcrumb.appendChild(rootItem);
+
+            // Navigation path
+            for (let i = 1; i < navigationStack.length; i++) {
+                const level = navigationStack[i];
+                if (level) {
+                    const item = safeCreateElement('div', 'breadcrumb-item', level.name);
+                    const index = i;
+                    item.addEventListener('click', () => navigateToLevel(index));
+                    breadcrumb.appendChild(item);
+                }
+            }
+
+            // Current level
+            if (currentLevel && currentLevel.id !== 'root') {
+                const current = safeCreateElement('div', 'breadcrumb-item active', currentLevel.name);
+                breadcrumb.appendChild(current);
+            }
+        }
+
+        function navigateToRoot() {
+            navigationStack = [knowledgeBase];
+            currentLevel = knowledgeBase;
+            buildNodes(currentLevel);
+            updateBreadcrumb();
+            hideInfoPanel();
+        }
+
+        function navigateToLevel(index) {
+            navigationStack = navigationStack.slice(0, index + 1);
+            currentLevel = navigationStack[index];
+            buildNodes(currentLevel);
+            updateBreadcrumb();
+            hideInfoPanel();
+        }
+
+        // Info panel
+        function showInfoPanel(data) {
+            const panel = document.getElementById('info-panel');
+            safeSetText(document.getElementById('info-title'), data.name);
+            safeSetText(document.getElementById('info-description'), data.description || 'No description available.');
+            safeSetText(document.getElementById('info-meta'), `Source: ${data.source || 'Knowledge Base'}`);
+            panel.classList.add('visible');
+        }
+
+        function hideInfoPanel() {
+            document.getElementById('info-panel').classList.remove('visible');
+        }
+
+        document.getElementById('info-close').addEventListener('click', hideInfoPanel);
+
+        // Search functionality
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length < 2) {
+                buildNodes(currentLevel);
+                return;
+            }
+
+            const results = searchKB(knowledgeBase, query);
+            if (results.length > 0) {
+                const searchResults = {
+                    id: 'search',
+                    name: `Search: "${query}"`,
+                    color: '#64b5f6',
+                    children: results.slice(0, 12)
+                };
+                buildNodes(searchResults);
+            }
+        });
+
+        function searchKB(node, query, results = []) {
+            if (node.name && node.name.toLowerCase().includes(query)) {
+                results.push(node);
+            }
+            if (node.children) {
+                for (const child of node.children) {
+                    searchKB(child, query, results);
+                }
+            }
+            return results;
+        }
+
+        // Load data and initialize
+        async function init() {
+            try {
+                const response = await fetch('kb-universe-data.json');
+                if (!response.ok) throw new Error('Data file not found');
+
+                knowledgeBase = await response.json();
+                currentLevel = knowledgeBase;
+                navigationStack = [knowledgeBase];
+
+                // Update UI safely
+                safeSetText(document.getElementById('title'), knowledgeBase.name);
+                safeSetText(document.getElementById('subtitle'), 'Knowledge Universe');
+                safeSetText(document.getElementById('stat-categories'), knowledgeBase.metadata?.categories || 0);
+                safeSetText(document.getElementById('stat-items'), knowledgeBase.metadata?.totalItems || 0);
+                safeSetText(document.getElementById('stat-generated'),
+                    knowledgeBase.metadata?.generatedAt
+                        ? new Date(knowledgeBase.metadata.generatedAt).toLocaleDateString()
+                        : '-'
+                );
+
+                // Show UI
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('header').classList.remove('hidden');
+                document.getElementById('search-container').classList.remove('hidden');
+                document.getElementById('stats').classList.remove('hidden');
+                document.getElementById('instructions').classList.remove('hidden');
+
+                // Initialize visualization
+                initStars();
+                buildNodes(currentLevel);
+                updateBreadcrumb();
+                animate();
+
+            } catch (err) {
+                safeSetText(document.querySelector('#loading div:last-child'),
+                    `Error: ${err.message}. Run: node scripts/kb-universe-data.js`);
+                document.querySelector('.loading-spinner').style.display = 'none';
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>

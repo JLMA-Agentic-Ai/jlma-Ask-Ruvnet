@@ -1,4 +1,4 @@
-Updated: 2025-12-30 14:50:00 EST | Version 1.0.0
+Updated: 2025-12-30 10:12:00 EST | Version 1.1.0
 Created: 2025-12-30 14:50:00 EST
 
 # Knowledge Base Patterns - MANDATORY READING
@@ -59,3 +59,26 @@ When starting a new KB-powered application:
 - ❌ Skip the anti-simplification patterns
 - ❌ Cache KB results
 - ❌ Respond without citing KB sources
+- ❌ Ship a KB without the Knowledge Universe visualization
+
+## 🌌 Knowledge Universe Visualization
+
+**A knowledge base isn't complete until users can SEE it.**
+
+Every KB-powered application MUST include the Knowledge Universe visualization:
+
+```bash
+# Build the visualization
+npm run kb:visual
+
+# View result
+open public/knowledge-universe.html
+```
+
+This provides:
+- Interactive 3D navigation of the entire KB
+- Click-to-expand category hierarchy
+- Search functionality
+- Visual validation that ingestion worked
+
+See `/ruvnet-kb-visual` skill for full documentation.

@@ -1,0 +1,62 @@
+{
+  "id": "root",
+  "name": "answerbot-builder",
+  "color": "#64b5f6",
+  "description": "Knowledge Base",
+  "version": "1.7.15",
+  "children": [
+    {
+      "id": "cat_readme",
+      "name": "README",
+      "color": "#ef4444",
+      "count": 1,
+      "children": [
+        {
+          "id": "item_1",
+          "name": "Getting Started",
+          "description": "Welcome to the knowledge base. Add content using kb:ingest....",
+          "color": "#ef4444",
+          "source": "README.md",
+          "type": "guide"
+        }
+      ]
+    },
+    {
+      "id": "cat_architecture",
+      "name": "architecture",
+      "color": "#f97316",
+      "count": 1,
+      "children": [
+        {
+          "id": "item_2",
+          "name": "Architecture",
+          "description": "This system uses vector embeddings for semantic search....",
+          "color": "#f97316",
+          "source": "architecture.md",
+          "type": "technical"
+        }
+      ]
+    },
+    {
+      "id": "cat_api",
+      "name": "api",
+      "color": "#eab308",
+      "count": 1,
+      "children": [
+        {
+          "id": "item_3",
+          "name": "API Reference",
+          "description": "API documentation will appear here after ingestion....",
+          "color": "#eab308",
+          "source": "api.md",
+          "type": "reference"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "totalItems": 3,
+    "categories": 3,
+    "generatedAt": "2025-12-30T14:49:57.420Z"
+  }
+}

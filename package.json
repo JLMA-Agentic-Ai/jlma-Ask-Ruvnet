@@ -7,10 +7,13 @@
     "build": "cd src/ui && npm install && npm run build",
     "start": "bash scripts/deployment/start-railway.sh",
     "postinstall": "node scripts/fix-agentic-flow.js || true",
-    "kb:ingest": "node scripts/kb-architecture-sync.js --ingest",
+    "kb:ingest": "node scripts/kb-architecture-sync.js --ingest && npm run kb:visual",
     "kb:watch": "node scripts/kb-architecture-sync.js --watch",
     "kb:status": "node scripts/kb-architecture-sync.js --status",
-    "kb:query": "node scripts/kb-architecture-sync.js --query"
+    "kb:query": "node scripts/kb-architecture-sync.js --query",
+    "kb:visual": "node scripts/build-kb-universe.js",
+    "kb:visual:screenshot": "node scripts/build-kb-universe.js --screenshot",
+    "kb:refresh": "node scripts/kb-refresh.js"
   },
   "keywords": [],
   "author": "",

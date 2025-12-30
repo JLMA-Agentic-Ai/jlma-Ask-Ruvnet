@@ -1,0 +1,120 @@
+#!/usr/bin/env node
+/**
+ * Build KB Universe Visualization
+ * Updated: 2025-12-30 09:55:00 EST | Version 1.0.0
+ * Created: 2025-12-30 09:55:00 EST
+ *
+ * Complete build script that:
+ * 1. Generates data from KB (PostgreSQL or local)
+ * 2. Copies template HTML
+ * 3. Optionally takes Playwright screenshots
+ *
+ * Usage:
+ *   node scripts/build-kb-universe.js [--screenshot] [--output-dir path]
+ *
+ * AUTO-UPDATE: Called by kb:ingest via postbuild hook
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { spawn } = require('child_process');
+
+const args = process.argv.slice(2);
+const takeScreenshot = args.includes('--screenshot');
+const outputDirIndex = args.indexOf('--output-dir');
+const outputDir = outputDirIndex !== -1 ? args[outputDirIndex + 1] : path.join(process.cwd(), 'public');
+
+async function runScript(scriptPath, args = []) {
+    return new Promise((resolve, reject) => {
+        const proc = spawn('node', [scriptPath, ...args], {
+            cwd: process.cwd(),
+            stdio: 'inherit'
+        });
+        proc.on('close', (code) => {
+            if (code === 0) resolve();
+            else reject(new Error(`Script exited with code ${code}`));
+        });
+        proc.on('error', reject);
+    });
+}
+
+async function main() {
+    console.log('');
+    console.log('╔═══════════════════════════════════════════════════════════════╗');
+    console.log('║           KB UNIVERSE BUILDER                                 ║');
+    console.log('║           Interactive Knowledge Base Visualization            ║');
+    console.log('╚═══════════════════════════════════════════════════════════════╝');
+    console.log('');
+
+    // Ensure output directory exists
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    // Step 1: Generate data
+    console.log('📊 Step 1: Generating KB data...');
+    console.log('');
+
+    const dataScript = path.join(__dirname, 'kb-universe-data.js');
+    const dataOutput = path.join(outputDir, 'kb-universe-data.json');
+
+    try {
+        await runScript(dataScript, ['--output', dataOutput]);
+    } catch (err) {
+        console.error('❌ Data generation failed:', err.message);
+        process.exit(1);
+    }
+
+    // Step 2: Copy template
+    console.log('');
+    console.log('📄 Step 2: Copying HTML template...');
+
+    const templateSrc = path.join(__dirname, '..', 'public', 'kb-universe-template.html');
+    const templateDest = path.join(outputDir, 'knowledge-universe.html');
+
+    // Read template and inject data path
+    let templateContent = fs.readFileSync(templateSrc, 'utf8');
+
+    // The template already looks for kb-universe-data.json in same directory
+    fs.writeFileSync(templateDest, templateContent);
+    console.log(`   ✅ Created: ${templateDest}`);
+
+    // Step 3: Optional screenshot
+    if (takeScreenshot) {
+        console.log('');
+        console.log('📸 Step 3: Taking screenshot with Playwright...');
+
+        const screenshotScript = path.join(__dirname, 'kb-universe-screenshot.js');
+        if (fs.existsSync(screenshotScript)) {
+            try {
+                await runScript(screenshotScript, ['--html', templateDest, '--output', outputDir]);
+            } catch (err) {
+                console.log(`   ⚠️ Screenshot failed: ${err.message}`);
+                console.log('   Run: npx playwright install chromium');
+            }
+        } else {
+            console.log('   ⚠️ Screenshot script not found');
+        }
+    }
+
+    // Summary
+    console.log('');
+    console.log('═══════════════════════════════════════════════════════════════');
+    console.log('✅ KB Universe Built Successfully!');
+    console.log('');
+    console.log('📁 Output Files:');
+    console.log(`   • ${path.relative(process.cwd(), dataOutput)} (data)`);
+    console.log(`   • ${path.relative(process.cwd(), templateDest)} (visualization)`);
+    console.log('');
+    console.log('🚀 To view:');
+    console.log(`   open ${path.relative(process.cwd(), templateDest)}`);
+    console.log('');
+    console.log('   Or serve locally:');
+    console.log(`   npx serve ${path.relative(process.cwd(), outputDir)}`);
+    console.log('═══════════════════════════════════════════════════════════════');
+}
+
+main().catch(err => {
+    console.error('Error:', err);
+    process.exit(1);
+});
