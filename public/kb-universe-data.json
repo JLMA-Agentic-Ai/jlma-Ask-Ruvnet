@@ -6,57 +6,3601 @@
   "version": "1.7.15",
   "children": [
     {
-      "id": "cat_readme",
-      "name": "README",
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/claude skills/ruvnet stack",
       "color": "#ef4444",
-      "count": 1,
+      "count": 20,
       "children": [
         {
-          "id": "item_1",
-          "name": "Getting Started",
-          "description": "Welcome to the knowledge base. Add content using kb:ingest....",
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_ruvnet",
+          "name": "RuvNet",
           "color": "#ef4444",
-          "source": "README.md",
-          "type": "guide"
+          "count": 1,
+          "children": [
+            {
+              "id": "item_240",
+              "name": "RuvNet Stack Setup",
+              "description": "Install and verify the complete RuvNet ecosystem for this project....",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "RuvNet Stack Setup"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_version",
+          "name": "Version",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_258",
+              "name": "Version Selection Logic",
+              "description": "The installer automatically chooses the best version for each package:\n\n1. **No @alpha tag exists** → Uses @latest\n2. **@alpha = @latest** → Uses @latest (more stable)\n3. **@alpha has higher MAJOR ver...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Version Selection Logic"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_installation",
+          "name": "Installation",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_244",
+              "name": "Installation",
+              "description": "Run the following commands to set up the RuvNet stack:\n\n```bash...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Installation"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_quick",
+          "name": "Quick",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_256",
+              "name": "Quick Reference",
+              "description": "After installation, you can use:\n\n```javascript\n// Vector database\nconst ruvector = require('ruvector');\nconst db = new ruvector.VectorDB(128);\n\n// LLM orchestration\nconst { RuvLLM } = require('@ruvec...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Quick Reference"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_check",
+          "name": "Check",
+          "color": "#ef4444",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_245",
+              "name": "Check if package.json exists",
+              "description": "if [ ! -f package.json ]; then\n  echo \"No package.json found. Initializing...\"\n  npm init -y\nfi\n\necho \"\"\necho \"╔═══════════════════════════════════════════════════════════════╗\"\necho \"║           RUVN...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Check if package.json exists"
+            },
+            {
+              "id": "item_252",
+              "name": "Check if Docker is available",
+              "description": "if command -v docker &> /dev/null; then\n  echo \"🐳 Docker detected. Setting up ruvector-postgres...\"\n\n  # Check if container already running and detect its port\n  if docker ps --format '{{.Names}}' | ...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Check if Docker is available"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_returns",
+          "name": "Returns",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_246",
+              "name": "Returns the better tag (@alpha or @latest) for a package",
+              "description": "get_best_version() {\n  local pkg=\"$1\"\n  local latest_ver=$(npm view \"${pkg}@latest\" version 2>/dev/null || echo \"0.0.0\")\n  local alpha_ver=$(npm view \"${pkg}@alpha\" version 2>/dev/null || echo \"0.0.0\"...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Returns the better tag (@alpha or @latest) for a package"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_smart",
+          "name": "Smart",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_247",
+              "name": "Smart install function",
+              "description": "smart_install() {\n  local pkg=\"$1\"\n  local desc=\"$2\"\n\n  echo \"🔍 Checking versions for $pkg...\"\n  local best=$(get_best_version \"$pkg\")\n  local tag=$(echo \"$best\" | cut -d'|' -f1)\n  local ver=$(echo \"...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Smart install function"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_install",
+          "name": "Install",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_248",
+              "name": "Install each package with smart version detection",
+              "description": "smart_install \"claude-flow\" \"Enterprise orchestration + Hive Mind\"\nsmart_install \"agentic-flow\" \"150+ agents, 213 MCP tools\"...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Install each package with smart version detection"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_mandatory:",
+          "name": "MANDATORY:",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_250",
+              "name": "MANDATORY: Start ruvector-postgres Docker container for knowledge bases",
+              "description": "echo \"\"\necho \"╔═══════════════════════════════════════════════════════════════╗\"\necho \"║           RUVECTOR-POSTGRES KNOWLEDGE BASE (MANDATORY)        ║\"\necho \"╚═══════════════════════════════════════...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "MANDATORY: Start ruvector-postgres Docker container for knowledge bases"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_extract",
+          "name": "Extract",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_251",
+              "name": "Extract project name for schema",
+              "description": "PROJECT_NAME=$(basename \"$(pwd)\" | tr '[:upper:]' '[:lower:]' | tr '-' '_' | tr ' ' '_')\necho \"📁 Project: $PROJECT_NAME\"\necho \"\"...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Extract project name for schema"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_initialize",
+          "name": "Initialize",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_253",
+              "name": "Initialize claude-flow (agents, commands, skills, hive-mind)",
+              "description": "echo \"\"\necho \"╔═══════════════════════════════════════════════════════════════╗\"\necho \"║           INITIALIZING CLAUDE-FLOW@ALPHA                      ║\"\necho \"╚═══════════════════════════════════════...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Initialize claude-flow (agents, commands, skills, hive-mind)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_packages",
+          "name": "Packages",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_257",
+              "name": "Packages Included",
+              "description": "| Package | Version Selection | Purpose |\n|---------|-------------------|---------|\n| `claude-flow` | **Dynamic** (auto-selects @alpha or @latest) | Enterprise orchestration, Hive Mind |\n| `agentic-fl...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Packages Included"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_verify",
+          "name": "Verify",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_255",
+              "name": "Verify all installations",
+              "description": "echo \"\"\necho \"╔═══════════════════════════════════════════════════════════════╗\"\necho \"║           VERIFYING INSTALLATION                              ║\"\necho \"╚═══════════════════════════════════════...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Verify all installations"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_store",
+          "name": "Store",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_254",
+              "name": "Store RuvNet knowledge in local memory",
+              "description": "echo \"\"\necho \"╔═══════════════════════════════════════════════════════════════╗\"\necho \"║           STORING KNOWLEDGE IN LOCAL MEMORY                   ║\"\necho \"╚═══════════════════════════════════════...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "Store RuvNet knowledge in local memory"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_ruvnet-stack",
+          "name": "ruvnet-stack",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_239",
+              "name": "ruvnet-stack",
+              "description": "Updated: 2025-12-30 14:45:00 EST | Version 1.3.0\nCreated: 2025-12-29 02:17:58 EST...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "document"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_fix:",
+          "name": "FIX:",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_249",
+              "name": "FIX: agentic-flow@alpha requires agent-booster as a peer dependency",
+              "description": "echo \"📦 Installing agent-booster (agentic-flow peer dependency)...\"\nnpm install agent-booster --save 2>/dev/null || true\necho \"\"\n\nsmart_install \"@ruvector/agentic-synth\" \"Synthetic data generation\"\ns...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "FIX: agentic-flow@alpha requires agent-booster as a peer dependency"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_critical:",
+          "name": "CRITICAL:",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_243",
+              "name": "CRITICAL: Knowledge Base Architecture",
+              "description": "**ALL knowledge bases MUST use ruvector-postgres with schema isolation:**\n\n```\nruvector-postgres (Docker on port 5434)\n├── Schema: askruvnet      → Ask-Ruvnet project KB\n├── Schema: bricksmith     → B...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "CRITICAL: Knowledge Base Architecture"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_what",
+          "name": "What",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_242",
+              "name": "What This Does",
+              "description": "1. **MANDATORY: Starts ruvector-postgres** Docker container for knowledge bases\n2. **Creates isolated schema** for this project (no data leakage)\n3. **Copies KB pattern documentation** to project docs...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "What This Does"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_stack_⚠️",
+          "name": "⚠️",
+          "color": "#ef4444",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_241",
+              "name": "⚠️ MANDATORY: Read ALL KB Documentation",
+              "description": "**Before building any KB-powered application, you MUST read the entire `docs/kb-patterns/` folder:**\n\n```\ndocs/kb-patterns/\n├── README.md                    ← START HERE (explains the system)\n├── know...",
+              "color": "#ef4444",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-stack.md",
+              "type": "⚠️ MANDATORY: Read ALL KB Documentation"
+            }
+          ]
         }
       ]
     },
     {
-      "id": "cat_architecture",
-      "name": "architecture",
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/kb production",
       "color": "#f97316",
-      "count": 1,
+      "count": 16,
       "children": [
         {
-          "id": "item_2",
-          "name": "Architecture",
-          "description": "This system uses vector embeddings for semantic search....",
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_volume",
+          "name": "Volume",
           "color": "#f97316",
-          "source": "architecture.md",
-          "type": "technical"
+          "count": 1,
+          "children": [
+            {
+              "id": "item_238",
+              "name": "Volume backup",
+              "description": "docker run --rm -v ruvector-kb-data:/data -v $(pwd):/backup \\\n    alpine tar czf /backup/kb-backup.tar.gz /data\n```...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Volume backup"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_restore",
+          "name": "Restore",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_237",
+              "name": "Restore",
+              "description": "docker exec -i ruvector-kb psql -U postgres < backup.sql...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Restore"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_backup",
+          "name": "Backup",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_236",
+              "name": "Backup",
+              "description": "docker exec ruvector-kb pg_dump -U postgres > backup.sql...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Backup"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_connection",
+          "name": "Connection",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_235",
+              "name": "Connection Pooling",
+              "description": "```javascript\nconst { Pool } = require('pg');\nconst pool = new Pool({\n    host: 'localhost',\n    port: 5435,\n    database: 'postgres',\n    user: 'postgres',\n    password: process.env.RUVECTOR_PASSWORD...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Connection Pooling"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_index",
+          "name": "Index",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_234",
+              "name": "Index Creation",
+              "description": "```sql\n-- HNSW index for faster search\nCREATE INDEX knowledge_embedding_idx\nON project_name.knowledge\nUSING hnsw (embedding vector_cosine_ops)\nWITH (m = 16, ef_construction = 200);\n```...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Index Creation"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_test",
+          "name": "Test",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_233",
+              "name": "Test connection",
+              "description": "PGPASSWORD=pwd psql -h localhost -p 5435 -U postgres -c \"SELECT 1\"\n```\n\n---...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Test connection"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_debug",
+          "name": "Debug",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_232",
+              "name": "Debug Commands",
+              "description": "```bash\nnpm run kb:status   # Check KB health\nnpm run kb:query    # Test search\nnpm run kb:ingest   # Force re-ingest\nnpm run kb:watch    # Start file watcher\n```...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Debug Commands"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_troubleshooting",
+          "name": "Troubleshooting",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_231",
+              "name": "Troubleshooting",
+              "description": "| Issue | Cause | Solution |\n|-------|-------|----------|\n| \"No KB results\" | Query too specific | Broaden query, lower minSimilarity |\n| Low similarity | Embedding mismatch | Verify embedding model |...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Troubleshooting"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_npm",
+          "name": "npm",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_230",
+              "name": "npm Scripts",
+              "description": "```json\n{\n  \"scripts\": {\n    \"kb:ingest\": \"node scripts/kb-architecture-sync.js --ingest\",\n    \"kb:watch\": \"node scripts/kb-architecture-sync.js --watch\",\n    \"kb:status\": \"node scripts/kb-architectur...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "npm Scripts"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_2.",
+          "name": "2.",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_228",
+              "name": "2. Create schema",
+              "description": "PGPASSWORD=your_password psql -h localhost -p 5435 -U postgres -c \"\nCREATE SCHEMA IF NOT EXISTS project_name;\nCREATE TABLE project_name.knowledge (\n    id SERIAL PRIMARY KEY,\n    title TEXT, content T...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "2. Create schema"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_1.",
+          "name": "1.",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_227",
+              "name": "1. Start ruvector-postgres",
+              "description": "docker run -d --name ruvector-kb \\\n  -e POSTGRES_PASSWORD=your_password \\\n  -p 5435:5432 \\\n  -v ruvector-kb-data:/var/lib/postgresql/data \\\n  ruvnet/ruvector-postgres:latest...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "1. Start ruvector-postgres"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_docker",
+          "name": "Docker",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_226",
+              "name": "Docker Compose",
+              "description": "```yaml\nversion: '3.8'\nservices:\n  ruvector-kb:\n    image: ruvnet/ruvector-postgres:latest\n    container_name: ruvector-kb\n    restart: always\n    environment:\n      POSTGRES_PASSWORD: ${RUVECTOR_PASS...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Docker Compose"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_production",
+          "name": "Production",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_225",
+              "name": "Production Architecture",
+              "description": "```\n┌─────────────────────────────────────────────────────────────┐\n│                    PRODUCTION STACK                          │\n└─────────────────────────────────────────────────────────────┘\n\n  ...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Production Architecture"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_kb",
+          "name": "KB",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_224",
+              "name": "KB Production Deployment",
+              "description": "**Deployment Patterns** - Docker, architecture, troubleshooting\n\n---...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "KB Production Deployment"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_kb-production",
+          "name": "kb-production",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_223",
+              "name": "kb-production",
+              "description": "Updated: 2025-12-30 14:30:00 EST | Version 1.0.0\nCreated: 2025-12-30 14:30:00 EST...",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "document"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_production_key",
+          "name": "Key",
+          "color": "#f97316",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_229",
+              "name": "Key APIs",
+              "description": "```javascript\n// Initialize KB access\nconst kb = new EnforcedKBAccess(kbClient, sessionId);\n\n// Query with enforcement\nconst result = await kb.query(\"your query\", {\n    limit: 5,\n    minSimilarity: 0....",
+              "color": "#f97316",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-production.md",
+              "type": "Key APIs"
+            }
+          ]
         }
       ]
     },
     {
-      "id": "cat_api",
-      "name": "api",
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/kb construction",
       "color": "#eab308",
-      "count": 1,
+      "count": 14,
       "children": [
         {
-          "id": "item_3",
-          "name": "API Reference",
-          "description": "API documentation will appear here after ingestion....",
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_hnsw",
+          "name": "HNSW",
           "color": "#eab308",
-          "source": "api.md",
-          "type": "reference"
+          "count": 1,
+          "children": [
+            {
+              "id": "item_221",
+              "name": "HNSW Configuration",
+              "description": "```javascript\nconst hnswConfig = {\n    M: 16,                    // Connections per layer (16-32)\n    efConstruction: 200,      // Build quality (200-400)\n    efSearch: 100,            // Search quali...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "HNSW Configuration"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_ruvector-postgres",
+          "name": "ruvector-postgres",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_220",
+              "name": "ruvector-postgres (RECOMMENDED)",
+              "description": "```sql\n-- Schema isolation\nCREATE SCHEMA IF NOT EXISTS project_name;\n\n-- Knowledge table\nCREATE TABLE project_name.knowledge (\n    id SERIAL PRIMARY KEY,\n    title TEXT NOT NULL,\n    content TEXT NOT ...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "ruvector-postgres (RECOMMENDED)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_write-ahead",
+          "name": "Write-Ahead",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_219",
+              "name": "Write-Ahead Log (WAL)",
+              "description": "```javascript\nasync writeWAL(op, data) {\n    const entry = { op, ts: Date.now(), data };\n    await appendFile(this.walPath, JSON.stringify(entry) + '\\n');\n}\n\nasync replayWAL() {\n    const lines = (awa...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Write-Ahead Log (WAL)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_binary",
+          "name": "Binary",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_218",
+              "name": "Binary Serialization",
+              "description": "```javascript\nasync save() {\n    const vectorBuffer = Buffer.alloc(vectorCount * dimensions * 4);\n    let offset = 0;\n    for (const [id, vector] of this.vectorCache.entries()) {\n        for (let i = ...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Binary Serialization"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_file",
+          "name": "File",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_217",
+              "name": "File Structure",
+              "description": "```\n.ruvector/\n├── knowledge-base/\n│   ├── vectors.bin       # Binary vectors (Float32Array)\n│   ├── metadata.json     # Metadata index\n│   ├── manifest.json     # Database manifest\n│   └── wal.log   ...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "File Structure"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_kb-construction",
+          "name": "kb-construction",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_209",
+              "name": "kb-construction",
+              "description": "Updated: 2025-12-30 14:30:00 EST | Version 1.0.0\nCreated: 2025-12-30 14:30:00 EST...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "document"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_deduplication",
+          "name": "Deduplication",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_216",
+              "name": "Deduplication (REQUIRED)",
+              "description": "```javascript\nconst crypto = require('crypto');\n\nfunction generateContentHash(content) {\n    return crypto.createHash('md5').update(content.trim()).digest('hex');\n}\n\nasync function insertWithDedup(db,...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Deduplication (REQUIRED)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_multi-format",
+          "name": "Multi-Format",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_215",
+              "name": "Multi-Format Support",
+              "description": "| Format | Parser | Chunking |\n|--------|--------|----------|\n| Markdown | Header-based | Section-based |\n| PDF | LlamaParse | Paragraph-based |\n| Code | AST | Function-based |\n| JSON/YAML | Structure...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Multi-Format Support"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_ingestion",
+          "name": "Ingestion",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_214",
+              "name": "Ingestion Pipeline",
+              "description": "```\nDocument → Parsing → Chunking → Embedding → Storage → Indexing\n```...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Ingestion Pipeline"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_metadata",
+          "name": "Metadata",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_213",
+              "name": "Metadata Enrichment (REQUIRED)",
+              "description": "```javascript\nconst enrichedMetadata = {\n    source: { path: filePath, type: 'documentation', hash: contentHash },\n    structure: { section: chunk.title, level: chunk.level },\n    semantic: { topics: ...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Metadata Enrichment (REQUIRED)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_topic",
+          "name": "Topic",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_212",
+              "name": "Topic Detection",
+              "description": "```javascript\nconst topicPatterns = [\n    { pattern: /ruvector|vector\\s*db|hnsw|embedding/i, topic: 'RuVector' },\n    { pattern: /ruvllm|sona|learning\\s*loop/i, topic: 'RuvLLM' },\n    { pattern: /agen...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Topic Detection"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_kb",
+          "name": "KB",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_210",
+              "name": "KB Construction Patterns",
+              "description": "**How to Build Knowledge Bases** - Chunking, embeddings, persistence, WAL\n\n---...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "KB Construction Patterns"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_section-based",
+          "name": "Section-Based",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_211",
+              "name": "Section-Based Chunking (REQUIRED)",
+              "description": "```javascript\nfunction parseMarkdownIntoChunks(content, filePath) {\n    const chunks = [];\n    const lines = content.split('\\n');\n    let currentSection = { title: 'Introduction', content: [], startLi...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Section-Based Chunking (REQUIRED)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_construction_coverage",
+          "name": "Coverage",
+          "color": "#eab308",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_222",
+              "name": "Coverage Analysis",
+              "description": "```javascript\nasync function analyzeCoverage(db) {\n    const expectedTopics = ['RuVector', 'RuvLLM', 'Agentic Flow', 'Claude Flow'];\n    const topicCounts = {};\n\n    // Count topics in KB\n    for (con...",
+              "color": "#eab308",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-construction.md",
+              "type": "Coverage Analysis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/kb agent integration",
+      "color": "#22c55e",
+      "count": 13,
+      "children": [
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_claude",
+          "name": "Claude",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_205",
+              "name": "Claude Flow Integration",
+              "description": "```javascript\nasync function hiveMindKBSwarm(objective, kbClient) {\n    const kb = new EnforcedKBAccess(kbClient, 'hive-mind-session');\n\n    const swarm = await initializeHiveMind({\n        topology: ...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "Claude Flow Integration"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_confidence",
+          "name": "Confidence",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_208",
+              "name": "Confidence Scoring",
+              "description": "```javascript\nfunction calculateConfidence(kbResults) {\n    if (kbResults.length === 0) return 0;\n    const avgSimilarity = kbResults.reduce((s,k) => s + k.similarity, 0) / kbResults.length;\n    const...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "Confidence Scoring"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_verification",
+          "name": "Verification",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_207",
+              "name": "Verification Checklist",
+              "description": "Before any agent response is finalized:\n\n- [ ] Response contains `kb_queries_made` array\n- [ ] Response contains `kb_results_used` with titles/sources\n- [ ] Response contains `raw_kb_content`\n- [ ] Re...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "Verification Checklist"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_enforcement",
+          "name": "Enforcement",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_206",
+              "name": "Enforcement Hooks",
+              "description": "```javascript\n// .claude/hooks/kb-enforcement.js\nmodule.exports = {\n    'pre-task': async ({ task }) => {\n        if (!task.kbQuery) {\n            task.kbQuery = task.description;\n        }\n    },\n\n  ...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "Enforcement Hooks"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_agentic",
+          "name": "Agentic",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_204",
+              "name": "Agentic Flow Integration",
+              "description": "```javascript\nimport { ModelRouter } from 'agentic-flow/router';\nimport * as reasoningbank from 'agentic-flow/reasoningbank';\n\nclass KBBoundAgentFlow {\n    constructor(kbClient) {\n        this.router ...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "Agentic Flow Integration"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_required",
+          "name": "Required",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_203",
+              "name": "Required Response Structure",
+              "description": "```javascript\n// EVERY agent response MUST include:\n{\n    answer: \"...\",\n    kb_queries_made: [\"query1\", \"query2\"],     // REQUIRED\n    kb_results_used: [                          // REQUIRED\n        ...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "Required Response Structure"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_enforcedkbaccess",
+          "name": "EnforcedKBAccess",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_202",
+              "name": "EnforcedKBAccess Class (REQUIRED)",
+              "description": "```javascript\nclass EnforcedKBAccess {\n    constructor(kbClient, sessionId) {\n        this.kb = kbClient;\n        this.sessionId = sessionId;\n        this.queryLog = [];\n        this.NO_CACHE = true; ...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "EnforcedKBAccess Class (REQUIRED)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_five",
+          "name": "Five",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_201",
+              "name": "Five Levels of Binding",
+              "description": "```\nLEVEL 1: QUERY BINDING\n├── Every question triggers KB query\n├── KB query is logged\n└── Zero tolerance for skipped queries\n\nLEVEL 2: CONTEXT BINDING\n├── KB results become part of prompt\n├── Agent s...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "Five Levels of Binding"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_forbidden",
+          "name": "Forbidden",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_200",
+              "name": "Forbidden Patterns",
+              "description": "```yaml\nFORBIDDEN PHRASES:\n  - \"Based on my understanding of the KB...\"\n  - \"The key principles are...\"\n  - \"From what I recall from the knowledge base...\"\n  - \"Generally speaking...\"\n\nREQUIRED PHRASE...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "Forbidden Patterns"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_the",
+          "name": "The",
+          "color": "#22c55e",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_199",
+              "name": "The Problem: Rule Distillation",
+              "description": "```\n❌ WRONG: Agent reads KB → Extracts \"5 key rules\" → Ignores KB → Uses rules only\n   Result: Lost nuance, missed edge cases, outdated info, wrong answers\n\n✅ CORRECT: Agent receives query → Queries K...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "The Problem: Rule Distillation"
+            },
+            {
+              "id": "item_198",
+              "name": "The Golden Rule: No Simplification",
+              "description": "```\n╔═══════════════════════════════════════════════════════════════════════════╗\n║   Agents MUST query the KB for EVERY question.                            ║\n║   Agents MUST NOT simplify, summarize,...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "The Golden Rule: No Simplification"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_kb",
+          "name": "KB",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_197",
+              "name": "KB Agent Integration Patterns",
+              "description": "**How to Use Knowledge Bases with Agents** - Binding, anti-simplification, enforcement\n\n---...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "KB Agent Integration Patterns"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_agent_integration_kb-agent-integration",
+          "name": "kb-agent-integration",
+          "color": "#22c55e",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_196",
+              "name": "kb-agent-integration",
+              "description": "Updated: 2025-12-30 14:30:00 EST | Version 1.0.0\nCreated: 2025-12-30 14:30:00 EST...",
+              "color": "#22c55e",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/kb-agent-integration.md",
+              "type": "document"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/claude skills/ruvnet update",
+      "color": "#06b6d4",
+      "count": 13,
+      "children": [
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_ruvnet-update",
+          "name": "ruvnet-update",
+          "color": "#06b6d4",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_183",
+              "name": "ruvnet-update",
+              "description": "Updated: 2025-12-29 10:05:00 EST | Version 1.1.0\nCreated: 2025-12-29 02:17:58 EST...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "document"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_related",
+          "name": "Related",
+          "color": "#06b6d4",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_195",
+              "name": "Related Commands",
+              "description": "- `/ruvnet-stack` - Install full RuvNet ecosystem from scratch\n- `/ruvnet-update` - Update existing RuvNet packages (this command)\n- `/ruvnet-kb` - Link the RuvNet knowledge base to current project...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Related Commands"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_version",
+          "name": "Version",
+          "color": "#06b6d4",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_194",
+              "name": "Version Selection Logic",
+              "description": "The updater automatically chooses the best version:\n\n1. **No @alpha tag exists** → Uses @latest\n2. **@alpha = @latest** → Uses @latest (more stable)\n3. **@alpha has higher MAJOR version** → Uses @alph...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Version Selection Logic"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_check",
+          "name": "Check",
+          "color": "#06b6d4",
+          "count": 3,
+          "children": [
+            {
+              "id": "item_193",
+              "name": "Check what's installed",
+              "description": "npm list ruvector @ruvector/ruvllm agentic-flow claude-flow\n```...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Check what's installed"
+            },
+            {
+              "id": "item_190",
+              "name": "Check each RuvNet package",
+              "description": "PACKAGES=(\"ruvector\" \"@ruvector/ruvllm\" \"@ruvector/agentic-synth\" \"agentic-flow\" \"claude-flow\")\nUPDATES_NEEDED=()\n\nfor pkg in \"${PACKAGES[@]}\"; do\n  local_ver=$(node -e \"\n    try {\n      const p = req...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Check each RuvNet package"
+            },
+            {
+              "id": "item_188",
+              "name": "Check if this is a RuvNet project",
+              "description": "if [ ! -f package.json ]; then\n  echo \"❌ No package.json found. This doesn't appear to be a Node.js project.\"\n  exit 1\nfi\n\nif ! grep -qE \"ruvector|@ruvector|agentic-flow|claude-flow\" package.json 2>/d...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Check if this is a RuvNet project"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_update",
+          "name": "Update",
+          "color": "#06b6d4",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_192",
+              "name": "Update all RuvNet packages",
+              "description": "npm update ruvector @ruvector/ruvllm @ruvector/agentic-synth agentic-flow claude-flow...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Update all RuvNet packages"
+            },
+            {
+              "id": "item_186",
+              "name": "Update Check",
+              "description": "Run the following commands to check and update RuvNet packages:\n\n```bash\necho \"\"\necho \"╔═══════════════════════════════════════════════════════════════╗\"\necho \"║           RUVNET UPDATE CHECK         ...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Update Check"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_manual",
+          "name": "Manual",
+          "color": "#06b6d4",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_191",
+              "name": "Manual Commands",
+              "description": "If you prefer to update specific packages manually:\n\n```bash...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Manual Commands"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_function",
+          "name": "Function",
+          "color": "#06b6d4",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_189",
+              "name": "Function to get the best version (alpha vs latest)",
+              "description": "get_best_tag() {\n  local pkg=\"$1\"\n  local latest_ver=$(npm view \"${pkg}@latest\" version 2>/dev/null || echo \"0.0.0\")\n  local alpha_ver=$(npm view \"${pkg}@alpha\" version 2>/dev/null || echo \"0.0.0\")\n\n ...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "Function to get the best version (alpha vs latest)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_mandatory:",
+          "name": "MANDATORY:",
+          "color": "#06b6d4",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_187",
+              "name": "MANDATORY: Check ruvector-postgres container",
+              "description": "echo \"🗄️  Checking ruvector-postgres (MANDATORY for knowledge bases)...\"\nif command -v docker &> /dev/null; then\n  if docker ps --format '{{.Names}}' 2>/dev/null | grep -q \"ruvector-kb\"; then\n    ech...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "MANDATORY: Check ruvector-postgres container"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_what",
+          "name": "What",
+          "color": "#06b6d4",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_185",
+              "name": "What This Does",
+              "description": "1. **Checks** ruvector-postgres Docker container status (MANDATORY for knowledge bases)\n2. **Checks** all installed RuvNet packages against npm registry\n3. **Compares** @latest vs @alpha versions (use...",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "What This Does"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_update_ruvnet",
+          "name": "RuvNet",
+          "color": "#06b6d4",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_184",
+              "name": "RuvNet Update",
+              "description": "Check for and install the latest RuvNet ecosystem packages in the current project....",
+              "color": "#06b6d4",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-update.md",
+              "type": "RuvNet Update"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/claude skills/ruvnet kb",
+      "color": "#3b82f6",
+      "count": 13,
+      "children": [
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_creating",
+          "name": "Creating",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_160",
+              "name": "Creating Your Domain Knowledge Base",
+              "description": "Your project's domain-specific content goes in `.ruvector/domain/`:\n\n```javascript\nconst { RuvectorStore } = require('ruvector');\n\n// Domain knowledge - isolated to this project\nconst domainKB = new R...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "Creating Your Domain Knowledge Base"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_key",
+          "name": "Key",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_163",
+              "name": "Key Principle",
+              "description": "**Tool Knowledge = HOW to build** (universal, shared)\n**Domain Knowledge = WHAT you're building** (project-specific, isolated)\n\nYour Retirement project, Bricksmith project, and Appeal Armor project al...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "Key Principle"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_related",
+          "name": "Related",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_162",
+              "name": "Related Commands",
+              "description": "| Command | What It Does |\n|---------|--------------|\n| `/ruvnet-stack` | Full install + links tool knowledge |\n| `/ruvnet-update` | Update packages + verify tool link |\n| `/ruvnet-kb` | Link tool kno...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "Related Commands"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_querying",
+          "name": "Querying",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_161",
+              "name": "Querying Both Layers",
+              "description": "```javascript\n// Query tool knowledge: \"How do I spawn agents?\"\nconst toolResults = await queryRuvnetTools('parallel agent spawning');\n\n// Query domain knowledge: \"What's the 401k limit?\"\nconst domain...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "Querying Both Layers"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_storage",
+          "name": "Storage",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_159",
+              "name": "Storage Architecture",
+              "description": "| Location | Purpose | Access |\n|----------|---------|--------|\n| `~/.claude/knowledge/ruvnet-kb/` | Global tool knowledge (source) | READ-ONLY |\n| `.ruvector/ruvnet-tools/` | Symlink to global tool k...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "Storage Architecture"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_3.",
+          "name": "3.",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_158",
+              "name": "3. Reports status",
+              "description": "echo \"✅ Tool knowledge: 2,152 vectors (ruvnet-tools/)\"\necho \"📁 Domain knowledge: .ruvector/domain/ (your content)\"\n```...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "3. Reports status"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_2.",
+          "name": "2.",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_157",
+              "name": "2. Links tool knowledge (READ-ONLY)",
+              "description": "ln -s ~/.claude/knowledge/ruvnet-kb .ruvector/ruvnet-tools...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "2. Links tool knowledge (READ-ONLY)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_when",
+          "name": "When",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_156",
+              "name": "When To Use This Command",
+              "description": "Run `/ruvnet-kb` when you need:\n- Access to RuvNet tool documentation in your project\n- To query \"how do I use X?\" for any agentic tool\n- Expert guidance on agent spawning, swarm patterns, etc.\n\n**Thi...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "When To Use This Command"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_topics",
+          "name": "Topics",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_155",
+              "name": "Topics Covered (Tool Knowledge Only)",
+              "description": "| Category | What You Can Ask |\n|----------|------------------|\n| **Core Packages** | How to use ruvector, ruvllm, agentic-flow, claude-flow |\n| **Agent System** | How to spawn 150+ agent types, paral...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "Topics Covered (Tool Knowledge Only)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_what's",
+          "name": "What's",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_154",
+              "name": "What's In The Tool Knowledge Base",
+              "description": "| Content | Size |\n|---------|------|\n| **2,152 vectors** | 768-dimensional embeddings (nomic-embed-text) |\n| **47 documentation files** | 36,949 lines of expert-level docs |\n| **38 tracked features**...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "What's In The Tool Knowledge Base"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_two-layer",
+          "name": "Two-Layer",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_153",
+              "name": "Two-Layer Architecture",
+              "description": "```\nYOUR_PROJECT/.ruvector/\n│\n├── ruvnet-tools/     → ~/.claude/knowledge/ruvnet-kb/  (READ-ONLY)\n│                        Expert docs on HOW to use the tools\n│                        Shared across AL...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "Two-Layer Architecture"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_what",
+          "name": "What",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_152",
+              "name": "What This Command Does",
+              "description": "Links the **RuvNet Tool Knowledge** to your project as a READ-ONLY reference layer. This gives you expert knowledge about HOW to use the agentic tools, completely separate from your project's domain-s...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "What This Command Does"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_kb_ruvnet-kb",
+          "name": "ruvnet-kb",
+          "color": "#3b82f6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_151",
+              "name": "ruvnet-kb",
+              "description": "Updated: 2025-12-29 02:26:43 EST | Version 1.0.1\nCreated: 2025-12-29 02:17:58 EST...",
+              "color": "#3b82f6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-kb.md",
+              "type": "document"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/claude skills/ruvnet ecosystem skill",
+      "color": "#8b5cf6",
+      "count": 19,
+      "children": [
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_package",
+          "name": "Package",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_138",
+              "name": "Package Reference",
+              "description": "| Package | Version | Purpose |\n|---------|---------|---------|\n| `ruvector` | @latest | Vector DB, HNSW indexing, 61μs latency |\n| `@ruvector/ruvllm` | 0.2.3 | Self-learning LLM, TRM reasoning, SONA ...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Package Reference"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_when",
+          "name": "When",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_150",
+              "name": "When to Use",
+              "description": "- **ruvector**: Semantic search, RAG, embeddings, graph queries\n- **@ruvector/ruvllm**: Self-learning LLMs, routing, SONA optimization\n- **agentic-flow**: Multi-agent workflows, 150+ specialized agent...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "When to Use"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_github",
+          "name": "GitHub",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_149",
+              "name": "GitHub Repositories",
+              "description": "| Package | URL |\n|---------|-----|\n| RuVector | https://github.com/ruvnet/ruvector |\n| Agentic Flow | https://github.com/ruvnet/agentic-flow |\n| Claude Flow | https://github.com/ruvnet/claude-flow |\n...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "GitHub Repositories"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_issue:",
+          "name": "Issue:",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_148",
+              "name": "Issue: Verify installation",
+              "description": "```bash\nnode -e \"console.log('ruvector:', typeof require('ruvector'))\"\nnode -e \"console.log('ruvllm:', typeof require('@ruvector/ruvllm'))\"\nnode -e \"console.log('agentic-flow:', typeof require('agenti...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Issue: Verify installation"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_claude",
+          "name": "Claude",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_147",
+              "name": "Claude Flow Enterprise",
+              "description": "- 84.8% SWE-Bench solve rate\n- 32.3% token reduction\n- 64 specialized agents\n- AgentDB v1.3.9: 96x-164x faster vector search\n\n---...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Claude Flow Enterprise"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_agentic",
+          "name": "Agentic",
+          "color": "#8b5cf6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_146",
+              "name": "Agentic Flow Agents",
+              "description": "- Development: coder, reviewer, tester, planner, researcher\n- Swarm: hierarchical-coordinator, mesh-coordinator, adaptive-coordinator\n- GitHub: pr-manager, code-review-swarm, issue-tracker, release-ma...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Agentic Flow Agents"
+            },
+            {
+              "id": "item_141",
+              "name": "Agentic Flow - Agent Platform",
+              "description": "```javascript\nimport { ModelRouter } from 'agentic-flow/router';\nimport * as reasoningbank from 'agentic-flow/reasoningbank';\n\n// Model routing\nconst router = new ModelRouter();\nconst response = await...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Agentic Flow - Agent Platform"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_ruvllm",
+          "name": "RuvLLM",
+          "color": "#8b5cf6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_145",
+              "name": "RuvLLM Learning Loops",
+              "description": "1. **Instant Loop** (<100μs): Per-request MicroLoRA adaptation\n2. **Background Loop** (Hourly): K-means++ pattern extraction\n3. **Deep Loop** (Weekly): EWC++ consolidation...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "RuvLLM Learning Loops"
+            },
+            {
+              "id": "item_140",
+              "name": "RuvLLM - LLM Orchestration",
+              "description": "```javascript\nconst { RuvLLM, Config } = require('@ruvector/ruvllm');\n\nconst llm = new RuvLLM({\n  embeddingDim: 768,\n  routerHiddenDim: 128,\n  learningEnabled: true\n});\n\nconst session = llm.newSession...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "RuvLLM - LLM Orchestration"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_ruvector",
+          "name": "RuVector",
+          "color": "#8b5cf6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_144",
+              "name": "RuVector Performance",
+              "description": "- HNSW Search: 61μs p50 latency, 16,400 QPS\n- Cosine Distance: 143ns, 7M ops/sec\n- 39 attention mechanisms (Flash, Linear, Graph, Hyperbolic)\n- SONA: Self-Optimizing Neural Architecture...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "RuVector Performance"
+            },
+            {
+              "id": "item_139",
+              "name": "RuVector - Vector Database",
+              "description": "```javascript\nconst ruvector = require('ruvector');\n\n// Vector operations\nconst db = new ruvector.VectorDB(128); // 128 dimensions\ndb.insert('doc1', embedding);\nconst results = db.search(queryEmbeddin...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "RuVector - Vector Database"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_query",
+          "name": "Query",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_143",
+              "name": "Query memory",
+              "description": "npx claude-flow@alpha memory query \"auth\" --recent\n```\n\n---...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Query memory"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_spawn",
+          "name": "Spawn",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_142",
+              "name": "Spawn hive-mind agent",
+              "description": "npx claude-flow@alpha hive-mind spawn \"Implement auth\" --claude...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Spawn hive-mind agent"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_verify",
+          "name": "Verify",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_137",
+              "name": "Verify ruvector loads",
+              "description": "node -e \"require('ruvector')\" && echo \"ruvector loaded successfully\"\n```\n\n---...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Verify ruvector loads"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_install",
+          "name": "Install",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_136",
+              "name": "Install all packages - try latest versions",
+              "description": "npm install ruvector@latest @ruvector/ruvllm@latest agentic-flow@latest claude-flow@latest...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Install all packages - try latest versions"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_one-line",
+          "name": "One-Line",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_135",
+              "name": "One-Line Global Setup",
+              "description": "```bash\ncurl -sL https://raw.githubusercontent.com/stuinfla/ruvnet-claude-integration/main/install.sh | bash\n```...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "One-Line Global Setup"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_overview",
+          "name": "Overview",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_134",
+              "name": "Overview",
+              "description": "RuvNet is a comprehensive AI orchestration ecosystem with high-performance vector databases, self-learning LLM orchestration, and enterprise agent coordination.\n\n---...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Overview"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_triggers",
+          "name": "Triggers",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_133",
+              "name": "Triggers",
+              "description": "- \"ruvnet\", \"ruvector\", \"vector database\", \"ruvllm\", \"agentic-flow\", \"claude-flow\"\n- \"ai orchestration\", \"agent swarm\", \"neural patterns\", \"multi-agent\"...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "Triggers"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/claude_skills/ruvnet_ecosystem_skill_ruvnet-ecosystem-ski",
+          "name": "ruvnet-ecosystem-ski",
+          "color": "#8b5cf6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_132",
+              "name": "ruvnet-ecosystem-skill",
+              "description": "Updated: 2025-12-29 02:26:43 EST | Version 1.0.1\nCreated: 2025-12-19 10:31:00 EST...",
+              "color": "#8b5cf6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/claude-skills/ruvnet-ecosystem-skill.md",
+              "type": "document"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/MULTI BUSINESS VECTOR ARCHITECTURE v2",
+      "color": "#ec4899",
+      "count": 33,
+      "children": [
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_get",
+          "name": "Get",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_124",
+              "name": "Get deployment URL",
+              "description": "DEPLOY_URL=$(railway status --json | jq -r '.deploymentUrl')\n\necho \"\"\necho \"=== Deployment Complete ===\"\necho \"Business: $BUSINESS\"\necho \"URL: https://$DEPLOY_URL\"\necho \"Health: https://$DEPLOY_URL/he...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Get deployment URL"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_multi-business-vecto",
+          "name": "MULTI-BUSINESS-VECTO",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_99",
+              "name": "MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2",
+              "description": "Updated: 2025-12-29 17:45:00 EST | Version 2.0.0\nCreated: 2025-12-29 17:45:00 EST...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "document"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_executive",
+          "name": "Executive",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_100",
+              "name": "Executive Summary",
+              "description": "This document defines the CORRECT architecture for multi-business knowledge base management that satisfies:\n\n1. **Independent Production Deployments** - Each business can be forked to its own Railway/...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Executive Summary"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_why",
+          "name": "Why",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_101",
+              "name": "Why NOT Single Container (Option A from previous discussion)?",
+              "description": "The single-container approach has a fatal flaw:\n\n```\nPROBLEM: If all businesses share one PostgreSQL container...\n- How do you \"fork\" retirewell to Railway?\n- You'd need to EXTRACT schema + data (mess...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Why NOT Single Container (Option A from previous discussion)?"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_the",
+          "name": "The",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_102",
+              "name": "The Correct Architecture",
+              "description": "```\n+------------------------------------------------------------------+\n|                        LOCAL DEVELOPMENT                          |\n+--------------------------------------------------------...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "The Correct Architecture"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_1.",
+          "name": "1.",
+          "color": "#ec4899",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_103",
+              "name": "1. One Container Per Business (Isolation)",
+              "description": "Each business gets its OWN PostgreSQL container:\n\n```yaml...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "1. One Container Per Business (Isolation)"
+            },
+            {
+              "id": "item_107",
+              "name": "1. Export utilities snapshot (one-time, ~3MB)",
+              "description": "curl http://utilities:5100/api/export > utilities-snapshot.json...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "1. Export utilities snapshot (one-time, ~3MB)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_each",
+          "name": "Each",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_104",
+              "name": "Each business is a self-contained unit",
+              "description": "retirewell/\n  ├── docker-compose.yml      # Standalone compose file\n  ├── .env                    # Business-specific config\n  ├── Dockerfile              # Optional custom image\n  └── data/          ...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Each business is a self-contained unit"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_2.",
+          "name": "2.",
+          "color": "#ec4899",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_105",
+              "name": "2. Utilities KB is a SERVICE, Not Data (API Pattern)",
+              "description": "The RuvNet tools knowledge base is accessed via API, NEVER duplicated:\n\n```javascript\n// CORRECT: Query utilities via API\nasync function searchUtilities(query) {\n  const response = await fetch('http:/...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "2. Utilities KB is a SERVICE, Not Data (API Pattern)"
+            },
+            {
+              "id": "item_108",
+              "name": "2. Bundle with business",
+              "description": "railway up --include utilities-snapshot.json\n```\n\n---...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "2. Bundle with business"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_3.",
+          "name": "3.",
+          "color": "#ec4899",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_106",
+              "name": "3. Production Gets Embedded Utilities (Exception)",
+              "description": "When a business goes to production WITHOUT utilities API access:\n\n```javascript\n// Production mode: utilities are pre-embedded at deploy time\nif (process.env.NODE_ENV === 'production' && !process.env....",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "3. Production Gets Embedded Utilities (Exception)"
+            },
+            {
+              "id": "item_127",
+              "name": "3. Test production deployment",
+              "description": "curl https://retirewell-production.up.railway.app/health...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "3. Test production deployment"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_local",
+          "name": "Local",
+          "color": "#ec4899",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_109",
+              "name": "Local Development Query Flow",
+              "description": "```\nClient Request: \"How do I spawn 150 agents for retirement planning?\"\n\n1. API Gateway receives query\n   └── Route to: retirewell API (domain context)\n\n2. Retirewell API processes:\n   a. Search LOCA...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Local Development Query Flow"
+            },
+            {
+              "id": "item_111",
+              "name": "Local Development Root",
+              "description": "```\nmulti-business-kb/\n├── docker-compose.yml           # Orchestrates ALL containers\n├── gateway/\n│   ├── index.js                 # API Gateway router\n│   └── Dockerfile\n│\n├── utilities/            ...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Local Development Root"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_production",
+          "name": "Production",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_110",
+              "name": "Production Query Flow (Independent Business)",
+              "description": "```\nClient Request: \"How do I spawn 150 agents for retirement planning?\"\n\n1. Retirewell Production API processes:\n   a. Search LOCAL business KB (Railway Postgres)\n      └── Retirement domain knowledg...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Production Query Flow (Independent Business)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_docker-compose.yml",
+          "name": "docker-compose.yml",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_112",
+              "name": "docker-compose.yml (ROOT - local dev only)",
+              "description": "version: '3.8'\n\nservices:\n  # API Gateway - routes to all services\n  gateway:\n    build: ./gateway\n    ports:\n      - \"5000:5000\"\n    environment:\n      - UTILITIES_URL=http://utilities:5100\n      - R...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "docker-compose.yml (ROOT - local dev only)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_this",
+          "name": "This",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_113",
+              "name": "This file is used when deploying retirewell INDEPENDENTLY",
+              "description": "version: '3.8'\n\nservices:\n  api:\n    build: .\n    ports:\n      - \"5101:5101\"\n    environment:\n      - BUSINESS_NAME=retirewell\n      - DATABASE_URL=${DATABASE_URL:-postgres://postgres:postgres@db:5432...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "This file is used when deploying retirewell INDEPENDENTLY"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_business",
+          "name": "Business",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_114",
+              "name": "Business API (businesses/retirewell/api/index.js)",
+              "description": "```javascript\n/**\n * RetireWell Business API\n *\n * This API is INDEPENDENTLY DEPLOYABLE:\n * - Has its own PostgreSQL with pgvector\n * - Can query utilities API in dev, uses embedded snapshot in prod\n ...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Business API (businesses/retirewell/api/index.js)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_utilities",
+          "name": "Utilities",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_115",
+              "name": "Utilities API (utilities/api/index.js)",
+              "description": "```javascript\n/**\n * Utilities API - Shared RuvNet Tools Knowledge Base\n *\n * READ-ONLY service providing:\n * - Agent spawning patterns\n * - Swarm configurations\n * - Deployment guides\n * - MCP tool r...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Utilities API (utilities/api/index.js)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_forks",
+          "name": "Forks",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_116",
+              "name": "Forks any business to Railway with minimal effort",
+              "description": "set -e\n\nBUSINESS=$1\nif [ -z \"$BUSINESS\" ]; then\n  echo \"Usage: ./fork-to-railway.sh <business-name>\"\n  echo \"Example: ./fork-to-railway.sh retirewell\"\n  exit 1\nfi\n\nBUSINESS_DIR=\"businesses/$BUSINESS\"\n...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Forks any business to Railway with minimal effort"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_step",
+          "name": "Step",
+          "color": "#ec4899",
+          "count": 3,
+          "children": [
+            {
+              "id": "item_117",
+              "name": "Step 1: Embed utilities snapshot",
+              "description": "echo \"1. Embedding utilities snapshot...\"\nmkdir -p \"$BUSINESS_DIR/utilities-snapshot\"\n\ncurl -s http://localhost:5100/api/export > \"$BUSINESS_DIR/utilities-snapshot/utilities.json\"...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Step 1: Embed utilities snapshot"
+            },
+            {
+              "id": "item_119",
+              "name": "Step 2: Create railway.json if not exists",
+              "description": "if [ ! -f \"$BUSINESS_DIR/railway.json\" ]; then\n  cat > \"$BUSINESS_DIR/railway.json\" << EOF\n{\n  \"\\$schema\": \"https://railway.app/railway.schema.json\",\n  \"build\": {\n    \"builder\": \"DOCKERFILE\",\n    \"doc...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Step 2: Create railway.json if not exists"
+            },
+            {
+              "id": "item_120",
+              "name": "Step 3: Deploy to Railway",
+              "description": "echo \"2. Deploying to Railway...\"\ncd \"$BUSINESS_DIR\"...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Step 3: Deploy to Railway"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_convert",
+          "name": "Convert",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_118",
+              "name": "Convert JSON to binary format for efficiency",
+              "description": "node scripts/convert-utilities-snapshot.js \"$BUSINESS_DIR/utilities-snapshot\"\n\necho \"   Utilities snapshot embedded: $(wc -c < \"$BUSINESS_DIR/utilities-snapshot/vectors.bin\") bytes\"...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Convert JSON to binary format for efficiency"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_check",
+          "name": "Check",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_121",
+              "name": "Check if Railway CLI is available",
+              "description": "if ! command -v railway &> /dev/null; then\n  echo \"Error: Railway CLI not found. Install with: npm i -g @railway/cli\"\n  exit 1\nfi...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Check if Railway CLI is available"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_add",
+          "name": "Add",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_122",
+              "name": "Add PostgreSQL if not already added",
+              "description": "echo \"3. Provisioning PostgreSQL...\"\nrailway add --plugin postgresql 2>/dev/null || echo \"   PostgreSQL already provisioned\"...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Add PostgreSQL if not already added"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_deploy",
+          "name": "Deploy",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_123",
+              "name": "Deploy",
+              "description": "echo \"4. Deploying application...\"\nrailway up --detach...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Deploy"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_verify",
+          "name": "Verify",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_125",
+              "name": "Verify services",
+              "description": "curl http://localhost:5000/health          # Gateway\ncurl http://localhost:5100/api/stats       # Utilities\ncurl http://localhost:5101/health          # RetireWell\ncurl http://localhost:5102/health   ...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Verify services"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_test",
+          "name": "Test",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_126",
+              "name": "Test unified query",
+              "description": "curl -X POST http://localhost:5000/api/search \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"How to spawn agents for retirement planning\", \"business\": \"retirewell\"}'\n```...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Test unified query"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_4.",
+          "name": "4.",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_128",
+              "name": "4. Deploy with Supabase connection",
+              "description": "cd businesses/retirewell\nDATABASE_URL=\"postgresql://postgres:xxx@db.xxx.supabase.co:5432/postgres\" \\\n  docker-compose up -d api...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "4. Deploy with Supabase connection"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_or",
+          "name": "Or",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_129",
+              "name": "Or deploy to any hosting with Supabase as DB",
+              "description": "fly deploy --env DATABASE_URL=\"postgresql://...\"\n```...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Or deploy to any hosting with Supabase as DB"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_key",
+          "name": "Key",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_130",
+              "name": "Key Differentiators from Previous Architecture",
+              "description": "| Aspect | Previous (Single Container) | New (Federated) |\n|--------|---------------------------|-----------------|\n| Business isolation | Shared DB, schema separation | Separate containers |\n| Fork t...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Key Differentiators from Previous Architecture"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/multi_business_vector_architecture_v2_summary",
+          "name": "Summary",
+          "color": "#ec4899",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_131",
+              "name": "Summary",
+              "description": "This architecture provides:\n\n1. **True Independence**: Each business is a complete, deployable unit\n2. **Shared Utilities via API**: No data duplication in development\n3. **Embedded Utilities for Prod...",
+              "color": "#ec4899",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/MULTI-BUSINESS-VECTOR-ARCHITECTURE-v2.md",
+              "type": "Summary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/KNOWLEDGE BASE ACCESS ARCHITECTURE",
+      "color": "#6366f1",
+      "count": 27,
+      "children": [
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_option",
+          "name": "Option",
+          "color": "#6366f1",
+          "count": 6,
+          "children": [
+            {
+              "id": "item_81",
+              "name": "Option 5: Unix Socket / Local IPC",
+              "description": "**Description:** Expose PostgreSQL via Unix socket for local-only access.\n\n**Evaluation:**\n\n| Criterion | Score (1-10) | Notes |\n|-----------|--------------|-------|\n| Simplicity | 4 | Docker socket m...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Option 5: Unix Socket / Local IPC"
+            },
+            {
+              "id": "item_80",
+              "name": "Option 4: GraphQL Interface",
+              "description": "**Description:** Deploy a GraphQL server that exposes the knowledge base with typed queries.\n\n**Evaluation:**\n\n| Criterion | Score (1-10) | Notes |\n|-----------|--------------|-------|\n| Simplicity | ...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Option 4: GraphQL Interface"
+            },
+            {
+              "id": "item_79",
+              "name": "Option 3: Direct PostgreSQL Access",
+              "description": "**Description:** Share the connection string and let consumers connect directly via psql, pg library, or native drivers.\n\n**Architecture:**\n```\n┌───────────────────────────────────────────────────────...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Option 3: Direct PostgreSQL Access"
+            },
+            {
+              "id": "item_78",
+              "name": "Option 2: REST API Layer",
+              "description": "**Description:** Deploy a lightweight HTTP API (Express/Fastify) that exposes the knowledge base via REST endpoints.\n\n**Architecture:**\n```\n┌───────────────────────────────────────────────────────────...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Option 2: REST API Layer"
+            },
+            {
+              "id": "item_77",
+              "name": "Option 1: MCP Server Integration",
+              "description": "**Description:** Create a dedicated MCP server that wraps the PostgreSQL knowledge base, exposing semantic search, retrieval, and management functions.\n\n**Architecture:**\n```\n┌────────────────────────...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Option 1: MCP Server Integration"
+            },
+            {
+              "id": "item_82",
+              "name": "Option 6: Shared Volume Approach",
+              "description": "**Description:** Mount the PostgreSQL data directory as a shared volume accessible by other containers.\n\n**Verdict:** Dangerous. PostgreSQL does not support concurrent access from multiple instances. ...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Option 6: Shared Volume Approach"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_secondary:",
+          "name": "Secondary:",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_84",
+              "name": "Secondary: Direct PostgreSQL Access (Fallback)",
+              "description": "**When to Use:**\n- MCP server not running\n- Need raw SQL power\n- Bulk operations\n- Non-Claude-Code consumers\n\n**Connection String:**\n```\npostgresql://postgres:guruKB2025@localhost:5435/postgres\n```\n\n*...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Secondary: Direct PostgreSQL Access (Fallback)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_schema",
+          "name": "Schema",
+          "color": "#6366f1",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_76",
+              "name": "Schema Isolation Pattern",
+              "description": "```\npostgres (database)\n├── public (ruvector extension + functions)\n├── askruvnet (project: Ask-Ruvnet)\n│   └── guru_knowledge (656 vectors)\n├── presenter_mode (project: Presenter)\n│   └── [knowledge ...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Schema Isolation Pattern"
+            },
+            {
+              "id": "item_87",
+              "name": "Schema Isolation",
+              "description": "Each project gets its own schema:\n```sql\nCREATE SCHEMA IF NOT EXISTS myproject;\nCREATE TABLE myproject.guru_knowledge (\n  -- same structure as askruvnet.guru_knowledge\n);\n```...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Schema Isolation"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_data",
+          "name": "Data",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_75",
+              "name": "Data Profile",
+              "description": "| Metric | Value |\n|--------|-------|\n| Total Vectors | 656 |\n| Content Size | 720 KB |\n| Embedding Size | 997 KB |\n| Embedding Model | all-MiniLM-L6-v2 (384 dimensions) |\n| Schemas | `askruvnet`, `ru...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Data Profile"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_infrastructure",
+          "name": "Infrastructure",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_74",
+              "name": "Infrastructure",
+              "description": "| Component | Value |\n|-----------|-------|\n| Container | `ruvector-kb` |\n| Port | 5435 (maps to internal 5432) |\n| Database | `postgres` (not `ruvector` as initially stated) |\n| User | `postgres` |\n|...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Infrastructure"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_executive",
+          "name": "Executive",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_73",
+              "name": "Executive Summary",
+              "description": "This document evaluates architecture options for making the PostgreSQL-based knowledge base (`ruvector-kb`) accessible to Claude Code instances, AI agents, and external applications across different r...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Executive Summary"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_knowledge-base-acces",
+          "name": "KNOWLEDGE-BASE-ACCES",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_72",
+              "name": "KNOWLEDGE-BASE-ACCESS-ARCHITECTURE",
+              "description": "Updated: 2025-12-29 01:15:00 EST | Version 1.1.0\nCreated: 2025-12-29 00:00:00 EST...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "document"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_key",
+          "name": "Key",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_96",
+              "name": "Key SQL Functions",
+              "description": "**IMPORTANT:** The `<=>` (cosine distance) operator requires `ruvector` type, but\n`ruvector_embed()` returns `real[]`. You must convert arrays to ruvector type:\n\n```sql\n-- Generate embedding (returns ...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Key SQL Functions"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_connection",
+          "name": "Connection",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_95",
+              "name": "Connection Details",
+              "description": "```\nHost: localhost\nPort: 5435\nDatabase: postgres\nUser: postgres\nPassword: guruKB2025\n```...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Connection Details"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_recommended",
+          "name": "Recommended",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_94",
+              "name": "Recommended Implementation Order",
+              "description": "1. **Phase 1 (Immediate):** Create `kb` CLI wrapper for direct access\n2. **Phase 2 (This Week):** Build and deploy MCP server\n3. **Phase 3 (Optional):** Add REST API if external access needed\n\n---...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Recommended Implementation Order"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_decision",
+          "name": "Decision",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_93",
+              "name": "Decision Matrix",
+              "description": "| Criterion | Weight | MCP Server | REST API | Direct PG |\n|-----------|--------|------------|----------|-----------|\n| Claude Code Native | 30% | 10 | 5 | 3 |\n| External Access | 20% | 6 | 10 | 8 |\n|...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Decision Matrix"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_from",
+          "name": "From",
+          "color": "#6366f1",
+          "count": 3,
+          "children": [
+            {
+              "id": "item_92",
+              "name": "From New Project (First Time)",
+              "description": "```\n> Initialize knowledge base for my new project \"financial-advisor\"\n\n[kb_create_schema schema=\"financial_advisor\"]\n[kb_ingest schema=\"financial_advisor\" ...]\n```\n\n---...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "From New Project (First Time)"
+            },
+            {
+              "id": "item_91",
+              "name": "From Presenter Project",
+              "description": "```\n> Search for presentation templates\n\n[kb_search query=\"presentation templates\" schema=\"presenter_mode\"]\n```...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "From Presenter Project"
+            },
+            {
+              "id": "item_90",
+              "name": "From Ask-Ruvnet (This Project)",
+              "description": "```\n> What do we know about retirement planning?\n\n[kb_search query=\"retirement planning\" schema=\"askruvnet\"]\n```...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "From Ask-Ruvnet (This Project)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_conclusion",
+          "name": "Conclusion",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_98",
+              "name": "Conclusion",
+              "description": "**Primary Recommendation:** MCP Server integration provides the best balance of Claude Code native experience, security through schema isolation, and ease of use across projects.\n\n**Secondary Recommen...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Conclusion"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_available",
+          "name": "Available",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_97",
+              "name": "Available Embedding Models",
+              "description": "| Model | Dimensions | Speed | Quality |\n|-------|------------|-------|---------|\n| all-MiniLM-L6-v2 | 384 | Fast | Good |\n| BAAI/bge-small-en-v1.5 | 384 | Fast | Better |\n| BAAI/bge-base-en-v1.5 | 76...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Available Embedding Models"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_mcp-level",
+          "name": "MCP-Level",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_89",
+              "name": "MCP-Level Validation",
+              "description": "The MCP server should validate schema names to prevent SQL injection:\n\n```javascript\nconst ALLOWED_SCHEMAS = ['askruvnet', 'presenter_mode', 'ruvector_test'];\n\nfunction validateSchema(schema) {\n  if (...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "MCP-Level Validation"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_access",
+          "name": "Access",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_88",
+              "name": "Access Control (Future Enhancement)",
+              "description": "```sql\n-- Create read-only role for consumers\nCREATE ROLE kb_reader;\nGRANT USAGE ON SCHEMA askruvnet TO kb_reader;\nGRANT SELECT ON ALL TABLES IN SCHEMA askruvnet TO kb_reader;\n\n-- Create project-speci...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Access Control (Future Enhancement)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_implementation",
+          "name": "Implementation",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_86",
+              "name": "Implementation Complexity",
+              "description": "| Component | Effort | Priority |\n|-----------|--------|----------|\n| MCP Server | 2-3 hours | High |\n| kb CLI wrapper | 30 mins | Medium |\n| REST API | 4-6 hours | Low (optional) |\n| Documentation | ...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Implementation Complexity"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_~/.local/bin/kb",
+          "name": "~/.local/bin/kb",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_85",
+              "name": "~/.local/bin/kb - Knowledge Base CLI",
+              "description": "PGPASSWORD=\"guruKB2025\"\nPGHOST=\"localhost\"\nPGPORT=\"5435\"\nPGUSER=\"postgres\"\nPGDB=\"postgres\"\n\ncase \"$1\" in\n  search)\n    shift\n    SCHEMA=\"${1:-askruvnet}\"\n    shift\n    QUERY=\"$*\"\n    PGPASSWORD=$PGPAS...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "~/.local/bin/kb - Knowledge Base CLI"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/knowledge_base_access_architecture_primary:",
+          "name": "Primary:",
+          "color": "#6366f1",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_83",
+              "name": "Primary: MCP Server (`ruvector-kb-mcp`)",
+              "description": "**Why MCP?**\n1. **Native Claude Code Integration:** Claude Code already understands MCP tools\n2. **Natural Language Interface:** Queries become simple tool calls\n3. **Schema Isolation:** MCP enforces ...",
+              "color": "#6366f1",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KNOWLEDGE-BASE-ACCESS-ARCHITECTURE.md",
+              "type": "Primary: MCP Server (`ruvector-kb-mcp`)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications",
+      "name": "/Users/stuartkerr/Code/Ask Ruvnet/Ask Ruvnet/docs/architecture/KB POWERED APPLICATIONS",
+      "color": "#14b8a6",
+      "count": 71,
+      "children": [
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_mandatory",
+          "name": "MANDATORY",
+          "color": "#14b8a6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_50",
+              "name": "MANDATORY KNOWLEDGE BASE CONTEXT",
+              "description": "You are bound to the following knowledge base content. You MUST:\n1. Use ONLY this information to answer\n2. Quote directly from sources\n3. Cite the source title for each claim\n4. Acknowledge if informa...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "MANDATORY KNOWLEDGE BASE CONTEXT"
+            },
+            {
+              "id": "item_15",
+              "name": "MANDATORY KB UTILIZATION RULES",
+              "description": "You are operating with a knowledge base that contains expert-level information.\nYou MUST follow these rules WITHOUT EXCEPTION:\n\n1. **NO RULE MEMORY**: You are FORBIDDEN from:\n   - Summarizing the KB i...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "MANDATORY KB UTILIZATION RULES"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_spawn",
+          "name": "Spawn",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_43",
+              "name": "Spawn KB-grounded swarm",
+              "description": "npx claude-flow@alpha swarm \"Analyze retirement options\" --claude \\\n    --kb-container retirewell \\\n    --enforce-citations...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Spawn KB-grounded swarm"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_hive",
+          "name": "Hive",
+          "color": "#14b8a6",
+          "count": 3,
+          "children": [
+            {
+              "id": "item_42",
+              "name": "Hive Mind KB-Powered Workflow",
+              "description": "```javascript\n/**\n * Hive Mind swarm where ALL agents are KB-bound\n */\nasync function hiveMindKBSwarm(objective, kbClient) {\n    const kb = new EnforcedKBAccess(kbClient, 'hive-mind-session');\n\n    //...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Hive Mind KB-Powered Workflow"
+            },
+            {
+              "id": "item_39",
+              "name": "Hive Mind + KB Architecture",
+              "description": "```\n┌─────────────────────────────────────────────────────────────────────────────┐\n│                     CLAUDE FLOW HIVE MIND + KB                               │\n└──────────────────────────────────...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Hive Mind + KB Architecture"
+            },
+            {
+              "id": "item_45",
+              "name": "Hive mind with KB validation",
+              "description": "npx claude-flow@alpha hive-mind spawn \"Create retirement plan\" --claude \\\n    --require-kb \\\n    --no-simplification\n```...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Hive mind with KB validation"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_export",
+          "name": "Export",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_41",
+              "name": "Export KB interaction history",
+              "description": "npx claude-flow@alpha memory export --namespace kb --format json\n```...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Export KB interaction history"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_store",
+          "name": "Store",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_40",
+              "name": "Store KB interaction in Claude Flow memory",
+              "description": "npx claude-flow@alpha memory store \"kb/last-query\" \\\n    \"Query: 'social security timing' | Results: 3 entries | Top: 92% similarity\"...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Store KB interaction in Claude Flow memory"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_complete",
+          "name": "Complete",
+          "color": "#14b8a6",
+          "count": 3,
+          "children": [
+            {
+              "id": "item_49",
+              "name": "Complete Implementation",
+              "description": "```javascript\n/**\n * FullDepthKBBinding - The complete agent-KB binding system\n * Ensures NO simplification, NO rule distillation, FULL KB utilization\n */\nclass FullDepthKBBinding {\n    constructor(co...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Complete Implementation"
+            },
+            {
+              "id": "item_24",
+              "name": "Complete Flow",
+              "description": "```\n┌─────────────────────────────────────────────────────────────────┐\n│                         USER REQUEST                             │\n│          \"Should I take Social Security at 62 or 67?\"    ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Complete Flow"
+            },
+            {
+              "id": "item_53",
+              "name": "Complete System Diagram",
+              "description": "```\n┌─────────────────────────────────────────────────────────────────────────────────┐\n│                              PRODUCTION ARCHITECTURE                             │\n│                         K...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Complete System Diagram"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_🔮",
+          "name": "🔮",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_38",
+              "name": "🔮 Claude Flow KB Integration",
+              "description": "Claude Flow provides **enterprise orchestration** with Hive Mind, 64 specialized agents, and AgentDB. This section shows deep KB integration....",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "🔮 Claude Flow KB Integration"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_multi-agent",
+          "name": "Multi-Agent",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_37",
+              "name": "Multi-Agent KB Workflow",
+              "description": "```javascript\n/**\n * Multi-agent workflow where ALL agents share KB binding\n */\nasync function multiAgentKBWorkflow(userRequest, kbClient) {\n    const kb = new EnforcedKBAccess(kbClient, 'multi-agent-...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Multi-Agent KB Workflow"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_agent",
+          "name": "Agent",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_36",
+              "name": "Agent Types for KB-Powered Applications",
+              "description": "| Agent Type | KB Role | Use Case |\n|------------|---------|----------|\n| `researcher` | Deep KB mining | Find all related information on a topic |\n| `analyst` | KB synthesis | Compare multiple KB ent...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Agent Types for KB-Powered Applications"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_kb",
+          "name": "KB",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_35",
+              "name": "KB Source ${i + 1}: ${r.title}",
+              "description": "**Similarity**: ${(r.similarity * 100).toFixed(1)}%\n**Source**: ${r.source}\n**Content**:\n${r.content}\n        `).join('\\n---\\n');\n    }\n}\n```...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "KB Source ${i + 1}: ${r.title}"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_reasoningbank",
+          "name": "ReasoningBank",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_34",
+              "name": "ReasoningBank + KB Integration",
+              "description": "Agentic Flow's ReasoningBank provides learning memory. Combined with the KB:\n\n```javascript\nimport { ModelRouter } from 'agentic-flow/router';\nimport * as reasoningbank from 'agentic-flow/reasoningban...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "ReasoningBank + KB Integration"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_architecture:",
+          "name": "Architecture:",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_33",
+              "name": "Architecture: Agent-KB Binding",
+              "description": "```\n┌─────────────────────────────────────────────────────────────────────────────┐\n│                    AGENTIC FLOW + KNOWLEDGE BASE                             │\n└──────────────────────────────────...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Architecture: Agent-KB Binding"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_🤖",
+          "name": "🤖",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_32",
+              "name": "🤖 Agentic Flow KB Integration",
+              "description": "Agentic Flow provides **150+ specialized agents** and **213 MCP tools**. This section shows how to bind these agents to the knowledge base for full-depth utilization....",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "🤖 Agentic Flow KB Integration"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_knowledge",
+          "name": "Knowledge",
+          "color": "#14b8a6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_31",
+              "name": "Knowledge Gap Tracking",
+              "description": "```sql\n-- Track queries that result in low-confidence responses\nCREATE TABLE knowledge_gaps (\n    id SERIAL PRIMARY KEY,\n    query TEXT NOT NULL,\n    query_embedding real[],\n    best_match_similarity ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Knowledge Gap Tracking"
+            },
+            {
+              "id": "item_1",
+              "name": "Knowledge Base-Powered Application Architecture",
+              "description": "Updated: 2025-12-30 08:50:00 EST | Version 2.0.0\nCreated: 2025-12-30 08:40:00 EST...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Knowledge Base-Powered Application Architecture"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_implementation",
+          "name": "Implementation",
+          "color": "#14b8a6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_30",
+              "name": "Implementation",
+              "description": "```javascript\nclass ConfidenceHandler {\n    async generateResponse(query, kbResults, userContext) {\n        const confidence = this.calculateConfidence(kbResults);\n\n        if (confidence > 0.85) {\n  ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Implementation"
+            },
+            {
+              "id": "item_25",
+              "name": "Implementation Code",
+              "description": "```javascript\n// RAG Pipeline Implementation\nclass KBPoweredRAG {\n    constructor(kbClient, llmClient) {\n        this.kb = kbClient;\n        this.llm = llmClient;\n    }\n\n    async process(query, userC...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Implementation Code"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_four-tier",
+          "name": "Four-Tier",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_29",
+              "name": "Four-Tier Confidence System",
+              "description": "| Tier | Confidence | User Experience |\n|------|------------|-----------------|\n| **High** | > 85% | Direct, confident answer with citations |\n| **Medium** | 60-85% | Answer with caveats and uncertain...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Four-Tier Confidence System"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_cross-container",
+          "name": "Cross-Container",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_28",
+              "name": "Cross-Container Search Example",
+              "description": "```javascript\nasync function federatedSearch(query, router, kbClient) {\n    const route = await router.route(query);\n    const results = { primary: [], supplemental: [] };\n\n    // Primary search (high...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Cross-Container Search Example"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_example",
+          "name": "Example",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_23",
+              "name": "Example Decision-Support Entry",
+              "description": "```sql\nINSERT INTO retirewell.knowledge (\n    title,\n    content,\n    embedding,\n    decision_category,\n    decision_factors,\n    outcome_type,\n    confidence_level,\n    regulatory_source\n) VALUES (\n ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Example Decision-Support Entry"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_enhanced",
+          "name": "Enhanced",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_22",
+              "name": "Enhanced Schema (Decision Support)",
+              "description": "For applications that need to power decision trees and personalized recommendations:\n\n```sql\nCREATE TABLE knowledge (\n    id SERIAL PRIMARY KEY,\n\n    -- Core content\n    title TEXT NOT NULL,\n    conte...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Enhanced Schema (Decision Support)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_basic",
+          "name": "Basic",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_21",
+              "name": "Basic Schema (Semantic Search Only)",
+              "description": "```sql\nCREATE TABLE knowledge (\n    id SERIAL PRIMARY KEY,\n    title TEXT NOT NULL,\n    content TEXT NOT NULL,\n    source TEXT,\n    embedding real[] NOT NULL,\n    created_at TIMESTAMP DEFAULT NOW()\n);...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Basic Schema (Semantic Search Only)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_recommendation:",
+          "name": "Recommendation:",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_20",
+              "name": "Recommendation: Use Both",
+              "description": "MCP and REST are **complementary, not competing**:\n- **MCP** = Development-time power tool\n- **REST** = Production-time interface\n\nBoth share the same underlying KB connection layer.\n\n---...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Recommendation: Use Both"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_rest",
+          "name": "REST",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_19",
+              "name": "REST API",
+              "description": "**Best for:**\n- Production web applications\n- Mobile applications\n- Third-party integrations\n- Public API consumers\n- Horizontal scaling requirements\n\n**Characteristics:**\n- Universal client support (...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "REST API"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_mcp",
+          "name": "MCP",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_18",
+              "name": "MCP (Model Context Protocol)",
+              "description": "**Best for:**\n- AI agent workflows\n- Claude Code integration\n- Development and debugging\n- KB maintenance operations\n- Automated content ingestion\n\n**Characteristics:**\n- Native tool integration with ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "MCP (Model Context Protocol)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_when",
+          "name": "When",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_17",
+              "name": "When to Use Each",
+              "description": "```\n                    KNOWLEDGE BASE (ruvector-postgres)\n                            │\n            ┌───────────────┴───────────────┐\n            │                               │\n      ┌─────┴─────┐...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "When to Use Each"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_verification",
+          "name": "Verification",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_16",
+              "name": "Verification Checklist",
+              "description": "Before any agent response is finalized, verify:\n\n- [ ] Response contains `kb_queries_made` array\n- [ ] Response contains `kb_results_used` array with titles and sources\n- [ ] Response contains `raw_kb...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Verification Checklist"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_session",
+          "name": "Session",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_14",
+              "name": "Session Prompt Enforcement",
+              "description": "Every agent session MUST include this system prompt:\n\n```markdown...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Session Prompt Enforcement"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_query",
+          "name": "Query",
+          "color": "#14b8a6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_27",
+              "name": "Query Routing Logic",
+              "description": "```javascript\n// Semantic router for multi-container search\nclass SemanticRouter {\n    constructor(containerRegistry) {\n        this.containers = containerRegistry;\n    }\n\n    async route(query, userC...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Query Routing Logic"
+            },
+            {
+              "id": "item_44",
+              "name": "Query KB before spawning agents",
+              "description": "npx claude-flow@alpha kb query \"social security timing\" \\\n    --container retirewell \\\n    --limit 5...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Query KB before spawning agents"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_implementation:",
+          "name": "Implementation:",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_13",
+              "name": "Implementation: KB Query Wrapper",
+              "description": "```javascript\n/**\n * MANDATORY KB Query Wrapper\n * All agent KB access MUST go through this wrapper\n * Prevents caching, enforces logging, requires citation\n */\nclass EnforcedKBAccess {\n    constructo...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Implementation: KB Query Wrapper"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_required:",
+          "name": "REQUIRED:",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_12",
+              "name": "REQUIRED:",
+              "description": "\"The KB entry 'Social Security Claiming Age: 62 vs 67 vs 70' (source: SSA,\nconfidence: high) states: 'CLAIM AT 67 (Full Retirement Age for those born\n1960+): Receive 100% of full benefit. Break-even a...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "REQUIRED:"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_forbidden:",
+          "name": "FORBIDDEN:",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_11",
+              "name": "FORBIDDEN:",
+              "description": "\"The KB says you should claim Social Security at 67.\"...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "FORBIDDEN:"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_required",
+          "name": "REQUIRED",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_10",
+              "name": "REQUIRED PATTERNS (Claude MUST do these):",
+              "description": "- \"Let me query the knowledge base for [specific query]...\"\n- \"The KB returns [X results] for this question...\"\n- \"According to [KB source]: [exact content]...\"\n- \"The knowledge base entry '[title]' s...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "REQUIRED PATTERNS (Claude MUST do these):"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_forbidden",
+          "name": "FORBIDDEN",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_9",
+              "name": "FORBIDDEN PATTERNS (Claude MUST NOT do these):",
+              "description": "- \"Based on my understanding of the KB...\"\n- \"The key principles are...\"\n- \"From what I recall from the knowledge base...\"\n- \"The rules state that...\"...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "FORBIDDEN PATTERNS (Claude MUST NOT do these):"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_federated",
+          "name": "Federated",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_26",
+              "name": "Federated Architecture",
+              "description": "```\n┌─────────────────────────────────────────────────────────────────┐\n│                    FEDERATED KB ARCHITECTURE                     │\n└──────────────────────────────────────────────────────────...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Federated Architecture"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_the",
+          "name": "The",
+          "color": "#14b8a6",
+          "count": 5,
+          "children": [
+            {
+              "id": "item_8",
+              "name": "The Solution: Mandatory KB Binding",
+              "description": "Every agent operation MUST be **bound to the KB** with verification:\n\n```\n┌─────────────────────────────────────────────────────────────────────────────┐\n│                        ANTI-SIMPLIFICATION F...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "The Solution: Mandatory KB Binding"
+            },
+            {
+              "id": "item_6",
+              "name": "The Problem: Rule Distillation",
+              "description": "AI agents (including Claude) have a tendency to **simplify** complex knowledge bases into simple rules. This creates massive problems:\n\n```\n❌ WRONG (Rule Distillation):\n  Agent reads KB → Extracts \"5 ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "The Problem: Rule Distillation"
+            },
+            {
+              "id": "item_4",
+              "name": "The KB as Engine, Not Storage",
+              "description": "Traditional databases store data. KB-powered applications use the knowledge base as a **decision engine**:\n\n```\nTraditional:  User → API → Database → Raw Data → Display\nKB-Powered:   User → API → KB E...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "The KB as Engine, Not Storage"
+            },
+            {
+              "id": "item_67",
+              "name": "The Golden Rule",
+              "description": "```\n┌─────────────────────────────────────────────────────────────────────────────┐\n│                           THE GOLDEN RULE                                    │\n│                                  ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "The Golden Rule"
+            },
+            {
+              "id": "item_48",
+              "name": "The Binding Protocol",
+              "description": "```\n┌─────────────────────────────────────────────────────────────────────────────┐\n│                    FULL-DEPTH AGENT-KB BINDING PROTOCOL                      │\n└──────────────────────────────────...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "The Binding Protocol"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_why",
+          "name": "Why",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_7",
+              "name": "Why This Happens",
+              "description": "1. **Token optimization** - Agents try to compress knowledge to save context\n2. **Pattern matching** - Agents identify \"common patterns\" and stop querying\n3. **Lazy caching** - Agents remember previou...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Why This Happens"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_key",
+          "name": "Key",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_5",
+              "name": "Key Differentiators",
+              "description": "| Aspect | Traditional DB | KB-Powered Engine |\n|--------|---------------|-------------------|\n| Query | Exact match | Semantic similarity |\n| Response | Raw records | Contextual answers |\n| Personali...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Key Differentiators"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_table",
+          "name": "Table",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_3",
+              "name": "Table of Contents",
+              "description": "1. [Core Principles](#core-principles)\n2. [⚠️ Anti-Simplification Architecture](#anti-simplification-architecture)\n3. [Access Patterns: MCP vs REST](#access-patterns-mcp-vs-rest)\n4. [Knowledge Base Sc...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Table of Contents"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_overview",
+          "name": "Overview",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_2",
+              "name": "Overview",
+              "description": "This document describes the optimal architecture for building **hyper-intelligent agentic applications** powered by RuvVector/RuvLLM knowledge bases. These patterns enable world-class applications whe...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Overview"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_version",
+          "name": "Version",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_71",
+              "name": "Version History",
+              "description": "| Version | Date | Changes |\n|---------|------|---------|\n| 2.0.0 | 2025-12-30 | Added Anti-Simplification Architecture, Agentic Flow integration, Claude Flow integration, Full-Depth Binding Protocol ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Version History"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_related",
+          "name": "Related",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_70",
+              "name": "Related Documentation",
+              "description": "- [Multi-Business Container Setup](../config/multi-business/README.md)\n- [MCP Server Configuration](../../.claude/mcp-servers/ruvector-kb/README.md)\n- [RuvVector PostgreSQL Functions](https://github.c...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Related Documentation"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_for",
+          "name": "For",
+          "color": "#14b8a6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_69",
+              "name": "For Existing Applications (Migration)",
+              "description": "- [ ] Audit current KB usage patterns\n- [ ] Identify where agents are \"summarizing\" KB\n- [ ] Replace direct KB access with EnforcedKBAccess\n- [ ] Add citation requirements to all response schemas\n- [ ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "For Existing Applications (Migration)"
+            },
+            {
+              "id": "item_68",
+              "name": "For New KB-Powered Applications",
+              "description": "- [ ] Set up ruvector-postgres container with isolated schema\n- [ ] Implement EnforcedKBAccess wrapper (prevents caching)\n- [ ] Add anti-simplification system prompt to all agents\n- [ ] Configure resp...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "For New KB-Powered Applications"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_agentic",
+          "name": "Agentic",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_66",
+              "name": "Agentic Integration",
+              "description": "11. **Agentic Flow binding** - 150+ agents with KB grounding\n12. **Claude Flow binding** - Hive Mind with KB memory sync\n13. **ReasoningBank learning** - Agents improve KB query patterns\n14. **Full-de...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Agentic Integration"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_anti-simplification",
+          "name": "Anti-Simplification",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_65",
+              "name": "Anti-Simplification (CRITICAL)",
+              "description": "7. **No rule distillation** - Agents MUST NOT reduce KB to simple rules\n8. **Mandatory KB queries** - Every question triggers fresh KB search\n9. **Citation enforcement** - Responses MUST cite KB sourc...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Anti-Simplification (CRITICAL)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_core",
+          "name": "Core",
+          "color": "#14b8a6",
+          "count": 2,
+          "children": [
+            {
+              "id": "item_64",
+              "name": "Core Requirements",
+              "description": "1. **Dual access patterns** - MCP for development, REST for production\n2. **Enhanced schema** - Decision metadata beyond basic embeddings\n3. **RAG pipeline** - Query understanding → routing → retrieva...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Core Requirements"
+            },
+            {
+              "id": "item_58",
+              "name": "Core Stack",
+              "description": "| Component | Technology | Rationale |\n|-----------|------------|-----------|\n| **API Framework** | Fastify (Node.js) | 2x faster than Express, built-in validation |\n| **Database** | ruvector-postgres...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Core Stack"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_summary",
+          "name": "Summary",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_63",
+              "name": "Summary",
+              "description": "Building **hyper-intelligent KB-powered applications** with RuvVector/RuvLLM requires:...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Summary"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_cache",
+          "name": "Cache",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_62",
+              "name": "Cache Invalidation",
+              "description": "| Update Type | Trigger | Strategy |\n|-------------|---------|----------|\n| **Real-time** | Regulatory changes | Webhook → immediate invalidation |\n| **Batch** | New content | Scheduled job → selectiv...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Cache Invalidation"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_embedding-based",
+          "name": "Embedding-Based",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_61",
+              "name": "Embedding-Based Cache Keys",
+              "description": "Traditional caching fails for semantic search because similar queries don't produce identical cache keys. Solution: quantize embeddings for cache keys.\n\n```javascript\nasync function semanticCacheKey(q...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Embedding-Based Cache Keys"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_development",
+          "name": "Development",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_60",
+              "name": "Development Tools",
+              "description": "| Component | Technology | Rationale |\n|-----------|------------|-----------|\n| **MCP Server** | ruvector-kb | Native Claude Code integration |\n| **CLI** | claude-flow | Swarm orchestration, hooks |\n|...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Development Tools"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_infrastructure",
+          "name": "Infrastructure",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_59",
+              "name": "Infrastructure",
+              "description": "| Component | Technology | Rationale |\n|-----------|------------|-----------|\n| **Hosting** | Railway | Simple scaling, Docker native |\n| **CDN** | Cloudflare | Free tier, edge caching |\n| **Auth** | ...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Infrastructure"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_phase",
+          "name": "Phase",
+          "color": "#14b8a6",
+          "count": 4,
+          "children": [
+            {
+              "id": "item_56",
+              "name": "Phase 3: Production Hardening (Week 5-6)",
+              "description": "1. **Authentication** - JWT, API keys\n2. **Rate limiting** - Redis-based\n3. **Monitoring** - OpenTelemetry, Grafana\n4. **Deployment** - Railway with auto-scaling...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Phase 3: Production Hardening (Week 5-6)"
+            },
+            {
+              "id": "item_55",
+              "name": "Phase 2: RAG Pipeline (Week 3-4)",
+              "description": "1. **Query processor** - Intent classification, entity extraction\n2. **Semantic router** - Container selection, factor checking\n3. **Context assembler** - Prompt building, user context\n4. **Response g...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Phase 2: RAG Pipeline (Week 3-4)"
+            },
+            {
+              "id": "item_54",
+              "name": "Phase 1: Foundation (Week 1-2)",
+              "description": "1. **Set up KB containers**\n   ```bash\n   # Utilities container (shared)\n   docker run -d --name kb-utilities \\\n     -p 5435:5432 \\\n     -e POSTGRES_PASSWORD=secure_pwd \\\n     ruvnet/ruvector-postgres...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Phase 1: Foundation (Week 1-2)"
+            },
+            {
+              "id": "item_57",
+              "name": "Phase 4: Knowledge Operations (Ongoing)",
+              "description": "1. **Content pipeline** - Ingestion, validation, re-embedding\n2. **Gap detection** - Query analysis, priority queue\n3. **Quality assurance** - Confidence monitoring, source verification\n\n---...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Phase 4: Knowledge Operations (Ongoing)"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_usage",
+          "name": "Usage",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_52",
+              "name": "Usage Example",
+              "description": "```javascript\n// Initialize full-depth binding\nconst binding = new FullDepthKBBinding({\n    kbClient: ruvectorClient,\n    sessionId: 'retirement-advisor-session',\n    claudeFlowMemory: claudeFlowMemor...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Usage Example"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_source",
+          "name": "SOURCE",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_51",
+              "name": "SOURCE ${i + 1}: ${r.title}",
+              "description": "- **Relevance**: ${(r.similarity * 100).toFixed(1)}%\n- **Origin**: ${r.source}\n- **Confidence**: ${r.confidence_level || 'standard'}\n\n**CONTENT**:\n${r.content}\n`).join('\\n---\\n')}\n\n---\n\nDO NOT make an...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "SOURCE ${i + 1}: ${r.title}"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_🧠",
+          "name": "🧠",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_47",
+              "name": "🧠 Full-Depth Agent-KB Binding",
+              "description": "This section defines the complete binding protocol that ensures agents NEVER simplify KB content....",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "🧠 Full-Depth Agent-KB Binding"
+            }
+          ]
+        },
+        {
+          "id": "sub_/users/stuartkerr/code/ask_ruvnet/ask_ruvnet/docs/architecture/kb_powered_applications_hooks",
+          "name": "Hooks",
+          "color": "#14b8a6",
+          "count": 1,
+          "children": [
+            {
+              "id": "item_46",
+              "name": "Hooks for KB Enforcement",
+              "description": "```javascript\n// .claude/hooks/kb-enforcement.js\nmodule.exports = {\n    'pre-task': async ({ task }) => {\n        // Ensure KB query is planned\n        if (!task.kbQuery) {\n            console.warn('W...",
+              "color": "#14b8a6",
+              "source": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/docs/architecture/KB-POWERED-APPLICATIONS.md",
+              "type": "Hooks for KB Enforcement"
+            }
+          ]
         }
       ]
     }
   ],
   "metadata": {
-    "totalItems": 3,
-    "categories": 3,
-    "generatedAt": "2025-12-30T14:49:57.420Z"
+    "totalItems": 239,
+    "categories": 10,
+    "generatedAt": "2025-12-30T14:55:17.799Z"
   }
 }

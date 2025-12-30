@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * KB Universe Data Generator
- * Updated: 2025-12-30 09:45:00 EST | Version 1.0.0
+ * Updated: 2025-12-30 10:25:00 EST | Version 1.1.0
  * Created: 2025-12-30 09:45:00 EST
  *
  * Generates JSON data structure from ruvector-postgres KB
@@ -188,13 +188,26 @@ async function generateKBData(outputPath) {
             connectionTimeoutMillis: 5000
         });
 
-        const result = await pool.query(`
-            SELECT id, title, content, source,
-                   COALESCE(type, 'document') as type
-            FROM ${schemaName}.knowledge
-            ORDER BY created_at DESC
-            LIMIT 1000
-        `);
+        // Try architecture_docs table first (kb-architecture-sync format)
+        let result;
+        try {
+            result = await pool.query(`
+                SELECT id, title, content, file_path as source,
+                       COALESCE(section_header, 'document') as type
+                FROM ${schemaName}.architecture_docs
+                ORDER BY created_at DESC
+                LIMIT 1000
+            `);
+        } catch (archErr) {
+            // Fallback to knowledge table (standard format)
+            result = await pool.query(`
+                SELECT id, title, content, source,
+                       COALESCE(type, 'document') as type
+                FROM ${schemaName}.knowledge
+                ORDER BY created_at DESC
+                LIMIT 1000
+            `);
+        }
 
         rows = result.rows;
         await pool.end();
