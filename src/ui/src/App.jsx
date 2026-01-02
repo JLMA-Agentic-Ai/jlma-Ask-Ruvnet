@@ -418,6 +418,18 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
         <div className={`main-layout ${viewMode}`}>
           {viewMode !== 'presentation' && (
             <div className="chat-panel">
+              {/* Input area moved to TOP for better visibility */}
+              <form className="input-area input-top" onSubmit={handleSubmit}>
+                <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
+                <button type="button" className="icon-btn" onClick={() => fileInputRef.current.click()}>📎</button>
+                <button type="button" className={`icon-btn voice ${listening ? 'listening' : ''}`} onClick={startVoiceInput}>{listening ? '🔴' : '🎤'}</button>
+                <div className="input-wrapper">
+                  {file && <div className="file-preview">📄 {file.name} <button type="button" onClick={() => setFile(null)}>×</button></div>}
+                  <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder={listening ? "Listening..." : "Ask a question..."} disabled={loading} />
+                </div>
+                <button type="submit" disabled={loading || (!input.trim() && !file)}>SEND</button>
+              </form>
+
               <div className="chat-container">
                 {messages.length === 0 ? (
                   <HeroSection onAction={(prompt) => handleSubmit(null, prompt)} />
@@ -456,17 +468,6 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                   </>
                 )}
               </div>
-
-              <form className="input-area" onSubmit={handleSubmit}>
-                <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
-                <button type="button" className="icon-btn" onClick={() => fileInputRef.current.click()}>📎</button>
-                <button type="button" className={`icon-btn voice ${listening ? 'listening' : ''}`} onClick={startVoiceInput}>{listening ? '🔴' : '🎤'}</button>
-                <div className="input-wrapper">
-                  {file && <div className="file-preview">📄 {file.name} <button type="button" onClick={() => setFile(null)}>×</button></div>}
-                  <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder={listening ? "Listening..." : "Ask a question..."} disabled={loading} />
-                </div>
-                <button type="submit" disabled={loading || (!input.trim() && !file)}>SEND</button>
-              </form>
             </div>
           )}
 
