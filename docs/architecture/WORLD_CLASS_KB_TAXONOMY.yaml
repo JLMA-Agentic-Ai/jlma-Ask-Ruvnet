@@ -1,0 +1,716 @@
+# =============================================================================
+# WORLD-CLASS KNOWLEDGE BASE TAXONOMY FOR RUVNET ECOSYSTEM
+# =============================================================================
+# Version: 1.0.0
+# Created: 2026-01-02
+# Purpose: Definitive category taxonomy, topic hierarchy, and quality scoring
+# =============================================================================
+
+metadata:
+  version: "1.0.0"
+  created: "2026-01-02"
+  author: "System Architect"
+  description: "Complete taxonomy for RuvNet ecosystem knowledge base"
+
+# =============================================================================
+# CATEGORY TAXONOMY (15 Top-Level Categories)
+# =============================================================================
+
+categories:
+  # ---------------------------------------------------------------------------
+  # CORE: AI Agent Infrastructure
+  # ---------------------------------------------------------------------------
+  agents:
+    name: "AI Agents"
+    icon: "robot"
+    description: "Agent types, spawning patterns, lifecycle management"
+    subcategories:
+      core-agents:
+        name: "Core Development Agents"
+        topics:
+          - coder
+          - reviewer
+          - tester
+          - planner
+          - researcher
+      specialized-agents:
+        name: "Specialized Agents"
+        topics:
+          - system-architect
+          - backend-dev
+          - frontend-architect
+          - mobile-dev
+          - ml-developer
+          - security-engineer
+          - devops-architect
+          - cicd-engineer
+      coordination-agents:
+        name: "Coordination Agents"
+        topics:
+          - coordinator
+          - orchestrator
+          - task-orchestrator
+          - hierarchical-coordinator
+          - mesh-coordinator
+          - adaptive-coordinator
+      sparc-agents:
+        name: "SPARC Methodology Agents"
+        topics:
+          - specification-agent
+          - pseudocode-agent
+          - architecture-agent
+          - refinement-agent
+          - completion-agent
+      github-agents:
+        name: "GitHub Integration Agents"
+        topics:
+          - pr-manager
+          - issue-tracker
+          - code-review-agent
+          - release-manager
+          - workflow-automation-agent
+
+  swarms:
+    name: "Swarm Intelligence"
+    icon: "bee"
+    description: "Multi-agent coordination, topologies, collective behavior"
+    subcategories:
+      topologies:
+        name: "Swarm Topologies"
+        topics:
+          - hierarchical-topology
+          - mesh-topology
+          - ring-topology
+          - star-topology
+          - adaptive-topology
+      hive-mind:
+        name: "Hive Mind Architecture"
+        topics:
+          - queen-worker-pattern
+          - collective-intelligence
+          - emergent-behavior
+          - swarm-memory
+      coordination:
+        name: "Swarm Coordination"
+        topics:
+          - task-distribution
+          - load-balancing
+          - auto-scaling
+          - topology-optimization
+
+  memory:
+    name: "Memory Systems"
+    icon: "brain"
+    description: "Episodic, semantic, and working memory architectures"
+    subcategories:
+      episodic:
+        name: "Episodic Memory"
+        topics:
+          - experience-storage
+          - temporal-indexing
+          - replay-mechanisms
+          - episode-retrieval
+      semantic:
+        name: "Semantic Memory"
+        topics:
+          - knowledge-graphs
+          - concept-networks
+          - fact-storage
+          - ontology-management
+      working:
+        name: "Working Memory"
+        topics:
+          - context-management
+          - attention-mechanisms
+          - short-term-storage
+          - memory-consolidation
+      advanced:
+        name: "Advanced Memory"
+        topics:
+          - reasoningbank
+          - tiered-storage
+          - memory-compression
+          - cross-session-persistence
+
+  consensus:
+    name: "Distributed Consensus"
+    icon: "handshake"
+    description: "Byzantine, Raft, Gossip, and consensus protocols"
+    subcategories:
+      protocols:
+        name: "Consensus Protocols"
+        topics:
+          - byzantine-fault-tolerance
+          - raft-consensus
+          - gossip-protocol
+          - crdt-synchronization
+          - quorum-consensus
+      coordination:
+        name: "Distributed Coordination"
+        topics:
+          - leader-election
+          - state-machine-replication
+          - conflict-resolution
+          - partition-tolerance
+
+  # ---------------------------------------------------------------------------
+  # CORE: Machine Learning & AI
+  # ---------------------------------------------------------------------------
+  reinforcement-learning:
+    name: "Reinforcement Learning"
+    icon: "target"
+    description: "RL algorithms: Decision Transformer, Actor-Critic, PPO, SAC"
+    subcategories:
+      algorithms:
+        name: "RL Algorithms"
+        topics:
+          - decision-transformer
+          - actor-critic
+          - ppo
+          - sac
+          - q-learning
+          - sarsa
+          - td-learning
+      components:
+        name: "RL Components"
+        topics:
+          - experience-replay
+          - reward-shaping
+          - exploration-exploitation
+          - policy-gradient
+      advanced:
+        name: "Advanced RL"
+        topics:
+          - meta-learning
+          - transfer-learning
+          - curriculum-learning
+          - ewc-consolidation
+
+  neural-networks:
+    name: "Neural Networks"
+    icon: "dna"
+    description: "ruv-FANN, training, inference, architectures"
+    subcategories:
+      architectures:
+        name: "Network Architectures"
+        topics:
+          - feedforward
+          - recurrent
+          - transformer
+          - attention-mechanisms
+      training:
+        name: "Training"
+        topics:
+          - backpropagation
+          - gradient-descent
+          - batch-normalization
+          - regularization
+      inference:
+        name: "Inference"
+        topics:
+          - model-serving
+          - quantization
+          - pruning
+          - distillation
+
+  # ---------------------------------------------------------------------------
+  # CORE: Data Infrastructure
+  # ---------------------------------------------------------------------------
+  vector-database:
+    name: "Vector Database"
+    icon: "database"
+    description: "RuVector, embeddings, HNSW indexing, semantic search"
+    subcategories:
+      indexing:
+        name: "Vector Indexing"
+        topics:
+          - hnsw-indexing
+          - ivf-indexing
+          - flat-indexing
+          - quantization
+      embeddings:
+        name: "Embeddings"
+        topics:
+          - embedding-generation
+          - sentence-transformers
+          - embedding-models
+          - dimension-reduction
+      search:
+        name: "Search Operations"
+        topics:
+          - semantic-search
+          - hybrid-search
+          - filtered-search
+          - similarity-metrics
+      ruvector:
+        name: "RuVector Specific"
+        topics:
+          - ruvector-core
+          - ruvector-postgres
+          - ruvector-distributed
+          - sona-architecture
+
+  llm-orchestration:
+    name: "LLM Orchestration"
+    icon: "wand"
+    description: "RuvLLM, model routing, self-learning systems"
+    subcategories:
+      routing:
+        name: "Model Routing"
+        topics:
+          - fastgrnn-router
+          - multi-model-selection
+          - cost-optimization
+          - latency-optimization
+      learning:
+        name: "Self-Learning"
+        topics:
+          - micro-lora
+          - instant-loop
+          - background-loop
+          - deep-loop
+      inference:
+        name: "Inference"
+        topics:
+          - trm-models
+          - simd-optimization
+          - streaming-inference
+          - batch-inference
+
+  # ---------------------------------------------------------------------------
+  # CORE: Development & Operations
+  # ---------------------------------------------------------------------------
+  deployment:
+    name: "Deployment"
+    icon: "rocket"
+    description: "Docker, Railway, K8s, air-gapped, edge deployment"
+    subcategories:
+      containerization:
+        name: "Containerization"
+        topics:
+          - docker-deployment
+          - docker-compose
+          - container-optimization
+      cloud:
+        name: "Cloud Deployment"
+        topics:
+          - railway-deployment
+          - vercel-deployment
+          - gcp-deployment
+          - kubernetes
+      edge:
+        name: "Edge & Offline"
+        topics:
+          - air-gapped-deployment
+          - edge-deployment
+          - browser-deployment
+          - offline-first
+      infrastructure:
+        name: "Infrastructure"
+        topics:
+          - ci-cd-pipelines
+          - infrastructure-as-code
+          - monitoring-setup
+          - logging-setup
+
+  mcp-protocol:
+    name: "MCP Protocol"
+    icon: "plug"
+    description: "Model Context Protocol, tools, servers, integration"
+    subcategories:
+      core:
+        name: "MCP Core"
+        topics:
+          - protocol-specification
+          - message-framing
+          - transport-layer
+          - lifecycle-management
+      tools:
+        name: "MCP Tools"
+        topics:
+          - tool-registration
+          - tool-execution
+          - tool-schemas
+          - error-handling
+      servers:
+        name: "MCP Servers"
+        topics:
+          - server-implementation
+          - stdio-mode
+          - http-mode
+          - federated-mcp
+
+  sparc:
+    name: "SPARC Methodology"
+    icon: "lightning"
+    description: "Specification, Pseudocode, Architecture, Refinement, Completion"
+    subcategories:
+      phases:
+        name: "SPARC Phases"
+        topics:
+          - specification-phase
+          - pseudocode-phase
+          - architecture-phase
+          - refinement-phase
+          - completion-phase
+      workflows:
+        name: "SPARC Workflows"
+        topics:
+          - tdd-workflow
+          - parallel-execution
+          - iterative-refinement
+
+  # ---------------------------------------------------------------------------
+  # CORE: Security & Performance
+  # ---------------------------------------------------------------------------
+  security:
+    name: "Security"
+    icon: "shield"
+    description: "Authentication, authorization, encryption, ZKP"
+    subcategories:
+      authentication:
+        name: "Authentication"
+        topics:
+          - jwt-tokens
+          - api-keys
+          - oauth-integration
+          - session-management
+      cryptography:
+        name: "Cryptography"
+        topics:
+          - encryption
+          - hashing
+          - digital-signatures
+          - zero-knowledge-proofs
+      access-control:
+        name: "Access Control"
+        topics:
+          - rbac
+          - permission-models
+          - sandboxing
+          - audit-logging
+
+  performance:
+    name: "Performance"
+    icon: "chart"
+    description: "Benchmarks, optimization, WASM SIMD, profiling"
+    subcategories:
+      optimization:
+        name: "Optimization"
+        topics:
+          - wasm-simd
+          - avx-optimization
+          - memory-optimization
+          - latency-optimization
+      benchmarking:
+        name: "Benchmarking"
+        topics:
+          - performance-testing
+          - load-testing
+          - swe-bench
+          - throughput-metrics
+      monitoring:
+        name: "Monitoring"
+        topics:
+          - observability
+          - metrics-collection
+          - alerting
+          - dashboards
+
+  github-integration:
+    name: "GitHub Integration"
+    icon: "github"
+    description: "PR management, code review, workflow automation"
+    subcategories:
+      pr-management:
+        name: "PR Management"
+        topics:
+          - pr-creation
+          - pr-review
+          - merge-strategies
+          - conflict-resolution
+      automation:
+        name: "Workflow Automation"
+        topics:
+          - github-actions
+          - webhooks
+          - issue-automation
+          - release-automation
+
+  data-synthesis:
+    name: "Data Synthesis"
+    icon: "sync"
+    description: "Agentic-synth, synthetic data generation, RAG data"
+    subcategories:
+      generation:
+        name: "Data Generation"
+        topics:
+          - synthetic-data
+          - structured-generation
+          - privacy-preserving
+          - augmentation
+      rag:
+        name: "RAG Systems"
+        topics:
+          - document-chunking
+          - retrieval-strategies
+          - context-injection
+          - hybrid-retrieval
+
+# =============================================================================
+# QUALITY SCORING RUBRIC
+# =============================================================================
+
+quality_scoring:
+  description: "Quality assessment criteria for knowledge base entries"
+
+  dimensions:
+    accuracy:
+      weight: 25
+      description: "Factual correctness and technical accuracy"
+      criteria:
+        100: "Verified against source code, tested, no errors"
+        80: "Accurate based on documentation, minor clarifications needed"
+        60: "Generally accurate but some outdated information"
+        40: "Contains inaccuracies that need correction"
+        20: "Significantly inaccurate or misleading"
+
+    completeness:
+      weight: 25
+      description: "Coverage of the topic"
+      criteria:
+        100: "Comprehensive coverage with all aspects documented"
+        80: "Good coverage, missing minor edge cases"
+        60: "Covers main points, some gaps in detail"
+        40: "Partial coverage, significant missing sections"
+        20: "Incomplete, only scratches the surface"
+
+    clarity:
+      weight: 20
+      description: "Readability and understandability"
+      criteria:
+        100: "Crystal clear, well-structured, excellent examples"
+        80: "Clear and readable with good organization"
+        60: "Understandable but could be better organized"
+        40: "Confusing in places, needs restructuring"
+        20: "Difficult to understand, poorly written"
+
+    code_quality:
+      weight: 15
+      description: "Quality of code examples (if present)"
+      criteria:
+        100: "Production-ready, tested, follows best practices"
+        80: "Good examples that work as documented"
+        60: "Examples work but lack error handling"
+        40: "Examples have issues or are incomplete"
+        20: "Broken or misleading code examples"
+
+    currency:
+      weight: 15
+      description: "How up-to-date the content is"
+      criteria:
+        100: "Current with latest version, recently verified"
+        80: "Up-to-date within last 3 months"
+        60: "Up-to-date within last 6 months"
+        40: "6-12 months old, may have outdated info"
+        20: "Over 1 year old, likely outdated"
+
+  tiers:
+    canonical:
+      min_score: 100
+      description: "Authoritative, verified, primary source of truth"
+      badge: "gold"
+    high:
+      min_score: 80
+      description: "Well-documented, tested, reliable"
+      badge: "silver"
+    medium:
+      min_score: 60
+      description: "Useful but may need updates"
+      badge: "bronze"
+    low:
+      min_score: 40
+      description: "Incomplete or outdated"
+      badge: "none"
+    draft:
+      min_score: 0
+      description: "Work in progress"
+      badge: "wip"
+    deprecated:
+      description: "Superseded, kept for history"
+      badge: "deprecated"
+
+# =============================================================================
+# DEDUPLICATION STRATEGY
+# =============================================================================
+
+deduplication:
+  description: "Strategy for identifying and handling duplicate content"
+
+  methods:
+    content_hash:
+      description: "SHA-256 hash of normalized content"
+      normalization:
+        - lowercase
+        - remove_extra_whitespace
+        - trim
+        - remove_markdown_formatting
+      threshold: "exact_match"
+      action: "mark_as_duplicate"
+
+    semantic_similarity:
+      description: "Embedding-based similarity detection"
+      model: "all-MiniLM-L6-v2"
+      dimensions: 384
+      threshold: 0.95
+      action: "flag_for_review"
+
+    title_similarity:
+      description: "Fuzzy matching on titles"
+      algorithm: "levenshtein"
+      threshold: 0.85
+      action: "flag_for_review"
+
+  canonical_selection:
+    description: "How to choose the canonical version"
+    criteria:
+      - highest_quality_score
+      - most_recent_update
+      - from_authoritative_source
+      - has_code_examples
+      - longest_content
+
+  handling:
+    exact_duplicates:
+      action: "keep_canonical_only"
+      preserve_references: true
+    near_duplicates:
+      action: "merge_content"
+      manual_review: true
+    superseded_content:
+      action: "mark_deprecated"
+      preserve: true
+
+# =============================================================================
+# TOPIC HIERARCHY STRUCTURE
+# =============================================================================
+
+topic_hierarchy:
+  description: "Hierarchical organization of knowledge topics"
+
+  structure:
+    depth: 4
+    levels:
+      1: "Domain (Category)"
+      2: "Subdomain (Subcategory)"
+      3: "Topic"
+      4: "Subtopic"
+
+  relationships:
+    parent_child:
+      description: "Hierarchical containment"
+      example: "agents > core-agents > coder"
+    related:
+      description: "Non-hierarchical association"
+      example: "coder <-> reviewer (collaboration)"
+    prerequisite:
+      description: "Learning dependency"
+      example: "hnsw-indexing requires embedding-generation"
+    supersedes:
+      description: "Version replacement"
+      example: "v2-api supersedes v1-api"
+
+  navigation:
+    breadcrumbs: true
+    tree_view: true
+    graph_view: true
+    search_aliases: true
+
+# =============================================================================
+# DOCUMENT TYPES
+# =============================================================================
+
+document_types:
+  api_reference:
+    description: "API documentation, function signatures, parameters"
+    required_fields:
+      - function_signature
+      - parameters
+      - return_type
+      - examples
+    quality_weight: 1.2
+
+  tutorial:
+    description: "Step-by-step guides with working examples"
+    required_fields:
+      - prerequisites
+      - steps
+      - code_examples
+      - expected_output
+    quality_weight: 1.1
+
+  conceptual:
+    description: "Explanatory content about concepts and architecture"
+    required_fields:
+      - overview
+      - key_concepts
+      - diagrams
+    quality_weight: 1.0
+
+  code_example:
+    description: "Working code samples with context"
+    required_fields:
+      - code
+      - language
+      - description
+      - dependencies
+    quality_weight: 1.0
+
+  configuration:
+    description: "Config files, settings, environment setup"
+    required_fields:
+      - config_format
+      - options
+      - defaults
+    quality_weight: 0.9
+
+  architecture:
+    description: "System design documents, diagrams, decisions"
+    required_fields:
+      - overview
+      - components
+      - data_flow
+      - decisions
+    quality_weight: 1.2
+
+  changelog:
+    description: "Version history and release notes"
+    required_fields:
+      - version
+      - date
+      - changes
+    quality_weight: 0.8
+
+  troubleshooting:
+    description: "Problem/solution pairs, FAQs"
+    required_fields:
+      - problem
+      - cause
+      - solution
+    quality_weight: 1.0
+
+  benchmark:
+    description: "Performance data and comparisons"
+    required_fields:
+      - methodology
+      - results
+      - environment
+    quality_weight: 1.0
+
+  research_note:
+    description: "Research findings, experiments, proposals"
+    required_fields:
+      - hypothesis
+      - methodology
+      - findings
+    quality_weight: 0.9

@@ -69,3 +69,9 @@ public/kb-universe-data.json
 # Large generated files
 public/Ask-Ruvnet-kb-visualization.html
 public/kb-universe-data.json
+
+# RuVector intelligence data
+.ruvector/
+.claude/statusline.sh
+# Add large KB data file to gitignore
+public/kb-universe-data.json

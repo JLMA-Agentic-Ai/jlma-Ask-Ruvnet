@@ -1,0 +1,8 @@
+# RuVector Agent Configuration
+# Focus: quality
+
+agents:
+  - typescript-specialist
+  - react-specialist
+  - test-architect
+  - project-coordinator

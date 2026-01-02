@@ -29,9 +29,9 @@ The **authoritative knowledge base** for the entire RuvNet AI ecosystem. Provide
 ### Updated Package Versions
 | Package | Version | Purpose |
 |---------|---------|---------|
-| agentic-flow | 2.0.1-alpha.42 | Multi-agent orchestration, federated learning |
+| agentic-flow | 2.0.1-alpha.50 | Multi-agent orchestration, federated learning |
 | claude-flow | 2.7.47 | Swarm orchestration, 100+ MCP tools |
-| ruvector | 0.1.80 | Vector DB, ONNX embeddings, graph algorithms |
+| ruvector | 0.1.95 | Vector DB, ONNX embeddings, graph algorithms, MCP server |
 | ruv-swarm | 1.0.20 | Distributed swarms, 27+ neural models |
 
 ---
