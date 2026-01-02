@@ -1,0 +1,75 @@
+# Railway Ignore File - Aggressive for size reduction
+# Target: <100MB upload
+
+# Git (911MB!)
+.git/
+.gitignore
+
+# Dependencies (Railway installs fresh)
+node_modules/
+
+# Local databases (60MB+)
+.swarm/
+*.db
+*.db-shm
+*.db-wal
+agentdb.db
+memory.db
+storage/
+
+# Local vector store (16MB)
+.ruvector/
+
+# KB Visualization files (240MB - dev only)
+public/kb-universe-data.json
+public/Ask-Ruvnet-kb-visualization.html
+public/kb-*.png
+
+# Heavy UI assets (182MB - not needed for API)
+src/ui/public/knowledge_assets/
+src/ui/public/assets/docs/
+*.png
+!src/ui/public/vite.svg
+!src/ui/public/ruv-favicon.png
+
+# Audio files (21MB)
+audio_extracted/
+*.mp3
+
+# Generated content
+generated_imgs/
+frames/
+temp_frames/
+
+# Research and documentation (not needed for runtime)
+strange-loop-research/
+docs/
+data/
+data_ingestion_github/
+data_ingestion_ruv_coaching/
+ruvector_index/
+archive/
+
+# Large media files
+*.mp4
+*.mov
+*.pdf
+*.tar.gz
+
+# IDE and OS
+.vscode/
+.DS_Store
+*.log
+
+# Claude Flow local config
+.claude/
+claude-flow.config.json
+.mcp.json
+
+# Test coverage
+coverage/
+tests/
+
+# Markdown docs (not needed for runtime)
+*.md
+!README.md
