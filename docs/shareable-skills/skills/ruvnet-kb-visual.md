@@ -1,257 +1,162 @@
-Updated: 2025-12-30 15:30:00 EST | Version 2.0.0
-Created: 2025-12-30 10:00:00 EST
+Updated: 2025-12-30 14:00:00 EST | Version 3.3.0
+Created: 2025-12-30 11:40:00 EST
 
-# RuvNet KB Visual
+# RuvNet KB Visual Skill
 
-Build interactive Knowledge Universe visualization with quality scoring for any knowledge base.
+## Skill Overview
 
-## Architecture Decision: Hybrid Skill + npm Scripts
+**Name:** `/ruvnet-kb-visual` (Knowledge Base Visualization)
+**Purpose:** Build interactive 3D Knowledge Universe visualization from ruvector-postgres data with embedded HTML output.
 
-**This skill uses a hybrid approach for maximum effectiveness:**
-
-1. **npm scripts** = Deterministic execution engine
-   - `kb:visual` - Build visualization
-   - `kb:visual:screenshot` - Build with Playwright screenshots
-   - Works in any repo with copied scripts
-   - Portable, testable, reliable
-
-2. **Skill file** = AI guidance layer
-   - Tells Claude WHEN to use the scripts
-   - Provides VERIFICATION steps
-   - Documents PARAMETERS and options
-   - Enables INTELLIGENT workflow decisions
-
-**Why not just a command?** Commands execute but don't adapt. Skills guide Claude to make smart decisions based on context.
+---
 
 ## What This Does
 
-1. **Reads KB data** from ruvector-postgres or local .ruvector storage
-2. **Generates interactive 3D visualization** with Bricksmith-inspired navigation
-3. **Calculates KB Quality Score** (1-100) across 5 dimensions
-4. **Provides enhancement recommendations** with actionable button
-5. **Takes Playwright screenshots** for documentation/sharing
-6. **Auto-updates** when KB changes (via kb:ingest hook)
+1. **Auto-discovers schema tables** - Scans `information_schema` to find ALL tables
+2. **Queries all content tables** - Pulls data from any table with title/content columns
+3. **Content-based categorization** - Detects RuvNet ecosystem components
+4. **Generates quality score** - 5-dimension scoring (Coverage, Depth, Balance, Quality, Sources)
+5. **Builds HTML with embedded data** - Named `{ProjectName}-kb-visualization.html`
+6. **AUTO-OPENS in browser** - Immediate visual feedback (use `--no-open` to disable)
 
-## KB Scoring System (NEW in v2.0)
+---
 
-The visualization includes a comprehensive quality score:
+## How Knowledge is Stored
 
-| Dimension | Weight | Measures | Optimal |
-|-----------|--------|----------|---------|
-| **Coverage** | 25% | Total knowledge items | 500+ items |
-| **Depth** | 15% | Category organization | 8-15 categories |
-| **Balance** | 15% | Distribution evenness | Low variance |
-| **Quality** | 30% | Content richness | 500+ chars avg |
-| **Sources** | 15% | Source diversity | 20+ sources |
+### Schema Structure (Auto-Discovered)
 
-### Grading Scale (Standard Academic)
+The skill does **NOT** require a specific table structure. It:
 
-| Score | Grade | Assessment |
-|-------|-------|------------|
-| 97-100 | A+ | Exceptional |
-| 93-96 | A | Excellent |
-| 90-92 | A- | Very Good |
-| 87-89 | B+ | Good |
-| 83-86 | B | Above Average |
-| 80-82 | B- | Satisfactory |
-| 77-79 | C+ | Fair |
-| 73-76 | C | Adequate |
-| 70-72 | C- | Below Average |
-| 67-69 | D+ | Poor |
-| 63-66 | D | Very Poor |
-| 60-62 | D- | Minimal |
-| <60 | F | Failing |
+1. **Queries `information_schema.tables`** to find all tables in your schema
+2. **Queries `information_schema.columns`** to understand each table's structure
+3. **Maps columns intelligently:**
 
-**Target: 95+ for production KBs**
+| Expected Column | Recognized Alternatives |
+|-----------------|------------------------|
+| `id` | Any column ending in `_id` |
+| `title` | `name`, `hook_name`, `template_name`, `post_type`, `cta_type` |
+| `content` | `description`, `template`, `hook_template`, `cta_template`, `body`, `text` |
+| `source` | `file_path`, `category`, `platform`, `hook_category` |
+| `type` | `category`, `platform`, `status` |
 
-## Usage
+### Example: Project with Specialized Tables
 
-### Build and Verify (MANDATORY WORKFLOW)
-
-```bash
-# Step 1: Build the visualization
-npm run kb:visual
-
-# Step 2: VERIFY with Playwright (CRITICAL!)
-node scripts/test-kb-universe.js
-
-# Step 3: View the result
-open public/knowledge-universe.html
-
-# Optional: Build with screenshots
-npm run kb:visual:screenshot
+```
+viral_social schema:
+├── hooks_templates (hook_name, template, category)  → ✓ queried
+├── post_types (post_type, description, platform)    → ✓ queried
+├── cta_templates (cta_type, cta_template, category) → ✓ queried
+└── file_tracking (path, hash, size)                 → ⏭️ skipped (no content)
 ```
 
-**NEVER skip verification.** Always run the test script before reporting success.
+### Example: Project with Standard Table
 
-### Quick Commands
+```
+ask_ruvnet schema:
+├── architecture_docs (title, content, file_path)    → ✓ queried
+└── file_tracking (path, hash, size)                 → ⏭️ skipped (no content)
+```
+
+---
+
+## Bash Commands
 
 ```bash
-# Build only
-npm run kb:visual
+echo ""
+echo "╔═══════════════════════════════════════════════════════════════╗"
+echo "║           RUVNET KB VISUAL v3.3                               ║"
+echo "╚═══════════════════════════════════════════════════════════════╝"
+echo ""
 
-# Build + screenshots
-npm run kb:visual:screenshot
+# Check for ruvector-postgres
+echo "🗄️  Checking ruvector-postgres connection..."
+if docker ps --format '{{.Names}}' 2>/dev/null | grep -q "ruvector-kb"; then
+  echo "   ✅ ruvector-kb container running on port 5435"
+else
+  echo "   ❌ ruvector-kb not running"
+  echo "   Run: docker start ruvector-kb"
+  exit 1
+fi
 
-# Test visualization
-node scripts/test-kb-universe.js
-
-# Test navigation
-node scripts/test-kb-navigation.js
-
-# Serve locally
-npx serve public
+# Build visualization - auto-discovers tables, generates HTML, opens browser
+echo ""
+echo "🎨 Building KB visualization..."
+if [ -f "scripts/build-kb-universe.js" ]; then
+  node scripts/build-kb-universe.js
+  # Script auto-opens browser (use --no-open to disable)
+else
+  echo "   ❌ scripts/build-kb-universe.js not found"
+  echo "   This skill requires the KB Universe builder scripts."
+  echo ""
+  echo "   Required files:"
+  echo "   - scripts/build-kb-universe.js (HTML builder v3.0+)"
+  echo "   - scripts/kb-universe-data.js (data generator v3.0+)"
+  echo "   - public/kb-universe-template.html (HTML template)"
+fi
 ```
+
+---
+
+## RuvNet Ecosystem Categories
+
+The visualization automatically detects and creates top-level categories for:
+
+| Category | Description |
+|----------|-------------|
+| **Agentic Flow** | Multi-agent orchestration system |
+| **Claude Flow** | Enterprise AI coordination |
+| **RuVector** | Vector database & embeddings |
+| **Flow Nexus** | Cloud orchestration platform |
+| **AgentDB** | Agent memory & persistence |
+| **Claude Code** | CLI development tool |
+| **Ruv Swarm** | Distributed agent swarms |
+| **RuvLLM** | LLM orchestration layer |
+
+Plus 30+ additional topic-based categories from content analysis.
+
+---
+
+## Scoring System
+
+| Dimension | Weight | Optimal |
+|-----------|--------|---------|
+| Coverage | 25% | 500-2000 entries |
+| Depth | 15% | 15-40 categories |
+| Balance | 15% | Even distribution |
+| Quality | 30% | Rich content (500+ chars avg) |
+| Sources | 15% | 20+ unique sources |
+
+---
 
 ## Output Files
 
-```
-public/
-├── kb-universe-data.json      # KB hierarchy with scores (JSON)
-├── knowledge-universe.html    # Interactive visualization (HTML)
-├── kb-universe-test.png       # Verification screenshot
-├── kb-universe-overview.png   # Screenshot (if --screenshot)
-└── kb-nav-*.png               # Navigation screenshots
-```
+| File | Purpose |
+|------|---------|
+| `public/kb-universe-data.json` | Raw hierarchy data |
+| `public/{ProjectName}-kb-visualization.html` | Self-contained visualization with embedded data |
 
-## Visualization Features
-
-### Core Features
-- **Central node**: Repo name (always from folder name, not package.json)
-- **Bricksmith navigation**: All categories stay visible when drilling down
-- **Categories sidebar**: Left panel listing all categories with counts
-- **Info panel**: Right panel with details and clickable sub-items
-
-### Score Dashboard
-- **Overall score**: 1-100 with letter grade
-- **Dimension bars**: Visual indicators for each dimension
-- **Enhancement recommendations**: Priority-ranked action items
-- **"Enhance KB" button**: Copies improvement plan to clipboard
-
-### Visual Design
-- **Star field background**: Animated twinkling stars
-- **Glow effects**: Radial glow matching category colors
-- **Smooth animations**: Easing for all transitions
-- **Responsive**: Works on all screen sizes
-
-## Integration with KB Workflow
-
-### Automatic Build on Ingest (Already Configured)
-
-```json
-{
-  "scripts": {
-    "kb:ingest": "node scripts/kb-architecture-sync.js --ingest && npm run kb:visual",
-    "kb:visual": "node scripts/build-kb-universe.js",
-    "kb:visual:screenshot": "node scripts/build-kb-universe.js --screenshot"
-  }
-}
-```
-
-### Prerequisites for Screenshots
-
-```bash
-npm install playwright --save-dev
-npx playwright install chromium
-```
-
-## Name Source (CRITICAL)
-
-**The KB name ALWAYS comes from the repository folder name, NOT package.json.**
-
-This is enforced in `kb-universe-data.js`:
-
-```javascript
-function getProjectInfo() {
-    // Get the repo/folder name - this is the authoritative name
-    const repoName = path.basename(process.cwd());
-    // ...
-    return {
-        name: repoName,  // ALWAYS use repo/folder name
-        version: version,
-        description: description
-    };
-}
-```
-
-## Improving Your KB Score
-
-### Coverage (48/100 → 90+)
-- Add more documentation, FAQs, reference materials
-- Include API documentation, guides, tutorials
-- Target: 500+ knowledge items
-
-### Balance (29/100 → 80+)
-- Split large categories into smaller ones
-- Expand underpopulated categories
-- Target: Even distribution across categories
-
-### Sources (50/100 → 80+)
-- Add content from diverse sources
-- Include APIs, guides, FAQs, tutorials
-- Target: 20+ unique sources
-
-## Files to Copy for New Projects
-
-Copy these to add KB visualization to any project:
-
-```
-scripts/
-├── kb-universe-data.js          # Data generator with scoring
-├── build-kb-universe.js         # Build orchestrator
-├── kb-universe-screenshot.js    # Playwright screenshots
-├── test-kb-universe.js          # Verification test
-└── test-kb-navigation.js        # Navigation test
-
-public/
-└── kb-universe-template.html    # Visualization template
-```
-
-Then add npm scripts:
-
-```bash
-npm pkg set scripts.kb:visual="node scripts/build-kb-universe.js"
-npm pkg set scripts.kb:visual:screenshot="node scripts/build-kb-universe.js --screenshot"
-```
+---
 
 ## Troubleshooting
 
-### "Canvas element not found"
-- Check that template IDs match test expectations
-- Rebuild: `npm run kb:visual`
+### "No tables found"
+- Check schema name matches directory: `project-name` → `project_name`
+- Verify tables exist: `\dt project_name.*` in psql
 
-### "Score shows wrong grade"
-- Updated grading scale in v2.0 uses standard academic scale
-- 67 = D+ (not B-)
+### "Skipping table X"
+- Normal - tables without title/content columns are skipped
+- Add a `title` or `name` column to include a table
 
-### "Name shows wrong"
-- Verify folder name is correct
-- `kb-universe-data.js` uses `path.basename(process.cwd())`
+### "No content/title columns"
+- Table needs at least one recognized column (see mapping table above)
+- Customize column detection in `kb-universe-data.js` lines 556-561
 
-### "Categories disappear when drilling"
-- Use v3.0.0 template with Bricksmith navigation
-- Rebuild: `npm run kb:visual`
+---
 
-### "Screenshots fail"
-```bash
-npm install playwright --save-dev
-npx playwright install chromium
-```
+## Related Commands
 
-## Why This Matters
-
-**Nobody understands how to see or visualize a vector knowledge base.**
-
-This visualization:
-- Shows users exactly what's in their KB
-- Demonstrates the hierarchical structure
-- Quantifies KB quality with actionable metrics
-- Makes semantic relationships visible
-- Provides a "wow factor" for stakeholders
-- Validates that KB ingestion worked correctly
-- Guides improvements with specific recommendations
-
-## Version History
-
-- **v2.0.0** (2025-12-30): Added KB scoring, standard grading, Bricksmith navigation
-- **v1.0.0** (2025-12-30): Initial release with basic visualization
+| Command | Purpose |
+|---------|---------|
+| `/ruvnet-stack` | Full ecosystem install |
+| `/ruvnet-update` | Update packages |
+| `/ruvnet-kb` | Link tool knowledge |

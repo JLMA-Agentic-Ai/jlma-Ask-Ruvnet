@@ -1,0 +1,98 @@
+# Multi-Business Knowledge Base Architecture
+# Updated: 2025-12-29 17:00:00 EST | Version 1.0.0
+#
+# LOCAL DEVELOPMENT ONLY
+# Each business can be forked to Railway independently
+#
+# Usage:
+#   docker compose up -d              # Start all
+#   docker compose up -d utilities    # Start utilities only
+#   docker compose up -d retirewell   # Start specific business
+
+version: '3.8'
+
+services:
+  # ============================================
+  # UTILITIES (Shared Knowledge - READ ONLY)
+  # ============================================
+  utilities:
+    container_name: kb-utilities
+    image: ruvnet/ruvector-postgres:latest
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_PASSWORD: guruKB2025
+      POSTGRES_DB: postgres
+    volumes:
+      - utilities-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kb-network
+
+  # ============================================
+  # RETIREWELL (AI Retirement Analyzer)
+  # ============================================
+  retirewell:
+    container_name: kb-retirewell
+    image: ruvnet/ruvector-postgres:latest
+    restart: always
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_PASSWORD: retirewell2025
+      POSTGRES_DB: postgres
+    volumes:
+      - retirewell-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kb-network
+    depends_on:
+      utilities:
+        condition: service_healthy
+
+  # ============================================
+  # PRESENTERMODE (Presentation Master)
+  # ============================================
+  presentermode:
+    container_name: kb-presentermode
+    image: ruvnet/ruvector-postgres:latest
+    restart: always
+    ports:
+      - "5437:5432"
+    environment:
+      POSTGRES_PASSWORD: presenter2025
+      POSTGRES_DB: postgres
+    volumes:
+      - presentermode-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kb-network
+    depends_on:
+      utilities:
+        condition: service_healthy
+
+volumes:
+  utilities-data:
+    name: kb-utilities-data
+  retirewell-data:
+    name: kb-retirewell-data
+  presentermode-data:
+    name: kb-presentermode-data
+
+networks:
+  kb-network:
+    name: kb-network
+    driver: bridge

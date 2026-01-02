@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+  <defs>
+    <linearGradient id="pgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#336791;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3a4d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="railwayGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9f2bff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5a1a8f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#68a063;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3d6b3d;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="600" fill="#0f0f23"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" fill="#00d4ff" font-family="Arial, sans-serif" font-size="22" font-weight="bold" filter="url(#glow)">Ask-Ruvnet Knowledge Base Architecture</text>
+
+  <!-- PostgreSQL Container -->
+  <rect x="30" y="55" width="420" height="280" rx="10" fill="url(#pgGrad)" stroke="#4d9ed6" stroke-width="2"/>
+  <text x="240" y="82" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">PostgreSQL (ruvector-kb:5435)</text>
+
+  <!-- Schema Box -->
+  <rect x="50" y="95" width="380" height="160" rx="6" fill="#1a3a4d" stroke="#5bb5e0" stroke-width="1"/>
+  <text x="240" y="118" text-anchor="middle" fill="#5bb5e0" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Schema: ask_ruvnet</text>
+
+  <!-- architecture_docs table -->
+  <rect x="65" y="130" width="170" height="110" rx="4" fill="#0d2533" stroke="#3d8eb9" stroke-width="1"/>
+  <text x="150" y="150" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="11" font-weight="bold">architecture_docs</text>
+  <text x="75" y="170" fill="#8db4d4" font-family="monospace" font-size="10">doc_id, title, content</text>
+  <text x="75" y="185" fill="#8db4d4" font-family="monospace" font-size="10">embedding real[384]</text>
+  <text x="75" y="200" fill="#8db4d4" font-family="monospace" font-size="10">package_name, version</text>
+  <text x="75" y="215" fill="#8db4d4" font-family="monospace" font-size="10">topics[], doc_type</text>
+  <text x="150" y="233" text-anchor="middle" fill="#00ff88" font-family="Arial, sans-serif" font-size="11" font-weight="bold">230,643 entries</text>
+
+  <!-- file_tracking table -->
+  <rect x="250" y="130" width="170" height="80" rx="4" fill="#0d2533" stroke="#3d8eb9" stroke-width="1"/>
+  <text x="335" y="150" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="11" font-weight="bold">file_tracking</text>
+  <text x="260" y="170" fill="#8db4d4" font-family="monospace" font-size="10">file_path, file_hash</text>
+  <text x="260" y="185" fill="#8db4d4" font-family="monospace" font-size="10">last_ingested</text>
+  <text x="260" y="200" fill="#8db4d4" font-family="monospace" font-size="10">chunk_count</text>
+
+  <!-- Features -->
+  <text x="60" y="275" fill="#ffd700" font-family="Arial, sans-serif" font-size="11">⚡ 77+ SQL vector functions</text>
+  <text x="60" y="292" fill="#ffd700" font-family="Arial, sans-serif" font-size="11">⚡ SIMD (AVX-512/AVX2/NEON)</text>
+  <text x="60" y="309" fill="#ffd700" font-family="Arial, sans-serif" font-size="11">⚡ HNSW: &lt;1.2ms on 1M vectors</text>
+  <text x="60" y="326" fill="#ffd700" font-family="Arial, sans-serif" font-size="11">⚡ Cross-repo schema isolation</text>
+
+  <!-- Railway Container -->
+  <rect x="30" y="350" width="420" height="220" rx="10" fill="url(#railwayGrad)" stroke="#c77dff" stroke-width="2"/>
+  <text x="240" y="377" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Railway Platform</text>
+
+  <!-- Docker Container -->
+  <rect x="50" y="390" width="380" height="160" rx="6" fill="#3d1a66" stroke="#9f2bff" stroke-width="1"/>
+  <text x="240" y="413" text-anchor="middle" fill="#e0b0ff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Docker Container (Node.js 22)</text>
+
+  <!-- Express Server -->
+  <rect x="65" y="425" width="170" height="55" rx="4" fill="url(#nodeGrad)" stroke="#8fbc8f" stroke-width="1"/>
+  <text x="150" y="445" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Express Server</text>
+  <text x="150" y="462" text-anchor="middle" fill="#d4ffd4" font-family="monospace" font-size="10">/api/chat, /api/knowledge</text>
+  <text x="150" y="475" text-anchor="middle" fill="#d4ffd4" font-family="monospace" font-size="10">Port 3000</text>
+
+  <!-- Vite React UI -->
+  <rect x="250" y="425" width="170" height="55" rx="4" fill="#1a1a4d" stroke="#61dafb" stroke-width="1"/>
+  <text x="335" y="445" text-anchor="middle" fill="#61dafb" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Vite React UI</text>
+  <text x="335" y="462" text-anchor="middle" fill="#a0d0f0" font-family="monospace" font-size="10">Static files served</text>
+  <text x="335" y="475" text-anchor="middle" fill="#a0d0f0" font-family="monospace" font-size="10">from /src/ui/dist</text>
+
+  <!-- Integrations -->
+  <rect x="65" y="490" width="170" height="45" rx="4" fill="#2d1a4d" stroke="#ff6b6b" stroke-width="1"/>
+  <text x="150" y="510" text-anchor="middle" fill="#ff6b6b" font-family="Arial, sans-serif" font-size="11" font-weight="bold">PostgreSQL Client</text>
+  <text x="150" y="525" text-anchor="middle" fill="#ffb0b0" font-family="monospace" font-size="10">→ ruvector-kb:5435</text>
+
+  <rect x="250" y="490" width="170" height="45" rx="4" fill="#2d1a4d" stroke="#ffa500" stroke-width="1"/>
+  <text x="335" y="510" text-anchor="middle" fill="#ffa500" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Groq LLM</text>
+  <text x="335" y="525" text-anchor="middle" fill="#ffd090" font-family="monospace" font-size="10">llama-3.3-70b</text>
+
+  <!-- Right side - Packages -->
+  <rect x="470" y="55" width="400" height="280" rx="10" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2"/>
+  <text x="670" y="82" text-anchor="middle" fill="#00d4ff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Core RuvNet Packages</text>
+
+  <!-- Package cards -->
+  <rect x="490" y="100" width="175" height="50" rx="4" fill="#0d1a26" stroke="#00ff88" stroke-width="1"/>
+  <text x="577" y="120" text-anchor="middle" fill="#00ff88" font-family="Arial, sans-serif" font-size="12" font-weight="bold">agentic-flow</text>
+  <text x="577" y="138" text-anchor="middle" fill="#88ddaa" font-family="monospace" font-size="10">v2.0.1-alpha.42</text>
+
+  <rect x="680" y="100" width="175" height="50" rx="4" fill="#0d1a26" stroke="#ff6b6b" stroke-width="1"/>
+  <text x="767" y="120" text-anchor="middle" fill="#ff6b6b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">claude-flow</text>
+  <text x="767" y="138" text-anchor="middle" fill="#ffaaaa" font-family="monospace" font-size="10">v2.7.47</text>
+
+  <rect x="490" y="160" width="175" height="50" rx="4" fill="#0d1a26" stroke="#ffd700" stroke-width="1"/>
+  <text x="577" y="180" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="12" font-weight="bold">ruvector</text>
+  <text x="577" y="198" text-anchor="middle" fill="#ffe088" font-family="monospace" font-size="10">v0.1.84</text>
+
+  <rect x="680" y="160" width="175" height="50" rx="4" fill="#0d1a26" stroke="#9f2bff" stroke-width="1"/>
+  <text x="767" y="180" text-anchor="middle" fill="#9f2bff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">ruv-swarm</text>
+  <text x="767" y="198" text-anchor="middle" fill="#d0a0ff" font-family="monospace" font-size="10">v1.0.20</text>
+
+  <rect x="490" y="220" width="175" height="50" rx="4" fill="#0d1a26" stroke="#61dafb" stroke-width="1"/>
+  <text x="577" y="240" text-anchor="middle" fill="#61dafb" font-family="Arial, sans-serif" font-size="12" font-weight="bold">@ruvector/ruvllm</text>
+  <text x="577" y="258" text-anchor="middle" fill="#a0d0f0" font-family="monospace" font-size="10">v0.2.3</text>
+
+  <rect x="680" y="220" width="175" height="50" rx="4" fill="#0d1a26" stroke="#ff8c00" stroke-width="1"/>
+  <text x="767" y="240" text-anchor="middle" fill="#ff8c00" font-family="Arial, sans-serif" font-size="12" font-weight="bold">@ruvector/agentic-synth</text>
+  <text x="767" y="258" text-anchor="middle" fill="#ffc088" font-family="monospace" font-size="10">v0.1.6</text>
+
+  <!-- Features summary -->
+  <text x="490" y="295" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">📊 150+ Agent Types</text>
+  <text x="490" y="312" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">🔗 100+ MCP Tools</text>
+  <text x="680" y="295" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">🧠 27+ Neural Models</text>
+  <text x="680" y="312" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">🌐 5 Swarm Topologies</text>
+
+  <!-- Right side - KB Topics -->
+  <rect x="470" y="350" width="400" height="220" rx="10" fill="#1a2e1a" stroke="#00ff88" stroke-width="2"/>
+  <text x="670" y="377" text-anchor="middle" fill="#00ff88" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Knowledge Base Coverage</text>
+
+  <!-- Topic pills -->
+  <rect x="490" y="395" width="120" height="28" rx="14" fill="#0d260d" stroke="#4dff4d"/>
+  <text x="550" y="414" text-anchor="middle" fill="#4dff4d" font-family="Arial, sans-serif" font-size="11">Agent Systems</text>
+
+  <rect x="620" y="395" width="100" height="28" rx="14" fill="#0d260d" stroke="#4dff4d"/>
+  <text x="670" y="414" text-anchor="middle" fill="#4dff4d" font-family="Arial, sans-serif" font-size="11">AI &amp; Learning</text>
+
+  <rect x="730" y="395" width="110" height="28" rx="14" fill="#0d260d" stroke="#4dff4d"/>
+  <text x="785" y="414" text-anchor="middle" fill="#4dff4d" font-family="Arial, sans-serif" font-size="11">Infrastructure</text>
+
+  <rect x="490" y="430" width="110" height="28" rx="14" fill="#0d260d" stroke="#88ff88"/>
+  <text x="545" y="449" text-anchor="middle" fill="#88ff88" font-family="Arial, sans-serif" font-size="11">Data Storage</text>
+
+  <rect x="610" y="430" width="90" height="28" rx="14" fill="#0d260d" stroke="#88ff88"/>
+  <text x="655" y="449" text-anchor="middle" fill="#88ff88" font-family="Arial, sans-serif" font-size="11">Consensus</text>
+
+  <rect x="710" y="430" width="130" height="28" rx="14" fill="#0d260d" stroke="#88ff88"/>
+  <text x="775" y="449" text-anchor="middle" fill="#88ff88" font-family="Arial, sans-serif" font-size="11">Memory Patterns</text>
+
+  <!-- Stats -->
+  <text x="490" y="485" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">📈 230,643 Knowledge Entries</text>
+  <text x="490" y="505" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">🎯 100% Embedding Coverage (ONNX)</text>
+  <text x="490" y="525" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">⚡ 384-dim all-MiniLM-L6-v2</text>
+  <text x="490" y="545" fill="#ffffff" font-family="Arial, sans-serif" font-size="12">🔍 Grade A Quality Score (95/100)</text>
+
+  <!-- Connection arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+    </marker>
+  </defs>
+
+  <!-- Arrow from Railway to PostgreSQL -->
+  <line x1="150" y1="490" x2="150" y2="345" stroke="#00d4ff" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)"/>
+
+</svg>

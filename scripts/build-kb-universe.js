@@ -1,16 +1,17 @@
 #!/usr/bin/env node
 /**
  * Build KB Universe Visualization
- * Updated: 2025-12-30 10:40:00 EST | Version 2.0.0
+ * Updated: 2025-12-30 13:55:00 EST | Version 3.0.0
  * Created: 2025-12-30 09:55:00 EST
  *
  * Complete build script that:
  * 1. Generates data from KB (PostgreSQL or local)
- * 2. Copies template HTML
+ * 2. Copies template HTML with embedded data
  * 3. Optionally takes Playwright screenshots
+ * 4. AUTO-OPENS in browser (unless --no-open)
  *
  * Usage:
- *   node scripts/build-kb-universe.js [--screenshot] [--output-dir path]
+ *   node scripts/build-kb-universe.js [--screenshot] [--output-dir path] [--no-open]
  *
  * AUTO-UPDATE: Called by kb:ingest via postbuild hook
  */
@@ -21,6 +22,7 @@ const { spawn } = require('child_process');
 
 const args = process.argv.slice(2);
 const takeScreenshot = args.includes('--screenshot');
+const noOpen = args.includes('--no-open');
 const outputDirIndex = args.indexOf('--output-dir');
 const outputDir = outputDirIndex !== -1 ? args[outputDirIndex + 1] : path.join(process.cwd(), 'public');
 
@@ -69,8 +71,10 @@ async function main() {
     console.log('');
     console.log('📄 Step 2: Building HTML with embedded data...');
 
+    // Use project/directory name for output file
+    const projectName = path.basename(process.cwd());
     const templateSrc = path.join(__dirname, '..', 'public', 'kb-universe-template.html');
-    const templateDest = path.join(outputDir, 'knowledge-universe.html');
+    const templateDest = path.join(outputDir, `${projectName}-kb-visualization.html`);
 
     // Read template and JSON data
     let templateContent = fs.readFileSync(templateSrc, 'utf8');
@@ -124,8 +128,26 @@ async function main() {
     console.log(`   • ${path.relative(process.cwd(), dataOutput)} (data)`);
     console.log(`   • ${path.relative(process.cwd(), templateDest)} (visualization)`);
     console.log('');
-    console.log('🚀 To view:');
-    console.log(`   open ${path.relative(process.cwd(), templateDest)}`);
+
+    // Auto-open in browser (unless --no-open flag)
+    if (!noOpen && fs.existsSync(templateDest)) {
+        console.log('🌐 Opening in browser...');
+        const openCmd = process.platform === 'darwin' ? 'open' :
+                        process.platform === 'win32' ? 'start' : 'xdg-open';
+        const openProc = spawn(openCmd, [templateDest], {
+            detached: true,
+            stdio: 'ignore'
+        });
+        openProc.unref();
+        openProc.on('error', (err) => {
+            console.log(`   ⚠️ Could not auto-open: ${err.message}`);
+            console.log(`   Manual: open ${path.relative(process.cwd(), templateDest)}`);
+        });
+    } else if (noOpen) {
+        console.log('🚀 To view:');
+        console.log(`   open ${path.relative(process.cwd(), templateDest)}`);
+    }
+
     console.log('');
     console.log('   Or serve locally:');
     console.log(`   npx serve ${path.relative(process.cwd(), outputDir)}`);

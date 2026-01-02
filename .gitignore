@@ -64,3 +64,8 @@ claude-flow
 # Removed Windows wrapper files per user request
 hive-mind-prompt-*.txt
 service-account.json
+public/kb-universe-data.json
+
+# Large generated files
+public/Ask-Ruvnet-kb-visualization.html
+public/kb-universe-data.json

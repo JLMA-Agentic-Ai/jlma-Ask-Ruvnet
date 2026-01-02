@@ -1,44 +1,93 @@
 # Ask rUVnet - AI Knowledge Base Assistant
 
-**Production URL:** https://ask-ruvnet-production.up.railway.app
-**Version:** 1.7.15
-**Deployment Platform:** Railway (Dockerfile Builder)
+> Updated: 2026-01-01 18:10:00 EST | Version 2.1.0
+> Created: 2024-01-15 00:00:00 EST
 
-An advanced AI-powered knowledge base assistant that provides accurate, contextual answers from Ruv's coaching materials, code repositories, and technical documentation.
+**Production URL:** https://ask-ruvnet-production.up.railway.app
+**Version:** 2.1.0
+**Deployment Platform:** Railway (Dockerfile Builder)
+**KB Engine:** PostgreSQL (ruvector-postgres) with ONNX Embeddings
+
+The **authoritative knowledge base** for the entire RuvNet AI ecosystem. Provides semantic search across 30+ RuvNet repositories, 8+ npm packages, and comprehensive documentation for multi-agent orchestration, vector databases, and AI development patterns.
+
+---
+
+## New in v2.0.0 (January 2026)
+
+### PostgreSQL Knowledge Base Architecture
+- **Migrated from SQLite** to PostgreSQL with ruvector-postgres
+- **230,643 KB entries** in `ask_ruvnet` schema
+- **ONNX local embeddings** (384d, all-MiniLM-L6-v2)
+- **<1.2ms semantic search** via HNSW indexing
+- **Cross-repo access** - query from any RuvNet project
+
+### New Analysis Capabilities
+- **Louvain Graph Clustering** - Auto-discover topic communities
+- **AST Code Analysis** - Symbol extraction, complexity metrics
+- **Federated Learning** - Multi-agent knowledge ingestion
+
+### Updated Package Versions
+| Package | Version | Purpose |
+|---------|---------|---------|
+| agentic-flow | 2.0.1-alpha.42 | Multi-agent orchestration, federated learning |
+| claude-flow | 2.7.47 | Swarm orchestration, 100+ MCP tools |
+| ruvector | 0.1.80 | Vector DB, ONNX embeddings, graph algorithms |
+| ruv-swarm | 1.0.20 | Distributed swarms, 27+ neural models |
 
 ---
 
 ## Architecture Overview
 
-### **Railway Deployment Architecture**
+### **Knowledge Base Architecture (PostgreSQL)**
+
+<p align="center">
+  <img src="assets/kb-architecture.svg" alt="Ask-Ruvnet Knowledge Base Architecture showing PostgreSQL, Railway Platform, and Core Packages" width="900">
+</p>
+
+<details>
+<summary>📄 Text Version (for AI/accessibility)</summary>
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    Railway Platform                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │  Docker Container (Node.js 22)                       │   │
-│  │                                                       │   │
-│  │  ├─ Express Server (Port 3000)                       │   │
-│  │  │  └─ API Routes (/api/chat, /api/knowledge)       │   │
-│  │  │                                                    │   │
-│  │  ├─ Vite React UI (served as static files)          │   │
-│  │  │  └─ /src/ui/dist/                                 │   │
-│  │  │                                                    │   │
-│  │  ├─ Knowledge Base (SQLite)                          │   │
-│  │  │  └─ .swarm/memory.db (403MB, persistent volume)  │   │
-│  │  │                                                    │   │
-│  │  └─ Groq LLM Integration                             │   │
-│  │     └─ llama-3.3-70b-versatile                       │   │
-│  │                                                       │   │
-│  └──────────────────────────────────────────────────────┘   │
-│                                                               │
-│  Persistent Volume: /app/.swarm/                             │
-│  Environment: GROQ_API_KEY, PORT=3000                        │
-│                                                               │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│                    PostgreSQL (ruvector-kb:5435)                     │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │  Schema: ask_ruvnet (Authoritative RuvNet KB)                │    │
+│  │  ├─ architecture_docs (230,643 entries)                      │    │
+│  │  │   ├─ doc_id, title, content, file_path                   │    │
+│  │  │   ├─ embedding real[] (384d ONNX)                        │    │
+│  │  │   ├─ package_name, package_version                       │    │
+│  │  │   └─ topics[], doc_type                                  │    │
+│  │  │                                                           │    │
+│  │  └─ file_tracking (change detection)                        │    │
+│  │      ├─ file_path, file_hash                                │    │
+│  │      └─ last_ingested, chunk_count                          │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│                                                                       │
+│  Features:                                                            │
+│  ├─ 77+ SQL functions for vector operations                         │
+│  ├─ SIMD acceleration (AVX-512/AVX2/NEON)                          │
+│  ├─ HNSW indexing for <1.2ms search on 1M vectors                  │
+│  └─ Cross-repo access via schema isolation                          │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                    Railway Platform                                   │
+├─────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │  Docker Container (Node.js 22)                               │    │
+│  │  ├─ Express Server (Port 3000)                               │    │
+│  │  │   └─ API Routes (/api/chat, /api/knowledge)              │    │
+│  │  ├─ Vite React UI (served as static files)                   │    │
+│  │  ├─ PostgreSQL Client → ruvector-kb:5435                     │    │
+│  │  └─ Groq LLM Integration (llama-3.3-70b-versatile)          │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 ### **Key Components**
 
@@ -55,12 +104,13 @@ An advanced AI-powered knowledge base assistant that provides accurate, contextu
    - Features: Chat interface, PDF viewer, knowledge base dashboard
    - Styling: Custom CSS with cyber-industrial theme
 
-3. **Knowledge Base**
-   - Engine: SQLite (better-sqlite3)
-   - Location: `.swarm/memory.db` (persistent volume)
-   - Size: 403MB
-   - Documents: 114,450+ embedded entries
-   - Embeddings: Xenova/all-MiniLM-L6-v2 (384-dim)
+3. **Knowledge Base (PostgreSQL)**
+   - Engine: PostgreSQL with ruvector-postgres
+   - Container: `ruvector-kb` on port 5435
+   - Schema: `ask_ruvnet`
+   - Documents: 230,643 embedded entries (authoritative RuvNet KB)
+   - Embeddings: ONNX all-MiniLM-L6-v2 (384-dim, local, offline)
+   - Search: HNSW indexing, <1.2ms latency
 
 4. **LLM Integration**
    - Provider: Groq
@@ -68,10 +118,100 @@ An advanced AI-powered knowledge base assistant that provides accurate, contextu
    - API: Direct fetch to `https://api.groq.com/openai/v1/chat/completions`
 
 5. **Core Dependencies**
-   - `agentic-flow@2.0.1-alpha.5` - Multi-agent orchestration with HybridReasoningBank
-   - `ruvector@0.1.35` - Vector database backend for semantic search
-   - `puppeteer@24.31.0` - Headless browser for web scraping
-   - `sharp@0.34.5` - Image processing
+   - `agentic-flow@2.0.1-alpha.42` - Multi-agent orchestration, federated learning
+   - `claude-flow@2.7.47` - Swarm orchestration, 100+ MCP tools
+   - `ruvector@0.1.80` - Vector database, ONNX embeddings, graph algorithms
+   - `ruv-swarm@1.0.20` - Distributed swarms, 27+ neural models
+   - `@ruvector/ruvllm@0.2.3` - LLM orchestration
+   - `@ruvector/agentic-synth@0.1.6` - Agent synthesis
+
+---
+
+## Knowledge Base Commands
+
+### **Full KB Refresh**
+```bash
+# Complete refresh - packages + local docs
+node scripts/kb-full-refresh.js
+
+# Package documentation only
+node scripts/kb-full-refresh.js --packages-only
+
+# Local documentation only
+node scripts/kb-full-refresh.js --docs-only
+
+# Force re-ingestion (ignore hashes)
+node scripts/kb-full-refresh.js --force
+
+# Check KB status
+node scripts/kb-full-refresh.js --status
+```
+
+### **Analysis Tools**
+```bash
+# KB coverage scorecard with graph clustering
+node scripts/analyze-knowledge.js
+
+# AST code analysis for KB indexing
+node scripts/ast-code-analyzer.js ./src
+node scripts/ast-code-analyzer.js --ingest ./src  # Add to KB
+
+# Gap analysis
+node scripts/gap-analysis.js
+```
+
+### **Federated Learning Ingestion**
+```javascript
+// Use multi-agent ingestion (10-50 parallel agents)
+const { FederatedKBCoordinator } = require('./src/agents/federated-kb-coordinator');
+const coordinator = new FederatedKBCoordinator({ maxAgents: 10 });
+await coordinator.ingestWithAgents('./docs');
+```
+
+---
+
+## Cross-Repo KB Access
+
+This knowledge base is **accessible from any RuvNet project** via PostgreSQL:
+
+### **Connection Details**
+```bash
+Host: localhost
+Port: 5435
+User: postgres
+Password: guruKB2025
+Database: postgres
+Schema: ask_ruvnet
+```
+
+### **Query from Any Project**
+```bash
+# Direct SQL query
+PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "
+  SELECT title, content
+  FROM ask_ruvnet.architecture_docs
+  WHERE content ILIKE '%swarm topology%'
+  LIMIT 5;
+"
+
+# Semantic search (requires embedding)
+PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "
+  SELECT title, 1 - (embedding <=> query_embedding) as similarity
+  FROM ask_ruvnet.architecture_docs
+  ORDER BY embedding <=> query_embedding
+  LIMIT 10;
+"
+```
+
+### **Schema Isolation**
+Each project can have its own schema while accessing shared RuvNet knowledge:
+```sql
+-- Create project-specific schema
+CREATE SCHEMA IF NOT EXISTS my_project;
+
+-- Access shared RuvNet KB
+SELECT * FROM ask_ruvnet.architecture_docs WHERE topics @> ARRAY['swarm'];
+```
 
 ### **Railway-Specific Architectural Decisions**
 
@@ -212,6 +352,13 @@ cd ../..
 
 ## Project Structure
 
+<p align="center">
+  <img src="assets/project-structure.svg" alt="Ask-Ruvnet Project Directory Structure" width="800">
+</p>
+
+<details>
+<summary>📄 Text Version (for AI/accessibility)</summary>
+
 ```
 Ask-Ruvnet/
 ├── src/
@@ -231,23 +378,39 @@ Ask-Ruvnet/
 │   │   ├── ReRanker.js            # Cross-encoder style reranking
 │   │   ├── ContextCompressor.js   # Context optimization
 │   │   └── MultiHopRetriever.js   # Complex query handling
+│   ├── storage/                   # Vector storage modules
+│   │   ├── persistent-vector-db.js    # Persistent vector DB
+│   │   └── swarm-vector-memory.js     # Semantic swarm memory
+│   ├── agents/                    # Agent coordinators
+│   │   └── federated-kb-coordinator.js # Multi-agent KB ingestion
 │   └── connectors/                # Data source connectors
 │       ├── GoogleDriveConnector.js
 │       └── LocalDirectoryConnector.js
 ├── scripts/
 │   ├── deployment/
 │   │   └── start-railway.sh       # Railway startup script
-│   └── ingestion/
-│       ├── ingest_correct.js      # Main ingestion script
-│       ├── check_repo_versions.js # Version checker utility
-│       └── repo_knowledge.json    # Tracked repositories
-├── .swarm/
-│   └── memory.db                  # SQLite knowledge base
+│   ├── kb-full-refresh.js         # PostgreSQL KB refresh
+│   ├── analyze-knowledge.js       # KB scorecard + clustering
+│   ├── ast-code-analyzer.js       # Symbol extraction
+│   ├── build-persistent-kb.js     # ONNX KB builder
+│   └── gap-analysis.js            # Coverage gap analysis
+├── docs/                          # Documentation
+│   ├── architecture/              # Architecture docs
+│   ├── shareable-skills/          # Claude skills
+│   └── ruvnet-knowledgebase-patterns/  # KB patterns
+├── public/                        # Generated visualizations
+│   ├── kb-universe-data.json
+│   └── Ask-Ruvnet-kb-visualization.html
+├── assets/                        # SVG diagrams
+│   ├── kb-architecture.svg
+│   └── project-structure.svg
 ├── Dockerfile                     # Railway build configuration
 ├── railway.json                   # Railway builder settings
 ├── package.json                   # Dependencies + version
 └── README.md                      # This file
 ```
+
+</details>
 
 ---
 
@@ -255,22 +418,47 @@ Ask-Ruvnet/
 
 ### **Knowledge Base Updates**
 
-Since automatic ingestion is disabled in production, update knowledge manually:
+The KB uses PostgreSQL with automatic change detection:
 
-1. **Run ingestion locally:**
+1. **Full refresh (recommended):**
    ```bash
-   node scripts/ingestion/ingest_correct.js
+   node scripts/kb-full-refresh.js
    ```
 
-2. **Update repo metadata:**
-   Edit `scripts/ingestion/repo_knowledge.json`
-
-3. **Commit and push:**
+2. **Check status:**
    ```bash
-   git add scripts/ingestion/*.json
-   git commit -m "Update knowledge base"
-   git push origin main
+   node scripts/kb-full-refresh.js --status
    ```
+
+3. **Force re-ingestion:**
+   ```bash
+   node scripts/kb-full-refresh.js --force
+   ```
+
+4. **Analyze coverage:**
+   ```bash
+   node scripts/analyze-knowledge.js
+   ```
+
+### **RuvNet Ecosystem Coverage**
+
+This KB is the authoritative source for 30+ RuvNet repositories:
+
+| Category | Repositories |
+|----------|--------------|
+| **Core Packages** | ruvector, agentic-flow, claude-flow, ruv-swarm, flow-nexus |
+| **Vector DB** | @ruvector/gnn, @ruvector/rvlite, @ruvector/ruvllm |
+| **AI/ML** | neural-trader, agentic-synth, SAFLA, strange-loop |
+| **Infrastructure** | Synaptic-Mesh, oz-bot, daa |
+| **Applications** | chatgpt-artifacts, ask-ruvnet, retirewell-ai |
+
+**Key Topics Covered:**
+- Agent orchestration (150+ agent types)
+- Swarm topologies (hierarchical, mesh, ring, star, adaptive)
+- Consensus protocols (Byzantine, Raft, CRDT, Gossip)
+- RL algorithms (Decision Transformer, Actor-Critic, PPO, SAC)
+- Memory architectures (episodic, semantic, working memory)
+- Deployment patterns (Docker, Railway, K8s, air-gapped)
 
 ### **Version Management**
 
@@ -330,23 +518,37 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
 
 ---
 
-## Current Status (v1.7.15)
+## Current Status (v2.0.0)
 
 ### **Production Metrics**
-- Server: Running
-- Knowledge Base: 114,450 documents
-- Active Repos: 7 (Ask-Ruvnet, agentic-flow, ruvector, ruvllm, claude-flow, neural-trader, agentic-synth)
+- Server: Running on Railway
+- Knowledge Base: 230,643 entries (PostgreSQL)
+- Active Repos: 30+ RuvNet repositories tracked
+- Embedding Model: ONNX all-MiniLM-L6-v2 (384d, local)
+- Search Latency: <1.2ms (HNSW indexing)
 - Uptime: 24/7
 - Response Time: <2s average
 
 ### **Features**
 - Chat with Groq LLM (llama-3.3-70b-versatile)
-- Agentic Flow integration (v2.0.1-alpha.5) with HybridReasoningBank
+- PostgreSQL KB with ONNX embeddings (10x faster, offline)
+- Louvain graph clustering for topic discovery
+- AST code analysis for symbol extraction
+- Federated learning multi-agent ingestion
+- Agentic Flow integration (v2.0.1-alpha.42)
+- Claude Flow swarm orchestration (v2.7.47)
+- Cross-repo KB access via schema isolation
 - Knowledge base dashboard with repo tracking
 - PDF presentation mode
-- Repository version display with alpha/latest tracking
-- Health monitoring
-- Professional technical assistant persona (formal documentation style)
+- Professional technical assistant persona
+
+### **New Scripts (v2.0.0)**
+| Script | Purpose |
+|--------|---------|
+| `kb-full-refresh.js` | Comprehensive KB refresh to PostgreSQL |
+| `analyze-knowledge.js` | Scorecard + Louvain clustering |
+| `ast-code-analyzer.js` | Symbol extraction, complexity metrics |
+| `federated-kb-coordinator.js` | Multi-agent KB ingestion |
 
 ---
 
@@ -359,10 +561,36 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
 - Verify Dockerfile is building correctly (uses `npm install` not `npm ci`)
 - Check `railway.json` specifies `DOCKERFILE` builder
 
-### **Knowledge Base Empty**
-- Check persistent volume is mounted
-- Verify `.swarm/memory.db` exists
-- Re-run ingestion if needed
+### **PostgreSQL KB Issues**
+```bash
+# Check if ruvector-kb container is running
+docker ps | grep ruvector-kb
+
+# Start container if not running
+docker start ruvector-kb
+
+# Test connection
+PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "SELECT 1"
+
+# Check entry count
+PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c \
+  "SELECT COUNT(*) FROM ask_ruvnet.architecture_docs"
+
+# Re-run full refresh
+node scripts/kb-full-refresh.js --force
+```
+
+### **ONNX Embeddings Not Working**
+```bash
+# Verify ruvector version (need 0.1.77+)
+npm list ruvector
+
+# Update if needed
+npm update ruvector
+
+# Check if ONNXEmbedder is available
+node -e "const r = require('ruvector'); console.log(!!r.ONNXEmbedder)"
+```
 
 ### **UI Not Loading**
 - Verify `src/ui/dist/` was built

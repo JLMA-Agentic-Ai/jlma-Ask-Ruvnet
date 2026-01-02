@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <!--
 KB Universe Visualization Template
-Updated: 2025-12-30 12:00:00 EST | Version 3.0.0
+Updated: 2025-12-30 14:15:00 EST | Version 3.1.0
 Created: 2025-12-30 09:50:00 EST
 
-ENHANCED: Bricksmith-inspired navigation
-- All categories remain visible when drilling down
+ENHANCED: Better drill-down navigation
+- Parent node label hidden when drilled in (node stays for traversal)
+- Zoom in/out buttons added (bottom right)
+- Label truncation increased from 18 to 40 chars
+- Zoom range expanded (30% - 300%)
 - Categories sidebar on left
 - Info panel on right with clickable sub-items
-- Persistent view that compresses but never hides
 -->
 <html lang="en">
 <head>
@@ -482,6 +484,53 @@ ENHANCED: Bricksmith-inspired navigation
             font-family: monospace;
         }
 
+        /* Zoom Controls */
+        #zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 44px;
+            height: 44px;
+            background: rgba(10, 20, 40, 0.95);
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            border-radius: 10px;
+            color: #94a3b8;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .zoom-btn:hover {
+            background: rgba(100, 181, 246, 0.2);
+            border-color: rgba(100, 181, 246, 0.5);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .zoom-btn:active {
+            transform: scale(0.95);
+        }
+
+        #zoom-level {
+            text-align: center;
+            font-size: 0.7em;
+            color: #64748b;
+            background: rgba(10, 20, 40, 0.9);
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(100, 150, 255, 0.2);
+        }
+
         /* Loading */
         #loading {
             position: fixed;
@@ -564,6 +613,14 @@ ENHANCED: Bricksmith-inspired navigation
         <p><kbd>Drag</kbd> Rotate view</p>
         <p><kbd>Scroll</kbd> Zoom</p>
         <p><kbd>R</kbd> Reset view</p>
+    </div>
+
+    <!-- Zoom Controls - Bottom Right -->
+    <div id="zoom-controls" class="hidden">
+        <button class="zoom-btn" id="zoom-in" title="Zoom In">+</button>
+        <div id="zoom-level">100%</div>
+        <button class="zoom-btn" id="zoom-out" title="Zoom Out">−</button>
+        <button class="zoom-btn" id="zoom-reset" title="Reset Zoom">⟲</button>
     </div>
 
     <canvas id="canvas"></canvas>
@@ -671,27 +728,27 @@ ENHANCED: Bricksmith-inspired navigation
                     if (!cat.pos) cat.pos = { ...cat.targetPos };
                 });
 
-                // Selected category moves right with children
+                // Selected category moves to center-right position
                 selectedCategory.targetPos = {
-                    x: centerX + 200,
+                    x: centerX + 120,
                     y: 0,
                     z: 50
                 };
                 if (!selectedCategory.pos) selectedCategory.pos = { x: 0, y: 0, z: 0 };
 
-                // Children spread vertically
+                // Children spread in a wider arc around selected category
                 if (selectedCategory.children) {
                     const numChildren = selectedCategory.children.length;
-                    const startX = selectedCategory.targetPos.x + 180;
-                    const spacingY = 80;
-                    const totalHeight = (numChildren - 1) * spacingY;
-                    const startY = -totalHeight / 2;
+                    const childRadius = 200 + Math.min(numChildren * 5, 100); // Expand with more children
+                    const arcSpan = Math.min(Math.PI * 1.4, numChildren * 0.15 + 0.8); // Wider arc for more children
+                    const arcStart = -arcSpan / 2;
 
                     selectedCategory.children.forEach((child, j) => {
+                        const angle = arcStart + (j / (numChildren - 1 || 1)) * arcSpan;
                         child.targetPos = {
-                            x: startX + (j % 2) * 60,
-                            y: startY + j * spacingY,
-                            z: 30 + j * 8
+                            x: selectedCategory.targetPos.x + Math.cos(angle) * childRadius,
+                            y: Math.sin(angle) * childRadius * 0.8, // Slightly compressed vertically
+                            z: 30 + Math.abs(angle) * 20
                         };
                         if (!child.pos) child.pos = { ...selectedCategory.targetPos };
                     });
@@ -756,18 +813,23 @@ ENHANCED: Bricksmith-inspired navigation
             ctx.fill();
             ctx.globalAlpha = 1;
 
-            // Label
-            ctx.font = `${Math.max(11, radius * 0.35)}px 'Segoe UI', system-ui, sans-serif`;
-            ctx.fillStyle = dimmed ? 'rgba(255,255,255,0.4)' : 'white';
-            ctx.textAlign = 'center';
+            // Label - hide center node label when drilled into a category
+            const hideLabel = isCenter && selectedCategory !== null;
 
-            const label = node.name.length > 18 ? node.name.substring(0, 16) + '...' : node.name;
-            ctx.fillText(label, p.x, p.y + radius + 16);
+            if (!hideLabel) {
+                ctx.font = `${Math.max(11, radius * 0.35)}px 'Segoe UI', system-ui, sans-serif`;
+                ctx.fillStyle = dimmed ? 'rgba(255,255,255,0.4)' : 'white';
+                ctx.textAlign = 'center';
 
-            if (node.count && !dimmed) {
-                ctx.font = '10px system-ui';
-                ctx.fillStyle = 'rgba(255,255,255,0.6)';
-                ctx.fillText(`(${node.count})`, p.x, p.y + radius + 28);
+                // Increased label limit from 18 to 40 chars for better readability
+                const label = node.name.length > 40 ? node.name.substring(0, 38) + '...' : node.name;
+                ctx.fillText(label, p.x, p.y + radius + 16);
+
+                if (node.count && !dimmed) {
+                    ctx.font = '10px system-ui';
+                    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+                    ctx.fillText(`(${node.count})`, p.x, p.y + radius + 28);
+                }
             }
         }
 
@@ -916,10 +978,11 @@ ENHANCED: Bricksmith-inspired navigation
         canvas.addEventListener('mouseup', () => { isDragging = false; });
         canvas.addEventListener('mouseleave', () => { isDragging = false; });
 
-        // Scroll zoom
+        // Scroll zoom - expanded range from 0.3 to 3x
         canvas.addEventListener('wheel', (e) => {
             e.preventDefault();
-            zoom = Math.max(0.5, Math.min(2, zoom - e.deltaY * 0.001));
+            zoom = Math.max(0.3, Math.min(3, zoom - e.deltaY * 0.001));
+            updateZoomDisplay();
         });
 
         // Keyboard
@@ -929,8 +992,35 @@ ENHANCED: Bricksmith-inspired navigation
                 targetRotationY = 0;
                 zoom = 1;
                 autoRotate = true;
+                updateZoomDisplay();
             }
         });
+
+        // Zoom controls
+        function updateZoomDisplay() {
+            const el = document.getElementById('zoom-level');
+            if (el) safeSetText(el, Math.round(zoom * 100) + '%');
+        }
+
+        function zoomIn() {
+            zoom = Math.min(3, zoom + 0.2);
+            updateZoomDisplay();
+        }
+
+        function zoomOut() {
+            zoom = Math.max(0.3, zoom - 0.2);
+            updateZoomDisplay();
+        }
+
+        function zoomReset() {
+            zoom = 1;
+            targetRotationX = 0;
+            targetRotationY = 0;
+            autoRotate = true;
+            updateZoomDisplay();
+        }
+
+        // Zoom button event listeners (added after DOM ready in init)
 
         // Navigation functions
         function selectCategory(cat) {
@@ -1194,6 +1284,13 @@ ENHANCED: Bricksmith-inspired navigation
                 document.getElementById('info-panel').classList.remove('hidden');
                 document.getElementById('breadcrumb').classList.remove('hidden');
                 document.getElementById('controls').classList.remove('hidden');
+                document.getElementById('zoom-controls').classList.remove('hidden');
+
+                // Attach zoom button listeners
+                document.getElementById('zoom-in').addEventListener('click', zoomIn);
+                document.getElementById('zoom-out').addEventListener('click', zoomOut);
+                document.getElementById('zoom-reset').addEventListener('click', zoomReset);
+                updateZoomDisplay();
 
                 render();
 

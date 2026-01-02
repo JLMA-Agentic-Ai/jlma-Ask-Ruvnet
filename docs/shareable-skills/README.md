@@ -1,4 +1,4 @@
-Updated: 2025-12-30 10:45:00 EST | Version 3.0.0
+Updated: 2025-12-30 12:20:00 EST | Version 3.1.1
 Created: 2025-12-30 10:05:00 EST
 
 # RuvNet Skills & Commands - Installation Guide
@@ -24,15 +24,15 @@ shareable-skills/
 │   │   └── SKILL.md             # Main skill file with YAML frontmatter
 │   ├── ruvnet-update/           # /ruvnet-update - Update packages
 │   │   └── SKILL.md             # Main skill file with YAML frontmatter
-│   └── ruvnet-kb-visual.md      # /ruvnet-kb-visual - KB visualization
+│   └── ruvnet-kb-visual/        # /ruvnet-kb-visual - KB visualization (v2.1.0)
+│       ├── SKILL.md             # Main skill file with YAML frontmatter
+│       ├── kb-universe-data.js  # Core visualization generator with scoring
+│       ├── kb-auto-enhance.js   # Auto-enhancement loop to 98+
+│       ├── kb-file-watcher.js   # Watch files, auto-rebuild
+│       └── ingest-docs-to-kb.js # Document ingestion pipeline
 ├── commands/                    ← Claude Code commands (if any)
 └── scripts/                     ← Supporting scripts (copy to project)
-    ├── kb-universe-data.js      # Generates KB JSON with scoring
-    ├── build-kb-universe.js     # Build orchestrator
-    ├── kb-universe-screenshot.js # Playwright screenshots
-    ├── test-kb-universe.js      # Verification test (MANDATORY)
-    ├── test-kb-navigation.js    # Navigation test
-    └── kb-universe-template.html # Visualization template (v3.0.0)
+    └── (scripts now in ruvnet-kb-visual/ skill directory)
 ```
 
 ## Quick Installation (5 minutes)
@@ -40,20 +40,24 @@ shareable-skills/
 ### Step 1: Install Skills (Directory-Based)
 
 ```bash
-# Create Claude skills directory (if it doesn't exist)
-mkdir -p ~/.claude/skills
+# Create Claude skills and templates directories
+mkdir -p ~/.claude/skills ~/.claude/templates/kb-universe
 
-# Copy directory-based skills (preserves structure)
+# Copy all 3 directory-based skills
 cp -r skills/ruvnet-stack ~/.claude/skills/
 cp -r skills/ruvnet-update ~/.claude/skills/
+cp -r skills/ruvnet-kb-visual ~/.claude/skills/
 
-# Copy flat skills (older format, still works)
-cp skills/*.md ~/.claude/skills/ 2>/dev/null || true
+# Copy KB visualization templates (for global reuse)
+cp skills/ruvnet-kb-visual/*.js ~/.claude/templates/kb-universe/
 
-# Verify
+# Verify skills
 ls ~/.claude/skills/
-# Should show directories: ruvnet-stack, ruvnet-update
-# And files: ruvnet-kb-visual.md
+# Should show: ruvnet-stack, ruvnet-update, ruvnet-kb-visual
+
+# Verify templates
+ls ~/.claude/templates/kb-universe/
+# Should show: kb-universe-data.js, kb-auto-enhance.js, kb-file-watcher.js, ingest-docs-to-kb.js
 ```
 
 ### Step 2: Restart Claude Code
@@ -131,12 +135,14 @@ updated: 2025-12-30
 # Navigate to this directory
 cd docs/shareable-skills
 
-# Copy directory-based skills
+# Copy all 3 directory-based skills
 cp -r skills/ruvnet-stack ~/.claude/skills/
 cp -r skills/ruvnet-update ~/.claude/skills/
+cp -r skills/ruvnet-kb-visual ~/.claude/skills/
 
-# Copy flat skills
-cp skills/*.md ~/.claude/skills/ 2>/dev/null || true
+# Copy KB visualization templates (for global reuse across any project)
+mkdir -p ~/.claude/templates/kb-universe
+cp skills/ruvnet-kb-visual/*.js ~/.claude/templates/kb-universe/
 
 # Copy KB pattern documentation (recommended)
 mkdir -p ~/.claude/docs/ruvnet-knowledgebase-patterns
@@ -199,19 +205,27 @@ npm pkg set scripts.kb:visual:screenshot="node scripts/build-kb-universe.js --sc
 
 **When to use:** Periodically, or when you need latest features.
 
-### `/ruvnet-kb-visual`
+### `/ruvnet-kb-visual` (v2.1.0) ⭐ NEW
 
-**Builds interactive Knowledge Universe visualization with quality scoring:**
+**Builds interactive Knowledge Universe visualization with quality scoring and auto-enhancement:**
 
 - Reads data from ruvector-postgres or local storage
-- Generates JSON hierarchy with KB scoring (v2.1.0)
-- Creates interactive 3D visualization with Bricksmith-inspired navigation
-- **KB Score Dashboard** (1-100 scale across 5 dimensions)
-- **Standard Academic Grading** (67 = D+, not B-)
+- **5-Dimension Quality Scoring** (Coverage, Depth, Balance, Quality, Sources)
+- **Auto-Enhancement Loop** - Recursively improves KB until 98+ score
+- **File Watcher** - Auto-rebuilds when documentation changes
+- Creates interactive 3D visualization with expand/collapse navigation
+- **Academic Grading** (A+ = 98-100, A = 95-97, etc.)
 - **Enhancement Recommendations** with priority levels
-- **Playwright Verification** - ALWAYS test before reporting success
 
-**When to use:** After populating your KB, to visualize and assess quality.
+**Scripts included:**
+- `kb-universe-data.js` - Core visualization generator with scoring
+- `kb-auto-enhance.js` - Auto-enhancement loop (`--target=98`)
+- `kb-file-watcher.js` - Watch files, auto-rebuild on changes
+- `ingest-docs-to-kb.js` - Document ingestion pipeline
+
+**Triggers:** "kb visual", "kb visualization", "kb universe", "kb quality score"
+
+**When to use:** After populating your KB, to visualize and auto-enhance to production quality (98+).
 
 ## Prerequisites
 
@@ -324,4 +338,7 @@ This gives Claude Code reference material on:
 
 ---
 
-**Version 3.0.0** - Directory-based skills with YAML frontmatter, auto-triggers, proper skills-index.json registration. Removed command duplicates.
+**Version 3.1.0** - All 3 skills now directory-based with YAML frontmatter:
+- `/ruvnet-stack` v2.1.0 - Full ecosystem install
+- `/ruvnet-update` v2.1.0 - Update packages + KB compliance
+- `/ruvnet-kb-visual` v2.1.0 - KB visualization with auto-enhancement to 98+

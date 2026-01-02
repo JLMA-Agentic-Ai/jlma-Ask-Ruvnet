@@ -1,156 +1,162 @@
-Updated: 2025-12-30 10:00:00 EST | Version 1.0.0
-Created: 2025-12-30 10:00:00 EST
+Updated: 2025-12-30 14:00:00 EST | Version 3.3.0
+Created: 2025-12-30 11:40:00 EST
 
-# RuvNet KB Visual
+# RuvNet KB Visual Skill
 
-Build interactive Knowledge Universe visualization for your knowledge base.
+## Skill Overview
+
+**Name:** `/ruvnet-kb-visual` (Knowledge Base Visualization)
+**Purpose:** Build interactive 3D Knowledge Universe visualization from ruvector-postgres data with embedded HTML output.
+
+---
 
 ## What This Does
 
-1. **Reads KB data** from ruvector-postgres or local .ruvector storage
-2. **Generates interactive 3D visualization** showing knowledge hierarchy
-3. **Creates navigable tree structure** - click to expand/collapse
-4. **Takes Playwright screenshots** for documentation/sharing
-5. **Auto-updates** when KB changes (via kb:ingest hook)
+1. **Auto-discovers schema tables** - Scans `information_schema` to find ALL tables
+2. **Queries all content tables** - Pulls data from any table with title/content columns
+3. **Content-based categorization** - Detects RuvNet ecosystem components
+4. **Generates quality score** - 5-dimension scoring (Coverage, Depth, Balance, Quality, Sources)
+5. **Builds HTML with embedded data** - Named `{ProjectName}-kb-visualization.html`
+6. **AUTO-OPENS in browser** - Immediate visual feedback (use `--no-open` to disable)
 
-## Usage
+---
+
+## How Knowledge is Stored
+
+### Schema Structure (Auto-Discovered)
+
+The skill does **NOT** require a specific table structure. It:
+
+1. **Queries `information_schema.tables`** to find all tables in your schema
+2. **Queries `information_schema.columns`** to understand each table's structure
+3. **Maps columns intelligently:**
+
+| Expected Column | Recognized Alternatives |
+|-----------------|------------------------|
+| `id` | Any column ending in `_id` |
+| `title` | `name`, `hook_name`, `template_name`, `post_type`, `cta_type` |
+| `content` | `description`, `template`, `hook_template`, `cta_template`, `body`, `text` |
+| `source` | `file_path`, `category`, `platform`, `hook_category` |
+| `type` | `category`, `platform`, `status` |
+
+### Example: Project with Specialized Tables
+
+```
+viral_social schema:
+├── hooks_templates (hook_name, template, category)  → ✓ queried
+├── post_types (post_type, description, platform)    → ✓ queried
+├── cta_templates (cta_type, cta_template, category) → ✓ queried
+└── file_tracking (path, hash, size)                 → ⏭️ skipped (no content)
+```
+
+### Example: Project with Standard Table
+
+```
+ask_ruvnet schema:
+├── architecture_docs (title, content, file_path)    → ✓ queried
+└── file_tracking (path, hash, size)                 → ⏭️ skipped (no content)
+```
+
+---
+
+## Bash Commands
 
 ```bash
-# Build the visualization
-node scripts/build-kb-universe.js
+echo ""
+echo "╔═══════════════════════════════════════════════════════════════╗"
+echo "║           RUVNET KB VISUAL v3.3                               ║"
+echo "╚═══════════════════════════════════════════════════════════════╝"
+echo ""
 
-# Build with screenshots
-node scripts/build-kb-universe.js --screenshot
+# Check for ruvector-postgres
+echo "🗄️  Checking ruvector-postgres connection..."
+if docker ps --format '{{.Names}}' 2>/dev/null | grep -q "ruvector-kb"; then
+  echo "   ✅ ruvector-kb container running on port 5435"
+else
+  echo "   ❌ ruvector-kb not running"
+  echo "   Run: docker start ruvector-kb"
+  exit 1
+fi
 
-# View the result
-open public/knowledge-universe.html
-
-# Or serve locally
-npx serve public
+# Build visualization - auto-discovers tables, generates HTML, opens browser
+echo ""
+echo "🎨 Building KB visualization..."
+if [ -f "scripts/build-kb-universe.js" ]; then
+  node scripts/build-kb-universe.js
+  # Script auto-opens browser (use --no-open to disable)
+else
+  echo "   ❌ scripts/build-kb-universe.js not found"
+  echo "   This skill requires the KB Universe builder scripts."
+  echo ""
+  echo "   Required files:"
+  echo "   - scripts/build-kb-universe.js (HTML builder v3.0+)"
+  echo "   - scripts/kb-universe-data.js (data generator v3.0+)"
+  echo "   - public/kb-universe-template.html (HTML template)"
+fi
 ```
+
+---
+
+## RuvNet Ecosystem Categories
+
+The visualization automatically detects and creates top-level categories for:
+
+| Category | Description |
+|----------|-------------|
+| **Agentic Flow** | Multi-agent orchestration system |
+| **Claude Flow** | Enterprise AI coordination |
+| **RuVector** | Vector database & embeddings |
+| **Flow Nexus** | Cloud orchestration platform |
+| **AgentDB** | Agent memory & persistence |
+| **Claude Code** | CLI development tool |
+| **Ruv Swarm** | Distributed agent swarms |
+| **RuvLLM** | LLM orchestration layer |
+
+Plus 30+ additional topic-based categories from content analysis.
+
+---
+
+## Scoring System
+
+| Dimension | Weight | Optimal |
+|-----------|--------|---------|
+| Coverage | 25% | 500-2000 entries |
+| Depth | 15% | 15-40 categories |
+| Balance | 15% | Even distribution |
+| Quality | 30% | Rich content (500+ chars avg) |
+| Sources | 15% | 20+ unique sources |
+
+---
 
 ## Output Files
 
-After running, you'll have:
+| File | Purpose |
+|------|---------|
+| `public/kb-universe-data.json` | Raw hierarchy data |
+| `public/{ProjectName}-kb-visualization.html` | Self-contained visualization with embedded data |
 
-```
-public/
-├── kb-universe-data.json      # KB hierarchy in JSON
-├── knowledge-universe.html    # Interactive visualization
-├── kb-universe-overview.png   # Screenshot (if --screenshot)
-├── kb-universe-expanded.png   # Screenshot (if --screenshot)
-└── kb-universe-detail.png     # Screenshot (if --screenshot)
-```
+---
 
-## Visualization Features
+## Troubleshooting
 
-- **Central node**: Project name with "Knowledge Universe"
-- **Click to expand**: Navigate into categories and subcategories
-- **Breadcrumb navigation**: Go back to any level
-- **Search**: Find specific knowledge items
-- **Info panel**: View details of any item
-- **Star field background**: Beautiful 3D space theme
-- **Glow effects**: Nodes have radial glow matching their category color
+### "No tables found"
+- Check schema name matches directory: `project-name` → `project_name`
+- Verify tables exist: `\dt project_name.*` in psql
 
-## Integration with KB Workflow
+### "Skipping table X"
+- Normal - tables without title/content columns are skipped
+- Add a `title` or `name` column to include a table
 
-### Automatic Build on Ingest
+### "No content/title columns"
+- Table needs at least one recognized column (see mapping table above)
+- Customize column detection in `kb-universe-data.js` lines 556-561
 
-Add to your `package.json` scripts:
+---
 
-```json
-{
-  "scripts": {
-    "kb:ingest": "node scripts/kb-architecture-sync.js --ingest && npm run kb:visual",
-    "kb:visual": "node scripts/build-kb-universe.js",
-    "kb:visual:screenshot": "node scripts/build-kb-universe.js --screenshot"
-  }
-}
-```
+## Related Commands
 
-### Prerequisites for Screenshots
-
-```bash
-npm install playwright --save-dev
-npx playwright install chromium
-```
-
-## Data Structure
-
-The generated `kb-universe-data.json` follows this structure:
-
-```json
-{
-  "id": "root",
-  "name": "Project Name",
-  "color": "#64b5f6",
-  "description": "Project description",
-  "children": [
-    {
-      "id": "cat_category_name",
-      "name": "Category Name",
-      "color": "#ef4444",
-      "count": 42,
-      "children": [
-        {
-          "id": "item_123",
-          "name": "Item Title",
-          "description": "Item content preview...",
-          "source": "source-file.md"
-        }
-      ]
-    }
-  ],
-  "metadata": {
-    "totalItems": 150,
-    "categories": 8,
-    "generatedAt": "2025-12-30T15:00:00.000Z"
-  }
-}
-```
-
-## Customization
-
-### Colors
-
-Edit `scripts/kb-universe-data.js` to change category colors:
-
-```javascript
-const CATEGORY_COLORS = [
-    '#ef4444', // red
-    '#f97316', // orange
-    '#22c55e', // green
-    // ... add more
-];
-```
-
-### Template Styling
-
-Edit `public/kb-universe-template.html` CSS to customize:
-- Background gradients
-- Font families
-- Node sizes
-- Animation speeds
-
-## Why This Matters
-
-**Nobody understands how to see or visualize a vector knowledge base.**
-
-This visualization:
-- Shows users exactly what's in their KB
-- Demonstrates the hierarchical structure
-- Makes semantic relationships visible
-- Provides a "wow factor" for stakeholders
-- Validates that KB ingestion worked correctly
-
-## Files to Copy
-
-To add this capability to a new project:
-
-1. Copy `scripts/kb-universe-data.js`
-2. Copy `scripts/build-kb-universe.js`
-3. Copy `scripts/kb-universe-screenshot.js`
-4. Copy `public/kb-universe-template.html`
-5. Add npm scripts to `package.json`
-
-Or run `/ruvnet-stack` which includes all KB visualization tools.
+| Command | Purpose |
+|---------|---------|
+| `/ruvnet-stack` | Full ecosystem install |
+| `/ruvnet-update` | Update packages |
+| `/ruvnet-kb` | Link tool knowledge |

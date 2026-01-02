@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "dimensions": 128,
+  "distanceMetric": "Cosine",
+  "vectorCount": 2043,
+  "savedAt": "2025-12-29T14:23:56.369Z",
+  "stats": {
+    "inserts": 138,
+    "deletes": 0,
+    "searches": 0,
+    "saves": 0,
+    "loads": 1
+  }
+}

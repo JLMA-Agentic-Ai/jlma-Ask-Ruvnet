@@ -109,7 +109,7 @@ echo ""
 echo "🗄️  Checking ruvector-postgres (MANDATORY for knowledge bases)..."
 if command -v docker &> /dev/null; then
   if docker ps --format '{{.Names}}' 2>/dev/null | grep -q "ruvector-kb"; then
-    echo "   ✅ ruvector-kb container running on port 5434"
+    echo "   ✅ ruvector-kb container running on port 5435"
     docker ps --filter "name=ruvector-kb" --format "   Status: {{.Status}}" 2>/dev/null
   elif docker ps -a --format '{{.Names}}' 2>/dev/null | grep -q "ruvector-kb"; then
     echo "   ⚠️  ruvector-kb container exists but stopped. Starting..."
@@ -121,7 +121,7 @@ if command -v docker &> /dev/null; then
     echo "   CRITICAL: Run this to create the knowledge base container:"
     echo "   docker run -d --name ruvector-kb \\"
     echo "     -e POSTGRES_PASSWORD=guruKB2025 \\"
-    echo "     -p 5434:5432 \\"
+    echo "     -p 5435:5432 \\"
     echo "     ruvnet/ruvector-postgres:latest"
   fi
 else
@@ -179,3 +179,4 @@ echo ""
 - `/ruvnet-stack` - Install full RuvNet ecosystem from scratch
 - `/ruvnet-update` - Update packages and validate KB compliance (this skill)
 - `/ruvnet-kb` - Link the RuvNet knowledge base to current project
+- `/ruvnet-kb-visual` - Build KB visualization with quality scoring

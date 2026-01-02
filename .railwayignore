@@ -15,7 +15,8 @@ node_modules/
 *.db-wal
 agentdb.db
 memory.db
-storage/
+/storage/
+# NOTE: src/storage/ MUST be included for production!
 
 # Local vector store (16MB)
 .ruvector/
