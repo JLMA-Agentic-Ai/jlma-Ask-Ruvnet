@@ -645,6 +645,31 @@ app.get('/api/knowledge', (req, res) => {
     }
     knowledge.videoStats = { total: videoCount, weeks: 4 };
 
+    // Sort repos by last_update (newest first), with alpha versions prioritized
+    knowledge.repos.sort((a, b) => {
+        // Prioritize alpha/v3 versions at top
+        const aIsAlpha = a.version_alpha || (a.version && a.version.includes('alpha'));
+        const bIsAlpha = b.version_alpha || (b.version && b.version.includes('alpha'));
+        if (aIsAlpha && !bIsAlpha) return -1;
+        if (!aIsAlpha && bIsAlpha) return 1;
+
+        // Then sort by last_update date (newest first)
+        const dateA = new Date(a.last_update || 0);
+        const dateB = new Date(b.last_update || 0);
+        return dateB - dateA;
+    });
+
+    // Add version status indicator to each repo
+    knowledge.repos = knowledge.repos.map(repo => ({
+        ...repo,
+        versionStatus: repo.version_alpha ? 'ALPHA' :
+                       repo.version === repo.version_latest ? 'LATEST' :
+                       'STABLE'
+    }));
+
+    // Add app version to response
+    knowledge.version = APP_VERSION;
+
     console.log(`   ✅ Returning ${knowledge.repos.length} repos, ${knowledge.websites.length} docs, ${knowledge.docs.length} files, ${videoCount} videos.`);
     res.json(knowledge);
 });
