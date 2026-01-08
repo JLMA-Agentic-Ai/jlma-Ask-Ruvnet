@@ -554,8 +554,8 @@ app.post('/api/learn', (req, res) => {
     res.json({ message: "Learning process started in background." });
 });
 
-// Serve Other Documents
-app.use('/assets/docs', express.static(path.join(__dirname, '../../data_ingestion_ruv_coaching/Other Documents')));
+// Serve Other Documents (PDFs and video from UI dist folder)
+app.use('/assets/docs', express.static(path.join(__dirname, '../ui/dist/assets/docs')));
 
 // Knowledge Base Inventory Endpoint
 app.get('/api/knowledge', (req, res) => {
