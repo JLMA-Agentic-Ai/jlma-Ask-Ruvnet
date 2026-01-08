@@ -645,13 +645,17 @@ app.get('/api/knowledge', (req, res) => {
     }
     knowledge.videoStats = { total: videoCount, weeks: 4 };
 
-    // Sort repos by last_update (newest first), with alpha versions prioritized
+    // Sort repos by last_update (newest first), with Claude-Flow V3 Alpha prioritized at top
     knowledge.repos.sort((a, b) => {
-        // Prioritize alpha/v3 versions at top
-        const aIsAlpha = a.version_alpha || (a.version && a.version.includes('alpha'));
-        const bIsAlpha = b.version_alpha || (b.version && b.version.includes('alpha'));
-        if (aIsAlpha && !bIsAlpha) return -1;
-        if (!aIsAlpha && bIsAlpha) return 1;
+        // Prioritize Claude-Flow V3 at the very top (it's the main feature)
+        if (a.name === 'claude-flow' && a.version && a.version.includes('alpha')) return -1;
+        if (b.name === 'claude-flow' && b.version && b.version.includes('alpha')) return 1;
+
+        // Then prioritize other alpha versions
+        const aIsRealAlpha = a.version && a.version.includes('alpha');
+        const bIsRealAlpha = b.version && b.version.includes('alpha');
+        if (aIsRealAlpha && !bIsRealAlpha) return -1;
+        if (!aIsRealAlpha && bIsRealAlpha) return 1;
 
         // Then sort by last_update date (newest first)
         const dateA = new Date(a.last_update || 0);
