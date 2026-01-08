@@ -32,27 +32,34 @@ const HeroSection = ({ onAction }) => (
       <p className="hero-subtitle">Your Agentic Engineering Companion</p>
 
       <div className="hero-grid">
-        <button onClick={() => onAction('Explain Agentic Flow')} className="hero-card">
+        <button onClick={() => onAction('Explain Claude-Flow V3 and its 54+ specialized agents')} className="hero-card">
+          <span className="icon">🤖</span>
+          <span className="text">Claude-Flow V3</span>
+        </button>
+        <button onClick={() => onAction('Explain Agentic Flow HybridReasoningBank')} className="hero-card">
           <span className="icon">🌊</span>
-          <span className="text">Explain Agentic Flow</span>
+          <span className="text">Agentic Flow</span>
         </button>
-        <button onClick={() => onAction('Show Ruvector Code')} className="hero-card">
+        <button onClick={() => onAction('Show Ruvector WASM and SIMD optimizations')} className="hero-card">
           <span className="icon">💻</span>
-          <span className="text">Show Ruvector Code</span>
+          <span className="text">RuVector Code</span>
         </button>
-        <button onClick={() => onAction('Compare Vector DBs')} className="hero-card">
-          <span className="icon">📊</span>
-          <span className="text">Compare Vector DBs</span>
-        </button>
-        <button onClick={() => onAction('System Architecture')} className="hero-card">
+        <button onClick={() => onAction('Explain the multi-agent swarm architecture')} className="hero-card">
           <span className="icon">🏗️</span>
-          <span className="text">System Architecture</span>
+          <span className="text">Swarm Architecture</span>
         </button>
       </div>
 
       <div className="hero-resources">
         <h3>📚 Quick Start Resources</h3>
         <div className="resource-links">
+          <a href="https://notebooklm.google.com/notebook/d3dc2e7a-5fb3-405d-87e5-fa98de971a1a" target="_blank" rel="noopener noreferrer" className="resource-link notebooklm-link">
+            <div className="resource-thumbnail">🎧</div>
+            <div className="resource-info">
+              <span className="resource-title">Claude-Flow V3 NotebookLM</span>
+              <span className="resource-type">Audio & Video Overviews</span>
+            </div>
+          </a>
           <button onClick={() => onAction('VIEW_PDF:Agentic_Engineering_Stack.pdf')} className="resource-link">
             <div className="resource-thumbnail">📊</div>
             <div className="resource-info">
@@ -74,6 +81,15 @@ const HeroSection = ({ onAction }) => (
               <span className="resource-type">Video Tutorial</span>
             </div>
           </button>
+        </div>
+        <div className="resource-links" style={{ marginTop: '0.5rem' }}>
+          <a href="https://github.com/ruvnet/claude-flow/tree/v3" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
+            <div className="resource-thumbnail">📦</div>
+            <div className="resource-info">
+              <span className="resource-title">Claude-Flow V3 GitHub</span>
+              <span className="resource-type">Source Code & Docs</span>
+            </div>
+          </a>
           <button onClick={() => onAction('VIEW_PDF:The_Agentic_Toolkit_Redefining_Creation.pdf')} className="resource-link">
             <div className="resource-thumbnail">🛠️</div>
             <div className="resource-info">
@@ -239,30 +255,58 @@ function App() {
       const timestamp = new Date().toLocaleString();
       const videoCount = data.videoStats?.total || 0;
 
+      // Find Claude-Flow v3 entry for featured display
+      const claudeFlow = data.repos.find(r => r.name === 'claude-flow');
+      const claudeFlowVersion = claudeFlow?.version || '3.0.0-alpha';
+      const claudeFlowFeatures = claudeFlow?.features || ['54+ Agents', 'ReasoningBank', 'SONA Neural'];
+
       const report = `
 # Knowledge Base Status
 
-**System Status:** Online
+**System Status:** 🟢 Online
 **Last Updated:** ${timestamp}
 **Indexed Videos:** ${videoCount}
 **Tracked Repositories:** ${data.repos.length}
 
 ---
 
+## 🚀 Featured: Claude-Flow V3
+
+**Version:** ${claudeFlowVersion}
+**Status:** ${claudeFlow?.status || 'ACTIVE'}
+**Branch:** [v3](https://github.com/ruvnet/claude-flow/tree/v3)
+
+### Key Features
+${claudeFlowFeatures.map(f => `- ✅ ${f}`).join('\n')}
+
+### Quick Install
+\`\`\`bash
+npx claude-flow@v3alpha init --force
+\`\`\`
+
+### Resources
+- 🎧 [NotebookLM Audio/Video Overview](https://notebooklm.google.com/notebook/d3dc2e7a-5fb3-405d-87e5-fa98de971a1a)
+- 📚 [GitHub Documentation](https://github.com/ruvnet/claude-flow/tree/v3)
+
+---
+
 ## Tracked Repositories
 
-${data.repos.length > 0 ? data.repos.map(r => `- **${r.name}** v${r.version || 'latest'} — ${r.description || 'Linked'}`).join('\n') : '_No repositories configured._'}
+${data.repos.length > 0 ? data.repos.map(r => {
+  const statusIcon = r.status?.includes('V3') ? '🚀' : r.status === 'ACTIVE' ? '🟢' : r.status === 'LINKED' ? '🔗' : '📦';
+  return `- ${statusIcon} **${r.name}** v${r.version || 'latest'} — ${r.description || 'Linked'}`;
+}).join('\n') : '_No repositories configured._'}
 
 ---
 
 ## Indexed Content
 
-The knowledge base includes documentation and source code from the following areas:
-- Agentic Flow framework and architecture
-- Claude Flow workflow engine
-- RuVector database implementation
-- Neural Trader analysis tools
-- Video transcripts and presentations
+The knowledge base includes:
+- 🤖 Claude-Flow V3 multi-agent orchestration (54+ agents)
+- 🌊 Agentic Flow HybridReasoningBank framework
+- 💾 RuVector WASM-optimized vector database
+- 🧠 SONA neural architecture & self-learning
+- 📹 Video transcripts and coaching sessions
 
 ---
 
@@ -273,7 +317,8 @@ ${data.docs && data.docs.length > 0 ? data.docs.map(d => `- [${d.name}](${d.url}
 ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- ${w.name}`).join('\n') : ''}
 
 ---
-*Powered by Agentic Flow HybridReasoningBank*
+*Powered by Claude-Flow V3 + Agentic Flow HybridReasoningBank*
+*Auto-refreshes on new version releases*
 `;
 
       setCanvasContent({

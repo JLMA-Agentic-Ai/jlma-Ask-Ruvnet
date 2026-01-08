@@ -1954,3 +1954,123 @@ body {
   height: 100% !important;
   max-width: none !important;
 }
+
+/* NotebookLM Link Styling */
+.notebooklm-link {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(168, 85, 247, 0.05)) !important;
+  border-color: rgba(147, 51, 234, 0.3) !important;
+}
+
+.notebooklm-link:hover {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(168, 85, 247, 0.15)) !important;
+  border-color: #9333ea !important;
+  color: #a855f7 !important;
+}
+
+.notebooklm-link .resource-thumbnail {
+  background: rgba(147, 51, 234, 0.15);
+}
+
+/* GitHub Link Styling */
+.github-link {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(129, 140, 248, 0.05)) !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+.github-link:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(129, 140, 248, 0.15)) !important;
+  border-color: #6366f1 !important;
+  color: #818cf8 !important;
+}
+
+.github-link .resource-thumbnail {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+/* Light mode overrides for special links */
+.light-mode .notebooklm-link {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.08), rgba(168, 85, 247, 0.03)) !important;
+  border-color: rgba(147, 51, 234, 0.25) !important;
+}
+
+.light-mode .notebooklm-link:hover {
+  background: rgba(147, 51, 234, 0.12) !important;
+  border-color: #9333ea !important;
+  color: #7c3aed !important;
+}
+
+.light-mode .github-link {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(129, 140, 248, 0.03)) !important;
+  border-color: rgba(99, 102, 241, 0.25) !important;
+}
+
+.light-mode .github-link:hover {
+  background: rgba(99, 102, 241, 0.12) !important;
+  border-color: #6366f1 !important;
+  color: #4f46e5 !important;
+}
+
+/* Claude-Flow V3 Featured Card */
+.claude-flow-v3-card {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05)) !important;
+  border: 2px solid rgba(239, 68, 68, 0.3) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.claude-flow-v3-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, transparent 50%, rgba(239, 68, 68, 0.2) 50%);
+  pointer-events: none;
+}
+
+.claude-flow-v3-card:hover {
+  border-color: #ef4444 !important;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.2) !important;
+  transform: translateY(-4px);
+}
+
+/* Version Badge */
+.version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  font-size: 0.7rem;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.version-badge.alpha {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+/* Install Command Box */
+.install-command {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #22d3ee;
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+.light-mode .install-command {
+  background: rgba(0, 0, 0, 0.05);
+  color: #0891b2;
+  border-color: rgba(8, 145, 178, 0.2);
+}
