@@ -33,7 +33,7 @@ const HeroSection = ({ onAction }) => (
 
       <div className="hero-grid">
         <button onClick={() => onAction('Explain Claude-Flow V3 and its 54+ specialized agents')} className="hero-card">
-          <span className="icon">🤖</span>
+          <span className="icon">⚡</span>
           <span className="text">Claude-Flow V3</span>
         </button>
         <button onClick={() => onAction('Explain Agentic Flow HybridReasoningBank')} className="hero-card">
@@ -90,6 +90,13 @@ const HeroSection = ({ onAction }) => (
               <span className="resource-type">Source Code & Docs</span>
             </div>
           </a>
+          <button onClick={() => onAction('VIEW_PDF:Claude-Flow_v3_Swarm_Platform.pdf')} className="resource-link swarm-link">
+            <div className="resource-thumbnail">🐝</div>
+            <div className="resource-info">
+              <span className="resource-title">Swarm Platform Overview</span>
+              <span className="resource-type">NotebookLM Export</span>
+            </div>
+          </button>
           <button onClick={() => onAction('VIEW_PDF:The_Agentic_Toolkit_Redefining_Creation.pdf')} className="resource-link">
             <div className="resource-thumbnail">🛠️</div>
             <div className="resource-info">
@@ -302,7 +309,7 @@ ${data.repos.length > 0 ? data.repos.map(r => {
 ## Indexed Content
 
 The knowledge base includes:
-- 🤖 Claude-Flow V3 multi-agent orchestration (54+ agents)
+- ⚡ Claude-Flow V3 multi-agent orchestration (54+ agents)
 - 🌊 Agentic Flow HybridReasoningBank framework
 - 💾 RuVector WASM-optimized vector database
 - 🧠 SONA neural architecture & self-learning
