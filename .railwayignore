@@ -41,6 +41,8 @@ audio_extracted/
 generated_imgs/
 frames/
 temp_frames/
+video_frames_detailed/
+video_frames_extracted/
 
 # Research and documentation (not needed for runtime)
 strange-loop-research/
