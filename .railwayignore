@@ -55,6 +55,10 @@ docs/
 data/
 data_ingestion_github/
 data_ingestion_ruv_coaching/
+# EXCEPTION: Server serves PDFs from this directory (see src/server/app.js line 558)
+!data_ingestion_ruv_coaching/Other Documents/
+!data_ingestion_ruv_coaching/Other Documents/*.pdf
+!data_ingestion_ruv_coaching/Other Documents/*.mp4
 ruvector_index/
 archive/
 
