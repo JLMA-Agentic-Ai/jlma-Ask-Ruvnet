@@ -6,6 +6,8 @@ INGEST_SCRIPT="scripts/ingestion/ingest_correct.js"
 
 echo "🚀 Starting Ask-Ruvnet on Railway..."
 ls -F src/ui/dist
+echo "📄 Checking for PDFs in dist/assets/docs:"
+ls -la src/ui/dist/assets/docs/ 2>&1 || echo "⚠️ docs folder not found"
 
 # ALWAYS check for latest package versions on every deploy
 echo "🔄 Checking for latest package versions..."
