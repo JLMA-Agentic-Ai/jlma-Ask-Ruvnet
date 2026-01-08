@@ -32,6 +32,11 @@ src/ui/public/knowledge_assets/
 *.png
 !src/ui/public/vite.svg
 !src/ui/public/ruv-favicon.png
+!src/ui/public/assets/ruv.png
+!src/ui/public/assets/Ruv prompt.png
+!src/ui/dist/assets/ruv.png
+!src/ui/dist/assets/Ruv prompt.png
+!src/ui/dist/ruv-favicon.png
 
 # Audio files (21MB)
 audio_extracted/
