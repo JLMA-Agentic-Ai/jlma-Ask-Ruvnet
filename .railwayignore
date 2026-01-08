@@ -28,7 +28,7 @@ public/kb-*.png
 
 # Heavy UI assets (182MB - not needed for API)
 src/ui/public/knowledge_assets/
-src/ui/public/assets/docs/
+# NOTE: src/ui/public/assets/docs/ MUST be included for Quick Start PDFs
 *.png
 !src/ui/public/vite.svg
 !src/ui/public/ruv-favicon.png
@@ -55,8 +55,10 @@ archive/
 
 # Large media files
 *.mp4
+!src/ui/public/assets/docs/The_Agentic_Stack.mp4
 *.mov
 *.pdf
+!src/ui/public/assets/docs/*.pdf
 *.tar.gz
 
 # IDE and OS

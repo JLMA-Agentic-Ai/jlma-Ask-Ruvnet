@@ -75,3 +75,4 @@ public/kb-universe-data.json
 .claude/statusline.sh
 # Add large KB data file to gitignore
 public/kb-universe-data.json
+.claude/commands/global/

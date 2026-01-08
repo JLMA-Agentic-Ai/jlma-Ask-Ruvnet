@@ -222,7 +222,7 @@
   },
   "includeCoAuthoredBy": true,
   "enabledMcpjsonServers": [
-    "claude-flow",
+    "claude-flow"
   ],
   "workers": {
     "enabled": true,
