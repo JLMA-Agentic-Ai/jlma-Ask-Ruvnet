@@ -61,9 +61,11 @@ archive/
 # Large media files
 *.mp4
 !src/ui/public/assets/docs/The_Agentic_Stack.mp4
+!src/ui/dist/assets/docs/The_Agentic_Stack.mp4
 *.mov
 *.pdf
 !src/ui/public/assets/docs/*.pdf
+!src/ui/dist/assets/docs/*.pdf
 *.tar.gz
 
 # IDE and OS
