@@ -54,11 +54,10 @@ strange-loop-research/
 docs/
 data/
 data_ingestion_github/
-data_ingestion_ruv_coaching/
-# EXCEPTION: Server serves PDFs from this directory (see src/server/app.js line 558)
-!data_ingestion_ruv_coaching/Other Documents/
-!data_ingestion_ruv_coaching/Other Documents/*.pdf
-!data_ingestion_ruv_coaching/Other Documents/*.mp4
+# data_ingestion_ruv_coaching - include "Other Documents" for PDFs (served by app.js:558)
+data_ingestion_ruv_coaching/Agentic Coding Training/
+data_ingestion_ruv_coaching/Ruv Coaching/
+data_ingestion_ruv_coaching/*.png
 ruvector_index/
 archive/
 
