@@ -13,16 +13,16 @@
     },
     {
         "name": "claude-flow",
-        "version": "3.0.0-alpha.37",
-        "version_latest": "3.0.0-alpha.37",
-        "version_alpha": "3.0.0-alpha.37",
-        "branch": "v3",
-        "last_update": "2026-01-08T19:30:00Z",
-        "status": "V3 ACTIVE",
-        "description": "Enterprise AI Orchestration - 54+ Agents, ReasoningBank, SONA Neural",
-        "npm": "claude-flow@v3alpha",
-        "github": "https://github.com/ruvnet/claude-flow/tree/v3",
-        "features": ["54+ Specialized Agents", "ReasoningBank Self-Learning", "HNSW 150x Faster Search", "31 Lifecycle Hooks", "12 Background Workers"]
+        "version": "3.0.0-alpha.118",
+        "version_latest": "3.0.0-alpha.118",
+        "version_alpha": "3.0.0-alpha.118",
+        "branch": "main",
+        "last_update": "2026-01-15T15:51:00Z",
+        "status": "PRODUCTION",
+        "description": "Enterprise AI Orchestration - 60+ Agents, ReasoningBank, SONA Neural",
+        "npm": "@claude-flow/cli@latest",
+        "github": "https://github.com/ruvnet/claude-flow",
+        "features": ["60+ Specialized Agents", "ReasoningBank Self-Learning", "HNSW 150x-12500x Faster Search", "31 Lifecycle Hooks", "12 Background Workers", "Flash Attention 2.49x-7.47x Speedup", "AIDefence Security"]
     },
     {
         "name": "agentic-flow",

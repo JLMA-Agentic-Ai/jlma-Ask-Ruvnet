@@ -265,7 +265,7 @@ function App() {
       // Find Claude-Flow v3 entry for featured display
       const claudeFlow = data.repos.find(r => r.name === 'claude-flow');
       const claudeFlowVersion = claudeFlow?.version || '3.0.0-alpha';
-      const claudeFlowFeatures = claudeFlow?.features || ['54+ Agents', 'ReasoningBank', 'SONA Neural'];
+      const claudeFlowFeatures = claudeFlow?.features || ['60+ Specialized Agents', 'ReasoningBank Self-Learning', 'HNSW 150x-12500x Faster Search', '31 Lifecycle Hooks', '12 Background Workers'];
 
       const report = `
 # Knowledge Base Status
@@ -281,26 +281,26 @@ function App() {
 
 **Version:** ${claudeFlowVersion}
 **Status:** ${claudeFlow?.status || 'ACTIVE'}
-**Branch:** [v3](https://github.com/ruvnet/claude-flow/tree/v3)
+**Branch:** [main](https://github.com/ruvnet/claude-flow)
 
 ### Key Features
 ${claudeFlowFeatures.map(f => `- ✅ ${f}`).join('\n')}
 
 ### Quick Install
 \`\`\`bash
-npx claude-flow@v3alpha init --force
+npx @claude-flow/cli@latest init --force
 \`\`\`
 
 ### Resources
 - 🎧 [NotebookLM Audio/Video Overview](https://notebooklm.google.com/notebook/d3dc2e7a-5fb3-405d-87e5-fa98de971a1a)
-- 📚 [GitHub Documentation](https://github.com/ruvnet/claude-flow/tree/v3)
+- 📚 [GitHub Documentation](https://github.com/ruvnet/claude-flow)
 
 ---
 
 ## Tracked Repositories
 
 ${data.repos.length > 0 ? data.repos.map(r => {
-  const statusIcon = r.status?.includes('V3') ? '🚀' : r.status === 'ACTIVE' ? '🟢' : r.status === 'LINKED' ? '🔗' : '📦';
+  const statusIcon = r.status === 'PRODUCTION' ? '🚀' : r.status?.includes('V3') ? '🚀' : r.status === 'ACTIVE' ? '🟢' : r.status === 'LINKED' ? '🔗' : '📦';
   return `- ${statusIcon} **${r.name}** v${r.version || 'latest'} — ${r.description || 'Linked'}`;
 }).join('\n') : '_No repositories configured._'}
 
@@ -309,7 +309,7 @@ ${data.repos.length > 0 ? data.repos.map(r => {
 ## Indexed Content
 
 The knowledge base includes:
-- ⚡ Claude-Flow V3 multi-agent orchestration (54+ agents)
+- ⚡ Claude-Flow V3 multi-agent orchestration (60+ agents)
 - 🌊 Agentic Flow HybridReasoningBank framework
 - 💾 RuVector WASM-optimized vector database
 - 🧠 SONA neural architecture & self-learning
