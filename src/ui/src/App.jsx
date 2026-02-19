@@ -29,24 +29,24 @@ const HeroSection = ({ onAction }) => (
     <div className="hero-content">
       <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo" />
       <h1>Ask rUVnet</h1>
-      <p className="hero-subtitle">Your Agentic Engineering Companion</p>
+      <p className="hero-subtitle">54K+ Knowledge Entries · 4 Expert Domains · Intent-Aware AI</p>
 
       <div className="hero-grid">
-        <button onClick={() => onAction('Explain Claude-Flow V3 and its 54+ specialized agents')} className="hero-card">
+        <button onClick={() => onAction('What is Claude-Flow V3 and what are its 60+ specialized agents?')} className="hero-card">
           <span className="icon">⚡</span>
           <span className="text">Claude-Flow V3</span>
         </button>
-        <button onClick={() => onAction('Explain Agentic Flow HybridReasoningBank')} className="hero-card">
-          <span className="icon">🌊</span>
-          <span className="text">Agentic Flow</span>
+        <button onClick={() => onAction('How does the ReasoningBank self-learning system work in Agentic Flow?')} className="hero-card">
+          <span className="icon">🧠</span>
+          <span className="text">ReasoningBank AI</span>
         </button>
-        <button onClick={() => onAction('Show Ruvector WASM and SIMD optimizations')} className="hero-card">
-          <span className="icon">💻</span>
-          <span className="text">RuVector Code</span>
+        <button onClick={() => onAction('How do I find business class flights using points optimization strategies?')} className="hero-card">
+          <span className="icon">✈️</span>
+          <span className="text">Travel Hacking</span>
         </button>
-        <button onClick={() => onAction('Explain the multi-agent swarm architecture')} className="hero-card">
-          <span className="icon">🏗️</span>
-          <span className="text">Swarm Architecture</span>
+        <button onClick={() => onAction('What is the best safe withdrawal strategy for early retirement?')} className="hero-card">
+          <span className="icon">💰</span>
+          <span className="text">RetireWell</span>
         </button>
       </div>
 
@@ -60,6 +60,29 @@ const HeroSection = ({ onAction }) => (
               <span className="resource-type">Audio & Video Overviews</span>
             </div>
           </a>
+          <a href="https://github.com/ruvnet/claude-flow" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
+            <div className="resource-thumbnail">📦</div>
+            <div className="resource-info">
+              <span className="resource-title">Claude-Flow V3 GitHub</span>
+              <span className="resource-type">v3.0.0-alpha.118 · Source & Docs</span>
+            </div>
+          </a>
+          <a href="https://github.com/ruvnet/agentic-flow" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
+            <div className="resource-thumbnail">🌊</div>
+            <div className="resource-info">
+              <span className="resource-title">Agentic Flow</span>
+              <span className="resource-type">v2.0.7 · HybridReasoningBank</span>
+            </div>
+          </a>
+          <a href="https://github.com/ruvnet/ruvector" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
+            <div className="resource-thumbnail">🔍</div>
+            <div className="resource-info">
+              <span className="resource-title">RuVector DB</span>
+              <span className="resource-type">v0.1.99 · PostgreSQL Vector Extension</span>
+            </div>
+          </a>
+        </div>
+        <div className="resource-links" style={{ marginTop: '0.5rem' }}>
           <button onClick={() => onAction('VIEW_PDF:Agentic_Engineering_Stack.pdf')} className="resource-link">
             <div className="resource-thumbnail">📊</div>
             <div className="resource-info">
@@ -74,22 +97,6 @@ const HeroSection = ({ onAction }) => (
               <span className="resource-type">PDF Guide</span>
             </div>
           </button>
-          <button onClick={() => onAction('VIEW_VIDEO:The_Agentic_Stack.mp4')} className="resource-link">
-            <div className="resource-thumbnail">▶️</div>
-            <div className="resource-info">
-              <span className="resource-title">The Agentic Stack</span>
-              <span className="resource-type">Video Tutorial</span>
-            </div>
-          </button>
-        </div>
-        <div className="resource-links" style={{ marginTop: '0.5rem' }}>
-          <a href="https://github.com/ruvnet/claude-flow/tree/v3" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
-            <div className="resource-thumbnail">📦</div>
-            <div className="resource-info">
-              <span className="resource-title">Claude-Flow V3 GitHub</span>
-              <span className="resource-type">Source Code & Docs</span>
-            </div>
-          </a>
           <button onClick={() => onAction('VIEW_PDF:Claude-Flow_v3_Swarm_Platform.pdf')} className="resource-link swarm-link">
             <div className="resource-thumbnail">🐝</div>
             <div className="resource-info">
@@ -97,11 +104,11 @@ const HeroSection = ({ onAction }) => (
               <span className="resource-type">NotebookLM Export</span>
             </div>
           </button>
-          <button onClick={() => onAction('VIEW_PDF:The_Agentic_Toolkit_Redefining_Creation.pdf')} className="resource-link">
-            <div className="resource-thumbnail">🛠️</div>
+          <button onClick={() => onAction('How do I create viral content using Schwartz psychological principles?')} className="resource-link">
+            <div className="resource-thumbnail">🔥</div>
             <div className="resource-info">
-              <span className="resource-title">Agentic Toolkit Guide</span>
-              <span className="resource-type">PDF Guide</span>
+              <span className="resource-title">Viral Content Secrets</span>
+              <span className="resource-type">Social Media KB</span>
             </div>
           </button>
         </div>
@@ -294,6 +301,20 @@ npx @claude-flow/cli@latest init --force
 ### Resources
 - 🎧 [NotebookLM Audio/Video Overview](https://notebooklm.google.com/notebook/d3dc2e7a-5fb3-405d-87e5-fa98de971a1a)
 - 📚 [GitHub Documentation](https://github.com/ruvnet/claude-flow)
+
+---
+
+## 🗄️ PostgreSQL Knowledge Base
+
+${data.kb_stats ? `| Domain | Entries | Status |
+|--------|---------|--------|
+| 🤖 Claude-Flow & Agentic AI | ${data.kb_stats.domains?.ask_ruvnet?.total?.toLocaleString() || '54,128'} | ✅ Active |
+| ✈️ Travel Hacking | ${data.kb_stats.domains?.travel_agent?.total?.toLocaleString() || '2,979'} | ✅ Active |
+| 🔥 Viral Social | ${data.kb_stats.domains?.viral_social?.total?.toLocaleString() || '2,831'} | ✅ Active |
+| 💰 RetireWell | ${data.kb_stats.domains?.retirewell?.total?.toLocaleString() || '980'} | ✅ Active |
+| **Total** | **${(data.kb_total_entries || 60918).toLocaleString()}** | **PostgreSQL RuVector** |
+` : ''}
+Backend: ${data.kb_backend || 'Local RuvectorStore'}
 
 ---
 

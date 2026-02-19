@@ -1,13 +1,13 @@
 [
     {
         "name": "Ask-Ruvnet",
-        "version": "1.8.0",
-        "version_latest": "1.8.0",
+        "version": "2.0.0",
+        "version_latest": "2.0.0",
         "version_alpha": null,
         "branch": "main",
-        "last_update": "2026-01-08T19:30:00Z",
+        "last_update": "2026-02-19T00:00:00Z",
         "status": "ACTIVE",
-        "description": "Production Deployment - AI Knowledge Assistant",
+        "description": "Production AI Knowledge Assistant - PostgreSQL KB (54K+ Entries), Intent-Aware RAG",
         "npm": null,
         "github": "https://github.com/stuinfla/Ask-Ruvnet"
     },
@@ -26,35 +26,35 @@
     },
     {
         "name": "agentic-flow",
-        "version": "2.0.3",
-        "version_latest": "2.0.3",
-        "version_alpha": "2.0.3",
+        "version": "2.0.7",
+        "version_latest": "2.0.7",
+        "version_alpha": "2.0.7",
         "branch": "main",
-        "last_update": "2026-01-08T19:30:00Z",
+        "last_update": "2026-02-19T00:00:00Z",
         "status": "LINKED",
-        "description": "Core Orchestration Framework - HybridReasoningBank",
+        "description": "Core Orchestration Framework - HybridReasoningBank, ONNX Embeddings, Flash Attention 2.49x Speedup",
         "npm": "agentic-flow",
         "github": "https://github.com/ruvnet/agentic-flow"
     },
     {
         "name": "ruvector",
-        "version": "0.1.96",
-        "version_latest": "0.1.96",
+        "version": "0.1.99",
+        "version_latest": "0.1.99",
         "version_alpha": null,
         "branch": "main",
-        "last_update": "2026-01-08T19:30:00Z",
+        "last_update": "2026-02-19T00:00:00Z",
         "status": "LINKED",
-        "description": "Vector Database Backend - Semantic Search & WASM Optimization",
+        "description": "Vector Database Backend - PostgreSQL Extension, HNSW Indexing, WASM SIMD",
         "npm": "ruvector",
         "github": "https://github.com/ruvnet/ruvector"
     },
     {
         "name": "ruvllm",
-        "version": "0.2.4",
-        "version_latest": "0.2.4",
+        "version": "2.4.1",
+        "version_latest": "2.4.1",
         "version_alpha": null,
         "branch": "main",
-        "last_update": "2026-01-08T19:30:00Z",
+        "last_update": "2026-02-19T00:00:00Z",
         "status": "LINKED",
         "description": "Self-Learning LLM Toolkit - ONNX Embeddings",
         "npm": "@ruvector/ruvllm",
@@ -83,5 +83,17 @@
         "description": "Synthetic Data Generator for AI/ML Training",
         "npm": "@ruvector/agentic-synth",
         "github": "https://github.com/ruvnet/ruvector/tree/main/npm/packages/agentic-synth"
+    },
+    {
+        "name": "ruv-swarm",
+        "version": "1.0.20",
+        "version_latest": "1.0.20",
+        "version_alpha": null,
+        "branch": "main",
+        "last_update": "2026-02-19T00:00:00Z",
+        "status": "LINKED",
+        "description": "Distributed Multi-Agent Swarm Coordination",
+        "npm": "ruv-swarm",
+        "github": "https://github.com/ruvnet/ruv-swarm"
     }
 ]

@@ -1,7 +1,10 @@
 const express = require('express');
 process.env.FORCE_TRANSFORMERS = 'true';
-const bodyParser = require('body-parser');
+const helmet = require('helmet');
+const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 const RuvectorStore = require('../core/RuvectorStore');
+const PostgresKnowledgeBase = require('../core/PostgresKnowledgeBase');
 const HybridSearch = require('../core/HybridSearch');
 const TextChunker = require('../core/TextChunker');
 const QueryExpander = require('../core/QueryExpander');
@@ -99,7 +102,11 @@ function calculateJaccardSimilarity(str1, str2) {
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+// Security middleware
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100, standardHeaders: true }));
+app.use(express.json({ limit: '1mb' }));
 const fs = require('fs');
 app.use(express.static(path.join(__dirname, '../ui/dist'))); // Serve frontend
 app.use('/frames', express.static(path.join(__dirname, '../../data_ingestion_ruv_coaching'))); // Serve video frames
@@ -107,6 +114,7 @@ app.use('/frames', express.static(path.join(__dirname, '../../data_ingestion_ruv
 // Initialize RuVector Native Components (replaces SQLite-based HybridReasoningBank)
 let modelRouter;
 let reasoningBank; // Now a RuvectorStore instance with reflexion-compatible API
+let pgKB = null;
 
 async function initAgenticFlow() {
     try {
@@ -119,16 +127,23 @@ async function initAgenticFlow() {
             console.log('⚠️ Agentic Flow Router not available (optional)');
         }
 
-        // Initialize RuvectorStore as the main knowledge base
-        // This provides the reflexion-compatible API for semantic search
-        const ruvectorStore = new RuvectorStore();
-        await ruvectorStore.initialize();
+        // PRIMARY: Try PostgreSQL knowledge base (54K+ enriched entries)
+        pgKB = new PostgresKnowledgeBase();
+        const pgConnected = await pgKB.initialize();
 
-        // Use RuvectorStore as the reasoning bank (provides .reflexion.retrieveRelevant)
-        reasoningBank = ruvectorStore;
+        if (pgConnected) {
+            reasoningBank = pgKB;
+            console.log('✅ PostgreSQL Knowledge Base connected (54K+ entries, intent-aware search)');
+        } else {
+            // FALLBACK: Local RuvectorStore (file-based vector DB)
+            console.log('⚠️ PostgreSQL unavailable — falling back to local RuvectorStore');
+            const ruvectorStore = new RuvectorStore();
+            await ruvectorStore.initialize();
+            reasoningBank = ruvectorStore;
+            console.log('✅ RuVector Local Backend Initialized (HNSW + PersistentVectorDB)');
+        }
 
-        console.log('✅ RuVector Native Backend Initialized (HNSW + PersistentVectorDB)');
-        console.log('📊 Backend: RuVector 125x faster than SQLite');
+        console.log('📊 Knowledge Backend: ' + (pgConnected ? 'PostgreSQL RuVector (54K+ entries)' : 'Local RuVector file DB'));
 
         // OPTIMIZED: Initialize hybrid search index for BM25 + semantic fusion
         await initHybridSearchIndex();
@@ -343,13 +358,13 @@ app.post('/api/chat', async (req, res) => {
         const systemPrompt = `${RUV_PERSONA}
 
 ===== KNOWLEDGE BASE CONTEXT =====
-${context || 'No specific context retrieved for this query. Use your general knowledge of these systems.'}
+${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
 
 ===== USER'S QUESTION =====
 ${message}
 
 ===== YOUR RESPONSE =====
-Provide a clear, accurate, and helpful response based on the context and your technical knowledge.`;
+Provide a clear, accurate, and helpful response based ONLY on the knowledge base context above. If the context is insufficient, say so honestly rather than guessing.`;
 
         // 3. Generate Response using Groq directly
         let answer = "";
@@ -425,6 +440,29 @@ app.get('/health', async (req, res) => {
         }
     };
     res.json(health);
+});
+
+// KB Statistics Endpoint - shows real PostgreSQL KB state
+app.get('/api/kb-stats', async (req, res) => {
+    try {
+        if (pgKB && pgKB.ready) {
+            const stats = await pgKB.getKBStats();
+            res.json({
+                backend: 'PostgreSQL RuVector',
+                connected: true,
+                ...stats
+            });
+        } else {
+            const vectorStats = reasoningBank ? reasoningBank.getStats?.() || {} : {};
+            res.json({
+                backend: 'Local RuvectorStore',
+                connected: false,
+                ...vectorStats
+            });
+        }
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // Debug Endpoint
@@ -525,19 +563,18 @@ app.post('/api/special', async (req, res) => {
 });
 
 // --- AGENTIC LEARNING LOOP ---
-const { exec } = require('child_process');
+const { execFile } = require('child_process');
 
 function runAutoLearner() {
     console.log("🧠 Agentic Learner: Checking for new knowledge...");
-    exec('node auto_updater.js', (error, stdout, stderr) => {
+    const updaterPath = path.resolve(__dirname, '../../scripts/kb-incremental-update.sh');
+    execFile(updaterPath, [], (error, stdout, stderr) => {
         if (error) {
             console.error(`❌ Learner Error: ${error.message} `);
             return;
         }
-        if (stdout.includes('Changes detected')) {
+        if (stdout.includes('Changes detected') || stdout.includes('Inserted/updated')) {
             console.log("🚀 Agentic Learner: Knowledge Base Updated!");
-            // Ideally, we would reload the vector store here, but for now, 
-            // the next request will pick up the new index files if they were saved.
         } else {
             console.log("💤 Agentic Learner: No new updates found.");
         }
@@ -558,7 +595,7 @@ app.post('/api/learn', (req, res) => {
 app.use('/assets/docs', express.static(path.join(__dirname, '../ui/dist/assets/docs')));
 
 // Knowledge Base Inventory Endpoint
-app.get('/api/knowledge', (req, res) => {
+app.get('/api/knowledge', async (req, res) => {
     // Use process.cwd() since we run from project root
     const rootDir = process.cwd();
     const githubDir = path.join(rootDir, 'data_ingestion_github');
@@ -623,7 +660,7 @@ app.get('/api/knowledge', (req, res) => {
                 return !file.startsWith('.'); // Ignore hidden files
             }).map(file => ({
                 name: file,
-                url: `/ assets / docs / ${encodeURIComponent(file)} `,
+                url: `/assets/docs/${encodeURIComponent(file)}`,
                 type: file.endsWith('.pdf') ? 'PDF' : file.endsWith('.mp4') ? 'Video' : 'File',
                 status: 'Available 🟢'
             }));
@@ -674,12 +711,38 @@ app.get('/api/knowledge', (req, res) => {
     // Add app version to response
     knowledge.version = APP_VERSION;
 
+    // Add real KB stats from PostgreSQL if available
+    if (pgKB && pgKB.ready) {
+        try {
+            const kbStats = await pgKB.getKBStats();
+            if (kbStats) {
+                knowledge.kb_stats = kbStats;
+                knowledge.kb_backend = 'PostgreSQL RuVector';
+                knowledge.kb_total_entries = kbStats.total;
+            }
+        } catch (e) {
+            console.error('Error fetching KB stats:', e.message);
+        }
+    }
+
     console.log(`   ✅ Returning ${knowledge.repos.length} repos, ${knowledge.websites.length} docs, ${knowledge.docs.length} files, ${videoCount} videos.`);
     res.json(knowledge);
 });
 
+// Error handler middleware (must be last)
+app.use((err, req, res, next) => {
+    console.error('Unhandled error:', err.message);
+    res.status(500).json({ error: 'Internal server error' });
+});
+
 // Start Server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Ask rUVnet v${APP_VERSION} initialized.`);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+    console.log('SIGTERM received, shutting down gracefully...');
+    server.close(() => process.exit(0));
 });
