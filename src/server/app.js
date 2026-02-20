@@ -102,6 +102,9 @@ function calculateJaccardSimilarity(str1, str2) {
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust Railway's load balancer for accurate IP-based rate limiting
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
