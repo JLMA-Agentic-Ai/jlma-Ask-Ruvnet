@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: ask-ruvnet
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: node src/server/app.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false   # Set manually in Render dashboard - points to Neon
+      - key: PORT
+        value: "3000"
+    healthCheckPath: /api/health
+    autoDeploy: true
