@@ -1,11 +1,15 @@
 {
   "name": "answerbot-builder",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd src/ui && npm install && npm run build",
     "start": "bash scripts/deployment/start-railway.sh",
+    "deploy": "bash scripts/deployment/deploy.sh",
+    "deploy:patch": "bash scripts/deployment/deploy.sh patch",
+    "deploy:minor": "bash scripts/deployment/deploy.sh minor",
+    "deploy:major": "bash scripts/deployment/deploy.sh major",
     "kb:ingest": "node scripts/kb-architecture-sync.js --ingest && npm run kb:visual",
     "kb:watch": "node scripts/kb-architecture-sync.js --watch",
     "kb:status": "node scripts/kb-architecture-sync.js --status",
