@@ -1,5 +1,114 @@
 # Claude Code Configuration - Claude Flow V3
 
+## ⚡ ABSOLUTE RULE — CLAUDE FLOW OWNS EVERY COMMAND (NO EXCEPTIONS)
+
+**Stuart's instruction (2026-02-21): Every command given in this project MUST be immediately handed to Claude Flow. Claude Code is the executor only — Claude Flow is the brain.**
+
+### The Mandatory Flow for EVERY Request:
+
+```
+Stuart gives command
+       ↓
+Claude Flow receives it (FIRST)
+       ↓
+Claude Flow queries RuvVector KB (ask_ruvnet schema, Neon pgvector)
+       ↓
+Claude Flow selects agents from RuvNet architecture
+       ↓
+Agents execute using agentic-flow + RuvNet tools
+       ↓
+Claude Code executes file/bash operations only
+```
+
+### Implementation (Run on EVERY command, no exceptions):
+
+```bash
+# Step 1: Route to Claude Flow immediately
+npx @claude-flow/cli@latest hooks route --task "[Stuart's command]"
+
+# Step 2: Initialize swarm for any non-trivial task
+npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
+
+# Step 3: Query RuvVector KB before any action
+mcp__Ruvnet-KB-first__kb_search({ query: "[relevant terms]", limit: 5 })
+```
+
+### Agent Dispatch Rules:
+| Command Type | Claude Flow Routes To |
+|---|---|
+| Any question | researcher + KB search first |
+| Architecture/design | system-architect (Opus model) |
+| Code changes | coder + reviewer |
+| Deployment/infra | devops-architect |
+| Cleanup/audit | Explore agent + coder |
+| Docs update | technical-writer |
+| Bug fix | root-cause-analyst + coder |
+| Testing | quality-engineer |
+
+**VIOLATION = failing to route through Claude Flow. Claude Code NEVER answers directly without CF orchestration.**
+
+---
+
+## RULE ZERO: KB-FIRST + CLAUDE FLOW-FIRST (NON-NEGOTIABLE)
+
+**This project has a 269-entry expert-curated knowledge base (v4.0.0, 10 tools, 105 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector, agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, Claude Flow, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
+
+### Before Answering ANY Question:
+
+**STEP 1: Check the KB.** For ANY question about agents, swarms, vectors, embeddings, HNSW, ONNX, MCP, RVF, AIMDS, security, Claude Flow, architecture, knowledge bases, RuVector, coding concepts, debugging, or how things work:
+
+```sql
+-- Via MCP (preferred — 10 tools available):
+mcp__Ruvnet-KB-first__kb_search({ query: "<user's question>", limit: 5 })
+-- For teaching/explanations:
+mcp__Ruvnet-KB-first__kb_teach({ query: "<concept>", limit: 3 })
+-- For WASM/browser apps:
+mcp__Ruvnet-KB-first__kb_wasm({ query: "<wasm topic>", limit: 5 })
+
+-- Via direct SQL (if MCP unavailable — query kb_complete FIRST, not architecture_docs):
+psql -h localhost -p 5435 -U postgres -c "
+  SELECT title, LEFT(content, 500) FROM ask_ruvnet.kb_complete
+  WHERE quality_score >= 80
+  ORDER BY embedding <=> '<query_embedding>'::ruvector LIMIT 5;"
+```
+
+**STEP 2: Route through Claude Flow.** Do NOT answer complex questions as raw Claude Code. Use Claude Flow agents:
+- Architecture questions -> `Task(subagent_type="system-architect")`
+- Code implementation -> `Task(subagent_type="coder")`
+- Research/exploration -> `Task(subagent_type="researcher")`
+- Security questions -> `Task(subagent_type="security-engineer")`
+- Teaching/explaining -> Check KB first, THEN answer using KB content
+
+**STEP 3: Teach from the KB, not from training data.** If the KB has a teaching entry (category='teaching'), use ITS analogies and plain English. Stuart is learning -- every response is a teaching moment. The KB entries were written specifically for his learning level.
+
+### Why This Matters:
+- Stuart is a vibe coder growing into advanced agentic development
+- The KB contains deep teaching knowledge about technologies that are TOO NEW for any LLM's training data
+- Claude Flow understands RuVector natively -- Claude Code does not
+- Every time Claude Code answers without checking the KB, it risks giving stale or wrong information
+- The KB has beginner-friendly explanations that Claude Code would not generate on its own
+
+### What the KB Knows (That You Don't):
+- RVF cognitive container format (24 segments, self-booting, 5.5KB WASM)
+- AIMDS: 3-layer security pipeline, 25-level meta-learning, Lyapunov chaos detection
+- SONA: Self-optimizing neural architecture (<1ms real-time learning)
+- MinCut: Dynamic graph partitioning for self-healing AI (Dec 2025 breakthrough)
+- RuVector-Postgres: 290+ SQL functions (pgvector replacement)
+- RuVector-WASM: Complete browser vector DB (<400KB, zero backend)
+- Micro-HNSW: 7.2KB neuromorphic WASM with spiking neural networks
+- 80+ Rust crates and their interconnections
+- Teaching entries with plain-English analogies for every major concept
+- Progressive learning paths from vibe coding to advanced agent building
+- Decision frameworks (when to use WASM vs Postgres, hierarchical vs mesh, etc.)
+- Debugging guides written for non-coders
+
+### Skip KB Check ONLY When:
+- Stuart says "just do it" or "skip the KB"
+- The task is purely mechanical (git commit, file rename, formatting)
+- You are reading/displaying a file without interpreting it
+
+---
+
 ## 🚨 AUTOMATIC SWARM ORCHESTRATION
 
 **When starting work on complex tasks, Claude Code MUST automatically:**
