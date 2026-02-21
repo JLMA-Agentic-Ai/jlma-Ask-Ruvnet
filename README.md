@@ -142,7 +142,7 @@ Request body:
 }
 ```
 
-The response is streamed as newline-delimited JSON chunks.
+The response is a JSON object with `answer` (string) and `sources` (array) fields.
 
 ### GET /api/kb-stats
 
@@ -324,7 +324,7 @@ Check that `DATABASE_URL` is set correctly in the Render environment. The Neon c
 psql "$DATABASE_URL" -c "SELECT COUNT(*) FROM ask_ruvnet.architecture_docs;"
 ```
 
-Expected result: `55111`
+Expected result: `54543`
 
 ### Frontend not loading
 

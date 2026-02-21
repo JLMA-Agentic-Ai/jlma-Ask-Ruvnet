@@ -1,4 +1,4 @@
-Updated: 2026-02-21 18:30:00 EST | Version 2.1.0
+Updated: 2026-02-21 20:00:00 EST | Version 2.1.1
 Created: 2025-12-29 00:12:59 EST
 
 # Ask-RuvNet Deployment Guide
@@ -323,7 +323,7 @@ curl https://ask-ruvnet.onrender.com/health
 Expected response when healthy:
 
 ```json
-{ "status": "ok", "database": "connected", "version": "1.8.13" }
+{ "status": "ok", "uptime": 412.3, "timestamp": "2026-02-21T20:00:00.000Z", "checks": { "server": "ok", "vectorStore": "unknown" } }
 ```
 
 ### Render dashboard metrics

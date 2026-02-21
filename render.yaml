@@ -5,7 +5,7 @@ services:
     plan: free
     region: oregon
     branch: main
-    buildCommand: npm install && npm run build
+    buildCommand: NODE_ENV=development npm install --include=dev && NODE_ENV=development npm run build
     startCommand: node src/server/app.js
     envVars:
       - key: NODE_ENV

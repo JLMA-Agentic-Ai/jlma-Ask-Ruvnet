@@ -801,7 +801,7 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Internal server error' });
 });
 
-// Start Server (only when run directly, not when imported by Vercel serverless)
+// Start Server (only when run directly, not when imported as a module)
 if (require.main === module) {
     const server = app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
@@ -815,5 +815,5 @@ if (require.main === module) {
     });
 }
 
-// Export for Vercel serverless
+// Export app for testing and module imports
 module.exports = app;
