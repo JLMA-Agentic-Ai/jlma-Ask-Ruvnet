@@ -42,10 +42,19 @@ function calculateRecencyScore(date) {
 }
 
 /**
- * Apply recency boost to search results
+ * Apply recency boost to search results.
+ * Skips boosting for PostgreSQL results (source starts with "postgresql:")
+ * since those already have quality-weighted scoring from the stored procedure.
  */
 function applyRecencyBoost(results) {
     return results.map(result => {
+        // PostgreSQL KB results already have quality-weighted scoring;
+        // applying date-based decay would penalize authoritative older content.
+        const isPostgresResult = (result.source || result.metadata?.source || '').startsWith('postgresql:');
+        if (isPostgresResult) {
+            return { ...result, originalScore: result.score, recencyScore: 1.0 };
+        }
+
         const date = result.metadata?.date
             ? new Date(result.metadata.date)
             : extractDate(result.metadata?.relativePath || result.id);
@@ -57,10 +66,10 @@ function applyRecencyBoost(results) {
             ...result,
             originalScore: result.score,
             recencyScore: recencyScore,
-            score: boostedScore, // New boosted score
+            score: boostedScore,
             date: date ? date.toISOString().split('T')[0] : 'Unknown'
         };
-    }).sort((a, b) => b.score - a.score); // Re-sort by boosted score
+    }).sort((a, b) => b.score - a.score);
 }
 
 module.exports = {

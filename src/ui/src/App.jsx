@@ -48,6 +48,10 @@ const HeroSection = ({ onAction }) => (
           <span className="icon">💰</span>
           <span className="text">RetireWell</span>
         </button>
+        <button onClick={() => onAction('VIEW_UNIVERSE')} className="hero-card">
+          <span className="icon">🌌</span>
+          <span className="text">Knowledge Universe</span>
+        </button>
       </div>
 
       <div className="hero-resources">
@@ -168,6 +172,18 @@ function App() {
 
     const queryText = specialMode || input;
 
+    // Handle Knowledge Universe
+    if (queryText === 'VIEW_UNIVERSE') {
+      setCanvasContent({
+        type: 'iframe',
+        content: '/knowledge-universe.html',
+        title: 'Knowledge Universe',
+        action: 'universe'
+      });
+      setViewMode('presentation');
+      return;
+    }
+
     // Handle document viewing
     if (queryText.startsWith('VIEW_PDF:')) {
       const filename = queryText.replace('VIEW_PDF:', '');
@@ -252,12 +268,31 @@ function App() {
 
   const handleSpecialAction = async (action, content) => {
     setLoading(true);
-    // Mock special action for now or implement endpoint
-    setTimeout(() => {
-      const result = `Here is the ${action} for: ${content}`;
-      setCanvasContent({ type: 'text', content: result });
+    try {
+      const response = await fetch('/api/special', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action, content })
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || `Server error (${response.status})`);
+      }
+
+      const data = await response.json();
+      const type = action === 'diagram' ? 'diagram' : 'text';
+      setCanvasContent({ type, content: data.result, action });
+    } catch (err) {
+      console.error('Special action error:', err);
+      setCanvasContent({
+        type: 'text',
+        content: `**${action.charAt(0).toUpperCase() + action.slice(1)} unavailable:** ${err.message}\n\nThis feature requires an OpenAI API key configured on the server.`,
+        action: 'error'
+      });
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const fetchKnowledge = async () => {
@@ -452,6 +487,25 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                 >
                   📚 Knowledge Base
                 </button>
+                <button
+                  className={`sidebar-btn action ${canvasContent?.action === 'universe' ? 'active' : ''}`}
+                  onClick={() => {
+                    if (canvasContent?.action === 'universe') {
+                      setCanvasContent(null);
+                      setViewMode('split');
+                    } else {
+                      setCanvasContent({
+                        type: 'iframe',
+                        content: '/knowledge-universe.html',
+                        title: 'Knowledge Universe',
+                        action: 'universe'
+                      });
+                      setViewMode('presentation');
+                    }
+                  }}
+                >
+                  🌌 Knowledge Universe
+                </button>
               </div>
             </SidebarSection>
 
@@ -608,6 +662,12 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                           Your browser does not support the video tag.
                         </video>
                       </div>
+                    ) : canvasContent.type === 'iframe' ? (
+                      <iframe
+                        src={canvasContent.content}
+                        title={canvasContent.title || 'Content'}
+                        style={{ width: '100%', height: 'calc(100vh - 80px)', border: 'none', borderRadius: '8px' }}
+                      />
                     ) : (
                       <ReactMarkdown className="canvas-markdown" remarkPlugins={[remarkGfm]}>{canvasContent.content}</ReactMarkdown>
                     )}

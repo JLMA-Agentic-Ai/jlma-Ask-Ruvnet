@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["nodejs-18_x", "python3", "ffmpeg", "gnumake", "gcc"]
+nixPkgs = ["nodejs-22_x", "python3", "ffmpeg", "gnumake", "gcc"]
 
 # Use npm install instead of npm ci to handle alpha versions
 # npm ci requires exact lock file match which fails with alpha dependencies

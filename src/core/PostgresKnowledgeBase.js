@@ -190,23 +190,35 @@ class PostgresKnowledgeBase {
 
     const client = await this.pool.connect();
     try {
-      const [ask, travel, viral, retire] = await Promise.all([
-        client.query("SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total, COUNT(*) FILTER (WHERE is_duplicate=false AND triage_tier='gold') as gold FROM ask_ruvnet.architecture_docs"),
-        client.query("SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM travel_agent.knowledge"),
-        client.query("SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM viral_social.knowledge"),
-        client.query("SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM retirewell.guru_knowledge"),
-      ]);
+      // Query each domain individually so missing schemas don't break everything
+      const domainQueries = [
+        { key: 'ask_ruvnet', sql: "SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total, COUNT(*) FILTER (WHERE is_duplicate=false AND triage_tier='gold') as gold FROM ask_ruvnet.architecture_docs" },
+        { key: 'travel_agent', sql: "SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM travel_agent.knowledge" },
+        { key: 'viral_social', sql: "SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM viral_social.knowledge" },
+        { key: 'retirewell', sql: "SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM retirewell.guru_knowledge" },
+      ];
+
+      const domains = {};
+      let total = 0;
+
+      for (const { key, sql } of domainQueries) {
+        try {
+          const result = await client.query(sql);
+          const row = result.rows[0];
+          const domainTotal = parseInt(row.total) || 0;
+          domains[key] = { total: domainTotal };
+          if (row.gold !== undefined) domains[key].gold = parseInt(row.gold) || 0;
+          total += domainTotal;
+        } catch (err) {
+          console.warn(`[PostgresKB] Schema ${key} unavailable: ${err.message}`);
+          domains[key] = { total: 0, error: 'schema unavailable' };
+        }
+      }
 
       this._stats = {
         backend: 'PostgreSQL RuVector',
-        domains: {
-          ask_ruvnet: { total: parseInt(ask.rows[0].total), gold: parseInt(ask.rows[0].gold) },
-          travel_agent: { total: parseInt(travel.rows[0].total) },
-          viral_social: { total: parseInt(viral.rows[0].total) },
-          retirewell: { total: parseInt(retire.rows[0].total) },
-        },
-        total: parseInt(ask.rows[0].total) + parseInt(travel.rows[0].total) +
-               parseInt(viral.rows[0].total) + parseInt(retire.rows[0].total),
+        domains,
+        total,
         lastUpdated: new Date().toISOString(),
       };
 

@@ -106,8 +106,12 @@ const PORT = process.env.PORT || 3000;
 app.set('trust proxy', 1);
 
 // Security middleware
-app.use(helmet({ contentSecurityPolicy: false }));
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+app.use(helmet({
+    contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false
+}));
+app.use(cors({
+    origin: process.env.CORS_ORIGIN || (process.env.NODE_ENV === 'production' ? false : '*')
+}));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100, standardHeaders: true }));
 app.use(express.json({ limit: '1mb' }));
 const fs = require('fs');
@@ -170,24 +174,50 @@ async function initHybridSearchIndex() {
             bm25Weight: 0.45       // 45% weight for keyword (BM25) search
         });
 
-        // OPTIMIZED: Fetch ALL documents for comprehensive keyword index
-        // Using multiple queries to get broader coverage
         console.log('🔍 Building comprehensive BM25 hybrid search index...');
 
         const allDocuments = new Map();
 
-        // Query 1: Empty query for recent/random docs
-        const batch1 = await reasoningBank.reflexion.retrieveRelevant({ task: '', k: 2000 });
-        batch1.forEach(r => allDocuments.set(r.id, r));
-
-        // Query 2: Common technical terms
-        const technicalQueries = ['code', 'function', 'api', 'install', 'config'];
-        for (const term of technicalQueries) {
+        // If PostgreSQL is available, fetch ALL documents directly for full BM25 coverage
+        if (pgKB && pgKB.ready && pgKB.pool) {
             try {
-                const batch = await reasoningBank.reflexion.retrieveRelevant({ task: term, k: 500 });
-                batch.forEach(r => allDocuments.set(r.id, r));
+                const client = await pgKB.pool.connect();
+                try {
+                    const result = await client.query(`
+                        SELECT id::text, title, LEFT(content, 2000) as content, category, source
+                        FROM ask_ruvnet.architecture_docs
+                        WHERE is_duplicate = false AND triage_tier != 'garbage'
+                        ORDER BY id
+                        LIMIT 10000
+                    `);
+                    result.rows.forEach(r => allDocuments.set(r.id, {
+                        id: r.id,
+                        input: `${r.title}\n${r.content}`,
+                        task: r.title,
+                        metadata: { docId: r.id, source: `postgresql:ask_ruvnet/${r.category}`, content: r.content }
+                    }));
+                    console.log(`📊 Loaded ${allDocuments.size} documents directly from PostgreSQL for BM25`);
+                } finally {
+                    client.release();
+                }
             } catch (e) {
-                // Continue on individual query failures
+                console.warn('⚠️ Direct PostgreSQL fetch failed, falling back to embedding-based sampling:', e.message);
+            }
+        }
+
+        // Fallback: if PostgreSQL direct fetch didn't work, use embedding-based sampling
+        if (allDocuments.size === 0) {
+            const batch1 = await reasoningBank.reflexion.retrieveRelevant({ task: '', k: 2000 });
+            batch1.forEach(r => allDocuments.set(r.id, r));
+
+            const technicalQueries = ['code', 'function', 'api', 'install', 'config'];
+            for (const term of technicalQueries) {
+                try {
+                    const batch = await reasoningBank.reflexion.retrieveRelevant({ task: term, k: 500 });
+                    batch.forEach(r => allDocuments.set(r.id, r));
+                } catch (e) {
+                    // Continue on individual query failures
+                }
             }
         }
 
@@ -213,11 +243,15 @@ async function initHybridSearchIndex() {
 initAgenticFlow();
 
 app.post('/api/chat', async (req, res) => {
-    const { message, history } = req.body;
-    console.log(`[Chat] Received: ${message}`);
+    const { message, history, mode } = req.body;
+    console.log(`[Chat] Received: ${message} (level: ${mode || 'Balanced'})`);
 
-    if (!message) {
-        return res.status(400).json({ error: 'Message is required' });
+    if (!message || typeof message !== 'string') {
+        return res.status(400).json({ error: 'Message is required and must be a string' });
+    }
+
+    if (message.length > 10000) {
+        return res.status(400).json({ error: 'Message too long (max 10,000 characters)' });
     }
 
     if (!process.env.GROQ_API_KEY) {
@@ -354,11 +388,23 @@ app.post('/api/chat', async (req, res) => {
             console.warn('ReasoningBank not initialized or reflexion memory unavailable.');
         }
 
-        // 2. Construct System Prompt
+        // 2. Construct System Prompt with Learning Level adaptation
         const { RUV_PERSONA } = require('./RuvPersona');
         console.log("Constructing system prompt...");
 
+        const learningLevel = mode || 'Balanced';
+        const levelInstructions = {
+            'Simple': 'Explain like I\'m 5. Use everyday analogies, avoid all jargon, keep sentences short. Use emojis to make concepts visual.',
+            'Beginner': 'Explain for someone new to programming. Define technical terms when first used, use real-world analogies, include "why this matters" context.',
+            'Balanced': 'Provide a clear, well-structured response suitable for an intermediate audience. Balance depth with accessibility.',
+            'Technical': 'Provide detailed technical depth. Include implementation details, code snippets, architecture considerations, and performance implications. Assume strong engineering background.'
+        };
+
         const systemPrompt = `${RUV_PERSONA}
+
+===== RESPONSE STYLE =====
+Learning Level: ${learningLevel}
+${levelInstructions[learningLevel] || levelInstructions['Balanced']}
 
 ===== KNOWLEDGE BASE CONTEXT =====
 ${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
@@ -367,7 +413,7 @@ ${context || 'No specific context was found in the knowledge base for this query
 ${message}
 
 ===== YOUR RESPONSE =====
-Provide a clear, accurate, and helpful response based ONLY on the knowledge base context above. If the context is insufficient, say so honestly rather than guessing.`;
+Provide a clear, accurate, and helpful response based ONLY on the knowledge base context above, adapted to the ${learningLevel} learning level. If the context is insufficient, say so honestly rather than guessing.`;
 
         // 3. Generate Response using Groq directly
         let answer = "";
@@ -468,36 +514,47 @@ app.get('/api/kb-stats', async (req, res) => {
     }
 });
 
-// Debug Endpoint
-app.get('/api/debug', (req, res) => {
-    const cwd = process.cwd();
-    const docsPath = path.join(cwd, 'data_ingestion_ruv_coaching/Other Documents');
-    let docsFiles = [];
-    let error = null;
+// Debug Endpoint - only available in development
+if (process.env.NODE_ENV !== 'production') {
+    app.get('/api/debug', (req, res) => {
+        const cwd = process.cwd();
+        const docsPath = path.join(cwd, 'data_ingestion_ruv_coaching/Other Documents');
+        let docsFiles = [];
+        let error = null;
 
-    try {
-        if (fs.existsSync(docsPath)) {
-            docsFiles = fs.readdirSync(docsPath);
-        } else {
-            error = "Path does not exist";
+        try {
+            if (fs.existsSync(docsPath)) {
+                docsFiles = fs.readdirSync(docsPath);
+            } else {
+                error = "Path does not exist";
+            }
+        } catch (e) {
+            error = e.message;
         }
-    } catch (e) {
-        error = e.message;
-    }
 
-    res.json({
-        cwd,
-        docsPath,
-        exists: fs.existsSync(docsPath),
-        files: docsFiles,
-        error
+        res.json({
+            cwd,
+            docsPath,
+            exists: fs.existsSync(docsPath),
+            files: docsFiles,
+            error
+        });
     });
-});
+}
 
 
 // Special Actions Endpoint (simplify, code, diagram)
 app.post('/api/special', async (req, res) => {
     const { action, content } = req.body;
+
+    if (!action || !content || typeof action !== 'string' || typeof content !== 'string') {
+        return res.status(400).json({ error: 'action and content are required strings' });
+    }
+
+    if (!['simplify', 'code', 'diagram'].includes(action)) {
+        return res.status(400).json({ error: 'Invalid action. Must be: simplify, code, or diagram' });
+    }
+
     console.log(`[Special] Action: ${action} `);
 
     // Check if OpenAI is configured
@@ -587,8 +644,14 @@ function runAutoLearner() {
 // Run Learner every 6 hours
 setInterval(runAutoLearner, 6 * 60 * 60 * 1000);
 
-// Manual Trigger Endpoint
+// Manual Trigger Endpoint - requires API key in production
 app.post('/api/learn', (req, res) => {
+    if (process.env.NODE_ENV === 'production') {
+        const authHeader = req.headers.authorization;
+        if (!authHeader || authHeader !== `Bearer ${process.env.LEARN_API_KEY}`) {
+            return res.status(401).json({ error: 'Unauthorized. Requires LEARN_API_KEY.' });
+        }
+    }
     console.log("🧠 Manual Learning Triggered");
     runAutoLearner();
     res.json({ message: "Learning process started in background." });

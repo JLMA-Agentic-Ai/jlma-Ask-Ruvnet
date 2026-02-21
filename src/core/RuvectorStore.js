@@ -36,6 +36,41 @@ try {
     // Will use fallback
 }
 
+// ONNX fast embeddings via @claude-flow/embeddings (~55x faster)
+let onnxService = null;
+let onnxInitPromise = null;
+const ONNX_EMBEDDINGS_PATH = process.env.CLAUDE_FLOW_EMBEDDINGS_PATH ||
+    require('path').join(require('os').homedir(), '.npm-global/lib/node_modules/@claude-flow/cli/node_modules/@claude-flow/embeddings/dist/index.js');
+
+/**
+ * Lazy-load the ONNX embedding service. Returns the cached instance
+ * on subsequent calls. Returns null if ONNX is unavailable.
+ */
+async function getOnnxService() {
+    if (onnxService) return onnxService;
+    if (onnxInitPromise) return onnxInitPromise;
+
+    onnxInitPromise = (async () => {
+        try {
+            const mod = await import(ONNX_EMBEDDINGS_PATH);
+            const svc = await mod.createEmbeddingServiceAsync({
+                provider: 'transformers',
+                model: 'Xenova/all-MiniLM-L6-v2',
+                dimensions: 384
+            });
+            onnxService = svc;
+            console.log('[RuvectorStore] ONNX fast embeddings loaded successfully (~55x faster)');
+            return svc;
+        } catch (err) {
+            console.warn('[RuvectorStore] ONNX embeddings unavailable, will use fallback chain:', err.message);
+            onnxInitPromise = null; // Allow retry on next call
+            return null;
+        }
+    })();
+
+    return onnxInitPromise;
+}
+
 // Try @xenova/transformers for local embeddings
 let pipeline = null;
 let embedPipeline = null;
@@ -44,7 +79,7 @@ let embedPipeline = null;
  * Simple text to vector hash (fallback when no embedder available)
  * This provides consistent hashing but limited semantic understanding
  */
-function textToHashVector(text, dimensions = 128) {
+function textToHashVector(text, dimensions = 384) {
     const vector = new Float32Array(dimensions);
     const str = String(text);
 
@@ -81,8 +116,26 @@ function textToHashVector(text, dimensions = 128) {
 /**
  * Generate embedding for text using best available method
  */
-async function generateEmbedding(text, dimensions = 128) {
-    // Try RuVector embedding service first
+async function generateEmbedding(text, dimensions = 384) {
+    // Try ONNX fast embeddings first (~55x faster than @xenova/transformers)
+    try {
+        const svc = await getOnnxService();
+        if (svc) {
+            const result = await svc.embed(text);
+            // result is Float32Array of length 384
+            if (result && result.length === dimensions) {
+                return result;
+            }
+            // Handle dimension mismatch (unlikely with same model)
+            if (result && result.length > dimensions) {
+                return new Float32Array(result.buffer, result.byteOffset, dimensions);
+            }
+        }
+    } catch {
+        // Fall through to next method
+    }
+
+    // Try RuVector embedding service
     if (embeddingService) {
         try {
             const embedding = await embeddingService.embed(text);
@@ -114,8 +167,7 @@ async function generateEmbedding(text, dimensions = 128) {
     if (embedPipeline) {
         try {
             const output = await embedPipeline(text, { pooling: 'mean', normalize: true });
-            // MiniLM produces 384-dim embeddings, but RuVector only supports 128
-            // Project down to 128 dims by averaging every 3 dimensions
+            // MiniLM produces 384-dim embeddings - use natively at 384 dims
             const fullEmbedding = new Float32Array(output.data);
             if (fullEmbedding.length > dimensions) {
                 const projected = new Float32Array(dimensions);
@@ -152,9 +204,8 @@ async function generateEmbedding(text, dimensions = 128) {
 class RuvectorStore {
     constructor() {
         this.db = null;
-        // RuVector native VectorDB supports 128 dimensions
-        // For larger embeddings, we project down to 128 for HNSW indexing
-        this.dimensions = 128;
+        // Standardized to 384 dimensions (all-MiniLM-L6-v2)
+        this.dimensions = 384;
         this.embeddingCache = new Map(); // Cache embeddings for faster search
     }
 
@@ -188,16 +239,35 @@ class RuvectorStore {
     }
 
     async addDocumentsBatch(documents) {
-        console.log(`\n[RuvectorStore] 📥 Adding batch of ${documents.length} documents...`);
+        console.log(`\n[RuvectorStore] Adding batch of ${documents.length} documents...`);
 
         let added = 0;
+        const contents = documents.map(doc => doc.content || '');
+
+        // Try ONNX batch embedding first (much faster than one-by-one)
+        let batchEmbeddings = null;
+        try {
+            const svc = await getOnnxService();
+            if (svc && svc.embedBatch && contents.length > 1) {
+                console.log(`[RuvectorStore] Using ONNX batch embedding for ${contents.length} documents...`);
+                const batchResult = await svc.embedBatch(contents);
+                if (batchResult && batchResult.embeddings && batchResult.embeddings.length === contents.length) {
+                    batchEmbeddings = batchResult.embeddings.map(e => e.embedding);
+                }
+            }
+        } catch (err) {
+            console.warn('[RuvectorStore] ONNX batch embed failed, falling back to individual embedding:', err.message);
+        }
+
         for (let i = 0; i < documents.length; i++) {
             const doc = documents[i];
 
             try {
-                // Generate embedding for document content
-                const content = doc.content || '';
-                const embedding = await generateEmbedding(content, this.dimensions);
+                // Use pre-computed batch embedding or generate individually
+                const content = contents[i];
+                const embedding = batchEmbeddings
+                    ? batchEmbeddings[i]
+                    : await generateEmbedding(content, this.dimensions);
 
                 // Create unique ID for document
                 const id = doc.id || doc.name || `doc_${Date.now()}_${i}`;
@@ -223,12 +293,12 @@ class RuvectorStore {
                     process.stdout.write('.');
                 }
             } catch (error) {
-                console.error(`[RuvectorStore] ❌ Error processing document:`, error.message);
+                console.error(`[RuvectorStore] Error processing document:`, error.message);
             }
         }
 
         console.log('');
-        console.log(`[RuvectorStore] ✅ Added ${added}/${documents.length} documents`);
+        console.log(`[RuvectorStore] Added ${added}/${documents.length} documents`);
     }
 
     async commit() {
