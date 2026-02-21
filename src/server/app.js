@@ -801,14 +801,19 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Internal server error' });
 });
 
-// Start Server
-const server = app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Ask rUVnet v${APP_VERSION} initialized.`);
-});
+// Start Server (only when run directly, not when imported by Vercel serverless)
+if (require.main === module) {
+    const server = app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+        console.log(`Ask rUVnet v${APP_VERSION} initialized.`);
+    });
 
-// Graceful shutdown
-process.on('SIGTERM', () => {
-    console.log('SIGTERM received, shutting down gracefully...');
-    server.close(() => process.exit(0));
-});
+    // Graceful shutdown
+    process.on('SIGTERM', () => {
+        console.log('SIGTERM received, shutting down gracefully...');
+        server.close(() => process.exit(0));
+    });
+}
+
+// Export for Vercel serverless
+module.exports = app;

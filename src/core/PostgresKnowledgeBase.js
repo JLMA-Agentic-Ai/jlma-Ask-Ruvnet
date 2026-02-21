@@ -139,7 +139,7 @@ class PostgresKnowledgeBase {
                   distance, quality, source_authority,
                   relevance_score, relationship_context
            FROM ask_ruvnet.knowledge_search(
-             $1::ruvector,
+             $1::vector,
              $2::text,
              $3::text,
              NULL::text[],
