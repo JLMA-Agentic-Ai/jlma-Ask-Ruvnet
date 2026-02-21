@@ -6,7 +6,7 @@
 **npm package name:** answerbot-builder
 **Deployment Platform:** Render.com (render.yaml auto-detected)
 
-AskRuvNet is an AI-powered assistant that answers questions about the RuvNet ecosystem. It combines a 55,111-entry gold-tier knowledge base stored in Neon PostgreSQL with Groq's llama-3.3-70b-versatile model to deliver accurate, context-grounded responses about RuvNet packages, agent orchestration, vector databases, and AI development patterns.
+AskRuvNet is an AI-powered assistant that answers questions about the RuvNet ecosystem. It combines a 54,543-entry gold-tier knowledge base stored in Neon PostgreSQL with Groq's llama-3.3-70b-versatile model to deliver accurate, context-grounded responses about RuvNet packages, agent orchestration, vector databases, and AI development patterns.
 
 ---
 
@@ -36,7 +36,7 @@ knowledge_search() stored procedure
   HNSW index, 5-factor relevance scoring
   |
   v
-ask_ruvnet.architecture_docs   55,111 entries
+ask_ruvnet.architecture_docs   54,543 entries
   embedding: real[] (384d, ONNX all-MiniLM-L6-v2)
   avg quality score: 92.1
   |
@@ -77,7 +77,7 @@ Every search result is scored using five weighted signals before being passed to
 
 | Stat | Value |
 |------|-------|
-| Total entries | 55,111 |
+| Total entries | 54,543 |
 | Quality tier | Gold |
 | Avg quality score | 92.1 / 100 |
 | Embedding model | ONNX all-MiniLM-L6-v2 |
@@ -227,7 +227,7 @@ services:
     runtime: node
     buildCommand: npm install && npm run build
     startCommand: node src/server/app.js
-    healthCheckPath: /api/health
+    healthCheckPath: /health
     autoDeploy: true
 ```
 

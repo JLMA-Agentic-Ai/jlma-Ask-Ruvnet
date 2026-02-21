@@ -1,4 +1,4 @@
-Updated: 2026-02-21 00:00:00 EST | Version 2.0.0
+Updated: 2026-02-21 18:30:00 EST | Version 2.1.0
 Created: 2025-12-29 00:12:59 EST
 
 # Ask-RuvNet Deployment Guide
@@ -35,7 +35,7 @@ Render.com (Free Tier Web Service)
   - Branch: main (auto-deploy on push)
   - Build: NODE_ENV=development npm install --include=dev && npm run build
   - Start: node src/server/app.js
-  - Health check: /api/health
+  - Health check: /health
   - URL: https://ask-ruvnet.onrender.com
      |
      v
@@ -44,7 +44,7 @@ Neon PostgreSQL (pgvector)
   - Host: ep-holy-pine-aksbss0s.c-3.us-west-2.aws.neon.tech
   - Database: neondb
   - Schema: ask_ruvnet
-  - Table: architecture_docs (55,111 rows)
+  - Table: architecture_docs (54,543 rows)
   - Extension: pgvector
   - Index: HNSW (m=16, ef_construction=64)
   - Stored procedure: ask_ruvnet.knowledge_search()
@@ -86,7 +86,7 @@ Render reads these values from `render.yaml`. Verify they match before deploying
 | Branch | main |
 | Build command | `NODE_ENV=development npm install --include=dev && NODE_ENV=development npm run build` |
 | Start command | `node src/server/app.js` |
-| Health check path | `/api/health` |
+| Health check path | `/health` |
 | Auto-deploy | Yes (on every push to main) |
 
 > The build command sets `NODE_ENV=development` deliberately during the build step. This ensures Vite and other dev dependencies are installed and available for the build. If `NODE_ENV=production` is set during `npm install`, dev dependencies are skipped and the build fails with a "vite not found" error. See [Troubleshooting](#troubleshooting) for more detail.
@@ -102,7 +102,7 @@ Click **Create Web Service**. Render will:
 1. Clone the repository.
 2. Run the build command.
 3. Start the server with the start command.
-4. Poll `/api/health` to confirm the service is healthy.
+4. Poll `/health` to confirm the service is healthy.
 
 The service URL will be `https://ask-ruvnet.onrender.com` once the deploy succeeds.
 
@@ -226,7 +226,7 @@ $$;
 
 ### Step 6: Verify row count
 
-After ingestion the table should contain approximately 55,111 rows:
+After ingestion the table should contain approximately 54,543 rows:
 
 ```sql
 SELECT COUNT(*) FROM ask_ruvnet.architecture_docs;
@@ -317,7 +317,7 @@ render logs -r srv-d6ctal0gjchc73e43d80 --tail
 The health endpoint returns a JSON response indicating whether the server and database are reachable:
 
 ```bash
-curl https://ask-ruvnet.onrender.com/api/health
+curl https://ask-ruvnet.onrender.com/health
 ```
 
 Expected response when healthy:
@@ -399,7 +399,7 @@ If this returns a row count, the connection string is valid. Trigger a redeploy 
 
 ### Health check fails and Render marks the deploy as failed
 
-**Cause**: The server did not start within Render's health check window, or `/api/health` returned a non-200 status.
+**Cause**: The server did not start within Render's health check window, or `/health` returned a non-200 status.
 
 **Steps to diagnose**:
 
@@ -445,12 +445,12 @@ buildCommand: NODE_ENV=development npm install --include=dev --legacy-peer-deps 
 | Item | Value |
 |------|-------|
 | Production URL | https://ask-ruvnet.onrender.com |
-| Health endpoint | https://ask-ruvnet.onrender.com/api/health |
+| Health endpoint | https://ask-ruvnet.onrender.com/health |
 | Render service ID | srv-d6ctal0gjchc73e43d80 |
 | Neon project | ask-ruvnet-kb (fragrant-math-26433511) |
 | Neon host | ep-holy-pine-aksbss0s.c-3.us-west-2.aws.neon.tech |
 | Neon schema | ask_ruvnet |
-| Neon table | architecture_docs (55,111 rows) |
+| Neon table | architecture_docs (54,543 rows) |
 | Tail logs | `render logs -r srv-d6ctal0gjchc73e43d80 --tail` |
 | Trigger redeploy | `render deploys trigger -r srv-d6ctal0gjchc73e43d80` |
 | Local dev server | `npm run dev` (localhost:3000) |
