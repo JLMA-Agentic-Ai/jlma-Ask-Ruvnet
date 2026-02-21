@@ -14,7 +14,7 @@ const CONFIG = {
     port: 5435,
     database: 'postgres',
     user: 'postgres',
-    password: 'guruKB2025'
+    password: process.env.RUVECTOR_PASSWORD || ''
   },
   schema: 'ask_ruvnet',
   repoDir: '/tmp/ruvnet-repos',

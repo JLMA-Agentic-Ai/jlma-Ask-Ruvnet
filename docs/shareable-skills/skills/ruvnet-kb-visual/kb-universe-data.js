@@ -21,7 +21,7 @@ const path = require('path');
 
 // Configuration
 const KB_PORT = process.env.KB_PORT || 5435;
-const KB_PASSWORD = process.env.KB_PASSWORD || 'guruKB2025';
+const KB_PASSWORD = process.env.KB_PASSWORD || '';
 
 // Get project info - ALWAYS use repo name (folder name), not package.json name
 function getProjectInfo() {

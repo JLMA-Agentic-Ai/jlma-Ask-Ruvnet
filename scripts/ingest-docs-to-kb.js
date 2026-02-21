@@ -28,7 +28,7 @@ function psql(sql) {
             '-c', sql
         ], {
             stdio: 'pipe',
-            env: { ...process.env, PGPASSWORD: 'guruKB2025' },
+            env: { ...process.env, PGPASSWORD: process.env.RUVECTOR_PASSWORD || '' },
             maxBuffer: 10 * 1024 * 1024
         });
         return true;
@@ -177,7 +177,7 @@ async function ingestDocs() {
             '-h', 'localhost', '-p', '5435', '-U', 'postgres', '-d', 'postgres',
             '-t', '-c', `SELECT COUNT(*) FROM ${SCHEMA}.${TABLE};`
         ], {
-            env: { ...process.env, PGPASSWORD: 'guruKB2025' },
+            env: { ...process.env, PGPASSWORD: process.env.RUVECTOR_PASSWORD || '' },
             encoding: 'utf-8'
         });
         console.log(`   Total KB entries: ${result.trim()}`);

@@ -55,7 +55,7 @@ echo "🏗️  INFRASTRUCTURE:"
 docker ps --format '{{.Names}}' 2>/dev/null | grep -q "ruvector-kb" && echo "   ✅ ruvector-kb running" || echo "   ⚠️  ruvector-kb not running"
 grep -q "kb-gateway" ~/.claude.json 2>/dev/null && echo "   ✅ kb-gateway MCP" || echo "   ⚠️  kb-gateway not registered"
 SCHEMA=$(basename "$(pwd)" | tr '[:upper:]' '[:lower:]' | tr '-' '_')
-COUNT=$(PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -t -c "SELECT COUNT(*) FROM $SCHEMA.architecture_docs" 2>/dev/null | tr -d ' ')
+COUNT=$(PGPASSWORD=${PGPASSWORD} psql -h localhost -p 5435 -U postgres -t -c "SELECT COUNT(*) FROM $SCHEMA.architecture_docs" 2>/dev/null | tr -d ' ')
 [ -n "$COUNT" ] && echo "   📊 KB: $COUNT entries"
 ```
 

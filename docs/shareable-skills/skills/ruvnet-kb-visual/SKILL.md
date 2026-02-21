@@ -100,17 +100,17 @@ echo "🗄️  Checking ruvector-postgres connection..."
 if command -v docker &> /dev/null; then
   if docker ps --format '{{.Names}}' 2>/dev/null | grep -q "ruvector-kb"; then
     echo "   ✅ ruvector-kb container running"
-    PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -d postgres -c "SELECT 1" > /dev/null 2>&1 && \
+    PGPASSWORD=${POSTGRES_PASSWORD} psql -h localhost -p 5435 -U postgres -d postgres -c "SELECT 1" > /dev/null 2>&1 && \
       echo "   ✅ Database connection successful" || \
       echo "   ❌ Database connection failed"
   else
     echo "   ❌ ruvector-kb container not running"
     echo "   Run: docker start ruvector-kb"
-    echo "   Or create: docker run -d --name ruvector-kb -e POSTGRES_PASSWORD=guruKB2025 -p 5435:5432 ruvnet/ruvector-postgres:latest"
+    echo "   Or create: docker run -d --name ruvector-kb -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} -p 5435:5432 ruvnet/ruvector-postgres:latest"
   fi
 else
   echo "   ⚠️  Docker not found - checking direct connection..."
-  PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -d postgres -c "SELECT 1" > /dev/null 2>&1 && \
+  PGPASSWORD=${POSTGRES_PASSWORD} psql -h localhost -p 5435 -U postgres -d postgres -c "SELECT 1" > /dev/null 2>&1 && \
     echo "   ✅ Database connection successful" || \
     echo "   ❌ Database connection failed"
 fi
@@ -150,7 +150,7 @@ echo "📊 Checking KB status..."
 SCHEMA="${KB_SCHEMA:-ask_ruvnet}"
 TABLE="${KB_TABLE:-architecture_docs}"
 
-COUNT=$(PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -d postgres -t -c \
+COUNT=$(PGPASSWORD=${POSTGRES_PASSWORD} psql -h localhost -p 5435 -U postgres -d postgres -t -c \
   "SELECT COUNT(*) FROM ${SCHEMA}.${TABLE};" 2>/dev/null | tr -d ' ')
 
 if [ -n "$COUNT" ] && [ "$COUNT" != "" ]; then
@@ -203,7 +203,7 @@ echo ""
 | `KB_TABLE` | `architecture_docs` | Table name |
 | `KB_HOST` | `localhost` | Database host |
 | `KB_PORT` | `5435` | Database port |
-| `KB_PASSWORD` | `guruKB2025` | Database password |
+| `KB_PASSWORD` | `${POSTGRES_PASSWORD}` | Database password |
 
 ---
 

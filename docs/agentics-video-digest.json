@@ -1,0 +1,466 @@
+{
+  "metadata": {
+    "source": "https://video.agentics.org/search?sortBy=recent",
+    "date_range": "Oct 17, 2025 - Jan 29, 2026",
+    "total_cataloged": 47,
+    "total_with_rich_data": 47,
+    "total_with_full_chapters": 12,
+    "total_with_transcripts": 10,
+    "extracted": "2026-02-20",
+    "platform": "Kaltura MediaSpace v5.171.15 (Partner ID: 5896392)"
+  },
+  "videos": [
+    {
+      "id": "1_dpwbbr66",
+      "title": "Agentic AI Revolution: Building Autonomous Intelligent Systems for Real-World Impact",
+      "url": "https://video.agentics.org/media/t/1_dpwbbr66",
+      "duration": "1h 30m",
+      "tags": ["agentic ai", "autonomous agents", "open source ai"],
+      "relevance": "high"
+    },
+    {
+      "id": "1_2156iluo",
+      "title": "From Helsinki to the World: Finland's AI-Native Government Transformation",
+      "url": "https://video.agentics.org/media/t/1_2156iluo",
+      "duration": "2h 8m",
+      "tags": ["ai-native transformation", "agentic development", "mob ai"],
+      "relevance": "medium"
+    },
+    {
+      "id": "1_40wp4k60",
+      "title": "OS-Level Automation and Agentic Systems: Building the Future of Computer Use",
+      "url": "https://video.agentics.org/media/t/1_40wp4k60",
+      "duration": "1h 51m",
+      "tags": ["agentic-systems", "os-automation", "browser-agents"],
+      "description": "Explores cutting edge of agentic computing: OS-level automation, browser-based agents, distributed swarm systems.",
+      "relevance": "high"
+    },
+    {
+      "id": "1_s07kapkb",
+      "title": "Building Agentic Systems at Scale: Architecture, Security, and Real-World Implementation",
+      "url": "https://video.agentics.org/media/t/1_s07kapkb",
+      "duration": "1h 51m",
+      "date": "2026-01-16",
+      "tags": ["agentic-systems", "architectural-decision-records", "ai-security", "claude-flow", "system-optimization", "vector-databases", "prompt-injection", "ai-defense", "community-driven-development", "temporal-ai", "robert ranson", "reuven cohen"],
+      "description": "Explores cutting-edge landscape of agentic AI systems, focusing on practical implementation strategies and security considerations. Covers multi-bot platforms, architectural decision records, and defense against prompt injection.",
+      "relevance": "critical"
+    },
+    {
+      "id": "1_33xvl0xn",
+      "title": "Agentix Foundation: Building a Global Community for Agentic AI Development",
+      "url": "https://video.agentics.org/media/t/1_33xvl0xn",
+      "duration": "1h 5m",
+      "date": "2026-01-29",
+      "tags": ["agentix foundation", "agentic ai", "community building", "open source development", "cloudflow", "ai education", "northeast india", "democratization of technology", "non-profit organization", "software development"],
+      "description": "Introduces the Agentix Foundation, global non-profit for advancing agentic AI. Three strategic pillars: education, community building, driving measurable impact. Showcases CloudFlow V3 and demonstrates how AI agents accelerate development from concept to deployment in hours.",
+      "relevance": "high"
+    },
+    {
+      "id": "1_rozlzilu",
+      "title": "London Meetup - AI Powered Content Creation: From Sheet Music to Semantic Graphs",
+      "url": "https://video.agentics.org/media/t/1_rozlzilu",
+      "duration": "1h 14m",
+      "date": "2026-01-28",
+      "tags": ["claude flow", "notebook lm", "ai development", "semantic graphs", "llm workflows", "rapid prototyping", "documentation automation", "knowledge graphs", "web audio api", "ai agents"],
+      "description": "Showcases leveraging LLMs for practical development workflows: sheet music-to-audio converter (WebAssembly), CRM via Claude Flow, automated content library with Notebook LM. Covers multi-agent orchestration, semantic graphs from unstructured data, containerization, and collaborative AI-driven development.",
+      "relevance": "high"
+    },
+    {
+      "id": "1_8afwqubg",
+      "title": "Building Agentic Systems: Network Topologies, Skills Aggregation, and AI Infrastructure",
+      "url": "https://video.agentics.org/media/t/1_8afwqubg",
+      "duration": "2h 1m",
+      "date": "2026-01-23",
+      "tags": ["agentic-systems", "network-topology", "claude-flow", "distributed-agents", "skill-aggregation", "quality-engineering", "prime-radiant", "ai-infrastructure", "hardware-optimization", "autonomous-coding", "robert ranson", "reuven cohen"],
+      "description": "Cutting edge agentic AI systems: network topology optimization for agent coordination, skills aggregation, quality engineering, prime radiant coherence engine, hardware optimization for AI infrastructure.",
+      "transcript_preview": "Discussion starting with weather check-in, congratulations to Bill McGraw and David Gratton for Vancouver kickoff event. Covers network topologies, skills aggregation, autonomous coding, hardware optimization.",
+      "relevance": "critical"
+    },
+    {
+      "id": "1_dxehuvpf",
+      "title": "Building the Prime Radiant: A Coherence Engine for AI Anti-Hallucination",
+      "url": "https://video.agentics.org/media/t/1_dxehuvpf",
+      "duration": "1h 30m",
+      "tags": ["ai verification", "coherence engine", "recursive language models", "edge computing", "rust development", "anti-hallucination", "distributed systems", "prime radiant", "mathematical integrity", "agent swarms"],
+      "description": "Introduces the Prime Radiant, a coherence engine solving AI hallucinations and unverifiable confidence scores. Uses mathematical integrity and recursive language models for verification.",
+      "relevance": "critical"
+    },
+    {
+      "id": "1_rtjw6iv4",
+      "title": "Building Agentic AI Solutions: Claude Flow, Anti-Gravity, and Real-World Applications",
+      "url": "https://video.agentics.org/media/t/1_rtjw6iv4",
+      "duration": "1h 31m",
+      "tags": ["agentic-ai", "claude-flow", "anti-gravity"],
+      "description": "Practical implementations of agentic AI technologies: Claude Flow and Anti-Gravity platforms. London-based agentic AI projects showcased.",
+      "relevance": "critical"
+    },
+    {
+      "id": "1_oowknql6",
+      "title": "CloudFlow V3 and Agentic Systems: Building the Future of AI Development",
+      "url": "https://video.agentics.org/media/t/1_oowknql6",
+      "duration": "2h 4m",
+      "tags": ["machine learning", "healthcare technology", "fyi"],
+      "description": "Latest developments in CloudFlow V3 and agentic AI systems. Multiple real-world applications from industry professionals. Architectural decisions for production systems.",
+      "relevance": "critical"
+    },
+    {
+      "id": "1_xlre6ukc",
+      "title": "Claude-flow v3 Release: Revolutionary Agentic AI System with 500K+ Downloads",
+      "url": "https://video.agentics.org/media/t/1_xlre6ukc",
+      "duration": "1h 49m",
+      "date": "2026-01-16",
+      "tags": ["claude-flow v3", "agentic ai", "ai symbolic protocol", "swarm coordination", "vector embeddings", "wasm technology", "disaster response", "mathematical ai", "open source ai", "real-time learning"],
+      "description": "Comprehensive discussion on Claude-flow v3 with 500K+ downloads and 12K GitHub stars. Covers incrementally learning AI system that adapts in real-time: swarm coordination, drift detection, intelligent token optimization. Hierarchical mesh for agent coordination, memory and embedding systems via WASM, security features (real-time PII detection, jailbreak monitoring). Differs from traditional AI by operating as prosthetic to human intelligence. Covers Seven Cents bioacoustic project, deployment strategies, 27 hooks system, background workers.",
+      "chapters": [
+        "Claude-flow v3 Release and Overview - 438K downloads, incremental learning, hierarchical mesh coordination",
+        "Guest Introductions and Community Updates - meetups in Vancouver, Bangalore, Toronto, Halifax",
+        "Claude-flow v3 Architecture - agents/workers with vector/graph implementations, Agent Booster token optimization, model routing (Haiku/Sonnet/Opus), micro-LoRa learning, defense system (0.04ms threat detection)",
+        "Seven Cents Bioacoustic Project - animal communication translation via bioacoustic embeddings, mincut algorithm",
+        "System Architecture Deep Dive - Root Vector system, WASM compilation, Agent DB, comparison vs Crew AI/LangGraph/Autogen",
+        "Security, Deployment, Hooks System - 27 hooks, trajectory learning, PII stripping, background workers",
+        "Windows Compatibility and Visualization - hyperbolic vector spaces, prime number quantization, time crystals",
+        "Emily OS Orchestration Platform - agent swarm management, LLM agnostic, scales 2-100K agents",
+        "AI Symbolic Protocol - mathematical language reducing ambiguity from 40% to <2%, 512 symbols, Lean4 integration",
+        "Beacon Disaster Rescue - Wi-Fi mesh network, life detection through rubble, quantum-resistant algorithms, $5-20 devices",
+        "Community Branding - retro-futuristic 1984 aesthetics, Atari/Sega inspired",
+        "Community Engagement - CB Radio submissions, marketing, meetup planning worldwide",
+        "Advanced Topics - bias management, dynamic min-cut, hallucination prevention via mathematical determinism",
+        "Integration Strategies - CLI vs MCPs, MCP grouping, local models, deployment packages, ADRs"
+      ],
+      "relevance": "critical"
+    },
+    {
+      "id": "1_nvkgdvm8",
+      "title": "Claude-Flow V3: Building AI Systems with Hive-Mind Intelligence",
+      "url": "https://video.agentics.org/media/t/1_nvkgdvm8",
+      "tags": ["claude-flow v3", "hive-mind", "intelligence"],
+      "relevance": "critical"
+    },
+    {
+      "id": "1_01hov9ws",
+      "title": "Building AI Solutions for Social Good: Agentics Foundation London Chapter Meetup 7 Jan 26",
+      "url": "https://video.agentics.org/media/t/1_01hov9ws",
+      "date": "2026-01-07",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_3t6shgyu",
+      "title": "Super Intelligence Through Human-AI Integration: Building the Nervous System of AI",
+      "url": "https://video.agentics.org/media/t/1_3t6shgyu",
+      "relevance": "high"
+    },
+    {
+      "id": "1_392oe5oa",
+      "title": "Claude Flow V3: Building Intelligent Agents with Self-Learning Vector Systems",
+      "url": "https://video.agentics.org/media/t/1_392oe5oa",
+      "tags": ["claude flow v3", "rue vector", "agentic systems", "self-learning ai", "edge computing", "distributed agents", "hyperbolic vectors", "embedded ai", "development tools", "ai architecture"],
+      "relevance": "critical"
+    },
+    {
+      "id": "1_wx6gnb5d",
+      "title": "Building AI Agents: From Development Tools to Industry Standards and Ethical Implementation",
+      "url": "https://video.agentics.org/media/t/1_wx6gnb5d",
+      "relevance": "high"
+    },
+    {
+      "id": "1_htfe35tu",
+      "title": "Agentic Quality Engineering Fleet: Revolutionizing Software Testing with AI Agents",
+      "url": "https://video.agentics.org/media/t/1_htfe35tu",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_hui4b06k",
+      "title": "From Cloud to Edge: Revolutionary AI Chip Technology and Distributed Neural Networks",
+      "url": "https://video.agentics.org/media/t/1_hui4b06k",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_ugh6jvf3",
+      "title": "Rec- Dec 8, 2025 - Agentics Foundation Session",
+      "url": "https://video.agentics.org/media/t/1_ugh6jvf3",
+      "date": "2025-12-08",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_3c70sv2p",
+      "title": "From Hackathon to Market: Building AI-Powered Media Discovery at Scale",
+      "url": "https://video.agentics.org/media/t/1_3c70sv2p",
+      "duration": "5h",
+      "tags": ["agentic-engineering", "recommendation-engine", "vector-search", "machine-learning", "real-time-processing", "hackathon", "ai-consulting", "self-learning-systems", "content-discovery", "swarm-intelligence"],
+      "description": "Distributed global team builds AI solutions during 72-hour hackathon. Development of self-learning recommendation engine with vector search and swarm intelligence.",
+      "relevance": "high"
+    },
+    {
+      "id": "1_ay4ozec9",
+      "title": "Breaking Down Content Silos: A 72-Hour Hackathon to Unify Streaming Discovery",
+      "url": "https://video.agentics.org/media/t/1_ay4ozec9",
+      "duration": "5h",
+      "tags": ["content discovery", "streaming aggregation", "metadata enrichment", "recommendation systems", "semantic search", "knowledge graphs", "multi-agent ai", "hackathon", "user experience", "platform fragmentation"],
+      "description": "Solving streaming content fragmentation across Netflix, Hulu, Amazon etc. Hyperbolic embeddings, graph neural networks, self-learning mechanisms in database infrastructure.",
+      "relevance": "high"
+    },
+    {
+      "id": "1_x6y3m453",
+      "title": "Building the Future: AI-Powered Media Discovery and Smart TV Integration at the Global AI Hackathon",
+      "url": "https://video.agentics.org/media/t/1_x6y3m453",
+      "duration": "5h",
+      "date": "2025-12-06",
+      "tags": ["data privacy", "emotion-driven ai", "open-source development", "federated learning", "ethical ai", "media recommendation systems", "hyperbolic embeddings", "ai hackathon", "root vector database", "real-time personalization", "geolocation-based discovery", "tddb", "smart tv integration", "supabase integration", "graph neural networks", "self-learning systems"],
+      "description": "Inaugural Global AI Hackathon: 80 registered participants, 29 active forks. Cinesphere geolocation-based content discovery. Root Vector: intelligent database replacing PG Vector with attention mechanisms. Samsung Smart TV integration. Hyperbolic embeddings, graph neural networks, federated learning. EU regulation compliance for emotional manipulation and data sovereignty.",
+      "relevance": "critical"
+    },
+    {
+      "id": "1_prlsngek",
+      "title": "Root Vector: Building the World's Fastest AI Search",
+      "url": "https://video.agentics.org/media/t/1_prlsngek",
+      "relevance": "critical"
+    },
+    {
+      "id": "1_vukid8rf",
+      "title": "Rec- Dec 6, 2025 - Agentics Foundation Session",
+      "url": "https://video.agentics.org/media/t/1_vukid8rf",
+      "date": "2025-12-06",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_ke1ntenu",
+      "title": "Rec- Dec 5, 2025 - Agentics Foundation Global AI Hackathon",
+      "url": "https://video.agentics.org/media/t/1_ke1ntenu",
+      "date": "2025-12-05",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_hpe5jw3w",
+      "title": "From Concept to Code: How Claude AI and Agentic Systems Are Reshaping Development",
+      "url": "https://video.agentics.org/media/t/1_hpe5jw3w",
+      "duration": "1h 29m",
+      "tags": ["ideas", "sourcing", "neurotrader", "openai", "build", "robotics", "rust-programming", "ai-agents", "neural-trading", "agentic-systems", "claude-ai", "machine-learning", "open-source", "high-performance-computing", "vector-databases"],
+      "description": "AI-powered robotics and autonomous systems. Complete ROS rewrite in Rust/MPX with zero-RTT connections for sub-100ms latency. Neural trading, vector databases, high-performance computing.",
+      "relevance": "high"
+    },
+    {
+      "id": "1_b9khft2b",
+      "title": "AI Hackerspace Live - Nov 21",
+      "url": "https://video.agentics.org/media/t/1_b9khft2b",
+      "duration": "1h 37m",
+      "date": "2025-11-21",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_04q83xk2",
+      "title": "AI Hackerspace Live - Nov 7",
+      "url": "https://video.agentics.org/media/t/1_04q83xk2",
+      "duration": "1h 32m",
+      "date": "2025-11-14",
+      "tags": ["hypervisor", "hackathon", "ai", "breakthroughs", "paris"],
+      "relevance": "medium"
+    },
+    {
+      "id": "1_nbcjpsps",
+      "title": "AI Hackerspace Live - Oct 31",
+      "url": "https://video.agentics.org/media/t/1_nbcjpsps",
+      "duration": "1h 52m",
+      "date": "2025-10-31",
+      "tags": ["jays", "kickoff", "lineup", "rob", "meetup"],
+      "description": "Halloween edition. Toronto Blue Jays theme. Paris event kickoff. Community updates.",
+      "relevance": "low"
+    },
+    {
+      "id": "1_b72cmcnd",
+      "title": "Devoxx BE Conference: The Rise of AI Agents",
+      "url": "https://video.agentics.org/media/t/1_b72cmcnd",
+      "duration": "5m",
+      "date": "2025-10-17",
+      "tags": ["agents", "enterprise", "devops", "ai", "spec-driven development", "devoxx", "software development", "java", "conference", "robert ranson", "ai hackerspace"],
+      "description": "Robert Ranson at Devoxx Antwerp: AI's impact on Java development, accelerated engineering, spec-driven development.",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_gst57e84",
+      "title": "Weekly Management Meetings",
+      "url": "https://video.agentics.org/media/t/1_gst57e84",
+      "relevance": "low"
+    },
+    {
+      "id": "1_4mwiowax",
+      "title": "Kaltura as Agentic Orgs Official Comms Platform",
+      "url": "https://video.agentics.org/media/t/1_4mwiowax",
+      "relevance": "low"
+    },
+    {
+      "id": "1_dnpll2q7",
+      "title": "AI Hackerspace Live - Oct 3",
+      "url": "https://video.agentics.org/media/t/1_dnpll2q7",
+      "duration": "5m",
+      "date": "2025-11-14",
+      "relevance": "low"
+    },
+    {
+      "id": "1_r4zkkj9l",
+      "title": "Agentics Live Vibe Coding (Nov)",
+      "url": "https://video.agentics.org/media/t/1_r4zkkj9l",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_zh3wij8t",
+      "title": "Agentics Vibe Coding Nov 6: Exploring Proxies",
+      "url": "https://video.agentics.org/media/t/1_zh3wij8t",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_40wr9v6h",
+      "title": "Agentics Live Vibe Coding (Dec)",
+      "url": "https://video.agentics.org/media/t/1_40wr9v6h",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_h5px3s1i",
+      "title": "Mastering Virtual Event Production: Complete Guide",
+      "url": "https://video.agentics.org/media/t/1_h5px3s1i",
+      "relevance": "low"
+    },
+    {
+      "id": "1_91j0fv12",
+      "title": "Hackathon Live Broadcast",
+      "url": "https://video.agentics.org/media/t/1_91j0fv12",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_6p0hrigp",
+      "title": "42 London x Agentics Foundation Introduction",
+      "url": "https://video.agentics.org/media/t/1_6p0hrigp",
+      "relevance": "low"
+    },
+    {
+      "id": "1_2lu2fttt",
+      "title": "Building AI-Powered Applications Without Code",
+      "url": "https://video.agentics.org/media/t/1_2lu2fttt",
+      "relevance": "medium"
+    },
+    {
+      "id": "1_cl3ymt1o",
+      "title": "22 Oct London Chapter - Agentics Foundation Meetup",
+      "url": "https://video.agentics.org/media/t/1_cl3ymt1o",
+      "relevance": "low"
+    },
+    {
+      "id": "1_tbj0avrk",
+      "title": "AI-Powered Eyewear Design and Manufacturing",
+      "url": "https://video.agentics.org/media/t/1_tbj0avrk",
+      "relevance": "low"
+    }
+  ],
+  "key_topics_extracted": {
+    "claude_flow_v3": {
+      "downloads": "500K+",
+      "github_stars": "12K+",
+      "key_features": [
+        "Incremental learning and real-time adaptation",
+        "Hierarchical mesh agent coordination",
+        "27 hooks system for intelligent learning",
+        "Background workers for continuous optimization",
+        "WASM embedding system (runs locally)",
+        "Root Vector system at core",
+        "Agent DB for data management",
+        "Agentic Flow for operational work",
+        "Model routing (Haiku/Sonnet/Opus) in <0.5ms",
+        "Micro-LoRa learning during use",
+        "Defense system: 0.04ms threat detection",
+        "Real-time PII stripping",
+        "Jailbreak monitoring",
+        "Drift detection and monitoring",
+        "London school TDD methodology",
+        "V2 to V3 migration preserving memory"
+      ],
+      "architecture": {
+        "core": "Root Vector compiled to WASM",
+        "coordination": "Hierarchical mesh (default)",
+        "memory": "Vector + graph implementations",
+        "learning": "Trajectory recording as neural pathways",
+        "visualization": "Hyperbolic vector spaces",
+        "math": "Prime numbers, odd numbers (7 optimal for quantization)"
+      },
+      "vs_competitors": "Crew AI, LangGraph, Autogen lack: learning, pattern recognition, expert routing, attention mechanisms, QLoRA, vector memory, swarms",
+      "agent_limits": "15 agent limit in Claude Code, workaround via sub-agent invocation, headless instances, Rue LLM for local free processing, 3-tier agent architecture",
+      "skills_system": "Skills as learned abilities (bounded contexts) vs agents as executors. Transferable between Claude desktop/code/web via zip files. Progressive discovery pattern. 14,000+ vetted skills from GitHub."
+    },
+    "root_vector": {
+      "description": "Intelligent database replacing PG Vector with attention mechanisms",
+      "features": ["Real-time learning", "Adaptive recommendations", "Privacy-preserving", "Samsung Smart TV integration"],
+      "tech": ["Hyperbolic embeddings", "Graph neural networks", "Self-learning mechanisms"]
+    },
+    "prime_radiant": {
+      "description": "Coherence engine for AI anti-hallucination",
+      "approach": "Mathematical determinism over probabilistic outputs",
+      "features": ["Recursive language models", "Edge computing", "Rust implementation", "Agent swarm integration"]
+    },
+    "ai_symbolic_protocol": {
+      "creator": "Brad Ross",
+      "purpose": "Reduce ambiguity in AI specs from 40% to <2%",
+      "symbols": 512,
+      "implementations": ["NPM validation", "Rust WASM", "Lean4 integration"]
+    },
+    "beacon_project": {
+      "purpose": "Wi-Fi mesh network for disaster rescue",
+      "capabilities": ["Life detection through rubble", "Movement/breathing/heartbeat detection", "0.1Hz rate"],
+      "cost": "$5-20 per device",
+      "security": "Quantum-resistant algorithms"
+    },
+    "emily_os": {
+      "description": "Orchestration layer for agent swarms",
+      "features": ["LLM agnostic", "Scales 2-100K agents", "One-to-many swarm communication", "PostgreSQL + vector DB", "Celery task orchestration"]
+    },
+    "community": {
+      "chapters": ["London", "Vancouver", "Bangalore", "Toronto", "Halifax", "Charlotte", "Chicago", "Hamburg", "Amsterdam", "Brisbane", "Paris", "Assam (NE India)"],
+      "events": "Weekly Zoom calls, live coding, hackathons",
+      "hackathon_stats": "80 registered, 29 active forks (Global AI Hackathon Dec 2025)"
+    },
+    "fox_flow_database": {
+      "description": "Next-gen vector database by Colby",
+      "performance": "12.8 million QPS (previous best: 3,000 from Redis)",
+      "features": ["Nuclear mode with shadow fox", "1-bit quantization", "9M read ops/sec", "12M write ops/sec"]
+    },
+    "universe_simulation": {
+      "description": "Living swarm and evolutionary simulation",
+      "specs": "10,000 intelligent agents, real-time physics, metabolism, reproduction at 60 FPS",
+      "vectors": "8-dimensional state vectors",
+      "performance": "2.89 million interactions/sec"
+    },
+    "neural_trading": {
+      "description": "Entropy-based stock trading prediction",
+      "accuracy": "53.8% general, 87% on walk-forward test",
+      "latency": "Sub-millisecond decisions"
+    },
+    "multiverse_oracle": {
+      "description": "Predictive time series via Lorenz attractors",
+      "specs": "100,000 parallel universes, 99% accuracy vs chaos, 0.68ms prediction latency, 1,400 predictions/sec"
+    },
+    "hive_mind_architecture": {
+      "description": "Distributed cognition achieving superintelligent behavior",
+      "specs": "1,000+ agents, shared memory, sub-millisecond latency, no context window limitations"
+    },
+    "drone_swarm": {
+      "description": "Autonomous terrain mapping",
+      "specs": "1,000 drones, 100% coverage via gossip propagation, 60 FPS, search-and-rescue and planetary exploration"
+    },
+    "smart_city_traffic": {
+      "description": "Manhattan-style grid optimization",
+      "specs": "100,000 vehicles, selfish vs fluid vector field behavior, swarm intelligence traffic management"
+    },
+    "microbiome_analysis": {
+      "description": "Largest microbiome graph database",
+      "specs": "40GB data, 8,000 samples, 250M agents, 187M interactions/sec",
+      "discoveries": "Huntington's/depression correlations, 18,000 PubMed papers ingested"
+    },
+    "os_optimizer": {
+      "description": "Self-learning OS optimizer using Rue Vector",
+      "features": ["Three.js desktop app", "Real-time monitoring", "Thermal-aware scheduling", "GPU memory optimization", "AI defense at kernel level", "Predictive prefetch via Markov chain", "Time-traveling config checkpoints"],
+      "size": "5MB compiled UI",
+      "platforms": "Windows complete, Mac planned, Linux for servers"
+    },
+    "qe_fleet": {
+      "description": "Quality Engineering Fleet by Dragon",
+      "specs": "51 specialized agents across 12 domains, built on Claude Flow"
+    }
+  }
+}

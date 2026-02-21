@@ -286,7 +286,7 @@ docker start ruvector-kb
 # Or create it:
 docker run -d --name ruvector-kb \
   --restart=always \
-  -e POSTGRES_PASSWORD=guruKB2025 \
+  -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
   -p 5435:5432 \
   ruvnet/ruvector-postgres:latest
 ```

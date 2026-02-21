@@ -80,7 +80,7 @@ class PersistentVectorDB {
   constructor(options = {}) {
     this.options = {
       path: options.path || '.ruvector',
-      dimensions: options.dimensions || 1536,
+      dimensions: options.dimensions || 384,
       distanceMetric: options.distanceMetric || 'Cosine',
       saveIntervalMs: options.saveIntervalMs || 1000,
       useWAL: options.useWAL !== false,

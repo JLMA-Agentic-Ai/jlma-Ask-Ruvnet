@@ -30,7 +30,7 @@ const pool = new Pool({
   host: 'localhost',
   port: 5435,
   user: 'postgres',
-  password: 'guruKB2025',
+  password: process.env.RUVECTOR_PASSWORD || '',
   database: 'postgres'
 });
 

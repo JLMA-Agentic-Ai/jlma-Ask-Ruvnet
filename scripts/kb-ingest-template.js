@@ -20,7 +20,7 @@ const CONFIG = {
     port: parseInt(process.env.RUVECTOR_PORT || '5435'),
     database: 'postgres',
     user: 'postgres',
-    password: process.env.RUVECTOR_PASSWORD || 'guruKB2025'
+    password: process.env.RUVECTOR_PASSWORD || ''
   }
 };
 

@@ -1,7 +1,0 @@
-[build]
-# Use npm install instead of npm ci to handle alpha versions with mismatched lock files
-installCommand = "npm install --legacy-peer-deps"
-buildCommand = "npm run build"
-
-[deploy]
-startCommand = "bash scripts/deployment/start-railway.sh"

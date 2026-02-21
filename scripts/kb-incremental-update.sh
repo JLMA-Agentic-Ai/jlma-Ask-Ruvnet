@@ -5,9 +5,9 @@
 
 set -e
 
-REPO_DIR="/tmp/ruvnet-repos"
-LAST_RUN_FILE="/tmp/kb-last-update.timestamp"
-LOG_FILE="/tmp/kb-update.log"
+REPO_DIR="$HOME/.ruvector/repos"
+LAST_RUN_FILE="$HOME/.ruvector/kb-last-update.timestamp"
+LOG_FILE="$HOME/.ruvector/kb-update.log"
 SCHEMA="ask_ruvnet"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"; }
@@ -27,7 +27,33 @@ log "Last update: $LAST_RUN"
 CHANGED_FILES=()
 NEW_REPOS=0
 
+# Ensure persistent repo directory exists
+mkdir -p "$REPO_DIR"
 cd "$REPO_DIR"
+
+# Clone repos if directory is empty (first run after migration from /tmp)
+if [ -z "$(ls -A "$REPO_DIR" 2>/dev/null)" ]; then
+  log "📦 First run - cloning RuvNet repos..."
+  RUVNET_REPOS=(
+    "ruvnet/ruvector"
+    "ruvnet/claude-flow"
+    "ruvnet/agentic-flow"
+    "ruvnet/ruv-swarm"
+    "ruvnet/bot-generator"
+    "ruvnet/agenticsjs"
+    "ruvnet/viral-social"
+    "ruvnet/scaling-up"
+    "ruvnet/appeal-armor"
+    "ruvnet/site-master"
+    "ruvnet/bricksmith"
+  )
+  for repo_url in "${RUVNET_REPOS[@]}"; do
+    repo_name="${repo_url#*/}"
+    if ! git clone --depth 1 "https://github.com/$repo_url.git" "$REPO_DIR/$repo_name" 2>/dev/null; then
+      log "⚠️ Failed to clone $repo_url (may be private or renamed)"
+    fi
+  done
+fi
 
 for repo in */; do
   repo_name="${repo%/}"
@@ -77,7 +103,7 @@ files = """${CHANGED_FILES[*]}""".split()
 print(f"   Processing {len(files)} files...")
 
 conn = psycopg2.connect(host='localhost', port=5435, database='postgres',
-                        user='postgres', password='guruKB2025')
+                        user='postgres', passfile=os.path.expanduser('~/.pgpass'))
 cur = conn.cursor()
 
 def content_hash(c):
@@ -92,7 +118,7 @@ for fp in files:
             continue
         h = content_hash(content)
         title = os.path.basename(fp)[:-3]
-        rel_path = fp.replace('/tmp/ruvnet-repos/', '')
+        rel_path = fp.replace(os.path.expanduser('~/.ruvector/repos/'), '')
         batch.append((h[:8], title, content[:50000], rel_path, h, 'general', 50))
     except:
         pass
@@ -108,7 +134,7 @@ if batch:
     # Generate embeddings for new/updated entries
     cur.execute('''
         UPDATE $SCHEMA.architecture_docs
-        SET embedding = ruvector_embed(LEFT(title || ' ' || content, 1500))::real[]
+        SET embedding = ('[' || array_to_string(ruvector_embed(LEFT(title || ' ' || content, 1500)), ',') || ']')::ruvector
         WHERE file_hash IN (SELECT file_hash FROM (VALUES %s) AS v(a,b,c,d,file_hash,e,f))
         AND (embedding IS NULL OR updated_at > NOW() - INTERVAL '1 minute')
     '''.replace('%s', ','.join(["('%s','%s','%s','%s','%s','%s',%s)" % b for b in batch])))

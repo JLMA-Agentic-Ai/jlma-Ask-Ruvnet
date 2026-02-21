@@ -120,7 +120,7 @@ if command -v docker &> /dev/null; then
     echo ""
     echo "   CRITICAL: Run this to create the knowledge base container:"
     echo "   docker run -d --name ruvector-kb \\"
-    echo "     -e POSTGRES_PASSWORD=guruKB2025 \\"
+    echo "     -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \\"
     echo "     -p 5435:5432 \\"
     echo "     ruvnet/ruvector-postgres:latest"
   fi

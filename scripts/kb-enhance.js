@@ -11,7 +11,7 @@ const path = require('path');
 
 const HOST = 'localhost';
 const PORT = '5435';
-const PASS = 'guruKB2025';
+const PASS = process.env.RUVECTOR_PASSWORD || '';
 const SCHEMA = 'ask_ruvnet';
 const TABLE = 'architecture_docs';
 const crypto = require('crypto');

@@ -30,7 +30,7 @@ const CONFIG = {
         port: parseInt(process.env.RUVECTOR_PORT || '5435'),
         database: 'postgres',
         user: 'postgres',
-        password: process.env.RUVECTOR_PASSWORD || 'guruKB2025'
+        password: process.env.RUVECTOR_PASSWORD || ''
     },
 
     // Schema for this project
@@ -156,9 +156,9 @@ class ArchitectureKB {
         // Use ruvector_embed function if available, otherwise use simple hash-based
         const client = await this.pool.connect();
         try {
-            // Try ruvector_embed first
+            // Use ruvector_embed with proper cast chain (real[] -> text -> ruvector)
             const result = await client.query(
-                `SELECT ruvector_embed($1) as embedding`,
+                `SELECT ('[' || array_to_string(ruvector_embed($1), ',') || ']')::ruvector as embedding`,
                 [text.substring(0, 8000)] // Limit text length
             );
             return result.rows[0].embedding;

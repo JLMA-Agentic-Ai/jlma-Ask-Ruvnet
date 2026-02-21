@@ -55,7 +55,7 @@ npm install claude-flow@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruve
 # Start ruvector-postgres
 docker run -d --name ruvector-kb \
   --restart=always \
-  -e POSTGRES_PASSWORD=guruKB2025 \
+  -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
   -p 5435:5432 \
   -v ruvector-kb-data:/var/lib/postgresql/data \
   ruvnet/ruvector-postgres:latest
@@ -118,7 +118,7 @@ if command -v docker &> /dev/null; then
     echo "   🚀 Creating ruvector-kb container..."
     docker run -d --name ruvector-kb \
       --restart=always \
-      -e POSTGRES_PASSWORD=guruKB2025 \
+      -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
       -p 5435:5432 \
       -v ruvector-kb-data:/var/lib/postgresql/data \
       ruvnet/ruvector-postgres:latest
@@ -153,7 +153,7 @@ echo ""
 # STEP 5: Create project schema
 echo "🏗️  Creating project database schema..."
 PROJECT_NAME=$(basename "$PWD" | tr '[:upper:]' '[:lower:]' | tr '-' '_' | tr ' ' '_')
-PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "
+PGPASSWORD=${POSTGRES_PASSWORD} psql -h localhost -p 5435 -U postgres -c "
 CREATE SCHEMA IF NOT EXISTS ${PROJECT_NAME};
 CREATE TABLE IF NOT EXISTS ${PROJECT_NAME}.knowledge (
   id SERIAL PRIMARY KEY,

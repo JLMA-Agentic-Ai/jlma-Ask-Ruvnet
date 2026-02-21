@@ -30,7 +30,7 @@ npm install claude-flow@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruve
 # Start ruvector-postgres
 docker run -d --name ruvector-kb \
   --restart=always \
-  -e POSTGRES_PASSWORD=guruKB2025 \
+  -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
   -p 5435:5432 \
   -v ruvector-kb-data:/var/lib/postgresql/data \
   ruvnet/ruvector-postgres:latest
@@ -83,7 +83,7 @@ Add to `~/.claude.json`:
       "env": {
         "RUVECTOR_PG_HOST": "localhost",
         "RUVECTOR_PG_PORT": "5435",
-        "RUVECTOR_PG_PASSWORD": "guruKB2025"
+        "RUVECTOR_PG_PASSWORD": "${POSTGRES_PASSWORD}"
       },
       "enabled": true
     }
@@ -136,14 +136,14 @@ npm install claude-flow@alpha agentic-flow@alpha ruvector @ruvector/ruvllm
 docker ps | grep ruvector-kb || \
 docker run -d --name ruvector-kb \
   --restart=always \
-  -e POSTGRES_PASSWORD=guruKB2025 \
+  -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} \
   -p 5435:5432 \
   -v ruvector-kb-data:/var/lib/postgresql/data \
   ruvnet/ruvector-postgres:latest
 
 # 3. Create schema for this project
 SCHEMA=$(basename $(pwd) | tr '[:upper:]' '[:lower:]' | tr '-' '_')
-PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "
+PGPASSWORD=${POSTGRES_PASSWORD} psql -h localhost -p 5435 -U postgres -c "
 CREATE SCHEMA IF NOT EXISTS $SCHEMA;
 CREATE TABLE IF NOT EXISTS $SCHEMA.architecture_docs (
   id SERIAL PRIMARY KEY,
@@ -182,11 +182,11 @@ cp ~/.claude/docs/ruvnet-knowledgebase-patterns/*.md docs/ruvnet-knowledgebase-p
 docker ps | grep ruvector-kb
 
 # Check database connection
-PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "SELECT 1"
+PGPASSWORD=${POSTGRES_PASSWORD} psql -h localhost -p 5435 -U postgres -c "SELECT 1"
 
 # Check schema exists
 SCHEMA=$(basename $(pwd) | tr '[:upper:]' '[:lower:]' | tr '-' '_')
-PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "\dn" | grep $SCHEMA
+PGPASSWORD=${POSTGRES_PASSWORD} psql -h localhost -p 5435 -U postgres -c "\dn" | grep $SCHEMA
 
 # Check MCP registration
 cat ~/.claude.json | jq '.mcpServers | keys'

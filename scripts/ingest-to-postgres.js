@@ -20,7 +20,7 @@ const path = require('path');
 
 const HOST = process.env.RUVECTOR_PG_HOST || 'localhost';
 const PORT = process.env.RUVECTOR_PG_PORT || '5435';
-const PASS = process.env.RUVECTOR_PG_PASSWORD || 'guruKB2025';
+const PASS = process.env.RUVECTOR_PG_PASSWORD || process.env.RUVECTOR_PASSWORD || '';
 const DEFAULT_SCHEMA = process.env.RUVECTOR_PG_SCHEMA || 'askruvnet';
 
 const args = process.argv.slice(2);

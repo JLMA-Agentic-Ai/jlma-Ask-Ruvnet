@@ -1,601 +1,348 @@
-# Ask rUVnet - AI Knowledge Base Assistant
+# AskRuvNet - AI Knowledge Base Assistant
 
-> Updated: 2026-01-01 18:10:00 EST | Version 2.1.0
-> Created: 2024-01-15 00:00:00 EST
+> Updated: 2026-02-21 | Version 2.1.1
 
-**Production URL:** https://ask-ruvnet-production.up.railway.app
-**Version:** 2.1.0
-**Deployment Platform:** Railway (Dockerfile Builder)
-**KB Engine:** PostgreSQL (ruvector-postgres) with ONNX Embeddings
+**Production URL:** https://ask-ruvnet.onrender.com
+**npm package name:** answerbot-builder
+**Deployment Platform:** Render.com (render.yaml auto-detected)
 
-The **authoritative knowledge base** for the entire RuvNet AI ecosystem. Provides semantic search across 30+ RuvNet repositories, 8+ npm packages, and comprehensive documentation for multi-agent orchestration, vector databases, and AI development patterns.
+AskRuvNet is an AI-powered assistant that answers questions about the RuvNet ecosystem. It combines a 55,111-entry gold-tier knowledge base stored in Neon PostgreSQL with Groq's llama-3.3-70b-versatile model to deliver accurate, context-grounded responses about RuvNet packages, agent orchestration, vector databases, and AI development patterns.
 
 ---
 
-## New in v2.0.0 (January 2026)
-
-### PostgreSQL Knowledge Base Architecture
-- **Migrated from SQLite** to PostgreSQL with ruvector-postgres
-- **230,643 KB entries** in `ask_ruvnet` schema
-- **ONNX local embeddings** (384d, all-MiniLM-L6-v2)
-- **<1.2ms semantic search** via HNSW indexing
-- **Cross-repo access** - query from any RuvNet project
-
-### New Analysis Capabilities
-- **Louvain Graph Clustering** - Auto-discover topic communities
-- **AST Code Analysis** - Symbol extraction, complexity metrics
-- **Federated Learning** - Multi-agent knowledge ingestion
-
-### Updated Package Versions
-| Package | Version | Purpose |
-|---------|---------|---------|
-| agentic-flow | 2.0.1-alpha.50 | Multi-agent orchestration, federated learning |
-| claude-flow | 2.7.47 | Swarm orchestration, 100+ MCP tools |
-| ruvector | 0.1.95 | Vector DB, ONNX embeddings, graph algorithms, MCP server |
-| ruv-swarm | 1.0.20 | Distributed swarms, 27+ neural models |
-
----
-
-## Architecture Overview
-
-### **Knowledge Base Architecture (PostgreSQL)**
-
-<p align="center">
-  <img src="assets/kb-architecture.svg" alt="Ask-Ruvnet Knowledge Base Architecture showing PostgreSQL, Railway Platform, and Core Packages" width="900">
-</p>
-
-<details>
-<summary>📄 Text Version (for AI/accessibility)</summary>
+## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    PostgreSQL (ruvector-kb:5435)                     │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                       │
-│  ┌─────────────────────────────────────────────────────────────┐    │
-│  │  Schema: ask_ruvnet (Authoritative RuvNet KB)                │    │
-│  │  ├─ architecture_docs (230,643 entries)                      │    │
-│  │  │   ├─ doc_id, title, content, file_path                   │    │
-│  │  │   ├─ embedding real[] (384d ONNX)                        │    │
-│  │  │   ├─ package_name, package_version                       │    │
-│  │  │   └─ topics[], doc_type                                  │    │
-│  │  │                                                           │    │
-│  │  └─ file_tracking (change detection)                        │    │
-│  │      ├─ file_path, file_hash                                │    │
-│  │      └─ last_ingested, chunk_count                          │    │
-│  └─────────────────────────────────────────────────────────────┘    │
-│                                                                       │
-│  Features:                                                            │
-│  ├─ 77+ SQL functions for vector operations                         │
-│  ├─ SIMD acceleration (AVX-512/AVX2/NEON)                          │
-│  ├─ HNSW indexing for <1.2ms search on 1M vectors                  │
-│  └─ Cross-repo access via schema isolation                          │
-│                                                                       │
-└─────────────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────────────┐
-│                    Railway Platform                                   │
-├─────────────────────────────────────────────────────────────────────┤
-│  ┌─────────────────────────────────────────────────────────────┐    │
-│  │  Docker Container (Node.js 22)                               │    │
-│  │  ├─ Express Server (Port 3000)                               │    │
-│  │  │   └─ API Routes (/api/chat, /api/knowledge)              │    │
-│  │  ├─ Vite React UI (served as static files)                   │    │
-│  │  ├─ PostgreSQL Client → ruvector-kb:5435                     │    │
-│  │  └─ Groq LLM Integration (llama-3.3-70b-versatile)          │    │
-│  └─────────────────────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────────────┘
+User
+  |
+  | HTTPS
+  v
+React Frontend (Vite)          served from /src/ui/dist/
+  |
+  | /api/*
+  v
+Express.js Server              src/server/app.js  (port 3000)
+  |
+  | RAG Pipeline
+  v
+PostgresKnowledgeBase.js       Neon PostgreSQL + pgvector
+  |  HybridSearch (BM25 + semantic)
+  |  QueryExpander
+  |  ReRanker
+  |  ContextCompressor
+  |  MultiHopRetriever
+  v
+knowledge_search() stored procedure
+  HNSW index, 5-factor relevance scoring
+  |
+  v
+ask_ruvnet.architecture_docs   55,111 entries
+  embedding: real[] (384d, ONNX all-MiniLM-L6-v2)
+  avg quality score: 92.1
+  |
+  | context + query
+  v
+Groq LLM                       llama-3.3-70b-versatile
+  |
+  v
+Streamed response to user
 ```
 
-</details>
+### 5-Factor Relevance Scoring
 
-### **Key Components**
+Every search result is scored using five weighted signals before being passed to the LLM:
 
-1. **Backend (Express.js)**
-   - Location: `/src/server/app.js`
-   - Handles chat requests, knowledge base queries
-   - Serves static React UI from `/src/ui/dist`
-   - Integrates with Groq API for LLM responses
-   - Professional technical persona: `/src/server/RuvPersona.js`
+| Factor | Weight | Description |
+|--------|--------|-------------|
+| Semantic similarity | 40% | Cosine distance via HNSW (ONNX 384d embeddings) |
+| Intent alignment | 20% | Query type matched to document intent |
+| Source authority | 15% | Repository and document type ranking |
+| Quality score | 15% | Per-entry gold-tier quality gate (avg 92.1) |
+| Usefulness | 10% | Historical relevance signal |
 
-2. **Frontend (React + Vite)**
-   - Location: `/src/ui/src/`
-   - Built to `/src/ui/dist/` during deployment
-   - Features: Chat interface, PDF viewer, knowledge base dashboard
-   - Styling: Custom CSS with cyber-industrial theme
+### RAG Pipeline Modules
 
-3. **Knowledge Base (PostgreSQL)**
-   - Engine: PostgreSQL with ruvector-postgres
-   - Container: `ruvector-kb` on port 5435
-   - Schema: `ask_ruvnet`
-   - Documents: 230,643 embedded entries (authoritative RuvNet KB)
-   - Embeddings: ONNX all-MiniLM-L6-v2 (384-dim, local, offline)
-   - Search: HNSW indexing, <1.2ms latency
-
-4. **LLM Integration**
-   - Provider: Groq
-   - Model: llama-3.3-70b-versatile
-   - API: Direct fetch to `https://api.groq.com/openai/v1/chat/completions`
-
-5. **Core Dependencies**
-   - `agentic-flow@2.0.1-alpha.42` - Multi-agent orchestration, federated learning
-   - `claude-flow@2.7.47` - Swarm orchestration, 100+ MCP tools
-   - `ruvector@0.1.80` - Vector database, ONNX embeddings, graph algorithms
-   - `ruv-swarm@1.0.20` - Distributed swarms, 27+ neural models
-   - `@ruvector/ruvllm@0.2.3` - LLM orchestration
-   - `@ruvector/agentic-synth@0.1.6` - Agent synthesis
+| Module | Location | Purpose |
+|--------|----------|---------|
+| PostgresKnowledgeBase | `src/core/PostgresKnowledgeBase.js` | Neon pgvector interface |
+| HybridSearch | `src/core/HybridSearch.js` | BM25 + semantic fusion |
+| QueryExpander | `src/core/QueryExpander.js` | Expands terse queries |
+| ReRanker | `src/core/ReRanker.js` | Cross-encoder style reranking |
+| ContextCompressor | `src/core/ContextCompressor.js` | Trims context to 16,000 tokens |
+| MultiHopRetriever | `src/core/MultiHopRetriever.js` | Handles multi-step queries |
 
 ---
 
-## Knowledge Base Commands
+## Knowledge Base
 
-### **Full KB Refresh**
+| Stat | Value |
+|------|-------|
+| Total entries | 55,111 |
+| Quality tier | Gold |
+| Avg quality score | 92.1 / 100 |
+| Embedding model | ONNX all-MiniLM-L6-v2 |
+| Embedding dimensions | 384 |
+| Index type | HNSW (pgvector) |
+| Database | Neon PostgreSQL |
+| Schema | ask_ruvnet |
+| Table | architecture_docs |
+
+### Topics Covered
+
+- Agent orchestration (claude-flow, ruv-swarm, agentic-flow)
+- Swarm topologies (hierarchical, mesh, ring, star, adaptive)
+- Consensus protocols (Byzantine, Raft, CRDT, Gossip)
+- Vector database patterns (HNSW, embeddings, similarity search)
+- Memory architectures (episodic, semantic, working memory)
+- RL algorithms (Decision Transformer, Actor-Critic, PPO, SAC)
+- Deployment patterns (Docker, cloud, air-gapped)
+- RuvNet npm package APIs and usage examples
+
+---
+
+## API Endpoints
+
+### GET /health
+
+Basic liveness check.
+
 ```bash
-# Complete refresh - packages + local docs
-node scripts/kb-full-refresh.js
-
-# Package documentation only
-node scripts/kb-full-refresh.js --packages-only
-
-# Local documentation only
-node scripts/kb-full-refresh.js --docs-only
-
-# Force re-ingestion (ignore hashes)
-node scripts/kb-full-refresh.js --force
-
-# Check KB status
-node scripts/kb-full-refresh.js --status
+curl https://ask-ruvnet.onrender.com/health
 ```
 
-### **Analysis Tools**
-```bash
-# KB coverage scorecard with graph clustering
-node scripts/analyze-knowledge.js
-
-# AST code analysis for KB indexing
-node scripts/ast-code-analyzer.js ./src
-node scripts/ast-code-analyzer.js --ingest ./src  # Add to KB
-
-# Gap analysis
-node scripts/gap-analysis.js
-```
-
-### **Federated Learning Ingestion**
-```javascript
-// Use multi-agent ingestion (10-50 parallel agents)
-const { FederatedKBCoordinator } = require('./src/agents/federated-kb-coordinator');
-const coordinator = new FederatedKBCoordinator({ maxAgents: 10 });
-await coordinator.ingestWithAgents('./docs');
-```
-
----
-
-## Cross-Repo KB Access
-
-This knowledge base is **accessible from any RuvNet project** via PostgreSQL:
-
-### **Connection Details**
-```bash
-Host: localhost
-Port: 5435
-User: postgres
-Password: guruKB2025
-Database: postgres
-Schema: ask_ruvnet
-```
-
-### **Query from Any Project**
-```bash
-# Direct SQL query
-PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "
-  SELECT title, content
-  FROM ask_ruvnet.architecture_docs
-  WHERE content ILIKE '%swarm topology%'
-  LIMIT 5;
-"
-
-# Semantic search (requires embedding)
-PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "
-  SELECT title, 1 - (embedding <=> query_embedding) as similarity
-  FROM ask_ruvnet.architecture_docs
-  ORDER BY embedding <=> query_embedding
-  LIMIT 10;
-"
-```
-
-### **Schema Isolation**
-Each project can have its own schema while accessing shared RuvNet knowledge:
-```sql
--- Create project-specific schema
-CREATE SCHEMA IF NOT EXISTS my_project;
-
--- Access shared RuvNet KB
-SELECT * FROM ask_ruvnet.architecture_docs WHERE topics @> ARRAY['swarm'];
-```
-
-### **Railway-Specific Architectural Decisions**
-
-This application is optimized for Railway deployment with the following architectural choices:
-
-| Decision | Rationale |
-|----------|-----------|
-| **Custom Dockerfile** | Railway's Railpack builder uses `npm ci` which requires exact package-lock.json matches. Using a custom Dockerfile allows `npm install --legacy-peer-deps` for alpha package compatibility. |
-| **Node.js 22 Bookworm** | Uses `node:22-bookworm-slim` base image with Debian packages for native module compilation (hnswlib-node requires `build-essential`). |
-| **SQLite over PostgreSQL** | Simplifies deployment with file-based database mounted on Railway's persistent volume. No separate database service required. |
-| **Static UI Serving** | Frontend built at deploy time and served as static files by Express, eliminating need for separate CDN or frontend service. |
-| **Self-Healing Startup** | `start-railway.sh` script handles knowledge base initialization and graceful restarts. |
-| **Groq LLM Integration** | External API for LLM inference avoids GPU requirements on Railway. |
-| **No package-lock.json** | Removed from repository to prevent npm ci failures with alpha package versions. |
-
----
-
-## Deployment
-
-### **Railway Deployment (Production)**
-
-The application is deployed on Railway with automatic builds from the `main` branch using a custom Dockerfile.
-
-#### **Build Configuration**
-
-Railway uses a custom Dockerfile builder (configured via `railway.json`) which:
-- Uses `npm install` instead of `npm ci` for alpha package compatibility
-- Installs `build-essential` for native module compilation (hnswlib-node)
-- Includes all Puppeteer and Sharp dependencies
-
+Response:
 ```json
-// railway.json
+{ "status": "ok", "version": "2.1.1" }
+```
+
+### GET /api/knowledge
+
+Returns knowledge base statistics.
+
+```bash
+curl https://ask-ruvnet.onrender.com/api/knowledge
+```
+
+Response includes entry count, quality metrics, and database connection status.
+
+### POST /api/chat
+
+Submit a question and receive a streamed answer grounded in the knowledge base.
+
+```bash
+curl -X POST https://ask-ruvnet.onrender.com/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "What swarm topologies does claude-flow support?"}'
+```
+
+Request body:
+```json
 {
-  "build": {
-    "builder": "DOCKERFILE",
-    "dockerfilePath": "Dockerfile"
-  }
+  "message": "string (required) — the user question"
 }
 ```
 
-#### **Build Process**
+The response is streamed as newline-delimited JSON chunks.
+
+### GET /api/kb-stats
+
+Detailed knowledge base statistics including per-source breakdown.
+
 ```bash
-# Defined in Dockerfile
-npm install --legacy-peer-deps  # Allows alpha versions
-cd src/ui && npm install && npm run build
-  └─ vite build (outputs to src/ui/dist/)
+curl https://ask-ruvnet.onrender.com/api/kb-stats
 ```
 
-#### **Start Process**
-```bash
-# Defined in package.json
-npm start
-  └─ bash scripts/deployment/start-railway.sh
-     └─ Self-healing startup script
-        ├─ Checks for knowledge base
-        ├─ Runs ingestion if needed
-        └─ Starts Express server
-```
+---
 
-#### **Environment Variables (Railway)**
-```bash
-# Required
-GROQ_API_KEY=<your-groq-api-key>
-PORT=3000
+## Environment Variables
 
-# Optional
-GOOGLE_GEMINI_API_KEY=<for-video-processing>
-NODE_ENV=production
-```
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `DATABASE_URL` | Yes | Neon PostgreSQL connection string (includes pgvector) |
+| `GROQ_API_KEY` | Yes | API key for Groq LLM (llama-3.3-70b-versatile) |
+| `NODE_ENV` | Yes | Set to `production` on Render |
+| `PORT` | Yes | Server port — Render sets this to `3000` |
 
-#### **Persistent Storage**
-- Railway automatically provisions a persistent volume
-- Mounted at: `/app/.swarm/`
-- Contains: `memory.db` (knowledge base)
-- Survives deployments and restarts
-
-### **Deployment Steps**
-
-1. **Push to GitHub**
-   ```bash
-   git push origin main
-   ```
-
-2. **Railway Auto-Deploys**
-   - Detects push to `main` branch
-   - Builds using Dockerfile
-   - Runs `npm start`
-   - Health check on `/health` endpoint
-
-3. **Verify Deployment**
-   - Check version badge in UI (top-left)
-   - Test chat functionality
-   - Verify knowledge base dashboard
+All variables except `DATABASE_URL` are configured in `render.yaml`. `DATABASE_URL` must be set manually in the Render dashboard because it contains credentials.
 
 ---
 
 ## Local Development
 
-### **Prerequisites**
-- Node.js 22+
-- Groq API Key ([get one free](https://console.groq.com))
+### Prerequisites
 
-### **Setup**
+- Node.js 22+
+- A Neon PostgreSQL database with the `ask_ruvnet` schema and `pgvector` extension
+- A Groq API key (free tier at https://console.groq.com)
+
+### Setup
 
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/stuinfla/Ask-Ruvnet.git
 cd Ask-Ruvnet
 
-# Install dependencies
+# Install backend dependencies
 npm install
-cd src/ui && npm install && cd ../..
 
-# Extract knowledge base (if not present)
-tar -xzf swarm-db.tar.gz
-
-# Create .env file
-cp .env.example .env
-# Add your GROQ_API_KEY to .env
-
-# Start development server
-PORT=3005 node src/server/app.js
-```
-
-### **Development URLs**
-- Backend: http://localhost:3005
-- Frontend: Served by Express from `/src/ui/dist`
-
-### **Building UI Changes**
-```bash
-cd src/ui
+# Install and build the React frontend
 npm run build
-cd ../..
-# Restart server to see changes
+
+# Create a .env file with your credentials
+cat > .env << 'EOF'
+DATABASE_URL=postgresql://user:password@host/dbname?sslmode=require
+GROQ_API_KEY=gsk_your_key_here
+NODE_ENV=development
+PORT=3000
+EOF
+
+# Start the server
+node src/server/app.js
 ```
+
+The app runs at http://localhost:3000. The Express server serves the React frontend from `/src/ui/dist/` as static files — no separate frontend dev server needed for local testing.
+
+### Rebuilding the Frontend
+
+After editing files in `src/ui/src/`, rebuild before testing:
+
+```bash
+npm run build
+# Then restart the server
+node src/server/app.js
+```
+
+---
+
+## Production Deployment (Render.com)
+
+The application deploys automatically to Render.com from the `main` branch. The `render.yaml` file in the repository root is auto-detected by Render on first connect.
+
+### render.yaml Summary
+
+```yaml
+services:
+  - type: web
+    name: ask-ruvnet
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: node src/server/app.js
+    healthCheckPath: /api/health
+    autoDeploy: true
+```
+
+### Deployment Steps
+
+1. Push changes to the `main` branch:
+   ```bash
+   git push origin main
+   ```
+
+2. Render detects the push, runs `npm install && npm run build`, and starts the server with `node src/server/app.js`.
+
+3. Verify the deployment:
+   ```bash
+   curl https://ask-ruvnet.onrender.com/health
+   ```
+
+### Setting Environment Variables on Render
+
+In the Render dashboard, navigate to your service and open the Environment tab. Add:
+
+- `DATABASE_URL` — paste the full Neon connection string
+- `GROQ_API_KEY` — paste your Groq key
+
+`NODE_ENV` and `PORT` are already defined in `render.yaml` and do not need to be set manually.
 
 ---
 
 ## Project Structure
 
-<p align="center">
-  <img src="assets/project-structure.svg" alt="Ask-Ruvnet Project Directory Structure" width="800">
-</p>
-
-<details>
-<summary>📄 Text Version (for AI/accessibility)</summary>
-
 ```
 Ask-Ruvnet/
 ├── src/
 │   ├── server/
-│   │   ├── app.js                 # Express server (main entry)
-│   │   └── RuvPersona.js          # Professional technical persona
-│   ├── ui/
-│   │   ├── src/
-│   │   │   ├── App.jsx            # Main React component
-│   │   │   └── PDFPresentation.jsx
-│   │   ├── public/assets/         # Static assets
-│   │   └── dist/                  # Built UI (generated)
-│   ├── core/                      # RAG enhancement modules
-│   │   ├── RuvectorStore.js       # Knowledge base interface
-│   │   ├── HybridSearch.js        # BM25 + semantic fusion
-│   │   ├── QueryExpander.js       # Query expansion
-│   │   ├── ReRanker.js            # Cross-encoder style reranking
-│   │   ├── ContextCompressor.js   # Context optimization
-│   │   └── MultiHopRetriever.js   # Complex query handling
-│   ├── storage/                   # Vector storage modules
-│   │   ├── persistent-vector-db.js    # Persistent vector DB
-│   │   └── swarm-vector-memory.js     # Semantic swarm memory
-│   ├── agents/                    # Agent coordinators
-│   │   └── federated-kb-coordinator.js # Multi-agent KB ingestion
-│   └── connectors/                # Data source connectors
-│       ├── GoogleDriveConnector.js
-│       └── LocalDirectoryConnector.js
-├── scripts/
-│   ├── deployment/
-│   │   └── start-railway.sh       # Railway startup script
-│   ├── kb-full-refresh.js         # PostgreSQL KB refresh
-│   ├── analyze-knowledge.js       # KB scorecard + clustering
-│   ├── ast-code-analyzer.js       # Symbol extraction
-│   ├── build-persistent-kb.js     # ONNX KB builder
-│   └── gap-analysis.js            # Coverage gap analysis
-├── docs/                          # Documentation
-│   ├── architecture/              # Architecture docs
-│   ├── shareable-skills/          # Claude skills
-│   └── ruvnet-knowledgebase-patterns/  # KB patterns
-├── public/                        # Generated visualizations
-│   ├── kb-universe-data.json
-│   └── Ask-Ruvnet-kb-visualization.html
-├── assets/                        # SVG diagrams
-│   ├── kb-architecture.svg
-│   └── project-structure.svg
-├── Dockerfile                     # Railway build configuration
-├── railway.json                   # Railway builder settings
-├── package.json                   # Dependencies + version
-└── README.md                      # This file
+│   │   ├── app.js                     # Express server — main entry point
+│   │   └── RuvPersona.js              # LLM system prompt and persona
+│   ├── core/                          # RAG pipeline modules
+│   │   ├── PostgresKnowledgeBase.js   # Neon pgvector interface
+│   │   ├── HybridSearch.js            # BM25 + semantic fusion
+│   │   ├── QueryExpander.js           # Query expansion
+│   │   ├── ReRanker.js                # Result reranking
+│   │   ├── ContextCompressor.js       # Context length management
+│   │   ├── MultiHopRetriever.js       # Multi-step query handling
+│   │   └── RuvectorStore.js           # Vector store abstraction
+│   ├── storage/
+│   │   ├── kb-embed.js                # Embedding utilities
+│   │   └── persistent-vector-db.js    # Local vector DB (dev/testing)
+│   └── ui/
+│       ├── src/                       # React source (Vite)
+│       └── dist/                      # Built frontend (served by Express)
+├── scripts/                           # KB management and ingestion scripts
+├── docs/                              # Documentation
+├── render.yaml                        # Render.com deployment config
+├── package.json                       # Dependencies — version source of truth
+└── README.md                          # This file
 ```
-
-</details>
 
 ---
 
-## Configuration
+## Version Management
 
-### **Knowledge Base Updates**
+The application version is stored in one place: `package.json`.
 
-The KB uses PostgreSQL with automatic change detection:
-
-1. **Full refresh (recommended):**
-   ```bash
-   node scripts/kb-full-refresh.js
-   ```
-
-2. **Check status:**
-   ```bash
-   node scripts/kb-full-refresh.js --status
-   ```
-
-3. **Force re-ingestion:**
-   ```bash
-   node scripts/kb-full-refresh.js --force
-   ```
-
-4. **Analyze coverage:**
-   ```bash
-   node scripts/analyze-knowledge.js
-   ```
-
-### **RuvNet Ecosystem Coverage**
-
-This KB is the authoritative source for 30+ RuvNet repositories:
-
-| Category | Repositories |
-|----------|--------------|
-| **Core Packages** | ruvector, agentic-flow, claude-flow, ruv-swarm, flow-nexus |
-| **Vector DB** | @ruvector/gnn, @ruvector/rvlite, @ruvector/ruvllm |
-| **AI/ML** | neural-trader, agentic-synth, SAFLA, strange-loop |
-| **Infrastructure** | Synaptic-Mesh, oz-bot, daa |
-| **Applications** | chatgpt-artifacts, ask-ruvnet, retirewell-ai |
-
-**Key Topics Covered:**
-- Agent orchestration (150+ agent types)
-- Swarm topologies (hierarchical, mesh, ring, star, adaptive)
-- Consensus protocols (Byzantine, Raft, CRDT, Gossip)
-- RL algorithms (Decision Transformer, Actor-Critic, PPO, SAC)
-- Memory architectures (episodic, semantic, working memory)
-- Deployment patterns (Docker, Railway, K8s, air-gapped)
-
-### **Version Management**
-
-**Single Source of Truth:** `/package.json`
-
-The application version is stored in ONE place only - the root `package.json` file. The UI imports this version directly.
-
-#### **Semantic Versioning (SemVer)**
-```
-MAJOR.MINOR.PATCH
-  │     │     │
-  │     │     └── Bug fixes, patches, small changes (e.g., 1.7.3 → 1.7.4)
-  │     └──────── New features, backward compatible (e.g., 1.7.x → 1.8.0)
-  └────────────── Breaking changes, major rewrites (e.g., 1.x.x → 2.0.0)
-```
-
-#### **How to Update Version**
-```bash
-# Edit package.json
+```json
 {
   "name": "answerbot-builder",
-  "version": "1.7.15",  # ← Update this
-  ...
+  "version": "2.1.1"
 }
+```
 
-# Commit with version tag
+The server and UI both import this value at runtime. To release a new version:
+
+```bash
+# Edit version in package.json, then:
 git add package.json
-git commit -m "VERSION: Bump to X.Y.Z - description"
+git commit -m "v2.1.2: description of changes"
 git push origin main
 ```
 
-#### **Where Version is Used**
-- **package.json** (line 3) - Source of truth
-- **UI Header** - Displays `v{version}` via import from package.json
-- **README.md** - Documentation reference (update manually)
-
----
-
-## Testing
-
-### **Health Check**
-```bash
-curl https://ask-ruvnet-production.up.railway.app/health
-```
-
-### **Knowledge Base Stats**
-```bash
-curl https://ask-ruvnet-production.up.railway.app/api/knowledge
-```
-
-### **Chat Test**
-```bash
-curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "What is ruvector?"}'
-```
-
----
-
-## Current Status (v2.0.0)
-
-### **Production Metrics**
-- Server: Running on Railway
-- Knowledge Base: 230,643 entries (PostgreSQL)
-- Active Repos: 30+ RuvNet repositories tracked
-- Embedding Model: ONNX all-MiniLM-L6-v2 (384d, local)
-- Search Latency: <1.2ms (HNSW indexing)
-- Uptime: 24/7
-- Response Time: <2s average
-
-### **Features**
-- Chat with Groq LLM (llama-3.3-70b-versatile)
-- PostgreSQL KB with ONNX embeddings (10x faster, offline)
-- Louvain graph clustering for topic discovery
-- AST code analysis for symbol extraction
-- Federated learning multi-agent ingestion
-- Agentic Flow integration (v2.0.1-alpha.42)
-- Claude Flow swarm orchestration (v2.7.47)
-- Cross-repo KB access via schema isolation
-- Knowledge base dashboard with repo tracking
-- PDF presentation mode
-- Professional technical assistant persona
-
-### **New Scripts (v2.0.0)**
-| Script | Purpose |
-|--------|---------|
-| `kb-full-refresh.js` | Comprehensive KB refresh to PostgreSQL |
-| `analyze-knowledge.js` | Scorecard + Louvain clustering |
-| `ast-code-analyzer.js` | Symbol extraction, complexity metrics |
-| `federated-kb-coordinator.js` | Multi-agent KB ingestion |
+Use semantic versioning: `MAJOR.MINOR.PATCH`
+- PATCH — bug fixes and small changes
+- MINOR — new features, backward compatible
+- MAJOR — breaking changes or significant rewrites
 
 ---
 
 ## Troubleshooting
 
-### **Deployment Fails**
-- Check Railway logs: `npx @railway/cli logs`
-- Verify `GROQ_API_KEY` is set
-- Ensure `npm run build` completes locally
-- Verify Dockerfile is building correctly (uses `npm install` not `npm ci`)
-- Check `railway.json` specifies `DOCKERFILE` builder
+### Chat returns no results
 
-### **PostgreSQL KB Issues**
+Check that `DATABASE_URL` is set correctly in the Render environment. The Neon connection string must include `?sslmode=require`. Test the database directly:
+
 ```bash
-# Check if ruvector-kb container is running
-docker ps | grep ruvector-kb
-
-# Start container if not running
-docker start ruvector-kb
-
-# Test connection
-PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c "SELECT 1"
-
-# Check entry count
-PGPASSWORD=guruKB2025 psql -h localhost -p 5435 -U postgres -c \
-  "SELECT COUNT(*) FROM ask_ruvnet.architecture_docs"
-
-# Re-run full refresh
-node scripts/kb-full-refresh.js --force
+psql "$DATABASE_URL" -c "SELECT COUNT(*) FROM ask_ruvnet.architecture_docs;"
 ```
 
-### **ONNX Embeddings Not Working**
+Expected result: `55111`
+
+### Frontend not loading
+
+Verify the build completed successfully. The `dist/` directory must exist at `src/ui/dist/`. Run `npm run build` locally and check for errors.
+
+### Groq API errors
+
+Verify `GROQ_API_KEY` is set and valid. Test with:
+
 ```bash
-# Verify ruvector version (need 0.1.77+)
-npm list ruvector
-
-# Update if needed
-npm update ruvector
-
-# Check if ONNXEmbedder is available
-node -e "const r = require('ruvector'); console.log(!!r.ONNXEmbedder)"
+curl https://ask-ruvnet.onrender.com/health
 ```
 
-### **UI Not Loading**
-- Verify `src/ui/dist/` was built
-- Check Express static file serving in `app.js`
-- Clear browser cache
+If the server is up but chat fails, check Render logs for `GROQ_API_KEY` authentication errors.
+
+### Cold start delays
+
+Render free-tier services spin down after inactivity. The first request after a cold start may take 30-60 seconds while the server restarts and loads the ONNX embedding model.
 
 ---
 
@@ -609,4 +356,4 @@ MIT
 
 **rUVnet**
 - GitHub: [@ruvnet](https://github.com/ruvnet)
-- Production: https://ask-ruvnet-production.up.railway.app
+- Production: https://ask-ruvnet.onrender.com

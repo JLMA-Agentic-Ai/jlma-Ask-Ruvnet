@@ -15,6 +15,7 @@ Usage:
     python3 scripts/kb-regenerate-optimal.py
 """
 
+import os
 import sys
 import time
 
@@ -34,7 +35,7 @@ CONFIG = {
     "port": 5435,
     "database": "postgres",
     "user": "postgres",
-    "password": "guruKB2025",
+    "password": os.environ.get('RUVECTOR_PASSWORD', ''),
     "schema": "ask_ruvnet",
     "batch_size": 500,
     "max_text_length": 1500,

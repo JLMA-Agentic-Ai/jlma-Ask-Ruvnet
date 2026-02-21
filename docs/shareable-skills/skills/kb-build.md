@@ -193,7 +193,7 @@ CREATE INDEX idx_embed ON project_name.architecture_docs
 | Host | localhost |
 | Port | 5435 |
 | User | postgres |
-| Password | guruKB2025 |
+| Password | ${POSTGRES_PASSWORD} |
 | Database | postgres |
 | Schema | `{directory_name}` (lowercase, underscores) |
 

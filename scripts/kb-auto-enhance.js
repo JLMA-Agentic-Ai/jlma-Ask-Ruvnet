@@ -21,7 +21,7 @@ const CONFIG = {
     dbHost: process.env.KB_HOST || 'localhost',
     dbPort: process.env.KB_PORT || '5435',
     dbUser: process.env.KB_USER || 'postgres',
-    dbPass: process.env.KB_PASSWORD || process.env.PGPASSWORD || 'guruKB2025'
+    dbPass: process.env.KB_PASSWORD || process.env.PGPASSWORD || process.env.RUVECTOR_PASSWORD || ''
 };
 
 function generateHash(content) {
