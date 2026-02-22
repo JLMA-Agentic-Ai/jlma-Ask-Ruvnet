@@ -1487,21 +1487,35 @@
         render();
     }
 
-    // Wait for the iframe to have real layout dimensions before initialising.
-    // A fixed timeout is unreliable across browsers and network speeds, so we
-    // poll on each animation frame until innerWidth > 0. This is bulletproof.
-    function tryInit() {
-        if (window.innerWidth > 0 && window.innerHeight > 0) {
-            init();
-        } else {
-            requestAnimationFrame(tryInit);
+    // Use ResizeObserver on the canvas to detect when the iframe has real
+    // layout dimensions. This fires as soon as the browser paints the iframe,
+    // making it reliable across localhost, HTTPS, headless, and all browsers.
+    // Falls back to a 500ms timeout as a safety net.
+    let initiated = false;
+    function safeInit() {
+        if (initiated) return;
+        initiated = true;
+        // Use canvas or body dimensions as fallback for window.innerWidth
+        const w = canvas.clientWidth || document.documentElement.clientWidth || window.innerWidth;
+        const h = canvas.clientHeight || document.documentElement.clientHeight || window.innerHeight;
+        if (w > 0) {
+            W = w; H = h;
+            canvas.width = w * devicePixelRatio;
+            canvas.height = h * devicePixelRatio;
+            ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
         }
+        init();
     }
-    if (document.readyState === 'complete') {
-        requestAnimationFrame(tryInit);
-    } else {
-        window.addEventListener('load', function() { requestAnimationFrame(tryInit); });
+    if (window.ResizeObserver) {
+        const ro = new ResizeObserver(entries => {
+            for (const e of entries) {
+                if (e.contentRect.width > 0) { ro.disconnect(); safeInit(); break; }
+            }
+        });
+        ro.observe(document.body);
     }
+    // Safety fallback: if ResizeObserver never fires, run after 500ms
+    setTimeout(safeInit, 500);
     </script>
 </body>
 </html>
