@@ -172,7 +172,7 @@ function App() {
 
     const queryText = specialMode || input;
 
-    // Handle Knowledge Universe
+    // Handle Knowledge Universe — fullscreen overlay handles display
     if (queryText === 'VIEW_UNIVERSE') {
       setCanvasContent({
         type: 'iframe',
@@ -180,7 +180,6 @@ function App() {
         title: 'Knowledge Universe',
         action: 'universe'
       });
-      setViewMode('presentation');
       return;
     }
 
@@ -431,8 +430,36 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
     if (canvasContent) navigator.clipboard.writeText(canvasContent.content);
   };
 
+  // Fullscreen universe overlay — fixed position, independent of layout system
+  const UniverseOverlay = canvasContent?.action === 'universe' ? (
+    <div style={{
+      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+      zIndex: 500, background: '#0a0a1a'
+    }}>
+      <iframe
+        src="/knowledge-universe.html"
+        title="Knowledge Universe"
+        style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+      />
+      <button
+        onClick={() => { setCanvasContent(null); setViewMode('split'); }}
+        style={{
+          position: 'absolute', top: '1rem', right: '1rem', zIndex: 10,
+          padding: '0.5rem 1.2rem',
+          background: 'rgba(10,20,40,0.92)', backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(100,150,255,0.3)', borderRadius: '8px',
+          color: '#e2e8f0', cursor: 'pointer', fontSize: '0.9rem',
+          fontFamily: 'system-ui, sans-serif',
+        }}
+      >
+        ✕ Close
+      </button>
+    </div>
+  ) : null;
+
   return (
     <div className="app-container">
+      {UniverseOverlay}
       <header className="header">
         <div className="header-left">
           {!sidebarOpen && (
@@ -492,7 +519,6 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                   onClick={() => {
                     if (canvasContent?.action === 'universe') {
                       setCanvasContent(null);
-                      setViewMode('split');
                     } else {
                       setCanvasContent({
                         type: 'iframe',
@@ -500,7 +526,6 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                         title: 'Knowledge Universe',
                         action: 'universe'
                       });
-                      setViewMode('presentation');
                     }
                   }}
                 >
