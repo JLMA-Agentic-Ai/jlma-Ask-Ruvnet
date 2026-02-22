@@ -1,5 +1,43 @@
 # Claude Code Configuration - Claude Flow V3
 
+## 🔴 MANDATORY RULE — TEST BEFORE DECLARING DONE (NO EXCEPTIONS)
+
+**Stuart's instruction (2026-02-22): Never say "I think I fixed it." You MUST verify before telling Stuart it works.**
+
+### The Non-Negotiable Standard:
+> "I wrote it, I tested it, I proved it, I'm sure it works, this looks great — use it."
+
+### Required Steps Before Saying Anything Is Done:
+
+1. **Build** — run `npm run build` and confirm it succeeds with zero errors
+2. **Screenshot the live result** — use Playwright to take real browser screenshots:
+   ```bash
+   node --input-type=module <<'EOF'
+   import { chromium } from '/Users/stuartkerr/.npm-global/lib/node_modules/playwright/index.mjs';
+   const b = await chromium.launch();
+   const p = await b.newPage();
+   await p.goto('http://localhost:3000');
+   await p.screenshot({ path: '/tmp/snap-verify.png' });
+   await b.close();
+   EOF
+   ```
+3. **Read the screenshots** — use the Read tool to view the PNG. Check visually: does it look right? Is anything broken, missing, or wrong?
+4. **Test the specific change** — if you added a UI element, click it. If you fixed a loading bug, wait and confirm loading is gone. If you fixed a layout, confirm sidebar + header are intact.
+5. **Only THEN declare it done** — with confidence, not hedging.
+
+### What Failure Looks Like (Never Again):
+- "I think I fixed it" ❌
+- "This should work now" ❌
+- "Let me know if it looks right" ❌
+- Shipping code that breaks navigation ❌
+- Shipping code that creates duplicate elements ❌
+- Shipping code with a still-spinning loader ❌
+
+### What Success Looks Like:
+- "I built it, ran Playwright, reviewed the screenshot, the loader is gone, the orb renders, the sidebar is intact — it works." ✓
+
+---
+
 ## ⚡ ABSOLUTE RULE — CLAUDE FLOW OWNS EVERY COMMAND (NO EXCEPTIONS)
 
 **Stuart's instruction (2026-02-21): Every command given in this project MUST be immediately handed to Claude Flow. Claude Code is the executor only — Claude Flow is the brain.**

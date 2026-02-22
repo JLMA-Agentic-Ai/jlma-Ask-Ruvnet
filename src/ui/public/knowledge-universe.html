@@ -1487,10 +1487,21 @@
         render();
     }
 
-    // Delay init so the iframe has time to compute its layout dimensions.
-    // Without this, window.innerWidth/Height = 0 on load and the canvas
-    // draws the orb at (0,0) which is invisible.
-    setTimeout(init, 150);
+    // Wait for the iframe to have real layout dimensions before initialising.
+    // A fixed timeout is unreliable across browsers and network speeds, so we
+    // poll on each animation frame until innerWidth > 0. This is bulletproof.
+    function tryInit() {
+        if (window.innerWidth > 0 && window.innerHeight > 0) {
+            init();
+        } else {
+            requestAnimationFrame(tryInit);
+        }
+    }
+    if (document.readyState === 'complete') {
+        requestAnimationFrame(tryInit);
+    } else {
+        window.addEventListener('load', function() { requestAnimationFrame(tryInit); });
+    }
     </script>
 </body>
 </html>
