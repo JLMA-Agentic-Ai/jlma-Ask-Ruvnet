@@ -1477,13 +1477,20 @@
 
     // ===== INIT =====
     function init() {
+        // Re-run resize so canvas has correct dimensions now that iframe is laid out
+        resize();
         buildCategorySidebar();
         setupViewNodes();
-        document.getElementById('loading').classList.add('hidden');
+        // Use style.display directly — more reliable than classList in iframe context
+        const loadingEl = document.getElementById('loading');
+        if (loadingEl) loadingEl.style.display = 'none';
         render();
     }
 
-    init();
+    // Delay init so the iframe has time to compute its layout dimensions.
+    // Without this, window.innerWidth/Height = 0 on load and the canvas
+    // draws the orb at (0,0) which is invisible.
+    setTimeout(init, 150);
     </script>
 </body>
 </html>

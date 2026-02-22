@@ -430,11 +430,17 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
     if (canvasContent) navigator.clipboard.writeText(canvasContent.content);
   };
 
-  // Fullscreen universe overlay — fixed position, independent of layout system
+  // Universe overlay: sits BELOW the header and RIGHT of the sidebar
+  // Header is ~72px tall, sidebar is 220px wide when open
   const UniverseOverlay = canvasContent?.action === 'universe' ? (
     <div style={{
-      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-      zIndex: 500, background: '#0a0a1a'
+      position: 'fixed',
+      top: '72px',
+      left: sidebarOpen ? '220px' : '0',
+      right: 0,
+      bottom: 0,
+      zIndex: 50,
+      background: '#0a0a1a',
     }}>
       <iframe
         src="/knowledge-universe.html"
@@ -442,13 +448,13 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
         style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
       />
       <button
-        onClick={() => { setCanvasContent(null); setViewMode('split'); }}
+        onClick={() => setCanvasContent(null)}
         style={{
-          position: 'absolute', top: '1rem', right: '1rem', zIndex: 10,
-          padding: '0.5rem 1.2rem',
-          background: 'rgba(10,20,40,0.92)', backdropFilter: 'blur(10px)',
+          position: 'absolute', top: '0.75rem', right: '0.75rem', zIndex: 10,
+          padding: '0.4rem 1rem',
+          background: 'rgba(10,20,40,0.9)', backdropFilter: 'blur(10px)',
           border: '1px solid rgba(100,150,255,0.3)', borderRadius: '8px',
-          color: '#e2e8f0', cursor: 'pointer', fontSize: '0.9rem',
+          color: '#e2e8f0', cursor: 'pointer', fontSize: '0.85rem',
           fontFamily: 'system-ui, sans-serif',
         }}
       >
@@ -623,7 +629,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
             </div>
           )}
 
-          {(viewMode === 'split' || viewMode === 'presentation') && (
+          {(viewMode === 'split' || viewMode === 'presentation') && canvasContent?.action !== 'universe' && (
             <div className="canvas-panel" style={viewMode === 'presentation' ? { width: '100%', borderLeft: 'none' } : {}}>
               <div className="canvas-header">
                 <h3>{viewMode === 'presentation' ? 'PRESENTATION MODE' : 'CANVAS'}</h3>
