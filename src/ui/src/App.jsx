@@ -133,7 +133,7 @@ const HeroSection = ({ onAction, knowledgeData }) => {
             <div className="resource-thumbnail">📹</div>
             <div className="resource-info">
               <span className="resource-title">Video Library</span>
-              <span className="resource-type">18 Sessions · Vibecast · Hackerspace</span>
+              <span className="resource-type">20 Sessions · Agentics Foundation · Watchable</span>
             </div>
           </button>
         </div>
@@ -203,31 +203,33 @@ function App() {
 
     const queryText = specialMode || input;
 
-    // Handle Video Library
+    // Handle Video Library — sourced from RuVector KB (50 entries with real watch URLs)
     if (queryText === 'VIEW_VIDEOS') {
-      const sessions = [
-        { date: '2025-08-08', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
-        { date: '2025-08-14', title: 'Live Vibe Coding',      type: 'Live Vibe Coding' },
-        { date: '2025-08-15', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
-        { date: '2025-08-21', title: 'Live Vibe Coding',      type: 'Live Vibe Coding' },
-        { date: '2025-08-22', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
-        { date: '2025-09-11', title: 'Office Hours',          type: 'Office Hours' },
-        { date: '2025-09-18', title: 'Live Vibe Coding',      type: 'Live Vibe Coding' },
-        { date: '2025-09-19', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
-        { date: '2025-09-25', title: 'Live Vibe Coding',      type: 'Live Vibe Coding' },
-        { date: '2025-09-26', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
-        { date: '2025-10-16', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
-        { date: '2025-10-24', title: 'Hacker Session',        type: 'AI Hackerspace' },
-        { date: '2025-10-30', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
-        { date: '2025-11-13', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
-        { date: '2025-11-20', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
-        { date: '2025-11-25', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
-        { date: '2026-01-01', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
-        { date: '2026-01-08', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
+      const videos = [
+        { id: '1_s07kapkb', date: '2026-01-16', dur: '1h 51m', title: 'Building Agentic Systems at Scale: Architecture, Security, and Real-World Implementation' },
+        { id: '1_xlre6ukc', date: '2026-01-16', dur: '1h 49m', title: 'Claude-flow v3 Release: Revolutionary Agentic AI System with 500K+ Downloads' },
+        { id: '1_33xvl0xn', date: '2026-01-29', dur: '1h 5m',  title: 'Agentix Foundation: Building a Global Community for Agentic AI Development' },
+        { id: '1_rozlzilu', date: '2026-01-28', dur: '1h 14m', title: 'London Meetup — AI Powered Content Creation: From Sheet Music to Semantic Graphs' },
+        { id: '1_8afwqubg', date: '2026-01-23', dur: '2h 1m',  title: 'Building Agentic Systems: Network Topologies, Skills Aggregation, and AI Infrastructure' },
+        { id: '1_nvkgdvm8', date: '2026-01-?',  dur: '—',      title: 'Claude-Flow V3: Building AI Systems with Hive-Mind Intelligence' },
+        { id: '1_392oe5oa', date: '2026-01-?',  dur: '—',      title: 'Claude Flow V3: Building Intelligent Agents with Self-Learning Vector Systems' },
+        { id: '1_oowknql6', date: '2026-01-?',  dur: '—',      title: 'CloudFlow V3 and Agentic Systems: Building the Future of AI Development' },
+        { id: '1_04q83xk2', date: '2025-11-14', dur: '1h 32m', title: 'AI Hackerspace Live — Nov 7' },
+        { id: '1_x6y3m453', date: '2025-12-06', dur: '5h',     title: 'Building the Future: AI-Powered Media Discovery and Smart TV Integration at the Global AI Hackathon' },
+        { id: '1_dpwbbr66', date: '2025-?',     dur: '—',      title: 'Agentic AI Revolution: Building Autonomous Intelligent Systems for Real-World Impact' },
+        { id: '1_dxehuvpf', date: '2025-?',     dur: '—',      title: 'Building the Prime Radiant: A Coherence Engine for AI Anti-Hallucination' },
+        { id: '1_hpe5jw3w', date: '2025-?',     dur: '—',      title: 'From Concept to Code: How Claude AI and Agentic Systems Are Reshaping Development' },
+        { id: '1_rtjw6iv4', date: '2025-?',     dur: '—',      title: 'Building Agentic AI Solutions: Claude Flow, Anti-Gravity, and Real-World Applications' },
+        { id: '1_b72cmcnd', date: '2025-10-17', dur: '5m',     title: 'Devoxx BE Conference: The Rise of AI Agents' },
+        { id: '1_prlsngek', date: '2025-?',     dur: '—',      title: 'Root Vector: Building the World\'s Fastest AI Search' },
+        { id: '1_2156iluo', date: '2025-?',     dur: '—',      title: 'From Helsinki to the World: Finland\'s AI-Native Government Transformation' },
+        { id: '1_ay4ozec9', date: '2025-?',     dur: '—',      title: 'Breaking Down Content Silos: A 72-Hour Hackathon to Unify Streaming Discovery' },
+        { id: '1_3c70sv2p', date: '2025-?',     dur: '—',      title: 'From Hackathon to Market: Building AI-Powered Media Discovery at Scale' },
+        { id: '1_40wp4k60', date: '2025-?',     dur: '—',      title: 'OS-Level Automation and Agentic Systems: Building the Future of Computer Use' },
       ];
-      const typeIcon = { 'AI Hackerspace': '🏗️', 'Live Vibe Coding': '💻', 'Office Hours': '🎓', 'Ruv Vibecast': '🎙️' };
-      const content = `# 📹 Agentic Foundation Video Library\n\n**${sessions.length} Sessions** — AI Hackerspace · Live Vibe Coding · Ruv Vibecast · Office Hours\n\nClick any session title below to explore its content from the knowledge base.\n\n---\n\n${sessions.map(s => `### ${typeIcon[s.type] || '🎬'} ${s.date} — ${s.title}\n**Type:** ${s.type} · [Ask about this session →](/ask-session/${s.date})\n`).join('\n')}\n\n---\n\n> 💡 **Tip:** You can ask questions like *"What was discussed on October 16 Vibecast?"* or *"What did rUv say about agent memory in the September sessions?"*`;
-      setCanvasContent({ type: 'text', content, title: 'Video Library', action: 'videos' });
+      const baseUrl = 'https://video.agentics.org/media/t/';
+      const content = `# 📹 Agentic Foundation Video Library\n\n**${videos.length} Sessions** — All sourced from Agentics Foundation. Full summaries and key topics are indexed in the knowledge base.\n\n---\n\n${videos.map(v => `### 🎬 ${v.title}\n📅 ${v.date} · ⏱ ${v.dur}\n[▶ Watch on Agentics Foundation](${baseUrl}${v.id}) · Ask: *"What was covered in the ${v.title.split(':')[0]} session?"*\n`).join('\n')}\n\n---\n\n> 💡 **All 20 sessions are fully summarized in RuVector.** Ask questions like *"What did rUv say about agent memory?"* or *"How does the Prime Radiant prevent hallucinations?"*`;
+      setCanvasContent({ type: 'text', content, title: 'Agentic Foundation Video Library', action: 'videos' });
       setViewMode('split');
       return;
     }
