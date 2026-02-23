@@ -58,6 +58,128 @@ if (process.env.OPENAI_API_KEY) {
 }
 
 // ============================================================================
+// MULTI-PROVIDER LLM — automatic fallback chain for chat
+// Default chain: groq-free → groq-paid → openai → anthropic → together → openrouter → deepseek
+// Set GROQ_API_KEY (free tier) and GROQ_PAID_API_KEY (paid tier) for dual-Groq setup.
+// When free Groq hits its daily rate limit, it seamlessly falls through to paid, then others.
+// Override order with LLM_PROVIDER env var if desired.
+// ============================================================================
+const LLM_PROVIDERS = [];
+
+function registerProviders() {
+    const preferred = (process.env.LLM_PROVIDER || '').toLowerCase();
+
+    // All supported providers — order matters (this is the default fallback chain)
+    const all = [
+        { name: 'groq-free',  key: process.env.GROQ_API_KEY,       url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile' },
+        { name: 'groq-paid',  key: process.env.GROQ_PAID_API_KEY,  url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_PAID_MODEL || process.env.GROQ_MODEL || 'llama-3.3-70b-versatile' },
+        { name: 'openai',     key: process.env.OPENAI_API_KEY,     url: 'https://api.openai.com/v1/chat/completions',         model: process.env.OPENAI_MODEL || 'gpt-4o' },
+        { name: 'anthropic',  key: process.env.CLAUDE_API_KEY,     url: null, /* uses native SDK format */                     model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514' },
+        { name: 'together',   key: process.env.TOGETHER_API_KEY,   url: 'https://api.together.xyz/v1/chat/completions',       model: process.env.TOGETHER_MODEL || 'meta-llama/Llama-3.3-70B-Instruct-Turbo' },
+        { name: 'openrouter', key: process.env.OPENROUTER_API_KEY, url: 'https://openrouter.ai/api/v1/chat/completions',      model: process.env.OPENROUTER_MODEL || 'anthropic/claude-sonnet-4' },
+        { name: 'deepseek',   key: process.env.DEEPSEEK_API_KEY,   url: 'https://api.deepseek.com/v1/chat/completions',       model: process.env.DEEPSEEK_MODEL || 'deepseek-chat' },
+    ];
+
+    // Filter to providers with keys set
+    const available = all.filter(p => p.key);
+
+    // If user sets LLM_PROVIDER, put that provider family first
+    if (preferred) {
+        // Match both exact name and family (e.g. "groq" matches "groq-free" and "groq-paid")
+        const matchIdx = available.findIndex(p => p.name === preferred || p.name.startsWith(preferred + '-'));
+        if (matchIdx > 0) {
+            const [pref] = available.splice(matchIdx, 1);
+            available.unshift(pref);
+        }
+    }
+
+    LLM_PROVIDERS.length = 0;
+    LLM_PROVIDERS.push(...available);
+
+    if (LLM_PROVIDERS.length === 0) {
+        console.error('❌ No LLM API keys configured! Set at least one: GROQ_API_KEY, OPENAI_API_KEY, CLAUDE_API_KEY, etc.');
+    } else {
+        console.log(`🤖 LLM fallback chain (${LLM_PROVIDERS.length}): ${LLM_PROVIDERS.map(p => p.name).join(' → ')}`);
+    }
+}
+
+async function callAnthropicAPI(provider, messages, temperature, maxTokens) {
+    // Anthropic uses a different API format than OpenAI-compatible providers
+    const systemMsg = messages.find(m => m.role === 'system');
+    const nonSystemMsgs = messages.filter(m => m.role !== 'system');
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+            'x-api-key': provider.key,
+            'anthropic-version': '2023-06-01',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            model: provider.model,
+            max_tokens: maxTokens,
+            temperature,
+            system: systemMsg ? systemMsg.content : undefined,
+            messages: nonSystemMsgs
+        })
+    });
+
+    const data = await response.json();
+    if (data.error) throw new Error(`Anthropic: ${data.error.message}`);
+    if (!data.content || !data.content[0]) throw new Error('Anthropic: empty response');
+    return data.content[0].text;
+}
+
+async function callOpenAICompatible(provider, messages, temperature, maxTokens) {
+    const response = await fetch(provider.url, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${provider.key}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            model: provider.model,
+            messages,
+            temperature,
+            max_tokens: maxTokens
+        })
+    });
+
+    const data = await response.json();
+    if (data.error) throw new Error(`${provider.name}: ${data.error.message}`);
+    if (!data.choices || !data.choices[0]) throw new Error(`${provider.name}: empty response`);
+    return data.choices[0].message.content;
+}
+
+async function llmChat(messages, { temperature = 0.3, maxTokens = 4096 } = {}) {
+    if (LLM_PROVIDERS.length === 0) {
+        throw new Error('No LLM providers configured');
+    }
+
+    const errors = [];
+    for (const provider of LLM_PROVIDERS) {
+        try {
+            console.log(`🤖 Trying ${provider.name} (${provider.model})...`);
+            let answer;
+            if (provider.name === 'anthropic') {
+                answer = await callAnthropicAPI(provider, messages, temperature, maxTokens);
+            } else {
+                answer = await callOpenAICompatible(provider, messages, temperature, maxTokens);
+            }
+            console.log(`✅ ${provider.name} responded (${answer.length} chars)`);
+            return { answer, provider: provider.name, model: provider.model };
+        } catch (err) {
+            console.warn(`⚠️ ${provider.name} failed: ${err.message}`);
+            errors.push(`${provider.name}: ${err.message}`);
+        }
+    }
+
+    throw new Error(`All LLM providers failed:\n${errors.join('\n')}`);
+}
+
+registerProviders();
+
+// ============================================================================
 // OPTIMIZED: Initialize all RAG enhancement modules
 // ============================================================================
 let hybridSearch = null;
@@ -287,9 +409,9 @@ app.post('/api/chat', async (req, res) => {
         return res.status(400).json({ error: 'Message too long (max 10,000 characters)' });
     }
 
-    if (!process.env.GROQ_API_KEY) {
-        console.error('❌ GROQ_API_KEY is missing!');
-        return res.status(500).json({ error: 'Server configuration error: GROQ_API_KEY missing' });
+    if (LLM_PROVIDERS.length === 0) {
+        console.error('❌ No LLM API keys configured!');
+        return res.status(500).json({ error: 'Server configuration error: No LLM API keys set. Configure OPENAI_API_KEY, CLAUDE_API_KEY, or GROQ_API_KEY.' });
     }
 
     try {
@@ -490,43 +612,22 @@ ${message}
 ===== YOUR RESPONSE =====
 Provide a clear, accurate, and helpful response based ONLY on the knowledge base context above, adapted to the ${learningLevel} learning level. If the context is insufficient, say so honestly rather than guessing.`;
 
-        // 3. Generate Response using Groq directly
+        // 3. Generate Response using multi-provider LLM (with automatic fallback)
         let answer = "";
         let errorMsg = null;
+        let usedProvider = null;
         try {
-            console.log('Calling Groq API...');
-            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    model: 'llama-3.3-70b-versatile',
-                    messages: [
-                        { role: 'system', content: systemPrompt },
-                        ...(history || []),
-                        { role: 'user', content: message }
-                    ],
-                    temperature: 0.3,
-                    max_tokens: 4096
-                })
-            });
-
-            console.log('Groq status:', response.status);
-            const data = await response.json();
-            console.log('Groq response:', JSON.stringify(data).substring(0, 200));
-
-            if (data.choices && data.choices[0]) {
-                answer = data.choices[0].message.content;
-                console.log('✅ Got answer from Groq');
-            } else if (data.error) {
-                throw new Error(`Groq error: ${data.error.message || JSON.stringify(data.error)} `);
-            } else {
-                throw new Error('No response from API: ' + JSON.stringify(data));
-            }
+            const llmMessages = [
+                { role: 'system', content: systemPrompt },
+                ...(history || []),
+                { role: 'user', content: message }
+            ];
+            const result = await llmChat(llmMessages);
+            answer = result.answer;
+            usedProvider = result.provider;
+            console.log(`✅ Got answer from ${result.provider} (${result.model})`);
         } catch (error) {
-            console.error('Error calling Groq:', error.message);
+            console.error('Error calling LLM:', error.message);
             answer = "I apologize, but I encountered an error generating a response. Please try again.";
             errorMsg = error.message;
         }
@@ -534,6 +635,7 @@ Provide a clear, accurate, and helpful response based ONLY on the knowledge base
         const responseData = {
             answer,
             error: errorMsg,
+            provider: usedProvider || null,
             sources: sources.map(s => ({
                 id: s.id,
                 score: s.score,
@@ -564,6 +666,16 @@ app.get('/health', async (req, res) => {
         }
     };
     res.json(health);
+});
+
+// LLM Provider Status — shows which providers are configured and the fallback chain
+app.get('/api/providers', (req, res) => {
+    res.json({
+        providers: LLM_PROVIDERS.map(p => ({ name: p.name, model: p.model })),
+        primary: LLM_PROVIDERS[0]?.name || 'none',
+        fallbackChain: LLM_PROVIDERS.map(p => p.name).join(' → '),
+        configured: LLM_PROVIDERS.length,
+    });
 });
 
 // KB Statistics Endpoint - shows real PostgreSQL KB state
