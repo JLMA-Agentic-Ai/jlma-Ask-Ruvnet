@@ -1,7 +1,7 @@
     // ===== KNOWLEDGE BASE DATA =====
     const KB_DATA = {
-        id: "root", name: "Ask Ruvnet Knowledge Universe", color: "#4ecdc4", count: 323,
-        description: "289 expert-curated entries across 15 categories covering RuVector, Claude Flow, AI Security, Teaching, Algorithms, Video Knowledge, and Infrastructure.",
+        id: "root", name: "Ask Ruvnet Knowledge Universe", color: "#4ecdc4", count: 54543,
+        description: "54,543 expert-curated entries across 15 categories covering RuVector, Claude Flow, AI Security, Teaching, Algorithms, Video Knowledge, and Infrastructure.",
         children: [
             {
                 id: "ruvector", name: "RuVector Ecosystem", color: "#3b82f6", count: 63,
