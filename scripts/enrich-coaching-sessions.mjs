@@ -220,7 +220,13 @@ async function enrichSession(client, sessionDate, chunks) {
     try {
       const userMsg = `SESSION DATE: ${sessionDate}\nSECTION: ${win.label}\n\nTRANSCRIPT EXCERPT:\n${win.text}`;
       const raw = await callGroq(EXTRACTION_SYSTEM_PROMPT, userMsg, 3000);
-      const cleaned = raw.replace(/^```(?:json)?\s*/m, '').replace(/\s*```$/m, '').trim();
+      // Robust JSON extraction: find first '[' to last ']'
+      let cleaned = raw.replace(/^```(?:json)?\s*/m, '').replace(/\s*```$/m, '').trim();
+      const arrStart = cleaned.indexOf('[');
+      const arrEnd = cleaned.lastIndexOf(']');
+      if (arrStart !== -1 && arrEnd !== -1 && arrEnd > arrStart) {
+        cleaned = cleaned.substring(arrStart, arrEnd + 1);
+      }
       const items = JSON.parse(cleaned);
       if (Array.isArray(items)) {
         allExtracted.push(...items);
