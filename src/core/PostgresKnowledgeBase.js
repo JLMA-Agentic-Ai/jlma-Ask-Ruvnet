@@ -193,9 +193,7 @@ class PostgresKnowledgeBase {
       // Query each domain individually so missing schemas don't break everything
       const domainQueries = [
         { key: 'ask_ruvnet', sql: "SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total, COUNT(*) FILTER (WHERE is_duplicate=false AND triage_tier='gold') as gold FROM ask_ruvnet.architecture_docs" },
-        { key: 'travel_agent', sql: "SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM travel_agent.knowledge" },
         { key: 'viral_social', sql: "SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM viral_social.knowledge" },
-        { key: 'retirewell', sql: "SELECT COUNT(*) FILTER (WHERE is_duplicate=false) as total FROM retirewell.guru_knowledge" },
       ];
 
       const domains = {};

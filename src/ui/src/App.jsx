@@ -30,7 +30,7 @@ const HeroSection = ({ onAction, knowledgeData }) => {
   const afVer  = getVer('agentic-flow')  || '2.0.7';
   const rvVer  = getVer('ruvector')      || '0.1.99';
   const totalEntries = (knowledgeData?.kb_total_entries || knowledgeData?.kb_stats?.total || 54543).toLocaleString();
-  const domainCount  = Object.keys(knowledgeData?.kb_stats?.domains || {}).length || 4;
+  const domainCount  = Object.keys(knowledgeData?.kb_stats?.domains || {}).length || 2;
   return (
   <div className="hero-section">
     <div className="hero-content">
@@ -53,13 +53,9 @@ const HeroSection = ({ onAction, knowledgeData }) => {
           <span className="icon">🧠</span>
           <span className="text">ReasoningBank AI</span>
         </button>
-        <button onClick={() => onAction('How do I find business class flights using points optimization strategies?')} className="hero-card">
-          <span className="icon">✈️</span>
-          <span className="text">Travel Hacking</span>
-        </button>
-        <button onClick={() => onAction('What is the best safe withdrawal strategy for early retirement?')} className="hero-card">
-          <span className="icon">💰</span>
-          <span className="text">RetireWell</span>
+        <button onClick={() => onAction('What is RuVector and how does it compare to pgvector for AI applications?')} className="hero-card">
+          <span className="icon">🔮</span>
+          <span className="text">RuVector DB</span>
         </button>
         <button onClick={() => onAction('VIEW_UNIVERSE')} className="hero-card">
           <span className="icon">🌌</span>
@@ -418,9 +414,7 @@ npx @claude-flow/cli@latest init --force
 ${data.kb_stats ? `| Domain | Entries | Status |
 |--------|---------|--------|
 | 🤖 Claude-Flow & Agentic AI | ${data.kb_stats.domains?.ask_ruvnet?.total?.toLocaleString() || '54,128'} | ✅ Active |
-| ✈️ Travel Hacking | ${data.kb_stats.domains?.travel_agent?.total?.toLocaleString() || '2,979'} | ✅ Active |
 | 🔥 Viral Social | ${data.kb_stats.domains?.viral_social?.total?.toLocaleString() || '2,831'} | ✅ Active |
-| 💰 RetireWell | ${data.kb_stats.domains?.retirewell?.total?.toLocaleString() || '980'} | ✅ Active |
 | **Total** | **${(data.kb_total_entries || 60918).toLocaleString()}** | **PostgreSQL RuVector** |
 ` : ''}
 Backend: ${data.kb_backend || 'Local RuvectorStore'}
