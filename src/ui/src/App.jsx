@@ -129,6 +129,13 @@ const HeroSection = ({ onAction, knowledgeData }) => {
               <span className="resource-type">Video Overview · Watch Now</span>
             </div>
           </button>
+          <button onClick={() => onAction('VIEW_VIDEOS')} className="resource-link">
+            <div className="resource-thumbnail">📹</div>
+            <div className="resource-info">
+              <span className="resource-title">Video Library</span>
+              <span className="resource-type">18 Sessions · Vibecast · Hackerspace</span>
+            </div>
+          </button>
         </div>
       </div>
     </div>
@@ -195,6 +202,35 @@ function App() {
     if (!input.trim() && !specialMode) return;
 
     const queryText = specialMode || input;
+
+    // Handle Video Library
+    if (queryText === 'VIEW_VIDEOS') {
+      const sessions = [
+        { date: '2025-08-08', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
+        { date: '2025-08-14', title: 'Live Vibe Coding',      type: 'Live Vibe Coding' },
+        { date: '2025-08-15', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
+        { date: '2025-08-21', title: 'Live Vibe Coding',      type: 'Live Vibe Coding' },
+        { date: '2025-08-22', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
+        { date: '2025-09-11', title: 'Office Hours',          type: 'Office Hours' },
+        { date: '2025-09-18', title: 'Live Vibe Coding',      type: 'Live Vibe Coding' },
+        { date: '2025-09-19', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
+        { date: '2025-09-25', title: 'Live Vibe Coding',      type: 'Live Vibe Coding' },
+        { date: '2025-09-26', title: 'AI Hackerspace',        type: 'AI Hackerspace' },
+        { date: '2025-10-16', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
+        { date: '2025-10-24', title: 'Hacker Session',        type: 'AI Hackerspace' },
+        { date: '2025-10-30', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
+        { date: '2025-11-13', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
+        { date: '2025-11-20', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
+        { date: '2025-11-25', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
+        { date: '2026-01-01', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
+        { date: '2026-01-08', title: 'Ruv Vibecast',          type: 'Ruv Vibecast' },
+      ];
+      const typeIcon = { 'AI Hackerspace': '🏗️', 'Live Vibe Coding': '💻', 'Office Hours': '🎓', 'Ruv Vibecast': '🎙️' };
+      const content = `# 📹 Agentic Foundation Video Library\n\n**${sessions.length} Sessions** — AI Hackerspace · Live Vibe Coding · Ruv Vibecast · Office Hours\n\nClick any session title below to explore its content from the knowledge base.\n\n---\n\n${sessions.map(s => `### ${typeIcon[s.type] || '🎬'} ${s.date} — ${s.title}\n**Type:** ${s.type} · [Ask about this session →](/ask-session/${s.date})\n`).join('\n')}\n\n---\n\n> 💡 **Tip:** You can ask questions like *"What was discussed on October 16 Vibecast?"* or *"What did rUv say about agent memory in the September sessions?"*`;
+      setCanvasContent({ type: 'text', content, title: 'Video Library', action: 'videos' });
+      setViewMode('split');
+      return;
+    }
 
     // Handle Knowledge Universe — fullscreen overlay handles display
     if (queryText === 'VIEW_UNIVERSE') {
