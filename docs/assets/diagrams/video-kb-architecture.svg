@@ -1,0 +1,291 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1580" width="900" height="1580">
+  <defs>
+    <style>
+      .title { font: bold 18px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .stage-label { font: bold 13px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .body-text { font: 12px 'Segoe UI', Arial, sans-serif; fill: #cbd5e0; }
+      .body-bold { font: bold 12px 'Segoe UI', Arial, sans-serif; fill: #e2e8f0; }
+      .sub-label { font: bold 11px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .sub-text { font: 11px 'Segoe UI', Arial, sans-serif; fill: #a0aec0; }
+      .tag-text { font: bold 10px 'Segoe UI', Arial, sans-serif; fill: #68d391; }
+      .new-badge { font: bold 10px 'Segoe UI', Arial, sans-serif; fill: #f6ad55; }
+      .stat-num { font: bold 22px 'Segoe UI', Arial, sans-serif; fill: #63b3ed; }
+      .stat-label { font: 11px 'Segoe UI', Arial, sans-serif; fill: #a0aec0; }
+      .arrow { stroke: #4a5568; stroke-width: 2; fill: none; marker-end: url(#arr); }
+    </style>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#4a5568"/>
+    </marker>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a202c"/>
+      <stop offset="100%" stop-color="#171923"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2d3748"/>
+      <stop offset="100%" stop-color="#1a365d"/>
+    </linearGradient>
+    <linearGradient id="stage1-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a4365"/>
+      <stop offset="100%" stop-color="#1a365d"/>
+    </linearGradient>
+    <linearGradient id="stage2-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#276749"/>
+      <stop offset="100%" stop-color="#1c4532"/>
+    </linearGradient>
+    <linearGradient id="stage3-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#553c9a"/>
+      <stop offset="100%" stop-color="#3c1f7a"/>
+    </linearGradient>
+    <linearGradient id="stage4-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#744210"/>
+      <stop offset="100%" stop-color="#4a2608"/>
+    </linearGradient>
+    <linearGradient id="source-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d3748"/>
+      <stop offset="100%" stop-color="#1a202c"/>
+    </linearGradient>
+    <linearGradient id="stats-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a365d"/>
+      <stop offset="100%" stop-color="#1a202c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="1580" fill="url(#bg-grad)" rx="12"/>
+  <rect width="900" height="1580" fill="none" stroke="#2d3748" stroke-width="1.5" rx="12"/>
+
+  <!-- ═══ TITLE BAR ═══ -->
+  <rect x="20" y="18" width="860" height="52" rx="8" fill="url(#title-grad)" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="450" y="38" text-anchor="middle" class="title">VIDEO TRANSCRIPT → KNOWLEDGE BASE</text>
+  <text x="450" y="58" text-anchor="middle" font="12px 'Segoe UI', Arial, sans-serif" fill="#90cdf4" font-size="12" font-family="'Segoe UI', Arial, sans-serif">AskRuvNet Integration Architecture · Feb 2026</text>
+
+  <!-- ═══ SOURCE SECTION ═══ -->
+  <rect x="20" y="88" width="860" height="100" rx="8" fill="url(#source-grad)" stroke="#4a5568" stroke-width="1.5"/>
+  <text x="36" y="108" class="stage-label" fill="#a0aec0">SOURCE</text>
+
+  <!-- Source box left -->
+  <rect x="36" y="115" width="390" height="62" rx="6" fill="#2d3748" stroke="#4a90d9" stroke-width="1"/>
+  <text x="231" y="133" text-anchor="middle" class="body-bold" fill="#63b3ed">Agentics Foundation Portal</text>
+  <text x="231" y="150" text-anchor="middle" class="body-text">video.agentics.org · 27 coaching sessions</text>
+  <text x="231" y="166" text-anchor="middle" class="body-text">Aug 2025 → Feb 2026</text>
+
+  <!-- Source box right -->
+  <rect x="474" y="115" width="390" height="62" rx="6" fill="#2d3748" stroke="#805ad5" stroke-width="1"/>
+  <text x="669" y="133" text-anchor="middle" class="body-bold" fill="#b794f4">Kaltura MediaSpace</text>
+  <text x="669" y="150" text-anchor="middle" class="body-text">cfvod.kaltura.com · HLS WebVTT captions</text>
+  <text x="669" y="166" text-anchor="middle" class="body-text">Segmented VTT files per session</text>
+
+  <!-- Arrow down from source -->
+  <line x1="450" y1="188" x2="450" y2="210" class="arrow"/>
+
+  <!-- ═══ STAGE 1 ═══ -->
+  <rect x="20" y="210" width="860" height="148" rx="8" fill="url(#stage1-grad)" stroke="#4a90d9" stroke-width="1.5"/>
+  <rect x="20" y="210" width="8" height="148" rx="4" fill="#4a90d9"/>
+  <text x="44" y="232" class="stage-label">STAGE 1 — TRANSCRIPT DOWNLOAD</text>
+  <text x="44" y="248" class="body-text" fill="#90cdf4">Playwright headless Chromium browser</text>
+
+  <text x="44" y="270" class="body-text">1.  Load video page in headless Chromium browser</text>
+  <text x="44" y="288" class="body-text">2.  Intercept HLS caption playlist URL from network traffic</text>
+  <text x="44" y="306" class="body-text">3.  Download segmentIndex/1.vtt → N.vtt  (50–200 segments per session)</text>
+  <text x="44" y="324" class="body-text">4.  Strip timestamps, merge all segments → plain text</text>
+  <text x="44" y="342" class="body-text">5.  Save to /tmp/agentics-transcripts/{entry_id}.txt</text>
+
+  <rect x="600" y="262" width="264" height="86" rx="6" fill="#1a365d" stroke="#4a90d9" stroke-width="1"/>
+  <text x="732" y="280" text-anchor="middle" class="sub-label">Output</text>
+  <text x="732" y="298" text-anchor="middle" class="sub-text">27 transcript files</text>
+  <text x="732" y="314" text-anchor="middle" class="sub-text">16K – 340K chars each</text>
+  <text x="732" y="330" text-anchor="middle" class="sub-text">~2.4M total characters</text>
+  <text x="732" y="346" text-anchor="middle" class="sub-text">100% coverage of known sessions</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="358" x2="450" y2="380" class="arrow"/>
+
+  <!-- ═══ STAGE 2 ═══ -->
+  <rect x="20" y="380" width="860" height="160" rx="8" fill="url(#stage2-grad)" stroke="#48bb78" stroke-width="1.5"/>
+  <rect x="20" y="380" width="8" height="160" rx="4" fill="#48bb78"/>
+  <text x="44" y="402" class="stage-label">STAGE 2 — CHUNKING &amp; BASE INGESTION</text>
+  <text x="44" y="418" class="body-text" fill="#9ae6b4">PostgreSQL · ask_ruvnet.architecture_docs</text>
+
+  <!-- Left column -->
+  <rect x="36" y="428" width="260" height="96" rx="6" fill="#1c4532" stroke="#48bb78" stroke-width="1"/>
+  <text x="166" y="446" text-anchor="middle" class="sub-label">Chunking Strategy</text>
+  <text x="60" y="464" class="sub-text">• 800-word chunks, 100-word overlap</text>
+  <text x="60" y="480" class="sub-text">• Min 80-char filter per chunk</text>
+  <text x="60" y="496" class="sub-text">• ~2,970 base chunks total</text>
+  <text x="60" y="512" class="sub-text">• 33 dated sessions covered</text>
+
+  <!-- Right column -->
+  <rect x="316" y="428" width="260" height="96" rx="6" fill="#1c4532" stroke="#48bb78" stroke-width="1"/>
+  <text x="446" y="446" text-anchor="middle" class="sub-label">Vector Embedding</text>
+  <text x="336" y="464" class="sub-text">• 384-dim hash-derived vectors</text>
+  <text x="336" y="480" class="sub-text">• Domain term boosts (ruv, claude, etc.)</text>
+  <text x="336" y="496" class="sub-text">• Stored as ruvector(384) type</text>
+  <text x="336" y="512" class="sub-text">• HNSW indexed for fast retrieval</text>
+
+  <!-- DB tags right -->
+  <rect x="596" y="428" width="268" height="96" rx="6" fill="#1c4532" stroke="#48bb78" stroke-width="1"/>
+  <text x="730" y="446" text-anchor="middle" class="sub-label">DB Metadata</text>
+  <text x="612" y="464" class="tag-text">category = 'coaching'</text>
+  <text x="612" y="480" class="tag-text">knowledge_type = 'concept'</text>
+  <text x="612" y="496" class="tag-text">source_authority = 'expert-curated'</text>
+  <text x="612" y="512" class="tag-text">triage_tier = 'bronze'</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="540" x2="450" y2="562" class="arrow"/>
+
+  <!-- ═══ STAGE 3 ═══ -->
+  <rect x="20" y="562" width="860" height="220" rx="8" fill="url(#stage3-grad)" stroke="#9f7aea" stroke-width="1.5"/>
+  <rect x="20" y="562" width="8" height="220" rx="4" fill="#9f7aea"/>
+  <text x="44" y="584" class="stage-label">STAGE 3 — LLM ENRICHMENT</text>
+  <text x="44" y="600" class="body-text" fill="#d6bcfa">Groq API · llama-3.3-70b-versatile · Per session: 3 windows + summary</text>
+
+  <!-- 4 window boxes -->
+  <rect x="36" y="612" width="174" height="80" rx="6" fill="#3c1f7a" stroke="#9f7aea" stroke-width="1"/>
+  <text x="123" y="630" text-anchor="middle" class="sub-label">Window 1</text>
+  <text x="123" y="646" text-anchor="middle" class="sub-text">Start of session</text>
+  <text x="123" y="662" text-anchor="middle" class="sub-text">First 12K chars</text>
+  <text x="123" y="678" text-anchor="middle" class="sub-text">~6.5K tokens</text>
+
+  <rect x="228" y="612" width="174" height="80" rx="6" fill="#3c1f7a" stroke="#9f7aea" stroke-width="1"/>
+  <text x="315" y="630" text-anchor="middle" class="sub-label">Window 2</text>
+  <text x="315" y="646" text-anchor="middle" class="sub-text">Middle of session</text>
+  <text x="315" y="662" text-anchor="middle" class="sub-text">Mid 12K chars</text>
+  <text x="315" y="678" text-anchor="middle" class="sub-text">~6.5K tokens</text>
+
+  <rect x="420" y="612" width="174" height="80" rx="6" fill="#3c1f7a" stroke="#9f7aea" stroke-width="1"/>
+  <text x="507" y="630" text-anchor="middle" class="sub-label">Window 3</text>
+  <text x="507" y="646" text-anchor="middle" class="sub-text">End of session</text>
+  <text x="507" y="662" text-anchor="middle" class="sub-text">Last 12K chars</text>
+  <text x="507" y="678" text-anchor="middle" class="sub-text">~6.5K tokens</text>
+
+  <rect x="612" y="612" width="252" height="80" rx="6" fill="#2c1654" stroke="#d6bcfa" stroke-width="1.5"/>
+  <text x="738" y="630" text-anchor="middle" class="sub-label" fill="#d6bcfa">Session Summary</text>
+  <text x="738" y="646" text-anchor="middle" class="sub-text">3–4 paragraph technical doc</text>
+  <text x="738" y="662" text-anchor="middle" class="sub-text">knowledge_type = 'overview'</text>
+  <text x="738" y="678" text-anchor="middle" class="sub-text">quality_score = 92</text>
+
+  <!-- Merge arrow -->
+  <line x1="123" y1="692" x2="123" y2="710" stroke="#9f7aea" stroke-width="1.5" fill="none"/>
+  <line x1="315" y1="692" x2="315" y2="710" stroke="#9f7aea" stroke-width="1.5" fill="none"/>
+  <line x1="507" y1="692" x2="507" y2="710" stroke="#9f7aea" stroke-width="1.5" fill="none"/>
+  <line x1="123" y1="710" x2="507" y2="710" stroke="#9f7aea" stroke-width="1.5" fill="none"/>
+  <line x1="315" y1="710" x2="315" y2="726" stroke="#9f7aea" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <!-- Knowledge types output -->
+  <rect x="36" y="726" width="270" height="46" rx="4" fill="#2d1b69" stroke="#9f7aea" stroke-width="1"/>
+  <text x="46" y="742" class="sub-text">Extracted types: decision · procedure</text>
+  <text x="46" y="758" class="sub-text">pattern · concept · troubleshooting · benchmark</text>
+
+  <!-- Gold output badge -->
+  <rect x="336" y="726" width="356" height="46" rx="4" fill="#2d1b69" stroke="#f6e05e" stroke-width="1.5"/>
+  <text x="344" y="742" class="tag-text" fill="#f6e05e">triage_tier = 'gold'  ·  quality_score = 92–95</text>
+  <text x="344" y="758" class="tag-text" fill="#f6e05e">[DATE] prefix on all entries for recency awareness</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="782" x2="450" y2="804" class="arrow"/>
+
+  <!-- ═══ STAGE 4 ═══ -->
+  <rect x="20" y="804" width="860" height="370" rx="8" fill="url(#stage4-grad)" stroke="#ed8936" stroke-width="1.5"/>
+  <rect x="20" y="804" width="8" height="370" rx="4" fill="#ed8936"/>
+  <text x="44" y="826" class="stage-label">STAGE 4 — RAG RETRIEVAL PIPELINE</text>
+  <text x="44" y="842" class="body-text" fill="#fbd38d">AskRuvNet API · app.js · 8 stages</text>
+
+  <!-- Pipeline steps - left spine -->
+  <rect x="36" y="854" width="820" height="38" rx="5" fill="#2d1a00" stroke="#4a5568" stroke-width="1"/>
+  <text x="56" y="869" class="body-bold" fill="#fbd38d">Stage 1</text>
+  <text x="120" y="869" class="body-text">Query expansion — synonyms, intent detection, related terms</text>
+
+  <line x1="56" y1="892" x2="56" y2="902" stroke="#ed8936" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="36" y="902" width="820" height="38" rx="5" fill="#2d1a00" stroke="#4a5568" stroke-width="1"/>
+  <text x="56" y="917" class="body-bold" fill="#fbd38d">Stage 2</text>
+  <text x="120" y="917" class="body-text">Vector similarity search — ruvector HNSW index, &lt;=&gt; cosine operator</text>
+
+  <line x1="56" y1="940" x2="56" y2="950" stroke="#ed8936" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="36" y="950" width="820" height="38" rx="5" fill="#2d1a00" stroke="#4a5568" stroke-width="1"/>
+  <text x="56" y="965" class="body-bold" fill="#fbd38d">Stage 3</text>
+  <text x="120" y="965" class="body-text">Multi-hop retrieval — follow concept links to related knowledge</text>
+
+  <line x1="56" y1="988" x2="56" y2="998" stroke="#ed8936" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="36" y="998" width="820" height="38" rx="5" fill="#2d1a00" stroke="#4a5568" stroke-width="1"/>
+  <text x="56" y="1013" class="body-bold" fill="#fbd38d">Stage 4</text>
+  <text x="120" y="1013" class="body-text">Re-ranking — cross-encoder relevance scoring</text>
+
+  <line x1="56" y1="1036" x2="56" y2="1046" stroke="#ed8936" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <!-- Stage 4b RECENCY BOOST - highlighted -->
+  <rect x="36" y="1046" width="820" height="62" rx="5" fill="#3d2000" stroke="#f6ad55" stroke-width="2"/>
+  <rect x="36" y="1046" width="6" height="62" rx="3" fill="#f6ad55"/>
+  <text x="58" y="1064" class="body-bold" fill="#f6ad55">Stage 4b</text>
+  <text x="130" y="1064" class="body-bold" fill="#f6ad55">RECENCY BOOST</text>
+  <rect x="288" y="1050" width="46" height="16" rx="3" fill="#f6ad55"/>
+  <text x="311" y="1062" text-anchor="middle" class="new-badge" fill="#1a202c">NEW</text>
+  <text x="58" y="1082" class="body-text">coaching entries: +15% boost  ·  video entries: +10% boost</text>
+  <text x="58" y="1098" class="body-text">entries ≤ 60 days old: up to +25% freshness taper  ·  re-sorted by boosted score</text>
+
+  <line x1="56" y1="1108" x2="56" y2="1118" stroke="#ed8936" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="36" y="1118" width="820" height="30" rx="5" fill="#2d1a00" stroke="#4a5568" stroke-width="1"/>
+  <text x="56" y="1138" class="body-bold" fill="#fbd38d">Stage 5</text>
+  <text x="120" y="1138" class="body-text">Similarity threshold filter — remove low-relevance results</text>
+
+  <line x1="56" y1="1148" x2="56" y2="1158" stroke="#ed8936" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="36" y="1158" width="820" height="30" rx="5" fill="#2d1a00" stroke="#4a5568" stroke-width="1"/>
+  <text x="56" y="1178" class="body-bold" fill="#fbd38d">Stage 6</text>
+  <text x="120" y="1178" class="body-text">Source mapping — attach metadata, file paths, session dates</text>
+
+  <line x1="56" y1="1188" x2="56" y2="1198" stroke="#ed8936" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="36" y="1198" width="820" height="30" rx="5" fill="#2d1a00" stroke="#4a5568" stroke-width="1"/>
+  <text x="56" y="1218" class="body-bold" fill="#fbd38d">Stage 7</text>
+  <text x="120" y="1218" class="body-text">Diversity filter — avoid surfacing duplicate topics from different chunks</text>
+
+  <line x1="56" y1="1228" x2="56" y2="1238" stroke="#ed8936" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+
+  <rect x="36" y="1238" width="820" height="30" rx="5" fill="#2d1a00" stroke="#4a5568" stroke-width="1"/>
+  <text x="56" y="1258" class="body-bold" fill="#fbd38d">Stage 8</text>
+  <text x="120" y="1258" class="body-text">Context compression — fit retrieved context into LLM context window</text>
+
+  <line x1="450" y1="1268" x2="450" y2="1284" stroke="#ed8936" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+  <!-- Answer generation box -->
+  <rect x="200" y="1284" width="500" height="34" rx="6" fill="#2d3748" stroke="#63b3ed" stroke-width="1.5"/>
+  <text x="450" y="1305" text-anchor="middle" class="body-bold" fill="#63b3ed">Claude claude-sonnet-4-6 · Generates final answer</text>
+
+  <!-- Arrow down to stats -->
+  <line x1="450" y1="1174" x2="450" y2="1196" class="arrow"/>
+
+  <!-- ═══ KB STATS ═══ -->
+  <rect x="20" y="1344" width="860" height="216" rx="8" fill="url(#stats-grad)" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="450" y="1368" text-anchor="middle" class="stage-label" fill="#90cdf4">KNOWLEDGE BASE · CURRENT STATE</text>
+
+  <!-- Stat boxes -->
+  <rect x="36" y="1380" width="192" height="80" rx="6" fill="#1a2744" stroke="#4a90d9" stroke-width="1"/>
+  <text x="132" y="1408" text-anchor="middle" class="stat-num">55,000+</text>
+  <text x="132" y="1428" text-anchor="middle" class="stat-label">Total KB Entries</text>
+  <text x="132" y="1448" text-anchor="middle" class="stat-label">across all domains</text>
+
+  <rect x="248" y="1380" width="192" height="80" rx="6" fill="#1a2744" stroke="#48bb78" stroke-width="1"/>
+  <text x="344" y="1408" text-anchor="middle" class="stat-num" fill="#68d391">2,970</text>
+  <text x="344" y="1428" text-anchor="middle" class="stat-label">Coaching Base Chunks</text>
+  <text x="344" y="1448" text-anchor="middle" class="stat-label">triage: bronze/silver</text>
+
+  <rect x="460" y="1380" width="192" height="80" rx="6" fill="#1a2744" stroke="#f6e05e" stroke-width="1.5"/>
+  <text x="556" y="1408" text-anchor="middle" class="stat-num" fill="#f6e05e">64</text>
+  <text x="556" y="1428" text-anchor="middle" class="stat-label">Gold Enriched Entries</text>
+  <text x="556" y="1448" text-anchor="middle" class="stat-label">5 sessions · triage: gold</text>
+
+  <rect x="672" y="1380" width="192" height="80" rx="6" fill="#1a2744" stroke="#9f7aea" stroke-width="1"/>
+  <text x="768" y="1408" text-anchor="middle" class="stat-num" fill="#b794f4">33</text>
+  <text x="768" y="1428" text-anchor="middle" class="stat-label">Dated Sessions</text>
+  <text x="768" y="1448" text-anchor="middle" class="stat-label">Aug 2025 – Feb 2026</text>
+
+  <!-- Footer note -->
+  <rect x="36" y="1474" width="828" height="70" rx="6" fill="#0d1117" stroke="#2d3748" stroke-width="1"/>
+  <text x="450" y="1493" text-anchor="middle" class="body-bold" fill="#90cdf4">Recency Principle: The agentic AI tooling landscape changes weekly.</text>
+  <text x="450" y="1511" text-anchor="middle" class="body-text">Gold entries (LLM-enriched) take priority in search. Coaching sessions from the last 60 days receive up to +25% score boost.</text>
+  <text x="450" y="1529" text-anchor="middle" class="body-text">Most recent session indexed: 2026-02-06 · Finland AI-Native Government Transformation</text>
+</svg>

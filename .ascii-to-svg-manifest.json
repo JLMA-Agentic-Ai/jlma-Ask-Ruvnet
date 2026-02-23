@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "lastSync": "2026-02-23T12:45:00Z",
+  "diagrams": [
+    {
+      "id": "video-kb-architecture",
+      "sourceFile": "docs/video-kb-architecture.md",
+      "sourceLine": 11,
+      "svgFile": "docs/assets/diagrams/video-kb-architecture.svg",
+      "asciiHash": "sha256:video-kb-architecture-2026-02-23",
+      "lastConverted": "2026-02-23T12:45:00Z"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+name: Keep Alive - Prevent Render Cold Start
+
+# Pings the app every 14 minutes so Render never idles it down.
+# Render spins down free/starter instances after 15 minutes of inactivity.
+# This workflow runs in GitHub Actions (always on, free) and keeps the
+# container warm so users never hit a 60-120 second cold start wait.
+
+on:
+  schedule:
+    - cron: '*/14 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    name: Ping AskRuvNet
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      APP_URL: https://ask-ruvnet.onrender.com
+
+    steps:
+      - name: Ping health endpoint
+        run: |
+          echo "Pinging $APP_URL/health at $(date -u)"
+          STATUS=$(curl --silent --max-time 30 --write-out "%{http_code}" --output /dev/null "$APP_URL/health")
+          echo "Health status: $STATUS"
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 400 ]; then
+            echo "App is warm and responding"
+          else
+            echo "Warning: status $STATUS - app may be cold-starting or unhealthy"
+          fi
+
+      - name: Ping main page
+        run: |
+          STATUS=$(curl --silent --max-time 30 --write-out "%{http_code}" --output /dev/null "$APP_URL")
+          echo "Main page status: $STATUS"

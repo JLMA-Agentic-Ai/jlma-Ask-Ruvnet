@@ -38,6 +38,12 @@ const HeroSection = ({ onAction, knowledgeData }) => {
       <h1>Ask rUVnet</h1>
       <p className="hero-subtitle">{totalEntries}+ Knowledge Entries · {domainCount} Expert Domains · Intent-Aware AI</p>
 
+      <div className="hero-kb-features">
+        <span className="kb-feature-badge">🎬 Video Transcripts Indexed</span>
+        <span className="kb-feature-badge kb-feature-recency">⚡ Recency-Weighted · Recent = More Credible</span>
+        <span className="kb-feature-badge">🚀 Agentic AI updates fast — newest sources ranked highest</span>
+      </div>
+
       <div className="hero-grid">
         <button onClick={() => onAction('What is Claude-Flow V3 and what are its 60+ specialized agents?')} className="hero-card">
           <span className="icon">⚡</span>

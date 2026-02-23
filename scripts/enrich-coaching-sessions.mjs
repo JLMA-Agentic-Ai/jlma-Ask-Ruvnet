@@ -46,9 +46,71 @@ const pool = new Pool({
   host: 'localhost', port: 5435, user: 'postgres', database: 'postgres', max: 3
 });
 
-// ── Groq API call with rate-limit retry ─────────────────────────────────────
-async function callGroq(systemPrompt, userContent, maxTokens = GROQ_MAX_TOKENS, retries = 3) {
+// ── Proactive token budget tracker ──────────────────────────────────────────
+// Groq free tier: 12,000 TPM for llama-3.3-70b-versatile.
+// We track tokens used in a rolling 60-second window and pre-emptively wait
+// before each call so we never exceed the limit. No surprises, no hammering.
+const TOKEN_BUDGET_TPM = 11000; // Stay 8% under the 12K limit as a safety buffer
+const TOKEN_WINDOW_MS  = 62000; // Slightly over 60s to ensure the window fully resets
+
+class TokenBudget {
+  constructor() {
+    this._calls = []; // [{ ts, tokens }]
+    // Conservative startup pre-fill: assume we used most of the budget just now.
+    // This prevents the first call from firing before Groq's server-side window has
+    // had time to clear after a restart. waitForCapacity will hold ~32s on first call,
+    // but skips the wait entirely if the window has already been clear for a while.
+    this.record(Math.floor(TOKEN_BUDGET_TPM * 0.7));
+  }
+
+  // Remove calls older than the rolling window
+  _prune() {
+    const cutoff = Date.now() - TOKEN_WINDOW_MS;
+    this._calls = this._calls.filter(c => c.ts > cutoff);
+  }
+
+  // Tokens used in the current rolling window
+  used() { this._prune(); return this._calls.reduce((s, c) => s + c.tokens, 0); }
+
+  // Wait however long is needed so that adding `tokens` stays under TPM budget.
+  // Logs clearly so it's obvious we're planning ahead, not reacting to an error.
+  async waitForCapacity(tokens) {
+    while (true) {
+      this._prune();
+      const currentUsed = this.used();
+      if (currentUsed + tokens <= TOKEN_BUDGET_TPM) break;
+
+      // Find the oldest call in the window — once it expires, we'll have room
+      const oldest = this._calls[0];
+      const waitMs = oldest ? (oldest.ts + TOKEN_WINDOW_MS - Date.now() + 500) : 5000;
+      const waitSec = Math.ceil(waitMs / 1000);
+      console.log(`    ⏱  Pacing: used ${currentUsed}/${TOKEN_BUDGET_TPM} tokens in window, waiting ${waitSec}s to stay within limits...`);
+      await new Promise(r => setTimeout(r, Math.max(waitMs, 1000)));
+      this._prune();
+    }
+  }
+
+  // Record a completed call
+  record(tokens) { this._calls.push({ ts: Date.now(), tokens }); }
+}
+
+const budget = new TokenBudget();
+
+// Estimate tokens from text length (Groq uses cl100k-style tokeniser ~3.7 chars/token)
+function estimateTokens(systemPrompt, userContent, maxTokens) {
+  const inputTokens = Math.ceil((systemPrompt.length + userContent.length) / 3.7);
+  return inputTokens + maxTokens; // Worst-case total (actual output is usually less)
+}
+
+// ── Groq API call with proactive budget management + safety-net retry ────────
+async function callGroq(systemPrompt, userContent, maxTokens = GROQ_MAX_TOKENS, retries = 5) {
+  const estimatedTokens = estimateTokens(systemPrompt, userContent, maxTokens);
+
   for (let attempt = 0; attempt < retries; attempt++) {
+    // Pre-emptively wait BEFORE every attempt (including retries) so the budget
+    // is always checked fresh. First attempt benefits from this too.
+    await budget.waitForCapacity(estimatedTokens);
+
     try {
       const result = await new Promise((resolve, reject) => {
         const body = JSON.stringify({
@@ -76,31 +138,52 @@ async function callGroq(systemPrompt, userContent, maxTokens = GROQ_MAX_TOKENS, 
           res.on('end', () => {
             try {
               const j = JSON.parse(d);
-              if (j.error) reject(new Error('GROQ_ERROR:' + JSON.stringify(j.error)));
-              else resolve(j.choices[0].message.content);
+              if (j.error) {
+                if (j.error.code === 'rate_limit_exceeded' || j.error.type === 'tokens') {
+                  reject(new Error('RATE_LIMIT:' + JSON.stringify(j.error)));
+                } else {
+                  reject(new Error('GROQ_ERROR:' + JSON.stringify(j.error)));
+                }
+              } else {
+                // Use actual token count from Groq's response for precise future pacing
+                const actualTokens = j.usage?.total_tokens || estimatedTokens;
+                budget.record(actualTokens);
+                resolve(j.choices[0].message.content);
+              }
             } catch (e) { reject(new Error('Parse error: ' + d.substring(0, 200))); }
           });
         });
         req.on('error', reject);
-        req.setTimeout(60000, () => { req.destroy(); reject(new Error('Timeout')); });
+        req.setTimeout(90000, () => { req.destroy(); reject(new Error('Timeout')); });
         req.write(body);
         req.end();
       });
       return result;
+
     } catch (e) {
       const msg = e.message || '';
-      if (msg.includes('rate_limit') || msg.includes('Rate limit') || msg.includes('429')) {
-        // Extract retry-after time if available
-        const retryMs = msg.match(/try again in (\d+\.?\d*)s/) ? parseFloat(msg.match(/try again in (\d+\.?\d*)s/)[1]) * 1000 + 1000 : 30000;
-        console.log(`    ⏳ Rate limit hit, waiting ${Math.round(retryMs/1000)}s before retry...`);
-        await new Promise(r => setTimeout(r, retryMs));
+      if (msg.startsWith('RATE_LIMIT:') || msg.includes('rate_limit') || msg.includes('429')) {
+        // Parse Groq's suggested wait time, or fall back to full window reset
+        const suggested = msg.match(/try again in (\d+\.?\d*)s/);
+        const waitMs = suggested
+          ? parseFloat(suggested[1]) * 1000 + 3000  // Groq's suggestion + 3s buffer
+          : TOKEN_WINDOW_MS;                         // Full 62s window reset as fallback
+        // Log full Groq error for diagnosis
+        const rawDetail = msg.replace('RATE_LIMIT:', '').substring(0, 300);
+        console.log(`    ⚠  Rate limit hit (attempt ${attempt+1}/${retries}) — filling budget, waiting ${Math.round(waitMs/1000)}s...`);
+        console.log(`       Groq says: ${rawDetail}`);
+        // Fill the budget so waitForCapacity on the next iteration will pace correctly
+        const fill = Math.max(0, TOKEN_BUDGET_TPM - budget.used());
+        if (fill > 0) budget.record(fill + 500);
+        await new Promise(r => setTimeout(r, waitMs));
       } else if (attempt < retries - 1) {
-        await new Promise(r => setTimeout(r, 3000));
+        await new Promise(r => setTimeout(r, 4000 * (attempt + 1)));
       } else {
         throw e;
       }
     }
   }
+  throw new Error('callGroq: all retries exhausted');
 }
 
 // ── Hash-based embedding (same pattern as rest of codebase) ──────────────────
@@ -235,8 +318,7 @@ async function enrichSession(client, sessionDate, chunks) {
     } catch (e) {
       console.error(`  ✗ Window ${wi+1} extraction failed: ${e.message.substring(0,80)}`);
     }
-    // Respect TPM limit: ~8K tokens per window, 12K TPM limit = need ~40s between calls
-    if (wi < windows.length - 1) await new Promise(r => setTimeout(r, 8000));
+    // No fixed sleep needed — TokenBudget handles pacing proactively before each call
   }
 
   // Deduplicate by title similarity
@@ -390,11 +472,7 @@ async function main() {
       totalInserted += count;
       processed++;
       console.log(`  ✅ Session done: ${count} enriched entries inserted`);
-
-      // Rate limiting — Groq free tier is generous but be polite
-      if (processed < sessions.length) {
-        await new Promise(r => setTimeout(r, 2000));
-      }
+      // No fixed inter-session sleep — TokenBudget paces all calls automatically
     } catch (e) {
       console.error(`  ✗ Session failed: ${e.message}`);
     }
