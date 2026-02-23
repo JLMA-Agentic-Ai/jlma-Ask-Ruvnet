@@ -599,7 +599,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                           {msg.role === 'assistant' ? <img src="/assets/Ruv prompt.png" alt="Ruv" className="avatar-img" /> : '👤'}
                         </div>
                         <div className="content">
-                          <ReactMarkdown className="markdown-content" remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
+                          <div className="markdown-content"><ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown></div>
                           {msg.role === 'assistant' && !msg.canvasGenerated && (
                             <div className="message-actions">
                               <button className="action-btn" onClick={() => handleSpecialAction('simplify', msg.content)}>🔄 Simplify</button>
@@ -700,7 +700,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                         style={{ width: '100%', height: 'calc(100vh - 80px)', border: 'none', borderRadius: '8px' }}
                       />
                     ) : (
-                      <ReactMarkdown className="canvas-markdown" remarkPlugins={[remarkGfm]}>{canvasContent.content}</ReactMarkdown>
+                      <div className="canvas-markdown"><ReactMarkdown remarkPlugins={[remarkGfm]}>{canvasContent.content}</ReactMarkdown></div>
                     )}
                   </>
                 )}
