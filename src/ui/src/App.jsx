@@ -70,6 +70,13 @@ const HeroSection = ({ onAction, knowledgeData }) => {
       <div className="hero-resources">
         <h3>📚 Quick Start Resources</h3>
         <div className="resource-links">
+          <a href="https://www.linkedin.com/in/reuvencohen/" target="_blank" rel="noopener noreferrer" className="resource-link linkedin-link">
+            <div className="resource-thumbnail">💼</div>
+            <div className="resource-info">
+              <span className="resource-title">Reuven Cohen · rUv</span>
+              <span className="resource-type">LinkedIn · Creator of RuvNet</span>
+            </div>
+          </a>
           <a href="https://notebooklm.google.com/notebook/d3dc2e7a-5fb3-405d-87e5-fa98de971a1a" target="_blank" rel="noopener noreferrer" className="resource-link notebooklm-link">
             <div className="resource-thumbnail">🎧</div>
             <div className="resource-info">
