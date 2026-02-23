@@ -68,7 +68,7 @@ const HeroSection = ({ onAction }) => (
             <div className="resource-thumbnail">📦</div>
             <div className="resource-info">
               <span className="resource-title">Claude-Flow V3 GitHub</span>
-              <span className="resource-type">v3.0.0-alpha.118 · Source & Docs</span>
+              <span className="resource-type">v3.1.0-alpha.44 · Source & Docs</span>
             </div>
           </a>
           <a href="https://github.com/ruvnet/agentic-flow" target="_blank" rel="noopener noreferrer" className="resource-link github-link">

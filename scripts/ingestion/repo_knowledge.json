@@ -1,11 +1,11 @@
 [
     {
         "name": "Ask-Ruvnet",
-        "version": "2.0.0",
-        "version_latest": "2.0.0",
+        "version": "2.1.1",
+        "version_latest": "2.1.1",
         "version_alpha": null,
         "branch": "main",
-        "last_update": "2026-02-19T00:00:00Z",
+        "last_update": "2026-02-23T00:00:00Z",
         "status": "ACTIVE",
         "description": "Production AI Knowledge Assistant - PostgreSQL KB (54K+ Entries), Intent-Aware RAG",
         "npm": null,
@@ -13,9 +13,9 @@
     },
     {
         "name": "claude-flow",
-        "version": "3.0.0-alpha.118",
-        "version_latest": "3.0.0-alpha.118",
-        "version_alpha": "3.0.0-alpha.118",
+        "version": "3.1.0-alpha.44",
+        "version_latest": "3.1.0-alpha.44",
+        "version_alpha": "3.1.0-alpha.44",
         "branch": "main",
         "last_update": "2026-01-15T15:51:00Z",
         "status": "PRODUCTION",
@@ -50,8 +50,8 @@
     },
     {
         "name": "ruvllm",
-        "version": "2.4.1",
-        "version_latest": "2.4.1",
+        "version": "2.5.1",
+        "version_latest": "2.5.1",
         "version_alpha": null,
         "branch": "main",
         "last_update": "2026-02-19T00:00:00Z",
