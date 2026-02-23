@@ -18,6 +18,39 @@ require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 // Version from single source of truth (package.json)
 const { version: APP_VERSION } = require('../../package.json');
 
+// ============================================================================
+// Live npm version cache (refreshes every hour)
+// ============================================================================
+const NPM_PACKAGES = {
+    'claude-flow':    '@claude-flow/cli',
+    'agentic-flow':   'agentic-flow',
+    'ruvector':       'ruvector',
+    'ruvllm':         '@ruvector/ruvllm',
+    'ruv-swarm':      'ruv-swarm',
+    'agentic-synth':  '@ruvector/agentic-synth',
+};
+let npmVersionCache = {};
+let npmCacheExpiry = 0;
+
+async function refreshNpmVersions() {
+    const now = Date.now();
+    if (now < npmCacheExpiry) return npmVersionCache;
+    const results = {};
+    await Promise.all(Object.entries(NPM_PACKAGES).map(async ([repoName, pkg]) => {
+        try {
+            const res = await fetch(`https://registry.npmjs.org/${encodeURIComponent(pkg)}/latest`, { signal: AbortSignal.timeout(5000) });
+            if (res.ok) {
+                const d = await res.json();
+                results[repoName] = d.version;
+            }
+        } catch (_) {}
+    }));
+    npmVersionCache = results;
+    npmCacheExpiry = now + 3600_000; // 1 hour
+    console.log('📦 npm versions refreshed:', results);
+    return results;
+}
+
 // Initialize OpenAI client for special endpoints (if API key available)
 let openai = null;
 if (process.env.OPENAI_API_KEY) {
@@ -765,6 +798,18 @@ app.get('/api/knowledge', async (req, res) => {
         const dateB = new Date(b.last_update || 0);
         return dateB - dateA;
     });
+
+    // Enrich with live npm versions (non-blocking, cached)
+    try {
+        const liveVersions = await refreshNpmVersions();
+        knowledge.repos = knowledge.repos.map(repo => {
+            const live = liveVersions[repo.name];
+            if (live) {
+                return { ...repo, version: live, version_latest: live, version_alpha: live.includes('alpha') ? live : repo.version_alpha };
+            }
+            return repo;
+        });
+    } catch (_) {}
 
     // Add version status indicator to each repo
     knowledge.repos = knowledge.repos.map(repo => ({

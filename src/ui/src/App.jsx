@@ -24,12 +24,19 @@ const SidebarSection = ({ title, children, defaultOpen = false }) => {
 };
 
 // Hero Section Component
-const HeroSection = ({ onAction }) => (
+const HeroSection = ({ onAction, knowledgeData }) => {
+  const getVer = (name) => knowledgeData?.repos?.find(r => r.name === name)?.version;
+  const cfVer  = getVer('claude-flow')   || '3.1.0-alpha.44';
+  const afVer  = getVer('agentic-flow')  || '2.0.7';
+  const rvVer  = getVer('ruvector')      || '0.1.99';
+  const totalEntries = (knowledgeData?.kb_total_entries || knowledgeData?.kb_stats?.total || 54543).toLocaleString();
+  const domainCount  = Object.keys(knowledgeData?.kb_stats?.domains || {}).length || 4;
+  return (
   <div className="hero-section">
     <div className="hero-content">
       <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo" />
       <h1>Ask rUVnet</h1>
-      <p className="hero-subtitle">54K+ Knowledge Entries · 4 Expert Domains · Intent-Aware AI</p>
+      <p className="hero-subtitle">{totalEntries}+ Knowledge Entries · {domainCount} Expert Domains · Intent-Aware AI</p>
 
       <div className="hero-grid">
         <button onClick={() => onAction('What is Claude-Flow V3 and what are its 60+ specialized agents?')} className="hero-card">
@@ -68,21 +75,21 @@ const HeroSection = ({ onAction }) => (
             <div className="resource-thumbnail">📦</div>
             <div className="resource-info">
               <span className="resource-title">Claude-Flow V3 GitHub</span>
-              <span className="resource-type">v3.1.0-alpha.44 · Source & Docs</span>
+              <span className="resource-type">v{cfVer} · Source & Docs</span>
             </div>
           </a>
           <a href="https://github.com/ruvnet/agentic-flow" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
             <div className="resource-thumbnail">🌊</div>
             <div className="resource-info">
               <span className="resource-title">Agentic Flow</span>
-              <span className="resource-type">v2.0.7 · HybridReasoningBank</span>
+              <span className="resource-type">v{afVer} · HybridReasoningBank</span>
             </div>
           </a>
           <a href="https://github.com/ruvnet/ruvector" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
             <div className="resource-thumbnail">🔍</div>
             <div className="resource-info">
               <span className="resource-title">RuVector DB</span>
-              <span className="resource-type">v0.1.99 · PostgreSQL Vector Extension</span>
+              <span className="resource-type">v{rvVer} · PostgreSQL Vector Extension</span>
             </div>
           </a>
         </div>
@@ -115,11 +122,19 @@ const HeroSection = ({ onAction }) => (
               <span className="resource-type">Social Media KB</span>
             </div>
           </button>
+          <button onClick={() => onAction('VIEW_VIDEO:The_Agentic_Stack.mp4')} className="resource-link">
+            <div className="resource-thumbnail">🎬</div>
+            <div className="resource-info">
+              <span className="resource-title">The Agentic Stack</span>
+              <span className="resource-type">Video Overview · Watch Now</span>
+            </div>
+          </button>
         </div>
       </div>
     </div>
   </div>
-);
+  );
+};
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -132,6 +147,15 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [file, setFile] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [knowledgeData, setKnowledgeData] = useState(null);
+
+  // Fetch live knowledge data (versions, stats) on mount
+  useEffect(() => {
+    fetch('/api/knowledge')
+      .then(r => r.json())
+      .then(data => setKnowledgeData(data))
+      .catch(() => {});
+  }, []);
 
   const messagesEndRef = useRef(null);
   const lastMessageRef = useRef(null);
@@ -590,7 +614,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
 
               <div className="chat-container">
                 {messages.length === 0 ? (
-                  <HeroSection onAction={(prompt) => handleSubmit(null, prompt)} />
+                  <HeroSection onAction={(prompt) => handleSubmit(null, prompt)} knowledgeData={knowledgeData} />
                 ) : (
                   <>
                     {messages.map((msg, idx) => (
