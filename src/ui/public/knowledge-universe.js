@@ -388,8 +388,8 @@
                 ]
             },
             {
-                id: "video", name: "Video Knowledge", color: "#ec4899", count: 50,
-                description: "Conference talks, demos, deep dives, and recorded sessions covering Claude Flow, RuVector, agentic AI, and architecture.",
+                id: "video", name: "Video Knowledge", color: "#ec4899", count: 70,
+                description: "Conference talks, demos, deep dives, and 20 watchable live sessions from the Agentics Foundation — all indexed in RuVector with summaries and key topics.",
                 children: [
                     {
                         id: "v-cf3", name: "Claude Flow V3 Series", color: "#ec4899", count: 7,
@@ -475,6 +475,32 @@
                             { id: "v-e-18", name: "Cost Optimization for AI Teams", color: "#831843", description: "Reducing AI costs: model selection, caching, batch processing, prompt optimization, and when to use local vs cloud.", tags: ["video","cost","optimization"] },
                             { id: "v-e-19", name: "Real-Time AI Applications", color: "#831843", description: "Building real-time AI: streaming responses, WebSocket integration, server-sent events, and sub-100ms response targets.", tags: ["video","realtime","streaming"] },
                             { id: "v-e-20", name: "Future of Agentic AI", color: "#831843", description: "Panel discussion: where agentic AI is heading. Self-improving agents, cross-organization swarms, and the path to AGI.", tags: ["video","future","panel"] }
+                        ]
+                    },
+                    {
+                        id: "v-live", name: "Live Sessions — Watch Now", color: "#f43f5e", count: 20,
+                        description: "20 recorded Agentics Foundation sessions — all watchable directly on video.agentics.org. Summaries and key topics are fully indexed in RuVector.",
+                        children: [
+                            { id: "vl-1",  name: "Building Agentic Systems at Scale",         color: "#f43f5e", date: "2026-01-16", duration: "1h 51m", videoUrl: "https://video.agentics.org/media/t/1_s07kapkb", description: "Architecture, security, and real-world implementation of agentic systems at scale. ADRs, the Rue Optimizer, Fox Flow database, and the complete agentic infrastructure stack.", tags: ["video","agentic","scale","architecture"] },
+                            { id: "vl-2",  name: "Claude-flow v3 Release",                    color: "#f43f5e", date: "2026-01-16", duration: "1h 49m", videoUrl: "https://video.agentics.org/media/t/1_xlre6ukc", description: "Revolutionary release hitting 500K+ downloads. Covers hive-mind intelligence, self-learning hooks, HNSW memory, security architecture, and the complete V3 ecosystem.", tags: ["video","claude-flow","v3","release"] },
+                            { id: "vl-3",  name: "Building Agentic Systems: Topologies",     color: "#f43f5e", date: "2026-01-23", duration: "2h 1m",  videoUrl: "https://video.agentics.org/media/t/1_8afwqubg", description: "Network topologies for agent coordination, the Voyager skills aggregation system, and AI infrastructure patterns for production deployments.", tags: ["video","topologies","skills","infrastructure"] },
+                            { id: "vl-4",  name: "Agentix Foundation Community",              color: "#f43f5e", date: "2026-01-29", duration: "1h 5m",  videoUrl: "https://video.agentics.org/media/t/1_33xvl0xn", description: "Building a global community for agentic AI development. Governance models, open-source contribution at scale, and the Agentix Foundation mission.", tags: ["video","community","agentix"] },
+                            { id: "vl-5",  name: "London Meetup: Sheet Music to Semantics",  color: "#f43f5e", date: "2026-01-28", duration: "1h 14m", videoUrl: "https://video.agentics.org/media/t/1_rozlzilu", description: "AI-powered content creation from structured data. Semantic graphs, content discovery, and building intelligent media applications.", tags: ["video","london","content","semantics"] },
+                            { id: "vl-6",  name: "Claude-Flow V3: Hive-Mind Intelligence",   color: "#f43f5e", date: "2026-01-?", duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_nvkgdvm8", description: "Deep dive into hive-mind consensus architecture: Byzantine fault tolerance, how agents achieve distributed agreement, and collective intelligence patterns.", tags: ["video","claude-flow","hive-mind","consensus"] },
+                            { id: "vl-7",  name: "Claude Flow V3: Self-Learning Vectors",    color: "#f43f5e", date: "2026-01-?", duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_392oe5oa", description: "Self-learning with vector systems: HNSW pattern memory, neural training from task outcomes, and knowledge distillation in Claude Flow V3.", tags: ["video","claude-flow","v3","learning","vectors"] },
+                            { id: "vl-8",  name: "CloudFlow V3: Future of AI Dev",           color: "#f43f5e", date: "2026-01-?", duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_oowknql6", description: "Building the future of AI development with Claude Flow V3 and agentic systems. Live coding, demonstrations, and Q&A.", tags: ["video","claude-flow","v3","agentic"] },
+                            { id: "vl-9",  name: "AI Hackerspace Live — Nov 7",              color: "#f43f5e", date: "2025-11-14", duration: "1h 32m", videoUrl: "https://video.agentics.org/media/t/1_04q83xk2", description: "November AI Hackerspace session. Community projects, live demonstrations, agent experiments, and open Q&A.", tags: ["video","hackerspace","community","live"] },
+                            { id: "vl-10", name: "Global AI Hackathon",                      color: "#f43f5e", date: "2025-12-06", duration: "5h",     videoUrl: "https://video.agentics.org/media/t/1_x6y3m453", description: "5-hour hackathon building AI-powered media discovery and smart TV integration. Root Vector, content silos, and streaming discovery.", tags: ["video","hackathon","media","smart-tv"] },
+                            { id: "vl-11", name: "Agentic AI Revolution",                    color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_dpwbbr66", description: "Keynote on the shift from passive AI to fully autonomous agentic systems. Building autonomous intelligent systems for real-world impact.", tags: ["video","agentic","revolution","keynote"] },
+                            { id: "vl-12", name: "Building the Prime Radiant",               color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_dxehuvpf", description: "How to build the Prime Radiant coherence engine for AI anti-hallucination. Sheaf Laplacian math, contradiction detection, and cryptographic proof chains.", tags: ["video","prime-radiant","anti-hallucination","coherence"] },
+                            { id: "vl-13", name: "From Concept to Code with Claude AI",      color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_hpe5jw3w", description: "How Claude AI and agentic systems are reshaping software development. Vibe coding, rapid prototyping, and AI-assisted development workflows.", tags: ["video","claude","vibe-coding","development"] },
+                            { id: "vl-14", name: "Building Agentic AI Solutions",            color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_rtjw6iv4", description: "Claude Flow, Anti-Gravity, and real-world agentic applications. Practical patterns for production agent systems.", tags: ["video","agentic","solutions","practical"] },
+                            { id: "vl-15", name: "Devoxx BE: Rise of AI Agents",             color: "#f43f5e", date: "2025-10-17", duration: "5m",    videoUrl: "https://video.agentics.org/media/t/1_b72cmcnd", description: "Conference talk at Devoxx Belgium on the rise of AI agents. Concise overview of the agentic shift for software developers.", tags: ["video","devoxx","conference","agents"] },
+                            { id: "vl-16", name: "Root Vector: World's Fastest AI Search",  color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_prlsngek", description: "Deep dive on Root Vector: building the world's fastest AI search system. HNSW architecture, Graph Neural Networks, and benchmark methodology.", tags: ["video","root-vector","search","performance"] },
+                            { id: "vl-17", name: "Finland: AI-Native Government",           color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_2156iluo", description: "Case study on Finland's AI-native government transformation. How agentic AI is reshaping public services and citizen engagement at national scale.", tags: ["video","finland","government","ai-native"] },
+                            { id: "vl-18", name: "Breaking Down Content Silos: Hackathon",  color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_ay4ozec9", description: "72-hour hackathon to unify streaming content discovery. Breaking down silos between Netflix, Spotify, YouTube using semantic graphs.", tags: ["video","hackathon","content","streaming"] },
+                            { id: "vl-19", name: "From Hackathon to Market",                 color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_3c70sv2p", description: "Taking AI-powered media discovery from hackathon prototype to market-ready product. Scaling, validation, and go-to-market strategy.", tags: ["video","hackathon","media","startup"] },
+                            { id: "vl-20", name: "OS-Level Automation and Agentic AI",      color: "#f43f5e", date: "2025-?",    duration: "—",      videoUrl: "https://video.agentics.org/media/t/1_40wp4k60", description: "Building the future of computer use through OS-level automation. Agentic systems that control applications, automate workflows, and adapt to user behavior.", tags: ["video","os-automation","computer-use","agentic"] }
                         ]
                     }
                 ]
@@ -1148,6 +1174,39 @@
             p.textContent = node.description;
             detail.appendChild(p);
             content.appendChild(detail);
+        }
+
+        // Watch button for video nodes with a real URL
+        if (node.videoUrl) {
+            // Video meta (date + duration)
+            if (node.date || node.duration) {
+                const meta = document.createElement('div');
+                meta.className = 'video-meta';
+                if (node.date) {
+                    const d = document.createElement('span');
+                    d.textContent = '\uD83D\uDCC5 ' + node.date;
+                    meta.appendChild(d);
+                }
+                if (node.duration) {
+                    const t = document.createElement('span');
+                    t.textContent = '\u23F1 ' + node.duration;
+                    meta.appendChild(t);
+                }
+                content.appendChild(meta);
+            }
+            const watchBtn = document.createElement('a');
+            watchBtn.className = 'watch-btn';
+            watchBtn.href = node.videoUrl;
+            watchBtn.target = '_blank';
+            watchBtn.rel = 'noopener noreferrer';
+            const playIcon = document.createElement('span');
+            playIcon.className = 'play-icon';
+            playIcon.textContent = '\u25B6';
+            const btnText = document.createElement('span');
+            btnText.textContent = 'Watch on Agentics Foundation';
+            watchBtn.appendChild(playIcon);
+            watchBtn.appendChild(btnText);
+            content.appendChild(watchBtn);
         }
     }
 
