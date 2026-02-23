@@ -383,10 +383,52 @@ app.post('/api/chat', async (req, res) => {
                 console.log(`📊 Re-ranked to ${rerankedResults.length} results`);
 
                 // ================================================================
+                // STAGE 4b: Recency boost — coaching & video entries are our
+                // freshest knowledge (Oct 2025 – Jan 2026 sessions). Boost their
+                // scores so they surface ahead of older generic docs.
+                // ================================================================
+                const NOW_MS = Date.now();
+                const RECENCY_BOOST_MAX = 0.25; // up to +25% score boost
+                const applyRecencyBoost = (r) => {
+                    const src = (r.source || r.metadata?.source || '').toLowerCase();
+                    const isCoaching = src.includes('/coaching') || src.includes('coaching');
+                    const isVideo = src.includes('/videos') || src.includes('video');
+                    // Check if a date string is embedded in the source or metadata
+                    const rawDate = r.metadata?.package_version || r.metadata?.session_date || r.timestamp || null;
+                    let ageDays = null;
+                    if (rawDate) {
+                        const parsed = Date.parse(String(rawDate));
+                        if (!isNaN(parsed)) {
+                            ageDays = (NOW_MS - parsed) / (24 * 60 * 60 * 1000);
+                        }
+                    }
+                    let boost = 0;
+                    if (ageDays !== null) {
+                        // Linear taper: entries <60 days old get full boost, older get less
+                        const freshness = Math.max(0, 1 - ageDays / 60);
+                        boost = RECENCY_BOOST_MAX * freshness;
+                    } else if (isCoaching) {
+                        // No date available but category is coaching — apply flat 15% boost
+                        boost = 0.15;
+                    } else if (isVideo) {
+                        boost = 0.10;
+                    }
+                    if (boost > 0) {
+                        const base = r.rerankedScore || r.score || 0;
+                        r.rerankedScore = Math.min(1.0, base + base * boost);
+                    }
+                    return r;
+                };
+                const boostedResults = rerankedResults.map(applyRecencyBoost);
+                // Re-sort after boost so higher-scored recent entries bubble up
+                boostedResults.sort((a, b) => (b.rerankedScore || b.score || 0) - (a.rerankedScore || a.score || 0));
+                console.log(`📅 Recency boost applied to ${boostedResults.filter(r => (r.source || '').includes('coaching') || (r.source || '').includes('video')).length} coaching/video results`);
+
+                // ================================================================
                 // STAGE 5: Apply similarity threshold
                 // ================================================================
                 const SIMILARITY_THRESHOLD = 0.15; // Lower threshold since re-ranker normalizes scores
-                const filteredResults = rerankedResults.filter(r => (r.rerankedScore || r.score || 0) >= SIMILARITY_THRESHOLD);
+                const filteredResults = boostedResults.filter(r => (r.rerankedScore || r.score || 0) >= SIMILARITY_THRESHOLD);
                 console.log(`After threshold filter (>=${SIMILARITY_THRESHOLD}): ${filteredResults.length} results`);
 
                 // ================================================================
