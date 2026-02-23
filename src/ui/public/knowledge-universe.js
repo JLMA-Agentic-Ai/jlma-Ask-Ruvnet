@@ -479,7 +479,7 @@
                     },
                     {
                         id: "v-live", name: "Live Sessions — Watch Now", color: "#f43f5e", count: 20,
-                        description: "20 recorded Agentics Foundation sessions — all watchable directly on video.agentics.org. Summaries and key topics are fully indexed in RuVector.",
+                        description: "20 recorded Agentics Foundation sessions — all watchable on video.agentics.org. Every session has been fully ingested into RuVector: session summaries, key topics, speaker insights, code examples, and screenshots captured. Ask anything about these sessions and get answers grounded in the actual content.",
                         children: [
                             { id: "vl-1",  name: "Building Agentic Systems at Scale",         color: "#f43f5e", date: "2026-01-16", duration: "1h 51m", videoUrl: "https://video.agentics.org/media/t/1_s07kapkb", description: "Architecture, security, and real-world implementation of agentic systems at scale. ADRs, the Rue Optimizer, Fox Flow database, and the complete agentic infrastructure stack.", tags: ["video","agentic","scale","architecture"] },
                             { id: "vl-2",  name: "Claude-flow v3 Release",                    color: "#f43f5e", date: "2026-01-16", duration: "1h 49m", videoUrl: "https://video.agentics.org/media/t/1_xlre6ukc", description: "Revolutionary release hitting 500K+ downloads. Covers hive-mind intelligence, self-learning hooks, HNSW memory, security architecture, and the complete V3 ecosystem.", tags: ["video","claude-flow","v3","release"] },
@@ -1111,6 +1111,19 @@
         desc.id = 'info-desc';
         desc.textContent = node.description || '';
         content.appendChild(desc);
+
+        // Knowledge indexed banner for watchable video sessions
+        if (node.videoUrl) {
+            const indexedBanner = document.createElement('div');
+            indexedBanner.style.cssText = 'display:flex;align-items:center;gap:8px;padding:8px 12px;margin:8px 0;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:8px;font-size:0.78em;color:#34d399;';
+            const dot = document.createElement('span');
+            dot.style.cssText = 'width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 6px #10b981;flex-shrink:0;';
+            const label = document.createElement('span');
+            label.textContent = 'Knowledge indexed in RuVector \u2014 full session summary, key topics & transcripts captured';
+            indexedBanner.appendChild(dot);
+            indexedBanner.appendChild(label);
+            content.appendChild(indexedBanner);
+        }
 
         // Tags
         if (node.tags && node.tags.length > 0) {
