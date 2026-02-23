@@ -74,8 +74,7 @@ function registerProviders() {
         { name: 'groq-free',  key: process.env.GROQ_API_KEY,       url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile' },
         { name: 'groq-paid',  key: process.env.GROQ_PAID_API_KEY,  url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_PAID_MODEL || process.env.GROQ_MODEL || 'llama-3.3-70b-versatile' },
         { name: 'openai',     key: process.env.OPENAI_API_KEY,     url: 'https://api.openai.com/v1/chat/completions',         model: process.env.OPENAI_MODEL || 'gpt-4o' },
-        { name: 'anthropic',  key: process.env.CLAUDE_API_KEY,     url: null, /* uses native SDK format */                     model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514' },
-        { name: 'together',   key: process.env.TOGETHER_API_KEY,   url: 'https://api.together.xyz/v1/chat/completions',       model: process.env.TOGETHER_MODEL || 'meta-llama/Llama-3.3-70B-Instruct-Turbo' },
+        { name: 'anthropic',  key: process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY, url: null, /* uses native SDK format */ model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514' },
         { name: 'openrouter', key: process.env.OPENROUTER_API_KEY, url: 'https://openrouter.ai/api/v1/chat/completions',      model: process.env.OPENROUTER_MODEL || 'anthropic/claude-sonnet-4' },
         { name: 'deepseek',   key: process.env.DEEPSEEK_API_KEY,   url: 'https://api.deepseek.com/v1/chat/completions',       model: process.env.DEEPSEEK_MODEL || 'deepseek-chat' },
     ];
