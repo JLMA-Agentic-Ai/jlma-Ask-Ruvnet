@@ -23,20 +23,42 @@ const SidebarSection = ({ title, children, defaultOpen = false }) => {
   );
 };
 
+// Helper: relative time string
+const timeAgo = (dateStr) => {
+  if (!dateStr) return '';
+  const now = new Date();
+  const then = new Date(dateStr);
+  const diffMs = now - then;
+  const diffDays = Math.floor(diffMs / 86400000);
+  if (diffDays < 1) return 'today';
+  if (diffDays === 1) return '1d ago';
+  if (diffDays < 30) return `${diffDays}d ago`;
+  const diffMonths = Math.floor(diffDays / 30);
+  if (diffMonths < 12) return `${diffMonths}mo ago`;
+  return `${Math.floor(diffMonths / 12)}y ago`;
+};
+
 // Hero Section Component
-const HeroSection = ({ onAction, knowledgeData }) => {
+const HeroSection = ({ onAction, knowledgeData, latestRepos, ecosystemStats }) => {
   const getVer = (name) => knowledgeData?.repos?.find(r => r.name === name)?.version;
   const cfVer  = getVer('claude-flow')   || '3.1.0-alpha.44';
-  const afVer  = getVer('agentic-flow')  || '2.0.7';
-  const rvVer  = getVer('ruvector')      || '0.1.99';
   const totalEntries = (knowledgeData?.kb_total_entries || knowledgeData?.kb_stats?.total || 54543).toLocaleString();
-  const domainCount  = Object.keys(knowledgeData?.kb_stats?.domains || {}).length || 2;
   return (
   <div className="hero-section">
     <div className="hero-content">
-      <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo" />
-      <h1>Ask rUVnet</h1>
-      <p className="hero-subtitle">{totalEntries}+ Knowledge Entries · {domainCount} Expert Domains · Intent-Aware AI</p>
+      {/* Value Proposition Banner */}
+      <div className="value-prop-banner">
+        <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo" />
+        <h1>Ask rUVnet</h1>
+        <p className="value-prop-headline">The most complete agentic AI development stack</p>
+        <div className="value-prop-stats">
+          <span className="value-prop-stat"><span className="stat-number">{ecosystemStats?.totalRepos || 145}+</span> Repos</span>
+          <span className="value-prop-divider">|</span>
+          <span className="value-prop-stat"><span className="stat-number">{totalEntries}+</span> KB Entries</span>
+          <span className="value-prop-divider">|</span>
+          <span className="value-prop-stat">Updated Daily</span>
+        </div>
+      </div>
 
       <div className="hero-kb-features">
         <span className="kb-feature-badge">🎬 Video Transcripts Indexed</span>
@@ -63,6 +85,59 @@ const HeroSection = ({ onAction, knowledgeData }) => {
         </button>
       </div>
 
+      {/* Latest from rUv */}
+      {latestRepos && latestRepos.length > 0 && (
+        <div className="latest-repos">
+          <div className="latest-repos-header">
+            <h3>Latest from rUv</h3>
+          </div>
+          <div className="latest-repos-scroll">
+            {latestRepos.slice(0, 5).map((repo) => (
+              <a
+                key={repo.name}
+                href={`https://github.com/ruvnet/${repo.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="repo-card"
+              >
+                <div className="repo-card-header">{repo.name}</div>
+                <div className="repo-card-desc">
+                  {repo.description || 'No description'}
+                </div>
+                <div className="repo-card-meta">
+                  <span className="repo-card-entries">{(repo.entryCount || 0).toLocaleString()} entries</span>
+                  {repo.lastUpdated && <span className="repo-card-time">{timeAgo(repo.lastUpdated)}</span>}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Why rUv's Approach is Different */}
+      <div className="differentiators">
+        <div className="diff-card">
+          <span className="diff-icon">🧠</span>
+          <div className="diff-title">Self-Learning Systems</div>
+          <div className="diff-desc">Every tool improves with use. SONA, EWC++, GNN-enhanced HNSW.</div>
+        </div>
+        <div className="diff-card">
+          <span className="diff-icon">🏗️</span>
+          <div className="diff-title">Full Stack, One Vision</div>
+          <div className="diff-desc">Vector DB to agent orchestration to autonomous businesses.</div>
+        </div>
+        <div className="diff-card">
+          <span className="diff-icon">⚙️</span>
+          <div className="diff-title">Rust + WASM Everywhere</div>
+          <div className="diff-desc">Browser, edge, server from one codebase. &lt;400KB.</div>
+        </div>
+        <div className="diff-card">
+          <span className="diff-icon">🔓</span>
+          <div className="diff-title">Open Source Innovation</div>
+          <div className="diff-desc">Original Rust implementations, not API wrappers.</div>
+        </div>
+      </div>
+
       <div className="hero-resources">
         <h3>📚 Quick Start Resources</h3>
         <div className="resource-links">
@@ -87,57 +162,6 @@ const HeroSection = ({ onAction, knowledgeData }) => {
               <span className="resource-type">v{cfVer} · Source & Docs</span>
             </div>
           </a>
-          <a href="https://github.com/ruvnet/agentic-flow" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
-            <div className="resource-thumbnail">🌊</div>
-            <div className="resource-info">
-              <span className="resource-title">Agentic Flow</span>
-              <span className="resource-type">v{afVer} · HybridReasoningBank</span>
-            </div>
-          </a>
-          <a href="https://github.com/ruvnet/ruvector" target="_blank" rel="noopener noreferrer" className="resource-link github-link">
-            <div className="resource-thumbnail">🔍</div>
-            <div className="resource-info">
-              <span className="resource-title">RuVector DB</span>
-              <span className="resource-type">v{rvVer} · PostgreSQL Vector Extension</span>
-            </div>
-          </a>
-        </div>
-        <div className="resource-links" style={{ marginTop: '0.5rem' }}>
-          <button onClick={() => onAction('VIEW_PDF:Agentic_Engineering_Stack.pdf')} className="resource-link">
-            <div className="resource-thumbnail">📊</div>
-            <div className="resource-info">
-              <span className="resource-title">Agentic Engineering Stack</span>
-              <span className="resource-type">PDF Guide</span>
-            </div>
-          </button>
-          <button onClick={() => onAction('VIEW_PDF:Agentic_Intelligence_Frameworks.pdf')} className="resource-link">
-            <div className="resource-thumbnail">🧠</div>
-            <div className="resource-info">
-              <span className="resource-title">Intelligence Frameworks</span>
-              <span className="resource-type">PDF Guide</span>
-            </div>
-          </button>
-          <button onClick={() => onAction('VIEW_PDF:Claude-Flow_v3_Swarm_Platform.pdf')} className="resource-link swarm-link">
-            <div className="resource-thumbnail">🐝</div>
-            <div className="resource-info">
-              <span className="resource-title">Swarm Platform Overview</span>
-              <span className="resource-type">NotebookLM Export</span>
-            </div>
-          </button>
-          <button onClick={() => onAction('How do I create viral content using Schwartz psychological principles?')} className="resource-link">
-            <div className="resource-thumbnail">🔥</div>
-            <div className="resource-info">
-              <span className="resource-title">Viral Content Secrets</span>
-              <span className="resource-type">Social Media KB</span>
-            </div>
-          </button>
-          <button onClick={() => onAction('VIEW_VIDEO:The_Agentic_Stack.mp4')} className="resource-link">
-            <div className="resource-thumbnail">🎬</div>
-            <div className="resource-info">
-              <span className="resource-title">The Agentic Stack</span>
-              <span className="resource-type">Video Overview · Watch Now</span>
-            </div>
-          </button>
           <button onClick={() => onAction('VIEW_VIDEOS')} className="resource-link">
             <div className="resource-thumbnail">📹</div>
             <div className="resource-info">
@@ -160,10 +184,12 @@ function App() {
   const [canvasContent, setCanvasContent] = useState(null);
   const [viewMode, setViewMode] = useState('split');
   const [listening, setListening] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth >= 768);
   const [file, setFile] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [knowledgeData, setKnowledgeData] = useState(null);
+  const [latestRepos, setLatestRepos] = useState([]);
+  const [ecosystemStats, setEcosystemStats] = useState(null);
 
   // Fetch live knowledge data (versions, stats) on mount
   useEffect(() => {
@@ -173,10 +199,36 @@ function App() {
       .catch(() => {});
   }, []);
 
+  // Fetch latest repos and ecosystem stats on mount
+  useEffect(() => {
+    fetch('/api/latest-repos').then(r => r.json()).then(data => setLatestRepos(data)).catch(() => {});
+    fetch('/api/ecosystem-stats').then(r => r.json()).then(data => setEcosystemStats(data)).catch(() => {});
+  }, []);
+
   const messagesEndRef = useRef(null);
   const lastMessageRef = useRef(null);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
+
+  const isMobile = () => window.innerWidth < 768;
+
+  // Auto-close sidebar when resizing to mobile, auto-open when resizing to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setSidebarOpen(true);
+      } else {
+        setSidebarOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Close sidebar on mobile when a sidebar action is taken
+  const closeSidebarOnMobile = () => {
+    if (isMobile()) setSidebarOpen(false);
+  };
 
   const toggleTheme = () => {
     document.body.classList.toggle('light-mode');
@@ -505,7 +557,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
     <div style={{
       position: 'fixed',
       top: '72px',
-      left: sidebarOpen ? '220px' : '0',
+      left: (sidebarOpen && !isMobile()) ? '220px' : '0',
       right: 0,
       bottom: 0,
       zIndex: 50,
@@ -537,6 +589,14 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
       {UniverseOverlay}
       <header className="header">
         <div className="header-left">
+          <button
+            className="mobile-menu-btn menu-btn"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            title="Toggle Sidebar"
+            style={{ display: 'none' }}
+          >
+            {sidebarOpen ? '✕' : '☰'}
+          </button>
           {!sidebarOpen && (
             <button className="menu-btn" onClick={() => setSidebarOpen(true)} title="Expand Sidebar">»</button>
           )}
@@ -568,6 +628,10 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
       </header>
 
       <div className="main-wrapper">
+        <div
+          className={`sidebar-backdrop ${sidebarOpen ? 'visible' : ''}`}
+          onClick={() => setSidebarOpen(false)}
+        />
         <div className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
           <div className="sidebar-header-row" style={{ padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h3 style={{ margin: 0, fontSize: '0.9rem', opacity: 0.7 }}>MENU</h3>
@@ -585,6 +649,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                     } else {
                       fetchKnowledge();
                     }
+                    closeSidebarOnMobile();
                   }}
                 >
                   📚 Knowledge Base
@@ -602,9 +667,24 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                         action: 'universe'
                       });
                     }
+                    closeSidebarOnMobile();
                   }}
                 >
                   🌌 Knowledge Universe
+                </button>
+                <button
+                  className={`sidebar-btn action ${canvasContent?.action === 'changelog' ? 'active' : ''}`}
+                  onClick={() => {
+                    setCanvasContent({
+                      type: 'text',
+                      content: `# What's New\n\n## v2.2.0 — ${new Date().toLocaleDateString()}\n\n### Enhanced Homepage\n- Value proposition banner with live ecosystem stats\n- "Latest from rUv" section showing recently updated repos\n- "Why rUv's Approach is Different" competitive positioning cards\n- Ecosystem overview in canvas panel default view\n\n### Dynamic Repo Tracking\n- Replaced hardcoded 3-repo sweep with dynamic GitHub API\n- All 145+ repos now auto-detected and tracked\n- Sweep state stored in PostgreSQL (not flat files)\n\n### New API Endpoints\n- \`/api/latest-repos\` — 20 most recently updated repos from KB\n- \`/api/ecosystem-stats\` — Aggregate ecosystem statistics\n\n### Mobile Improvements\n- Sidebar auto-collapses on small screens\n- Hamburger menu toggle for mobile\n`,
+                      title: "What's New",
+                      action: 'changelog'
+                    });
+                    closeSidebarOnMobile();
+                  }}
+                >
+                  🆕 What's New
                 </button>
               </div>
             </SidebarSection>
@@ -612,7 +692,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
             <SidebarSection title="Learning Level" defaultOpen={true}>
               <div className="level-selector">
                 {['Simple', 'Beginner', 'Balanced', 'Technical'].map((l) => (
-                  <button key={l} className={`level-btn ${level === l ? 'active' : ''}`} onClick={() => setLevel(l)}>
+                  <button key={l} className={`level-btn ${level === l ? 'active' : ''}`} onClick={() => { setLevel(l); closeSidebarOnMobile(); }}>
                     <span className={`dot ${l.toLowerCase()}`}></span> {l}
                   </button>
                 ))}
@@ -621,8 +701,8 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
 
             <SidebarSection title="View Mode" defaultOpen={true}>
               <div className="view-mode-selector">
-                <button className={`mode-btn ${viewMode === 'split' ? 'active' : ''}`} onClick={() => setViewMode('split')}>📊 Split View</button>
-                <button className={`mode-btn ${viewMode === 'chat' ? 'active' : ''}`} onClick={() => setViewMode('chat')}>💬 Chat Only</button>
+                <button className={`mode-btn ${viewMode === 'split' ? 'active' : ''}`} onClick={() => { setViewMode('split'); closeSidebarOnMobile(); }}>📊 Split View</button>
+                <button className={`mode-btn ${viewMode === 'chat' ? 'active' : ''}`} onClick={() => { setViewMode('chat'); closeSidebarOnMobile(); }}>💬 Chat Only</button>
               </div>
             </SidebarSection>
           </div>
@@ -659,7 +739,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
 
               <div className="chat-container">
                 {messages.length === 0 ? (
-                  <HeroSection onAction={(prompt) => handleSubmit(null, prompt)} knowledgeData={knowledgeData} />
+                  <HeroSection onAction={(prompt) => handleSubmit(null, prompt)} knowledgeData={knowledgeData} latestRepos={latestRepos} ecosystemStats={ecosystemStats} />
                 ) : (
                   <>
                     {messages.map((msg, idx) => (
@@ -711,9 +791,22 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
               </div>
               <div className="canvas-content">
                 {!canvasContent ? (
-                  <div className="canvas-placeholder">
-                    <div style={{ fontSize: '3rem', opacity: 0.2, marginBottom: '1rem' }}>▤</div>
-                    <p>Select content to view details</p>
+                  <div className="ecosystem-overview">
+                    <h2>Ecosystem Overview</h2>
+                    <div className="eco-stats-grid">
+                      <div className="eco-stat"><span className="eco-number">{ecosystemStats?.totalRepos || 145}</span><span className="eco-label">Repositories</span></div>
+                      <div className="eco-stat"><span className="eco-number">{ecosystemStats?.totalEntries?.toLocaleString() || '148K+'}</span><span className="eco-label">KB Entries</span></div>
+                      <div className="eco-stat"><span className="eco-number">{ecosystemStats?.docTypes || 6}</span><span className="eco-label">Content Types</span></div>
+                    </div>
+                    <h3>Stack Architecture</h3>
+                    <div className="stack-layers">
+                      <div className="stack-layer"><span className="layer-num">5</span><span className="layer-name">Applications</span><span className="layer-desc">Ask-RuvNet, DAA, Flow Nexus</span></div>
+                      <div className="stack-layer"><span className="layer-num">4</span><span className="layer-name">Orchestration</span><span className="layer-desc">Claude Flow, Ruv-Swarm, Hive Mind</span></div>
+                      <div className="stack-layer"><span className="layer-num">3</span><span className="layer-name">Intelligence</span><span className="layer-desc">Agentic Flow, SONA, ReasoningBank</span></div>
+                      <div className="stack-layer"><span className="layer-num">2</span><span className="layer-name">Data & Search</span><span className="layer-desc">RuVector, HNSW, pgvector</span></div>
+                      <div className="stack-layer"><span className="layer-num">1</span><span className="layer-name">Foundation</span><span className="layer-desc">Rust Core, WASM Runtime, RVF Format</span></div>
+                    </div>
+                    <p className="eco-footer">Ask a question to explore any layer in depth</p>
                   </div>
                 ) : (
                   <>

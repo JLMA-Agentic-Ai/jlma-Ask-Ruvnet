@@ -1,131 +1,202 @@
 #!/usr/bin/env node
 /**
- * KB Sweep Updates Tool v1.0.0
+ * KB Sweep Updates Tool v2.0.0
  *
- * Automatically checks for RuvNet ecosystem updates every 12 hours
- * and ingests new documentation into the knowledge base.
+ * Dynamically discovers ALL ruvnet repos via GitHub CLI, compares
+ * pushedAt timestamps against PostgreSQL sweep state, and only
+ * ingests repos that have actually changed.
+ *
+ * State is stored in PostgreSQL (ask_ruvnet.repo_sweep_state),
+ * NOT in flat files.
  *
  * Usage:
  *   node scripts/kb-sweep-updates.js          # Run once
  *   node scripts/kb-sweep-updates.js --watch  # Run every 12 hours
  *   node scripts/kb-sweep-updates.js --force  # Force re-fetch all
+ *   node scripts/kb-sweep-updates.js --help   # Show this help
+ *
+ * Requires:
+ *   - DATABASE_URL env var (Neon PostgreSQL)
+ *   - gh CLI (/opt/homebrew/bin/gh) authenticated
+ *   - pg npm module (project dependency)
  */
 
 const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { Pool } = require('pg');
 
+// ---------------------------------------------------------------------------
 // Configuration
+// ---------------------------------------------------------------------------
 const CONFIG = {
-  packages: [
-    { name: 'ruvector', repo: 'ruvnet/ruvector' },
-    { name: '@ruvector/ruvllm', repo: 'ruvnet/ruvector' },
-    { name: '@ruvector/agentic-synth', repo: 'ruvnet/ruvector' },
-    { name: '@ruvector/rvlite', repo: 'ruvnet/ruvector' },
-    { name: 'agentic-flow', repo: 'ruvnet/agentic-flow' },
-    { name: 'claude-flow', repo: 'ruvnet/claude-flow' },
-  ],
-  stateFile: path.join(__dirname, '../.ruvector/sweep-state.json'),
+  ghBin: '/opt/homebrew/bin/gh',
+  ghOrg: 'ruvnet',
+  ghLimit: 200,
   docsDir: path.join(__dirname, '../docs'),
   sweepIntervalHours: 12,
 };
 
-// Ensure state directory exists
-const stateDir = path.dirname(CONFIG.stateFile);
-if (!fs.existsSync(stateDir)) {
-  fs.mkdirSync(stateDir, { recursive: true });
+// ---------------------------------------------------------------------------
+// PostgreSQL connection (Neon via DATABASE_URL)
+// ---------------------------------------------------------------------------
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+
+/**
+ * Ensure the sweep-state table exists in ask_ruvnet schema.
+ */
+async function ensureSweepTable() {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS ask_ruvnet.repo_sweep_state (
+      repo_name         TEXT PRIMARY KEY,
+      last_pushed_at    TIMESTAMPTZ,
+      last_swept_at     TIMESTAMPTZ,
+      description       TEXT,
+      stars             INTEGER DEFAULT 0,
+      primary_language  TEXT,
+      entry_count       INTEGER DEFAULT 0
+    );
+  `);
 }
 
-// Load or initialize state
-function loadState() {
-  if (fs.existsSync(CONFIG.stateFile)) {
-    return JSON.parse(fs.readFileSync(CONFIG.stateFile, 'utf-8'));
-  }
-  return { lastSweep: null, versions: {}, updates: [] };
-}
+// ---------------------------------------------------------------------------
+// GitHub repo discovery
+// ---------------------------------------------------------------------------
 
-function saveState(state) {
-  state.lastSweep = new Date().toISOString();
-  fs.writeFileSync(CONFIG.stateFile, JSON.stringify(state, null, 2));
-}
+/**
+ * Fetch all source repos for the ruvnet org/user via `gh repo list`.
+ * Returns an array of { name, pushedAt, description, stars, language }.
+ */
+function fetchAllRepos() {
+  const fields = 'name,pushedAt,description,stargazerCount,primaryLanguage';
+  const args = [
+    'repo', 'list', CONFIG.ghOrg,
+    '--limit', String(CONFIG.ghLimit),
+    '--source',
+    '--json', fields,
+  ];
 
-// Safe command execution using execFileSync
-function safeExec(command, args, options = {}) {
   try {
-    const result = execFileSync(command, args, {
+    const raw = execFileSync(CONFIG.ghBin, args, {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
-      ...options
     });
-    return { success: true, output: result.trim() };
+    const repos = JSON.parse(raw);
+    return repos.map(r => ({
+      name: r.name,
+      pushedAt: r.pushedAt,
+      description: r.description || '',
+      stars: r.stargazerCount || 0,
+      language: r.primaryLanguage ? r.primaryLanguage.name : null,
+    }));
   } catch (error) {
-    return { success: false, output: '', error: error.message };
+    console.error('   Failed to list repos via gh CLI:', error.message);
+    return [];
   }
 }
 
-// Get current npm version
-function getNpmVersion(packageName) {
-  const result = safeExec('npm', ['view', packageName, 'version']);
-  return result.success ? result.output : null;
+// ---------------------------------------------------------------------------
+// Sweep state (PostgreSQL)
+// ---------------------------------------------------------------------------
+
+/**
+ * Load all existing sweep state rows into a Map keyed by repo_name.
+ */
+async function loadSweepState() {
+  const { rows } = await pool.query(
+    'SELECT repo_name, last_pushed_at, last_swept_at, entry_count FROM ask_ruvnet.repo_sweep_state'
+  );
+  const map = new Map();
+  for (const row of rows) {
+    map.set(row.repo_name, row);
+  }
+  return map;
 }
 
-// Get last modified date from npm
-function getNpmModified(packageName) {
-  const result = safeExec('npm', ['view', packageName, 'time.modified']);
-  return result.success ? result.output : null;
+/**
+ * Upsert a repo's sweep state after successful ingestion.
+ */
+async function updateSweepState(repo, entryCount) {
+  await pool.query(`
+    INSERT INTO ask_ruvnet.repo_sweep_state
+      (repo_name, last_pushed_at, last_swept_at, description, stars, primary_language, entry_count)
+    VALUES ($1, $2, NOW(), $3, $4, $5, $6)
+    ON CONFLICT (repo_name) DO UPDATE SET
+      last_pushed_at   = EXCLUDED.last_pushed_at,
+      last_swept_at    = NOW(),
+      description      = EXCLUDED.description,
+      stars            = EXCLUDED.stars,
+      primary_language = EXCLUDED.primary_language,
+      entry_count      = EXCLUDED.entry_count;
+  `, [repo.name, repo.pushedAt, repo.description, repo.stars, repo.language, entryCount]);
 }
 
-// Check for package updates
-function checkPackageUpdates(state) {
-  console.log('\n📦 Checking RuvNet Package Updates...\n');
+// ---------------------------------------------------------------------------
+// Determine which repos need ingestion
+// ---------------------------------------------------------------------------
 
-  const updates = [];
+/**
+ * Compare GitHub repo list against DB sweep state.
+ * Returns repos where pushedAt > last_swept_at, or that are brand new.
+ */
+function findStaleRepos(allRepos, sweepState, forceRefresh) {
+  const stale = [];
 
-  for (const pkg of CONFIG.packages) {
-    const currentVersion = getNpmVersion(pkg.name);
-    const modified = getNpmModified(pkg.name);
-    const previousVersion = state.versions[pkg.name];
+  for (const repo of allRepos) {
+    const existing = sweepState.get(repo.name);
 
-    const isNew = currentVersion !== previousVersion;
-    const status = isNew ? '🆕 NEW' : '✅ Current';
+    if (forceRefresh) {
+      stale.push({ ...repo, reason: 'forced' });
+      continue;
+    }
 
-    console.log(`   ${pkg.name.padEnd(25)} ${(currentVersion || 'N/A').padEnd(20)} ${status}`);
+    if (!existing) {
+      stale.push({ ...repo, reason: 'new' });
+      continue;
+    }
 
-    if (isNew && currentVersion) {
-      updates.push({
-        name: pkg.name,
-        repo: pkg.repo,
-        oldVersion: previousVersion,
-        newVersion: currentVersion,
-        modified,
-      });
-      state.versions[pkg.name] = currentVersion;
+    const pushedAt = new Date(repo.pushedAt);
+    const sweptAt = existing.last_swept_at ? new Date(existing.last_swept_at) : new Date(0);
+
+    if (pushedAt > sweptAt) {
+      stale.push({ ...repo, reason: 'updated' });
     }
   }
 
-  return updates;
+  return stale;
 }
 
-// Fetch docs from GitHub repo
-async function fetchRepoDocs(repo, targetDir) {
-  console.log(`\n📥 Fetching docs from ${repo}...`);
+// ---------------------------------------------------------------------------
+// Repo doc fetching (preserved from v1, now accepts dynamic repo info)
+// ---------------------------------------------------------------------------
 
-  const repoName = repo.replace('/', '-');
-  const tmpDir = path.join('/tmp', `ruvnet-${repoName}`);
-  const repoUrl = `https://github.com/${repo}.git`;
+/**
+ * Clone/pull a repo and copy its markdown docs into the target directory.
+ * Returns the number of files copied.
+ */
+async function fetchRepoDocs(repoFullName, targetDir) {
+  console.log(`\n   Fetching docs from ${repoFullName}...`);
+
+  const repoSafeName = repoFullName.replace('/', '-');
+  const tmpDir = path.join('/tmp', `ruvnet-${repoSafeName}`);
+  const repoUrl = `https://github.com/${repoFullName}.git`;
 
   try {
-    // Clone or pull repo using safe execFileSync
     if (fs.existsSync(tmpDir)) {
-      safeExec('git', ['-C', tmpDir, 'pull', '--quiet']);
+      execFileSync('git', ['-C', tmpDir, 'pull', '--quiet'], {
+        encoding: 'utf-8',
+        stdio: ['pipe', 'pipe', 'pipe'],
+      });
     } else {
-      safeExec('git', ['clone', '--depth', '1', repoUrl, tmpDir]);
+      execFileSync('git', ['clone', '--depth', '1', repoUrl, tmpDir], {
+        encoding: 'utf-8',
+        stdio: ['pipe', 'pipe', 'pipe'],
+      });
     }
 
-    // Find and copy markdown files
     const docsPath = path.join(tmpDir, 'docs');
     const readmePath = path.join(tmpDir, 'README.md');
-    const repoShortName = repo.split('/')[1];
+    const repoShortName = repoFullName.split('/')[1];
 
     let filesCopied = 0;
 
@@ -145,124 +216,203 @@ async function fetchRepoDocs(repo, targetDir) {
       filesCopied++;
     }
 
-    console.log(`   ✅ Copied ${filesCopied} docs from ${repo}`);
+    console.log(`   Copied ${filesCopied} doc(s) from ${repoShortName}`);
     return filesCopied;
   } catch (error) {
-    console.log(`   ⚠️  Failed to fetch ${repo}: ${error.message}`);
+    console.log(`   Warning: failed to fetch ${repoFullName}: ${error.message}`);
     return 0;
   }
 }
 
-// Run KB ingestion using npm
+// ---------------------------------------------------------------------------
+// KB ingestion (preserved from v1)
+// ---------------------------------------------------------------------------
+
+/**
+ * Run the project's kb:ingest npm script to push docs into the KB.
+ */
 function runKBIngest() {
-  console.log('\n🔄 Running KB Ingestion...\n');
+  console.log('\n   Running KB ingestion...\n');
 
   try {
     const result = spawnSync('npm', ['run', 'kb:ingest'], {
       cwd: path.join(__dirname, '..'),
       stdio: 'inherit',
-      encoding: 'utf-8'
+      encoding: 'utf-8',
     });
     return result.status === 0;
   } catch (error) {
-    console.error('❌ KB ingestion failed:', error.message);
+    console.error('   KB ingestion failed:', error.message);
     return false;
   }
 }
 
-// Main sweep function
+// ---------------------------------------------------------------------------
+// Main sweep
+// ---------------------------------------------------------------------------
+
 async function sweep(forceRefresh = false) {
-  console.log('═'.repeat(60));
-  console.log('🔍 KB SWEEP UPDATES');
+  console.log('='.repeat(60));
+  console.log('KB SWEEP UPDATES v2.0.0 (dynamic repo discovery)');
   console.log(`   Time: ${new Date().toISOString()}`);
-  console.log('═'.repeat(60));
+  console.log('='.repeat(60));
 
-  const state = loadState();
+  // Ensure the sweep state table exists
+  await ensureSweepTable();
 
-  // Check last sweep time
-  if (state.lastSweep && !forceRefresh) {
-    const lastSweep = new Date(state.lastSweep);
-    const hoursSinceLastSweep = (Date.now() - lastSweep.getTime()) / (1000 * 60 * 60);
+  // Load existing sweep state from PostgreSQL
+  const sweepState = await loadSweepState();
 
-    if (hoursSinceLastSweep < CONFIG.sweepIntervalHours) {
-      console.log(`\n⏳ Last sweep: ${lastSweep.toISOString()}`);
-      console.log(`   Next sweep in ${(CONFIG.sweepIntervalHours - hoursSinceLastSweep).toFixed(1)} hours`);
-      console.log(`   Use --force to run now\n`);
+  // Check last global sweep time (most recent last_swept_at across all repos)
+  if (!forceRefresh && sweepState.size > 0) {
+    let mostRecent = new Date(0);
+    for (const [, row] of sweepState) {
+      if (row.last_swept_at) {
+        const d = new Date(row.last_swept_at);
+        if (d > mostRecent) mostRecent = d;
+      }
+    }
+
+    const hoursSince = (Date.now() - mostRecent.getTime()) / (1000 * 60 * 60);
+    if (hoursSince < CONFIG.sweepIntervalHours) {
+      console.log(`\n   Last sweep: ${mostRecent.toISOString()}`);
+      console.log(`   Next sweep in ${(CONFIG.sweepIntervalHours - hoursSince).toFixed(1)} hours`);
+      console.log('   Use --force to run now\n');
       return;
     }
   }
 
-  // Check for updates
-  const updates = checkPackageUpdates(state);
+  // Discover all ruvnet repos from GitHub
+  console.log(`\n   Discovering repos from github.com/${CONFIG.ghOrg}...`);
+  const allRepos = fetchAllRepos();
+  console.log(`   Found ${allRepos.length} source repo(s)\n`);
 
-  if (updates.length > 0 || forceRefresh) {
-    console.log(`\n📊 Found ${updates.length} package update(s)`);
-
-    // Get unique repos to fetch
-    const repos = [...new Set(updates.map(u => u.repo))];
-
-    for (const repo of repos) {
-      await fetchRepoDocs(repo, CONFIG.docsDir);
-    }
-
-    // Run KB ingestion
-    runKBIngest();
-
-    // Record updates
-    state.updates.push({
-      timestamp: new Date().toISOString(),
-      packages: updates.map(u => `${u.name}@${u.newVersion}`),
-    });
-
-    // Keep only last 50 updates
-    if (state.updates.length > 50) {
-      state.updates = state.updates.slice(-50);
-    }
-  } else {
-    console.log('\n✅ All packages up to date - no ingestion needed');
+  if (allRepos.length === 0) {
+    console.log('   No repos returned from gh CLI. Check authentication.\n');
+    return;
   }
 
-  saveState(state);
+  // Determine which repos need ingestion
+  const stale = findStaleRepos(allRepos, sweepState, forceRefresh);
 
-  console.log('\n' + '═'.repeat(60));
-  console.log('✅ Sweep complete');
-  console.log('═'.repeat(60));
+  // Print summary table
+  console.log('   ' + 'Repo'.padEnd(35) + 'Stars'.padEnd(8) + 'Language'.padEnd(15) + 'Status');
+  console.log('   ' + '-'.repeat(68));
+
+  for (const repo of allRepos) {
+    const match = stale.find(s => s.name === repo.name);
+    let status = 'up to date';
+    if (match) {
+      status = match.reason === 'new' ? 'NEW' :
+               match.reason === 'forced' ? 'FORCED' :
+               'UPDATED';
+    }
+    console.log(
+      '   ' +
+      repo.name.padEnd(35) +
+      String(repo.stars).padEnd(8) +
+      (repo.language || '-').padEnd(15) +
+      status
+    );
+  }
+
+  if (stale.length === 0) {
+    console.log('\n   All repos up to date - no ingestion needed');
+  } else {
+    console.log(`\n   ${stale.length} repo(s) need ingestion`);
+
+    let totalDocs = 0;
+
+    for (const repo of stale) {
+      const repoFullName = `${CONFIG.ghOrg}/${repo.name}`;
+      const docCount = await fetchRepoDocs(repoFullName, CONFIG.docsDir);
+      totalDocs += docCount;
+
+      // Update sweep state in PostgreSQL after each repo
+      await updateSweepState(repo, docCount);
+    }
+
+    if (totalDocs > 0) {
+      runKBIngest();
+    } else {
+      console.log('\n   No new docs found across changed repos - skipping ingestion');
+    }
+  }
+
+  console.log('\n' + '='.repeat(60));
+  console.log(`   Sweep complete. ${allRepos.length} repos checked, ${stale.length} ingested.`);
+  console.log('='.repeat(60));
 }
 
-// Watch mode - run every 12 hours
+// ---------------------------------------------------------------------------
+// Watch mode
+// ---------------------------------------------------------------------------
+
 function watchMode() {
-  console.log(`\n👀 Watch mode enabled - checking every ${CONFIG.sweepIntervalHours} hours`);
+  console.log(`\n   Watch mode enabled - checking every ${CONFIG.sweepIntervalHours} hours`);
   console.log('   Press Ctrl+C to stop\n');
 
   // Run immediately
-  sweep();
+  sweep().catch(err => console.error('Sweep error:', err.message));
 
   // Then run on interval
   setInterval(() => {
-    sweep();
+    sweep().catch(err => console.error('Sweep error:', err.message));
   }, CONFIG.sweepIntervalHours * 60 * 60 * 1000);
 }
 
-// CLI
+// ---------------------------------------------------------------------------
+// Cleanup on exit
+// ---------------------------------------------------------------------------
+
+async function cleanup() {
+  await pool.end();
+}
+
+process.on('SIGINT', async () => {
+  await cleanup();
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  await cleanup();
+  process.exit(0);
+});
+
+// ---------------------------------------------------------------------------
+// CLI entry point
+// ---------------------------------------------------------------------------
+
 const args = process.argv.slice(2);
 
-if (args.includes('--watch')) {
-  watchMode();
-} else if (args.includes('--force')) {
-  sweep(true);
-} else if (args.includes('--help')) {
+if (args.includes('--help')) {
   console.log(`
-KB Sweep Updates Tool
+KB Sweep Updates Tool v2.0.0
+
+Dynamically discovers ALL ruvnet repos via GitHub CLI, compares
+pushedAt timestamps against PostgreSQL sweep state, and only
+ingests repos that have actually changed.
 
 Usage:
   node scripts/kb-sweep-updates.js          # Run once (skips if <12h since last)
   node scripts/kb-sweep-updates.js --watch  # Run every 12 hours
-  node scripts/kb-sweep-updates.js --force  # Force refresh all packages
+  node scripts/kb-sweep-updates.js --force  # Force refresh all repos
   node scripts/kb-sweep-updates.js --help   # Show this help
+
+State is stored in: ask_ruvnet.repo_sweep_state (PostgreSQL)
+Requires: DATABASE_URL env var, gh CLI (/opt/homebrew/bin/gh)
 
 Crontab example (every 12 hours):
   0 */12 * * * cd /path/to/project && node scripts/kb-sweep-updates.js
 `);
+} else if (args.includes('--watch')) {
+  watchMode();
 } else {
-  sweep();
+  const forceRefresh = args.includes('--force');
+  sweep(forceRefresh)
+    .catch(err => {
+      console.error('Sweep failed:', err.message);
+      process.exit(1);
+    })
+    .finally(() => cleanup());
 }

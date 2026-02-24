@@ -700,6 +700,106 @@ app.get('/api/kb-stats', async (req, res) => {
     }
 });
 
+// Latest Repos Endpoint - returns 20 most recently updated repos from KB
+let latestReposCache = null;
+let latestReposCacheExpiry = 0;
+
+app.get('/api/latest-repos', async (req, res) => {
+    try {
+        const now = Date.now();
+        if (latestReposCache && now < latestReposCacheExpiry) {
+            return res.json(latestReposCache);
+        }
+
+        if (pgKB && pgKB.ready && pgKB.pool) {
+            const result = await pgKB.pool.query(`
+                SELECT
+                    package_name,
+                    MAX(created_at) as last_updated,
+                    COUNT(*) as entry_count
+                FROM ask_ruvnet.architecture_docs
+                WHERE package_name IS NOT NULL AND package_name != ''
+                  AND is_duplicate = false AND triage_tier != 'garbage'
+                GROUP BY package_name
+                ORDER BY last_updated DESC
+                LIMIT 20
+            `);
+
+            const repos = result.rows.map(row => ({
+                name: row.package_name,
+                description: `${parseInt(row.entry_count, 10).toLocaleString()} KB entries`,
+                lastUpdated: row.last_updated,
+                entryCount: parseInt(row.entry_count, 10)
+            }));
+
+            latestReposCache = repos;
+            latestReposCacheExpiry = now + 3600_000; // 1 hour
+            console.log(`[KB] Latest repos refreshed: ${repos.length} repos`);
+            return res.json(repos);
+        }
+
+        // Fallback when PostgreSQL is not available
+        res.json([
+            { name: 'ruvnet/ask-ruvnet', description: 'Ask RuvNet - AI Knowledge Platform', lastUpdated: new Date().toISOString(), entryCount: 0 },
+            { name: 'ruvnet/agentic-flow', description: 'Agentic Flow - Multi-Agent Framework', lastUpdated: new Date().toISOString(), entryCount: 0 }
+        ]);
+    } catch (err) {
+        console.error('[KB] Error fetching latest repos:', err.message);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Ecosystem Stats Endpoint - aggregate stats from the KB
+let ecosystemStatsCache = null;
+let ecosystemStatsCacheExpiry = 0;
+
+app.get('/api/ecosystem-stats', async (req, res) => {
+    try {
+        const now = Date.now();
+        if (ecosystemStatsCache && now < ecosystemStatsCacheExpiry) {
+            return res.json(ecosystemStatsCache);
+        }
+
+        if (pgKB && pgKB.ready && pgKB.pool) {
+            const result = await pgKB.pool.query(`
+                SELECT
+                    COUNT(DISTINCT package_name) as total_repos,
+                    COUNT(*) as total_entries,
+                    COUNT(DISTINCT doc_type) as doc_types,
+                    MAX(created_at) as last_updated
+                FROM ask_ruvnet.architecture_docs
+                WHERE is_duplicate = false AND triage_tier != 'garbage'
+            `);
+
+            const row = result.rows[0] || {};
+            const stats = {
+                totalRepos: parseInt(row.total_repos, 10) || 0,
+                totalEntries: parseInt(row.total_entries, 10) || 0,
+                docTypes: parseInt(row.doc_types, 10) || 0,
+                lastUpdated: row.last_updated,
+                kbBackend: 'PostgreSQL RuVector'
+            };
+
+            ecosystemStatsCache = stats;
+            ecosystemStatsCacheExpiry = now + 3600_000; // 1 hour
+            console.log(`[KB] Ecosystem stats refreshed: ${stats.totalEntries} entries across ${stats.totalRepos} repos`);
+            return res.json(stats);
+        }
+
+        // Fallback when PostgreSQL is not available
+        res.json({
+            totalRepos: 0,
+            totalEntries: 0,
+            docTypes: 0,
+            lastUpdated: null,
+            kbBackend: 'Not connected'
+        });
+    } catch (err) {
+        console.error('[KB] Error fetching ecosystem stats:', err.message);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // Debug Endpoint - only available in development
 if (process.env.NODE_ENV !== 'production') {
     app.get('/api/debug', (req, res) => {
