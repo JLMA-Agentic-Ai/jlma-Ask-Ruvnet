@@ -1,0 +1,35 @@
+#!/bin/bash
+# Deploy Ask-RuvNet to Railway
+# Usage: bash scripts/deployment/deploy.sh [patch|minor|major]
+#
+# Railway auto-deploys on every push to main.
+# This script bumps the version, commits, and pushes.
+
+set -e
+
+BUMP="${1:-patch}"
+
+echo "Deploying Ask-RuvNet ($BUMP bump)..."
+
+# Bump version in package.json
+npm version "$BUMP" --no-git-tag-version
+VERSION=$(node -p "require('./package.json').version")
+echo "Version: $VERSION"
+
+# Build frontend
+echo "Building frontend..."
+cd src/ui && npm run build && cd ../..
+
+# Commit and push
+git add package.json package-lock.json src/ui/dist/
+git commit -m "v${VERSION}: deploy $BUMP"
+git push origin main
+
+echo ""
+echo "Pushed v${VERSION} to main. Railway will auto-deploy."
+echo "Monitor: https://ask-ruvnet-production.up.railway.app/health"
+echo ""
+echo "Verify after deploy:"
+echo "  curl https://ask-ruvnet-production.up.railway.app/health"
+echo "  curl https://ask-ruvnet-production.up.railway.app/api/kb-stats"
+echo "  curl https://ask-ruvnet-production.up.railway.app/api/providers"
