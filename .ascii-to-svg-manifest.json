@@ -1,14 +1,46 @@
 {
   "version": "1.0.0",
-  "lastSync": "2026-02-23T12:45:00Z",
+  "lastSync": "2026-02-24T07:10:42.910018Z",
   "diagrams": [
     {
-      "id": "video-kb-architecture",
-      "sourceFile": "docs/video-kb-architecture.md",
-      "sourceLine": 11,
-      "svgFile": "docs/assets/diagrams/video-kb-architecture.svg",
-      "asciiHash": "sha256:video-kb-architecture-2026-02-23",
-      "lastConverted": "2026-02-23T12:45:00Z"
+      "id": "system-overview",
+      "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
+      "sourceLine": 8,
+      "svgFile": "docs/architecture/assets/diagrams/system-overview.svg",
+      "asciiHash": "sha256:cde87413cfa35d8f",
+      "lastConverted": "2026-02-24T07:10:42.910018Z"
+    },
+    {
+      "id": "request-flow",
+      "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
+      "sourceLine": 64,
+      "svgFile": "docs/architecture/assets/diagrams/request-flow.svg",
+      "asciiHash": "sha256:05381228c2adab5e",
+      "lastConverted": "2026-02-24T07:10:42.910018Z"
+    },
+    {
+      "id": "deployment-pipeline",
+      "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
+      "sourceLine": 96,
+      "svgFile": "docs/architecture/assets/diagrams/deployment-pipeline.svg",
+      "asciiHash": "sha256:459a35df7f6019fb",
+      "lastConverted": "2026-02-24T07:10:42.910018Z"
+    },
+    {
+      "id": "env-variable-flow",
+      "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
+      "sourceLine": 116,
+      "svgFile": "docs/architecture/assets/diagrams/env-variable-flow.svg",
+      "asciiHash": "sha256:733a4b5ef6ce6788",
+      "lastConverted": "2026-02-24T07:10:42.910018Z"
+    },
+    {
+      "id": "relevance-scoring",
+      "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
+      "sourceLine": 139,
+      "svgFile": "docs/architecture/assets/diagrams/relevance-scoring.svg",
+      "asciiHash": "sha256:bac9970e65c939d3",
+      "lastConverted": "2026-02-24T07:10:42.910018Z"
     }
   ]
 }

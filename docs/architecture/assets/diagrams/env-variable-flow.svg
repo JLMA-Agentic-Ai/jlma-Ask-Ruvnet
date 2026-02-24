@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="700" height="340">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .box { fill: #161b22; stroke: #30363d; stroke-width: 1.5; rx: 6; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 14px; fill: #f0f6fc; font-weight: 600; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 12px; fill: #c9d1d9; }
+      .var { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 11px; fill: #58a6ff; }
+      .target { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 11px; fill: #8b949e; }
+      .warn { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 11px; fill: #f85149; font-weight: 600; }
+      .warn-sub { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 10px; fill: #f85149; }
+      .arrow { stroke: #484f58; stroke-width: 1; fill: none; marker-end: url(#ah); }
+    </style>
+    <marker id="ah" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 6 2.5, 0 5" fill="#484f58"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="700" height="340" rx="8"/>
+
+  <rect class="box" x="20" y="15" width="660" height="310"/>
+  <text class="title" x="350" y="42" text-anchor="middle">Railway Variables (set via dashboard or API)</text>
+
+  <!-- Variable rows -->
+  <text class="var" x="50" y="75">DATABASE_URL</text>
+  <line class="arrow" x1="220" y1="72" x2="380" y2="72"/>
+  <text class="target" x="390" y="75">PostgresKnowledgeBase</text>
+
+  <text class="var" x="50" y="105">GROQ_API_KEY</text>
+  <line class="arrow" x1="220" y1="102" x2="380" y2="102"/>
+  <text class="target" x="390" y="105">Provider Chain #1 (free)</text>
+
+  <text class="var" x="50" y="135">OPENAI_API_KEY</text>
+  <line class="arrow" x1="220" y1="132" x2="380" y2="132"/>
+  <text class="target" x="390" y="135">Provider Chain #2</text>
+
+  <text class="var" x="50" y="165">ANTHROPIC_API_KEY</text>
+  <line class="arrow" x1="220" y1="162" x2="380" y2="162"/>
+  <text class="target" x="390" y="165">Provider Chain #3</text>
+
+  <text class="var" x="50" y="195">OPENROUTER_API_KEY</text>
+  <line class="arrow" x1="220" y1="192" x2="380" y2="192"/>
+  <text class="target" x="390" y="195">Provider Chain #4</text>
+
+  <text class="var" x="50" y="225">DEEPSEEK_API_KEY</text>
+  <line class="arrow" x1="220" y1="222" x2="380" y2="222"/>
+  <text class="target" x="390" y="225">Provider Chain #5</text>
+
+  <text class="target" x="50" y="255">NODE_ENV=production</text>
+  <text class="target" x="350" y="255">PORT=3000</text>
+
+  <!-- Warning -->
+  <line x1="40" y1="275" x2="660" y2="275" stroke="#f85149" stroke-width="1" stroke-dasharray="3 2"/>
+  <text class="warn" x="350" y="298" text-anchor="middle">CRITICAL: Use DATABASE_URL (underscore)</text>
+  <text class="warn-sub" x="350" y="314" text-anchor="middle">NOT DATABASE-URL (hyphen) — Node.js process.env cannot read hyphens!</text>
+</svg>

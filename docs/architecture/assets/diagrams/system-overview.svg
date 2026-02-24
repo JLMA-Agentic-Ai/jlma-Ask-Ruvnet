@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720" width="800" height="720">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .box { fill: none; stroke: #30363d; stroke-width: 1.5; rx: 6; }
+      .box-fill { fill: #161b22; stroke: #30363d; stroke-width: 1.5; rx: 6; }
+      .box-accent { fill: #1a1f2b; stroke: #58a6ff; stroke-width: 1.5; rx: 6; }
+      .box-db { fill: #1a1f2b; stroke: #3fb950; stroke-width: 1.5; rx: 6; }
+      .box-llm { fill: #1a1f2b; stroke: #d2a8ff; stroke-width: 1.5; rx: 6; }
+      .box-rag { fill: #1a1f2b; stroke: #f0883e; stroke-width: 1.5; rx: 6; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace; font-size: 16px; fill: #f0f6fc; font-weight: 600; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace; font-size: 12px; fill: #c9d1d9; }
+      .sublabel { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace; font-size: 11px; fill: #8b949e; }
+      .highlight { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace; font-size: 11px; fill: #58a6ff; }
+      .arrow { stroke: #484f58; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-reverse { stroke: #484f58; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); stroke-dasharray: 4 3; }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#484f58"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" width="800" height="720" rx="8"/>
+
+  <!-- Outer border -->
+  <rect class="box" x="20" y="20" width="760" height="680"/>
+  <text class="title" x="400" y="50" text-anchor="middle">PRODUCTION STACK</text>
+
+  <!-- Browser Client -->
+  <rect class="box-fill" x="60" y="80" width="130" height="60"/>
+  <text class="label" x="125" y="106" text-anchor="middle">Browser</text>
+  <text class="sublabel" x="125" y="122" text-anchor="middle">Client</text>
+
+  <!-- Railway -->
+  <rect class="box-accent" x="320" y="80" width="400" height="100"/>
+  <text class="label" x="520" y="104" text-anchor="middle">Railway (Hobby, $5/mo)</text>
+  <text class="sublabel" x="520" y="120" text-anchor="middle">Docker: node:22-bookworm</text>
+  <text class="sublabel" x="520" y="136" text-anchor="middle">Region: us-west-2 | Always-on</text>
+  <text class="sublabel" x="520" y="152" text-anchor="middle">Auto-deploy on git push</text>
+
+  <!-- Arrows: Browser to Railway -->
+  <line class="arrow" x1="190" y1="100" x2="315" y2="100"/>
+  <text class="highlight" x="250" y="94" text-anchor="middle">HTTPS</text>
+  <line class="arrow-reverse" x1="315" y1="120" x2="190" y2="120"/>
+  <text class="sublabel" x="250" y="136" text-anchor="middle">Response</text>
+
+  <!-- Express.js -->
+  <rect class="box-fill" x="370" y="210" width="300" height="120"/>
+  <text class="label" x="520" y="234" text-anchor="middle">Express.js (port 3000)</text>
+  <text class="sublabel" x="520" y="252" text-anchor="middle">src/server/app.js</text>
+  <text class="sublabel" x="520" y="274" text-anchor="middle">GET /health  GET /api/providers</text>
+  <text class="sublabel" x="520" y="290" text-anchor="middle">GET /api/kb-stats  POST /api/chat</text>
+
+  <!-- Arrow: Railway to Express -->
+  <line class="arrow" x1="520" y1="180" x2="520" y2="205"/>
+
+  <!-- LLM Fallback Chain -->
+  <rect class="box-llm" x="60" y="370" width="280" height="200"/>
+  <text class="label" x="200" y="394" text-anchor="middle">LLM Fallback Chain</text>
+  <text class="sublabel" x="200" y="418" text-anchor="middle">1. groq-free (1M tok/day free)</text>
+  <text class="sublabel" x="200" y="438" text-anchor="middle">2. openai (gpt-4o)</text>
+  <text class="sublabel" x="200" y="458" text-anchor="middle">3. anthropic (claude-sonnet-4)</text>
+  <text class="sublabel" x="200" y="478" text-anchor="middle">4. openrouter</text>
+  <text class="sublabel" x="200" y="498" text-anchor="middle">5. deepseek</text>
+  <text class="highlight" x="200" y="528" text-anchor="middle">Auto-fallback on rate-limit/error</text>
+
+  <!-- RAG Pipeline -->
+  <rect class="box-rag" x="460" y="370" width="280" height="200"/>
+  <text class="label" x="600" y="394" text-anchor="middle">RAG Pipeline</text>
+  <text class="sublabel" x="600" y="418" text-anchor="middle">QueryExpander</text>
+  <text class="sublabel" x="600" y="440" text-anchor="middle">|</text>
+  <text class="sublabel" x="600" y="458" text-anchor="middle">HybridSearch (BM25 + semantic)</text>
+  <text class="sublabel" x="600" y="480" text-anchor="middle">|</text>
+  <text class="sublabel" x="600" y="498" text-anchor="middle">ReRanker</text>
+  <text class="sublabel" x="600" y="520" text-anchor="middle">|</text>
+  <text class="sublabel" x="600" y="538" text-anchor="middle">ContextCompressor</text>
+
+  <!-- Arrows: Express to LLM and RAG -->
+  <line class="arrow" x1="450" y1="330" x2="300" y2="365"/>
+  <line class="arrow" x1="590" y1="330" x2="600" y2="365"/>
+
+  <!-- Neon PostgreSQL -->
+  <rect class="box-db" x="260" y="610" width="400" height="80"/>
+  <text class="label" x="460" y="634" text-anchor="middle">Neon PostgreSQL + pgvector</text>
+  <text class="sublabel" x="460" y="652" text-anchor="middle">ask_ruvnet.architecture_docs | 54,543 rows (22,667 gold)</text>
+  <text class="sublabel" x="460" y="668" text-anchor="middle">384d ONNX embeddings | HNSW (m=16, ef=64) | 5-factor scoring</text>
+
+  <!-- Arrow: RAG to Neon -->
+  <line class="arrow" x1="600" y1="570" x2="530" y2="605"/>
+</svg>

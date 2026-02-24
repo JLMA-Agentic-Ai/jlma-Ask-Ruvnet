@@ -3,7 +3,7 @@
  * test-production.mjs
  * AskRuvNet Production Smoke + API + Quality Tests
  *
- * Hits the live deployment at https://ask-ruvnet.onrender.com and validates:
+ * Hits the live deployment at https://ask-ruvnet-production.up.railway.app and validates:
  *   - Health endpoint
  *   - KB stats (entry count, backend)
  *   - Knowledge inventory
@@ -20,7 +20,7 @@
  *   1 = one or more tests failed
  */
 
-const BASE_URL = process.env.BASE_URL || 'https://ask-ruvnet.onrender.com';
+const BASE_URL = process.env.BASE_URL || 'https://ask-ruvnet-production.up.railway.app';
 const TIMEOUT_MS = parseInt(process.env.TIMEOUT_MS || '60000');  // 60s for cold starts
 
 // ─── Colour helpers ────────────────────────────────────────────────────────────

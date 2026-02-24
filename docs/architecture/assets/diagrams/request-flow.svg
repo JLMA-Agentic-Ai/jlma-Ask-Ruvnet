@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .box { fill: #161b22; stroke: #30363d; stroke-width: 1.5; rx: 6; }
+      .box-blue { fill: #1a1f2b; stroke: #58a6ff; stroke-width: 1.5; rx: 6; }
+      .box-green { fill: #1a1f2b; stroke: #3fb950; stroke-width: 1.5; rx: 6; }
+      .box-purple { fill: #1a1f2b; stroke: #d2a8ff; stroke-width: 1.5; rx: 6; }
+      .title { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 14px; fill: #f0f6fc; font-weight: 600; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 12px; fill: #c9d1d9; }
+      .sublabel { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 11px; fill: #8b949e; }
+      .step { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 11px; fill: #d2a8ff; }
+      .ok { font-family: -apple-system, BlinkMacSystemFont, monospace; font-size: 10px; fill: #3fb950; }
+      .arrow { stroke: #484f58; stroke-width: 1.5; fill: none; marker-end: url(#ah); }
+      .arrow-back { stroke: #3fb950; stroke-width: 1.5; fill: none; marker-end: url(#ah-green); stroke-dasharray: 4 3; }
+    </style>
+    <marker id="ah" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#484f58"/>
+    </marker>
+    <marker id="ah-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#3fb950"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="800" height="440" rx="8"/>
+  <text class="title" x="400" y="30" text-anchor="middle">Request Flow</text>
+
+  <!-- Top row boxes -->
+  <rect class="box" x="30" y="50" width="120" height="50"/>
+  <text class="label" x="90" y="72" text-anchor="middle">User</text>
+  <text class="sublabel" x="90" y="88" text-anchor="middle">Browser</text>
+
+  <rect class="box-blue" x="220" y="50" width="130" height="50"/>
+  <text class="label" x="285" y="72" text-anchor="middle">Express</text>
+  <text class="sublabel" x="285" y="88" text-anchor="middle">Server</text>
+
+  <rect class="box" x="420" y="50" width="140" height="50"/>
+  <text class="label" x="490" y="72" text-anchor="middle">RAG Pipeline</text>
+
+  <rect class="box-green" x="630" y="50" width="130" height="50"/>
+  <text class="label" x="695" y="72" text-anchor="middle">Neon</text>
+  <text class="sublabel" x="695" y="88" text-anchor="middle">pgvector</text>
+
+  <!-- Forward arrows -->
+  <line class="arrow" x1="150" y1="75" x2="215" y2="75"/>
+  <line class="arrow" x1="350" y1="75" x2="415" y2="75"/>
+  <line class="arrow" x1="560" y1="75" x2="625" y2="75"/>
+
+  <!-- Return arrow: Neon to Express -->
+  <path class="arrow-back" d="M 695 100 L 695 130 L 285 130 L 285 105"/>
+  <text class="sublabel" x="490" y="124" text-anchor="middle">query + context (KB results)</text>
+
+  <!-- LLM Chain -->
+  <rect class="box-purple" x="220" y="160" width="360" height="260"/>
+  <text class="title" x="400" y="184" text-anchor="middle">LLM Fallback Chain</text>
+
+  <rect class="box" x="250" y="200" width="300" height="36"/>
+  <text class="step" x="270" y="222">Try #1: groq-free</text>
+  <text class="ok" x="520" y="222">OK? Return answer</text>
+
+  <rect class="box" x="250" y="246" width="300" height="36"/>
+  <text class="step" x="270" y="268">Try #2: openai</text>
+  <text class="ok" x="520" y="268">OK? Return answer</text>
+
+  <rect class="box" x="250" y="292" width="300" height="36"/>
+  <text class="step" x="270" y="314">Try #3: anthropic</text>
+  <text class="ok" x="520" y="314">OK? Return answer</text>
+
+  <rect class="box" x="250" y="338" width="300" height="36"/>
+  <text class="step" x="270" y="360">Try #4: openrouter</text>
+  <text class="ok" x="520" y="360">OK? Return answer</text>
+
+  <rect class="box" x="250" y="384" width="300" height="36"/>
+  <text class="step" x="270" y="406">Try #5: deepseek</text>
+  <text class="ok" x="520" y="406">OK? Return answer</text>
+
+  <!-- Arrow: Express to LLM -->
+  <line class="arrow" x1="285" y1="105" x2="285" y2="155"/>
+</svg>

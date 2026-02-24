@@ -5,9 +5,9 @@ Created: 2026-02-21
 
 ## Overview
 
-This document defines the comprehensive testing strategy for the AskRuvNet application — a Node.js/Express RAG (Retrieval-Augmented Generation) server backed by a PostgreSQL knowledge base of 54,543 enriched entries, ONNX embeddings (all-MiniLM-L6-v2, 384 dimensions), and Groq LLM (llama-3.3-70b-versatile).
+This document defines the comprehensive testing strategy for the AskRuvNet application — a Node.js/Express RAG (Retrieval-Augmented Generation) server backed by a PostgreSQL knowledge base of 54,543 enriched entries, ONNX embeddings (all-MiniLM-L6-v2, 384 dimensions), and a 5-provider LLM fallback chain (groq-free → openai → anthropic → openrouter → deepseek).
 
-Production URL: https://ask-ruvnet.onrender.com
+Production URL: https://ask-ruvnet-production.up.railway.app
 
 ---
 
