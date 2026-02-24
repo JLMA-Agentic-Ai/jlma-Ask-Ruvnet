@@ -16,12 +16,13 @@ npm version "$BUMP" --no-git-tag-version
 VERSION=$(node -p "require('./package.json').version")
 echo "Version: $VERSION"
 
-# Build frontend
+# Build frontend (validates it compiles — Railway rebuilds in Docker)
 echo "Building frontend..."
 cd src/ui && npm run build && cd ../..
+echo "Frontend build OK"
 
-# Commit and push
-git add package.json package-lock.json src/ui/dist/
+# Commit and push (dist/ is gitignored — Railway builds it in Docker)
+git add package.json package-lock.json
 git commit -m "v${VERSION}: deploy $BUMP"
 git push origin main
 
