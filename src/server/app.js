@@ -1238,7 +1238,7 @@ app.use((err, req, res, next) => {
 
 // Start Server (only when run directly, not when imported as a module)
 if (require.main === module) {
-    const HOST = process.env.HOST || '127.0.0.1';
+    const HOST = process.env.HOST || '0.0.0.0';
     const server = app.listen(PORT, HOST, () => {
         console.log(`Server running on ${HOST}:${PORT}`);
         console.log(`Ask rUVnet v${APP_VERSION} initialized.`);
