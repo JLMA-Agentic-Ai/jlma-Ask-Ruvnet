@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" width="700" height="420">
+  <defs>
+    <marker id="ll-arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+    </marker>
+    <marker id="ll-arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; fill: #e0e0e0; }
+    .title { font-size: 18px; font-weight: 700; }
+    .box-title { font-size: 13px; font-weight: 600; }
+    .body { font-size: 11px; fill: #c0c0c0; }
+    .flow-label { font-size: 9px; fill: #888; font-style: italic; }
+  </style>
+  <rect width="700" height="420" rx="12" fill="#1a1a2e"/>
+  <text x="350" y="35" text-anchor="middle" class="title">The Learning Loop</text>
+
+  <!-- User Question (top) -->
+  <rect x="270" y="55" width="160" height="45" rx="8" fill="#0f3460" stroke="#7c3aed" stroke-width="2"/>
+  <text x="350" y="75" text-anchor="middle" class="box-title" fill="#7c3aed">User Question</text>
+
+  <!-- Arrow down to RAG -->
+  <line x1="350" y1="100" x2="350" y2="130" stroke="#00d4ff" stroke-width="2" marker-end="url(#ll-arrow)"/>
+
+  <!-- RAG Pipeline (left column) -->
+  <rect x="80" y="135" width="200" height="55" rx="8" fill="#0f3460" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="180" y="158" text-anchor="middle" class="box-title" fill="#00d4ff">RAG Pipeline</text>
+  <text x="180" y="175" text-anchor="middle" class="body">(5 stages)</text>
+
+  <!-- Quality Metrics (right column) -->
+  <rect x="420" y="135" width="200" height="55" rx="8" fill="#0f3460" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="520" y="158" text-anchor="middle" class="box-title" fill="#f59e0b">Quality Metrics</text>
+
+  <!-- Arrow RAG to Quality -->
+  <line x1="280" y1="155" x2="418" y2="155" stroke="#10b981" stroke-width="1.5" marker-end="url(#ll-arrow-green)"/>
+  <text x="350" y="148" text-anchor="middle" class="flow-label">retrieval quality</text>
+
+  <!-- Arrow down from RAG -->
+  <line x1="180" y1="190" x2="180" y2="225" stroke="#00d4ff" stroke-width="2" marker-end="url(#ll-arrow)"/>
+  <!-- Arrow down from Quality -->
+  <line x1="520" y1="190" x2="520" y2="225" stroke="#00d4ff" stroke-width="2" marker-end="url(#ll-arrow)"/>
+
+  <!-- Grounded Answer (left column) -->
+  <rect x="80" y="230" width="200" height="45" rx="8" fill="#0f3460" stroke="#10b981" stroke-width="1.5"/>
+  <text x="180" y="258" text-anchor="middle" class="box-title" fill="#10b981">Grounded Answer</text>
+
+  <!-- KB Sweep Pipeline (right column) -->
+  <rect x="420" y="230" width="200" height="45" rx="8" fill="#0f3460" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="520" y="258" text-anchor="middle" class="box-title" fill="#f59e0b">KB Sweep Pipeline</text>
+
+  <!-- Arrow Quality to KB Sweep -->
+  <text x="520" y="218" text-anchor="middle" class="flow-label">informs next round</text>
+
+  <!-- Arrow down from Grounded Answer -->
+  <line x1="180" y1="275" x2="180" y2="310" stroke="#00d4ff" stroke-width="2" marker-end="url(#ll-arrow)"/>
+  <!-- Arrow down from KB Sweep -->
+  <line x1="520" y1="275" x2="520" y2="310" stroke="#00d4ff" stroke-width="2" marker-end="url(#ll-arrow)"/>
+
+  <!-- User learns (left column) -->
+  <rect x="80" y="315" width="200" height="55" rx="8" fill="#0f3460" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="180" y="338" text-anchor="middle" class="box-title" fill="#7c3aed">User learns,</text>
+  <text x="180" y="355" text-anchor="middle" class="body">asks deeper questions</text>
+
+  <!-- Re-ingest (right column) -->
+  <rect x="420" y="315" width="200" height="55" rx="8" fill="#0f3460" stroke="#10b981" stroke-width="1.5"/>
+  <text x="520" y="338" text-anchor="middle" class="box-title" fill="#10b981">Re-ingest</text>
+  <text x="520" y="355" text-anchor="middle" class="body">+ Score + Embed</text>
+
+  <!-- Labels between columns -->
+  <text x="350" y="308" text-anchor="middle" class="flow-label">new versions trigger</text>
+
+  <!-- Feedback loops: user back to top -->
+  <path d="M80,342 Q40,342 40,250 Q40,80 270,80" stroke="#7c3aed" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#ll-arrow)"/>
+  <text x="25" y="210" text-anchor="middle" class="flow-label" transform="rotate(-90,25,210)">deeper questions feed back</text>
+
+  <!-- Re-ingest back to DB/RAG -->
+  <path d="M620,342 Q660,342 660,250 Q660,160 620,160" stroke="#10b981" stroke-width="1.5" fill="none" stroke-dasharray="6,3"/>
+  <text x="675" y="250" text-anchor="middle" class="flow-label" transform="rotate(90,675,250)">continuous improvement</text>
+
+  <!-- Bottom label -->
+  <text x="350" y="400" text-anchor="middle" font-size="11" fill="#888" font-family="system-ui, -apple-system, sans-serif">kb:sweep and kb:evolution scripts monitor repos for new content</text>
+</svg>

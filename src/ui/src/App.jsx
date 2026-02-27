@@ -403,8 +403,13 @@ function App() {
       }
 
       const data = await response.json();
-      const type = action === 'diagram' ? 'diagram' : 'text';
-      setCanvasContent({ type, content: data.result, action });
+      if (action === 'visualize') {
+        const imageUrl = data.imageUrl || data.result;
+        setCanvasContent({ type: 'image', content: imageUrl, title: 'Generated Visualization', action });
+      } else {
+        const type = action === 'diagram' ? 'diagram' : 'text';
+        setCanvasContent({ type, content: data.result, action });
+      }
     } catch (err) {
       console.error('Special action error:', err);
       setCanvasContent({
@@ -749,11 +754,39 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                         </div>
                         <div className="content">
                           <div className="markdown-content"><ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown></div>
+                          {msg.role === 'assistant' && msg.sources && msg.sources.length > 0 && (
+                            <div className="sources">
+                              <div className="sources-title">Sources ({msg.sources.length})</div>
+                              <div className="sources-list">
+                                {msg.sources.slice(0, 6).map((src, si) => {
+                                  const githubUrl = src.file_path
+                                    ? (src.file_path.startsWith('github://')
+                                        ? src.file_path.replace('github://', 'https://github.com/').replace(/^([^/]+)\/([^/]+)\/(.+)$/, '$1/$2/blob/main/$3')
+                                        : src.file_path.startsWith('http') ? src.file_path : null)
+                                    : null;
+                                  const displayTitle = src.title || src.package_name || src.id || `Source ${si + 1}`;
+                                  const score = src.score ? Math.round(src.score * 100) : null;
+                                  return (
+                                    <div key={si} className="source-tag">
+                                      {src.doc_type && <span className="source-badge">{src.doc_type}</span>}
+                                      {githubUrl ? (
+                                        <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="source-link">{displayTitle}</a>
+                                      ) : (
+                                        <span className="source-name">{displayTitle}</span>
+                                      )}
+                                      {score && <span className="source-score">{score}%</span>}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
                           {msg.role === 'assistant' && !msg.canvasGenerated && (
                             <div className="message-actions">
                               <button className="action-btn" onClick={() => handleSpecialAction('simplify', msg.content)}>🔄 Simplify</button>
                               <button className="action-btn" onClick={() => handleSpecialAction('code', msg.content)}>💻 Code</button>
                               <button className="action-btn" onClick={() => handleSpecialAction('diagram', msg.content)}>📊 Diagram</button>
+                              <button className="action-btn" onClick={() => handleSpecialAction('visualize', msg.content)}>🎨 Visualize</button>
                               <button className="action-btn" onClick={() => setCanvasContent({ type: 'text', content: msg.content })}>➡️ Canvas</button>
                             </div>
                           )}
@@ -854,6 +887,15 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                         >
                           Your browser does not support the video tag.
                         </video>
+                      </div>
+                    ) : canvasContent.type === 'image' ? (
+                      <div className="image-viewer" style={{ padding: '1rem', textAlign: 'center' }}>
+                        {canvasContent.title && <h2 style={{ marginBottom: '1rem' }}>{canvasContent.title}</h2>}
+                        <img
+                          src={canvasContent.content}
+                          alt={canvasContent.title || 'Generated visualization'}
+                          style={{ maxWidth: '100%', borderRadius: '8px', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
+                        />
                       </div>
                     ) : canvasContent.type === 'iframe' ? (
                       <iframe

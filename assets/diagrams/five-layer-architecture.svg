@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520" width="700" height="520">
+  <defs>
+    <linearGradient id="layerGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="layerGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="layerGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="layerGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="layerGrad5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; fill: #e0e0e0; }
+    .title { font-size: 18px; font-weight: 700; }
+    .layer-name { font-size: 15px; font-weight: 700; }
+    .layer-detail { font-size: 11px; fill: #b0b0b0; }
+    .layer-sub { font-size: 12px; fill: #c0c0c0; }
+    .layer-desc { font-size: 10px; fill: #888; font-style: italic; }
+  </style>
+  <rect width="700" height="520" rx="12" fill="#1a1a2e"/>
+  <text x="350" y="35" text-anchor="middle" class="title">Five-Layer Architecture</text>
+
+  <!-- Layer 1: Applications -->
+  <rect x="40" y="55" width="620" height="80" rx="8" fill="url(#layerGrad1)" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="60" y="78" class="layer-name" fill="#7c3aed">APPLICATIONS</text>
+  <text x="60" y="98" class="layer-sub">Ask-RuvNet    Flow-Nexus    Neural Trader    Agentics Hub</text>
+  <text x="60" y="124" class="layer-desc">(User-facing products built on the stack below)</text>
+
+  <!-- Layer 2: Orchestration -->
+  <rect x="40" y="145" width="620" height="80" rx="8" fill="url(#layerGrad2)" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="60" y="168" class="layer-name" fill="#00d4ff">ORCHESTRATION</text>
+  <text x="60" y="188" class="layer-sub">Claude Flow v3    ruv-swarm    Hive-Mind Consensus</text>
+  <text x="60" y="202" class="layer-detail">60+ agent types    5 topologies    BFT / Raft / CRDT</text>
+  <text x="60" y="216" class="layer-desc">(Multi-agent coordination, swarm intelligence)</text>
+
+  <!-- Layer 3: Intelligence -->
+  <rect x="40" y="235" width="620" height="80" rx="8" fill="url(#layerGrad3)" stroke="#10b981" stroke-width="1.5"/>
+  <text x="60" y="258" class="layer-name" fill="#10b981">INTELLIGENCE</text>
+  <text x="60" y="278" class="layer-sub">SONA    AIMDS    ReasoningBank    RVF Containers</text>
+  <text x="60" y="292" class="layer-detail">&lt;0.05ms adapt    3-layer security    Self-learning    24-segment cognitive</text>
+  <text x="60" y="306" class="layer-desc">(Self-learning, security, neural adaptation)</text>
+
+  <!-- Layer 4: Data -->
+  <rect x="40" y="325" width="620" height="80" rx="8" fill="url(#layerGrad4)" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="60" y="348" class="layer-name" fill="#f59e0b">DATA</text>
+  <text x="60" y="368" class="layer-sub">RuVector-Postgres    RuVector-WASM    AgentDB</text>
+  <text x="60" y="382" class="layer-detail">290+ SQL functions    &lt;400KB browser    Hybrid memory (episodic/semantic)</text>
+  <text x="60" y="396" class="layer-desc">(Vector storage, similarity search, agent memory)</text>
+
+  <!-- Layer 5: Foundation -->
+  <rect x="40" y="415" width="620" height="80" rx="8" fill="url(#layerGrad5)" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="60" y="438" class="layer-name" fill="#ef4444">FOUNDATION</text>
+  <text x="60" y="458" class="layer-sub">ONNX Runtime    Rust Crates (80+)    WASM/SIMD</text>
+  <text x="60" y="472" class="layer-detail">384d embeddings    Tensor Compress    Micro-HNSW 7.2KB</text>
+  <text x="60" y="486" class="layer-desc">(Low-level compute, embeddings, edge deployment)</text>
+</svg>

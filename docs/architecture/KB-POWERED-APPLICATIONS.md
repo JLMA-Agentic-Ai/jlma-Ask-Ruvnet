@@ -81,6 +81,11 @@ AI agents (including Claude) have a tendency to **simplify** complex knowledge b
 
 Every agent operation MUST be **bound to the KB** with verification:
 
+![Anti-Simplification Flow](assets/diagrams/anti-simplification-flow.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                        ANTI-SIMPLIFICATION FLOW                              │
@@ -105,6 +110,8 @@ Every agent operation MUST be **bound to the KB** with verification:
 │  (Every Time)     │              │  (With Sources)   │
 └───────────────────┘              └───────────────────┘
 ```
+
+</details>
 
 ### Enforcement Rules
 
@@ -301,6 +308,11 @@ Before any agent response is finalized, verify:
 
 ### When to Use Each
 
+![MCP vs REST Access Patterns](assets/diagrams/mcp-vs-rest.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
                     KNOWLEDGE BASE (ruvector-postgres)
                             │
@@ -316,6 +328,8 @@ Before any agent response is finalized, verify:
       │   Code    │                   │   Apps    │
       └───────────┘                   └───────────┘
 ```
+
+</details>
 
 ### MCP (Model Context Protocol)
 
@@ -483,6 +497,11 @@ INSERT INTO retirewell.knowledge (
 
 ### Complete Flow
 
+![RAG Pipeline — Complete Flow](assets/diagrams/rag-pipeline.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         USER REQUEST                             │
@@ -574,6 +593,8 @@ INSERT INTO retirewell.knowledge (
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+</details>
+
 ### Implementation Code
 
 ```javascript
@@ -662,6 +683,11 @@ class KBPoweredRAG {
 
 ### Federated Architecture
 
+![Federated KB Architecture](assets/diagrams/federated-kb-architecture.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                    FEDERATED KB ARCHITECTURE                     │
@@ -688,6 +714,8 @@ class KBPoweredRAG {
               │ Supplement: Utils   │
               └─────────────────────┘
 ```
+
+</details>
 
 ### Query Routing Logic
 
@@ -890,6 +918,11 @@ Agentic Flow provides **150+ specialized agents** and **213 MCP tools**. This se
 
 ### Architecture: Agent-KB Binding
 
+![Agentic Flow + Knowledge Base](assets/diagrams/agentic-flow-kb.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                    AGENTIC FLOW + KNOWLEDGE BASE                             │
@@ -933,6 +966,8 @@ Agentic Flow provides **150+ specialized agents** and **213 MCP tools**. This se
                          │  • SIMD Acceleration  │
                          └───────────────────────┘
 ```
+
+</details>
 
 ### ReasoningBank + KB Integration
 
@@ -1080,6 +1115,11 @@ Claude Flow provides **enterprise orchestration** with Hive Mind, 64 specialized
 
 ### Hive Mind + KB Architecture
 
+![Claude Flow Hive Mind + KB](assets/diagrams/claude-flow-hive-mind-kb.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                     CLAUDE FLOW HIVE MIND + KB                               │
@@ -1115,6 +1155,8 @@ Claude Flow provides **enterprise orchestration** with Hive Mind, 64 specialized
          │ .swarm/memory.db│ │ 164x faster     │ │ 77+ functions   │
          └─────────────────┘ └─────────────────┘ └─────────────────┘
 ```
+
+</details>
 
 ### Claude Flow Memory + KB Sync
 
@@ -1247,6 +1289,11 @@ This section defines the complete binding protocol that ensures agents NEVER sim
 
 ### The Binding Protocol
 
+![Full-Depth Agent-KB Binding Protocol](assets/diagrams/kb-binding-protocol.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                    FULL-DEPTH AGENT-KB BINDING PROTOCOL                      │
@@ -1282,6 +1329,8 @@ LEVEL 5: LEARNING BINDING
 ├── Agent improves KB query strategies
 └── Continuous feedback loop
 ```
+
+</details>
 
 ### Complete Implementation
 
@@ -1545,6 +1594,11 @@ console.log('Session Stats:', binding.getStats());
 
 ### Complete System Diagram
 
+![Production Architecture](assets/diagrams/production-architecture.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                              PRODUCTION ARCHITECTURE                             │
@@ -1645,6 +1699,8 @@ console.log('Session Stats:', binding.getStats());
 │  └─────────────────┘        └─────────────────┘      └─────────────────┘       │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 ---
 
@@ -1795,6 +1851,11 @@ Building **hyper-intelligent KB-powered applications** with RuvVector/RuvLLM req
 
 ### The Golden Rule
 
+![The Golden Rule](assets/diagrams/golden-rule.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           THE GOLDEN RULE                                    │
@@ -1816,6 +1877,8 @@ Building **hyper-intelligent KB-powered applications** with RuvVector/RuvLLM req
 │   VIOLATION OF THESE RULES IS UNACCEPTABLE.                                  │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 ---
 

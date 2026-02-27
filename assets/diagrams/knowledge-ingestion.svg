@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" width="600" height="480">
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; fill: #e0e0e0; }
+    .title { font-size: 18px; font-weight: 700; }
+    .layer-title { font-size: 14px; font-weight: 700; }
+    .item { font-size: 11px; fill: #c0c0c0; }
+    .tree { font-size: 11px; fill: #666; }
+  </style>
+  <rect width="600" height="480" rx="12" fill="#1a1a2e"/>
+  <text x="300" y="35" text-anchor="middle" class="title">Knowledge Ingestion Ecosystem</text>
+
+  <rect x="40" y="55" width="520" height="410" rx="8" fill="#16213e" stroke="#00d4ff" stroke-width="1.5"/>
+
+  <!-- Layer 1 -->
+  <rect x="60" y="70" width="480" height="90" rx="6" fill="#0f3460" stroke="#7c3aed" stroke-width="1"/>
+  <text x="80" y="92" class="layer-title" fill="#7c3aed">Layer 1: Repository Content</text>
+  <text x="90" y="112" class="tree">|--</text><text x="115" y="112" class="item">README files (173 repos)</text>
+  <text x="90" y="128" class="tree">|--</text><text x="115" y="128" class="item">Code structure and API surfaces</text>
+  <text x="90" y="144" class="tree">|--</text><text x="115" y="144" class="item">Package manifests and dependencies</text>
+  <text x="90" y="156" class="tree">`--</text><text x="115" y="156" class="item">Configuration patterns</text>
+
+  <!-- Layer 2 -->
+  <rect x="60" y="170" width="480" height="90" rx="6" fill="#0f3460" stroke="#00d4ff" stroke-width="1"/>
+  <text x="80" y="192" class="layer-title" fill="#00d4ff">Layer 2: Evolutionary Knowledge</text>
+  <text x="90" y="212" class="tree">|--</text><text x="115" y="212" class="item">26 Architecture Decision Records</text>
+  <text x="90" y="228" class="tree">|--</text><text x="115" y="228" class="item">Changelogs and release notes</text>
+  <text x="90" y="244" class="tree">|--</text><text x="115" y="244" class="item">Commit history (significant changes)</text>
+  <text x="90" y="256" class="tree">`--</text><text x="115" y="256" class="item">Version progression and rationale</text>
+
+  <!-- Layer 3 -->
+  <rect x="60" y="270" width="480" height="90" rx="6" fill="#0f3460" stroke="#10b981" stroke-width="1"/>
+  <text x="80" y="292" class="layer-title" fill="#10b981">Layer 3: Teaching Content</text>
+  <text x="90" y="312" class="tree">|--</text><text x="115" y="312" class="item">Plain-English concept explanations</text>
+  <text x="90" y="328" class="tree">|--</text><text x="115" y="328" class="item">Decision frameworks (when to use X)</text>
+  <text x="90" y="344" class="tree">|--</text><text x="115" y="344" class="item">Debugging guides</text>
+  <text x="90" y="356" class="tree">`--</text><text x="115" y="356" class="item">Progressive learning paths</text>
+
+  <!-- Layer 4 -->
+  <rect x="60" y="370" width="480" height="80" rx="6" fill="#0f3460" stroke="#f59e0b" stroke-width="1"/>
+  <text x="80" y="392" class="layer-title" fill="#f59e0b">Layer 4: Multimedia</text>
+  <text x="90" y="412" class="tree">|--</text><text x="115" y="412" class="item">Video transcript chunks</text>
+  <text x="90" y="428" class="tree">|--</text><text x="115" y="428" class="item">Coaching session transcripts</text>
+  <text x="90" y="444" class="tree">`--</text><text x="115" y="444" class="item">Agentics Foundation content</text>
+</svg>

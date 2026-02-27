@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 960" width="700" height="960">
+  <rect width="700" height="960" fill="#1a1a2e"/>
+  <!-- Step 0: USER REQUEST -->
+  <rect x="30" y="15" width="640" height="68" rx="4" fill="#0f3460" stroke="#4a9eff" stroke-width="1.5"/>
+  <text x="350" y="40" fill="#4a9eff" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">USER REQUEST</text>
+  <line x1="42" y1="47" x2="658" y2="47" stroke="#4a9eff" stroke-width="0.5" opacity="0.4"/>
+  <text x="350" y="66" fill="#e2e8f0" font-family="monospace" font-size="12" text-anchor="middle">"Should I take Social Security at 62 or 67?"</text>
+  <!-- Arrow 0→1 -->
+  <line x1="350" y1="83" x2="350" y2="113" stroke="#64748b" stroke-width="2"/>
+  <polygon points="345,110 350,120 355,110" fill="#64748b"/>
+  <!-- Step 1: QUERY UNDERSTANDING -->
+  <rect x="30" y="120" width="640" height="110" rx="4" fill="#16213e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="350" y="143" fill="#a78bfa" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">1. QUERY UNDERSTANDING</text>
+  <line x1="42" y1="150" x2="658" y2="150" stroke="#a78bfa" stroke-width="0.5" opacity="0.4"/>
+  <text x="350" y="170" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">• Intent Classification: "social_security_timing"</text>
+  <text x="350" y="188" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">• Entity Extraction: {benefit_type: "SS", ages: [62, 67]}</text>
+  <text x="350" y="206" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">• Context Enrichment: user profile, conversation history</text>
+  <!-- Arrow 1→2 -->
+  <line x1="350" y1="230" x2="350" y2="260" stroke="#64748b" stroke-width="2"/>
+  <polygon points="345,257 350,267 355,257" fill="#64748b"/>
+  <!-- Step 2: SEMANTIC ROUTING -->
+  <rect x="30" y="267" width="640" height="100" rx="4" fill="#16213e" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="350" y="290" fill="#4ade80" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">2. SEMANTIC ROUTING</text>
+  <line x1="42" y1="297" x2="658" y2="297" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+  <text x="350" y="317" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">Embed query: "social security claiming age 62 67"</text>
+  <text x="350" y="335" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">Route → retirewell (primary) + utilities (supplemental)</text>
+  <!-- Arrow 2→3 -->
+  <line x1="350" y1="367" x2="350" y2="397" stroke="#64748b" stroke-width="2"/>
+  <polygon points="345,394 350,404 355,394" fill="#64748b"/>
+  <!-- Step 3: KNOWLEDGE RETRIEVAL -->
+  <rect x="30" y="404" width="640" height="130" rx="4" fill="#16213e" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="350" y="427" fill="#fb923c" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">3. KNOWLEDGE RETRIEVAL</text>
+  <line x1="42" y1="434" x2="658" y2="434" stroke="#fb923c" stroke-width="0.5" opacity="0.4"/>
+  <text x="350" y="455" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">SELECT … 1 - cosine_distance_arr(embedding, ruvector_embed($query)) AS similarity</text>
+  <text x="350" y="474" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">WHERE decision_category = 'social_security' AND similarity &gt; 0.7</text>
+  <text x="350" y="494" fill="#4ade80" font-family="monospace" font-size="11" text-anchor="middle">Results: "SS Claiming Strategies" (0.92) · "Break-Even" (0.88) · "Tax" (0.81)</text>
+  <!-- Arrow 3→4 -->
+  <line x1="350" y1="534" x2="350" y2="564" stroke="#64748b" stroke-width="2"/>
+  <polygon points="345,561 350,571 355,561" fill="#64748b"/>
+  <!-- Step 4: CONTEXT ASSEMBLY -->
+  <rect x="30" y="571" width="640" height="120" rx="4" fill="#16213e" stroke="#4a9eff" stroke-width="1.5"/>
+  <text x="350" y="594" fill="#4a9eff" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">4. CONTEXT ASSEMBLY</text>
+  <line x1="42" y1="601" x2="658" y2="601" stroke="#4a9eff" stroke-width="0.5" opacity="0.4"/>
+  <text x="350" y="621" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">System Prompt: "Use ONLY the following knowledge to answer…"</text>
+  <text x="350" y="640" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">Retrieved Context: [Chunk 1] [Chunk 2] [Chunk 3]</text>
+  <text x="350" y="659" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">User Context: {age: 60, life_expectancy: 85, other_income: $40k/yr}</text>
+  <!-- Arrow 4→5 -->
+  <line x1="350" y1="691" x2="350" y2="721" stroke="#64748b" stroke-width="2"/>
+  <polygon points="345,718 350,728 355,718" fill="#64748b"/>
+  <!-- Step 5: LLM GENERATION -->
+  <rect x="30" y="728" width="640" height="80" rx="4" fill="#16213e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="350" y="751" fill="#a78bfa" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">5. LLM GENERATION</text>
+  <line x1="42" y1="758" x2="658" y2="758" stroke="#a78bfa" stroke-width="0.5" opacity="0.4"/>
+  <text x="350" y="778" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">Claude API call → Personalized response grounded in KB → Cites sources</text>
+  <!-- Arrow 5→6 -->
+  <line x1="350" y1="808" x2="350" y2="838" stroke="#64748b" stroke-width="2"/>
+  <polygon points="345,835 350,845 355,835" fill="#64748b"/>
+  <!-- Step 6: STRUCTURED RESPONSE -->
+  <rect x="30" y="845" width="640" height="100" rx="4" fill="#0f3460" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="350" y="868" fill="#4ade80" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">6. STRUCTURED RESPONSE</text>
+  <line x1="42" y1="875" x2="658" y2="875" stroke="#4ade80" stroke-width="0.5" opacity="0.4"/>
+  <text x="350" y="894" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">{ answer, confidence: 0.91, sources, knowledge_coverage: "full",</text>
+  <text x="350" y="912" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">suggested_followups: ["What about Medicare timing?"] }</text>
+</svg>

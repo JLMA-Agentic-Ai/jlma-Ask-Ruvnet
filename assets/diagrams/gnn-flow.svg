@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <marker id="arrowCyan" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="340" rx="12" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="360" y="32" fill="#e0e0e0" font-size="16" font-weight="bold" text-anchor="middle">Traditional Search vs RuVector GNN-Enhanced Search</text>
+
+  <!-- SECTION 1: Traditional vector search -->
+  <text x="30" y="72" fill="#a0a0a0" font-size="12" font-weight="600">Traditional Vector Search</text>
+
+  <!-- Query box -->
+  <rect x="30" y="85" width="120" height="42" rx="8" fill="#16213e" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="90" y="111" fill="#00d4ff" font-size="13" font-weight="600" text-anchor="middle">Query</text>
+
+  <!-- Arrow -->
+  <line x1="150" y1="106" x2="210" y2="106" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowCyan)"/>
+
+  <!-- HNSW Index box -->
+  <rect x="220" y="85" width="150" height="42" rx="8" fill="#16213e" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="295" y="111" fill="#00d4ff" font-size="13" font-weight="600" text-anchor="middle">HNSW Index</text>
+
+  <!-- Arrow -->
+  <line x1="370" y1="106" x2="430" y2="106" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowCyan)"/>
+
+  <!-- Top K Results box -->
+  <rect x="440" y="85" width="160" height="42" rx="8" fill="#16213e" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="520" y="111" fill="#00d4ff" font-size="13" font-weight="600" text-anchor="middle">Top K Results</text>
+
+  <!-- Divider -->
+  <line x1="30" y1="155" x2="690" y2="155" stroke="#333" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- SECTION 2: RuVector with GNN -->
+  <text x="30" y="185" fill="#10b981" font-size="12" font-weight="600">RuVector with GNN (Self-Learning)</text>
+
+  <!-- Query box -->
+  <rect x="30" y="198" width="120" height="42" rx="8" fill="#16213e" stroke="#10b981" stroke-width="1.5"/>
+  <text x="90" y="224" fill="#10b981" font-size="13" font-weight="600" text-anchor="middle">Query</text>
+
+  <!-- Arrow to HNSW -->
+  <line x1="150" y1="219" x2="210" y2="219" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- HNSW Index box -->
+  <rect x="220" y="198" width="150" height="42" rx="8" fill="#16213e" stroke="#10b981" stroke-width="1.5"/>
+  <text x="295" y="224" fill="#10b981" font-size="13" font-weight="600" text-anchor="middle">HNSW Index</text>
+
+  <!-- Arrow to GNN -->
+  <line x1="370" y1="219" x2="430" y2="219" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- GNN Layer box (highlighted) -->
+  <rect x="440" y="198" width="130" height="42" rx="8" fill="#1a1a4e" stroke="#7c3aed" stroke-width="2"/>
+  <text x="505" y="224" fill="#7c3aed" font-size="13" font-weight="bold" text-anchor="middle">GNN Layer</text>
+
+  <!-- Arrow to Enhanced Results -->
+  <line x1="570" y1="219" x2="595" y2="219" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowPurple)"/>
+
+  <!-- Enhanced Results box -->
+  <rect x="600" y="188" width="100" height="62" rx="8" fill="#16213e" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="650" y="215" fill="#7c3aed" font-size="12" font-weight="600" text-anchor="middle">Enhanced</text>
+  <text x="650" y="233" fill="#7c3aed" font-size="12" font-weight="600" text-anchor="middle">Results</text>
+
+  <!-- Feedback loop: curved arrow from Enhanced Results back up and left to HNSW Index -->
+  <path d="M 650 250 L 650 290 Q 650 310 630 310 L 310 310 Q 290 310 290 290 L 290 245"
+        fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrowCyan)"/>
+
+  <!-- "learns from" label on the feedback loop -->
+  <rect x="395" y="296" width="110" height="24" rx="4" fill="#1a1a2e"/>
+  <text x="450" y="313" fill="#f59e0b" font-size="11" font-weight="600" text-anchor="middle">learns from</text>
+
+  <!-- Upward arrow marker for feedback (recolor) -->
+  <defs>
+    <marker id="arrowUp" markerWidth="10" markerHeight="7" refX="5" refY="0" orient="auto">
+      <polygon points="0 7, 5 0, 10 7" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <!-- Replace the arrowCyan on feedback with arrowUp by redrawing the last segment -->
+  <line x1="290" y1="288" x2="290" y2="245" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowUp)"/>
+</svg>

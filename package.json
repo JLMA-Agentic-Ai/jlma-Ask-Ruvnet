@@ -20,13 +20,17 @@
     "kb:visual:screenshot": "node scripts/build-kb-universe.js --screenshot",
     "kb:refresh": "node scripts/kb-refresh.js",
     "kb:sweep": "node scripts/kb-sweep-updates.js",
-    "kb:sweep:force": "node scripts/kb-sweep-updates.js --force"
+    "kb:sweep:force": "node scripts/kb-sweep-updates.js --force",
+    "kb:evolution": "node scripts/ingest-github-evolution.js",
+    "kb:github": "node scripts/ingest-github-repos.js",
+    "kb:full": "npm run kb:github && npm run kb:evolution && npm run kb:ingest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/genai": "^1.43.0",
     "@google/generative-ai": "^0.24.1",
     "@xenova/transformers": "^2.17.2",
     "axios": "^1.13.2",

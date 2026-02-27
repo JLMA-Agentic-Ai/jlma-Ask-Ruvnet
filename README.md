@@ -1,71 +1,548 @@
-# AskRuvNet - AI Knowledge Base Assistant
+# Ask-RuvNet
 
-> Updated: 2026-02-24 | Version 2.1.5
+> Updated: 2026-02-27 | Version 2.2.0
 
-**Production URL:** https://ask-ruvnet-production.up.railway.app
-**npm package name:** answerbot-builder
-**Deployment Platform:** Railway (Hobby plan, Docker, always-on)
+**The front door to one of the most ambitious open-source AI architecture projects ever built.**
 
-AskRuvNet is an AI-powered assistant that answers questions about the RuvNet ecosystem. It combines a 54,543-entry gold-tier knowledge base stored in Neon PostgreSQL with a 5-provider LLM fallback chain to deliver accurate, context-grounded responses about RuvNet packages, agent orchestration, vector databases, and AI development patterns.
+Ask-RuvNet is a RAG-powered knowledge assistant that makes 150+ interconnected repositories, 26 architecture decision records, and years of engineering decisions searchable, explainable, and visual. It exists because understanding an ecosystem this large should not require reading 170,000 documents.
+
+**Production:** https://ask-ruvnet-production.up.railway.app
 
 ---
 
-## Architecture
+## What's New in v2.2.0
 
-```
-                          ┌─────────────────────┐
-                          │       User           │
-                          └──────────┬──────────┘
-                                     │ HTTPS
-                                     ▼
-                    ┌────────────────────────────────┐
-                    │  Railway (Hobby Plan, $5/mo)   │
-                    │  Docker container, always-on   │
-                    │  Region: us-west-2             │
-                    │  Auto-deploy on push to main   │
-                    └──────────┬─────────────────────┘
-                               │
-                    ┌──────────▼─────────────────────┐
-                    │   Express.js Server (port 3000)│
-                    │   src/server/app.js             │
-                    └──────┬───────────┬─────────────┘
-                           │           │
-              ┌────────────▼──┐   ┌────▼──────────────────┐
-              │ LLM Provider  │   │  RAG Pipeline          │
-              │ Fallback Chain│   │                        │
-              │               │   │  HybridSearch          │
-              │ 1. groq-free  │   │  (BM25 + semantic)     │
-              │ 2. openai     │   │        │               │
-              │ 3. anthropic  │   │  QueryExpander         │
-              │ 4. openrouter │   │        │               │
-              │ 5. deepseek   │   │  ReRanker              │
-              └───────┬───────┘   │        │               │
-                      │           │  ContextCompressor     │
-                      │           │        │               │
-                      │           │  MultiHopRetriever     │
-                      │           └────────┬───────────────┘
-                      │                    │
-                      │           ┌────────▼───────────────┐
-                      │           │  PostgresKnowledgeBase  │
-                      │           │  Neon PostgreSQL        │
-                      │           │  + pgvector HNSW        │
-                      │           │  54,543 entries         │
-                      │           │  384d ONNX embeddings   │
-                      │           └────────────────────────┘
-                      │
-              ┌───────▼───────┐
-              │ Streamed      │
-              │ Response      │
-              └───────────────┘
+### Rich Responses with Source Citations
+
+Chat responses are no longer plain text walls. The LLM is now instructed to cite its sources naturally throughout answers, embedding GitHub links inline where relevant. Responses are doc-type aware -- the system knows whether a source is an ADR, a changelog, a release note, commit history, or a repository README -- and adjusts citation style accordingly. Each answer ends with a **Related Resources** section for direct follow-up links and an **Explore Further** section that points to deeper material the user might want to read next.
+
+### Source Cards
+
+Every chat response now displays clickable **source cards** beneath the answer. Each card shows:
+
+- A **doc_type badge** indicating the kind of source (ADR, changelog, release-note, commit-history, github-repository)
+- A **relevance score** so you can see how closely the source matched your question
+- A **direct GitHub link** to the original file or repository
+
+Source cards make it easy to verify answers and dive deeper without having to search GitHub yourself.
+
+### Evolutionary Knowledge Ingestion
+
+The knowledge base now includes **13,192 chunks of evolutionary knowledge** drawn from **173 repositories** across **3 GitHub organizations** (ruvnet, openclaw, VibiumDev). This covers:
+
+- Architecture Decision Records (ADRs)
+- Changelogs and release notes
+- Commit history for significant changes
+
+Run the evolutionary ingestion pipeline locally with:
+
+```bash
+npm run kb:evolution
 ```
 
-### Multi-Provider LLM Fallback Chain
+### Full Pipeline Command
 
-The app automatically detects all configured API keys and builds a fallback chain. If one provider is rate-limited or fails, it tries the next.
+A single command now runs the complete knowledge ingestion pipeline -- GitHub repository content, evolutionary knowledge, and architecture sync -- in one shot:
+
+```bash
+npm run kb:full
+```
+
+### Gemini Visual Integration
+
+A new **Visualize** button appears alongside chat responses. Clicking it generates an architectural diagram using **Gemini 2.0 Flash** with full KB context, so the diagram is grounded in actual ecosystem knowledge rather than generic illustrations.
+
+### Markdown Link Styling
+
+Links in chat responses are now properly styled and clickable. Previously, raw URLs and markdown links rendered as plain text. They now display as styled hyperlinks with appropriate hover states.
+
+---
+
+## The Big Picture
+
+Ruben Cohen (rUv) has spent years building something unusual: not a single AI product, but an entire *ecosystem* of interlocking systems that span agent orchestration, self-learning vector databases, graph neural networks, cognitive containers, distributed swarm intelligence, and neuromorphic computing.
+
+Across **173 repositories** in three GitHub organizations (ruvnet, openclaw, VibiumDev), the RuVNet ecosystem covers:
+
+- **Agent orchestration** -- Claude Flow v3, ruv-swarm, agentic-flow
+- **Vector databases** -- RuVector (PostgreSQL-native, WASM, neuromorphic)
+- **Self-learning AI** -- SONA, AIMDS, ReasoningBank, LoRA adapters
+- **Cognitive containers** -- RVF format (24-segment, self-booting, 5.5KB WASM)
+- **Graph intelligence** -- GNN, min-cut analysis, Louvain community detection
+- **Synthetic data** -- Agentic Synth, procedural generation
+- **Distributed consensus** -- Byzantine, Raft, CRDT, Gossip protocols
+- **Robotics** -- ROS3 (Rust-native robot operating system)
+
+The problem is obvious: no human can hold all of this in their head. Ask-RuvNet is the solution. It ingests everything -- READMEs, changelogs, ADRs, commit messages, release notes, code structure -- and makes it conversational.
+
+Ask a question. Get an answer grounded in the actual codebase, not in an LLM's stale training data.
+
+---
+
+## The Five-Layer Architecture
+
+The RuVNet ecosystem is organized into five layers. Each layer builds on the one below it.
+
+![Five-Layer Architecture](assets/diagrams/five-layer-architecture.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    APPLICATIONS                          │
+│  Ask-RuvNet  Flow-Nexus  Neural Trader  Agentics Hub    │
+│  (User-facing products built on the stack below)        │
+├─────────────────────────────────────────────────────────┤
+│                   ORCHESTRATION                          │
+│  Claude Flow v3    ruv-swarm    Hive-Mind Consensus     │
+│  60+ agent types   5 topologies   BFT / Raft / CRDT    │
+│  (Multi-agent coordination, swarm intelligence)         │
+├─────────────────────────────────────────────────────────┤
+│                   INTELLIGENCE                           │
+│  SONA     AIMDS      ReasoningBank     RVF Containers   │
+│  <0.05ms  3-layer    Self-learning     24-segment       │
+│  adapt    security   with LoRA/EWC++   cognitive fmt    │
+│  (Self-learning, security, neural adaptation)           │
+├─────────────────────────────────────────────────────────┤
+│                      DATA                                │
+│  RuVector-Postgres   RuVector-WASM    AgentDB           │
+│  290+ SQL functions  <400KB browser   Hybrid memory     │
+│  HNSW 150x-12500x   Zero backend     Episodic/semantic │
+│  (Vector storage, similarity search, agent memory)      │
+├─────────────────────────────────────────────────────────┤
+│                   FOUNDATION                             │
+│  ONNX Runtime    Rust Crates (80+)    WASM/SIMD        │
+│  384d embeddings  Tensor Compress     Micro-HNSW 7.2KB │
+│  (Low-level compute, embeddings, edge deployment)       │
+└─────────────────────────────────────────────────────────┘
+```
+
+</details>
+
+Ask-RuvNet sits at the **Applications** layer. It reaches down through every layer to answer questions about any part of the stack.
+
+---
+
+## How It Works
+
+### From GitHub to Answer: The Knowledge Flow
+
+![Knowledge Flow: From GitHub to Answer](assets/diagrams/knowledge-flow.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+  173 GitHub Repos                    26 ADRs
+  (ruvnet, openclaw, VibiumDev)      (Claude Flow v3 decisions)
+        │                                  │
+        ▼                                  ▼
+  ┌──────────────────────────────────────────────┐
+  │          Evolution Ingestion Pipeline         │
+  │                                              │
+  │  READMEs ─┐                                  │
+  │  Changelogs ──┐                              │
+  │  Releases ──────► Chunk + Embed + Score      │
+  │  Commits ─────┘       │                      │
+  │  ADRs ────────┘       │                      │
+  │                       ▼                      │
+  │            ONNX all-MiniLM-L6-v2             │
+  │            384-dimensional embeddings        │
+  └──────────────────┬───────────────────────────┘
+                     │
+                     ▼
+  ┌──────────────────────────────────────────────┐
+  │       Neon PostgreSQL + pgvector (HNSW)       │
+  │                                              │
+  │   170,542+ entries across ask_ruvnet schema  │
+  │   Gold-tier quality gate (avg 92.1/100)      │
+  │   HNSW index (m=16, ef_construction=64)      │
+  └──────────────────┬───────────────────────────┘
+                     │
+                     ▼
+  ┌──────────────────────────────────────────────┐
+  │              RAG Pipeline                     │
+  │                                              │
+  │   User Question                              │
+  │        │                                     │
+  │        ▼                                     │
+  │   QueryExpander (expand terse queries)       │
+  │        │                                     │
+  │        ▼                                     │
+  │   HybridSearch (BM25 + semantic fusion)      │
+  │        │                                     │
+  │        ▼                                     │
+  │   ReRanker (5-factor relevance scoring)      │
+  │        │                                     │
+  │        ▼                                     │
+  │   ContextCompressor (fit 16K token window)   │
+  │        │                                     │
+  │        ▼                                     │
+  │   MultiHopRetriever (follow-up retrieval)    │
+  └──────────────────┬───────────────────────────┘
+                     │
+                     ▼
+  ┌──────────────────────────────────────────────┐
+  │         LLM Fallback Chain (5 providers)      │
+  │                                              │
+  │   groq-free ──► openai ──► anthropic         │
+  │                               │              │
+  │            openrouter ◄───────┘              │
+  │                │                             │
+  │                ▼                              │
+  │            deepseek                          │
+  └──────────────────┬───────────────────────────┘
+                     │
+                     ▼
+              Grounded Answer
+              (with source citations)
+```
+
+</details>
+
+### The RAG Pipeline in Detail
+
+Every question goes through five stages before reaching the LLM.
+
+| Stage | Module | What It Does |
+|-------|--------|-------------|
+| 1. Expand | `QueryExpander` | Rewrites terse queries into richer search terms |
+| 2. Search | `HybridSearch` | Combines BM25 keyword matching with semantic vector search |
+| 3. Rank | `ReRanker` | Scores results using 5 weighted factors (see below) |
+| 4. Compress | `ContextCompressor` | Trims context to 16,000 tokens, preserving code blocks |
+| 5. Retrieve | `MultiHopRetriever` | Follows cross-references for multi-step questions |
+
+### 5-Factor Relevance Scoring
+
+Every search result is scored before being passed to the LLM:
+
+![5-Factor Relevance Scoring](assets/diagrams/relevance-scoring.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+  ┌───────────────────────────────────────┐
+  │         RELEVANCE SCORE               │
+  │                                       │
+  │  Semantic similarity ████████  40%    │
+  │  (HNSW cosine, 384d ONNX)            │
+  │                                       │
+  │  Intent alignment   ████      20%    │
+  │  (query type ↔ doc intent)            │
+  │                                       │
+  │  Source authority    ███       15%    │
+  │  (repo + doc type ranking)            │
+  │                                       │
+  │  Quality score      ███       15%    │
+  │  (gold-tier gate, avg 92.1)           │
+  │                                       │
+  │  Usefulness         ██        10%    │
+  │  (historical relevance signal)        │
+  └───────────────────────────────────────┘
+```
+
+</details>
+
+---
+
+## What You Can Ask
+
+Ask-RuvNet handles questions across the entire ecosystem. Here are some starting points:
+
+**Architecture and Design**
+- "What swarm topologies does Claude Flow support?"
+- "How does SONA achieve sub-millisecond adaptation?"
+- "Explain the RVF cognitive container format"
+
+**Practical Usage**
+- "How do I set up a hierarchical swarm with 8 agents?"
+- "Show me how to use RuVector HNSW indexing in PostgreSQL"
+- "What npm packages do I need for agentic-flow?"
+
+**Decision-Making**
+- "When should I use mesh topology vs hierarchical?"
+- "What are the tradeoffs between RuVector-WASM and RuVector-Postgres?"
+- "Which consensus protocol should I use for my use case?"
+
+**Evolution and History**
+- "What changed in Claude Flow v3 alpha.118?"
+- "What ADRs were written about memory architecture?"
+- "Show me the release history for ruv-swarm"
+
+**Deep Technical**
+- "How does the ReasoningBank implement self-learning with LoRA?"
+- "Explain EWC++ and how it prevents catastrophic forgetting"
+- "What Rust crates does the ecosystem depend on?"
+
+---
+
+## See It, Don't Just Read It
+
+Ask-RuvNet includes Gemini-powered architectural visualization. Instead of reading a text description of how swarm topologies work, you can generate a visual diagram on the spot.
+
+![Visualization Flow](assets/diagrams/visualization-flow.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+  User asks about              Gemini generates
+  swarm topologies             architectural diagram
+        │                            │
+        ▼                            ▼
+  ┌────────────┐    ┌───────────────────────────┐
+  │ "Visualize │    │                           │
+  │  how mesh  │───►│   Gemini 2.0 Flash        │
+  │  topology  │    │   (Image Generation)       │
+  │  works"    │    │         │                  │
+  └────────────┘    │         ▼                  │
+                    │   1K or 2K resolution      │
+                    │   architectural diagram    │
+                    │         │                  │
+                    │         ▼                  │
+                    │   Served at                │
+                    │   /generated_imgs/         │
+                    └───────────────────────────┘
+```
+
+</details>
+
+### Visualization API
+
+```bash
+curl -X POST https://ask-ruvnet-production.up.railway.app/api/visualize \
+  -H "Content-Type: application/json" \
+  -d '{
+    "concept": "hierarchical swarm with queen coordination",
+    "style": "technical-blueprint",
+    "resolution": "2K"
+  }'
+```
+
+This is also available through the **Special Actions** endpoint using `action: "visualize"`:
+
+```bash
+curl -X POST https://ask-ruvnet-production.up.railway.app/api/special \
+  -H "Content-Type: application/json" \
+  -d '{"action": "visualize", "content": "HNSW graph traversal"}'
+```
+
+---
+
+## The Knowledge Base
+
+### By the Numbers
+
+| Metric | Value |
+|--------|-------|
+| Total KB entries | 170,542+ |
+| Evolutionary knowledge chunks | 13,192 |
+| Repositories ingested | 173 |
+| GitHub organizations | 3 (ruvnet, openclaw, VibiumDev) |
+| Architecture Decision Records | 26 |
+| Quality tier | Gold |
+| Average quality score | 92.1 / 100 |
+| Embedding model | ONNX all-MiniLM-L6-v2 |
+| Embedding dimensions | 384 |
+| Index type | HNSW (m=16, ef_construction=64) |
+| Database | Neon PostgreSQL + pgvector |
+| Schema | `ask_ruvnet` |
+| Primary table | `architecture_docs` |
+
+### What Gets Ingested
+
+The knowledge base is not just a dump of README files. It includes multiple layers of understanding:
+
+![Knowledge Ingestion Ecosystem](assets/diagrams/knowledge-ingestion.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+  ┌─────────────────────────────────────────────┐
+  │           Knowledge Ingestion Ecosystem      │
+  │                                             │
+  │  Layer 1: Repository Content                │
+  │  ├── README files (173 repos)               │
+  │  ├── Code structure and API surfaces        │
+  │  ├── Package manifests and dependencies     │
+  │  └── Configuration patterns                 │
+  │                                             │
+  │  Layer 2: Evolutionary Knowledge            │
+  │  ├── 26 Architecture Decision Records       │
+  │  ├── Changelogs and release notes           │
+  │  ├── Commit history (significant changes)   │
+  │  └── Version progression and rationale      │
+  │                                             │
+  │  Layer 3: Teaching Content                  │
+  │  ├── Plain-English concept explanations     │
+  │  ├── Decision frameworks (when to use X)    │
+  │  ├── Debugging guides                       │
+  │  └── Progressive learning paths             │
+  │                                             │
+  │  Layer 4: Multimedia                        │
+  │  ├── Video transcript chunks                │
+  │  ├── Coaching session transcripts           │
+  │  └── Agentics Foundation content            │
+  └─────────────────────────────────────────────┘
+```
+
+</details>
+
+### Topics Covered
+
+- Agent orchestration (Claude Flow, ruv-swarm, agentic-flow)
+- Swarm topologies (hierarchical, mesh, ring, star, adaptive)
+- Consensus protocols (Byzantine, Raft, CRDT, Gossip)
+- Vector database patterns (HNSW, embeddings, similarity search)
+- Memory architectures (episodic, semantic, working memory)
+- Reinforcement learning (Decision Transformer, Actor-Critic, PPO, SAC)
+- Cognitive containers (RVF format, WASM deployment)
+- Security patterns (AIMDS 3-layer pipeline, Lyapunov chaos detection)
+- Deployment patterns (Docker, cloud, air-gapped, edge)
+- npm package APIs and usage examples
+
+---
+
+## Swarm Topologies
+
+One of the most-asked-about features in the ecosystem. Claude Flow v3 supports five swarm topologies, each suited to different coordination needs:
+
+![Swarm Topologies](assets/diagrams/swarm-topologies.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+  HIERARCHICAL                    MESH
+  (Queen controls workers)        (Fully connected peers)
+
+       ┌───┐                    ┌───┐───┌───┐
+       │ Q │                    │ A │   │ B │
+       └─┬─┘                    └─┬─┘───└─┬─┘
+    ┌────┼────┐                   │  ╲ ╱  │
+  ┌─┴─┐┌─┴─┐┌─┴─┐              ┌─┴─┐ ╳ ┌─┴─┐
+  │ W1││ W2││ W3│              │ C │╱ ╲│ D │
+  └───┘└───┘└───┘              └───┘───└───┘
+
+
+  RING                           STAR
+  (Circular message passing)     (Central coordinator)
+
+    ┌───┐     ┌───┐                 ┌───┐
+    │ A │────►│ B │           ┌─────│ S │─────┐
+    └───┘     └─┬─┘           │     └─┬─┘     │
+      ▲         │           ┌─┴─┐  ┌─┴─┐  ┌─┴─┐
+      │         ▼           │ A │  │ B │  │ C │
+    ┌─┴─┐     ┌───┐        └───┘  └───┘  └───┘
+    │ D │◄────│ C │
+    └───┘     └───┘
+
+
+  HIERARCHICAL-MESH (Recommended for 10+ agents)
+  (Queen + peer communication)
+
+           ┌───┐
+           │ Q │ ◄── Queen coordinates
+           └─┬─┘
+      ┌──────┼──────┐
+    ┌─┴─┐  ┌─┴─┐  ┌─┴─┐
+    │ L1│──│ L2│──│ L3│ ◄── Leads (mesh peers)
+    └─┬─┘  └─┬─┘  └─┬─┘
+    ┌─┴─┐  ┌─┴─┐  ┌─┴─┐
+    │W1a│  │W2a│  │W3a│ ◄── Workers
+    └───┘  └───┘  └───┘
+```
+
+</details>
+
+---
+
+## Component Relationships
+
+The core systems in the ecosystem are deeply interconnected:
+
+![Component Relationships](assets/diagrams/component-relationships.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+  ┌──────────────────────────────────────────────────┐
+  │                                                  │
+  │   ┌────────────┐         ┌────────────┐         │
+  │   │ Claude Flow │◄───────►│  AgentDB    │         │
+  │   │ v3         │ agents  │  (hybrid    │         │
+  │   │            │ store   │   memory)   │         │
+  │   │ 60+ agent  │ state   │  episodic + │         │
+  │   │ types      │ in      │  semantic   │         │
+  │   └─────┬──────┘         └──────┬─────┘         │
+  │         │                       │                │
+  │    orchestrates            vectors stored in     │
+  │         │                       │                │
+  │         ▼                       ▼                │
+  │   ┌────────────┐         ┌────────────┐         │
+  │   │  SONA      │◄───────►│  RuVector   │         │
+  │   │  (neural   │ learns  │  (vector    │         │
+  │   │   adapt)   │ from    │   DB)       │         │
+  │   │            │ vector  │             │         │
+  │   │  <0.05ms   │ search  │  HNSW       │         │
+  │   │  adaptation│ results │  150x-12500x│         │
+  │   └─────┬──────┘         └──────┬─────┘         │
+  │         │                       │                │
+  │    protected by            secures               │
+  │         │                       │                │
+  │         ▼                       ▼                │
+  │   ┌────────────────────────────────────┐        │
+  │   │            AIMDS                    │        │
+  │   │  (AI Defense Middleware)             │        │
+  │   │  3-layer security pipeline          │        │
+  │   │  Inbound scan + Outbound scan       │        │
+  │   └────────────────────────────────────┘        │
+  │                                                  │
+  └──────────────────────────────────────────────────┘
+```
+
+</details>
+
+---
+
+## The LLM Fallback Chain
+
+Ask-RuvNet automatically detects all configured API keys and builds a resilient fallback chain. If one provider is rate-limited or fails, it tries the next.
+
+![LLM Fallback Chain](assets/diagrams/llm-fallback-chain.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+  ┌─────────────┐    fail    ┌──────────┐    fail
+  │  groq-free  │ ─────────► │  openai   │ ────────►
+  │  llama-3.3  │            │  gpt-4o   │
+  │  (free tier)│            │  (paid)   │
+  └─────────────┘            └──────────┘
+
+  ┌─────────────┐    fail    ┌────────────┐    fail
+  │  anthropic  │ ─────────► │ openrouter  │ ────────►
+  │  claude     │            │ multi-model │
+  │  sonnet 4   │            │ gateway     │
+  └─────────────┘            └────────────┘
+
+  ┌─────────────┐
+  │  deepseek   │  (last resort)
+  │  deepseek-  │
+  │  chat       │
+  └─────────────┘
+```
+
+</details>
 
 | Priority | Provider | Model | Notes |
 |----------|----------|-------|-------|
-| 1 | groq-free | llama-3.3-70b-versatile | Free tier (1M tokens/day) |
+| 1 | groq-free | llama-3.3-70b-versatile | Free tier, 1M tokens/day |
 | 2 | openai | gpt-4o | Paid |
 | 3 | anthropic | claude-sonnet-4 | Paid |
 | 4 | openrouter | anthropic/claude-sonnet-4 | Multi-model gateway |
@@ -73,60 +550,50 @@ The app automatically detects all configured API keys and builds a fallback chai
 
 Set `LLM_PROVIDER` to override the primary. Add `GROQ_PAID_API_KEY` to insert a paid Groq tier between free Groq and OpenAI.
 
-### 5-Factor Relevance Scoring
+---
 
-Every search result is scored using five weighted signals before being passed to the LLM:
+## The Learning Loop
 
-| Factor | Weight | Description |
-|--------|--------|-------------|
-| Semantic similarity | 40% | Cosine distance via HNSW (ONNX 384d embeddings) |
-| Intent alignment | 20% | Query type matched to document intent |
-| Source authority | 15% | Repository and document type ranking |
-| Quality score | 15% | Per-entry gold-tier quality gate (avg 92.1) |
-| Usefulness | 10% | Historical relevance signal |
+Ask-RuvNet is not a static system. It improves over time through a continuous feedback loop:
 
-### RAG Pipeline Modules
+![The Learning Loop](assets/diagrams/learning-loop.svg)
 
-| Module | Location | Purpose |
-|--------|----------|---------|
-| PostgresKnowledgeBase | `src/core/PostgresKnowledgeBase.js` | Neon pgvector interface |
-| HybridSearch | `src/core/HybridSearch.js` | BM25 + semantic fusion |
-| QueryExpander | `src/core/QueryExpander.js` | Expands terse queries |
-| ReRanker | `src/core/ReRanker.js` | Cross-encoder style reranking |
-| ContextCompressor | `src/core/ContextCompressor.js` | Trims context to 16,000 tokens |
-| MultiHopRetriever | `src/core/MultiHopRetriever.js` | Handles multi-step queries |
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
+```
+  ┌──────────┐
+  │   User   │
+  │ Question │
+  └────┬─────┘
+       │
+       ▼
+  ┌──────────────┐     retrieval quality      ┌──────────┐
+  │  RAG Pipeline │ ─────────────────────────► │ Quality  │
+  │  (5 stages)  │                            │ Metrics  │
+  └──────┬───────┘                            └────┬─────┘
+         │                                         │
+         ▼                                         ▼
+  ┌──────────────┐     informs next round     ┌──────────┐
+  │  Grounded    │                            │ KB Sweep │
+  │  Answer      │                            │ Pipeline │
+  └──────┬───────┘                            └────┬─────┘
+         │                                         │
+         ▼                                         ▼
+  ┌──────────────┐     new versions trigger   ┌──────────┐
+  │  User learns,│                            │ Re-ingest│
+  │  asks deeper │                            │ + Score  │
+  │  questions   │                            │ + Embed  │
+  └──────────────┘                            └──────────┘
+```
+
+</details>
+
+The `kb:sweep` and `kb:evolution` scripts continuously monitor repositories for new releases, commits, and ADRs, re-ingesting and re-scoring content to keep the knowledge base current.
 
 ---
 
-## Knowledge Base
-
-| Stat | Value |
-|------|-------|
-| Total entries | 54,543 |
-| Gold tier entries | 22,667 |
-| Quality tier | Gold |
-| Avg quality score | 92.1 / 100 |
-| Embedding model | ONNX all-MiniLM-L6-v2 |
-| Embedding dimensions | 384 |
-| Index type | HNSW (pgvector) |
-| Database | Neon PostgreSQL |
-| Schema | ask_ruvnet |
-| Table | architecture_docs |
-
-### Topics Covered
-
-- Agent orchestration (claude-flow, ruv-swarm, agentic-flow)
-- Swarm topologies (hierarchical, mesh, ring, star, adaptive)
-- Consensus protocols (Byzantine, Raft, CRDT, Gossip)
-- Vector database patterns (HNSW, embeddings, similarity search)
-- Memory architectures (episodic, semantic, working memory)
-- RL algorithms (Decision Transformer, Actor-Critic, PPO, SAC)
-- Deployment patterns (Docker, cloud, air-gapped)
-- RuvNet npm package APIs and usage examples
-
----
-
-## API Endpoints
+## API Reference
 
 ### GET /health
 
@@ -136,50 +603,13 @@ Basic liveness check.
 curl https://ask-ruvnet-production.up.railway.app/health
 ```
 
-Response:
 ```json
-{ "status": "ok", "version": "2.1.5" }
+{ "status": "ok", "version": "2.2.0" }
 ```
-
-### GET /api/providers
-
-Returns the active LLM fallback chain.
-
-```bash
-curl https://ask-ruvnet-production.up.railway.app/api/providers
-```
-
-Response:
-```json
-{
-  "providers": [
-    {"name": "groq-free", "model": "llama-3.3-70b-versatile"},
-    {"name": "openai", "model": "gpt-4o"},
-    {"name": "anthropic", "model": "claude-sonnet-4-20250514"},
-    {"name": "openrouter", "model": "anthropic/claude-sonnet-4"},
-    {"name": "deepseek", "model": "deepseek-chat"}
-  ],
-  "primary": "groq-free",
-  "fallbackChain": "groq-free → openai → anthropic → openrouter → deepseek",
-  "configured": 5
-}
-```
-
-### GET /api/kb-stats
-
-Knowledge base statistics.
-
-```bash
-curl https://ask-ruvnet-production.up.railway.app/api/kb-stats
-```
-
-### GET /api/knowledge
-
-Returns knowledge base statistics (alias for kb-stats).
 
 ### POST /api/chat
 
-Submit a question and receive a streamed answer grounded in the knowledge base.
+Submit a question and receive a grounded answer with source citations.
 
 ```bash
 curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
@@ -187,14 +617,68 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
   -d '{"message": "What swarm topologies does claude-flow support?"}'
 ```
 
-Request body:
-```json
-{
-  "message": "string (required) — the user question"
-}
+**Request body:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `message` | string | Yes | The user's question |
+
+**Response:** JSON object with `answer` (string) and `sources` (array).
+
+### POST /api/visualize
+
+Generate an architectural visualization using Gemini.
+
+```bash
+curl -X POST https://ask-ruvnet-production.up.railway.app/api/visualize \
+  -H "Content-Type: application/json" \
+  -d '{"concept": "HNSW graph layers", "resolution": "2K"}'
 ```
 
-The response is a JSON object with `answer` (string) and `sources` (array) fields.
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `concept` | string | Yes | What to visualize |
+| `style` | string | No | Visual style hint |
+| `resolution` | string | No | `"1K"` or `"2K"` (default: `"1K"`) |
+
+### POST /api/special
+
+Perform special actions on content: simplify, generate code, create diagrams, or visualize.
+
+```bash
+curl -X POST https://ask-ruvnet-production.up.railway.app/api/special \
+  -H "Content-Type: application/json" \
+  -d '{"action": "diagram", "content": "agent lifecycle in claude-flow"}'
+```
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `action` | string | Yes | `simplify`, `code`, `diagram`, or `visualize` |
+| `content` | string | Yes | The content to act on |
+
+### GET /api/providers
+
+Returns the active LLM fallback chain.
+
+### GET /api/kb-stats
+
+Knowledge base connection status and entry counts.
+
+### GET /api/knowledge
+
+Alias for `/api/kb-stats`.
+
+### GET /api/ecosystem-stats
+
+Aggregated statistics about the RuVNet ecosystem.
+
+### GET /api/latest-repos
+
+Live npm version data for key ecosystem packages (cached hourly).
+
+### POST /api/learn
+
+Submit feedback to improve answer quality.
 
 ---
 
@@ -204,29 +688,30 @@ The response is a JSON object with `answer` (string) and `sources` (array) field
 
 | Variable | Description |
 |----------|-------------|
-| `DATABASE_URL` | Neon PostgreSQL connection string (includes pgvector). Must end with `?sslmode=require`. |
+| `DATABASE_URL` | Neon PostgreSQL connection string. Must end with `?sslmode=require`. |
 
 ### LLM Providers (at least one required)
 
 | Variable | Description |
 |----------|-------------|
 | `GROQ_API_KEY` | Groq free tier (1M tokens/day). Primary provider. |
-| `GROQ_PAID_API_KEY` | Groq paid tier. Used after free tier exhausted. |
-| `OPENAI_API_KEY` | OpenAI API key (gpt-4o). |
-| `ANTHROPIC_API_KEY` | Anthropic API key. Also accepts `CLAUDE_API_KEY`. |
-| `OPENROUTER_API_KEY` | OpenRouter API key. |
-| `DEEPSEEK_API_KEY` | DeepSeek API key. |
+| `GROQ_PAID_API_KEY` | Groq paid tier. Falls in after free tier. |
+| `OPENAI_API_KEY` | OpenAI (gpt-4o). Also used for special actions. |
+| `ANTHROPIC_API_KEY` | Anthropic. Also accepts `CLAUDE_API_KEY`. |
+| `OPENROUTER_API_KEY` | OpenRouter multi-model gateway. |
+| `DEEPSEEK_API_KEY` | DeepSeek. |
 
 ### Optional
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `LLM_PROVIDER` | auto-detect | Override the primary provider. |
-| `NODE_ENV` | `development` | Set to `production` on Railway. |
-| `PORT` | `3000` | Server port. |
-| `GROQ_MODEL` | `llama-3.3-70b-versatile` | Override Groq model. |
-| `OPENAI_MODEL` | `gpt-4o` | Override OpenAI model. |
-| `ANTHROPIC_MODEL` | `claude-sonnet-4-20250514` | Override Anthropic model. |
+| `LLM_PROVIDER` | auto-detect | Override the primary provider |
+| `GEMINI_API_KEY` | built-in | Gemini API key for visualization |
+| `NODE_ENV` | `development` | Set to `production` on Railway |
+| `PORT` | `3000` | Server port |
+| `GROQ_MODEL` | `llama-3.3-70b-versatile` | Override Groq model |
+| `OPENAI_MODEL` | `gpt-4o` | Override OpenAI model |
+| `ANTHROPIC_MODEL` | `claude-sonnet-4-20250514` | Override Anthropic model |
 
 ---
 
@@ -241,7 +726,6 @@ The response is a JSON object with `answer` (string) and `sources` (array) field
 ### Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/stuinfla/Ask-Ruvnet.git
 cd Ask-Ruvnet
 
@@ -251,31 +735,34 @@ npm install
 # Install and build the React frontend
 npm run build
 
-# Create a .env file with your credentials
+# Create .env with your credentials
 cp .env.example .env
-# Edit .env with your actual API keys and DATABASE_URL
+# Edit .env: set DATABASE_URL and at least one LLM API key
 
 # Start the server
 node src/server/app.js
 ```
 
-The app runs at http://localhost:3000. The Express server serves the React frontend from `/src/ui/dist/` as static files.
+The app runs at http://localhost:3000. Express serves the React frontend from `src/ui/dist/` as static files.
 
-### Rebuilding the Frontend
+### Useful npm Scripts
 
-After editing files in `src/ui/src/`, rebuild before testing:
-
-```bash
-npm run build
-# Then restart the server
-node src/server/app.js
-```
+| Script | What It Does |
+|--------|-------------|
+| `npm run build` | Build the React frontend |
+| `npm run kb:status` | Check KB sync status |
+| `npm run kb:ingest` | Ingest architecture docs into KB |
+| `npm run kb:evolution` | Ingest ADRs, changelogs, commits |
+| `npm run kb:github` | Ingest GitHub repo content |
+| `npm run kb:full` | Full pipeline: github + evolution + ingest |
+| `npm run kb:sweep` | Check repos for updates |
+| `npm run kb:visual` | Build KB universe visualization |
+| `npm run test:smoke` | Smoke test production endpoint |
+| `npm run test:kb` | Test KB completeness |
 
 ---
 
 ## Production Deployment (Railway)
-
-### Platform Details
 
 | Item | Value |
 |------|-------|
@@ -283,179 +770,100 @@ node src/server/app.js
 | Container | Docker (node:22-bookworm-slim) |
 | Region | us-west-2 |
 | Always-on | Yes (no cold starts) |
-| Auto-deploy | Yes (on push to main) |
-| Production URL | https://ask-ruvnet-production.up.railway.app |
+| Auto-deploy | Yes (push to `main`) |
 
-### How It Works
+### How Deployment Works
 
-1. Push to `main` triggers Railway auto-deploy via GitHub integration.
-2. Railway builds the Docker image from `Dockerfile`.
-3. The container starts via `scripts/deployment/start-railway.sh`.
-4. The startup script verifies `DATABASE_URL` is set, then runs `node src/server/app.js`.
-
-### Railway Project IDs
-
-| Resource | ID |
-|----------|------|
-| Project | `8344da50-ba32-4973-abb5-c73dd11ca69d` |
-| Service | `e10d03b5-bc26-47c2-8ae9-3d444a083560` |
-| Environment | `3e37ece4-3af3-4be5-94e6-c61b9983e95e` |
-
-### Managing Railway via GraphQL API
-
-The Railway CLI requires account-scoped tokens (not available on Hobby plan). Use the GraphQL API instead with a project-scoped token:
-
-```bash
-# Check deployment status
-curl -s -X POST https://backboard.railway.app/graphql/v2 \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_RAILWAY_TOKEN" \
-  -d '{"query": "{ deployments(first: 1, input: { projectId: \"8344da50-ba32-4973-abb5-c73dd11ca69d\", environmentId: \"3e37ece4-3af3-4be5-94e6-c61b9983e95e\", serviceId: \"e10d03b5-bc26-47c2-8ae9-3d444a083560\" }) { edges { node { id status createdAt } } } }"}'
-
-# Read environment variables
-curl -s -X POST https://backboard.railway.app/graphql/v2 \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_RAILWAY_TOKEN" \
-  -d '{"query": "{ variables(projectId: \"8344da50-ba32-4973-abb5-c73dd11ca69d\", environmentId: \"3e37ece4-3af3-4be5-94e6-c61b9983e95e\", serviceId: \"e10d03b5-bc26-47c2-8ae9-3d444a083560\") }"}'
-
-# Set an environment variable (triggers auto-redeploy)
-curl -s -X POST https://backboard.railway.app/graphql/v2 \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_RAILWAY_TOKEN" \
-  -d '{"query": "mutation { variableUpsert(input: { projectId: \"8344da50-ba32-4973-abb5-c73dd11ca69d\", environmentId: \"3e37ece4-3af3-4be5-94e6-c61b9983e95e\", serviceId: \"e10d03b5-bc26-47c2-8ae9-3d444a083560\", name: \"VAR_NAME\", value: \"VAR_VALUE\" }) }"}'
-```
+1. Push to `main` triggers Railway auto-deploy via GitHub integration
+2. Railway builds the Docker image from `Dockerfile`
+3. Container starts via `scripts/deployment/start-railway.sh`
+4. Startup script verifies `DATABASE_URL`, then runs `node src/server/app.js`
 
 ### Verifying a Deployment
 
 ```bash
-# Check health
+# Health check
 curl https://ask-ruvnet-production.up.railway.app/health
 
-# Check KB connection (should show connected: true, total: 54543)
+# KB connection (should show connected: true)
 curl https://ask-ruvnet-production.up.railway.app/api/kb-stats
 
-# Check LLM providers
+# LLM providers
 curl https://ask-ruvnet-production.up.railway.app/api/providers
 ```
 
-### Setting Environment Variables
+### Version Management
 
-Set variables in the Railway dashboard under your service > **Variables** tab. Or use the GraphQL API as shown above.
-
-**Critical**: The variable name must be `DATABASE_URL` (with underscore), not `DATABASE-URL` (with hyphen). Environment variable names with hyphens are not accessible via `process.env`.
-
----
-
-## Neon Database
-
-| Item | Value |
-|------|-------|
-| Project | ask-ruvnet-kb (fragrant-math-26433511) |
-| Host | ep-holy-pine-aksbss0s.c-3.us-west-2.aws.neon.tech |
-| Database | neondb |
-| Schema | ask_ruvnet |
-| Table | architecture_docs (54,543 rows) |
-| Extension | pgvector |
-| Index | HNSW (m=16, ef_construction=64) |
-| Stored procedure | ask_ruvnet.knowledge_search() |
-
-### Verifying the Database
+Version lives in `package.json` (single source of truth). Server and UI read it at runtime.
 
 ```bash
-psql "postgresql://neondb_owner:PASSWORD@ep-holy-pine-aksbss0s.c-3.us-west-2.aws.neon.tech/neondb?sslmode=require" \
-  -c "SELECT COUNT(*) FROM ask_ruvnet.architecture_docs;"
-# Expected: 54543
+npm version patch   # bug fix
+npm version minor   # new feature
+npm version major   # breaking change
+git push origin main
+# Railway auto-deploys
 ```
 
 ---
 
-## Project Structure
+## Under the Hood
 
 ```
 Ask-Ruvnet/
 ├── src/
 │   ├── server/
-│   │   ├── app.js                     # Express server — main entry point
+│   │   ├── app.js                     # Express server, all endpoints
 │   │   └── RuvPersona.js              # LLM system prompt and persona
 │   ├── core/                          # RAG pipeline modules
 │   │   ├── PostgresKnowledgeBase.js   # Neon pgvector interface
 │   │   ├── HybridSearch.js            # BM25 + semantic fusion
 │   │   ├── QueryExpander.js           # Query expansion
-│   │   ├── ReRanker.js                # Result reranking
+│   │   ├── ReRanker.js                # 5-factor result reranking
 │   │   ├── ContextCompressor.js       # Context length management
 │   │   ├── MultiHopRetriever.js       # Multi-step query handling
-│   │   └── RuvectorStore.js           # Vector store abstraction (local fallback)
+│   │   ├── RecencyBoost.js            # Boost recent content
+│   │   ├── ContentProcessor.js        # Content preprocessing
+│   │   ├── RuvectorStore.js           # Vector store abstraction
+│   │   └── TextChunker.js             # Document chunking
 │   ├── storage/
 │   │   ├── kb-embed.js                # Embedding utilities
-│   │   └── persistent-vector-db.js    # Local vector DB (dev/testing)
+│   │   └── persistent-vector-db.js    # Local vector DB (dev)
+│   ├── connectors/
+│   │   ├── GoogleDriveConnector.js    # Google Drive ingestion
+│   │   ├── LocalDirectoryConnector.js # Local file ingestion
+│   │   └── SourceManager.js           # Source routing
 │   └── ui/
 │       ├── src/                       # React source (Vite)
-│       └── dist/                      # Built frontend (served by Express)
+│       └── dist/                      # Built frontend
 ├── scripts/
-│   └── deployment/
-│       └── start-railway.sh           # Docker/Railway startup script
-├── docs/                              # Documentation
+│   ├── deployment/
+│   │   └── start-railway.sh           # Docker startup
+│   ├── ingestion/                     # Data ingestion scripts
+│   ├── ingest-github-evolution.js     # ADR/changelog ingestion
+│   ├── ingest-github-repos.js         # Repository ingestion
+│   ├── kb-architecture-sync.js        # KB sync orchestrator
+│   ├── kb-sweep-updates.js            # Update detector
+│   └── build-kb-universe.js           # KB visualization builder
 ├── Dockerfile                         # Railway Docker build
-├── package.json                       # Dependencies — version source of truth
+├── package.json                       # Version source of truth
 └── README.md                          # This file
 ```
 
 ---
 
-## Version Management
-
-The application version is stored in one place: `package.json`.
-
-```json
-{
-  "name": "answerbot-builder",
-  "version": "2.1.5"
-}
-```
-
-The server and UI both import this value at runtime. To release a new version:
-
-```bash
-npm version patch  # or minor, or major
-git push origin main
-# Railway auto-deploys from main
-```
-
-Use semantic versioning: `MAJOR.MINOR.PATCH`
-- PATCH — bug fixes and small changes
-- MINOR — new features, backward compatible
-- MAJOR — breaking changes or significant rewrites
-
----
-
 ## Troubleshooting
 
-### Chat returns no results or generic answers
+**Chat returns generic answers or no results**
+Check that `DATABASE_URL` is set correctly. Common mistake: using a hyphen (`DATABASE-URL`) instead of an underscore (`DATABASE_URL`). Verify with `/api/kb-stats` -- it should show `"connected": true`.
 
-Check that `DATABASE_URL` is set correctly in Railway Variables. Common mistake: using a hyphen (`DATABASE-URL`) instead of an underscore (`DATABASE_URL`). Test the database directly:
+**Frontend not loading**
+Run `npm run build` and check for errors. The `dist/` directory must exist at `src/ui/dist/`.
 
-```bash
-psql "$DATABASE_URL" -c "SELECT COUNT(*) FROM ask_ruvnet.architecture_docs;"
-```
+**All LLM providers failing**
+Check `/api/providers` to see which are configured. At least one API key must be set. The system tries each provider in order and falls to the next on failure.
 
-Expected result: `54543`
-
-Also check `/api/kb-stats` — it should show `"connected": true`.
-
-### Frontend not loading
-
-Verify the build completed successfully. The `dist/` directory must exist at `src/ui/dist/`. Run `npm run build` locally and check for errors.
-
-### LLM provider errors
-
-Check `/api/providers` to see which providers are configured. The app tries each in order and falls to the next on failure. If all providers fail, check that at least one API key is set in Railway Variables.
-
-### Railway deploy fails
-
-Check Railway deploy logs in the dashboard. Common causes:
-- Missing system dependencies (Dockerfile handles these)
-- npm install failures (try `--legacy-peer-deps`)
-- Missing `scripts/deployment/start-railway.sh`
+**Visualization not generating**
+The `/api/visualize` endpoint requires a Gemini API key. Check that `GEMINI_API_KEY` is set or that the built-in key is still valid.
 
 ---
 
@@ -463,7 +871,8 @@ Check Railway deploy logs in the dashboard. Common causes:
 
 | Date | Version | Change |
 |------|---------|--------|
-| 2026-02-24 | 2.1.5 | Fixed DATABASE_URL (hyphen→underscore), decommissioned Render, Railway-only |
+| 2026-02-27 | 2.2.0 | Rich responses with source citations, source cards with doc-type badges, 13K evolutionary knowledge chunks, full pipeline command, Gemini visual integration, markdown link styling |
+| 2026-02-24 | 2.1.5 | Fixed DATABASE_URL, decommissioned Render, Railway-only |
 | 2026-02-23 | 2.1.4 | Recreated start-railway.sh, fixed Railway 502 |
 | 2026-02-23 | 2.1.3 | Removed Travel Hacking and RetireWell domains |
 | 2026-02-23 | 2.1.2 | Multi-provider LLM fallback chain (5 providers) |
@@ -472,14 +881,28 @@ Check Railway deploy logs in the dashboard. Common causes:
 
 ---
 
-## License
+## Contributing
 
-MIT
+Ask-RuvNet is part of the broader RuVNet ecosystem. Contributions are welcome -- especially around knowledge coverage, RAG pipeline improvements, and frontend UX.
+
+1. Fork the repository
+2. Create a feature branch
+3. Run `npm run build` and `npm run test:smoke` before submitting
+4. Open a pull request against `main`
 
 ---
 
 ## Author
 
-**rUVnet**
+**Ruben Cohen (rUv)**
 - GitHub: [@ruvnet](https://github.com/ruvnet)
-- Production: https://ask-ruvnet-production.up.railway.app
+- Ecosystem: 173 repositories across [ruvnet](https://github.com/ruvnet), [openclaw](https://github.com/openclaw), [VibiumDev](https://github.com/VibiumDev)
+
+**Maintained by:** [@stuinfla](https://github.com/stuinfla)
+**Production:** https://ask-ruvnet-production.up.railway.app
+
+---
+
+## License
+
+MIT

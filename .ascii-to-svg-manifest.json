@@ -1,46 +1,134 @@
 {
-  "version": "1.0.0",
-  "lastSync": "2026-02-24T07:10:42.910018Z",
+  "version": "2.1.0",
+  "created": "2026-02-26",
+  "lastUpdated": "2026-02-27",
+  "description": "Manifest tracking ASCII-to-SVG diagram conversions",
+  "styling": {
+    "darkBackground": "#1a1a2e",
+    "boxFillDark": "#16213e",
+    "boxFillMedium": "#0f3460",
+    "boxFillLight": "#1a1a4e",
+    "textColor": "#e0e0e0",
+    "accentCyan": "#00d4ff",
+    "accentPurple": "#7c3aed",
+    "accentGreen": "#10b981",
+    "accentOrange": "#f59e0b",
+    "accentRed": "#ef4444",
+    "font": "system-ui, -apple-system, sans-serif",
+    "borderRadius": "8px"
+  },
   "diagrams": [
+    {
+      "id": "five-layer-architecture",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/five-layer-architecture.svg",
+      "readmeSection": "The Five-Layer Architecture",
+      "description": "Stack diagram showing Applications, Orchestration, Intelligence, Data, and Foundation layers",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "knowledge-flow",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/knowledge-flow.svg",
+      "readmeSection": "From GitHub to Answer: The Knowledge Flow",
+      "description": "End-to-end pipeline from GitHub repos through ingestion, database, RAG, LLM chain to answer",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "relevance-scoring",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/relevance-scoring.svg",
+      "readmeSection": "5-Factor Relevance Scoring",
+      "description": "Horizontal bar chart of 5 scoring factors with percentages",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "visualization-flow",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/visualization-flow.svg",
+      "readmeSection": "See It, Don't Just Read It",
+      "description": "Flow from user request through Gemini 2.0 Flash to generated architectural diagram",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "knowledge-ingestion",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/knowledge-ingestion.svg",
+      "readmeSection": "What Gets Ingested",
+      "description": "Four-layer breakdown: Repository Content, Evolutionary Knowledge, Teaching Content, Multimedia",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "swarm-topologies",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/swarm-topologies.svg",
+      "readmeSection": "Swarm Topologies",
+      "description": "Visual representation of 5 topologies: Hierarchical, Mesh, Ring, Star, Hierarchical-Mesh",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "component-relationships",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/component-relationships.svg",
+      "readmeSection": "Component Relationships",
+      "description": "Interconnection diagram: Claude Flow, AgentDB, SONA, RuVector, and AIMDS",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "llm-fallback-chain",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/llm-fallback-chain.svg",
+      "readmeSection": "The LLM Fallback Chain",
+      "description": "Sequential failover: groq-free to openai to anthropic to openrouter to deepseek",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "learning-loop",
+      "sourceFile": "README.md",
+      "svgFile": "assets/diagrams/learning-loop.svg",
+      "readmeSection": "The Learning Loop",
+      "description": "Dual-column feedback loop: user questions drive RAG, quality metrics drive KB re-ingestion",
+      "lastConverted": "2026-02-26"
+    },
+    {
+      "id": "gnn-flow",
+      "sourceFile": "data/README_Ruvector.md",
+      "svgFile": "assets/diagrams/gnn-flow.svg",
+      "readmeSection": "How the GNN Works",
+      "description": "Side-by-side comparison: traditional HNSW search vs RuVector GNN-enhanced search with feedback learning loop",
+      "lastConverted": "2026-02-27"
+    }
+  ],
+  "legacyDiagrams": [
     {
       "id": "system-overview",
       "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
-      "sourceLine": 8,
       "svgFile": "docs/architecture/assets/diagrams/system-overview.svg",
-      "asciiHash": "sha256:cde87413cfa35d8f",
-      "lastConverted": "2026-02-24T07:10:42.910018Z"
+      "lastConverted": "2026-02-24"
     },
     {
       "id": "request-flow",
       "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
-      "sourceLine": 64,
       "svgFile": "docs/architecture/assets/diagrams/request-flow.svg",
-      "asciiHash": "sha256:05381228c2adab5e",
-      "lastConverted": "2026-02-24T07:10:42.910018Z"
+      "lastConverted": "2026-02-24"
     },
     {
       "id": "deployment-pipeline",
       "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
-      "sourceLine": 96,
       "svgFile": "docs/architecture/assets/diagrams/deployment-pipeline.svg",
-      "asciiHash": "sha256:459a35df7f6019fb",
-      "lastConverted": "2026-02-24T07:10:42.910018Z"
+      "lastConverted": "2026-02-24"
     },
     {
       "id": "env-variable-flow",
       "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
-      "sourceLine": 116,
       "svgFile": "docs/architecture/assets/diagrams/env-variable-flow.svg",
-      "asciiHash": "sha256:733a4b5ef6ce6788",
-      "lastConverted": "2026-02-24T07:10:42.910018Z"
+      "lastConverted": "2026-02-24"
     },
     {
-      "id": "relevance-scoring",
+      "id": "relevance-scoring-arch",
       "sourceFile": "docs/architecture/PRODUCTION-ARCHITECTURE.md",
-      "sourceLine": 139,
       "svgFile": "docs/architecture/assets/diagrams/relevance-scoring.svg",
-      "asciiHash": "sha256:bac9970e65c939d3",
-      "lastConverted": "2026-02-24T07:10:42.910018Z"
+      "lastConverted": "2026-02-24"
     }
   ]
 }

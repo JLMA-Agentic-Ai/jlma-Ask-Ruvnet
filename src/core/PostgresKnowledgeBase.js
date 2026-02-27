@@ -152,29 +152,58 @@ class PostgresKnowledgeBase {
           [vectorLiteral, query, intent, minQuality, limit]
         );
 
-        return result.rows.map(r => ({
-          id: String(r.id),
-          title: r.title || 'Untitled',
-          content: r.content || '',
-          summary: r.summary || '',
-          score: parseFloat(r.relevance_score) || 0,
-          similarity: Math.max(0, 1 - parseFloat(r.distance || 1)),
-          source: `postgresql:ask_ruvnet/${r.category || 'general'}`,
-          metadata: {
-            docId: String(r.id),
-            title: r.title,
-            category: r.category,
-            knowledge_type: r.knowledge_type,
-            concepts: r.concepts || [],
-            expertise_level: r.expertise_level,
-            quality: r.quality,
-            source_authority: r.source_authority,
-            source: `ask_ruvnet:${r.category}`,
-            intent,
-            relationship_context: r.relationship_context,
-            timestamp: new Date().toISOString(),
+        // Enrich with package_name, doc_type, file_path, topics from architecture_docs
+        const ids = result.rows.map(r => r.id).filter(Boolean);
+        let enrichment = {};
+        if (ids.length > 0) {
+          try {
+            const enrichResult = await client.query(
+              `SELECT id, package_name, doc_type, file_path, topics
+               FROM ask_ruvnet.architecture_docs WHERE id = ANY($1::int[])`,
+              [ids]
+            );
+            for (const row of enrichResult.rows) {
+              enrichment[row.id] = row;
+            }
+          } catch (e) {
+            // Non-fatal: proceed without enrichment
           }
-        }));
+        }
+
+        return result.rows.map(r => {
+          const extra = enrichment[r.id] || {};
+          return {
+            id: String(r.id),
+            title: r.title || 'Untitled',
+            content: r.content || '',
+            summary: r.summary || '',
+            score: parseFloat(r.relevance_score) || 0,
+            similarity: Math.max(0, 1 - parseFloat(r.distance || 1)),
+            source: `postgresql:ask_ruvnet/${r.category || 'general'}`,
+            package_name: extra.package_name || null,
+            doc_type: extra.doc_type || null,
+            file_path: extra.file_path || null,
+            topics: extra.topics || [],
+            metadata: {
+              docId: String(r.id),
+              title: r.title,
+              category: r.category,
+              knowledge_type: r.knowledge_type,
+              concepts: r.concepts || [],
+              expertise_level: r.expertise_level,
+              quality: r.quality,
+              source_authority: r.source_authority,
+              source: `ask_ruvnet:${r.category}`,
+              intent,
+              relationship_context: r.relationship_context,
+              timestamp: new Date().toISOString(),
+              package_name: extra.package_name || null,
+              doc_type: extra.doc_type || null,
+              file_path: extra.file_path || null,
+              topics: extra.topics || [],
+            }
+          };
+        });
       } finally {
         client.release();
       }

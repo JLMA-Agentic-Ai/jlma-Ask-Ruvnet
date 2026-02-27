@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440">
+  <rect width="800" height="440" fill="#1a1a2e"/>
+  <!-- Header -->
+  <rect x="10" y="10" width="780" height="38" rx="3" fill="#0f3460" stroke="#4a9eff" stroke-width="1.5"/>
+  <text x="400" y="34" fill="#4a9eff" font-family="monospace" font-size="15" font-weight="bold" text-anchor="middle">ANTI-SIMPLIFICATION FLOW</text>
+  <!-- User Query top-left -->
+  <text x="190" y="76" fill="#e2e8f0" font-family="monospace" font-size="13" text-anchor="middle">User Query</text>
+  <line x1="190" y1="82" x2="190" y2="118" stroke="#64748b" stroke-width="2"/>
+  <polygon points="185,115 190,125 195,115" fill="#64748b"/>
+  <!-- Agent Response top-right -->
+  <text x="610" y="76" fill="#e2e8f0" font-family="monospace" font-size="13" text-anchor="middle">Agent Response</text>
+  <line x1="610" y1="115" x2="610" y2="82" stroke="#64748b" stroke-width="2"/>
+  <polygon points="605,85 610,75 615,85" fill="#64748b"/>
+  <!-- QUERY INTERCEPT box -->
+  <rect x="60" y="125" width="260" height="130" rx="4" fill="#16213e" stroke="#4a9eff" stroke-width="1.5"/>
+  <text x="190" y="148" fill="#4a9eff" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">QUERY INTERCEPT</text>
+  <line x1="72" y1="155" x2="308" y2="155" stroke="#4a9eff" stroke-width="0.5" opacity="0.5"/>
+  <text x="190" y="175" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">"Has this been</text>
+  <text x="190" y="192" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">queried from KB</text>
+  <text x="190" y="209" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">in THIS session?"</text>
+  <!-- Arrow down from QUERY INTERCEPT -->
+  <line x1="190" y1="257" x2="190" y2="300" stroke="#64748b" stroke-width="2"/>
+  <polygon points="185,297 190,307 195,297" fill="#64748b"/>
+  <text x="205" y="283" fill="#fb923c" font-family="monospace" font-size="10">NO CACHE ALLOWED</text>
+  <!-- RESPONSE VERIFY box -->
+  <rect x="480" y="125" width="260" height="130" rx="4" fill="#16213e" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="610" y="148" fill="#4ade80" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">RESPONSE VERIFY</text>
+  <line x1="492" y1="155" x2="728" y2="155" stroke="#4ade80" stroke-width="0.5" opacity="0.5"/>
+  <text x="610" y="175" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">"Does response</text>
+  <text x="610" y="192" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">cite KB sources</text>
+  <text x="610" y="209" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">explicitly?"</text>
+  <!-- Arrow up from CONTEXT ASSEMBLY to RESPONSE VERIFY -->
+  <line x1="610" y1="307" x2="610" y2="257" stroke="#64748b" stroke-width="2"/>
+  <polygon points="605,260 610,250 615,260" fill="#64748b"/>
+  <text x="620" y="288" fill="#fb923c" font-family="monospace" font-size="10">NO CITATION = REJECT</text>
+  <!-- KB QUERY box -->
+  <rect x="60" y="307" width="260" height="78" rx="4" fill="#16213e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="190" y="332" fill="#a78bfa" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">KB QUERY</text>
+  <text x="190" y="354" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">(Every Time)</text>
+  <!-- CONTEXT ASSEMBLY box -->
+  <rect x="480" y="307" width="260" height="78" rx="4" fill="#16213e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="610" y="332" fill="#a78bfa" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">CONTEXT ASSEMBLY</text>
+  <text x="610" y="354" fill="#94a3b8" font-family="monospace" font-size="11" text-anchor="middle">(With Sources)</text>
+  <!-- Horizontal arrow KB QUERY → CONTEXT ASSEMBLY -->
+  <line x1="322" y1="346" x2="478" y2="346" stroke="#64748b" stroke-width="2"/>
+  <polygon points="475,341 485,346 475,351" fill="#64748b"/>
+  <!-- Footer note -->
+  <text x="400" y="418" fill="#475569" font-family="monospace" font-size="10" text-anchor="middle">Every agent operation MUST be bound to the KB — no caching, no rule distillation</text>
+</svg>

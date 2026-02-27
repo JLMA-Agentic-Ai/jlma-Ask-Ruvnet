@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 980" width="700" height="980">
+  <defs>
+    <marker id="kf-arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; fill: #e0e0e0; }
+    .title { font-size: 18px; font-weight: 700; }
+    .section-title { font-size: 14px; font-weight: 700; }
+    .body { font-size: 11px; fill: #c0c0c0; }
+    .small { font-size: 10px; fill: #999; }
+    .accent { fill: #00d4ff; }
+    .accent-green { fill: #10b981; }
+    .accent-purple { fill: #7c3aed; }
+    .accent-orange { fill: #f59e0b; }
+  </style>
+  <rect width="700" height="980" rx="12" fill="#1a1a2e"/>
+  <text x="350" y="35" text-anchor="middle" class="title">Knowledge Flow: From GitHub to Answer</text>
+
+  <!-- Sources -->
+  <rect x="60" y="55" width="240" height="50" rx="8" fill="#16213e" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="180" y="77" text-anchor="middle" class="section-title accent-purple">173 GitHub Repos</text>
+  <text x="180" y="93" text-anchor="middle" class="small">(ruvnet, openclaw, VibiumDev)</text>
+
+  <rect x="400" y="55" width="240" height="50" rx="8" fill="#16213e" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="520" y="77" text-anchor="middle" class="section-title accent-purple">26 ADRs</text>
+  <text x="520" y="93" text-anchor="middle" class="small">(Claude Flow v3 decisions)</text>
+
+  <!-- Arrow down from sources -->
+  <line x1="180" y1="105" x2="180" y2="130" stroke="#00d4ff" stroke-width="2" marker-end="url(#kf-arrow)"/>
+  <line x1="520" y1="105" x2="520" y2="130" stroke="#00d4ff" stroke-width="2" marker-end="url(#kf-arrow)"/>
+
+  <!-- Ingestion Pipeline -->
+  <rect x="60" y="135" width="580" height="180" rx="8" fill="#16213e" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="350" y="160" text-anchor="middle" class="section-title accent">Evolution Ingestion Pipeline</text>
+  <text x="100" y="185" class="body">READMEs</text>
+  <text x="100" y="202" class="body">Changelogs</text>
+  <text x="100" y="219" class="body">Releases</text>
+  <text x="100" y="236" class="body">Commits</text>
+  <text x="100" y="253" class="body">ADRs</text>
+  <!-- Converging arrows -->
+  <line x1="175" y1="185" x2="300" y2="215" stroke="#555" stroke-width="1"/>
+  <line x1="185" y1="200" x2="300" y2="215" stroke="#555" stroke-width="1"/>
+  <line x1="175" y1="217" x2="300" y2="215" stroke="#555" stroke-width="1"/>
+  <line x1="180" y1="234" x2="300" y2="215" stroke="#555" stroke-width="1"/>
+  <line x1="155" y1="251" x2="300" y2="215" stroke="#555" stroke-width="1"/>
+  <rect x="300" y="200" width="200" height="30" rx="6" fill="#0f3460" stroke="#00d4ff" stroke-width="1"/>
+  <text x="400" y="220" text-anchor="middle" class="body accent">Chunk + Embed + Score</text>
+  <line x1="400" y1="230" x2="400" y2="260" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#kf-arrow)"/>
+  <rect x="280" y="262" width="240" height="35" rx="6" fill="#0f3460" stroke="#10b981" stroke-width="1"/>
+  <text x="400" y="278" text-anchor="middle" class="body accent-green">ONNX all-MiniLM-L6-v2</text>
+  <text x="400" y="292" text-anchor="middle" class="small">384-dimensional embeddings</text>
+
+  <!-- Arrow down -->
+  <line x1="350" y1="315" x2="350" y2="345" stroke="#00d4ff" stroke-width="2" marker-end="url(#kf-arrow)"/>
+
+  <!-- Database -->
+  <rect x="60" y="350" width="580" height="110" rx="8" fill="#16213e" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="350" y="375" text-anchor="middle" class="section-title accent-orange">Neon PostgreSQL + pgvector (HNSW)</text>
+  <text x="350" y="400" text-anchor="middle" class="body">170,542+ entries across ask_ruvnet schema</text>
+  <text x="350" y="420" text-anchor="middle" class="body">Gold-tier quality gate (avg 92.1/100)</text>
+  <text x="350" y="440" text-anchor="middle" class="small">HNSW index (m=16, ef_construction=64)</text>
+
+  <!-- Arrow down -->
+  <line x1="350" y1="460" x2="350" y2="490" stroke="#00d4ff" stroke-width="2" marker-end="url(#kf-arrow)"/>
+
+  <!-- RAG Pipeline -->
+  <rect x="60" y="495" width="580" height="280" rx="8" fill="#16213e" stroke="#10b981" stroke-width="1.5"/>
+  <text x="350" y="520" text-anchor="middle" class="section-title accent-green">RAG Pipeline</text>
+  <rect x="250" y="530" width="200" height="28" rx="6" fill="#0f3460" stroke="#555" stroke-width="1"/>
+  <text x="350" y="549" text-anchor="middle" class="body">User Question</text>
+  <line x1="350" y1="558" x2="350" y2="572" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#kf-arrow)"/>
+  <rect x="210" y="575" width="280" height="28" rx="6" fill="#0f3460" stroke="#555" stroke-width="1"/>
+  <text x="350" y="594" text-anchor="middle" class="body">QueryExpander (expand terse queries)</text>
+  <line x1="350" y1="603" x2="350" y2="617" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#kf-arrow)"/>
+  <rect x="210" y="620" width="280" height="28" rx="6" fill="#0f3460" stroke="#555" stroke-width="1"/>
+  <text x="350" y="639" text-anchor="middle" class="body">HybridSearch (BM25 + semantic)</text>
+  <line x1="350" y1="648" x2="350" y2="662" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#kf-arrow)"/>
+  <rect x="210" y="665" width="280" height="28" rx="6" fill="#0f3460" stroke="#555" stroke-width="1"/>
+  <text x="350" y="684" text-anchor="middle" class="body">ReRanker (5-factor scoring)</text>
+  <line x1="350" y1="693" x2="350" y2="707" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#kf-arrow)"/>
+  <rect x="210" y="710" width="280" height="28" rx="6" fill="#0f3460" stroke="#555" stroke-width="1"/>
+  <text x="350" y="729" text-anchor="middle" class="body">ContextCompressor (16K token window)</text>
+  <line x1="350" y1="738" x2="350" y2="752" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#kf-arrow)"/>
+  <rect x="210" y="755" width="280" height="28" rx="6" fill="#0f3460" stroke="#555" stroke-width="1"/>
+  <text x="350" y="774" text-anchor="middle" class="body">MultiHopRetriever (follow-up)</text>
+
+  <!-- Arrow down -->
+  <line x1="350" y1="785" x2="350" y2="810" stroke="#00d4ff" stroke-width="2" marker-end="url(#kf-arrow)"/>
+
+  <!-- LLM Chain -->
+  <rect x="60" y="815" width="580" height="100" rx="8" fill="#16213e" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="350" y="840" text-anchor="middle" class="section-title accent-purple">LLM Fallback Chain (5 providers)</text>
+  <text x="350" y="865" text-anchor="middle" class="body">groq-free  -->  openai  -->  anthropic  -->  openrouter  -->  deepseek</text>
+  <text x="350" y="900" text-anchor="middle" class="small">Automatic failover on rate limits or errors</text>
+
+  <!-- Arrow down -->
+  <line x1="350" y1="915" x2="350" y2="940" stroke="#00d4ff" stroke-width="2" marker-end="url(#kf-arrow)"/>
+
+  <!-- Grounded Answer -->
+  <rect x="220" y="945" width="260" height="30" rx="8" fill="#0f3460" stroke="#10b981" stroke-width="2"/>
+  <text x="350" y="965" text-anchor="middle" class="section-title accent-green">Grounded Answer (with citations)</text>
+</svg>

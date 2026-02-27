@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 500" width="650" height="500">
+  <defs>
+    <marker id="cr-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#00d4ff"/>
+    </marker>
+    <marker id="cr-arrow-rev" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="8 0, 0 3, 8 6" fill="#00d4ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; fill: #e0e0e0; }
+    .title { font-size: 18px; font-weight: 700; }
+    .box-title { font-size: 14px; font-weight: 700; }
+    .box-sub { font-size: 11px; fill: #c0c0c0; }
+    .box-detail { font-size: 10px; fill: #999; }
+    .relation { font-size: 10px; fill: #888; font-style: italic; }
+  </style>
+  <rect width="650" height="500" rx="12" fill="#1a1a2e"/>
+  <text x="325" y="35" text-anchor="middle" class="title">Component Relationships</text>
+
+  <rect x="30" y="50" width="590" height="440" rx="8" fill="#16213e" stroke="#555" stroke-width="1"/>
+
+  <!-- Claude Flow v3 (top-left) -->
+  <rect x="60" y="75" width="220" height="110" rx="8" fill="#0f3460" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="170" y="100" text-anchor="middle" class="box-title" fill="#7c3aed">Claude Flow v3</text>
+  <text x="170" y="120" text-anchor="middle" class="box-sub">60+ agent types</text>
+  <text x="170" y="140" text-anchor="middle" class="box-detail">Multi-agent orchestration</text>
+  <text x="170" y="155" text-anchor="middle" class="box-detail">5 swarm topologies</text>
+
+  <!-- AgentDB (top-right) -->
+  <rect x="370" y="75" width="220" height="110" rx="8" fill="#0f3460" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="480" y="100" text-anchor="middle" class="box-title" fill="#00d4ff">AgentDB</text>
+  <text x="480" y="120" text-anchor="middle" class="box-sub">Hybrid memory</text>
+  <text x="480" y="140" text-anchor="middle" class="box-detail">Episodic + semantic</text>
+  <text x="480" y="155" text-anchor="middle" class="box-detail">Agent state storage</text>
+
+  <!-- Double arrow between CF and AgentDB -->
+  <line x1="280" y1="120" x2="368" y2="120" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#cr-arrow)"/>
+  <line x1="370" y1="135" x2="282" y2="135" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#cr-arrow)"/>
+  <text x="325" y="113" text-anchor="middle" class="relation">agents store</text>
+  <text x="325" y="150" text-anchor="middle" class="relation">state in</text>
+
+  <!-- Vertical labels -->
+  <text x="170" y="210" text-anchor="middle" class="relation">orchestrates</text>
+  <text x="480" y="210" text-anchor="middle" class="relation">vectors stored in</text>
+
+  <!-- Vertical arrows -->
+  <line x1="170" y1="185" x2="170" y2="230" stroke="#555" stroke-width="1.5" marker-end="url(#cr-arrow)"/>
+  <line x1="480" y1="185" x2="480" y2="230" stroke="#555" stroke-width="1.5" marker-end="url(#cr-arrow)"/>
+
+  <!-- SONA (bottom-left) -->
+  <rect x="60" y="235" width="220" height="110" rx="8" fill="#0f3460" stroke="#10b981" stroke-width="1.5"/>
+  <text x="170" y="260" text-anchor="middle" class="box-title" fill="#10b981">SONA</text>
+  <text x="170" y="280" text-anchor="middle" class="box-sub">Neural adaptation</text>
+  <text x="170" y="300" text-anchor="middle" class="box-detail">&lt;0.05ms adaptation</text>
+  <text x="170" y="315" text-anchor="middle" class="box-detail">Self-optimizing neural arch</text>
+
+  <!-- RuVector (bottom-right) -->
+  <rect x="370" y="235" width="220" height="110" rx="8" fill="#0f3460" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="480" y="260" text-anchor="middle" class="box-title" fill="#f59e0b">RuVector</text>
+  <text x="480" y="280" text-anchor="middle" class="box-sub">Vector database</text>
+  <text x="480" y="300" text-anchor="middle" class="box-detail">HNSW 150x-12,500x faster</text>
+  <text x="480" y="315" text-anchor="middle" class="box-detail">290+ SQL functions</text>
+
+  <!-- Double arrow between SONA and RuVector -->
+  <line x1="280" y1="280" x2="368" y2="280" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#cr-arrow)"/>
+  <line x1="370" y1="295" x2="282" y2="295" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#cr-arrow)"/>
+  <text x="325" y="273" text-anchor="middle" class="relation">learns from</text>
+  <text x="325" y="310" text-anchor="middle" class="relation">vector search</text>
+
+  <!-- Vertical labels below -->
+  <text x="170" y="370" text-anchor="middle" class="relation">protected by</text>
+  <text x="480" y="370" text-anchor="middle" class="relation">secures</text>
+
+  <!-- Vertical arrows to AIMDS -->
+  <line x1="170" y1="345" x2="170" y2="390" stroke="#555" stroke-width="1.5" marker-end="url(#cr-arrow)"/>
+  <line x1="480" y1="345" x2="480" y2="390" stroke="#555" stroke-width="1.5" marker-end="url(#cr-arrow)"/>
+
+  <!-- AIMDS (bottom center) -->
+  <rect x="60" y="395" width="530" height="70" rx="8" fill="#0f3460" stroke="#ef4444" stroke-width="2"/>
+  <text x="325" y="420" text-anchor="middle" class="box-title" fill="#ef4444">AIMDS (AI Defense Middleware)</text>
+  <text x="325" y="440" text-anchor="middle" class="box-sub">3-layer security pipeline</text>
+  <text x="325" y="455" text-anchor="middle" class="box-detail">Inbound scan + Outbound scan</text>
+</svg>

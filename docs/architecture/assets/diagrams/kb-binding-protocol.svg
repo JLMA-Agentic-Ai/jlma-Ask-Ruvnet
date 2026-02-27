@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" width="720" height="560">
+  <rect width="720" height="560" fill="#1a1a2e"/>
+  <!-- Header -->
+  <rect x="10" y="10" width="700" height="38" rx="3" fill="#0f3460" stroke="#4a9eff" stroke-width="1.5"/>
+  <text x="360" y="34" fill="#4a9eff" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">FULL-DEPTH AGENT-KB BINDING PROTOCOL</text>
+  <!-- LEVEL 1: QUERY BINDING -->
+  <rect x="30" y="68" width="660" height="82" rx="4" fill="#16213e" stroke="#4a9eff" stroke-width="1.5"/>
+  <text x="50" y="91" fill="#4a9eff" font-family="monospace" font-size="12" font-weight="bold">LEVEL 1: QUERY BINDING</text>
+  <text x="60" y="110" fill="#94a3b8" font-family="monospace" font-size="11">• Every user question triggers KB query</text>
+  <text x="60" y="127" fill="#94a3b8" font-family="monospace" font-size="11">• KB query is logged with timestamp · Results attached to agent context · Zero tolerance for skipped queries</text>
+  <!-- LEVEL 2: CONTEXT BINDING -->
+  <rect x="30" y="164" width="660" height="82" rx="4" fill="#16213e" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="50" y="187" fill="#4ade80" font-family="monospace" font-size="12" font-weight="bold">LEVEL 2: CONTEXT BINDING</text>
+  <text x="60" y="206" fill="#94a3b8" font-family="monospace" font-size="11">• KB results become part of system prompt</text>
+  <text x="60" y="223" fill="#94a3b8" font-family="monospace" font-size="11">• Agent sees raw KB content (not summaries) · Similarity scores visible · Source metadata included</text>
+  <!-- LEVEL 3: RESPONSE BINDING -->
+  <rect x="30" y="260" width="660" height="82" rx="4" fill="#16213e" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="50" y="283" fill="#fb923c" font-family="monospace" font-size="12" font-weight="bold">LEVEL 3: RESPONSE BINDING</text>
+  <text x="60" y="302" fill="#94a3b8" font-family="monospace" font-size="11">• Response MUST cite KB sources</text>
+  <text x="60" y="319" fill="#94a3b8" font-family="monospace" font-size="11">• Direct quotes required (not paraphrases) · Gaps acknowledged explicitly · Confidence tied to KB coverage</text>
+  <!-- LEVEL 4: VERIFICATION BINDING -->
+  <rect x="30" y="356" width="660" height="82" rx="4" fill="#16213e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="50" y="379" fill="#a78bfa" font-family="monospace" font-size="12" font-weight="bold">LEVEL 4: VERIFICATION BINDING</text>
+  <text x="60" y="398" fill="#94a3b8" font-family="monospace" font-size="11">• Post-response validation</text>
+  <text x="60" y="415" fill="#94a3b8" font-family="monospace" font-size="11">• Citation checker runs automatically · Violations logged and flagged · Session audit trail maintained</text>
+  <!-- LEVEL 5: LEARNING BINDING -->
+  <rect x="30" y="452" width="660" height="82" rx="4" fill="#16213e" stroke="#f9a8d4" stroke-width="1.5"/>
+  <text x="50" y="475" fill="#f9a8d4" font-family="monospace" font-size="12" font-weight="bold">LEVEL 5: LEARNING BINDING</text>
+  <text x="60" y="494" fill="#94a3b8" font-family="monospace" font-size="11">• Successful patterns stored in ReasoningBank</text>
+  <text x="60" y="511" fill="#94a3b8" font-family="monospace" font-size="11">• Gap patterns trigger KB enhancement · Agent improves KB query strategies · Continuous feedback loop</text>
+  <!-- Connector lines between levels -->
+  <line x1="360" y1="150" x2="360" y2="164" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="360" y1="246" x2="360" y2="260" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="360" y1="342" x2="360" y2="356" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="360" y1="438" x2="360" y2="452" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+</svg>

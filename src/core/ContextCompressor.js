@@ -265,15 +265,52 @@ class ContextCompressor {
     }
 
     /**
-     * Format compressed sources into final context
+     * Convert github:// URI to real https://github.com/ URL
+     */
+    githubUriToUrl(filePath) {
+        if (!filePath) return null;
+        if (filePath.startsWith('http')) return filePath;
+        if (filePath.startsWith('github://')) {
+            // github://org/repo/path → https://github.com/org/repo/blob/main/path
+            const parts = filePath.replace('github://', '').split('/');
+            if (parts.length >= 3) {
+                const org = parts[0];
+                const repo = parts[1];
+                const rest = parts.slice(2).join('/');
+                return `https://github.com/${org}/${repo}/blob/main/${rest}`;
+            }
+            return `https://github.com/${filePath.replace('github://', '')}`;
+        }
+        return null;
+    }
+
+    /**
+     * Format compressed sources into final context with rich metadata
      */
     formatContext(sources) {
         return sources.map((s, i) => {
-            const header = `[Source ${i + 1}: ${s.source || s.id || 'Unknown'} | Relevance: ${(s.score || 0).toFixed(2)}]`;
+            const sourceId = s.source || s.id || 'Unknown';
+            const score = (s.score || 0).toFixed(2);
+            const pkg = s.package_name || s.metadata?.package_name;
+            const docType = s.doc_type || s.metadata?.doc_type;
+            const filePath = s.file_path || s.metadata?.file_path;
+            const topics = s.topics || s.metadata?.topics || [];
+
+            let header = `[Source ${i + 1}: ${sourceId} | Relevance: ${score}]`;
+
+            const metaLines = [];
+            if (pkg) metaLines.push(`Repository: ${pkg}`);
+            if (docType) metaLines.push(`Type: ${docType}`);
+            const url = this.githubUriToUrl(filePath);
+            if (url) metaLines.push(`URL: ${url}`);
+            if (topics.length > 0) metaLines.push(`Topics: ${topics.slice(0, 5).join(', ')}`);
+
             const compression = s.originalLength > s.compressedLength
                 ? ` (compressed ${Math.round((1 - s.compressedLength / s.originalLength) * 100)}%)`
                 : '';
-            return `${header}${compression}\n${s.content}`;
+
+            const metaBlock = metaLines.length > 0 ? '\n' + metaLines.join(' | ') : '';
+            return `${header}${compression}${metaBlock}\n${s.content}`;
         }).join('\n\n---\n\n');
     }
 }

@@ -57,6 +57,11 @@ if (process.env.OPENAI_API_KEY) {
     openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 }
 
+// Initialize Gemini client for image generation (visualize endpoint)
+const { GoogleGenAI } = require('@google/genai');
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyDR-2kQuxZ1HJyZ2-IhUHmPN0XG3DS4HgY';
+const geminiClient = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+
 // ============================================================================
 // MULTI-PROVIDER LLM — automatic fallback chain for chat
 // Default chain: groq-free → groq-paid → openai → anthropic → together → openrouter → deepseek
@@ -271,6 +276,7 @@ app.use(express.json({ limit: '1mb' }));
 const fs = require('fs');
 app.use(express.static(path.join(__dirname, '../ui/dist'))); // Serve frontend
 app.use('/frames', express.static(path.join(__dirname, '../../data_ingestion_ruv_coaching'))); // Serve video frames
+app.use('/generated_imgs', express.static(path.join(__dirname, '../../generated_imgs'))); // Serve generated visualizations
 
 // Initialize RuVector Native Components (replaces SQLite-based HybridReasoningBank)
 let modelRouter;
@@ -561,7 +567,12 @@ app.post('/api/chat', async (req, res) => {
                     score: r.rerankedScore || r.score || 0,
                     source: r.source || r.metadata?.source,
                     timestamp: r.timestamp || r.metadata?.timestamp,
-                    scoreBreakdown: r.scoreBreakdown
+                    scoreBreakdown: r.scoreBreakdown,
+                    package_name: r.package_name || r.metadata?.package_name || null,
+                    doc_type: r.doc_type || r.metadata?.doc_type || null,
+                    file_path: r.file_path || r.metadata?.file_path || null,
+                    topics: r.topics || r.metadata?.topics || [],
+                    metadata: r.metadata,
                 }));
 
                 // ================================================================
@@ -638,7 +649,12 @@ Provide a clear, accurate, and helpful response based ONLY on the knowledge base
             sources: sources.map(s => ({
                 id: s.id,
                 score: s.score,
-                content: s.content
+                content: (s.content || '').substring(0, 200),
+                title: s.metadata?.title || s.source || s.id,
+                package_name: s.package_name || s.metadata?.package_name || null,
+                doc_type: s.doc_type || s.metadata?.doc_type || null,
+                file_path: s.file_path || s.metadata?.file_path || null,
+                topics: s.topics || s.metadata?.topics || [],
             }))
         };
 
@@ -829,7 +845,117 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 
-// Special Actions Endpoint (simplify, code, diagram)
+// ============================================================================
+// Visualization Helper — Gemini image generation with KB context
+// ============================================================================
+async function generateVisualization(concept, style, resolution) {
+    // 1. Query KB for context about the concept
+    let kbContext = '';
+    if (pgKB && pgKB.ready && pgKB.pool) {
+        try {
+            const kbResult = await pgKB.pool.query(`
+                SELECT title, LEFT(content, 300) AS snippet
+                FROM ask_ruvnet.kb_complete
+                WHERE title ILIKE $1 OR content ILIKE $1
+                ORDER BY quality_score DESC NULLS LAST
+                LIMIT 3
+            `, [`%${concept}%`]);
+            if (kbResult.rows.length > 0) {
+                kbContext = kbResult.rows.map(r => `- ${r.title}: ${r.snippet}`).join('\n');
+            }
+        } catch (err) {
+            console.warn('[Visualize] KB lookup failed (non-fatal):', err.message);
+        }
+    }
+
+    // 2. Build the image generation prompt
+    const styleInstruction = style || 'modern flat design';
+    const resLabel = resolution === '2K' ? '2048x2048' : '1024x1024';
+    const prompt = [
+        `Create a technical architecture diagram in ${styleInstruction} style.`,
+        `Dark background (#1a1a2e), use vibrant accent colors (cyan #00d4ff, purple #7c3aed, green #10b981).`,
+        `Include labeled components with clean connecting lines.`,
+        `Professional technical illustration, no gradients, annotated.`,
+        `Resolution target: ${resLabel}.`,
+        ``,
+        `Subject: "${concept}"`,
+        kbContext ? `\nContext from knowledge base:\n${kbContext}` : '',
+        ``,
+        `Show the key components, their relationships, and data flows. Make labels clear and readable.`,
+    ].join('\n');
+
+    // 3. Call Gemini image generation
+    const response = await geminiClient.models.generateContent({
+        model: 'gemini-2.0-flash-exp',
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        config: { responseModalities: ['TEXT', 'IMAGE'] }
+    });
+
+    // 4. Extract the image from the response
+    const candidates = response.candidates;
+    if (!candidates || candidates.length === 0) {
+        throw new Error('Gemini returned no candidates');
+    }
+
+    let imageBuffer = null;
+    for (const part of candidates[0].content.parts) {
+        if (part.inlineData) {
+            imageBuffer = Buffer.from(part.inlineData.data, 'base64');
+            break;
+        }
+    }
+
+    if (!imageBuffer) {
+        throw new Error('Gemini response did not contain an image');
+    }
+
+    // 5. Save image to generated_imgs/
+    const slug = concept.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').substring(0, 50);
+    const timestamp = Date.now();
+    const filename = `viz-${slug}-${timestamp}.png`;
+    const imgDir = path.join(__dirname, '../../generated_imgs');
+
+    // Ensure directory exists
+    if (!fs.existsSync(imgDir)) {
+        fs.mkdirSync(imgDir, { recursive: true });
+    }
+
+    const filePath = path.join(imgDir, filename);
+    fs.writeFileSync(filePath, imageBuffer);
+    console.log(`[Visualize] Saved: ${filePath} (${imageBuffer.length} bytes)`);
+
+    return {
+        imageUrl: `/generated_imgs/${filename}`,
+        prompt,
+        concept
+    };
+}
+
+// POST /api/visualize — Generate architectural diagram images via Gemini
+app.post('/api/visualize', async (req, res) => {
+    const { concept, style, resolution } = req.body;
+
+    if (!concept || typeof concept !== 'string') {
+        return res.status(400).json({ error: 'concept is a required string' });
+    }
+
+    const validResolutions = ['1K', '2K'];
+    if (resolution && !validResolutions.includes(resolution)) {
+        return res.status(400).json({ error: 'resolution must be "1K" or "2K"' });
+    }
+
+    console.log(`[Visualize] Concept: "${concept}", Style: ${style || 'default'}, Resolution: ${resolution || '1K'}`);
+
+    try {
+        const result = await generateVisualization(concept, style, resolution);
+        res.json(result);
+    } catch (error) {
+        console.error('[Visualize] Error:', error);
+        res.status(500).json({ error: `Visualization failed: ${error.message}` });
+    }
+});
+
+// Special Actions Endpoint (simplify, code, diagram, visualize)
 app.post('/api/special', async (req, res) => {
     const { action, content } = req.body;
 
@@ -837,13 +963,24 @@ app.post('/api/special', async (req, res) => {
         return res.status(400).json({ error: 'action and content are required strings' });
     }
 
-    if (!['simplify', 'code', 'diagram'].includes(action)) {
-        return res.status(400).json({ error: 'Invalid action. Must be: simplify, code, or diagram' });
+    if (!['simplify', 'code', 'diagram', 'visualize'].includes(action)) {
+        return res.status(400).json({ error: 'Invalid action. Must be: simplify, code, diagram, or visualize' });
     }
 
     console.log(`[Special] Action: ${action} `);
 
-    // Check if OpenAI is configured
+    // Visualize action uses Gemini, not OpenAI — handle separately
+    if (action === 'visualize') {
+        try {
+            const vizResult = await generateVisualization(content);
+            return res.json({ result: vizResult.imageUrl, imageUrl: vizResult.imageUrl, concept: vizResult.concept });
+        } catch (error) {
+            console.error('[Special/Visualize] Error:', error);
+            return res.status(500).json({ error: `Visualization failed: ${error.message}` });
+        }
+    }
+
+    // Check if OpenAI is configured (required for simplify, code, diagram)
     if (!openai) {
         return res.status(503).json({
             error: 'OpenAI API not configured. Set OPENAI_API_KEY environment variable.'
@@ -1101,8 +1238,9 @@ app.use((err, req, res, next) => {
 
 // Start Server (only when run directly, not when imported as a module)
 if (require.main === module) {
-    const server = app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
+    const HOST = process.env.HOST || '127.0.0.1';
+    const server = app.listen(PORT, HOST, () => {
+        console.log(`Server running on ${HOST}:${PORT}`);
         console.log(`Ask rUVnet v${APP_VERSION} initialized.`);
     });
 

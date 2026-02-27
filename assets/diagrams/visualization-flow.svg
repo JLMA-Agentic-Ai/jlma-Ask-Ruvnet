@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 300" width="650" height="300">
+  <defs>
+    <marker id="vf-arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; fill: #e0e0e0; }
+    .title { font-size: 18px; font-weight: 700; }
+    .box-title { font-size: 13px; font-weight: 600; }
+    .body { font-size: 11px; fill: #c0c0c0; }
+    .small { font-size: 10px; fill: #999; }
+  </style>
+  <rect width="650" height="300" rx="12" fill="#1a1a2e"/>
+  <text x="325" y="35" text-anchor="middle" class="title">Nano Banana Visualization Flow</text>
+
+  <!-- User asks -->
+  <rect x="30" y="65" width="160" height="100" rx="8" fill="#16213e" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="110" y="90" text-anchor="middle" class="box-title" fill="#7c3aed">User asks about</text>
+  <text x="110" y="108" text-anchor="middle" class="box-title" fill="#7c3aed">swarm topologies</text>
+  <text x="110" y="132" text-anchor="middle" class="body">"Visualize how</text>
+  <text x="110" y="147" text-anchor="middle" class="body">mesh topology</text>
+  <text x="110" y="162" text-anchor="middle" class="body">works"</text>
+
+  <!-- Arrow -->
+  <line x1="190" y1="115" x2="240" y2="115" stroke="#00d4ff" stroke-width="2" marker-end="url(#vf-arrow)"/>
+
+  <!-- Gemini generates -->
+  <rect x="250" y="55" width="370" height="190" rx="8" fill="#16213e" stroke="#00d4ff" stroke-width="1.5"/>
+  <text x="435" y="80" text-anchor="middle" class="box-title" fill="#00d4ff">Gemini generates architectural diagram</text>
+
+  <rect x="290" y="95" width="290" height="30" rx="6" fill="#0f3460" stroke="#10b981" stroke-width="1"/>
+  <text x="435" y="115" text-anchor="middle" class="body" fill="#10b981">Gemini 2.0 Flash (Image Generation)</text>
+
+  <line x1="435" y1="125" x2="435" y2="150" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#vf-arrow)"/>
+
+  <rect x="310" y="155" width="250" height="28" rx="6" fill="#0f3460" stroke="#f59e0b" stroke-width="1"/>
+  <text x="435" y="174" text-anchor="middle" class="body" fill="#f59e0b">1K or 2K resolution diagram</text>
+
+  <line x1="435" y1="183" x2="435" y2="208" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#vf-arrow)"/>
+
+  <rect x="310" y="212" width="250" height="25" rx="6" fill="#0f3460" stroke="#7c3aed" stroke-width="1"/>
+  <text x="435" y="229" text-anchor="middle" class="body">Served at /generated_imgs/</text>
+
+  <!-- Bottom label -->
+  <text x="325" y="278" text-anchor="middle" class="small">Gemini-powered on-demand architectural visualization</text>
+</svg>
