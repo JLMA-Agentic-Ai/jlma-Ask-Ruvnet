@@ -762,7 +762,10 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                                   const githubUrl = src.file_path
                                     ? (src.file_path.startsWith('github://')
                                         ? src.file_path.replace('github://', 'https://github.com/').replace(/^([^/]+)\/([^/]+)\/(.+)$/, '$1/$2/blob/main/$3')
-                                        : src.file_path.startsWith('http') ? src.file_path : null)
+                                        : src.file_path.startsWith('http') ? src.file_path
+                                        : src.file_path.startsWith('/tmp/ruvnet-repos/')
+                                          ? (() => { const parts = src.file_path.replace('/tmp/ruvnet-repos/', '').split('/'); return parts.length >= 2 ? `https://github.com/ruvnet/${parts[0]}/blob/main/${parts.slice(1).join('/')}` : null; })()
+                                          : null)
                                     : null;
                                   const displayTitle = src.title || src.package_name || src.id || `Source ${si + 1}`;
                                   const score = src.score ? Math.round(src.score * 100) : null;

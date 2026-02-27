@@ -281,6 +281,17 @@ class ContextCompressor {
             }
             return `https://github.com/${filePath.replace('github://', '')}`;
         }
+        if (filePath.startsWith('/tmp/ruvnet-repos/')) {
+            // /tmp/ruvnet-repos/{repo-name}/... → https://github.com/ruvnet/{repo-name}/blob/main/...
+            const withoutPrefix = filePath.replace('/tmp/ruvnet-repos/', '');
+            const parts = withoutPrefix.split('/');
+            if (parts.length >= 2) {
+                const repo = parts[0];
+                const rest = parts.slice(1).join('/');
+                return `https://github.com/ruvnet/${repo}/blob/main/${rest}`;
+            }
+            return null;
+        }
         return null;
     }
 
