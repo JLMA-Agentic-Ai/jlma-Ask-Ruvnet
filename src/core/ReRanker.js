@@ -7,6 +7,7 @@
  * - Position/recency weighting
  * - Source diversity scoring
  * - Query-document alignment scoring
+ * - Authority boost by document type (ADRs, changelogs, etc.)
  */
 
 class ReRanker {
@@ -23,6 +24,15 @@ class ReRanker {
         // Ensure weights sum to 1
         const total = Object.values(this.weights).reduce((a, b) => a + b, 0);
         Object.keys(this.weights).forEach(k => this.weights[k] /= total);
+
+        // Authority boosts by doc_type — additive bonus applied after
+        // weighted scoring so high-value document types surface higher.
+        this.authorityBoosts = {
+            adr:       options.adrBoost       || 0.15,  // Architectural Decision Records
+            changelog: options.changelogBoost || 0.10,  // Recent change documentation
+            release:   options.releaseBoost   || 0.08,  // Release notes
+            commit:    options.commitBoost    || 0.05   // Commit messages
+        };
 
         // Query term importance (TF-IDF style)
         this.idfCache = new Map();
@@ -61,13 +71,17 @@ class ReRanker {
             // 5. Diversity penalty (applied later)
             const diversityScore = 1.0; // Will be adjusted in post-processing
 
-            // Combined score
+            // 6. Authority boost based on doc_type
+            const authorityBoost = this.calculateAuthorityBoost(result);
+
+            // Combined score (authority boost is additive, not weighted)
             const combinedScore =
                 (semanticScore * this.weights.semantic) +
                 (keywordScore * this.weights.keyword) +
                 (alignmentScore * this.weights.alignment) +
                 (recencyScore * this.weights.recency) +
-                (diversityScore * this.weights.diversity);
+                (diversityScore * this.weights.diversity) +
+                authorityBoost;
 
             return {
                 ...result,
@@ -76,7 +90,8 @@ class ReRanker {
                     semantic: semanticScore,
                     keyword: keywordScore,
                     alignment: alignmentScore,
-                    recency: recencyScore
+                    recency: recencyScore,
+                    authority: authorityBoost
                 }
             };
         });
@@ -206,6 +221,16 @@ class ReRanker {
         // Exponential decay with 60-day half-life
         const halfLife = 60;
         return Math.exp(-daysDiff * Math.LN2 / halfLife);
+    }
+
+    /**
+     * Calculate authority boost based on doc_type.
+     * ADRs, changelogs, releases, and commits each get an additive boost
+     * so that high-value architectural documents surface higher in results.
+     */
+    calculateAuthorityBoost(result) {
+        const docType = (result.doc_type || result.metadata?.doc_type || '').toLowerCase();
+        return this.authorityBoosts[docType] || 0;
     }
 
     /**

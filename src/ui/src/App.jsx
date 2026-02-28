@@ -771,7 +771,7 @@ ${data.websites.length > 0 ? '\n## Documentation\n' + data.websites.map(w => `- 
                                   const score = src.score ? Math.round(src.score * 100) : null;
                                   return (
                                     <div key={si} className="source-tag">
-                                      {src.doc_type && <span className="source-badge">{src.doc_type}</span>}
+                                      {src.doc_type && <span className={`source-badge ${src.doc_type}`}>{src.doc_type}</span>}
                                       {githubUrl ? (
                                         <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="source-link">{displayTitle}</a>
                                       ) : (

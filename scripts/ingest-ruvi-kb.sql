@@ -11,7 +11,7 @@
 --   psql -h <host> -p <port> -U postgres -d postgres -f scripts/ingest-ruvi-kb.sql
 --
 -- Target table: ask_ruvnet.architecture_docs
--- Columns used: title, content, package_name, doc_type, file_path, topics, quality_tier
+-- Columns used: doc_id, title, content, package_name, doc_type, file_path, topics, triage_tier
 -- =============================================================================
 
 BEGIN;
@@ -20,8 +20,9 @@ BEGIN;
 -- 1. Overview — What ruvi is, how to install, core value proposition
 -- ---------------------------------------------------------------------------
 INSERT INTO ask_ruvnet.architecture_docs
-  (title, content, package_name, doc_type, file_path, topics, quality_tier)
+  (doc_id, title, content, package_name, doc_type, file_path, topics, triage_tier, file_hash)
 VALUES (
+  'ruvi-overview-001',
   'ruvi CLI — Overview and Installation',
   E'ruvi is a command-line interface published on npm that provides access to rUv''s AI coaching platform. '
   'The full name is "rUv CLI - Agentic Engineering Console with MCP integration." '
@@ -45,15 +46,17 @@ VALUES (
   'documentation',
   'github://ruvnet/ruvi/README.md',
   ARRAY['ruvi', 'cli', 'mcp', 'installation', 'overview', 'ruvnet', 'agentic'],
-  'gold'
+  'gold',
+  'sha256:0001'
 );
 
 -- ---------------------------------------------------------------------------
 -- 2. MCP Integration — FastMCP server, tools, resources, client configuration
 -- ---------------------------------------------------------------------------
 INSERT INTO ask_ruvnet.architecture_docs
-  (title, content, package_name, doc_type, file_path, topics, quality_tier)
+  (doc_id, title, content, package_name, doc_type, file_path, topics, triage_tier, file_hash)
 VALUES (
+  'ruvi-mcp-integration-002',
   'ruvi CLI — MCP Server Integration and Tools',
   E'ruvi includes a full Model Context Protocol (MCP) server built with FastMCP v3.20.2. '
   'The server runs on stdio transport and is compatible with any MCP client.\n\n'
@@ -81,15 +84,17 @@ VALUES (
   'documentation',
   'github://ruvnet/ruvi/docs/mcp-integration.md',
   ARRAY['ruvi', 'mcp', 'fastmcp', 'tools', 'resources', 'claude-desktop', 'stdio'],
-  'gold'
+  'gold',
+  'sha256:0002'
 );
 
 -- ---------------------------------------------------------------------------
 -- 3. AI Console and Coaching Features
 -- ---------------------------------------------------------------------------
 INSERT INTO ask_ruvnet.architecture_docs
-  (title, content, package_name, doc_type, file_path, topics, quality_tier)
+  (doc_id, title, content, package_name, doc_type, file_path, topics, triage_tier, file_hash)
 VALUES (
+  'ruvi-coaching-console-003',
   'ruvi CLI — AI Console, Coaching, and Agentic Tribe',
   E'The ruvi console command launches an interactive AI chat powered by Google Gemini 2.5 Flash '
   'via Supabase edge functions with RAG (Retrieval-Augmented Generation) knowledge base integration.\n\n'
@@ -115,15 +120,17 @@ VALUES (
   'documentation',
   'github://ruvnet/ruvi/docs/coaching-and-console.md',
   ARRAY['ruvi', 'coaching', 'ai-chat', 'console', 'gemini', 'rag', 'tribe'],
-  'gold'
+  'gold',
+  'sha256:0003'
 );
 
 -- ---------------------------------------------------------------------------
 -- 4. Relationship to RuVector Ecosystem
 -- ---------------------------------------------------------------------------
 INSERT INTO ask_ruvnet.architecture_docs
-  (title, content, package_name, doc_type, file_path, topics, quality_tier)
+  (doc_id, title, content, package_name, doc_type, file_path, topics, triage_tier, file_hash)
 VALUES (
+  'ruvi-ecosystem-004',
   'ruvi CLI — Relationship to RuVector and rUv Ecosystem',
   E'ruvi is the personal CLI gateway into the broader rUv/RuVector ecosystem of npm packages and tools. '
   'It serves as a discovery layer and entry point for the following major projects:\n\n'
@@ -150,15 +157,17 @@ VALUES (
   'architecture',
   'github://ruvnet/ruvi/docs/ecosystem-relationships.md',
   ARRAY['ruvi', 'ruvector', 'claude-flow', 'agentic-flow', 'flow-nexus', 'agentdb', 'ecosystem'],
-  'gold'
+  'gold',
+  'sha256:0004'
 );
 
 -- ---------------------------------------------------------------------------
 -- 5. Version History and Evolution
 -- ---------------------------------------------------------------------------
 INSERT INTO ask_ruvnet.architecture_docs
-  (title, content, package_name, doc_type, file_path, topics, quality_tier)
+  (doc_id, title, content, package_name, doc_type, file_path, topics, triage_tier, file_hash)
 VALUES (
+  'ruvi-versions-005',
   'ruvi CLI — Version History and Release Timeline',
   E'ruvi has 8 published versions on npm, from 1.0.0 to 1.1.0.\n\n'
   'Release timeline:\n'
@@ -182,15 +191,17 @@ VALUES (
   'changelog',
   'github://ruvnet/ruvi/CHANGELOG.md',
   ARRAY['ruvi', 'versions', 'changelog', 'releases', 'npm'],
-  'silver'
+  'silver',
+  'sha256:0005'
 );
 
 -- ---------------------------------------------------------------------------
 -- 6. Authentication and Supabase Integration
 -- ---------------------------------------------------------------------------
 INSERT INTO ask_ruvnet.architecture_docs
-  (title, content, package_name, doc_type, file_path, topics, quality_tier)
+  (doc_id, title, content, package_name, doc_type, file_path, topics, triage_tier, file_hash)
 VALUES (
+  'ruvi-auth-supabase-006',
   'ruvi CLI — Authentication and Supabase Integration',
   E'ruvi uses Supabase for authentication, sharing the same auth system as the rUv web dashboard.\n\n'
   'Authentication commands:\n'
@@ -215,15 +226,17 @@ VALUES (
   'documentation',
   'github://ruvnet/ruvi/docs/authentication.md',
   ARRAY['ruvi', 'authentication', 'supabase', 'session', 'security'],
-  'gold'
+  'gold',
+  'sha256:0006'
 );
 
 -- ---------------------------------------------------------------------------
 -- 7. Package Discovery System
 -- ---------------------------------------------------------------------------
 INSERT INTO ask_ruvnet.architecture_docs
-  (title, content, package_name, doc_type, file_path, topics, quality_tier)
+  (doc_id, title, content, package_name, doc_type, file_path, topics, triage_tier, file_hash)
 VALUES (
+  'ruvi-packages-discovery-007',
   'ruvi CLI — Package Discovery and Installation System',
   E'ruvi v1.1.0 introduced a built-in package discovery and installation system for browsing '
   'the entire rUv/ruvnet npm ecosystem.\n\n'
@@ -257,7 +270,8 @@ VALUES (
   'documentation',
   'github://ruvnet/ruvi/docs/package-discovery.md',
   ARRAY['ruvi', 'packages', 'discovery', 'npm', 'installation', 'ecosystem'],
-  'silver'
+  'silver',
+  'sha256:0007'
 );
 
 COMMIT;
@@ -265,14 +279,13 @@ COMMIT;
 -- =============================================================================
 -- Verification query (run after ingestion to confirm entries were inserted):
 --
---   SELECT id, title, quality_tier, topics
+--   SELECT id, title, triage_tier, topics
 --   FROM ask_ruvnet.architecture_docs
 --   WHERE package_name = 'ruvi'
---   ORDER BY id;
+--   ORDER BY id DESC;
 --
--- Expected: 7 rows (4 gold, 3 silver... wait, let me count)
--- Expected: 7 rows (4 gold, 2 silver)... actually:
+-- Expected: 7 rows (5 gold, 2 silver)
 --   gold:   overview, mcp, coaching, ecosystem, authentication = 5
 --   silver: versions, package-discovery = 2
--- Total: 7 entries
+-- Total: 7 entries inserted
 -- =============================================================================

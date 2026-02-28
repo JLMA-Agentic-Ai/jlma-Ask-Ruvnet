@@ -52,6 +52,8 @@ function detectIntent(query) {
   if (/^what\s+is\b/.test(q) || /^what\s+are\b/.test(q) ||
       /\b(define|definition|explain what|describe|overview of)\b/.test(q)) return 'what-is';
   if (/^why\s/.test(q) || /\b(reason|because|rationale|motivation)\b/.test(q)) return 'why';
+  if (/\b(decision|tradeoff|trade-off|alternative[s]?|adr|architecture decision|why was .+ chosen|why did .+ choose|compared to|versus|vs\b|pros and cons|drawback)\b/.test(q) ||
+      /\bwhy\s+(use|pick|select|prefer|chose|chosen|went with)\b/.test(q)) return 'decision';
   if (/\b(example[s]?|show me|demonstrate|sample|use case)\b/.test(q)) return 'example';
   if (/\b(error|bug|fix|broken|fail|issue|problem|troubleshoot|debug|not working)\b/.test(q)) return 'troubleshoot';
   return 'general';
@@ -120,9 +122,18 @@ class PostgresKnowledgeBase {
     } = options;
 
     const intent = overrideIntent || detectIntent(query);
+    const isDecisionIntent = (intent === 'decision');
+
+    // For decision intent, expand query with ADR-specific terms for better semantic matching
+    const searchQuery = isDecisionIntent
+      ? `${query} architecture decision record tradeoff alternatives rationale`
+      : query;
+
+    // ADRs scored 65-85 should pass through; lower minQuality for decision queries
+    const effectiveMinQuality = isDecisionIntent ? Math.min(minQuality, 60) : minQuality;
 
     try {
-      const embedding = await generateEmbedding(query);
+      const embedding = await generateEmbedding(searchQuery);
       if (!embedding || embedding.length === 0) {
         console.warn('[PostgresKB] No embedding generated');
         return [];
@@ -149,7 +160,7 @@ class PostgresKnowledgeBase {
              $5::integer,
              true
            )`,
-          [vectorLiteral, query, intent, minQuality, limit]
+          [vectorLiteral, query, intent, effectiveMinQuality, isDecisionIntent ? limit * 2 : limit]
         );
 
         // Enrich with package_name, doc_type, file_path, topics from architecture_docs
@@ -170,18 +181,29 @@ class PostgresKnowledgeBase {
           }
         }
 
-        return result.rows.map(r => {
+        // ADR boost factor for decision intent queries
+        const ADR_BOOST = 1.35;
+
+        let results = result.rows.map(r => {
           const extra = enrichment[r.id] || {};
+          const docType = extra.doc_type || null;
+          const baseScore = parseFloat(r.relevance_score) || 0;
+
+          // Boost ADR results when user is asking about decisions/tradeoffs
+          const boostedScore = (isDecisionIntent && docType === 'adr')
+            ? Math.min(baseScore * ADR_BOOST, 1.0)
+            : baseScore;
+
           return {
             id: String(r.id),
             title: r.title || 'Untitled',
             content: r.content || '',
             summary: r.summary || '',
-            score: parseFloat(r.relevance_score) || 0,
+            score: boostedScore,
             similarity: Math.max(0, 1 - parseFloat(r.distance || 1)),
             source: `postgresql:ask_ruvnet/${r.category || 'general'}`,
             package_name: extra.package_name || null,
-            doc_type: extra.doc_type || null,
+            doc_type: docType,
             file_path: extra.file_path || null,
             topics: extra.topics || [],
             metadata: {
@@ -195,15 +217,24 @@ class PostgresKnowledgeBase {
               source_authority: r.source_authority,
               source: `ask_ruvnet:${r.category}`,
               intent,
+              adr_boosted: isDecisionIntent && docType === 'adr',
               relationship_context: r.relationship_context,
               timestamp: new Date().toISOString(),
               package_name: extra.package_name || null,
-              doc_type: extra.doc_type || null,
+              doc_type: docType,
               file_path: extra.file_path || null,
               topics: extra.topics || [],
             }
           };
         });
+
+        // Re-sort by boosted score and trim to requested limit
+        if (isDecisionIntent) {
+          results.sort((a, b) => b.score - a.score);
+          results = results.slice(0, limit);
+        }
+
+        return results;
       } finally {
         client.release();
       }
