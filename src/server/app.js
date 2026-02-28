@@ -181,6 +181,122 @@ async function llmChat(messages, { temperature = 0.3, maxTokens = 4096 } = {}) {
     throw new Error(`All LLM providers failed:\n${errors.join('\n')}`);
 }
 
+// ============================================================================
+// SSE Streaming: stream tokens from OpenAI-compatible or Anthropic providers
+// ============================================================================
+async function* llmChatStream(messages, { temperature = 0.3, maxTokens = 4096 } = {}) {
+    if (LLM_PROVIDERS.length === 0) throw new Error('No LLM providers configured');
+
+    const errors = [];
+    for (const provider of LLM_PROVIDERS) {
+        try {
+            console.log(`🤖 Streaming from ${provider.name} (${provider.model})...`);
+            if (provider.name === 'anthropic') {
+                yield* streamAnthropicAPI(provider, messages, temperature, maxTokens);
+            } else {
+                yield* streamOpenAICompatible(provider, messages, temperature, maxTokens);
+            }
+            return; // Successfully streamed, stop trying providers
+        } catch (err) {
+            console.warn(`⚠️ ${provider.name} stream failed: ${err.message}`);
+            errors.push(`${provider.name}: ${err.message}`);
+        }
+    }
+    throw new Error(`All LLM providers failed:\n${errors.join('\n')}`);
+}
+
+async function* streamOpenAICompatible(provider, messages, temperature, maxTokens) {
+    const response = await fetch(provider.url, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${provider.key}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            model: provider.model,
+            messages,
+            temperature,
+            max_tokens: maxTokens,
+            stream: true
+        })
+    });
+
+    if (!response.ok) {
+        const text = await response.text();
+        throw new Error(`${provider.name}: HTTP ${response.status} - ${text.substring(0, 200)}`);
+    }
+
+    const reader = response.body;
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    for await (const chunk of reader) {
+        buffer += decoder.decode(chunk, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed || !trimmed.startsWith('data: ')) continue;
+            const data = trimmed.slice(6);
+            if (data === '[DONE]') return;
+            try {
+                const parsed = JSON.parse(data);
+                const token = parsed.choices?.[0]?.delta?.content;
+                if (token) yield token;
+            } catch (_) {}
+        }
+    }
+}
+
+async function* streamAnthropicAPI(provider, messages, temperature, maxTokens) {
+    const systemMsg = messages.find(m => m.role === 'system');
+    const nonSystemMsgs = messages.filter(m => m.role !== 'system');
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+            'x-api-key': provider.key,
+            'anthropic-version': '2023-06-01',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            model: provider.model,
+            max_tokens: maxTokens,
+            temperature,
+            stream: true,
+            system: systemMsg ? systemMsg.content : undefined,
+            messages: nonSystemMsgs
+        })
+    });
+
+    if (!response.ok) {
+        const text = await response.text();
+        throw new Error(`Anthropic: HTTP ${response.status} - ${text.substring(0, 200)}`);
+    }
+
+    const reader = response.body;
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    for await (const chunk of reader) {
+        buffer += decoder.decode(chunk, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed || !trimmed.startsWith('data: ')) continue;
+            try {
+                const parsed = JSON.parse(trimmed.slice(6));
+                if (parsed.type === 'content_block_delta' && parsed.delta?.text) {
+                    yield parsed.delta.text;
+                }
+            } catch (_) {}
+        }
+    }
+}
+
 registerProviders();
 
 // ============================================================================
@@ -343,12 +459,16 @@ async function initHybridSearchIndex() {
             try {
                 const client = await pgKB.pool.connect();
                 try {
+                    await client.query("SET client_encoding = 'UTF8'");
                     const result = await client.query(`
-                        SELECT id::text, title, LEFT(content, 2000) as content, category, source
+                        SELECT id::text,
+                               regexp_replace(title, '[^\\x20-\\x7E\\n\\r\\t]', '', 'g') as title,
+                               LEFT(regexp_replace(content, '[^\\x20-\\x7E\\n\\r\\t]', '', 'g'), 2000) as content,
+                               category
                         FROM ask_ruvnet.architecture_docs
                         WHERE is_duplicate = false AND triage_tier != 'garbage'
                         ORDER BY id
-                        LIMIT 10000
+                        LIMIT 50000
                     `);
                     result.rows.forEach(r => allDocuments.set(r.id, {
                         id: r.id,
@@ -475,22 +595,25 @@ app.post('/api/chat', async (req, res) => {
                     // Standard retrieval with query expansion
                     const resultsMap = new Map();
 
-                    for (const query of expandedQueries) {
-                        let queryResults;
+                    // Run all expanded queries in parallel for lower latency
+                    const queryPromises = expandedQueries.map(query => {
                         if (hybridSearch) {
                             console.log('🔀 Using hybrid search (semantic + BM25)...');
-                            queryResults = await hybridSearch.hybridSearch(query, semanticSearchFn, adaptiveK);
+                            return hybridSearch.hybridSearch(query, semanticSearchFn, adaptiveK);
                         } else {
                             console.log('🔍 Using semantic search only...');
-                            queryResults = await semanticSearchFn(query, adaptiveK);
+                            return semanticSearchFn(query, adaptiveK);
                         }
+                    });
+                    const batchResults = await Promise.all(queryPromises);
 
-                        // Aggregate results (boost for appearing in multiple query variants)
+                    // Aggregate results (boost for appearing in multiple query variants)
+                    for (const queryResults of batchResults) {
                         for (const result of queryResults) {
                             const id = result.id;
                             if (resultsMap.has(id)) {
                                 const existing = resultsMap.get(id);
-                                existing.score = Math.max(existing.score, result.score) + 0.05; // Small boost for multiple matches
+                                existing.score = Math.max(existing.score, result.score) + 0.05;
                                 existing.queryMatches = (existing.queryMatches || 1) + 1;
                             } else {
                                 resultsMap.set(id, { ...result, queryMatches: 1 });
@@ -572,6 +695,8 @@ app.post('/api/chat', async (req, res) => {
                     doc_type: r.doc_type || r.metadata?.doc_type || null,
                     file_path: r.file_path || r.metadata?.file_path || null,
                     topics: r.topics || r.metadata?.topics || [],
+                    triage_tier: r.triage_tier || r.metadata?.triage_tier || null,
+                    quality_score: r.quality_score || r.metadata?.quality_score || null,
                     metadata: r.metadata,
                 }));
 
@@ -601,10 +726,42 @@ app.post('/api/chat', async (req, res) => {
 
         const learningLevel = mode || 'Balanced';
         const levelInstructions = {
-            'Simple': 'Explain like I\'m 5. Use everyday analogies, avoid all jargon, keep sentences short. Use emojis to make concepts visual.',
-            'Beginner': 'Explain for someone new to programming. Define technical terms when first used, use real-world analogies, include "why this matters" context.',
-            'Balanced': 'Provide a clear, well-structured response suitable for an intermediate audience. Balance depth with accessibility.',
-            'Technical': 'Provide detailed technical depth. Include implementation details, code snippets, architecture considerations, and performance implications. Assume strong engineering background.'
+            'Simple': `Explain like I'm 5 years old. Rules:
+- Use everyday analogies for EVERY concept (e.g., "A vector database is like a library where books are shelved by what they're about, not alphabetically")
+- Zero jargon — if you must use a technical term, immediately explain it in parentheses
+- Short sentences (max 15 words each)
+- Use emojis as visual markers: 🔑 for key points, ⚡ for actions, 🎯 for outcomes
+- Mermaid diagrams should use simple labels and emoji nodes
+- Skip the "What to Watch For" section — keep it fun and approachable
+- End with "Try This" instead of code examples — a simple hands-on activity`,
+
+            'Beginner': `Explain for someone new to programming who is eager to learn. Rules:
+- Define every technical term on first use with a real-world analogy
+- Include "Why This Matters" callouts (> blockquotes) explaining practical relevance
+- Show complete, runnable code examples with comments on every line
+- Mermaid diagrams should have descriptive labels and clear flow
+- Include "Common Mistake" callouts flagging what beginners get wrong
+- Comparison tables should include a "Best For" column
+- The "Explore Further" section should progress from easier → harder questions`,
+
+            'Balanced': `Provide a clear, well-structured response for an intermediate technical audience. Rules:
+- Balance depth with accessibility — assume programming knowledge, don't assume domain expertise
+- Analogies for complex architectural concepts, but skip basics
+- Code examples should be practical and production-oriented
+- Mermaid diagrams should show real component names and data flow
+- Include performance characteristics and scaling considerations
+- Comparison tables should include quantitative metrics where available
+- Cover edge cases in "What to Watch For"`,
+
+            'Technical': `Provide maximum technical depth for an experienced engineer. Rules:
+- Assume strong engineering background — skip analogies for basic concepts
+- Include implementation internals: data structures, algorithms, complexity analysis
+- Code examples should show advanced patterns, configuration, and optimization
+- Mermaid diagrams should include internal architecture, not just high-level boxes
+- Include benchmark data, memory characteristics, and performance implications
+- Cover failure modes, debugging approaches, and operational concerns
+- Reference ADRs, changelogs, and architectural evolution when available
+- Include SQL queries, API calls, and system commands where relevant`
         };
 
         const systemPrompt = `${RUV_PERSONA}
@@ -616,20 +773,20 @@ ${levelInstructions[learningLevel] || levelInstructions['Balanced']}
 ===== KNOWLEDGE BASE CONTEXT =====
 ${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
 
-===== USER'S QUESTION =====
-${message}
-
-===== YOUR RESPONSE =====
-Provide a clear, accurate, and helpful response based ONLY on the knowledge base context above, adapted to the ${learningLevel} learning level. If the context is insufficient, say so honestly rather than guessing.`;
+===== INSTRUCTIONS =====
+MANDATORY: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid diagram → Practical Example → What to Watch For → Explore Further). Include a Mermaid diagram if the topic involves any system, workflow, or multi-step process. Base your answer ONLY on the knowledge base context above. When sources conflict, prefer [GOLD] over [SILVER] over [BRONZE]. Adapt depth and language to the ${learningLevel} learning level. If context is insufficient, say so honestly.`;
 
         // 3. Generate Response using multi-provider LLM (with automatic fallback)
         let answer = "";
         let errorMsg = null;
         let usedProvider = null;
         try {
+            // Truncate history to last 6 messages (3 exchanges) to prevent context overflow
+            const MAX_HISTORY_TURNS = 6;
+            const truncatedHistory = (history || []).slice(-MAX_HISTORY_TURNS);
             const llmMessages = [
                 { role: 'system', content: systemPrompt },
-                ...(history || []),
+                ...truncatedHistory,
                 { role: 'user', content: message }
             ];
             const result = await llmChat(llmMessages);
@@ -655,6 +812,8 @@ Provide a clear, accurate, and helpful response based ONLY on the knowledge base
                 doc_type: s.doc_type || s.metadata?.doc_type || null,
                 file_path: s.file_path || s.metadata?.file_path || null,
                 topics: s.topics || s.metadata?.topics || [],
+                triage_tier: s.triage_tier || s.metadata?.triage_tier || null,
+                quality_score: s.quality_score || s.metadata?.quality_score || null,
             }))
         };
 
@@ -666,6 +825,184 @@ Provide a clear, accurate, and helpful response based ONLY on the knowledge base
     } catch (error) {
         console.error('Error processing chat:', error);
         res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// ============================================================================
+// SSE Streaming Chat Endpoint — sends tokens as they arrive
+// ============================================================================
+app.post('/api/chat/stream', async (req, res) => {
+    const { message, history, mode } = req.body;
+    console.log(`[Stream] Received: ${message} (level: ${mode || 'Balanced'})`);
+
+    if (!message || typeof message !== 'string') {
+        return res.status(400).json({ error: 'Message is required' });
+    }
+    if (message.length > 10000) {
+        return res.status(400).json({ error: 'Message too long' });
+    }
+    if (LLM_PROVIDERS.length === 0) {
+        return res.status(500).json({ error: 'No LLM providers configured' });
+    }
+
+    // Set SSE headers
+    res.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+        'X-Accel-Buffering': 'no'
+    });
+
+    try {
+        // === RAG Pipeline (same as /api/chat) ===
+        let context = "";
+        let sources = [];
+
+        if (reasoningBank && reasoningBank.reflexion) {
+            try {
+                const expandedQueries = queryExpander.expand(message);
+                const adaptiveK = queryExpander.getRecommendedK(message);
+
+                const semanticSearchFn = async (query, k) => {
+                    const results = await reasoningBank.reflexion.retrieveRelevant({ task: query, k });
+                    return results.map(r => ({
+                        id: r.metadata?.docId || r.id,
+                        content: r.input || r.task || '',
+                        score: r.similarity || 0,
+                        similarity: r.similarity || 0,
+                        source: r.metadata?.source,
+                        metadata: r.metadata,
+                        timestamp: r.metadata?.timestamp
+                    }));
+                };
+
+                let allResults = [];
+                if (multiHopRetriever.needsMultiHop(message)) {
+                    const searchFn = hybridSearch
+                        ? async (q, k) => await hybridSearch.hybridSearch(q, semanticSearchFn, k)
+                        : semanticSearchFn;
+                    allResults = await multiHopRetriever.retrieve(message, searchFn, adaptiveK);
+                } else {
+                    const resultsMap = new Map();
+                    const queryPromises = expandedQueries.map(query =>
+                        hybridSearch
+                            ? hybridSearch.hybridSearch(query, semanticSearchFn, adaptiveK)
+                            : semanticSearchFn(query, adaptiveK)
+                    );
+                    const batchResults = await Promise.all(queryPromises);
+                    for (const queryResults of batchResults) {
+                        for (const result of queryResults) {
+                            const id = result.id;
+                            if (resultsMap.has(id)) {
+                                const existing = resultsMap.get(id);
+                                existing.score = Math.max(existing.score, result.score) + 0.05;
+                            } else {
+                                resultsMap.set(id, { ...result });
+                            }
+                        }
+                    }
+                    allResults = Array.from(resultsMap.values());
+                }
+
+                const rerankedResults = reRanker.rerank(message, allResults, { maxResults: 12 });
+
+                // Recency boost
+                const NOW_MS = Date.now();
+                const boostedResults = rerankedResults.map(r => {
+                    const src = (r.source || r.metadata?.source || '').toLowerCase();
+                    const isCoaching = src.includes('coaching');
+                    const isVideo = src.includes('video');
+                    const rawDate = r.metadata?.package_version || r.metadata?.session_date || r.timestamp || null;
+                    let boost = 0;
+                    if (rawDate) {
+                        const parsed = Date.parse(String(rawDate));
+                        if (!isNaN(parsed)) {
+                            const ageDays = (NOW_MS - parsed) / (86400000);
+                            boost = 0.25 * Math.max(0, 1 - ageDays / 60);
+                        }
+                    } else if (isCoaching) { boost = 0.15; }
+                    else if (isVideo) { boost = 0.10; }
+                    if (boost > 0) {
+                        const base = r.rerankedScore || r.score || 0;
+                        r.rerankedScore = Math.min(1.0, base + base * boost);
+                    }
+                    return r;
+                });
+                boostedResults.sort((a, b) => (b.rerankedScore || b.score || 0) - (a.rerankedScore || a.score || 0));
+
+                const filteredResults = boostedResults.filter(r => (r.rerankedScore || r.score || 0) >= 0.15);
+
+                sources = filteredResults.map(r => ({
+                    id: r.id,
+                    content: r.content || r.input || '',
+                    score: r.rerankedScore || r.score || 0,
+                    source: r.source || r.metadata?.source,
+                    package_name: r.package_name || r.metadata?.package_name || null,
+                    doc_type: r.doc_type || r.metadata?.doc_type || null,
+                    file_path: r.file_path || r.metadata?.file_path || null,
+                    topics: r.topics || r.metadata?.topics || [],
+                    triage_tier: r.triage_tier || r.metadata?.triage_tier || null,
+                    quality_score: r.quality_score || r.metadata?.quality_score || null,
+                    metadata: r.metadata,
+                }));
+
+                sources = applyDiversityFilter(sources, 8);
+                context = contextCompressor.compress(sources, message);
+            } catch (err) {
+                console.error('Stream RAG error:', err);
+            }
+        }
+
+        // Send sources first as a JSON event
+        const sourcesPayload = sources.map(s => ({
+            id: s.id,
+            score: s.score,
+            content: (s.content || '').substring(0, 200),
+            title: s.metadata?.title || s.source || s.id,
+            package_name: s.package_name,
+            doc_type: s.doc_type,
+            file_path: s.file_path,
+            topics: s.topics,
+            triage_tier: s.triage_tier,
+            quality_score: s.quality_score,
+        }));
+        res.write(`event: sources\ndata: ${JSON.stringify(sourcesPayload)}\n\n`);
+
+        // Build system prompt (same as /api/chat)
+        const { RUV_PERSONA } = require('./RuvPersona');
+        const learningLevel = mode || 'Balanced';
+        const levelInstructions = {
+            'Simple': `Explain like I'm 5 years old. Use everyday analogies, zero jargon, short sentences, emojis as visual markers.`,
+            'Beginner': `Explain for someone new to programming. Define every term, show complete runnable examples with comments on every line.`,
+            'Balanced': `Clear, well-structured response for intermediate technical audience. Balance depth with accessibility.`,
+            'Technical': `Maximum technical depth for experienced engineers. Include internals, benchmarks, failure modes, and debugging approaches.`
+        };
+
+        const systemPrompt = `${RUV_PERSONA}\n\n===== RESPONSE STYLE =====\nLearning Level: ${learningLevel}\n${levelInstructions[learningLevel] || levelInstructions['Balanced']}\n\n===== KNOWLEDGE BASE CONTEXT =====\n${context || 'No specific context found. Tell the user you lack sufficient knowledge base information for this query.'}\n\n===== INSTRUCTIONS =====\nMandatory: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid → Practical Example → What to Watch For → Explore Further). Base answer ONLY on knowledge base context. Adapt to ${learningLevel} level.`;
+
+        const MAX_HISTORY_TURNS = 6;
+        const truncatedHistory = (history || []).slice(-MAX_HISTORY_TURNS);
+        const llmMessages = [
+            { role: 'system', content: systemPrompt },
+            ...truncatedHistory,
+            { role: 'user', content: message }
+        ];
+
+        // Stream LLM tokens
+        let fullAnswer = '';
+        for await (const token of llmChatStream(llmMessages)) {
+            fullAnswer += token;
+            res.write(`event: token\ndata: ${JSON.stringify(token)}\n\n`);
+        }
+
+        console.log(`✅ Streamed ${fullAnswer.length} chars`);
+        res.write(`event: done\ndata: ${JSON.stringify({ length: fullAnswer.length })}\n\n`);
+        res.end();
+
+    } catch (error) {
+        console.error('Stream error:', error);
+        res.write(`event: error\ndata: ${JSON.stringify({ error: error.message })}\n\n`);
+        res.end();
     }
 });
 

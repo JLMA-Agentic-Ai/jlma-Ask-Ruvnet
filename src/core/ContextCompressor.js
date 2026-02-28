@@ -10,8 +10,8 @@
 
 class ContextCompressor {
     constructor(options = {}) {
-        this.maxContextLength = options.maxContextLength || 12000; // chars
-        this.maxPerSource = options.maxPerSource || 3000; // chars per source
+        this.maxContextLength = options.maxContextLength || 32000; // chars
+        this.maxPerSource = options.maxPerSource || 6000; // chars per source
         this.preserveCode = options.preserveCode !== false; // Keep code blocks
         this.preserveNumbers = options.preserveNumbers !== false; // Keep stats/numbers
     }
@@ -29,12 +29,16 @@ class ContextCompressor {
         const compressed = [];
         let totalLength = 0;
 
-        for (const source of sources) {
+        for (let i = 0; i < sources.length; i++) {
+            const source = sources[i];
             if (totalLength >= this.maxContextLength) break;
 
             const content = source.content || '';
             const remainingSpace = this.maxContextLength - totalLength;
-            const allowedLength = Math.min(this.maxPerSource, remainingSpace);
+            // Graduated allocation: top sources get more space, later ones less
+            const rankFactor = 1 - (i / (sources.length * 2));
+            const baseAllowed = Math.min(this.maxPerSource, remainingSpace);
+            const allowedLength = Math.round(baseAllowed * Math.max(0.4, rankFactor));
 
             // Compress this source
             const compressedContent = this.compressSource(content, queryTerms, allowedLength);
@@ -307,21 +311,21 @@ class ContextCompressor {
             const filePath = s.file_path || s.metadata?.file_path;
             const topics = s.topics || s.metadata?.topics || [];
 
-            let header = `[Source ${i + 1}: ${sourceId} | Relevance: ${score}]`;
+            const tier = s.triage_tier || s.metadata?.triage_tier;
+            const qualScore = s.quality_score || s.metadata?.quality_score;
+            const tierLabel = tier === 'gold' ? ' [GOLD]' : tier === 'silver' ? ' [SILVER]' : '';
+            let header = `[Source ${i + 1}: ${sourceId} | Relevance: ${score}${tierLabel}]`;
 
             const metaLines = [];
             if (pkg) metaLines.push(`Repository: ${pkg}`);
             if (docType) metaLines.push(`Type: ${docType}`);
+            if (tier) metaLines.push(`Quality: ${tier}${qualScore ? ` (${qualScore}/100)` : ''}`);
             const url = this.githubUriToUrl(filePath);
             if (url) metaLines.push(`URL: ${url}`);
             if (topics.length > 0) metaLines.push(`Topics: ${topics.slice(0, 5).join(', ')}`);
 
-            const compression = s.originalLength > s.compressedLength
-                ? ` (compressed ${Math.round((1 - s.compressedLength / s.originalLength) * 100)}%)`
-                : '';
-
             const metaBlock = metaLines.length > 0 ? '\n' + metaLines.join(' | ') : '';
-            return `${header}${compression}${metaBlock}\n${s.content}`;
+            return `${header}${metaBlock}\n${s.content}`;
         }).join('\n\n---\n\n');
     }
 }

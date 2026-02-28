@@ -150,7 +150,7 @@ class PostgresKnowledgeBase {
                   distance, quality, source_authority,
                   relevance_score, relationship_context
            FROM ask_ruvnet.knowledge_search(
-             $1::vector,
+             $1::ruvector,
              $2::text,
              $3::text,
              NULL::text[],
@@ -169,7 +169,7 @@ class PostgresKnowledgeBase {
         if (ids.length > 0) {
           try {
             const enrichResult = await client.query(
-              `SELECT id, package_name, doc_type, file_path, topics
+              `SELECT id, package_name, doc_type, file_path, topics, triage_tier, quality_score, source_authority
                FROM ask_ruvnet.architecture_docs WHERE id = ANY($1::int[])`,
               [ids]
             );
@@ -206,6 +206,8 @@ class PostgresKnowledgeBase {
             doc_type: docType,
             file_path: extra.file_path || null,
             topics: extra.topics || [],
+            triage_tier: extra.triage_tier || null,
+            quality_score: extra.quality_score || null,
             metadata: {
               docId: String(r.id),
               title: r.title,
@@ -214,7 +216,7 @@ class PostgresKnowledgeBase {
               concepts: r.concepts || [],
               expertise_level: r.expertise_level,
               quality: r.quality,
-              source_authority: r.source_authority,
+              source_authority: extra.source_authority || r.source_authority,
               source: `ask_ruvnet:${r.category}`,
               intent,
               adr_boosted: isDecisionIntent && docType === 'adr',
@@ -224,6 +226,8 @@ class PostgresKnowledgeBase {
               doc_type: docType,
               file_path: extra.file_path || null,
               topics: extra.topics || [],
+              triage_tier: extra.triage_tier || null,
+              quality_score: extra.quality_score || null,
             }
           };
         });

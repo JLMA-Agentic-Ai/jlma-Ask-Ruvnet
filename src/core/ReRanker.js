@@ -74,14 +74,17 @@ class ReRanker {
             // 6. Authority boost based on doc_type
             const authorityBoost = this.calculateAuthorityBoost(result);
 
-            // Combined score (authority boost is additive, not weighted)
+            // 7. Quality tier boost — gold entries surface more reliably
+            const tierBoost = this.calculateTierBoost(result);
+
+            // Combined score (authority + tier boosts are additive, not weighted)
+            // Note: diversity weight is dead (always 1.0) — redistributed to semantic/keyword
             const combinedScore =
-                (semanticScore * this.weights.semantic) +
-                (keywordScore * this.weights.keyword) +
+                (semanticScore * (this.weights.semantic + this.weights.diversity * 0.6)) +
+                (keywordScore * (this.weights.keyword + this.weights.diversity * 0.4)) +
                 (alignmentScore * this.weights.alignment) +
                 (recencyScore * this.weights.recency) +
-                (diversityScore * this.weights.diversity) +
-                authorityBoost;
+                authorityBoost + tierBoost;
 
             return {
                 ...result,
@@ -231,6 +234,16 @@ class ReRanker {
     calculateAuthorityBoost(result) {
         const docType = (result.doc_type || result.metadata?.doc_type || '').toLowerCase();
         return this.authorityBoosts[docType] || 0;
+    }
+
+    /**
+     * Calculate quality tier boost — gold entries get a scoring advantage
+     */
+    calculateTierBoost(result) {
+        const tier = (result.triage_tier || result.metadata?.triage_tier || '').toLowerCase();
+        if (tier === 'gold') return 0.12;
+        if (tier === 'silver') return 0.05;
+        return 0;
     }
 
     /**
