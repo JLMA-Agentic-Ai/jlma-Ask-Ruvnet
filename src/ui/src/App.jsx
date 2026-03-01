@@ -29,11 +29,68 @@ const timeAgo = (dateStr) => {
   return `${Math.floor(diffMonths / 12)}y ago`;
 };
 
-// Compact Hero — prompt starters only
-const HeroSection = ({ onAction }) => (
+// Resource documents available at /assets/docs/
+const RESOURCE_DOCS = [
+  { file: 'Agentic_Engineering_Stack.pdf', title: 'Agentic Engineering Stack', icon: '📘', type: 'pdf' },
+  { file: 'Agentic_Intelligence_Frameworks.pdf', title: 'Agentic Intelligence Frameworks', icon: '📗', type: 'pdf' },
+  { file: 'Claude-Flow_v3_Swarm_Platform.pdf', title: 'Claude-Flow v3 Swarm Platform', icon: '📙', type: 'pdf' },
+  { file: 'The_Agentic_Toolkit_Redefining_Creation.pdf', title: 'The Agentic Toolkit', icon: '📕', type: 'pdf' },
+  { file: 'The_Agentic_Stack.mp4', title: 'The Agentic Stack (Video)', icon: '🎬', type: 'video' },
+];
+
+// Follow-up suggestion generator based on response keywords
+const getFollowUpSuggestions = (content) => {
+  const lower = (content || '').toLowerCase();
+  if (lower.includes('claude-flow') || lower.includes('claude flow') || lower.includes('agentic flow')) {
+    return ['What agents does Claude-Flow V3 include?', 'How does the ReasoningBank self-learning work?', 'Show me the swarm architecture'];
+  }
+  if (lower.includes('ruvector') || lower.includes('hnsw') || lower.includes('vector')) {
+    return ['How does HNSW compare to pgvector?', 'What is the RVF cognitive container format?', 'What apps can be built with RuVector?'];
+  }
+  if (lower.includes('reasoning') || lower.includes('learning') || lower.includes('neural')) {
+    return ['How does SONA real-time learning work?', 'What is the Prime Radiant anti-hallucination engine?', 'Show me the intelligence pipeline'];
+  }
+  if (lower.includes('rust') || lower.includes('wasm') || lower.includes('crate')) {
+    return ['What is Micro-HNSW and how small is it?', 'How does the WASM runtime work?', 'What are the core 80+ Rust crates?'];
+  }
+  if (lower.includes('rvf') || lower.includes('cognitive container') || lower.includes('format')) {
+    return ['What are the 24 segments of an RVF?', 'How does RVF enable offline AI?', 'Show me the RVF architecture'];
+  }
+  return ['Tell me more about this', 'What are the practical applications?', 'Show me a diagram of the architecture'];
+};
+
+// Hero with capability tiles, prompt starters, resources, and latest updates
+const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData }) => (
   <div className="hero-compact">
     <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo-sm" />
     <h1 className="hero-heading">What do you want to learn?</h1>
+    <p className="hero-tagline">Explore the agentic AI ecosystem — 170+ repos, 339 gold-curated knowledge entries, and 20 deep-dive video sessions.</p>
+
+    {/* Capability Tiles */}
+    <div className="capability-tiles">
+      <button className="capability-tile" onClick={() => onCapability('videos')}>
+        <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">📹</span></span>
+        <span className="tile-label">Videos</span>
+        <span className="tile-count">20 Sessions</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('decks')}>
+        <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">📊</span></span>
+        <span className="tile-label">CEO & CTO Decks</span>
+        <span className="tile-count">Presentations</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('universe')}>
+        <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">🌌</span></span>
+        <span className="tile-label">Knowledge Universe</span>
+        <span className="tile-count">3D Explorer</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('kb')}>
+        <span className="tile-icon-wrapper tile-kb"><span className="tile-icon">📚</span></span>
+        <span className="tile-label">Knowledge Base</span>
+        <span className="tile-count">339 Gold Entries</span>
+      </button>
+    </div>
+
+    {/* Prompt Starters */}
     <div className="prompt-starters">
       <button onClick={() => onAction('What is Claude-Flow V3 and what are its 60+ specialized agents?')} className="prompt-pill">
         <span className="pill-icon">⚡</span> Claude-Flow V3
@@ -47,7 +104,41 @@ const HeroSection = ({ onAction }) => (
       <button onClick={() => onAction('What are the core Rust crates in the rUv ecosystem and how do they connect?')} className="prompt-pill">
         <span className="pill-icon">🦀</span> Rust Ecosystem
       </button>
+      <button onClick={() => onAction('What impossible applications can be built with RuVector that traditional tools cannot?')} className="prompt-pill">
+        <span className="pill-icon">🚀</span> Impossible Apps
+      </button>
+      <button onClick={() => onAction("What's new in the agentic AI ecosystem and latest RuVector developments?")} className="prompt-pill">
+        <span className="pill-icon">🆕</span> What's New
+      </button>
     </div>
+
+    {/* Resource Documents */}
+    <div className="resource-section">
+      <h3 className="resource-heading">Resources & Documents</h3>
+      <div className="resource-grid">
+        {RESOURCE_DOCS.map((doc, i) => (
+          <button key={i} className={`resource-card resource-${doc.type}`} onClick={() => onAction(doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : `VIEW_PDF:${doc.file}`)}>
+            <span className="resource-icon">{doc.icon}</span>
+            <span className="resource-title">{doc.title}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {/* Latest Updates */}
+    {knowledgeData?.repos && knowledgeData.repos.length > 0 && (
+      <div className="latest-updates">
+        <h3 className="resource-heading">Latest Updates</h3>
+        <div className="updates-scroll">
+          {knowledgeData.repos.slice(0, 5).map((repo, i) => (
+            <div key={i} className="update-card">
+              <span className="update-name">{repo.name}</span>
+              <span className="update-meta">{repo.entryCount?.toLocaleString() || '—'} entries{repo.lastUpdated ? ` · ${timeAgo(repo.lastUpdated)}` : ''}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
   </div>
 );
 
@@ -555,6 +646,31 @@ function App() {
     </div>
   ) : null;
 
+  // Capability tile handler
+  const handleCapability = (type) => {
+    switch (type) {
+      case 'videos':
+        handleSubmit(null, 'VIEW_VIDEOS');
+        break;
+      case 'decks':
+        setCanvasContent({
+          type: 'text',
+          content: `# 📊 Presentation Decks\n\nTwo comprehensive decks covering the RuVector/Agentic Intelligence architecture from business and technical perspectives.\n\n---\n\n## CEO Deck — Agentic Intelligence\nBusiness case, market opportunity, and strategic vision.\n\n[📥 View CEO Deck](/assets/docs/CEO-Deck-Agentic-Intelligence.pptx)\n\n## CTO Deck — RuvNet Architecture\nDeep technical architecture, benchmarks, and implementation roadmap.\n\n[📥 View CTO Deck](/assets/docs/CTO-Deck-RuvNet-Architecture.pptx)\n\n---\n\n### Also Available:\n- [Agentic Engineering Stack (PDF)](/assets/docs/Agentic_Engineering_Stack.pdf)\n- [Agentic Intelligence Frameworks (PDF)](/assets/docs/Agentic_Intelligence_Frameworks.pdf)\n- [Claude-Flow v3 Swarm Platform (PDF)](/assets/docs/Claude-Flow_v3_Swarm_Platform.pdf)\n- [The Agentic Toolkit (PDF)](/assets/docs/The_Agentic_Toolkit_Redefining_Creation.pdf)`,
+          title: 'Presentation Decks',
+          action: 'decks'
+        });
+        break;
+      case 'universe':
+        setCanvasContent({ type: 'iframe', content: '/knowledge-universe.html', title: 'Knowledge Universe', action: 'universe' });
+        break;
+      case 'kb':
+        fetchKnowledge();
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="app-container">
       {UniverseOverlay}
@@ -592,24 +708,39 @@ function App() {
             </select>
           </div>
           <button
-            className={`header-icon-btn ${canvasContent?.action === 'knowledge' ? 'active' : ''}`}
+            className={`header-icon-btn has-label ${canvasContent?.action === 'knowledge' ? 'active' : ''}`}
             onClick={() => canvasContent?.action === 'knowledge' ? setCanvasContent(null) : fetchKnowledge()}
             title="Knowledge Base"
           >
-            📚
+            📚 <span className="icon-label">KB</span>
           </button>
           <button
-            className={`header-icon-btn ${canvasContent?.action === 'universe' ? 'active' : ''}`}
+            className={`header-icon-btn has-label ${canvasContent?.action === 'universe' ? 'active' : ''}`}
             onClick={() => canvasContent?.action === 'universe' ? setCanvasContent(null) : setCanvasContent({ type: 'iframe', content: '/knowledge-universe.html', title: 'Knowledge Universe', action: 'universe' })}
             title="Knowledge Universe"
           >
-            🌌
+            🌌 <span className="icon-label">Universe</span>
           </button>
           <button className="header-icon-btn" onClick={toggleTheme} title={isDarkMode ? 'Light Mode' : 'Dark Mode'}>
             {isDarkMode ? '☀️' : '🌙'}
           </button>
         </div>
       </header>
+
+      {/* ===== ECOSYSTEM STATS BAR ===== */}
+      {ecosystemStats && (
+        <div className="stats-bar">
+          <span><span className="stats-highlight">{ecosystemStats.totalRepos || '170'}+</span> Repos</span>
+          <span className="stats-dot">·</span>
+          <span><span className="stats-highlight">{(ecosystemStats.totalEntries || 132931).toLocaleString()}+</span> KB Entries</span>
+          <span className="stats-dot">·</span>
+          <span><span className="stats-highlight">339</span> Gold Curated</span>
+          <span className="stats-dot">·</span>
+          <span><span className="stats-highlight">20</span> Video Sessions</span>
+          <span className="stats-dot">·</span>
+          <span>Updated Daily</span>
+        </div>
+      )}
 
       {/* ===== MAIN LAYOUT ===== */}
       <main className={`main-layout ${effectiveViewMode}`} role="main">
@@ -618,7 +749,12 @@ function App() {
             {/* Chat messages */}
             <div className="chat-container">
               {messages.length === 0 ? (
-                <HeroSection onAction={(prompt) => handleSubmit(null, prompt)} />
+                <HeroSection
+                  onAction={(prompt) => handleSubmit(null, prompt)}
+                  onCapability={handleCapability}
+                  ecosystemStats={ecosystemStats}
+                  knowledgeData={knowledgeData}
+                />
               ) : (
                 <>
                   {messages.map((msg, idx) => (
@@ -639,10 +775,21 @@ function App() {
                           <SourceCards sources={msg.sources} />
                         )}
                         {msg.role === 'assistant' && !msg.canvasGenerated && (
-                          <div className="message-actions">
-                            <button className="action-btn" onClick={() => copyToClipboard(msg.content)}>📋 Copy</button>
-                            <button className="action-btn" onClick={() => setCanvasContent({ type: 'text', content: msg.content })}>➡️ Open in Canvas</button>
-                          </div>
+                          <>
+                            <div className="message-actions">
+                              <button className="action-btn" onClick={() => copyToClipboard(msg.content)}>📋 Copy</button>
+                              <button className="action-btn" onClick={() => setCanvasContent({ type: 'text', content: msg.content })}>➡️ Open in Canvas</button>
+                            </div>
+                            {idx === messages.length - 1 && !msg.streaming && (
+                              <div className="follow-up-suggestions">
+                                {getFollowUpSuggestions(msg.content).map((suggestion, si) => (
+                                  <button key={si} className="follow-up-pill" onClick={() => { setInput(suggestion); handleSubmit(null, suggestion); }}>
+                                    {suggestion}
+                                  </button>
+                                ))}
+                              </div>
+                            )}
+                          </>
                         )}
                       </div>
                     </div>

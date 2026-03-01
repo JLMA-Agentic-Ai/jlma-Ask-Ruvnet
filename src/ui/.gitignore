@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.claude/commands/global/
+
+# Claude Flow intelligence
+.claude-flow/
+.swarm/
