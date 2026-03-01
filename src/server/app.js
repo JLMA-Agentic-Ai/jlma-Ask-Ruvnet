@@ -1119,7 +1119,7 @@ app.get('/api/ecosystem-stats', async (req, res) => {
                     COUNT(DISTINCT package_name) as total_repos,
                     COUNT(*) as total_entries,
                     COUNT(DISTINCT doc_type) as doc_types,
-                    COUNT(*) FILTER (WHERE quality_score >= 80) as gold_count,
+                    COUNT(*) FILTER (WHERE triage_tier = 'gold') as gold_count,
                     MAX(created_at) as last_updated
                 FROM ask_ruvnet.architecture_docs
                 WHERE is_duplicate = false AND triage_tier != 'garbage'
@@ -1424,8 +1424,8 @@ app.use('/assets/docs', express.static(path.join(__dirname, '../ui/dist/assets/d
 
 // Knowledge Base Inventory Endpoint
 app.get('/api/knowledge', async (req, res) => {
-    // Use process.cwd() since we run from project root
-    const rootDir = process.cwd();
+    // Resolve project root from this file's location (2 dirs up from src/server/)
+    const rootDir = path.resolve(__dirname, '../..');
     const githubDir = path.join(rootDir, 'data_ingestion_github');
     const dataDir = path.join(rootDir, 'data');
     const docsDir = path.join(rootDir, 'data_ingestion_ruv_coaching/Other Documents');
@@ -1497,18 +1497,23 @@ app.get('/api/knowledge', async (req, res) => {
         console.error("Error reading Docs dir:", e);
     }
 
-    // Calculate Video Stats
+    // Calculate Video Stats — count only session directories, not stray docs
     let videoCount = 0;
+    let sessionDirs = 0;
     try {
         const videoDir1 = path.join(rootDir, 'data_ingestion_ruv_coaching/Agentic Coding Training/Agentics Videos');
         const videoDir2 = path.join(rootDir, 'data_ingestion_ruv_coaching/Ruv Coaching');
 
-        if (fs.existsSync(videoDir1)) videoCount += fs.readdirSync(videoDir1).filter(f => !f.startsWith('.')).length;
-        if (fs.existsSync(videoDir2)) videoCount += fs.readdirSync(videoDir2).filter(f => !f.startsWith('.')).length;
+        const countSessions = (dir) => {
+            if (!fs.existsSync(dir)) return 0;
+            return fs.readdirSync(dir).filter(f => !f.startsWith('.') && fs.statSync(path.join(dir, f)).isDirectory()).length;
+        };
+        sessionDirs = countSessions(videoDir1) + countSessions(videoDir2);
+        videoCount = sessionDirs;
     } catch (e) {
         console.error("Error counting videos:", e);
     }
-    knowledge.videoStats = { total: videoCount, weeks: 4 };
+    knowledge.videoStats = { total: videoCount, sessions: sessionDirs };
 
     // Sort repos by last_update (newest first), with Claude-Flow V3 Alpha prioritized at top
     knowledge.repos.sort((a, b) => {

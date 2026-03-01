@@ -66,10 +66,9 @@ const getFollowUpSuggestions = (content) => {
 };
 
 // Hero with capability tiles, prompt starters, resources, and latest updates
-const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData }) => {
+const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, latestRepos }) => {
   const repoCount = ecosystemStats?.totalRepos || 170;
   const entryCount = ecosystemStats?.totalEntries || 54543;
-  const goldCount = ecosystemStats?.goldCount || 339;
   const videoCount = knowledgeData?.videoStats?.total || 28;
   return (
   <div className="hero-compact">
@@ -139,13 +138,13 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData }) 
       </div>
     </div>
 
-    {/* Latest Updates */}
-    {knowledgeData?.repos && knowledgeData.repos.length > 0 && (
+    {/* Latest Updates — shows 10 most active repos from /api/latest-repos */}
+    {latestRepos && latestRepos.length > 0 && (
       <div className="latest-updates">
-        <h3 className="resource-heading">Latest Updates</h3>
+        <h3 className="resource-heading">Latest Updates ({latestRepos.length} Active Repos)</h3>
         <div className="updates-scroll">
-          {knowledgeData.repos.slice(0, 5).map((repo, i) => (
-            <div key={i} className="update-card">
+          {latestRepos.slice(0, 10).map((repo, i) => (
+            <div key={i} className="update-card" onClick={() => onAction(`Tell me about ${repo.name} — what does it do, its architecture, and key features`)}>
               <span className="update-name">{repo.name}</span>
               <span className="update-meta">{repo.entryCount?.toLocaleString() || '—'} entries{repo.lastUpdated ? ` · ${timeAgo(repo.lastUpdated)}` : ''}</span>
             </div>
@@ -347,6 +346,7 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [knowledgeData, setKnowledgeData] = useState(null);
   const [ecosystemStats, setEcosystemStats] = useState(null);
+  const [latestRepos, setLatestRepos] = useState(null);
 
   const [presentationMode, setPresentationMode] = useState(false);
   const [showResourceDrawer, setShowResourceDrawer] = useState(false);
@@ -360,6 +360,7 @@ function App() {
   useEffect(() => {
     fetch('/api/knowledge').then(r => r.json()).then(data => setKnowledgeData(data)).catch(() => {});
     fetch('/api/ecosystem-stats').then(r => r.json()).then(data => setEcosystemStats(data)).catch(() => {});
+    fetch('/api/latest-repos').then(r => r.json()).then(data => setLatestRepos(data)).catch(() => {});
   }, []);
 
   const messagesEndRef = useRef(null);
@@ -503,19 +504,17 @@ function App() {
         const lines = buffer.split('\n');
         buffer = lines.pop() || '';
 
+        let currentEventType = null;
         for (const line of lines) {
           const trimmed = line.trim();
           if (trimmed.startsWith('event: ')) {
-            const eventType = trimmed.slice(7);
-            // Next data line
+            currentEventType = trimmed.slice(7).trim();
             continue;
           }
           if (!trimmed.startsWith('data: ')) continue;
           const rawData = trimmed.slice(6);
-
-          // Determine event type from most recent event line
-          // SSE format: event: xxx\ndata: yyy\n\n
-          const eventMatch = buffer.match(/event: (\w+)/);
+          const eventType = currentEventType;
+          currentEventType = null; // Reset for next event
 
           try {
             const parsed = JSON.parse(rawData);
@@ -534,9 +533,8 @@ function App() {
               continue;
             }
 
-            // Check if it's a done event
-            if (parsed && typeof parsed === 'object' && parsed.length !== undefined && !Array.isArray(parsed)) {
-              // Done event
+            // Check if it's a done event (explicitly via event type, or by shape)
+            if (eventType === 'done' || (parsed && typeof parsed === 'object' && parsed.length !== undefined && !Array.isArray(parsed))) {
               setMessages(prev => {
                 const updated = [...prev];
                 const last = updated[updated.length - 1];
@@ -571,6 +569,16 @@ function App() {
           }
         }
       }
+
+      // Ensure streaming is marked complete (safety net)
+      setMessages(prev => {
+        const updated = [...prev];
+        const last = updated[updated.length - 1];
+        if (last && last.role === 'assistant' && last.streaming) {
+          updated[updated.length - 1] = { ...last, streaming: false };
+        }
+        return updated;
+      });
 
       // Final scroll
       setTimeout(() => {
@@ -618,14 +626,14 @@ function App() {
         `| Last Updated | ${timestamp} |\n` +
         `| Total Repos | **${totalRepos}** across 3 orgs |\n` +
         `| KB Entries | **${totalEntries.toLocaleString()}** |\n` +
-        `| Gold Curated | **${stats.goldCount || 339}** |\n` +
+        `| Gold Curated | **${(stats.goldCount || 339).toLocaleString()}** |\n` +
         `| Videos | **${videoCount}** sessions |\n` +
         `| Doc Types | **${stats.docTypes || 18}** |\n` +
         `| Backend | PostgreSQL RuVector + HNSW |\n\n` +
         `---\n\n## Claude-Flow V3 (v${claudeFlowVersion})\n\n` +
         `| Capability | Detail |\n|------------|--------|\n` +
-        `| Agent Types | 60+ specialized (coder, architect, security, swarm, etc.) |\n` +
-        `| Swarm Topologies | 5 (hierarchical, mesh, ring, star, hierarchical-mesh) |\n` +
+        `| Agent Types | 60+ specialized (coder, architect, security, swarm, GitHub, SPARC, etc.) |\n` +
+        `| Swarm Topologies | 7 (hierarchical, mesh, ring, star, hierarchical-mesh, hybrid, adaptive) |\n` +
         `| Lifecycle Hooks | 27 hooks + 12 background workers |\n` +
         `| CLI Commands | 26 commands, 140+ subcommands |\n` +
         `| Consensus | BFT, Raft, CRDT, Gossip, Quorum |\n` +
@@ -803,7 +811,7 @@ function App() {
           <span className="stats-dot">·</span>
           <span><span className="stats-highlight">{(ecosystemStats.totalEntries || 54543).toLocaleString()}+</span> KB Entries</span>
           <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">{(ecosystemStats.goldCount || 339).toLocaleString()}</span> Gold Scored</span>
+          <span><span className="stats-highlight">{(ecosystemStats.goldCount || 339).toLocaleString()}</span> Gold Curated</span>
           <span className="stats-dot">·</span>
           <span><span className="stats-highlight">{knowledgeData?.videoStats?.total || '28'}</span> Video Sessions</span>
           <span className="stats-dot">·</span>
@@ -823,6 +831,7 @@ function App() {
                   onCapability={handleCapability}
                   ecosystemStats={ecosystemStats}
                   knowledgeData={knowledgeData}
+                  latestRepos={latestRepos}
                 />
               ) : (
                 <>

@@ -2385,6 +2385,7 @@ body > div > svg[id^="mermaid-"],
   flex-shrink: 0;
   transition: all 0.2s;
   position: relative;
+  cursor: pointer;
 }
 
 .update-card::before {
