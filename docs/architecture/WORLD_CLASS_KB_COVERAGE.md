@@ -243,7 +243,6 @@ This document defines the complete coverage requirements for a world-class RuvNe
 
 #### Cloud
 - [ ] Railway deployment
-- [ ] Vercel deployment
 - [ ] GCP deployment
 - [ ] Kubernetes patterns
 

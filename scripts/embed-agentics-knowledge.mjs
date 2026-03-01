@@ -102,7 +102,7 @@ Source: github.com/ruvnet/ruvector/crates/sona`,
     {
       category: 'agentics-architecture',
       title: 'RvLite: Lightweight WASM Vector Database',
-      content: `RvLite is a lightweight, standalone vector database that runs entirely in WebAssembly. It works in browsers, Node.js, Deno, Bun, Cloudflare Workers, and Vercel Edge Functions.
+      content: `RvLite is a lightweight, standalone vector database that runs entirely in WebAssembly. It works in browsers, Node.js, Deno, Bun, and Cloudflare Workers.
 
 Architecture:
 RvLite is a thin orchestration layer that reuses battle-tested WASM crates:

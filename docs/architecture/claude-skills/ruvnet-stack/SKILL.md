@@ -401,7 +401,7 @@ echo "╚═══════════════════════�
 echo ""
 
 npx claude-flow@alpha memory store "ruvnet/ecosystem" "RuvNet ecosystem initialized with: ruvector (vector DB), @ruvector/ruvllm (self-learning LLM), agentic-flow (150+ agents), claude-flow (enterprise orchestration). Documentation at docs/RUVNET_ECOSYSTEM_COMPLETE.md" 2>/dev/null || true
-npx claude-flow@alpha memory store "ruvnet/deployment" "Deployment options: Railway (recommended, full native module support), Docker (enterprise/self-hosted), Vercel (limited, read-only). Data stored in .swarm/ and .ruvector/ directories." 2>/dev/null || true
+npx claude-flow@alpha memory store "ruvnet/deployment" "Deployment options: Railway (recommended, full native module support), Docker (enterprise/self-hosted). Data stored in .swarm/ and .ruvector/ directories." 2>/dev/null || true
 npx claude-flow@alpha memory store "ruvnet/local-llm" "For private/air-gapped deployment: Use Ollama + Qwen (qwen2.5:7b for workstations, qwen2.5:14b for servers). Also supports ONNX local inference with Phi-4." 2>/dev/null || true
 
 echo "✅ Stored RuvNet knowledge in .swarm/memory.db"

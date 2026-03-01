@@ -1615,7 +1615,7 @@ console.log('Session Stats:', binding.getStats());
                                          ▼
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                            CDN / EDGE LAYER                                      │
-│                         (Cloudflare / Vercel Edge)                               │
+│                         (Cloudflare Edge / CDN)                                  │
 │                    Static assets, DDoS protection, edge caching                  │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                          │

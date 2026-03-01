@@ -172,7 +172,7 @@ function detectTopics(content) {
         { pattern: /claude[- ]flow|hive[- ]mind|swarm/i, topic: 'Claude Flow' },
         { pattern: /npm|install|package/i, topic: 'Installation' },
         { pattern: /api|endpoint|query|search/i, topic: 'API Reference' },
-        { pattern: /deploy|railway|docker|vercel/i, topic: 'Deployment' },
+        { pattern: /deploy|railway|docker/i, topic: 'Deployment' },
         { pattern: /ollama|qwen|local\s*llm|air[- ]gapped/i, topic: 'Local LLM' },
         { pattern: /performance|benchmark|latency|throughput/i, topic: 'Performance' },
         { pattern: /persist|storage|memory|database/i, topic: 'Persistence' },

@@ -295,7 +295,6 @@ categories:
         name: "Cloud Deployment"
         topics:
           - railway-deployment
-          - vercel-deployment
           - gcp-deployment
           - kubernetes
       edge:

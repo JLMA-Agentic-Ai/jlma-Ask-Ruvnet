@@ -1108,7 +1108,7 @@ async function generateLong(prompt) {
 
 ### Scenario D: Edge/Serverless Function
 - **Recommendation**: Transformers.js WASM or wllama
-- **Why**: No native binary in Cloudflare Workers/Vercel Edge
+- **Why**: No native binary in Cloudflare Workers/edge runtimes
 - **Privacy**: Inference at edge, data never reaches origin
 
 ### Scenario E: Mobile Web (iOS/Android Browser)
