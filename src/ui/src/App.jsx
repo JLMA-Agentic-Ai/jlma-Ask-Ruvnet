@@ -31,11 +31,11 @@ const timeAgo = (dateStr) => {
 
 // Resource documents available at /assets/docs/
 const RESOURCE_DOCS = [
-  { file: 'Agentic_Engineering_Stack.pdf', title: 'Agentic Engineering Stack', icon: '📘', type: 'pdf' },
-  { file: 'Agentic_Intelligence_Frameworks.pdf', title: 'Agentic Intelligence Frameworks', icon: '📗', type: 'pdf' },
-  { file: 'Claude-Flow_v3_Swarm_Platform.pdf', title: 'Claude-Flow v3 Swarm Platform', icon: '📙', type: 'pdf' },
-  { file: 'The_Agentic_Toolkit_Redefining_Creation.pdf', title: 'The Agentic Toolkit', icon: '📕', type: 'pdf' },
-  { file: 'The_Agentic_Stack.mp4', title: 'The Agentic Stack (Video)', icon: '🎬', type: 'video' },
+  { file: 'Agentic_Engineering_Stack.pdf', title: 'Agentic Engineering Stack', desc: '80 Rust crates powering the ecosystem', icon: '📘', type: 'pdf' },
+  { file: 'Agentic_Intelligence_Frameworks.pdf', title: 'Agentic Intelligence Frameworks', desc: 'Architecture patterns for autonomous AI', icon: '📗', type: 'pdf' },
+  { file: 'Claude-Flow_v3_Swarm_Platform.pdf', title: 'Claude-Flow v3 Swarm Platform', desc: '60+ agents, hive-mind consensus', icon: '📙', type: 'pdf' },
+  { file: 'The_Agentic_Toolkit_Redefining_Creation.pdf', title: 'The Agentic Toolkit', desc: 'How agentic AI redefines creation', icon: '📕', type: 'pdf' },
+  { file: 'The_Agentic_Stack.mp4', title: 'The Agentic Stack', desc: 'Video overview of the full platform', icon: '🎬', type: 'video' },
 ];
 
 // Follow-up suggestion generator based on response keywords
@@ -119,7 +119,10 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData }) 
         {RESOURCE_DOCS.map((doc, i) => (
           <button key={i} className={`resource-card resource-${doc.type}`} onClick={() => onAction(doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : `VIEW_PDF:${doc.file}`)}>
             <span className="resource-icon">{doc.icon}</span>
-            <span className="resource-title">{doc.title}</span>
+            <span className="resource-text">
+              <span className="resource-title">{doc.title}</span>
+              {doc.desc && <span className="resource-desc">{doc.desc}</span>}
+            </span>
           </button>
         ))}
       </div>
