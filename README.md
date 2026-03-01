@@ -1,6 +1,6 @@
 # Ask-RuvNet
 
-> Updated: 2026-02-27 | Version 2.2.0
+> Updated: 2026-03-01 | Version 3.1.0
 
 **The front door to one of the most ambitious open-source AI architecture projects ever built.**
 
@@ -10,51 +10,58 @@ Ask-RuvNet is a RAG-powered knowledge assistant that makes 150+ interconnected r
 
 ---
 
-## What's New in v2.2.0
+## What's New in v3.1.0
 
-### Rich Responses with Source Citations
+### Resource Drawer
 
-Chat responses are no longer plain text walls. The LLM is now instructed to cite its sources naturally throughout answers, embedding GitHub links inline where relevant. Responses are doc-type aware -- the system knows whether a source is an ADR, a changelog, a release note, commit history, or a repository README -- and adjusts citation style accordingly. Each answer ends with a **Related Resources** section for direct follow-up links and an **Explore Further** section that points to deeper material the user might want to read next.
+In v3.0, once a user sent their first message, the landing screen (capability tiles, resource documents, prompt starters) disappeared with no way to access them again short of starting a new conversation. v3.1 adds a **Resource Drawer** — a collapsible panel accessible via a folder icon (📂) in the chat input area. The drawer contains all four capability tiles (Videos, Decks, Knowledge Universe, KB) and all five resource documents (four PDFs + one video), available at any point during a conversation. Tapping any item opens it and auto-closes the drawer.
 
-### Source Cards
+### Light Mode Contrast Fixes
 
-Every chat response now displays clickable **source cards** beneath the answer. Each card shows:
+Light mode in v3.0 had washed-out borders on source cards, action buttons, follow-up pills, and the input field. v3.1 adds targeted CSS overrides for `.light-mode` elements with proper border colors (`#d6d3d1`), subtle shadows, and improved text contrast so the interface remains readable and visually distinct in both themes.
 
-- A **doc_type badge** indicating the kind of source (ADR, changelog, release-note, commit-history, github-repository)
-- A **relevance score** so you can see how closely the source matched your question
-- A **direct GitHub link** to the original file or repository
+### Mobile Polish
 
-Source cards make it easy to verify answers and dive deeper without having to search GitHub yourself.
+The resource drawer adapts to mobile viewports (375px–768px) with a compact 4-icon capability row and stacked resource cards. Canvas views on mobile now use a fullscreen overlay (`position: fixed; z-index: 100`) instead of the desktop split-panel layout, preventing the chat from being squeezed to unusable widths on small screens.
 
-### Evolutionary Knowledge Ingestion
+---
 
-The knowledge base now includes **13,192 chunks of evolutionary knowledge** drawn from **173 repositories** across **3 GitHub organizations** (ruvnet, openclaw, VibiumDev). This covers:
+## What's New in v3.0.0
 
-- Architecture Decision Records (ADRs)
-- Changelogs and release notes
-- Commit history for significant changes
+### Complete Visual Overhaul
 
-Run the evolutionary ingestion pipeline locally with:
+v3.0 is a ground-up redesign of the Ask-RuvNet frontend. The interface moves from a conventional chat layout to an immersive, modern experience built around glassmorphism, animated gradients, and color-coded visual hierarchy.
 
-```bash
-npm run kb:evolution
-```
+### v3.0 Visual Design
 
-### Full Pipeline Command
+**Capability Tiles** -- The landing screen presents four capability tiles (Videos, CEO/CTO Decks, Knowledge Universe, KB) as glassmorphism cards with frosted-glass backgrounds, layered shadows, and color-coded accents. Each tile uses a distinct accent color (red, blue, purple, amber) to establish visual identity at a glance.
 
-A single command now runs the complete knowledge ingestion pipeline -- GitHub repository content, evolutionary knowledge, and architecture sync -- in one shot:
+**Aurora Background** -- The entire interface sits on an animated aurora background with layered radial gradients that shift continuously. This replaces the static dark background from v2.x and gives the application a sense of depth and motion.
 
-```bash
-npm run kb:full
-```
+**Stats Bar** -- A persistent stats bar displays live ecosystem data (repository count, KB entries, architecture decisions, quality score) directly on the landing screen. Users see the scale of the knowledge base before asking their first question.
 
-### Gemini Visual Integration
+**Prompt Starters** -- Six prompt starters (up from four in v2.x) are displayed as pill-shaped buttons below the input field. Each starter is written to demonstrate a different query style: architecture, practical usage, decision-making, evolution, deep technical, and ecosystem overview.
 
-A new **Visualize** button appears alongside chat responses. Clicking it generates an architectural diagram using **Gemini 2.0 Flash** with full KB context, so the diagram is grounded in actual ecosystem knowledge rather than generic illustrations.
+**Resource Documents Grid** -- A grid of resource cards (four PDFs and one video) appears below the capability tiles. Each card links to a specific document or media asset with a descriptive label and file-type indicator.
 
-### Markdown Link Styling
+**Follow-Up Suggestion Pills** -- After the assistant responds, a row of contextual follow-up suggestions appears as clickable pills beneath the answer. These are generated based on the response content and guide the user toward deeper exploration.
 
-Links in chat responses are now properly styled and clickable. Previously, raw URLs and markdown links rendered as plain text. They now display as styled hyperlinks with appropriate hover states.
+**Gradient Text and Layered Shadows** -- Section headers and key labels use CSS gradient text (linear gradients across the text fill). Cards and interactive elements use multi-layer box shadows for a lifted, dimensional appearance.
+
+**Staggered Entrance Animations** -- Capability tiles, prompt starters, and resource cards animate in with staggered delays on page load. Each element fades up and slides into position sequentially, creating a polished reveal sequence.
+
+**Color-Coded Accent System** -- A four-color accent system (red, blue, purple, amber) is applied consistently across capability tiles, source badges, and interactive elements. Each color maps to a content category, making the interface scannable without reading labels.
+
+### Retained from v2.x
+
+The following features from v2.x remain fully intact in v3.0:
+
+- **Rich responses with source citations** -- inline GitHub links, doc-type awareness, Related Resources and Explore Further sections
+- **Source cards** -- clickable cards with doc-type badges, relevance scores, and direct GitHub links
+- **Evolutionary knowledge ingestion** -- 13,192 chunks across 173 repositories and 3 GitHub organizations
+- **Full pipeline command** -- `npm run kb:full` runs the complete ingestion pipeline
+- **Gemini visual integration** -- Visualize button generates architectural diagrams via Gemini 2.0 Flash
+- **Markdown link styling** -- properly styled, clickable hyperlinks in chat responses
 
 ---
 
@@ -604,7 +611,7 @@ curl https://ask-ruvnet-production.up.railway.app/health
 ```
 
 ```json
-{ "status": "ok", "version": "2.2.0" }
+{ "status": "ok", "version": "3.1.0" }
 ```
 
 ### POST /api/chat
@@ -871,6 +878,8 @@ The `/api/visualize` endpoint requires a Gemini API key. Check that `GEMINI_API_
 
 | Date | Version | Change |
 |------|---------|--------|
+| 2026-03-01 | 3.1.0 | Resource drawer for mid-chat access to capabilities and documents, light mode contrast fixes, mobile fullscreen canvas overlay, responsive drawer layout |
+| 2026-03-01 | 3.0.0 | Complete visual overhaul: glassmorphism capability tiles, aurora animated background, stats bar with live ecosystem data, 6 prompt starters, resource documents grid, follow-up suggestion pills, color-coded accent system (red/blue/purple/amber), staggered entrance animations, gradient text and layered shadows |
 | 2026-02-27 | 2.2.0 | Rich responses with source citations, source cards with doc-type badges, 13K evolutionary knowledge chunks, full pipeline command, Gemini visual integration, markdown link styling |
 | 2026-02-24 | 2.1.5 | Fixed DATABASE_URL, decommissioned Render, Railway-only |
 | 2026-02-23 | 2.1.4 | Recreated start-railway.sh, fixed Railway 502 |
