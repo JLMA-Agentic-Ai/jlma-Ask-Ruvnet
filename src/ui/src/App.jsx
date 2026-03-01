@@ -224,15 +224,33 @@ function MermaidBlock({ code }) {
     let cancelled = false;
     // Generate a unique ID per render call -- Mermaid consumes the ID
     const uniqueId = `mermaid-${Date.now()}-${++mermaidCounter}`;
+
+    // Clean up orphaned mermaid SVGs that escape from the rendering container
+    const cleanupOrphans = () => {
+      const orphan = document.getElementById(uniqueId);
+      if (orphan) orphan.remove();
+      // Also remove any mermaid-created container for this ID
+      const container = document.querySelector(`[data-id="${uniqueId}"]`);
+      if (container) container.remove();
+    };
+
     mermaid.render(uniqueId, code).then(({ svg: renderedSvg }) => {
       if (!cancelled) {
-        setSvg(renderedSvg);
-        setError(null);
+        // Mermaid 11.x can resolve with an error SVG instead of rejecting
+        if (renderedSvg && renderedSvg.includes('Syntax error')) {
+          setError('Mermaid syntax error in diagram');
+          cleanupOrphans();
+        } else {
+          setSvg(renderedSvg);
+          setError(null);
+        }
       }
+      cleanupOrphans();
     }).catch(err => {
       if (!cancelled) setError(err.message || 'Diagram render failed');
+      cleanupOrphans();
     });
-    return () => { cancelled = true; };
+    return () => { cancelled = true; cleanupOrphans(); };
   }, [code]);
 
   React.useEffect(() => {
@@ -244,7 +262,7 @@ function MermaidBlock({ code }) {
   if (error) {
     return (
       <div className="mermaid-error">
-        <div className="mermaid-error-label">Diagram could not render</div>
+        <div className="mermaid-error-label">Diagram could not render — showing source</div>
         <pre><code>{code}</code></pre>
       </div>
     );
@@ -654,8 +672,8 @@ function App() {
         break;
       case 'decks':
         setCanvasContent({
-          type: 'text',
-          content: `# 📊 Presentation Decks\n\nTwo comprehensive decks covering the RuVector/Agentic Intelligence architecture from business and technical perspectives.\n\n---\n\n## CEO Deck — Agentic Intelligence\nBusiness case, market opportunity, and strategic vision.\n\n[📥 View CEO Deck](/assets/docs/CEO-Deck-Agentic-Intelligence.pptx)\n\n## CTO Deck — RuvNet Architecture\nDeep technical architecture, benchmarks, and implementation roadmap.\n\n[📥 View CTO Deck](/assets/docs/CTO-Deck-RuvNet-Architecture.pptx)\n\n---\n\n### Also Available:\n- [Agentic Engineering Stack (PDF)](/assets/docs/Agentic_Engineering_Stack.pdf)\n- [Agentic Intelligence Frameworks (PDF)](/assets/docs/Agentic_Intelligence_Frameworks.pdf)\n- [Claude-Flow v3 Swarm Platform (PDF)](/assets/docs/Claude-Flow_v3_Swarm_Platform.pdf)\n- [The Agentic Toolkit (PDF)](/assets/docs/The_Agentic_Toolkit_Redefining_Creation.pdf)`,
+          type: 'deck-picker',
+          content: null,
           title: 'Presentation Decks',
           action: 'decks'
         });
@@ -851,7 +869,27 @@ function App() {
                       {effectiveViewMode === 'presentation' ? '🔙 Exit Presentation' : '✕ Close'}
                     </button>
                   </div>
-                  {canvasContent.type === 'diagram' ? (
+                  {canvasContent.type === 'deck-picker' ? (
+                    <div className="deck-picker">
+                      <h1>Presentation Decks</h1>
+                      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+                        Two comprehensive decks covering the RuVector/Agentic Intelligence architecture from business and technical perspectives.
+                      </p>
+                      <div className="deck-cards">
+                        {RESOURCE_DOCS.filter(d => d.type === 'pdf').map((doc) => (
+                          <button key={doc.file} className="deck-card" onClick={() => setCanvasContent({
+                            type: 'pdf',
+                            content: `/assets/docs/${doc.file}`,
+                            title: doc.title,
+                            action: 'document'
+                          })}>
+                            <span className="deck-card-icon">{doc.icon}</span>
+                            <span className="deck-card-title">{doc.title}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ) : canvasContent.type === 'diagram' ? (
                     <div ref={canvasRef} className="diagram-container"></div>
                   ) : canvasContent.type === 'pdf' ? (
                     effectiveViewMode === 'presentation' ? (

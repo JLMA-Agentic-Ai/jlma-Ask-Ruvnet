@@ -387,7 +387,7 @@ app.use(helmet({
 app.use(cors({
     origin: process.env.CORS_ORIGIN || (process.env.NODE_ENV === 'production' ? false : '*')
 }));
-app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100, standardHeaders: true }));
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: process.env.NODE_ENV === 'production' ? 100 : 500, standardHeaders: true }));
 app.use(express.json({ limit: '1mb' }));
 const fs = require('fs');
 app.use(express.static(path.join(__dirname, '../ui/dist'))); // Serve frontend
