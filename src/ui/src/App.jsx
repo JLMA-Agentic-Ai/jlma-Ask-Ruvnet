@@ -29,11 +29,17 @@ const timeAgo = (dateStr) => {
   return `${Math.floor(diffMonths / 12)}y ago`;
 };
 
+// CEO & CTO presentation decks
+const DECK_DOCS = [
+  { file: 'CEO-Deck-Agentic-Intelligence.pdf', title: 'CEO Deck: Agentic Intelligence', desc: 'Business vision, market opportunity, and strategic roadmap', icon: '👔', type: 'pdf' },
+  { file: 'CTO-Deck-RuvNet-Architecture.pdf', title: 'CTO Deck: RuvNet Architecture', desc: 'Technical architecture, performance benchmarks, and stack deep-dive', icon: '🔧', type: 'pdf' },
+];
+
 // Resource documents available at /assets/docs/
 const RESOURCE_DOCS = [
-  { file: 'Agentic_Engineering_Stack.pdf', title: 'Agentic Engineering Stack', desc: '80 Rust crates powering the ecosystem', icon: '📘', type: 'pdf' },
+  { file: 'Agentic_Engineering_Stack.pdf', title: 'Agentic Engineering Stack', desc: '80+ Rust crates powering the ecosystem', icon: '📘', type: 'pdf' },
   { file: 'Agentic_Intelligence_Frameworks.pdf', title: 'Agentic Intelligence Frameworks', desc: 'Architecture patterns for autonomous AI', icon: '📗', type: 'pdf' },
-  { file: 'Claude-Flow_v3_Swarm_Platform.pdf', title: 'Claude-Flow v3 Swarm Platform', desc: '60+ agents, hive-mind consensus', icon: '📙', type: 'pdf' },
+  { file: 'Claude-Flow_v3_Swarm_Platform.pdf', title: 'Claude-Flow v3 Swarm Platform', desc: 'Agents, swarms, hive-mind consensus', icon: '📙', type: 'pdf' },
   { file: 'The_Agentic_Toolkit_Redefining_Creation.pdf', title: 'The Agentic Toolkit', desc: 'How agentic AI redefines creation', icon: '📕', type: 'pdf' },
   { file: 'The_Agentic_Stack.mp4', title: 'The Agentic Stack', desc: 'Video overview of the full platform', icon: '🎬', type: 'video' },
 ];
@@ -51,7 +57,7 @@ const getFollowUpSuggestions = (content) => {
     return ['How does SONA real-time learning work?', 'What is the Prime Radiant anti-hallucination engine?', 'Show me the intelligence pipeline'];
   }
   if (lower.includes('rust') || lower.includes('wasm') || lower.includes('crate')) {
-    return ['What is Micro-HNSW and how small is it?', 'How does the WASM runtime work?', 'What are the core 80+ Rust crates?'];
+    return ['What is Micro-HNSW and how small is it?', 'How does the WASM runtime work?', 'What are the core Rust crates in the ecosystem?'];
   }
   if (lower.includes('rvf') || lower.includes('cognitive container') || lower.includes('format')) {
     return ['What are the 24 segments of an RVF?', 'How does RVF enable offline AI?', 'Show me the RVF architecture'];
@@ -60,18 +66,23 @@ const getFollowUpSuggestions = (content) => {
 };
 
 // Hero with capability tiles, prompt starters, resources, and latest updates
-const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData }) => (
+const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData }) => {
+  const repoCount = ecosystemStats?.totalRepos || 170;
+  const entryCount = ecosystemStats?.totalEntries || 54543;
+  const goldCount = ecosystemStats?.goldCount || 339;
+  const videoCount = knowledgeData?.videoStats?.total || 28;
+  return (
   <div className="hero-compact">
     <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo-sm" />
     <h1 className="hero-heading">What do you want to learn?</h1>
-    <p className="hero-tagline">Explore the agentic AI ecosystem — 170+ repos, 339 gold-curated knowledge entries, and 20 deep-dive video sessions.</p>
+    <p className="hero-tagline">Explore the agentic AI ecosystem — {repoCount}+ repos, {entryCount.toLocaleString()}+ knowledge entries, and {videoCount} deep-dive video sessions.</p>
 
     {/* Capability Tiles */}
     <div className="capability-tiles">
       <button className="capability-tile" onClick={() => onCapability('videos')}>
         <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">📹</span></span>
         <span className="tile-label">Videos</span>
-        <span className="tile-count">20 Sessions</span>
+        <span className="tile-count">{videoCount} Sessions</span>
       </button>
       <button className="capability-tile" onClick={() => onCapability('decks')}>
         <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">📊</span></span>
@@ -86,13 +97,13 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData }) 
       <button className="capability-tile" onClick={() => onCapability('kb')}>
         <span className="tile-icon-wrapper tile-kb"><span className="tile-icon">📚</span></span>
         <span className="tile-label">Knowledge Base</span>
-        <span className="tile-count">339 Gold Entries</span>
+        <span className="tile-count">{entryCount.toLocaleString()}+ Entries</span>
       </button>
     </div>
 
     {/* Prompt Starters */}
     <div className="prompt-starters">
-      <button onClick={() => onAction('What is Claude-Flow V3 and what are its 60+ specialized agents?')} className="prompt-pill">
+      <button onClick={() => onAction('What is Claude-Flow V3, its specialized agents, swarm topologies, and capabilities?')} className="prompt-pill">
         <span className="pill-icon">⚡</span> Claude-Flow V3
       </button>
       <button onClick={() => onAction('How does the ReasoningBank self-learning system work in Agentic Flow?')} className="prompt-pill">
@@ -143,7 +154,8 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData }) 
       </div>
     )}
   </div>
-);
+  );
+};
 
 // Expandable Source Cards with Pagination
 const SourceCards = ({ sources }) => {
@@ -587,18 +599,51 @@ function App() {
   const fetchKnowledge = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/knowledge');
-      const data = await response.json();
+      const [knowledgeRes, statsRes] = await Promise.all([
+        fetch('/api/knowledge'),
+        fetch('/api/ecosystem-stats')
+      ]);
+      const data = await knowledgeRes.json();
+      const stats = await statsRes.json();
       const timestamp = new Date().toLocaleString();
-      const videoCount = data.videoStats?.total || 0;
-      const claudeFlow = data.repos.find(r => r.name === 'claude-flow');
-      const claudeFlowVersion = claudeFlow?.version || '3.0.0-alpha';
-      const claudeFlowFeatures = claudeFlow?.features || ['60+ Specialized Agents', 'ReasoningBank Self-Learning', 'HNSW 150x-12500x Faster Search', '31 Lifecycle Hooks', '12 Background Workers'];
+      const videoCount = data.videoStats?.total || 28;
+      const totalRepos = stats.totalRepos || data.repos?.length || 148;
+      const totalEntries = stats.totalEntries || data.kb_total_entries || 54543;
+      const claudeFlow = data.repos?.find(r => r.name === 'claude-flow');
+      const claudeFlowVersion = claudeFlow?.version || '3.5.2';
 
-      const report = `# Knowledge Base Status\n\n**System Status:** 🟢 Online\n**Last Updated:** ${timestamp}\n**Indexed Videos:** ${videoCount}\n**Tracked Repositories:** ${data.repos.length}\n\n---\n\n## 🚀 Featured: Claude-Flow V3\n\n**Version:** ${claudeFlowVersion}\n**Status:** ${claudeFlow?.status || 'ACTIVE'}\n\n### Key Features\n${claudeFlowFeatures.map(f => `- ✅ ${f}`).join('\n')}\n\n---\n\n## 🗄️ PostgreSQL Knowledge Base\n\n${data.kb_stats ? `| Domain | Entries | Status |\n|--------|---------|--------|\n| 🤖 Claude-Flow & Agentic AI | ${data.kb_stats.domains?.ask_ruvnet?.total?.toLocaleString() || '54,128'} | ✅ Active |\n| 🔥 Viral Social | ${data.kb_stats.domains?.viral_social?.total?.toLocaleString() || '2,831'} | ✅ Active |\n| **Total** | **${(data.kb_total_entries || 60918).toLocaleString()}** | **PostgreSQL RuVector** |\n` : ''}\n\n---\n\n## Tracked Repositories\n\n${data.repos.length > 0 ? data.repos.map(r => {
-        const statusIcon = r.status === 'PRODUCTION' ? '🚀' : r.status?.includes('V3') ? '🚀' : r.status === 'ACTIVE' ? '🟢' : r.status === 'LINKED' ? '🔗' : '📦';
-        return `- ${statusIcon} **${r.name}** v${r.version || 'latest'} — ${r.description || 'Linked'}`;
-      }).join('\n') : '_No repositories configured._'}\n\n---\n*Powered by Claude-Flow V3 + Agentic Flow HybridReasoningBank*`;
+      const report = `# Knowledge Base Status\n\n` +
+        `| Metric | Value |\n|--------|-------|\n` +
+        `| Status | 🟢 Online |\n` +
+        `| Last Updated | ${timestamp} |\n` +
+        `| Total Repos | **${totalRepos}** across 3 orgs |\n` +
+        `| KB Entries | **${totalEntries.toLocaleString()}** |\n` +
+        `| Gold Curated | **${stats.goldCount || 339}** |\n` +
+        `| Videos | **${videoCount}** sessions |\n` +
+        `| Doc Types | **${stats.docTypes || 18}** |\n` +
+        `| Backend | PostgreSQL RuVector + HNSW |\n\n` +
+        `---\n\n## Claude-Flow V3 (v${claudeFlowVersion})\n\n` +
+        `| Capability | Detail |\n|------------|--------|\n` +
+        `| Agent Types | 60+ specialized (coder, architect, security, swarm, etc.) |\n` +
+        `| Swarm Topologies | 5 (hierarchical, mesh, ring, star, hierarchical-mesh) |\n` +
+        `| Lifecycle Hooks | 27 hooks + 12 background workers |\n` +
+        `| CLI Commands | 26 commands, 140+ subcommands |\n` +
+        `| Consensus | BFT, Raft, CRDT, Gossip, Quorum |\n` +
+        `| Search Speed | HNSW 150x–12,500x faster |\n` +
+        `| Neural | SONA <0.05ms, Flash Attention 2.49x–7.47x |\n` +
+        `| Security | AIMDS 3-layer pipeline, AIDefence middleware |\n\n` +
+        `---\n\n## PostgreSQL Knowledge Base\n\n` +
+        (data.kb_stats ? `| Domain | Entries | Status |\n|--------|---------|--------|\n` +
+        `| Claude-Flow & Agentic AI | ${data.kb_stats.domains?.ask_ruvnet?.total?.toLocaleString() || totalEntries.toLocaleString()} | ✅ Active |\n` +
+        `| **Total** | **${totalEntries.toLocaleString()}** | **RuVector HNSW** |\n\n` : '') +
+        `---\n\n## Key Tracked Packages\n\n` +
+        `| Package | Version | Status |\n|---------|---------|--------|\n` +
+        (data.repos?.length > 0 ? data.repos.map(r => {
+          const statusIcon = r.status === 'PRODUCTION' ? '🚀' : r.status === 'ACTIVE' ? '🟢' : '🔗';
+          return `| ${statusIcon} ${r.name} | v${r.version || 'latest'} | ${r.status || 'Linked'} |`;
+        }).join('\n') : '_No packages configured._') +
+        `\n\n*Plus ${Math.max(0, totalRepos - (data.repos?.length || 0))} additional repositories across ruvnet, openclaw, and VibiumDev orgs.*\n\n` +
+        `---\n*Powered by Claude-Flow V3 + Agentic Flow HybridReasoningBank*`;
 
       setCanvasContent({ type: 'text', content: report, action: 'knowledge' });
     } catch (e) {
@@ -754,13 +799,13 @@ function App() {
       {/* ===== ECOSYSTEM STATS BAR ===== */}
       {ecosystemStats && (
         <div className="stats-bar">
-          <span><span className="stats-highlight">{ecosystemStats.totalRepos || '170'}+</span> Repos</span>
+          <span><span className="stats-highlight">{ecosystemStats.totalRepos || '148'}+</span> Repos</span>
           <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">{(ecosystemStats.totalEntries || 132931).toLocaleString()}+</span> KB Entries</span>
+          <span><span className="stats-highlight">{(ecosystemStats.totalEntries || 54543).toLocaleString()}+</span> KB Entries</span>
           <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">339</span> Gold Curated</span>
+          <span><span className="stats-highlight">{(ecosystemStats.goldCount || 339).toLocaleString()}</span> Gold Scored</span>
           <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">20</span> Video Sessions</span>
+          <span><span className="stats-highlight">{knowledgeData?.videoStats?.total || '28'}</span> Video Sessions</span>
           <span className="stats-dot">·</span>
           <span>Updated Daily</span>
         </div>
@@ -925,11 +970,26 @@ function App() {
                   </div>
                   {canvasContent.type === 'deck-picker' ? (
                     <div className="deck-picker">
-                      <h1>Presentation Decks</h1>
-                      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                        Two comprehensive decks covering the RuVector/Agentic Intelligence architecture from business and technical perspectives.
+                      <h2 style={{ marginBottom: '0.5rem' }}>CEO & CTO Decks</h2>
+                      <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontSize: '0.85rem' }}>
+                        Business and technical perspectives on the RuVector/Agentic Intelligence architecture.
                       </p>
                       <div className="deck-cards">
+                        {DECK_DOCS.map((doc) => (
+                          <button key={doc.file} className="deck-card deck-card-featured" onClick={() => setCanvasContent({
+                            type: 'pdf',
+                            content: `/assets/docs/${doc.file}`,
+                            title: doc.title,
+                            action: 'document'
+                          })}>
+                            <span className="deck-card-icon">{doc.icon}</span>
+                            <span className="deck-card-title">{doc.title}</span>
+                            <span className="deck-card-desc">{doc.desc}</span>
+                          </button>
+                        ))}
+                      </div>
+                      <h3 style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Additional Resources</h3>
+                      <div className="deck-cards deck-cards-compact">
                         {RESOURCE_DOCS.filter(d => d.type === 'pdf').map((doc) => (
                           <button key={doc.file} className="deck-card" onClick={() => setCanvasContent({
                             type: 'pdf',

@@ -1119,6 +1119,7 @@ app.get('/api/ecosystem-stats', async (req, res) => {
                     COUNT(DISTINCT package_name) as total_repos,
                     COUNT(*) as total_entries,
                     COUNT(DISTINCT doc_type) as doc_types,
+                    COUNT(*) FILTER (WHERE quality_score >= 80) as gold_count,
                     MAX(created_at) as last_updated
                 FROM ask_ruvnet.architecture_docs
                 WHERE is_duplicate = false AND triage_tier != 'garbage'
@@ -1129,6 +1130,7 @@ app.get('/api/ecosystem-stats', async (req, res) => {
                 totalRepos: parseInt(row.total_repos, 10) || 0,
                 totalEntries: parseInt(row.total_entries, 10) || 0,
                 docTypes: parseInt(row.doc_types, 10) || 0,
+                goldCount: parseInt(row.gold_count, 10) || 0,
                 lastUpdated: row.last_updated,
                 kbBackend: 'PostgreSQL RuVector'
             };
