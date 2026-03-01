@@ -333,9 +333,11 @@ function App() {
   const [knowledgeData, setKnowledgeData] = useState(null);
   const [ecosystemStats, setEcosystemStats] = useState(null);
 
-  // Auto view mode: canvas shows when content exists
+  const [presentationMode, setPresentationMode] = useState(false);
+
+  // Auto view mode: canvas shows when content exists; presentation only when user explicitly toggles
   const effectiveViewMode = canvasContent
-    ? (canvasContent.type === 'pdf' || canvasContent.type === 'video' ? 'presentation' : 'split')
+    ? (presentationMode ? 'presentation' : 'split')
     : 'chat';
 
   // Fetch live knowledge data on mount
@@ -849,6 +851,11 @@ function App() {
               <h3>{effectiveViewMode === 'presentation' ? 'PRESENTATION MODE' : 'CANVAS'}</h3>
               {canvasContent && (
                 <div className="canvas-actions">
+                  {(canvasContent.type === 'pdf' || canvasContent.type === 'video') && (
+                    <button onClick={() => setPresentationMode(p => !p)} className="canvas-btn" title={presentationMode ? 'Exit fullscreen' : 'Fullscreen'}>
+                      {presentationMode ? '⊡ SPLIT' : '⊞ FULL'}
+                    </button>
+                  )}
                   <button onClick={exportCanvas} className="canvas-btn" title="Download content">EXPORT</button>
                   <button onClick={() => copyToClipboard()} className="canvas-btn" title="Copy to clipboard">COPY</button>
                 </div>
@@ -860,8 +867,8 @@ function App() {
                   <div className="content-controls">
                     <button
                       onClick={() => {
-                        if (effectiveViewMode === 'presentation') setCanvasContent(null);
-                        else setCanvasContent(null);
+                        setPresentationMode(false);
+                        setCanvasContent(null);
                       }}
                       className="close-content-btn"
                       title="Close View"
@@ -896,7 +903,7 @@ function App() {
                       <PDFPresentation
                         url={canvasContent.content}
                         title={canvasContent.title}
-                        onClose={() => setCanvasContent(null)}
+                        onClose={() => { setPresentationMode(false); setCanvasContent(null); }}
                       />
                     ) : (
                       <div className="pdf-viewer">
