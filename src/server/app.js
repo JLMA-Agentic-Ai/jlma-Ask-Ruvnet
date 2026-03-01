@@ -323,6 +323,56 @@ const multiHopRetriever = new MultiHopRetriever({
 });
 
 // ============================================================================
+// ============================================================================
+// Generate clean, human-readable source title from available metadata
+// ============================================================================
+function cleanSourceTitle(s) {
+    // Try title from the data pipeline
+    const rawTitle = s.title || s.metadata?.title;
+
+    // Validate the title is actually usable (not garbage/fragment)
+    if (rawTitle && typeof rawTitle === 'string') {
+        const t = rawTitle.trim();
+        // Reject: too short, table chars, path-like, 'Untitled', sentence fragments, code snippets
+        const isGarbage = t.length < 3 || t === 'Untitled' ||
+            /[│├└┌┐┘─┤┬┴┼|]/.test(t) ||             // table/box drawing chars
+            t.startsWith('postgresql:') || t.startsWith('ask_ruvnet:') ||
+            /^[a-z]/.test(t) ||                        // starts lowercase = mid-sentence fragment
+            /^[\s\-\*\>\#]/.test(t) ||                 // starts with markdown formatting
+            /\.\s*$/.test(t) && t.length > 60 ||       // long sentence ending in period = content fragment
+            /^(const|let|var|function|import|export|return|if|for|while)\b/.test(t) || // code
+            t.split(' ').length > 12;                   // too many words = content, not a title
+        if (!isGarbage) {
+            return t.charAt(0).toUpperCase() + t.slice(1);
+        }
+    }
+
+    // Fallback: build from package_name + doc_type
+    const pkg = s.package_name || s.metadata?.package_name;
+    const docType = s.doc_type || s.metadata?.doc_type;
+    if (pkg) {
+        const label = docType ? `${pkg} (${docType})` : pkg;
+        return label.charAt(0).toUpperCase() + label.slice(1);
+    }
+
+    // Fallback: extract category from source path
+    const src = s.source || s.metadata?.source || '';
+    const categoryMatch = src.match(/ask_ruvnet[:/](.+)/);
+    if (categoryMatch) {
+        const cat = categoryMatch[1].replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        return `Knowledge Base: ${cat}`;
+    }
+
+    // Fallback: first meaningful line of content
+    const content = s.content || '';
+    if (content.length > 10) {
+        const firstLine = content.split('\n')[0].trim().substring(0, 80);
+        if (firstLine.length > 10) return firstLine + (firstLine.length >= 80 ? '…' : '');
+    }
+
+    return `KB Entry #${s.id || 'unknown'}`;
+}
+
 // OPTIMIZED: Diversity Filter to avoid redundant context from similar sources
 // ============================================================================
 function applyDiversityFilter(sources, maxSources = 6) {
@@ -566,6 +616,7 @@ app.post('/api/chat', async (req, res) => {
                     });
                     return semanticResults.map(r => ({
                         id: r.metadata?.docId || r.id,
+                        title: r.metadata?.title || r.title || null,
                         content: r.input || r.task || '',
                         score: r.similarity || 0,
                         similarity: r.similarity || 0,
@@ -686,6 +737,7 @@ app.post('/api/chat', async (req, res) => {
                 // ================================================================
                 sources = filteredResults.map(r => ({
                     id: r.id,
+                    title: r.title || r.metadata?.title || null,
                     content: r.content || r.input || '',
                     score: r.rerankedScore || r.score || 0,
                     source: r.source || r.metadata?.source,
@@ -807,7 +859,7 @@ MANDATORY: Follow the response structure (TL;DR → Core Explanation → Archite
                 id: s.id,
                 score: s.score,
                 content: (s.content || '').substring(0, 200),
-                title: s.title || s.metadata?.title || s.source || s.id,
+                title: cleanSourceTitle(s),
                 package_name: s.package_name || s.metadata?.package_name || null,
                 doc_type: s.doc_type || s.metadata?.doc_type || null,
                 file_path: s.file_path || s.metadata?.file_path || null,
@@ -867,6 +919,7 @@ app.post('/api/chat/stream', async (req, res) => {
                     const results = await reasoningBank.reflexion.retrieveRelevant({ task: query, k });
                     return results.map(r => ({
                         id: r.metadata?.docId || r.id,
+                        title: r.metadata?.title || r.title || null,
                         content: r.input || r.task || '',
                         score: r.similarity || 0,
                         similarity: r.similarity || 0,
@@ -934,6 +987,7 @@ app.post('/api/chat/stream', async (req, res) => {
 
                 sources = filteredResults.map(r => ({
                     id: r.id,
+                    title: r.title || r.metadata?.title || null,
                     content: r.content || r.input || '',
                     score: r.rerankedScore || r.score || 0,
                     source: r.source || r.metadata?.source,
@@ -958,7 +1012,7 @@ app.post('/api/chat/stream', async (req, res) => {
             id: s.id,
             score: s.score,
             content: (s.content || '').substring(0, 200),
-            title: s.title || s.metadata?.title || s.source || s.id,
+            title: cleanSourceTitle(s),
             package_name: s.package_name,
             doc_type: s.doc_type,
             file_path: s.file_path,
