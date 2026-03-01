@@ -3087,6 +3087,253 @@ button, a, .source-card, .prompt-pill {
   }
 }
 
+/* ===== RESOURCE DRAWER (accessible during chat) ===== */
+.resource-drawer {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 0 auto 1.5rem;
+  max-width: min(1100px, 96%);
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.resource-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.resource-drawer-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: var(--font-code);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.resource-drawer-close {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.resource-drawer-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.capability-tiles-compact {
+  margin-bottom: 0.75rem;
+}
+
+.capability-tiles-compact .capability-tile {
+  padding: 0.75rem 0.5rem;
+}
+
+.resource-grid-compact {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.4rem;
+}
+
+/* Resources toggle button */
+.icon-btn.resources-toggle {
+  position: relative;
+}
+
+.icon-btn.resources-toggle.active {
+  border-color: var(--accent);
+  background: rgba(239, 68, 68, 0.1);
+  color: #fff;
+}
+
+/* ===== LIGHT MODE ENHANCEMENTS ===== */
+
+/* Better contrast for stats bar in light mode */
+.light-mode .stats-bar {
+  border-bottom-color: #d6d3d1;
+}
+
+.light-mode .stats-bar .stats-highlight {
+  background: linear-gradient(135deg, #ea580c, #db2777, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Better border visibility in light mode */
+.light-mode .message.assistant .content {
+  border-color: #d6d3d1;
+  border-top-color: rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
+.light-mode .message.assistant .content::before {
+  background: linear-gradient(180deg, #ea580c, #db2777, #7c3aed);
+}
+
+/* Light mode input better contrast */
+.light-mode .input-area {
+  border-top: 1px solid #e7e5e4;
+}
+
+.light-mode .input-area input[type="text"] {
+  background: white;
+  border-color: #d6d3d1;
+}
+
+/* Light mode resource drawer */
+.light-mode .resource-drawer {
+  background: white;
+  border-color: #d6d3d1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Light mode sources stronger contrast */
+.light-mode .source-card {
+  border-color: #d6d3d1;
+}
+
+.light-mode .source-card-title {
+  color: #1c1917;
+}
+
+.light-mode .source-name {
+  color: #57534e;
+}
+
+/* Light mode follow-up pills */
+.light-mode .follow-up-pill {
+  border-color: #d6d3d1;
+  color: #44403c;
+}
+
+/* Light mode action buttons */
+.light-mode .action-btn {
+  background: white;
+  border-color: #d6d3d1;
+  color: #57534e;
+}
+
+.light-mode .action-btn:hover {
+  border-color: #ea580c;
+  color: #ea580c;
+  background: rgba(234, 88, 12, 0.04);
+}
+
+/* Light mode message actions border */
+.light-mode .message-actions {
+  border-top-color: #e7e5e4;
+}
+
+/* Light mode icon buttons */
+.light-mode .icon-btn {
+  border-color: #d6d3d1;
+  color: #78716c;
+}
+
+.light-mode .icon-btn:hover {
+  border-color: #ea580c;
+  color: #ea580c;
+  background: rgba(234, 88, 12, 0.04);
+}
+
+/* Light mode hero aurora toned down */
+.light-mode .hero-compact::before {
+  opacity: 0.6;
+}
+
+/* Light mode resource heading */
+.light-mode .resource-heading {
+  background: linear-gradient(90deg, #57534e, rgba(124,58,237,0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== RESPONSIVE — Resource Drawer ===== */
+@media (max-width: 768px) {
+  .resource-drawer {
+    margin: 0 0 1rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 0.75rem;
+  }
+
+  .capability-tiles-compact {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+  }
+
+  .capability-tiles-compact .capability-tile {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .capability-tiles-compact .tile-label {
+    font-size: 0.65rem;
+  }
+
+  .capability-tiles-compact .tile-icon-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  .capability-tiles-compact .tile-icon {
+    font-size: 1rem;
+  }
+
+  .resource-grid-compact {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-btn.resources-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 393px) {
+  .icon-btn.resources-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .capability-tiles-compact .tile-label {
+    font-size: 0.6rem;
+  }
+
+  .capability-tiles-compact .tile-icon-wrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+}
+
 /* Landscape */
 @media (max-height: 500px) and (orientation: landscape) {
   .hero-compact { padding: 1rem; gap: 0.75rem; }

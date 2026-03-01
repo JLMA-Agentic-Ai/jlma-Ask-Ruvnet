@@ -337,6 +337,7 @@ function App() {
   const [ecosystemStats, setEcosystemStats] = useState(null);
 
   const [presentationMode, setPresentationMode] = useState(false);
+  const [showResourceDrawer, setShowResourceDrawer] = useState(false);
 
   // Auto view mode: canvas shows when content exists; presentation only when user explicitly toggles
   const effectiveViewMode = canvasContent
@@ -780,6 +781,46 @@ function App() {
                 />
               ) : (
                 <>
+                  {/* Collapsible resource drawer — accessible during chat */}
+                  {showResourceDrawer && (
+                    <div className="resource-drawer">
+                      <div className="resource-drawer-header">
+                        <span className="resource-drawer-title">Resources & Explore</span>
+                        <button className="resource-drawer-close" onClick={() => setShowResourceDrawer(false)}>✕</button>
+                      </div>
+                      <div className="capability-tiles capability-tiles-compact">
+                        <button className="capability-tile" onClick={() => { handleCapability('videos'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">📹</span></span>
+                          <span className="tile-label">Videos</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('decks'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">📊</span></span>
+                          <span className="tile-label">Decks</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('universe'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">🌌</span></span>
+                          <span className="tile-label">Universe</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('kb'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-kb"><span className="tile-icon">📚</span></span>
+                          <span className="tile-label">KB</span>
+                        </button>
+                      </div>
+                      <div className="resource-grid resource-grid-compact">
+                        {RESOURCE_DOCS.map((doc, i) => (
+                          <button key={i} className={`resource-card resource-${doc.type}`} onClick={() => {
+                            handleSubmit(null, doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : `VIEW_PDF:${doc.file}`);
+                            setShowResourceDrawer(false);
+                          }}>
+                            <span className="resource-icon">{doc.icon}</span>
+                            <span className="resource-text">
+                              <span className="resource-title">{doc.title}</span>
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   {messages.map((msg, idx) => (
                     <div key={idx} className={`message ${msg.role}`} ref={idx === messages.length - 1 ? lastMessageRef : null}>
                       <div className="avatar">
@@ -836,6 +877,9 @@ function App() {
             {/* Input at BOTTOM */}
             <form className="input-area" onSubmit={handleSubmit}>
               <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
+              {messages.length > 0 && (
+                <button type="button" className={`icon-btn resources-toggle ${showResourceDrawer ? 'active' : ''}`} onClick={() => setShowResourceDrawer(p => !p)} aria-label="Browse resources" title="Browse resources & documents">📂</button>
+              )}
               <button type="button" className="icon-btn" onClick={() => fileInputRef.current.click()} aria-label="Attach file">📎</button>
               <button type="button" className={`icon-btn voice ${listening ? 'listening' : ''}`} onClick={startVoiceInput} aria-label={listening ? 'Stop listening' : 'Start voice input'}>{listening ? '🔴' : '🎤'}</button>
               <div className="input-wrapper">
