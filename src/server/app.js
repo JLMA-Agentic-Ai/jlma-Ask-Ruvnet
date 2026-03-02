@@ -3,9 +3,23 @@ process.env.FORCE_TRANSFORMERS = 'true';
 const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
-const RuvectorStore = require('../core/RuvectorStore');
-// PostgresKnowledgeBase no longer needed — using RuvectorStore as single source of truth
-// const PostgresKnowledgeBase = require('../core/PostgresKnowledgeBase');
+// RVF Native: uses @ruvector/rvf for vector search + content sidecar for text
+// Falls back to legacy RuvectorStore (PersistentVectorDB) if knowledge.rvf not found
+let StoreClass;
+try {
+    const fs = require('fs');
+    const rvfPath = require('path').resolve('knowledge.rvf');
+    if (fs.existsSync(rvfPath)) {
+        StoreClass = require('../core/RvfStore');
+        console.log('📦 Using RVF Native backend (knowledge.rvf detected)');
+    } else {
+        StoreClass = require('../core/RuvectorStore');
+        console.log('📦 Using legacy RuvectorStore backend (no knowledge.rvf found)');
+    }
+} catch {
+    StoreClass = require('../core/RuvectorStore');
+    console.log('📦 Falling back to RuvectorStore backend');
+}
 const HybridSearch = require('../core/HybridSearch');
 const TextChunker = require('../core/TextChunker');
 const QueryExpander = require('../core/QueryExpander');
@@ -461,15 +475,15 @@ async function initAgenticFlow() {
             console.log('⚠️ Agentic Flow Router not available (optional)');
         }
 
-        // PRIMARY: RuvectorStore binary format (103K+ curated entries, HNSW-indexed)
+        // PRIMARY: RVF native or legacy RuvectorStore (auto-detected at import)
         // Single source of truth — no external database dependency
-        const ruvectorStore = new RuvectorStore();
-        await ruvectorStore.initialize();
-        reasoningBank = ruvectorStore;
+        const store = new StoreClass();
+        await store.initialize();
+        reasoningBank = store;
 
-        const rvStats = ruvectorStore.getStats();
-        console.log(`✅ RuvectorStore loaded (${rvStats.vectorCount.toLocaleString()} entries, HNSW-indexed)`);
-        console.log('📊 Knowledge Backend: RuvectorStore binary (single source of truth)');
+        const rvStats = store.getStats();
+        console.log(`✅ ${rvStats.backend || 'Knowledge store'} loaded (${rvStats.vectorCount.toLocaleString()} entries)`);
+        console.log(`📊 Knowledge Backend: ${rvStats.backend || 'RuvectorStore'}`);
 
         // OPTIMIZED: Initialize hybrid search index for BM25 + semantic fusion
         await initHybridSearchIndex();

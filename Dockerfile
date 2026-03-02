@@ -55,10 +55,16 @@ RUN npm install --legacy-peer-deps
 # Copy application code
 COPY . .
 
-# Extract RuvectorStore knowledge base at build time
-# Data is split into <95MB chunks to fit GitHub's file size limit
-RUN if ls ruvector-kb.tar.gz.part-* 1>/dev/null 2>&1; then \
-      echo "📦 Reassembling and extracting RuvectorStore KB..." && \
+# Extract knowledge base at build time
+# Supports both RVF format (preferred) and legacy RuvectorStore tarballs
+RUN if ls knowledge.rvf.gz.part-* 1>/dev/null 2>&1; then \
+      echo "📦 Reassembling RVF knowledge base..." && \
+      cat knowledge.rvf.gz.part-* > knowledge.rvf.gz && \
+      gunzip knowledge.rvf.gz && \
+      rm -f knowledge.rvf.gz.part-* && \
+      echo "✅ RVF extracted ($(du -sh knowledge.rvf | cut -f1))"; \
+    elif ls ruvector-kb.tar.gz.part-* 1>/dev/null 2>&1; then \
+      echo "📦 Reassembling legacy RuvectorStore KB..." && \
       cat ruvector-kb.tar.gz.part-* | tar xzf - && \
       rm -f ruvector-kb.tar.gz.part-* && \
       echo "✅ RuvectorStore extracted ($(du -sh .ruvector/knowledge-base/ | cut -f1))"; \

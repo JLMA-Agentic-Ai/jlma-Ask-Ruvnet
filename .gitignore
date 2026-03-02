@@ -80,3 +80,7 @@ ruvector/
 
 # Allow RuvectorStore split data files for Railway deployment
 !ruvector-kb.tar.gz.part-*
+
+# Allow RVF knowledge base files for Railway deployment
+!knowledge.rvf.gz.part-*
+!content-sidecar.json.gz
