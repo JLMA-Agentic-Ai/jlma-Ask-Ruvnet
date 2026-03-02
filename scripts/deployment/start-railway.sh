@@ -1,17 +1,20 @@
 #!/bin/bash
 # Railway/Docker Startup Script for Ask-Ruvnet
-# Backend: PostgreSQL RuVector (connected via DATABASE_URL or PG_HOST env vars)
+# Backend: RuvectorStore binary (HNSW-indexed, no external database required)
 
 echo "🚀 Starting Ask-Ruvnet..."
 
-# Verify PostgreSQL connectivity
-if [ -n "$DATABASE_URL" ] || [ -n "$PG_HOST" ]; then
-  echo "✅ PostgreSQL connection configured"
+# Extract RuvectorStore data if not already present
+if [ ! -d ".ruvector/knowledge-base" ] && ls ruvector-kb.tar.gz.part-* 1>/dev/null 2>&1; then
+  echo "📦 Reassembling and extracting RuvectorStore knowledge base..."
+  cat ruvector-kb.tar.gz.part-* | tar xzf -
+  echo "✅ RuvectorStore extracted"
+elif [ -d ".ruvector/knowledge-base" ]; then
+  echo "✅ RuvectorStore knowledge base already present"
 else
-  echo "⚠️ No DATABASE_URL or PG_HOST set — will use local RuvectorStore fallback"
+  echo "⚠️ No RuvectorStore data found — app will start with empty KB"
 fi
 
 # Start the server
 echo "🔌 Starting Node.js server..."
-cd /app
 node src/server/app.js || { echo "❌ App crashed! Sleeping for debug..."; sleep 3600; }

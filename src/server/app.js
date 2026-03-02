@@ -4,7 +4,8 @@ const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const RuvectorStore = require('../core/RuvectorStore');
-const PostgresKnowledgeBase = require('../core/PostgresKnowledgeBase');
+// PostgresKnowledgeBase no longer needed — using RuvectorStore as single source of truth
+// const PostgresKnowledgeBase = require('../core/PostgresKnowledgeBase');
 const HybridSearch = require('../core/HybridSearch');
 const TextChunker = require('../core/TextChunker');
 const QueryExpander = require('../core/QueryExpander');
@@ -447,7 +448,7 @@ app.use('/generated_imgs', express.static(path.join(__dirname, '../../generated_
 // Initialize RuVector Native Components (replaces SQLite-based HybridReasoningBank)
 let modelRouter;
 let reasoningBank; // Now a RuvectorStore instance with reflexion-compatible API
-let pgKB = null;
+// pgKB removed — RuvectorStore is the single source of truth
 
 async function initAgenticFlow() {
     try {
@@ -460,23 +461,15 @@ async function initAgenticFlow() {
             console.log('⚠️ Agentic Flow Router not available (optional)');
         }
 
-        // PRIMARY: Try PostgreSQL knowledge base (54K+ enriched entries)
-        pgKB = new PostgresKnowledgeBase();
-        const pgConnected = await pgKB.initialize();
+        // PRIMARY: RuvectorStore binary format (103K+ curated entries, HNSW-indexed)
+        // Single source of truth — no external database dependency
+        const ruvectorStore = new RuvectorStore();
+        await ruvectorStore.initialize();
+        reasoningBank = ruvectorStore;
 
-        if (pgConnected) {
-            reasoningBank = pgKB;
-            console.log('✅ PostgreSQL Knowledge Base connected (54K+ entries, intent-aware search)');
-        } else {
-            // FALLBACK: Local RuvectorStore (file-based vector DB)
-            console.log('⚠️ PostgreSQL unavailable — falling back to local RuvectorStore');
-            const ruvectorStore = new RuvectorStore();
-            await ruvectorStore.initialize();
-            reasoningBank = ruvectorStore;
-            console.log('✅ RuVector Local Backend Initialized (HNSW + PersistentVectorDB)');
-        }
-
-        console.log('📊 Knowledge Backend: ' + (pgConnected ? 'PostgreSQL RuVector (54K+ entries)' : 'Local RuVector file DB'));
+        const rvStats = ruvectorStore.getStats();
+        console.log(`✅ RuvectorStore loaded (${rvStats.vectorCount.toLocaleString()} entries, HNSW-indexed)`);
+        console.log('📊 Knowledge Backend: RuvectorStore binary (single source of truth)');
 
         // OPTIMIZED: Initialize hybrid search index for BM25 + semantic fusion
         await initHybridSearchIndex();
@@ -504,38 +497,26 @@ async function initHybridSearchIndex() {
 
         const allDocuments = new Map();
 
-        // If PostgreSQL is available, fetch ALL documents directly for full BM25 coverage
-        if (pgKB && pgKB.ready && pgKB.pool) {
-            try {
-                const client = await pgKB.pool.connect();
-                try {
-                    await client.query("SET client_encoding = 'UTF8'");
-                    const result = await client.query(`
-                        SELECT id::text,
-                               regexp_replace(title, '[^\\x20-\\x7E\\n\\r\\t]', '', 'g') as title,
-                               LEFT(regexp_replace(content, '[^\\x20-\\x7E\\n\\r\\t]', '', 'g'), 2000) as content,
-                               category
-                        FROM ask_ruvnet.architecture_docs
-                        WHERE is_duplicate = false AND triage_tier != 'garbage'
-                        ORDER BY id
-                        LIMIT 50000
-                    `);
-                    result.rows.forEach(r => allDocuments.set(r.id, {
-                        id: r.id,
-                        input: `${r.title}\n${r.content}`,
-                        task: r.title,
-                        metadata: { docId: r.id, source: `postgresql:ask_ruvnet/${r.category}`, content: r.content }
-                    }));
-                    console.log(`📊 Loaded ${allDocuments.size} documents directly from PostgreSQL for BM25`);
-                } finally {
-                    client.release();
-                }
-            } catch (e) {
-                console.warn('⚠️ Direct PostgreSQL fetch failed, falling back to embedding-based sampling:', e.message);
+        // Load all documents from RuvectorStore metadata (no external DB needed)
+        if (reasoningBank && reasoningBank.db && reasoningBank.db.getAllMetadata) {
+            const allMeta = reasoningBank.db.getAllMetadata();
+            const limit = Math.min(allMeta.length, 50000); // Cap at 50K for BM25 performance
+            for (let i = 0; i < limit; i++) {
+                const entry = allMeta[i];
+                const meta = entry.metadata || {};
+                const title = meta.title || meta.name || '';
+                const content = (meta.content || '').substring(0, 2000);
+                allDocuments.set(entry.id, {
+                    id: entry.id,
+                    input: `${title}\n${content}`,
+                    task: title,
+                    metadata: { docId: entry.id, source: meta.source || 'ruvectorstore', content, title }
+                });
             }
+            console.log(`📊 Loaded ${allDocuments.size} documents from RuvectorStore for BM25`);
         }
 
-        // Fallback: if PostgreSQL direct fetch didn't work, use embedding-based sampling
+        // Fallback: use embedding-based sampling if metadata load failed
         if (allDocuments.size === 0) {
             const batch1 = await reasoningBank.reflexion.retrieveRelevant({ task: '', k: 2000 });
             batch1.forEach(r => allDocuments.set(r.id, r));
@@ -1084,24 +1065,15 @@ app.get('/api/providers', (req, res) => {
     });
 });
 
-// KB Statistics Endpoint - shows real PostgreSQL KB state
+// KB Statistics Endpoint - shows RuvectorStore state
 app.get('/api/kb-stats', async (req, res) => {
     try {
-        if (pgKB && pgKB.ready) {
-            const stats = await pgKB.getKBStats();
-            res.json({
-                backend: 'PostgreSQL RuVector',
-                connected: true,
-                ...stats
-            });
-        } else {
-            const vectorStats = reasoningBank ? reasoningBank.getStats?.() || {} : {};
-            res.json({
-                backend: 'Local RuvectorStore',
-                connected: false,
-                ...vectorStats
-            });
-        }
+        const vectorStats = reasoningBank ? reasoningBank.getStats?.() || {} : {};
+        res.json({
+            backend: 'RuvectorStore (HNSW binary)',
+            connected: true,
+            ...vectorStats
+        });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -1118,38 +1090,40 @@ app.get('/api/latest-repos', async (req, res) => {
             return res.json(latestReposCache);
         }
 
-        if (pgKB && pgKB.ready && pgKB.pool) {
-            const result = await pgKB.pool.query(`
-                SELECT
-                    package_name,
-                    MAX(created_at) as last_updated,
-                    COUNT(*) as entry_count
-                FROM ask_ruvnet.architecture_docs
-                WHERE package_name IS NOT NULL AND package_name != ''
-                  AND is_duplicate = false AND triage_tier != 'garbage'
-                GROUP BY package_name
-                ORDER BY last_updated DESC
-                LIMIT 20
-            `);
+        // Compute from RuvectorStore metadata
+        if (reasoningBank && reasoningBank.db && reasoningBank.db.getAllMetadata) {
+            const allMeta = reasoningBank.db.getAllMetadata();
+            const repoCounts = new Map();
 
-            const repos = result.rows.map(row => ({
-                name: row.package_name,
-                description: `${parseInt(row.entry_count, 10).toLocaleString()} KB entries`,
-                lastUpdated: row.last_updated,
-                entryCount: parseInt(row.entry_count, 10)
-            }));
+            for (const entry of allMeta) {
+                const pkg = entry.metadata?.package_name;
+                if (pkg) {
+                    const existing = repoCounts.get(pkg) || { count: 0, lastUpdated: null };
+                    existing.count++;
+                    const ts = entry.metadata?.timestamp;
+                    if (ts && (!existing.lastUpdated || ts > existing.lastUpdated)) {
+                        existing.lastUpdated = ts;
+                    }
+                    repoCounts.set(pkg, existing);
+                }
+            }
+
+            const repos = Array.from(repoCounts.entries())
+                .sort((a, b) => (b[1].lastUpdated || '').localeCompare(a[1].lastUpdated || ''))
+                .slice(0, 20)
+                .map(([name, data]) => ({
+                    name,
+                    description: `${data.count.toLocaleString()} KB entries`,
+                    lastUpdated: data.lastUpdated,
+                    entryCount: data.count
+                }));
 
             latestReposCache = repos;
-            latestReposCacheExpiry = now + 3600_000; // 1 hour
-            console.log(`[KB] Latest repos refreshed: ${repos.length} repos`);
+            latestReposCacheExpiry = now + 3600_000;
             return res.json(repos);
         }
 
-        // Fallback when PostgreSQL is not available
-        res.json([
-            { name: 'ruvnet/ask-ruvnet', description: 'Ask RuvNet - AI Knowledge Platform', lastUpdated: new Date().toISOString(), entryCount: 0 },
-            { name: 'ruvnet/agentic-flow', description: 'Agentic Flow - Multi-Agent Framework', lastUpdated: new Date().toISOString(), entryCount: 0 }
-        ]);
+        res.json([]);
     } catch (err) {
         console.error('[KB] Error fetching latest repos:', err.message);
         res.status(500).json({ error: err.message });
@@ -1167,35 +1141,34 @@ app.get('/api/ecosystem-stats', async (req, res) => {
             return res.json(ecosystemStatsCache);
         }
 
-        if (pgKB && pgKB.ready && pgKB.pool) {
-            const result = await pgKB.pool.query(`
-                SELECT
-                    COUNT(DISTINCT package_name) as total_repos,
-                    COUNT(*) as total_entries,
-                    COUNT(DISTINCT doc_type) as doc_types,
-                    COUNT(*) FILTER (WHERE triage_tier = 'gold') as gold_count,
-                    MAX(created_at) as last_updated
-                FROM ask_ruvnet.architecture_docs
-                WHERE is_duplicate = false AND triage_tier != 'garbage'
-            `);
+        // Compute from RuvectorStore metadata
+        if (reasoningBank && reasoningBank.db && reasoningBank.db.getAllMetadata) {
+            const allMeta = reasoningBank.db.getAllMetadata();
+            const repos = new Set();
+            const docTypes = new Set();
+            let goldCount = 0;
 
-            const row = result.rows[0] || {};
+            for (const entry of allMeta) {
+                const m = entry.metadata || {};
+                if (m.package_name) repos.add(m.package_name);
+                if (m.doc_type) docTypes.add(m.doc_type);
+                if (m.is_curated || m.triage_tier === 'gold') goldCount++;
+            }
+
             const stats = {
-                totalRepos: parseInt(row.total_repos, 10) || 0,
-                totalEntries: parseInt(row.total_entries, 10) || 0,
-                docTypes: parseInt(row.doc_types, 10) || 0,
-                goldCount: parseInt(row.gold_count, 10) || 0,
-                lastUpdated: row.last_updated,
-                kbBackend: 'PostgreSQL RuVector'
+                totalRepos: repos.size,
+                totalEntries: allMeta.length,
+                docTypes: docTypes.size,
+                goldCount,
+                lastUpdated: new Date().toISOString(),
+                kbBackend: 'RuvectorStore (HNSW binary)'
             };
 
             ecosystemStatsCache = stats;
-            ecosystemStatsCacheExpiry = now + 3600_000; // 1 hour
-            console.log(`[KB] Ecosystem stats refreshed: ${stats.totalEntries} entries across ${stats.totalRepos} repos`);
+            ecosystemStatsCacheExpiry = now + 3600_000;
             return res.json(stats);
         }
 
-        // Fallback when PostgreSQL is not available
         res.json({
             totalRepos: 0,
             totalEntries: 0,
@@ -1242,19 +1215,13 @@ if (process.env.NODE_ENV !== 'production') {
 // Visualization Helper — Gemini image generation with KB context
 // ============================================================================
 async function generateVisualization(concept, style, resolution) {
-    // 1. Query KB for context about the concept
+    // 1. Query KB for context about the concept via vector search
     let kbContext = '';
-    if (pgKB && pgKB.ready && pgKB.pool) {
+    if (reasoningBank && reasoningBank.reflexion) {
         try {
-            const kbResult = await pgKB.pool.query(`
-                SELECT title, LEFT(content, 300) AS snippet
-                FROM ask_ruvnet.kb_complete
-                WHERE title ILIKE $1 OR content ILIKE $1
-                ORDER BY quality_score DESC NULLS LAST
-                LIMIT 3
-            `, [`%${concept}%`]);
-            if (kbResult.rows.length > 0) {
-                kbContext = kbResult.rows.map(r => `- ${r.title}: ${r.snippet}`).join('\n');
+            const results = await reasoningBank.reflexion.retrieveRelevant({ task: concept, k: 3 });
+            if (results.length > 0) {
+                kbContext = results.map(r => `- ${r.metadata?.title || r.task}: ${(r.input || '').substring(0, 300)}`).join('\n');
             }
         } catch (err) {
             console.warn('[Visualize] KB lookup failed (non-fatal):', err.message);
@@ -1611,17 +1578,12 @@ app.get('/api/knowledge', async (req, res) => {
     knowledge.version = APP_VERSION;
 
     // Add real KB stats from PostgreSQL if available
-    if (pgKB && pgKB.ready) {
-        try {
-            const kbStats = await pgKB.getKBStats();
-            if (kbStats) {
-                knowledge.kb_stats = kbStats;
-                knowledge.kb_backend = 'PostgreSQL RuVector';
-                knowledge.kb_total_entries = kbStats.total;
-            }
-        } catch (e) {
-            console.error('Error fetching KB stats:', e.message);
-        }
+    // Add RuvectorStore stats
+    if (reasoningBank && reasoningBank.getStats) {
+        const stats = reasoningBank.getStats();
+        knowledge.kb_stats = stats;
+        knowledge.kb_backend = 'RuvectorStore (HNSW binary)';
+        knowledge.kb_total_entries = stats.vectorCount || 0;
     }
 
     console.log(`   ✅ Returning ${knowledge.repos.length} repos, ${knowledge.websites.length} docs, ${knowledge.docs.length} files, ${videoCount} videos.`);

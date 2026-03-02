@@ -701,6 +701,18 @@ class PersistentVectorDB {
   }
 
   /**
+   * Get all metadata entries (for BM25 indexing without re-embedding)
+   * Returns an array of { id, metadata } objects
+   */
+  getAllMetadata() {
+    const entries = [];
+    for (const [id, meta] of this.metadata.entries()) {
+      entries.push({ id, metadata: meta });
+    }
+    return entries;
+  }
+
+  /**
    * Clear all data
    */
   async clear() {

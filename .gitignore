@@ -77,3 +77,6 @@ public/kb-universe-data.json
 public/kb-universe-data.json
 .claude/commands/global/
 ruvector/
+
+# Allow RuvectorStore split data files for Railway deployment
+!ruvector-kb.tar.gz.part-*
