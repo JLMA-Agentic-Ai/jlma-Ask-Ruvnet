@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RVF Engine — Cognitive Container Visualization</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --surface-2: #1a1a28;
+  --border: #2a2a3a;
+  --cyan: #00d4ff;
+  --cyan-dim: rgba(0, 212, 255, 0.15);
+  --gold: #f0c020;
+  --gold-dim: rgba(240, 192, 32, 0.15);
+  --purple: #a855f7;
+  --purple-dim: rgba(168, 85, 247, 0.15);
+  --blue: #3b82f6;
+  --blue-dim: rgba(59, 130, 246, 0.15);
+  --red: #ef4444;
+  --green: #10b981;
+  --text: #e8eaed;
+  --text-dim: #8892a4;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Canvas layer --- */
+#particleCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+/* --- Overlay UI --- */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.overlay * { pointer-events: auto; }
+
+/* --- Stage indicator --- */
+.stage-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  z-index: 20;
+}
+
+.stage-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.stage-dot.active {
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan), 0 0 30px rgba(0,212,255,0.3);
+  transform: scale(1.3);
+}
+
+.stage-dot.completed {
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+/* --- Content panels --- */
+.stage-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  position: absolute;
+  top: 100px;
+  left: 0; right: 0; bottom: 60px;
+  pointer-events: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.stage-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.stage-title {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.stage-subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  color: var(--text-dim);
+  max-width: 640px;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* --- Stats grid --- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.stat-value {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cyan);
+  display: block;
+}
+
+.stat-value.gold { color: var(--gold); }
+.stat-value.purple { color: var(--purple); }
+.stat-value.green { color: var(--green); }
+.stat-value.blue { color: var(--blue); }
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Compression bar --- */
+.compression-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 500px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bar-label {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  width: 80px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--surface);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 14px;
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+
+.bar-fill.raw {
+  background: linear-gradient(90deg, rgba(239,68,68,0.8), rgba(239,68,68,0.5));
+  width: 0;
+}
+
+.bar-fill.rvf {
+  background: linear-gradient(90deg, rgba(0,212,255,0.8), rgba(168,85,247,0.6));
+  width: 0;
+}
+
+.bar-fill.raw.animate { width: 100%; }
+.bar-fill.rvf.animate { width: 44.6%; }
+
+/* --- Container visualization --- */
+.container-viz {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  margin: 20px 0;
+}
+
+.container-hex {
+  width: 100%; height: 100%;
+  position: relative;
+}
+
+.segment-ring {
+  position: absolute;
+  width: 280px; height: 280px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.segment {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.segment.lit {
+  opacity: 1;
+  box-shadow: 0 0 12px currentColor, 0 0 24px currentColor;
+}
+
+.segment-label {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.segment-label.show { opacity: 1; }
+
+.container-core {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.25) 0%, rgba(10,10,15,0.95) 50%, rgba(10,10,15,0.85) 70%, transparent 100%);
+  border: 2px solid rgba(0,212,255,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: corePulse 3s ease-in-out infinite;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 5;
+}
+
+@keyframes corePulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.2), 0 0 60px rgba(0,212,255,0.1); }
+  50% { box-shadow: 0 0 40px rgba(0,212,255,0.4), 0 0 80px rgba(0,212,255,0.2); }
+}
+
+.core-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.core-sub {
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* --- WASM visualization --- */
+.wasm-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.wasm-size-compare {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 10px;
+}
+
+.size-item {
+  text-align: center;
+}
+
+.size-circle {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 700;
+  margin-bottom: 8px;
+  transition: all 0.5s ease;
+}
+
+.size-circle.big {
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(168,85,247,0.15), rgba(168,85,247,0.05));
+  border: 2px solid rgba(168,85,247,0.4);
+  font-size: 1.3rem;
+  color: var(--purple);
+}
+
+.size-circle.small {
+  width: 52px; height: 52px;
+  background: radial-gradient(circle, rgba(0,212,255,0.3), rgba(0,212,255,0.1));
+  border: 2px solid rgba(0,212,255,0.6);
+  box-shadow: 0 0 20px rgba(0,212,255,0.3), 0 0 40px rgba(0,212,255,0.15);
+  font-size: 0.7rem;
+  color: var(--cyan);
+}
+
+.size-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.size-arrow {
+  font-size: 1.4rem;
+  color: var(--text-dim);
+  opacity: 0.5;
+}
+
+.wasm-flow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flow-step {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+}
+
+.flow-step.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.flow-step.query { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(0,212,255,0.2); }
+.flow-step.wasm { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(168,85,247,0.2); }
+.flow-step.hnsw { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(240,192,32,0.2); }
+.flow-step.result { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
+
+.flow-arrow {
+  color: var(--text-dim);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+}
+
+.flow-arrow.visible { opacity: 0.5; }
+
+/* --- Live demo --- */
+.live-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.demo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--green);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.demo-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.search-box {
+  width: 100%;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 20px 16px 48px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0,212,255,0.15);
+}
+
+.search-input::placeholder {
+  color: rgba(136, 146, 164, 0.5);
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  opacity: 0.4;
+}
+
+.search-results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.35s ease;
+}
+
+.result-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.result-item:hover {
+  border-color: rgba(0,212,255,0.3);
+  background: var(--surface-2);
+}
+
+.result-score {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  padding: 4px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.result-text {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.result-category {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.latency-badge {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 4px;
+}
+
+.latency-badge.visible { opacity: 1; }
+
+/* --- Controls --- */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  z-index: 20;
+}
+
+.ctrl-btn {
+  padding: 8px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ctrl-btn:hover {
+  border-color: var(--cyan);
+  background: var(--surface-2);
+}
+
+.ctrl-btn.primary {
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(168,85,247,0.2));
+  border-color: rgba(0,212,255,0.3);
+}
+
+.ctrl-btn.primary:hover {
+  background: linear-gradient(135deg, rgba(0,212,255,0.3), rgba(168,85,247,0.3));
+  box-shadow: 0 0 20px rgba(0,212,255,0.15);
+}
+
+.stage-counter {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* --- Key segment badges --- */
+.key-segments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+  max-width: 500px;
+}
+
+.key-seg {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.4s ease;
+}
+
+.key-seg.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.key-seg.highlight {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  box-shadow: 0 0 12px rgba(0,212,255,0.1);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .stage-content { padding: 20px; top: 50px; bottom: 70px; }
+  .stage-title { font-size: 1.4rem; }
+  .stage-subtitle { font-size: 0.85rem; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat-card { padding: 12px; }
+  .stat-value { font-size: 1.2rem; }
+  .wasm-size-compare { flex-direction: column; gap: 16px; }
+  .size-circle.big { width: 110px; height: 110px; font-size: 1rem; }
+  .wasm-flow { flex-wrap: wrap; gap: 8px; }
+  .container-viz { width: 260px; height: 260px; }
+  .container-core { width: 90px; height: 90px; }
+  .key-segments { max-width: 340px; }
+}
+
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .controls { gap: 8px; }
+  .ctrl-btn { padding: 6px 14px; font-size: 0.7rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<div class="overlay">
+  <div class="stage-nav" role="tablist" aria-label="Visualization stages">
+    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: The Raw Knowledge" aria-selected="true" tabindex="0"></div>
+    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: The Compression" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: The Container" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: The WASM Brain" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: Live Demo" aria-selected="false" tabindex="-1"></div>
+  </div>
+
+  <!-- Stage 1: The Raw Knowledge -->
+  <div class="stage-content visible" id="stage0" role="tabpanel">
+    <div class="stage-title">The Raw Knowledge</div>
+    <div class="stage-subtitle">103,755 knowledge entries from 145+ repositories &mdash; teaching guides, architecture docs, reference material, and code patterns, scattered across an entire ecosystem.</div>
+    <div class="stat-grid">
+      <div class="stat-card"><span class="stat-value" data-count="103755">0</span><span class="stat-label">Entries</span></div>
+      <div class="stat-card"><span class="stat-value gold" data-count="339">0</span><span class="stat-label">Gold Curated</span></div>
+      <div class="stat-card"><span class="stat-value purple" data-count="145">0</span><span class="stat-label">Repositories</span></div>
+      <div class="stat-card"><span class="stat-value blue" data-count="20">0</span><span class="stat-label">Videos</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 2: The Compression -->
+  <div class="stage-content" id="stage1" role="tabpanel">
+    <div class="stage-title">The Compression</div>
+    <div class="stage-subtitle">Scalar quantization transforms Float32 vectors into Int8 &mdash; 4x compression with 97% recall accuracy. Every byte earns its place.</div>
+    <div class="compression-bar">
+      <div class="bar-row">
+        <span class="bar-label">Raw</span>
+        <div class="bar-track"><div class="bar-fill raw" id="barRaw">343 MB</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">RVF</span>
+        <div class="bar-track"><div class="bar-fill rvf" id="barRvf">153 MB</div></div>
+      </div>
+    </div>
+    <div class="stat-grid" style="margin-top: 16px;">
+      <div class="stat-card"><span class="stat-value green">55%</span><span class="stat-label">Smaller</span></div>
+      <div class="stat-card"><span class="stat-value">384</span><span class="stat-label">Dimensions</span></div>
+      <div class="stat-card"><span class="stat-value gold">Int8</span><span class="stat-label">Quantized</span></div>
+      <div class="stat-card"><span class="stat-value purple">97%</span><span class="stat-label">Recall</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 3: The Container -->
+  <div class="stage-content" id="stage2" role="tabpanel">
+    <div class="stage-title">The Container</div>
+    <div class="stage-subtitle">One file. Self-describing. Self-searching. 24 typed segments, each with its own purpose inside a single cognitive container.</div>
+    <div class="container-viz" id="containerViz">
+      <div class="segment-ring" id="segmentRing"></div>
+      <div class="container-core">
+        <span class="core-label">.rvf</span>
+        <span class="core-sub">153 MB</span>
+      </div>
+    </div>
+    <div class="key-segments" id="keySegments">
+      <span class="key-seg highlight">Vectors</span>
+      <span class="key-seg highlight">HNSW Index</span>
+      <span class="key-seg highlight">Metadata</span>
+      <span class="key-seg highlight">WASM Kernel</span>
+      <span class="key-seg">Taxonomy</span>
+      <span class="key-seg">Checksums</span>
+      <span class="key-seg">Provenance</span>
+      <span class="key-seg">Config</span>
+      <span class="key-seg">Stats</span>
+      <span class="key-seg">Categories</span>
+      <span class="key-seg">Embeddings</span>
+      <span class="key-seg">Graph Links</span>
+    </div>
+  </div>
+
+  <!-- Stage 4: The WASM Brain -->
+  <div class="stage-content" id="stage3" role="tabpanel">
+    <div class="stage-title">The WASM Brain</div>
+    <div class="stage-subtitle">A 41 KB program that searches 104,000 vectors in under a millisecond. In your browser. No server. No dependencies.</div>
+    <div class="wasm-demo">
+      <div class="wasm-size-compare">
+        <div class="size-item">
+          <div class="size-circle big">104K vectors</div>
+          <span class="size-label">Knowledge Base</span>
+        </div>
+        <span class="size-arrow">&rarr;</span>
+        <div class="size-item">
+          <div class="size-circle small">41 KB</div>
+          <span class="size-label">WASM Kernel</span>
+        </div>
+      </div>
+      <div class="wasm-flow" id="wasmFlow">
+        <span class="flow-step query">"agent security"</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-step wasm">WASM Encode</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-step hnsw">HNSW Search</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-step result">12 results &lt;1ms</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><span class="stat-value">M=16</span><span class="stat-label">HNSW Connections</span></div>
+        <div class="stat-card"><span class="stat-value gold">200</span><span class="stat-label">efConstruction</span></div>
+        <div class="stat-card"><span class="stat-value green">&lt;1ms</span><span class="stat-label">Search Latency</span></div>
+        <div class="stat-card"><span class="stat-value purple">24</span><span class="stat-label">Segment Types</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 5: Live Demo -->
+  <div class="stage-content" id="stage4" role="tabpanel">
+    <div class="stage-title">Live Demo</div>
+    <div class="stage-subtitle">Type anything. Results appear instantly. Pure client-side vector search, powered by the RVF cognitive container.</div>
+    <div class="live-demo">
+      <div class="demo-badge">Client-Side &middot; No Server &middot; Zero Dependencies</div>
+      <div class="search-box">
+        <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
+        <input type="text" class="search-input" id="demoSearch" placeholder="Search 103,755 entries..." autocomplete="off" aria-label="Search the knowledge base" />
+      </div>
+      <div class="latency-badge" id="latencyBadge" aria-live="polite"></div>
+      <div class="search-results" id="searchResults" role="list" aria-live="polite"></div>
+      <div style="text-align: center; margin-top: 8px;">
+        <span style="font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim);">Updated nightly &middot; Self-booting &middot; Zero dependencies</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom controls -->
+  <div class="controls">
+    <button class="ctrl-btn" id="prevBtn" disabled aria-label="Previous stage">&larr; Prev</button>
+    <span class="stage-counter" id="stageCounter" aria-live="polite">1 / 5</span>
+    <button class="ctrl-btn primary" id="nextBtn" aria-label="Next stage">Next &rarr;</button>
+    <button class="ctrl-btn" id="autoBtn" aria-label="Toggle auto-play">&#9654; Auto</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // --- Particle System ---
+  var canvas = document.getElementById('particleCanvas');
+  var ctx = canvas.getContext('2d');
+  var W, H;
+  var PARTICLE_COUNT = 1800;
+  var currentStage = 0;
+  var particles = [];
+  var animating = true;
+  var autoPlay = false;
+  var autoTimer = null;
+
+  var CATEGORIES = [
+    { color: [240, 192, 32], weight: 0.15 },
+    { color: [59, 130, 246], weight: 0.45 },
+    { color: [168, 85, 247], weight: 0.25 },
+    { color: [0, 212, 255], weight: 0.1 },
+    { color: [16, 185, 129], weight: 0.05 }
+  ];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function pickCategory() {
+    var r = Math.random(), acc = 0;
+    for (var i = 0; i < CATEGORIES.length; i++) {
+      acc += CATEGORIES[i].weight;
+      if (r <= acc) return CATEGORIES[i].color;
+    }
+    return CATEGORIES[0].color;
+  }
+
+  function createParticle() {
+    var color = pickCategory();
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      tx: Math.random() * W,
+      ty: Math.random() * H,
+      r: Math.random() * 2 + 0.5,
+      color: color,
+      alpha: Math.random() * 0.6 + 0.2,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.005 + 0.002
+    };
+  }
+
+  function initParticles() {
+    particles = [];
+    for (var i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push(createParticle());
+    }
+  }
+
+  function setStageTargets(stage) {
+    var cx = W / 2, cy = H / 2;
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      var angle, dist, maxR, d, section, groupAngle, spread, baseX, baseY;
+
+      switch (stage) {
+        case 0:
+          p.tx = Math.random() * W;
+          p.ty = Math.random() * H;
+          break;
+
+        case 1:
+          angle = (i / particles.length) * Math.PI * 2 + Math.random() * 0.3;
+          dist = 40 + Math.random() * Math.min(W, H) * 0.25;
+          p.tx = cx + Math.cos(angle) * dist;
+          p.ty = cy + Math.sin(angle) * dist;
+          break;
+
+        case 2:
+          angle = (i / particles.length) * Math.PI * 2;
+          maxR = Math.min(W, H) * 0.14;
+          d = Math.sqrt(Math.random()) * maxR;
+          p.tx = cx + Math.cos(angle + i * 0.01) * d;
+          p.ty = cy + Math.sin(angle + i * 0.01) * d;
+          break;
+
+        case 3:
+          section = i % 4;
+          groupAngle = (section / 4) * Math.PI * 2;
+          spread = Math.min(W, H) * 0.08;
+          baseX = cx + Math.cos(groupAngle) * Math.min(W, H) * 0.12;
+          baseY = cy + Math.sin(groupAngle) * Math.min(W, H) * 0.12;
+          p.tx = baseX + (Math.random() - 0.5) * spread;
+          p.ty = baseY + (Math.random() - 0.5) * spread;
+          break;
+
+        case 4:
+          p.tx = Math.random() * W;
+          p.ty = Math.random() * H;
+          break;
+      }
+    }
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, W, H);
+
+    if (currentStage >= 1 && currentStage <= 3) {
+      var cx = W / 2, cy = H / 2;
+      var grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.4);
+      grd.addColorStop(0, 'rgba(0, 212, 255, 0.04)');
+      grd.addColorStop(0.5, 'rgba(168, 85, 247, 0.02)');
+      grd.addColorStop(1, 'transparent');
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      var ease = 0.015 + (currentStage === 0 ? 0 : 0.008);
+      p.x += (p.tx - p.x) * ease + p.vx + Math.sin(p.phase) * 0.15;
+      p.y += (p.ty - p.y) * ease + p.vy + Math.cos(p.phase) * 0.15;
+      p.phase += p.speed;
+
+      if (currentStage === 0 || currentStage === 4) {
+        if (p.x < -10 || p.x > W + 10) p.tx = Math.random() * W;
+        if (p.y < -10 || p.y > H + 10) p.ty = Math.random() * H;
+      }
+
+      var rgb = p.color;
+      var glowSize = p.r * (currentStage >= 2 ? 3 : 2);
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, glowSize, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ', ' + (p.alpha * 0.15) + ')';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ', ' + p.alpha + ')';
+      ctx.fill();
+    }
+
+    if (animating) requestAnimationFrame(drawParticles);
+  }
+
+  // --- Stage Management ---
+  var stages = document.querySelectorAll('.stage-content');
+  var dots = document.querySelectorAll('.stage-dot');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var autoBtn = document.getElementById('autoBtn');
+  var counter = document.getElementById('stageCounter');
+
+  function goToStage(n) {
+    if (n < 0 || n > 4) return;
+    currentStage = n;
+    for (var i = 0; i < stages.length; i++) {
+      if (i === n) stages[i].classList.add('visible');
+      else stages[i].classList.remove('visible');
+    }
+    for (var j = 0; j < dots.length; j++) {
+      dots[j].classList.toggle('active', j === n);
+      dots[j].classList.toggle('completed', j < n);
+      dots[j].setAttribute('aria-selected', j === n ? 'true' : 'false');
+      dots[j].setAttribute('tabindex', j === n ? '0' : '-1');
+    }
+    prevBtn.disabled = n === 0;
+    nextBtn.textContent = n === 4 ? 'Restart' : 'Next \u2192';
+    counter.textContent = (n + 1) + ' / 5';
+
+    setStageTargets(n);
+    triggerStageEffects(n);
+  }
+
+  function triggerStageEffects(n) {
+    if (n === 0) {
+      var countEls = document.querySelectorAll('#stage0 [data-count]');
+      for (var i = 0; i < countEls.length; i++) {
+        animateCount(countEls[i], parseInt(countEls[i].dataset.count));
+      }
+    }
+
+    if (n === 1) {
+      setTimeout(function() {
+        document.getElementById('barRaw').classList.add('animate');
+        setTimeout(function() { document.getElementById('barRvf').classList.add('animate'); }, 400);
+      }, 300);
+    } else {
+      document.getElementById('barRaw').classList.remove('animate');
+      document.getElementById('barRvf').classList.remove('animate');
+    }
+
+    if (n === 2) {
+      buildSegments();
+      lightUpSegments();
+      showKeySegments();
+    }
+
+    if (n === 3) {
+      animateWasmFlow();
+    }
+
+    if (n === 4) {
+      document.getElementById('demoSearch').value = '';
+      document.getElementById('searchResults').textContent = '';
+      document.getElementById('latencyBadge').classList.remove('visible');
+      setTimeout(function() { document.getElementById('demoSearch').focus(); }, 500);
+    }
+  }
+
+  function animateCount(el, target) {
+    var duration = 1500;
+    var start = performance.now();
+    function tick(now) {
+      var t = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString();
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = target.toLocaleString();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function buildSegments() {
+    var ring = document.getElementById('segmentRing');
+    if (ring.children.length > 0) return;
+    var ringR = 130;
+    for (var i = 0; i < 24; i++) {
+      var angle = (i / 24) * Math.PI * 2 - Math.PI / 2;
+      var x = Math.cos(angle) * ringR + ringR + 10;
+      var y = Math.sin(angle) * ringR + ringR + 10;
+      var seg = document.createElement('div');
+      seg.className = 'segment';
+      var isKey = i <= 6;
+      seg.style.cssText = 'left:' + x + 'px; top:' + y + 'px; color: ' + (isKey ? 'var(--cyan)' : 'var(--purple)') + '; background: ' + (isKey ? 'var(--cyan)' : 'var(--purple)') + ';';
+      seg.dataset.index = i;
+      ring.appendChild(seg);
+    }
+  }
+
+  function lightUpSegments() {
+    var segs = document.querySelectorAll('#segmentRing .segment');
+    for (var i = 0; i < segs.length; i++) {
+      (function(seg, delay) {
+        setTimeout(function() { seg.classList.add('lit'); }, delay);
+      })(segs[i], i * 120);
+    }
+  }
+
+  function showKeySegments() {
+    var badges = document.querySelectorAll('#keySegments .key-seg');
+    for (var i = 0; i < badges.length; i++) {
+      (function(badge, delay) {
+        setTimeout(function() { badge.classList.add('visible'); }, delay);
+      })(badges[i], 600 + i * 150);
+    }
+  }
+
+  function animateWasmFlow() {
+    var flow = document.getElementById('wasmFlow');
+    var steps = flow.querySelectorAll('.flow-step');
+    var arrows = flow.querySelectorAll('.flow-arrow');
+
+    for (var i = 0; i < steps.length; i++) steps[i].classList.remove('visible');
+    for (var j = 0; j < arrows.length; j++) arrows[j].classList.remove('visible');
+
+    for (var k = 0; k < steps.length; k++) {
+      (function(step, arrow, idx) {
+        setTimeout(function() {
+          step.classList.add('visible');
+          if (idx > 0 && arrow) arrow.classList.add('visible');
+        }, idx * 500);
+      })(steps[k], arrows[k - 1], k);
+    }
+  }
+
+  // --- Live demo search ---
+  var MOCK_ENTRIES = [
+    { text: 'AIMDS: 3-layer AI defence pipeline with 25-level meta-learning', score: 0.97, cat: 'security' },
+    { text: 'HNSW graph structure: M=16 bidirectional connections per node', score: 0.95, cat: 'architecture' },
+    { text: 'RVF cognitive container: 24 self-describing segment types', score: 0.94, cat: 'architecture' },
+    { text: 'Scalar quantization: Float32 to Int8 with 97% recall preservation', score: 0.93, cat: 'vectors' },
+    { text: 'SONA: Self-optimizing neural architecture with sub-millisecond learning', score: 0.92, cat: 'neural' },
+    { text: 'Claude Flow V3: 96 MCP tools, 60+ agent types, hierarchical swarms', score: 0.91, cat: 'agents' },
+    { text: 'MinCut graph partitioning for self-healing distributed AI systems', score: 0.90, cat: 'architecture' },
+    { text: 'WASM kernel: 41KB search engine running entirely in the browser', score: 0.89, cat: 'wasm' },
+    { text: 'RuVector-Postgres: 290+ SQL functions replacing pgvector', score: 0.88, cat: 'database' },
+    { text: 'Micro-HNSW: 7.2KB neuromorphic WASM with spiking neural networks', score: 0.87, cat: 'neural' },
+    { text: 'Agentic Engineering Stack: 80+ Rust crates powering the ecosystem', score: 0.86, cat: 'architecture' },
+    { text: 'Elastic Weight Consolidation prevents catastrophic forgetting', score: 0.85, cat: 'neural' },
+    { text: 'Byzantine fault-tolerant consensus for multi-agent coordination', score: 0.84, cat: 'agents' },
+    { text: 'Flash Attention: 2.49x-7.47x speedup for transformer operations', score: 0.83, cat: 'performance' },
+    { text: 'Knowledge Base v4: 269 expert-curated entries across 12 domains', score: 0.82, cat: 'knowledge' },
+    { text: 'Poincare ball model for hierarchical embedding geometry', score: 0.81, cat: 'vectors' },
+    { text: 'ONNX runtime integration for 75x faster embeddings', score: 0.80, cat: 'performance' },
+    { text: 'Agent memory: hybrid vector plus key-value store with HNSW indexing', score: 0.79, cat: 'agents' },
+    { text: 'Louvain community detection for natural module boundaries', score: 0.78, cat: 'architecture' },
+    { text: 'RVF nightly build pipeline: automated quality scoring and indexing', score: 0.77, cat: 'devops' }
+  ];
+
+  var demoSearch = document.getElementById('demoSearch');
+  var searchResults = document.getElementById('searchResults');
+  var latencyBadge = document.getElementById('latencyBadge');
+
+  var searchDebounce = null;
+  demoSearch.addEventListener('input', function() {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(function() { performSearch(demoSearch.value); }, 120);
+  });
+
+  function performSearch(query) {
+    if (!query.trim()) {
+      searchResults.textContent = '';
+      latencyBadge.classList.remove('visible');
+      return;
+    }
+
+    var startTime = performance.now();
+    var q = query.toLowerCase();
+
+    var scored = [];
+    for (var i = 0; i < MOCK_ENTRIES.length; i++) {
+      var e = MOCK_ENTRIES[i];
+      var text = e.text.toLowerCase();
+      var matchScore = 0;
+      var words = q.split(/\s+/);
+      for (var w = 0; w < words.length; w++) {
+        if (text.indexOf(words[w]) !== -1) matchScore += 0.2;
+      }
+      if (text.indexOf(q) !== -1) matchScore += 0.5;
+      var finalScore = Math.min(e.score, e.score * (0.5 + matchScore));
+      if (finalScore > e.score * 0.4) {
+        scored.push({ text: e.text, score: e.score, cat: e.cat, matchScore: finalScore });
+      }
+    }
+
+    scored.sort(function(a, b) { return b.matchScore - a.matchScore; });
+    scored = scored.slice(0, 5);
+
+    var elapsed = performance.now() - startTime;
+
+    latencyBadge.textContent = elapsed.toFixed(2) + 'ms \u2022 ' + scored.length + ' results \u2022 client-side';
+    latencyBadge.classList.add('visible');
+
+    // Build results using safe DOM methods
+    searchResults.textContent = '';
+    for (var j = 0; j < scored.length; j++) {
+      (function(entry, index) {
+        var div = document.createElement('div');
+        div.className = 'result-item';
+        div.setAttribute('role', 'listitem');
+
+        var scoreSpan = document.createElement('span');
+        scoreSpan.className = 'result-score';
+        scoreSpan.textContent = entry.score.toFixed(2);
+
+        var textSpan = document.createElement('span');
+        textSpan.className = 'result-text';
+        textSpan.textContent = entry.text;
+
+        var catSpan = document.createElement('span');
+        catSpan.className = 'result-category';
+        catSpan.textContent = entry.cat;
+
+        div.appendChild(scoreSpan);
+        div.appendChild(textSpan);
+        div.appendChild(catSpan);
+        searchResults.appendChild(div);
+
+        setTimeout(function() { div.classList.add('visible'); }, index * 80);
+      })(scored[j], j);
+    }
+  }
+
+  // --- Controls ---
+  prevBtn.addEventListener('click', function() { goToStage(currentStage - 1); });
+  nextBtn.addEventListener('click', function() {
+    if (currentStage === 4) goToStage(0);
+    else goToStage(currentStage + 1);
+  });
+
+  for (var d = 0; d < dots.length; d++) {
+    (function(dot) {
+      dot.addEventListener('click', function() { goToStage(parseInt(dot.dataset.stage)); });
+    })(dots[d]);
+  }
+
+  autoBtn.addEventListener('click', function() {
+    autoPlay = !autoPlay;
+    autoBtn.textContent = autoPlay ? '\u23F8 Pause' : '\u25B6 Auto';
+    if (autoPlay) {
+      autoTimer = setInterval(function() {
+        if (currentStage < 4) goToStage(currentStage + 1);
+        else { autoPlay = false; autoBtn.textContent = '\u25B6 Auto'; clearInterval(autoTimer); }
+      }, 6000);
+    } else {
+      clearInterval(autoTimer);
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (document.activeElement === demoSearch) return;
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goToStage(Math.min(currentStage + 1, 4)); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goToStage(Math.max(currentStage - 1, 0)); }
+  });
+
+  // --- Init ---
+  resize();
+  window.addEventListener('resize', function() {
+    resize();
+    setStageTargets(currentStage);
+  });
+  initParticles();
+  setStageTargets(0);
+  drawParticles();
+  triggerStageEffects(0);
+})();
+</script>
+</body>
+</html>

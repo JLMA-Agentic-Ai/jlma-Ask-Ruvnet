@@ -474,6 +474,7 @@ body {
 .capability-tile:nth-child(2) { animation-delay: 0.25s; }
 .capability-tile:nth-child(3) { animation-delay: 0.35s; }
 .capability-tile:nth-child(4) { animation-delay: 0.45s; }
+.capability-tile:nth-child(5) { animation-delay: 0.55s; }
 
 /* Staggered entrance for prompt pills */
 .prompt-pill {
@@ -2208,6 +2209,14 @@ body > div > svg[id^="mermaid-"],
   box-shadow: 0 8px 24px rgba(245,158,11,0.25), inset 0 1px 0 rgba(245,158,11,0.2);
 }
 
+.tile-icon-wrapper.tile-rvf {
+  background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(168,85,247,0.15));
+  box-shadow: 0 4px 12px rgba(0,212,255,0.12), inset 0 1px 0 rgba(0,212,255,0.15);
+}
+.capability-tile:hover .tile-icon-wrapper.tile-rvf {
+  box-shadow: 0 8px 24px rgba(0,212,255,0.25), inset 0 1px 0 rgba(0,212,255,0.2);
+}
+
 .tile-icon {
   font-size: 1.4rem;
 }
@@ -2484,11 +2493,13 @@ body > div > svg[id^="mermaid-"],
 .light-mode .capability-tile:nth-child(2):hover { box-shadow: 0 8px 25px rgba(37,99,235,0.12), 0 0 0 1px rgba(37,99,235,0.2); }
 .light-mode .capability-tile:nth-child(3):hover { box-shadow: 0 8px 25px rgba(124,58,237,0.12), 0 0 0 1px rgba(124,58,237,0.2); }
 .light-mode .capability-tile:nth-child(4):hover { box-shadow: 0 8px 25px rgba(217,119,6,0.12), 0 0 0 1px rgba(217,119,6,0.2); }
+.light-mode .capability-tile:nth-child(5):hover { box-shadow: 0 8px 25px rgba(0,180,220,0.12), 0 0 0 1px rgba(0,180,220,0.2); }
 
 .light-mode .tile-icon-wrapper.tile-videos { background: rgba(234,88,12,0.1); }
 .light-mode .tile-icon-wrapper.tile-decks { background: rgba(37,99,235,0.1); }
 .light-mode .tile-icon-wrapper.tile-universe { background: rgba(124,58,237,0.1); }
 .light-mode .tile-icon-wrapper.tile-kb { background: rgba(217,119,6,0.1); }
+.light-mode .tile-icon-wrapper.tile-rvf { background: rgba(0,180,220,0.1); }
 
 .light-mode .resource-card {
   background: rgba(255, 255, 255, 0.7);

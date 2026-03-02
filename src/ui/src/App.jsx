@@ -98,6 +98,11 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
         <span className="tile-label">Knowledge Base</span>
         <span className="tile-count">{entryCount.toLocaleString()}+ Entries</span>
       </button>
+      <button className="capability-tile" onClick={() => onCapability('rvf-engine')}>
+        <span className="tile-icon-wrapper tile-rvf"><span className="tile-icon">&#9889;</span></span>
+        <span className="tile-label">RVF Engine</span>
+        <span className="tile-count">Live Demo</span>
+      </button>
     </div>
 
     {/* Prompt Starters */}
@@ -743,6 +748,9 @@ function App() {
       case 'kb':
         fetchKnowledge();
         break;
+      case 'rvf-engine':
+        setCanvasContent({ type: 'iframe', content: '/rvf-engine.html', title: 'RVF Engine Demo', action: 'rvf-engine' });
+        break;
       default:
         break;
     }
@@ -858,6 +866,10 @@ function App() {
                         <button className="capability-tile" onClick={() => { handleCapability('kb'); setShowResourceDrawer(false); }}>
                           <span className="tile-icon-wrapper tile-kb"><span className="tile-icon">📚</span></span>
                           <span className="tile-label">KB</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('rvf-engine'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-rvf"><span className="tile-icon">&#9889;</span></span>
+                          <span className="tile-label">RVF</span>
                         </button>
                       </div>
                       <div className="resource-grid resource-grid-compact">
