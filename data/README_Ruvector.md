@@ -1,6 +1,6 @@
 ---
 created: 2025-12-03
-last_modified: 2025-12-03
+last_modified: 2026-02-27
 ---
 
 # RuVector
@@ -232,6 +232,11 @@ Production-validated metrics at hyperscale:
 
 ## How the GNN Works
 
+![GNN Flow: Traditional vs RuVector Self-Learning Search](../assets/diagrams/gnn-flow.svg)
+
+<details>
+<summary>ASCII Version (for AI/accessibility)</summary>
+
 Traditional vector search:
 ```
 Query → HNSW Index → Top K Results
@@ -243,6 +248,8 @@ Query → HNSW Index → GNN Layer → Enhanced Results
                 ↑                      │
                 └──── learns from ─────┘
 ```
+
+</details>
 
 The GNN layer:
 1. Takes your query and its nearest neighbors

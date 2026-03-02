@@ -1,15 +1,15 @@
 ---
 created: 2025-12-03
-last_modified: 2025-12-03
+last_modified: 2026-02-27
 ---
 
-# 🌊 Claude-Flow v2.7.0: Enterprise AI Orchestration Platform
+# 🌊 Claude-Flow V3: Enterprise AI Orchestration Platform
 
 <div align="center">
 
 [![🌟 Star on GitHub](https://img.shields.io/github/stars/ruvnet/claude-flow?style=for-the-badge&logo=github&color=gold)](https://github.com/ruvnet/claude-flow)
 [![📈 Downloads](https://img.shields.io/npm/dt/claude-flow?style=for-the-badge&logo=npm&color=blue&label=Downloads)](https://www.npmjs.com/package/claude-flow)
-[![📦 Latest Release](https://img.shields.io/npm/v/claude-flow/alpha?style=for-the-badge&logo=npm&color=green&label=v2.7.0-alpha.10)](https://www.npmjs.com/package/claude-flow)
+[![📦 Latest Release](https://img.shields.io/npm/v/claude-flow/alpha?style=for-the-badge&logo=npm&color=green&label=v3.1.0-alpha)](https://www.npmjs.com/package/claude-flow)
 [![⚡ Claude Code](https://img.shields.io/badge/Claude%20Code-SDK%20Integrated-green?style=for-the-badge&logo=anthropic)](https://github.com/ruvnet/claude-flow)
 [![🏛️ Agentics Foundation](https://img.shields.io/badge/Agentics-Foundation-crimson?style=for-the-badge&logo=openai)](https://discord.com/invite/dfxmpwkG2D)
 [![🛡️ MIT License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge&logo=opensourceinitiative)](https://opensource.org/licenses/MIT)
@@ -18,7 +18,7 @@ last_modified: 2025-12-03
 
 ## 🌟 **Overview**
 
-**Claude-Flow v2.7** is an enterprise-grade AI orchestration platform that combines **hive-mind swarm intelligence**, **persistent memory**, and **100+ advanced MCP tools** to revolutionize AI-powered development workflows.
+**Claude-Flow V3 (3.1.0-alpha)** is an enterprise-grade AI orchestration platform that combines **hive-mind swarm intelligence**, **persistent memory**, and **100+ advanced MCP tools** to revolutionize AI-powered development workflows.
 
 ### 🎯 **Key Features**
 
@@ -69,7 +69,7 @@ npx claude-flow@alpha --help
 # Or install globally
 npm install -g claude-flow@alpha
 claude-flow --version
-# v2.7.0-alpha.10
+# v3.1.0-alpha
 ```
 
 ---
@@ -98,7 +98,7 @@ Claude-Flow includes **25 specialized skills** that activate automatically via n
 
 ---
 
-## 🆕 **What's New in v2.7.0-alpha.10**
+## 🆕 **What's New in v3.1.0-alpha**
 
 ### ✅ **Semantic Search Fixed**
 Critical bug fix for semantic search returning 0 results:
@@ -122,7 +122,7 @@ npx claude-flow@alpha memory query "configuration" --namespace semantic --reason
 # ✅ Found 3 results (semantic search) in 2ms
 ```
 
-📚 **Release Notes**: [v2.7.0-alpha.10](./docs/RELEASE-NOTES-v2.7.0-alpha.10.md)
+📚 **Release Notes**: [v3.1.0-alpha](./docs/RELEASE-NOTES-v3.1.0-alpha.md)
 
 ## 🧠 **Memory System Commands**
 
@@ -453,6 +453,6 @@ MIT License - see [LICENSE](./LICENSE) for details
 
 **Built with ❤️ by [rUv](https://github.com/ruvnet) | Powered by Revolutionary AI**
 
-*v2.7.0-alpha.10 - Semantic Search Fixed + ReasoningBank Node.js Backend*
+*v3.1.0-alpha - Advanced Agent Orchestration + Vector Intelligence*
 
 </div>
