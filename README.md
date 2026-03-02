@@ -1,12 +1,29 @@
 # Ask-RuvNet
 
-> Updated: 2026-03-01 | Version 3.1.0
+> Updated: 2026-03-02 | Version 3.2.0
 
 **The front door to one of the most ambitious open-source AI architecture projects ever built.**
 
-Ask-RuvNet is a RAG-powered knowledge assistant that makes 150+ interconnected repositories, 26 architecture decision records, and years of engineering decisions searchable, explainable, and visual. It exists because understanding an ecosystem this large should not require reading 170,000 documents.
+Ask-RuvNet is a RAG-powered knowledge assistant that makes 155+ interconnected repositories, 26 architecture decision records, and years of engineering decisions searchable, explainable, and visual. It exists because understanding an ecosystem this large should not require reading 103,000+ curated documents.
 
 **Production:** https://ask-ruvnet-production.up.railway.app
+
+---
+
+## What's New in v3.2.0
+
+### RuvectorStore: Zero External Database Dependencies
+
+v3.2 replaces the external Neon PostgreSQL database with **RuvectorStore**, an embedded HNSW-indexed binary vector database. The entire 103,755-entry knowledge base ships inside the Docker container — no external database connection required. This eliminates connection timeouts, SSL configuration, and database hosting costs. The Neon database has been sunset.
+
+### Database Cleanup and Curation
+
+The knowledge base was cleaned from 135,632 raw entries down to 103,755 curated entries:
+- Removed 3,154 garbage-tier entries, 24,480 duplicates, and 1,397 low-quality fragments
+- Classified all entries by knowledge type (procedure, reference, concept, troubleshooting, example, decision, pattern)
+- 100% embedding coverage (384-dim, all-MiniLM-L6-v2)
+- 323 expert-curated gold teaching entries (avg quality 97.8/100)
+- 155+ repos represented across 24 document types
 
 ---
 
@@ -14,15 +31,15 @@ Ask-RuvNet is a RAG-powered knowledge assistant that makes 150+ interconnected r
 
 ### Resource Drawer
 
-In v3.0, once a user sent their first message, the landing screen (capability tiles, resource documents, prompt starters) disappeared with no way to access them again short of starting a new conversation. v3.1 adds a **Resource Drawer** — a collapsible panel accessible via a folder icon (📂) in the chat input area. The drawer contains all four capability tiles (Videos, Decks, Knowledge Universe, KB) and all five resource documents (four PDFs + one video), available at any point during a conversation. Tapping any item opens it and auto-closes the drawer.
+v3.1 adds a **Resource Drawer** — a collapsible panel accessible via a folder icon in the chat input area. The drawer contains all four capability tiles (Videos, Decks, Knowledge Universe, KB) and all five resource documents (four PDFs + one video), available at any point during a conversation.
 
 ### Light Mode Contrast Fixes
 
-Light mode in v3.0 had washed-out borders on source cards, action buttons, follow-up pills, and the input field. v3.1 adds targeted CSS overrides for `.light-mode` elements with proper border colors (`#d6d3d1`), subtle shadows, and improved text contrast so the interface remains readable and visually distinct in both themes.
+Targeted CSS overrides for `.light-mode` elements with proper border colors, subtle shadows, and improved text contrast.
 
 ### Mobile Polish
 
-The resource drawer adapts to mobile viewports (375px–768px) with a compact 4-icon capability row and stacked resource cards. Canvas views on mobile now use a fullscreen overlay (`position: fixed; z-index: 100`) instead of the desktop split-panel layout, preventing the chat from being squeezed to unusable widths on small screens.
+Resource drawer adapts to mobile viewports (375px–768px). Canvas views on mobile use a fullscreen overlay instead of the desktop split-panel layout.
 
 ---
 
@@ -58,7 +75,7 @@ The following features from v2.x remain fully intact in v3.0:
 
 - **Rich responses with source citations** -- inline GitHub links, doc-type awareness, Related Resources and Explore Further sections
 - **Source cards** -- clickable cards with doc-type badges, relevance scores, and direct GitHub links
-- **Evolutionary knowledge ingestion** -- 13,192 chunks across 173 repositories and 3 GitHub organizations
+- **Evolutionary knowledge ingestion** -- 13,192 chunks across 155+ repositories and 3 GitHub organizations
 - **Full pipeline command** -- `npm run kb:full` runs the complete ingestion pipeline
 - **Gemini visual integration** -- Visualize button generates architectural diagrams via Gemini 2.0 Flash
 - **Markdown link styling** -- properly styled, clickable hyperlinks in chat responses
@@ -69,7 +86,7 @@ The following features from v2.x remain fully intact in v3.0:
 
 Ruben Cohen (rUv) has spent years building something unusual: not a single AI product, but an entire *ecosystem* of interlocking systems that span agent orchestration, self-learning vector databases, graph neural networks, cognitive containers, distributed swarm intelligence, and neuromorphic computing.
 
-Across **173 repositories** in three GitHub organizations (ruvnet, openclaw, VibiumDev), the RuVNet ecosystem covers:
+Across **155+ repositories** in three GitHub organizations (ruvnet, openclaw, VibiumDev), the RuVNet ecosystem covers:
 
 - **Agent orchestration** -- Claude Flow v3, ruv-swarm, agentic-flow
 - **Vector databases** -- RuVector (PostgreSQL-native, WASM, neuromorphic)
@@ -160,11 +177,11 @@ Ask-RuvNet sits at the **Applications** layer. It reaches down through every lay
                      │
                      ▼
   ┌──────────────────────────────────────────────┐
-  │       Neon PostgreSQL + pgvector (HNSW)       │
+  │       RuvectorStore (embedded HNSW binary)    │
   │                                              │
-  │   170,542+ entries across ask_ruvnet schema  │
-  │   Gold-tier quality gate (avg 92.1/100)      │
-  │   HNSW index (m=16, ef_construction=64)      │
+  │   103,755 curated entries (384d embeddings)  │
+  │   323 gold teaching + 103,432 architecture   │
+  │   HNSW-indexed, zero external DB dependency  │
   └──────────────────┬───────────────────────────┘
                      │
                      ▼
@@ -193,7 +210,7 @@ Ask-RuvNet sits at the **Applications** layer. It reaches down through every lay
   ┌──────────────────────────────────────────────┐
   │         LLM Fallback Chain (5 providers)      │
   │                                              │
-  │   groq-free ──► openai ──► anthropic         │
+  │   openai ──► groq-free ──► anthropic          │
   │                               │              │
   │            openrouter ◄───────┘              │
   │                │                             │
@@ -344,19 +361,18 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/special \
 
 | Metric | Value |
 |--------|-------|
-| Total KB entries | 170,542+ |
-| Evolutionary knowledge chunks | 13,192 |
-| Repositories ingested | 173 |
+| Total KB entries | 103,755 (curated) |
+| Gold teaching entries | 323 (avg quality 97.8/100) |
+| Architecture docs | 103,432 |
+| Repositories represented | 155+ |
 | GitHub organizations | 3 (ruvnet, openclaw, VibiumDev) |
 | Architecture Decision Records | 26 |
-| Quality tier | Gold |
-| Average quality score | 92.1 / 100 |
+| Document types | 24 |
 | Embedding model | ONNX all-MiniLM-L6-v2 |
 | Embedding dimensions | 384 |
-| Index type | HNSW (m=16, ef_construction=64) |
-| Database | Neon PostgreSQL + pgvector |
-| Schema | `ask_ruvnet` |
-| Primary table | `architecture_docs` |
+| Index type | HNSW (embedded binary) |
+| Storage | RuvectorStore (`.ruvector/knowledge-base/`) |
+| Storage format | Binary vectors + JSON metadata |
 
 ### What Gets Ingested
 
@@ -372,7 +388,7 @@ The knowledge base is not just a dump of README files. It includes multiple laye
   │           Knowledge Ingestion Ecosystem      │
   │                                             │
   │  Layer 1: Repository Content                │
-  │  ├── README files (173 repos)               │
+  │  ├── README files (155+ repos)               │
   │  ├── Code structure and API surfaces        │
   │  ├── Package manifests and dependencies     │
   │  └── Configuration patterns                 │
@@ -527,9 +543,9 @@ Ask-RuvNet automatically detects all configured API keys and builds a resilient 
 
 ```
   ┌─────────────┐    fail    ┌──────────┐    fail
-  │  groq-free  │ ─────────► │  openai   │ ────────►
-  │  llama-3.3  │            │  gpt-4o   │
-  │  (free tier)│            │  (paid)   │
+  │  openai     │ ─────────► │ groq-free │ ────────►
+  │  gpt-4o     │            │ llama-3.3 │
+  │  (paid)     │            │ (free)    │
   └─────────────┘            └──────────┘
 
   ┌─────────────┐    fail    ┌────────────┐    fail
@@ -549,8 +565,8 @@ Ask-RuvNet automatically detects all configured API keys and builds a resilient 
 
 | Priority | Provider | Model | Notes |
 |----------|----------|-------|-------|
-| 1 | groq-free | llama-3.3-70b-versatile | Free tier, 1M tokens/day |
-| 2 | openai | gpt-4o | Paid |
+| 1 | openai | gpt-4o | Paid, primary |
+| 2 | groq-free | llama-3.3-70b-versatile | Free tier, 1M tokens/day |
 | 3 | anthropic | claude-sonnet-4 | Paid |
 | 4 | openrouter | anthropic/claude-sonnet-4 | Multi-model gateway |
 | 5 | deepseek | deepseek-chat | Paid |
@@ -611,7 +627,7 @@ curl https://ask-ruvnet-production.up.railway.app/health
 ```
 
 ```json
-{ "status": "ok", "version": "3.1.0" }
+{ "status": "ok", "version": "3.2.0" }
 ```
 
 ### POST /api/chat
@@ -693,15 +709,13 @@ Submit feedback to improve answer quality.
 
 ### Required
 
-| Variable | Description |
-|----------|-------------|
-| `DATABASE_URL` | Neon PostgreSQL connection string. Must end with `?sslmode=require`. |
+No external database is required. The knowledge base is embedded in the application.
 
 ### LLM Providers (at least one required)
 
 | Variable | Description |
 |----------|-------------|
-| `GROQ_API_KEY` | Groq free tier (1M tokens/day). Primary provider. |
+| `GROQ_API_KEY` | Groq free tier (1M tokens/day). |
 | `GROQ_PAID_API_KEY` | Groq paid tier. Falls in after free tier. |
 | `OPENAI_API_KEY` | OpenAI (gpt-4o). Also used for special actions. |
 | `ANTHROPIC_API_KEY` | Anthropic. Also accepts `CLAUDE_API_KEY`. |
@@ -727,8 +741,7 @@ Submit feedback to improve answer quality.
 ### Prerequisites
 
 - Node.js 22+
-- A Neon PostgreSQL database with the `ask_ruvnet` schema and `pgvector` extension
-- At least one LLM API key (Groq free tier recommended: https://console.groq.com)
+- At least one LLM API key (OpenAI or Groq free tier recommended)
 
 ### Setup
 
@@ -742,9 +755,12 @@ npm install
 # Install and build the React frontend
 npm run build
 
+# Extract the knowledge base (shipped as split tarballs)
+cat ruvector-kb.tar.gz.part-* | tar xzf -
+
 # Create .env with your credentials
 cp .env.example .env
-# Edit .env: set DATABASE_URL and at least one LLM API key
+# Edit .env: set at least one LLM API key
 
 # Start the server
 node src/server/app.js
@@ -783,8 +799,8 @@ The app runs at http://localhost:3000. Express serves the React frontend from `s
 
 1. Push to `main` triggers Railway auto-deploy via GitHub integration
 2. Railway builds the Docker image from `Dockerfile`
-3. Container starts via `scripts/deployment/start-railway.sh`
-4. Startup script verifies `DATABASE_URL`, then runs `node src/server/app.js`
+3. Dockerfile reassembles and extracts the RuvectorStore knowledge base from split tarballs
+4. Container starts via `scripts/deployment/start-railway.sh` → `node src/server/app.js`
 
 ### Verifying a Deployment
 
@@ -817,39 +833,36 @@ git push origin main
 
 ```
 Ask-Ruvnet/
+├── .ruvector/knowledge-base/          # Embedded vector DB (extracted from tarballs)
+│   ├── vectors.bin                    # 152MB binary embeddings (384d × 103,755)
+│   ├── metadata.json                  # 191MB entry metadata (titles, content, etc.)
+│   └── manifest.json                  # DB config (dimensions, distance metric)
+├── ruvector-kb.tar.gz.part-aa         # Split tarball part 1 (90MB)
+├── ruvector-kb.tar.gz.part-ab         # Split tarball part 2 (74MB)
 ├── src/
 │   ├── server/
 │   │   ├── app.js                     # Express server, all endpoints
 │   │   └── RuvPersona.js              # LLM system prompt and persona
 │   ├── core/                          # RAG pipeline modules
-│   │   ├── PostgresKnowledgeBase.js   # Neon pgvector interface
+│   │   ├── RuvectorStore.js           # Primary KB backend (HNSW search)
 │   │   ├── HybridSearch.js            # BM25 + semantic fusion
 │   │   ├── QueryExpander.js           # Query expansion
 │   │   ├── ReRanker.js                # 5-factor result reranking
 │   │   ├── ContextCompressor.js       # Context length management
 │   │   ├── MultiHopRetriever.js       # Multi-step query handling
 │   │   ├── RecencyBoost.js            # Boost recent content
-│   │   ├── ContentProcessor.js        # Content preprocessing
-│   │   ├── RuvectorStore.js           # Vector store abstraction
-│   │   └── TextChunker.js             # Document chunking
+│   │   └── ContentProcessor.js        # Content preprocessing
 │   ├── storage/
-│   │   ├── kb-embed.js                # Embedding utilities
-│   │   └── persistent-vector-db.js    # Local vector DB (dev)
-│   ├── connectors/
-│   │   ├── GoogleDriveConnector.js    # Google Drive ingestion
-│   │   ├── LocalDirectoryConnector.js # Local file ingestion
-│   │   └── SourceManager.js           # Source routing
+│   │   ├── kb-embed.js                # Embedding utilities (ONNX)
+│   │   └── persistent-vector-db.js    # PersistentVectorDB engine
 │   └── ui/
 │       ├── src/                       # React source (Vite)
 │       └── dist/                      # Built frontend
 ├── scripts/
 │   ├── deployment/
-│   │   └── start-railway.sh           # Docker startup
-│   ├── ingestion/                     # Data ingestion scripts
-│   ├── ingest-github-evolution.js     # ADR/changelog ingestion
-│   ├── ingest-github-repos.js         # Repository ingestion
-│   ├── kb-architecture-sync.js        # KB sync orchestrator
-│   ├── kb-sweep-updates.js            # Update detector
+│   │   ├── start-railway.sh           # Docker startup
+│   │   └── deploy.sh                  # Version bump + push
+│   ├── export-to-ruvectorstore.mjs    # PostgreSQL → RuvectorStore export
 │   └── build-kb-universe.js           # KB visualization builder
 ├── Dockerfile                         # Railway Docker build
 ├── package.json                       # Version source of truth
@@ -861,7 +874,7 @@ Ask-Ruvnet/
 ## Troubleshooting
 
 **Chat returns generic answers or no results**
-Check that `DATABASE_URL` is set correctly. Common mistake: using a hyphen (`DATABASE-URL`) instead of an underscore (`DATABASE_URL`). Verify with `/api/kb-stats` -- it should show `"connected": true`.
+Check `/api/kb-stats` -- it should show `"connected": true` and `"vectorCount": 103755`. If vectorCount is 0, the RuvectorStore data was not extracted. Run `cat ruvector-kb.tar.gz.part-* | tar xzf -` to extract.
 
 **Frontend not loading**
 Run `npm run build` and check for errors. The `dist/` directory must exist at `src/ui/dist/`.
@@ -878,6 +891,7 @@ The `/api/visualize` endpoint requires a Gemini API key. Check that `GEMINI_API_
 
 | Date | Version | Change |
 |------|---------|--------|
+| 2026-03-02 | 3.2.0 | RuvectorStore replaces Neon PostgreSQL as single source of truth. 103,755 curated entries embedded in container. Zero external DB dependency. KB cleaned from 135K to 103K entries. Neon sunset. |
 | 2026-03-01 | 3.1.0 | Resource drawer for mid-chat access to capabilities and documents, light mode contrast fixes, mobile fullscreen canvas overlay, responsive drawer layout |
 | 2026-03-01 | 3.0.0 | Complete visual overhaul: glassmorphism capability tiles, aurora animated background, stats bar with live ecosystem data, 6 prompt starters, resource documents grid, follow-up suggestion pills, color-coded accent system (red/blue/purple/amber), staggered entrance animations, gradient text and layered shadows |
 | 2026-02-27 | 2.2.0 | Rich responses with source citations, source cards with doc-type badges, 13K evolutionary knowledge chunks, full pipeline command, Gemini visual integration, markdown link styling |
@@ -905,7 +919,7 @@ Ask-RuvNet is part of the broader RuVNet ecosystem. Contributions are welcome --
 
 **Ruben Cohen (rUv)**
 - GitHub: [@ruvnet](https://github.com/ruvnet)
-- Ecosystem: 173 repositories across [ruvnet](https://github.com/ruvnet), [openclaw](https://github.com/openclaw), [VibiumDev](https://github.com/VibiumDev)
+- Ecosystem: 155+ repositories across [ruvnet](https://github.com/ruvnet), [openclaw](https://github.com/openclaw), [VibiumDev](https://github.com/VibiumDev)
 
 **Maintained by:** [@stuinfla](https://github.com/stuinfla)
 **Production:** https://ask-ruvnet-production.up.railway.app

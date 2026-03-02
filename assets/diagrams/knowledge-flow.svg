@@ -57,10 +57,10 @@
 
   <!-- Database -->
   <rect x="60" y="350" width="580" height="110" rx="8" fill="#16213e" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="350" y="375" text-anchor="middle" class="section-title accent-orange">Neon PostgreSQL + pgvector (HNSW)</text>
-  <text x="350" y="400" text-anchor="middle" class="body">170,542+ entries across ask_ruvnet schema</text>
-  <text x="350" y="420" text-anchor="middle" class="body">Gold-tier quality gate (avg 92.1/100)</text>
-  <text x="350" y="440" text-anchor="middle" class="small">HNSW index (m=16, ef_construction=64)</text>
+  <text x="350" y="375" text-anchor="middle" class="section-title accent-orange">RuvectorStore (embedded HNSW binary)</text>
+  <text x="350" y="400" text-anchor="middle" class="body">103,755 curated entries (384d embeddings)</text>
+  <text x="350" y="420" text-anchor="middle" class="body">323 gold teaching + 103,432 architecture</text>
+  <text x="350" y="440" text-anchor="middle" class="small">HNSW-indexed, zero external DB dependency</text>
 
   <!-- Arrow down -->
   <line x1="350" y1="460" x2="350" y2="490" stroke="#00d4ff" stroke-width="2" marker-end="url(#kf-arrow)"/>
@@ -92,7 +92,7 @@
   <!-- LLM Chain -->
   <rect x="60" y="815" width="580" height="100" rx="8" fill="#16213e" stroke="#7c3aed" stroke-width="1.5"/>
   <text x="350" y="840" text-anchor="middle" class="section-title accent-purple">LLM Fallback Chain (5 providers)</text>
-  <text x="350" y="865" text-anchor="middle" class="body">groq-free  -->  openai  -->  anthropic  -->  openrouter  -->  deepseek</text>
+  <text x="350" y="865" text-anchor="middle" class="body">openai  --&gt;  groq-free  --&gt;  anthropic  --&gt;  openrouter  --&gt;  deepseek</text>
   <text x="350" y="900" text-anchor="middle" class="small">Automatic failover on rate limits or errors</text>
 
   <!-- Arrow down -->
