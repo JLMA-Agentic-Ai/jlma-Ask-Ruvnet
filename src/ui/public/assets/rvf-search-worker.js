@@ -121,7 +121,7 @@ async function initialize(baseUrl) {
     // Step 4: Load WASM and build index
     // Try to import the WASM module
     try {
-      const wasmModule = await import('/node_modules/@ruvector/rvf-wasm/pkg/rvf_wasm.mjs');
+      const wasmModule = await import('/assets/wasm/rvf_wasm.mjs');
       wasm = await wasmModule.default();
     } catch {
       // Fallback: build a simple brute-force search (no WASM needed)

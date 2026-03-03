@@ -672,6 +672,79 @@ html, body {
   .controls { gap: 8px; }
   .ctrl-btn { padding: 6px 14px; font-size: 0.7rem; }
 }
+
+/* --- Container Mode --- */
+.container-mode { display: none; position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; }
+.container-mode.active { display: flex; flex-direction: column; }
+.container-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--border); background: var(--surface); }
+.container-brand { font-family: var(--mono); font-weight: 700; font-size: 1.1rem; color: var(--cyan); }
+.container-stats { font-family: var(--mono); font-size: 0.75rem; color: var(--text-dim); }
+.container-tabs { display: flex; gap: 4px; }
+.container-tabs .tab { background: transparent; border: 1px solid var(--border); border-radius: 6px; padding: 6px 16px; color: var(--text-dim); font-family: var(--mono); font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+.container-tabs .tab.active { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); }
+.container-tabs .tab:hover { border-color: var(--text-dim); }
+.container-body { flex: 1; padding: 24px; max-width: 1200px; margin: 0 auto; width: 100%; }
+.container-close { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; color: var(--text-dim); cursor: pointer; font-family: var(--mono); font-size: 0.75rem; }
+.container-close:hover { border-color: var(--red); color: var(--red); }
+
+/* Browse tab */
+.category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 16px; }
+.category-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; cursor: pointer; transition: all 0.2s; }
+.category-card:hover { border-color: var(--cyan); transform: translateY(-2px); }
+.category-card .cat-name { font-weight: 600; margin-bottom: 4px; }
+.category-card .cat-count { font-family: var(--mono); font-size: 0.8rem; color: var(--cyan); }
+
+/* Entry list */
+.entry-list { margin-top: 16px; }
+.entry-item { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 12px; }
+.entry-item:hover { border-color: var(--gold); }
+.entry-item .entry-score { font-family: var(--mono); font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; background: var(--gold-dim); color: var(--gold); flex-shrink: 0; }
+.entry-item .entry-title { flex: 1; font-size: 0.9rem; }
+.entry-item .entry-cat { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); flex-shrink: 0; }
+
+/* Content viewer */
+.content-viewer { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 16px; max-height: 60vh; overflow-y: auto; line-height: 1.7; white-space: pre-wrap; font-size: 0.9rem; }
+.content-viewer-title { font-size: 1.2rem; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+.back-btn { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 4px 12px; color: var(--text-dim); cursor: pointer; font-family: var(--mono); font-size: 0.75rem; margin-bottom: 12px; }
+.back-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* Docs tab */
+.docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 16px; }
+.doc-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; cursor: pointer; transition: all 0.2s; }
+.doc-card:hover { border-color: var(--purple); transform: translateY(-2px); }
+.doc-card .doc-icon { font-size: 1.5rem; margin-bottom: 8px; }
+.doc-card .doc-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; }
+.doc-card .doc-desc { font-size: 0.75rem; color: var(--text-dim); }
+
+/* Doc viewer overlay */
+.doc-viewer-overlay { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.9); }
+.doc-viewer-overlay.active { display: flex; flex-direction: column; }
+.doc-viewer-overlay iframe { flex: 1; border: none; }
+.doc-viewer-close { position: fixed; top: 12px; right: 12px; z-index: 101; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; color: var(--text); cursor: pointer; font-family: var(--mono); }
+
+/* Enter container button */
+.enter-container-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.15)); border: 1px solid var(--cyan); border-radius: 8px; padding: 10px 24px; color: var(--cyan); font-family: var(--mono); font-weight: 600; font-size: 0.85rem; cursor: pointer; margin-top: 16px; transition: all 0.3s; }
+.enter-container-btn:hover { background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(168,85,247,0.25)); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,212,255,0.3); }
+
+/* Search mode toggle */
+.search-mode { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }
+.search-mode label { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); cursor: pointer; padding: 3px 10px; border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s; }
+.search-mode label:has(input:checked) { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+.search-mode input { display: none; }
+
+/* WebLLM answer panel */
+.answer-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 12px; display: none; line-height: 1.6; font-size: 0.9rem; white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+.answer-panel.active { display: block; }
+.answer-panel .answer-header { font-family: var(--mono); font-size: 0.75rem; color: var(--purple); margin-bottom: 8px; }
+.llm-progress { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); text-align: center; margin-top: 8px; display: none; }
+.llm-progress.active { display: block; }
+
+@media (max-width: 768px) {
+  .container-header { flex-direction: column; gap: 8px; }
+  .container-body { padding: 12px; }
+  .category-grid { grid-template-columns: 1fr; }
+  .docs-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -724,7 +797,7 @@ html, body {
   <!-- Stage 3: The Container -->
   <div class="stage-content" id="stage2" role="tabpanel">
     <div class="stage-title">The Container</div>
-    <div class="stage-subtitle">One file. Self-describing. Self-searching. 24 typed segments, each with its own purpose inside a single cognitive container.</div>
+    <div class="stage-subtitle">One file. Self-describing. Self-searching. 12 typed segments containing vectors, HNSW index, metadata, WASM kernel, and gold content &mdash; everything needed for offline cognitive search.</div>
     <div class="container-viz" id="containerViz">
       <div class="segment-ring" id="segmentRing"></div>
       <div class="container-core">
@@ -733,18 +806,16 @@ html, body {
       </div>
     </div>
     <div class="key-segments" id="keySegments">
-      <span class="key-seg highlight">Vectors</span>
-      <span class="key-seg highlight">HNSW Index</span>
-      <span class="key-seg highlight">Metadata</span>
-      <span class="key-seg highlight">WASM Kernel</span>
-      <span class="key-seg">Taxonomy</span>
-      <span class="key-seg">Checksums</span>
-      <span class="key-seg">Provenance</span>
-      <span class="key-seg">Config</span>
-      <span class="key-seg">Stats</span>
-      <span class="key-seg">Categories</span>
-      <span class="key-seg">Embeddings</span>
-      <span class="key-seg">Graph Links</span>
+      <span class="key-seg highlight">VEC_SEG (SQ8)</span>
+      <span class="key-seg highlight">HNSW_SEG (M=16)</span>
+      <span class="key-seg highlight">META_SEG (103K)</span>
+      <span class="key-seg highlight">WASM_SEG (41KB)</span>
+      <span class="key-seg highlight">CONTENT_SEG (339 gold)</span>
+      <span class="key-seg">MODEL_SEG (MiniLM)</span>
+      <span class="key-seg">CONFIG_SEG</span>
+      <span class="key-seg">WITNESS_SEG</span>
+      <span class="key-seg">CRYPTO_SEG</span>
+      <span class="key-seg">TAXONOMY_SEG</span>
     </div>
   </div>
 
@@ -767,17 +838,17 @@ html, body {
       <div class="wasm-flow" id="wasmFlow">
         <span class="flow-step query">"agent security"</span>
         <span class="flow-arrow">&rarr;</span>
-        <span class="flow-step wasm">WASM Encode</span>
+        <span class="flow-step wasm">MiniLM Embed</span>
         <span class="flow-arrow">&rarr;</span>
-        <span class="flow-step hnsw">HNSW Search</span>
+        <span class="flow-step hnsw">WASM HNSW</span>
         <span class="flow-arrow">&rarr;</span>
-        <span class="flow-step result">12 results &lt;1ms</span>
+        <span class="flow-step result">8 results &lt;200ms</span>
       </div>
       <div class="stat-grid">
-        <div class="stat-card"><span class="stat-value">M=16</span><span class="stat-label">HNSW Connections</span></div>
-        <div class="stat-card"><span class="stat-value gold">200</span><span class="stat-label">efConstruction</span></div>
-        <div class="stat-card"><span class="stat-value green">&lt;1ms</span><span class="stat-label">Search Latency</span></div>
-        <div class="stat-card"><span class="stat-value purple">24</span><span class="stat-label">Segment Types</span></div>
+        <div class="stat-card"><span class="stat-value">384</span><span class="stat-label">Embedding Dims</span></div>
+        <div class="stat-card"><span class="stat-value gold">22MB</span><span class="stat-label">Model</span></div>
+        <div class="stat-card"><span class="stat-value green">&lt;200ms</span><span class="stat-label">Total Latency</span></div>
+        <div class="stat-card"><span class="stat-value purple">41KB</span><span class="stat-label">WASM Kernel</span></div>
       </div>
     </div>
   </div>
@@ -787,7 +858,7 @@ html, body {
     <div class="stage-title">Live Demo</div>
     <div class="stage-subtitle">Type anything. Results appear instantly. Pure client-side vector search, powered by the RVF cognitive container.</div>
     <div class="live-demo">
-      <div class="demo-badge">Client-Side &middot; No Server &middot; Zero Dependencies</div>
+      <div class="demo-badge">Semantic Search &middot; Transformers.js &middot; WASM HNSW &middot; Zero Server</div>
       <div class="search-box">
         <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
         <input type="text" class="search-input" id="demoSearch" placeholder="Search 103,755 entries..." autocomplete="off" aria-label="Search the knowledge base" />
@@ -796,6 +867,9 @@ html, body {
       <div class="search-results" id="searchResults" role="list" aria-live="polite"></div>
       <div style="text-align: center; margin-top: 8px;">
         <span style="font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim);">Updated nightly &middot; Self-booting &middot; Zero dependencies</span>
+      </div>
+      <div style="text-align: center; margin-top: 16px;">
+        <button class="enter-container-btn" onclick="enterContainerMode()">&#x1F9E0; Enter Cognitive Container</button>
       </div>
     </div>
   </div>
@@ -807,6 +881,56 @@ html, body {
     <button class="ctrl-btn primary" id="nextBtn" aria-label="Next stage">Next &rarr;</button>
     <button class="ctrl-btn" id="autoBtn" aria-label="Toggle auto-play">&#9654; Auto</button>
   </div>
+</div>
+
+<!-- Cognitive Container Mode -->
+<div class="container-mode" id="containerMode">
+  <div class="container-header">
+    <span class="container-brand">&#x1F9E0; .rvf Cognitive Container</span>
+    <span class="container-stats" id="containerStats">103,755 entries | 384 dims | 32.5 MB</span>
+    <div class="container-tabs">
+      <button class="tab active" data-tab="search" onclick="switchContainerTab('search')">Search</button>
+      <button class="tab" data-tab="browse" onclick="switchContainerTab('browse')">Browse</button>
+      <button class="tab" data-tab="docs" onclick="switchContainerTab('docs')">Documents</button>
+    </div>
+    <button class="container-close" onclick="exitContainerMode()">Exit</button>
+  </div>
+  <div class="container-body">
+    <!-- Search Tab -->
+    <div class="container-tab-content" id="tabSearch">
+      <div class="search-box" style="margin-bottom: 12px;">
+        <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
+        <input type="text" class="search-input" id="containerSearch" placeholder="Semantic search across 103,755 entries..." autocomplete="off" />
+      </div>
+      <div class="search-mode" id="searchModeToggle">
+        <label><input type="radio" name="cSearchMode" value="semantic" checked> Semantic</label>
+        <label><input type="radio" name="cSearchMode" value="keyword"> Keyword</label>
+        <label id="askModeLabel" style="display:none"><input type="radio" name="cSearchMode" value="ask"> Ask Brain</label>
+      </div>
+      <div class="latency-badge visible" id="containerLatency" aria-live="polite"></div>
+      <div class="search-results" id="containerResults" role="list"></div>
+      <div class="answer-panel" id="answerPanel">
+        <div class="answer-header">Brain Response (TinyLlama 1.1B &mdash; local, private)</div>
+        <div id="answerText"></div>
+      </div>
+      <div class="llm-progress" id="llmProgress"></div>
+    </div>
+    <!-- Browse Tab -->
+    <div class="container-tab-content" id="tabBrowse" style="display:none">
+      <button class="back-btn" id="browseback" style="display:none" onclick="showCategories()">&#8592; All Categories</button>
+      <div id="browseContent"></div>
+    </div>
+    <!-- Documents Tab -->
+    <div class="container-tab-content" id="tabDocs" style="display:none">
+      <div class="docs-grid" id="docsGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Document Viewer Overlay -->
+<div class="doc-viewer-overlay" id="docViewer">
+  <button class="doc-viewer-close" onclick="closeDocViewer()">&#x2715; Close</button>
+  <iframe id="docFrame" title="Document viewer"></iframe>
 </div>
 
 <script>
@@ -1019,8 +1143,9 @@ html, body {
       document.getElementById('demoSearch').value = '';
       document.getElementById('searchResults').textContent = '';
       document.getElementById('latencyBadge').classList.remove('visible');
-      loadRealMetadata(); // Load real KB metadata for keyword search
-      initSearchWorker(); // Start loading WASM + quantized vectors
+      loadRealMetadata();
+      initSearchWorker();
+      initEmbeddingWorker();
       setTimeout(function() { document.getElementById('demoSearch').focus(); }, 500);
     }
   }
@@ -1094,6 +1219,9 @@ html, body {
   // --- Live demo search (WASM-powered) ---
   var searchWorker = null;
   var workerReady = false;
+  var embeddingWorker = null;
+  var embeddingReady = false;
+  var searchStartTime = 0;
   var demoSearch = document.getElementById('demoSearch');
   var searchResults = document.getElementById('searchResults');
   var latencyBadge = document.getElementById('latencyBadge');
@@ -1114,9 +1242,14 @@ html, body {
           latencyBadge.classList.add('visible');
           demoSearch.placeholder = 'Search ' + msg.vectorCount.toLocaleString() + ' entries...';
         } else if (msg.type === 'results') {
-          renderResults(msg.results, msg.elapsed, msg.method);
+          var totalElapsed = (performance.now() - searchStartTime).toFixed(1);
+          renderResults(msg.results, totalElapsed, msg.method);
+          if (containerSearchPending) {
+            containerSearchPending = false;
+            renderContainerResults(msg.results, totalElapsed, msg.method);
+          }
         } else if (msg.type === 'error') {
-          latencyBadge.textContent = 'Error: ' + msg.message + ' — falling back to keyword search';
+          latencyBadge.textContent = 'Error: ' + msg.message + ' \u2014 falling back to keyword search';
           latencyBadge.classList.add('visible');
           workerReady = false;
           fallbackMode = true;
@@ -1125,6 +1258,39 @@ html, body {
       searchWorker.postMessage({ type: 'init', baseUrl: '/assets' });
     } catch (err) {
       fallbackMode = true;
+    }
+  }
+
+  function initEmbeddingWorker() {
+    if (embeddingWorker) return;
+    try {
+      embeddingWorker = new Worker('/assets/embedding-worker.js', { type: 'module' });
+      embeddingWorker.onmessage = function(e) {
+        var msg = e.data;
+        if (msg.type === 'progress') {
+          latencyBadge.textContent = msg.message;
+          latencyBadge.classList.add('visible');
+        } else if (msg.type === 'ready') {
+          embeddingReady = true;
+          latencyBadge.textContent = 'Semantic search ready \u2014 AI embeddings active';
+          latencyBadge.classList.add('visible');
+          demoSearch.placeholder = 'Semantic search across 103,755 entries...';
+          initWebLLM();
+        } else if (msg.type === 'embedding') {
+          if (workerReady && searchWorker) {
+            searchWorker.postMessage({ type: 'search', query: msg.embedding, k: 8 });
+          } else {
+            var results = fallbackSearch(demoSearch.value);
+            var elapsed = (performance.now() - searchStartTime).toFixed(1);
+            renderResults(results, elapsed, 'keyword (vectors loading)');
+          }
+        } else if (msg.type === 'error') {
+          console.warn('Embedding error:', msg.message);
+        }
+      };
+      embeddingWorker.postMessage({ type: 'init' });
+    } catch (err) {
+      console.warn('Embedding worker failed:', err);
     }
   }
 
@@ -1196,20 +1362,22 @@ html, body {
       return;
     }
 
-    // Use keyword search against real 103K+ metadata entries
-    // This is honest search — real titles, categories, and packages from the KB
-    if (!realMetadata) {
+    searchStartTime = performance.now();
+
+    if (embeddingReady && embeddingWorker) {
+      latencyBadge.textContent = 'Embedding query...';
+      latencyBadge.classList.add('visible');
+      embeddingWorker.postMessage({ type: 'embed', text: query });
+    } else if (realMetadata) {
+      var results = fallbackSearch(query);
+      var elapsed = (performance.now() - searchStartTime).toFixed(1);
+      var methodLabel = embeddingReady ? 'keyword' : 'keyword (loading AI model...)';
+      renderResults(results, elapsed, methodLabel);
+    } else {
       loadRealMetadata().then(function() { performSearch(query); });
       latencyBadge.textContent = 'Loading knowledge base...';
       latencyBadge.classList.add('visible');
-      return;
     }
-
-    var startTime = performance.now();
-    var results = fallbackSearch(query);
-    var elapsed = (performance.now() - startTime).toFixed(2);
-    var methodLabel = workerReady ? 'keyword + WASM HNSW loaded' : 'keyword';
-    renderResults(results, elapsed, methodLabel);
   }
 
   function renderResults(results, elapsed, method) {
@@ -1278,6 +1446,309 @@ html, body {
     if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goToStage(Math.min(currentStage + 1, 4)); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); goToStage(Math.max(currentStage - 1, 0)); }
   });
+
+  // --- Container Mode ---
+  var containerActive = false;
+  var goldContent = null;
+  var containerSearchPending = false;
+
+  function enterContainerMode() {
+    containerActive = true;
+    document.getElementById('containerMode').classList.add('active');
+    var cSearch = document.getElementById('containerSearch');
+    var cDebounce = null;
+    cSearch.addEventListener('input', function() {
+      clearTimeout(cDebounce);
+      cDebounce = setTimeout(function() { containerPerformSearch(cSearch.value); }, 150);
+    });
+    if (realMetadata) buildCategories();
+    else loadRealMetadata().then(buildCategories);
+    buildDocsGrid();
+  }
+  window.enterContainerMode = enterContainerMode;
+
+  function exitContainerMode() {
+    containerActive = false;
+    document.getElementById('containerMode').classList.remove('active');
+  }
+  window.exitContainerMode = exitContainerMode;
+
+  function switchContainerTab(tab) {
+    document.querySelectorAll('.container-tabs .tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelector('.container-tabs .tab[data-tab="' + tab + '"]').classList.add('active');
+    document.getElementById('tabSearch').style.display = tab === 'search' ? '' : 'none';
+    document.getElementById('tabBrowse').style.display = tab === 'browse' ? '' : 'none';
+    document.getElementById('tabDocs').style.display = tab === 'docs' ? '' : 'none';
+  }
+  window.switchContainerTab = switchContainerTab;
+
+  function containerPerformSearch(query) {
+    if (!query.trim()) {
+      document.getElementById('containerResults').textContent = '';
+      document.getElementById('containerLatency').textContent = '';
+      document.getElementById('answerPanel').classList.remove('active');
+      return;
+    }
+    var mode = document.querySelector('input[name="cSearchMode"]:checked').value;
+    searchStartTime = performance.now();
+
+    if (mode === 'semantic' && embeddingReady) {
+      document.getElementById('containerLatency').textContent = 'Embedding query...';
+      containerSearchPending = true;
+      embeddingWorker.postMessage({ type: 'embed', text: query });
+    } else if (mode === 'ask' && llmReady) {
+      askBrain(query);
+    } else {
+      var results = fallbackSearch(query);
+      var elapsed = (performance.now() - searchStartTime).toFixed(1);
+      renderContainerResults(results, elapsed, 'keyword');
+    }
+  }
+
+  function renderContainerResults(results, elapsed, method) {
+    var container = document.getElementById('containerResults');
+    var badge = document.getElementById('containerLatency');
+    badge.textContent = elapsed + 'ms \u2022 ' + results.length + ' results \u2022 ' + method;
+    container.textContent = '';
+    for (var j = 0; j < results.length; j++) {
+      (function(entry, index) {
+        var div = document.createElement('div');
+        div.className = 'entry-item';
+        div.onclick = function() { viewEntry(entry); };
+        var score = document.createElement('span');
+        score.className = 'entry-score';
+        score.textContent = entry.quality_score || (entry.distance != null ? ((1 - entry.distance) * 100).toFixed(0) : '\u2014');
+        var title = document.createElement('span');
+        title.className = 'entry-title';
+        title.textContent = entry.title || '';
+        var cat = document.createElement('span');
+        cat.className = 'entry-cat';
+        cat.textContent = entry.category || '';
+        div.appendChild(score);
+        div.appendChild(title);
+        div.appendChild(cat);
+        container.appendChild(div);
+        setTimeout(function() { div.style.opacity = '1'; }, index * 40);
+      })(results[j], j);
+    }
+  }
+
+  // --- Browse Tab ---
+  function buildCategories() {
+    if (!realMetadata) return;
+    var cats = {};
+    for (var i = 0; i < realMetadata.length; i++) {
+      var c = realMetadata[i].c || 'uncategorized';
+      if (!cats[c]) cats[c] = 0;
+      cats[c]++;
+    }
+    var sorted = Object.entries(cats).sort(function(a, b) { return b[1] - a[1]; });
+    var html = '<div class="category-grid">';
+    for (var s = 0; s < sorted.length; s++) {
+      html += '<div class="category-card" onclick="showCategoryEntries(\'' + sorted[s][0].replace(/'/g, "\\'") + '\')">';
+      html += '<div class="cat-name">' + sorted[s][0] + '</div>';
+      html += '<div class="cat-count">' + sorted[s][1].toLocaleString() + ' entries</div>';
+      html += '</div>';
+    }
+    html += '</div>';
+    document.getElementById('browseContent').innerHTML = html;
+    document.getElementById('browseback').style.display = 'none';
+  }
+
+  function showCategories() {
+    buildCategories();
+  }
+  window.showCategories = showCategories;
+
+  function showCategoryEntries(cat) {
+    if (!realMetadata) return;
+    var entries = [];
+    for (var i = 0; i < realMetadata.length; i++) {
+      if ((realMetadata[i].c || 'uncategorized') === cat) {
+        entries.push(realMetadata[i]);
+      }
+    }
+    entries.sort(function(a, b) { return (b.q || 0) - (a.q || 0); });
+    var html = '<h3 style="color: var(--cyan); margin-bottom: 12px;">' + cat + ' (' + entries.length + ' entries)</h3>';
+    html += '<div class="entry-list">';
+    var limit = Math.min(entries.length, 100);
+    for (var e = 0; e < limit; e++) {
+      var entry = entries[e];
+      html += '<div class="entry-item" onclick="viewEntryById(\'' + (entry.id || '').replace(/'/g, "\\'") + '\')">';
+      html += '<span class="entry-score">' + (entry.q || 0) + '</span>';
+      html += '<span class="entry-title">' + (entry.t || entry.id || '') + '</span>';
+      html += '<span class="entry-cat">' + (entry.k || '') + '</span>';
+      html += '</div>';
+    }
+    if (entries.length > 100) {
+      html += '<div style="text-align:center; color: var(--text-dim); padding: 12px;">Showing 100 of ' + entries.length + '</div>';
+    }
+    html += '</div>';
+    document.getElementById('browseContent').innerHTML = html;
+    document.getElementById('browseback').style.display = '';
+  }
+  window.showCategoryEntries = showCategoryEntries;
+
+  function viewEntryById(id) {
+    if (!realMetadata) return;
+    var entry = null;
+    for (var i = 0; i < realMetadata.length; i++) {
+      if (realMetadata[i].id === id) { entry = realMetadata[i]; break; }
+    }
+    if (entry) viewEntry({ title: entry.t, category: entry.c, quality_score: entry.q, id: entry.id, knowledge_type: entry.k, package_name: entry.p });
+  }
+  window.viewEntryById = viewEntryById;
+
+  function viewEntry(entry) {
+    var html = '<button class="back-btn" onclick="this.parentElement.innerHTML=\'\'">&larr; Back</button>';
+    html += '<div class="content-viewer-title">' + (entry.title || '') + '</div>';
+    html += '<div style="font-family: var(--mono); font-size: 0.75rem; color: var(--text-dim); margin-bottom: 12px;">';
+    html += (entry.category || '') + ' | Quality: ' + (entry.quality_score || '\u2014') + ' | ' + (entry.knowledge_type || '') + ' | ' + (entry.package_name || '');
+    html += '</div>';
+
+    var contentDiv = document.createElement('div');
+    contentDiv.innerHTML = html;
+
+    var viewer = document.createElement('div');
+    viewer.className = 'content-viewer';
+    viewer.textContent = 'Loading content...';
+    contentDiv.appendChild(viewer);
+
+    if (document.getElementById('tabBrowse').style.display !== 'none') {
+      document.getElementById('browseContent').textContent = '';
+      document.getElementById('browseContent').appendChild(contentDiv);
+      document.getElementById('browseback').style.display = 'none';
+    } else {
+      document.getElementById('containerResults').textContent = '';
+      document.getElementById('containerResults').appendChild(contentDiv);
+    }
+
+    loadGoldContent().then(function() {
+      if (goldContent && entry.id && goldContent[entry.id]) {
+        viewer.textContent = goldContent[entry.id];
+      } else {
+        viewer.textContent = 'Full content available for 339 gold-curated entries. This entry: ' + (entry.title || entry.id || 'unknown');
+      }
+    });
+  }
+
+  function loadGoldContent() {
+    if (goldContent) return Promise.resolve();
+    return fetch('/assets/gold-content.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { goldContent = data; })
+      .catch(function() {
+        return fetch('/assets/gold-content.json.gz')
+          .then(function(r) {
+            var ds = new DecompressionStream('gzip');
+            return new Response(r.body.pipeThrough(ds)).text();
+          })
+          .then(function(text) { goldContent = JSON.parse(text); })
+          .catch(function() { goldContent = {}; });
+      });
+  }
+
+  // --- Documents Tab ---
+  function buildDocsGrid() {
+    var docs = [
+      { name: 'Agentic Engineering Stack', file: 'The Agentic Engineering Stack \u2014 Technical Overview.pdf', icon: '\uD83D\uDCCA', desc: 'Complete technical overview of the agentic ecosystem' },
+      { name: 'Agentic Intelligence Frameworks', file: 'Agentic Intelligence Frameworks.pdf', icon: '\uD83E\uDDE0', desc: 'Framework designs for autonomous AI systems' },
+      { name: 'Claude-Flow v3 Swarm Platform', file: 'Claude-Flow v3 Swarm Platform \u2014 CEO Briefing.pdf', icon: '\u26A1', desc: 'CEO briefing on multi-agent orchestration' },
+      { name: 'The Agentic Toolkit', file: 'The Agentic Toolkit Redefining Creation.pdf', icon: '\uD83D\uDE80', desc: 'How agentic tools are redefining creation' },
+      { name: 'CEO Strategy Deck', file: 'ceo-deck-rev4.pdf', icon: '\uD83D\uDCC8', desc: 'Executive strategy presentation' },
+      { name: 'CTO Architecture Deck', file: 'cto-deck-rev4.pdf', icon: '\uD83D\uDD27', desc: 'Technical architecture deep-dive' },
+      { name: 'The Agentic Stack (Video)', file: 'The Agentic Stack.mp4', icon: '\uD83C\uDFAC', desc: 'Video walkthrough of the full stack' },
+    ];
+    var html = '';
+    for (var d = 0; d < docs.length; d++) {
+      html += '<div class="doc-card" onclick="openDoc(\'' + docs[d].file.replace(/'/g, "\\'") + '\')">';
+      html += '<div class="doc-icon">' + docs[d].icon + '</div>';
+      html += '<div class="doc-name">' + docs[d].name + '</div>';
+      html += '<div class="doc-desc">' + docs[d].desc + '</div>';
+      html += '</div>';
+    }
+    document.getElementById('docsGrid').innerHTML = html;
+  }
+
+  function openDoc(file) {
+    document.getElementById('docFrame').src = '/assets/docs/' + file;
+    document.getElementById('docViewer').classList.add('active');
+  }
+  window.openDoc = openDoc;
+
+  function closeDocViewer() {
+    document.getElementById('docViewer').classList.remove('active');
+    document.getElementById('docFrame').src = '';
+  }
+  window.closeDocViewer = closeDocViewer;
+
+  // --- WebLLM (Optional Browser LLM) ---
+  var llmEngine = null;
+  var llmReady = false;
+
+  function initWebLLM() {
+    if (!navigator.gpu) {
+      document.getElementById('llmProgress').textContent = 'WebGPU not available \u2014 full AI chat at ask-ruvnet-production.up.railway.app';
+      document.getElementById('llmProgress').classList.add('active');
+      return;
+    }
+
+    document.getElementById('llmProgress').textContent = 'Loading browser AI model...';
+    document.getElementById('llmProgress').classList.add('active');
+
+    import('https://esm.run/@mlc-ai/web-llm').then(function(webllm) {
+      return webllm.CreateMLCEngine('TinyLlama-1.1B-Chat-v1.0-q4f16_1-MLC', {
+        initProgressCallback: function(progress) {
+          document.getElementById('llmProgress').textContent = progress.text || 'Loading model...';
+        }
+      });
+    }).then(function(engine) {
+      llmEngine = engine;
+      llmReady = true;
+      document.getElementById('askModeLabel').style.display = '';
+      document.getElementById('llmProgress').textContent = 'Brain ready \u2014 TinyLlama 1.1B running locally';
+      setTimeout(function() { document.getElementById('llmProgress').classList.remove('active'); }, 3000);
+    }).catch(function(err) {
+      document.getElementById('llmProgress').textContent = 'Browser AI unavailable: ' + err.message;
+    });
+  }
+
+  async function askBrain(question) {
+    if (!llmReady || !llmEngine) return;
+
+    document.getElementById('answerPanel').classList.add('active');
+    document.getElementById('answerText').textContent = 'Searching knowledge base...';
+
+    var results = fallbackSearch(question);
+    var context = results.slice(0, 5).map(function(r) { return r.title + ': ' + (r.category || ''); }).join('\n');
+
+    await loadGoldContent();
+    var fullContext = results.slice(0, 3).map(function(r) {
+      var content = goldContent && r.id && goldContent[r.id] ? goldContent[r.id].substring(0, 500) : r.title;
+      return content;
+    }).join('\n\n');
+
+    document.getElementById('answerText').textContent = 'Generating response...';
+
+    try {
+      var response = await llmEngine.chat.completions.create({
+        messages: [
+          { role: 'system', content: 'You are a helpful AI assistant specializing in agentic AI, vector databases, and the RuVector ecosystem. Answer based on the provided context.\n\nContext:\n' + fullContext },
+          { role: 'user', content: question }
+        ],
+        stream: true,
+        max_tokens: 512,
+      });
+
+      document.getElementById('answerText').textContent = '';
+      for await (var chunk of response) {
+        var delta = chunk.choices[0] && chunk.choices[0].delta && chunk.choices[0].delta.content || '';
+        document.getElementById('answerText').textContent += delta;
+      }
+    } catch (err) {
+      document.getElementById('answerText').textContent = 'Error: ' + err.message;
+    }
+  }
 
   // --- Init ---
   resize();
