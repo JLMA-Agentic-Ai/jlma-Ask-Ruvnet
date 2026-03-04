@@ -701,30 +701,44 @@ function App() {
     navigator.clipboard.writeText(text || canvasContent?.content || '');
   };
 
-  // Universe overlay
+  // Universe overlay — full screen on mobile, below header on desktop
   const UniverseOverlay = canvasContent?.action === 'universe' ? (
     <div style={{
-      position: 'fixed', top: '56px', left: 0, right: 0, bottom: 0,
-      zIndex: 50, background: '#0a0a1a',
+      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+      zIndex: 200, background: '#0a0a1a',
+      display: 'flex', flexDirection: 'column',
     }}>
+      {/* Close bar */}
+      <div style={{
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        padding: 'max(0.5rem, env(safe-area-inset-top, 0.5rem)) 0.75rem 0.5rem',
+        background: 'rgba(10,20,40,0.95)', backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(100,150,255,0.2)',
+        flexShrink: 0, zIndex: 10,
+      }}>
+        <span style={{ color: '#7dd3fc', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase' }}>
+          Knowledge Universe
+        </span>
+        <button
+          onClick={() => setCanvasContent(null)}
+          style={{
+            padding: '0.35rem 0.85rem',
+            background: 'rgba(239, 68, 68, 0.15)',
+            border: '1px solid rgba(239, 68, 68, 0.4)', borderRadius: '8px',
+            color: '#fca5a5', cursor: 'pointer', fontSize: '0.8rem',
+            fontFamily: 'system-ui, sans-serif',
+            minHeight: '36px',
+          }}
+        >
+          ✕ Close
+        </button>
+      </div>
+      {/* iframe fills remaining space */}
       <iframe
         src="/knowledge-universe.html"
         title="Knowledge Universe"
-        style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+        style={{ flex: 1, width: '100%', border: 'none', display: 'block', minHeight: 0 }}
       />
-      <button
-        onClick={() => setCanvasContent(null)}
-        style={{
-          position: 'absolute', top: '0.75rem', right: '0.75rem', zIndex: 10,
-          padding: '0.4rem 1rem',
-          background: 'rgba(10,20,40,0.9)', backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(100,150,255,0.3)', borderRadius: '8px',
-          color: '#e2e8f0', cursor: 'pointer', fontSize: '0.85rem',
-          fontFamily: 'system-ui, sans-serif',
-        }}
-      >
-        ✕ Close
-      </button>
     </div>
   ) : null;
 
@@ -1036,11 +1050,31 @@ function App() {
                     ) : (
                       <div className="pdf-viewer">
                         <h2>{canvasContent.title}</h2>
-                        <iframe
-                          src={`${canvasContent.content}#toolbar=0&navpanes=0&view=Fit`}
-                          title={canvasContent.title}
-                          style={{ width: '100%', height: 'calc(100vh - 150px)', border: 'none' }}
-                        />
+                        {/* Mobile: show open button since iframe PDFs fail on most mobile browsers */}
+                        {window.innerWidth <= 1024 ? (
+                          <div className="pdf-mobile-card">
+                            <div className="pdf-mobile-icon">
+                              {canvasContent.title?.toLowerCase().includes('ceo') ? '👔' :
+                               canvasContent.title?.toLowerCase().includes('cto') ? '🔧' : '📄'}
+                            </div>
+                            <p className="pdf-mobile-hint">
+                              Tap to open the full document.
+                              {window.innerWidth < window.innerHeight && ' Rotate to landscape for best viewing.'}
+                            </p>
+                            <a href={canvasContent.content} target="_blank" rel="noopener noreferrer" className="pdf-open-btn">
+                              View Document →
+                            </a>
+                            {window.innerWidth < window.innerHeight && (
+                              <span className="pdf-landscape-hint">↻ Rotate to landscape for slides</span>
+                            )}
+                          </div>
+                        ) : (
+                          <iframe
+                            src={`${canvasContent.content}#toolbar=0&navpanes=0&view=FitH`}
+                            title={canvasContent.title}
+                            style={{ width: '100%', flex: 1, minHeight: '60vh', border: 'none' }}
+                          />
+                        )}
                       </div>
                     )
                   ) : canvasContent.type === 'video' ? (
@@ -1056,7 +1090,7 @@ function App() {
                       <img src={canvasContent.content} alt={canvasContent.title || 'Generated visualization'} style={{ maxWidth: '100%', borderRadius: '8px', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }} />
                     </div>
                   ) : canvasContent.type === 'iframe' ? (
-                    <iframe src={canvasContent.content} title={canvasContent.title || 'Content'} style={{ width: '100%', height: 'calc(100vh - 80px)', border: 'none', borderRadius: '8px' }} />
+                    <iframe src={canvasContent.content} title={canvasContent.title || 'Content'} style={{ width: '100%', flex: 1, minHeight: '70vh', border: 'none', borderRadius: '8px' }} />
                   ) : (
                     <div className="canvas-markdown"><ReactMarkdown remarkPlugins={[remarkGfm]}>{canvasContent.content}</ReactMarkdown></div>
                   )}

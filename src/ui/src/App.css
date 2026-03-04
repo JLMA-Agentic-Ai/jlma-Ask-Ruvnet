@@ -1468,6 +1468,8 @@ body {
   height: 100%;
   flex: 1;
   overflow: hidden;
+  /* Allow touch scrolling on the panel itself for mobile */
+  -webkit-overflow-scrolling: touch;
 }
 
 .canvas-header {
@@ -1514,10 +1516,12 @@ body {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  overflow-x: auto;
   background: #111;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   color: #ddd;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Content Controls */
@@ -2652,6 +2656,38 @@ body > div > svg[id^="mermaid-"],
     bottom: 0;
     z-index: 100;
     background: var(--bg-primary, #0a0a0a);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Allow canvas content to scroll freely on mobile */
+  .main-layout.split .canvas-content {
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.75rem;
+    min-height: 0; /* Flex child shrink fix */
+  }
+
+  /* PDF viewer on mobile: allow scrolling and proper sizing */
+  .main-layout.split .pdf-viewer {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .main-layout.split .pdf-viewer iframe {
+    width: 100%;
+    height: calc(100vh - 140px);
+    min-height: 300px;
+  }
+
+  /* iframes in canvas on mobile: proper sizing */
+  .main-layout.split .canvas-content > iframe {
+    width: 100%;
+    height: calc(100vh - 120px);
+    min-height: 400px;
   }
 
   .main-layout.split .chat-panel {
@@ -3392,4 +3428,199 @@ button, a, .source-card, .prompt-pill {
   .hero-compact { padding: 1rem; gap: 0.75rem; }
   .hero-heading { font-size: 1.2rem; }
   .input-area { padding: 0.4rem 0.5rem; }
+}
+
+/* ===== MOBILE CANVAS FIX — Full-screen overlay with proper scroll ===== */
+@media (max-width: 1024px) {
+  /* Canvas panel: full-screen overlay that scrolls */
+  .main-layout.split .canvas-panel,
+  .main-layout.presentation .canvas-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background: var(--bg-primary, #0a0a0a);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Canvas header: compact on mobile */
+  .main-layout.split .canvas-header,
+  .main-layout.presentation .canvas-header {
+    padding: 0.5rem 0.75rem;
+    flex-shrink: 0;
+    min-height: 44px;
+  }
+
+  .main-layout.split .canvas-header h3 {
+    font-size: 0.7rem;
+  }
+
+  .main-layout.split .canvas-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+  }
+
+  /* Canvas content: fills remaining space, scrollable both axes */
+  .main-layout.split .canvas-content,
+  .main-layout.presentation .canvas-content {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem;
+  }
+
+  /* Close button: compact */
+  .main-layout.split .close-content-btn {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+
+  .main-layout.split .content-controls {
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* PDF viewer: fill canvas, allow scrolling */
+  .main-layout.split .pdf-viewer,
+  .main-layout.presentation .pdf-viewer {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .main-layout.split .pdf-viewer h2 {
+    font-size: 0.95rem;
+    margin: 0 0 0.5rem 0;
+    flex-shrink: 0;
+  }
+
+  .main-layout.split .pdf-viewer iframe {
+    flex: 1;
+    width: 100%;
+    min-height: 60vh;
+    border: none;
+    border-radius: 4px;
+  }
+
+  /* PDF mobile card — replaces broken iframe on mobile */
+  .pdf-mobile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 1.2rem;
+    flex: 1;
+  }
+
+  .pdf-mobile-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+  }
+
+  .pdf-mobile-hint {
+    color: #888;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-width: 85%;
+    margin: 0;
+  }
+
+  .pdf-landscape-hint {
+    color: #00ff88;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  .pdf-open-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #00ff88, #00cc6a);
+    color: #0a0a0a;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .pdf-open-btn:hover,
+  .pdf-open-btn:active {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+
+  /* Generic iframes in canvas: fill available space */
+  .main-layout.split .canvas-content > iframe,
+  .main-layout.presentation .canvas-content > iframe {
+    width: 100%;
+    flex: 1;
+    min-height: 70vh;
+    border: none;
+    border-radius: 4px;
+  }
+
+  /* Video viewer on mobile */
+  .main-layout.split .video-viewer {
+    width: 100%;
+  }
+
+  .main-layout.split .video-viewer h2 {
+    font-size: 0.95rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .main-layout.split .video-viewer video {
+    max-height: 70vh;
+  }
+
+  /* Deck picker on mobile */
+  .main-layout.split .deck-picker h2 {
+    font-size: 1.1rem;
+  }
+
+  .main-layout.split .deck-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Image viewer on mobile */
+  .main-layout.split .image-viewer img {
+    max-height: 70vh;
+    object-fit: contain;
+  }
+}
+
+/* ===== MOBILE CANVAS — Small phones (≤480px) ===== */
+@media (max-width: 480px) {
+  .main-layout.split .canvas-content,
+  .main-layout.presentation .canvas-content {
+    padding: 0.35rem;
+  }
+
+  .main-layout.split .canvas-header {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .main-layout.split .canvas-actions {
+    gap: 0.3rem;
+  }
+
+  .main-layout.split .canvas-btn {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.6rem;
+  }
+
+  .main-layout.split .pdf-viewer h2,
+  .main-layout.split .video-viewer h2 {
+    font-size: 0.85rem;
+  }
 }
