@@ -212,7 +212,7 @@ class KBBoundAgentFlow {
 
 ---
 
-## Claude Flow Integration
+## Ruflo Integration
 
 ```javascript
 async function hiveMindKBSwarm(objective, kbClient) {

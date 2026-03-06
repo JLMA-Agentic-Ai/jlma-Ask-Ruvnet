@@ -83,8 +83,8 @@ YOUR_PROJECT/.ruvector/
 **When to use:** New project or adding RuvNet to existing project
 
 **What it does:**
-1. Installs 5 npm packages (ruvector, ruvllm, agentic-synth, agentic-flow, claude-flow)
-2. Initializes claude-flow
+1. Installs 5 npm packages (ruvector, ruvllm, agentic-synth, agentic-flow, ruflo)
+2. Initializes ruflo
 3. Creates two-layer knowledge architecture
 4. Links tool knowledge (READ-ONLY)
 5. Creates domain folder (READ-WRITE)

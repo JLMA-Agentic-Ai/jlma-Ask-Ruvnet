@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 .claude/commands/global/
 
-# Claude Flow intelligence
+# Ruflo intelligence
+.ruflo/
 .claude-flow/
 .swarm/

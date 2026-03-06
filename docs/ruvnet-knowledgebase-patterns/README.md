@@ -142,7 +142,7 @@ or `/ruvnet-update` is run, this folder is automatically synced.
 
 - **KB-Gateway MCP**: Code generation requires KB query first
 - **Agentic Flow**: 150+ agents with KB binding via `EnforcedKBAccess`
-- **Claude Flow**: Hive Mind orchestration with KB grounding
+- **Ruflo**: Hive Mind orchestration with KB grounding
 - **ruvector-postgres**: 77+ SQL functions, <1.2ms search
 
 ---

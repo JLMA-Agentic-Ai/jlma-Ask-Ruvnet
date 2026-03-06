@@ -36,6 +36,7 @@ const TEMP_DIR = '/tmp/ruvnet-repos';
 // Orgs to scan and their priority repos
 const ORGS = ['ruvnet', 'openclaw', 'VibiumDev'];
 const PRIORITY_REPOS = [
+  { org: 'ruvnet', name: 'ruflo' },
   { org: 'ruvnet', name: 'claude-flow' },
   { org: 'ruvnet', name: 'ruvector' },
   { org: 'ruvnet', name: 'agentic-flow' },

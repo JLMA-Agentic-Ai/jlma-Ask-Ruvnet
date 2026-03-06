@@ -15,7 +15,7 @@ This document defines the complete coverage requirements for a world-class RuvNe
 
 | Repository | Stars | Status | Docs | Tutorials | API Ref | Examples |
 |------------|-------|--------|------|-----------|---------|----------|
-| **claude-flow** | 11,037 | Required | [ ] | [ ] | [ ] | [ ] |
+| **ruflo** | 11,037 | Required | [ ] | [ ] | [ ] | [ ] |
 | **agentic-flow** | 304 | Required | [ ] | [ ] | [ ] | [ ] |
 | **ruvector** | 178 | Required | [ ] | [ ] | [ ] | [ ] |
 | **daa** | 209 | Required | [ ] | [ ] | [ ] | [ ] |
@@ -369,7 +369,7 @@ For each major topic, the following documentation types are required:
 
 **Package Distribution**:
 - agentic-flow: 49,431 entries
-- claude-flow: 31,014 entries
+- ruflo: 31,014 entries
 - ruvector: 28,426 entries
 - Synaptic-Mesh: 24,593 entries
 - daa: 9,919 entries

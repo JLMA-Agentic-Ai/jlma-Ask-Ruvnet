@@ -45,13 +45,22 @@ const GITHUB_REQUEST_DELAY_MS = 500;
  */
 export const WATCH_TARGETS = [
   {
+    id: 'ruflo',
+    owner: 'ruvnet',
+    repo: 'ruflo',
+    npm: 'ruflo',
+    // Doc files to watch for additions (paths relative to repo root)
+    watchDocs: ['CHANGELOG.md', 'README.md', 'docs/'],
+    label: 'Ruflo',
+  },
+  {
+    // Legacy entry — tracks the old claude-flow repo for backward compatibility
     id: 'claude-flow',
     owner: 'ruvnet',
     repo: 'claude-flow',
     npm: '@claude-flow/cli',
-    // Doc files to watch for additions (paths relative to repo root)
-    watchDocs: ['CHANGELOG.md', 'README.md', 'docs/'],
-    label: 'Claude Flow',
+    watchDocs: ['CHANGELOG.md', 'README.md'],
+    label: 'Claude Flow (legacy)',
   },
   {
     id: 'agentic-flow',

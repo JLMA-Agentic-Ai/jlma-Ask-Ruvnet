@@ -1,7 +1,7 @@
 /**
  * SwarmVectorMemory - Drop-in replacement for SQLite-based swarm memory
  *
- * This integrates PersistentVectorDB with claude-flow's swarm memory system,
+ * This integrates PersistentVectorDB with Ruflo's swarm memory system,
  * providing semantic search capabilities instead of key-value lookups.
  *
  * REPLACES:

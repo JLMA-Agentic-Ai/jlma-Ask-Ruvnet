@@ -1,11 +1,9 @@
 ---
-name: claude-flow-memory
-description: Interact with Ruflo memory system (legacy alias - see /ruflo-memory)
+name: ruflo-memory
+description: Interact with Ruflo memory system
 ---
 
 # Ruflo Memory System
-
-> Note: This command is a backwards-compatible alias. The canonical version is `/ruflo-memory`.
 
 The memory system provides persistent storage for cross-session and cross-agent collaboration with CRDT-based conflict resolution.
 

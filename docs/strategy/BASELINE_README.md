@@ -58,7 +58,7 @@ This directory contains the **baseline retrieval quality assessment** of the Ask
 
 ### Tests Performing Excellently (10/10)
 - Test 1: RuVector vs pgvector (avg quality 99.4/100)
-- Test 2: Claude Flow orchestration (avg quality 99.2/100)
+- Test 2: Ruflo orchestration (avg quality 99.2/100)
 - Test 4: AIMDS security (avg quality 99.0/100)
 - Test 5: RVF cognitive containers (avg quality 98.6/100)
 - Test 6: AgentDB memory (avg quality 99.6/100) ⭐ BEST
@@ -145,7 +145,7 @@ This directory contains the **baseline retrieval quality assessment** of the Ask
 Use these 10 queries in the same order:
 ```
 1. RuVector vs pgvector
-2. Claude Flow orchestration
+2. Ruflo orchestration
 3. HNSW vs IVF indexing
 4. AIMDS security
 5. RVF cognitive containers

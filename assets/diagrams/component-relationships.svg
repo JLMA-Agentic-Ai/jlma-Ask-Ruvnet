@@ -20,9 +20,9 @@
 
   <rect x="30" y="50" width="590" height="440" rx="8" fill="#16213e" stroke="#555" stroke-width="1"/>
 
-  <!-- Claude Flow v3 (top-left) -->
+  <!-- Ruflo v3.5 (top-left) -->
   <rect x="60" y="75" width="220" height="110" rx="8" fill="#0f3460" stroke="#7c3aed" stroke-width="1.5"/>
-  <text x="170" y="100" text-anchor="middle" class="box-title" fill="#7c3aed">Claude Flow v3</text>
+  <text x="170" y="100" text-anchor="middle" class="box-title" fill="#7c3aed">Ruflo v3.5</text>
   <text x="170" y="120" text-anchor="middle" class="box-sub">60+ agent types</text>
   <text x="170" y="140" text-anchor="middle" class="box-detail">Multi-agent orchestration</text>
   <text x="170" y="155" text-anchor="middle" class="box-detail">5 swarm topologies</text>

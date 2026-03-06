@@ -31,15 +31,15 @@ const timeAgo = (dateStr) => {
 
 // CEO & CTO presentation decks
 const DECK_DOCS = [
-  { file: 'CEO-Deck-Agentic-Intelligence.pdf', title: 'CEO Deck: Agentic Intelligence', desc: 'Business vision, market opportunity, and strategic roadmap', icon: '👔', type: 'pdf' },
-  { file: 'CTO-Deck-RuvNet-Architecture.pdf', title: 'CTO Deck: RuvNet Architecture', desc: 'Technical architecture, performance benchmarks, and stack deep-dive', icon: '🔧', type: 'pdf' },
+  { file: 'Ruflo-v35-CEO-Deck.pdf', title: 'CEO Deck: Ruflo v3.5 Agentic Intelligence', desc: 'Business vision, market opportunity, and strategic roadmap', icon: '👔', type: 'pdf' },
+  { file: 'Ruflo-v35-CTO-Deck.pdf', title: 'CTO Deck: Ruflo v3.5 Technical Architecture', desc: 'Architecture deep-dive, performance benchmarks, and stack overview', icon: '🔧', type: 'pdf' },
 ];
 
 // Resource documents available at /assets/docs/
 const RESOURCE_DOCS = [
   { file: 'Agentic_Engineering_Stack.pdf', title: 'Agentic Engineering Stack', desc: '80+ Rust crates powering the ecosystem', icon: '📘', type: 'pdf' },
   { file: 'Agentic_Intelligence_Frameworks.pdf', title: 'Agentic Intelligence Frameworks', desc: 'Architecture patterns for autonomous AI', icon: '📗', type: 'pdf' },
-  { file: 'Claude-Flow_v3_Swarm_Platform.pdf', title: 'Claude-Flow v3 Swarm Platform', desc: 'Agents, swarms, hive-mind consensus', icon: '📙', type: 'pdf' },
+  { file: 'Claude-Flow_v3_Swarm_Platform.pdf', title: 'Ruflo v3.5 Swarm Platform', desc: 'Agents, swarms, hive-mind consensus', icon: '📙', type: 'pdf' },
   { file: 'The_Agentic_Toolkit_Redefining_Creation.pdf', title: 'The Agentic Toolkit', desc: 'How agentic AI redefines creation', icon: '📕', type: 'pdf' },
   { file: 'The_Agentic_Stack.mp4', title: 'The Agentic Stack', desc: 'Video overview of the full platform', icon: '🎬', type: 'video' },
 ];
@@ -47,8 +47,8 @@ const RESOURCE_DOCS = [
 // Follow-up suggestion generator based on response keywords
 const getFollowUpSuggestions = (content) => {
   const lower = (content || '').toLowerCase();
-  if (lower.includes('claude-flow') || lower.includes('claude flow') || lower.includes('agentic flow')) {
-    return ['What agents does Claude-Flow V3 include?', 'How does the ReasoningBank self-learning work?', 'Show me the swarm architecture'];
+  if (lower.includes('ruflo') || lower.includes('claude-flow') || lower.includes('claude flow') || lower.includes('agentic flow')) {
+    return ['What agents does Ruflo v3.5 include?', 'How does the ReasoningBank self-learning work?', 'Show me the swarm architecture'];
   }
   if (lower.includes('ruvector') || lower.includes('hnsw') || lower.includes('vector')) {
     return ['How does HNSW compare to pgvector?', 'What is the RVF cognitive container format?', 'What apps can be built with RuVector?'];
@@ -107,8 +107,8 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
 
     {/* Prompt Starters */}
     <div className="prompt-starters">
-      <button onClick={() => onAction('What is Claude-Flow V3, its specialized agents, swarm topologies, and capabilities?')} className="prompt-pill">
-        <span className="pill-icon">⚡</span> Claude-Flow V3
+      <button onClick={() => onAction('What is Ruflo v3.5, its specialized agents, swarm topologies, and capabilities?')} className="prompt-pill">
+        <span className="pill-icon">⚡</span> Ruflo v3.5
       </button>
       <button onClick={() => onAction('How does the ReasoningBank self-learning system work in Agentic Flow?')} className="prompt-pill">
         <span className="pill-icon">🧠</span> ReasoningBank
@@ -408,19 +408,19 @@ function App() {
     if (queryText === 'VIEW_VIDEOS') {
       const videos = [
         { id: '1_s07kapkb', date: '2026-01-16', dur: '1h 51m', title: 'Building Agentic Systems at Scale: Architecture, Security, and Real-World Implementation' },
-        { id: '1_xlre6ukc', date: '2026-01-16', dur: '1h 49m', title: 'Claude-flow v3 Release: Revolutionary Agentic AI System with 500K+ Downloads' },
+        { id: '1_xlre6ukc', date: '2026-01-16', dur: '1h 49m', title: 'Ruflo v3 Release: Revolutionary Agentic AI System with 500K+ Downloads' },
         { id: '1_33xvl0xn', date: '2026-01-29', dur: '1h 5m',  title: 'Agentix Foundation: Building a Global Community for Agentic AI Development' },
         { id: '1_rozlzilu', date: '2026-01-28', dur: '1h 14m', title: 'London Meetup — AI Powered Content Creation: From Sheet Music to Semantic Graphs' },
         { id: '1_8afwqubg', date: '2026-01-23', dur: '2h 1m',  title: 'Building Agentic Systems: Network Topologies, Skills Aggregation, and AI Infrastructure' },
-        { id: '1_nvkgdvm8', date: '2026-01-?',  dur: '—',      title: 'Claude-Flow V3: Building AI Systems with Hive-Mind Intelligence' },
-        { id: '1_392oe5oa', date: '2026-01-?',  dur: '—',      title: 'Claude Flow V3: Building Intelligent Agents with Self-Learning Vector Systems' },
-        { id: '1_oowknql6', date: '2026-01-?',  dur: '—',      title: 'CloudFlow V3 and Agentic Systems: Building the Future of AI Development' },
+        { id: '1_nvkgdvm8', date: '2026-01-?',  dur: '—',      title: 'Ruflo v3: Building AI Systems with Hive-Mind Intelligence' },
+        { id: '1_392oe5oa', date: '2026-01-?',  dur: '—',      title: 'Ruflo v3: Building Intelligent Agents with Self-Learning Vector Systems' },
+        { id: '1_oowknql6', date: '2026-01-?',  dur: '—',      title: 'Ruflo v3 and Agentic Systems: Building the Future of AI Development' },
         { id: '1_04q83xk2', date: '2025-11-14', dur: '1h 32m', title: 'AI Hackerspace Live — Nov 7' },
         { id: '1_x6y3m453', date: '2025-12-06', dur: '5h',     title: 'Building the Future: AI-Powered Media Discovery and Smart TV Integration at the Global AI Hackathon' },
         { id: '1_dpwbbr66', date: '2025-?',     dur: '—',      title: 'Agentic AI Revolution: Building Autonomous Intelligent Systems for Real-World Impact' },
         { id: '1_dxehuvpf', date: '2025-?',     dur: '—',      title: 'Building the Prime Radiant: A Coherence Engine for AI Anti-Hallucination' },
         { id: '1_hpe5jw3w', date: '2025-?',     dur: '—',      title: 'From Concept to Code: How Claude AI and Agentic Systems Are Reshaping Development' },
-        { id: '1_rtjw6iv4', date: '2025-?',     dur: '—',      title: 'Building Agentic AI Solutions: Claude Flow, Anti-Gravity, and Real-World Applications' },
+        { id: '1_rtjw6iv4', date: '2025-?',     dur: '—',      title: 'Building Agentic AI Solutions: Ruflo, Anti-Gravity, and Real-World Applications' },
         { id: '1_b72cmcnd', date: '2025-10-17', dur: '5m',     title: 'Devoxx BE Conference: The Rise of AI Agents' },
         { id: '1_prlsngek', date: '2025-?',     dur: '—',      title: 'Root Vector: Building the World\'s Fastest AI Search' },
         { id: '1_2156iluo', date: '2025-?',     dur: '—',      title: 'From Helsinki to the World: Finland\'s AI-Native Government Transformation' },
@@ -622,8 +622,8 @@ function App() {
       const videoCount = data.videoStats?.total || 28;
       const totalRepos = stats.totalRepos || data.repos?.length || 148;
       const totalEntries = stats.totalEntries || data.kb_total_entries || 54543;
-      const claudeFlow = data.repos?.find(r => r.name === 'claude-flow');
-      const claudeFlowVersion = claudeFlow?.version || '3.5.2';
+      const ruflo = data.repos?.find(r => r.name === 'ruflo');
+      const rufloVersion = ruflo?.version || '3.5.2';
 
       const report = `# Knowledge Base Status\n\n` +
         `| Metric | Value |\n|--------|-------|\n` +
@@ -635,7 +635,7 @@ function App() {
         `| Videos | **${videoCount}** sessions |\n` +
         `| Doc Types | **${stats.docTypes || 18}** |\n` +
         `| Backend | PostgreSQL RuVector + HNSW |\n\n` +
-        `---\n\n## Claude-Flow V3 (v${claudeFlowVersion})\n\n` +
+        `---\n\n## Ruflo (v${rufloVersion})\n\n` +
         `| Capability | Detail |\n|------------|--------|\n` +
         `| Agent Types | 60+ specialized (coder, architect, security, swarm, GitHub, SPARC, etc.) |\n` +
         `| Swarm Topologies | 7 (hierarchical, mesh, ring, star, hierarchical-mesh, hybrid, adaptive) |\n` +
@@ -647,7 +647,7 @@ function App() {
         `| Security | AIMDS 3-layer pipeline, AIDefence middleware |\n\n` +
         `---\n\n## PostgreSQL Knowledge Base\n\n` +
         (data.kb_stats ? `| Domain | Entries | Status |\n|--------|---------|--------|\n` +
-        `| Claude-Flow & Agentic AI | ${data.kb_stats.domains?.ask_ruvnet?.total?.toLocaleString() || totalEntries.toLocaleString()} | ✅ Active |\n` +
+        `| Ruflo & Agentic AI | ${data.kb_stats.domains?.ask_ruvnet?.total?.toLocaleString() || totalEntries.toLocaleString()} | ✅ Active |\n` +
         `| **Total** | **${totalEntries.toLocaleString()}** | **RuVector HNSW** |\n\n` : '') +
         `---\n\n## Key Tracked Packages\n\n` +
         `| Package | Version | Status |\n|---------|---------|--------|\n` +
@@ -656,7 +656,7 @@ function App() {
           return `| ${statusIcon} ${r.name} | v${r.version || 'latest'} | ${r.status || 'Linked'} |`;
         }).join('\n') : '_No packages configured._') +
         `\n\n*Plus ${Math.max(0, totalRepos - (data.repos?.length || 0))} additional repositories across ruvnet, openclaw, and VibiumDev orgs.*\n\n` +
-        `---\n*Powered by Claude-Flow V3 + Agentic Flow HybridReasoningBank*`;
+        `---\n*Powered by Ruflo v3.5 + Agentic Flow HybridReasoningBank*`;
 
       setCanvasContent({ type: 'text', content: report, action: 'knowledge' });
     } catch (e) {

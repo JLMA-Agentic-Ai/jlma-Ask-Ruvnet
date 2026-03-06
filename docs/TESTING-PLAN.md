@@ -128,7 +128,7 @@ Complete coverage of all routes defined in src/server/app.js.
 | Valid message | { message: "what is HNSW" } | 200, answer non-empty |
 | HNSW topic | { message: "what is HNSW vector search" } | answer contains "HNSW" or "vector" or "index" |
 | RuVector topic | { message: "how do I use ruvector postgres" } | sources.length >= 1 |
-| Claude Flow topic | { message: "explain Claude Flow swarm agents" } | answer non-empty |
+| Ruflo topic | { message: "explain Ruflo swarm agents" } | answer non-empty |
 | Missing message | {} | 400, error present |
 | Empty string | { message: "" } | 400 |
 | Non-string message | { message: 12345 } | 400 |
@@ -172,7 +172,7 @@ For each test query, the top result should achieve a relevance score >= 0.4 and 
 |-------|--------------------------|-----------|-------------|
 | "what is HNSW vector search" | hnsw, vector, index, approximate | 0.40 | 3 |
 | "how do I use ruvector postgres" | ruvector, postgres, postgresql, vector | 0.40 | 3 |
-| "explain Claude Flow swarm agents" | claude-flow, swarm, agent, orchestrat | 0.35 | 2 |
+| "explain Ruflo swarm agents" | ruflo, swarm, agent, orchestrat | 0.35 | 2 |
 | "how to deploy to Railway" | railway, deploy, docker, environment | 0.35 | 2 |
 | "what is RAG retrieval augmented generation" | retrieval, augmented, generation, context | 0.40 | 3 |
 | "error handling in Node.js" | error, node, handler, catch, try | 0.30 | 2 |
@@ -290,7 +290,7 @@ Run the following queries before and after ingestion. Compare result counts and 
 Baseline queries (stored in test-production.mjs):
 1. "what is HNSW vector search"
 2. "how do I use ruvector postgres"
-3. "explain Claude Flow swarm agents"
+3. "explain Ruflo swarm agents"
 4. "what are ONNX embeddings"
 5. "how to deploy Node.js to Railway"
 

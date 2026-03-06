@@ -109,8 +109,8 @@ CREATE INDEX idx_topics_slug ON ruvnet_kb.topics(slug);
 -- -----------------------------------------------------------------------------
 CREATE TABLE ruvnet_kb.repositories (
     id SERIAL PRIMARY KEY,
-    name TEXT UNIQUE NOT NULL,            -- e.g., 'claude-flow', 'ruvector'
-    full_name TEXT NOT NULL,              -- e.g., 'ruvnet/claude-flow'
+    name TEXT UNIQUE NOT NULL,            -- e.g., 'ruflo', 'ruvector'
+    full_name TEXT NOT NULL,              -- e.g., 'ruvnet/ruflo'
     description TEXT,
     url TEXT NOT NULL,
     stars INTEGER DEFAULT 0,
@@ -507,7 +507,7 @@ FROM ruvnet_kb.categories WHERE slug = 'memory';
 
 INSERT INTO ruvnet_kb.repositories (name, full_name, description, url, stars, is_core) VALUES
 -- Core RuvNet Packages (>100 stars or essential)
-('claude-flow', 'ruvnet/claude-flow', 'The leading agent orchestration platform for Claude', 'https://github.com/ruvnet/claude-flow', 11037, TRUE),
+('ruflo', 'ruvnet/ruflo', 'The leading agent orchestration platform for Claude', 'https://github.com/ruvnet/ruflo', 11037, TRUE),
 ('wifi-densepose', 'ruvnet/wifi-densepose', 'WiFi-based dense human pose estimation', 'https://github.com/ruvnet/wifi-densepose', 4872, FALSE),
 ('rUv-dev', 'ruvnet/rUv-dev', 'AI power Dev using the rUv approach', 'https://github.com/ruvnet/rUv-dev', 420, TRUE),
 ('sparc', 'ruvnet/sparc', 'SPARC methodology', 'https://github.com/ruvnet/sparc', 412, TRUE),
@@ -554,7 +554,7 @@ INSERT INTO ruvnet_kb.repositories (name, full_name, description, url, stars, is
 ('hacker-league', 'ruvnet/hacker-league', 'Hacker League', 'https://github.com/ruvnet/hacker-league', 32, FALSE),
 ('agileagents', 'ruvnet/agileagents', 'Serverless intelligent agents framework', 'https://github.com/ruvnet/agileagents', 30, FALSE),
 ('sparc-ide', 'ruvnet/sparc-ide', 'AI-driven IDE', 'https://github.com/ruvnet/sparc-ide', 26, FALSE),
-('yyz-agentics-june', 'ruvnet/yyz-agentics-june', 'Neural Network Libraries with Claude-Flow', 'https://github.com/ruvnet/yyz-agentics-june', 26, FALSE),
+('yyz-agentics-june', 'ruvnet/yyz-agentics-june', 'Neural Network Libraries with Ruflo', 'https://github.com/ruvnet/yyz-agentics-june', 26, FALSE),
 ('quantum-magnetic-navigation', 'ruvnet/quantum-magnetic-navigation', 'Quantum magnetometer navigation', 'https://github.com/ruvnet/quantum-magnetic-navigation', 26, FALSE),
 ('agentic-difusion', 'ruvnet/agentic-difusion', 'Diffusion-based code refinement', 'https://github.com/ruvnet/agentic-difusion', 25, FALSE);
 

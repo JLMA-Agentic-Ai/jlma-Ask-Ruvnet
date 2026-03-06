@@ -1,11 +1,9 @@
 ---
-name: claude-flow-help
-description: Show Ruflo commands and usage (legacy alias - see /ruflo-help)
+name: ruflo-help
+description: Show Ruflo commands and usage
 ---
 
 # Ruflo Commands
-
-> Note: This command is a backwards-compatible alias. The canonical version is `/ruflo-help`.
 
 ## Ruflo: Agent Orchestration Platform
 

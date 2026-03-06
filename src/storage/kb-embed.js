@@ -1,7 +1,7 @@
 /**
  * KB Embedding Helper v2.0.0
  *
- * Primary: ONNX via @claude-flow/embeddings (~930 embeds/sec)
+ * Primary: ONNX via @claude-flow/embeddings (~930 embeds/sec) [Ruflo ecosystem]
  * Fallback: PostgreSQL ruvector_embed() (~17 embeds/sec)
  *
  * The ONNX service is lazy-loaded on first use. If it fails to
@@ -50,7 +50,7 @@ async function getOnnxService() {
   if (!onnxInitPromise) {
     onnxInitPromise = (async () => {
       try {
-        const embeddingsPath = process.env.CLAUDE_FLOW_EMBEDDINGS_PATH ||
+        const embeddingsPath = process.env.RUFLO_EMBEDDINGS_PATH || process.env.CLAUDE_FLOW_EMBEDDINGS_PATH ||
           require('path').join(require('os').homedir(), '.npm-global/lib/node_modules/@claude-flow/cli/node_modules/@claude-flow/embeddings/dist/index.js');
         const mod = await import(embeddingsPath);
 

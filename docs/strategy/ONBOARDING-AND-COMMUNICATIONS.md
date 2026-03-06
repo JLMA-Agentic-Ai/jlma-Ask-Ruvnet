@@ -14,7 +14,7 @@ This work is blocked by the application optimization work. The sequence is:
 
 ## The Problem
 
-The RuvNet architecture (Claude Flow, Agentic Flow, AgentDB, RuVector, RVF format, ruv-swarm, Flow Nexus, etc.) represents millions of lines of code and capabilities that are 6-9 months ahead of state-of-the-art from Anthropic, OpenAI, Google, and xAI. Less than 2% of CEOs and CTOs know these capabilities exist. There is no compelling communication strategy to meet them where they live and explain what they're giving up.
+The RuvNet architecture (Ruflo, Agentic Flow, AgentDB, RuVector, RVF format, ruv-swarm, Flow Nexus, etc.) represents millions of lines of code and capabilities that are 6-9 months ahead of state-of-the-art from Anthropic, OpenAI, Google, and xAI. Less than 2% of CEOs and CTOs know these capabilities exist. There is no compelling communication strategy to meet them where they live and explain what they're giving up.
 
 ## Two Presentations Needed (PPTX Skill)
 

@@ -37,7 +37,7 @@ const { version: APP_VERSION } = require('../../package.json');
 // Live npm version cache (refreshes every hour)
 // ============================================================================
 const NPM_PACKAGES = {
-    'claude-flow':    '@claude-flow/cli',
+    'ruflo':          'ruflo',
     'agentic-flow':   'agentic-flow',
     'ruvector':       'ruvector',
     'ruvllm':         '@ruvector/ruvllm',
@@ -170,7 +170,7 @@ async function callOpenAICompatible(provider, messages, temperature, maxTokens) 
     return data.choices[0].message.content;
 }
 
-async function llmChat(messages, { temperature = 0.3, maxTokens = 4096 } = {}) {
+async function llmChat(messages, { temperature = 0.3, maxTokens = 8192 } = {}) {
     if (LLM_PROVIDERS.length === 0) {
         throw new Error('No LLM providers configured');
     }
@@ -199,7 +199,7 @@ async function llmChat(messages, { temperature = 0.3, maxTokens = 4096 } = {}) {
 // ============================================================================
 // SSE Streaming: stream tokens from OpenAI-compatible or Anthropic providers
 // ============================================================================
-async function* llmChatStream(messages, { temperature = 0.3, maxTokens = 4096 } = {}) {
+async function* llmChatStream(messages, { temperature = 0.3, maxTokens = 8192 } = {}) {
     if (LLM_PROVIDERS.length === 0) throw new Error('No LLM providers configured');
 
     const errors = [];
@@ -716,7 +716,39 @@ app.post('/api/chat', async (req, res) => {
                     return r;
                 };
                 const boostedResults = rerankedResults.map(applyRecencyBoost);
-                // Re-sort after boost so higher-scored recent entries bubble up
+
+                // ================================================================
+                // STAGE 4c: Gold/curated entry boost — kb_ entries are expert-curated
+                // and should ALWAYS rank above bulk arch_ entries at equal relevance
+                // ================================================================
+                const applyGoldBoost = (r) => {
+                    const id = r.id || '';
+                    const isCurated = r.metadata?.is_curated || id.startsWith('kb_');
+                    const qualityScore = r.metadata?.quality_score || r.quality_score || 0;
+                    let boost = 0;
+                    if (isCurated) {
+                        boost = 0.30; // +30% boost for curated gold entries
+                    } else if (qualityScore >= 95) {
+                        boost = 0.15; // +15% for high-quality arch entries
+                    } else if (qualityScore >= 88) {
+                        boost = 0.05; // +5% for decent arch entries
+                    }
+                    // Penalize entries with generic duplicate titles
+                    const title = (r.title || r.metadata?.title || '').toLowerCase();
+                    if (/^\w+\s*\(\w+(-\w+)?\)$/.test(title)) {
+                        // Matches "PackageName (category)" pattern — generic bulk title
+                        const base = r.rerankedScore || r.score || 0;
+                        r.rerankedScore = base * 0.6; // -40% penalty for generic titles
+                    }
+                    if (boost > 0) {
+                        const base = r.rerankedScore || r.score || 0;
+                        r.rerankedScore = Math.min(1.0, base + base * boost);
+                    }
+                    return r;
+                };
+                boostedResults.forEach(applyGoldBoost);
+
+                // Re-sort after boost so higher-scored recent/gold entries bubble up
                 boostedResults.sort((a, b) => (b.rerankedScore || b.score || 0) - (a.rerankedScore || a.score || 0));
                 console.log(`📅 Recency boost applied to ${boostedResults.filter(r => (r.source || '').includes('coaching') || (r.source || '').includes('video')).length} coaching/video results`);
 
@@ -976,6 +1008,28 @@ app.post('/api/chat/stream', async (req, res) => {
                     }
                     return r;
                 });
+
+                // Gold/curated entry boost — kb_ entries rank above bulk arch_ entries
+                boostedResults.forEach(r => {
+                    const id = r.id || '';
+                    const isCurated = r.metadata?.is_curated || id.startsWith('kb_');
+                    const qualityScore = r.metadata?.quality_score || r.quality_score || 0;
+                    let boost = 0;
+                    if (isCurated) boost = 0.30;
+                    else if (qualityScore >= 95) boost = 0.15;
+                    else if (qualityScore >= 88) boost = 0.05;
+                    // Penalize generic duplicate titles
+                    const title = (r.title || r.metadata?.title || '').toLowerCase();
+                    if (/^\w+\s*\(\w+(-\w+)?\)$/.test(title)) {
+                        const base = r.rerankedScore || r.score || 0;
+                        r.rerankedScore = base * 0.6;
+                    }
+                    if (boost > 0) {
+                        const base = r.rerankedScore || r.score || 0;
+                        r.rerankedScore = Math.min(1.0, base + base * boost);
+                    }
+                });
+
                 boostedResults.sort((a, b) => (b.rerankedScore || b.score || 0) - (a.rerankedScore || a.score || 0));
 
                 const filteredResults = boostedResults.filter(r => (r.rerankedScore || r.score || 0) >= 0.15);
@@ -1017,17 +1071,61 @@ app.post('/api/chat/stream', async (req, res) => {
         }));
         res.write(`event: sources\ndata: ${JSON.stringify(sourcesPayload)}\n\n`);
 
-        // Build system prompt (same as /api/chat)
+        // Build system prompt — MUST match /api/chat's full level instructions
         const { RUV_PERSONA } = require('./RuvPersona');
         const learningLevel = mode || 'Balanced';
         const levelInstructions = {
-            'Simple': `Explain like I'm 5 years old. Use everyday analogies, zero jargon, short sentences, emojis as visual markers.`,
-            'Beginner': `Explain for someone new to programming. Define every term, show complete runnable examples with comments on every line.`,
-            'Balanced': `Clear, well-structured response for intermediate technical audience. Balance depth with accessibility.`,
-            'Technical': `Maximum technical depth for experienced engineers. Include internals, benchmarks, failure modes, and debugging approaches.`
+            'Simple': `Explain like I'm 5 years old. Rules:
+- Use everyday analogies for EVERY concept (e.g., "A vector database is like a library where books are shelved by what they're about, not alphabetically")
+- Zero jargon — if you must use a technical term, immediately explain it in parentheses
+- Short sentences (max 15 words each)
+- Use emojis as visual markers: 🔑 for key points, ⚡ for actions, 🎯 for outcomes
+- Mermaid diagrams should use simple labels and emoji nodes
+- Skip the "What to Watch For" section — keep it fun and approachable
+- End with "Try This" instead of code examples — a simple hands-on activity`,
+
+            'Beginner': `Explain for someone new to programming who is eager to learn. Rules:
+- Define every technical term on first use with a real-world analogy
+- Include "Why This Matters" callouts (> blockquotes) explaining practical relevance
+- Show complete, runnable code examples with comments on every line
+- Mermaid diagrams should have descriptive labels and clear flow
+- Include "Common Mistake" callouts flagging what beginners get wrong
+- Comparison tables should include a "Best For" column
+- The "Explore Further" section should progress from easier → harder questions`,
+
+            'Balanced': `Provide a clear, well-structured response for an intermediate technical audience. Rules:
+- Balance depth with accessibility — assume programming knowledge, don't assume domain expertise
+- Analogies for complex architectural concepts, but skip basics
+- Code examples should be practical and production-oriented
+- Mermaid diagrams should show real component names and data flow
+- Include performance characteristics and scaling considerations
+- Comparison tables should include quantitative metrics where available
+- Cover edge cases in "What to Watch For"`,
+
+            'Technical': `Provide maximum technical depth for an experienced engineer. Rules:
+- Assume strong engineering background — skip analogies for basic concepts
+- Include implementation internals: data structures, algorithms, complexity analysis
+- Code examples should show advanced patterns, configuration, and optimization
+- Mermaid diagrams should include internal architecture, not just high-level boxes
+- Include benchmark data, memory characteristics, and performance implications
+- Cover failure modes, debugging approaches, and operational concerns
+- Reference ADRs, changelogs, and architectural evolution when available
+- Include SQL queries, API calls, and system commands where relevant`
         };
 
-        const systemPrompt = `${RUV_PERSONA}\n\n===== RESPONSE STYLE =====\nLearning Level: ${learningLevel}\n${levelInstructions[learningLevel] || levelInstructions['Balanced']}\n\n===== KNOWLEDGE BASE CONTEXT =====\n${context || 'No specific context found. Tell the user you lack sufficient knowledge base information for this query.'}\n\n===== INSTRUCTIONS =====\nMandatory: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid → Practical Example → What to Watch For → Explore Further). Base answer ONLY on knowledge base context. Adapt to ${learningLevel} level.`;
+        const systemPrompt = `${RUV_PERSONA}
+
+===== RESPONSE STYLE =====
+Learning Level: ${learningLevel}
+${levelInstructions[learningLevel] || levelInstructions['Balanced']}
+
+===== KNOWLEDGE BASE CONTEXT =====
+${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
+
+===== INSTRUCTIONS =====
+MANDATORY: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid diagram → Practical Example → What to Watch For → Explore Further). Include a Mermaid diagram if the topic involves any system, workflow, or multi-step process. Base your answer ONLY on the knowledge base context above. When sources conflict, prefer [GOLD] over [SILVER] over [BRONZE]. Adapt depth and language to the ${learningLevel} learning level. If context is insufficient, say so honestly.
+
+CRITICAL: You MUST include at least ONE \`\`\`mermaid diagram and ONE | markdown table | in every response about architecture, workflows, or comparisons. Responses without visual elements are incomplete.`;
 
         const MAX_HISTORY_TURNS = 6;
         const truncatedHistory = (history || []).slice(-MAX_HISTORY_TURNS);
@@ -1550,11 +1648,11 @@ app.get('/api/knowledge', async (req, res) => {
     }
     knowledge.videoStats = { total: videoCount, sessions: sessionDirs };
 
-    // Sort repos by last_update (newest first), with Claude-Flow V3 Alpha prioritized at top
+    // Sort repos by last_update (newest first), with Ruflo prioritized at top
     knowledge.repos.sort((a, b) => {
-        // Prioritize Claude-Flow V3 at the very top (it's the main feature)
-        if (a.name === 'claude-flow' && a.version && a.version.includes('alpha')) return -1;
-        if (b.name === 'claude-flow' && b.version && b.version.includes('alpha')) return 1;
+        // Prioritize Ruflo at the very top (it's the main feature)
+        if (a.name === 'ruflo') return -1;
+        if (b.name === 'ruflo') return 1;
 
         // Then prioritize other alpha versions
         const aIsRealAlpha = a.version && a.version.includes('alpha');

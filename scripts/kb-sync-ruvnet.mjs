@@ -18,7 +18,7 @@
  *   node scripts/kb-sync-ruvnet.mjs                  # incremental (default)
  *   node scripts/kb-sync-ruvnet.mjs --force          # re-check all, ingest new only
  *   node scripts/kb-sync-ruvnet.mjs --dry-run        # detect but don't write to DB
- *   node scripts/kb-sync-ruvnet.mjs --target claude-flow   # single repo only
+ *   node scripts/kb-sync-ruvnet.mjs --target ruflo          # single repo only (use claude-flow for legacy)
  *   node scripts/kb-sync-ruvnet.mjs --verbose        # extra logging
  */
 
@@ -116,11 +116,13 @@ let xenovaEmbedder = null;
  */
 async function initEmbedding() {
   // Path 1: @claude-flow/embeddings (fastest — ~930 embeds/sec)
-  const claudeFlowPath = process.env.CLAUDE_FLOW_EMBEDDINGS_PATH ||
+  // Note: this NPM package path is @claude-flow/embeddings and is NOT renamed on npm
+  const rufloEmbeddingsPath = process.env.RUFLO_EMBEDDINGS_PATH ||
+    process.env.CLAUDE_FLOW_EMBEDDINGS_PATH ||
     path.join(os.homedir(), '.npm-global/lib/node_modules/@claude-flow/cli/node_modules/@claude-flow/embeddings/dist/index.js');
 
   try {
-    const mod = await import(claudeFlowPath);
+    const mod = await import(rufloEmbeddingsPath);
     const createFn = mod.createEmbeddingServiceAsync || mod.default?.createEmbeddingServiceAsync;
     if (!createFn) throw new Error('createEmbeddingServiceAsync not found');
 
@@ -130,7 +132,7 @@ async function initEmbedding() {
       dimensions: 384,
     });
     await onnxService.embed('warmup');
-    onnxAvailable = 'claude-flow-embeddings';
+    onnxAvailable = 'ruflo-embeddings';
     console.log('[sync] ONNX embedding via @claude-flow/embeddings ready (~930 embeds/sec)');
     return true;
   } catch {
@@ -161,8 +163,8 @@ async function initEmbedding() {
 async function embed(text, pool) {
   const truncated = text.slice(0, 2000);
 
-  // Path 1: @claude-flow/embeddings
-  if (onnxAvailable === 'claude-flow-embeddings' && onnxService) {
+  // Path 1: @claude-flow/embeddings (via ruflo-embeddings path)
+  if (onnxAvailable === 'ruflo-embeddings' && onnxService) {
     try {
       const result = await onnxService.embed(truncated);
       const vec = result.embedding || result;

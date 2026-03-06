@@ -21,7 +21,7 @@ This document describes the optimal architecture for building **hyper-intelligen
 6. [Cross-Container Search Patterns](#cross-container-search-patterns)
 7. [Confidence Scoring & Fallbacks](#confidence-scoring--fallbacks)
 8. [🤖 Agentic Flow KB Integration](#agentic-flow-kb-integration)
-9. [🔮 Claude Flow KB Integration](#claude-flow-kb-integration)
+9. [🔮 Ruflo KB Integration](#ruflo-kb-integration)
 10. [🧠 Full-Depth Agent-KB Binding](#full-depth-agent-kb-binding)
 11. [Production Architecture](#production-architecture)
 12. [Implementation Guide](#implementation-guide)
@@ -1109,20 +1109,20 @@ async function multiAgentKBWorkflow(userRequest, kbClient) {
 
 ---
 
-## 🔮 Claude Flow KB Integration
+## 🔮 Ruflo KB Integration
 
-Claude Flow provides **enterprise orchestration** with Hive Mind, 64 specialized agents, and AgentDB. This section shows deep KB integration.
+Ruflo provides **enterprise orchestration** with Hive Mind, 64 specialized agents, and AgentDB. This section shows deep KB integration.
 
 ### Hive Mind + KB Architecture
 
-![Claude Flow Hive Mind + KB](assets/diagrams/claude-flow-hive-mind-kb.svg)
+![Ruflo Hive Mind + KB](assets/diagrams/ruflo-hive-mind-kb.svg)
 
 <details>
 <summary>ASCII Version (for AI/accessibility)</summary>
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                     CLAUDE FLOW HIVE MIND + KB                               │
+│                       RUFLO HIVE MIND + KB                                   │
 └─────────────────────────────────────────────────────────────────────────────┘
 
                          ┌─────────────────────────┐
@@ -1158,18 +1158,18 @@ Claude Flow provides **enterprise orchestration** with Hive Mind, 64 specialized
 
 </details>
 
-### Claude Flow Memory + KB Sync
+### Ruflo Memory + KB Sync
 
 ```bash
-# Store KB interaction in Claude Flow memory
-npx claude-flow@alpha memory store "kb/last-query" \
+# Store KB interaction in Ruflo memory
+npx ruflo@latest memory store "kb/last-query" \
     "Query: 'social security timing' | Results: 3 entries | Top: 92% similarity"
 
 # Query memory for KB usage patterns
-npx claude-flow@alpha memory query "kb/" --recent
+npx ruflo@latest memory query "kb/" --recent
 
 # Export KB interaction history
-npx claude-flow@alpha memory export --namespace kb --format json
+npx ruflo@latest memory export --namespace kb --format json
 ```
 
 ### Hive Mind KB-Powered Workflow
@@ -1207,7 +1207,7 @@ async function hiveMindKBSwarm(objective, kbClient) {
                 kb.verifyCitation(result, task.kbContext.metadata);
 
                 // Store in memory for learning
-                await claudeFlowMemory.store(
+                await rufloMemory.store(
                     `task/${task.id}`,
                     JSON.stringify({
                         task: task.description,
@@ -1223,21 +1223,21 @@ async function hiveMindKBSwarm(objective, kbClient) {
 }
 ```
 
-### Claude Flow Commands with KB
+### Ruflo Commands with KB
 
 ```bash
 # Spawn KB-grounded swarm
-npx claude-flow@alpha swarm "Analyze retirement options" --claude \
+npx ruflo@latest swarm "Analyze retirement options" --claude \
     --kb-container retirewell \
     --enforce-citations
 
 # Query KB before spawning agents
-npx claude-flow@alpha kb query "social security timing" \
+npx ruflo@latest kb query "social security timing" \
     --container retirewell \
     --limit 5
 
 # Hive mind with KB validation
-npx claude-flow@alpha hive-mind spawn "Create retirement plan" --claude \
+npx ruflo@latest hive-mind spawn "Create retirement plan" --claude \
     --require-kb \
     --no-simplification
 ```
@@ -1343,7 +1343,7 @@ class FullDepthKBBinding {
     constructor(config) {
         this.kb = new EnforcedKBAccess(config.kbClient, config.sessionId);
         this.agentFlow = new KBBoundAgentFlow(config.kbClient);
-        this.claudeFlow = config.claudeFlowMemory;
+        this.ruflo = config.rufloMemory;
         this.violations = [];
         this.stats = {
             queries: 0,
@@ -1499,9 +1499,9 @@ DO NOT summarize these into "key rules" - use the full content.
     }
 
     async recordLearning(request, kbResult, response) {
-        // Store in Claude Flow memory
-        if (this.claudeFlow) {
-            await this.claudeFlow.store(
+        // Store in Ruflo memory
+        if (this.ruflo) {
+            await this.ruflo.store(
                 `kb-interaction/${Date.now()}`,
                 JSON.stringify({
                     request,
@@ -1561,7 +1561,7 @@ module.exports = { FullDepthKBBinding, EnforcedKBAccess, KBBoundAgentFlow };
 const binding = new FullDepthKBBinding({
     kbClient: ruvectorClient,
     sessionId: 'retirement-advisor-session',
-    claudeFlowMemory: claudeFlowMemory
+    rufloMemory: rufloMemory
 });
 
 // Process user request with full KB enforcement
@@ -1781,7 +1781,7 @@ console.log('Session Stats:', binding.getStats());
 | Component | Technology | Rationale |
 |-----------|------------|-----------|
 | **MCP Server** | ruvector-kb | Native Claude Code integration |
-| **CLI** | claude-flow | Swarm orchestration, hooks |
+| **CLI** | ruflo | Swarm orchestration, hooks |
 | **Testing** | Vitest | Fast, ESM native |
 
 ---
@@ -1845,7 +1845,7 @@ Building **hyper-intelligent KB-powered applications** with RuvVector/RuvLLM req
 
 ### Agentic Integration
 11. **Agentic Flow binding** - 150+ agents with KB grounding
-12. **Claude Flow binding** - Hive Mind with KB memory sync
+12. **Ruflo binding** - Hive Mind with KB memory sync
 13. **ReasoningBank learning** - Agents improve KB query patterns
 14. **Full-depth protocol** - 5-level binding ensures complete utilization
 
@@ -1892,7 +1892,7 @@ Building **hyper-intelligent KB-powered applications** with RuvVector/RuvLLM req
 - [ ] Configure response verification in post-task hooks
 - [ ] Set up knowledge gap tracking table
 - [ ] Integrate with Agentic Flow ReasoningBank
-- [ ] Integrate with Claude Flow Memory
+- [ ] Integrate with Ruflo Memory
 - [ ] Test violation detection (try to bypass KB)
 - [ ] Monitor citation rates and gap rates
 - [ ] Review session audit logs regularly
@@ -1918,7 +1918,7 @@ Building **hyper-intelligent KB-powered applications** with RuvVector/RuvLLM req
 - [MCP Server Configuration](../../.claude/mcp-servers/ruvector-kb/README.md)
 - [RuvVector PostgreSQL Functions](https://github.com/ruvnet/ruvector-postgres)
 - [Agentic Flow Documentation](https://github.com/ruvnet/agentic-flow)
-- [Claude Flow Documentation](https://github.com/ruvnet/claude-flow)
+- [Ruflo Documentation](https://github.com/ruvnet/ruflo)
 - [Claude Skills: RuvNet Stack](./claude-skills/ruvnet-stack.md)
 - [Claude Skills: RuvNet Update](./claude-skills/ruvnet-update.md)
 - [Claude Skills: RuvNet KB](./claude-skills/ruvnet-kb.md)
@@ -1929,7 +1929,7 @@ Building **hyper-intelligent KB-powered applications** with RuvVector/RuvLLM req
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 2.0.0 | 2025-12-30 | Added Anti-Simplification Architecture, Agentic Flow integration, Claude Flow integration, Full-Depth Binding Protocol |
+| 2.0.0 | 2025-12-30 | Added Anti-Simplification Architecture, Agentic Flow integration, Ruflo integration, Full-Depth Binding Protocol |
 | 1.0.0 | 2025-12-30 | Initial architecture document |
 
 ---

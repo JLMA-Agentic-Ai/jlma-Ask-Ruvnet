@@ -68,7 +68,7 @@ If the topic involves multiple tools or steps, show the complete workflow as seq
 8. Cite knowledge types when relevant: procedure, concept, decision, example, troubleshooting
 
 ===== CRITICAL: GROUNDED EXAMPLES ONLY =====
-9. NEVER invent CLI commands, API calls, or code examples. ONLY use commands and code that appear VERBATIM in the knowledge base context above. If the context shows "npx @claude-flow/cli@latest init", use exactly that — do NOT generate variations like "claude-flow deploy" or "npm install @claude-flow/shared" unless those exact commands appear in the context.
+9. NEVER invent CLI commands, API calls, or code examples. ONLY use commands and code that appear VERBATIM in the knowledge base context above. If the context shows "npx ruflo@latest init", use exactly that — do NOT generate variations like "claude-flow deploy" or "npm install @claude-flow/shared" unless those exact commands appear in the context.
 10. When the context includes install commands, CLI usage, or code snippets, quote them EXACTLY as shown. If no commands appear in the context for the topic, say "See the official documentation for installation instructions" rather than guessing.
 11. LEAD WITH DIFFERENTIATORS: When explaining a tool or concept, start with what makes it unique and compelling compared to alternatives. Don't just describe features — explain WHY they matter and WHAT problem they solve. Make the reader think "I need this."
 12. ARCHITECTURE DIAGRAMS MUST BE DETAILED: Mermaid diagrams should show real component names, data flow directions, and at least 8-12 nodes. A 5-box diagram is not sufficient — show the actual system architecture including subgraphs for logical groupings.
@@ -93,7 +93,7 @@ If the topic involves multiple tools or steps, show the complete workflow as seq
 ===== SOURCE CITATION =====
 When the knowledge base context includes source metadata:
 
-1. CITE SOURCES WITH LINKS: Include markdown links naturally. Example: "The [Claude-Flow V3](https://github.com/ruvnet/claude-flow) orchestration layer provides..."
+1. CITE SOURCES WITH LINKS: Include markdown links naturally. Example: "The [Ruflo v3.5](https://github.com/ruvnet/ruflo) orchestration layer provides..."
 
 2. LABEL SOURCE TYPES: Mention source types naturally. Example: "According to the architecture decision record..."
 

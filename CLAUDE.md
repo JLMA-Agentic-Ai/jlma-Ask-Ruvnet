@@ -1,4 +1,4 @@
-# Claude Code Configuration - Claude Flow V3
+# Claude Code Configuration - Ruflo v3.5
 
 ## 🔴 MANDATORY RULE — TEST BEFORE DECLARING DONE (NO EXCEPTIONS)
 
@@ -38,20 +38,20 @@
 
 ---
 
-## ⚡ ABSOLUTE RULE — CLAUDE FLOW OWNS EVERY COMMAND (NO EXCEPTIONS)
+## ⚡ ABSOLUTE RULE — RUFLO OWNS EVERY COMMAND (NO EXCEPTIONS)
 
-**Stuart's instruction (2026-02-21): Every command given in this project MUST be immediately handed to Claude Flow. Claude Code is the executor only — Claude Flow is the brain.**
+**Stuart's instruction (2026-02-21): Every command given in this project MUST be immediately handed to Ruflo. Claude Code is the executor only — Ruflo is the brain.**
 
 ### The Mandatory Flow for EVERY Request:
 
 ```
 Stuart gives command
        ↓
-Claude Flow receives it (FIRST)
+Ruflo receives it (FIRST)
        ↓
-Claude Flow queries RuvVector KB (ask_ruvnet schema, Neon pgvector)
+Ruflo queries RuvVector KB (ask_ruvnet schema, Neon pgvector)
        ↓
-Claude Flow selects agents from RuvNet architecture
+Ruflo selects agents from RuvNet architecture
        ↓
 Agents execute using agentic-flow + RuvNet tools
        ↓
@@ -61,18 +61,18 @@ Claude Code executes file/bash operations only
 ### Implementation (Run on EVERY command, no exceptions):
 
 ```bash
-# Step 1: Route to Claude Flow immediately
-npx @claude-flow/cli@latest hooks route --task "[Stuart's command]"
+# Step 1: Route to Ruflo immediately
+npx ruflo@latest hooks route --task "[Stuart's command]"
 
 # Step 2: Initialize swarm for any non-trivial task
-npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
+npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
 
 # Step 3: Query RuvVector KB before any action
 mcp__Ruvnet-KB-first__kb_search({ query: "[relevant terms]", limit: 5 })
 ```
 
 ### Agent Dispatch Rules:
-| Command Type | Claude Flow Routes To |
+| Command Type | Ruflo Routes To |
 |---|---|
 | Any question | researcher + KB search first |
 | Architecture/design | system-architect (Opus model) |
@@ -83,17 +83,17 @@ mcp__Ruvnet-KB-first__kb_search({ query: "[relevant terms]", limit: 5 })
 | Bug fix | root-cause-analyst + coder |
 | Testing | quality-engineer |
 
-**VIOLATION = failing to route through Claude Flow. Claude Code NEVER answers directly without CF orchestration.**
+**VIOLATION = failing to route through Ruflo. Claude Code NEVER answers directly without CF orchestration.**
 
 ---
 
-## RULE ZERO: KB-FIRST + CLAUDE FLOW-FIRST (NON-NEGOTIABLE)
+## RULE ZERO: KB-FIRST + RUFLO-FIRST (NON-NEGOTIABLE)
 
-**This project has a 269-entry expert-curated knowledge base (v4.0.0, 10 tools, 105 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector, agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, Claude Flow, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
+**This project has a 269-entry expert-curated knowledge base (v4.0.0, 10 tools, 105 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector, agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, Ruflo, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
 
 ### Before Answering ANY Question:
 
-**STEP 1: Check the KB.** For ANY question about agents, swarms, vectors, embeddings, HNSW, ONNX, MCP, RVF, AIMDS, security, Claude Flow, architecture, knowledge bases, RuVector, coding concepts, debugging, or how things work:
+**STEP 1: Check the KB.** For ANY question about agents, swarms, vectors, embeddings, HNSW, ONNX, MCP, RVF, AIMDS, security, Ruflo, architecture, knowledge bases, RuVector, coding concepts, debugging, or how things work:
 
 ```sql
 -- Via MCP (preferred — 10 tools available):
@@ -110,7 +110,7 @@ psql -h localhost -p 5435 -U postgres -c "
   ORDER BY embedding <=> '<query_embedding>'::ruvector LIMIT 5;"
 ```
 
-**STEP 2: Route through Claude Flow.** Do NOT answer complex questions as raw Claude Code. Use Claude Flow agents:
+**STEP 2: Route through Ruflo.** Do NOT answer complex questions as raw Claude Code. Use Ruflo agents:
 - Architecture questions -> `Task(subagent_type="system-architect")`
 - Code implementation -> `Task(subagent_type="coder")`
 - Research/exploration -> `Task(subagent_type="researcher")`
@@ -122,7 +122,7 @@ psql -h localhost -p 5435 -U postgres -c "
 ### Why This Matters:
 - Stuart is a vibe coder growing into advanced agentic development
 - The KB contains deep teaching knowledge about technologies that are TOO NEW for any LLM's training data
-- Claude Flow understands RuVector natively -- Claude Code does not
+- Ruflo understands RuVector natively -- Claude Code does not
 - Every time Claude Code answers without checking the KB, it risks giving stale or wrong information
 - The KB has beginner-friendly explanations that Claude Code would not generate on its own
 
@@ -169,10 +169,10 @@ psql -h localhost -p 5435 -U postgres -c "
 **Use this to prevent agent drift:**
 ```bash
 # Small teams (6-8 agents) - use hierarchical for tight control
-npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
+npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
 
 # Large teams (10-15 agents) - use hierarchical-mesh for V3 queen + peer communication
-npx @claude-flow/cli@latest swarm init --topology hierarchical-mesh --max-agents 15 --strategy specialized
+npx ruflo@latest swarm init --topology hierarchical-mesh --max-agents 15 --strategy specialized
 ```
 
 **Valid Topologies:**
@@ -197,7 +197,7 @@ When the user requests a complex task, **spawn agents in background and WAIT for
 
 ```javascript
 // STEP 1: Initialize swarm coordination (anti-drift config)
-Bash("npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized")
+Bash("npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized")
 
 // STEP 2: Spawn ALL agents IN BACKGROUND in a SINGLE message
 // Use run_in_background: true so agents work concurrently
@@ -275,28 +275,28 @@ They're working in parallel. I'll synthesize their results when they complete.
 ### Before Starting Any Task
 ```bash
 # 1. Search memory for relevant patterns from past successes
-Bash("npx @claude-flow/cli@latest memory search --query '[task keywords]' --namespace patterns")
+Bash("npx ruflo@latest memory search --query '[task keywords]' --namespace patterns")
 
 # 2. Check if similar task was done before
-Bash("npx @claude-flow/cli@latest memory search --query '[task type]' --namespace tasks")
+Bash("npx ruflo@latest memory search --query '[task type]' --namespace tasks")
 
 # 3. Load learned optimizations
-Bash("npx @claude-flow/cli@latest hooks route --task '[task description]'")
+Bash("npx ruflo@latest hooks route --task '[task description]'")
 ```
 
 ### After Completing Any Task Successfully
 ```bash
 # 1. Store successful pattern for future reference
-Bash("npx @claude-flow/cli@latest memory store --namespace patterns --key '[pattern-name]' --value '[what worked]'")
+Bash("npx ruflo@latest memory store --namespace patterns --key '[pattern-name]' --value '[what worked]'")
 
 # 2. Train neural patterns on the successful approach
-Bash("npx @claude-flow/cli@latest hooks post-edit --file '[main-file]' --train-neural true")
+Bash("npx ruflo@latest hooks post-edit --file '[main-file]' --train-neural true")
 
 # 3. Record task completion with metrics
-Bash("npx @claude-flow/cli@latest hooks post-task --task-id '[id]' --success true --store-results true")
+Bash("npx ruflo@latest hooks post-task --task-id '[id]' --success true --store-results true")
 
 # 4. Trigger optimization worker if performance-related
-Bash("npx @claude-flow/cli@latest hooks worker dispatch --trigger optimize")
+Bash("npx ruflo@latest hooks worker dispatch --trigger optimize")
 ```
 
 ### Continuous Improvement Triggers
@@ -432,28 +432,28 @@ Bash("npx @claude-flow/cli@latest hooks worker dispatch --trigger optimize")
 
 ```bash
 # Initialize project
-npx @claude-flow/cli@latest init --wizard
+npx ruflo@latest init --wizard
 
 # Start daemon with background workers
-npx @claude-flow/cli@latest daemon start
+npx ruflo@latest daemon start
 
 # Spawn an agent
-npx @claude-flow/cli@latest agent spawn -t coder --name my-coder
+npx ruflo@latest agent spawn -t coder --name my-coder
 
 # Initialize swarm
-npx @claude-flow/cli@latest swarm init --v3-mode
+npx ruflo@latest swarm init --v3-mode
 
 # Search memory (HNSW-indexed)
-npx @claude-flow/cli@latest memory search --query "authentication patterns"
+npx ruflo@latest memory search --query "authentication patterns"
 
 # System diagnostics
-npx @claude-flow/cli@latest doctor --fix
+npx ruflo@latest doctor --fix
 
 # Security scan
-npx @claude-flow/cli@latest security scan --depth full
+npx ruflo@latest security scan --depth full
 
 # Performance benchmark
-npx @claude-flow/cli@latest performance benchmark --suite all
+npx ruflo@latest performance benchmark --suite all
 ```
 
 ## 🚀 Available Agents (60+ Types)
@@ -464,7 +464,7 @@ npx @claude-flow/cli@latest performance benchmark --suite all
 ### V3 Specialized Agents
 `security-architect`, `security-auditor`, `memory-specialist`, `performance-engineer`
 
-### 🔐 @claude-flow/security
+### 🔐 @ruflo/security
 CVE remediation, input validation, path security:
 - `InputValidator` - Zod validation
 - `PathValidator` - Traversal prevention
@@ -545,51 +545,51 @@ CVE remediation, input validation, path security:
 
 ```bash
 # Core hooks
-npx @claude-flow/cli@latest hooks pre-task --description "[task]"
-npx @claude-flow/cli@latest hooks post-task --task-id "[id]" --success true
-npx @claude-flow/cli@latest hooks post-edit --file "[file]" --train-neural true
+npx ruflo@latest hooks pre-task --description "[task]"
+npx ruflo@latest hooks post-task --task-id "[id]" --success true
+npx ruflo@latest hooks post-edit --file "[file]" --train-neural true
 
 # Session management
-npx @claude-flow/cli@latest hooks session-start --session-id "[id]"
-npx @claude-flow/cli@latest hooks session-end --export-metrics true
-npx @claude-flow/cli@latest hooks session-restore --session-id "[id]"
+npx ruflo@latest hooks session-start --session-id "[id]"
+npx ruflo@latest hooks session-end --export-metrics true
+npx ruflo@latest hooks session-restore --session-id "[id]"
 
 # Intelligence routing
-npx @claude-flow/cli@latest hooks route --task "[task]"
-npx @claude-flow/cli@latest hooks explain --topic "[topic]"
+npx ruflo@latest hooks route --task "[task]"
+npx ruflo@latest hooks explain --topic "[topic]"
 
 # Neural learning
-npx @claude-flow/cli@latest hooks pretrain --model-type moe --epochs 10
-npx @claude-flow/cli@latest hooks build-agents --agent-types coder,tester
+npx ruflo@latest hooks pretrain --model-type moe --epochs 10
+npx ruflo@latest hooks build-agents --agent-types coder,tester
 
 # Background workers
-npx @claude-flow/cli@latest hooks worker list
-npx @claude-flow/cli@latest hooks worker dispatch --trigger audit
-npx @claude-flow/cli@latest hooks worker status
+npx ruflo@latest hooks worker list
+npx ruflo@latest hooks worker dispatch --trigger audit
+npx ruflo@latest hooks worker status
 
 # Coverage-aware routing
-npx @claude-flow/cli@latest hooks coverage-gaps --format table
-npx @claude-flow/cli@latest hooks coverage-route --task "[task]"
+npx ruflo@latest hooks coverage-gaps --format table
+npx ruflo@latest hooks coverage-route --task "[task]"
 
 # Statusline (for Claude Code integration)
-npx @claude-flow/cli@latest hooks statusline
-npx @claude-flow/cli@latest hooks statusline --json
+npx ruflo@latest hooks statusline
+npx ruflo@latest hooks statusline --json
 ```
 
 ## 🔄 Migration (V2 to V3)
 
 ```bash
 # Check migration status
-npx @claude-flow/cli@latest migrate status
+npx ruflo@latest migrate status
 
 # Run migration with backup
-npx @claude-flow/cli@latest migrate run --backup
+npx ruflo@latest migrate run --backup
 
 # Rollback if needed
-npx @claude-flow/cli@latest migrate rollback
+npx ruflo@latest migrate rollback
 
 # Validate migration
-npx @claude-flow/cli@latest migrate validate
+npx ruflo@latest migrate validate
 ```
 
 ## 🧠 Intelligence System (RuVector)
@@ -648,42 +648,42 @@ Features:
 ### Automatic Performance Tracking
 ```bash
 # After any significant operation, track metrics
-Bash("npx @claude-flow/cli@latest hooks post-command --command '[operation]' --track-metrics true")
+Bash("npx ruflo@latest hooks post-command --command '[operation]' --track-metrics true")
 
 # Periodically run benchmarks (every major feature)
-Bash("npx @claude-flow/cli@latest performance benchmark --suite all")
+Bash("npx ruflo@latest performance benchmark --suite all")
 
 # Analyze bottlenecks when performance degrades
-Bash("npx @claude-flow/cli@latest performance profile --target '[component]'")
+Bash("npx ruflo@latest performance profile --target '[component]'")
 ```
 
 ### Session Persistence (Cross-Conversation Learning)
 ```bash
 # At session start - restore previous context
-Bash("npx @claude-flow/cli@latest session restore --latest")
+Bash("npx ruflo@latest session restore --latest")
 
 # At session end - persist learned patterns
-Bash("npx @claude-flow/cli@latest hooks session-end --generate-summary true --persist-state true --export-metrics true")
+Bash("npx ruflo@latest hooks session-end --generate-summary true --persist-state true --export-metrics true")
 ```
 
 ### Neural Pattern Training
 ```bash
 # Train on successful code patterns
-Bash("npx @claude-flow/cli@latest neural train --pattern-type coordination --epochs 10")
+Bash("npx ruflo@latest neural train --pattern-type coordination --epochs 10")
 
 # Predict optimal approach for new tasks
-Bash("npx @claude-flow/cli@latest neural predict --input '[task description]'")
+Bash("npx ruflo@latest neural predict --input '[task description]'")
 
 # View learned patterns
-Bash("npx @claude-flow/cli@latest neural patterns --list")
+Bash("npx ruflo@latest neural patterns --list")
 ```
 
 ## 🔧 Environment Variables
 
 ```bash
 # Configuration
-CLAUDE_FLOW_CONFIG=./claude-flow.config.json
-CLAUDE_FLOW_LOG_LEVEL=info
+RUFLO_CONFIG=./ruflo.config.json
+RUFLO_LOG_LEVEL=info
 
 # Provider API Keys
 ANTHROPIC_API_KEY=sk-ant-...
@@ -691,18 +691,18 @@ OPENAI_API_KEY=sk-...
 GOOGLE_API_KEY=...
 
 # MCP Server
-CLAUDE_FLOW_MCP_PORT=3000
-CLAUDE_FLOW_MCP_HOST=localhost
-CLAUDE_FLOW_MCP_TRANSPORT=stdio
+RUFLO_MCP_PORT=3000
+RUFLO_MCP_HOST=localhost
+RUFLO_MCP_TRANSPORT=stdio
 
 # Memory
-CLAUDE_FLOW_MEMORY_BACKEND=hybrid
-CLAUDE_FLOW_MEMORY_PATH=./data/memory
+RUFLO_MEMORY_BACKEND=hybrid
+RUFLO_MEMORY_PATH=./data/memory
 ```
 
 ## 🔍 Doctor Health Checks
 
-Run `npx @claude-flow/cli@latest doctor` to check:
+Run `npx ruflo@latest doctor` to check:
 - Node.js version (20+)
 - npm version (9+)
 - Git installation
@@ -718,15 +718,15 @@ Run `npx @claude-flow/cli@latest doctor` to check:
 
 ```bash
 # Add MCP servers (auto-detects MCP mode when stdin is piped)
-claude mcp add claude-flow -- npx -y @claude-flow/cli@latest
+claude mcp add ruflo -- npx -y ruflo@latest
 claude mcp add ruv-swarm -- npx -y ruv-swarm mcp start  # Optional
 claude mcp add flow-nexus -- npx -y flow-nexus@latest mcp start  # Optional
 
 # Start daemon
-npx @claude-flow/cli@latest daemon start
+npx ruflo@latest daemon start
 
 # Run doctor
-npx @claude-flow/cli@latest doctor --fix
+npx ruflo@latest doctor --fix
 ```
 
 ## 🎯 Claude Code vs CLI Tools
@@ -740,14 +740,14 @@ npx @claude-flow/cli@latest doctor --fix
 - Git operations
 
 ### CLI Tools Handle Coordination (via Bash):
-- **Swarm init**: `npx @claude-flow/cli@latest swarm init --topology <type>`
-- **Swarm status**: `npx @claude-flow/cli@latest swarm status`
-- **Agent spawn**: `npx @claude-flow/cli@latest agent spawn -t <type> --name <name>`
-- **Memory store**: `npx @claude-flow/cli@latest memory store --key "mykey" --value "myvalue" --namespace patterns`
-- **Memory search**: `npx @claude-flow/cli@latest memory search --query "search terms"`
-- **Memory list**: `npx @claude-flow/cli@latest memory list --namespace patterns`
-- **Memory retrieve**: `npx @claude-flow/cli@latest memory retrieve --key "mykey" --namespace patterns`
-- **Hooks**: `npx @claude-flow/cli@latest hooks <hook-name> [options]`
+- **Swarm init**: `npx ruflo@latest swarm init --topology <type>`
+- **Swarm status**: `npx ruflo@latest swarm status`
+- **Agent spawn**: `npx ruflo@latest agent spawn -t <type> --name <name>`
+- **Memory store**: `npx ruflo@latest memory store --key "mykey" --value "myvalue" --namespace patterns`
+- **Memory search**: `npx ruflo@latest memory search --query "search terms"`
+- **Memory list**: `npx ruflo@latest memory list --namespace patterns`
+- **Memory retrieve**: `npx ruflo@latest memory retrieve --key "mykey" --namespace patterns`
+- **Hooks**: `npx ruflo@latest hooks <hook-name> [options]`
 
 ## 📝 Memory Commands Reference (IMPORTANT)
 
@@ -755,48 +755,48 @@ npx @claude-flow/cli@latest doctor --fix
 ```bash
 # REQUIRED: --key and --value
 # OPTIONAL: --namespace (default: "default"), --ttl, --tags
-npx @claude-flow/cli@latest memory store --key "pattern-auth" --value "JWT with refresh tokens" --namespace patterns
-npx @claude-flow/cli@latest memory store --key "bug-fix-123" --value "Fixed null check" --namespace solutions --tags "bugfix,auth"
+npx ruflo@latest memory store --key "pattern-auth" --value "JWT with refresh tokens" --namespace patterns
+npx ruflo@latest memory store --key "bug-fix-123" --value "Fixed null check" --namespace solutions --tags "bugfix,auth"
 ```
 
 ### Search Data (semantic vector search)
 ```bash
 # REQUIRED: --query (full flag, not -q)
 # OPTIONAL: --namespace, --limit, --threshold
-npx @claude-flow/cli@latest memory search --query "authentication patterns"
-npx @claude-flow/cli@latest memory search --query "error handling" --namespace patterns --limit 5
+npx ruflo@latest memory search --query "authentication patterns"
+npx ruflo@latest memory search --query "error handling" --namespace patterns --limit 5
 ```
 
 ### List Entries
 ```bash
 # OPTIONAL: --namespace, --limit
-npx @claude-flow/cli@latest memory list
-npx @claude-flow/cli@latest memory list --namespace patterns --limit 10
+npx ruflo@latest memory list
+npx ruflo@latest memory list --namespace patterns --limit 10
 ```
 
 ### Retrieve Specific Entry
 ```bash
 # REQUIRED: --key
 # OPTIONAL: --namespace (default: "default")
-npx @claude-flow/cli@latest memory retrieve --key "pattern-auth"
-npx @claude-flow/cli@latest memory retrieve --key "pattern-auth" --namespace patterns
+npx ruflo@latest memory retrieve --key "pattern-auth"
+npx ruflo@latest memory retrieve --key "pattern-auth" --namespace patterns
 ```
 
 ### Initialize Memory Database
 ```bash
-npx @claude-flow/cli@latest memory init --force --verbose
+npx ruflo@latest memory init --force --verbose
 ```
 
 **KEY**: CLI coordinates the strategy via Bash, Claude Code's Task tool executes with real agents.
 
 ## Support
 
-- Documentation: https://github.com/ruvnet/claude-flow
-- Issues: https://github.com/ruvnet/claude-flow/issues
+- Documentation: https://github.com/ruvnet/ruflo
+- Issues: https://github.com/ruvnet/ruflo/issues
 
 ---
 
-Remember: **Claude Flow CLI coordinates, Claude Code Task tool creates!**
+Remember: **Ruflo coordinates, Claude Code Task tool creates!**
 
 # important-instruction-reminders
 Do what has been asked; nothing more, nothing less.

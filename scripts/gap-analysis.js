@@ -22,7 +22,7 @@ for (const [id, meta] of Object.entries(metadataEntries)) {
 
   // Check for specific feature/package mentions
   const features = {
-    "claude-flow": /claude[-\s]?flow/i,
+    "ruflo": /ruflo|claude[-\s]?flow/i,
     "agentic-flow": /agentic[-\s]?flow/i,
     "flow-nexus": /flow[-\s]?nexus/i,
     "postgres-cli": /postgres[-\s]?cli|ruvector[-\s]?postgres/i,
@@ -85,7 +85,7 @@ console.log("──────────────────────�
 
 const features = Object.keys(content).length > 0 ? content : {};
 const allFeatures = [
-  "claude-flow", "agentic-flow", "flow-nexus", "postgres-cli", "neural-trader",
+  "ruflo", "agentic-flow", "flow-nexus", "postgres-cli", "neural-trader",
   "strange-loop", "reasoningbank", "hive-mind", "agent-booster", "multi-model-router",
   "mcp-tools", "150-agents", "docker-deployment", "railway-deployment", "tiered-compression",
   "ewc-consolidation", "safetensors", "quic-sync", "reflexion", "voyager-skills",

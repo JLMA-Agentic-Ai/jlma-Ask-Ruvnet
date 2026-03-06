@@ -41,7 +41,7 @@
   <!-- Layer 2: Orchestration -->
   <rect x="40" y="145" width="620" height="80" rx="8" fill="url(#layerGrad2)" stroke="#00d4ff" stroke-width="1.5"/>
   <text x="60" y="168" class="layer-name" fill="#00d4ff">ORCHESTRATION</text>
-  <text x="60" y="188" class="layer-sub">Claude Flow v3    ruv-swarm    Hive-Mind Consensus</text>
+  <text x="60" y="188" class="layer-sub">Ruflo v3.5    ruv-swarm    Hive-Mind Consensus</text>
   <text x="60" y="202" class="layer-detail">60+ agent types    5 topologies    BFT / Raft / CRDT</text>
   <text x="60" y="216" class="layer-desc">(Multi-agent coordination, swarm intelligence)</text>
 

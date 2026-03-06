@@ -397,7 +397,7 @@ KB-Gateway works with:
 | ruvector-postgres | Vector database with embeddings |
 | /ruvnet-kb-visual | KB visualization skill |
 | /ruvnet-stack | Full ecosystem installation |
-| claude-flow | Agent orchestration and memory |
+| ruflo | Agent orchestration and memory |
 
 ---
 

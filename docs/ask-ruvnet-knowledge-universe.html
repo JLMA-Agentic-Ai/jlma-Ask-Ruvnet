@@ -268,7 +268,7 @@
     <div class="stars"></div>
     <div id="title-bar">
         <h1>Ask Ruvnet Knowledge Universe</h1>
-        <div class="subtitle">323 Knowledge Nodes | Claude Flow v3.1.0</div>
+        <div class="subtitle">323 Knowledge Nodes | Ruflo v3.1.0</div>
     </div>
     <div id="search-container">
         <span class="search-icon">&#128269;</span>
@@ -299,7 +299,7 @@
     // ===== KNOWLEDGE BASE DATA =====
     const KB_DATA = {
         id: "root", name: "Ask Ruvnet Knowledge Universe", color: "#4ecdc4", count: 323,
-        description: "289 expert-curated entries across 15 categories covering RuVector, Claude Flow, AI Security, Teaching, Algorithms, Video Knowledge, and Infrastructure.",
+        description: "289 expert-curated entries across 15 categories covering RuVector, Ruflo, AI Security, Teaching, Algorithms, Video Knowledge, and Infrastructure.",
         children: [
             {
                 id: "ruvector", name: "RuVector Ecosystem", color: "#3b82f6", count: 63,
@@ -384,92 +384,92 @@
                 ]
             },
             {
-                id: "claude-flow", name: "Claude Flow & Agents", color: "#8b5cf6", count: 70,
+                id: "ruflo", name: "Ruflo & Agents", color: "#8b5cf6", count: 70,
                 description: "AI orchestration platform with 150+ agent types, swarm coordination, memory systems, and self-learning hooks.",
                 children: [
                     {
-                        id: "cf-platform", name: "Claude Flow Platform", color: "#8b5cf6", count: 6,
+                        id: "ruflo-platform", name: "Ruflo Platform", color: "#8b5cf6", count: 6,
                         description: "The operating system for AI teams: architecture, memory, and hooks.",
                         children: [
-                            { id: "cf-p-1", name: "Claude Flow: Operating System for AI Teams", color: "#8b5cf6", description: "Claude Flow is an operating system for AI agents. It spawns, coordinates, and monitors multiple AI agents working together on complex tasks, like a project manager for AI.", tags: ["claude-flow","overview"] },
-                            { id: "cf-p-2", name: "Claude Flow Architecture: 10,000-Foot View", color: "#8b5cf6", description: "High-level architecture: CLI layer, MCP server, agent pool, memory system (3 levels), hooks nervous system, and swarm coordinator. 26 commands, 140+ subcommands.", tags: ["architecture","overview"] },
-                            { id: "cf-p-3", name: "Claude Flow Memory: Three Levels", color: "#8b5cf6", description: "Three memory tiers: Working (session), Episodic (task history), Semantic (learned patterns). HNSW-indexed for 150x-12,500x faster retrieval than flat search.", tags: ["memory","hnsw"] },
-                            { id: "cf-p-4", name: "Claude Flow Hooks: Nervous System", color: "#8b5cf6", description: "27 hooks + 12 background workers form the nervous system. Pre/post hooks for edits, commands, tasks. Auto-learning from successes and failures.", tags: ["hooks","learning"] },
-                            { id: "cf-p-5", name: "Why Claude Flow Exists", color: "#8b5cf6", description: "The problem Claude Flow solves: single AI agents hit walls on complex tasks. CF coordinates multiple specialized agents with shared memory and self-learning.", tags: ["motivation","problem"] },
-                            { id: "cf-p-6", name: "Claude Flow Limitations", color: "#8b5cf6", description: "Honest assessment of current limitations: token costs, agent drift, context window constraints, and when NOT to use Claude Flow.", tags: ["limitations","honest"] }
+                            { id: "ruflo-p-1", name: "Ruflo: Operating System for AI Teams", color: "#8b5cf6", description: "Ruflo is an operating system for AI agents. It spawns, coordinates, and monitors multiple AI agents working together on complex tasks, like a project manager for AI.", tags: ["ruflo","overview"] },
+                            { id: "ruflo-p-2", name: "Ruflo Architecture: 10,000-Foot View", color: "#8b5cf6", description: "High-level architecture: CLI layer, MCP server, agent pool, memory system (3 levels), hooks nervous system, and swarm coordinator. 26 commands, 140+ subcommands.", tags: ["architecture","overview"] },
+                            { id: "ruflo-p-3", name: "Ruflo Memory: Three Levels", color: "#8b5cf6", description: "Three memory tiers: Working (session), Episodic (task history), Semantic (learned patterns). HNSW-indexed for 150x-12,500x faster retrieval than flat search.", tags: ["memory","hnsw"] },
+                            { id: "ruflo-p-4", name: "Ruflo Hooks: Nervous System", color: "#8b5cf6", description: "27 hooks + 12 background workers form the nervous system. Pre/post hooks for edits, commands, tasks. Auto-learning from successes and failures.", tags: ["hooks","learning"] },
+                            { id: "ruflo-p-5", name: "Why Ruflo Exists", color: "#8b5cf6", description: "The problem Ruflo solves: single AI agents hit walls on complex tasks. CF coordinates multiple specialized agents with shared memory and self-learning.", tags: ["motivation","problem"] },
+                            { id: "ruflo-p-6", name: "Ruflo Limitations", color: "#8b5cf6", description: "Honest assessment of current limitations: token costs, agent drift, context window constraints, and when NOT to use Ruflo.", tags: ["limitations","honest"] }
                         ]
                     },
                     {
-                        id: "cf-agents", name: "Agent Systems", color: "#a78bfa", count: 7,
+                        id: "ruflo-agents", name: "Agent Systems", color: "#a78bfa", count: 7,
                         description: "150+ agent types, lifecycle management, and inter-agent communication.",
                         children: [
-                            { id: "cf-a-1", name: "Complete Agent Catalog: 150+ Types", color: "#a78bfa", description: "Full catalog of agent types: coder, reviewer, tester, researcher, security-architect, performance-engineer, and 140+ more specialized agents.", tags: ["agents","catalog"] },
-                            { id: "cf-a-2", name: "Agent Lifecycle: Spawn, Execute, Report", color: "#a78bfa", description: "How agents are born, do their work, and report back. Covers spawning, task assignment, execution, result collection, and graceful shutdown.", tags: ["lifecycle","agents"] },
-                            { id: "cf-a-3", name: "Agent Spawning Patterns", color: "#a78bfa", description: "Five spawning patterns: single agent, parallel batch, sequential pipeline, swarm with coordinator, and background daemon agents.", tags: ["spawning","patterns"] },
-                            { id: "cf-a-4", name: "Creating Custom Agent Types", color: "#a78bfa", description: "How to define custom agent types with specific skills, tools, and behavioral constraints. Template-based approach for rapid agent creation.", tags: ["custom","agents"] },
-                            { id: "cf-a-5", name: "How Agents Talk to Each Other", color: "#a78bfa", description: "Inter-agent communication via shared memory, message passing, and event hooks. Covers synchronous and asynchronous communication patterns.", tags: ["communication","agents"] },
-                            { id: "cf-a-6", name: "When Agents Fail: Recovery Patterns", color: "#a78bfa", description: "Failure recovery: retry with backoff, fallback to different agent type, escalate to human, checkpoint and resume, and graceful degradation.", tags: ["recovery","failure"] },
-                            { id: "cf-a-7", name: "Agent Booster: Multi-Model Routing", color: "#a78bfa", description: "Intelligent routing of tasks to the optimal AI model (Haiku for speed, Sonnet for balance, Opus for reasoning) based on task complexity analysis.", tags: ["routing","models"] }
+                            { id: "ruflo-a-1", name: "Complete Agent Catalog: 150+ Types", color: "#a78bfa", description: "Full catalog of agent types: coder, reviewer, tester, researcher, security-architect, performance-engineer, and 140+ more specialized agents.", tags: ["agents","catalog"] },
+                            { id: "ruflo-a-2", name: "Agent Lifecycle: Spawn, Execute, Report", color: "#a78bfa", description: "How agents are born, do their work, and report back. Covers spawning, task assignment, execution, result collection, and graceful shutdown.", tags: ["lifecycle","agents"] },
+                            { id: "ruflo-a-3", name: "Agent Spawning Patterns", color: "#a78bfa", description: "Five spawning patterns: single agent, parallel batch, sequential pipeline, swarm with coordinator, and background daemon agents.", tags: ["spawning","patterns"] },
+                            { id: "ruflo-a-4", name: "Creating Custom Agent Types", color: "#a78bfa", description: "How to define custom agent types with specific skills, tools, and behavioral constraints. Template-based approach for rapid agent creation.", tags: ["custom","agents"] },
+                            { id: "ruflo-a-5", name: "How Agents Talk to Each Other", color: "#a78bfa", description: "Inter-agent communication via shared memory, message passing, and event hooks. Covers synchronous and asynchronous communication patterns.", tags: ["communication","agents"] },
+                            { id: "ruflo-a-6", name: "When Agents Fail: Recovery Patterns", color: "#a78bfa", description: "Failure recovery: retry with backoff, fallback to different agent type, escalate to human, checkpoint and resume, and graceful degradation.", tags: ["recovery","failure"] },
+                            { id: "ruflo-a-7", name: "Agent Booster: Multi-Model Routing", color: "#a78bfa", description: "Intelligent routing of tasks to the optimal AI model (Haiku for speed, Sonnet for balance, Opus for reasoning) based on task complexity analysis.", tags: ["routing","models"] }
                         ]
                     },
                     {
-                        id: "cf-swarm", name: "Swarm Intelligence", color: "#7c3aed", count: 5,
+                        id: "ruflo-swarm", name: "Swarm Intelligence", color: "#7c3aed", count: 5,
                         description: "Multi-agent coordination, topology selection, and consensus protocols.",
                         children: [
-                            { id: "cf-sw-1", name: "Choosing the Right Swarm Topology", color: "#7c3aed", description: "When to use hierarchical (tight control), mesh (peer-to-peer), ring (sequential), star (centralized), or hybrid (adaptive) topologies.", tags: ["topology","swarm"] },
-                            { id: "cf-sw-2", name: "Keeping Agents On Track: Anti-Drift", color: "#7c3aed", description: "Preventing agent drift: hierarchical control, max-agents limits, specialized roles, consensus protocols, and coordinator oversight patterns.", tags: ["anti-drift","control"] },
-                            { id: "cf-sw-3", name: "Five Swarm Patterns", color: "#7c3aed", description: "Research swarm, implementation swarm, review swarm, security audit swarm, and full-stack development swarm. When to use each pattern.", tags: ["patterns","swarm"] },
-                            { id: "cf-sw-4", name: "Hive Mind Consensus Protocols", color: "#7c3aed", description: "Byzantine fault tolerance, Raft leader election, gossip protocol, CRDTs, and quorum-based consensus. How agents agree on shared state.", tags: ["consensus","hive-mind"] },
-                            { id: "cf-sw-5", name: "AI Marketing Swarms: 15-Agent", color: "#7c3aed", description: "Case study: 15-agent marketing swarm with researcher, copywriter, designer, analyst, and coordinator agents working in parallel.", tags: ["marketing","case-study"] }
+                            { id: "ruflo-sw-1", name: "Choosing the Right Swarm Topology", color: "#7c3aed", description: "When to use hierarchical (tight control), mesh (peer-to-peer), ring (sequential), star (centralized), or hybrid (adaptive) topologies.", tags: ["topology","swarm"] },
+                            { id: "ruflo-sw-2", name: "Keeping Agents On Track: Anti-Drift", color: "#7c3aed", description: "Preventing agent drift: hierarchical control, max-agents limits, specialized roles, consensus protocols, and coordinator oversight patterns.", tags: ["anti-drift","control"] },
+                            { id: "ruflo-sw-3", name: "Five Swarm Patterns", color: "#7c3aed", description: "Research swarm, implementation swarm, review swarm, security audit swarm, and full-stack development swarm. When to use each pattern.", tags: ["patterns","swarm"] },
+                            { id: "ruflo-sw-4", name: "Hive Mind Consensus Protocols", color: "#7c3aed", description: "Byzantine fault tolerance, Raft leader election, gossip protocol, CRDTs, and quorum-based consensus. How agents agree on shared state.", tags: ["consensus","hive-mind"] },
+                            { id: "ruflo-sw-5", name: "AI Marketing Swarms: 15-Agent", color: "#7c3aed", description: "Case study: 15-agent marketing swarm with researcher, copywriter, designer, analyst, and coordinator agents working in parallel.", tags: ["marketing","case-study"] }
                         ]
                     },
                     {
-                        id: "cf-memory", name: "Memory & Learning", color: "#6d28d9", count: 10,
+                        id: "ruflo-memory", name: "Memory & Learning", color: "#6d28d9", count: 10,
                         description: "Neural patterns, self-optimizing architectures, and knowledge retention.",
                         children: [
-                            { id: "cf-m-1", name: "Neural Patterns: What They Are", color: "#6d28d9", description: "Learned behavioral patterns from successful task completions. Stored as vector embeddings in HNSW-indexed memory for rapid retrieval.", tags: ["neural","patterns"] },
-                            { id: "cf-m-2", name: "SONA: Self-Optimizing Architecture", color: "#6d28d9", description: "Self-Optimizing Neural Architecture achieves <0.05ms adaptation. Continuously adjusts routing and parameters based on task outcomes.", tags: ["sona","optimization"] },
-                            { id: "cf-m-3", name: "ReasoningBank: Learning From Decisions", color: "#6d28d9", description: "A bank of reasoning traces from past decisions. Agents consult it before making new decisions, learning from both successes and failures.", tags: ["reasoning","learning"] },
-                            { id: "cf-m-4", name: "LoRA and EWC: Learning Without Forgetting", color: "#6d28d9", description: "Low-Rank Adaptation (LoRA) for efficient fine-tuning. Elastic Weight Consolidation (EWC++) prevents catastrophic forgetting of old knowledge.", tags: ["lora","ewc","learning"] },
-                            { id: "cf-m-5", name: "Mixture of Experts Routing", color: "#6d28d9", description: "MoE routing selects specialized expert sub-networks for each task. Only activates relevant parameters, reducing compute while maintaining quality.", tags: ["moe","routing"] },
-                            { id: "cf-m-6", name: "Flash Attention", color: "#6d28d9", description: "2.49x-7.47x speedup in attention computation through tiled computation and reduced memory I/O. Critical for processing long contexts efficiently.", tags: ["attention","performance"] },
-                            { id: "cf-m-7", name: "Episodic Memory", color: "#6d28d9", description: "Task-by-task memory of what happened, what worked, and what failed. Like a project journal that agents consult before starting similar work.", tags: ["episodic","memory"] },
-                            { id: "cf-m-8", name: "Semantic Memory", color: "#6d28d9", description: "Distilled knowledge from many episodes. General patterns and principles rather than specific events. The wisdom extracted from experience.", tags: ["semantic","memory"] },
-                            { id: "cf-m-9", name: "Experience Replay", color: "#6d28d9", description: "Re-processing past experiences to strengthen learning. Prevents recency bias and ensures important lessons aren't forgotten.", tags: ["replay","learning"] },
-                            { id: "cf-m-10", name: "Knowledge Distillation", color: "#6d28d9", description: "Transferring knowledge from a large expert model to a smaller, faster student model. Enables deploying smaller models that perform like larger ones.", tags: ["distillation","transfer"] }
+                            { id: "ruflo-m-1", name: "Neural Patterns: What They Are", color: "#6d28d9", description: "Learned behavioral patterns from successful task completions. Stored as vector embeddings in HNSW-indexed memory for rapid retrieval.", tags: ["neural","patterns"] },
+                            { id: "ruflo-m-2", name: "SONA: Self-Optimizing Architecture", color: "#6d28d9", description: "Self-Optimizing Neural Architecture achieves <0.05ms adaptation. Continuously adjusts routing and parameters based on task outcomes.", tags: ["sona","optimization"] },
+                            { id: "ruflo-m-3", name: "ReasoningBank: Learning From Decisions", color: "#6d28d9", description: "A bank of reasoning traces from past decisions. Agents consult it before making new decisions, learning from both successes and failures.", tags: ["reasoning","learning"] },
+                            { id: "ruflo-m-4", name: "LoRA and EWC: Learning Without Forgetting", color: "#6d28d9", description: "Low-Rank Adaptation (LoRA) for efficient fine-tuning. Elastic Weight Consolidation (EWC++) prevents catastrophic forgetting of old knowledge.", tags: ["lora","ewc","learning"] },
+                            { id: "ruflo-m-5", name: "Mixture of Experts Routing", color: "#6d28d9", description: "MoE routing selects specialized expert sub-networks for each task. Only activates relevant parameters, reducing compute while maintaining quality.", tags: ["moe","routing"] },
+                            { id: "ruflo-m-6", name: "Flash Attention", color: "#6d28d9", description: "2.49x-7.47x speedup in attention computation through tiled computation and reduced memory I/O. Critical for processing long contexts efficiently.", tags: ["attention","performance"] },
+                            { id: "ruflo-m-7", name: "Episodic Memory", color: "#6d28d9", description: "Task-by-task memory of what happened, what worked, and what failed. Like a project journal that agents consult before starting similar work.", tags: ["episodic","memory"] },
+                            { id: "ruflo-m-8", name: "Semantic Memory", color: "#6d28d9", description: "Distilled knowledge from many episodes. General patterns and principles rather than specific events. The wisdom extracted from experience.", tags: ["semantic","memory"] },
+                            { id: "ruflo-m-9", name: "Experience Replay", color: "#6d28d9", description: "Re-processing past experiences to strengthen learning. Prevents recency bias and ensures important lessons aren't forgotten.", tags: ["replay","learning"] },
+                            { id: "ruflo-m-10", name: "Knowledge Distillation", color: "#6d28d9", description: "Transferring knowledge from a large expert model to a smaller, faster student model. Enables deploying smaller models that perform like larger ones.", tags: ["distillation","transfer"] }
                         ]
                     },
                     {
-                        id: "cf-agentic", name: "Agentic Flow", color: "#9333ea", count: 4,
+                        id: "ruflo-agentic", name: "Agentic Flow", color: "#9333ea", count: 4,
                         description: "Agentic Flow platform, AgentDB, and skills systems.",
                         children: [
-                            { id: "cf-af-1", name: "Agentic Flow (Main)", color: "#9333ea", description: "The agentic-flow npm package: 75x faster embeddings with ONNX integration, AgentDB for persistent agent state, and the Voyager skills system.", tags: ["agentic-flow","main"] },
-                            { id: "cf-af-2", name: "Agentic Flow v2.0.7", color: "#9333ea", description: "Latest stable release with HybridReasoningBank, improved ONNX embedding pipeline (75x faster), sql.js cross-platform cache, and enhanced document chunking.", tags: ["agentic-flow","release"] },
-                            { id: "cf-af-3", name: "AgentDB v2.0.0-alpha", color: "#9333ea", description: "RuVector-powered graph database with Cypher queries, hyperedges, ACID persistence, 150x faster than SQLite. Reflexion memory, skill library, and lifelong learning for agents.", tags: ["agentdb","database"] },
-                            { id: "cf-af-4", name: "Voyager Skills & Reflexion", color: "#9333ea", description: "Voyager-inspired skill library where agents learn reusable skills. Reflexion enables agents to reflect on failures and improve.", tags: ["voyager","skills","reflexion"] }
+                            { id: "ruflo-af-1", name: "Agentic Flow (Main)", color: "#9333ea", description: "The agentic-flow npm package: 75x faster embeddings with ONNX integration, AgentDB for persistent agent state, and the Voyager skills system.", tags: ["agentic-flow","main"] },
+                            { id: "ruflo-af-2", name: "Agentic Flow v2.0.7", color: "#9333ea", description: "Latest stable release with HybridReasoningBank, improved ONNX embedding pipeline (75x faster), sql.js cross-platform cache, and enhanced document chunking.", tags: ["agentic-flow","release"] },
+                            { id: "ruflo-af-3", name: "AgentDB v2.0.0-alpha", color: "#9333ea", description: "RuVector-powered graph database with Cypher queries, hyperedges, ACID persistence, 150x faster than SQLite. Reflexion memory, skill library, and lifelong learning for agents.", tags: ["agentdb","database"] },
+                            { id: "ruflo-af-4", name: "Voyager Skills & Reflexion", color: "#9333ea", description: "Voyager-inspired skill library where agents learn reusable skills. Reflexion enables agents to reflect on failures and improve.", tags: ["voyager","skills","reflexion"] }
                         ]
                     },
                     {
-                        id: "cf-bg", name: "Background Systems", color: "#7e22ce", count: 3,
+                        id: "ruflo-bg", name: "Background Systems", color: "#7e22ce", count: 3,
                         description: "Background workers, SPARC framework, and automated processes.",
                         children: [
-                            { id: "cf-bg-1", name: "Background Workers: AI Patterns", color: "#7e22ce", description: "12 background workers: ultralearn, optimize, consolidate, predict, audit, map, preload, deepdive, document, refactor, benchmark, testgaps.", tags: ["workers","background"] },
-                            { id: "cf-bg-2", name: "SPARC Framework", color: "#7e22ce", description: "Specification, Pseudocode, Architecture, Refinement, Completion. Structured methodology for breaking complex tasks into manageable agent-friendly steps.", tags: ["sparc","methodology"] },
-                            { id: "cf-bg-3", name: "SPARC Methodology Complete", color: "#7e22ce", description: "Full SPARC methodology with examples: how to write specifications, pseudocode planning, architecture decisions, iterative refinement, and completion criteria.", tags: ["sparc","complete"] }
+                            { id: "ruflo-bg-1", name: "Background Workers: AI Patterns", color: "#7e22ce", description: "12 background workers: ultralearn, optimize, consolidate, predict, audit, map, preload, deepdive, document, refactor, benchmark, testgaps.", tags: ["workers","background"] },
+                            { id: "ruflo-bg-2", name: "SPARC Framework", color: "#7e22ce", description: "Specification, Pseudocode, Architecture, Refinement, Completion. Structured methodology for breaking complex tasks into manageable agent-friendly steps.", tags: ["sparc","methodology"] },
+                            { id: "ruflo-bg-3", name: "SPARC Methodology Complete", color: "#7e22ce", description: "Full SPARC methodology with examples: how to write specifications, pseudocode planning, architecture decisions, iterative refinement, and completion criteria.", tags: ["sparc","complete"] }
                         ]
                     },
                     {
-                        id: "cf-ecosystem", name: "Claude Flow Ecosystem", color: "#c084fc", count: 8,
-                        description: "The extended Claude Flow package ecosystem: MCP servers, guidance, codex adapters, quality engineering, and cloud platform.",
+                        id: "ruflo-ecosystem", name: "Ruflo Ecosystem", color: "#c084fc", count: 8,
+                        description: "The extended Ruflo package ecosystem: MCP servers, guidance, codex adapters, quality engineering, and cloud platform.",
                         children: [
-                            { id: "cf-eco-1", name: "@claude-flow/guidance v3.0.0-alpha.1", color: "#c084fc", description: "Guidance Control Plane: compiles, retrieves, enforces, and evolves guidance rules for Claude Code sessions. Proof chains, trust systems, adversarial defense, prompt injection protection.", tags: ["guidance","governance","security"] },
-                            { id: "cf-eco-2", name: "@claude-flow/mcp v3.0.0-alpha.8", color: "#c084fc", description: "Standalone MCP (Model Context Protocol) server with stdio/http/websocket transports, connection pooling, and tool registry. The universal AI tool connector.", tags: ["mcp","server","protocol"] },
-                            { id: "cf-eco-3", name: "@claude-flow/codex v3.0.0-alpha.9", color: "#c084fc", description: "OpenAI Codex CLI integration for Claude Flow. Bridges Claude Flow agent orchestration to the Codex platform with AGENTS.md support.", tags: ["codex","openai","adapter"] },
-                            { id: "cf-eco-4", name: "flow-nexus v0.1.128 (Cloud Platform)", color: "#c084fc", description: "Cloud-hosted AI orchestration: sandboxes, workflows, swarm deployment, neural training, app store, and credit-based billing. The SaaS layer on top of Claude Flow.", tags: ["cloud","saas","platform"] },
-                            { id: "cf-eco-5", name: "Agentic QE v3.6.15 (QE Fleet)", color: "#c084fc", description: "Quality Engineering with 59 specialized QE agents, 13 bounded contexts (DDD), O(log n) coverage analysis, ReasoningBank learning, and mathematical coherence verification.", tags: ["qe","testing","quality"] },
-                            { id: "cf-eco-6", name: "AgentDB v2 (Graph Database)", color: "#c084fc", description: "RuVector-powered graph database: Cypher queries, hyperedges, ACID persistence, 150x faster than SQLite. Reflexion memory, skill library, lifelong learning for agents.", tags: ["agentdb","graph","persistence"] },
-                            { id: "cf-eco-7", name: "RuvNet KB-First v6.5.3", color: "#c084fc", description: "Knowledge-Base-First Application Builder: build intelligent apps on expert knowledge. GNN attention routing, SONA vector search, MCP server with 10 tools.", tags: ["kb","builder","mcp"] },
-                            { id: "cf-eco-8", name: "Gemini Code Flow", color: "#c084fc", description: "Gemini CLI adaptation of Claude Flow: brings the same agent orchestration, SPARC methodology, and swarm patterns to Google's Gemini ecosystem.", tags: ["gemini","adaptation","cross-platform"] }
+                            { id: "ruflo-eco-1", name: "@claude-flow/guidance v3.0.0-alpha.1", color: "#c084fc", description: "Guidance Control Plane: compiles, retrieves, enforces, and evolves guidance rules for Claude Code sessions. Proof chains, trust systems, adversarial defense, prompt injection protection.", tags: ["guidance","governance","security"] },
+                            { id: "ruflo-eco-2", name: "@claude-flow/mcp v3.0.0-alpha.8", color: "#c084fc", description: "Standalone MCP (Model Context Protocol) server with stdio/http/websocket transports, connection pooling, and tool registry. The universal AI tool connector.", tags: ["mcp","server","protocol"] },
+                            { id: "ruflo-eco-3", name: "@claude-flow/codex v3.0.0-alpha.9", color: "#c084fc", description: "OpenAI Codex CLI integration for Ruflo. Bridges Ruflo agent orchestration to the Codex platform with AGENTS.md support.", tags: ["codex","openai","adapter"] },
+                            { id: "ruflo-eco-4", name: "flow-nexus v0.1.128 (Cloud Platform)", color: "#c084fc", description: "Cloud-hosted AI orchestration: sandboxes, workflows, swarm deployment, neural training, app store, and credit-based billing. The SaaS layer on top of Ruflo.", tags: ["cloud","saas","platform"] },
+                            { id: "ruflo-eco-5", name: "Agentic QE v3.6.15 (QE Fleet)", color: "#c084fc", description: "Quality Engineering with 59 specialized QE agents, 13 bounded contexts (DDD), O(log n) coverage analysis, ReasoningBank learning, and mathematical coherence verification.", tags: ["qe","testing","quality"] },
+                            { id: "ruflo-eco-6", name: "AgentDB v2 (Graph Database)", color: "#c084fc", description: "RuVector-powered graph database: Cypher queries, hyperedges, ACID persistence, 150x faster than SQLite. Reflexion memory, skill library, lifelong learning for agents.", tags: ["agentdb","graph","persistence"] },
+                            { id: "ruflo-eco-7", name: "RuvNet KB-First v6.5.3", color: "#c084fc", description: "Knowledge-Base-First Application Builder: build intelligent apps on expert knowledge. GNN attention routing, SONA vector search, MCP server with 10 tools.", tags: ["kb","builder","mcp"] },
+                            { id: "ruflo-eco-8", name: "Gemini Code Flow", color: "#c084fc", description: "Gemini CLI adaptation of Ruflo: brings the same agent orchestration, SPARC methodology, and swarm patterns to Google's Gemini ecosystem.", tags: ["gemini","adaptation","cross-platform"] }
                         ]
                     }
                 ]
@@ -507,8 +507,8 @@
                         children: [
                             { id: "sec-p-1", name: "RuvBot 5-Layer AIMDS Protection Stack", color: "#dc2626", description: "Five layers of production security: input validation, behavioral analysis, threat detection, output sanitization, and audit logging. Complete production hardening.", tags: ["ruvbot","production","layers"] },
                             { id: "sec-p-2", name: "RuvBot AIDefence Gate: 6-Layer", color: "#dc2626", description: "Six-layer gate protecting the AI pipeline: rate limiting, input validation, context verification, model protection, output filtering, and response signing.", tags: ["gate","defense","production"] },
-                            { id: "sec-p-3", name: "Claude Flow Security CLI", color: "#dc2626", description: "Security scanning from the command line: npx @claude-flow/cli security scan --depth full. Covers CVEs, input validation, path security, and injection protection.", tags: ["cli","scanning"] },
-                            { id: "sec-p-4", name: "Claude Flow Adversarial Model", color: "#dc2626", description: "How Claude Flow models adversarial scenarios: threat modeling, attack surface analysis, and automated red-teaming for AI systems.", tags: ["adversarial","modeling"] },
+                            { id: "sec-p-3", name: "Ruflo Security CLI", color: "#dc2626", description: "Security scanning from the command line: npx ruflo security scan --depth full. Covers CVEs, input validation, path security, and injection protection.", tags: ["cli","scanning"] },
+                            { id: "sec-p-4", name: "Ruflo Adversarial Model", color: "#dc2626", description: "How Ruflo models adversarial scenarios: threat modeling, attack surface analysis, and automated red-teaming for AI systems.", tags: ["adversarial","modeling"] },
                             { id: "sec-p-5", name: "Input Validation & Path Security", color: "#dc2626", description: "Zod validation for input schemas, path traversal prevention, and injection protection. The first line of defense in any AI application.", tags: ["validation","path","zod"] },
                             { id: "sec-p-6", name: "Security Agents: Four Specialized Defenders", color: "#dc2626", description: "Four security agent types: security-architect (design), security-auditor (review), threat-detector (runtime), and incident-responder (recovery).", tags: ["agents","security"] }
                         ]
@@ -545,7 +545,7 @@
                             { id: "t-c-9", name: "What Is PostgreSQL for AI", color: "#34d399", description: "A database that speaks AI. PostgreSQL with vector extensions stores both regular data AND embeddings, so your AI can search by meaning inside a real database.", tags: ["postgres","teaching"] },
                             { id: "t-c-10", name: "What Is RVF", color: "#34d399", description: "RuVector Format: AI in a box. A single file containing everything needed to run AI offline: the model, the data, the search index, and the runtime. Self-contained intelligence.", tags: ["rvf","teaching"] },
                             { id: "t-c-11", name: "What Is a Knowledge Base", color: "#34d399", description: "A curated collection of expert knowledge that AI can search. Not a database dump - carefully written, scored, and embedded information designed for AI retrieval.", tags: ["kb","teaching"] },
-                            { id: "t-c-12", name: "What Is Claude Flow", color: "#34d399", description: "An operating system for AI teams. It spawns agents, assigns tasks, manages memory, and coordinates work. Like a project manager that never sleeps and learns from every project.", tags: ["claude-flow","teaching"] },
+                            { id: "t-c-12", name: "What Is Ruflo", color: "#34d399", description: "An operating system for AI teams. It spawns agents, assigns tasks, manages memory, and coordinates work. Like a project manager that never sleeps and learns from every project.", tags: ["ruflo","teaching"] },
                             { id: "t-c-13", name: "What Is Min-Cut", color: "#34d399", description: "Finding the weakest link in a network. Min-cut identifies where a system is most likely to break by finding the minimum set of connections whose removal splits the graph.", tags: ["mincut","teaching"] },
                             { id: "t-c-14", name: "What Is a Cognitive Container", color: "#34d399", description: "An RVF file that contains not just data but reasoning capability. It can boot itself, process queries, and learn - all without an internet connection or external API.", tags: ["cognitive","teaching"] }
                         ]
@@ -574,7 +574,7 @@
                             { id: "t-d-5", name: "Which Vector Database", color: "#047857", description: "RuVector-Postgres for production, RuVector-WASM for browser, Pinecone for managed, ChromaDB for prototyping. Feature comparison.", tags: ["database","decision"] },
                             { id: "t-d-6", name: "Do I Need a Swarm?", color: "#047857", description: "Single agent handles 80% of tasks. Use swarms for: multi-file changes, cross-domain work, parallel research, and tasks needing diverse expertise.", tags: ["swarm","decision"] },
                             { id: "t-d-7", name: "How Much Security?", color: "#047857", description: "Level 1: Basic input validation. Level 2: + PII detection. Level 3: + behavioral analysis. Level 4: + meta-learning. Level 5: Full AIMDS pipeline.", tags: ["security","decision"] },
-                            { id: "t-d-8", name: "Build vs Buy: Claude Flow", color: "#047857", description: "When to build custom orchestration vs using Claude Flow. CF wins when you need swarms, memory, hooks, or multi-model routing.", tags: ["build-buy","decision"] },
+                            { id: "t-d-8", name: "Build vs Buy: Ruflo", color: "#047857", description: "When to build custom orchestration vs using Ruflo. CF wins when you need swarms, memory, hooks, or multi-model routing.", tags: ["build-buy","decision"] },
                             { id: "t-d-9", name: "Local vs Cloud AI", color: "#047857", description: "Local: privacy, no latency, no API costs. Cloud: more powerful models, no hardware investment. Hybrid: local for speed, cloud for reasoning.", tags: ["local","cloud","decision"] },
                             { id: "t-d-10", name: "Quality vs Speed", color: "#047857", description: "When to prioritize quality (production KB, security scanning) vs speed (prototyping, exploration, batch processing). Practical guidelines.", tags: ["quality","speed"] },
                             { id: "t-d-11", name: "HNSW Index vs Sequential Scan", color: "#047857", description: "HNSW for >1000 vectors (logarithmic). Sequential scan for <1000 (simpler, no index overhead). Break-even analysis.", tags: ["hnsw","performance","decision"] },
@@ -587,12 +587,12 @@
                         id: "t-recipes", name: "Recipes & How-To", color: "#065f46", count: 10,
                         description: "Step-by-step recipes for common AI tasks.",
                         children: [
-                            { id: "t-r-1", name: "Spawning a Single Agent", color: "#065f46", description: "npx @claude-flow/cli agent spawn -t coder --name my-coder. Complete walkthrough from spawn to result collection.", tags: ["recipe","agent"] },
+                            { id: "t-r-1", name: "Spawning a Single Agent", color: "#065f46", description: "npx ruflo agent spawn -t coder --name my-coder. Complete walkthrough from spawn to result collection.", tags: ["recipe","agent"] },
                             { id: "t-r-2", name: "Running Multiple Agents in Parallel", color: "#065f46", description: "Using Task tool with run_in_background: true. Spawn 5 agents simultaneously, wait for results, synthesize output.", tags: ["recipe","parallel"] },
                             { id: "t-r-3", name: "Storing & Retrieving AI Memory", color: "#065f46", description: "memory store --key 'pattern-auth' --value 'JWT refresh tokens' --namespace patterns. Then memory search --query 'authentication'.", tags: ["recipe","memory"] },
                             { id: "t-r-4", name: "Making Every Chat Check the KB", color: "#065f46", description: "Configure Claude Code to always call kb_search before answering. CLAUDE.md rule setup and MCP server configuration.", tags: ["recipe","kb"] },
                             { id: "t-r-5", name: "Teaching AI to Learn From Tasks", color: "#065f46", description: "Post-task hooks: store successful patterns, train neural patterns, trigger optimization workers. Building a self-improving system.", tags: ["recipe","learning"] },
-                            { id: "t-r-6", name: "Running a Security Scan", color: "#065f46", description: "npx @claude-flow/cli security scan --depth full. Interpreting results, fixing vulnerabilities, and scheduling regular scans.", tags: ["recipe","security"] },
+                            { id: "t-r-6", name: "Running a Security Scan", color: "#065f46", description: "npx ruflo security scan --depth full. Interpreting results, fixing vulnerabilities, and scheduling regular scans.", tags: ["recipe","security"] },
                             { id: "t-r-7", name: "Using a Swarm to Fix a Complex Bug", color: "#065f46", description: "Coordinator + researcher + coder + tester swarm. Researcher finds the bug, coder fixes it, tester verifies. Real example walkthrough.", tags: ["recipe","swarm"] },
                             { id: "t-r-8", name: "Adding New Knowledge to the KB", color: "#065f46", description: "Write entry (2000-7000 chars), embed with ONNX pipeline, store with parameterized query, verify unique embedding. Complete workflow.", tags: ["recipe","kb"] },
                             { id: "t-r-9", name: "Monitoring Your Agents", color: "#065f46", description: "agent status, agent metrics, agent health, agent logs. Setting up alerts for failures and performance degradation.", tags: ["recipe","monitoring"] },
@@ -624,7 +624,7 @@
                         description: "Advanced topics explored in depth.",
                         children: [
                             { id: "t-dd-1", name: "How Ask Ruvnet Actually Works", color: "#166534", description: "End-to-end architecture: user query -> MCP server -> KB search (HNSW) -> context assembly -> LLM generation -> response. The complete pipeline.", tags: ["architecture","deep-dive"] },
-                            { id: "t-dd-2", name: "What Claude Flow Should Do Automatically", color: "#166534", description: "Vision document: auto-swarm detection, self-healing agents, predictive task routing, continuous optimization, and zero-config deployment.", tags: ["vision","automation"] },
+                            { id: "t-dd-2", name: "What Ruflo Should Do Automatically", color: "#166534", description: "Vision document: auto-swarm detection, self-healing agents, predictive task routing, continuous optimization, and zero-config deployment.", tags: ["vision","automation"] },
                             { id: "t-dd-3", name: "Hyperbolic Embeddings", color: "#166534", description: "Poincare ball model: embedding hierarchical data in hyperbolic space where the circumference grows exponentially. Perfect for tree structures and taxonomies.", tags: ["hyperbolic","math"] },
                             { id: "t-dd-4", name: "Byzantine Consensus", color: "#166534", description: "How agents agree when some might be lying. Byzantine fault tolerance ensures correct consensus even when up to 1/3 of agents are faulty or malicious.", tags: ["byzantine","consensus"] },
                             { id: "t-dd-5", name: "CRDTs: Distributed State", color: "#166534", description: "Conflict-free Replicated Data Types allow multiple agents to update shared state independently and merge without conflicts. Eventually consistent, always available.", tags: ["crdt","distributed"] },
@@ -640,7 +640,7 @@
                         children: [
                             { id: "t-g-1", name: "Core AI Glossary: 30 Terms", color: "#15803d", description: "30 essential AI terms explained: embedding, vector, similarity, HNSW, RAG, agent, swarm, MCP, token, context window, and 20 more.", tags: ["glossary","core"] },
                             { id: "t-g-2", name: "AI Jargon Decoder", color: "#15803d", description: "Translating buzzwords: 'fine-tuning' = teaching, 'inference' = asking, 'embedding' = meaning-as-numbers, 'hallucination' = confident guessing.", tags: ["jargon","decoder"] },
-                            { id: "t-g-3", name: "Claude Flow Glossary: 25 Terms", color: "#15803d", description: "Claude Flow specific terms: agent, swarm, hook, worker, topology, consensus, memory tier, SPARC, hive mind, and 16 more.", tags: ["glossary","claude-flow"] },
+                            { id: "t-g-3", name: "Ruflo Glossary: 25 Terms", color: "#15803d", description: "Ruflo specific terms: agent, swarm, hook, worker, topology, consensus, memory tier, SPARC, hive mind, and 16 more.", tags: ["glossary","ruflo"] },
                             { id: "t-g-4", name: "Database Glossary: 20 Terms", color: "#15803d", description: "Database terms for AI: vector column, HNSW index, embedding dimension, similarity operator (<=>), ruvector type, and 15 more.", tags: ["glossary","database"] },
                             { id: "t-g-5", name: "Architecture Glossary: 15 Terms", color: "#15803d", description: "Architecture terms: microservice, monolith, serverless, edge computing, CDN, load balancer, container, orchestrator, and 7 more.", tags: ["glossary","architecture"] },
                             { id: "t-g-6", name: "AI Security Glossary: 20 Terms", color: "#15803d", description: "Security terms: prompt injection, jailbreak, PII, AIMDS, behavioral analysis, Lyapunov exponent, meta-learning, witness chain, and 12 more.", tags: ["glossary","security"] }
@@ -687,19 +687,19 @@
             },
             {
                 id: "video", name: "Video Knowledge", color: "#ec4899", count: 50,
-                description: "Conference talks, demos, deep dives, and recorded sessions covering Claude Flow, RuVector, agentic AI, and architecture.",
+                description: "Conference talks, demos, deep dives, and recorded sessions covering Ruflo, RuVector, agentic AI, and architecture.",
                 children: [
                     {
-                        id: "v-cf3", name: "Claude Flow V3 Series", color: "#ec4899", count: 7,
-                        description: "Video series covering Claude Flow V3 architecture, self-learning, security, and community.",
+                        id: "v-ruflo3", name: "Ruflo v3.5 Series", color: "#ec4899", count: 7,
+                        description: "Video series covering Ruflo v3.5 architecture, self-learning, security, and community.",
                         children: [
                             { id: "v-cf-1", name: "CF V3: Architecture, Agents, Workers", color: "#ec4899", description: "Deep dive into V3 architecture: new agent pool, background workers, hooks nervous system, and the shift from V2 sequential to V3 concurrent execution.", tags: ["video","cf-v3","architecture"] },
                             { id: "v-cf-2", name: "CF V3: Self-Learning Vector Systems", color: "#ec4899", description: "How V3 uses HNSW-indexed pattern memory to learn from every task. Neural pattern training, experience replay, and knowledge distillation in action.", tags: ["video","cf-v3","learning"] },
                             { id: "v-cf-3", name: "CF V3: Security & Self-Learning", color: "#ec4899", description: "Security architecture in V3: AIMDS integration, adversarial testing, and how the security system learns from attacks to improve defenses.", tags: ["video","cf-v3","security"] },
                             { id: "v-cf-4", name: "CF V3: Everything Revealed", color: "#ec4899", description: "Comprehensive overview of all V3 features: 26 commands, 140+ subcommands, 12 workers, 27 hooks, and the complete ecosystem.", tags: ["video","cf-v3","complete"] },
-                            { id: "v-cf-5", name: "CF V3: Community QE Fleet", color: "#ec4899", description: "Community quality engineering: how the open-source community tests, validates, and improves Claude Flow through collaborative QE fleets.", tags: ["video","cf-v3","community"] },
+                            { id: "v-cf-5", name: "CF V3: Community QE Fleet", color: "#ec4899", description: "Community quality engineering: how the open-source community tests, validates, and improves Ruflo through collaborative QE fleets.", tags: ["video","cf-v3","community"] },
                             { id: "v-cf-6", name: "CF V3: Hive Mind Architecture", color: "#ec4899", description: "Hive mind consensus deep dive: Byzantine fault tolerance, Raft leader election, gossip protocols, and how agents achieve distributed agreement.", tags: ["video","cf-v3","hive-mind"] },
-                            { id: "v-cf-7", name: "Claude-Flow V3 Release: 500K Downloads", color: "#ec4899", description: "Milestone celebration and retrospective on the V3 release reaching 500,000 downloads. Community growth, adoption patterns, and roadmap.", tags: ["video","cf-v3","milestone"] }
+                            { id: "v-cf-7", name: "Ruflo v3.5 Release: 500K Downloads", color: "#ec4899", description: "Milestone celebration and retrospective on the V3 release reaching 500,000 downloads. Community growth, adoption patterns, and roadmap.", tags: ["video","cf-v3","milestone"] }
                         ]
                     },
                     {
@@ -763,7 +763,7 @@
                             { id: "v-e-8", name: "Swarm Coordination Patterns", color: "#831843", description: "Visual demonstrations of swarm patterns: hierarchical, mesh, ring, star, and hybrid topologies in action.", tags: ["video","swarm","patterns"] },
                             { id: "v-e-9", name: "WASM for AI Applications", color: "#831843", description: "Tutorial on using WebAssembly for AI: compiling models to WASM, running inference in browsers, and performance optimization.", tags: ["video","wasm","tutorial"] },
                             { id: "v-e-10", name: "PostgreSQL for AI Developers", color: "#831843", description: "PostgreSQL crash course for AI developers: vector types, HNSW indexes, full-text search, and hybrid query strategies.", tags: ["video","postgres","tutorial"] },
-                            { id: "v-e-11", name: "Claude Flow CLI Masterclass", color: "#831843", description: "Complete CLI walkthrough: all 26 commands, key subcommands, workflow examples, and power-user tips.", tags: ["video","cli","masterclass"] },
+                            { id: "v-e-11", name: "Ruflo CLI Masterclass", color: "#831843", description: "Complete CLI walkthrough: all 26 commands, key subcommands, workflow examples, and power-user tips.", tags: ["video","cli","masterclass"] },
                             { id: "v-e-12", name: "ONNX Embedding Pipeline", color: "#831843", description: "Building an ONNX embedding pipeline: model selection, batch processing, caching, and integration with vector databases.", tags: ["video","onnx","pipeline"] },
                             { id: "v-e-13", name: "Self-Healing AI Systems", color: "#831843", description: "Designing self-healing systems: health checks, automatic recovery, fallback strategies, and min-cut based resilience.", tags: ["video","self-healing","resilience"] },
                             { id: "v-e-14", name: "Cognitive Container Workshop", color: "#831843", description: "Hands-on: creating, deploying, and running RVF cognitive containers. From build to self-boot in a browser.", tags: ["video","rvf","workshop"] },
@@ -805,7 +805,7 @@
                         id: "inf-eco", name: "Ecosystem", color: "#0e7490", count: 4,
                         description: "How all the pieces connect: packages, documentation, and reference guides.",
                         children: [
-                            { id: "inf-e-1", name: "RuvNet Ecosystem: How All Pieces Connect", color: "#0e7490", description: "Map of the complete ecosystem: RuVector (database) + Claude Flow (orchestration) + AIMDS (security) + RVF (containers). How they interact.", tags: ["ecosystem","map"] },
+                            { id: "inf-e-1", name: "RuvNet Ecosystem: How All Pieces Connect", color: "#0e7490", description: "Map of the complete ecosystem: RuVector (database) + Ruflo (orchestration) + AIMDS (security) + RVF (containers). How they interact.", tags: ["ecosystem","map"] },
                             { id: "inf-e-2", name: "RuvNet Complete Reference", color: "#0e7490", description: "Comprehensive reference documentation: all packages, all APIs, all configurations, and all deployment options in one place.", tags: ["reference","complete"] },
                             { id: "inf-e-3", name: "Core Package Tutorials", color: "#0e7490", description: "Getting started tutorials for each core package: @ruvector/core, @ruvector/rvf, @claude-flow/cli, and @ruvector/rvf-mcp-server.", tags: ["tutorials","packages"] },
                             { id: "inf-e-4", name: "RuvNet Packages Complete Documentation", color: "#0e7490", description: "Full documentation for all published npm packages: APIs, configuration options, examples, and migration guides.", tags: ["packages","docs"] }
@@ -825,7 +825,7 @@
                         description: "Key GitHub repositories from rUv (github.com/ruvnet) that comprise the broader RuvNet ecosystem.",
                         children: [
                             { id: "repo-1", name: "ruvector (80+ Rust crates)", color: "#22d3ee", description: "Core RuVector monorepo: 80+ Rust crates including rvf, ruvector-core, ruvector-mincut, sona, ruvector-nervous-system, ruvector-wasm, ruvector-postgres, micro-hnsw-wasm, prime-radiant, and more. The foundation of everything.", tags: ["github","rust","core"] },
-                            { id: "repo-2", name: "claude-flow v3.1.0 (AI Orchestration)", color: "#22d3ee", description: "Claude Flow V3.1: The #1 ranked agent-based framework. 60+ specialized agents, swarm coordination, MCP server, self-learning hooks, vector memory. TypeScript.", tags: ["github","orchestration","agents"] },
+                            { id: "repo-2", name: "ruflo v3.5.2 (AI Orchestration)", color: "#22d3ee", description: "Ruflo v3.5.1: The #1 ranked agent-based framework. 60+ specialized agents, swarm coordination, MCP server, self-learning hooks, vector memory. TypeScript.", tags: ["github","orchestration","agents"] },
                             { id: "repo-3", name: "agentic-flow (Model Switching)", color: "#22d3ee", description: "Agentic Flow: switch between low-cost AI models in Claude Code/Agent SDK. 66 agents, 213 MCP tools, ReasoningBank. Deploy locally then move to cloud.", tags: ["github","agentic","models"] },
                             { id: "repo-4", name: "flow-nexus (Cloud Platform)", color: "#22d3ee", description: "Flow Nexus: competitive agentic platform built on MCP. Deploy swarms, train neural networks, coding challenges, rUv credits. Gamified cloud development.", tags: ["github","cloud","platform"] },
                             { id: "repo-5", name: "SAFLA (Self-Aware Feedback Loop)", color: "#22d3ee", description: "Self-Aware Feedback Loop Algorithm: Python framework for building self-improving AI systems with autonomous feedback loops and meta-learning.", tags: ["github","safla","python","self-aware"] },

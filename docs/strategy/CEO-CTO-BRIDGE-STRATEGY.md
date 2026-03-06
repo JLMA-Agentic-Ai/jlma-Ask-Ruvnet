@@ -9,7 +9,7 @@ Created: 2026-02-28 10:30:00 EST
 
 **The Problem:** Fewer than 2% of CEOs and CTOs are aware that RuvNet exists. The overwhelming majority of enterprise decision-makers are stuck in Stage 1 thinking — they equate "AI strategy" with ChatGPT subscriptions and Copilot licenses. They have no mental model for orchestrated agentic intelligence, offline AI containers, or self-learning systems that run without cloud dependency.
 
-**The Opportunity:** The RuvNet ecosystem is 6–9 months ahead of what Anthropic, OpenAI, Google, and xAI are shipping natively. Claude Flow V3 orchestrates 64 agent types across 5 swarm topologies. RuVector delivers HNSW search in 61 microseconds — 33x faster than Pinecone, 820x faster than ChromaDB. AgentDB provides persistent agent memory 96x–164x faster than alternatives, with 9 reinforcement learning algorithms. RVF cognitive containers package an entire AI knowledge system — database, model, index, security, runtime — into a single deployable file that works offline. AIMDS provides 3-layer AI security with ML-DSA-65 post-quantum cryptography. None of this exists anywhere else as an integrated stack. This window will not stay open.
+**The Opportunity:** The RuvNet ecosystem is 6–9 months ahead of what Anthropic, OpenAI, Google, and xAI are shipping natively. Ruflo v3.5 orchestrates 64 agent types across 5 swarm topologies. RuVector delivers HNSW search in 61 microseconds — 33x faster than Pinecone, 820x faster than ChromaDB. AgentDB provides persistent agent memory 96x–164x faster than alternatives, with 9 reinforcement learning algorithms. RVF cognitive containers package an entire AI knowledge system — database, model, index, security, runtime — into a single deployable file that works offline. AIMDS provides 3-layer AI security with ML-DSA-65 post-quantum cryptography. None of this exists anywhere else as an integrated stack. This window will not stay open.
 
 **The Bridge:** CEOs and CTOs do not jump from "I use ChatGPT" to "I need RuvNet" in one step. This document defines a 5-stage awareness bridge with distinct messaging, proof points, and conversion triggers for each stage. It provides separate CEO and CTO tracks — because the CEO needs to understand why this matters to the business, and the CTO needs to understand why this is architecturally superior. Both tracks converge on the same conclusion: the RuvNet ecosystem is the production-grade infrastructure that makes enterprise AI actually work.
 
@@ -32,14 +32,14 @@ Every CEO and CTO sits at one of five stages. Sending Stage 5 content to a Stage
 
 - **What they believe:** AI agents and automation are interesting but risky. They are evaluating vendors, reading Gartner reports, running pilot programs. "We are exploring" means they have a committee.
 - **What they need to hear:** "Exploration without architecture is waste. Every pilot that runs on raw API calls is accumulating technical debt you will pay for. The question is not *if* you need an orchestration layer — it is whether you build one yourself in 18 months or deploy one this quarter."
-- **Key proof point:** A cost comparison: a team of 5 developers making direct API calls spends $2,800–$8,500/month on tokens with no memory, no learning, and no coordination. The same workload through Claude Flow V3 with AgentDB memory costs a fraction, runs faster, and retains context across sessions.
+- **Key proof point:** A cost comparison: a team of 5 developers making direct API calls spends $2,800–$8,500/month on tokens with no memory, no learning, and no coordination. The same workload through Ruflo v3.5 with AgentDB memory costs a fraction, runs faster, and retains context across sessions.
 - **What moves them to Stage 3:** Hitting a wall. Their pilot works for demos but fails at scale. Agents forget context. Outputs are inconsistent. Security review flags data exposure. The trigger is pain: "Our AI pilot is not production-ready, and we do not know why."
 
 ### Stage 3: "I need more than a chatbot — I need agents"
 
 - **What they believe:** The future is agentic, but the tooling is immature. They have tried LangChain, CrewAI, or AutoGen and found them fragile. They need agents but do not trust them in production.
-- **What they need to hear:** "You are right that agents are the answer. But agents without orchestration are chaos. You need a system that coordinates agent lifecycles, manages shared memory, enforces security policies, and scales without manual intervention. That system exists. It is called Claude Flow V3, and it orchestrates 64 agent types across 5 battle-tested swarm topologies."
-- **Key proof point:** A side-by-side comparison: the same task (analyze a codebase, find security vulnerabilities, generate fixes, write tests, create PR) running on raw agents vs. Claude Flow V3 hierarchical swarm. Raw agents: 45 minutes, 3 failures, manual intervention required. Claude Flow: 12 minutes, zero failures, fully autonomous. Developer productivity multiplier: 2.8–4.4x verified.
+- **What they need to hear:** "You are right that agents are the answer. But agents without orchestration are chaos. You need a system that coordinates agent lifecycles, manages shared memory, enforces security policies, and scales without manual intervention. That system exists. It is called Ruflo v3.5, and it orchestrates 64 agent types across 5 battle-tested swarm topologies."
+- **Key proof point:** A side-by-side comparison: the same task (analyze a codebase, find security vulnerabilities, generate fixes, write tests, create PR) running on raw agents vs. Ruflo v3.5 hierarchical swarm. Raw agents: 45 minutes, 3 failures, manual intervention required. Ruflo: 12 minutes, zero failures, fully autonomous. Developer productivity multiplier: 2.8–4.4x verified.
 - **What moves them to Stage 4:** Understanding that agents alone are not enough — you need the infrastructure underneath them. Memory that persists (AgentDB: 96x–164x faster than SQLite). Search that scales (RuVector HNSW: 61 microseconds). Security that is provable (AIMDS: 3-layer pipeline). The trigger is ambition: "I do not just want agents. I want an AI-native platform."
 
 ### Stage 4: "I need infrastructure, not just tools"
@@ -82,7 +82,7 @@ Walk through three eras:
 | Metric | Before RuvNet | After RuvNet | Impact |
 |--------|--------------|-------------|--------|
 | Cloud API costs | $2,800–$8,500/mo per team | Near-zero (local inference via RVF) | $33,600–$102,000/year saved per team |
-| Developer productivity | 1x baseline | 2.8–4.4x (Claude Flow V3 verified) | Ship features in days, not weeks |
+| Developer productivity | 1x baseline | 2.8–4.4x (Ruflo v3.5 verified) | Ship features in days, not weeks |
 | Time to market | 12–18 month AI initiatives | Tier 1 deploys in Week 1, full stack in Quarter 1 | 4–6x faster deployment |
 | Data breach risk | API calls expose proprietary data to 3rd parties | RVF: zero data leaves premises; AIMDS: 3-layer security | Risk reduced from "hope" to "provable" |
 | Agent reliability | 60–70% task completion (raw agents) | 84.8% SWE-Bench solve rate (orchestrated swarm) | Production-grade autonomous AI |
@@ -96,7 +96,7 @@ Walk through three eras:
 "Good — you have experience. The question is whether those tools can coordinate, remember, learn, and operate without cloud dependency. Ask your CTO: do your AI agents share memory? Can they operate offline? Do they self-improve? If the answer is no, you have tools but not architecture. Tools are components. Architecture is what makes them production-grade."
 
 **2. "This sounds too complex for my team."**
-"It is less complex than what your team is doing now. Right now, your developers are manually orchestrating AI — copy-pasting outputs, managing context windows, debugging hallucinations. Claude Flow V3 replaces that manual work with a single command: `npx @claude-flow/cli@latest swarm init`. Your developers write intent; the system handles coordination. The Tier 1 deployment requires zero changes to existing code."
+"It is less complex than what your team is doing now. Right now, your developers are manually orchestrating AI — copy-pasting outputs, managing context windows, debugging hallucinations. Ruflo v3.5 replaces that manual work with a single command: `npx ruflo@latest swarm init`. Your developers write intent; the system handles coordination. The Tier 1 deployment requires zero changes to existing code."
 
 **3. "We don't have the budget."**
 "You are already spending the budget — just inefficiently. A team of 5 developers on ChatGPT/Claude API calls spends $33,600–$102,000 per year on tokens alone, with no memory, no learning, and no security. RuvNet eliminates those API costs through local inference and reduces headcount requirements through 2.8–4.4x productivity gains. The ROI is not theoretical — it is arithmetic."
@@ -114,7 +114,7 @@ Walk through three eras:
 | 1. Title | Set authority | RuvNet logo, "The Architecture Behind Agentic Intelligence," clean dark background |
 | 2. The Obsolescence Curve | Create urgency | S-curve showing Chatbots → Agents → Orchestrated Intelligence with competitor positions plotted. RuvNet is 6–9 months ahead on the curve. |
 | 3. Three Eras | Establish context | Three columns: Chatbot (1 human, 1 AI), Agent (1 human, N tools), Orchestrated (1 human, swarm of specialists). Visual complexity increases left to right. |
-| 4. The Architecture Stack | Show completeness | Layered diagram: RVF (foundation) → RuVector (search) → AgentDB (memory) → Claude Flow (orchestration) → AIMDS (security) → SONA (learning). Each layer labeled with its benchmark number. |
+| 4. The Architecture Stack | Show completeness | Layered diagram: RVF (foundation) → RuVector (search) → AgentDB (memory) → Ruflo (orchestration) → AIMDS (security) → SONA (learning). Each layer labeled with its benchmark number. |
 | 5. ROI Calculator | Justify investment | Interactive-style table with before/after columns. Bold the annual savings number. |
 | 6. Data Sovereignty | Address fear | Split screen: LEFT shows data flowing to cloud providers (red arrows, warning icons). RIGHT shows RVF container on local hardware (green, locked, air-gapped). |
 | 7. Migration Timeline | Show simplicity | 3-step Gantt: Week 1 (Tier 1), Month 1 (Tier 2), Quarter 1 (Tier 3). Emphasize "zero code changes" for Tier 1. |
@@ -131,7 +131,7 @@ Walk through three eras:
 | Capability | Raw ChatGPT/Claude API | With RuvNet Architecture |
 |---|---|---|
 | **Vector Search** | External service (Pinecone: 2ms+, ChromaDB: 50ms+) | RuVector HNSW: 61 microseconds. 33x faster than Pinecone. 820x faster than ChromaDB. |
-| **Agent Orchestration** | Manual prompt chaining, no coordination | Claude Flow V3: 64 agent types, 5 swarm topologies (hierarchical, mesh, pipeline, consensus, hybrid), dynamic scaling |
+| **Agent Orchestration** | Manual prompt chaining, no coordination | Ruflo v3.5: 64 agent types, 5 swarm topologies (hierarchical, mesh, pipeline, consensus, hybrid), dynamic scaling |
 | **Persistent Memory** | None — every session starts from zero | AgentDB: 96x–164x faster than SQLite, 9 reinforcement learning algorithms, cross-session context |
 | **Security** | Trust the API provider | AIMDS: 3-layer pipeline (inbound scan, processing, outbound scan), ML-DSA-65 post-quantum crypto, blockThreshold configurable |
 | **Offline Capability** | None — requires internet | RVF cognitive containers: 5.5KB WASM runtime, full AI system in a single deployable file, air-gapped operation |
@@ -144,10 +144,10 @@ Walk through three eras:
 ### 4b. Migration Path
 
 **Tier 1 — Week 1: Orchestration Overlay**
-- Install Claude Flow V3 as a coordination layer on top of existing AI workflows
+- Install Ruflo v3.5 as a coordination layer on top of existing AI workflows
 - Zero changes to existing code. Pure addition.
 - Gain: Multi-agent orchestration, task decomposition, parallel execution
-- Command: `npx @claude-flow/cli@latest init --wizard`
+- Command: `npx ruflo@latest init --wizard`
 - Verification: Run a hierarchical swarm on your existing codebase. Measure time-to-completion vs. single-agent approach.
 - Risk: Zero. Additive only. Remove it by deleting the config file.
 
@@ -171,17 +171,17 @@ Walk through three eras:
 **Prerequisites:** Node.js 18+, terminal access. No other dependencies.
 
 ```bash
-# Step 1: Initialize Claude Flow V3 (30 seconds)
-npx @claude-flow/cli@latest init --wizard
+# Step 1: Initialize Ruflo v3.5 (30 seconds)
+npx ruflo@latest init --wizard
 
 # Step 2: Spawn a specialized agent (15 seconds)
-npx @claude-flow/cli@latest agent spawn -t coder --name demo-coder
+npx ruflo@latest agent spawn -t coder --name demo-coder
 
 # Step 3: Launch a hierarchical swarm (30 seconds)
-npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8
+npx ruflo@latest swarm init --topology hierarchical --max-agents 8
 
 # Step 4: Give the swarm a real task (3 minutes)
-npx @claude-flow/cli@latest task orchestrate \
+npx ruflo@latest task orchestrate \
   "Analyze this codebase for security vulnerabilities, \
    generate fixes, write tests for each fix, \
    and create a summary report"
@@ -217,7 +217,7 @@ graph TB
     end
 
     subgraph "AFTER: RuvNet Orchestrated Architecture"
-        D2[Developer] -->|single instruction| CF[Claude Flow V3]
+        D2[Developer] -->|single instruction| CF[Ruflo v3.5]
         CF -->|orchestrates| SW[Agent Swarm - 8 specialists]
         SW -->|writes| CODE[Tested Code]
         SW -->|queries| RV[RuVector - 61us search]
@@ -325,8 +325,8 @@ The single most effective move in any meeting is to pull up Ask-RuvNet on a phon
 | **Conferences** | Mixed C-suite + technical | 10-minute CEO talk + live demo + booth with 5-minute CTO demo | Quarterly | Stage 1→3 rapid acceleration |
 | **Webinars** | Registered technical leads | 45-minute deep dive: architecture walkthrough + live coding | 2x/month | Stage 3→4 technical conviction |
 | **Embedded demos** | Website visitors | Interactive Ask-RuvNet widget + "Try the architecture" CTA | Always on | Stage 2→4 self-service |
-| **GitHub** | Developers, CTOs | Open-source Claude Flow components, example swarm configs, RVF spec | Continuous | Stage 3→5 developer adoption (bottom-up) |
-| **npm downloads** | Developers | `@claude-flow/cli`, `@ruvector/core`, `@claude-flow/aidefence` | Continuous | Stage 3→4 hands-on trial |
+| **GitHub** | Developers, CTOs | Open-source Ruflo components, example swarm configs, RVF spec | Continuous | Stage 3→5 developer adoption (bottom-up) |
+| **npm downloads** | Developers | `ruflo`, `@ruvector/core`, `@claude-flow/aidefence` | Continuous | Stage 3→4 hands-on trial |
 
 ### 7b. Content Calendar (12-Week Plan)
 
@@ -334,7 +334,7 @@ The single most effective move in any meeting is to pull up Ask-RuvNet on a phon
 |------|-------------------|-----------|-------|---------------|-------------|
 | **1** | "Your AI strategy is a chatbot" hook; 61μs benchmark graphic; RVF explainer thread | "Why Agents Fail Without Orchestration" (article) | Newsletter launch: "The Agentic Architecture Briefing" | — | CEO deck v1 completed |
 | **2** | SWE-Bench 84.8% result; AgentDB vs SQLite comparison; "5 signs your AI isn't production-grade" | "The Vector Search Benchmark: RuVector vs. Pinecone vs. ChromaDB" | Benchmark summary + Ask-RuvNet link | — | CTO technical brief v1 |
-| **3** | Claude Flow swarm demo video (30s); data sovereignty post; "What your CTO isn't telling you about AI security" | — | "What is RVF?" explainer email | Webinar 1: "From ChatGPT to Orchestrated Intelligence" | RVF one-pager |
+| **3** | Ruflo swarm demo video (30s); data sovereignty post; "What your CTO isn't telling you about AI security" | — | "What is RVF?" explainer email | Webinar 1: "From ChatGPT to Orchestrated Intelligence" | RVF one-pager |
 | **4** | AIMDS post-quantum security; migration tier visual; customer-language testimonial | "The 3-Tier Migration: Zero Risk AI Architecture Adoption" | Migration guide link + "Book 15-min assessment" CTA | — | Migration guide PDF |
 | **5** | "I deployed 8 agents in 30 seconds" demo clip; SONA self-learning explainer; cost comparison infographic | "The True Cost of Cloud AI: A CFO's Guide" | CFO-focused cost analysis | Webinar 2: "RVF: The Shipping Container for AI" | Cost calculator tool |
 | **6** | Ask-RuvNet screenshot + metrics; "98/100 educational effectiveness" post; developer productivity data | — | Mid-series survey: "What stage are you at?" | — | Stage assessment quiz |
@@ -364,7 +364,7 @@ The single most effective move in any meeting is to pull up Ask-RuvNet on a phon
 | 1 | CEO presentation deck (10 slides, per Section 3c) | 3 days | ROI data finalized, benchmark graphics | Marketing + Design |
 | 2 | CTO technical brief (8 pages, per Section 4a–4d) | 2 days | Benchmark validation, architecture diagrams | Engineering + Marketing |
 | 3 | RVF one-pager (per Section 5) | 1 day | RVF demo script tested | Marketing |
-| 4 | "5 Minutes to Wow" demo script (tested + recorded) | 2 days | Claude Flow V3 stable release | Engineering |
+| 4 | "5 Minutes to Wow" demo script (tested + recorded) | 2 days | Ruflo v3.5 stable release | Engineering |
 | 5 | Ask-RuvNet embedded demo widget | 3 days | Ask-RuvNet production deployment verified | Engineering |
 | 6 | Before/After architecture diagram (Mermaid → SVG) | 0.5 day | None | Design |
 | 7 | ROI calculator (interactive web tool or spreadsheet) | 2 days | Cost benchmarks validated | Marketing + Engineering |

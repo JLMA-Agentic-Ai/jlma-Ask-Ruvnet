@@ -24,7 +24,7 @@ Created: 2025-12-29 00:03:47 EST
 |-------|---------|------------|-------|--------|
 | GitHub | 83 | 45.9% | 75/100 | Good |
 | RuVector | 72 | 39.8% | 45/100 | **Incomplete** |
-| Claude Flow | 67 | 37.0% | 60/100 | Fair |
+| Ruflo | 67 | 37.0% | 60/100 | Fair |
 | Agentic Flow | 62 | 34.3% | 35/100 | **Major Gaps** |
 | Persistence | 55 | 30.4% | 20/100 | **Critical Gap** |
 | API Reference | 50 | 27.6% | 40/100 | Incomplete |
@@ -49,7 +49,7 @@ Created: 2025-12-29 00:03:47 EST
 | ruvector | 0.1.35 | ~35 | 45/100 | Missing: storagePath, redb, 230+ SQL funcs |
 | @ruvector/ruvllm | 0.2.3 | ~20 | 30/100 | Missing: ReasoningBank persistence, SONA details |
 | agentic-flow | 2.0.1-alpha | ~30 | 35/100 | Missing: 150 agents list, ReasoningBank to PG |
-| claude-flow | 2.7.47 | ~40 | 60/100 | Missing: AgentDB integration, hive-mind patterns |
+| ruflo | 2.7.47 | ~40 | 60/100 | Missing: AgentDB integration, hive-mind patterns |
 
 ### MISSING PACKAGES (NOT DOCUMENTED AT ALL)
 
@@ -138,7 +138,7 @@ Created: 2025-12-29 00:03:47 EST
 **What's Missing:**
 - Full 213 MCP tools reference
 - flow-nexus 70+ tools
-- claude-flow 100+ tools
+- ruflo 100+ tools
 - Tool categories and use cases
 - Integration patterns
 - Tool chaining examples
@@ -177,7 +177,7 @@ To fill gaps, ingest from:
 1. **GitHub READMEs:**
    - https://github.com/ruvnet/ruvector/blob/main/crates/ruvector-postgres/README.md
    - https://github.com/ruvnet/agentic-flow/blob/main/README.md
-   - https://github.com/ruvnet/claude-flow/blob/main/README.md
+   - https://github.com/ruvnet/ruflo/blob/main/README.md
 
 2. **NPM Package Docs:**
    - npm view @ruvector/rvlite readme

@@ -1,11 +1,9 @@
 ---
-name: claude-flow-swarm
-description: Coordinate multi-agent swarms for complex tasks (legacy alias - see /ruflo-swarm)
+name: ruflo-swarm
+description: Coordinate multi-agent swarms for complex tasks
 ---
 
 # Ruflo Swarm Coordination
-
-> Note: This command is a backwards-compatible alias. The canonical version is `/ruflo-swarm`.
 
 Advanced multi-agent coordination system with timeout-free execution, distributed memory sharing, and intelligent load balancing.
 

@@ -39,7 +39,7 @@ try {
 // ONNX fast embeddings via @claude-flow/embeddings (~55x faster)
 let onnxService = null;
 let onnxInitPromise = null;
-const ONNX_EMBEDDINGS_PATH = process.env.CLAUDE_FLOW_EMBEDDINGS_PATH ||
+const ONNX_EMBEDDINGS_PATH = process.env.RUFLO_EMBEDDINGS_PATH || process.env.CLAUDE_FLOW_EMBEDDINGS_PATH ||
     require('path').join(require('os').homedir(), '.npm-global/lib/node_modules/@claude-flow/cli/node_modules/@claude-flow/embeddings/dist/index.js');
 
 /**

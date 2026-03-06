@@ -275,9 +275,9 @@ const CHAT_QUERIES = [
     minAnswerLen: 100,
   },
   {
-    name: 'Claude Flow swarm agents',
-    message: 'explain Claude Flow swarm agents',
-    expectedTerms: ['claude', 'flow', 'swarm', 'agent'],
+    name: 'Ruflo swarm agents',
+    message: 'explain Ruflo swarm agents',
+    expectedTerms: ['ruflo', 'swarm', 'agent', 'flow'],
     minSources: 1,
     minAnswerLen: 100,
   },

@@ -25,7 +25,7 @@
 
   <rect x="400" y="55" width="240" height="50" rx="8" fill="#16213e" stroke="#7c3aed" stroke-width="1.5"/>
   <text x="520" y="77" text-anchor="middle" class="section-title accent-purple">26 ADRs</text>
-  <text x="520" y="93" text-anchor="middle" class="small">(Claude Flow v3 decisions)</text>
+  <text x="520" y="93" text-anchor="middle" class="small">(Ruflo v3.5 decisions)</text>
 
   <!-- Arrow down from sources -->
   <line x1="180" y1="105" x2="180" y2="130" stroke="#00d4ff" stroke-width="2" marker-end="url(#kf-arrow)"/>

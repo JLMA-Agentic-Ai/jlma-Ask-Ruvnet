@@ -88,7 +88,7 @@ Ruben Cohen (rUv) has spent years building something unusual: not a single AI pr
 
 Across **155+ repositories** in three GitHub organizations (ruvnet, openclaw, VibiumDev), the RuVNet ecosystem covers:
 
-- **Agent orchestration** -- Claude Flow v3, ruv-swarm, agentic-flow
+- **Agent orchestration** -- Ruflo v3.5, ruv-swarm, agentic-flow
 - **Vector databases** -- RuVector (PostgreSQL-native, WASM, neuromorphic)
 - **Self-learning AI** -- SONA, AIMDS, ReasoningBank, LoRA adapters
 - **Cognitive containers** -- RVF format (24-segment, self-booting, 5.5KB WASM)
@@ -119,7 +119,7 @@ The RuVNet ecosystem is organized into five layers. Each layer builds on the one
 │  (User-facing products built on the stack below)        │
 ├─────────────────────────────────────────────────────────┤
 │                   ORCHESTRATION                          │
-│  Claude Flow v3    ruv-swarm    Hive-Mind Consensus     │
+│  Ruflo v3.5        ruv-swarm    Hive-Mind Consensus     │
 │  60+ agent types   5 topologies   BFT / Raft / CRDT    │
 │  (Multi-agent coordination, swarm intelligence)         │
 ├─────────────────────────────────────────────────────────┤
@@ -159,7 +159,7 @@ Ask-RuvNet sits at the **Applications** layer. It reaches down through every lay
 
 ```
   173 GitHub Repos                    26 ADRs
-  (ruvnet, openclaw, VibiumDev)      (Claude Flow v3 decisions)
+  (ruvnet, openclaw, VibiumDev)      (Ruflo v3.5 decisions)
         │                                  │
         ▼                                  ▼
   ┌──────────────────────────────────────────────┐
@@ -276,7 +276,7 @@ Every search result is scored before being passed to the LLM:
 Ask-RuvNet handles questions across the entire ecosystem. Here are some starting points:
 
 **Architecture and Design**
-- "What swarm topologies does Claude Flow support?"
+- "What swarm topologies does Ruflo support?"
 - "How does SONA achieve sub-millisecond adaptation?"
 - "Explain the RVF cognitive container format"
 
@@ -291,7 +291,7 @@ Ask-RuvNet handles questions across the entire ecosystem. Here are some starting
 - "Which consensus protocol should I use for my use case?"
 
 **Evolution and History**
-- "What changed in Claude Flow v3 alpha.118?"
+- "What changed in Ruflo v3.5 alpha.118?"
 - "What ADRs were written about memory architecture?"
 - "Show me the release history for ruv-swarm"
 
@@ -416,7 +416,7 @@ The knowledge base is not just a dump of README files. It includes multiple laye
 
 ### Topics Covered
 
-- Agent orchestration (Claude Flow, ruv-swarm, agentic-flow)
+- Agent orchestration (Ruflo, ruv-swarm, agentic-flow)
 - Swarm topologies (hierarchical, mesh, ring, star, adaptive)
 - Consensus protocols (Byzantine, Raft, CRDT, Gossip)
 - Vector database patterns (HNSW, embeddings, similarity search)
@@ -431,7 +431,7 @@ The knowledge base is not just a dump of README files. It includes multiple laye
 
 ## Swarm Topologies
 
-One of the most-asked-about features in the ecosystem. Claude Flow v3 supports five swarm topologies, each suited to different coordination needs:
+One of the most-asked-about features in the ecosystem. Ruflo v3.5 supports five swarm topologies, each suited to different coordination needs:
 
 ![Swarm Topologies](assets/diagrams/swarm-topologies.svg)
 
@@ -496,8 +496,8 @@ The core systems in the ecosystem are deeply interconnected:
   ┌──────────────────────────────────────────────────┐
   │                                                  │
   │   ┌────────────┐         ┌────────────┐         │
-  │   │ Claude Flow │◄───────►│  AgentDB    │         │
-  │   │ v3         │ agents  │  (hybrid    │         │
+  │   │ Ruflo      │◄───────►│  AgentDB    │         │
+  │   │ v3.5       │ agents  │  (hybrid    │         │
   │   │            │ store   │   memory)   │         │
   │   │ 60+ agent  │ state   │  episodic + │         │
   │   │ types      │ in      │  semantic   │         │
@@ -637,7 +637,7 @@ Submit a question and receive a grounded answer with source citations.
 ```bash
 curl -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message": "What swarm topologies does claude-flow support?"}'
+  -d '{"message": "What swarm topologies does ruflo support?"}'
 ```
 
 **Request body:**
@@ -671,7 +671,7 @@ Perform special actions on content: simplify, generate code, create diagrams, or
 ```bash
 curl -X POST https://ask-ruvnet-production.up.railway.app/api/special \
   -H "Content-Type: application/json" \
-  -d '{"action": "diagram", "content": "agent lifecycle in claude-flow"}'
+  -d '{"action": "diagram", "content": "agent lifecycle in ruflo"}'
 ```
 
 | Field | Type | Required | Description |

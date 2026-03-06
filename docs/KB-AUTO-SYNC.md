@@ -13,7 +13,7 @@ The system watches the following repositories and npm packages for new content:
 
 | ID | GitHub Repo | npm Package |
 |----|-------------|-------------|
-| `claude-flow` | github.com/ruvnet/claude-flow | `@claude-flow/cli` |
+| `ruflo` | github.com/ruvnet/ruflo | `ruflo` |
 | `agentic-flow` | github.com/ruvnet/agentic-flow | `agentic-flow` |
 | `ruvector` | github.com/ruvnet/ruvector | `ruvector` |
 | `ruv-swarm` | github.com/ruvnet/ruv-swarm | `ruv-swarm` |
@@ -73,11 +73,11 @@ node scripts/kb-sync-ruvnet.mjs --dry-run
 ### Single-repo only
 
 ```bash
-node scripts/kb-sync-ruvnet.mjs --target claude-flow
+node scripts/kb-sync-ruvnet.mjs --target ruflo
 node scripts/kb-sync-ruvnet.mjs --target ruv-swarm
 ```
 
-Valid target IDs: `claude-flow`, `agentic-flow`, `ruvector`, `ruv-swarm`
+Valid target IDs: `ruflo`, `agentic-flow`, `ruvector`, `ruv-swarm`
 
 ### Verbose output
 

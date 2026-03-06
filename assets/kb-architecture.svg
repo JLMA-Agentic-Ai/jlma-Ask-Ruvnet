@@ -96,8 +96,8 @@
   <text x="577" y="138" text-anchor="middle" fill="#88ddaa" font-family="monospace" font-size="10">v2.0.1-alpha.42</text>
 
   <rect x="680" y="100" width="175" height="50" rx="4" fill="#0d1a26" stroke="#ff6b6b" stroke-width="1"/>
-  <text x="767" y="120" text-anchor="middle" fill="#ff6b6b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">claude-flow</text>
-  <text x="767" y="138" text-anchor="middle" fill="#ffaaaa" font-family="monospace" font-size="10">v2.7.47</text>
+  <text x="767" y="120" text-anchor="middle" fill="#ff6b6b" font-family="Arial, sans-serif" font-size="12" font-weight="bold">ruflo</text>
+  <text x="767" y="138" text-anchor="middle" fill="#ffaaaa" font-family="monospace" font-size="10">v3.5.2</text>
 
   <rect x="490" y="160" width="175" height="50" rx="4" fill="#0d1a26" stroke="#ffd700" stroke-width="1"/>
   <text x="577" y="180" text-anchor="middle" fill="#ffd700" font-family="Arial, sans-serif" font-size="12" font-weight="bold">ruvector</text>

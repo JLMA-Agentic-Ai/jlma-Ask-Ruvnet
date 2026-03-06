@@ -49,7 +49,7 @@ const topicPatterns = [
     { pattern: /ruvector|vector\s*db|hnsw|embedding/i, topic: 'RuVector' },
     { pattern: /ruvllm|sona|learning\s*loop/i, topic: 'RuvLLM' },
     { pattern: /agentic[- ]flow|agent|reasoningbank/i, topic: 'Agentic Flow' },
-    { pattern: /claude[- ]flow|hive[- ]mind|swarm/i, topic: 'Claude Flow' },
+    { pattern: /ruflo|hive[- ]mind|swarm/i, topic: 'Ruflo' },
 ];
 ```
 
@@ -210,7 +210,7 @@ const hnswConfig = {
 
 ```javascript
 async function analyzeCoverage(db) {
-    const expectedTopics = ['RuVector', 'RuvLLM', 'Agentic Flow', 'Claude Flow'];
+    const expectedTopics = ['RuVector', 'RuvLLM', 'Agentic Flow', 'Ruflo'];
     const topicCounts = {};
 
     // Count topics in KB

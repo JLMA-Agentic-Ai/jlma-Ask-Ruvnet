@@ -54,7 +54,7 @@ Only include if source material contains code.]
 
 ## How It Connects
 [Relationship to other RuvNet tools — AgentDB, RuVector,
-Claude Flow, Agentic Flow, etc. Only mention connections
+Ruflo, Agentic Flow, etc. Only mention connections
 that are documented, never fabricated.]
 
 ## Summary
@@ -157,7 +157,7 @@ criteria:
 | # | Tool | What It Does | Min Entries Needed |
 |---|------|-------------|-------------------|
 | 1 | **RuVector** | Vector database engine (HNSW, 150x-12,500x faster) | 15 |
-| 2 | **Claude Flow** | Agent orchestration framework | 15 |
+| 2 | **Ruflo** | Agent orchestration framework | 15 |
 | 3 | **Agentic Flow** | Agent runtime & self-learning | 15 |
 | 4 | **AgentDB** | Agent memory & persistence | 12 |
 | 5 | **AIMDS** | AI security middleware (3-layer pipeline) | 10 |
@@ -204,7 +204,7 @@ The biggest quality problem is over-chunking. Examples:
 
 | File | Current Chunks | Should Be |
 |------|---------------|-----------|
-| claude-flow README | 389 fragments | 15-25 topic documents |
+| ruflo README | 389 fragments | 15-25 topic documents |
 | ruvector README | 352 fragments | 12-20 topic documents |
 | agentic-flow README | ~200 fragments | 10-15 topic documents |
 
@@ -240,7 +240,7 @@ Ask these 5 questions and verify the response is rich, accurate, and cited:
 1. **"What is RuVector and how is it different from pgvector?"**
    → Should get a clear comparison with performance numbers, architecture differences
 
-2. **"How do I set up Claude Flow for multi-agent orchestration?"**
+2. **"How do I set up Ruflo for multi-agent orchestration?"**
    → Should get step-by-step setup with code examples
 
 3. **"Why did RuvNet choose HNSW over IVF for vector indexing?"**
@@ -387,7 +387,7 @@ ask_ruvnet.architecture_docs (
   content         TEXT,
   file_path       TEXT,                        -- source file or "curated/group-name"
   file_hash       TEXT,                        -- md5 of content
-  package_name    TEXT,                        -- e.g. "claude-flow", "ruvector"
+  package_name    TEXT,                        -- e.g. "ruflo", "ruvector"
   doc_type        TEXT,                        -- "documentation", "adr", "changelog"
   category        TEXT,                        -- "general", "api", "security"
   knowledge_type  TEXT,                        -- "concept", "procedure", "reference"
@@ -596,7 +596,7 @@ vectors in the KB by cosine similarity.
 | Query Pattern | Why It Works |
 |--------------|-------------|
 | "What is RuVector and how does it compare to pgvector?" | Clear question with comparison context |
-| "How do I set up Claude Flow for multi-agent orchestration?" | Specific task with tool named |
+| "How do I set up Ruflo for multi-agent orchestration?" | Specific task with tool named |
 | "Why was HNSW chosen over IVF for vector indexing?" | Decision question — matches ADRs |
 | "Common errors when using RuVector-Postgres" | Problem-oriented — matches troubleshooting docs |
 
@@ -614,7 +614,7 @@ The `knowledge_type` field determines which content gets prioritized:
 
 | knowledge_type | Best For | Example Query |
 |---------------|---------|---------------|
-| `concept` | "What is X?" questions | "What is Claude Flow?" |
+| `concept` | "What is X?" questions | "What is Ruflo?" |
 | `procedure` | "How do I?" questions | "How do I deploy a swarm?" |
 | `reference` | API/config lookups | "What parameters does ruvector_embed take?" |
 | `adr` | Design rationale | "Why was X designed this way?" |
@@ -639,7 +639,7 @@ If you're adding entries to the KB, follow these rules:
    embeddings. Longer entries dilute the signal. The gold template targets
    this range.
 
-5. **One topic per entry**: "RuVector HNSW + AIMDS Security + Claude Flow
+5. **One topic per entry**: "RuVector HNSW + AIMDS Security + Ruflo
    Setup" in one doc means it matches all three queries weakly instead of
    one query strongly.
 
