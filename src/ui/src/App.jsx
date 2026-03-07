@@ -6,6 +6,27 @@ import packageJson from '../../../package.json';
 import PDFPresentation from './PDFPresentation';
 import './App.css';
 
+// Error Boundary — must be a class component per React spec
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() { return { hasError: true }; }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '2rem', textAlign: 'center', color: '#e5e5e5', background: '#111', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <h2 style={{ marginBottom: '1rem', fontSize: '1.5rem' }}>Something went wrong</h2>
+          <p style={{ marginBottom: '1.5rem', color: '#888' }}>The application encountered an unexpected error.</p>
+          <button onClick={() => window.location.reload()} style={{ padding: '0.6rem 1.5rem', borderRadius: '8px', border: 'none', background: 'linear-gradient(135deg, #ef4444, #ec4899)', color: 'white', fontWeight: 600, cursor: 'pointer', fontSize: '1rem' }}>Reload</button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 // Initialize Mermaid -- startOnLoad must be false since we render manually
 mermaid.initialize({
   startOnLoad: false,
@@ -35,13 +56,21 @@ const DECK_DOCS = [
   { file: 'Ruflo-v35-CTO-Deck.pdf', title: 'CTO Deck: Ruflo v3.5 Technical Architecture', desc: 'Architecture deep-dive, performance benchmarks, and stack overview', icon: '🔧', type: 'pdf' },
 ];
 
-// Resource documents available at /assets/docs/
+// NotebookLM deep-dive interactive notebook
+const NOTEBOOKLM_URL = 'https://notebooklm.google.com/notebook/50a4a2ef-a743-4fc7-81e3-774b95c667c3';
+
+// Resource documents available at /assets/docs/ — Auto-synced 2026-03-07
 const RESOURCE_DOCS = [
-  { file: 'Agentic_Engineering_Stack.pdf', title: 'Agentic Engineering Stack', desc: '80+ Rust crates powering the ecosystem', icon: '📘', type: 'pdf' },
-  { file: 'Agentic_Intelligence_Frameworks.pdf', title: 'Agentic Intelligence Frameworks', desc: 'Architecture patterns for autonomous AI', icon: '📗', type: 'pdf' },
-  { file: 'Claude-Flow_v3_Swarm_Platform.pdf', title: 'Ruflo v3.5 Swarm Platform', desc: 'Agents, swarms, hive-mind consensus', icon: '📙', type: 'pdf' },
-  { file: 'The_Agentic_Toolkit_Redefining_Creation.pdf', title: 'The Agentic Toolkit', desc: 'How agentic AI redefines creation', icon: '📕', type: 'pdf' },
-  { file: 'The_Agentic_Stack.mp4', title: 'The Agentic Stack', desc: 'Video overview of the full platform', icon: '🎬', type: 'video' },
+  { file: 'Whats_New_RuvNet_Stack_March2026.mp4', title: 'What\'s New (March 2026)', desc: 'Latest updates across Ruflo, RuVector, RuView, Dossier', icon: '🔊', type: 'video' },
+  { file: 'Architecture_That_Changes_Everything.mp4', title: 'The Architecture That Changes Everything', desc: 'Why this is 2 std devs beyond state-of-art', icon: '🔊', type: 'video' },
+  { file: 'How_Ruflo_Actually_Works.mp4', title: 'How Ruflo Actually Works', desc: 'Deep architecture explainer — agents, MCP, AgentDB', icon: '🎬', type: 'video' },
+  { file: 'Impossible_Apps_RuvNet.mp4', title: 'Impossible Apps', desc: 'Applications only buildable with the RuvNet stack', icon: '🎬', type: 'video' },
+  { file: 'From_Zero_to_Production_Getting_Started.mp4', title: 'From Zero to Production', desc: 'Hands-on getting started tutorial', icon: '🎬', type: 'video' },
+  { file: 'RuView_WiFi_Sensing.mp4', title: 'RuView: WiFi Sensing', desc: 'WiFi pose estimation through walls — science fiction made real', icon: '🎬', type: 'video' },
+  { file: 'Why_Dev_Teams_Should_Switch.mp4', title: 'Why Dev Teams Should Switch', desc: 'Generations beyond Cursor, Copilot, and Devin', icon: '🎬', type: 'video' },
+  { file: 'Business_Case_Why_Your_Company_Needs_This.pdf', title: 'Business Case', desc: 'C-level deck: why your company needs this now', icon: '📊', type: 'pdf' },
+  { file: 'RuvNet_Ecosystem_Map.png', title: 'RuvNet Ecosystem Map', desc: 'Complete visual map of the entire ecosystem', icon: '🗺️', type: 'image' },
+  { file: null, title: 'NotebookLM: Interactive Deep Dive', desc: 'AI-powered audio, video, and interactive exploration of the full ecosystem', icon: '📓', type: 'notebooklm', url: NOTEBOOKLM_URL },
 ];
 
 // Follow-up suggestion generator based on response keywords
@@ -62,22 +91,38 @@ const getFollowUpSuggestions = (content) => {
   if (lower.includes('rvf') || lower.includes('cognitive container') || lower.includes('format')) {
     return ['What are the 24 segments of an RVF?', 'How does RVF enable offline AI?', 'Show me the RVF architecture'];
   }
+  if (lower.includes('ecosystem') || lower.includes('overview') || lower.includes('platform')) {
+    return ['How do all the pieces connect?', 'What makes this different from LangChain?', 'Show me the ecosystem map'];
+  }
   return ['Tell me more about this', 'What are the practical applications?', 'Show me a diagram of the architecture'];
 };
+
+// Rotating hero taglines for dual-audience messaging
+const HERO_TAGLINES = [
+  'For executives: See ROI in 5 days, not 5 months',
+  'For engineers: npx ruflo@latest \u2192 60 coordinated agents',
+  'For teams: One brain that learns across every department',
+];
 
 // Hero with capability tiles, prompt starters, resources, and latest updates
 const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, latestRepos }) => {
   const repoCount = ecosystemStats?.totalRepos || 170;
   const entryCount = ecosystemStats?.totalEntries || 54543;
   const videoCount = knowledgeData?.videoStats?.total || 28;
+  const [taglineIdx, setTaglineIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTaglineIdx(i => (i + 1) % HERO_TAGLINES.length), 4000);
+    return () => clearInterval(id);
+  }, []);
   return (
   <div className="hero-compact">
     <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo-sm" />
     <h1 className="hero-heading">What do you want to learn?</h1>
+    <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
     <p className="hero-tagline">Explore the agentic AI ecosystem — {repoCount}+ repos, {entryCount.toLocaleString()}+ knowledge entries, and {videoCount} deep-dive video sessions.</p>
 
     {/* Capability Tiles */}
-    <div className="capability-tiles">
+    <div className="capability-tiles" role="navigation" aria-label="Explore capabilities">
       <button className="capability-tile" onClick={() => onCapability('videos')}>
         <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">📹</span></span>
         <span className="tile-label">Videos</span>
@@ -103,10 +148,18 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
         <span className="tile-label">RVF Engine</span>
         <span className="tile-count">Live Demo</span>
       </button>
+      <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
+        <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">📓</span></span>
+        <span className="tile-label">NotebookLM</span>
+        <span className="tile-count">Interactive AI</span>
+      </button>
     </div>
 
     {/* Prompt Starters */}
     <div className="prompt-starters">
+      <button onClick={() => onAction('Give me a 60-second overview of what Ruflo can do, with a diagram')} className="prompt-pill prompt-pill-demo">
+        <span className="pill-icon">&#9889;</span> Try it live
+      </button>
       <button onClick={() => onAction('What is Ruflo v3.5, its specialized agents, swarm topologies, and capabilities?')} className="prompt-pill">
         <span className="pill-icon">⚡</span> Ruflo v3.5
       </button>
@@ -127,12 +180,23 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
       </button>
     </div>
 
+    {/* Social Proof */}
+    <div className="social-proof-bar">
+      <span>500K+ npm downloads</span>
+      <span className="proof-dot" aria-hidden="true">&middot;</span>
+      <span>170+ repos</span>
+      <span className="proof-dot" aria-hidden="true">&middot;</span>
+      <span>Open source</span>
+      <span className="proof-dot" aria-hidden="true">&middot;</span>
+      <span>Used by teams at enterprise scale</span>
+    </div>
+
     {/* Resource Documents */}
     <div className="resource-section">
       <h3 className="resource-heading">Resources & Documents</h3>
       <div className="resource-grid">
         {RESOURCE_DOCS.map((doc, i) => (
-          <button key={i} className={`resource-card resource-${doc.type}`} onClick={() => onAction(doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : `VIEW_PDF:${doc.file}`)}>
+          <button key={i} className={`resource-card resource-${doc.type}`} onClick={() => doc.type === 'notebooklm' ? window.open(doc.url, '_blank', 'noopener,noreferrer') : onAction(doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : doc.type === 'image' ? `VIEW_IMAGE:${doc.file}` : `VIEW_PDF:${doc.file}`)}>
             <span className="resource-icon">{doc.icon}</span>
             <span className="resource-text">
               <span className="resource-title">{doc.title}</span>
@@ -468,6 +532,17 @@ function App() {
       return;
     }
 
+    if (queryText.startsWith('VIEW_IMAGE:')) {
+      const filename = queryText.replace('VIEW_IMAGE:', '');
+      setCanvasContent({
+        type: 'image',
+        content: `/assets/docs/${filename}`,
+        title: filename.replace(/_/g, ' ').replace('.png', ''),
+        action: 'document'
+      });
+      return;
+    }
+
     const userMsg = { role: 'user', content: queryText };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
@@ -765,12 +840,16 @@ function App() {
       case 'rvf-engine':
         setCanvasContent({ type: 'iframe', content: '/rvf-engine.html', title: 'RVF Engine Demo', action: 'rvf-engine' });
         break;
+      case 'notebooklm':
+        window.open(NOTEBOOKLM_URL, '_blank', 'noopener,noreferrer');
+        break;
       default:
         break;
     }
   };
 
   return (
+    <ErrorBoundary>
     <div className="app-container">
       {UniverseOverlay}
 
@@ -787,6 +866,7 @@ function App() {
             className="header-btn new-chat-btn"
             onClick={() => { setMessages([]); setCanvasContent(null); setInput(''); }}
             title="Start a new conversation"
+            aria-label="Start a new conversation"
           >
             + New Chat
           </button>
@@ -810,6 +890,7 @@ function App() {
             className={`header-icon-btn has-label ${canvasContent?.action === 'knowledge' ? 'active' : ''}`}
             onClick={() => canvasContent?.action === 'knowledge' ? setCanvasContent(null) : fetchKnowledge()}
             title="Knowledge Base"
+            aria-label="Knowledge Base"
           >
             📚 <span className="icon-label">KB</span>
           </button>
@@ -817,10 +898,11 @@ function App() {
             className={`header-icon-btn has-label ${canvasContent?.action === 'universe' ? 'active' : ''}`}
             onClick={() => canvasContent?.action === 'universe' ? setCanvasContent(null) : setCanvasContent({ type: 'iframe', content: '/knowledge-universe.html', title: 'Knowledge Universe', action: 'universe' })}
             title="Knowledge Universe"
+            aria-label="Knowledge Universe"
           >
             🌌 <span className="icon-label">Universe</span>
           </button>
-          <button className="header-icon-btn" onClick={toggleTheme} title={isDarkMode ? 'Light Mode' : 'Dark Mode'}>
+          <button className="header-icon-btn" onClick={toggleTheme} title={isDarkMode ? 'Light Mode' : 'Dark Mode'} aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
             {isDarkMode ? '☀️' : '🌙'}
           </button>
         </div>
@@ -836,6 +918,8 @@ function App() {
           <span><span className="stats-highlight">{(ecosystemStats.goldCount || 339).toLocaleString()}</span> Gold Curated</span>
           <span className="stats-dot">·</span>
           <span><span className="stats-highlight">{knowledgeData?.videoStats?.total || '28'}</span> Video Sessions</span>
+          <span className="stats-dot">·</span>
+          <span><span className="stats-highlight">9</span> NLM Studios</span>
           <span className="stats-dot">·</span>
           <span>Updated Daily</span>
         </div>
@@ -859,10 +943,10 @@ function App() {
                 <>
                   {/* Collapsible resource drawer — accessible during chat */}
                   {showResourceDrawer && (
-                    <div className="resource-drawer">
+                    <div className="resource-drawer" role="complementary" aria-label="Resources and documents">
                       <div className="resource-drawer-header">
                         <span className="resource-drawer-title">Resources & Explore</span>
-                        <button className="resource-drawer-close" onClick={() => setShowResourceDrawer(false)}>✕</button>
+                        <button className="resource-drawer-close" onClick={() => setShowResourceDrawer(false)} aria-label="Close resource drawer">✕</button>
                       </div>
                       <div className="capability-tiles capability-tiles-compact">
                         <button className="capability-tile" onClick={() => { handleCapability('videos'); setShowResourceDrawer(false); }}>
@@ -885,11 +969,16 @@ function App() {
                           <span className="tile-icon-wrapper tile-rvf"><span className="tile-icon">&#9889;</span></span>
                           <span className="tile-label">RVF</span>
                         </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('notebooklm'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">📓</span></span>
+                          <span className="tile-label">NotebookLM</span>
+                        </button>
                       </div>
                       <div className="resource-grid resource-grid-compact">
                         {RESOURCE_DOCS.map((doc, i) => (
                           <button key={i} className={`resource-card resource-${doc.type}`} onClick={() => {
-                            handleSubmit(null, doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : `VIEW_PDF:${doc.file}`);
+                            if (doc.type === 'notebooklm') { window.open(doc.url, '_blank', 'noopener,noreferrer'); }
+                            else { handleSubmit(null, doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : doc.type === 'image' ? `VIEW_IMAGE:${doc.file}` : `VIEW_PDF:${doc.file}`); }
                             setShowResourceDrawer(false);
                           }}>
                             <span className="resource-icon">{doc.icon}</span>
@@ -925,13 +1014,62 @@ function App() {
                               <button className="action-btn" onClick={() => setCanvasContent({ type: 'text', content: msg.content })}>➡️ Open in Canvas</button>
                             </div>
                             {idx === messages.length - 1 && !msg.streaming && (
-                              <div className="follow-up-suggestions">
-                                {getFollowUpSuggestions(msg.content).map((suggestion, si) => (
-                                  <button key={si} className="follow-up-pill" onClick={() => { setInput(suggestion); handleSubmit(null, suggestion); }}>
-                                    {suggestion}
+                              <>
+                                {/* Quick Actions — one-click follow-ups */}
+                                <div className="quick-actions">
+                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Show me a diagram of: ${msg.content.slice(0, 100)}`)}>
+                                    <span className="qa-icon">📐</span> Visualize
                                   </button>
-                                ))}
-                              </div>
+                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Give me a practical code example for: ${msg.content.slice(0, 100)}`)}>
+                                    <span className="qa-icon">💻</span> Code Example
+                                  </button>
+                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Explain this more simply, as if to a non-technical person: ${msg.content.slice(0, 100)}`)}>
+                                    <span className="qa-icon">✨</span> Simplify
+                                  </button>
+                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Go deeper on the most important aspect of: ${msg.content.slice(0, 100)}`)}>
+                                    <span className="qa-icon">🔬</span> Deep Dive
+                                  </button>
+                                </div>
+                                {/* Contextual resource cards — auto-surface based on query intent */}
+                                {(() => {
+                                  const lower = (msg.content || '').toLowerCase();
+                                  const cards = [];
+                                  if (lower.includes('ceo') || lower.includes('business') || lower.includes('roi') || lower.includes('executive')) {
+                                    cards.push({ title: 'CEO Deck', desc: 'Business vision & ROI', icon: '👔', action: () => handleCapability('decks') });
+                                  }
+                                  if (lower.includes('cto') || lower.includes('architect') || lower.includes('stack') || lower.includes('benchmark')) {
+                                    cards.push({ title: 'CTO Deck', desc: 'Architecture deep-dive', icon: '🔧', action: () => handleCapability('decks') });
+                                  }
+                                  if (lower.includes('wifi') || lower.includes('sensing') || lower.includes('ruview')) {
+                                    cards.push({ title: 'RuView Demo', desc: 'WiFi sensing video', icon: '📡', action: () => handleSubmit(null, 'VIEW_VIDEO:RuView_WiFi_Sensing.mp4') });
+                                  }
+                                  if (lower.includes('getting started') || lower.includes('tutorial') || lower.includes('how to start')) {
+                                    cards.push({ title: 'Getting Started', desc: 'Zero to production video', icon: '🚀', action: () => handleSubmit(null, 'VIEW_VIDEO:From_Zero_to_Production_Getting_Started.mp4') });
+                                  }
+                                  if (lower.includes('notebook') || lower.includes('deep dive') || lower.includes('explore more')) {
+                                    cards.push({ title: 'NotebookLM', desc: 'Interactive AI deep-dive', icon: '📓', action: () => window.open(NOTEBOOKLM_URL, '_blank', 'noopener,noreferrer') });
+                                  }
+                                  if (cards.length === 0) return null;
+                                  return (
+                                    <div className="contextual-resources">
+                                      <span className="ctx-label">Related resources</span>
+                                      {cards.map((c, ci) => (
+                                        <button key={ci} className="ctx-card" onClick={c.action}>
+                                          <span className="ctx-icon">{c.icon}</span>
+                                          <span className="ctx-text"><span className="ctx-title">{c.title}</span><span className="ctx-desc">{c.desc}</span></span>
+                                        </button>
+                                      ))}
+                                    </div>
+                                  );
+                                })()}
+                                <div className="follow-up-suggestions" aria-live="polite" aria-label="Follow-up suggestions">
+                                  {getFollowUpSuggestions(msg.content).map((suggestion, si) => (
+                                    <button key={si} className="follow-up-pill" onClick={() => { setInput(suggestion); handleSubmit(null, suggestion); }}>
+                                      {suggestion}
+                                    </button>
+                                  ))}
+                                </div>
+                              </>
                             )}
                           </>
                         )}
@@ -963,7 +1101,7 @@ function App() {
               <button type="button" className="icon-btn" onClick={() => fileInputRef.current.click()} aria-label="Attach file">📎</button>
               <button type="button" className={`icon-btn voice ${listening ? 'listening' : ''}`} onClick={startVoiceInput} aria-label={listening ? 'Stop listening' : 'Start voice input'}>{listening ? '🔴' : '🎤'}</button>
               <div className="input-wrapper">
-                {file && <div className="file-preview">📄 {file.name} <button type="button" onClick={() => setFile(null)}>×</button></div>}
+                {file && <div className="file-preview">📄 {file.name} <button type="button" onClick={() => setFile(null)} aria-label="Remove attached file">×</button></div>}
                 <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder={listening ? "Listening..." : "Ask a question..."} disabled={loading} aria-label="Type your question" />
               </div>
               <button type="submit" disabled={loading || (!input.trim() && !file)}>SEND</button>
@@ -983,8 +1121,8 @@ function App() {
                       {presentationMode ? '⊡ SPLIT' : '⊞ FULL'}
                     </button>
                   )}
-                  <button onClick={exportCanvas} className="canvas-btn" title="Download content">EXPORT</button>
-                  <button onClick={() => copyToClipboard()} className="canvas-btn" title="Copy to clipboard">COPY</button>
+                  <button onClick={exportCanvas} className="canvas-btn" title="Download content" aria-label="Export canvas content">EXPORT</button>
+                  <button onClick={() => copyToClipboard()} className="canvas-btn" title="Copy to clipboard" aria-label="Copy canvas to clipboard">COPY</button>
                 </div>
               )}
             </div>
@@ -1025,9 +1163,9 @@ function App() {
                       </div>
                       <h3 style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Additional Resources</h3>
                       <div className="deck-cards deck-cards-compact">
-                        {RESOURCE_DOCS.filter(d => d.type === 'pdf').map((doc) => (
+                        {RESOURCE_DOCS.map((doc) => (
                           <button key={doc.file} className="deck-card" onClick={() => setCanvasContent({
-                            type: 'pdf',
+                            type: doc.type === 'video' ? 'video' : doc.type === 'image' ? 'image' : 'pdf',
                             content: `/assets/docs/${doc.file}`,
                             title: doc.title,
                             action: 'document'
@@ -1101,6 +1239,7 @@ function App() {
         )}
       </main>
     </div>
+    </ErrorBoundary>
   );
 }
 

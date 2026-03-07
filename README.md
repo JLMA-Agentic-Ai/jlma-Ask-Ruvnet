@@ -1,6 +1,6 @@
 # Ask-RuvNet
 
-> Updated: 2026-03-02 | Version 3.2.0
+> Updated: 2026-03-07 | Version 3.5.0
 
 **The front door to one of the most ambitious open-source AI architecture projects ever built.**
 
@@ -82,13 +82,51 @@ The following features from v2.x remain fully intact in v3.0:
 
 ---
 
+## What's New in v3.5.0
+
+### NotebookLM Studio Pipeline
+
+v3.5 adds a fully automated NotebookLM content pipeline. Nine studios — deep-dive audio, architecture explainers, whiteboard videos, a business case slide deck, and an ecosystem infographic — are generated from 115 curated notebook sources and auto-synced to the app. A nightly LaunchAgent handles source refresh, studio regeneration, asset download, and App.jsx resource sync. Auto-authentication via agent-browser CDP eliminates manual auth renewal.
+
+### Ruflo Rebrand
+
+All references to Claude Flow have been updated to Ruflo across ~324 files and ~2,900 replacements. The CLI is now `npx ruflo@latest`. NPM scope `@claude-flow/*` is preserved for backward compatibility.
+
+---
+
+## Strategic Goals
+
+Ask-RuvNet is evolving from a knowledge assistant into **the definitive on-ramp** to the RuvNet ecosystem. These goals drive the next phase of development. Full tracking: [`docs/TODO.md`](docs/TODO.md).
+
+### 1. Smarter AI Output
+
+Responses should be intelligent artifacts — not text walls. Auto-generated comparison tables for architecture questions. Inline Mermaid diagrams. Contextual resource cards that surface relevant videos, decks, and audio when the topic matches. Quick actions (Visualize, Code Example, Deep Dive) after every response.
+
+### 2. NotebookLM Integration
+
+A dynamic NotebookLM notebook with 115 sources and 9 generated studios exists alongside Ask-RuvNet. Users should discover it — via a capability tile on the hero, a link in the resource drawer, and contextual mentions in chat responses when a deep-dive audio or explainer video covers the topic being discussed.
+
+### 3. World-Class Executive Content
+
+The CEO deck explains why this technology tears down departmental walls and enables cross-functional AI that no other platform offers. The CTO deck explains why this is the ultimate toolkit — generations beyond Gen 1 tools (Cursor, Copilot, LangChain) that are 9+ months behind. Both are built via PPTX with custom layouts, data visualizations, competitive positioning, and concrete ROI. Target quality: 9.5/10.
+
+### 4. MCP Package
+
+The NotebookLM source refresh and studio pipeline is being packaged as a publishable MCP server (`@ruvnet/nlm-pipeline-mcp`) so others can install and run it with `claude mcp add`.
+
+### 5. On-Ramp Experience
+
+Based on patterns from Vercel, Supabase, Stripe, and LangChain: dual-audience hero (business leaders vs developers), progressive disclosure, live product demos, time-to-value metrics, social proof, and content-led growth where each NLM studio becomes a shareable entry point.
+
+---
+
 ## The Big Picture
 
 Ruben Cohen (rUv) has spent years building something unusual: not a single AI product, but an entire *ecosystem* of interlocking systems that span agent orchestration, self-learning vector databases, graph neural networks, cognitive containers, distributed swarm intelligence, and neuromorphic computing.
 
 Across **155+ repositories** in three GitHub organizations (ruvnet, openclaw, VibiumDev), the RuVNet ecosystem covers:
 
-- **Agent orchestration** -- Ruflo v3.5, ruv-swarm, agentic-flow
+- **Agent orchestration** -- [Ruflo v3.5](https://github.com/ruvnet/ruflo), ruv-swarm, agentic-flow
 - **Vector databases** -- RuVector (PostgreSQL-native, WASM, neuromorphic)
 - **Self-learning AI** -- SONA, AIMDS, ReasoningBank, LoRA adapters
 - **Cognitive containers** -- RVF format (24-segment, self-booting, 5.5KB WASM)
@@ -887,10 +925,35 @@ The `/api/visualize` endpoint requires a Gemini API key. Check that `GEMINI_API_
 
 ---
 
+## Roadmap
+
+### Next Up
+- **Deck polish** — Rebuild CEO & CTO decks with PptxGenJS (charts, icons, professional layouts)
+- **MCP package** — Publish `@ruvnet/nlm-pipeline-mcp` for NotebookLM automation via MCP
+- **Content-led growth** — Each NLM studio becomes a shareable landing page with SEO
+
+### In Progress
+- Dual-audience hero messaging (CEO vs CTO on-ramp)
+- Mobile responsive polish for new components
+- Accessibility (WCAG 2.1 AA) audit on all UI elements
+- Error boundary for graceful crash recovery
+
+### Done Recently
+- NotebookLM integration (capability tile, resource drawer, contextual cards)
+- Quick Actions after responses (Visualize, Code Example, Simplify, Deep Dive)
+- CDN caching for media assets (7d media, 1d docs, 30d images)
+- SEO: Open Graph, Twitter Card, structured data
+- Lightweight usage analytics endpoint
+
+---
+
 ## Deployment History
 
 | Date | Version | Change |
 |------|---------|--------|
+| 2026-03-07 | 3.5.0 | NotebookLM studio pipeline (9 studios, auto-auth, nightly refresh), Ruflo rebrand (~324 files), ecosystem infographic, strategic goals and TODO tracking |
+| 2026-03-06 | 3.4.1 | Full codebase Ruflo rebrand — 2,900+ replacements across 324 files |
+| 2026-03-03 | 3.3.0 | RVF Cognitive Container with Transformers.js semantic search, container mode, optional WebLLM |
 | 2026-03-02 | 3.2.0 | RuvectorStore replaces Neon PostgreSQL as single source of truth. 103,755 curated entries embedded in container. Zero external DB dependency. KB cleaned from 135K to 103K entries. Neon sunset. |
 | 2026-03-01 | 3.1.0 | Resource drawer for mid-chat access to capabilities and documents, light mode contrast fixes, mobile fullscreen canvas overlay, responsive drawer layout |
 | 2026-03-01 | 3.0.0 | Complete visual overhaul: glassmorphism capability tiles, aurora animated background, stats bar with live ecosystem data, 6 prompt starters, resource documents grid, follow-up suggestion pills, color-coded accent system (red/blue/purple/amber), staggered entrance animations, gradient text and layered shadows |

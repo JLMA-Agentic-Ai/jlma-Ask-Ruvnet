@@ -1167,6 +1167,20 @@ app.get('/health', async (req, res) => {
     res.json(health);
 });
 
+// Lightweight usage analytics (9.3) — tracks resource engagement, no PII
+const usageStats = { queries: 0, resources: {}, capabilities: {}, startTime: Date.now() };
+app.post('/api/analytics/event', (req, res) => {
+    const { type, name } = req.body || {};
+    if (!type || !name) return res.status(400).json({ error: 'type and name required' });
+    if (type === 'query') usageStats.queries++;
+    else if (type === 'resource') usageStats.resources[name] = (usageStats.resources[name] || 0) + 1;
+    else if (type === 'capability') usageStats.capabilities[name] = (usageStats.capabilities[name] || 0) + 1;
+    res.json({ ok: true });
+});
+app.get('/api/analytics/summary', (req, res) => {
+    res.json({ ...usageStats, uptimeMs: Date.now() - usageStats.startTime });
+});
+
 // LLM Provider Status — shows which providers are configured and the fallback chain
 app.get('/api/providers', (req, res) => {
     res.json({
@@ -1552,8 +1566,19 @@ app.post('/api/learn', (req, res) => {
     res.json({ message: "Learning process started in background." });
 });
 
-// Serve Other Documents (PDFs and video from UI dist folder)
-app.use('/assets/docs', express.static(path.join(__dirname, '../ui/dist/assets/docs')));
+// Serve Other Documents (PDFs, video, audio) — with CDN-friendly caching (9.6)
+app.use('/assets/docs', express.static(path.join(__dirname, '../ui/dist/assets/docs'), {
+  maxAge: '7d',
+  setHeaders: (res, filePath) => {
+    if (/\.(mp4|mp3|wav)$/.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=604800'); // 7d for media
+    } else if (/\.(pdf|pptx)$/.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=86400'); // 1d for docs
+    } else if (/\.(png|jpg|svg)$/.test(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=2592000'); // 30d for images
+    }
+  }
+}));
 
 // Knowledge Base Inventory Endpoint
 app.get('/api/knowledge', async (req, res) => {
