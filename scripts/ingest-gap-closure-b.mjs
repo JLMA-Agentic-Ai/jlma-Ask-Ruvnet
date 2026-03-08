@@ -146,7 +146,7 @@ Common Issues:
   {
     path: 'neural/neural-patterns-explained',
     title: 'Neural Patterns: What They Are and Why They Matter',
-    content: `When Claude Flow "learns," it stores neural patterns. But what actually ARE these patterns?
+    content: `When Ruflo "learns," it stores neural patterns. But what actually ARE these patterns?
 
 A neural pattern is a recorded relationship between an input situation and a successful outcome. When Agent A handles a specific type of task successfully, the system records: "When the input looked like THIS, doing THAT worked well."
 
@@ -166,7 +166,7 @@ How Patterns Are Used:
 This is self-reinforcement learning. Good outcomes reinforce their patterns. Bad outcomes are noted to avoid. Over time, the system converges on optimal approaches for each type of task.
 
 The SONA Architecture:
-SONA (Self-Optimizing Neural Architecture) is Claude Flows implementation of pattern learning. It operates in under 0.05 milliseconds per adaptation, meaning it is essentially instant. SONA uses:
+SONA (Self-Optimizing Neural Architecture) is Ruflos implementation of pattern learning. It operates in under 0.05 milliseconds per adaptation, meaning it is essentially instant. SONA uses:
 - Mixture of Experts (MoE) for routing tasks to specialized handlers
 - EWC++ (Elastic Weight Consolidation) to prevent catastrophic forgetting
 - Flash Attention for faster pattern matching
@@ -175,7 +175,7 @@ Why Catastrophic Forgetting Matters:
 Without EWC++, learning new patterns could erase old ones. Like a student who forgets algebra when they learn calculus. EWC++ adds "importance weights" to existing patterns so the critical ones are protected when new learning happens.
 
 Practical Impact:
-After a few sessions, Claude Flow gets noticeably better at:
+After a few sessions, Ruflo gets noticeably better at:
 - Choosing the right agent type for each task
 - Predicting which approaches will work
 - Avoiding strategies that failed before
@@ -187,20 +187,20 @@ After a few sessions, Claude Flow gets noticeably better at:
   },
   {
     path: 'neural/mixture-of-experts-guide',
-    title: 'Mixture of Experts: How Claude Flow Routes Tasks to Specialists',
-    content: `Mixture of Experts (MoE) is how Claude Flow decides which agent handles each task. Instead of one generalist doing everything, you have specialists who each excel at their thing.
+    title: 'Mixture of Experts: How Ruflo Routes Tasks to Specialists',
+    content: `Mixture of Experts (MoE) is how Ruflo decides which agent handles each task. Instead of one generalist doing everything, you have specialists who each excel at their thing.
 
 The Restaurant Analogy:
 A MoE system is like a restaurant kitchen. You dont have one chef making everything. You have a grill specialist, a pastry chef, a sushi master. The head chef (router) looks at each order and sends it to the right specialist.
 
-How MoE Works in Claude Flow:
+How MoE Works in Ruflo:
 1. ROUTER: Receives the task description and analyzes what kind of work it is
 2. EXPERTS: Multiple specialized agents, each trained on specific task types
 3. GATING: A scoring function that determines which expert(s) are most relevant
 4. COMBINATION: Results from selected experts are combined if multiple are needed
 
 The Tiny Dancer Router:
-Claude Flows router is called Tiny Dancer. It is a small, fast model that does one thing well: figure out which bigger model should handle each request.
+Ruflos router is called Tiny Dancer. It is a small, fast model that does one thing well: figure out which bigger model should handle each request.
 
 Tiny Dancer considers:
 - Task complexity (simple edit vs architectural decision)
@@ -214,7 +214,7 @@ Cost. Opus is 60x more expensive than Haiku. Most tasks (simple edits, formattin
 Sparse Activation:
 In traditional AI, every part of the model processes every input. In MoE, only the relevant experts activate. This is like only turning on the ovens you need instead of heating the whole kitchen.
 
-For Claude Flow specifically:
+For Ruflo specifically:
 - Code edits route to local AST editors (zero API cost)
 - Simple queries route to Haiku (cheapest API model)
 - Complex reasoning routes to Opus (best but expensive)
@@ -340,13 +340,13 @@ Defense Layer 1: INPUT VALIDATION
 Sanitize all user inputs before they reach the AI. Strip known injection patterns, limit input length, and validate format.
 
 Defense Layer 2: PII STRIPPING
-Claude Flows AI defense system strips personal identifiable information before data hits Claude. This protects both against data leaks and against injection attacks that try to exfiltrate PII.
+Ruflos AI defense system strips personal identifiable information before data hits Claude. This protects both against data leaks and against injection attacks that try to exfiltrate PII.
 
 Defense Layer 3: BOUNDED EXECUTION
 Agents operate within explicit permission boundaries. A code review agent cannot delete files. A search agent cannot execute commands. Even if an injection succeeds, the agent cannot do what it is not allowed to.
 
 Defense Layer 4: THREAT DETECTION
-Claude Flow detects threats in 0.04 milliseconds. Known injection patterns are matched in real-time. Suspicious inputs are flagged for human review before the agent acts on them.
+Ruflo detects threats in 0.04 milliseconds. Known injection patterns are matched in real-time. Suspicious inputs are flagged for human review before the agent acts on them.
 
 Defense Layer 5: JAILBREAK MONITORING
 The system monitors for attempts to override safety guidelines. Techniques include instruction hierarchy (system prompts take priority over user input) and output filtering.
@@ -369,7 +369,7 @@ When ingesting content from external sources (web pages, documents, user submiss
     content: `Tokens are the currency of AI. Every API call costs tokens. Here is how to spend less.
 
 Strategy 1: MODEL ROUTING (Biggest Impact)
-Do not use Opus for everything. The Tiny Dancer router in Claude Flow automatically picks the cheapest model that can handle each task:
+Do not use Opus for everything. The Tiny Dancer router in Ruflo automatically picks the cheapest model that can handle each task:
 - Haiku ($0.25/M tokens): Formatting, simple edits, data extraction
 - Sonnet ($3/M tokens): Code generation, analysis, most tasks
 - Opus ($15/M tokens): Architecture decisions, complex reasoning, security
@@ -386,7 +386,7 @@ Instead of sending entire files to the AI, send only relevant sections. Techniqu
 - Truncate embedding text to 1500 chars (proven sweet spot)
 
 Strategy 4: CACHING
-If you ask the same question twice, return the cached answer. Claude Flow memory stores previous results. Before making an API call, search memory for a matching past query.
+If you ask the same question twice, return the cached answer. Ruflo memory stores previous results. Before making an API call, search memory for a matching past query.
 
 Strategy 5: BATCH OPERATIONS
 Instead of making 100 separate API calls for 100 files, batch them. Send 10 files per call where possible. This reduces overhead from connection setup and system prompts.
@@ -406,7 +406,7 @@ A typical development session uses 50-100K tokens. At Opus rates, that is $0.75-
   {
     path: 'memory/memory-systems-overview',
     title: 'The Memory Systems: When to Use Each One',
-    content: `Claude Flow has multiple memory systems. Each serves a different purpose. Here is when to use which.
+    content: `Ruflo has multiple memory systems. Each serves a different purpose. Here is when to use which.
 
 System 1: AGENT MEMORY (Short-term)
 What: Memory within a single agent session. Lost when the agent terminates.

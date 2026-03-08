@@ -129,13 +129,13 @@ for (const v of videos) {
 // === TOPIC SYNTHESIS ENTRIES (the extracted knowledge) ===
 
 entries.push({
-  path: 'knowledge/videos/topic-claude-flow-v3-from-videos',
-  title: 'Claude Flow V3: Everything Revealed in Agentics Foundation Sessions',
+  path: 'knowledge/videos/topic-ruflo-v3-from-videos',
+  title: 'Ruflo V3: Everything Revealed in Agentics Foundation Sessions',
   category: 'videos', quality: 97, knowledge_type: 'concept',
   concepts: ['claude flow', 'v3', 'architecture', 'agents', 'swarm', 'hooks', 'wasm', 'learning'],
-  content: `## Claude Flow V3 - Comprehensive Knowledge from Agentics Videos
+  content: `## Ruflo V3 - Comprehensive Knowledge from Agentics Videos
 
-Claude Flow V3 has achieved ${topics.claude_flow_v3.downloads} downloads and ${topics.claude_flow_v3.github_stars} GitHub stars.
+Ruflo V3 has achieved ${topics.claude_flow_v3.downloads} downloads and ${topics.claude_flow_v3.github_stars} GitHub stars.
 
 ## Key Features (from video sessions)
 ${topics.claude_flow_v3.key_features.map(f => `- ${f}`).join('\n')}
@@ -367,11 +367,11 @@ ${topics.hive_mind_architecture.specs}
 ## Why It Matters
 The hive mind architecture breaks through the fundamental limitation of single AI models -- the context window. By distributing cognition across 1,000+ agents with shared memory and sub-millisecond latency, the system achieves "superintelligent" behavior where the whole is dramatically greater than any individual agent. No single agent needs to hold everything in context because the swarm collectively knows everything.
 
-## How It Connects to Claude Flow
-Claude Flow's hive-mind consensus system (available via the hive-mind CLI commands) implements a practical version of this architecture. Byzantine fault tolerance ensures correct decisions even if some agents malfunction. The queen-led hierarchical-mesh topology coordinates the distributed cognition.
+## How It Connects to Ruflo
+Ruflo's hive-mind consensus system (available via the hive-mind CLI commands) implements a practical version of this architecture. Byzantine fault tolerance ensures correct decisions even if some agents malfunction. The queen-led hierarchical-mesh topology coordinates the distributed cognition.
 
 ## Source
-From "Claude-Flow V3: Building AI Systems with Hive-Mind Intelligence" (1_nvkgdvm8).`
+From "Ruflo V3: Building AI Systems with Hive-Mind Intelligence" (1_nvkgdvm8).`
 });
 
 async function main() {

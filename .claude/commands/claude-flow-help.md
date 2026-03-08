@@ -1,5 +1,5 @@
 ---
-name: claude-flow-help
+name: ruflo-help
 description: Show Ruflo commands and usage (legacy alias - see /ruflo-help)
 ---
 

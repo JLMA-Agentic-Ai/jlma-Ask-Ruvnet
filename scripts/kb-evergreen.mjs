@@ -145,7 +145,7 @@ function cloneOrPull(repoName) {
 // --- Category & topic detection ---
 function detectCategory(repoName, content) {
   const text = content.toLowerCase();
-  if (repoName === 'claude-flow') {
+  if (repoName === 'ruflo') {
     if (/swarm|hive|queen|worker|mesh/.test(text)) return 'swarms';
     if (/neural|sona|ewc|moe|pattern/.test(text)) return 'neural';
     if (/hnsw|vector|embed|ruvector/.test(text)) return 'vector-db';

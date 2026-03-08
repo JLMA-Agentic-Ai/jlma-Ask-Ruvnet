@@ -759,7 +759,7 @@
     var docs = [
       { name: 'Agentic Engineering Stack', file: 'The Agentic Engineering Stack \u2014 Technical Overview.pdf', icon: '\uD83D\uDCCA', desc: 'Complete technical overview of the agentic ecosystem' },
       { name: 'Agentic Intelligence Frameworks', file: 'Agentic Intelligence Frameworks.pdf', icon: '\uD83E\uDDE0', desc: 'Framework designs for autonomous AI systems' },
-      { name: 'Claude-Flow v3 Swarm Platform', file: 'Claude-Flow v3 Swarm Platform \u2014 CEO Briefing.pdf', icon: '\u26A1', desc: 'CEO briefing on multi-agent orchestration' },
+      { name: 'Ruflo v3.5 Swarm Platform', file: 'Claude-Flow v3 Swarm Platform \u2014 CEO Briefing.pdf', icon: '\u26A1', desc: 'CEO briefing on multi-agent orchestration' },
       { name: 'The Agentic Toolkit', file: 'The Agentic Toolkit Redefining Creation.pdf', icon: '\uD83D\uDE80', desc: 'How agentic tools are redefining creation' },
       { name: 'CEO Strategy Deck', file: 'ceo-deck-rev4.pdf', icon: '\uD83D\uDCC8', desc: 'Executive strategy presentation' },
       { name: 'CTO Architecture Deck', file: 'cto-deck-rev4.pdf', icon: '\uD83D\uDD27', desc: 'Technical architecture deep-dive' },

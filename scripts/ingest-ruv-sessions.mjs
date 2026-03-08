@@ -26,13 +26,13 @@ const SESSIONS = [
   // === RUV COACHING (highest priority — direct 1:1 architecture teaching) ===
   {
     date: '2025-10-02', type: 'ruv-coaching', priority: 'critical',
-    title: 'Ruv Coaching: Claude Flow Setup & GitHub Codespaces Architecture',
+    title: 'Ruv Coaching: Ruflo Setup & GitHub Codespaces Architecture',
     dir: 'Ruv Coaching/2025-10-02 Ruv Coaching',
-    files: ['2025-10-02 Ruv coaching Transcript.txt', 'Claude Flow coaching_  Summary.txt'],
+    files: ['2025-10-02 Ruv coaching Transcript.txt', 'Ruflo coaching_  Summary.txt'],
   },
   {
     date: '2025-10-16', type: 'ruv-coaching', priority: 'critical',
-    title: 'Ruv Coaching: Agent Architecture & Claude Flow Patterns',
+    title: 'Ruv Coaching: Agent Architecture & Ruflo Patterns',
     dir: 'Ruv Coaching/2025-10-16 Ruv Coaching',
     files: ['2025-10-16 Ruv Coaching Transcript.txt'],
   },
@@ -80,7 +80,7 @@ const SESSIONS = [
   },
   {
     date: '2026-01-08', type: 'ruv-vibecast', priority: 'critical',
-    title: 'Ruv Vibecast: January 8th — Claude Flow V3 Deep Dive',
+    title: 'Ruv Vibecast: January 8th — Ruflo V3 Deep Dive',
     dir: 'Ruv Coaching/2026-01-08 Ruv Coaching',
     files: ['Ruv Vibecast Transcript (1).txt'],
   },
@@ -100,7 +100,7 @@ const SESSIONS = [
   },
   {
     date: '2025-11-13', type: 'ruv-vibecast', priority: 'high',
-    title: 'Ruv Vibecast Nov 13: Claude Flow V3 Features & Agent Coordination',
+    title: 'Ruv Vibecast Nov 13: Ruflo V3 Features & Agent Coordination',
     dir: 'Agentic Coding Training/Agentics Videos/2025-11-13 Ruv Vibecast',
     files: ['Ruv Vibecast - November 13, 2025.srt'],
   },
@@ -152,7 +152,7 @@ const SESSIONS = [
   },
   {
     date: '2025-08-22', type: 'hackerspace', priority: 'medium',
-    title: 'AI Hackerspace Aug 22: Claude Flow Patterns & Q&A',
+    title: 'AI Hackerspace Aug 22: Ruflo Patterns & Q&A',
     dir: 'Agentic Coding Training/Agentics Videos/2025-08-22 AI Hackerspace',
     files: ['2025-08-22 AI Hackerspace.srt'],
   },
@@ -501,7 +501,7 @@ ${text.trim()}`;
 }
 
 function buildTopics(session, chunk) {
-  const base = ['ruv-teaching', 'agentic-ai', 'claude-flow', 'ruvnet'];
+  const base = ['ruv-teaching', 'agentic-ai', 'ruflo', 'ruvnet'];
   const typeMap = {
     'ruv-coaching': ['ruv-coaching', 'mentorship', 'architecture-coaching'],
     'ruv-vibecast': ['ruv-vibecast', 'live-teaching', 'community'],
@@ -516,7 +516,7 @@ function buildTopics(session, chunk) {
   if (/vector|embedding|hnsw/.test(text)) contentTopics.push('vector-search');
   if (/agent|swarm|spawn/.test(text)) contentTopics.push('agent-systems');
   if (/memory|reasoning.?bank/.test(text)) contentTopics.push('memory-systems');
-  if (/claude.?flow|cf v3|hooks/.test(text)) contentTopics.push('claude-flow');
+  if (/claude.?flow|cf v3|hooks/.test(text)) contentTopics.push('ruflo');
   if (/security|aimds|defense/.test(text)) contentTopics.push('security');
   if (/deploy|railway|render|docker/.test(text)) contentTopics.push('deployment');
   if (/wasm|browser|offline/.test(text)) contentTopics.push('wasm');

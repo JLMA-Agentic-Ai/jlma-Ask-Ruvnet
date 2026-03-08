@@ -85,7 +85,7 @@ LoRA (Low-Rank Adaptation) is like giving a student a specialized cheat sheet in
 
 Instead of changing ALL the weights (numbers) in an AI model, LoRA only changes a tiny subset -- like adding sticky notes to a textbook instead of rewriting the textbook. The result: the AI gets specialized for your task while keeping all its original knowledge intact.
 
-In Claude Flow, micro-LoRA learning happens during use. As Claude works on your code, it builds tiny specialized adaptations for YOUR codebase patterns without losing its general coding ability.
+In Ruflo, micro-LoRA learning happens during use. As Claude works on your code, it builds tiny specialized adaptations for YOUR codebase patterns without losing its general coding ability.
 
 ## EWC: The Elastic Safety Net
 
@@ -93,11 +93,11 @@ EWC (Elastic Weight Consolidation) works differently. It identifies which weight
 
 Analogy: Imagine your brain has a "lock importance" dial for each memory. The memories of how to breathe and walk are locked at maximum. Memories of what you had for lunch are barely locked. EWC does this for AI -- it locks the important knowledge and lets less important knowledge be updated.
 
-EWC++ (used in Claude Flow) is the advanced version that can handle learning many tasks sequentially without degradation.
+EWC++ (used in Ruflo) is the advanced version that can handle learning many tasks sequentially without degradation.
 
 ## Why You Should Care
 
-Without LoRA and EWC, your AI tutor would forget yesterday's lessons every time it learns something new. WITH them, the AI accumulates knowledge like a human expert -- each session adds to the foundation without destroying it. This is why Claude Flow gets smarter over time instead of resetting.`
+Without LoRA and EWC, your AI tutor would forget yesterday's lessons every time it learns something new. WITH them, the AI accumulates knowledge like a human expert -- each session adds to the foundation without destroying it. This is why Ruflo gets smarter over time instead of resetting.`
 },
 {
   path: 'knowledge/teaching/what-is-byzantine-consensus',
@@ -120,13 +120,13 @@ How it works:
 3. Each agent checks: "Do most agents agree?"
 4. The majority answer wins, even if some agents lied
 
-## In Claude Flow
+## In Ruflo
 
-Claude Flow's hive-mind consensus system uses BFT. When agents vote on a decision (like "should we refactor this function?"), the system tolerates malfunctioning agents. If 2 out of 8 agents produce bad answers, the other 6 overrule them.
+Ruflo's hive-mind consensus system uses BFT. When agents vote on a decision (like "should we refactor this function?"), the system tolerates malfunctioning agents. If 2 out of 8 agents produce bad answers, the other 6 overrule them.
 
 ## When This Matters
 
-For your personal tutor: rarely. BFT matters most in production systems where agents process user data or make critical decisions. But understanding it helps you understand WHY Claude Flow has consensus protocols -- it is building for reliability at scale.
+For your personal tutor: rarely. BFT matters most in production systems where agents process user data or make critical decisions. But understanding it helps you understand WHY Ruflo has consensus protocols -- it is building for reliability at scale.
 
 ## The Jury Analogy
 
@@ -151,9 +151,9 @@ The key insight: design your data so that merging is always possible. Instead of
 
 You and your partner both have a copy of the shopping list on your phones. You add "milk." They add "eggs." When your phones sync, the list has both "milk" and "eggs." No conflict, no data loss. That is a CRDT -- a grow-only set where additions never conflict.
 
-## In Claude Flow
+## In Ruflo
 
-Claude Flow uses CRDTs for agent memory synchronization. When multiple agents write to shared memory simultaneously, CRDTs ensure all updates are preserved. Agent A stores "found auth bug in line 45" and Agent B stores "found auth bug in line 67" -- both entries survive, no conflict.
+Ruflo uses CRDTs for agent memory synchronization. When multiple agents write to shared memory simultaneously, CRDTs ensure all updates are preserved. Agent A stores "found auth bug in line 45" and Agent B stores "found auth bug in line 67" -- both entries survive, no conflict.
 
 The alternative (locks and transactions) would force agents to wait in line, destroying the speed advantage of parallel execution.
 
@@ -168,7 +168,7 @@ CRDTs matter whenever agents work in parallel on shared state. For a personal tu
   concepts: ['sona', 'self-optimizing', 'neural', 'adaptation', 'performance', 'beginner'],
   content: `## What SONA Does
 
-SONA (Self-Optimizing Neural Architecture) automatically tunes Claude Flow's behavior based on what is happening RIGHT NOW. In under 0.05 milliseconds -- that is 50 microseconds, faster than you can blink -- SONA adjusts how the system processes your request.
+SONA (Self-Optimizing Neural Architecture) automatically tunes Ruflo's behavior based on what is happening RIGHT NOW. In under 0.05 milliseconds -- that is 50 microseconds, faster than you can blink -- SONA adjusts how the system processes your request.
 
 ## The Thermostat Analogy
 
@@ -190,7 +190,7 @@ SONA uses the Mixture of Experts (MoE) pattern. Think of it as having 10 special
 
 ## For Stuart
 
-You do not need to configure SONA. It runs automatically inside Claude Flow. But understanding it helps you appreciate WHY Claude Flow gets faster and more accurate the more you use it. It is not magic -- it is adaptive optimization.`
+You do not need to configure SONA. It runs automatically inside Ruflo. But understanding it helps you appreciate WHY Ruflo gets faster and more accurate the more you use it. It is not magic -- it is adaptive optimization.`
 },
 {
   path: 'knowledge/teaching/what-is-mincut-graph',
@@ -209,7 +209,7 @@ MinCut is a graph algorithm that finds the MINIMUM number of connections to cut 
 
 Imagine a city with many bridges. A flood is coming from the east side. You need to find the FEWEST bridges to close to protect the west side. MinCut finds those bridges -- the minimum cuts that separate the safe zone from the danger zone.
 
-## In RuVector and Claude Flow
+## In RuVector and Ruflo
 
 Dynamic MinCut is used for:
 1. SELF-HEALING: When an agent malfunctions, MinCut isolates it from the swarm by cutting the minimum connections, keeping the rest of the swarm working.
@@ -220,7 +220,7 @@ The "dynamic" part means it adapts in real-time as the network changes. Agents j
 
 ## Why You Should Care
 
-MinCut is why Claude Flow swarms are resilient. If one of your 8 agents crashes, the system does not collapse -- MinCut isolates the failed agent and the other 7 continue working. This is self-healing in action.`
+MinCut is why Ruflo swarms are resilient. If one of your 8 agents crashes, the system does not collapse -- MinCut isolates the failed agent and the other 7 continue working. This is self-healing in action.`
 },
 {
   path: 'knowledge/teaching/what-is-hyperbolic-embedding',
@@ -261,7 +261,7 @@ Most of your daily usage will be regular embeddings. Hyperbolic embeddings are t
 // === END-TO-END EXAMPLES (3) ===
 {
   path: 'knowledge/teaching/example-complete-feature-walkthrough',
-  title: 'End-to-End: Building a Complete Feature with Claude Flow',
+  title: 'End-to-End: Building a Complete Feature with Ruflo',
   category: 'teaching', quality: 99, knowledge_type: 'procedure',
   concepts: ['end-to-end', 'feature', 'walkthrough', 'complete', 'tutorial'],
   content: `## The Scenario
@@ -272,7 +272,7 @@ You want to add a "search history" feature to Ask Ruvnet. Users should be able t
 
 Tell Claude: "I want to add search history. Plan it."
 
-Claude Flow routes to a planner agent. The planner:
+Ruflo routes to a planner agent. The planner:
 1. Searches the KB for existing patterns
 2. Checks the codebase structure
 3. Proposes: new PostgreSQL table, API endpoint, UI component
@@ -307,8 +307,8 @@ Next time you build a similar feature, Claude starts with this pattern.
 
 ## Total Time: ~28 minutes
 
-Without Claude Flow: You'd write everything yourself, sequentially. Probably 2-3 hours.
-With Claude Flow: Parallel execution + KB patterns + learned optimizations = under 30 minutes.
+Without Ruflo: You'd write everything yourself, sequentially. Probably 2-3 hours.
+With Ruflo: Parallel execution + KB patterns + learned optimizations = under 30 minutes.
 
 ## The Key Takeaway
 
@@ -472,33 +472,33 @@ You set up self-learning hooks but the AI does not seem to be getting smarter. P
 
 ## Check 1: Is the Daemon Running?
 
-Hooks run through the Claude Flow daemon. If it is not running, hooks do not fire.
+Hooks run through the Ruflo daemon. If it is not running, hooks do not fire.
 
-npx @claude-flow/cli@latest daemon status
+npx ruflo@latest daemon status
 
-If stopped: npx @claude-flow/cli@latest daemon start
+If stopped: npx ruflo@latest daemon start
 
 ## Check 2: Are Hooks Registered?
 
-npx @claude-flow/cli@latest hooks list
+npx ruflo@latest hooks list
 
 You should see pre-task, post-task, and other hooks listed. If empty, hooks were never configured.
 
 ## Check 3: Is Memory Working?
 
-npx @claude-flow/cli@latest memory list --namespace patterns
+npx ruflo@latest memory list --namespace patterns
 
 If empty: no patterns have been stored. Either post-task hooks are not storing, or the memory backend is not configured.
 
-Test manually: npx @claude-flow/cli@latest memory store --key "test-hook" --value "hello" --namespace patterns
-Then: npx @claude-flow/cli@latest memory retrieve --key "test-hook" --namespace patterns
+Test manually: npx ruflo@latest memory store --key "test-hook" --value "hello" --namespace patterns
+Then: npx ruflo@latest memory retrieve --key "test-hook" --namespace patterns
 
 If the test works but hooks don't: the hook is not calling memory store correctly.
 
 ## Check 4: Is the Hook Actually Executing?
 
 Add --verbose to hook commands:
-npx @claude-flow/cli@latest hooks pre-task --description "test task" --verbose
+npx ruflo@latest hooks pre-task --description "test task" --verbose
 
 This shows exactly what the hook does. If it errors, you'll see why.
 
@@ -563,10 +563,10 @@ API failures are like failed phone calls:
 // === CLAUDE FLOW OPS & PRODUCTION (3) ===
 {
   path: 'knowledge/teaching/cf-limitations-honest',
-  title: 'Claude Flow Limitations: What It Cannot Do (Honest Assessment)',
+  title: 'Ruflo Limitations: What It Cannot Do (Honest Assessment)',
   category: 'teaching', quality: 99, knowledge_type: 'concept',
   concepts: ['claude flow', 'limitations', 'honest', 'trade-offs', 'reality'],
-  content: `## What Claude Flow Cannot Do
+  content: `## What Ruflo Cannot Do
 
 Being honest about limitations is more useful than overpromising. Here is what CF cannot do well -- and what to do instead.
 
@@ -632,36 +632,36 @@ For 100 tasks/day: Opus = $100, Sonnet = $30, Haiku = $5.
 
 ## SONA's Role
 
-SONA (Claude Flow's optimizer) automatically routes tasks to the best model. Simple pattern matches go to Haiku. Complex reasoning goes to Opus. You do not need to manually choose -- but understanding the trade-offs helps you override when needed.`
+SONA (Ruflo's optimizer) automatically routes tasks to the best model. Simple pattern matches go to Haiku. Complex reasoning goes to Opus. You do not need to manually choose -- but understanding the trade-offs helps you override when needed.`
 },
 {
   path: 'knowledge/teaching/cf-build-vs-buy',
-  title: 'Build vs Buy: When to Use Claude Flow vs Other AI Frameworks',
+  title: 'Build vs Buy: When to Use Ruflo vs Other AI Frameworks',
   category: 'teaching', quality: 99, knowledge_type: 'decision',
   concepts: ['build vs buy', 'comparison', 'langchain', 'crewai', 'autogen', 'decision'],
   content: `## The Landscape
 
-There are many AI orchestration frameworks. Here is how Claude Flow compares to the main alternatives.
+There are many AI orchestration frameworks. Here is how Ruflo compares to the main alternatives.
 
-## Claude Flow vs LangChain
+## Ruflo vs LangChain
 LangChain: Chain-based. Good for linear pipelines (A -> B -> C). Large ecosystem of integrations.
-Claude Flow: Agent-based. Good for parallel execution and self-learning. Integrated memory and hooks.
-CHOOSE Claude Flow when: You need multi-agent coordination, persistent learning, or swarm patterns.
+Ruflo: Agent-based. Good for parallel execution and self-learning. Integrated memory and hooks.
+CHOOSE Ruflo when: You need multi-agent coordination, persistent learning, or swarm patterns.
 CHOOSE LangChain when: You need a simple linear pipeline with many third-party integrations.
 
-## Claude Flow vs CrewAI
+## Ruflo vs CrewAI
 CrewAI: Role-based agents with simple coordination. Easy to set up.
-Claude Flow: More complex but more powerful. Self-learning, consensus, fault tolerance.
-CHOOSE Claude Flow when: You need production-grade reliability, self-learning, or 10+ agents.
+Ruflo: More complex but more powerful. Self-learning, consensus, fault tolerance.
+CHOOSE Ruflo when: You need production-grade reliability, self-learning, or 10+ agents.
 CHOOSE CrewAI when: You want quick prototyping with 3-5 agents and simple roles.
 
-## Claude Flow vs AutoGen
+## Ruflo vs AutoGen
 AutoGen: Microsoft's multi-agent framework. Good for conversational agent patterns.
-Claude Flow: Better for coordinated work with memory persistence.
-CHOOSE Claude Flow when: You need persistent memory, HNSW search, or deployment on a single machine.
+Ruflo: Better for coordinated work with memory persistence.
+CHOOSE Ruflo when: You need persistent memory, HNSW search, or deployment on a single machine.
 CHOOSE AutoGen when: You're in the Microsoft ecosystem and need conversational agent patterns.
 
-## Claude Flow's Unique Advantages
+## Ruflo's Unique Advantages
 What NO other framework has:
 1. Self-learning hooks (27 hooks that make the system smarter over time)
 2. HNSW-indexed pattern memory (150x-12,500x faster pattern search)
@@ -670,7 +670,7 @@ What NO other framework has:
 5. SONA adaptive routing (0.05ms model selection)
 
 ## The Bottom Line
-Claude Flow is the most powerful option for serious, production-grade AI orchestration. The trade-off is complexity -- it has more moving parts than simpler frameworks. For Stuart's use case (personal AI tutor with persistent knowledge), Claude Flow is the right choice because the self-learning and KB integration are core requirements.`
+Ruflo is the most powerful option for serious, production-grade AI orchestration. The trade-off is complexity -- it has more moving parts than simpler frameworks. For Stuart's use case (personal AI tutor with persistent knowledge), Ruflo is the right choice because the self-learning and KB integration are core requirements.`
 },
 ];
 

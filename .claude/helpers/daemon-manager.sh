@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Flow V3 - Daemon Manager
+# Ruflo V3 - Daemon Manager
 # Manages background services for real-time statusline updates
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -125,7 +125,7 @@ stop_daemon() {
 
 # Start all daemons
 start_all() {
-    log "Starting all Claude Flow daemons..."
+    log "Starting all Ruflo daemons..."
     start_swarm_monitor "${1:-3}"
     start_metrics_daemon "${2:-5}"
 
@@ -138,7 +138,7 @@ start_all() {
 
 # Stop all daemons
 stop_all() {
-    log "Stopping all Claude Flow daemons..."
+    log "Stopping all Ruflo daemons..."
     stop_daemon "$SWARM_MONITOR_PID" "Swarm monitor"
     stop_daemon "$METRICS_DAEMON_PID" "Metrics daemon"
     success "All daemons stopped"
@@ -155,7 +155,7 @@ restart_all() {
 show_status() {
     echo ""
     echo -e "${CYAN}═══════════════════════════════════════════════════${RESET}"
-    echo -e "${CYAN}       Claude Flow V3 Daemon Status${RESET}"
+    echo -e "${CYAN}       Ruflo V3 Daemon Status${RESET}"
     echo -e "${CYAN}═══════════════════════════════════════════════════${RESET}"
     echo ""
 
@@ -225,7 +225,7 @@ case "${1:-status}" in
         start_metrics_daemon "${2:-5}"
         ;;
     "help"|"-h"|"--help")
-        echo "Claude Flow V3 Daemon Manager"
+        echo "Ruflo V3 Daemon Manager"
         echo ""
         echo "Usage: $0 [command] [options]"
         echo ""

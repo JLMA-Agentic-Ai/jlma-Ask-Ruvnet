@@ -1,5 +1,5 @@
 ---
-name: claude-flow-memory
+name: ruflo-memory
 description: Interact with Ruflo memory system (legacy alias - see /ruflo-memory)
 ---
 

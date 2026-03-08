@@ -37,7 +37,7 @@ const TEMP_DIR = '/tmp/ruvnet-repos';
 const ORGS = ['ruvnet', 'openclaw', 'VibiumDev'];
 const PRIORITY_REPOS = [
   { org: 'ruvnet', name: 'ruflo' },
-  { org: 'ruvnet', name: 'claude-flow' },
+  { org: 'ruvnet', name: 'ruflo' },
   { org: 'ruvnet', name: 'ruvector' },
   { org: 'ruvnet', name: 'agentic-flow' },
   { org: 'ruvnet', name: 'flow-nexus' },

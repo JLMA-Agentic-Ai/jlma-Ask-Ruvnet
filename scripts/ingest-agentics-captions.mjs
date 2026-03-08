@@ -21,7 +21,7 @@ const CHUNK_SIZE = 800;
 const CHUNK_OVERLAP = 100;
 
 const VIDEOS = [
-  { id: '1_392oe5oa', title: 'Claude Flow V3: Building Intelligent Agents with Self-Learning Vector Systems', date: '2026-01-08', category: 'coaching' },
+  { id: '1_392oe5oa', title: 'Ruflo V3: Building Intelligent Agents with Self-Learning Vector Systems', date: '2026-01-08', category: 'coaching' },
   { id: '1_wx6gnb5d', title: 'Building AI Agents: From Development Tools to Industry Standards', date: '2025-12-xx', category: 'coaching' },
   { id: '1_htfe35tu', title: 'Agentic Quality Engineering Fleet: Revolutionizing Software Testing', date: '2025-12-xx', category: 'coaching' },
   { id: '1_hui4b06k', title: 'From Cloud to Edge: Revolutionary AI Chip Technology and Distributed Systems', date: '2025-12-11', category: 'coaching' },
@@ -30,7 +30,7 @@ const VIDEOS = [
   { id: '1_33xvl0xn', title: 'Agentix Foundation: Building a Global Community for Agentic AI Development', date: '2026-01-29', category: 'coaching' },
   { id: '1_rozlzilu', title: 'London Meetup - AI Powered Content Creation: From Sheet Music to Semantic Search', date: '2025-xx-xx', category: 'coaching' },
   { id: '1_dxehuvpf', title: 'Building the Prime Radiant: A Coherence Engine for AI Anti-Hallucination', date: '2025-xx-xx', category: 'coaching' },
-  { id: '1_rtjw6iv4', title: 'Building Agentic AI Solutions: Claude Flow, Anti-Gravity, and Real-World Deployment', date: '2025-xx-xx', category: 'coaching' },
+  { id: '1_rtjw6iv4', title: 'Building Agentic AI Solutions: Ruflo, Anti-Gravity, and Real-World Deployment', date: '2025-xx-xx', category: 'coaching' },
 ];
 
 // Detect date from transcript content
@@ -76,7 +76,7 @@ function detectDate(text) {
 // Extract key topics from transcript
 function extractTopics(text) {
   const techTerms = [
-    'claude-flow', 'claude flow', 'ruvector', 'ruv-swarm', 'agentic', 'swarm',
+    'ruflo', 'claude flow', 'ruvector', 'ruv-swarm', 'agentic', 'swarm',
     'mcp', 'model context protocol', 'hnsw', 'embedding', 'vector', 'rag',
     'sparc', 'neural', 'typescript', 'postgresql', 'wasm', 'onnx',
     'anti-gravity', 'flow-nexus', 'openclaw', 'kaltura', 'coaching',

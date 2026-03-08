@@ -8,7 +8,7 @@ import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import https from 'https';
 
 const VIDEO_IDS = [
-  { id: '1_392oe5oa', title: 'Claude Flow V3: Building Intelligent Agents with Self-Learning Vector Systems' },
+  { id: '1_392oe5oa', title: 'Ruflo V3: Building Intelligent Agents with Self-Learning Vector Systems' },
   { id: '1_wx6gnb5d', title: 'Building AI Agents: From Development Tools to Industry Standards' },
   { id: '1_htfe35tu', title: 'Agentic Quality Engineering Fleet: Revolutionizing Software Testing' },
   { id: '1_hui4b06k', title: 'From Cloud to Edge: Revolutionary AI Chip Technology and Distributed Systems' },
@@ -17,7 +17,7 @@ const VIDEO_IDS = [
   { id: '1_33xvl0xn', title: 'Agentix Foundation: Building a Global Community for Agentic AI Development' },
   { id: '1_rozlzilu', title: 'London Meetup - AI Powered Content Creation: From Sheet Music to Semantic Search' },
   { id: '1_dxehuvpf', title: 'Building the Prime Radiant: A Coherence Engine for AI Anti-Hallucination' },
-  { id: '1_rtjw6iv4', title: 'Building Agentic AI Solutions: Claude Flow, Anti-Gravity, and Real-World Deployment' },
+  { id: '1_rtjw6iv4', title: 'Building Agentic AI Solutions: Ruflo, Anti-Gravity, and Real-World Deployment' },
 ];
 
 const OUTPUT_DIR = '/tmp/agentics-transcripts';

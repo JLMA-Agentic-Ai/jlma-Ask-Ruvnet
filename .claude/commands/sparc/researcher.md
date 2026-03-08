@@ -7,7 +7,7 @@ Deep research with parallel WebSearch/WebFetch and Memory coordination.
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__ruflo__sparc_mode {
   mode: "researcher",
   task_description: "research AI trends 2024",
   options: {
@@ -20,16 +20,16 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run researcher "research AI trends 2024"
+npx ruflo sparc run researcher "research AI trends 2024"
 
 # For alpha features
-npx claude-flow@alpha sparc run researcher "research AI trends 2024"
+npx ruflo@alpha sparc run researcher "research AI trends 2024"
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run researcher "research AI trends 2024"
+# If ruflo is installed locally
+./ruflo sparc run researcher "research AI trends 2024"
 ```
 
 ## Core Capabilities

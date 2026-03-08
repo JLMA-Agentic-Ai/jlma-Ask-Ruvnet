@@ -6,7 +6,7 @@ Created: 2025-12-29 16:45:00 EST
 ## Skill Overview
 
 **Name:** `/ruvnet-stack` (RuvNet Ecosystem Installer)
-**Purpose:** Install and configure the complete RuvNet AI ecosystem including claude-flow, agentic-flow, ruvector, ruvector-postgres, AND the kb-gateway MCP server.
+**Purpose:** Install and configure the complete RuvNet AI ecosystem including ruflo, agentic-flow, ruvector, ruvector-postgres, AND the kb-gateway MCP server.
 
 ---
 
@@ -14,8 +14,8 @@ Created: 2025-12-29 16:45:00 EST
 
 1. **Starts ruvector-postgres** Docker container on port 5435
 2. **Creates isolated schema** for this project
-3. **Installs** claude-flow, agentic-flow, ruvector, @ruvector/ruvllm
-4. **Initializes** claude-flow with agents and hive-mind
+3. **Installs** ruflo, agentic-flow, ruvector, @ruvector/ruvllm
+4. **Initializes** ruflo with agents and hive-mind
 5. **Sets up kb-gateway** MCP server for KB-enforced code generation
 6. **Copies ruvnet-knowledgebase-patterns** documentation
 
@@ -25,7 +25,7 @@ Created: 2025-12-29 16:45:00 EST
 
 ```bash
 # Install packages
-npm install claude-flow@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruvector/agentic-synth
+npm install ruflo@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruvector/agentic-synth
 
 # Start ruvector-postgres
 docker run -d --name ruvector-kb \
@@ -35,8 +35,8 @@ docker run -d --name ruvector-kb \
   -v ruvector-kb-data:/var/lib/postgresql/data \
   ruvnet/ruvector-postgres:latest
 
-# Initialize claude-flow
-npx claude-flow@alpha init --force
+# Initialize ruflo
+npx ruflo@alpha init --force
 ```
 
 ---
@@ -45,7 +45,7 @@ npx claude-flow@alpha init --force
 
 | Package | Purpose |
 |---------|---------|
-| `claude-flow` | Enterprise orchestration, Hive Mind |
+| `ruflo` | Enterprise orchestration, Hive Mind |
 | `agentic-flow` | 150+ agents, 213 MCP tools |
 | `ruvector` | Vector database with HNSW |
 | `ruvector-postgres` | PostgreSQL + pgvector |
@@ -130,7 +130,7 @@ cp -r /path/to/Ask-Ruvnet/docs/ruvnet-knowledgebase-patterns docs/
 
 ```bash
 # 1. Install packages
-npm install claude-flow@alpha agentic-flow@alpha ruvector @ruvector/ruvllm
+npm install ruflo@alpha agentic-flow@alpha ruvector @ruvector/ruvllm
 
 # 2. Start ruvector-postgres (if not running)
 docker ps | grep ruvector-kb || \
@@ -162,8 +162,8 @@ CREATE INDEX IF NOT EXISTS idx_fts_$SCHEMA ON $SCHEMA.architecture_docs
   USING gin(to_tsvector('english', title || ' ' || content));
 "
 
-# 4. Initialize claude-flow
-npx claude-flow@alpha init --force
+# 4. Initialize ruflo
+npx ruflo@alpha init --force
 
 # 5. Verify kb-gateway MCP is registered
 cat ~/.claude.json | jq '.mcpServers["kb-gateway"]'

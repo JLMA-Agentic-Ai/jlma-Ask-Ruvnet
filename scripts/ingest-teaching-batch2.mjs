@@ -371,7 +371,7 @@ The context window is NOT permanent memory. It is working memory -- like the stu
 What: Everything in the current conversation. Duration: This conversation only. Size: Large but limited (about 200K tokens for Claude). When it fills up, old messages get compressed or lost.
 
 ### Level 2: Session Memory (Notes)
-What: Claude Flow's memory system -- you can explicitly store things for later. Duration: Across conversations in the same project. How: memory store --key "pattern-name" --value "what you learned" --namespace patterns. This is like writing notes in a notebook you keep between meetings.
+What: Ruflo's memory system -- you can explicitly store things for later. Duration: Across conversations in the same project. How: memory store --key "pattern-name" --value "what you learned" --namespace patterns. This is like writing notes in a notebook you keep between meetings.
 
 ### Level 3: Knowledge Base (Encyclopedia)
 What: The PostgreSQL KB with embeddings. Duration: Permanent until deleted. How: Entries in kb_complete and architecture_docs. This is like an encyclopedia that Claude can search any time.
@@ -388,7 +388,7 @@ MISTAKE 3: Not using the KB-first pattern. If CLAUDE.md does not tell Claude to 
 
 For things Claude should ALWAYS know: Put them in CLAUDE.md (loaded every conversation).
 For knowledge Claude should SEARCH for: Put them in the KB (searched via MCP).
-For temporary working notes: Use Claude Flow memory store.
+For temporary working notes: Use Ruflo memory store.
 For conversation-specific context: Just talk -- it is in the context window.`
 },
 {
@@ -516,7 +516,7 @@ claude mcp add my-server -- node /path/to/my-server.js
 This tells Claude Code: "When you start, also start this server and connect to its tools."
 
 For npm packages that provide MCP servers:
-claude mcp add claude-flow -- npx -y @claude-flow/cli@latest
+claude mcp add ruflo -- npx -y @claude-flow/cli@latest
 
 ## Step 3: Verify It Works
 
@@ -559,7 +559,7 @@ Launch 5 AI agents that work on a task simultaneously. By the end, you will unde
 
 In Claude Code, the swarm is initialized via the CLI:
 
-npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
+npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
 
 This sets up: hierarchical topology (one coordinator, workers below), max 8 agents, specialized strategy (each agent has a clear role).
 
@@ -711,7 +711,7 @@ Start with something the reader already understands, then bridge to the new conc
 End every teaching entry with key terms defined in plain English. Not everyone reads top to bottom -- some people skip to the glossary first.
 
 ### Rule 5: Tell Claude How to Use This
-End with a section "For Claude Flow / Claude Code" that tells the AI how to reference this entry when answering questions. This is meta-teaching: you are teaching the teacher.
+End with a section "For Ruflo / Claude Code" that tells the AI how to reference this entry when answering questions. This is meta-teaching: you are teaching the teacher.
 
 ## Quality Score: 99
 
@@ -738,9 +738,9 @@ A good coach reviews game tape after every game. What plays worked? What failed?
 
 Before starting a task, Claude checks if it has solved something similar before:
 
-npx @claude-flow/cli@latest hooks pre-task --description "fix authentication bug"
+npx ruflo@latest hooks pre-task --description "fix authentication bug"
 
-This searches Claude Flow's memory for patterns related to "fix authentication bug." If a previous session stored a pattern like "JWT bugs usually involve expired token checks," Claude starts with that knowledge.
+This searches Ruflo's memory for patterns related to "fix authentication bug." If a previous session stored a pattern like "JWT bugs usually involve expired token checks," Claude starts with that knowledge.
 
 ## Step 2: Do the Work
 
@@ -750,11 +750,11 @@ Claude does the task normally. Nothing changes here.
 
 After successfully completing the task, store what worked:
 
-npx @claude-flow/cli@latest hooks post-task --task-id "auth-fix-1" --success true --store-results true
+npx ruflo@latest hooks post-task --task-id "auth-fix-1" --success true --store-results true
 
 Then explicitly store the pattern:
 
-npx @claude-flow/cli@latest memory store --key "pattern-auth-bug" --value "JWT auth bugs: check token expiry, refresh token flow, and session cleanup" --namespace patterns
+npx ruflo@latest memory store --key "pattern-auth-bug" --value "JWT auth bugs: check token expiry, refresh token flow, and session cleanup" --namespace patterns
 
 ## Step 4: Next Time
 
@@ -1130,7 +1130,7 @@ Duration: This conversation only.
 Best for: Short tasks, quick questions, throwaway work.
 Like: A whiteboard you erase after the meeting.
 
-### Option 2: Claude Flow Memory (Session Notes)
+### Option 2: Ruflo Memory (Session Notes)
 What it is: Key-value store that persists across conversations.
 Duration: As long as you want.
 Best for: Patterns, preferences, working notes, task state.
@@ -1147,15 +1147,15 @@ Like: An encyclopedia on the shelf.
 ## Decision Matrix
 
 "Will I need this in 5 minutes?" -> Context window
-"Will I need this next week?" -> Claude Flow memory
+"Will I need this next week?" -> Ruflo memory
 "Will I need this in 6 months?" -> Knowledge Base
 "Should Claude find this automatically?" -> Knowledge Base (MCP searches it)
-"Is this a quick note?" -> Claude Flow memory
+"Is this a quick note?" -> Ruflo memory
 "Is this a teaching concept?" -> Knowledge Base
 
 ## The Key Insight
 
-Most people under-use persistent memory. They re-explain the same things every conversation. Every time you find yourself saying "as I explained before," that is a signal: put it in the KB or Claude Flow memory so you never have to explain it again.
+Most people under-use persistent memory. They re-explain the same things every conversation. Every time you find yourself saying "as I explained before," that is a signal: put it in the KB or Ruflo memory so you never have to explain it again.
 
 ## CLAUDE.md: The Secret Fourth Option
 

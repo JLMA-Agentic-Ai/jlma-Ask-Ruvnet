@@ -56,7 +56,7 @@ For accessing MCP resources, use `access_mcp_resource` with proper URI:
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__ruflo__sparc_mode {
   mode: "mcp",
   task_description: "integrate with external API",
   options: {
@@ -69,22 +69,22 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run mcp "integrate with external API"
+npx ruflo sparc run mcp "integrate with external API"
 
 # For alpha features
-npx claude-flow@alpha sparc run mcp "integrate with external API"
+npx ruflo@alpha sparc run mcp "integrate with external API"
 
 # With namespace
-npx claude-flow sparc run mcp "your task" --namespace mcp
+npx ruflo sparc run mcp "your task" --namespace mcp
 
 # Non-interactive mode
-npx claude-flow sparc run mcp "your task" --non-interactive
+npx ruflo sparc run mcp "your task" --non-interactive
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run mcp "integrate with external API"
+# If ruflo is installed locally
+./ruflo sparc run mcp "integrate with external API"
 ```
 
 ## Memory Integration
@@ -92,7 +92,7 @@ npx claude-flow sparc run mcp "your task" --non-interactive
 ### Using MCP Tools (Preferred)
 ```javascript
 // Store mode-specific context
-mcp__claude-flow__memory_usage {
+mcp__ruflo__memory_usage {
   action: "store",
   key: "mcp_context",
   value: "important decisions",
@@ -100,7 +100,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // Query previous work
-mcp__claude-flow__memory_search {
+mcp__ruflo__memory_search {
   pattern: "mcp",
   namespace: "mcp",
   limit: 5
@@ -110,8 +110,8 @@ mcp__claude-flow__memory_search {
 ### Using NPX CLI (Fallback)
 ```bash
 # Store mode-specific context
-npx claude-flow memory store "mcp_context" "important decisions" --namespace mcp
+npx ruflo memory store "mcp_context" "important decisions" --namespace mcp
 
 # Query previous work
-npx claude-flow memory query "mcp" --limit 5
+npx ruflo memory query "mcp" --limit 5
 ```

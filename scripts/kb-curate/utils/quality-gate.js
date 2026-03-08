@@ -26,7 +26,7 @@ const BANNED_WORDS = [
 ];
 
 const KNOWN_TOOLS = [
-  'AgentDB', 'RuVector', 'Claude Flow', 'Agentic Flow', 'AIMDS',
+  'AgentDB', 'RuVector', 'Ruflo', 'Agentic Flow', 'AIMDS',
   'RVF', 'ruv-swarm', 'Flow Nexus', 'SONA', 'MinCut',
   'Micro-HNSW', 'RuVector-WASM', 'RuVector-Postgres',
 ];

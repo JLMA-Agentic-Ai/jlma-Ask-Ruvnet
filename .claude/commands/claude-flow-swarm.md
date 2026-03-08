@@ -1,5 +1,5 @@
 ---
-name: claude-flow-swarm
+name: ruflo-swarm
 description: Coordinate multi-agent swarms for complex tasks (legacy alias - see /ruflo-swarm)
 ---
 

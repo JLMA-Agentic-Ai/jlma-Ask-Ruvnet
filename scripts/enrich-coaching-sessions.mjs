@@ -238,7 +238,7 @@ async function insertEntry(client, { docId, title, content, filePath, sectionHea
 // ── Main extraction prompt ───────────────────────────────────────────────────
 const EXTRACTION_SYSTEM_PROMPT = `You are an expert technical knowledge extractor analyzing transcripts from rUv (Ruven Cohen), the creator of the RuvNet agentic AI ecosystem.
 
-RuvNet ecosystem includes: claude-flow v3, agentic-flow, ruv-swarm, ruvector (PostgreSQL vector extension), ONNX embeddings, HNSW indexing, SPARC methodology, Flow-Nexus, OpenClaw.
+RuvNet ecosystem includes: ruflo v3, agentic-flow, ruv-swarm, ruvector (PostgreSQL vector extension), ONNX embeddings, HNSW indexing, SPARC methodology, Flow-Nexus, OpenClaw.
 
 Your task: Extract STRUCTURED KNOWLEDGE from the transcript. Focus exclusively on:
 1. Architectural decisions and WHY rUv made them
@@ -250,7 +250,7 @@ Your task: Extract STRUCTURED KNOWLEDGE from the transcript. Focus exclusively o
 
 CRITICAL RULES:
 - Write in third person ("rUv recommends...", "As of [date], the pattern is...")
-- Include version numbers when mentioned (e.g., claude-flow v3.0.0-alpha.118)
+- Include version numbers when mentioned (e.g., ruflo v3.0.0-alpha.118)
 - DO NOT include conversational filler, greetings, off-topic discussion
 - Each extracted item must be independently useful without the full transcript context
 - Mark recency: prefix with "[DATE] " if you know the session date

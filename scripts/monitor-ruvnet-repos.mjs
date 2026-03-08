@@ -54,13 +54,13 @@ export const WATCH_TARGETS = [
     label: 'Ruflo',
   },
   {
-    // Legacy entry — tracks the old claude-flow repo for backward compatibility
-    id: 'claude-flow',
+    // Legacy entry — tracks the old ruflo repo for backward compatibility
+    id: 'ruflo',
     owner: 'ruvnet',
-    repo: 'claude-flow',
+    repo: 'ruflo',
     npm: '@claude-flow/cli',
     watchDocs: ['CHANGELOG.md', 'README.md'],
-    label: 'Claude Flow (legacy)',
+    label: 'Ruflo (legacy)',
   },
   {
     id: 'agentic-flow',

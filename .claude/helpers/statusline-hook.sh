@@ -1,4 +1,4 @@
-# Claude Flow V3 Statusline Hook
+# Ruflo V3 Statusline Hook
 # Add to your shell RC file (.bashrc, .zshrc, etc.)
 
 # Function to get statusline

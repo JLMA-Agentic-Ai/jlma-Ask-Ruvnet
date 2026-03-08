@@ -144,7 +144,7 @@ Kaltura's API requires an authenticated session token — anonymous calls return
 A 2-hour coaching session produces ~340K chars of transcript. An LLM context window handles ~12K chars at a time. Rather than truncating (losing 96% of content), three windows cover start, middle, and end of each session, ensuring key decisions from any part of the session are captured.
 
 ### Why recency boost in the RAG pipeline?
-The agentic AI tooling landscape changes weekly. A coaching session from February 2026 about claude-flow v3 architecture supersedes a September 2025 session about v2 patterns. Without explicit recency weighting, vector similarity alone will surface older content equally — and older guidance may be actively wrong for current versions.
+The agentic AI tooling landscape changes weekly. A coaching session from February 2026 about ruflo v3 architecture supersedes a September 2025 session about v2 patterns. Without explicit recency weighting, vector similarity alone will surface older content equally — and older guidance may be actively wrong for current versions.
 
 ### Gold vs Bronze tiers
 Raw transcript chunks (bronze) are useful for broad keyword coverage. LLM-enriched entries (gold) are self-contained, structured, and precise — they're what the RAG system should primarily surface. The two tiers coexist so neither completeness nor precision is sacrificed.

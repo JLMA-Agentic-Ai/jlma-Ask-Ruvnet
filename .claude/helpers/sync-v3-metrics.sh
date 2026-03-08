@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Flow V3 - Auto-sync Metrics from Actual Implementation
+# Ruflo V3 - Auto-sync Metrics from Actual Implementation
 # Scans the V3 codebase and updates metrics to reflect reality
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -26,8 +26,8 @@ count_modules() {
     local count=0
     local modules=()
 
-    if [ -d "$V3_DIR/@claude-flow" ]; then
-        for dir in "$V3_DIR/@claude-flow"/*/; do
+    if [ -d "$V3_DIR/@ruflo" ]; then
+        for dir in "$V3_DIR/@ruflo"/*/; do
             if [ -d "$dir" ]; then
                 name=$(basename "$dir")
                 modules+=("$name")
@@ -101,7 +101,7 @@ calculate_ddd_progress() {
     local total_progress=0
     local module_count=0
 
-    for dir in "$V3_DIR/@claude-flow"/*/; do
+    for dir in "$V3_DIR/@ruflo"/*/; do
         if [ -d "$dir" ]; then
             name=$(basename "$dir")
             progress=$(calculate_module_progress "$name")
@@ -131,7 +131,7 @@ count_total_files() {
 count_domains() {
     local domains=0
 
-    # Map @claude-flow modules to DDD domains
+    # Map @ruflo modules to DDD domains
     [ -d "$V3_DIR/@claude-flow/swarm" ] && ((domains++))      # task-management
     [ -d "$V3_DIR/@claude-flow/memory" ] && ((domains++))     # session-management
     [ -d "$V3_DIR/@claude-flow/performance" ] && ((domains++)) # health-monitoring

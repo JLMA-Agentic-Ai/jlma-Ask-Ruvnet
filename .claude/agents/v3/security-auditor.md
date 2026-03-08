@@ -21,26 +21,26 @@ hooks:
     echo "Security Auditor initiating scan: $TASK"
 
     # 1. Learn from past security audits (ReasoningBank)
-    SIMILAR_VULNS=$(npx claude-flow@v3alpha memory search-patterns "$TASK" --k=10 --min-reward=0.8 --namespace=security)
+    SIMILAR_VULNS=$(npx ruflo@v3alpha memory search-patterns "$TASK" --k=10 --min-reward=0.8 --namespace=security)
     if [ -n "$SIMILAR_VULNS" ]; then
       echo "Found similar vulnerability patterns from past audits"
-      npx claude-flow@v3alpha memory get-pattern-stats "$TASK" --k=10 --namespace=security
+      npx ruflo@v3alpha memory get-pattern-stats "$TASK" --k=10 --namespace=security
     fi
 
     # 2. Search for known CVEs using HNSW-indexed database
-    CVE_MATCHES=$(npx claude-flow@v3alpha security cve --search "$TASK" --hnsw-enabled)
+    CVE_MATCHES=$(npx ruflo@v3alpha security cve --search "$TASK" --hnsw-enabled)
     if [ -n "$CVE_MATCHES" ]; then
       echo "Found potentially related CVEs in database"
     fi
 
     # 3. Load OWASP Top 10 patterns
-    npx claude-flow@v3alpha memory retrieve --key "owasp_top_10_2024" --namespace=security-patterns
+    npx ruflo@v3alpha memory retrieve --key "owasp_top_10_2024" --namespace=security-patterns
 
     # 4. Initialize audit session
-    npx claude-flow@v3alpha hooks session-start --session-id "audit-$(date +%s)"
+    npx ruflo@v3alpha hooks session-start --session-id "audit-$(date +%s)"
 
     # 5. Store audit start in memory
-    npx claude-flow@v3alpha memory store-pattern \
+    npx ruflo@v3alpha memory store-pattern \
       --session-id "audit-$(date +%s)" \
       --task "$TASK" \
       --status "started" \
@@ -63,7 +63,7 @@ hooks:
     fi
 
     # 2. Store learning pattern for future improvement
-    npx claude-flow@v3alpha memory store-pattern \
+    npx ruflo@v3alpha memory store-pattern \
       --session-id "audit-$(date +%s)" \
       --task "$TASK" \
       --output "Vulnerabilities found: $VULNS_FOUND, Critical: $CRITICAL_VULNS" \
@@ -75,24 +75,24 @@ hooks:
     # 3. Train neural patterns on successful high-accuracy audits
     if [ "$SUCCESS" = "true" ] && [ "$VULNS_FOUND" -gt 0 ]; then
       echo "Training neural pattern from successful audit"
-      npx claude-flow@v3alpha neural train \
+      npx ruflo@v3alpha neural train \
         --pattern-type "prediction" \
         --training-data "security-audit" \
         --epochs 50
     fi
 
     # 4. Generate security report
-    npx claude-flow@v3alpha security report --format detailed --output /tmp/security_report_$(date +%s).json
+    npx ruflo@v3alpha security report --format detailed --output /tmp/security_report_$(date +%s).json
 
     # 5. End audit session with metrics
-    npx claude-flow@v3alpha hooks session-end --export-metrics true
+    npx ruflo@v3alpha hooks session-end --export-metrics true
 ---
 
 # Security Auditor Agent (V3)
 
 You are an advanced security auditor specialized in comprehensive vulnerability detection, compliance auditing, and threat assessment. You leverage V3's ReasoningBank for pattern learning, HNSW-indexed CVE database for rapid lookup (150x-12,500x faster), and Flash Attention for efficient code scanning.
 
-**Enhanced with Claude Flow V3**: Self-learning vulnerability detection powered by ReasoningBank, HNSW-indexed CVE/vulnerability database search, Flash Attention for rapid code scanning (2.49x-7.47x speedup), and continuous improvement through neural pattern training.
+**Enhanced with Ruflo V3**: Self-learning vulnerability detection powered by ReasoningBank, HNSW-indexed CVE/vulnerability database search, Flash Attention for rapid code scanning (2.49x-7.47x speedup), and continuous improvement through neural pattern training.
 
 ## Core Responsibilities
 

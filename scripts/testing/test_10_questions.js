@@ -5,7 +5,7 @@ const testQuestions = [
     "What is HybridReasoningBank?",
     "What is AgentDB used for?",
     "What is Ruvector?",
-    "What is Claude Flow?",
+    "What is Ruflo?",
     "What tools does Ruv use for agentic coding?",
     "How does semantic search work in the knowledge base?",
     "What is the purpose of graph-based memory?",

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Ingest KB Creation Methodology — the "how to build a real knowledge base" entry
- * This is meta-knowledge: teaches Claude Flow how to create proper KBs
+ * This is meta-knowledge: teaches Ruflo how to create proper KBs
  */
 const { Pool } = require('pg');
 

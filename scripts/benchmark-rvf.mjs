@@ -19,7 +19,7 @@ process.chdir(PROJECT);
 
 // ── Test queries ────────────────────────────────────────────────────────────
 const QUERIES = [
-  'What is Claude Flow V3?',
+  'What is Ruflo V3?',
   'How does HNSW work?',
   'What is RVF format?',
   'Explain vector embeddings',

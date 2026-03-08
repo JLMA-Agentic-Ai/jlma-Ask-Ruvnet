@@ -128,7 +128,7 @@ content from multiple rUv repositories:
 - **agentic-flow**: Core orchestration framework for AI agents
 - **ruvector**: Vector database backend for semantic search
 - **ruvllm**: Self-learning LLM toolkit
-- **claude-flow**: Agentic workflow engine
+- **ruflo**: Agentic workflow engine
 - **neural-trader**: Market analysis agent
 - **agentic-synth**: Synthetic data generator
 

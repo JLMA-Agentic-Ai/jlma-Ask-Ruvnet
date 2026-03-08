@@ -36,7 +36,7 @@ hooks:
     export PERF_SESSION_ID
 
     # Store session start in memory
-    npx claude-flow@v3alpha memory store \
+    npx ruflo@v3alpha memory store \
       --key "performance-engineer/session/${PERF_SESSION_ID}/start" \
       --value "{\"timestamp\": $(date +%s), \"task\": \"$TASK\"}" \
       --namespace "v3-performance" 2>/dev/null || true
@@ -54,7 +54,7 @@ hooks:
     echo "  Memory: ${MEM_USED}MB / ${MEM_TOTAL}MB"
 
     # Start SONA trajectory
-    TRAJECTORY_RESULT=$(npx claude-flow@v3alpha hooks intelligence trajectory-start \
+    TRAJECTORY_RESULT=$(npx ruflo@v3alpha hooks intelligence trajectory-start \
       --task "performance-analysis" \
       --context "performance-engineer" 2>&1 || echo "")
 
@@ -90,7 +90,7 @@ hooks:
       # Simple quality score: 0.85 default, higher for longer/more detailed outputs
       QUALITY_SCORE="0.85"
 
-      npx claude-flow@v3alpha hooks intelligence trajectory-end \
+      npx ruflo@v3alpha hooks intelligence trajectory-end \
         --session-id "$TRAJECTORY_ID" \
         --verdict "success" \
         --reward "$QUALITY_SCORE" 2>/dev/null || true
@@ -99,7 +99,7 @@ hooks:
     fi
 
     # Store session completion
-    npx claude-flow@v3alpha memory store \
+    npx ruflo@v3alpha memory store \
       --key "performance-engineer/session/${PERF_SESSION_ID}/end" \
       --value "{\"timestamp\": $END_TIME, \"quality\": \"$QUALITY_SCORE\"}" \
       --namespace "v3-performance" 2>/dev/null || true
@@ -117,7 +117,7 @@ hooks:
 
 ## Overview
 
-I am a **V3 Performance Engineering Agent** specialized in optimizing Claude Flow systems for maximum performance. I leverage Flash Attention (2.49x-7.47x speedup), WASM SIMD acceleration, and SONA adaptive learning to achieve industry-leading performance improvements.
+I am a **V3 Performance Engineering Agent** specialized in optimizing Ruflo systems for maximum performance. I leverage Flash Attention (2.49x-7.47x speedup), WASM SIMD acceleration, and SONA adaptive learning to achieve industry-leading performance improvements.
 
 ## V3 Performance Targets
 
@@ -1026,12 +1026,12 @@ class V3BenchmarkSuite {
 const performanceMCP = {
   // Run benchmark suite
   async runBenchmarks(suite = 'all') {
-    return await mcp__claude-flow__benchmark_run({ suite });
+    return await mcp__ruflo__benchmark_run({ suite });
   },
 
   // Analyze bottlenecks
   async analyzeBottlenecks(component) {
-    return await mcp__claude-flow__bottleneck_analyze({
+    return await mcp__ruflo__bottleneck_analyze({
       component: component,
       metrics: ['latency', 'throughput', 'memory', 'cpu']
     });
@@ -1039,7 +1039,7 @@ const performanceMCP = {
 
   // Get performance report
   async getPerformanceReport(timeframe = '24h') {
-    return await mcp__claude-flow__performance_report({
+    return await mcp__ruflo__performance_report({
       format: 'detailed',
       timeframe: timeframe
     });
@@ -1047,7 +1047,7 @@ const performanceMCP = {
 
   // Token usage analysis
   async analyzeTokenUsage(operation) {
-    return await mcp__claude-flow__token_usage({
+    return await mcp__ruflo__token_usage({
       operation: operation,
       timeframe: '24h'
     });
@@ -1055,14 +1055,14 @@ const performanceMCP = {
 
   // WASM optimization
   async optimizeWASM(operation) {
-    return await mcp__claude-flow__wasm_optimize({
+    return await mcp__ruflo__wasm_optimize({
       operation: operation
     });
   },
 
   // Neural pattern optimization
   async optimizeNeuralPatterns() {
-    return await mcp__claude-flow__neural_patterns({
+    return await mcp__ruflo__neural_patterns({
       action: 'analyze',
       metadata: { focus: 'performance' }
     });
@@ -1070,7 +1070,7 @@ const performanceMCP = {
 
   // Store performance metrics
   async storeMetrics(key, value) {
-    return await mcp__claude-flow__memory_usage({
+    return await mcp__ruflo__memory_usage({
       action: 'store',
       key: `performance/${key}`,
       value: JSON.stringify(value),
@@ -1087,31 +1087,31 @@ const performanceMCP = {
 
 ```bash
 # Run full benchmark suite
-npx claude-flow@v3alpha performance benchmark --suite all
+npx ruflo@v3alpha performance benchmark --suite all
 
 # Profile specific component
-npx claude-flow@v3alpha performance profile --component mcp-server
+npx ruflo@v3alpha performance profile --component mcp-server
 
 # Analyze bottlenecks
-npx claude-flow@v3alpha performance analyze --target latency
+npx ruflo@v3alpha performance analyze --target latency
 
 # Generate performance report
-npx claude-flow@v3alpha performance report --format detailed
+npx ruflo@v3alpha performance report --format detailed
 
 # Optimize specific area
-npx claude-flow@v3alpha performance optimize --focus memory
+npx ruflo@v3alpha performance optimize --focus memory
 
 # Real-time metrics
-npx claude-flow@v3alpha status --metrics --watch
+npx ruflo@v3alpha status --metrics --watch
 
 # WASM SIMD benchmark
-npx claude-flow@v3alpha performance benchmark --suite wasm-simd
+npx ruflo@v3alpha performance benchmark --suite wasm-simd
 
 # Flash attention benchmark
-npx claude-flow@v3alpha performance benchmark --suite flash-attention
+npx ruflo@v3alpha performance benchmark --suite flash-attention
 
 # Memory reduction analysis
-npx claude-flow@v3alpha performance analyze --target memory --quantization int8
+npx ruflo@v3alpha performance analyze --target memory --quantization int8
 ```
 
 ## SONA Integration
@@ -1144,14 +1144,14 @@ class SONAPerformanceOptimizer {
 
   async triggerSONALearning() {
     // Use SONA to learn optimization patterns
-    await mcp__claude-flow__neural_train({
+    await mcp__ruflo__neural_train({
       pattern_type: 'optimization',
       training_data: JSON.stringify(this.trajectories),
       epochs: 10
     });
 
     // Extract learned patterns
-    const patterns = await mcp__claude-flow__neural_patterns({
+    const patterns = await mcp__ruflo__neural_patterns({
       action: 'analyze',
       metadata: { domain: 'performance' }
     });
@@ -1167,7 +1167,7 @@ class SONAPerformanceOptimizer {
 
   async predictOptimalSettings(context) {
     // Use SONA to predict optimal configuration
-    const prediction = await mcp__claude-flow__neural_predict({
+    const prediction = await mcp__ruflo__neural_predict({
       modelId: 'performance-optimizer',
       input: JSON.stringify(context)
     });
@@ -1228,6 +1228,6 @@ class SONAPerformanceOptimizer {
 
 ---
 
-**V3 Performance Engineer** - Optimizing Claude Flow for maximum performance
+**V3 Performance Engineer** - Optimizing Ruflo for maximum performance
 
 Targets: Flash Attention 2.49x-7.47x | HNSW 150x-12,500x | Memory -50-75% | MCP <100ms | SONA <0.05ms

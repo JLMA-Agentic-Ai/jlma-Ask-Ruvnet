@@ -1,0 +1,233 @@
+#!/usr/bin/env node
+/**
+ * kb-export-pipeline.mjs -- Automated KB export pipeline
+ *
+ * Detects when PostgreSQL KB has new entries that are not yet in the
+ * binary RuvectorStore files, then runs a two-stage rebuild:
+ *   Stage 1: PG -> .ruvector/knowledge-base/ (binary vectors + metadata)
+ *   Stage 2: binary -> src/ui/public/assets/ (scalar-quantized browser assets)
+ *
+ * CLI flags:
+ *   --force       Skip count comparison, always re-export
+ *   --check       Only check staleness (exit 0=fresh, 1=stale)
+ *   --stage1-only Only run PG -> binary export
+ *   --stage2-only Only run binary -> browser assets
+ *   --verbose     Show child script output (default: pipe to /dev/null)
+ *
+ * Scheduled via LaunchAgent ai.openclaw.kb-export at 5:00 AM daily.
+ *
+ * Updated: 2026-03-06 00:00:00 EST | Version 1.0.0
+ * Created: 2026-03-06
+ */
+
+import { execFileSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import pg from 'pg';
+import { fileURLToPath } from 'url';
+
+// ---------------------------------------------------------------------------
+// Paths
+// ---------------------------------------------------------------------------
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const PROJECT_ROOT = path.resolve(__dirname, '..');
+const MANIFEST_PATH = path.join(PROJECT_ROOT, '.ruvector', 'knowledge-base', 'manifest.json');
+const LOG_DIR = path.join(PROJECT_ROOT, 'logs');
+const LOG_PATH = path.join(LOG_DIR, 'kb-export-pipeline.jsonl');
+const NODE_BIN = '/usr/local/bin/node';
+
+// ---------------------------------------------------------------------------
+// CLI flags
+// ---------------------------------------------------------------------------
+
+const FLAGS = {
+  force:      process.argv.includes('--force'),
+  check:      process.argv.includes('--check'),
+  stage1Only: process.argv.includes('--stage1-only'),
+  stage2Only: process.argv.includes('--stage2-only'),
+  verbose:    process.argv.includes('--verbose'),
+};
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+const DB_CONFIG = {
+  host: 'localhost',
+  port: 5435,
+  user: 'postgres',
+  database: 'postgres',
+  max: 2,
+  idleTimeoutMillis: 10000,
+  connectionTimeoutMillis: 5000,
+};
+
+function log(msg) {
+  const ts = new Date().toISOString();
+  console.log(`[${ts}] ${msg}`);
+}
+
+function appendLogEntry(entry) {
+  if (!fs.existsSync(LOG_DIR)) {
+    fs.mkdirSync(LOG_DIR, { recursive: true });
+  }
+  fs.appendFileSync(LOG_PATH, JSON.stringify(entry) + '\n');
+}
+
+function readManifestCount() {
+  if (!fs.existsSync(MANIFEST_PATH)) {
+    return 0;
+  }
+  try {
+    const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
+    return manifest.vectorCount ?? 0;
+  } catch {
+    return 0;
+  }
+}
+
+async function queryPgCount() {
+  const pool = new pg.Pool(DB_CONFIG);
+  try {
+    const result = await pool.query(`
+      SELECT
+        (SELECT count(*) FROM ask_ruvnet.architecture_docs
+         WHERE is_duplicate = false AND embedding IS NOT NULL) +
+        (SELECT count(*) FROM ask_ruvnet.kb_complete
+         WHERE embedding IS NOT NULL) AS total
+    `);
+    return parseInt(result.rows[0].total, 10);
+  } finally {
+    await pool.end();
+  }
+}
+
+function runStage(label, scriptName, timeoutMs) {
+  const scriptPath = path.join(PROJECT_ROOT, 'scripts', scriptName);
+  log(`Stage: ${label} -- running ${scriptName}`);
+  const stdio = FLAGS.verbose ? 'inherit' : ['ignore', 'ignore', 'inherit'];
+  execFileSync(NODE_BIN, [scriptPath], {
+    cwd: PROJECT_ROOT,
+    stdio,
+    timeout: timeoutMs,
+  });
+  log(`Stage: ${label} -- complete`);
+}
+
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
+
+async function main() {
+  const startTime = Date.now();
+  log('=== KB Export Pipeline ===');
+
+  // -----------------------------------------------------------------------
+  // 1. Detect staleness
+  // -----------------------------------------------------------------------
+
+  const manifestCount = readManifestCount();
+  let pgCount;
+
+  if (!FLAGS.stage2Only) {
+    try {
+      pgCount = await queryPgCount();
+    } catch (err) {
+      log(`ERROR: Could not query PostgreSQL -- ${err.message}`);
+      process.exit(2);
+    }
+    log(`PG entries with embeddings: ${pgCount}`);
+  } else {
+    pgCount = manifestCount; // stage2-only skips PG check
+  }
+
+  log(`Manifest vectorCount:       ${manifestCount}`);
+
+  const isStale = pgCount > manifestCount;
+
+  if (FLAGS.check) {
+    if (isStale) {
+      log(`STALE: PG has ${pgCount - manifestCount} new entries`);
+      process.exit(1);
+    } else {
+      log('UP TO DATE');
+      process.exit(0);
+    }
+  }
+
+  if (!FLAGS.force && !isStale && !FLAGS.stage1Only && !FLAGS.stage2Only) {
+    log('No new entries detected. Use --force to re-export anyway.');
+    appendLogEntry({
+      timestamp: new Date().toISOString(),
+      action: 'skip',
+      pgCount,
+      manifestCount,
+      durationMs: Date.now() - startTime,
+    });
+    process.exit(0);
+  }
+
+  // -----------------------------------------------------------------------
+  // 2. Stage 1: PG -> binary
+  // -----------------------------------------------------------------------
+
+  if (!FLAGS.stage2Only) {
+    runStage('1 (PG -> binary)', 'export-to-ruvectorstore.mjs', 900_000);
+  }
+
+  // -----------------------------------------------------------------------
+  // 3. Stage 2: binary -> browser assets
+  // -----------------------------------------------------------------------
+
+  if (!FLAGS.stage1Only) {
+    runStage('2 (binary -> browser assets)', 'build-quantized-rvf.mjs', 120_000);
+  }
+
+  // -----------------------------------------------------------------------
+  // 4. Verify
+  // -----------------------------------------------------------------------
+
+  const newManifestCount = readManifestCount();
+  log(`New manifest vectorCount: ${newManifestCount}`);
+
+  if (!FLAGS.stage2Only && newManifestCount < pgCount) {
+    log(`WARNING: Manifest (${newManifestCount}) < PG (${pgCount}). Partial export?`);
+  }
+
+  if (newManifestCount > manifestCount) {
+    log(`SUCCESS: ${newManifestCount - manifestCount} new vectors exported`);
+  } else if (FLAGS.force) {
+    log('Force re-export complete (counts unchanged)');
+  }
+
+  // -----------------------------------------------------------------------
+  // 5. Log
+  // -----------------------------------------------------------------------
+
+  const durationMs = Date.now() - startTime;
+  const entry = {
+    timestamp: new Date().toISOString(),
+    action: 'export',
+    flags: Object.keys(FLAGS).filter((k) => FLAGS[k]),
+    pgCount: pgCount ?? null,
+    oldManifestCount: manifestCount,
+    newManifestCount,
+    delta: newManifestCount - manifestCount,
+    durationMs,
+  };
+
+  appendLogEntry(entry);
+  log(`Pipeline finished in ${(durationMs / 1000).toFixed(1)}s`);
+  log(`Log appended to ${LOG_PATH}`);
+}
+
+main().catch((err) => {
+  log(`FATAL: ${err.message}`);
+  appendLogEntry({
+    timestamp: new Date().toISOString(),
+    action: 'error',
+    error: err.message,
+  });
+  process.exit(2);
+});

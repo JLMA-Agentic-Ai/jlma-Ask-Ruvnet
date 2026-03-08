@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Flow V3 - Performance Benchmark Worker
+# Ruflo V3 - Performance Benchmark Worker
 # Runs periodic benchmarks and updates metrics using agentic-flow agents
 
 set -euo pipefail

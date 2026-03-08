@@ -159,7 +159,7 @@ async function main() {
   // ═══ CAN IT TEACH CLAUDE-FLOW? ═══
   console.log('\n--- CLAUDE-FLOW TEACHING ABILITY ---');
   const cfTests = [
-    { q: 'Claude Flow V3 agent wants to create a WASM knowledge base for a client. What approach should it recommend?',
+    { q: 'Ruflo V3 agent wants to create a WASM knowledge base for a client. What approach should it recommend?',
       expect: /@ruvector\/wasm|browser.*WASM|ONNX|zero.*backend/i, tag: 'CF: Recommend KB approach' },
     { q: 'detect communication bottlenecks in multi-agent swarm using dynamic minimum cut graph partitioning',
       expect: /MinCut|min.cut|topology|bottleneck|Dynamic.*Graph|Agent/i, tag: 'CF: Agent bottleneck tool' },
@@ -189,7 +189,7 @@ async function main() {
   if (failed === 0) {
     console.log('  VERDICT: KNOWLEDGE BASE IS PROVEN OPERATIONAL');
     console.log('  All entries are findable, teach deeply, work cross-domain,');
-    console.log('  and can guide Claude-Flow V3 to recommend WASM KB apps.');
+    console.log('  and can guide Ruflo V3 to recommend WASM KB apps.');
   } else {
     console.log(`  VERDICT: ${failed} issue(s) -- see failures above`);
   }

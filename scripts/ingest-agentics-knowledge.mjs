@@ -41,16 +41,16 @@ async function upsertKnowledge(entry) {
 const entries = [
   {
     category: 'agentics-architecture',
-    title: 'Claude Flow V3: Complete Architecture Overview',
-    content: `Claude Flow V3 is an agentic AI orchestration framework with 500K+ downloads and 12K+ GitHub stars (as of Jan 2026). Root Vector compiled to WASM sits at the core — an intelligent vector database replacing PGVector with attention mechanisms. Hierarchical mesh is the default agent coordination topology — a queen coordinates workers who can also peer-communicate. Agent DB manages data with vector and graph implementations. Memory uses trajectory recording stored as neural pathways for continuous learning. Model routing selects between Haiku/Sonnet/Opus in <0.5ms based on task complexity. Key capabilities include incremental learning via micro-LoRa training during use, 27 hooks system for intelligent learning at every stage, 12 background workers for continuous optimization, drift detection and monitoring, defense system with 0.04ms threat detection, real-time PII stripping, jailbreak monitoring. Agent architecture uses 3-tier model: coordinator to specialists to workers. 15 agent limit in Claude Code with workaround via sub-agent invocation and headless instances. 14,000+ vetted skills from GitHub, transferable between Claude desktop/code/web via zip files. Claude Flow V3 differs from Crew AI, LangGraph, and Autogen by including: learning capabilities, pattern recognition, expert routing, attention mechanisms, QLoRA fine-tuning, vector memory, and true swarm coordination.`,
-    tags: ['agentics-knowledge','claude-flow','v3','architecture','wasm','root-vector','agent-orchestration','hierarchical-mesh'],
+    title: 'Ruflo V3: Complete Architecture Overview',
+    content: `Ruflo V3 is an agentic AI orchestration framework with 500K+ downloads and 12K+ GitHub stars (as of Jan 2026). Root Vector compiled to WASM sits at the core — an intelligent vector database replacing PGVector with attention mechanisms. Hierarchical mesh is the default agent coordination topology — a queen coordinates workers who can also peer-communicate. Agent DB manages data with vector and graph implementations. Memory uses trajectory recording stored as neural pathways for continuous learning. Model routing selects between Haiku/Sonnet/Opus in <0.5ms based on task complexity. Key capabilities include incremental learning via micro-LoRa training during use, 27 hooks system for intelligent learning at every stage, 12 background workers for continuous optimization, drift detection and monitoring, defense system with 0.04ms threat detection, real-time PII stripping, jailbreak monitoring. Agent architecture uses 3-tier model: coordinator to specialists to workers. 15 agent limit in Claude Code with workaround via sub-agent invocation and headless instances. 14,000+ vetted skills from GitHub, transferable between Claude desktop/code/web via zip files. Ruflo V3 differs from Crew AI, LangGraph, and Autogen by including: learning capabilities, pattern recognition, expert routing, attention mechanisms, QLoRA fine-tuning, vector memory, and true swarm coordination.`,
+    tags: ['agentics-knowledge','ruflo','v3','architecture','wasm','root-vector','agent-orchestration','hierarchical-mesh'],
     learned_from: 'Synthesized from 12+ Agentics Foundation videos (Oct 2025-Jan 2026)',
     confidence: 0.95
   },
   {
     category: 'agentics-architecture',
     title: 'Root Vector: Intelligent Vector Database System',
-    content: `Root Vector is a next-generation vector database that replaces PGVector with attention-based mechanisms. It is the core storage engine inside Claude Flow V3. Compiled to WASM for cross-platform deployment (runs locally in browser, Node.js, edge devices). Uses hyperbolic embeddings in Poincare ball model for hierarchical data representation. Graph neural networks for relationship-aware search. Self-learning mechanisms improve search quality over time. Features include real-time learning that adapts embeddings based on usage patterns, adaptive recommendations based on query history, privacy-preserving local processing via WASM. HNSW indexing provides 150x-12,500x faster pattern search vs brute force, 50-75% memory reduction via quantization, sub-millisecond query latency. Samsung Smart TV integration demonstrated at Global AI Hackathon Dec 2025. Root Vector powers the RuVector PostgreSQL extension (port 5435) with HNSW indexing via ruvector_embed() for semantic search.`,
+    content: `Root Vector is a next-generation vector database that replaces PGVector with attention-based mechanisms. It is the core storage engine inside Ruflo V3. Compiled to WASM for cross-platform deployment (runs locally in browser, Node.js, edge devices). Uses hyperbolic embeddings in Poincare ball model for hierarchical data representation. Graph neural networks for relationship-aware search. Self-learning mechanisms improve search quality over time. Features include real-time learning that adapts embeddings based on usage patterns, adaptive recommendations based on query history, privacy-preserving local processing via WASM. HNSW indexing provides 150x-12,500x faster pattern search vs brute force, 50-75% memory reduction via quantization, sub-millisecond query latency. Samsung Smart TV integration demonstrated at Global AI Hackathon Dec 2025. Root Vector powers the RuVector PostgreSQL extension (port 5435) with HNSW indexing via ruvector_embed() for semantic search.`,
     tags: ['agentics-knowledge','root-vector','vector-database','wasm','hnsw','hyperbolic-embeddings'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.95
@@ -58,7 +58,7 @@ const entries = [
   {
     category: 'agentics-architecture',
     title: 'Prime Radiant: AI Anti-Hallucination Coherence Engine',
-    content: `The Prime Radiant is a coherence engine designed to solve AI hallucinations and unverifiable confidence scores. Named after Asimov Foundation series. Uses mathematical determinism over probabilistic outputs — if a statement cannot be mathematically verified, it is flagged. Recursive language models verify their own outputs in a loop. Built in Rust for performance and safety. Designed for edge computing — runs locally without cloud dependency. Integrates with agent swarms to verify collective outputs. Process: AI generates response, Prime Radiant scores for mathematical coherence, incoherent segments flagged and re-generated, recursive verification until threshold met, final output includes verifiable integrity scores. Serves as verification layer in Claude Flow V3 quality pipeline combined with QE Fleet (51 agents across 12 domains).`,
+    content: `The Prime Radiant is a coherence engine designed to solve AI hallucinations and unverifiable confidence scores. Named after Asimov Foundation series. Uses mathematical determinism over probabilistic outputs — if a statement cannot be mathematically verified, it is flagged. Recursive language models verify their own outputs in a loop. Built in Rust for performance and safety. Designed for edge computing — runs locally without cloud dependency. Integrates with agent swarms to verify collective outputs. Process: AI generates response, Prime Radiant scores for mathematical coherence, incoherent segments flagged and re-generated, recursive verification until threshold met, final output includes verifiable integrity scores. Serves as verification layer in Ruflo V3 quality pipeline combined with QE Fleet (51 agents across 12 domains).`,
     tags: ['agentics-knowledge','prime-radiant','anti-hallucination','coherence-engine','rust','verification'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.9
@@ -82,7 +82,7 @@ const entries = [
   {
     category: 'agentics-architecture',
     title: 'Emily OS: Agent Swarm Orchestration Platform',
-    content: `Emily OS is an orchestration layer for large-scale agent swarms, LLM-agnostic. Scales from 2 to 100,000 agents. Works with Claude, GPT, Llama, Mistral, or any model. One-to-many swarm communication patterns. Built on PostgreSQL + vector DB for state management with Celery task orchestration. Agents defined by capabilities not model type. Dynamic scaling based on task complexity. Fault-tolerant — agents can fail and be replaced without losing swarm state. Complementary to Claude Flow V3: Emily OS manages the fleet, Claude Flow handles individual agent intelligence.`,
+    content: `Emily OS is an orchestration layer for large-scale agent swarms, LLM-agnostic. Scales from 2 to 100,000 agents. Works with Claude, GPT, Llama, Mistral, or any model. One-to-many swarm communication patterns. Built on PostgreSQL + vector DB for state management with Celery task orchestration. Agents defined by capabilities not model type. Dynamic scaling based on task complexity. Fault-tolerant — agents can fail and be replaced without losing swarm state. Complementary to Ruflo V3: Emily OS manages the fleet, Ruflo handles individual agent intelligence.`,
     tags: ['agentics-knowledge','emily-os','orchestration','llm-agnostic','swarm-management','scalability'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.85
@@ -98,7 +98,7 @@ const entries = [
   {
     category: 'agentics-projects',
     title: 'QE Fleet: 51-Agent Quality Engineering System',
-    content: `QE Fleet (Quality Engineering Fleet) by Dragon: 51 specialized agents across 12 quality domains built on Claude Flow V3. Domains: unit testing, integration testing, performance testing, security testing, accessibility testing, API testing, UI testing, data validation, regression testing, load testing, compliance testing, code quality analysis. Process: code changes submitted, coordinator analyzes scope, relevant specialists activated in parallel, results aggregated with confidence scores, unified quality report with pass/fail/warning per domain. Uses Prime Radiant coherence scoring to verify test results, preventing false positives/negatives.`,
+    content: `QE Fleet (Quality Engineering Fleet) by Dragon: 51 specialized agents across 12 quality domains built on Ruflo V3. Domains: unit testing, integration testing, performance testing, security testing, accessibility testing, API testing, UI testing, data validation, regression testing, load testing, compliance testing, code quality analysis. Process: code changes submitted, coordinator analyzes scope, relevant specialists activated in parallel, results aggregated with confidence scores, unified quality report with pass/fail/warning per domain. Uses Prime Radiant coherence scoring to verify test results, preventing false positives/negatives.`,
     tags: ['agentics-knowledge','qe-fleet','quality-engineering','testing','multi-agent'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.85
@@ -146,7 +146,7 @@ const entries = [
   {
     category: 'agentics-architecture',
     title: 'Agentic Security: Defense Systems and Threat Detection',
-    content: `Security across Agentics ecosystem: real-time defense, prompt injection prevention, quantum-resistant algorithms. Claude Flow V3: 0.04ms threat detection, real-time PII stripping, jailbreak monitoring, ADRs for security decisions. Four defense layers: input validation scanning for injection, output filtering for PII, behavioral drift detection for compromised agents, Byzantine consensus preventing single-agent attacks. AIMDS (AI Defense System) provides 25-level adaptive mitigation for prompt injection. Beacon project uses quantum-resistant algorithms.`,
+    content: `Security across Agentics ecosystem: real-time defense, prompt injection prevention, quantum-resistant algorithms. Ruflo V3: 0.04ms threat detection, real-time PII stripping, jailbreak monitoring, ADRs for security decisions. Four defense layers: input validation scanning for injection, output filtering for PII, behavioral drift detection for compromised agents, Byzantine consensus preventing single-agent attacks. AIMDS (AI Defense System) provides 25-level adaptive mitigation for prompt injection. Beacon project uses quantum-resistant algorithms.`,
     tags: ['agentics-knowledge','security','prompt-injection','pii-detection','threat-detection'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.9
@@ -154,7 +154,7 @@ const entries = [
   {
     category: 'agentics-architecture',
     title: 'Skills System: Bounded Contexts for Agent Capabilities',
-    content: `Claude Flow V3 Skills System treats capabilities as transferable, composable units. Skills are learned abilities (bounded contexts defining WHAT), agents are executors (defining WHO). Skills transfer between Claude Desktop/Code/Web as zip files. Progressive discovery: loaded on-demand. 14,000+ vetted skills from GitHub with quality validation. Skills compose — one invokes others. YAML manifests define capabilities/inputs/outputs. DDD bounded context pattern — skills own their logic and data. Version-controlled independently from agents. Skills aggregation follows topology: Star (central registry), Mesh (peer-to-peer sharing), Hierarchical (queen catalog).`,
+    content: `Ruflo V3 Skills System treats capabilities as transferable, composable units. Skills are learned abilities (bounded contexts defining WHAT), agents are executors (defining WHO). Skills transfer between Claude Desktop/Code/Web as zip files. Progressive discovery: loaded on-demand. 14,000+ vetted skills from GitHub with quality validation. Skills compose — one invokes others. YAML manifests define capabilities/inputs/outputs. DDD bounded context pattern — skills own their logic and data. Version-controlled independently from agents. Skills aggregation follows topology: Star (central registry), Mesh (peer-to-peer sharing), Hierarchical (queen catalog).`,
     tags: ['agentics-knowledge','skills-system','bounded-contexts','agent-capabilities','ddd'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.9
@@ -162,7 +162,7 @@ const entries = [
   {
     category: 'agentics-architecture',
     title: 'Network Topologies for Agent Coordination',
-    content: `Claude Flow V3 supports multiple agent coordination topologies. Hierarchical: queen controls workers, best for 6-8 agents, anti-drift, single point of failure risk. Hierarchical-Mesh (recommended for 10+): queen strategy with peer communication, balances control and flexibility. Mesh: fully connected, best for equal-capability agents, quadratic communication overhead. Ring: circular neighbors-only, best for pipelines. Star: flat central coordinator. Adaptive: dynamic switching, starts hierarchical for planning, mesh for execution. Selection: bug fixes (hierarchical, 4 agents), features (hierarchical, 5), refactoring (hierarchical, 5), performance (hierarchical, 3), security (hierarchical, 3), docs (mesh, 2).`,
+    content: `Ruflo V3 supports multiple agent coordination topologies. Hierarchical: queen controls workers, best for 6-8 agents, anti-drift, single point of failure risk. Hierarchical-Mesh (recommended for 10+): queen strategy with peer communication, balances control and flexibility. Mesh: fully connected, best for equal-capability agents, quadratic communication overhead. Ring: circular neighbors-only, best for pipelines. Star: flat central coordinator. Adaptive: dynamic switching, starts hierarchical for planning, mesh for execution. Selection: bug fixes (hierarchical, 4 agents), features (hierarchical, 5), refactoring (hierarchical, 5), performance (hierarchical, 3), security (hierarchical, 3), docs (mesh, 2).`,
     tags: ['agentics-knowledge','network-topology','hierarchical','mesh','agent-coordination','swarm-patterns'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.95
@@ -170,7 +170,7 @@ const entries = [
   {
     category: 'agentics-community',
     title: 'Agentics Foundation: Global Community and Chapters',
-    content: `Agentics Foundation (Agentix Foundation): global non-profit advancing agentic AI. Three pillars: Education, Community Building, Measurable Impact. Chapters: London, Vancouver, Bangalore, Toronto, Halifax, Charlotte, Chicago, Hamburg, Amsterdam, Brisbane, Paris, Assam (NE India). Key people: Reuven Cohen (ruvnet, creator of Claude Flow/Root Vector/Ask Ruvnet), Robert Ranson (speaker, Devoxx), Bill McGraw (Vancouver), David Gratton (Vancouver), Dragon (QE Fleet), Brad Ross (AI Symbolic Protocol). Events: weekly Zoom, monthly vibe coding, AI Hackerspace Live, London meetups, Global AI Hackathon (Dec 2025: 80 registered, 29 forks). Notable projects: Cinesphere geolocation discovery, Seven Cents bioacoustics, Samsung Smart TV integration. Uses Kaltura MediaSpace for video. Retro-futuristic 1984 Atari/Sega branding.`,
+    content: `Agentics Foundation (Agentix Foundation): global non-profit advancing agentic AI. Three pillars: Education, Community Building, Measurable Impact. Chapters: London, Vancouver, Bangalore, Toronto, Halifax, Charlotte, Chicago, Hamburg, Amsterdam, Brisbane, Paris, Assam (NE India). Key people: Reuven Cohen (ruvnet, creator of Ruflo/Root Vector/Ask Ruvnet), Robert Ranson (speaker, Devoxx), Bill McGraw (Vancouver), David Gratton (Vancouver), Dragon (QE Fleet), Brad Ross (AI Symbolic Protocol). Events: weekly Zoom, monthly vibe coding, AI Hackerspace Live, London meetups, Global AI Hackathon (Dec 2025: 80 registered, 29 forks). Notable projects: Cinesphere geolocation discovery, Seven Cents bioacoustics, Samsung Smart TV integration. Uses Kaltura MediaSpace for video. Retro-futuristic 1984 Atari/Sega branding.`,
     tags: ['agentics-knowledge','agentics-foundation','community','chapters','reuven-cohen'],
     learned_from: 'Synthesized from 47 Agentics Foundation videos',
     confidence: 0.9
@@ -206,7 +206,7 @@ async function main() {
   // Verify with a test search
   console.log('\n--- SEARCH VERIFICATION ---');
   const queries = [
-    'How does Claude Flow V3 architecture work?',
+    'How does Ruflo V3 architecture work?',
     'What is Root Vector database?',
     'disaster rescue wifi mesh',
     'prevent AI hallucinations',

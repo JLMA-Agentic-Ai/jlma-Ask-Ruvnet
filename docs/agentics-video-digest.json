@@ -41,7 +41,7 @@
       "url": "https://video.agentics.org/media/t/1_s07kapkb",
       "duration": "1h 51m",
       "date": "2026-01-16",
-      "tags": ["agentic-systems", "architectural-decision-records", "ai-security", "claude-flow", "system-optimization", "vector-databases", "prompt-injection", "ai-defense", "community-driven-development", "temporal-ai", "robert ranson", "reuven cohen"],
+      "tags": ["agentic-systems", "architectural-decision-records", "ai-security", "ruflo", "system-optimization", "vector-databases", "prompt-injection", "ai-defense", "community-driven-development", "temporal-ai", "robert ranson", "reuven cohen"],
       "description": "Explores cutting-edge landscape of agentic AI systems, focusing on practical implementation strategies and security considerations. Covers multi-bot platforms, architectural decision records, and defense against prompt injection.",
       "relevance": "critical"
     },
@@ -61,8 +61,8 @@
       "url": "https://video.agentics.org/media/t/1_rozlzilu",
       "duration": "1h 14m",
       "date": "2026-01-28",
-      "tags": ["claude flow", "notebook lm", "ai development", "semantic graphs", "llm workflows", "rapid prototyping", "documentation automation", "knowledge graphs", "web audio api", "ai agents"],
-      "description": "Showcases leveraging LLMs for practical development workflows: sheet music-to-audio converter (WebAssembly), CRM via Claude Flow, automated content library with Notebook LM. Covers multi-agent orchestration, semantic graphs from unstructured data, containerization, and collaborative AI-driven development.",
+      "tags": ["ruflo", "notebook lm", "ai development", "semantic graphs", "llm workflows", "rapid prototyping", "documentation automation", "knowledge graphs", "web audio api", "ai agents"],
+      "description": "Showcases leveraging LLMs for practical development workflows: sheet music-to-audio converter (WebAssembly), CRM via Ruflo, automated content library with Notebook LM. Covers multi-agent orchestration, semantic graphs from unstructured data, containerization, and collaborative AI-driven development.",
       "relevance": "high"
     },
     {
@@ -71,7 +71,7 @@
       "url": "https://video.agentics.org/media/t/1_8afwqubg",
       "duration": "2h 1m",
       "date": "2026-01-23",
-      "tags": ["agentic-systems", "network-topology", "claude-flow", "distributed-agents", "skill-aggregation", "quality-engineering", "prime-radiant", "ai-infrastructure", "hardware-optimization", "autonomous-coding", "robert ranson", "reuven cohen"],
+      "tags": ["agentic-systems", "network-topology", "ruflo", "distributed-agents", "skill-aggregation", "quality-engineering", "prime-radiant", "ai-infrastructure", "hardware-optimization", "autonomous-coding", "robert ranson", "reuven cohen"],
       "description": "Cutting edge agentic AI systems: network topology optimization for agent coordination, skills aggregation, quality engineering, prime radiant coherence engine, hardware optimization for AI infrastructure.",
       "transcript_preview": "Discussion starting with weather check-in, congratulations to Bill McGraw and David Gratton for Vancouver kickoff event. Covers network topologies, skills aggregation, autonomous coding, hardware optimization.",
       "relevance": "critical"
@@ -87,11 +87,11 @@
     },
     {
       "id": "1_rtjw6iv4",
-      "title": "Building Agentic AI Solutions: Claude Flow, Anti-Gravity, and Real-World Applications",
+      "title": "Building Agentic AI Solutions: Ruflo, Anti-Gravity, and Real-World Applications",
       "url": "https://video.agentics.org/media/t/1_rtjw6iv4",
       "duration": "1h 31m",
-      "tags": ["agentic-ai", "claude-flow", "anti-gravity"],
-      "description": "Practical implementations of agentic AI technologies: Claude Flow and Anti-Gravity platforms. London-based agentic AI projects showcased.",
+      "tags": ["agentic-ai", "ruflo", "anti-gravity"],
+      "description": "Practical implementations of agentic AI technologies: Ruflo and Anti-Gravity platforms. London-based agentic AI projects showcased.",
       "relevance": "critical"
     },
     {
@@ -105,16 +105,16 @@
     },
     {
       "id": "1_xlre6ukc",
-      "title": "Claude-flow v3 Release: Revolutionary Agentic AI System with 500K+ Downloads",
+      "title": "Ruflo v3 Release: Revolutionary Agentic AI System with 500K+ Downloads",
       "url": "https://video.agentics.org/media/t/1_xlre6ukc",
       "duration": "1h 49m",
       "date": "2026-01-16",
-      "tags": ["claude-flow v3", "agentic ai", "ai symbolic protocol", "swarm coordination", "vector embeddings", "wasm technology", "disaster response", "mathematical ai", "open source ai", "real-time learning"],
-      "description": "Comprehensive discussion on Claude-flow v3 with 500K+ downloads and 12K GitHub stars. Covers incrementally learning AI system that adapts in real-time: swarm coordination, drift detection, intelligent token optimization. Hierarchical mesh for agent coordination, memory and embedding systems via WASM, security features (real-time PII detection, jailbreak monitoring). Differs from traditional AI by operating as prosthetic to human intelligence. Covers Seven Cents bioacoustic project, deployment strategies, 27 hooks system, background workers.",
+      "tags": ["ruflo v3", "agentic ai", "ai symbolic protocol", "swarm coordination", "vector embeddings", "wasm technology", "disaster response", "mathematical ai", "open source ai", "real-time learning"],
+      "description": "Comprehensive discussion on Ruflo v3 with 500K+ downloads and 12K GitHub stars. Covers incrementally learning AI system that adapts in real-time: swarm coordination, drift detection, intelligent token optimization. Hierarchical mesh for agent coordination, memory and embedding systems via WASM, security features (real-time PII detection, jailbreak monitoring). Differs from traditional AI by operating as prosthetic to human intelligence. Covers Seven Cents bioacoustic project, deployment strategies, 27 hooks system, background workers.",
       "chapters": [
-        "Claude-flow v3 Release and Overview - 438K downloads, incremental learning, hierarchical mesh coordination",
+        "Ruflo v3 Release and Overview - 438K downloads, incremental learning, hierarchical mesh coordination",
         "Guest Introductions and Community Updates - meetups in Vancouver, Bangalore, Toronto, Halifax",
-        "Claude-flow v3 Architecture - agents/workers with vector/graph implementations, Agent Booster token optimization, model routing (Haiku/Sonnet/Opus), micro-LoRa learning, defense system (0.04ms threat detection)",
+        "Ruflo v3 Architecture - agents/workers with vector/graph implementations, Agent Booster token optimization, model routing (Haiku/Sonnet/Opus), micro-LoRa learning, defense system (0.04ms threat detection)",
         "Seven Cents Bioacoustic Project - animal communication translation via bioacoustic embeddings, mincut algorithm",
         "System Architecture Deep Dive - Root Vector system, WASM compilation, Agent DB, comparison vs Crew AI/LangGraph/Autogen",
         "Security, Deployment, Hooks System - 27 hooks, trajectory learning, PII stripping, background workers",
@@ -131,9 +131,9 @@
     },
     {
       "id": "1_nvkgdvm8",
-      "title": "Claude-Flow V3: Building AI Systems with Hive-Mind Intelligence",
+      "title": "Ruflo V3: Building AI Systems with Hive-Mind Intelligence",
       "url": "https://video.agentics.org/media/t/1_nvkgdvm8",
-      "tags": ["claude-flow v3", "hive-mind", "intelligence"],
+      "tags": ["ruflo v3", "hive-mind", "intelligence"],
       "relevance": "critical"
     },
     {
@@ -151,9 +151,9 @@
     },
     {
       "id": "1_392oe5oa",
-      "title": "Claude Flow V3: Building Intelligent Agents with Self-Learning Vector Systems",
+      "title": "Ruflo V3: Building Intelligent Agents with Self-Learning Vector Systems",
       "url": "https://video.agentics.org/media/t/1_392oe5oa",
-      "tags": ["claude flow v3", "rue vector", "agentic systems", "self-learning ai", "edge computing", "distributed agents", "hyperbolic vectors", "embedded ai", "development tools", "ai architecture"],
+      "tags": ["ruflo v3", "rue vector", "agentic systems", "self-learning ai", "edge computing", "distributed agents", "hyperbolic vectors", "embedded ai", "development tools", "ai architecture"],
       "relevance": "critical"
     },
     {
@@ -460,7 +460,7 @@
     },
     "qe_fleet": {
       "description": "Quality Engineering Fleet by Dragon",
-      "specs": "51 specialized agents across 12 domains, built on Claude Flow"
+      "specs": "51 specialized agents across 12 domains, built on Ruflo"
     }
   }
 }

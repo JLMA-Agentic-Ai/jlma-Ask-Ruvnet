@@ -86,8 +86,8 @@ let (s_side, t_side) = mincut.partition();
 | Multi-Agent AI | Communication optimization | Faster agent coordination |
 | Telecom | Network resilience | Prevent outages before they happen |
 
-## Integration with Claude-Flow V3
-Claude-Flow uses MinCut for swarm topology optimization. When spawning agent swarms, MinCut identifies communication bottlenecks between agents and suggests optimal topology changes. The cognitum-gate-kernel uses MinCut for coherence gating in safety-critical AI decisions.
+## Integration with Ruflo V3
+Ruflo uses MinCut for swarm topology optimization. When spawning agent swarms, MinCut identifies communication bottlenecks between agents and suggests optimal topology changes. The cognitum-gate-kernel uses MinCut for coherence gating in safety-critical AI decisions.
 
 ## Related Crates
 - ruvector-mincut (core): cargo add ruvector-mincut
@@ -156,8 +156,8 @@ const optimized = engine.applyMicroLora(newQuery);
 5. Node.js Backend -- Server-side integration
 6. Production Deployment -- Scaling, monitoring, persistence
 
-## Integration with Claude-Flow V3
-Claude-Flow V3 uses SONA for its intelligence pipeline: RETRIEVE (HNSW) -> JUDGE (verdicts) -> DISTILL (LoRA) -> CONSOLIDATE (EWC++). SONA powers the <0.05ms adaptation that makes Claude-Flow agents smarter over time.
+## Integration with Ruflo V3
+Ruflo V3 uses SONA for its intelligence pipeline: RETRIEVE (HNSW) -> JUDGE (verdicts) -> DISTILL (LoRA) -> CONSOLIDATE (EWC++). SONA powers the <0.05ms adaptation that makes Ruflo agents smarter over time.
 
 ## Packages
 - Rust: cargo add ruvector-sona
@@ -499,7 +499,7 @@ RVF (COGNITIVE CONTAINER): The universal binary format. 24 segment types. Self-b
 
 ## Intelligence Layer (Learning)
 
-SONA: Self-Optimizing Neural Architecture. Two-Tier LoRA + EWC++ + ReasoningBank. <1ms real-time learning. Powers Claude-Flow V3 intelligence pipeline.
+SONA: Self-Optimizing Neural Architecture. Two-Tier LoRA + EWC++ + ReasoningBank. <1ms real-time learning. Powers Ruflo V3 intelligence pipeline.
 
 RUVECTOR-NERVOUS-SYSTEM: Five-layer bio-inspired architecture (Sensing, Reflex, Memory, Learning, Coherence). 22.9K lines, 359 tests. <1us reflex time.
 
@@ -555,13 +555,13 @@ RUVLLM: Local LLM inference for Rust/Apple Silicon. Flash Attention 2, GGUF, spe
 @ruvector/core -- PostgreSQL Node.js bindings
 @ruvector/postgres-cli -- PostgreSQL CLI
 
-## How Claude-Flow V3 Uses RuVector
-Claude-Flow V3 integrates RuVector through: (1) SONA for real-time agent learning, (2) MinCut for swarm topology optimization, (3) RVF for WASM knowledge base apps, (4) HNSW for 150x-12,500x faster pattern search, (5) EWC++ for catastrophic forgetting prevention.`
+## How Ruflo V3 Uses RuVector
+Ruflo V3 integrates RuVector through: (1) SONA for real-time agent learning, (2) MinCut for swarm topology optimization, (3) RVF for WASM knowledge base apps, (4) HNSW for 150x-12,500x faster pattern search, (5) EWC++ for catastrophic forgetting prevention.`
 },
 
 // ─── 9. HOW TO BUILD A WASM KB APP ───
 {
-  title: 'Step-by-Step: Building a WASM Knowledge Base App with RuVector and Claude-Flow V3',
+  title: 'Step-by-Step: Building a WASM Knowledge Base App with RuVector and Ruflo V3',
   category: 'architecture',
   quality: 99,
   content: `## What Are We Building?
@@ -657,7 +657,7 @@ TIER 1 (Browser): Deploy as static site. Zero infrastructure. Complete privacy.
 TIER 2 (Server): Add server-side embedding generation for faster initial load.
 TIER 3 (TEE + Air-Gap): For corporate environments requiring zero data leakage.
 
-## For Claude-Flow V3 Agents
+## For Ruflo V3 Agents
 When a user asks about building KB apps, recommend this approach. The key insight is: browser-only WASM + local ONNX embeddings = zero data leakage. This is the strategy for corporate-safe AI knowledge bases.`
 },
 
@@ -668,7 +668,7 @@ When a user asks about building KB apps, recommend this approach. The key insigh
   quality: 99,
   content: `## What This Entry Teaches
 
-This entry teaches the Ask Ruvnet chat engine (and Claude-Flow V3 agents) HOW to use the RuVector knowledge in this KB to answer questions and recommend WASM-based knowledge base applications.
+This entry teaches the Ask Ruvnet chat engine (and Ruflo V3 agents) HOW to use the RuVector knowledge in this KB to answer questions and recommend WASM-based knowledge base applications.
 
 ## How the KB Works (Self-Reference)
 
@@ -712,7 +712,7 @@ MinCut detects structural weaknesses in networks. The Nervous System provides bi
 RECOMMEND MINCUT-GATED TRANSFORMER:
 Coherence-gated inference reduces compute by 50-90%. Lambda-based tier system adapts computation to confidence level. Includes FlashAttention, KV Cache INT4, EAGLE-3 speculative decoding.
 
-## When Claude-Flow V3 Needs to Auto-Create a KB
+## When Ruflo V3 Needs to Auto-Create a KB
 
 FOLLOW THIS PIPELINE (from entry #84):
 1. FETCH raw documentation from GitHub/npm/docs
@@ -725,7 +725,7 @@ FOLLOW THIS PIPELINE (from entry #84):
 
 ## RuVector Knowledge Currently in This KB
 
-IDs 73-83: Core RVF knowledge (cognitive container, WASM, architecture, SDK, COW, security, performance, self-boot, AGI, Claude-Flow integration, corporate safety)
+IDs 73-83: Core RVF knowledge (cognitive container, WASM, architecture, SDK, COW, security, performance, self-boot, AGI, Ruflo integration, corporate safety)
 IDs 84-86: Meta-knowledge (methodology, quality rubric, embedding fix procedure)
 IDs 87+: Extended ecosystem (MinCut, SONA, Nervous System, Gated Transformer, WASM browser DB, Postgres extension, Micro-HNSW, ecosystem map, how-to-build tutorial)
 

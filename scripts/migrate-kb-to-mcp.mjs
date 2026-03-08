@@ -40,7 +40,7 @@ function extractConcepts(title, content, category) {
   // Common KB domain terms
   const domainTerms = [
     'rvf', 'wasm', 'hnsw', 'onnx', 'simd', 'cow', 'sona', 'mincut',
-    'ruvector', 'claude-flow', 'postgresql', 'indexdb', 'embedding',
+    'ruvector', 'ruflo', 'postgresql', 'indexdb', 'embedding',
     'vector', 'neural', 'swarm', 'agent', 'knowledge base', 'mcp',
     'self-healing', 'self-learning', 'offline', 'browser', 'corporate',
     'air-gap', 'witness', 'cryptographic', 'gated transformer',

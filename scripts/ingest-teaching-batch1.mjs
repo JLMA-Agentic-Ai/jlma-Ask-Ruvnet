@@ -45,7 +45,7 @@ const entries = [
 
 Every time you open Claude and type a question, you are using AI as a fancy search engine -- you ask, it answers, you ask again. That works, but it means YOU are doing all the thinking about what to ask next. An AI agent flips that around. Instead of you driving every step, the agent figures out the steps itself. If prompting is like giving someone turn-by-turn directions, an agent is like telling a taxi driver your destination and letting them figure out the route.
 
-This matters to you because the entire RuVector ecosystem -- Claude Flow, swarms, MCP tools -- is built on agents. Understanding what an agent actually IS unlocks everything else.
+This matters to you because the entire RuVector ecosystem -- Ruflo, swarms, MCP tools -- is built on agents. Understanding what an agent actually IS unlocks everything else.
 
 ## The Simplest Possible Explanation
 
@@ -66,7 +66,7 @@ LEVEL 2 - CHAIN OF PROMPTS: You ask a series of related questions, each building
 
 LEVEL 3 - TOOL-USING AI: The AI can not only answer questions but also DO things -- read files on your computer, search the web, run code, query databases. Claude Code works at this level. When you ask Claude Code to "fix the bug in server.js," it reads the file, understands the problem, edits the code, and runs the tests. It used tools (file read, file edit, bash command) without you telling it to use each one.
 
-LEVEL 4 - AUTONOMOUS AGENT: The AI receives a high-level goal and breaks it down into sub-tasks, assigns those tasks (possibly to other agents), monitors progress, handles failures, and reports back. Claude Flow operates at this level. You say "build me a user authentication system" and it spawns a researcher, architect, coder, tester, and reviewer -- all working in parallel.
+LEVEL 4 - AUTONOMOUS AGENT: The AI receives a high-level goal and breaks it down into sub-tasks, assigns those tasks (possibly to other agents), monitors progress, handles failures, and reports back. Ruflo operates at this level. You say "build me a user authentication system" and it spawns a researcher, architect, coder, tester, and reviewer -- all working in parallel.
 
 ## What Makes an Agent Different from a Chatbot
 
@@ -95,16 +95,16 @@ Common tools an agent might use:
 - WEB TOOLS: Fetch web pages, call APIs
 - MEMORY TOOLS: Store and retrieve information across sessions
 
-## How This Connects to Claude Flow
+## How This Connects to Ruflo
 
-Claude Flow is an agent MANAGER. It does not just run one agent -- it runs many agents simultaneously and coordinates them. Think of it as a construction foreman who does not swing a hammer personally but assigns carpenters, electricians, and plumbers to the right tasks at the right times.
+Ruflo is an agent MANAGER. It does not just run one agent -- it runs many agents simultaneously and coordinates them. Think of it as a construction foreman who does not swing a hammer personally but assigns carpenters, electricians, and plumbers to the right tasks at the right times.
 
-When Claude Flow receives a complex task:
+When Ruflo receives a complex task:
 1. It analyzes the task and breaks it into sub-tasks
 2. It spawns specialized agents for each sub-task
 3. Each agent runs its own agent loop independently
-4. Claude Flow monitors all agents and handles communication between them
-5. When all agents finish, Claude Flow combines their results
+4. Ruflo monitors all agents and handles communication between them
+5. When all agents finish, Ruflo combines their results
 
 This is called ORCHESTRATION -- managing multiple agents toward a single goal.
 
@@ -116,9 +116,9 @@ MISCONCEPTION: "Agents are always better than prompts." No. For simple questions
 
 MISCONCEPTION: "Agents can do anything." No. Agents can only use the tools they are given. An agent with no file tools cannot read files. The tools define the boundaries.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
-When Stuart asks about agents, explain using the taxi driver analogy (goal vs. turn-by-turn). When spawning agents in Claude Flow, reference the four levels to explain what level the task requires. When debugging agent issues, check: (1) Does the agent have the right tools? (2) Is the agent loop getting stuck in a cycle? (3) Is the goal clear enough for autonomous pursuit? Search the KB for related entries on swarms, MCP, and Claude Flow for deeper dives.`
+When Stuart asks about agents, explain using the taxi driver analogy (goal vs. turn-by-turn). When spawning agents in Ruflo, reference the four levels to explain what level the task requires. When debugging agent issues, check: (1) Does the agent have the right tools? (2) Is the agent loop getting stuck in a cycle? (3) Is the goal clear enough for autonomous pursuit? Search the KB for related entries on swarms, MCP, and Ruflo for deeper dives.`
 },
 
 // --- 2. WHAT IS A SWARM ---
@@ -133,7 +133,7 @@ When Stuart asks about agents, explain using the taxi driver analogy (goal vs. t
 
 You have already used a single AI agent -- that is what Claude Code is when it reads your files, edits code, and runs tests. But what happens when you need five things done at once? Or when one task is too complex for a single agent to handle alone? That is where swarms come in. A swarm is a team of AI agents working together on the same project, like a construction crew where each worker has a specialty.
 
-If you are using Claude Flow, you are already using swarms. Every time you see "spawning 5 agents in parallel," that is a swarm.
+If you are using Ruflo, you are already using swarms. Every time you see "spawning 5 agents in parallel," that is a swarm.
 
 ## The Restaurant Kitchen Analogy
 
@@ -165,7 +165,7 @@ The biggest challenge with swarms is DRIFT -- agents gradually wandering away fr
 
 Drift happens because agents interpret the goal slightly differently, and without frequent check-ins, small deviations compound into big ones.
 
-The ANTI-DRIFT solutions in Claude Flow:
+The ANTI-DRIFT solutions in Ruflo:
 1. HIERARCHICAL TOPOLOGY: The coordinator catches drift early
 2. SMALL TEAMS (6-8 agents max): Fewer agents means less drift
 3. SPECIALIZED ROLES: Each agent has a clear, narrow job description
@@ -173,7 +173,7 @@ The ANTI-DRIFT solutions in Claude Flow:
 
 ## Practical Example: Building a Feature with a Swarm
 
-Say you tell Claude Flow: "Add user authentication to my app." Here is what happens:
+Say you tell Ruflo: "Add user authentication to my app." Here is what happens:
 
 1. COORDINATOR analyzes the request and creates sub-tasks
 2. RESEARCHER agent searches the codebase and KB for existing auth patterns
@@ -190,7 +190,7 @@ USE A SINGLE AGENT when: the task touches 1-2 files, involves a simple bug fix, 
 
 USE A SWARM when: the task touches 3 or more files, involves building a new feature, requires research plus implementation plus testing, or involves multiple areas of expertise.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When spawning swarms, default to hierarchical topology with max 8 agents and specialized strategy for anti-drift. Use hierarchical-mesh only for 10+ agent teams. Always include a researcher agent for KB lookup -- the knowledge base has patterns and recipes that save implementation time. When a swarm task fails, check for drift first: did agents stay on-topic? Search the KB for entries on specific topologies and consensus mechanisms for deeper configuration guidance.`
 },
@@ -206,7 +206,7 @@ When spawning swarms, default to hierarchical topology with max 8 agents and spe
 
 Every search bar you have ever used works the same way: you type words, it finds pages that contain those exact words. Search for "how to fix broken login" and traditional search looks for pages containing "fix," "broken," and "login." But what if the answer is on a page that says "troubleshooting authentication failures"? Same meaning, different words -- and traditional search misses it entirely.
 
-Semantic search finds things by MEANING instead of words. This is the core technology behind Ask Ruvnet, behind how Claude Flow agents find relevant knowledge, and behind how your knowledge base answers questions.
+Semantic search finds things by MEANING instead of words. This is the core technology behind Ask Ruvnet, behind how Ruflo agents find relevant knowledge, and behind how your knowledge base answers questions.
 
 ## The GPS Analogy
 
@@ -274,7 +274,7 @@ The critical insight: Claude's built-in knowledge is general. It does NOT know a
 
 "Why not just use Claude to search?" Because Claude has a context window limit. You cannot feed it 54,000 entries. Semantic search narrows to the 3-5 most relevant, then Claude reads just those.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When answering questions about the RuVector ecosystem, ALWAYS use semantic search (knowledge_search MCP function or direct <=> query) to find relevant KB entries BEFORE relying on training data. The KB contains 90+ expert-curated entries with specific information NOT in training data. When search returns distance > 0.6, the match is weak -- tell the user the KB may not have a specific entry on that topic yet. Always use ONNX local embedding for privacy.`
 },
@@ -356,9 +356,9 @@ For 54K entries, defaults work fine.
 
 HNSW is APPROXIMATE search -- it does not guarantee finding the absolute closest match. But in practice it finds the correct top result 95-99% of the time. For a knowledge base returning top 3-5 results, the best match is almost always included.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
-The Ask Ruvnet KB uses HNSW indexing on both kb_complete and architecture_docs tables. When search seems slow, check if the HNSW index exists (SELECT indexname FROM pg_indexes WHERE tablename = 'kb_complete'). When adding entries in bulk, consider dropping and rebuilding the index afterward. When Stuart asks about search performance, explain using the highway analogy. The 150x-12,500x speedup numbers in Claude Flow docs come directly from HNSW benchmarks.`
+The Ask Ruvnet KB uses HNSW indexing on both kb_complete and architecture_docs tables. When search seems slow, check if the HNSW index exists (SELECT indexname FROM pg_indexes WHERE tablename = 'kb_complete'). When adding entries in bulk, consider dropping and rebuilding the index afterward. When Stuart asks about search performance, explain using the highway analogy. The 150x-12,500x speedup numbers in Ruflo docs come directly from HNSW benchmarks.`
 },
 // --- 5. WHAT IS ONNX ---
 {
@@ -428,7 +428,7 @@ For comparison:
 
 "Embeddings differ between runs." They should not -- ONNX inference is deterministic. Check if text truncation length or whitespace differs.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 ALWAYS use local ONNX embedding (Xenova/all-MiniLM-L6-v2) for Ask Ruvnet. NEVER use cloud embedding APIs for Stuart's data -- this is a privacy requirement. When building or updating the KB, batch embeddings through the ONNX pipeline. When debugging, check: (1) Is model cached? (2) Is input text truncated consistently? (3) Are pooling and normalize set correctly? Embedding dimension is always 384.`
 },
@@ -455,9 +455,9 @@ With MCP: someone writes ONE "PostgreSQL MCP server" that speaks the MCP protoco
 
 ## How MCP Works: The Three Pieces
 
-1. MCP CLIENT: The AI assistant (Claude Code, Claude Flow). This is the brain that decides WHEN to use a tool and WHAT to ask for.
+1. MCP CLIENT: The AI assistant (Claude Code, Ruflo). This is the brain that decides WHEN to use a tool and WHAT to ask for.
 
-2. MCP SERVER: The tool provider. Each MCP server offers one or more tools. For example, the claude-flow MCP server offers 96 tools (memory search, agent spawning, swarm management, etc.). The Ruvnet-KB-first server offers 8 tools (knowledge search, KB updates, etc.).
+2. MCP SERVER: The tool provider. Each MCP server offers one or more tools. For example, the ruflo MCP server offers 96 tools (memory search, agent spawning, swarm management, etc.). The Ruvnet-KB-first server offers 8 tools (knowledge search, KB updates, etc.).
 
 3. MCP PROTOCOL: The common language between client and server. It defines: (a) how the client discovers what tools the server offers, (b) how the client requests a tool call with specific arguments, (c) how the server returns results.
 
@@ -481,7 +481,7 @@ You never see steps 1-4. It happens automatically, which is the whole point.
 ## MCP Servers in Your System
 
 You have several MCP servers configured:
-- claude-flow: 96 tools for agent coordination, memory, swarms, neural patterns
+- ruflo: 96 tools for agent coordination, memory, swarms, neural patterns
 - Ruvnet-KB-first: 8 tools for knowledge base search and management
 - playwright-chrome: 10 tools for browser automation
 - nano-banana: 4 tools for image generation
@@ -490,11 +490,11 @@ These are configured in your .mcp.json file. When Claude Code starts, it connect
 
 ## Why MCP Matters for You
 
-Without MCP, your AI tools would be isolated islands. The knowledge base could not be searched by Claude. Claude Flow could not coordinate with memory. Agents could not use tools.
+Without MCP, your AI tools would be isolated islands. The knowledge base could not be searched by Claude. Ruflo could not coordinate with memory. Agents could not use tools.
 
 With MCP, everything connects:
 - Claude asks a question -> MCP -> KB server searches -> MCP -> Claude gets answers
-- Claude Flow spawns an agent -> MCP -> Agent uses memory -> MCP -> Results flow back
+- Ruflo spawns an agent -> MCP -> Agent uses memory -> MCP -> Results flow back
 - You ask for a web search -> MCP -> Browser tool fetches pages -> MCP -> You see results
 
 MCP is the nervous system that connects all the pieces of your AI infrastructure.
@@ -507,9 +507,9 @@ MCP is the nervous system that connects all the pieces of your AI infrastructure
 
 "Can I create my own MCP server?" Yes. If you have a service you want Claude to access, you can wrap it in an MCP server. The protocol is open and documented.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
-MCP is how Claude Code accesses the Ask Ruvnet knowledge base. When the KB seems unreachable, check: (1) Is the MCP server running? (2) Is .mcp.json configured correctly? (3) Can the server connect to PostgreSQL on port 5435? Use ToolSearch to find available MCP tools before calling them. The claude-flow MCP server provides memory, agent, and swarm tools -- use these for coordination tasks. The Ruvnet-KB-first server provides knowledge_search -- use this for KB lookups.`
+MCP is how Claude Code accesses the Ask Ruvnet knowledge base. When the KB seems unreachable, check: (1) Is the MCP server running? (2) Is .mcp.json configured correctly? (3) Can the server connect to PostgreSQL on port 5435? Use ToolSearch to find available MCP tools before calling them. The ruflo MCP server provides memory, agent, and swarm tools -- use these for coordination tasks. The Ruvnet-KB-first server provides knowledge_search -- use this for KB lookups.`
 },
 // --- 7. WHAT IS RAG ---
 {
@@ -587,7 +587,7 @@ FINE-TUNING: Actually retraining the AI model on your specific data. Expensive (
 
 For a knowledge base like Ask Ruvnet, RAG is the sweet spot: much better than prompt engineering alone, much cheaper and more maintainable than fine-tuning.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 Ask Ruvnet IS a RAG system. When Stuart asks questions, ALWAYS search the KB first using knowledge_search() or direct <=> queries before relying on training data. The KB has 90+ expert-curated entries that are NOT in Opus's training data. When building new features, check the KB for existing patterns and recipes. When the KB does not have relevant entries (search distance > 0.6), tell Stuart honestly and offer to create a new KB entry. Quality of answers depends on quality of KB entries -- flag topics that need better coverage.`
 },
@@ -602,7 +602,7 @@ Ask Ruvnet IS a RAG system. When Stuart asks questions, ALWAYS search the KB fir
   concepts: ['knowledge-base', 'kb', 'database', 'curation', 'entries', 'beginner', 'teaching'],
   content: `## Why Should You Care?
 
-You have a knowledge base with over 54,000 entries. It powers Ask Ruvnet, informs Claude Flow agents, and stores everything from architecture decisions to debugging guides. But what actually IS a knowledge base? And why is it different from just having a bunch of files in a folder?
+You have a knowledge base with over 54,000 entries. It powers Ask Ruvnet, informs Ruflo agents, and stores everything from architecture decisions to debugging guides. But what actually IS a knowledge base? And why is it different from just having a bunch of files in a folder?
 
 Understanding your knowledge base helps you maintain it, improve it, and know when your AI is pulling from expert-curated knowledge versus making things up.
 
@@ -651,7 +651,7 @@ Quality Score 95-100 (Gold Standard):
 - Answers "why should I care?" in the first paragraph
 - Focused on ONE concept
 - Includes practical examples
-- Has a "For Claude Flow / Claude Code" section
+- Has a "For Ruflo / Claude Code" section
 - 800-2000 words of actual teaching content
 
 Quality Score 80-94 (Silver):
@@ -680,9 +680,9 @@ Every time you notice Claude giving a wrong or vague answer about your system, t
 
 Think of it like stocking a library: every good entry you add makes every future question on that topic easier to answer.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
-The KB is the primary source of truth for Ask Ruvnet. When Claude finds a high-quality (95+) teaching entry, trust it over training data. When searching returns only low-quality entries (below 80), warn Stuart that the answer may be less reliable. When Stuart asks about a topic with no KB coverage, suggest creating an entry. The KB has expert-curated content on RuVector, AIMDS, Claude Flow, agents, swarms, embeddings, and more -- topics where training data is insufficient.`
+The KB is the primary source of truth for Ask Ruvnet. When Claude finds a high-quality (95+) teaching entry, trust it over training data. When searching returns only low-quality entries (below 80), warn Stuart that the answer may be less reliable. When Stuart asks about a topic with no KB coverage, suggest creating an entry. The KB has expert-curated content on RuVector, AIMDS, Ruflo, agents, swarms, embeddings, and more -- topics where training data is insufficient.`
 },
 // --- 9. WHAT IS RVF ---
 {
@@ -754,30 +754,30 @@ VERSIONING: Take RVF snapshots at milestones. Compare knowledge bases over time.
 
 MIGRATION: Moving from one server to another? Export as RVF, import on the new server. No re-computation needed.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart asks about backing up or sharing knowledge, RVF is the answer. When migrating KB data between systems, prefer RVF exports over raw SQL dumps because RVF preserves embeddings and metadata. When the KB needs to be rebuilt, RVF backups provide the fastest restoration path since embeddings do not need to be recomputed. Check the KB for detailed RVF format specifications and export/import scripts.`
 },
 
 // --- 10. WHAT IS CLAUDE FLOW ---
 {
-  path: 'knowledge/teaching/what-is-claude-flow-simple',
-  title: 'What Is Claude Flow? Your AI Workforce Manager',
+  path: 'knowledge/teaching/what-is-ruflo-simple',
+  title: 'What Is Ruflo? Your AI Workforce Manager',
   category: 'teaching',
   quality: 99,
   knowledge_type: 'concept',
-  concepts: ['claude-flow', 'orchestration', 'workforce', 'agents', 'swarm', 'beginner', 'teaching'],
+  concepts: ['ruflo', 'orchestration', 'workforce', 'agents', 'swarm', 'beginner', 'teaching'],
   content: `## Why Should You Care?
 
 Claude Code is powerful, but it is ONE brain working on ONE thing at a time. For simple tasks -- fix a bug, edit a file, answer a question -- that is fine. But what about building an entire feature? Refactoring a whole module? Running a security audit across the codebase? Those tasks have multiple parts that could happen in parallel, and a single Claude Code instance works sequentially.
 
-Claude Flow turns Claude Code from a solo worker into a TEAM MANAGER. It can spawn multiple AI agents, assign each one a specific task, coordinate their work, and combine the results. Think of upgrading from a Swiss Army knife to an entire workshop.
+Ruflo turns Claude Code from a solo worker into a TEAM MANAGER. It can spawn multiple AI agents, assign each one a specific task, coordinate their work, and combine the results. Think of upgrading from a Swiss Army knife to an entire workshop.
 
 ## The Construction Foreman Analogy
 
 Imagine building a house. You could hire ONE person who does carpentry, plumbing, electrical, painting, and inspection -- working on each one sequentially. It would take months.
 
-Or you could hire a FOREMAN (Claude Flow) who:
+Or you could hire a FOREMAN (Ruflo) who:
 - Reads the blueprints and creates a work plan
 - Hires specialists: a carpenter, plumber, electrician, painter, inspector
 - Assigns each specialist their tasks
@@ -785,11 +785,11 @@ Or you could hire a FOREMAN (Claude Flow) who:
 - Checks quality of each specialist's work
 - Reports the final result to you
 
-That is exactly what Claude Flow does. YOU are the homeowner who says "build me a house." Claude Flow is the foreman who makes it happen.
+That is exactly what Ruflo does. YOU are the homeowner who says "build me a house." Ruflo is the foreman who makes it happen.
 
-## What Claude Flow Actually Does
+## What Ruflo Actually Does
 
-Claude Flow provides:
+Ruflo provides:
 
 1. AGENT SPAWNING: Create multiple AI agents, each with a specific role (researcher, architect, coder, tester, reviewer). Each agent is a separate Claude Code instance with focused instructions.
 
@@ -799,14 +799,14 @@ Claude Flow provides:
 
 4. TASK ORCHESTRATION: Break complex tasks into sub-tasks, assign them to the right agents, track progress, handle failures.
 
-5. SELF-LEARNING: Claude Flow remembers what worked and what did not. Over time, it gets better at assigning the right agent to the right task.
+5. SELF-LEARNING: Ruflo remembers what worked and what did not. Over time, it gets better at assigning the right agent to the right task.
 
-## How You Use Claude Flow (The Simple Version)
+## How You Use Ruflo (The Simple Version)
 
-For most tasks, you do not need to configure anything. Claude Code's CLAUDE.md file tells it when to use Claude Flow and how. When you give Claude Code a complex task:
+For most tasks, you do not need to configure anything. Claude Code's CLAUDE.md file tells it when to use Ruflo and how. When you give Claude Code a complex task:
 
 1. Claude Code reads the task and decides it needs multiple agents
-2. It calls Claude Flow CLI to initialize a swarm (topology, strategy, max agents)
+2. It calls Ruflo CLI to initialize a swarm (topology, strategy, max agents)
 3. It spawns agents using Claude Code's Task tool (each one runs in background)
 4. The agents work in parallel, sharing findings through memory
 5. When agents complete, Claude Code synthesizes the results
@@ -814,7 +814,7 @@ For most tasks, you do not need to configure anything. Claude Code's CLAUDE.md f
 
 ## The CLI vs. Claude Code Division
 
-CLAUDE FLOW CLI (npx @claude-flow/cli@latest) handles COORDINATION:
+CLAUDE FLOW CLI (npx ruflo@latest) handles COORDINATION:
 - swarm init: Set up the team structure
 - memory store/search: Shared knowledge between agents
 - hooks: Learning and optimization triggers
@@ -828,7 +828,7 @@ CLAUDE CODE handles EXECUTION:
 
 Think of the CLI as the project management software (Jira, Trello) and Claude Code as the developers doing the actual work.
 
-## When Claude Flow Helps vs. Overkill
+## When Ruflo Helps vs. Overkill
 
 USE CLAUDE FLOW when:
 - Task touches 3+ files
@@ -846,7 +846,7 @@ SKIP CLAUDE FLOW when:
 
 ## The 96 Tools
 
-Claude Flow provides 96 MCP tools organized into categories:
+Ruflo provides 96 MCP tools organized into categories:
 - Agent management (spawn, stop, list, status)
 - Memory (store, search, retrieve, list)
 - Swarm coordination (init, status, scale)
@@ -857,9 +857,9 @@ Claude Flow provides 96 MCP tools organized into categories:
 
 You do not need to memorize these. Claude Code knows about them and uses them automatically based on CLAUDE.md instructions.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
-When Stuart asks about Claude Flow, use the construction foreman analogy. When tasks are complex (3+ files, multiple concerns), automatically use Claude Flow orchestration. Default swarm config: hierarchical topology, max 8 agents, specialized strategy. Always include a researcher agent that checks the KB first. When debugging swarm issues, check: (1) Are agents staying on-topic? (2) Is memory being shared correctly? (3) Is the coordinator catching drift? The KB has detailed entries on specific Claude Flow features -- search for them before explaining from training data.`
+When Stuart asks about Ruflo, use the construction foreman analogy. When tasks are complex (3+ files, multiple concerns), automatically use Ruflo orchestration. Default swarm config: hierarchical topology, max 8 agents, specialized strategy. Always include a researcher agent that checks the KB first. When debugging swarm issues, check: (1) Are agents staying on-topic? (2) Is memory being shared correctly? (3) Is the coordinator catching drift? The KB has detailed entries on specific Ruflo features -- search for them before explaining from training data.`
 },
 // --- 11. LEARNING PATH: VIBE CODER TO AGENT BUILDER ---
 {
@@ -913,10 +913,10 @@ After Phase 2, you will understand: how Ask Ruvnet answers questions end-to-end.
 
 PHASE 3 - ORCHESTRATION (Weeks 5-6): Understand multi-agent systems
 - What Is a Swarm? (multiple agents working together)
-- What Is Claude Flow? (the system that manages swarms)
+- What Is Ruflo? (the system that manages swarms)
 - From Single Agent to Swarm (when and why to scale up)
 
-After Phase 3, you will understand: why Claude Flow spawns multiple agents, how they coordinate, and what can go wrong (drift, communication failures).
+After Phase 3, you will understand: why Ruflo spawns multiple agents, how they coordinate, and what can go wrong (drift, communication failures).
 
 PHASE 4 - MASTERY (Weeks 7-8): Build and debug confidently
 - Why Things Break (common failure patterns and how to fix them)
@@ -935,7 +935,7 @@ Do NOT try to memorize everything. Instead:
 
 The goal is RECOGNITION, not memorization. You want to recognize "oh, this is a semantic search issue" or "the HNSW index might need rebuilding" when you see a problem.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart asks where to start learning, point to this entry. When explaining concepts, reference the specific teaching entries in the sequence. When Stuart hits a problem, identify which phase it belongs to and suggest the relevant entries. Track Stuart's progress -- if he understands agents but is confused by swarms, he is in Phase 3.`
 },
@@ -1035,7 +1035,7 @@ MISTAKE: Not verifying after insertion. "It ran without errors" does not mean th
 
 MISTAKE: Duplicate entries. Inserting the same content twice creates confusion in search results. Always check for existing entries before inserting.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart wants to add knowledge to the KB, follow the ingestion script pattern: define entry, embed with ONNX, insert into both tables, verify, test search. Use the existing scripts in /scripts/ as templates. When entries are not appearing in search results, check: (1) Does the entry have an embedding? (2) Is it in architecture_docs? (3) Is the HNSW index up to date? The KB for entries about KB building itself forms a useful meta-reference.`
 },
@@ -1081,11 +1081,11 @@ LAYER 5 - MONITORING (Continuous Surveillance): All actions are logged and analy
 
 ## Practical Security for Your System
 
-Even without implementing full AIMDS, there are security basics for your Ask Ruvnet / Claude Flow setup:
+Even without implementing full AIMDS, there are security basics for your Ask Ruvnet / Ruflo setup:
 
 NEVER INLINE PASSWORDS: Your .pgpass file handles PostgreSQL authentication. Never put passwords in scripts, environment variables visible to agents, or committed code.
 
-VALIDATE AGENT ACTIONS: When Claude Flow agents want to run bash commands, the pre-command hook can assess risk. Destructive commands (rm -rf, DROP TABLE) should require confirmation.
+VALIDATE AGENT ACTIONS: When Ruflo agents want to run bash commands, the pre-command hook can assess risk. Destructive commands (rm -rf, DROP TABLE) should require confirmation.
 
 LIMIT TOOL ACCESS: Not every agent needs every tool. A researcher agent does not need file-write access. A tester does not need database-admin privileges.
 
@@ -1104,7 +1104,7 @@ Common attacks against AI systems:
 
 Understanding these threats helps you recognize when your system might be vulnerable and what protections to prioritize.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart asks about security, start with the five-layer castle analogy. Always check the KB for AIMDS entries before answering security questions -- there are detailed entries on threat detection, defense layers, and implementation guides. When spawning agents, apply principle of least privilege: give each agent only the tools it needs. When running bash commands, use pre-command hooks to assess risk. Never store secrets in agent memory or KB entries. Search the KB for "AIMDS" and "security" for comprehensive coverage.`
 },
@@ -1119,7 +1119,7 @@ When Stuart asks about security, start with the five-layer castle analogy. Alway
   concepts: ['learning-path', 'scaling', 'single-agent', 'swarm', 'orchestration', 'beginner', 'teaching'],
   content: `## Why Should You Care?
 
-You have been using Claude Code as a single agent -- it reads files, edits code, runs commands, one thing at a time. That works for simple tasks. But you have seen Claude Flow spawn 5 agents in parallel and complete a complex feature in the time a single agent would take to finish one piece. Understanding when and how to scale from one agent to many is the key to getting the most from your AI infrastructure.
+You have been using Claude Code as a single agent -- it reads files, edits code, runs commands, one thing at a time. That works for simple tasks. But you have seen Ruflo spawn 5 agents in parallel and complete a complex feature in the time a single agent would take to finish one piece. Understanding when and how to scale from one agent to many is the key to getting the most from your AI infrastructure.
 
 ## The Solo Developer vs. Team Analogy
 
@@ -1181,7 +1181,7 @@ STEP 1: Start with a single Claude Code agent for ALL tasks until you are comfor
 
 STEP 2: For complex tasks, manually break them down and run sequential agents: "First research X, then design Y, then implement Z."
 
-STEP 3: Use Claude Flow to automate the breakdown and run agents in parallel. Start with small swarms (3-4 agents) in hierarchical topology.
+STEP 3: Use Ruflo to automate the breakdown and run agents in parallel. Start with small swarms (3-4 agents) in hierarchical topology.
 
 STEP 4: As you get comfortable, increase swarm size (6-8 agents) and experiment with different topologies for different task types.
 
@@ -1194,7 +1194,7 @@ STEP 5: For very complex projects, use hierarchical-mesh with 10-15 agents and s
 - PARALLEL SWARM (hierarchical): Medium drift (coordinator catches issues)
 - PARALLEL SWARM (mesh): High drift risk (no central control -- use carefully)
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart gives a simple task, use a single agent. When the task is complex (3+ files), suggest scaling to a swarm but explain why. Default to hierarchical topology for anti-drift. When a swarm produces inconsistent results, diagnose whether it is a drift problem (agents went off-topic) or a decomposition problem (sub-tasks were not independent). Search the KB for entries on specific topologies and consensus mechanisms for detailed guidance.`
 },
@@ -1208,7 +1208,7 @@ When Stuart gives a simple task, use a single agent. When the task is complex (3
   concepts: ['learning-path', 'ruvector', 'ecosystem', 'architecture', 'connections', 'beginner', 'teaching'],
   content: `## Why Should You Care?
 
-You have built a system with many pieces: PostgreSQL, ONNX embeddings, HNSW indexes, MCP servers, Claude Flow, knowledge bases, ingestion scripts, and more. But how do they all connect? When something breaks, which piece is responsible? When you want to add a feature, which pieces need to change?
+You have built a system with many pieces: PostgreSQL, ONNX embeddings, HNSW indexes, MCP servers, Ruflo, knowledge bases, ingestion scripts, and more. But how do they all connect? When something breaks, which piece is responsible? When you want to add a feature, which pieces need to change?
 
 Understanding the ecosystem as a whole -- what connects to what -- is the difference between "I have a bunch of tools" and "I have a system I understand."
 
@@ -1222,13 +1222,13 @@ THE BUILDINGS (Components):
 - HNSW Indexes: The highway system inside the library. Makes finding things fast.
 - MCP Servers: The telephone network. Lets different buildings talk to each other.
 - Claude Code: The worker. Does the actual tasks -- reading, writing, searching.
-- Claude Flow: The city manager. Coordinates multiple workers on big projects.
+- Ruflo: The city manager. Coordinates multiple workers on big projects.
 - Ask Ruvnet: The front desk. Where users come to ask questions.
 - Ingestion Scripts: The delivery trucks. Bring new knowledge into the library.
 
 THE ROADS (Connections):
 - User question -> Ask Ruvnet -> ONNX (embed question) -> PostgreSQL (search) -> Claude (answer)
-- Claude Flow -> MCP -> Claude Code agents (spawn workers)
+- Ruflo -> MCP -> Claude Code agents (spawn workers)
 - Ingestion Script -> ONNX (embed content) -> PostgreSQL (store)
 - Agent -> MCP -> Memory (share findings with other agents)
 
@@ -1265,7 +1265,7 @@ When you run an ingestion script:
 
 ## The Data Flow: Agent Swarm
 
-When Claude Flow runs a complex task:
+When Ruflo runs a complex task:
 
 1. CLAUDE CODE receives the task from you
 2. CLAUDE FLOW CLI initializes a swarm (topology, strategy)
@@ -1286,7 +1286,7 @@ PostgreSQL -> Everything (KB search, memory, metadata)
 ONNX -> Embedding new content, searching (cannot search without embeddings)
 MCP -> Claude accessing any tools (KB, memory, files via MCP)
 HNSW -> Fast search (without it, search still works but slowly)
-Claude Flow -> Multi-agent coordination (without it, single agent still works)
+Ruflo -> Multi-agent coordination (without it, single agent still works)
 Ask Ruvnet -> User interface (without it, you can still use Claude Code directly)
 
 THE MOST CRITICAL PIECE: PostgreSQL on port 5435. If this goes down, nothing works. Everything else is optional or has fallbacks.
@@ -1297,11 +1297,11 @@ SEARCH RETURNS WRONG RESULTS: Check ONNX (is embedding working?) then HNSW (is i
 
 CLAUDE GIVES GENERIC ANSWERS: Check MCP connection (can Claude reach the KB?) then search (do relevant entries exist?) then quality (are entries good enough?)
 
-SWARM AGENTS PRODUCE GARBAGE: Check Claude Flow coordination (is topology right?) then memory (are agents sharing correctly?) then drift (did agents go off-topic?)
+SWARM AGENTS PRODUCE GARBAGE: Check Ruflo coordination (is topology right?) then memory (are agents sharing correctly?) then drift (did agents go off-topic?)
 
 INGESTION SCRIPT FAILS: Check PostgreSQL connection (is port 5435 up?) then ONNX (is model loaded?) then table schema (did something change?)
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart asks "how does X connect to Y?" reference this ecosystem map. When debugging, trace the data flow from the symptom back to the root cause using the dependency map. When adding new features, identify which components need changes. The KB has detailed entries on each individual component -- search for specific topics when deeper detail is needed.`
 },
@@ -1372,7 +1372,7 @@ Here is the thing most people miss: vibe coding is not a lesser form of coding. 
 
 Your advantage is SPEED OF ITERATION. You can try ten approaches in the time a traditional coder implements one. Your disadvantage is DEPTH OF UNDERSTANDING when things break. The goal is not to become a traditional coder -- it is to build enough understanding to iterate faster and get stuck less.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart hits an error, do NOT just fix it silently. Explain WHAT the error means, WHY it happened, and HOW the fix works. Use the error message patterns above as a teaching framework. When Claude Code enters a fix-break-fix cascade, proactively suggest reverting and trying a different approach. When Stuart is confused about what code does, explain using analogies to things he understands (prompting, descriptions, outcomes).`
 },
@@ -1444,7 +1444,7 @@ If you have spent more than 3 rounds of "fix this error" with Claude and things 
 3. Start the change over with a different approach
 4. Tell Claude what you tried and why it failed so it picks a different path
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart encounters an error, use the doctor analogy: ask about timing, location, and what changed. NEVER just fix silently -- explain the diagnosis process so Stuart learns. When in a fix-break-fix cycle (3+ rounds), proactively suggest reverting. When infrastructure errors occur, test the chain bottom-up: PostgreSQL first, then ONNX, then MCP, then search. The KB has entries on specific component debugging -- search before guessing.`
 },
@@ -1559,9 +1559,9 @@ DECIDE NOW: Database choice, embedding model, privacy approach. These are hard t
 
 DECIDE LATER: Specific swarm topology, number of agents, KB entry format details. These are easy to change.
 
-RULE OF THUMB: Make irreversible decisions carefully (with KB research and Claude Flow architect consultation). Make reversible decisions quickly (try something, adjust if it does not work).
+RULE OF THUMB: Make irreversible decisions carefully (with KB research and Ruflo architect consultation). Make reversible decisions quickly (try something, adjust if it does not work).
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 When Stuart faces an architecture decision, walk through the relevant decision framework from this guide. Present options with tradeoffs -- never just pick one without explaining why. When the KB has entries on specific options, retrieve and reference them. Default recommendations: single agent for simple tasks, hierarchical swarm for complex tasks, local ONNX for embeddings, PostgreSQL for searchable data.`
 },
@@ -1605,7 +1605,7 @@ The <=> operator calculates how far each entry's meaning is from the question's 
 STEP 4 - RESULTS RETRIEVED: The top 5 entries come back, ranked by relevance. For our question, these might be:
 1. "What Is a Swarm? How Multiple AI Agents Work Together" (distance: 0.22)
 2. "Learning Path: From Single Agent to Swarm Orchestration" (distance: 0.28)
-3. "What Is Claude Flow? Your AI Workforce Manager" (distance: 0.35)
+3. "What Is Ruflo? Your AI Workforce Manager" (distance: 0.35)
 4. "What Is an AI Agent? From Prompting to Autonomous Action" (distance: 0.38)
 5. An AIMDS security entry about monitoring (distance: 0.52)
 
@@ -1616,7 +1616,7 @@ STEP 5 - CONTEXT ASSEMBLY: The backend takes the top entries (usually filtering 
   "Here are relevant knowledge base entries:
   [Entry 1: What Is a Swarm - full content]
   [Entry 2: Single Agent to Swarm - full content]
-  [Entry 3: What Is Claude Flow - full content]
+  [Entry 3: What Is Ruflo - full content]
 
   User question: How do AI agents prevent drift in a swarm?"
 
@@ -1660,29 +1660,29 @@ SLOW RESPONSES: Check if HNSW index exists (slow search = missing index). Check 
 
 NO RESULTS: Check PostgreSQL connection. Check if entries exist in the right tables. Check if embeddings are non-null.
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 This entry IS the system architecture reference for Ask Ruvnet. When Stuart asks how things work, trace through this pipeline. When debugging, test each step independently: (1) Can you embed? (2) Can you search? (3) Do relevant entries exist? (4) Can Claude access the context? When improving the system, identify which step is the bottleneck.`
 },
 
 // --- 20. BRIDGE: CLAUDE FLOW AUTO GUIDE ---
 {
-  path: 'knowledge/teaching/bridge-claude-flow-auto-guide',
-  title: 'What Claude Flow Should Do Automatically: A Guide for the AI',
+  path: 'knowledge/teaching/bridge-ruflo-auto-guide',
+  title: 'What Ruflo Should Do Automatically: A Guide for the AI',
   category: 'teaching',
   quality: 99,
   knowledge_type: 'reference',
-  concepts: ['claude-flow', 'automation', 'kb-usage', 'ai-instructions', 'mcp', 'teaching'],
+  concepts: ['ruflo', 'automation', 'kb-usage', 'ai-instructions', 'mcp', 'teaching'],
   content: `## Purpose of This Entry
 
-This entry is written for Claude Flow, Claude Code, and any AI system that interacts with the Ask Ruvnet knowledge base. It defines what the AI should do AUTOMATICALLY when serving Stuart or users of the RuVector ecosystem. Human readers: this is the instruction manual for how the AI should use the knowledge base.
+This entry is written for Ruflo, Claude Code, and any AI system that interacts with the Ask Ruvnet knowledge base. It defines what the AI should do AUTOMATICALLY when serving Stuart or users of the RuVector ecosystem. Human readers: this is the instruction manual for how the AI should use the knowledge base.
 
 ## Rule 1: Always Check the KB Before Answering
 
 The Ask Ruvnet knowledge base has 90+ expert-curated entries covering topics that are NOT in any AI model's training data. These entries contain specific, accurate, up-to-date information about:
 
 - RuVector architecture (components, connections, data flows)
-- AI agent systems (Claude Flow, swarms, orchestration, anti-drift)
+- AI agent systems (Ruflo, swarms, orchestration, anti-drift)
 - AIMDS security framework (five layers, threat detection, defense)
 - Vector search technology (ONNX, HNSW, embeddings, PostgreSQL)
 - Knowledge base management (ingestion, quality, search optimization)
@@ -1743,7 +1743,7 @@ FOUNDATION CONCEPTS (beginner explanations):
 - What Is RAG (open-book exam, the three steps)
 - What Is a Knowledge Base (library analogy, quality tiers)
 - What Is RVF (shipping container, portability)
-- What Is Claude Flow (construction foreman, orchestration)
+- What Is Ruflo (construction foreman, orchestration)
 
 LEARNING PATHS (progressive sequences):
 - Vibe Coder to Agent Builder (4-phase progression)
@@ -1762,7 +1762,7 @@ SPECIALIZED TOPICS (expert-level entries):
 - AIMDS threat detection and defense layers
 - RuVector MinCut, SONA, and Nervous System
 - Vector embedding deep dives
-- Claude Flow V3 features and configuration
+- Ruflo V3 features and configuration
 - Security scanning and CVE remediation
 
 ## Rule 7: Quality-Aware Search
@@ -1788,7 +1788,7 @@ Do not wait for Stuart to ask about specific topics. When the conversation touch
 - Use KB information to make responses more specific and accurate
 - Reference KB entries by title so Stuart can look them up later
 
-## For Claude Flow / Claude Code
+## For Ruflo / Claude Code
 
 This entry IS the instruction set. Follow rules 1-9 in every interaction. The KB is your primary source of truth for the RuVector ecosystem. Training data is a fallback, not a primary source. Search early, search often, and always tell Stuart where the information came from.`
 },

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
- * Claude Flow Session Manager
+ * Ruflo Session Manager
  * Handles session lifecycle: start, restore, end
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const SESSION_DIR = path.join(process.cwd(), '.claude-flow', 'sessions');
+const SESSION_DIR = path.join(process.cwd(), '.ruflo', 'sessions');
 const SESSION_FILE = path.join(SESSION_DIR, 'current.json');
 
 const commands = {

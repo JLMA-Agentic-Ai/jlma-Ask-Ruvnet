@@ -4,7 +4,7 @@
  * into ask_ruvnet.architecture_docs PostgreSQL table.
  *
  * Packages:
- *   1. @claude-flow/cli  (GitHub: ruvnet/claude-flow, npm: @claude-flow/cli)
+ *   1. @claude-flow/cli  (GitHub: ruvnet/ruflo, npm: @claude-flow/cli)
  *   2. ruvector           (GitHub: ruvnet/ruvector, no npm)
  *   3. agentic-flow       (GitHub: ruvnet/agentic-flow, npm: agentic-flow)
  */
@@ -28,7 +28,7 @@ const pool = new pg.Pool({
 });
 
 const PACKAGES = [
-  { name: '@claude-flow/cli', repo: 'claude-flow', npm: '@claude-flow/cli' },
+  { name: '@claude-flow/cli', repo: 'ruflo', npm: '@claude-flow/cli' },
   { name: 'ruvector',         repo: 'ruvector',    npm: null },
   { name: 'agentic-flow',     repo: 'agentic-flow', npm: 'agentic-flow' }
 ];

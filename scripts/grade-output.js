@@ -6,7 +6,7 @@
  */
 
 const TEST_QUERIES = [
-  { message: "What is Claude-Flow V3 and what makes it different from V2?", mode: "Balanced", intent: "what-is" },
+  { message: "What is Ruflo V3 and what makes it different from V2?", mode: "Balanced", intent: "what-is" },
   { message: "How do I install and configure RuVector for my PostgreSQL database?", mode: "Beginner", intent: "how-to" },
   { message: "Why did rUv choose HNSW over brute-force vector search, and what are the tradeoffs?", mode: "Technical", intent: "decision" },
   { message: "HNSW search is returning wrong results with low recall. How do I debug and fix it?", mode: "Technical", intent: "troubleshoot" },

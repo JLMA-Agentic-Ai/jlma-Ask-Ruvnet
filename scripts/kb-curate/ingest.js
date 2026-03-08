@@ -14,7 +14,7 @@
  *   7. Generate embeddings
  *
  * Usage:
- *   node ingest.js --source github --repo ruvnet/claude-flow --branch main
+ *   node ingest.js --source github --repo ruvnet/ruflo --branch main
  *   node ingest.js --source file --path ./docs/feature.md
  *   node ingest.js --source text --title "ADR-017" --content "..."
  *   node ingest.js --source dir --path ./repos/ruvector/docs/
@@ -85,7 +85,7 @@ function parseArgs() {
  */
 function validateRepoName(repo) {
   if (!/^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/.test(repo)) {
-    throw new Error(`Invalid repo format: "${repo}". Expected owner/name (e.g., ruvnet/claude-flow)`);
+    throw new Error(`Invalid repo format: "${repo}". Expected owner/name (e.g., ruvnet/ruflo)`);
   }
   return repo;
 }

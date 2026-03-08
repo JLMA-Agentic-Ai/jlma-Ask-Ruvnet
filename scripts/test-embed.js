@@ -2,7 +2,7 @@
 const { embed } = require('../src/storage/kb-embed');
 
 async function test() {
-  const v1 = await embed('Claude Flow V3 architecture overview');
+  const v1 = await embed('Ruflo V3 architecture overview');
   const v2 = await embed('Root Vector database system');
   const v3 = await embed('What is a banana?');
 

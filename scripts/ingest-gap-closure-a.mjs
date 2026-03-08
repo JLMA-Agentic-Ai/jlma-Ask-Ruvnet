@@ -108,7 +108,7 @@ Metrics are useless if nobody looks at them. Alerts notify you when metrics cros
 Level 5: Observability
 The ability to understand what happened inside your system by examining its outputs. This combines logs, metrics, and traces (following a single request through all services it touches). Tools like Grafana, Datadog, or simple PostgreSQL queries give you this visibility.
 
-For Claude Flow specifically:
+For Ruflo specifically:
 - The hooks system (27 hooks) provides built-in monitoring points
 - The statusline shows real-time agent state
 - Background workers track drift, performance, and security
@@ -164,8 +164,8 @@ DOCKER ERRORS:
   },
   {
     path: 'teaching/deploy-to-production-cookbook',
-    title: 'Cookbook: Deploying Claude Flow to Production Step by Step',
-    content: `This is the step-by-step recipe for deploying a Claude Flow powered application to production.
+    title: 'Cookbook: Deploying Ruflo to Production Step by Step',
+    content: `This is the step-by-step recipe for deploying a Ruflo powered application to production.
 
 Prerequisites:
 - Your app runs locally and passes tests
@@ -267,7 +267,7 @@ Business value: Your AI can prove its answers are correct, not just guess. For l
   {
     path: 'agents/agent-lifecycle-deep-dive',
     title: 'Agent Lifecycle: Spawn, Execute, Report, Terminate',
-    content: `Every agent in Claude Flow goes through a predictable lifecycle. Understanding this lifecycle helps you debug problems and design better systems.
+    content: `Every agent in Ruflo goes through a predictable lifecycle. Understanding this lifecycle helps you debug problems and design better systems.
 
 Phase 1: SPAWN
 The agent is created with a specific type, task, and configuration. This is like hiring someone - you define their role, give them their assignment, and set boundaries.
@@ -320,7 +320,7 @@ Common Lifecycle Problems:
   {
     path: 'agents/agent-communication-patterns',
     title: 'How Agents Talk to Each Other: Memory, Events, and Direct Communication',
-    content: `Agents need to share information. Here are the three main ways agents communicate in Claude Flow.
+    content: `Agents need to share information. Here are the three main ways agents communicate in Ruflo.
 
 Pattern 1: SHARED MEMORY (Most Common)
 Agents write to and read from a shared memory store. One agent stores a finding, another agent reads it later. This is asynchronous - the sender does not wait for the receiver.
@@ -405,8 +405,8 @@ Best Practice: Design for Failure
   },
   {
     path: 'agents/custom-agent-creation-guide',
-    title: 'Creating Your Own Custom Agent Types in Claude Flow',
-    content: `Claude Flow comes with 60+ agent types, but sometimes you need something specific. Here is how to create your own.
+    title: 'Creating Your Own Custom Agent Types in Ruflo',
+    content: `Ruflo comes with 60+ agent types, but sometimes you need something specific. Here is how to create your own.
 
 Step 1: Define the Role
 What does this agent DO? Be specific. Instead of "handles data," say "ingests CSV files into PostgreSQL with ONNX embeddings." The narrower the role, the better the agent performs.
@@ -426,8 +426,8 @@ A skill defines the agents behavior. It includes:
 - Constraints: What the agent should NOT do
 - Output format: How results should be structured
 
-Step 4: Register with Claude Flow
-Add your agent type to the configuration so Claude Flow knows how to spawn it:
+Step 4: Register with Ruflo
+Add your agent type to the configuration so Ruflo knows how to spawn it:
 - Agent type name (must be unique)
 - Default model (Haiku for simple tasks, Opus for complex)
 - Memory namespace (keeps this agents knowledge separate)
@@ -495,7 +495,7 @@ The Key Components:
 Why Should You Care?
 Because agentic AI is the difference between AI as a novelty and AI as a genuine productivity multiplier. When AI can act autonomously, it can handle the 80% of work that is repetitive, leaving you to focus on the creative 20%.
 
-Claude Flow is one implementation of agentic AI. It provides the agents, orchestration, memory, tools, and learning all in one system.`,
+Ruflo is one implementation of agentic AI. It provides the agents, orchestration, memory, tools, and learning all in one system.`,
     category: 'general',
     quality: 99,
     knowledge_type: 'concept',
@@ -538,7 +538,7 @@ Topology: How agents are connected. Star = all talk to one center. Mesh = everyo
 
 Drift: When an AI gradually wanders away from its intended task. Like a meeting that goes off-topic.
 
-WASM: Code that runs anywhere - browser, server, phone. Claude Flow uses it for cross-platform compatibility.
+WASM: Code that runs anywhere - browser, server, phone. Ruflo uses it for cross-platform compatibility.
 
 ADR: Architectural Decision Record. A document that captures WHY a technical decision was made.
 
@@ -564,10 +564,10 @@ Root Vector provides:
 - HNSW indexing (fast similarity search)
 - WASM compilation (runs anywhere)
 
-THE ORCHESTRATOR: Claude Flow
-Claude Flow is the system that coordinates everything. It manages agents, handles memory, routes tasks, and ensures quality. Think of it as the conductor of an orchestra.
+THE ORCHESTRATOR: Ruflo
+Ruflo is the system that coordinates everything. It manages agents, handles memory, routes tasks, and ensures quality. Think of it as the conductor of an orchestra.
 
-Claude Flow provides:
+Ruflo provides:
 - Agent spawning and lifecycle management
 - Swarm coordination (multiple agents working together)
 - Memory and learning (patterns persist across sessions)
@@ -601,7 +601,7 @@ How data flows:
     category: 'general',
     quality: 98,
     knowledge_type: 'reference',
-    concepts: ['ecosystem', 'root-vector', 'claude-flow', 'ask-ruvnet', 'agentics-foundation']
+    concepts: ['ecosystem', 'root-vector', 'ruflo', 'ask-ruvnet', 'agentics-foundation']
   }
 ];
 

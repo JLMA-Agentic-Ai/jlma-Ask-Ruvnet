@@ -1,5 +1,5 @@
 #!/bin/bash
-# Guidance Hooks for Claude Flow V3
+# Guidance Hooks for Ruflo V3
 # Provides context and routing for Claude Code operations
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -68,7 +68,7 @@ case "$COMMAND" in
         cat << 'EOF'
 ## V3 Development Context
 
-**Architecture**: Domain-Driven Design with 15 @claude-flow modules
+**Architecture**: Domain-Driven Design with 15 @ruflo modules
 **Priority**: Security-first (CVE-1, CVE-2, CVE-3 remediation)
 **Performance Targets**:
 - HNSW search: 150x-12,500x faster

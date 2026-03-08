@@ -2,7 +2,7 @@
 /**
  * KB Application Architecture Guides - 30 curated guides
  * for building intelligent knowledge-based applications
- * with RuVector and Claude Flow V3.
+ * with RuVector and Ruflo V3.
  *
  * Updated: 2026-02-18 00:00:00 EST | Version 1.0.0
  * Created: 2026-02-18 00:00:00 EST
@@ -220,8 +220,8 @@ LEVEL 3 -- QUALITY-SCORED AND CATEGORIZED: You have added metadata -- quality_sc
 
 LEVEL 4 -- RELATIONSHIP-AWARE: Entries know about each other. When you retrieve a concept, the system automatically finds prerequisites, examples, and related concepts. This uses the topics[] array as implicit graph edges and multi-hop retrieval to chain related entries.
 
-LEVEL 5 -- SELF-IMPROVING WITH FEEDBACK LOOPS: The KB gets smarter over time. User interactions feed back into quality scores. Claude Flow V3 neural training captures successful retrieval patterns. Entries that consistently help users get quality boosts; entries that confuse users get flagged for review:
-  npx @claude-flow/cli@latest neural train --pattern-type retrieval --epochs 10
+LEVEL 5 -- SELF-IMPROVING WITH FEEDBACK LOOPS: The KB gets smarter over time. User interactions feed back into quality scores. Ruflo V3 neural training captures successful retrieval patterns. Entries that consistently help users get quality boosts; entries that confuse users get flagged for review:
+  npx ruflo@latest neural train --pattern-type retrieval --epochs 10
 
 WHERE YOU ARE NOW: If you have followed the ask_ruvnet pattern, you are solidly at Level 3. The path to Level 4 requires building explicit relationship queries (multi-hop search). Level 5 requires instrumenting your application to capture feedback and pipe it back into the KB.
 
@@ -248,7 +248,7 @@ STEP 3 -- SEMANTIC EMBEDDING: Transform each chunk into a 384-dimensional vector
 STEP 4 -- QUALITY SCORING: Not all chunks are equal. Rate each entry on: completeness (does it answer a question fully?), clarity (is it well-written?), authority (is the source reliable?), and currency (is it up to date?). Assign quality_score from 0-100.
 
 STEP 5 -- RELATIONSHIP MAPPING: Tag each entry with topics[] to create an implicit knowledge graph. When entries share topics, they are implicitly related. The more specific and consistent your topic vocabulary, the stronger the implicit graph:
-  topics: ARRAY['claude-flow', 'swarm', 'hierarchical', 'anti-drift']
+  topics: ARRAY['ruflo', 'swarm', 'hierarchical', 'anti-drift']
 
 STEP 6 -- CONTINUOUS REFINEMENT: Set up the evergreen pattern to keep knowledge fresh. Monitor which entries get retrieved but produce poor results (low user satisfaction). Flag stale entries. Re-ingest updated sources. This is the step most people skip, and it is the difference between a KB that decays and one that improves.
 
@@ -310,7 +310,7 @@ The result: instead of finding 3 relevant entries for "fix auth," expanded searc
   title: 'Re-Ranking: Why the First Results Are Not Always Best',
   content: `Vector search with HNSW is fast and semantically aware, but it has a blind spot: it ranks by embedding similarity alone. The entry most semantically similar to your query is not always the most USEFUL result. Re-ranking adds intelligence on top of raw similarity.
 
-THE PROBLEM: You search for "how to configure Claude Flow swarms." HNSW returns 10 results ranked by cosine distance. Result #1 is a brief mention of swarms in a changelog (distance 0.15). Result #4 is a comprehensive swarm configuration guide (distance 0.22). Pure vector search picks #1, but #4 is what the user actually needs.
+THE PROBLEM: You search for "how to configure Ruflo swarms." HNSW returns 10 results ranked by cosine distance. Result #1 is a brief mention of swarms in a changelog (distance 0.15). Result #4 is a comprehensive swarm configuration guide (distance 0.22). Pure vector search picks #1, but #4 is what the user actually needs.
 
 HOW RE-RANKING WORKS: After vector search returns candidates, apply a composite score that considers multiple factors:
 
@@ -330,7 +330,7 @@ THE FOUR RE-RANKING SIGNALS:
 
 1. Quality Score (30% weight): Your quality_score field is a pre-computed relevance indicator. A 98-quality entry about the right topic beats a 60-quality entry that happens to be slightly closer in embedding space.
 
-2. Recency (15% weight): For technical documentation, newer is usually more relevant. A 2026 guide to Claude Flow V3 should outrank a 2024 guide to V1, even if the V1 guide has a slightly better embedding match.
+2. Recency (15% weight): For technical documentation, newer is usually more relevant. A 2026 guide to Ruflo V3 should outrank a 2024 guide to V1, even if the V1 guide has a slightly better embedding match.
 
 3. Source Authority (15% weight): Not all sources are equal. Official documentation (doc_type = 'curated') should outrank auto-generated summaries (doc_type = 'generated'). Use the doc_type field for this.
 
@@ -355,7 +355,7 @@ THE THREE-HOP PATTERN:
 
 Hop 1 -- Find the Concept: Search for the user's primary question. This finds the broad topic entries.
   Query: "self-healing swarm with authentication"
-  Finds: "Swarm Architecture Overview", "Self-Healing Patterns in Claude Flow"
+  Finds: "Swarm Architecture Overview", "Self-Healing Patterns in Ruflo"
 
 Hop 2 -- Find the Implementation: Extract key terms from Hop 1 results and search for implementation details.
   From Hop 1 results, extract: "hierarchical topology", "health checks", "claims-based auth"
@@ -405,11 +405,11 @@ WHAT TO AVOID:
 // --- 11 ---
 {
   title: 'Building Memory Systems: Short-term, Long-term, Episodic',
-  content: `Humans have three types of memory, and intelligent AI applications need all three. Short-term memory holds your current conversation. Long-term memory holds everything you have ever learned. Episodic memory holds specific experiences. Claude Flow V3 implements each differently.
+  content: `Humans have three types of memory, and intelligent AI applications need all three. Short-term memory holds your current conversation. Long-term memory holds everything you have ever learned. Episodic memory holds specific experiences. Ruflo V3 implements each differently.
 
-SHORT-TERM MEMORY -- THE CONVERSATION CONTEXT: This is the AI's awareness of what has been discussed in the current session. It includes the user's previous questions, the AI's previous answers, and any context that has been established. In Claude Flow V3, this is managed through session state:
+SHORT-TERM MEMORY -- THE CONVERSATION CONTEXT: This is the AI's awareness of what has been discussed in the current session. It includes the user's previous questions, the AI's previous answers, and any context that has been established. In Ruflo V3, this is managed through session state:
 
-  npx @claude-flow/cli@latest session restore --latest
+  npx ruflo@latest session restore --latest
   // Restores the most recent session context so the AI remembers previous interactions
 
 Without short-term memory, every question is asked in isolation. The AI cannot follow up, cannot reference "the thing we discussed earlier," and cannot build on previous answers.
@@ -417,13 +417,13 @@ Without short-term memory, every question is asked in isolation. The AI cannot f
 LONG-TERM MEMORY -- THE KNOWLEDGE BASE: This is the ask_ruvnet.architecture_docs table -- your persistent, searchable knowledge that survives across sessions and users. It is the foundation of everything: facts, procedures, patterns, and reference material. Long-term memory is shared across all conversations.
 
   // Storing long-term knowledge
-  npx @claude-flow/cli@latest memory store --key "pattern-swarm-anti-drift" \\
+  npx ruflo@latest memory store --key "pattern-swarm-anti-drift" \\
     --value "Use hierarchical topology with max 8 agents for anti-drift" \\
     --namespace patterns
 
-EPISODIC MEMORY -- SPECIFIC INTERACTION MEMORIES: This is the most underused and most powerful type. Episodic memory records WHAT HAPPENED in specific interactions: "Last time Stuart asked about swarm configuration, the hierarchical approach worked but mesh caused drift." These are stored as memories in Claude Flow V3:
+EPISODIC MEMORY -- SPECIFIC INTERACTION MEMORIES: This is the most underused and most powerful type. Episodic memory records WHAT HAPPENED in specific interactions: "Last time Stuart asked about swarm configuration, the hierarchical approach worked but mesh caused drift." These are stored as memories in Ruflo V3:
 
-  npx @claude-flow/cli@latest memory store --key "episode-2026-02-18-swarm" \\
+  npx ruflo@latest memory store --key "episode-2026-02-18-swarm" \\
     --value "Stuart needed anti-drift config. Hierarchical with max-agents 8 solved it. Mesh topology was tried first and caused agent drift after 5 minutes." \\
     --namespace episodes
 
@@ -513,12 +513,12 @@ Step 2 -- Capture Feedback: After the user rates a response (or you detect engag
   SET quality_score = GREATEST(quality_score - 5, 0)
   WHERE doc_id = ANY($1::text[]);  -- penalty is larger than reward (conservative)
 
-Step 3 -- Neural Pattern Training: Periodically train Claude Flow V3's neural system on the successful retrieval patterns:
-  npx @claude-flow/cli@latest neural train --pattern-type retrieval --epochs 10
+Step 3 -- Neural Pattern Training: Periodically train Ruflo V3's neural system on the successful retrieval patterns:
+  npx ruflo@latest neural train --pattern-type retrieval --epochs 10
   This captures which entry combinations tend to produce good answers.
 
 Step 4 -- Re-Embedding Improved Content: When entries accumulate enough feedback data, regenerate their embeddings to reflect updated content:
-  npx @claude-flow/cli@latest embeddings batch --source ask_ruvnet --filter "quality_score > 80"
+  npx ruflo@latest embeddings batch --source ask_ruvnet --filter "quality_score > 80"
 
 THE COMPOUND EFFECT: After 1,000 interactions, the quality scores in your KB have been calibrated by real user behavior. Entries that consistently help users have scores of 95-100. Entries that were retrieved but did not help have dropped to 40-60. Your retrieval is now personalized by collective usage patterns.
 
@@ -544,7 +544,7 @@ Blind spot: Terrible at exact matches. If you search for "error code E-4521," ve
 
 FULL-TEXT SEARCH (KEYWORD):
 How it works: Traditional text matching using PostgreSQL's to_tsvector and to_tsquery.
-Strengths: Perfect for exact terms, error codes, version numbers, and proper nouns. "Claude Flow V3.0.0-alpha.118" will find that exact version reliably.
+Strengths: Perfect for exact terms, error codes, version numbers, and proper nouns. "Ruflo V3.0.0-alpha.118" will find that exact version reliably.
 Blind spot: No semantic understanding. "How do I log in" will not find an entry titled "Authentication Guide" because the words do not overlap.
 
 HYBRID SEARCH -- THE BEST OF BOTH:

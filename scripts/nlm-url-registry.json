@@ -1,0 +1,1163 @@
+{
+  "notebookId": "50a4a2ef-a743-4fc7-81e3-774b95c667c3",
+  "nlmBin": "/Users/stuartkerr/.openclaw/gmail/nlm-venv/bin/nlm",
+  "refreshSchedule": "daily",
+  "sources": [
+    {
+      "nlmSourceId": "ac3a04c5-b6db-4651-b42a-ebb7e556e863",
+      "url": "https://gist.github.com/ruvnet/8bcc6e11b38db72ed56f04eaf811ea1d",
+      "title": "A cognitive framework for optimizing logic, reasoning, and comprehension when using ChatGPT. This framework ensures clear understanding, effective problem-solving, and accurate responses.",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "8bcc6e11b38db72ed56f04eaf811ea1d",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "2fd59db7-8104-4ad7-ae13-8f2aa62b1d85",
+      "url": "https://gist.github.com/ruvnet/4cc23f3d3a97a0d8acd80693407b9a67",
+      "title": "AI Manipulation Defense System - GitHub Gist",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "4cc23f3d3a97a0d8acd80693407b9a67",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "d0f7238c-7766-494f-a0b0-fa508316bcee",
+      "url": "https://gist.github.com/ruvnet/4b8e75ea2e4f18bd72da1ac43a1a2a64",
+      "title": "Advanced Consciousness and Memory Management",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "4b8e75ea2e4f18bd72da1ac43a1a2a64",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "fdf577e1-c46d-4bc6-b6d1-7b7fc5a0de0e",
+      "url": "https://gist.github.com/ruvnet/beaf2435053b78c68bf9460976720447",
+      "title": "Agent Package Management",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "beaf2435053b78c68bf9460976720447",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "4665f281-5b4c-45e8-8115-c32b7a72afe0",
+      "url": "https://gist.github.com/ruvnet/c0acb81e02cb5c052e1def32e3f8df04",
+      "title": "Agent Swarm Tutorial.ipynb",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "c0acb81e02cb5c052e1def32e3f8df04",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "ad1ffab9-4756-4a7f-a859-79efc5315a04",
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1obs32a/agentdb_ultra_fast_agent_memory_system_ive/",
+      "title": "AgentDB: Ultra Fast Agent Memory System: I've separated the Claude Flow Memory system into a standalone package with built-in vector self-learning system. - Reddit",
+      "category": "reddit",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "0c7266f8-5763-4eb6-9bcf-2dda8f345180",
+      "url": "https://www.reddit.com/r/aipromptprogramming/hot/",
+      "title": "Ai Hackerspace - Reddit",
+      "category": "reddit",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "56991b91-1c2c-483a-bf9c-047d02fafd8f",
+      "url": "https://github.com/ruvnet/RuView/issues/123",
+      "title": "App Repo: 65 WASM edge modules, ADR-042 coherent sensing protocol, vendor integration, docs overhaul · Issue #123 · ruvnet/RuView",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "RuView",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "325b265b-1514-4eb0-a37e-ffd3fa82ec97",
+      "url": "https://gist.github.com/ruvnet/18dc8d060194017b989d1f8993919ee4",
+      "title": "Architectural Comparison: Claude Flow V3 vs Claude Code TeammateTool",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "18dc8d060194017b989d1f8993919ee4",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "8bdd3830-6597-497f-83a6-c75ca70cf5ed",
+      "url": null,
+      "title": "Can Agentic Engineering Really Deliver Enterprise-Grade Code? | Reuven Cohen",
+      "category": "youtube",
+      "enabled": true,
+      "refreshPolicy": "manual"
+    },
+    {
+      "nlmSourceId": "6e414a1a-66cc-427f-9c0c-18a96625ec03",
+      "url": "https://github.com/ruvnet/claude-flow/issues/130",
+      "title": "Complete Documentation Review & Rewrite for v2.0.0 - 5-Agent Swarm Implementation · Issue #130 · ruvnet/claude-flow",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "claude-flow",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "e46d643a-fd13-4557-a103-a07115ed5f27",
+      "url": "https://github.com/ruvnet/claude-flow/issues/105",
+      "title": "Documentation and examples · Issue #105 · ruvnet/claude-flow",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "claude-flow",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "bb687616-696d-4210-ba2d-e213b48125e8",
+      "url": "https://github.com/ruvnet/claude-flow/issues/421",
+      "title": "Enterprise Multi-LLM Orchestration Platform with Mastra AI Integration · Issue #421 · ruvnet/claude-flow",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "claude-flow",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "806c99e1-68b9-4ca8-951f-068c5365e022",
+      "url": "https://cbarkinozer.medium.com/gemini-cli-agentic-software-engineering-is-here-f280c30e862f",
+      "title": "Gemini CLI: Agentic Software Engineering Is Here | cbarkinozer | Medium",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "7d6c6201-c677-4b8f-9e53-08dbc7c142a9",
+      "url": "https://github.com/agenticsorg/agentic-robots-txt",
+      "title": "agenticsorg/agentic-robots-txt: Agentic_Robots.txt is a protocol specification that extends the traditional robots.txt protocol to enable sophisticated interaction between autonomous agents and web applications.",
+      "category": "github-repo",
+      "owner": "agenticsorg",
+      "repo": "agentic-robots-txt",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "fe1b43eb-24e3-498f-8e6d-04839efa362e",
+      "url": "https://github.com/agenticsorg/agentic-security",
+      "title": "agenticsorg/agentic-security",
+      "category": "github-repo",
+      "owner": "agenticsorg",
+      "repo": "agentic-security",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "73d041a8-ba66-4fee-af45-7be09f550fc8",
+      "url": "https://github.com/agenticsorg/devops",
+      "title": "agenticsorg/devops: A fully autonomous, AI-powered DevOps platform for managing cloud infrastructure across multiple providers, with AWS and GitHub integration, powered by OpenAI's Agents SDK.",
+      "category": "github-repo",
+      "owner": "agenticsorg",
+      "repo": "devops",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "510ef699-2fc7-4d09-a596-f7dcc3e7e634",
+      "url": "https://github.com/agenticsorg/edge-agents/",
+      "title": "agenticsorg/edge-agents: serverless agents",
+      "category": "github-repo",
+      "owner": "agenticsorg",
+      "repo": "edge-agents",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "fb2c6658-ec9a-4991-bb0d-dc252b67d1d7",
+      "url": "https://github.com/agenticsorg/quantum-agentics",
+      "title": "agenticsorg/quantum-agentics: The Quantum Agent Manager as described is a comprehensive solution that marries quantum optimization with multi-agent AI.",
+      "category": "github-repo",
+      "owner": "agenticsorg",
+      "repo": "quantum-agentics",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "7046c040-a459-435c-9ff9-ebac92e3c4c6",
+      "url": "https://github.com/agenticsorg/sparc2",
+      "title": "agenticsorg/sparc2: The SPARC Framework is a comprehensive methodology designed to guide the development of robust and scalable applications. SPARC stands for Specification, Pseudocode, Architecture, Refinement, and Completion. Each step ensures thorough planning, execution, and reflection throughout the project lifecycle.",
+      "category": "github-repo",
+      "owner": "agenticsorg",
+      "repo": "sparc2",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "a73d87cf-3d40-4ae1-9075-922973bfb24e",
+      "url": "https://github.com/ruvnet/Agent-Name-Service",
+      "title": "ruvnet/Agent-Name-Service: Agent Name Service (ANS) Protocol, introduced by the OWASP GenAI Security Project, is a foundational framework designed to facilitate secure discovery and interaction among AI agents.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "Agent-Name-Service",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "375c7d52-8d85-4848-b1c8-f24e1605c707",
+      "url": "https://github.com/ruvnet/FACT",
+      "title": "ruvnet/FACT: FACT – Fast Augmented Context Tools: FACT is a lean retrieval pattern that skips vector search. We cache every static token inside Claude Sonnet‑4 and fetch live facts only through authenticated tools hosted on Arcade.dev. The result is deterministic answers, fresh data, and sub‑100 ms latency.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "FACT",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "77545779-f16a-476d-a14b-d54f1c3507dc",
+      "url": "https://github.com/ruvnet/GenAI-Superstream",
+      "title": "ruvnet/GenAI-Superstream: Agentic Engineering for Data Analysis",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "GenAI-Superstream",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "fd69e1bc-c091-4677-b916-559a5bdc063d",
+      "url": "https://github.com/ruvnet/Prompt-Engine",
+      "title": "ruvnet/Prompt-Engine: Prompt Engine is a powerful and flexible template designed to facilitate the creation and customization of interactive prompts.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "Prompt-Engine",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "dcb04139-5e7a-49ee-a79e-277c92725c1e",
+      "url": "https://github.com/ruvnet/SAFLA",
+      "title": "ruvnet/SAFLA: Self-Aware Feedback Loop Algorithm (python)",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "SAFLA",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "a746b99f-862c-4b22-8757-dbd73627bef5",
+      "url": "https://github.com/ruvnet/Surfer/tree/chatgpt-huggingface-plugin",
+      "title": "ruvnet/Surfer at chatgpt-huggingface-plugin",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "Surfer",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "d71b6db5-7631-4daa-979a-b241083ca33f",
+      "url": "https://github.com/ruvnet/Surfer",
+      "title": "ruvnet/Surfer: ChatGPT Web Surfer Plugin",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "Surfer",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "7eab0a62-ccab-4e29-b23c-d47070a542ad",
+      "url": "https://github.com/ruvnet/SynthLang",
+      "title": "ruvnet/SynthLang: SynthLang is a hyper-efficient prompt language designed to optimize interactions with Large Language Models (LLMs) like GPT-4o by leveraging logographical scripts and symbolic constructs.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "SynthLang",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "675eb2fd-ed8c-4230-81c8-822636217b7f",
+      "url": "https://github.com/ruvnet/agentXNG",
+      "title": "ruvnet/agentXNG",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentXNG",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "a67efb8a-4e75-4729-bdc0-9cb005426df5",
+      "url": "https://github.com/ruvnet/agentic-difusion",
+      "title": "ruvnet/agentic-difusion: a comprehensive diffusion-based code refinement model",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentic-difusion",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "1235e52e-32a3-40a0-bb08-16ec2601bfdd",
+      "url": "https://github.com/ruvnet/agentic-employment",
+      "title": "ruvnet/agentic-employment: The first platform designed to empower organizations by automating and enhancing their employment processes through advanced autonomous agents.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentic-employment",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "53667840-cc35-4b4e-b143-abdcaf989ded",
+      "url": "https://github.com/ruvnet/agentic-preview",
+      "title": "ruvnet/agentic-preview: Agentic Preview is an asynchronous FastAPI backend service that allows users to deploy preview environments using Fly.io.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentic-preview",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "be2d95da-b72f-47ec-99e2-192512619cc4",
+      "url": "https://github.com/ruvnet/agentic-reports",
+      "title": "ruvnet/agentic-reports",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentic-reports",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "bb5ee007-31ea-487a-9892-e80fd03b931e",
+      "url": "https://github.com/ruvnet/agentic-search",
+      "title": "ruvnet/agentic-search: An Agentic Github Copilot Extension",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentic-search",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "0091041b-5145-480f-ad19-50730a77dbf4",
+      "url": "https://github.com/ruvnet/agentic-security",
+      "title": "ruvnet/agentic-security",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentic-security",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "ac6cdbae-bc77-4e0d-981f-9b77d3364dbb",
+      "url": "https://github.com/ruvnet/agentic-voice",
+      "title": "ruvnet/agentic-voice: Agentic Chat App is an advanced AI-powered chat application designed for seamless real-time communication and intelligent responses. Built with Next.js, OpenAI, and Exa API, it leverages cutting-edge technologies to enhance user interactions and provide contextual, relevant information dynamically.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentic-voice",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "00fbfcd1-a633-4e5a-b935-b7cce84055e8",
+      "url": "https://github.com/ruvnet/agenticsjs",
+      "title": "ruvnet/agenticsjs",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agenticsjs",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "9c5f5c4d-f05e-4313-badb-389f154771fe",
+      "url": "https://github.com/ruvnet/agileagents",
+      "title": "ruvnet/agileagents: Agile Agents (A2) is an open-source framework for the creation and deployment of serverless intelligent agents using public and private container repositories. The framework supports serverless Ai Agent deployments to AWS, Azure, and GCP, with optional configurations for Azure and GCP",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agileagents",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "422d8b1e-05e5-4492-a40a-49149a785eb8",
+      "url": "https://github.com/ruvnet/ai-gist",
+      "title": "ruvnet/ai-gist: This project provides a FastAPI application to create and update GitHub gists using the GitHub API. It includes SQLite for persistence and is designed to run in a GitHub Codespace.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "ai-gist",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "75d556ce-9c12-4328-b87a-07de696766fe",
+      "url": "https://github.com/ruvnet/ai-video",
+      "title": "ruvnet/ai-video: a web application that captures media streams from various sources such as a webcam, desktop, or specific applications. It captures frames at intervals and uses AI to analyze and summarize the frames, providing insights using GPT-4.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "ai-video",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "ccfa57dd-03d2-47a7-8763-c4c7acf4f649",
+      "url": "https://github.com/ruvnet/aido",
+      "title": "ruvnet/aido: AI-Driven Decentralized Organization (AIDO) using Supabase and LangChain.js. It includes all necessary files, configurations, tests, and deployment components to get started. Feel free to extend and customize the system based on your specific requirements.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "aido",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "21100513-bff7-42bb-96a3-4d279330ea06",
+      "url": "https://github.com/ruvnet/aihl",
+      "title": "ruvnet/aihl",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "aihl",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "d4ea7353-172c-4360-b95b-f0ba2d6f6ad9",
+      "url": "https://github.com/ruvnet/auto-browser",
+      "title": "ruvnet/auto-browser: A command-line tool for configurable web automation with AI-assisted template creation.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "auto-browser",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "0f7c91c4-e10c-40a7-b41a-00dd5361ac25",
+      "url": "https://github.com/ruvnet/aws-dev",
+      "title": "ruvnet/aws-dev: AWS Dev enviroment",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "aws-dev",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "5251c81c-43ce-4ebf-b7d9-04ecd76d82a2",
+      "url": "https://github.com/ruvnet/chatgpt-openai-api-plugin",
+      "title": "ruvnet/chatgpt-openai-api-plugin: A powerful ChatGPT plugin that integrates with the OpenAI API, enabling creative text generation, conversational AI, model fine-tuning, and more. Enhance ChatGPT's capabilities with seamless access to OpenAI's language models.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "chatgpt-openai-api-plugin",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "745c0492-8395-439b-b797-d8092f19fd82",
+      "url": "https://github.com/ruvnet/claude-flow/tree/v3",
+      "title": "ruvnet/claude-flow at v3",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "claude-flow",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "12d3ccd5-3fe1-4e22-b8d6-5e6e948759ed",
+      "url": "https://github.com/ruvnet/claude-code-flow",
+      "title": "ruvnet/claude-flow: 🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build conversational AI systems. Features enterprise-grade architecture, distributed swarm intelligence, RAG integration, and native Claude Code support via MCP protocol. Ranked #1 in agent-based frameworks.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "claude-code-flow",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "96cdc66a-bce6-4d2a-a294-2f03089f5c4f",
+      "url": "https://github.com/ruvnet/claude-flow",
+      "title": "ruvnet/claude-flow: 🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build conversational AI systems. Features enterprise-grade architecture, distributed swarm intelligence, RAG integration, and native Claude Code support via MCP protocol. Ranked #1 in agent-based frameworks.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "claude-flow",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "f7b595c6-0b4f-40b6-931e-cc4c3699f9c0",
+      "url": "https://github.com/ruvnet/dspy.ts",
+      "title": "ruvnet/dspy.ts: DS.js (Declarative Self‑learning JavaScript",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "dspy.ts",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "82af4f83-f278-4a54-8242-9c425bdad740",
+      "url": "https://github.com/ruvnet/dynamo-mcp",
+      "title": "ruvnet/dynamo-mcp: A dyamic MCP Registry using Cookiecutter templates",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "dynamo-mcp",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "9ef32b44-1449-47c7-9848-3a9603ec0402",
+      "url": "https://github.com/ruvnet/electo1-js",
+      "title": "ruvnet/electo1-js: What if you could predict every election at an individual level for the entire world in real time?",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "electo1-js",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "d71ec5db-3ed7-4587-8228-a42f74629ba0",
+      "url": "https://github.com/ruvnet/federated-mcp",
+      "title": "ruvnet/federated-mcp: This implementation follows the official MCP specification, including proper message framing, transport layer implementation, and complete protocol lifecycle management. It provides a foundation for building federated MCP systems that can scale across multiple servers while maintaining security and standardization requirements.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "federated-mcp",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "8dd76512-bec7-402d-9a6b-760c67fd22f0",
+      "url": "https://github.com/ruvnet/fireflies-webook",
+      "title": "ruvnet/fireflies-webook: Webhook endpoint for Fireflies transcripts with intent detection",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "fireflies-webook",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "12a73049-9fcc-4d58-8b90-39768df359b8",
+      "url": "https://github.com/ruvnet/genesis",
+      "title": "ruvnet/genesis: Genesis is a groundbreaking physics platform designed for robotics and embodied AI applications that combines unprecedented simulation speeds with comprehensive features.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "genesis",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "481d2d9c-3cec-47dc-923f-553a74b8eb3c",
+      "url": "https://github.com/ruvnet/gpts",
+      "title": "ruvnet/gpts: A collection of the GPTs created by rUv",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "gpts",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "c61d2e42-3c3b-49ae-9622-807d66c30866",
+      "url": "https://github.com/ruvnet/guardrail",
+      "title": "ruvnet/guardrail: GuardRail: Advanced tool for data analysis and AI content generation using OpenAI GPT models. Features sentiment analysis, content classification, trend analysis, and tailored GPT model usage. Ideal for content moderation, customer support, and market research.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "guardrail",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "c94fa43f-86ac-4749-abe8-1757831d4594",
+      "url": "https://github.com/ruvnet/hello_world_agent",
+      "title": "ruvnet/hello_world_agent: A simple demonstration agent using the ReACT methodology for analyzing and executing tasks.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "hello_world_agent",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "8d063805-5211-41d5-99de-a823900a52a0",
+      "url": "https://github.com/ruvnet/infinity-ui",
+      "title": "ruvnet/infinity-ui",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "infinity-ui",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "dc143570-1cfd-423c-9b29-a8e863d6deee",
+      "url": "https://github.com/ruvnet/inflight",
+      "title": "ruvnet/inflight",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "inflight",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "2c65136f-a72e-478a-b456-8431ff8d6354",
+      "url": "https://github.com/ruvnet/llamastack",
+      "title": "ruvnet/llamastack: An open source UI for Meta LLama Stack Apps / Agents",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "llamastack",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "fad3b608-1eaa-4dbb-b727-93f3e7e9bc55",
+      "url": "https://github.com/ruvnet/midstream",
+      "title": "ruvnet/midstream: MidStream is a powerful platform that makes AI conversations smarter and more responsive. Instead of waiting for an AI to finish speaking before understanding what it's saying, MidStream analyzes responses as they stream in real-time—enabling instant insights, pattern detection, and intelligent decision-making.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "midstream",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "a722914d-a964-4dd9-96e8-ae15a6d6c9ef",
+      "url": "https://github.com/ruvnet/nova",
+      "title": "ruvnet/nova: NOVA is a knowledge distillation system that extracts domain-specific knowledge and trains compact models while maintaining high performance.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "nova",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "2a0b553a-af9e-404d-999b-f0d5a4364ca3",
+      "url": "https://github.com/ruvnet/omnipotent",
+      "title": "ruvnet/omnipotent",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "omnipotent",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "a9c34527-6560-4f04-a559-dc1f83837fd1",
+      "url": "https://github.com/ruvnet/onnx-agent",
+      "title": "ruvnet/onnx-agent: A complete set of requirements—covering UX, CLI, and code—that builds on the previous pipeline for training and optimizing ONNX models with test‑time compute methods using DSPy. This document specifies user stories, command‐line interface arguments, and sample code snippets to guide implementation.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "onnx-agent",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "4819377d-fdb1-45b3-af4c-a46465be4583",
+      "url": "https://github.com/ruvnet/pipackager",
+      "title": "ruvnet/pipackager: pipackager is a tool to manage your PyPI package, including cleaning old distributions, building new ones, uploading to PyPI, version incrementing, and more.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "pipackager",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "4f8cd897-3c5d-4d5f-9154-17a9b6141549",
+      "url": "https://github.com/ruvnet/promptlang",
+      "title": "ruvnet/promptlang: A Prompt based programming language for prompts and AI interactions. Simple and human-readable syntax for easy integration with APIs and data.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "promptlang",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "dcf904f4-7011-4c44-851f-83efcad4ae1c",
+      "url": "https://github.com/ruvnet/pygentic",
+      "title": "ruvnet/pygentic: Pygentic is an innovative system designed to enhance the capabilities of AI assistants by providing a flexible and standardized API.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "pygentic",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "d9a3f801-75fb-4fdd-a55a-ed86281d6c2c",
+      "url": "https://github.com/ruvnet/q-space",
+      "title": "ruvnet/q-space: Q-Space, a cutting-edge deployment wizard designed to simplify the process of setting up and managing quantum computing applications using Azure Quantum and Azure Functions.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "q-space",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "13495462-b55a-4773-884b-4dedd4ba115f",
+      "url": "https://github.com/ruvnet/q-star",
+      "title": "ruvnet/q-star: Q-Star Agent Code: A reinforcement learning-based framework for intelligent agents using Microsoft AutoGen. It leverages Q-Star, a Q-learning variant, for dynamic decision-making. Ideal for developing adaptive AI agents in diverse applications, from service bots to advanced simulations. Includes setup and customization guidelines.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "q-star",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "c405e609-e9ad-4293-89da-bbea92a32884",
+      "url": "https://github.com/ruvnet/quantum-magnetic-navigation",
+      "title": "ruvnet/quantum-magnetic-navigation: A navigation system that uses quantum magnetometers to provide precise positioning in GPS-denied environment",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "quantum-magnetic-navigation",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "431f6a9d-d2f5-4437-acec-4977bbefd252",
+      "url": "https://github.com/ruvnet/quantum_cryptocurrency",
+      "title": "ruvnet/quantum_cryptocurrency: Quantum-Secured Cryptocurrency",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "quantum_cryptocurrency",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "cb2d3481-ccc5-4928-b97a-9065e40fc441",
+      "url": "https://github.com/ruvnet/rUv-Enterprise-AI-Guide/",
+      "title": "ruvnet/rUv-Enterprise-AI-Guide: The rUv Enterprise AI Guide is a comprehensive resource designed to assist Chief Information Officers (CIOs) and technology leaders in navigating the complexities of AI integration within large enterprises.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "rUv-Enterprise-AI-Guide",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "074d50a4-25e0-4dbd-84bf-2c23c9bab787",
+      "url": "https://github.com/ruvnet/rUv-dev",
+      "title": "ruvnet/rUv-dev: Ai power Dev using the rUv approach",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "rUv-dev",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "55b5a0df-30e3-4260-8d95-6bfe7336287d",
+      "url": "https://github.com/ruvnet/reflective-engineer",
+      "title": "ruvnet/reflective-engineer",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "reflective-engineer",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "7dfa068e-f584-4eaf-9b45-7414c8f98c80",
+      "url": "https://github.com/ruvnet/retro-ai-ui",
+      "title": "ruvnet/retro-ai-ui: A prompt building web application built in python with a retro style Unix web based command line interface",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "retro-ai-ui",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "6b5bce8d-0141-41f7-a7f7-5e7511fe3340",
+      "url": "https://github.com/ruvnet/ruflo",
+      "title": "ruvnet/ruflo: 🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build conversational AI systems. Features enterprise-grade architecture, distributed swarm intelligence, RAG integration, and native Claude Code / Codex Integration",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "ruflo",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "9bb2d449-9ed0-4ffd-bee5-a0471d40dc42",
+      "url": "https://github.com/ruvnet/sparc",
+      "title": "ruvnet/sparc",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "sparc",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "e87d2ab1-5b96-499b-8f8f-58757ae7abe3",
+      "url": "https://github.com/ruvnet/sparc-ide",
+      "title": "ruvnet/sparc-ide: A custom Ai driven IDE",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "sparc-ide",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "8f1243e1-4685-40ce-a7bb-89d04d806270",
+      "url": "https://github.com/ruvnet/strawberry-phi",
+      "title": "ruvnet/strawberry-phi",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "strawberry-phi",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "93f3457d-497d-4c32-8ee9-2436c60940d4",
+      "url": "https://github.com/ruvnet/supa-ruv",
+      "title": "ruvnet/supa-ruv: Everything you need to use Supabase + Ai",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "supa-ruv",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "803ead4f-a2ca-4602-acf0-6dc219f38a83",
+      "url": "https://github.com/ruvnet/symbolic-scribe",
+      "title": "ruvnet/symbolic-scribe",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "symbolic-scribe",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "b1a79838-d0e5-4d5f-a4dc-1dd2ab834cc3",
+      "url": "https://github.com/ruvnet/ultrasonic",
+      "title": "ruvnet/ultrasonic: A comprehensive steganography framework for embedding and extracting agentic commands in audio and video media using ultrasonic frequencies. This project provides tools for covert communication and command transmission through multimedia channels.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "ultrasonic",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "883c03aa-84ea-4a1c-b94f-ec469be46a78",
+      "url": "https://github.com/ruvnet/vibing",
+      "title": "ruvnet/vibing",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "vibing",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "9048c8a6-357f-4ea0-90fe-56e713925f79",
+      "url": "https://github.com/ruvnet/voicebot",
+      "title": "ruvnet/voicebot",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "voicebot",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "ffe475f8-f10c-4ea2-b4f6-52fa0babecd7",
+      "url": "https://github.com/ruvnet/vsc-remote-mcp",
+      "title": "ruvnet/vsc-remote-mcp",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "vsc-remote-mcp",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "99ad2a64-7298-4fa0-92be-0379d7ab804c",
+      "url": "https://github.com/ruvnet/wifi-densepose",
+      "title": "ruvnet/wifi-densepose: Production-ready implementation of InvisPose - a revolutionary WiFi-based dense human pose estimation system that enables real-time full-body tracking through walls using commodity mesh routers",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "wifi-densepose",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "5f3083e4-37d1-4792-bed5-bf29fa5deba8",
+      "url": "https://github.com/ruvnet/ruflo/wiki",
+      "title": "Home · ruvnet/ruflo Wiki",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "ruflo",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "36c234c7-fab4-4d2b-97b9-6369d0f7fae3",
+      "url": "https://gist.github.com/ruvnet/b4b29101a99b1e45bf7da5c8b3cc2fb3",
+      "title": "Mixture of rUv: Recursive Unified Validators For DSPy",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "b4b29101a99b1e45bf7da5c8b3cc2fb3",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "e2752639-7378-445c-b963-74ab37f7e77c",
+      "url": "https://github.com/ruvnet/agentic-flow/blob/main/PROOF_OF_IMPLEMENTATION.md",
+      "title": "PROOF_OF_IMPLEMENTATION.md - ruvnet/agentic-flow",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "agentic-flow",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "ec0dd03b-005b-4f3a-8bbe-ab686aa37ea5",
+      "url": "https://gist.github.com/ruvnet/b110bd43b66c107393e31fe475a14be9",
+      "title": "Q* (Q-Star)",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "b110bd43b66c107393e31fe475a14be9",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "ec596dd5-04ab-410f-a58e-41df11c0e1f7",
+      "url": "https://gist.github.com/ruvnet/6a42f511a9eca74729986e70aa695bc6",
+      "title": "README.md",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "6a42f511a9eca74729986e70aa695bc6",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "4c920cfa-8121-40c1-8eed-113114b621bd",
+      "url": "https://github.com/ruvnet/RuView/releases",
+      "title": "Releases · ruvnet/RuView",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "RuView",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "69555fb7-3452-47ec-8269-410abff56326",
+      "url": "https://apify.com/ruv",
+      "title": "Reuven Cohen (ruv) - Apify",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "45027a3e-a74e-4e1d-a0b3-b2f3f1195d3a",
+      "url": "https://github.com/ruvnet/RuView/blob/main/docs/edge-modules/medical.md",
+      "title": "RuView/docs/edge-modules/medical.md at main · ruvnet/RuView ...",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "RuView",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "14bc1b41-c933-45a2-9cb8-a32b21d61b92",
+      "url": "https://github.com/ruvnet/RuView/blob/main/rust-port/wifi-densepose-rs/crates/wifi-densepose-wasm-edge/src/med_cardiac_arrhythmia.rs",
+      "title": "RuView/rust-port/wifi-densepose-rs/crates/wifi-densepose-wasm-edge/src/med_cardiac_arrhythmia.rs at main",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "RuView",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "bf4763e8-2c36-40d1-9190-6ce2e2f9049a",
+      "url": "https://www.profound-deming.com/profound-podcast/s5-e4-reuven-cohen-ai-automation-and-the-future-of-human-work",
+      "title": "S5 E4 - Reuven Cohen – AI, Automation, and the Future of Human Work - Profound",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "1e2e254a-7285-413e-9ac9-e6905a2b4fa4",
+      "url": null,
+      "title": "The Architecture of Autonomy: A Comprehensive Analysis of the RuvNet Agentic Framework and Ecosystem",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "manual"
+    },
+    {
+      "nlmSourceId": "4d5848c9-fcd7-45b3-ad8d-9c21516d8a06",
+      "url": "https://gist.github.com/ruvnet/5227498ee0f072bd5c304773a1ef9b08",
+      "title": "This document provides a comprehensive overview of five advanced algorithms, detailing their technical implementations using Python and Pydantic for data validation, as well as asynchronous programming for efficiency. Each algorithm is also explored in terms of practical applications across various domains.",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "5227498ee0f072bd5c304773a1ef9b08",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "1580470b-83e6-42fd-90de-6cfff02a4f8a",
+      "url": "https://gist.github.com/ruvnet/06b397b596a75fb5614215f3d4f78973",
+      "title": "This setup provides a complete framework for deploying a video processing service on AWS ECS, integrating with the OpenAI GPT-4 Vision API, and testing it with a client script.",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "06b397b596a75fb5614215f3d4f78973",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "4c06a85a-c030-49ab-b9fc-35f17c9380cd",
+      "url": "https://gist.github.com/ruvnet/6217ea3bd75cc0c27522965965e7383b",
+      "title": "TikTok-like recommender Algorithm",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "6217ea3bd75cc0c27522965965e7383b",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "daad284e-d6b0-4dfd-8894-812bb38b5631",
+      "url": "https://www.redhat.com/en/resources/executive-guide-ai-agentic-ebook",
+      "title": "Unlock the power of agentic AI with Red Hat technologies",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "c988cb8a-8d1a-4e07-a2f8-4ecfca4251ea",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1pe0zwx/what_if_a_language_model_could_improve_the_more/",
+      "title": "What if a language model could improve the more users interact with it in real time, no GPU required? Introducing ruvLLM for Claude Code. (npm @ruvector/ruvllm) : r/ClaudeAI - Reddit",
+      "category": "reddit",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "adaf524d-95ba-40df-8f31-c9bf3d53b162",
+      "url": "https://github.com/johe123qwe/github-trending?search=1",
+      "title": "at main · johe123qwe/github-trending",
+      "category": "github-page",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "e2ebebfc-abd0-489f-ae35-d5df101c34bc",
+      "url": "https://github.com/ruvnet/claude-flow/blob/main/CHANGELOG.md",
+      "title": "claude-flow/CHANGELOG.md at main",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "claude-flow",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "682f5bbe-c294-4d05-996d-463298f59204",
+      "url": "https://gist.github.com/ruvnet/7dfa190c97b0f3d1f0872d14ae2a22c7",
+      "title": "notebook.ipynb",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "7dfa190c97b0f3d1f0872d14ae2a22c7",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "3f1f8e51-b1ad-49d4-a00d-1a54789c1342",
+      "url": "https://gist.github.com/ruvnet/aeb4fb6a0260a922f037a476ffded72d",
+      "title": "progressive-story-ai.ipynb",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "aeb4fb6a0260a922f037a476ffded72d",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "cbb2ec9d-d7fe-4c5a-ab11-4d1889bed17f",
+      "url": "https://www.reddit.com/user/Educational_Ice151/",
+      "title": "rUv (u/Educational_Ice151) - Reddit",
+      "category": "reddit",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "8b72301b-2cbd-471b-8d1a-1d03074ba01d",
+      "url": "https://github.com/ruvnet",
+      "title": "rUv ruvnet",
+      "category": "github-page",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "250cb6ef-39d1-4c3e-84d7-47db1057dcc8",
+      "url": "https://gist.github.com/ruvnet/5cf24851841a120198f43e9639dba7a5",
+      "title": "ruv-final.ipynb",
+      "category": "github-gist",
+      "owner": "ruvnet",
+      "gistId": "5cf24851841a120198f43e9639dba7a5",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "888d4e01-b2ea-44e2-9825-cdda52cc7663",
+      "url": "https://lib.rs/crates/ruvllm-esp32",
+      "title": "ruvllm-esp32 — Rust utility // Lib.rs",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "a471ae04-741d-4f2d-9081-14aa83b163dd",
+      "url": "https://docs.rs/ruvllm-esp32/latest/ruvllm_esp32/",
+      "title": "ruvllm_esp32 - Rust - Docs.rs",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "06362a17-368e-47a9-a716-a0aaf66dee99",
+      "url": "https://gist.github.com/ruvnet?direction=desc",
+      "title": "ruvnet's gists",
+      "category": "github-gist",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "aed2bb1a-1cf2-45e9-8f93-6623bd724823",
+      "url": "https://theresanaiforthat.com/company/ruvnet/repository/RuView/",
+      "title": "ruvnet/RuView | Repositories - There's An AI For That",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "02a23ec5-ff2e-425f-a2ff-8eab6784a26d",
+      "url": "https://github.com/ruvnet/agentic-flow",
+      "title": "ruvnet/agentic-flow: Easily switch between alternative low ...",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "agentic-flow",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "7a7a9a87-e9f6-4343-9c4b-ce231a25e117",
+      "url": "https://github.com/ruvnet/ruvector",
+      "title": "ruvnet/ruvector: A distributed vector database that learns. Store embeddings, query with Cypher, scale horizontally with Raft consensus, and let the index improve itself through Graph Neural Networks.",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "ruvector",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "84703c3f-1446-4860-b033-4c94fdf9b017",
+      "url": "https://github.com/ruvnet/ruview",
+      "title": "RuView: WiFi DensePose — real-time human pose estimation via WiFi signals",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "ruview",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    },
+    {
+      "nlmSourceId": "0cf75346-552c-4505-afb4-f3e77c91276b",
+      "url": "https://pi.ruv.io/",
+      "title": "pi.ruv.io — Shared AI Brain and Collective Intelligence Network",
+      "category": "other",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "98a613af-5ae0-432a-807a-9497d00857ed",
+      "url": "https://ruvnet.github.io/RuView",
+      "title": "RuView Observatory — WiFi DensePose interactive demo",
+      "category": "github-page",
+      "owner": "ruvnet",
+      "repo": "RuView",
+      "enabled": true,
+      "refreshPolicy": "weekly"
+    },
+    {
+      "nlmSourceId": "fba35349-d050-4d50-bb51-c791fc7b7857",
+      "url": "https://github.com/ruvnet/Dossier",
+      "title": "Dossier: AI-native product building platform — visual planning and context control for shipping big apps with AI coding",
+      "category": "github-repo",
+      "owner": "ruvnet",
+      "repo": "Dossier",
+      "enabled": true,
+      "refreshPolicy": "on-change"
+    }
+  ]
+}

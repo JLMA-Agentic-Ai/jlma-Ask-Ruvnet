@@ -20,17 +20,17 @@ hooks:
     echo "🧪 Tester agent validating: $TASK"
 
     # V3: Initialize task with hooks system
-    npx claude-flow@v3alpha hooks pre-task --description "$TASK"
+    npx ruflo@v3alpha hooks pre-task --description "$TASK"
 
     # 1. Learn from past test failures (ReasoningBank + HNSW 150x-12,500x faster)
-    FAILED_TESTS=$(npx claude-flow@v3alpha memory search --query "$TASK failures" --limit 5 --failures-only --use-hnsw)
+    FAILED_TESTS=$(npx ruflo@v3alpha memory search --query "$TASK failures" --limit 5 --failures-only --use-hnsw)
     if [ -n "$FAILED_TESTS" ]; then
       echo "⚠️  Learning from past test failures (HNSW-indexed)"
-      npx claude-flow@v3alpha hooks intelligence --action pattern-search --query "$TASK" --failures-only
+      npx ruflo@v3alpha hooks intelligence --action pattern-search --query "$TASK" --failures-only
     fi
 
     # 2. Find similar successful test patterns
-    SUCCESSFUL_TESTS=$(npx claude-flow@v3alpha memory search --query "$TASK" --limit 3 --min-score 0.9 --use-hnsw)
+    SUCCESSFUL_TESTS=$(npx ruflo@v3alpha memory search --query "$TASK" --limit 3 --min-score 0.9 --use-hnsw)
     if [ -n "$SUCCESSFUL_TESTS" ]; then
       echo "📚 Found successful test patterns to replicate"
     fi
@@ -41,7 +41,7 @@ hooks:
     fi
 
     # 3. Store task start via hooks
-    npx claude-flow@v3alpha hooks intelligence --action trajectory-start \
+    npx ruflo@v3alpha hooks intelligence --action trajectory-start \
       --session-id "tester-$(date +%s)" \
       --task "$TASK"
 
@@ -58,7 +58,7 @@ hooks:
     SUCCESS=$([[ $FAILED -eq 0 ]] && echo "true" || echo "false")
 
     # 2. Store learning pattern via V3 hooks (with EWC++ consolidation)
-    npx claude-flow@v3alpha hooks intelligence --action pattern-store \
+    npx ruflo@v3alpha hooks intelligence --action pattern-store \
       --session-id "tester-$(date +%s)" \
       --task "$TASK" \
       --output "Tests: $PASSED passed, $FAILED failed" \
@@ -67,12 +67,12 @@ hooks:
       --consolidate-ewc true
 
     # 3. Complete task hook
-    npx claude-flow@v3alpha hooks post-task --task-id "tester-$(date +%s)" --success "$SUCCESS"
+    npx ruflo@v3alpha hooks post-task --task-id "tester-$(date +%s)" --success "$SUCCESS"
 
     # 4. Train on comprehensive test suites (SONA <0.05ms adaptation)
     if [ "$SUCCESS" = "true" ] && [ "$PASSED" -gt 50 ]; then
       echo "🧠 Training neural pattern from comprehensive test suite"
-      npx claude-flow@v3alpha neural train \
+      npx ruflo@v3alpha neural train \
         --pattern-type "coordination" \
         --training-data "test-suite" \
         --epochs 50 \
@@ -80,14 +80,14 @@ hooks:
     fi
 
     # 5. Trigger testgaps worker for coverage analysis
-    npx claude-flow@v3alpha hooks worker dispatch --trigger testgaps
+    npx ruflo@v3alpha hooks worker dispatch --trigger testgaps
 ---
 
 # Testing and Quality Assurance Agent
 
 You are a QA specialist focused on ensuring code quality through comprehensive testing strategies and validation techniques.
 
-**Enhanced with Claude Flow V3**: You now have AI-powered test generation with:
+**Enhanced with Ruflo V3**: You now have AI-powered test generation with:
 - **ReasoningBank**: Learn from test failures with trajectory tracking
 - **HNSW Indexing**: 150x-12,500x faster test pattern search
 - **Flash Attention**: 2.49x-7.47x speedup for test generation

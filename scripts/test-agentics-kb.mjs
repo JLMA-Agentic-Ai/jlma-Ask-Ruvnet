@@ -52,7 +52,7 @@ async function main() {
   const cnt = await pool.query(`SELECT count(*) as c FROM openclaw_memory.operational_knowledge WHERE tags @> ARRAY['agentics-knowledge']`);
   console.log(`=== Agentics KB: ${cnt.rows[0].c} knowledge entries ===`);
 
-  await search('What is Claude Flow V3 and how does its architecture work?');
+  await search('What is Ruflo V3 and how does its architecture work?');
   await search('What is the RVF cognitive container format?');
   await search('How does the mincut algorithm work in RuVector?');
   await search('What is the Prime Radiant anti-hallucination engine?');

@@ -51,7 +51,7 @@ for (const [id, metadata] of Object.entries(metadataEntries)) {
 
   // Count package mentions
   const content = (metadata.content || '').toLowerCase();
-  const packages = ['ruvector', 'ruvllm', 'rvlite', 'agentdb', 'agentic-flow', 'ruflo', 'claude-flow', 'flow-nexus', 'postgres-cli', 'agentic-synth', 'neural-trader', 'strange-loop', 'gnn', 'sona', 'attention'];
+  const packages = ['ruvector', 'ruvllm', 'rvlite', 'agentdb', 'agentic-flow', 'ruflo', 'ruflo', 'flow-nexus', 'postgres-cli', 'agentic-synth', 'neural-trader', 'strange-loop', 'gnn', 'sona', 'attention'];
   for (const pkg of packages) {
     if (content.includes(pkg.toLowerCase().replace('-', ''))) {
       packageCounts[pkg] = (packageCounts[pkg] || 0) + 1;

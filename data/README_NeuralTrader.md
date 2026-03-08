@@ -35,7 +35,7 @@ Neural Trader MCP is the world's first **MCP-compatible AI trading platform**. I
 -   **Claude Code Native:** Designed for Claude Code workflows.
 -   **Polymarket Integration:** Real-time prediction market data and trading.
 
-### 4. Claude-Flow Orchestration
+### 4. Ruflo Orchestration
 -   **Agent Coordination:** Facilitates AI agent coordination for complex trading workflows.
 -   **SPARC Development:** 17 specialized development modes for strategy creation.
 -   **Memory Management:** Persistent knowledge across trading sessions.

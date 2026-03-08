@@ -86,7 +86,7 @@ Only include if source material contains warnings, error handling, or known issu
 [How this connects to other tools in the RuvNet ecosystem.
 - Name the package this code belongs to (e.g., "@ruvector/core v0.1.30")
 - Describe what broader system or architecture it is part of
-- If source mentions other tools (AgentDB, RuVector, Claude Flow, Agentic Flow, AIMDS, RVF, SONA, MinCut, etc.), explain the specific relationship
+- If source mentions other tools (AgentDB, RuVector, Ruflo, Agentic Flow, AIMDS, RVF, SONA, MinCut, etc.), explain the specific relationship
 - If no explicit integrations are documented, write: "Part of the [package_name] package. No explicit integrations with other RuvNet tools are documented in the source material."
 Do NOT fabricate connections that aren't in the source.]
 

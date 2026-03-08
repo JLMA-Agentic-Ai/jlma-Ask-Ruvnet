@@ -178,12 +178,12 @@ npm pkg set scripts.kb:visual:screenshot="node scripts/build-kb-universe.js --sc
 - Instructs Claude to READ and INTERNALIZE all KB patterns
 - Starts ruvector-postgres Docker container
 - Creates isolated database schema for your project
-- Installs claude-flow (enterprise orchestration)
+- Installs ruflo (enterprise orchestration)
 - Installs agentic-flow (150+ agents)
 - Installs ruvector (vector database)
 - Installs @ruvector/ruvllm (LLM orchestration)
 - Installs @ruvector/agentic-synth (synthetic data)
-- Initializes claude-flow with agents and skills
+- Initializes ruflo with agents and skills
 - Validates KB architecture compliance
 
 **Triggers:** "install ruvnet", "setup agents", "agent orchestration", "ruvnet ecosystem"
@@ -301,7 +301,7 @@ Add to your `~/.claude/CLAUDE.md`:
 ### /ruvnet-stack
 Install complete RuvNet AI ecosystem including:
 - ruvector-postgres (vector DB)
-- claude-flow (orchestration)
+- ruflo (orchestration)
 - agentic-flow (150+ agents)
 - KB visualization tools
 
@@ -333,7 +333,7 @@ This gives Claude Code reference material on:
 ## Support
 
 - Repository: https://github.com/ruvnet/ask-ruvnet
-- Claude Flow: https://github.com/ruvnet/claude-flow
+- Ruflo: https://github.com/ruvnet/ruflo
 - Issues: https://github.com/ruvnet/ask-ruvnet/issues
 
 ---

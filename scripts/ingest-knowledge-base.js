@@ -169,7 +169,7 @@ function detectTopics(content) {
         { pattern: /ruvector|vector\s*db|hnsw|embedding/i, topic: 'RuVector' },
         { pattern: /ruvllm|sona|learning\s*loop|trm/i, topic: 'RuvLLM' },
         { pattern: /agentic[- ]flow|agent|reasoningbank/i, topic: 'Agentic Flow' },
-        { pattern: /claude[- ]flow|hive[- ]mind|swarm/i, topic: 'Claude Flow' },
+        { pattern: /claude[- ]flow|hive[- ]mind|swarm/i, topic: 'Ruflo' },
         { pattern: /npm|install|package/i, topic: 'Installation' },
         { pattern: /api|endpoint|query|search/i, topic: 'API Reference' },
         { pattern: /deploy|railway|docker/i, topic: 'Deployment' },

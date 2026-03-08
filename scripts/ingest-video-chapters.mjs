@@ -22,10 +22,10 @@ const entries = [
   // ═══════════════════════════════════════════════════════════════
   {
     path: 'videos/cf-v3-release-architecture',
-    title: 'Claude Flow V3 Architecture: Agents, Workers, and Real-Time Learning',
+    title: 'Ruflo V3 Architecture: Agents, Workers, and Real-Time Learning',
     content: `From the Claude-flow v3 Release presentation (video.agentics.org):
 
-Claude Flow V3 uses a sophisticated architecture with agents and workers operating in latent space. The system features vector and graph implementations for storage and learning. Key architectural components include:
+Ruflo V3 uses a sophisticated architecture with agents and workers operating in latent space. The system features vector and graph implementations for storage and learning. Key architectural components include:
 
 Agent Booster: Reroutes edits locally to save tokens, avoiding unnecessary API calls for simple operations.
 
@@ -42,18 +42,18 @@ Migration: System preserves memory when migrating from v2 to v3, so you dont los
 Workers operate in background without hitting the main LLM directly, using hierarchical mesh coordination between agents. The system provides a constant feedback loop for learning, functioning as a prosthetic to human intelligence.
 
 Source: Agentics Foundation Global AI Hackathon
-Tags: claude-flow v3, architecture, agents, workers, model routing, LoRA`,
+Tags: ruflo v3, architecture, agents, workers, model routing, LoRA`,
     category: 'videos',
     quality: 98,
     knowledge_type: 'reference',
-    concepts: ['claude-flow-v3', 'agent-architecture', 'model-routing', 'micro-lora', 'hooks-system']
+    concepts: ['ruflo-v3', 'agent-architecture', 'model-routing', 'micro-lora', 'hooks-system']
   },
   {
     path: 'videos/cf-v3-release-security-hooks',
-    title: 'Claude Flow V3 Security and Self-Learning Hooks System',
+    title: 'Ruflo V3 Security and Self-Learning Hooks System',
     content: `From the Claude-flow v3 Release presentation:
 
-The security and hooks infrastructure forms the learning backbone of Claude Flow V3.
+The security and hooks infrastructure forms the learning backbone of Ruflo V3.
 
 Security Layer:
 - AI defense system provides real-time threat detection in microseconds
@@ -82,11 +82,11 @@ Source: Claude-flow v3 Release video, Chapters 3 and 6`,
   },
   {
     path: 'videos/cf-v3-release-visualization-math',
-    title: 'Hyperbolic Space Visualization and Mathematical Foundations in Claude Flow',
+    title: 'Hyperbolic Space Visualization and Mathematical Foundations in Ruflo',
     content: `From the Claude-flow v3 Release presentation:
 
 Real-Time AI Visualization:
-Claude Flow V3 includes a visualization system that represents AI operations in hyperbolic space rather than traditional Euclidean planes. This is significant because hyperbolic space can represent hierarchical relationships more naturally - think of it like a tree that keeps branching, where each level has exponentially more room.
+Ruflo V3 includes a visualization system that represents AI operations in hyperbolic space rather than traditional Euclidean planes. This is significant because hyperbolic space can represent hierarchical relationships more naturally - think of it like a tree that keeps branching, where each level has exponentially more room.
 
 In the visualization:
 - Dots represent conceptual groupings and neighborhoods
@@ -101,7 +101,7 @@ Harmonic relationships between mathematical constants provide the grounding that
 
 The fractal structure throughout means patterns repeat at different scales - the same coordination principles work whether you have 3 agents or 300.
 
-Why this matters for learning: Traditional AI systems use flat vector spaces. By using hyperbolic geometry, Claude Flow can represent complex hierarchies (like code dependencies, organizational structures, or knowledge trees) much more efficiently. A vector in hyperbolic space encodes both the item AND its relationship to everything above and below it in the hierarchy.
+Why this matters for learning: Traditional AI systems use flat vector spaces. By using hyperbolic geometry, Ruflo can represent complex hierarchies (like code dependencies, organizational structures, or knowledge trees) much more efficiently. A vector in hyperbolic space encodes both the item AND its relationship to everything above and below it in the hierarchy.
 
 Source: Claude-flow v3 Release video, Chapter 7`,
     category: 'videos',
@@ -134,7 +134,7 @@ Technical Stack:
 - JSON tagging for agent identification
 - Autonomous task handling without constant human supervision
 
-What makes Emily OS different from Claude Flow: Emily OS focuses on being the top-level coordinator that manages MULTIPLE orchestration systems. Claude Flow might handle one swarm, but Emily OS can manage multiple swarms, each using different models and strategies. Think of it as the manager of managers.
+What makes Emily OS different from Ruflo: Emily OS focuses on being the top-level coordinator that manages MULTIPLE orchestration systems. Ruflo might handle one swarm, but Emily OS can manage multiple swarms, each using different models and strategies. Think of it as the manager of managers.
 
 Source: Claude-flow v3 Release video, Chapter 8`,
     category: 'videos',
@@ -195,7 +195,7 @@ How they prevent drift:
 - Each ADR references previous ones
 - This creates anti-drift mechanisms that keep systems focused
 - Prevents duplication and encourages code reuse
-- Currently on ADR 25 in Claude Flow V3
+- Currently on ADR 25 in Ruflo V3
 
 ADR vs PRD vs DDD:
 - PRD (Product Requirements Document): Defines what and why
@@ -338,7 +338,7 @@ Skill Aggregation (Ryan Smith):
 Ryan Smiths innovative tool curates over 14,000 vetted skills from GitHub repositories. This enables intelligent skill discovery and composition - instead of building from scratch, you find and combine existing skills.
 
 QE Fleet (Dragon):
-A comprehensive quality engineering system built on Claude Flow that orchestrates 51 specialized agents across 12 domains. Each domain is lazily loaded only when needed, significantly reducing resource usage.
+A comprehensive quality engineering system built on Ruflo that orchestrates 51 specialized agents across 12 domains. Each domain is lazily loaded only when needed, significantly reducing resource usage.
 
 Key Technical Insights:
 - Pre-training and tiny dancer routing optimize agent selection
@@ -409,9 +409,9 @@ Reuvens comprehensive benchmarking approach proves system functionality and perf
 
 Rather than relying on peer review, the approach focuses on solving problems reliably multiple times. If the system can solve a problem correctly 1000 times in a row, thats more reliable than one human reviewing it once.
 
-Agentic Flow + Claude Flow Integration:
+Agentic Flow + Ruflo Integration:
 - Agentic Flow provides core intelligence as a module
-- Claude Flow provides the orchestration layer
+- Ruflo provides the orchestration layer
 - Together they allow spawning agent swarms using different API providers
 - Careful management of API keys and cost optimization
 
@@ -569,7 +569,7 @@ Source: CloudFlow V3 video, Chapters 2-7`,
 Moving from Software to Hardware:
 Reuven presents his work on designing edge-optimized chips with a nervous system architecture. The key insight is that current AI hardware (GPUs) are designed for training, not for the kind of efficient inference that agentic systems need.
 
-Claude Flow V3 Stats:
+Ruflo V3 Stats:
 - Complete rewrite with 265,000 lines of code
 - Incorporates vector memory and background agents
 - Agents learn and optimize without constant human supervision
@@ -596,10 +596,10 @@ Source: Super Intelligence video, Chapters 2-5, 8`,
   // ═══════════════════════════════════════════════════════════════
   {
     path: 'videos/cf-v3-self-learning-vectors',
-    title: 'Claude Flow V3: Self-Learning Vector Systems and Modular Architecture',
-    content: `From Claude Flow V3: Building Intelligent Agents with Self-Learning Vector Systems:
+    title: 'Ruflo V3: Self-Learning Vector Systems and Modular Architecture',
+    content: `From Ruflo V3: Building Intelligent Agents with Self-Learning Vector Systems:
 
-Claude Flow V3 is a complete rebuild featuring modular architecture and integrated self-learning capabilities. It leverages Rue Vector technology - a sophisticated graph-meets-vector learning system - to enable autonomous background agents that optimize code without consuming API credits.
+Ruflo V3 is a complete rebuild featuring modular architecture and integrated self-learning capabilities. It leverages Rue Vector technology - a sophisticated graph-meets-vector learning system - to enable autonomous background agents that optimize code without consuming API credits.
 
 Key innovations covered:
 - Status line system tracks development progress through ADRs
@@ -618,9 +618,9 @@ Community Features:
 - Community-driven model sharing
 - Applications beyond development: Windows optimization, automated system management
 
-With 2,500 downloads in alpha phase, Claude Flow V3 represents a significant evolution in AI-assisted development, offering accessibility for general users and deep customization for advanced developers.
+With 2,500 downloads in alpha phase, Ruflo V3 represents a significant evolution in AI-assisted development, offering accessibility for general users and deep customization for advanced developers.
 
-Source: Claude Flow V3: Building Intelligent Agents video`,
+Source: Ruflo V3: Building Intelligent Agents video`,
     category: 'videos',
     quality: 97,
     knowledge_type: 'reference',
@@ -629,7 +629,7 @@ Source: Claude Flow V3: Building Intelligent Agents video`,
   {
     path: 'videos/hyperbolic-vectors-edge',
     title: 'Hyperbolic Vector Spaces and Edge Computing for Efficient AI',
-    content: `From Claude-Flow V3: Building AI Systems with Hyperbolic Vector Spaces:
+    content: `From Ruflo V3: Building AI Systems with Hyperbolic Vector Spaces:
 
 This presentation covers the architecture behind self-learning systems, mixture-of-experts routing, and hyperbolic vector spaces for efficient information storage and retrieval.
 
@@ -639,7 +639,7 @@ Key demonstrations:
 - Dynamic model selection reducing API usage by up to 250%
 
 Enterprise Adoption:
-Enterprises are replacing entire coding toolsets with Claude Flow V3. Real examples include legacy system migrations from COBOL to Rust completed in a single afternoon. This demonstrates that the system handles not just new development but migration of decades-old codebases.
+Enterprises are replacing entire coding toolsets with Ruflo V3. Real examples include legacy system migrations from COBOL to Rust completed in a single afternoon. This demonstrates that the system handles not just new development but migration of decades-old codebases.
 
 Modular Plugin System:
 - Hierarchical mesh coordination for multi-agent swarms
@@ -647,9 +647,9 @@ Modular Plugin System:
 - Production-ready agent swarms that operate independently
 - Significantly reduced token consumption and operational costs
 
-The presentation includes live demonstrations of Claude-Flow V3 installation, configuration, and spawning production-ready agent swarms without continuous monitoring.
+The presentation includes live demonstrations of Ruflo V3 installation, configuration, and spawning production-ready agent swarms without continuous monitoring.
 
-Source: Claude-Flow V3: Hyperbolic Vector Spaces video`,
+Source: Ruflo V3: Hyperbolic Vector Spaces video`,
     category: 'videos',
     quality: 97,
     knowledge_type: 'reference',

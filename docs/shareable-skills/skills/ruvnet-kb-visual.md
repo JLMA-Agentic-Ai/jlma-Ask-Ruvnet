@@ -104,7 +104,7 @@ The visualization automatically detects and creates top-level categories for:
 | Category | Description |
 |----------|-------------|
 | **Agentic Flow** | Multi-agent orchestration system |
-| **Claude Flow** | Enterprise AI coordination |
+| **Ruflo** | Enterprise AI coordination |
 | **RuVector** | Vector database & embeddings |
 | **Flow Nexus** | Cloud orchestration platform |
 | **AgentDB** | Agent memory & persistence |

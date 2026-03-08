@@ -162,20 +162,20 @@ G(!self_approve)                   -- Agents cannot self-approve actions
 
 Verification latency: <1ms simple formulas, <3.5ms complex. Complexity: O(n x |formula|).
 
-## Why This Matters for Claude-Flow
+## Why This Matters for Ruflo
 
 Traditional security is pattern-matching (whitelists/blacklists). AIMDS behavioral analysis catches NOVEL attacks that no pattern has seen before, because the BEHAVIOR of probing is chaotic regardless of the specific words used. This is what makes AIMDS fundamentally different from simple input sanitization.`
   },
   {
     path: 'knowledge/aidefense/four-agent-security-swarm',
-    title: 'AIMDS Agent Ecosystem: Four Specialized Security Agents for Claude-Flow V3 Swarms',
+    title: 'AIMDS Agent Ecosystem: Four Specialized Security Agents for Ruflo V3 Swarms',
     category: 'agents',
     quality: 98,
     knowledge_type: 'procedure',
-    concepts: ['aimds', 'aidefense', 'security agents', 'guardian', 'injection analyst', 'pii detector', 'swarm security', 'claude-flow'],
+    concepts: ['aimds', 'aidefense', 'security agents', 'guardian', 'injection analyst', 'pii detector', 'swarm security', 'ruflo'],
     content: `## The Four AIMDS Agents
 
-Claude-Flow V3 deploys four specialized security agents that work together to protect every swarm:
+Ruflo V3 deploys four specialized security agents that work together to protect every swarm:
 
 ## 1. aidefence-guardian (Singleton, Auto-Spawns)
 
@@ -234,7 +234,7 @@ aidefence_verify_policy: Verify behavior against LTL formula`
     concepts: ['aimds', 'reasoningbank', 'hnsw', 'agentdb', 'threat patterns', 'self-learning', 'vector search', 'security memory'],
     content: `## How AIMDS Remembers and Learns
 
-AIMDS integrates with Claude-Flow V3's ReasoningBank through three dedicated AgentDB namespaces, all using 384-dimensional HNSW-indexed vectors for 150x-12,500x faster threat pattern retrieval.
+AIMDS integrates with Ruflo V3's ReasoningBank through three dedicated AgentDB namespaces, all using 384-dimensional HNSW-indexed vectors for 150x-12,500x faster threat pattern retrieval.
 
 ## Namespace 1: security_threats
 
@@ -277,10 +277,10 @@ HNSW speedup: 150x to 12,500x vs linear scan. Vector dimension: 384 (all namespa
 
 ## CLI Commands
 
-npx claude-flow@v3alpha security defend --input "<input>" --mode thorough --json
-npx claude-flow@v3alpha security behavior --agent <id> --window 1h
-npx claude-flow@v3alpha security policy --agent <id> --formula "G(edit -> F(review))"
-npx claude-flow@v3alpha security learn --threat-type prompt_injection --strategy sanitize --effectiveness 0.95`
+npx ruflo@v3alpha security defend --input "<input>" --mode thorough --json
+npx ruflo@v3alpha security behavior --agent <id> --window 1h
+npx ruflo@v3alpha security policy --agent <id> --formula "G(edit -> F(review))"
+npx ruflo@v3alpha security learn --threat-type prompt_injection --strategy sanitize --effectiveness 0.95`
   },
   {
     path: 'knowledge/aidefense/ruvbot-5-layer-protection',
@@ -332,7 +332,7 @@ Layer 4 adds significant value for: multi-turn conversations, persistent session
 ## ADR References
 
 ADR-014: "AIDefence Integration for Adversarial Protection" (Accepted, 2026-01-27) - RuvBot implementation
-ADR-022: "AIDEFENCE (AIMDS) Integration" (Proposed, 2026-01-12) - Claude-Flow V3 design`
+ADR-022: "AIDEFENCE (AIMDS) Integration" (Proposed, 2026-01-12) - Ruflo V3 design`
   },
 ];
 

@@ -1149,7 +1149,7 @@ Ruflo provides **enterprise orchestration** with Hive Mind, 64 specialized agent
                     │                │                │
                     ▼                ▼                ▼
          ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-         │  CLAUDE FLOW    │ │   AGENTDB       │ │  RUVECTOR KB    │
+         │  RUFLO          │ │   AGENTDB       │ │  RUVECTOR KB    │
          │  MEMORY         │ │   (Vector)      │ │  (PostgreSQL)   │
          │                 │ │                 │ │                 │
          │ .swarm/memory.db│ │ 164x faster     │ │ 77+ functions   │

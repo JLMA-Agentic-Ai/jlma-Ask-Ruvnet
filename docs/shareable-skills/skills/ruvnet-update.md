@@ -39,7 +39,7 @@ echo ""
 echo "   Package          @latest      @alpha         → Best"
 echo "   ───────────────  ───────────  ─────────────  ─────────"
 
-for pkg in agentic-flow claude-flow ruv-swarm ruvector; do
+for pkg in agentic-flow ruflo ruv-swarm ruvector; do
   latest=$(npm view "$pkg@latest" version 2>/dev/null || echo "N/A")
   alpha=$(npm view "$pkg@alpha" version 2>/dev/null || echo "N/A")
   if [ "$alpha" != "N/A" ]; then best="$alpha (alpha)"; else best="$latest (latest)"; fi
@@ -64,12 +64,12 @@ COUNT=$(PGPASSWORD=${PGPASSWORD} psql -h localhost -p 5435 -U postgres -t -c "SE
 ```bash
 echo ""
 echo "🔄 INSTALLING..."
-npm install agentic-flow@alpha claude-flow@latest ruv-swarm@latest ruvector@latest --save 2>&1 | grep -E "^(added|updated|changed)" | head -3
+npm install agentic-flow@alpha ruflo@latest ruv-swarm@latest ruvector@latest --save 2>&1 | grep -E "^(added|updated|changed)" | head -3
 echo "   ✅ Done"
 
 echo ""
 echo "📦 INSTALLED:"
-for pkg in agentic-flow claude-flow ruv-swarm ruvector; do
+for pkg in agentic-flow ruflo ruv-swarm ruvector; do
   [ -f "node_modules/$pkg/package.json" ] && echo "   $pkg: $(jq -r '.version' node_modules/$pkg/package.json)"
 done
 ```
@@ -178,7 +178,7 @@ PRIORITY ORDER:
 | Security Scanning | Vulnerability patterns | Code review |
 | MCP Server (30+ tools) | Vector operations via MCP | Claude Code integration |
 
-### claude-flow 2.7.47
+### ruflo 2.7.47
 | Feature | Description | Use When |
 |---------|-------------|----------|
 | 100+ MCP Tools | Swarm/memory/neural | Orchestration |
@@ -263,7 +263,7 @@ PRIORITY ORDER:
 | Multi-agent learning | agentic-flow | `FederatedLearningCoordinator` |
 | Ephemeral agents | agentic-flow | `EphemeralLearningAgent` |
 | Model switching | agentic-flow | `QueryController` |
-| Swarm MCP | claude-flow | `mcp__claude-flow__*` |
+| Swarm MCP | ruflo | `mcp__ruflo__*` |
 | Neural predictions | ruv-swarm | `npx ruv-swarm predict` |
 
 ---
@@ -273,7 +273,7 @@ PRIORITY ORDER:
 | Package | Use Tag | Reason |
 |---------|---------|--------|
 | agentic-flow | @alpha | Alpha has newest features (2.x vs 1.x) |
-| claude-flow | @latest | Stable only |
+| ruflo | @latest | Stable only |
 | ruv-swarm | @latest | Stable only |
 | ruvector | @latest | Stable only |
 

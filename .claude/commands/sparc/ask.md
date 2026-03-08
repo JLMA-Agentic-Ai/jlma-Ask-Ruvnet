@@ -36,7 +36,7 @@ Help users craft `new_task` messages to delegate effectively, and always remind 
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__ruflo__sparc_mode {
   mode: "ask",
   task_description: "help me choose the right mode",
   options: {
@@ -49,22 +49,22 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run ask "help me choose the right mode"
+npx ruflo sparc run ask "help me choose the right mode"
 
 # For alpha features
-npx claude-flow@alpha sparc run ask "help me choose the right mode"
+npx ruflo@alpha sparc run ask "help me choose the right mode"
 
 # With namespace
-npx claude-flow sparc run ask "your task" --namespace ask
+npx ruflo sparc run ask "your task" --namespace ask
 
 # Non-interactive mode
-npx claude-flow sparc run ask "your task" --non-interactive
+npx ruflo sparc run ask "your task" --non-interactive
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run ask "help me choose the right mode"
+# If ruflo is installed locally
+./ruflo sparc run ask "help me choose the right mode"
 ```
 
 ## Memory Integration
@@ -72,7 +72,7 @@ npx claude-flow sparc run ask "your task" --non-interactive
 ### Using MCP Tools (Preferred)
 ```javascript
 // Store mode-specific context
-mcp__claude-flow__memory_usage {
+mcp__ruflo__memory_usage {
   action: "store",
   key: "ask_context",
   value: "important decisions",
@@ -80,7 +80,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // Query previous work
-mcp__claude-flow__memory_search {
+mcp__ruflo__memory_search {
   pattern: "ask",
   namespace: "ask",
   limit: 5
@@ -90,8 +90,8 @@ mcp__claude-flow__memory_search {
 ### Using NPX CLI (Fallback)
 ```bash
 # Store mode-specific context
-npx claude-flow memory store "ask_context" "important decisions" --namespace ask
+npx ruflo memory store "ask_context" "important decisions" --namespace ask
 
 # Query previous work
-npx claude-flow memory query "ask" --limit 5
+npx ruflo memory query "ask" --limit 5
 ```

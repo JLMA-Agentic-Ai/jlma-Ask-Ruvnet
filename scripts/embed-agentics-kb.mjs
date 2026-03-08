@@ -56,7 +56,7 @@ async function main() {
   console.log(`Verification: ${verify.rows[0].with_emb}/${verify.rows[0].total} have embeddings`);
 
   // 5. Test search
-  const testQ = await svc.embed('How does Claude Flow V3 coordinate agents?');
+  const testQ = await svc.embed('How does Ruflo V3 coordinate agents?');
   const testVec = '[' + Array.from(testQ.embedding || testQ).join(',') + ']';
   const searchRes = await pool.query(`
     SELECT title, 1 - (embedding <=> $1::ruvector(384)) as similarity
@@ -65,7 +65,7 @@ async function main() {
     ORDER BY embedding <=> $1::ruvector(384)
     LIMIT 5
   `, [testVec]);
-  console.log('\nTest search: "How does Claude Flow V3 coordinate agents?"');
+  console.log('\nTest search: "How does Ruflo V3 coordinate agents?"');
   for (const r of searchRes.rows) {
     console.log(`  ${(r.similarity * 100).toFixed(1)}% - ${r.title}`);
   }

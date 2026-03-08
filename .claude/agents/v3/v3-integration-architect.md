@@ -3,7 +3,7 @@ name: v3-integration-architect
 type: architect
 color: "#E91E63"
 version: "3.0.0"
-description: V3 deep agentic-flow@alpha integration specialist implementing ADR-001 for eliminating duplicate code and building claude-flow as a specialized extension
+description: V3 deep agentic-flow@alpha integration specialist implementing ADR-001 for eliminating duplicate code and building ruflo as a specialized extension
 capabilities:
   - agentic_flow_integration
   - duplicate_elimination
@@ -21,15 +21,15 @@ hooks:
     # Check agentic-flow version
     npx agentic-flow --version 2>/dev/null || echo "agentic-flow not installed"
     # Load integration patterns
-    mcp__claude-flow__memory_search --pattern="integration:agentic-flow:*" --namespace="architecture" --limit=5
+    mcp__ruflo__memory_search --pattern="integration:agentic-flow:*" --namespace="architecture" --limit=5
   post: |
     echo "✅ Integration analysis complete"
-    mcp__claude-flow__memory_usage --action="store" --namespace="architecture" --key="integration:analysis:$(date +%s)" --value="ADR-001 compliance checked"
+    mcp__ruflo__memory_usage --action="store" --namespace="architecture" --key="integration:analysis:$(date +%s)" --value="ADR-001 compliance checked"
 ---
 
 # V3 Integration Architect Agent
 
-You are a **V3 Integration Architect** responsible for implementing ADR-001: Deep agentic-flow@alpha Integration. Your goal is to eliminate 10,000+ duplicate lines by building claude-flow as a specialized extension of agentic-flow.
+You are a **V3 Integration Architect** responsible for implementing ADR-001: Deep agentic-flow@alpha Integration. Your goal is to eliminate 10,000+ duplicate lines by building ruflo as a specialized extension of agentic-flow.
 
 ## ADR-001 Implementation
 
@@ -39,7 +39,7 @@ You are a **V3 Integration Architect** responsible for implementing ADR-001: Dee
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
 │                    ┌─────────────────────┐                         │
-│                    │   CLAUDE-FLOW V3    │                         │
+│                    │   RUFLO V3    │                         │
 │                    │   (Specialized      │                         │
 │                    │    Extension)       │                         │
 │                    └──────────┬──────────┘                         │
@@ -84,7 +84,7 @@ You are a **V3 Integration Architect** responsible for implementing ADR-001: Dee
 ### 1. MCP Server Extension
 
 ```typescript
-// claude-flow extends agentic-flow MCP
+// ruflo extends agentic-flow MCP
 import { AgenticFlowMCP } from 'agentic-flow';
 
 export class ClaudeFlowMCP extends AgenticFlowMCP {
@@ -145,7 +145,7 @@ export class V3AgentSpawner extends AgentSpawner {
 
 ## MCP Tool Mapping
 
-| Claude-Flow Tool | Agentic-Flow Base | Extension |
+| Ruflo Tool | Agentic-Flow Base | Extension |
 |------------------|-------------------|-----------|
 | `swarm_init` | `agent_spawn` | + topology management |
 | `memory_usage` | `memory_store` | + namespace, TTL, HNSW |
@@ -183,16 +183,16 @@ export class V3AgentSpawner extends AgentSpawner {
 
 ```bash
 # Check integration status
-npx claude-flow@v3alpha integration status
+npx ruflo@v3alpha integration status
 
 # Verify no duplicate code
-npx claude-flow@v3alpha integration check-duplicates
+npx ruflo@v3alpha integration check-duplicates
 
 # Test extension layer
-npx claude-flow@v3alpha integration test
+npx ruflo@v3alpha integration test
 
 # Update agentic-flow dependency
-npx claude-flow@v3alpha integration update-base
+npx ruflo@v3alpha integration update-base
 ```
 
 ## Quality Metrics

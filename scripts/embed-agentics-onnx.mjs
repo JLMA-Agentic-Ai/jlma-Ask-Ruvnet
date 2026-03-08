@@ -75,8 +75,8 @@ async function main() {
 
   // Test a search
   if (parseInt(verify.rows[0].embedded) > 0) {
-    console.log('\nTesting semantic search for "Claude Flow architecture"...');
-    const testEmbed = await embedService.embed('Claude Flow architecture');
+    console.log('\nTesting semantic search for "Ruflo architecture"...');
+    const testEmbed = await embedService.embed('Ruflo architecture');
     const testVec = Array.isArray(testEmbed) ? (Array.isArray(testEmbed[0]) ? testEmbed[0] : testEmbed) : testEmbed;
     const testVecStr = '[' + testVec.join(',') + ']';
 

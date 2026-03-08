@@ -262,7 +262,7 @@ function extractSubTheme(filePath, title = '', content = '') {
     }
 
     // Fallback: Folder-based hints
-    if (relativePath.includes('ruvnet') || relativePath.includes('agentic') || relativePath.includes('claude-flow')) {
+    if (relativePath.includes('ruvnet') || relativePath.includes('agentic') || relativePath.includes('ruflo')) {
         return 'Ecosystem Architecture';
     }
 

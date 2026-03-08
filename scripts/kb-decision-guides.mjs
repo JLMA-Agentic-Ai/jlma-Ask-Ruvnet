@@ -183,8 +183,8 @@ There are two ways to generate embeddings in the Ask-Ruvnet system: (1) ONNX via
 **Bottom line**: One KB = one embedding model. Ask-Ruvnet uses ONNX. Never mix models. If you see ruvector_embed() in an Ask-Ruvnet script, it is a bug.`
   },
   {
-    title: 'Decision Guide: Claude Flow topology selection',
-    content: `## Choosing the Right Claude Flow Swarm Topology
+    title: 'Decision Guide: Ruflo topology selection',
+    content: `## Choosing the Right Ruflo Swarm Topology
 
 ### The Decision
 When spawning multiple AI agents to work on a task together, you need to choose how they communicate. This is the "topology" — the structure of the agent team.
@@ -505,13 +505,13 @@ When installing MCP (Model Context Protocol) servers, should you pin to a specif
 
 The correct installation pattern:
 \`\`\`bash
-claude mcp add claude-flow -- npx -y @claude-flow/cli@latest
+claude mcp add ruflo -- npx -y @claude-flow/cli@latest
 claude mcp add flow-nexus -- npx -y flow-nexus@latest mcp start
 \`\`\`
 
 ### What Happens If You Choose Wrong
 - **Pinning to a specific version**: Initially works fine. Then Claude Code updates, the protocol evolves, and your pinned MCP server silently fails. Tools return errors or no results. You spend hours debugging "why did my tools stop working?" when the answer is just "update the MCP server."
-- **Using @alpha when @latest exists**: Alpha versions may have experimental features that break. Only use @alpha when specifically instructed (e.g., claude-flow uses @latest which tracks the stable channel).
+- **Using @alpha when @latest exists**: Alpha versions may have experimental features that break. Only use @alpha when specifically instructed (e.g., ruflo uses @latest which tracks the stable channel).
 
 ### Quick Reference
 | Pattern | Example | Correct? |
@@ -665,11 +665,11 @@ You are spawning a swarm of AI agents. How many can your M3 Max with 128GB RAM h
 **Bottom line**: Check the status bar. CPU < 50% = go big (10). CPU > 75% = go small (3). The M3 Max is powerful but not infinite.`
   },
   {
-    title: 'Decision Guide: When to consult Claude Flow Architect',
-    content: `## When to Consult the Claude Flow Architect Agent
+    title: 'Decision Guide: When to consult Ruflo Architect',
+    content: `## When to Consult the Ruflo Architect Agent
 
 ### The Decision
-Should you make this architectural decision yourself, or route it through the Claude Flow Architect agent for analysis?
+Should you make this architectural decision yourself, or route it through the Ruflo Architect agent for analysis?
 
 ### Decision Criteria
 - **Reversibility**: Can you easily undo this decision if it is wrong?
@@ -686,7 +686,7 @@ Should you make this architectural decision yourself, or route it through the Cl
 - Security architecture
 - Any decision where a wrong choice wastes significant time or money
 
-Route via: npx @claude-flow/cli@latest route "task description" --agent architect
+Route via: npx ruflo@latest route "task description" --agent architect
 
 **Skip the Architect for**: trivial one-line fixes, file reads, slash commands, and confirmations.
 
@@ -921,11 +921,11 @@ WITH (m = 16, ef_construction = 200);
 **Bottom line**: m=16, ef_construction=200. Do not change these unless you are beyond 100K rows and have benchmarked the alternatives.`
   },
   {
-    title: 'Decision Guide: Session management in Claude Flow',
-    content: `## Session Management in Claude Flow
+    title: 'Decision Guide: Session management in Ruflo',
+    content: `## Session Management in Ruflo
 
 ### The Decision
-Claude Flow supports session persistence — saving the state of a conversation or task across multiple interactions. Should you use it, and how?
+Ruflo supports session persistence — saving the state of a conversation or task across multiple interactions. Should you use it, and how?
 
 ### Decision Criteria
 - **Task continuity**: Will you return to this task later?
@@ -939,10 +939,10 @@ Claude Flow supports session persistence — saving the state of a conversation 
 
 \`\`\`bash
 # At session start
-npx @claude-flow/cli@latest session restore --latest
+npx ruflo@latest session restore --latest
 
 # At session end
-npx @claude-flow/cli@latest hooks session-end --generate-summary true --persist-state true --export-metrics true
+npx ruflo@latest hooks session-end --generate-summary true --persist-state true --export-metrics true
 \`\`\`
 
 ### What Happens If You Choose Wrong

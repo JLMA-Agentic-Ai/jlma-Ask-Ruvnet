@@ -44,7 +44,7 @@ The RuvNet ecosystem (https://github.com/ruvnet) contains over 160 repositories 
 
 ## Core Pillars (Already Ingested)
 -   **Agentic Flow:** Swarm coordination.
--   **Claude Flow:** Enterprise orchestration.
+-   **Ruflo:** Enterprise orchestration.
 -   **Ruvector:** Vector database.
 -   **Sparc:** Agentic coding framework.
 -   **Neural Trader:** AI-driven quantitative finance.

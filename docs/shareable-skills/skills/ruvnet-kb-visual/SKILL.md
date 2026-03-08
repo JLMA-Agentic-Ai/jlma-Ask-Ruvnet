@@ -278,4 +278,4 @@ node scripts/kb-universe-data.js --score-only
 
 ## Memory Key
 
-`tools/ruvnet-kb-visual` in claude-flow namespace `tools`
+`tools/ruvnet-kb-visual` in ruflo namespace `tools`

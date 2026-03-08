@@ -14,9 +14,9 @@ capabilities:
   - architecture_pattern_validation
   - style_and_convention_enforcement
 tools:
-  - mcp__claude-flow__swarm_init
-  - mcp__claude-flow__agent_spawn
-  - mcp__claude-flow__task_orchestrate
+  - mcp__ruflo__swarm_init
+  - mcp__ruflo__agent_spawn
+  - mcp__ruflo__task_orchestrate
   - mcp__agentic-flow__agentdb_pattern_store
   - mcp__agentic-flow__agentdb_pattern_search
   - mcp__agentic-flow__agentdb_pattern_stats
@@ -75,7 +75,7 @@ hooks:
     # 4. Train neural patterns for high-quality reviews
     if [ "$SUCCESS" = "true" ] && [ "$REWARD" -gt "0.9" ]; then
       echo "🧠 Training neural pattern from successful code review"
-      npx claude-flow neural train \
+      npx ruflo neural train \
         --pattern-type "coordination" \
         --training-data "$REVIEW_OUTPUT" \
         --epochs 50
@@ -297,7 +297,7 @@ PR_DATA=$(gh pr view 123 --json files,additions,deletions,title,body)
 PR_DIFF=$(gh pr diff 123)
 
 # Initialize swarm with PR context
-npx claude-flow@v3alpha github review-init \
+npx ruflo@v3alpha github review-init \
   --pr 123 \
   --pr-data "$PR_DATA" \
   --diff "$PR_DIFF" \
@@ -317,7 +317,7 @@ gh pr comment 123 --body "🔍 Multi-agent code review initiated"
 CHANGED_FILES=$(gh pr view 123 --json files --jq '.files[].path')
 
 # Run security review
-SECURITY_RESULTS=$(npx claude-flow@v3alpha github review-security \
+SECURITY_RESULTS=$(npx ruflo@v3alpha github review-security \
   --pr 123 \
   --files "$CHANGED_FILES" \
   --check "owasp,cve,secrets,permissions" \

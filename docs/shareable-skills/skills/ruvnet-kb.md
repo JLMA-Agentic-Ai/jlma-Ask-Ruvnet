@@ -40,7 +40,7 @@ YOUR_PROJECT/.ruvector/
 
 | Category | What You Can Ask |
 |----------|------------------|
-| **Core Packages** | How to use ruvector, ruvllm, agentic-flow, claude-flow |
+| **Core Packages** | How to use ruvector, ruvllm, agentic-flow, ruflo |
 | **Agent System** | How to spawn 150+ agent types, parallel execution |
 | **Orchestration** | How to configure hive-mind, consensus protocols |
 | **AI/ML** | How to implement Decision Transformer, Actor-Critic |

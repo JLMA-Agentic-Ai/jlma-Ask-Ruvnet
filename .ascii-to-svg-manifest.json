@@ -71,7 +71,7 @@
       "sourceFile": "README.md",
       "svgFile": "assets/diagrams/component-relationships.svg",
       "readmeSection": "Component Relationships",
-      "description": "Interconnection diagram: Claude Flow, AgentDB, SONA, RuVector, and AIMDS",
+      "description": "Interconnection diagram: Ruflo, AgentDB, SONA, RuVector, and AIMDS",
       "lastConverted": "2026-02-26"
     },
     {

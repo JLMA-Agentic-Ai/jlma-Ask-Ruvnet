@@ -74,7 +74,7 @@ const ruvllmConfig = {
   memory: {
     enabled: process.env.ENABLE_PERSISTENT_MEMORY !== 'false',
     namespace: process.env.MEMORY_NAMESPACE || 'ruvnet-integration',
-    dbPath: process.env.CLAUDE_FLOW_DB_PATH || '.swarm/memory.db',
+    dbPath: process.env.RUFLO_DB_PATH || process.env.CLAUDE_FLOW_DB_PATH || '.swarm/memory.db',
 
     // Tiered storage for long-term persistence
     tiered: {

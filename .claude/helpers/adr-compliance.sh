@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Flow V3 - ADR Compliance Checker Worker
+# Ruflo V3 - ADR Compliance Checker Worker
 # Checks compliance with Architecture Decision Records
 
 set -euo pipefail

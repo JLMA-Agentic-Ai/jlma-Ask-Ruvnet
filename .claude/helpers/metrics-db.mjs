@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Claude Flow V3 - Metrics Database Manager
+ * Ruflo V3 - Metrics Database Manager
  * Uses sql.js for cross-platform SQLite storage
  * Single .db file with multiple tables
  */
@@ -14,7 +14,7 @@ import { execSync } from 'child_process';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '../..');
 const V3_DIR = join(PROJECT_ROOT, 'v3');
-const DB_PATH = join(PROJECT_ROOT, '.claude-flow', 'metrics.db');
+const DB_PATH = join(PROJECT_ROOT, '.ruflo', 'metrics.db');
 
 // Ensure directory exists
 const dbDir = dirname(DB_PATH);
@@ -248,14 +248,14 @@ async function syncMetrics() {
   const now = new Date().toISOString();
 
   // Count V3 modules
-  const modulesDir = join(V3_DIR, '@claude-flow');
+  const modulesDir = join(V3_DIR, '@ruflo');
   let modules = [];
   let totalProgress = 0;
 
   if (existsSync(modulesDir)) {
     const entries = readdirSync(modulesDir, { withFileTypes: true });
     for (const entry of entries) {
-      // Skip hidden directories (like .agentic-flow, .claude-flow)
+      // Skip hidden directories (like .agentic-flow, .ruflo)
       if (entry.isDirectory() && !entry.name.startsWith('.')) {
         const moduleDir = join(modulesDir, entry.name);
         const { files, lines } = countFilesAndLines(moduleDir);

@@ -4,7 +4,7 @@ Create reusable workflow templates.
 
 ## Usage
 ```bash
-npx claude-flow workflow create [options]
+npx ruflo workflow create [options]
 ```
 
 ## Options
@@ -15,11 +15,11 @@ npx claude-flow workflow create [options]
 ## Examples
 ```bash
 # Create workflow
-npx claude-flow workflow create --name "deploy-api"
+npx ruflo workflow create --name "deploy-api"
 
 # From history
-npx claude-flow workflow create --name "test-suite" --from-history
+npx ruflo workflow create --name "test-suite" --from-history
 
 # Interactive mode
-npx claude-flow workflow create --interactive
+npx ruflo workflow create --interactive
 ```

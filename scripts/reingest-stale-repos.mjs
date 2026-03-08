@@ -7,7 +7,7 @@
  * upsert (ON CONFLICT) to safely update existing entries.
  *
  * Process:
- * 1. Clone/pull the 3 stale repos (claude-flow, ruvector, agentic-flow)
+ * 1. Clone/pull the 3 stale repos (ruflo, ruvector, agentic-flow)
  * 2. Find all markdown/text/rst files
  * 3. Chunk with overlap (800 chars, 100 char overlap)
  * 4. ONNX embed in batches of 100
@@ -39,7 +39,7 @@ const DB_BATCH = 200;
 // Repos to re-ingest (verified stale via GitHub API)
 const STALE_REPOS = SINGLE_REPO
   ? [SINGLE_REPO]
-  : ['claude-flow', 'ruvector', 'agentic-flow'];
+  : ['ruflo', 'ruvector', 'agentic-flow'];
 
 const pool = new pg.Pool({
   host: 'localhost',
@@ -150,7 +150,7 @@ function cloneOrPull(repoName) {
 // --- Category detection ---
 function detectCategory(repoName, content) {
   const text = content.toLowerCase();
-  if (repoName === 'claude-flow') {
+  if (repoName === 'ruflo') {
     if (/swarm|hive|queen|worker|mesh/i.test(text)) return 'swarms';
     if (/neural|sona|ewc|moe|pattern/i.test(text)) return 'neural';
     if (/hnsw|vector|embed|ruvector/i.test(text)) return 'vector-db';

@@ -4,7 +4,7 @@ Created: 2025-12-19 10:31:00 EST
 # RuvNet Ecosystem Skill
 
 ## Triggers
-- "ruvnet", "ruvector", "vector database", "ruvllm", "agentic-flow", "claude-flow"
+- "ruvnet", "ruvector", "vector database", "ruvllm", "agentic-flow", "ruflo"
 - "ai orchestration", "agent swarm", "neural patterns", "multi-agent"
 
 ## Overview
@@ -23,7 +23,7 @@ curl -sL https://raw.githubusercontent.com/stuinfla/ruvnet-claude-integration/ma
 ### NPM Packages (Always Try Latest First)
 ```bash
 # Install all packages - try latest versions
-npm install ruvector@latest @ruvector/ruvllm@latest agentic-flow@latest claude-flow@latest
+npm install ruvector@latest @ruvector/ruvllm@latest agentic-flow@latest ruflo@latest
 
 # Verify ruvector loads
 node -e "require('ruvector')" && echo "ruvector loaded successfully"
@@ -38,7 +38,7 @@ node -e "require('ruvector')" && echo "ruvector loaded successfully"
 | `ruvector` | @latest | Vector DB, HNSW indexing, 61μs latency |
 | `@ruvector/ruvllm` | 0.2.3 | Self-learning LLM, TRM reasoning, SONA |
 | `agentic-flow` | 1.10.2 | 150+ agents, 213 MCP tools, ReasoningBank |
-| `claude-flow` | 2.7.47 | Enterprise orchestration, AgentDB |
+| `ruflo` | 2.7.47 | Enterprise orchestration, AgentDB |
 
 ---
 
@@ -92,16 +92,16 @@ await reasoningbank.initialize();
 await reasoningbank.storeMemory('key', 'value', { namespace: 'api' });
 ```
 
-### Claude Flow - Enterprise
+### Ruflo - Enterprise
 ```bash
 # Initialize project
-npx claude-flow@alpha init --force
+npx ruflo@alpha init --force
 
 # Spawn hive-mind agent
-npx claude-flow@alpha hive-mind spawn "Implement auth" --claude
+npx ruflo@alpha hive-mind spawn "Implement auth" --claude
 
 # Query memory
-npx claude-flow@alpha memory query "auth" --recent
+npx ruflo@alpha memory query "auth" --recent
 ```
 
 ---
@@ -124,7 +124,7 @@ npx claude-flow@alpha memory query "auth" --recent
 - Swarm: hierarchical-coordinator, mesh-coordinator, adaptive-coordinator
 - GitHub: pr-manager, code-review-swarm, issue-tracker, release-manager
 
-### Claude Flow Enterprise
+### Ruflo Enterprise
 - 84.8% SWE-Bench solve rate
 - 32.3% token reduction
 - 64 specialized agents
@@ -167,7 +167,7 @@ node -e "console.log('agentic-flow:', typeof require('agentic-flow'))"
 |---------|-----|
 | RuVector | https://github.com/ruvnet/ruvector |
 | Agentic Flow | https://github.com/ruvnet/agentic-flow |
-| Claude Flow | https://github.com/ruvnet/claude-flow |
+| Ruflo | https://github.com/ruvnet/ruflo |
 | Integration | https://github.com/stuinfla/ruvnet-claude-integration |
 
 ---
@@ -177,7 +177,7 @@ node -e "console.log('agentic-flow:', typeof require('agentic-flow'))"
 - **ruvector**: Semantic search, RAG, embeddings, graph queries
 - **@ruvector/ruvllm**: Self-learning LLMs, routing, SONA optimization
 - **agentic-flow**: Multi-agent workflows, 150+ specialized agents
-- **claude-flow**: Enterprise coordination, hive-mind, AgentDB
+- **ruflo**: Enterprise coordination, hive-mind, AgentDB
 
 ---
 

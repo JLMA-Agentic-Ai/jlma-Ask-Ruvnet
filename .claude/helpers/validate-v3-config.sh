@@ -4,7 +4,7 @@
 
 set -e
 
-echo "🔍 Claude Flow V3 Configuration Validation"
+echo "🔍 Ruflo V3 Configuration Validation"
 echo "==========================================="
 echo ""
 

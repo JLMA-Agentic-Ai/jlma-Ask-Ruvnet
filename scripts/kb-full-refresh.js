@@ -3,7 +3,7 @@
  * KB Full Refresh - Comprehensive RuvNet Knowledge Base Refresh
  *
  * This script makes Ask-Ruvnet the AUTHORITATIVE knowledge base for:
- * - All RuvNet packages (agentic-flow, ruflo, claude-flow legacy, ruv-swarm, ruvector, etc.)
+ * - All RuvNet packages (agentic-flow, ruflo, ruflo legacy, ruv-swarm, ruvector, etc.)
  * - All RuvNet architecture patterns
  * - All agent types, swarm topologies, consensus protocols
  * - Cross-repo accessible via PostgreSQL
@@ -41,7 +41,7 @@ const SCHEMA = 'ask_ruvnet';
 const RUVNET_PACKAGES = [
   'agentic-flow',
   'ruflo',
-  'claude-flow',
+  'ruflo',
   'ruv-swarm',
   'ruvector',
   '@ruvector/ruvllm',
@@ -53,7 +53,7 @@ const DOC_SOURCES = [
   './docs',
   './node_modules/agentic-flow',
   './node_modules/ruflo',
-  './node_modules/claude-flow',
+  './node_modules/ruflo',
   './node_modules/ruv-swarm',
   './node_modules/ruvector'
 ];

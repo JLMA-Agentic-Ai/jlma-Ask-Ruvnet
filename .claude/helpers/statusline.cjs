@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Claude Flow V3 Statusline Generator
+ * Ruflo V3 Statusline Generator
  * Displays real-time V3 implementation progress and system status
  *
  * Usage: node statusline.cjs [--json] [--compact]
@@ -214,7 +214,7 @@ function getSystemMetrics() {
 
   // Count active sub-agents from process list
   try {
-    const agents = execSync('ps aux 2>/dev/null | grep -c "claude-flow.*agent" || echo "0"', { encoding: 'utf-8' });
+    const agents = execSync('ps aux 2>/dev/null | grep -c "ruflo.*agent" || echo "0"', { encoding: 'utf-8' });
     subAgents = Math.max(0, parseInt(agents.trim()) - 1);
   } catch (e) {
     // Ignore
@@ -246,7 +246,7 @@ function generateStatusline() {
   const lines = [];
 
   // Header Line
-  let header = `${c.bold}${c.brightPurple}▊ Claude Flow V3 ${c.reset}`;
+  let header = `${c.bold}${c.brightPurple}▊ Ruflo V3 ${c.reset}`;
   header += `${swarm.coordinationActive ? c.brightCyan : c.dim}● ${c.brightCyan}${user.name}${c.reset}`;
   if (user.gitBranch) {
     header += `  ${c.dim}│${c.reset}  ${c.brightBlue}⎇ ${user.gitBranch}${c.reset}`;

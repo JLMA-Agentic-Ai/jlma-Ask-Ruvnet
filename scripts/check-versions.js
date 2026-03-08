@@ -22,7 +22,7 @@ const PACKAGES = [
   { name: 'agentdb', preferAlpha: false },
   { name: 'agentic-flow', preferAlpha: true },
   { name: 'ruflo', preferAlpha: false },
-  { name: 'claude-flow', preferAlpha: false },
+  { name: 'ruflo', preferAlpha: false },
   { name: 'flow-nexus', preferAlpha: false },
   { name: 'neural-trader', preferAlpha: false },
   { name: '@ruvnet/strange-loop', preferAlpha: false },

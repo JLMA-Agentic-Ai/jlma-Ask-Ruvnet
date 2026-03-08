@@ -1,13 +1,13 @@
 ---
 name: ruvnet-stack
 version: 2.1.0
-description: Install and configure the complete RuvNet AI ecosystem including claude-flow, agentic-flow, ruvector, and ruvector-postgres. Use when user wants to set up RuvNet, install the AI stack, or initialize a new project with agents.
+description: Install and configure the complete RuvNet AI ecosystem including ruflo, agentic-flow, ruvector, and ruvector-postgres. Use when user wants to set up RuvNet, install the AI stack, or initialize a new project with agents.
 triggers:
   - install ruvnet
   - ruvnet stack
   - setup ruvnet
   - ruvnet ecosystem
-  - install claude-flow
+  - install ruflo
   - install agentic-flow
   - setup agents
   - agent orchestration
@@ -20,15 +20,15 @@ updated: 2025-12-30
 
 # RuvNet Stack
 
-Install and configure the complete RuvNet AI ecosystem including claude-flow, agentic-flow, ruvector, and ruvector-postgres.
+Install and configure the complete RuvNet AI ecosystem including ruflo, agentic-flow, ruvector, and ruvector-postgres.
 
 ## What This Does
 
 1. **Syncs RuvNet Knowledgebase Patterns** (MANDATORY)
 2. **Starts ruvector-postgres** Docker container on port 5435
 3. **Creates isolated schema** for this project
-4. **Installs** claude-flow, agentic-flow, ruvector, @ruvector/ruvllm
-5. **Initializes** claude-flow with agents and hive-mind
+4. **Installs** ruflo, agentic-flow, ruvector, @ruvector/ruvllm
+5. **Initializes** ruflo with agents and hive-mind
 6. **Validates** project follows KB architecture patterns
 
 ---
@@ -50,7 +50,7 @@ ruvector-postgres (Docker on port 5435)
 
 ```bash
 # Install packages
-npm install claude-flow@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruvector/agentic-synth
+npm install ruflo@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruvector/agentic-synth
 
 # Start ruvector-postgres
 docker run -d --name ruvector-kb \
@@ -60,8 +60,8 @@ docker run -d --name ruvector-kb \
   -v ruvector-kb-data:/var/lib/postgresql/data \
   ruvnet/ruvector-postgres:latest
 
-# Initialize claude-flow
-npx claude-flow@alpha init --force
+# Initialize ruflo
+npx ruflo@alpha init --force
 ```
 
 ---
@@ -70,7 +70,7 @@ npx claude-flow@alpha init --force
 
 | Package | Purpose |
 |---------|---------|
-| `claude-flow` | Enterprise orchestration, Hive Mind |
+| `ruflo` | Enterprise orchestration, Hive Mind |
 | `agentic-flow` | 150+ agents, 213 MCP tools |
 | `@ruvector/agentic-synth` | Synthetic data generation |
 | `@ruvector/ruvllm` | LLM orchestration |
@@ -135,19 +135,19 @@ echo ""
 # STEP 3: Install npm packages
 echo "📦 Installing RuvNet packages..."
 if [ -f package.json ]; then
-  npm install claude-flow@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruvector/agentic-synth
+  npm install ruflo@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruvector/agentic-synth
   echo "   ✅ Packages installed"
 else
   echo "   ⚠️  No package.json found. Creating minimal one..."
   echo '{"name":"ruvnet-project","private":true,"dependencies":{}}' > package.json
-  npm install claude-flow@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruvector/agentic-synth
+  npm install ruflo@alpha agentic-flow@alpha ruvector @ruvector/ruvllm @ruvector/agentic-synth
   echo "   ✅ Packages installed"
 fi
 echo ""
 
-# STEP 4: Initialize claude-flow
-echo "🔧 Initializing claude-flow..."
-npx claude-flow@alpha init --force 2>/dev/null || echo "   ⚠️  claude-flow init skipped (may already exist)"
+# STEP 4: Initialize ruflo
+echo "🔧 Initializing ruflo..."
+npx ruflo@alpha init --force 2>/dev/null || echo "   ⚠️  ruflo init skipped (may already exist)"
 echo ""
 
 # STEP 5: Create project schema
@@ -170,7 +170,7 @@ echo "════════════════════════�
 echo ""
 echo "✅ RuvNet Stack installation complete!"
 echo ""
-echo "   📦 Packages: claude-flow, agentic-flow, ruvector, ruvllm"
+echo "   📦 Packages: ruflo, agentic-flow, ruvector, ruvllm"
 echo "   🗄️  Database: ruvector-kb on port 5435"
 echo "   📂 Schema: ${PROJECT_NAME}"
 echo ""

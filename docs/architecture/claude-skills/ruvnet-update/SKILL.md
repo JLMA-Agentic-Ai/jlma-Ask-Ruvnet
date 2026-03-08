@@ -132,7 +132,7 @@ echo ""
 # STEP 3: Check RuvNet packages
 echo "📦 Checking RuvNet package versions..."
 if [ -f package.json ]; then
-  PACKAGES=("ruvector" "@ruvector/ruvllm" "@ruvector/agentic-synth" "agentic-flow" "claude-flow")
+  PACKAGES=("ruvector" "@ruvector/ruvllm" "@ruvector/agentic-synth" "agentic-flow" "ruflo")
 
   for pkg in "${PACKAGES[@]}"; do
     local_ver=$(node -e "

@@ -1,7 +1,7 @@
 /**
  * Ingest rUv's public content into ask_ruvnet knowledge base
  * Sources (all 100% public, no login required):
- *   - GitHub READMEs: claude-flow, agentic-flow, ruvector, flow-nexus, sparc, ruvbot, ruvnet profile
+ *   - GitHub READMEs: ruflo, agentic-flow, ruvector, flow-nexus, sparc, ruvbot, ruvnet profile
  *   - ruv.net about page (biography, philosophy, projects)
  *   - agentics.ruv.io blog posts
  */
@@ -67,13 +67,13 @@ async function ingestChunks(docId, title, text, filePath, category, docType, top
 const SOURCES = [
   // GitHub READMEs
   {
-    file: '/tmp/ruv-content/claude-flow-README.md',
-    id: 'ruv-github-claude-flow-readme',
-    title: 'Claude-Flow V3 — Official README by rUv',
-    filePath: 'ruv-public/github/claude-flow/README',
+    file: '/tmp/ruv-content/ruflo-README.md',
+    id: 'ruv-github-ruflo-readme',
+    title: 'Ruflo V3 — Official README by rUv',
+    filePath: 'ruv-public/github/ruflo/README',
     category: 'ruv-content',
     docType: 'documentation',
-    topics: ['claude-flow', 'ruv', 'swarm', 'mcp', 'agentic', 'orchestration', 'ruvnet'],
+    topics: ['ruflo', 'ruv', 'swarm', 'mcp', 'agentic', 'orchestration', 'ruvnet'],
     date: '2025-01-01'
   },
   {
@@ -178,11 +178,11 @@ Reuven's track record includes advising governments and international organizati
     filePath: 'ruv-public/ruv.net/projects',
     category: 'ruv-content',
     docType: 'reference',
-    topics: ['ruv', 'projects', 'claude-flow', 'ruvector', 'agentdb', 'flow-nexus', 'sparc', 'ruvnet'],
+    topics: ['ruv', 'projects', 'ruflo', 'ruvector', 'agentdb', 'flow-nexus', 'sparc', 'ruvnet'],
     date: '2026-02-01',
     text: `rUv Featured Projects Portfolio (ruv.net)
 
-Claude-Flow V3: Enterprise-grade AI orchestration platform. Hive-mind swarm intelligence, neural pattern recognition, 87+ advanced MCP tools. Reimagines how developers build with AI. Features: Swarm Intelligence, MCP Tools, Neural Patterns, Enterprise-Ready.
+Ruflo V3: Enterprise-grade AI orchestration platform. Hive-mind swarm intelligence, neural pattern recognition, 87+ advanced MCP tools. Reimagines how developers build with AI. Features: Swarm Intelligence, MCP Tools, Neural Patterns, Enterprise-Ready.
 
 Agentic-Flow: Agent Workflow Engine. Powerful workflow orchestration system for building multi-agent AI applications. Create complex agent workflows with built-in state management, error handling, and execution monitoring for production-grade autonomous systems. Features: Workflow Engine, State Management, Multi-Agent, Production-Ready.
 

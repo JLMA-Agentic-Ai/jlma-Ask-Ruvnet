@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * KB Decision Guides v2.0 — Curated decision-framework entries for kb_complete.
- * These fill gaps: Claude Flow needs clear IF/THEN decision trees when building apps.
+ * These fill gaps: Ruflo needs clear IF/THEN decision trees when building apps.
  *
  * Targets: ask_ruvnet.kb_complete (curated, quality 99)
  * Embedding: ONNX Xenova/all-MiniLM-L6-v2 (384-dim) — never ruvector_embed()
@@ -98,11 +98,11 @@ You would never use RVF WASM to power a live search interface. You would never u
 | COW branching | No | Yes |
 | Security witnesses | No | Yes |
 
-## For Claude Flow Building Apps
+## For Ruflo Building Apps
 
-When Claude Flow is building a browser search app: use RuVector-WASM.
-When Claude Flow is packaging knowledge for deployment: use RVF.
-When Claude Flow is building a complete offline AI system: use both -- RVF for the knowledge package, RuVector-WASM for the search layer.
+When Ruflo is building a browser search app: use RuVector-WASM.
+When Ruflo is packaging knowledge for deployment: use RVF.
+When Ruflo is building a complete offline AI system: use both -- RVF for the knowledge package, RuVector-WASM for the search layer.
 Never confuse them. They are filing cabinet vs shipping container.`
   },
   {
@@ -175,7 +175,7 @@ OUTBOUND (AI -> user): Scan when the AI generates dynamic responses using extern
 Both directions when: Chat systems, agent outputs, any endpoint where the AI constructs responses from KB data or user context.
 Inbound only when: Search endpoints, classification, read-only queries where the response is a direct KB lookup.
 
-## For Claude Flow Building Apps
+## For Ruflo Building Apps
 
 Default middleware setup: createAIDefence({ enableLearning: true }) with blockThreshold: 'medium'.
 Always scan inbound. Scan outbound on chat/agent endpoints.
@@ -267,7 +267,7 @@ MISTAKE 2: Re-embedding the entire KB client-side on every page load. Pre-comput
 MISTAKE 3: Using cloud embedding APIs (OpenAI, etc.) when ONNX does the same job for free locally.
 MISTAKE 4: Forgetting that the ONNX model download is ~80MB. Use a loading indicator.
 
-## For Claude Flow Building Apps
+## For Ruflo Building Apps
 
 Default: Server-side ONNX for KB ingestion, client-side ONNX for user queries (hybrid pattern).
 Privacy-critical: Full client-side with RuVector-WASM.
@@ -355,7 +355,7 @@ ef_search (query-time accuracy): Default 40. Higher = more accurate results, slo
 
 m (connections per node): Default 16. Higher = more memory, better recall. For 384-dim vectors, 16-32 is the sweet spot.
 
-## For Claude Flow Building Apps
+## For Ruflo Building Apps
 
 Under 1,000 rows: No index. Sequential scan. Done.
 1K-10K rows: Add index if search is a hot path.
@@ -462,7 +462,7 @@ MISTAKE 3: Not differentiating curated from bulk in search. Curated should ALWAY
 MISTAKE 4: Auto-generating "teaching" entries. AI-written teaching lacks deliberate structure.
 MISTAKE 5: Setting all quality scores to 100. Score inflation makes ranking useless.
 
-## For Claude Flow Building Apps
+## For Ruflo Building Apps
 
 When building a KB for a new app: Start with 20-30 curated entries covering core concepts. Bulk-ingest everything else. Use curated-first search (like the Ask Ruvnet MCP v4.0.0 pattern). Teaching entries should be hand-written or heavily human-edited. Reference entries can be auto-ingested. Decision guides must be hand-written -- the nuance matters.`
   }

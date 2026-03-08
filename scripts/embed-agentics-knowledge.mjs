@@ -89,7 +89,7 @@ Performance Benchmarks:
 - Zero-downtime learning: system continues serving while learning
 
 Integration:
-- Core component of Claude Flow V3 intelligence pipeline
+- Core component of Ruflo V3 intelligence pipeline
 - Powers the hooks system real-time learning (post-edit, post-task hooks trigger SONA updates)
 - Works with RuVector WASM runtime for edge deployment
 
@@ -163,8 +163,8 @@ RuVector uses the mincut algorithm for graph partitioning in distributed deploym
 - Network topology optimization for agent swarms
 - Bioacoustic signal segmentation (Seven Cents project uses mincut to separate animal vocalizations from background noise)
 
-Integration with Claude Flow:
-RuVector is the storage and intelligence layer beneath Claude Flow V3. All agent memory, pattern recognition, and semantic search flows through RuVector.
+Integration with Ruflo:
+RuVector is the storage and intelligence layer beneath Ruflo V3. All agent memory, pattern recognition, and semantic search flows through RuVector.
 
 Source: github.com/ruvnet/ruvector`,
       tags: ['agentics-knowledge','ruvector','distributed-database','gnn','raft-consensus','mincut','onnx-embeddings','cypher'],
@@ -244,7 +244,7 @@ Source: github.com/ruvnet/ruvector`,
   console.log(`\n[5/5] DONE: ${verifyRes.rows[0].total} entries, ${verifyRes.rows[0].embedded} embedded`);
 
   // Quick search test
-  const testResult = await svc.embed('What is Claude Flow V3 architecture?');
+  const testResult = await svc.embed('What is Ruflo V3 architecture?');
   let testEmb = testResult?.embedding || testResult;
   if (testEmb && testEmb[0] && Array.isArray(testEmb[0])) testEmb = testEmb[0];
   const testStr = '[' + Array.from(testEmb).slice(0, 384).join(',') + ']';
@@ -255,7 +255,7 @@ Source: github.com/ruvnet/ruvector`,
      ORDER BY embedding <=> $1::ruvector LIMIT 5`,
     [testStr]
   );
-  console.log('\n=== SEARCH TEST: "What is Claude Flow V3 architecture?" ===');
+  console.log('\n=== SEARCH TEST: "What is Ruflo V3 architecture?" ===');
   for (const r of searchRes.rows) {
     console.log(`  ${(r.similarity * 100).toFixed(1)}% - ${r.title}`);
   }

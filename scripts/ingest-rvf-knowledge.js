@@ -110,7 +110,7 @@ RVF is the core format powering the ruvector ecosystem:
 - **Runtime crate**: rvf-runtime 0.2.0 (crates.io)
 - **npm package**: @ruvector/rvf 0.1.0 (TypeScript SDK)
 
-The format was designed by ruvnet as the foundational primitive for the entire agentic AI toolchain — from claude-flow v3's memory system to the WASM knowledge base applications described in the accompanying architecture documents in this knowledge base.
+The format was designed by ruvnet as the foundational primitive for the entire agentic AI toolchain — from ruflo v3's memory system to the WASM knowledge base applications described in the accompanying architecture documents in this knowledge base.
 
 ## Key Insight for Practitioners
 
@@ -236,11 +236,11 @@ The three-tier progressive HNSW system (covered in depth in the indexing entry) 
 
 This means a 50MB knowledge base feels instant: the user gets answers within milliseconds of opening the page, with accuracy improving silently in the background.
 
-## Integration with Claude-Flow V3
+## Integration with Ruflo V3
 
-The WASM runtime is the foundation for claude-flow v3's browser-side KB applications. When a claude-flow researcher agent builds a knowledge base, it can compile the output as a WASM-deployable .rvf file. The final artefact deploys to a CDN as a single file — no database server, no backend API, no infrastructure to maintain.
+The WASM runtime is the foundation for ruflo v3's browser-side KB applications. When a ruflo researcher agent builds a knowledge base, it can compile the output as a WASM-deployable .rvf file. The final artefact deploys to a CDN as a single file — no database server, no backend API, no infrastructure to maintain.
 
-This pattern is detailed further in the "Claude-Flow V3 + RVF Integration Strategy" entry.`,
+This pattern is detailed further in the "Ruflo V3 + RVF Integration Strategy" entry.`,
   },
 
   // -------------------------------------------------------------------------
@@ -410,7 +410,7 @@ rvf-runtime = "0.2.0"
 
 **@ruvector/rvf-mcp-server** — Model Context Protocol server
 - Provides: 10 MCP tools for AI agent integration
-- Use for: Claude Code, claude-flow, any MCP-compatible agent
+- Use for: Claude Code, ruflo, any MCP-compatible agent
 
 \`\`\`bash
 npm install @ruvector/rvf          # Server-side TypeScript
@@ -422,7 +422,7 @@ npm install @ruvector/rvf-mcp-server  # MCP server for agents
 
 These adapters connect RVF stores to popular AI frameworks without requiring direct rvf-runtime usage:
 
-1. **rvf-adapter-claude-flow** — claude-flow v3 memory backend with WITNESS_SEG audit trails
+1. **rvf-adapter-ruflo** — ruflo v3 memory backend with WITNESS_SEG audit trails
 2. **rvf-adapter-agentdb** — AgentDB vector store replacement
 3. **rvf-adapter-ospipe** — OsPipe streaming integration
 4. **rvf-adapter-agentic-flow** — agentic-flow ONNX embedding pipeline integration (75x faster embeddings)
@@ -955,7 +955,7 @@ An AGI container answers the question: "How do you ship an AI agent the same way
 - \`model_id_hash\`: BLAKE3 hash of the AI model ID string (e.g., "claude-opus-4-6")
 
 **Orchestration**
-- \`orchestrator_config\`: JSON blob containing Claude Code or claude-flow v3 configuration. This is the complete config that would normally live in .claude.json or claude-flow.config.json, embedded in the container.
+- \`orchestrator_config\`: JSON blob containing Claude Code or ruflo v3 configuration. This is the complete config that would normally live in .claude.json or ruflo.config.json, embedded in the container.
 
 **Tool Integration**
 - \`tool_registry\`: MCP adapter registry — list of MCP server definitions (name, command, args, transport). Defines exactly which external tools the agent is authorised to use.
@@ -1043,24 +1043,24 @@ let container = AgiContainerBuilder::new(agent_uuid, build_uuid)
 container.write_to("my-agent.rvf")?;
 \`\`\`
 
-## Why This Matters for claude-flow v3
+## Why This Matters for ruflo v3
 
-When a claude-flow v3 swarm completes a task, the AGI container format allows packaging the result not as code files, but as a self-contained agent that can be launched, verified, and replayed anywhere. The entire agent — its knowledge, its tools, its governance, its eval harness — ships as a single .rvf file. DevOps for AI agents becomes as simple as: \`rvf launch my-agent.rvf\`.`,
+When a ruflo v3 swarm completes a task, the AGI container format allows packaging the result not as code files, but as a self-contained agent that can be launched, verified, and replayed anywhere. The entire agent — its knowledge, its tools, its governance, its eval harness — ships as a single .rvf file. DevOps for AI agents becomes as simple as: \`rvf launch my-agent.rvf\`.`,
   },
 
   // -------------------------------------------------------------------------
-  // Entry 10: Claude-Flow V3 + RVF Integration Strategy
+  // Entry 10: Ruflo V3 + RVF Integration Strategy
   // -------------------------------------------------------------------------
   {
-    file_path: 'github.com/ruvnet/ruvector/crates/rvf/10-claude-flow-integration.md',
-    title: 'Claude-Flow V3 + RVF: Building WASM Knowledge Base Applications',
+    file_path: 'github.com/ruvnet/ruvector/crates/rvf/10-ruflo-integration.md',
+    title: 'Ruflo V3 + RVF: Building WASM Knowledge Base Applications',
     category: 'architecture',
     quality_score: 98,
-    content: `## The Strategic Relationship Between claude-flow V3 and RVF
+    content: `## The Strategic Relationship Between ruflo V3 and RVF
 
 Claude-flow v3 is an orchestration layer — it coordinates agents, manages memory, routes tasks. RVF is a storage and compute substrate — it persists knowledge, executes queries, proves integrity. Together they form a complete agentic application stack that can be deployed as a single file.
 
-The integration is not accidental: one of RVF's six library adapters is rvf-adapter-claude-flow, purpose-built to connect claude-flow v3's memory system to RVF storage with automatic WITNESS_SEG audit trails. Every claude-flow memory operation (store, search, retrieve) is recorded in the RVF file's witness chain.
+The integration is not accidental: one of RVF's six library adapters is rvf-adapter-ruflo, purpose-built to connect ruflo v3's memory system to RVF storage with automatic WITNESS_SEG audit trails. Every ruflo memory operation (store, search, retrieve) is recorded in the RVF file's witness chain.
 
 ## Why RVF Replaces Traditional KB Approaches
 
@@ -1078,15 +1078,15 @@ RVF replaces all four components with a single .rvf file:
 
 ## Building a WASM KB Application: End-to-End Walkthrough
 
-### Phase 1: Knowledge Gathering (claude-flow researcher agent)
+### Phase 1: Knowledge Gathering (ruflo researcher agent)
 
 \`\`\`bash
 # Initialise swarm for KB construction
-npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 6 --strategy specialized
+npx ruflo@latest swarm init --topology hierarchical --max-agents 6 --strategy specialized
 
 # The researcher agent gathers content (this runs as a Task in background)
-# Researcher stores findings using claude-flow memory:
-npx @claude-flow/cli@latest memory store \
+# Researcher stores findings using ruflo memory:
+npx ruflo@latest memory store \
   --key "rvf-architecture" \
   --value "RVF is a universal binary substrate..." \
   --namespace kb-content
@@ -1098,7 +1098,7 @@ npx @claude-flow/cli@latest memory store \
 # Create the .rvf file with appropriate dimensions
 rvf create my-app-kb.rvf --dims 384 --hnsw-m 16 --hnsw-ef 200
 
-# Ingest from claude-flow memory (via the rvf-adapter-claude-flow)
+# Ingest from ruflo memory (via the rvf-adapter-ruflo)
 npx @ruvector/rvf-mcp-server --transport stdio &
 # Then via MCP tool:
 # rvf_ingest({ store: "my-app-kb.rvf", from_memory: "kb-content", namespace: "kb-content" })
@@ -1173,7 +1173,7 @@ Each user's personalisation is stored as a small branch (kilobytes) pointing bac
 
 ## MCP Integration for Agent-Driven KB Management
 
-For claude-flow agents that need to build and manage KBs programmatically:
+For ruflo agents that need to build and manage KBs programmatically:
 
 \`\`\`json
 // Add to project .mcp.json
@@ -1187,7 +1187,7 @@ For claude-flow agents that need to build and manage KBs programmatically:
 }
 \`\`\`
 
-A claude-flow researcher agent can then use MCP tools directly:
+A ruflo researcher agent can then use MCP tools directly:
 - \`rvf_create\` to initialise a new KB for a project
 - \`rvf_ingest\` to add documents as they are discovered
 - \`rvf_query\` to search the KB before writing new content (avoid duplication)
@@ -1203,11 +1203,11 @@ Every operation in this stack is automatically audited:
 
 The audit trail is in the file itself. No separate logging infrastructure. No log rotation. No "logs disappeared." The witness chain is immutable and append-only.
 
-## The Recommended claude-flow V3 + RVF Stack
+## The Recommended ruflo V3 + RVF Stack
 
 | Component | Tool | Role |
 |-----------|------|------|
-| Agent orchestration | claude-flow v3 | Coordinates researcher, coder, deployer agents |
+| Agent orchestration | ruflo v3 | Coordinates researcher, coder, deployer agents |
 | Knowledge gathering | Researcher agent (Task tool) | Content discovery, synthesis |
 | KB construction | rvf-runtime + MCP tools | Vector storage, embedding, indexing |
 | Browser delivery | @ruvector/rvf-wasm | Zero-backend query engine |
@@ -1216,7 +1216,7 @@ The audit trail is in the file itself. No separate logging infrastructure. No lo
 | Personalisation | RVCOW branches | Per-user knowledge branches |
 | Audit | WITNESS_SEG | Automatic, in-file, tamper-evident |
 
-This stack replaces Pinecone + separate backend + separate frontend with a single .rvf file on a CDN, deployed by a claude-flow swarm, queryable from any browser.`,
+This stack replaces Pinecone + separate backend + separate frontend with a single .rvf file on a CDN, deployed by a ruflo swarm, queryable from any browser.`,
   },
 
 ];

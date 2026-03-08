@@ -24,7 +24,7 @@ const EMBED_BATCH_SIZE = 50;
 
 const FILES = {
   'OpenClaw-code-wikki.md': 'openclaw',
-  'claude-flow-code-wikki.md': 'agents',
+  'ruflo-code-wikki.md': 'agents',
   'ruvector-code-wikki.md': 'vector-db',
 };
 

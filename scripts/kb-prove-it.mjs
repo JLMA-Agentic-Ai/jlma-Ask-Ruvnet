@@ -5,7 +5,7 @@
  * Tests 3 layers:
  *   A) Raw PostgreSQL semantic search (the real backend)
  *   B) Ask Ruvnet chat-style question answering (can it teach?)
- *   C) Claude Flow knowledge comparison (what does CF already know vs KB?)
+ *   C) Ruflo knowledge comparison (what does CF already know vs KB?)
  *   D) Cross-domain integration (do old + new entries work together?)
  *   E) Edge cases and adversarial queries
  */
@@ -73,7 +73,7 @@ async function main() {
     { q: 'What recall does the progressive HNSW index achieve?', expectTop: /Progressive.*Index|Performance.*Benchmark/i, tag: 'HNSW recall' },
     { q: 'Can an RVF file boot as a Linux microservice on Firecracker?', expectTop: /Self.Boot|Three.Tier|Cognitive Container/i, tag: 'Self-boot' },
     { q: 'What authority levels does an AGI container support?', expectTop: /AGI.*Container|Agent.*Runtime/i, tag: 'AGI authority' },
-    { q: 'How does claude-flow v3 use RVF for WASM KB apps?', expectTop: /Claude.Flow.*RVF|RVF.*WASM.*Knowledge/i, tag: 'CF+RVF' },
+    { q: 'How does ruflo v3 use RVF for WASM KB apps?', expectTop: /Claude.Flow.*RVF|RVF.*WASM.*Knowledge/i, tag: 'CF+RVF' },
     { q: 'How to prevent corporate data leakage with AI?', expectTop: /Corporate.Safe|Data.Leak|Zero.*Leak/i, tag: 'Data safety' },
     // Cross-domain (old KB + new)
     { q: 'What consensus protocols are used in hive mind swarms?', expectTop: /Hive.*Mind|Consensus/i, tag: 'Hive mind' },
@@ -106,7 +106,7 @@ async function main() {
     { id: 75, mustContain: ['0x01', 'MANIFEST', 'VEC_SEG', '64-byte', 'crash-safe', 'fsync'], label: 'Architecture entry has wire format details' },
     { id: 77, mustContain: ['cluster', '2.6 ms', '28 ns', 'Membership', 'snapshot'], label: 'COW entry has performance numbers' },
     { id: 78, mustContain: ['SHAKE-256', 'Ed25519', 'ML-DSA-65', 'SGX', 'SEV-SNP', 'KernelBinding'], label: 'Security entry has algorithm specifics' },
-    { id: 82, mustContain: ['rvf-adapter-claude-flow', 'WITNESS_SEG', '@ruvector/rvf-wasm', 'MCP server'], label: 'CF+RVF entry has integration specifics' },
+    { id: 82, mustContain: ['rvf-adapter-ruflo', 'WITNESS_SEG', '@ruvector/rvf-wasm', 'MCP server'], label: 'CF+RVF entry has integration specifics' },
   ];
 
   for (const check of depthChecks) {
@@ -119,11 +119,11 @@ async function main() {
   }
 
   // ═══════════════════════════════════════════
-  // LAYER C: Claude Flow baseline comparison
+  // LAYER C: Ruflo baseline comparison
   // ═══════════════════════════════════════════
-  console.log('\n═══ LAYER C: What KB adds that Claude Flow does NOT already know ═══\n');
+  console.log('\n═══ LAYER C: What KB adds that Ruflo does NOT already know ═══\n');
 
-  console.log('  Claude Flow v3 CLAUDE.md knows about:');
+  console.log('  Ruflo v3 CLAUDE.md knows about:');
   console.log('    - CLI commands, swarm topologies, hook system, agent types');
   console.log('    - Generic "RuVector Intelligence System" mention');
   console.log('    - SONA, MoE, HNSW, EWC++ (high-level bullets)');
@@ -142,14 +142,14 @@ async function main() {
     'AGI containers (ADR-036): authority levels, coherence gates, resource budgets',
     'npm packages: @ruvector/rvf, rvf-node, rvf-wasm, rvf-mcp-server',
     '14 Rust crates: rvf-runtime 0.2.0, rvf-types 0.2.0, etc.',
-    '6 library adapters: claude-flow, agentdb, ospipe, agentic-flow, rvlite, sona',
+    '6 library adapters: ruflo, agentdb, ospipe, agentic-flow, rvlite, sona',
     'MCP server: 10 tools for AI agents to manage vector stores',
     'Corporate safety: 3-tier deployment (browser/server/TEE+air-gap)',
     'Lineage: DNA-style 68-byte FileIdentity with cryptographic parent hashing',
   ];
 
   kbOnly.forEach(k => console.log(`    ✦ ${k}`));
-  ok('KB adds 15+ topics Claude Flow CLAUDE.md does NOT contain', kbOnly.length >= 15);
+  ok('KB adds 15+ topics Ruflo CLAUDE.md does NOT contain', kbOnly.length >= 15);
 
   // ═══════════════════════════════════════════
   // LAYER D: Cross-domain integration

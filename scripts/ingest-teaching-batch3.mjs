@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Teaching Batch 3: Glossary (5) + Claude Flow Cookbook (10) + CF Awareness (5) = 20 entries
+ * Teaching Batch 3: Glossary (5) + Ruflo Cookbook (10) + CF Awareness (5) = 20 entries
  */
 import pg from 'pg';
 import crypto from 'crypto';
@@ -187,11 +187,11 @@ THREAT PATTERN: A known attack signature stored in memory. When AIMDS sees a sim
 ZERO-TRUST: Never trust, always verify. Every request is treated as potentially hostile, even from internal agents. The opposite of "trust everything inside the firewall."`
 },
 {
-  path: 'knowledge/teaching/glossary-claude-flow-terms',
-  title: 'Claude Flow Glossary: 25 Terms for Swarm Masters',
+  path: 'knowledge/teaching/glossary-ruflo-terms',
+  title: 'Ruflo Glossary: 25 Terms for Swarm Masters',
   category: 'teaching', quality: 99, knowledge_type: 'reference',
   concepts: ['glossary', 'claude flow', 'terminology', 'swarm', 'reference'],
-  content: `## Claude Flow Terms in Plain English
+  content: `## Ruflo Terms in Plain English
 
 AGENTDB: The database system that stores agent memory, patterns, and learning data. The institutional memory of your AI workforce.
 
@@ -201,7 +201,7 @@ CONSOLIDATE: Merging and optimizing stored patterns to prevent memory bloat. Lik
 
 COORDINATOR: The agent in a hierarchical swarm that assigns tasks and checks results. The manager of the AI team.
 
-DAEMON: A background process that runs Claude Flow services continuously. Start it with: npx @claude-flow/cli@latest daemon start.
+DAEMON: A background process that runs Ruflo services continuously. Start it with: npx ruflo@latest daemon start.
 
 EWC (Elastic Weight Consolidation): A technique that prevents the AI from forgetting old patterns when learning new ones. Like studying for a new exam without forgetting last semester's material.
 
@@ -217,7 +217,7 @@ MEMORY NAMESPACE: A category for organizing stored memories. "patterns" for solu
 
 MOE (Mixture of Experts): A routing system that sends each task to the most qualified specialist. Like a hospital triage nurse directing patients to the right department.
 
-NEURAL PATTERN: A learned behavior pattern stored in Claude Flow's neural system. Over time, the system learns which approaches work for which types of tasks.
+NEURAL PATTERN: A learned behavior pattern stored in Ruflo's neural system. Over time, the system learns which approaches work for which types of tasks.
 
 PRETRAIN: Bootstrap intelligence from a repository by analyzing existing code patterns. Like a new employee reading all the company documentation on their first day.
 
@@ -307,7 +307,7 @@ CI/CD (Continuous Integration / Continuous Deployment): Automated systems that t
 
 CONTAINER (Docker): A lightweight package that bundles your app with all its dependencies. Like a shipping container -- everything the app needs is inside, and it runs the same everywhere.
 
-EVENT-DRIVEN: A system where things happen in response to events (triggers) rather than following a fixed script. Hooks in Claude Flow are event-driven: "when a task completes, store the pattern."
+EVENT-DRIVEN: A system where things happen in response to events (triggers) rather than following a fixed script. Hooks in Ruflo are event-driven: "when a task completes, store the pattern."
 
 INFRASTRUCTURE AS CODE: Defining your servers, databases, and services in configuration files instead of clicking through dashboards. Repeatable, version-controlled, reviewable.
 
@@ -315,7 +315,7 @@ LOAD BALANCER: Distributes work across multiple servers so no single server gets
 
 MESSAGE QUEUE: A system where components communicate by sending messages to a queue. The sender does not wait for the receiver. Like leaving a voicemail instead of waiting for someone to pick up.
 
-MICROSERVICE: A small, independent service that does one thing well. The alternative is a MONOLITH (one big program that does everything). Claude Flow is microservice-oriented.
+MICROSERVICE: A small, independent service that does one thing well. The alternative is a MONOLITH (one big program that does everything). Ruflo is microservice-oriented.
 
 MONOLITH: One big program that handles everything. Simpler to start with, harder to scale. Good for small projects, painful for large ones.
 
@@ -417,7 +417,7 @@ INGREDIENTS: Something worth remembering, a namespace, a key.
 
 ## Storing a Memory
 
-npx @claude-flow/cli@latest memory store --key "pattern-jwt-auth" --value "JWT auth: always check token expiry in middleware, use refresh tokens with 7-day TTL, store tokens in httpOnly cookies" --namespace patterns
+npx ruflo@latest memory store --key "pattern-jwt-auth" --value "JWT auth: always check token expiry in middleware, use refresh tokens with 7-day TTL, store tokens in httpOnly cookies" --namespace patterns
 
 Breaking it down:
 - --key: A unique name for this memory (like a filename)
@@ -426,19 +426,19 @@ Breaking it down:
 
 ## Retrieving a Specific Memory
 
-npx @claude-flow/cli@latest memory retrieve --key "pattern-jwt-auth" --namespace patterns
+npx ruflo@latest memory retrieve --key "pattern-jwt-auth" --namespace patterns
 
 This returns the exact value you stored.
 
 ## Searching by Meaning
 
-npx @claude-flow/cli@latest memory search --query "authentication token security" --namespace patterns
+npx ruflo@latest memory search --query "authentication token security" --namespace patterns
 
 This uses vector search to find memories RELATED to your query, even if the words do not match exactly. You might find "pattern-jwt-auth" even though you searched for "authentication token security."
 
 ## Listing All Memories
 
-npx @claude-flow/cli@latest memory list --namespace patterns
+npx ruflo@latest memory list --namespace patterns
 
 Shows all stored memories in a namespace.
 
@@ -469,13 +469,13 @@ INGREDIENTS: CLAUDE.md file, KB-first rule, MCP server running.
 
 ## The Problem
 
-By default, Claude answers from its training data. But your KB has custom knowledge about RuVector, AIMDS, Claude Flow, and your specific architecture that is NOT in any training data. If Claude does not check the KB first, it gives generic answers instead of your expert-curated knowledge.
+By default, Claude answers from its training data. But your KB has custom knowledge about RuVector, AIMDS, Ruflo, and your specific architecture that is NOT in any training data. If Claude does not check the KB first, it gives generic answers instead of your expert-curated knowledge.
 
 ## The Fix: CLAUDE.md Rule
 
 Add this to your project's CLAUDE.md:
 
-Before answering ANY question about agents, swarms, vectors, embeddings, HNSW, ONNX, MCP, RVF, AIMDS, security, Claude Flow, architecture, knowledge bases, or RuVector:
+Before answering ANY question about agents, swarms, vectors, embeddings, HNSW, ONNX, MCP, RVF, AIMDS, security, Ruflo, architecture, knowledge bases, or RuVector:
 
 STEP 1: Search the KB
 mcp__Ruvnet-KB-first__kb_search({ query: "user's question here", limit: 5 })
@@ -506,25 +506,25 @@ The KB is only useful if Claude actually looks at it. CLAUDE.md is the enforceme
   concepts: ['recipe', 'hooks', 'self-learning', 'patterns', 'cookbook'],
   content: `## The Recipe
 
-INGREDIENTS: Claude Flow hooks, memory store, discipline.
+INGREDIENTS: Ruflo hooks, memory store, discipline.
 
 ## Before Each Task
 
-npx @claude-flow/cli@latest hooks pre-task --description "what you are about to do"
+npx ruflo@latest hooks pre-task --description "what you are about to do"
 
 This searches for relevant patterns from previous tasks. If you solved something similar before, the pattern shows up and you start smarter.
 
 ## After Each Successful Task
 
-npx @claude-flow/cli@latest hooks post-task --task-id "task-name" --success true --store-results true
+npx ruflo@latest hooks post-task --task-id "task-name" --success true --store-results true
 
 Then store the specific pattern:
-npx @claude-flow/cli@latest memory store --key "pattern-name" --value "what worked and why" --namespace patterns
+npx ruflo@latest memory store --key "pattern-name" --value "what worked and why" --namespace patterns
 
 ## After Each Failed Task
 
 Still store it -- failures are more valuable than successes:
-npx @claude-flow/cli@latest memory store --key "antipattern-name" --value "what failed and why -- do NOT repeat this approach" --namespace patterns
+npx ruflo@latest memory store --key "antipattern-name" --value "what failed and why -- do NOT repeat this approach" --namespace patterns
 
 ## The Compound Effect
 
@@ -544,18 +544,18 @@ Self-learning hooks are like a developer journal. After every task, write down: 
   concepts: ['recipe', 'security', 'scan', 'audit', 'cookbook'],
   content: `## The Recipe
 
-INGREDIENTS: Claude Flow CLI, security commands, time to review results.
+INGREDIENTS: Ruflo CLI, security commands, time to review results.
 
 ## Quick Scan (5 minutes)
 
-npx @claude-flow/cli@latest security scan --depth quick
+npx ruflo@latest security scan --depth quick
 
 This checks for: exposed API keys, common vulnerabilities, insecure configurations. Like a quick walk-through of the building checking that doors are locked.
 
 ## Full Audit (30 minutes)
 
-npx @claude-flow/cli@latest security scan --depth full
-npx @claude-flow/cli@latest security audit
+npx ruflo@latest security scan --depth full
+npx ruflo@latest security audit
 
 This checks for: everything in quick scan PLUS dependency vulnerabilities, code injection risks, data exposure paths, authentication weaknesses. Like a professional security inspection.
 
@@ -598,7 +598,7 @@ Do NOT use a swarm for: simple bugs with obvious fixes, single-file issues, or t
 ## The Swarm
 
 STEP 1: Initialize with anti-drift config:
-npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 6 --strategy specialized
+npx ruflo@latest swarm init --topology hierarchical --max-agents 6 --strategy specialized
 
 STEP 2: Spawn the bug-fixing team (all in ONE message):
 
@@ -666,19 +666,19 @@ INGREDIENTS: A running swarm, monitoring commands, patience.
 
 ## Check Swarm Status
 
-npx @claude-flow/cli@latest swarm status
+npx ruflo@latest swarm status
 
 Shows: active agents, their roles, current status (working/idle/done), and how long they have been running.
 
 ## Check Individual Agent
 
-npx @claude-flow/cli@latest agent status --name my-coder
+npx ruflo@latest agent status --name my-coder
 
 Shows: what the agent is currently doing, files it has touched, time elapsed.
 
 ## Check Memory Activity
 
-npx @claude-flow/cli@latest memory list --namespace tasks
+npx ruflo@latest memory list --namespace tasks
 
 Shows: what patterns and results have been stored by agents.
 
@@ -739,13 +739,13 @@ The sweet spot for most KB searches: accept results with distance < 0.5, flag re
 
 // === CLAUDE FLOW AWARENESS (5 entries) ===
 {
-  path: 'knowledge/teaching/cf-why-claude-flow-exists',
-  title: 'Why Claude Flow Exists: The Problem It Solves',
+  path: 'knowledge/teaching/cf-why-ruflo-exists',
+  title: 'Why Ruflo Exists: The Problem It Solves',
   category: 'teaching', quality: 99, knowledge_type: 'concept',
   concepts: ['claude flow', 'orchestration', 'agents', 'coordination', 'history'],
-  content: `## The Problem Before Claude Flow
+  content: `## The Problem Before Ruflo
 
-Without Claude Flow, every AI interaction is:
+Without Ruflo, every AI interaction is:
 - ONE agent at a time (Claude Code runs one conversation)
 - NO memory between sessions (start from scratch every time)
 - NO coordination between agents (if you spawn multiple, they cannot share information)
@@ -754,7 +754,7 @@ Without Claude Flow, every AI interaction is:
 
 This is like running a company where every employee works alone, has amnesia every morning, cannot talk to coworkers, never learns from mistakes, and quits if they hit any obstacle.
 
-## What Claude Flow Adds
+## What Ruflo Adds
 
 MULTI-AGENT ORCHESTRATION: Run 5-15 agents simultaneously, each with a specialized role. The coordinator ensures they work toward the same goal.
 
@@ -768,20 +768,20 @@ FAULT TOLERANCE: If an agent fails, the swarm continues. The coordinator reassig
 
 ## The Operating System Analogy
 
-Before Claude Flow, using AI was like running one program at a time on an old computer. Claude Flow is like installing a modern operating system: now you can run multiple programs, they share memory, they communicate, and the system manages resources automatically.
+Before Ruflo, using AI was like running one program at a time on an old computer. Ruflo is like installing a modern operating system: now you can run multiple programs, they share memory, they communicate, and the system manages resources automatically.
 
 ## For Stuart Specifically
 
-Your goal is to build a personal AI tutor. Without Claude Flow, every session starts from zero and you re-explain everything. With Claude Flow: the KB provides the knowledge, hooks provide the learning, memory provides the context, and swarms provide the workforce. The system gets better every time you use it.`
+Your goal is to build a personal AI tutor. Without Ruflo, every session starts from zero and you re-explain everything. With Ruflo: the KB provides the knowledge, hooks provide the learning, memory provides the context, and swarms provide the workforce. The system gets better every time you use it.`
 },
 {
   path: 'knowledge/teaching/cf-architecture-overview',
-  title: 'Claude Flow Architecture: The 10,000-Foot View',
+  title: 'Ruflo Architecture: The 10,000-Foot View',
   category: 'teaching', quality: 99, knowledge_type: 'concept',
   concepts: ['claude flow', 'architecture', 'layers', 'overview', 'system design'],
   content: `## The Five Layers
 
-Think of Claude Flow as a five-story building. Each floor serves a different purpose, and they work together.
+Think of Ruflo as a five-story building. Each floor serves a different purpose, and they work together.
 
 ### Floor 1: CLI Commands (The Lobby)
 What you interact with. Commands like swarm init, agent spawn, memory search. This is the front door of the building -- you tell it what you want, and it routes your request to the right floor.
@@ -808,7 +808,7 @@ No single floor is the "important" one. The power is in how they connect. An age
 },
 {
   path: 'knowledge/teaching/cf-memory-system-deep',
-  title: 'Claude Flow Memory: Three Levels of Remembering',
+  title: 'Ruflo Memory: Three Levels of Remembering',
   category: 'teaching', quality: 99, knowledge_type: 'concept',
   concepts: ['memory', 'persistence', 'context window', 'agentdb', 'postgresql', 'claude flow'],
   content: `## Level 1: Context Window (Short-Term Memory)
@@ -820,7 +820,7 @@ Analogy: The stuff you can hold in your head while working on a problem. Useful 
 
 When context fills up, old messages get compressed (summarized to save space) or dropped. This is why long conversations sometimes "forget" things from the beginning.
 
-## Level 2: Claude Flow Memory (Medium-Term Memory)
+## Level 2: Ruflo Memory (Medium-Term Memory)
 
 What: Key-value pairs stored in AgentDB with vector search capability.
 Duration: As long as you want -- survives across conversations.
@@ -847,13 +847,13 @@ Example: Stuart asks "What is HNSW?"
 
 1. Claude checks context window -- was HNSW discussed earlier in this conversation?
 2. Claude searches KB via MCP -- finds the teaching entry "What Is HNSW? The Highway System..."
-3. Claude checks Claude Flow memory -- has this question been asked before? Was there a pattern stored?
+3. Claude checks Ruflo memory -- has this question been asked before? Was there a pattern stored?
 
 The answer combines: fresh context (Level 1) + curated knowledge (Level 3) + learned patterns (Level 2). This is why the system gets better over time -- each level adds a layer of intelligence.`
 },
 {
   path: 'knowledge/teaching/cf-hooks-nervous-system',
-  title: 'Claude Flow Hooks: The Nervous System of Self-Learning',
+  title: 'Ruflo Hooks: The Nervous System of Self-Learning',
   category: 'teaching', quality: 99, knowledge_type: 'concept',
   concepts: ['hooks', 'self-learning', 'nervous system', 'triggers', 'claude flow'],
   content: `## Hooks Are Triggers
@@ -891,7 +891,7 @@ Your nervous system works in the same four stages:
 3. ACT (motor hooks): Pull your hand away
 4. LEARN (learning hooks): Remember not to touch that again
 
-Claude Flow's hooks do exactly this for AI tasks. Sense the context, route to the right handler, execute the action, learn from the result.
+Ruflo's hooks do exactly this for AI tasks. Sense the context, route to the right handler, execute the action, learn from the result.
 
 ## Why This Matters for Stuart
 

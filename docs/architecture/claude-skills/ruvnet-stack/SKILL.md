@@ -1,13 +1,13 @@
 ---
 name: ruvnet-stack
 version: 2.1.0
-description: Install and configure the complete RuvNet AI ecosystem including claude-flow, agentic-flow, ruvector, and ruvector-postgres. Use when user wants to set up RuvNet, install the AI stack, or initialize a new project with agents.
+description: Install and configure the complete RuvNet AI ecosystem including ruflo, agentic-flow, ruvector, and ruvector-postgres. Use when user wants to set up RuvNet, install the AI stack, or initialize a new project with agents.
 triggers:
   - install ruvnet
   - ruvnet stack
   - setup ruvnet
   - ruvnet ecosystem
-  - install claude-flow
+  - install ruflo
   - install agentic-flow
   - setup agents
   - agent orchestration
@@ -29,7 +29,7 @@ Install and verify the complete RuvNet ecosystem for this project.
 3. **MANDATORY: Starts ruvector-postgres** Docker container for knowledge bases
 4. **Creates isolated schema** for this project (no data leakage)
 5. **Dynamically checks** @alpha vs @latest for each package
-6. Installs **claude-flow** - Enterprise orchestration with Hive Mind
+6. Installs **ruflo** - Enterprise orchestration with Hive Mind
 7. Installs **agentic-flow** - 150+ agents, 213 MCP tools
 8. Installs **@ruvector/agentic-synth** - Synthetic data generation
 9. Installs **@ruvector/ruvllm** - LLM orchestration
@@ -217,7 +217,7 @@ smart_install() {
 }
 
 # Install each package with smart version detection
-smart_install "claude-flow" "Enterprise orchestration + Hive Mind"
+smart_install "ruflo" "Enterprise orchestration + Hive Mind"
 smart_install "agentic-flow" "150+ agents, 213 MCP tools"
 
 # FIX: agentic-flow@alpha requires agent-booster as a peer dependency
@@ -309,12 +309,12 @@ else
   exit 1
 fi
 
-# Initialize claude-flow (agents, commands, skills, hive-mind)
+# Initialize ruflo (agents, commands, skills, hive-mind)
 echo ""
 echo "╔═══════════════════════════════════════════════════════════════╗"
-echo "║           INITIALIZING CLAUDE-FLOW@ALPHA                      ║"
+echo "║           INITIALIZING RUFLO@ALPHA                      ║"
 echo "╚═══════════════════════════════════════════════════════════════╝"
-npx claude-flow@alpha init --force
+npx ruflo@alpha init --force
 
 # Copy RuvNet documentation to project
 echo ""
@@ -400,9 +400,9 @@ echo "║           STORING KNOWLEDGE IN LOCAL MEMORY                   ║"
 echo "╚═══════════════════════════════════════════════════════════════╝"
 echo ""
 
-npx claude-flow@alpha memory store "ruvnet/ecosystem" "RuvNet ecosystem initialized with: ruvector (vector DB), @ruvector/ruvllm (self-learning LLM), agentic-flow (150+ agents), claude-flow (enterprise orchestration). Documentation at docs/RUVNET_ECOSYSTEM_COMPLETE.md" 2>/dev/null || true
-npx claude-flow@alpha memory store "ruvnet/deployment" "Deployment options: Railway (recommended, full native module support), Docker (enterprise/self-hosted). Data stored in .swarm/ and .ruvector/ directories." 2>/dev/null || true
-npx claude-flow@alpha memory store "ruvnet/local-llm" "For private/air-gapped deployment: Use Ollama + Qwen (qwen2.5:7b for workstations, qwen2.5:14b for servers). Also supports ONNX local inference with Phi-4." 2>/dev/null || true
+npx ruflo@alpha memory store "ruvnet/ecosystem" "RuvNet ecosystem initialized with: ruvector (vector DB), @ruvector/ruvllm (self-learning LLM), agentic-flow (150+ agents), ruflo (enterprise orchestration). Documentation at docs/RUVNET_ECOSYSTEM_COMPLETE.md" 2>/dev/null || true
+npx ruflo@alpha memory store "ruvnet/deployment" "Deployment options: Railway (recommended, full native module support), Docker (enterprise/self-hosted). Data stored in .swarm/ and .ruvector/ directories." 2>/dev/null || true
+npx ruflo@alpha memory store "ruvnet/local-llm" "For private/air-gapped deployment: Use Ollama + Qwen (qwen2.5:7b for workstations, qwen2.5:14b for servers). Also supports ONNX local inference with Phi-4." 2>/dev/null || true
 
 echo "✅ Stored RuvNet knowledge in .swarm/memory.db"
 
@@ -424,7 +424,7 @@ try {
 } catch (e) {}
 
 const packages = [
-  { name: 'claude-flow', pkg: 'claude-flow', desc: 'Enterprise orchestration + Hive Mind (ALPHA)' },
+  { name: 'ruflo', pkg: 'ruflo', desc: 'Enterprise orchestration + Hive Mind (ALPHA)' },
   { name: 'agentic-flow', pkg: 'agentic-flow', desc: '150+ agents, 213 MCP tools (ALPHA)' },
   { name: '@ruvector/agentic-synth', pkg: '@ruvector/agentic-synth', desc: 'Synthetic data generation for AI/ML' },
   { name: '@ruvector/ruvllm', pkg: '@ruvector/ruvllm', desc: 'LLM orchestration and routing' },
@@ -474,8 +474,8 @@ if (allGood) {
   console.log('╚═══════════════════════════════════════════════════════════════╝');
   console.log('');
   console.log('🚀 Ready to use! Try these commands:');
-  console.log('   • npx claude-flow@alpha swarm \"your objective\" --claude');
-  console.log('   • npx claude-flow@alpha hive-mind spawn \"command\" --claude');
+  console.log('   • npx ruflo@alpha swarm \"your objective\" --claude');
+  console.log('   • npx ruflo@alpha hive-mind spawn \"command\" --claude');
   console.log('   • npx agentic-flow@alpha --help');
   console.log('');
 } else {
@@ -534,8 +534,8 @@ const { SyntheticGenerator } = require('@ruvector/agentic-synth');
 const { ModelRouter } = require('agentic-flow/router');
 
 // Enterprise features (CLI - alpha)
-// npx claude-flow@alpha swarm "your objective" --claude
-// npx claude-flow@alpha hive-mind spawn "command" --claude
+// npx ruflo@alpha swarm "your objective" --claude
+// npx ruflo@alpha hive-mind spawn "command" --claude
 // npx agentic-flow@alpha --help
 
 // Docker: ruvector-postgres (persistent vector storage)
@@ -547,7 +547,7 @@ const { ModelRouter } = require('agentic-flow/router');
 
 | Package | Version Selection | Purpose |
 |---------|-------------------|---------|
-| `claude-flow` | **Dynamic** (auto-selects @alpha or @latest) | Enterprise orchestration, Hive Mind, swarm management |
+| `ruflo` | **Dynamic** (auto-selects @alpha or @latest) | Enterprise orchestration, Hive Mind, swarm management |
 | `agentic-flow` | **Dynamic** (auto-selects @alpha or @latest) | 150+ agents, 213 MCP tools, model routing |
 | `@ruvector/agentic-synth` | **Dynamic** (auto-selects @alpha or @latest) | Synthetic data generation for AI/ML training |
 | `@ruvector/ruvllm` | **Dynamic** (auto-selects @alpha or @latest) | LLM orchestration and routing |

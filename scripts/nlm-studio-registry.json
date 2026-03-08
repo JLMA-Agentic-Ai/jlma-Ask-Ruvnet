@@ -1,0 +1,172 @@
+{
+  "notebookId": "50a4a2ef-a743-4fc7-81e3-774b95c667c3",
+  "nlmBin": "/Users/stuartkerr/.openclaw/gmail/nlm-venv/bin/nlm",
+  "assetsDir": "src/ui/public/assets/docs",
+  "stateFile": "data/.nlm-studio-state.json",
+  "auditLog": "logs/nlm-studio-audit.jsonl",
+  "downloadRetries": 3,
+  "downloadRetryDelayMs": 60000,
+  "pollIntervalMs": 30000,
+  "pollTimeoutMs": 1200000,
+  "studios": [
+    {
+      "id": "whats-new",
+      "title": "What's New (March 2026)",
+      "filename": "Whats_New_RuvNet_Stack_March2026.mp4",
+      "artifactType": "audio",
+      "audioFormat": "deep_dive",
+      "audioLength": "default",
+      "icon": "🔊",
+      "appType": "video",
+      "enabled": true,
+      "sourceIds": [
+        "061dcc25-3123-436a-bf2d-0735fd2836da",
+        "84a7b14a-2a52-4381-bebe-6d0f5559a110",
+        "e2ebebfc-abd0-489f-ae35-d5df101c34bc"
+      ],
+      "focusPrompt": "STRICT FOCUS: Only cover 3 specific updates that shipped in the last 90 days. Do NOT try to cover the whole stack.\n\nUpdate 1: Ruflo v3.5 — RVF native storage format. This is a custom binary vector format that replaces JSON. It's 79% smaller (152MB down to 32MB), loads in 200ms instead of 3 seconds, and enables browser-side semantic search via WASM. No other agent framework has this. LangChain, CrewAI, AutoGen — they all dump JSON and pray. Ruflo has a compiled binary format purpose-built for agent memory.\n\nUpdate 2: AgentDB v3 with 9 reinforcement learning algorithms built in. Not bolted on — built into the vector database itself. Agents learn from their own execution history. Q-Learning, SARSA, Actor-Critic, Decision Transformer — running directly where the data lives. Zero other agent framework does this.\n\nUpdate 3: The coflow package — portable multi-agent workflows that run anywhere. Package a swarm of 15 agents into a single deployable unit. Like Docker for AI agent teams.\n\nFor each update: what it is, why it matters, what you can build with it that you couldn't before. 30% of the conversation should be competitive contrast — what are LangChain/CrewAI/AutoGen users stuck doing instead?",
+      "desc": "Latest updates across Ruflo, RuVector, RuView, Dossier"
+    },
+    {
+      "id": "architecture",
+      "title": "The Architecture That Changes Everything",
+      "filename": "Architecture_That_Changes_Everything.mp4",
+      "artifactType": "audio",
+      "audioFormat": "deep_dive",
+      "audioLength": "long",
+      "icon": "🔊",
+      "appType": "video",
+      "enabled": true,
+      "sourceIds": [
+        "061dcc25-3123-436a-bf2d-0735fd2836da",
+        "84a7b14a-2a52-4381-bebe-6d0f5559a110",
+        "7a7a9a87-e9f6-4343-9c4b-ce231a25e117",
+        "e2752639-7378-445c-b963-74ab37f7e77c"
+      ],
+      "focusPrompt": "THESIS: This architecture is not an incremental improvement — it's a generational leap. Build the argument in 3 acts.\n\nACT 1 — THE PROBLEM EVERYONE IGNORES: Today's AI tools (Cursor, Copilot, ChatGPT, LangChain) are stateless. Every conversation starts from zero. Every agent forgets everything. Context windows are a band-aid. RAG is duct tape. The industry is building on quicksand and calling it a foundation. Name these competitors explicitly.\n\nACT 2 — THE ARCHITECTURE THAT FIXES IT: Ruflo's three-layer stack solves this permanently. Layer 1: 60 specialized agents coordinating via hierarchical mesh topology — not one chatbot, a coordinated team. Layer 2: RuVector with HNSW indexing that's 150x-12,500x faster than FAISS/Pinecone/Weaviate — and runs 100% local, your data never leaves. Layer 3: pi.ruv.io Shared AI Brain — agents build collective intelligence across a mesh network. One agent learns, all agents benefit. This is the TCP/IP moment for AI infrastructure.\n\nACT 3 — WHAT THIS MEANS FOR YOU: Concrete examples. A task that takes 5 engineers a month takes one person an afternoon. Edge computing on $5 ESP32 chips that's 80-95% cheaper than cloud. Self-learning systems that get smarter autonomously. Data sovereignty that lets enterprises actually adopt AI without terrifying their security team.\n\nThis should make a technical listener stop what they're doing and go read the docs.",
+      "desc": "Why this is 2 std devs beyond state-of-art"
+    },
+    {
+      "id": "how-ruflo-works",
+      "title": "How Ruflo Actually Works",
+      "filename": "How_Ruflo_Actually_Works.mp4",
+      "artifactType": "video",
+      "videoFormat": "explainer",
+      "visualStyle": "whiteboard",
+      "icon": "🎬",
+      "appType": "video",
+      "enabled": true,
+      "sourceIds": [
+        "061dcc25-3123-436a-bf2d-0735fd2836da",
+        "84a7b14a-2a52-4381-bebe-6d0f5559a110",
+        "88ff62f9-2c37-4889-97ec-8efe0f08ea87"
+      ],
+      "focusPrompt": "ARCHITECTURE DEEP-DIVE: How Ruflo actually works under the hood. Whiteboard-style diagrams showing data flow.\n\nDIAGRAM 1 — The Three Layers: Draw the microkernel core at center. Around it: DDD domain modules (Agent, Memory, Swarm, Security, MCP). Outside: the MCP protocol layer connecting to 96 external tools. Show how a request flows from user → CLI → microkernel → domain → agent swarm → tools → result.\n\nDIAGRAM 2 — Swarm Coordination: Show hierarchical mesh topology. A coordinator agent at top. Beneath it: specialist agents (researcher, coder, tester, reviewer, deployer). Arrows showing message passing, task delegation, result aggregation. Compare to LangChain's linear chain (A→B→C) vs Ruflo's mesh (any agent can talk to any agent, coordinator manages priority).\n\nDIAGRAM 3 — Memory Architecture: AgentDB with HNSW vector indexing. Show how an agent stores an experience → it gets embedded → indexed → future agents retrieve it in 0.1ms. Show the 9 RL algorithms that let agents learn from outcomes. This is what makes it SELF-IMPROVING.\n\nDIAGRAM 4 — The RVF Format: Show JSON (bloated, slow, 152MB) being compiled into RVF binary (compact, fast, 32MB). Show it loading in a browser via WASM for sub-second semantic search on 100K+ entries. No API calls needed. Nothing leaves the browser.\n\nFor each diagram: what it is, why it matters, what breaks without it. This should be THE definitive 'how Ruflo works' reference.",
+      "desc": "Deep architecture explainer — agents, MCP, AgentDB"
+    },
+    {
+      "id": "impossible-apps",
+      "title": "Impossible Apps",
+      "filename": "Impossible_Apps_RuvNet.mp4",
+      "artifactType": "video",
+      "videoFormat": "explainer",
+      "visualStyle": "classic",
+      "icon": "🎬",
+      "appType": "video",
+      "enabled": true,
+      "sourceIds": [
+        "84703c3f-1446-4860-b033-4c94fdf9b017",
+        "0cf75346-552c-4505-afb4-f3e77c91276b",
+        "396c61df-0553-4ca1-9ca8-237f33e2708d",
+        "061dcc25-3123-436a-bf2d-0735fd2836da",
+        "7a7a9a87-e9f6-4343-9c4b-ce231a25e117"
+      ],
+      "focusPrompt": "IMPOSSIBLE APPS: 5 applications that are literally impossible to build without the RuvNet stack. Not 'hard' — IMPOSSIBLE with any other technology available today.\n\nAPP 1 — THROUGH-WALL CARDIAC MONITORING ($5/room): RuView detects heartbeat arrhythmias through walls using commodity WiFi. No wearables. No cameras. Cost: $5 ESP32 per room. Compare: Apple Watch ($400/person), clinical monitors ($2,000+).\n\nAPP 2 — SELF-IMPROVING CODEBASE AGENT: Deploy a Ruflo swarm on your repo. It learns from your codebase over time via AgentDB's reinforcement learning. After a month, it knows your coding patterns. IMPOSSIBLE without persistent vector memory + RL algorithms.\n\nAPP 3 — COLLECTIVE AI BRAIN (pi.ruv.io): Deploy AI agents on 50 Raspberry Pis. Each learns locally. Every night, they federate-learn from each other. 80-95% cheaper than cloud AI. IMPOSSIBLE without federated edge intelligence.\n\nAPP 4 — AUTONOMOUS SELF-HEALING INFRASTRUCTURE (SAFLA): Production systems that monitor, diagnose, and fix themselves. 3 AM outage? Already fixed before your pager fires. IMPOSSIBLE without self-aware feedback loops + multi-agent coordination.\n\nAPP 5 — PRIVACY-PRESERVING SMART BUILDING: An entire building that knows who's in every room without a single camera. Gesture control through walls. Fall detection in bathrooms. All from $5 WiFi chips. IMPOSSIBLE without RuView + edge AI.\n\nEach app: what it does, why it's impossible with current tech, what RuvNet component makes it possible, the cost comparison that makes executives' jaws drop.",
+      "desc": "Applications only buildable with the RuvNet stack"
+    },
+    {
+      "id": "from-zero",
+      "title": "From Zero to Production",
+      "filename": "From_Zero_to_Production_Getting_Started.mp4",
+      "artifactType": "video",
+      "videoFormat": "explainer",
+      "visualStyle": "whiteboard",
+      "icon": "🎬",
+      "appType": "video",
+      "enabled": true,
+      "sourceIds": null,
+      "focusPrompt": "GETTING STARTED TUTORIAL: How to try the RuvNet stack today. Step 1: Install via npx ruflo@latest, run your first 5-agent swarm. Step 2: Use Dossier to plan a feature with product maps and context cards, dispatch agents. Step 3: Set up RuVector for persistent agent memory — agents remember everything across sessions. Step 4: Three starter projects to build next. Tone: smart colleague screen-sharing. No marketing.",
+      "desc": "Hands-on getting started tutorial"
+    },
+    {
+      "id": "ruview",
+      "title": "RuView: WiFi Sensing",
+      "filename": "RuView_WiFi_Sensing.mp4",
+      "artifactType": "video",
+      "videoFormat": "explainer",
+      "visualStyle": "classic",
+      "icon": "🎬",
+      "appType": "video",
+      "enabled": true,
+      "sourceIds": [
+        "84703c3f-1446-4860-b033-4c94fdf9b017",
+        "98a613af-5ae0-432a-807a-9497d00857ed",
+        "99ad2a64-7298-4fa0-92be-0379d7ab804c",
+        "45027a3e-a74e-4e1d-a0b3-b2f3f1195d3a"
+      ],
+      "focusPrompt": "RuView: WiFi-based human sensing through walls with $5 hardware. Your WiFi router can track heartbeats, detect falls, monitor breathing — through walls, in darkness, no cameras. 28,000 GitHub stars. ESP32: $5, Raspberry Pi: $35 for 30 FPS. Compare: LiDAR $2,000+. Applications: elderly fall detection, cardiac monitoring at $5/room, physical therapy without wearables, gesture control through walls. The only non-contact, privacy-preserving, through-wall sensing at commodity prices.",
+      "desc": "WiFi pose estimation through walls — science fiction made real"
+    },
+    {
+      "id": "why-switch",
+      "title": "Why Dev Teams Should Switch",
+      "filename": "Why_Dev_Teams_Should_Switch.mp4",
+      "artifactType": "video",
+      "videoFormat": "explainer",
+      "visualStyle": "classic",
+      "icon": "🎬",
+      "appType": "video",
+      "enabled": true,
+      "sourceIds": [
+        "061dcc25-3123-436a-bf2d-0735fd2836da",
+        "84a7b14a-2a52-4381-bebe-6d0f5559a110",
+        "7a7a9a87-e9f6-4343-9c4b-ce231a25e117"
+      ],
+      "focusPrompt": "HEAD-TO-HEAD: Why development teams should switch from Cursor, Copilot, and LangChain to the RuvNet stack. Round 1: Single agent autocomplete vs 60 coordinated specialist agents. Round 2: Stateless amnesia vs persistent self-learning memory with 9 RL algorithms. Round 3: Cloud lock-in vs 100% local data sovereignty. Round 4: Fragile chains vs MCP protocol with 96 extensible tools. Verdict: Cursor/Copilot are calculators. Ruflo is an operating system for AI development.",
+      "desc": "Generations beyond Cursor, Copilot, and Devin"
+    },
+    {
+      "id": "business-case",
+      "title": "Business Case",
+      "filename": "Business_Case_Why_Your_Company_Needs_This.pdf",
+      "artifactType": "slide_deck",
+      "slideFormat": "detailed_deck",
+      "icon": "📊",
+      "appType": "pdf",
+      "enabled": true,
+      "sourceIds": [
+        "061dcc25-3123-436a-bf2d-0735fd2836da",
+        "84a7b14a-2a52-4381-bebe-6d0f5559a110",
+        "7a7a9a87-e9f6-4343-9c4b-ce231a25e117",
+        "0cf75346-552c-4505-afb4-f3e77c91276b"
+      ],
+      "focusPrompt": "C-LEVEL BUSINESS CASE for the RuvNet Stack. Cover: the problem (87% AI projects fail, stateless agents, no data sovereignty), the solution (Ruflo + RuVector + RuView), competitive advantage vs LangChain/CrewAI/AutoGen/Cursor, ROI (5-10x productivity, 80-95% cost reduction), data sovereignty, deployment options, and call to action. Every claim backed by a number. No typos.",
+      "desc": "C-level deck: why your company needs this now"
+    },
+    {
+      "id": "ecosystem-map",
+      "title": "RuvNet Ecosystem Map",
+      "filename": "RuvNet_Ecosystem_Map.png",
+      "artifactType": "infographic",
+      "orientation": "landscape",
+      "detailLevel": "detailed",
+      "icon": "🗺️",
+      "appType": "image",
+      "enabled": true,
+      "sourceIds": [],
+      "focusPrompt": "ECOSYSTEM MAP: Visual map of the complete RuvNet technology stack. Center: Ruflo (Agent Orchestration Platform). Connected outward to 5 major components: (1) RuVector — high-performance vector database in Rust, HNSW indexing 150x-12,500x faster, (2) AgentDB — persistent agent memory with 9 reinforcement learning algorithms, (3) RuView — WiFi-based human sensing through walls using commodity hardware, (4) Dossier — visual planning and context control for AI coding, (5) pi.ruv.io — federated shared AI brain for collective intelligence. Show how they connect: Ruflo orchestrates agents → agents use AgentDB for memory → AgentDB stores vectors in RuVector → RuView provides sensing data → Dossier plans workflows → pi.ruv.io federates learning across nodes. Include key stats: 60 agent types, 96 MCP tools, 290+ SQL functions, 80+ Rust crates.",
+      "desc": "Complete visual map of the entire ecosystem"
+    }
+  ],
+  "staticAssets": []
+}

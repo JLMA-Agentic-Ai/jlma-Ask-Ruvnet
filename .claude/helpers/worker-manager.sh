@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Flow V3 - Unified Worker Manager
+# Ruflo V3 - Unified Worker Manager
 # Orchestrates all background workers with proper scheduling
 
 set -euo pipefail
@@ -65,7 +65,7 @@ run_daemon() {
 
 status_all() {
   echo "╔══════════════════════════════════════════════════════════════╗"
-  echo "║           Claude Flow V3 - Worker Status                      ║"
+  echo "║           Ruflo V3 - Worker Status                      ║"
   echo "╠══════════════════════════════════════════════════════════════╣"
 
   for worker_def in "${WORKERS[@]}"; do
@@ -140,7 +140,7 @@ case "${1:-help}" in
     ;;
   "help"|*)
     cat << EOF
-Claude Flow V3 - Worker Manager
+Ruflo V3 - Worker Manager
 
 Usage: $0 <command> [options]
 

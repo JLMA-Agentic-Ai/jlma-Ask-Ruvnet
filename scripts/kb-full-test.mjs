@@ -205,7 +205,7 @@ async function main() {
     { query: 'What segment types does an RVF file contain?', expectId: 75, label: 'Segment types' },
     { query: 'How to install RVF npm packages for Node.js', expectId: 76, label: 'SDK/npm packages' },
     { query: 'What are the performance benchmarks for RVF?', expectId: 79, label: 'Performance data' },
-    { query: 'How does claude-flow v3 integrate with RVF for WASM apps?', expectId: 82, label: 'CF+RVF integration' },
+    { query: 'How does ruflo v3 integrate with RVF for WASM apps?', expectId: 82, label: 'CF+RVF integration' },
   ];
 
   for (const t of depthTests) {
@@ -267,7 +267,7 @@ async function main() {
     { pattern: '%Progressive%Performance%', label: 'Progressive Indexing' },
     { pattern: '%Self-Boot%Three-Tier%', label: 'Self-Booting Containers' },
     { pattern: '%AGI%Agent Runtime%', label: 'AGI Containers' },
-    { pattern: '%Claude-Flow%WASM%Knowledge%', label: 'CF+RVF Integration' },
+    { pattern: '%Ruflo%WASM%Knowledge%', label: 'CF+RVF Integration' },
     { pattern: '%Corporate-Safe%Zero Data Leak%', label: 'Corporate Safety' },
   ];
 

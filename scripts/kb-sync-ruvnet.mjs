@@ -18,7 +18,7 @@
  *   node scripts/kb-sync-ruvnet.mjs                  # incremental (default)
  *   node scripts/kb-sync-ruvnet.mjs --force          # re-check all, ingest new only
  *   node scripts/kb-sync-ruvnet.mjs --dry-run        # detect but don't write to DB
- *   node scripts/kb-sync-ruvnet.mjs --target ruflo          # single repo only (use claude-flow for legacy)
+ *   node scripts/kb-sync-ruvnet.mjs --target ruflo          # single repo only (use ruflo for legacy)
  *   node scripts/kb-sync-ruvnet.mjs --verbose        # extra logging
  */
 

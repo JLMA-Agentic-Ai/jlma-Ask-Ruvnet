@@ -12,7 +12,7 @@ console.log('Stats:', store.getStats());
 
 // Test search
 console.log('\n--- Search Test ---');
-const results = await store.search('What is Claude Flow V3?', 3);
+const results = await store.search('What is Ruflo V3?', 3);
 console.log('Results:', results.length);
 for (const r of results) {
   console.log(`  ${r.id} | score: ${r.score?.toFixed(4)} | title: ${(r.title || '').substring(0, 60)}`);

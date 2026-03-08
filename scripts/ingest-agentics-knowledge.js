@@ -41,8 +41,8 @@ function dollarEsc(s) {
 const knowledgeEntries = [
   {
     category: 'agentics-architecture',
-    title: 'Claude Flow V3: Complete Architecture Overview',
-    content: `Claude Flow V3 is an agentic AI orchestration framework with 500K+ downloads and 12K+ GitHub stars (as of Jan 2026).
+    title: 'Ruflo V3: Complete Architecture Overview',
+    content: `Ruflo V3 is an agentic AI orchestration framework with 500K+ downloads and 12K+ GitHub stars (as of Jan 2026).
 
 ## Core Architecture
 - **Root Vector** compiled to WASM sits at the core — an intelligent vector database replacing PGVector with attention mechanisms
@@ -66,13 +66,13 @@ const knowledgeEntries = [
 - Progressive discovery pattern for skill loading
 
 ## vs Competitors
-Claude Flow V3 differs from Crew AI, LangGraph, and Autogen by including: learning capabilities, pattern recognition, expert routing, attention mechanisms, QLoRA fine-tuning, vector memory, and true swarm coordination.
+Ruflo V3 differs from Crew AI, LangGraph, and Autogen by including: learning capabilities, pattern recognition, expert routing, attention mechanisms, QLoRA fine-tuning, vector memory, and true swarm coordination.
 
 ## Visualization
 Uses hyperbolic vector spaces for visualization. Prime number quantization with 7 as optimal. Time crystal patterns for temporal data.
 
-Sources: Claude-flow v3 Release (1_xlre6ukc), Claude Flow V3 Building Intelligent Agents (1_392oe5oa), CloudFlow V3 (1_oowknql6), Building Agentic Systems Network Topologies (1_8afwqubg)`,
-    tags: ['agentics-knowledge', 'claude-flow', 'v3', 'architecture', 'wasm', 'root-vector', 'agent-orchestration', 'hierarchical-mesh'],
+Sources: Claude-flow v3 Release (1_xlre6ukc), Ruflo V3 Building Intelligent Agents (1_392oe5oa), CloudFlow V3 (1_oowknql6), Building Agentic Systems Network Topologies (1_8afwqubg)`,
+    tags: ['agentics-knowledge', 'ruflo', 'v3', 'architecture', 'wasm', 'root-vector', 'agent-orchestration', 'hierarchical-mesh'],
     learned_from: 'Synthesized from 12+ Agentics Foundation videos (Oct 2025-Jan 2026)',
     confidence: 0.95
   },
@@ -80,7 +80,7 @@ Sources: Claude-flow v3 Release (1_xlre6ukc), Claude Flow V3 Building Intelligen
   {
     category: 'agentics-architecture',
     title: 'Root Vector: Intelligent Vector Database System',
-    content: `Root Vector is a next-generation vector database that replaces PGVector with attention-based mechanisms. It is the core storage engine inside Claude Flow V3.
+    content: `Root Vector is a next-generation vector database that replaces PGVector with attention-based mechanisms. It is the core storage engine inside Ruflo V3.
 
 ## Architecture
 - Compiled to WASM for cross-platform deployment (runs locally in browser, Node.js, edge devices)
@@ -134,8 +134,8 @@ Sources: Root Vector Building World Fastest AI Search (1_prlsngek), Global AI Ha
 4. Recursive verification continues until coherence threshold is met
 5. Final output includes verifiable integrity scores
 
-## Integration with Claude Flow
-Prime Radiant serves as the verification layer in Claude Flow V3's quality pipeline. Combined with the QE Fleet (51 agents across 12 domains), it ensures output quality.
+## Integration with Ruflo
+Prime Radiant serves as the verification layer in Ruflo V3's quality pipeline. Combined with the QE Fleet (51 agents across 12 domains), it ensures output quality.
 
 Sources: Building the Prime Radiant (1_dxehuvpf), Building Agentic Systems Network Topologies (1_8afwqubg)`,
     tags: ['agentics-knowledge', 'prime-radiant', 'anti-hallucination', 'coherence-engine', 'rust', 'verification'],
@@ -220,8 +220,8 @@ Sources: Claude-flow v3 Release (1_xlre6ukc)`,
 - Dynamic scaling based on task complexity
 - Fault-tolerant — agents can fail and be replaced without losing swarm state
 
-## Relationship to Claude Flow
-Emily OS is a broader orchestration platform. Claude Flow V3 is more specialized for Claude-based agent development. They can be complementary — Emily OS managing the fleet, Claude Flow handling individual agent intelligence.
+## Relationship to Ruflo
+Emily OS is a broader orchestration platform. Ruflo V3 is more specialized for Claude-based agent development. They can be complementary — Emily OS managing the fleet, Ruflo handling individual agent intelligence.
 
 Sources: Claude-flow v3 Release (1_xlre6ukc)`,
     tags: ['agentics-knowledge', 'emily-os', 'orchestration', 'llm-agnostic', 'swarm-management', 'scalability'],
@@ -258,7 +258,7 @@ Sources: Claude-flow v3 Release (1_xlre6ukc)`,
 - Smart city traffic: 100,000 vehicle simulation with swarm intelligence optimization
 - Microbiome analysis: 250M agents processing 40GB biological data at 187M interactions/sec
 
-Sources: Claude-Flow V3 Hive-Mind Intelligence (1_nvkgdvm8), Claude-flow v3 Release (1_xlre6ukc)`,
+Sources: Ruflo V3 Hive-Mind Intelligence (1_nvkgdvm8), Claude-flow v3 Release (1_xlre6ukc)`,
     tags: ['agentics-knowledge', 'hive-mind', 'distributed-intelligence', 'byzantine-fault-tolerance', 'swarm-coordination', 'consensus'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.9
@@ -271,7 +271,7 @@ Sources: Claude-Flow V3 Hive-Mind Intelligence (1_nvkgdvm8), Claude-flow v3 Rele
 
 ## Architecture
 - 51 specialized agents across 12 quality domains
-- Built on Claude Flow V3 framework
+- Built on Ruflo V3 framework
 - Each agent has deep expertise in a specific testing discipline
 
 ## Domains Covered
@@ -399,7 +399,7 @@ Sources: Claude-flow v3 Release (1_xlre6ukc), OS-Level Automation (1_40wp4k60)`,
 ## Significance
 Demonstrates agentic AI applied to biological research at a scale impossible for human researchers. The 250M agent count shows the hive mind architecture's scalability.
 
-Sources: Claude-Flow V3 Hive-Mind Intelligence (1_nvkgdvm8)`,
+Sources: Ruflo V3 Hive-Mind Intelligence (1_nvkgdvm8)`,
     tags: ['agentics-knowledge', 'microbiome', 'biology', 'graph-database', 'medical-research', 'huntingtons', 'depression'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.85
@@ -433,7 +433,7 @@ Sources: Claude-Flow V3 Hive-Mind Intelligence (1_nvkgdvm8)`,
 - Network traffic prediction
 - Any system exhibiting chaotic but deterministic behavior
 
-Sources: Claude-Flow V3 Hive-Mind Intelligence (1_nvkgdvm8)`,
+Sources: Ruflo V3 Hive-Mind Intelligence (1_nvkgdvm8)`,
     tags: ['agentics-knowledge', 'multiverse-oracle', 'chaos-theory', 'lorenz-attractor', 'prediction', 'time-series'],
     learned_from: 'Synthesized from Agentics Foundation videos',
     confidence: 0.8
@@ -452,7 +452,7 @@ Sources: Claude-Flow V3 Hive-Mind Intelligence (1_nvkgdvm8)`,
 London, Vancouver, Bangalore, Toronto, Halifax, Charlotte, Chicago, Hamburg, Amsterdam, Brisbane, Paris, Assam (Northeast India)
 
 ## Key People
-- Reuven Cohen (ruvnet) — Creator of Claude Flow, Root Vector, Ask Ruvnet
+- Reuven Cohen (ruvnet) — Creator of Ruflo, Root Vector, Ask Ruvnet
 - Robert Ranson — Regular speaker, demonstrated at Devoxx BE Conference
 - Bill McGraw — Vancouver chapter
 - David Gratton — Vancouver chapter
@@ -469,7 +469,7 @@ London, Vancouver, Bangalore, Toronto, Halifax, Charlotte, Chicago, Hamburg, Ams
 - Cinesphere: geolocation-based content discovery
 - Seven Cents: bioacoustic animal communication translation
 - Sheet music to audio converter via WebAssembly
-- CRM built via Claude Flow
+- CRM built via Ruflo
 - Samsung Smart TV integration
 
 ## Communication
@@ -488,7 +488,7 @@ Sources: Multiple Agentics Foundation sessions, London meetups, hackathon broadc
     title: 'Agentic Security: Defense Systems and Threat Detection',
     content: `Security architecture across the Agentics ecosystem focuses on real-time defense, prompt injection prevention, and quantum-resistant algorithms.
 
-## Claude Flow V3 Security
+## Ruflo V3 Security
 - 0.04ms threat detection latency — faster than a single frame of video
 - Real-time PII stripping from agent communications
 - Jailbreak monitoring across all agent interactions
@@ -519,7 +519,7 @@ Sources: Building Agentic Systems at Scale (1_s07kapkb), Claude-flow v3 Release 
   {
     category: 'agentics-architecture',
     title: 'Skills System: Bounded Contexts for Agent Capabilities',
-    content: `The Skills System in Claude Flow V3 treats agent capabilities as transferable, composable units of knowledge.
+    content: `The Skills System in Ruflo V3 treats agent capabilities as transferable, composable units of knowledge.
 
 ## Skills vs Agents
 - Skills are learned abilities (bounded contexts) — they define WHAT can be done
@@ -556,7 +556,7 @@ Sources: Building Agentic Systems Network Topologies (1_8afwqubg), Claude-flow v
   {
     category: 'agentics-architecture',
     title: 'Network Topologies for Agent Coordination',
-    content: `Agent coordination in Claude Flow V3 supports multiple network topologies, each with different tradeoffs.
+    content: `Agent coordination in Ruflo V3 supports multiple network topologies, each with different tradeoffs.
 
 ## Available Topologies
 

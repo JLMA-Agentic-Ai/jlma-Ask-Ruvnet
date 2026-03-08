@@ -142,11 +142,11 @@ RUVLLM: Local inference, Flash Attention 2, GGUF, speculative decoding.
 
 ## npm: @ruvector/rvf, @ruvector/rvf-wasm, @ruvector/rvf-mcp-server, @ruvector/sona, @ruvector/wasm, @ruvector/core, @ruvector/postgres-cli
 
-## Claude-Flow V3 Integration: SONA (learning), MinCut (topology), RVF (WASM KB), HNSW (150x-12,500x search), EWC++ (forgetting prevention)`
+## Ruflo V3 Integration: SONA (learning), MinCut (topology), RVF (WASM KB), HNSW (150x-12,500x search), EWC++ (forgetting prevention)`
   },
   {
     path: 'knowledge/ruvector-ecosystem/wasm-kb-app-tutorial',
-    title: 'Step-by-Step: Building a WASM Knowledge Base App with RuVector and Claude-Flow V3',
+    title: 'Step-by-Step: Building a WASM Knowledge Base App with RuVector and Ruflo V3',
     category: 'architecture',
     quality: 99,
     content: `## What Are We Building?
@@ -199,7 +199,7 @@ Tier 1 (Browser): Static site, complete privacy.
 Tier 2 (Server): Server-side embeddings for faster load.
 Tier 3 (TEE + Air-Gap): Corporate zero data leakage.
 
-## For Claude-Flow V3 Agents: browser WASM + local ONNX = zero data leakage. This is the corporate-safe AI strategy.`
+## For Ruflo V3 Agents: browser WASM + local ONNX = zero data leakage. This is the corporate-safe AI strategy.`
   },
   {
     path: 'knowledge/ruvector-ecosystem/teaching-ask-ruvnet',
@@ -208,7 +208,7 @@ Tier 3 (TEE + Air-Gap): Corporate zero data leakage.
     quality: 99,
     content: `## What This Entry Teaches
 
-This teaches Ask Ruvnet and Claude-Flow V3 agents HOW to use RuVector knowledge to answer questions and recommend WASM knowledge base applications.
+This teaches Ask Ruvnet and Ruflo V3 agents HOW to use RuVector knowledge to answer questions and recommend WASM knowledge base applications.
 
 ## How the KB Works
 Ask Ruvnet stores knowledge in PostgreSQL (RuVector-Postgres, port 5435, table ask_ruvnet.kb_complete). Each entry has title, content (teaching text), category, quality_score, and 384-dim ruvector embedding from ONNX. Search: embedding <=> query_vector::ruvector ORDER BY distance ASC.
