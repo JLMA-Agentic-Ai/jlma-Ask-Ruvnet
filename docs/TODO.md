@@ -74,11 +74,11 @@ The CTO deck must make technical leaders see this as the ultimate toolkit — ge
 Package the NotebookLM source refresh + studio pipeline as a publishable MCP server that others can install.
 
 - [x] **6.1** Define MCP server interface: tools for source refresh, studio management, download, status
-- [ ] **6.2** Extract pipeline logic from scripts into a standalone npm package (stub created, extraction pending)
+- [x] **6.2** Extract pipeline logic from scripts into a standalone npm package (757-line implementation with all 6 tools)
 - [x] **6.3** Create MCP server entry point with stdio transport
 - [x] **6.4** Add configuration via environment variables (notebook ID, NLM binary path, assets directory)
 - [x] **6.5** Add `npx` support: `npx @ruvnet/nlm-pipeline-mcp` to run the server
-- [ ] **6.6** Write README with setup instructions, tool descriptions, and example usage
+- [x] **6.6** Write README with setup instructions, tool descriptions, and example usage
 - [ ] **6.7** Test with Claude Code: `claude mcp add nlm-pipeline -- npx @ruvnet/nlm-pipeline-mcp`
 - [ ] **6.8** Publish to npm
 
@@ -137,8 +137,8 @@ Areas identified through research that should not be overlooked.
 | 3. NLM Utilization | 7 | 7 | 0 |
 | 4. CEO Deck | 9 | 9 | 0 |
 | 5. CTO Deck | 10 | 10 | 0 |
-| 6. MCP Package | 8 | 4 | 4 |
+| 6. MCP Package | 8 | 6 | 2 (test + publish need npm auth) |
 | 7. On-Ramp | 7 | 6 | 1 (7.7 future) |
 | 8. Documentation | 5 | 5 | 0 |
 | 9. Additional | 7 | 7 | 0 |
-| **TOTAL** | **64** | **59** | **5** |
+| **TOTAL** | **64** | **61** | **3** |
