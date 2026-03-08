@@ -26,7 +26,7 @@ The Performance Engineer agent is back with critical findings. Let me check on t
 
 All 3 review agents are back. Let me synthesize the findings and implement the highest-impact changes.
 
-## Claude Flow Review Summary — 3 Agents, 24 Findings
+## Ruflo Review Summary — 3 Agents, 24 Findings
 
 ### Top Priority Fixes (by all 3 agents):
 
@@ -388,7 +388,7 @@ await p.waitForTimeout(2000);
 
 // Send a question
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and what makes it different from V2?');
+await input.fill('What is Ruflo V3 and what makes it different from V2?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 
 await p.waitForTimeout(18000);
@@ -435,7 +435,7 @@ Everything is rendering correctly:
 - **Chat input at bottom** with mic and attachment
 - **Header toolbar** with Level dropdown, KB, Universe, Theme
 
-## Summary of Claude Flow Review Implementation
+## Summary of Ruflo Review Implementation
 
 ### What 3 agents found (24 findings total):
 
@@ -501,7 +501,7 @@ await p.screenshot({ path: '/tmp/audit-01-landing.png' });
 
 // Send question 1: Balanced level conceptual question
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?');
+await input.fill('What is Ruflo V3 and how can I use it to build AI solutions for my organization?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 await p.waitForTimeout(18000);
 
@@ -563,7 +563,7 @@ Now let me also get the full raw response text and capture the middle sections (
 ---
 **Tools Used:**
 
-* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?","mode":"Balanced"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{const j=JSON.parse(Buffer.concat(d));console.log('PROVIDER:',j.provider);console.log('LENGTH:',j.answer?.length,'chars');console.log('SOURCES:',j.sources?.length);console.log('GOLD SOURCES:',j.sources?.filter(s=>s.triage_tier==='gold').length);console.log('');console.log(j.answer)})"`
+* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Ruflo V3 and how can I use it to build AI solutions for my organization?","mode":"Balanced"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{const j=JSON.parse(Buffer.concat(d));console.log('PROVIDER:',j.provider);console.log('LENGTH:',j.answer?.length,'chars');console.log('SOURCES:',j.sources?.length);console.log('GOLD SOURCES:',j.sources?.filter(s=>s.triage_tier==='gold').length);console.log('');console.log(j.answer)})"`
   _Get full raw response for grading_
 
 ---
@@ -584,7 +584,7 @@ await p.waitForTimeout(2000);
 
 // Send question
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?');
+await input.fill('What is Ruflo V3 and how can I use it to build AI solutions for my organization?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 await p.waitForTimeout(18000);
 
@@ -650,7 +650,7 @@ await p.goto('http://localhost:3000');
 await p.waitForTimeout(2000);
 
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?');
+await input.fill('What is Ruflo V3 and how can I use it to build AI solutions for my organization?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 await p.waitForTimeout(18000);
 
@@ -708,7 +708,7 @@ await p.goto('http://localhost:3000');
 await p.waitForTimeout(2000);
 
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?');
+await input.fill('What is Ruflo V3 and how can I use it to build AI solutions for my organization?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 await p.waitForTimeout(20000);
 
@@ -769,7 +769,7 @@ The full-page screenshot shows a complete response with all sections rendered:
 - No mention of the 96 MCP tools, ReasoningBank self-learning, or SONA — the genuinely differentiating features
 - The analogy is good but there's only ONE. A truly educational response would layer multiple analogies for different concepts
 
-**What would make it 95+:** Deeper examples from actual KB content — show a real swarm init command, explain what happens step by step, include a before/after comparison of doing a task with vs without Claude-Flow
+**What would make it 95+:** Deeper examples from actual KB content — show a real swarm init command, explain what happens step by step, include a before/after comparison of doing a task with vs without Ruflo
 
 ### 2. Visual Compellingness — **72/100**
 
@@ -798,7 +798,7 @@ The full-page screenshot shows a complete response with all sections rendered:
 - 3 GOLD sources from the actual claude-flow repo are surfaced
 
 **What's NOT working:**
-- The install command (`npm install @claude-flow/shared`) is the wrong package — the real command is `npx @claude-flow/cli@latest init`
+- The install command (`npm install @claude-flow/shared`) is the wrong package — the real command is `npx ruflo@latest init`
 - The deploy examples are fabricated — `claude-flow deploy --agents coder,tester --topology mesh` doesn't exist
 - No mention of the actual npm packages (claude-flow 3.5.2, agentic-flow 2.0.7, ruvector 0.2.2)
 - No mention of hooks, ReasoningBank, HNSW, or the specific capabilities that make the architecture unique
@@ -816,10 +816,10 @@ The full-page screenshot shows a complete response with all sections rendered:
 **What's NOT working:**
 - The MOST compelling concepts (self-learning agents, HNSW 12,500x speed, SONA real-time adaptation, ReasoningBank) are not mentioned at all
 - No "wow factor" — nothing that makes someone think "I NEED this." The response reads like documentation, not like a compelling introduction to groundbreaking technology
-- No comparison to what people currently use (e.g., "Unlike LangChain which requires..., Claude-Flow...")
+- No comparison to what people currently use (e.g., "Unlike LangChain which requires..., Ruflo...")
 - The Mermaid diagram is too simple — 5 boxes connected with arrows doesn't convey the sophistication of the system
 
-**What would make it 90+:** Lead with the differentiators. "While most AI frameworks manage one agent at a time, Claude-Flow V3 coordinates 60+ agents with self-learning..." The architecture diagram should show the full stack: hooks → agents → ReasoningBank → memory → HNSW
+**What would make it 90+:** Lead with the differentiators. "While most AI frameworks manage one agent at a time, Ruflo V3 coordinates 60+ agents with self-learning..." The architecture diagram should show the full stack: hooks → agents → ReasoningBank → memory → HNSW
 
 ### 5. Actionability for Building Solutions — **68/100**
 
@@ -835,7 +835,7 @@ The full-page screenshot shows a complete response with all sections rendered:
 - No mention of cost/pricing/free tier
 - No "next step" that actually works
 
-**What would make it 90+:** Include the REAL `npx @claude-flow/cli@latest init --wizard` command, show actual output, link to the real README, mention that it works with Claude Code
+**What would make it 90+:** Include the REAL `npx ruflo@latest init --wizard` command, show actual output, link to the real README, mention that it works with Claude Code
 
 ---
 
@@ -859,7 +859,7 @@ The automated grading system I built scores 98/100 because it checks for **struc
 But your question is about **effectiveness** — does someone walk away understanding, excited, and capable of building? That's a much harder bar. The gaps:
 
 1. **Fabricated examples** (the biggest problem) — the LLM generates plausible-looking commands that don't work
-2. **Surface-level content** — it describes WHAT Claude-Flow is but not WHY it matters or HOW it's different from alternatives
+2. **Surface-level content** — it describes WHAT Ruflo is but not WHY it matters or HOW it's different from alternatives
 3. **Mermaid diagrams too small** — the visual aid that should be the hero is barely visible
 4. **No streaming** — 5-8 second blank wait kills the experience
 5. **Source card raw markdown bug** — card 3 shows unrendered `**bold**` text

@@ -213,7 +213,7 @@ Now I have the full picture. Let me present findings and plan.
 **What**: Add a `/visualize` or "Diagram" action that generates rich architectural diagrams using Nano Banana's Gemini image generation.
 
 Current Mermaid diagrams are useful but limited — they can't show:
-- Conceptual metaphors (the "five-story building" for Claude Flow)
+- Conceptual metaphors (the "five-story building" for Ruflo)
 - Data flow animations or gradient visualizations
 - Hyperbolic space representations
 - Component relationship maps with visual weight/importance
@@ -242,7 +242,7 @@ Current Mermaid diagrams are useful but limited — they can't show:
    - Each card: one-sentence definition + visual + "learn more" link into chat
 
 3. **Architecture Explorer** — interactive visual map where clicking a component shows its KB entry:
-   - Start with the "five-story building" metaphor for Claude Flow
+   - Start with the "five-story building" metaphor for Ruflo
    - Click a floor → see its components → click a component → see its ADR history
    - This is where Cytoscape Knowledge Universe + Nano Banana visuals combine
 
@@ -1448,20 +1448,20 @@ All 9 SVGs created, validated, and README updated with image references + access
 Now addressing your two messages. You want:
 
 1. **Make all this knowledge available to the KB/chat** — ensure the evolutionary knowledge and new documentation feeds into the live system
-2. **Explore RVF/WASM/MCP packaging** — but DON'T build, just think and have Claude Flow review the architecture
+2. **Explore RVF/WASM/MCP packaging** — but DON'T build, just think and have Ruflo review the architecture
 
-Let me route this through Claude Flow's architect for a proper analysis:
+Let me route this through Ruflo's architect for a proper analysis:
 
 
 ---
 **Tools Used:**
 
 * **Task**
-  description: Claude Flow architecture review
+  description: Ruflo architecture review
 
 ---
 
-Here are the Claude Flow architecture review findings for packaging Ask-RuvNet's 170K+ entry KB as an MCP/WASM/RVF distribution. This is the analysis you asked for — recommendations only, no action taken.
+Here are the Ruflo architecture review findings for packaging Ask-RuvNet's 170K+ entry KB as an MCP/WASM/RVF distribution. This is the analysis you asked for — recommendations only, no action taken.
 
 ---
 
@@ -1867,7 +1867,7 @@ All 6 changes are implemented and the build passes cleanly. Here's what changed:
 
 1. **`src/core/PostgresKnowledgeBase.js`** — After `knowledge_search()`, a secondary query enriches results with `package_name`, `doc_type`, `file_path`, and `topics` from `architecture_docs`. Sub-millisecond cost (PK lookup on 8-12 IDs).
 
-2. **`src/core/ContextCompressor.js`** — `formatContext()` now includes metadata lines in what the LLM sees: `Repository: claude-flow | Type: adr | URL: https://github.com/ruvnet/claude-flow/blob/main/docs/adr/001.md | Topics: architecture, swarm`. Also added `githubUriToUrl()` helper to convert `github://` URIs to real GitHub URLs.
+2. **`src/core/ContextCompressor.js`** — `formatContext()` now includes metadata lines in what the LLM sees: `Repository: claude-flow | Type: adr | URL: https://github.com/ruvnet/ruflo/blob/main/docs/adr/001.md | Topics: architecture, swarm`. Also added `githubUriToUrl()` helper to convert `github://` URIs to real GitHub URLs.
 
 3. **`src/server/RuvPersona.js`** — New `STRUCTURED RESPONSE FORMAT` section instructs the LLM to: cite sources with markdown links, label ADR/changelog/release/commit sources by type, explain evolutionary context, and include "Related Resources" and "Explore Further" sections. Critical guardrail: "Do NOT fabricate GitHub URLs."
 
@@ -2032,7 +2032,7 @@ All 3 background agents completed successfully:
 
 2. **README v2.2.0**: Added "What's New in v2.2.0" section documenting all 6 features (rich responses, source cards, evolutionary knowledge, full pipeline, Gemini visual, markdown links). Updated deployment history.
 
-3. **Data doc timestamps**: Updated `last_modified` to `2026-02-27` across all 5 data docs. Updated Claude-Flow references from v2.7.0 to V3.
+3. **Data doc timestamps**: Updated `last_modified` to `2026-02-27` across all 5 data docs. Updated Ruflo references from v2.7.0 to V3.
 
 Now the critical next step — **test the application locally and deploy**. Let me verify the build still passes with all the doc changes, then test against real data.
 
@@ -2176,8 +2176,8 @@ Server connects to PostgreSQL with 174,310 entries but has vector type errors du
 
 * **Bash** `curl -s -X POST http://localhost:4000/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is Claude-Flow V3?","history":[]}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print('RESPONSE:', d.get('response','')[:500]); print('---'); print('SOURCES:', json.dumps(d.get('sources',[])[:3], indent=2))"`
-  _Test chat API with real query about Claude-Flow V3_
+  -d '{"message":"What is Ruflo V3?","history":[]}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print('RESPONSE:', d.get('response','')[:500]); print('---'); print('SOURCES:', json.dumps(d.get('sources',[])[:3], indent=2))"`
+  _Test chat API with real query about Ruflo V3_
 
 ---
 
@@ -2189,7 +2189,7 @@ Empty response. Let me check the full response and server logs.
 
 * **Bash** `curl -s -X POST http://localhost:4000/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is Claude-Flow V3?","history":[]}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print(json.dumps(d, indent=2)[:2000])"`
+  -d '{"message":"What is Ruflo V3?","history":[]}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print(json.dumps(d, indent=2)[:2000])"`
   _Full chat API response_
 
 ---
@@ -2206,7 +2206,7 @@ Let me check the sources more carefully and the server logs.
 
 * **Bash** `curl -s -X POST http://localhost:4000/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is Claude-Flow V3?","history":[]}' 2>&1 | python3 -c "
+  -d '{"message":"What is Ruflo V3?","history":[]}' 2>&1 | python3 -c "
 import sys,json
 d=json.load(sys.stdin)
 print('Has sources key:', 'sources' in d)
@@ -2932,7 +2932,7 @@ ora: ^8.0.1                        (Loading spinners)
 `ruvi` is part of the broader **rUv Agentic Engineering Ecosystem**:
 
 - **RuVector**: High-performance vector database (Rust-based, self-learning)
-- **Claude-Flow**: Multi-agent orchestration platform with swarm intelligence
+- **Ruflo**: Multi-agent orchestration platform with swarm intelligence
 - **ruvi**: CLI interface for accessing coaching, tools, and community resources
 - **RuvBot**: Knowledge base assistant for Reuven Cohen's expertise
 
@@ -2966,7 +2966,7 @@ Available versions: 1.0.0 → 1.0.1 → 1.0.2 → 1.0.3 → 1.0.4 → 1.0.5 → 
 - [GitHub - ruvnet (rUv)](https://github.com/ruvnet)
 - [rUv's Agentic Engineering Platform](https://ruv.net/)
 - [RuVector - GitHub](https://github.com/ruvnet/ruvector)
-- [Claude Flow - GitHub](https://github.com/ruvnet/claude-flow)</result>
+- [Ruflo - GitHub](https://github.com/ruvnet/ruflo)</result>
 <usage><total_tokens>45390</total_tokens><tool_uses>8</tool_uses><duration_ms>44775</duration_ms></usage>
 </task-notification>
 Full transcript available at: /private/tmp/claude-501/-Users-stuartkerr-Code-Ask-Ruvnet/tasks/ae73661c7944c6692.output
@@ -3354,7 +3354,7 @@ Wait — this is a new deployment! `3810 documents` vs `3800` before, and `43734
 
 * **Bash** `curl -s -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is Claude-Flow V3?","history":[]}' 2>&1 | python3 -c "
+  -d '{"message":"What is Ruflo V3?","history":[]}' 2>&1 | python3 -c "
 import sys,json
 d=json.load(sys.stdin)
 print('ANSWER (first 600 chars):')
@@ -3438,7 +3438,7 @@ console.log('Homepage screenshot taken');
 const input = await p.$('textarea, input[type="text"], .chat-input textarea, .input-area textarea');
 if (input) {
   await input.click();
-  await input.fill('What is Claude-Flow V3 and how does it work?');
+  await input.fill('What is Ruflo V3 and how does it work?');
   console.log('Typed question');
   
   // Find and click send button
@@ -3489,13 +3489,13 @@ Excellent — all three screenshots loaded. Let me analyze what I see:
 
 **Screenshot 1 (Homepage):** v2.2.0 confirmed in header. Hero loads correctly with stats (148+ Repos, 54,543+ KB Entries). Sidebar with System Brain, Learning Level, View Mode. Canvas panel on right with Ecosystem Overview and Stack Architecture. Clean dark theme.
 
-**Screenshot 2 (Response):** Question submitted, response rendering with markdown — "Introduction to Claude-Flow V3" heading, bullet points with bold labels. Looks professional.
+**Screenshot 2 (Response):** Question submitted, response rendering with markdown — "Introduction to Ruflo V3" heading, bullet points with bold labels. Looks professional.
 
 **Screenshot 3 (Sources + Actions):** **SOURCE CARDS ARE WORKING!** I can see:
 - "SOURCES (8)" header
 - Doc-type badges: `GITHUB-REPOSITORY`, `DOCUMENTATION` — purple pill badges
 - Titles with relevance scores (64%, 62%, 61%, 60%, 57%)
-- Related Resources section with clickable links ("Claude-Flow Documentation", "Agentics Foundation")
+- Related Resources section with clickable links ("Ruflo Documentation", "Agentics Foundation")
 - Action buttons: Simplify, Code, Diagram, Visualize, Canvas
 
 ---
@@ -3761,7 +3761,7 @@ await desktop.waitForTimeout(2000);
 // Ask a question
 const input = await desktop.$('textarea, .input-area textarea');
 if (input) {
-  await input.fill('What is Claude-Flow V3 and how does the swarm orchestration work?');
+  await input.fill('What is Ruflo V3 and how does the swarm orchestration work?');
   const btn = await desktop.$('button.send-button, .send-button');
   if (btn) await btn.click();
   await desktop.waitForTimeout(18000);
@@ -3850,10 +3850,10 @@ const inputs = await p.$$('input[type="text"]');
 console.log(`Found ${inputs.length} text inputs`);
 
 if (textareas.length > 0) {
-  await textareas[0].fill('What is Claude-Flow V3?');
+  await textareas[0].fill('What is Ruflo V3?');
   console.log('Filled textarea');
 } else if (inputs.length > 0) {
-  await inputs[0].fill('What is Claude-Flow V3?');
+  await inputs[0].fill('What is Ruflo V3?');
   console.log('Filled input');
 }
 
@@ -3885,10 +3885,10 @@ SCRIPT`
 ---
 
 **GitHub URLs are working!** Source cards now link to real GitHub repos:
-- `https://github.com/ruvnet/claude-flow/blob/main/v3/implementation/README.md`
-- `https://github.com/ruvnet/claude-flow/blob/main/v3/implementation/adrs/README.md`
-- `https://github.com/ruvnet/claude-flow/blob/main/v3/@claude-flow/shared/README.md`
-- `https://github.com/ruvnet/claude-flow/blob/main/v3/@claude-flow/cli/README.md`
+- `https://github.com/ruvnet/ruflo/blob/main/v3/implementation/README.md`
+- `https://github.com/ruvnet/ruflo/blob/main/v3/implementation/adrs/README.md`
+- `https://github.com/ruvnet/ruflo/blob/main/v3/@claude-flow/shared/README.md`
+- `https://github.com/ruvnet/ruflo/blob/main/v3/@claude-flow/cli/README.md`
 
 Let me view the screenshots.
 

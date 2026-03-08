@@ -213,7 +213,7 @@ Now I have the full picture. Let me present findings and plan.
 **What**: Add a `/visualize` or "Diagram" action that generates rich architectural diagrams using Nano Banana's Gemini image generation.
 
 Current Mermaid diagrams are useful but limited — they can't show:
-- Conceptual metaphors (the "five-story building" for Claude Flow)
+- Conceptual metaphors (the "five-story building" for Ruflo)
 - Data flow animations or gradient visualizations
 - Hyperbolic space representations
 - Component relationship maps with visual weight/importance
@@ -242,7 +242,7 @@ Current Mermaid diagrams are useful but limited — they can't show:
    - Each card: one-sentence definition + visual + "learn more" link into chat
 
 3. **Architecture Explorer** — interactive visual map where clicking a component shows its KB entry:
-   - Start with the "five-story building" metaphor for Claude Flow
+   - Start with the "five-story building" metaphor for Ruflo
    - Click a floor → see its components → click a component → see its ADR history
    - This is where Cytoscape Knowledge Universe + Nano Banana visuals combine
 
@@ -1448,20 +1448,20 @@ All 9 SVGs created, validated, and README updated with image references + access
 Now addressing your two messages. You want:
 
 1. **Make all this knowledge available to the KB/chat** — ensure the evolutionary knowledge and new documentation feeds into the live system
-2. **Explore RVF/WASM/MCP packaging** — but DON'T build, just think and have Claude Flow review the architecture
+2. **Explore RVF/WASM/MCP packaging** — but DON'T build, just think and have Ruflo review the architecture
 
-Let me route this through Claude Flow's architect for a proper analysis:
+Let me route this through Ruflo's architect for a proper analysis:
 
 
 ---
 **Tools Used:**
 
 * **Task**
-  description: Claude Flow architecture review
+  description: Ruflo architecture review
 
 ---
 
-Here are the Claude Flow architecture review findings for packaging Ask-RuvNet's 170K+ entry KB as an MCP/WASM/RVF distribution. This is the analysis you asked for — recommendations only, no action taken.
+Here are the Ruflo architecture review findings for packaging Ask-RuvNet's 170K+ entry KB as an MCP/WASM/RVF distribution. This is the analysis you asked for — recommendations only, no action taken.
 
 ---
 

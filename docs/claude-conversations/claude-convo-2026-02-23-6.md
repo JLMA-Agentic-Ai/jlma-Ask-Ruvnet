@@ -15,7 +15,7 @@ Can you set it up to use my free Grok first and then beyond that go to my paid G
 
 ## Assistant
 
-I'll do a comprehensive evaluation of the Ruvnet-KB-first MCP. Let me start by understanding its current state - the MCP config, the KB contents, and how well it serves Claude Flow. I'll run several investigations in parallel.
+I'll do a comprehensive evaluation of the Ruvnet-KB-first MCP. Let me start by understanding its current state - the MCP config, the KB contents, and how well it serves Ruflo. I'll run several investigations in parallel.
 
 
 ---
@@ -418,21 +418,21 @@ Stuart, here's the honest assessment. There are **two completely separate things
 | 3 | **Wrong KB data** -- package ships 17K auto-generated entries, not your 258 curated ones | Even if it worked, wrong knowledge |
 | 4 | **No PostgreSQL connection** -- MCP server reads local filesystem, not your DB | Disconnected from real KB |
 | 5 | **No teaching awareness** -- MCP has zero concept of teaching entries | Can't serve Stuart's learning needs |
-| 6 | **No Claude Flow integration** -- no tool for agents to query KB during task execution | Agents work blind |
+| 6 | **No Ruflo integration** -- no tool for agents to query KB during task execution | Agents work blind |
 | 7 | **WASM capability exists but is dormant** -- `kb-loader.js` has WASM search via RvLite but MCP never uses it | Wasted potential |
 
 ---
 
 ### What You Actually Need
 
-The MCP needs to be a **knowledge bridge** -- Claude Code and Claude Flow agents query it, and it returns teaching-level knowledge from your curated KB. Here's what it should do:
+The MCP needs to be a **knowledge bridge** -- Claude Code and Ruflo agents query it, and it returns teaching-level knowledge from your curated KB. Here's what it should do:
 
 1. **`kb_search`** -- Semantic search against PostgreSQL KB (258 entries, ONNX embeddings)
 2. **`kb_get`** -- Get a specific entry by ID or title
 3. **`kb_categories`** -- List categories and entry counts
 4. **`kb_teach`** -- Return teaching entries specifically, with the plain-English analogies
 5. **`kb_wasm_guide`** -- Return WASM-specific guidance for building browser-based apps
-6. **`kb_architecture`** -- Return architecture patterns for Claude Flow agents
+6. **`kb_architecture`** -- Return architecture patterns for Ruflo agents
 7. **`kb_store`** -- Store new knowledge back into the KB (with proper ONNX embedding)
 8. **`kb_stats`** -- KB health: entry counts, embedding coverage, quality scores
 
@@ -441,7 +441,7 @@ Do you want me to fix this? The plan would be:
 1. **Reinstall** the package properly (`npm install -g ruvnet-kb-first@6.5.3`)
 2. **Build a new MCP server** that connects to your PostgreSQL KB and exposes the 8 tools above
 3. **Wire WASM search** as a fallback when PostgreSQL is unavailable (offline/edge mode)
-4. **Add Claude Flow awareness** so agents can query the KB during task execution
+4. **Add Ruflo awareness** so agents can query the KB during task execution
 5. **Test end-to-end** -- semantic search, teaching retrieval, WASM guidance, knowledge storage
 
 This is a significant rebuild of the MCP server. The current one is architecturally wrong for your use case -- it's a project-quality scorer when you need a knowledge retrieval system. Want me to proceed?
@@ -1258,7 +1258,7 @@ Everything is working. The v4.0.0 MCP server is fully operational with all 10 to
 
 5. **Updated MEMORY.md** with v4.0.0 details, 269 entry count, MCP location, and tool inventory.
 
-The MCP server is live and Claude Flow can now leverage expert-curated knowledge, teaching content, and WASM guidance for building intelligent RuVector-based applications.
+The MCP server is live and Ruflo can now leverage expert-curated knowledge, teaching content, and WASM guidance for building intelligent RuVector-based applications.
 
 
 
@@ -1285,9 +1285,9 @@ Here's the final status:
 
 **MEMORY.md updated** with v4.0.0 tool inventory, entry counts, and MCP location.
 
-The server is live at `/Users/stuartkerr/Code/Ruvnet-Koweldgebase-and-Application-Builder/bin/mcp-server.js` and registered globally. Claude Flow agents can now use `kb_teach` for learning, `kb_wasm` for browser apps, and `kb_search` with curated-first intelligence for everything else.
+The server is live at `/Users/stuartkerr/Code/Ruvnet-Koweldgebase-and-Application-Builder/bin/mcp-server.js` and registered globally. Ruflo agents can now use `kb_teach` for learning, `kb_wasm` for browser apps, and `kb_search` with curated-first intelligence for everything else.
 
-Good question. Let me audit exactly what's registered and whether the KB is structured to actually help Claude Flow make decisions (not just find information).
+Good question. Let me audit exactly what's registered and whether the KB is structured to actually help Ruflo make decisions (not just find information).
 
 
 ---
@@ -1344,7 +1344,7 @@ OK, I can see the full picture now. Let me check what's actually relevant for As
 
 ---
 
-Good. The KB is actually returning solid decision-support content. Now let me check if the CLAUDE.md and routing are correctly configured so Claude Flow **always** consults it.
+Good. The KB is actually returning solid decision-support content. Now let me check if the CLAUDE.md and routing are correctly configured so Ruflo **always** consults it.
 
 
 ---
@@ -1369,11 +1369,11 @@ Here's my assessment, Stuart:
 
 **Two things I'd tighten:**
 
-1. **CLAUDE.md line 5 says "90+ entry"** — it's actually **269 entries** now (105 teaching, 50 videos, 28 agents, etc.). This stale number could cause Claude Flow to underestimate the KB's coverage.
+1. **CLAUDE.md line 5 says "90+ entry"** — it's actually **269 entries** now (105 teaching, 50 videos, 28 agents, etc.). This stale number could cause Ruflo to underestimate the KB's coverage.
 
 2. **CLAUDE.md line 17-19 has a SQL fallback pointing to `architecture_docs`** — the old table. If MCP is unavailable, the fallback should point to `kb_complete` first.
 
-3. **The `mcp-registry.json` says 8 tools and "17,524 entries"** — should be 10 tools and 269 curated entries. Stale docs could confuse Claude Flow.
+3. **The `mcp-registry.json` says 8 tools and "17,524 entries"** — should be 10 tools and 269 curated entries. Stale docs could confuse Ruflo.
 
 Want me to fix these three stale references so everything accurately reflects the v4.0.0 reality?
 
@@ -1404,10 +1404,10 @@ Good, I can see all three stale spots. Fixing them all now.
 All three fixes applied:
 
 1. **CLAUDE.md line 5**: "90+ entry" → "269-entry expert-curated knowledge base (v4.0.0, 10 tools, 105 teaching entries)"
-2. **CLAUDE.md SQL fallback**: Changed from `architecture_docs` to `kb_complete`, and added `kb_teach` and `kb_wasm` tool examples so Claude Flow knows all three search tools exist
+2. **CLAUDE.md SQL fallback**: Changed from `architecture_docs` to `kb_complete`, and added `kb_teach` and `kb_wasm` tool examples so Ruflo knows all three search tools exist
 3. **mcp-registry.json**: "17,524 entry, 8 tools" → "269 expert-curated KB entries (v4.0.0), 10 tools"
 
-Now Claude Flow will always see the accurate tool count, know about `kb_teach` and `kb_wasm` as first-class options, and fall back to the right table if MCP is unavailable.
+Now Ruflo will always see the accurate tool count, know about `kb_teach` and `kb_wasm` as first-class options, and fall back to the right table if MCP is unavailable.
 
 That's the right question. Let me actually read the full content of what comes back and evaluate it critically — not just "did it find something" but "would this actually teach someone?"
 
@@ -1442,16 +1442,16 @@ Here's my honest assessment after reading the full content of every result:
 - They explain WHY you'd care before HOW it works
 - Specific numbers everywhere (AIMDS: <5ms quick scan, 50+ patterns, 6 threat categories; SONA: 0.05ms adaptation)
 - Code examples are practical and copy-pasteable
-- Each entry ends with "For Claude Flow / Claude Code" — direct instructions on how to use the knowledge
+- Each entry ends with "For Ruflo / Claude Code" — direct instructions on how to use the knowledge
 - Progressive depth — starts simple, goes deep, never assumes prior knowledge
 
-**One gap I noticed:** The entries are great at explaining WHAT things are and WHY they matter, but I didn't see strong **"when to pick A vs B" decision entries** that would help Claude Flow make architecture choices during app building. For example:
+**One gap I noticed:** The entries are great at explaining WHAT things are and WHY they matter, but I didn't see strong **"when to pick A vs B" decision entries** that would help Ruflo make architecture choices during app building. For example:
 
 - "When should I use RVF WASM vs RuVector-WASM?" — the WASM entry mentions this briefly but doesn't give a decision tree
 - "When should I use AIMDS quick-scan-only vs full detection?" — not covered
 - "When should I embed client-side vs server-side?" — touched on but no clear decision framework
 
-These are the kinds of questions Claude Flow would hit when it's actually building an app and needs to make a call.
+These are the kinds of questions Ruflo would hit when it's actually building an app and needs to make a call.
 
 **Bottom line:** For education — both yours and Claude's — these entries are as good as it gets. For decision-making during app development, they're strong but could be sharper with dedicated "decision guide" entries. Want me to create a few of those targeted decision-framework entries?
 
@@ -1611,7 +1611,7 @@ Each entry has:
 - A clear START HERE decision tree with IF/THEN paths
 - Technical comparison tables with specific numbers
 - Common mistakes section (what goes wrong if you choose wrong)
-- "For Claude Flow Building Apps" section with direct instructions
+- "For Ruflo Building Apps" section with direct instructions
 
 KB is now at **294 entries**. All verified searchable with the correct entry ranking #1 for its target query.
 
@@ -1663,7 +1663,7 @@ except: pass
 {"jsonrpc":"2.0","id":13,"method":"tools/call","params":{"name":"kb_teach","arguments":{"query":"what is RVF cognitive container format","limit":1}}}
 {"jsonrpc":"2.0","id":14,"method":"tools/call","params":{"name":"kb_teach","arguments":{"query":"what is AIMDS AI defense system","limit":1}}}
 {"jsonrpc":"2.0","id":15,"method":"tools/call","params":{"name":"kb_teach","arguments":{"query":"what is SONA self-optimizing neural","limit":1}}}
-{"jsonrpc":"2.0","id":16,"method":"tools/call","params":{"name":"kb_teach","arguments":{"query":"how do swarms work in Claude Flow","limit":1}}}
+{"jsonrpc":"2.0","id":16,"method":"tools/call","params":{"name":"kb_teach","arguments":{"query":"how do swarms work in Ruflo","limit":1}}}
 {"jsonrpc":"2.0","id":17,"method":"tools/call","params":{"name":"kb_teach","arguments":{"query":"what is MinCut graph partitioning","limit":1}}}
 {"jsonrpc":"2.0","id":18,"method":"tools/call","params":{"name":"kb_teach","arguments":{"query":"how to debug slow AI search","limit":1}}}
 {"jsonrpc":"2.0","id":19,"method":"tools/call","params":{"name":"kb_teach","arguments":{"query":"what is prompt injection and how to prevent it","limit":1}}}
@@ -1794,7 +1794,7 @@ Here's my **comprehensive KB grade report**:
 ### What's excellent:
 - Teaching entries are genuinely world-class — analogies, tables, code, progressive depth
 - Decision frameworks are clear IF/THEN trees with tradeoff tables
-- Every entry ends with "For Claude Flow" instructions
+- Every entry ends with "For Ruflo" instructions
 - Quality scores are honest (98-99 for curated, not inflated)
 - Curated-first search ensures the best content surfaces first
 
@@ -1855,7 +1855,7 @@ The agent is almost done — it generated the full visualization HTML but hit a 
 The security hook blocked the write. The agent generated the full visualization but couldn't save it. I also heard your expanded requirements — you want this to be much more than a flat category browser. You want:
 
 1. **Deep multi-level traversal** (3-5+ levels deep) — not just category → sub-topic, but all the way down to core concepts
-2. **Mind map of the full architecture** — Claude Flow, RuVector, Agentic Flow, Agentic Splice, RVF, AIMDS, SONA, MinCut, etc.
+2. **Mind map of the full architecture** — Ruflo, RuVector, Agentic Flow, Agentic Splice, RVF, AIMDS, SONA, MinCut, etc.
 3. **Learning paths** — how to use it, where, when, why
 4. **Video knowledge integration** — what was learned from the video digests
 
@@ -1990,7 +1990,7 @@ ORDER BY category, title;"`
 
 ---
 
-I have all 294 entries. Now I understand your vision — a deep, multi-level mind map where you can traverse the entire RuVector/Claude Flow architecture hierarchy. Let me build this properly with real depth (4-5 levels), organized by concept relationships rather than flat categories.
+I have all 294 entries. Now I understand your vision — a deep, multi-level mind map where you can traverse the entire RuVector/Ruflo architecture hierarchy. Let me build this properly with real depth (4-5 levels), organized by concept relationships rather than flat categories.
 
 
 ---
@@ -2006,7 +2006,7 @@ I've launched a new visualization agent with the full KB hierarchy data (all 294
 **Ask Ruvnet Knowledge Universe** — a 3D interactive mind map with:
 
 - **Level 0**: Root node ("Ask Ruvnet Knowledge Universe")
-- **Level 1**: 7 major domains (RuVector Ecosystem, Claude Flow & Agents, AI Security, Teaching & Learning, Algorithms & Performance, Video Knowledge, Infrastructure & Deployment)
+- **Level 1**: 7 major domains (RuVector Ecosystem, Ruflo & Agents, AI Security, Teaching & Learning, Algorithms & Performance, Video Knowledge, Infrastructure & Deployment)
 - **Level 2**: 30+ sub-domains (Vector Search, RVF Format, Agent Systems, Swarm Intelligence, AIMDS Core, Learning Paths, Decision Guides, etc.)
 - **Level 3**: Individual topics grouped by concept
 - **Level 4**: Entry details with key facts
@@ -2031,7 +2031,7 @@ I hear you on the comprehensiveness requirement. Let me make sure we have ALL th
 **Already in the KB / being included:**
 - RuVector core (80+ Rust crates)
 - RVF (cognitive container, 24-segment binary, WASM runtime)
-- Claude Flow V3 (agents, swarms, hooks, memory, SPARC)
+- Ruflo V3 (agents, swarms, hooks, memory, SPARC)
 - Agentic Flow (v2.0.1-alpha, agent booster, background workers)
 - AIMDS (3-layer pipeline, 25-level meta-learning, Lyapunov chaos)
 - SONA (self-optimizing neural architecture)
@@ -2080,7 +2080,7 @@ Working in parallel — I'll synthesize when they return.
 
 ---
 
-The visualization is built and saved. Let me check on the research agent and then address your feedback — you're right that this is the **RuvNet ecosystem** not just RuVector. It includes Claude Flow, Agentic Flow, Agentic Splice, and all the other tools that work together as a team.
+The visualization is built and saved. Let me check on the research agent and then address your feedback — you're right that this is the **RuvNet ecosystem** not just RuVector. It includes Ruflo, Agentic Flow, Agentic Splice, and all the other tools that work together as a team.
 
 
 ---
@@ -2229,7 +2229,7 @@ Let me add these to the appropriate domains.
 
 ---
 
-Now I need to add the missing ecosystem components. I'll add a new "npm Packages & Tools" sub-domain to RuVector and expand Claude Flow with the missing packages.
+Now I need to add the missing ecosystem components. I'll add a new "npm Packages & Tools" sub-domain to RuVector and expand Ruflo with the missing packages.
 
 
 ---
@@ -2239,7 +2239,7 @@ Now I need to add the missing ecosystem components. I'll add a new "npm Packages
 
 ---
 
-Now let me add the missing Claude Flow ecosystem packages:
+Now let me add the missing Ruflo ecosystem packages:
 
 
 ---
@@ -2353,7 +2353,7 @@ The Knowledge Universe visualization should now be open in your browser. Here's 
 | Domain | Entries | Sub-domains |
 |--------|---------|-------------|
 | RuVector Ecosystem | 60 | Core, Vector Search (14), RVF Format (8), Neuromorphic (4), **npm Packages (12)** |
-| Claude Flow & Agents | 70 | Platform (6), Agent Systems (7), Swarm Intelligence (5), Memory & Learning (10), Agentic Flow (4), Background (3), **CF Ecosystem (8)** |
+| Ruflo & Agents | 70 | Platform (6), Agent Systems (7), Swarm Intelligence (5), Memory & Learning (10), Agentic Flow (4), Background (3), **CF Ecosystem (8)** |
 | AI Security (AIMDS) | 22 | Core (5), Detection (6), Production (6) |
 | Teaching & Learning | 118 | Start Here (5), Concepts (14), Paths (7), Decisions (14), Recipes (10), Debugging (14), Deep Dives (9), Glossaries (6) |
 | Algorithms & Performance | 19 | Graph Algorithms (6), Performance Engineering (13) |
@@ -2407,7 +2407,7 @@ Good — the research agent came back with excellent findings. Let me share what
 - **Prime Radiant** — Real Rust crate in ruvector! A mathematical coherence engine for anti-hallucination using Sheaf Laplacian math. This is NOT in the visualization yet.
 - **Fox-Flow** — 12.8M QPS vector database by community member Colby
 - **Anti-Gravity** — London-based agentic AI platform (community project)
-- **QE Fleet** — 59 QE agents by Dragan Spiridonov, built on Claude Flow
+- **QE Fleet** — 59 QE agents by Dragan Spiridonov, built on Ruflo
 
 Can you tell me more about what Agentic Splice actually is and whether "Continuum Chip" refers to the WASM-as-universal-chip concept? I want to get these right before adding them.
 
@@ -2500,7 +2500,7 @@ Visualization is valid with 312 nodes and refreshed in the browser. Now it inclu
 - **Continuum / Edge Computing** (WASM-as-universal-chip concept, ESP32 microcontrollers)
 - **Agentic Splice** (runtime model switching for cost optimization)
 
-Plus all the npm packages and Claude Flow ecosystem additions from before.
+Plus all the npm packages and Ruflo ecosystem additions from before.
 
 ---
 
@@ -3673,7 +3673,7 @@ if [ "$EMPTY_CODE" = "400" ]; then echo "   PASS"; else echo "   FAIL"; fi
 echo ""
 
 echo "6. CHAT ENDPOINT WORKS"
-CHAT_RESPONSE=$(curl -s -X POST -H "Content-Type: application/json" -d '{"message":"What is Claude Flow?"}' "$PROD/api/chat" 2>&1)
+CHAT_RESPONSE=$(curl -s -X POST -H "Content-Type: application/json" -d '{"message":"What is Ruflo?"}' "$PROD/api/chat" 2>&1)
 HAS_ANSWER=$(echo "$CHAT_RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print('YES' if d.get('answer','') and len(d['answer']) > 50 else 'NO')" 2>/dev/null)
 echo "   Got answer: $HAS_ANSWER"
 if [ "$HAS_ANSWER" = "YES" ]; then echo "   PASS"; else echo "   FAIL"; fi
@@ -3696,7 +3696,7 @@ echo "=========================================="`
 ---
 **Tools Used:**
 
-* **Bash** `curl -s -X POST -H "Content-Type: application/json" -d '{"message":"What is Claude Flow?"}' https://ask-ruvnet-production.up.railway.app/api/chat 2>&1 | python3 -c "
+* **Bash** `curl -s -X POST -H "Content-Type: application/json" -d '{"message":"What is Ruflo?"}' https://ask-ruvnet-production.up.railway.app/api/chat 2>&1 | python3 -c "
 import sys,json
 d = json.load(sys.stdin)
 print('Answer length:', len(d.get('answer','')) if d.get('answer') else 0)
@@ -5714,7 +5714,7 @@ Railway is live right now with 5 providers configured, no cold start needed. Let
 
 * **Bash** `curl -s --max-time 30 https://ask-ruvnet-production.up.railway.app/api/chat \
   -H 'Content-Type: application/json' \
-  -d '{"message":"What is Claude Flow V3?"}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print('Provider:', d.get('provider','?')); print('Answer:', d.get('answer','')[:200]); print('Error:', d.get('error','none'))"`
+  -d '{"message":"What is Ruflo V3?"}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print('Provider:', d.get('provider','?')); print('Answer:', d.get('answer','')[:200]); print('Error:', d.get('error','none'))"`
   _Test Railway chat endpoint_
 
 ---

@@ -213,7 +213,7 @@ Now I have the full picture. Let me present findings and plan.
 **What**: Add a `/visualize` or "Diagram" action that generates rich architectural diagrams using Nano Banana's Gemini image generation.
 
 Current Mermaid diagrams are useful but limited — they can't show:
-- Conceptual metaphors (the "five-story building" for Claude Flow)
+- Conceptual metaphors (the "five-story building" for Ruflo)
 - Data flow animations or gradient visualizations
 - Hyperbolic space representations
 - Component relationship maps with visual weight/importance
@@ -242,7 +242,7 @@ Current Mermaid diagrams are useful but limited — they can't show:
    - Each card: one-sentence definition + visual + "learn more" link into chat
 
 3. **Architecture Explorer** — interactive visual map where clicking a component shows its KB entry:
-   - Start with the "five-story building" metaphor for Claude Flow
+   - Start with the "five-story building" metaphor for Ruflo
    - Click a floor → see its components → click a component → see its ADR history
    - This is where Cytoscape Knowledge Universe + Nano Banana visuals combine
 
@@ -1448,20 +1448,20 @@ All 9 SVGs created, validated, and README updated with image references + access
 Now addressing your two messages. You want:
 
 1. **Make all this knowledge available to the KB/chat** — ensure the evolutionary knowledge and new documentation feeds into the live system
-2. **Explore RVF/WASM/MCP packaging** — but DON'T build, just think and have Claude Flow review the architecture
+2. **Explore RVF/WASM/MCP packaging** — but DON'T build, just think and have Ruflo review the architecture
 
-Let me route this through Claude Flow's architect for a proper analysis:
+Let me route this through Ruflo's architect for a proper analysis:
 
 
 ---
 **Tools Used:**
 
 * **Task**
-  description: Claude Flow architecture review
+  description: Ruflo architecture review
 
 ---
 
-Here are the Claude Flow architecture review findings for packaging Ask-RuvNet's 170K+ entry KB as an MCP/WASM/RVF distribution. This is the analysis you asked for — recommendations only, no action taken.
+Here are the Ruflo architecture review findings for packaging Ask-RuvNet's 170K+ entry KB as an MCP/WASM/RVF distribution. This is the analysis you asked for — recommendations only, no action taken.
 
 ---
 
@@ -1867,7 +1867,7 @@ All 6 changes are implemented and the build passes cleanly. Here's what changed:
 
 1. **`src/core/PostgresKnowledgeBase.js`** — After `knowledge_search()`, a secondary query enriches results with `package_name`, `doc_type`, `file_path`, and `topics` from `architecture_docs`. Sub-millisecond cost (PK lookup on 8-12 IDs).
 
-2. **`src/core/ContextCompressor.js`** — `formatContext()` now includes metadata lines in what the LLM sees: `Repository: claude-flow | Type: adr | URL: https://github.com/ruvnet/claude-flow/blob/main/docs/adr/001.md | Topics: architecture, swarm`. Also added `githubUriToUrl()` helper to convert `github://` URIs to real GitHub URLs.
+2. **`src/core/ContextCompressor.js`** — `formatContext()` now includes metadata lines in what the LLM sees: `Repository: claude-flow | Type: adr | URL: https://github.com/ruvnet/ruflo/blob/main/docs/adr/001.md | Topics: architecture, swarm`. Also added `githubUriToUrl()` helper to convert `github://` URIs to real GitHub URLs.
 
 3. **`src/server/RuvPersona.js`** — New `STRUCTURED RESPONSE FORMAT` section instructs the LLM to: cite sources with markdown links, label ADR/changelog/release/commit sources by type, explain evolutionary context, and include "Related Resources" and "Explore Further" sections. Critical guardrail: "Do NOT fabricate GitHub URLs."
 
@@ -2032,7 +2032,7 @@ All 3 background agents completed successfully:
 
 2. **README v2.2.0**: Added "What's New in v2.2.0" section documenting all 6 features (rich responses, source cards, evolutionary knowledge, full pipeline, Gemini visual, markdown links). Updated deployment history.
 
-3. **Data doc timestamps**: Updated `last_modified` to `2026-02-27` across all 5 data docs. Updated Claude-Flow references from v2.7.0 to V3.
+3. **Data doc timestamps**: Updated `last_modified` to `2026-02-27` across all 5 data docs. Updated Ruflo references from v2.7.0 to V3.
 
 Now the critical next step — **test the application locally and deploy**. Let me verify the build still passes with all the doc changes, then test against real data.
 
@@ -2176,8 +2176,8 @@ Server connects to PostgreSQL with 174,310 entries but has vector type errors du
 
 * **Bash** `curl -s -X POST http://localhost:4000/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is Claude-Flow V3?","history":[]}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print('RESPONSE:', d.get('response','')[:500]); print('---'); print('SOURCES:', json.dumps(d.get('sources',[])[:3], indent=2))"`
-  _Test chat API with real query about Claude-Flow V3_
+  -d '{"message":"What is Ruflo V3?","history":[]}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print('RESPONSE:', d.get('response','')[:500]); print('---'); print('SOURCES:', json.dumps(d.get('sources',[])[:3], indent=2))"`
+  _Test chat API with real query about Ruflo V3_
 
 ---
 
@@ -2189,7 +2189,7 @@ Empty response. Let me check the full response and server logs.
 
 * **Bash** `curl -s -X POST http://localhost:4000/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is Claude-Flow V3?","history":[]}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print(json.dumps(d, indent=2)[:2000])"`
+  -d '{"message":"What is Ruflo V3?","history":[]}' 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print(json.dumps(d, indent=2)[:2000])"`
   _Full chat API response_
 
 ---
@@ -2206,7 +2206,7 @@ Let me check the sources more carefully and the server logs.
 
 * **Bash** `curl -s -X POST http://localhost:4000/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is Claude-Flow V3?","history":[]}' 2>&1 | python3 -c "
+  -d '{"message":"What is Ruflo V3?","history":[]}' 2>&1 | python3 -c "
 import sys,json
 d=json.load(sys.stdin)
 print('Has sources key:', 'sources' in d)
@@ -3212,7 +3212,7 @@ Wait — this is a new deployment! `3810 documents` vs `3800` before, and `43734
 
 * **Bash** `curl -s -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message":"What is Claude-Flow V3?","history":[]}' 2>&1 | python3 -c "
+  -d '{"message":"What is Ruflo V3?","history":[]}' 2>&1 | python3 -c "
 import sys,json
 d=json.load(sys.stdin)
 print('ANSWER (first 600 chars):')
@@ -3287,7 +3287,7 @@ console.log('Homepage screenshot taken');
 const input = await p.$('textarea, input[type="text"], .chat-input textarea, .input-area textarea');
 if (input) {
   await input.click();
-  await input.fill('What is Claude-Flow V3 and how does it work?');
+  await input.fill('What is Ruflo V3 and how does it work?');
   console.log('Typed question');
   
   // Find and click send button
@@ -3338,13 +3338,13 @@ Excellent — all three screenshots loaded. Let me analyze what I see:
 
 **Screenshot 1 (Homepage):** v2.2.0 confirmed in header. Hero loads correctly with stats (148+ Repos, 54,543+ KB Entries). Sidebar with System Brain, Learning Level, View Mode. Canvas panel on right with Ecosystem Overview and Stack Architecture. Clean dark theme.
 
-**Screenshot 2 (Response):** Question submitted, response rendering with markdown — "Introduction to Claude-Flow V3" heading, bullet points with bold labels. Looks professional.
+**Screenshot 2 (Response):** Question submitted, response rendering with markdown — "Introduction to Ruflo V3" heading, bullet points with bold labels. Looks professional.
 
 **Screenshot 3 (Sources + Actions):** **SOURCE CARDS ARE WORKING!** I can see:
 - "SOURCES (8)" header
 - Doc-type badges: `GITHUB-REPOSITORY`, `DOCUMENTATION` — purple pill badges
 - Titles with relevance scores (64%, 62%, 61%, 60%, 57%)
-- Related Resources section with clickable links ("Claude-Flow Documentation", "Agentics Foundation")
+- Related Resources section with clickable links ("Ruflo Documentation", "Agentics Foundation")
 - Action buttons: Simplify, Code, Diagram, Visualize, Canvas
 
 ---
@@ -3601,7 +3601,7 @@ await desktop.waitForTimeout(2000);
 // Ask a question
 const input = await desktop.$('textarea, .input-area textarea');
 if (input) {
-  await input.fill('What is Claude-Flow V3 and how does the swarm orchestration work?');
+  await input.fill('What is Ruflo V3 and how does the swarm orchestration work?');
   const btn = await desktop.$('button.send-button, .send-button');
   if (btn) await btn.click();
   await desktop.waitForTimeout(18000);
@@ -3690,10 +3690,10 @@ const inputs = await p.$$('input[type="text"]');
 console.log(`Found ${inputs.length} text inputs`);
 
 if (textareas.length > 0) {
-  await textareas[0].fill('What is Claude-Flow V3?');
+  await textareas[0].fill('What is Ruflo V3?');
   console.log('Filled textarea');
 } else if (inputs.length > 0) {
-  await inputs[0].fill('What is Claude-Flow V3?');
+  await inputs[0].fill('What is Ruflo V3?');
   console.log('Filled input');
 }
 
@@ -3725,10 +3725,10 @@ SCRIPT`
 ---
 
 **GitHub URLs are working!** Source cards now link to real GitHub repos:
-- `https://github.com/ruvnet/claude-flow/blob/main/v3/implementation/README.md`
-- `https://github.com/ruvnet/claude-flow/blob/main/v3/implementation/adrs/README.md`
-- `https://github.com/ruvnet/claude-flow/blob/main/v3/@claude-flow/shared/README.md`
-- `https://github.com/ruvnet/claude-flow/blob/main/v3/@claude-flow/cli/README.md`
+- `https://github.com/ruvnet/ruflo/blob/main/v3/implementation/README.md`
+- `https://github.com/ruvnet/ruflo/blob/main/v3/implementation/adrs/README.md`
+- `https://github.com/ruvnet/ruflo/blob/main/v3/@claude-flow/shared/README.md`
+- `https://github.com/ruvnet/ruflo/blob/main/v3/@claude-flow/cli/README.md`
 
 Let me view the screenshots.
 
@@ -4126,7 +4126,7 @@ Uptime is 130 seconds — fresh deployment is live. Let me verify it's working p
 
 * **Bash** `curl -s -X POST https://ask-ruvnet-production.up.railway.app/api/chat \
   -H 'Content-Type: application/json' \
-  -d '{"message":"Why was HNSW chosen for vector search in Claude Flow?","level":"Balanced"}' | python3 -c "import sys,json; d=json.load(sys.stdin); print('Answer length:', len(d.get('answer',''))); print('Sources:', len(d.get('sources',[]))); print('First 500 chars:', d.get('answer','')[:500])"`
+  -d '{"message":"Why was HNSW chosen for vector search in Ruflo?","level":"Balanced"}' | python3 -c "import sys,json; d=json.load(sys.stdin); print('Answer length:', len(d.get('answer',''))); print('Sources:', len(d.get('sources',[]))); print('First 500 chars:', d.get('answer','')[:500])"`
   _Test ADR-aware query on production_
 
 ---
@@ -4171,7 +4171,7 @@ await p.screenshot({ path: '/tmp/v2.2.2-desktop.png', fullPage: false });
 // Ask a question to test source cards
 const textarea = await p.$('textarea');
 if (textarea) {
-  await textarea.fill('What architecture decisions were made for Claude Flow?');
+  await textarea.fill('What architecture decisions were made for Ruflo?');
   await p.keyboard.press('Enter');
   await p.waitForTimeout(8000);
   await p.screenshot({ path: '/tmp/v2.2.2-response.png', fullPage: true });
@@ -4232,7 +4232,7 @@ Here's what was accomplished in this batch of ADR improvements:
 
 5. **Ruvi KB entries** — 7 knowledge entries for the ruvi CLI package ingested
 
-The question "What architecture decisions were made for Claude Flow?" now returns 8 sources with a 3,279-char structured response — compared to 0 results before this session.
+The question "What architecture decisions were made for Ruflo?" now returns 8 sources with a 3,279-char structured response — compared to 0 results before this session.
 
 Let me do this properly — honest assessment first, then research RVF and rich output solutions.
 
@@ -4399,7 +4399,7 @@ This alone transforms every architectural response from wall-of-text to text + d
 
 ### Fix 2: Pre-Built Diagram Library (3-5 Days)
 
-Create a `knowledge_diagrams` table in PostgreSQL with curated SVGs for key concepts (HNSW, swarm topology, Claude Flow architecture, RVF format, etc.). Embed descriptions, vector-search them alongside text, and return matching diagrams as a `diagrams[]` array in the API response. The frontend renders them as expandable cards.
+Create a `knowledge_diagrams` table in PostgreSQL with curated SVGs for key concepts (HNSW, swarm topology, Ruflo architecture, RVF format, etc.). Embed descriptions, vector-search them alongside text, and return matching diagrams as a `diagrams[]` array in the API response. The frontend renders them as expandable cards.
 
 ### Fix 3: Force Mermaid from the LLM (1 Hour)
 
@@ -4468,7 +4468,7 @@ First, let me memorialize the onboarding/presentation requirements so we don't l
 
 ---
 
-Good. Onboarding requirements are stored. Now let me route the core problem — KB quality + search recall optimization — through Claude Flow.
+Good. Onboarding requirements are stored. Now let me route the core problem — KB quality + search recall optimization — through Ruflo.
 
 
 ---
@@ -4490,7 +4490,7 @@ CURRENT STATE (scored 58/100)
 
 ---
 
-Claude Flow has the task. Now let me run the actual diagnostic work — starting with the most critical question: **is the LLM actually seeing KB context on production?**
+Ruflo has the task. Now let me run the actual diagnostic work — starting with the most critical question: **is the LLM actually seeing KB context on production?**
 
 
 ---
@@ -4635,7 +4635,7 @@ Specifically:
 **Three agents working now:**
 1. **KB data audit** — Running 10 diagnostic queries to get the full picture of what's broken (garbage titles, zero-score entries, missing embeddings, content size distribution)
 2. **Context pipeline trace** — Reading ContextCompressor, ReRanker, and app.js to map every filter/threshold that affects what the LLM sees
-3. **Anchor doc gap analysis** — Finding which core tools (Claude Flow, RuVector, AgentDB, etc.) have good overview docs vs which are missing
+3. **Anchor doc gap analysis** — Finding which core tools (Ruflo, RuVector, AgentDB, etc.) have good overview docs vs which are missing
 
 Once all three report back, I'll have the full diagnostic and can start fixing. The fix sequence will be:
 1. Score and classify the 120K unclassified entries
@@ -4810,7 +4810,7 @@ assign title from nearest heading → store chunk → done
 
 That produces **quantity** (174K entries). It does NOT produce **knowledge** (well-structured, coherent, educational content that helps someone understand what a tool does).
 
-The 323 entries in `kb_complete` — the ones that actually work well (AIMDS, Claude Flow, HNSW, RVF) — were **hand-authored teaching documents**. They score 99 because they ARE 99-quality. The 174K entries score whatever number we assign them, but the content quality doesn't change.
+The 323 entries in `kb_complete` — the ones that actually work well (AIMDS, Ruflo, HNSW, RVF) — were **hand-authored teaching documents**. They score 99 because they ARE 99-quality. The 174K entries score whatever number we assign them, but the content quality doesn't change.
 
 ## What It Would Take to Get to Gold
 
@@ -4853,7 +4853,7 @@ The 8 anchor docs we just created are the start of this approach, and they work 
 
 Good — Path A: LLM-curate all 174K entries. And the 8 anchor docs are now inserted (both tables, confirmed).
 
-This is a massive compute job but it's the right call. Let me design this properly through Claude Flow — this is exactly the kind of architectural decision that needs to be routed through the system architect.
+This is a massive compute job but it's the right call. Let me design this properly through Ruflo — this is exactly the kind of architectural decision that needs to be routed through the system architect.
 
 
 
@@ -4866,7 +4866,7 @@ The plan:
 2. **LLM-curate the 174K entries** — not just reclassify, but actually READ each one, extract useful facts, merge related chunks, rewrite as coherent knowledge, and delete the garbage
 3. **Verify with real queries** — test every core topic and confirm the response is grounded, rich, and accurate
 
-Let me route this to Claude Flow properly and start executing.
+Let me route this to Ruflo properly and start executing.
 
 
 ---
@@ -6998,7 +6998,7 @@ Stuart, here's what's happening right now, with zero padding:
 2. Rewrote the prompt to fix all 4 audit findings (banned "Think of it", required qualified numbers, explicit banned word list, required cross-references)
 3. Enhanced the goal doc from a specification into an engineering handbook (sections 11-15: schema, data flow, rollback, common issues, query patterns, audit process, pipeline extension guide)
 
-**What you're asking for — recursive improvement with Claude Flow:**
+**What you're asking for — recursive improvement with Ruflo:**
 
 You're right that I should be using parallel agents to close the quality loop faster. Let me set up a real feedback loop: Stage 3 produces docs → audit agent scores them → if below threshold, prompt gets tuned → repeat. And I need to verify the v2.0 prompt actually fixed the problems before letting it run through 558 groups.
 
@@ -7030,7 +7030,7 @@ Stuart, I'm going to give you the briefing you asked for. No hedging.
 
 **What I understand you're asking:**
 
-You want me to stop treating this as a "run script → check results → fix script → run again" loop. You want a **system** where Claude Flow orchestrates multiple expert agents that catch problems BEFORE content goes into the database — not after 400 entries are already written with flawed prompts.
+You want me to stop treating this as a "run script → check results → fix script → run again" loop. You want a **system** where Ruflo orchestrates multiple expert agents that catch problems BEFORE content goes into the database — not after 400 entries are already written with flawed prompts.
 
 Specifically:
 1. A **quality gate** that evaluates every rewrite before it's stored — not a post-hoc audit
@@ -8202,7 +8202,7 @@ Now let me test the actual chat API to verify triage_tier and quality_score come
 
 * **Bash** `curl -s -X POST http://localhost:3000/api/chat \
   -H 'Content-Type: application/json' \
-  -d '{"message": "What is Claude Flow V3?", "history": []}' | \
+  -d '{"message": "What is Ruflo V3?", "history": []}' | \
   python3 -c "
 import json, sys
 data = json.load(sys.stdin)
@@ -8369,7 +8369,7 @@ echo "Started PID: $!"`
 
 * **Bash** `curl -s -X POST http://localhost:3000/api/chat \
   -H 'Content-Type: application/json' \
-  -d '{"message": "What is Claude Flow V3?", "history": []}' | \
+  -d '{"message": "What is Ruflo V3?", "history": []}' | \
   python3 -c "
 import json, sys
 data = json.load(sys.stdin)
@@ -8411,7 +8411,7 @@ await p.waitForTimeout(2000);
 
 // Type a question
 const textarea = await p.locator('textarea').first();
-await textarea.fill('What is Claude Flow V3?');
+await textarea.fill('What is Ruflo V3?');
 await p.waitForTimeout(500);
 
 // Press Enter
@@ -8475,7 +8475,7 @@ await p.waitForTimeout(3000);
 
 // Find input field
 const input = await p.locator('input[placeholder*="Ask"]').first();
-await input.fill('What is Claude Flow V3?');
+await input.fill('What is Ruflo V3?');
 await p.waitForTimeout(500);
 
 // Click Send button
@@ -8507,7 +8507,7 @@ ENDSCRIPT`
 
 ---
 
-The response is rendering with actual KB content. I can see the answer mentions Claude Flow V3 with substantive content from the knowledge base. I need to scroll down further to see the source cards:
+The response is rendering with actual KB content. I can see the answer mentions Ruflo V3 with substantive content from the knowledge base. I need to scroll down further to see the source cards:
 
 
 ---
@@ -8523,7 +8523,7 @@ await p.goto('http://localhost:3000');
 await p.waitForTimeout(3000);
 
 const input = await p.locator('input[placeholder*="Ask"]').first();
-await input.fill('What is Claude Flow V3?');
+await input.fill('What is Ruflo V3?');
 await p.waitForTimeout(500);
 await p.locator('button:has-text("SEND")').click();
 await p.waitForTimeout(20000);
@@ -8574,7 +8574,7 @@ await p.goto('http://localhost:3000');
 await p.waitForTimeout(3000);
 
 const input = await p.locator('input[placeholder*="Ask"]').first();
-await input.fill('What is Claude Flow V3?');
+await input.fill('What is Ruflo V3?');
 await p.waitForTimeout(500);
 await p.locator('button:has-text("SEND")').click();
 await p.waitForTimeout(20000);
@@ -9028,7 +9028,7 @@ All 7 changes implemented, built, and verified with Playwright. Here's the summa
 
 1. **Sidebar killed, header toolbar built** — Logo + New Chat on left, Level dropdown + KB/Universe/Theme icon buttons on right. Clean, compact 56px header.
 
-2. **Hero condensed to prompt starters** — 135 lines of marketing → 30 lines: small logo, "What do you want to learn?" heading, 4 pill buttons (Claude-Flow V3, ReasoningBank, RuVector DB, Rust Ecosystem).
+2. **Hero condensed to prompt starters** — 135 lines of marketing → 30 lines: small logo, "What do you want to learn?" heading, 4 pill buttons (Ruflo V3, ReasoningBank, RuVector DB, Rust Ecosystem).
 
 3. **Canvas auto-shows/hides** — No more view mode toggle. `effectiveViewMode` computed from `canvasContent` state. Canvas appears when you click KB/Universe/Open in Canvas, disappears when closed.
 
@@ -9204,7 +9204,7 @@ Good data. Now let me run the end-to-end verification — test 5 different query
 ---
 **Tools Used:**
 
-* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Claude Flow V3?","mode":"Balanced","history":[]}' | python3 -m json.tool 2>/dev/null | head -80`
+* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Ruflo V3?","mode":"Balanced","history":[]}' | python3 -m json.tool 2>/dev/null | head -80`
   _Test query 1: what-is intent_
 
 ---
@@ -9216,7 +9216,7 @@ Excellent — gold sources with quality scores are flowing through. Let me run a
 **Tools Used:**
 
 * **Bash** `# Test how-to intent
-curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"How do I install and set up Claude Flow?","mode":"Balanced","history":[]}' | python3 -c "
+curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"How do I install and set up Ruflo?","mode":"Balanced","history":[]}' | python3 -c "
 import json,sys
 d=json.load(sys.stdin)
 print('=== HOW-TO TEST ===')
@@ -9666,7 +9666,7 @@ Server is ready. Let me fire test queries across all 5 intent types in parallel.
 ---
 **Tools Used:**
 
-* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Claude-Flow V3 and what makes it different from V2?","mode":"Balanced"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{try{const j=JSON.parse(Buffer.concat(d));console.log('PROVIDER:',j.provider);console.log('ANSWER LENGTH:',j.answer?.length);console.log('SOURCES:',j.sources?.length);console.log('---ANSWER---');console.log(j.answer?.substring(0,3000))}catch(e){console.log(Buffer.concat(d).toString().substring(0,2000))}})"`
+* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Ruflo V3 and what makes it different from V2?","mode":"Balanced"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{try{const j=JSON.parse(Buffer.concat(d));console.log('PROVIDER:',j.provider);console.log('ANSWER LENGTH:',j.answer?.length);console.log('SOURCES:',j.sources?.length);console.log('---ANSWER---');console.log(j.answer?.substring(0,3000))}catch(e){console.log(Buffer.concat(d).toString().substring(0,2000))}})"`
   _Test what-is query with new prompt_
 
 * **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"How do I install and configure RuVector for my PostgreSQL database?","mode":"Beginner"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{try{const j=JSON.parse(Buffer.concat(d));console.log('PROVIDER:',j.provider);console.log('ANSWER LENGTH:',j.answer?.length);console.log('---ANSWER---');console.log(j.answer?.substring(0,3000))}catch(e){console.log(Buffer.concat(d).toString().substring(0,2000))}})"`
@@ -9770,7 +9770,7 @@ sleep 8 && grep -c "Hybrid search initialized" /tmp/askruvnet-server.log`
 ---
 **Tools Used:**
 
-* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Claude-Flow V3 and what makes it different from V2?","mode":"Balanced"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{const j=JSON.parse(Buffer.concat(d));console.log(j.answer)})"`
+* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Ruflo V3 and what makes it different from V2?","mode":"Balanced"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{const j=JSON.parse(Buffer.concat(d));console.log(j.answer)})"`
   _Read full response to verify quality visually_
 
 ---
@@ -9801,7 +9801,7 @@ await p.waitForTimeout(2000);
 
 // Type a question and submit
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and what makes it different from V2?');
+await input.fill('What is Ruflo V3 and what makes it different from V2?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 
 // Wait for response
@@ -9899,7 +9899,7 @@ Here's where we are now:
 - **No streaming** — responses arrive all at once (3-4 second wait). Streaming would improve perceived performance.
 - **Stateless chat** — no conversation memory between messages yet.
 
-Routing through Claude Flow for a comprehensive architecture review. Let me launch parallel review agents to analyze the full stack and identify improvement opportunities.
+Routing through Ruflo for a comprehensive architecture review. Let me launch parallel review agents to analyze the full stack and identify improvement opportunities.
 
 
 ---
@@ -9916,7 +9916,7 @@ Routing through Claude Flow for a comprehensive architecture review. Let me laun
 
 ---
 
-I've launched 3 Claude Flow review agents in parallel:
+I've launched 3 Ruflo review agents in parallel:
 
 - **System Architect (Opus)**: Reviewing the system prompt, LLM pipeline, and context assembly for output quality blind spots
 - **Frontend Architect (Opus)**: Reviewing UI rendering — Mermaid diagrams, markdown tables, source cards, responsive design, accessibility
@@ -9940,7 +9940,7 @@ The Performance Engineer agent is back with critical findings. Let me check on t
 
 All 3 review agents are back. Let me synthesize the findings and implement the highest-impact changes.
 
-## Claude Flow Review Summary — 3 Agents, 24 Findings
+## Ruflo Review Summary — 3 Agents, 24 Findings
 
 ### Top Priority Fixes (by all 3 agents):
 
@@ -10302,7 +10302,7 @@ await p.waitForTimeout(2000);
 
 // Send a question
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and what makes it different from V2?');
+await input.fill('What is Ruflo V3 and what makes it different from V2?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 
 await p.waitForTimeout(18000);
@@ -10349,7 +10349,7 @@ Everything is rendering correctly:
 - **Chat input at bottom** with mic and attachment
 - **Header toolbar** with Level dropdown, KB, Universe, Theme
 
-## Summary of Claude Flow Review Implementation
+## Summary of Ruflo Review Implementation
 
 ### What 3 agents found (24 findings total):
 
@@ -10406,7 +10406,7 @@ await p.screenshot({ path: '/tmp/audit-01-landing.png' });
 
 // Send question 1: Balanced level conceptual question
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?');
+await input.fill('What is Ruflo V3 and how can I use it to build AI solutions for my organization?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 await p.waitForTimeout(18000);
 
@@ -10468,7 +10468,7 @@ Now let me also get the full raw response text and capture the middle sections (
 ---
 **Tools Used:**
 
-* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?","mode":"Balanced"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{const j=JSON.parse(Buffer.concat(d));console.log('PROVIDER:',j.provider);console.log('LENGTH:',j.answer?.length,'chars');console.log('SOURCES:',j.sources?.length);console.log('GOLD SOURCES:',j.sources?.filter(s=>s.triage_tier==='gold').length);console.log('');console.log(j.answer)})"`
+* **Bash** `curl -s http://localhost:3000/api/chat -H 'Content-Type: application/json' -d '{"message":"What is Ruflo V3 and how can I use it to build AI solutions for my organization?","mode":"Balanced"}' | node -e "const d=[];process.stdin.on('data',c=>d.push(c));process.stdin.on('end',()=>{const j=JSON.parse(Buffer.concat(d));console.log('PROVIDER:',j.provider);console.log('LENGTH:',j.answer?.length,'chars');console.log('SOURCES:',j.sources?.length);console.log('GOLD SOURCES:',j.sources?.filter(s=>s.triage_tier==='gold').length);console.log('');console.log(j.answer)})"`
   _Get full raw response for grading_
 
 ---
@@ -10489,7 +10489,7 @@ await p.waitForTimeout(2000);
 
 // Send question
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?');
+await input.fill('What is Ruflo V3 and how can I use it to build AI solutions for my organization?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 await p.waitForTimeout(18000);
 
@@ -10555,7 +10555,7 @@ await p.goto('http://localhost:3000');
 await p.waitForTimeout(2000);
 
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?');
+await input.fill('What is Ruflo V3 and how can I use it to build AI solutions for my organization?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 await p.waitForTimeout(18000);
 
@@ -10613,7 +10613,7 @@ await p.goto('http://localhost:3000');
 await p.waitForTimeout(2000);
 
 const input = await p.locator('textarea, input[type="text"]').first();
-await input.fill('What is Claude-Flow V3 and how can I use it to build AI solutions for my organization?');
+await input.fill('What is Ruflo V3 and how can I use it to build AI solutions for my organization?');
 await p.locator('button.send-btn, button[type="submit"]').first().click();
 await p.waitForTimeout(20000);
 
@@ -10674,7 +10674,7 @@ The full-page screenshot shows a complete response with all sections rendered:
 - No mention of the 96 MCP tools, ReasoningBank self-learning, or SONA — the genuinely differentiating features
 - The analogy is good but there's only ONE. A truly educational response would layer multiple analogies for different concepts
 
-**What would make it 95+:** Deeper examples from actual KB content — show a real swarm init command, explain what happens step by step, include a before/after comparison of doing a task with vs without Claude-Flow
+**What would make it 95+:** Deeper examples from actual KB content — show a real swarm init command, explain what happens step by step, include a before/after comparison of doing a task with vs without Ruflo
 
 ### 2. Visual Compellingness — **72/100**
 
@@ -10703,7 +10703,7 @@ The full-page screenshot shows a complete response with all sections rendered:
 - 3 GOLD sources from the actual claude-flow repo are surfaced
 
 **What's NOT working:**
-- The install command (`npm install @claude-flow/shared`) is the wrong package — the real command is `npx @claude-flow/cli@latest init`
+- The install command (`npm install @claude-flow/shared`) is the wrong package — the real command is `npx ruflo@latest init`
 - The deploy examples are fabricated — `claude-flow deploy --agents coder,tester --topology mesh` doesn't exist
 - No mention of the actual npm packages (claude-flow 3.5.2, agentic-flow 2.0.7, ruvector 0.2.2)
 - No mention of hooks, ReasoningBank, HNSW, or the specific capabilities that make the architecture unique
@@ -10721,10 +10721,10 @@ The full-page screenshot shows a complete response with all sections rendered:
 **What's NOT working:**
 - The MOST compelling concepts (self-learning agents, HNSW 12,500x speed, SONA real-time adaptation, ReasoningBank) are not mentioned at all
 - No "wow factor" — nothing that makes someone think "I NEED this." The response reads like documentation, not like a compelling introduction to groundbreaking technology
-- No comparison to what people currently use (e.g., "Unlike LangChain which requires..., Claude-Flow...")
+- No comparison to what people currently use (e.g., "Unlike LangChain which requires..., Ruflo...")
 - The Mermaid diagram is too simple — 5 boxes connected with arrows doesn't convey the sophistication of the system
 
-**What would make it 90+:** Lead with the differentiators. "While most AI frameworks manage one agent at a time, Claude-Flow V3 coordinates 60+ agents with self-learning..." The architecture diagram should show the full stack: hooks → agents → ReasoningBank → memory → HNSW
+**What would make it 90+:** Lead with the differentiators. "While most AI frameworks manage one agent at a time, Ruflo V3 coordinates 60+ agents with self-learning..." The architecture diagram should show the full stack: hooks → agents → ReasoningBank → memory → HNSW
 
 ### 5. Actionability for Building Solutions — **68/100**
 
@@ -10740,7 +10740,7 @@ The full-page screenshot shows a complete response with all sections rendered:
 - No mention of cost/pricing/free tier
 - No "next step" that actually works
 
-**What would make it 90+:** Include the REAL `npx @claude-flow/cli@latest init --wizard` command, show actual output, link to the real README, mention that it works with Claude Code
+**What would make it 90+:** Include the REAL `npx ruflo@latest init --wizard` command, show actual output, link to the real README, mention that it works with Claude Code
 
 ---
 
@@ -10764,7 +10764,7 @@ The automated grading system I built scores 98/100 because it checks for **struc
 But your question is about **effectiveness** — does someone walk away understanding, excited, and capable of building? That's a much harder bar. The gaps:
 
 1. **Fabricated examples** (the biggest problem) — the LLM generates plausible-looking commands that don't work
-2. **Surface-level content** — it describes WHAT Claude-Flow is but not WHY it matters or HOW it's different from alternatives
+2. **Surface-level content** — it describes WHAT Ruflo is but not WHY it matters or HOW it's different from alternatives
 3. **Mermaid diagrams too small** — the visual aid that should be the hero is barely visible
 4. **No streaming** — 5-8 second blank wait kills the experience
 5. **Source card raw markdown bug** — card 3 shows unrendered `**bold**` text
@@ -11105,7 +11105,7 @@ await p.goto('http://localhost:3000', { waitUntil: 'networkidle' });
 await p.screenshot({ path: '/tmp/fix-empty-state.png', fullPage: false });
 
 // Type a query to test streaming
-await p.fill('input[type="text"]', 'What is Claude-Flow V3 and what makes it unique?');
+await p.fill('input[type="text"]', 'What is Ruflo V3 and what makes it unique?');
 await p.click('button.send-btn');
 
 // Wait for streaming to start (the assistant message appears)
@@ -11156,7 +11156,7 @@ await p.goto('http://localhost:3000', { waitUntil: 'networkidle' });
 await p.screenshot({ path: '/tmp/fix-empty-state.png', fullPage: false });
 
 // Type and send
-await p.fill('input[type="text"]', 'What is Claude-Flow V3 and what makes it unique?');
+await p.fill('input[type="text"]', 'What is Ruflo V3 and what makes it unique?');
 await p.click('button[type="submit"]');
 
 // Wait for streaming to start
@@ -11490,7 +11490,7 @@ Now I can see the full output. Let me now run the comprehensive real-world effec
 import { chromium } from '/Users/stuartkerr/.npm-global/lib/node_modules/playwright/index.mjs';
 
 const queries = [
-  'What is Claude-Flow V3 and what makes it unique?',
+  'What is Ruflo V3 and what makes it unique?',
   'How do I install and configure RuVector for my PostgreSQL database?',
   'What is RuVector and how does HNSW compare to brute-force search?',
 ];
@@ -11624,7 +11624,7 @@ The server may have gotten slow after multiple queries. Let me use the API direc
 
 * **Bash** `node -e '
 const queries = [
-  "What is Claude-Flow V3 and what makes it unique?",
+  "What is Ruflo V3 and what makes it unique?",
   "How do I install and configure RuVector for my PostgreSQL database?",
   "What is RuVector and how does HNSW compare to brute-force search?"
 ];
@@ -11821,7 +11821,7 @@ Here are the complete results across all 5 queries:
 
 | Query | Score | Deductions |
 |-------|-------|-----------|
-| Claude-Flow V3 unique features | **98/100** | no gold sources (-2) |
+| Ruflo V3 unique features | **98/100** | no gold sources (-2) |
 | Install/configure RuVector | **93/100** | missing analogy (-7) |
 | HNSW vs brute-force | **100/100** | none |
 | ReasoningBank self-learning | **98/100** | no gold sources (-2) |

@@ -843,7 +843,7 @@ OK. Now let me check the ingest progress and then give you the full evaluation.
 
 **Ingest status: claude-flow DONE, ruvector DONE, agentic-flow embedding 27,000/39,904 (68%). ~20 min to finish.**
 
-Now, Stuart asked me to use Claude Flow V3 to evaluate this, not just answer directly. Let me route this through CF.
+Now, Stuart asked me to use Ruflo V3 to evaluate this, not just answer directly. Let me route this through CF.
 
 
 ---
@@ -2316,7 +2316,7 @@ Yes, HNSW graph node settings are configured across all 18 indexes. The main KB 
 | Parameter | Score | Assessment |
 |---|---|---|
 | **1. Raw Data Coverage** | **82/100** | 3 key repos fully ingested (claude-flow, ruvector, agentic-flow). 137 total repos. Missing: developer announcements, npm changelogs, community discussions |
-| **2. Claude Flow V3 Knowledge** | **78/100** | All V3 source code ingested (22K entries). Missing: curated "how to use V3" guides, decision trees for topology selection |
+| **2. Ruflo V3 Knowledge** | **78/100** | All V3 source code ingested (22K entries). Missing: curated "how to use V3" guides, decision trees for topology selection |
 | **3. RuVector Architecture** | **80/100** | Full ruvector source + 35K entries. HNSW graph nodes configured correctly. Missing: practical troubleshooting guides (we just discovered 3 bugs this session) |
 | **4. Search Retrieval Quality** | **45/100** | CRITICAL GAP. Tested 6 queries - only 2/6 returned good results. Problems: garbage chunk titles, no quality boosting in search path, cosine operator bug forces L2 workaround |
 | **5. Decision-Making Guidance** | **30/100** | CRITICAL GAP. Zero curated decision guides exist (being created now). The KB has raw code but not "when should I use X vs Y" guidance. This is the #1 thing you need. |
@@ -2689,14 +2689,14 @@ GOLDEN STANDARD: m=16, ef_construction=200, ruvector_cosine_ops. This gives sub-
       category: 'decision-guide'
     },
     {
-      title: 'Architecture Decision: Claude Flow V3 Topology Selection Guide',
-      content: \`Claude Flow V3 supports 6 swarm topologies. Choosing the wrong one causes agent drift, wasted compute, and poor results. Here is when to use each:
+      title: 'Architecture Decision: Ruflo V3 Topology Selection Guide',
+      content: \`Ruflo V3 supports 6 swarm topologies. Choosing the wrong one causes agent drift, wasted compute, and poor results. Here is when to use each:
 
 HIERARCHICAL (DEFAULT, RECOMMENDED): Use for teams of 3-8 agents. A coordinator agent controls all workers directly. Best anti-drift protection. Use for: bug fixes, feature implementation, refactoring, security audits.
-Command: npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
+Command: npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
 
 HIERARCHICAL-MESH: Use for 10-15 agents. Queen coordinator plus peer-to-peer communication between workers. Best for complex multi-module work where workers need to share findings.
-Command: npx @claude-flow/cli@latest swarm init --topology hierarchical-mesh --max-agents 15 --strategy specialized
+Command: npx ruflo@latest swarm init --topology hierarchical-mesh --max-agents 15 --strategy specialized
 
 MESH: Fully connected peer network. Every agent can talk to every other. Use only for research tasks where there is no clear hierarchy. Risk: high drift without coordinator.
 
@@ -2849,25 +2849,25 @@ asana, context7, firebase, github, gitlab, google-maps, greptile, imagen, linear
 
 DEFERRED TOOLS: MCP tools must be loaded via ToolSearch before use. Use keyword search (e.g., 'slack message') or direct selection (e.g., 'select:mcp__slack__read_channel').
 
-TROUBLESHOOTING: If an MCP server fails to start, run: npx @claude-flow/cli@latest doctor --fix. This checks Node.js version, npm version, config validity, and server connectivity.\`,
+TROUBLESHOOTING: If an MCP server fails to start, run: npx ruflo@latest doctor --fix. This checks Node.js version, npm version, config validity, and server connectivity.\`,
       category: 'decision-guide'
     },
     {
       title: 'Architecture Decision: Session Management and Cross-Conversation Learning',
-      content: \`Claude Flow V3 supports persistent sessions that carry context and learned patterns across conversations. Proper session management prevents knowledge loss between sessions.
+      content: \`Ruflo V3 supports persistent sessions that carry context and learned patterns across conversations. Proper session management prevents knowledge loss between sessions.
 
 SESSION START (always do this):
-npx @claude-flow/cli@latest hooks session-start --session-id 'session-name' --auto-configure
-OR: npx @claude-flow/cli@latest session restore --latest
+npx ruflo@latest hooks session-start --session-id 'session-name' --auto-configure
+OR: npx ruflo@latest session restore --latest
 
 SESSION END (always do this before closing):
-npx @claude-flow/cli@latest hooks session-end --generate-summary true --persist-state true --export-metrics true
+npx ruflo@latest hooks session-end --generate-summary true --persist-state true --export-metrics true
 
 MEMORY OPERATIONS:
-- Store: npx @claude-flow/cli@latest memory store --key 'pattern-name' --value 'what worked' --namespace patterns
-- Search: npx @claude-flow/cli@latest memory search --query 'search terms' --namespace patterns
-- Retrieve: npx @claude-flow/cli@latest memory retrieve --key 'pattern-name' --namespace patterns
-- List: npx @claude-flow/cli@latest memory list --namespace patterns
+- Store: npx ruflo@latest memory store --key 'pattern-name' --value 'what worked' --namespace patterns
+- Search: npx ruflo@latest memory search --query 'search terms' --namespace patterns
+- Retrieve: npx ruflo@latest memory retrieve --key 'pattern-name' --namespace patterns
+- List: npx ruflo@latest memory list --namespace patterns
 
 ALWAYS CHECK MEMORY BEFORE:
 - Starting a new feature (search for similar implementations)
@@ -2882,8 +2882,8 @@ ALWAYS STORE IN MEMORY AFTER:
 - Discovering a security issue (store the vulnerability pattern)
 
 NEURAL PATTERN TRAINING:
-npx @claude-flow/cli@latest neural train --pattern-type coordination --epochs 10
-npx @claude-flow/cli@latest neural predict --input 'task description'
+npx ruflo@latest neural train --pattern-type coordination --epochs 10
+npx ruflo@latest neural predict --input 'task description'
 
 CRON RULES: Use kind: agentTurn + sessionTarget: isolated. NEVER use systemEvent.\`,
       category: 'decision-guide'
@@ -2939,8 +2939,8 @@ const pg = require('pg');
   const guides = [
     { title: 'Architecture Decision: HNSW vs IVFFlat Index Selection',
       content: 'When building vector databases with ruvector-postgres, you must choose between HNSW and IVFFlat indexes. This decision directly impacts search speed, accuracy, and memory usage.\n\nCHOOSE HNSW WHEN: Your table has fewer than 500K rows, you need high recall (>95%), you can afford the memory (roughly 10x the vector data size), and you need sub-millisecond search times. HNSW builds a navigable small-world graph where each node connects to m=16 neighbors. Use ef_construction=200 for quality builds.\n\nCHOOSE IVFFlat WHEN: Your table exceeds 500K rows, you need faster index builds, memory is constrained, or approximate results (90% recall) are acceptable.\n\nCRITICAL SETTINGS: maintenance_work_mem MUST be at least 512MB for HNSW builds on tables >10K rows. The 4MB PostgreSQL default WILL crash the server (SIGSEGV). Set via: ALTER SYSTEM SET maintenance_work_mem = 512MB; SELECT pg_reload_conf();\n\nKNOWN BUG (Feb 2026): The cosine operator (<=>) does not work correctly with HNSW indexes in ruvector-postgres 2.0.x. Use the L2 operator (<->) instead. For normalized vectors (which all transformer models produce), L2 preserves the same ranking as cosine. Fix pending in PR #181.\n\nGOLDEN STANDARD: m=16, ef_construction=200, ruvector_cosine_ops. This gives sub-millisecond search on 235K+ rows with 2.7GB index size.' },
-    { title: 'Architecture Decision: Claude Flow V3 Topology Selection Guide',
-      content: 'Claude Flow V3 supports 6 swarm topologies. Choosing the wrong one causes agent drift, wasted compute, and poor results.\n\nHIERARCHICAL (DEFAULT, RECOMMENDED): Use for teams of 3-8 agents. A coordinator agent controls all workers directly. Best anti-drift protection. Use for: bug fixes, feature implementation, refactoring, security audits.\nCommand: npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized\n\nHIERARCHICAL-MESH: Use for 10-15 agents. Queen coordinator plus peer-to-peer communication between workers. Best for complex multi-module work where workers need to share findings.\n\nMESH: Fully connected peer network. Every agent can talk to every other. Use only for research tasks where there is no clear hierarchy. Risk: high drift without coordinator.\n\nSTAR: Central coordinator with spokes. Agents cannot communicate with each other. Use for independent parallel tasks.\n\nRING: Circular communication. Each agent passes to the next. Use for pipeline processing (research -> design -> code -> test -> review).\n\nADAPTIVE: Dynamically switches topology based on load. Advanced use only.\n\nRESOURCE RULES (M3 Max 128GB): CPU <50% = up to 10 agents. CPU 50-75% = up to 6 agents. CPU >75% = max 3 agents.' },
+    { title: 'Architecture Decision: Ruflo V3 Topology Selection Guide',
+      content: 'Ruflo V3 supports 6 swarm topologies. Choosing the wrong one causes agent drift, wasted compute, and poor results.\n\nHIERARCHICAL (DEFAULT, RECOMMENDED): Use for teams of 3-8 agents. A coordinator agent controls all workers directly. Best anti-drift protection. Use for: bug fixes, feature implementation, refactoring, security audits.\nCommand: npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized\n\nHIERARCHICAL-MESH: Use for 10-15 agents. Queen coordinator plus peer-to-peer communication between workers. Best for complex multi-module work where workers need to share findings.\n\nMESH: Fully connected peer network. Every agent can talk to every other. Use only for research tasks where there is no clear hierarchy. Risk: high drift without coordinator.\n\nSTAR: Central coordinator with spokes. Agents cannot communicate with each other. Use for independent parallel tasks.\n\nRING: Circular communication. Each agent passes to the next. Use for pipeline processing (research -> design -> code -> test -> review).\n\nADAPTIVE: Dynamically switches topology based on load. Advanced use only.\n\nRESOURCE RULES (M3 Max 128GB): CPU <50% = up to 10 agents. CPU 50-75% = up to 6 agents. CPU >75% = max 3 agents.' },
     { title: 'Architecture Decision: Embedding Model Selection and Compatibility',
       content: 'CRITICAL RULE: Never mix embedding models in the same table. The vector space produced by different models is incompatible.\n\nCURRENT STANDARD: Xenova/all-MiniLM-L6-v2 via ONNX (@claude-flow/embeddings package). Produces 384-dimensional vectors. Fast (~930 embeddings/sec), good quality for code/documentation search.\n\nNEVER USE ruvector_embed(): This is the built-in PostgreSQL function. It uses a DIFFERENT model than ONNX. If your table was embedded with ONNX (which all ask_ruvnet tables are), searching with ruvector_embed() returns meaningless results because the vector spaces do not align.\n\nCORRECT SEARCH PATTERN:\n1. Generate query embedding with ONNX (same model as ingestion)\n2. Pass the vector to kb_smart_search() or kb_search_vec()\n3. These use the HNSW index for sub-ms search\n\nWRONG SEARCH PATTERN:\n1. Call kb_search(text) which internally uses ruvector_embed()\n2. This produces a vector in a different space\n3. Results are random noise, not semantic matches\n\nEMBEDDING DIMENSIONS: 384 (MiniLM) for KB/semantic search. 768 (BERT-base) for deeper understanding, 4x memory. 1536 (OpenAI) best quality but requires API. ALWAYS match dimensions: column must be ruvector(384) for 384-dim embeddings.' },
     { title: 'Architecture Decision: When to Spawn a Swarm vs Single Agent',
@@ -2950,9 +2950,9 @@ const pg = require('pg');
     { title: 'Architecture Decision: KB Ingestion Pipeline and Evergreen Strategy',
       content: 'The knowledge base must stay current with the latest code across all RuvNet repositories.\n\nINGESTION PIPELINE: 1. Clone/pull GitHub repo to /tmp/ruvnet-repos/ 2. Read all text files (md, js, ts, json, py, etc.) 3. Chunk into 800-char segments with 100-char overlap for code or 2000/200 for docs 4. Generate ONNX embeddings (Xenova/all-MiniLM-L6-v2, 384 dimensions) 5. INSERT into ask_ruvnet.architecture_docs with ON CONFLICT upsert 6. Clean up orphaned entries from deleted files\n\nEVERGREEN (AUTOMATED DAILY): LaunchAgent com.ruvnet.kb-evergreen runs at 4:00 AM daily. Checks GitHub API for repos with commits since last ingest. Only re-ingests STALE repos. Logs to logs/kb-evergreen.log. Script: scripts/kb-evergreen.mjs (--force, --dry-run, --repo flags).\n\nCHUNK SIZE: 800 chars + 100 overlap for code (precise search). 2000 chars + 200 overlap for documentation (more context). Never below 200 (too fragmented). Never above 4000 (loses precision).\n\nQUALITY SCORING: Curated guides=98, methodology=93, code wiki=85, GitHub repos=80, raw code=50, short fragments=25.\n\nEMBEDDING SPEED: 100 per ONNX batch, ~930/sec. For 235K rows expect 4-6 hours.' },
     { title: 'Architecture Decision: MCP Server Configuration Rules',
-      content: 'Model Context Protocol (MCP) servers extend Claude Code with specialized tools. Configuration mistakes cause version conflicts and broken tools.\n\nVERSION RULES: ALWAYS use @latest or @alpha tags. NEVER pin specific versions. Pinned MCP versions create dependency conflicts with Claude Code updates.\nCommand: claude mcp add server-name -- npx -y @package/name@latest\n\nINSTALLATION LOCATION: CLI tools go in ~/.npm-global/bin ONLY. NEVER install to /usr/local/ (requires sudo, conflicts with Homebrew). Set with: npm config set prefix ~/.npm-global\n\nGLOBAL MCP SERVERS (always loaded): claude-flow (96 tools, orchestration), Ruvnet-KB-first (8 tools, KB search), playwright-chrome (10 tools, browser), nano-banana (4 tools, images).\n\nON-DEMAND MCP SERVERS: asana, context7, firebase, github, gitlab, google-maps, greptile, imagen, linear, slack, stripe, supabase. Loaded via ToolSearch when needed.\n\nDEFERRED TOOLS: MCP tools must be loaded via ToolSearch before calling. Use keyword search or select:tool_name.\n\nTROUBLESHOOTING: Run npx @claude-flow/cli@latest doctor --fix to check Node.js version, npm version, config validity, and server connectivity.' },
+      content: 'Model Context Protocol (MCP) servers extend Claude Code with specialized tools. Configuration mistakes cause version conflicts and broken tools.\n\nVERSION RULES: ALWAYS use @latest or @alpha tags. NEVER pin specific versions. Pinned MCP versions create dependency conflicts with Claude Code updates.\nCommand: claude mcp add server-name -- npx -y @package/name@latest\n\nINSTALLATION LOCATION: CLI tools go in ~/.npm-global/bin ONLY. NEVER install to /usr/local/ (requires sudo, conflicts with Homebrew). Set with: npm config set prefix ~/.npm-global\n\nGLOBAL MCP SERVERS (always loaded): claude-flow (96 tools, orchestration), Ruvnet-KB-first (8 tools, KB search), playwright-chrome (10 tools, browser), nano-banana (4 tools, images).\n\nON-DEMAND MCP SERVERS: asana, context7, firebase, github, gitlab, google-maps, greptile, imagen, linear, slack, stripe, supabase. Loaded via ToolSearch when needed.\n\nDEFERRED TOOLS: MCP tools must be loaded via ToolSearch before calling. Use keyword search or select:tool_name.\n\nTROUBLESHOOTING: Run npx ruflo@latest doctor --fix to check Node.js version, npm version, config validity, and server connectivity.' },
     { title: 'Architecture Decision: Session Management and Cross-Conversation Learning',
-      content: 'Claude Flow V3 supports persistent sessions that carry context across conversations.\n\nSESSION START: npx @claude-flow/cli@latest hooks session-start --session-id session-name --auto-configure OR: npx @claude-flow/cli@latest session restore --latest\n\nSESSION END: npx @claude-flow/cli@latest hooks session-end --generate-summary true --persist-state true --export-metrics true\n\nMEMORY OPERATIONS: Store: memory store --key pattern-name --value what-worked --namespace patterns. Search: memory search --query terms --namespace patterns. Retrieve: memory retrieve --key pattern-name --namespace patterns.\n\nALWAYS CHECK MEMORY BEFORE: Starting a new feature (search similar implementations). Debugging (search past solutions). Refactoring (search learned patterns). Performance work (search optimizations).\n\nALWAYS STORE AFTER: Solving a tricky bug. Completing a feature. Finding a performance fix. Discovering a security issue.\n\nNEURAL TRAINING: npx @claude-flow/cli@latest neural train --pattern-type coordination --epochs 10. npx @claude-flow/cli@latest neural predict --input task-description.\n\nCRON RULES: Use kind: agentTurn + sessionTarget: isolated. NEVER use systemEvent.\n\nDOCUMENT VERSIONING: Line 1: Updated timestamp + version. Line 2: Created timestamp. Bugfix=0.0.X, Minor=0.X.0, Major=X.0.0.' }
+      content: 'Ruflo V3 supports persistent sessions that carry context across conversations.\n\nSESSION START: npx ruflo@latest hooks session-start --session-id session-name --auto-configure OR: npx ruflo@latest session restore --latest\n\nSESSION END: npx ruflo@latest hooks session-end --generate-summary true --persist-state true --export-metrics true\n\nMEMORY OPERATIONS: Store: memory store --key pattern-name --value what-worked --namespace patterns. Search: memory search --query terms --namespace patterns. Retrieve: memory retrieve --key pattern-name --namespace patterns.\n\nALWAYS CHECK MEMORY BEFORE: Starting a new feature (search similar implementations). Debugging (search past solutions). Refactoring (search learned patterns). Performance work (search optimizations).\n\nALWAYS STORE AFTER: Solving a tricky bug. Completing a feature. Finding a performance fix. Discovering a security issue.\n\nNEURAL TRAINING: npx ruflo@latest neural train --pattern-type coordination --epochs 10. npx ruflo@latest neural predict --input task-description.\n\nCRON RULES: Use kind: agentTurn + sessionTarget: isolated. NEVER use systemEvent.\n\nDOCUMENT VERSIONING: Line 1: Updated timestamp + version. Line 2: Created timestamp. Bugfix=0.0.X, Minor=0.X.0, Major=X.0.0.' }
   ];
 
   let inserted = 0;
@@ -3003,7 +3003,7 @@ done`
 Major improvement. The decision guides are now surfacing as #1 results for critical queries:
 
 - **"swarm vs single agent"** → Decision guide at **0.7856 relevance** (was noise before)
-- **"Claude Flow V3 topology"** → Decision guide at **0.7730** (#1 result)
+- **"Ruflo V3 topology"** → Decision guide at **0.7730** (#1 result)
 - **"embedding model compatibility"** → Decision guide at **0.7303** (#1)
 - **"maintenance_work_mem"** → Decision guide at **0.6784** (#1)
 
@@ -3098,7 +3098,7 @@ done`
 | Parameter | Before | After | Change |
 |---|---|---|---|
 | **Raw Data Coverage** | 82 | **88** | +6 (changelogs added) |
-| **Claude Flow V3 Knowledge** | 78 | **85** | +7 (decision guides, changelogs) |
+| **Ruflo V3 Knowledge** | 78 | **85** | +7 (decision guides, changelogs) |
 | **RuVector Architecture** | 80 | **87** | +7 (bug documented, guides, changelogs) |
 | **Search Retrieval Quality** | 45 | **72** | +27 (smart search, quality boost, title fixes) |
 | **Decision-Making Guidance** | 30 | **78** | +48 (33 curated decision guides!) |
@@ -3306,7 +3306,7 @@ That's the difference between a car manual and driving lessons. I'll let you kno
 
 
 
-Crystal clear. You want me to figure out the RIGHT way to store knowledge in RuVector - not just text chunks - and implement it. Let me research this properly through Claude Flow.
+Crystal clear. You want me to figure out the RIGHT way to store knowledge in RuVector - not just text chunks - and implement it. Let me research this properly through Ruflo.
 
 
 ---
@@ -4788,7 +4788,7 @@ Now let me run the final test — your exact scenario. The question that started
 * **Bash** `node scripts/kb-search.mjs "how do I build a knowledge base around a topic" --limit 5 2>&1`
   _Final test - Stuart's core question_
 
-* **Bash** `node scripts/kb-search.mjs "how do I use Claude Flow to build an application that uses RuVector knowledge" --limit 5 2>&1`
+* **Bash** `node scripts/kb-search.mjs "how do I use Ruflo to build an application that uses RuVector knowledge" --limit 5 2>&1`
   _Final test - application building question_
 
 * **Bash** `node scripts/kb-search.mjs "why is my search returning garbage instead of useful results" --limit 5 2>&1`
@@ -4809,7 +4809,7 @@ Here's what the results tell us:
 
 **The first query now returns exactly what you've been asking for.** The #1 result is "From Text Dump to Knowledge System" with relationship context showing it's a prerequisite to 5 domain-specific guides. That IS the answer to your question.
 
-**What's still weak**: The "Claude Flow + RuVector application" query still returns code fragments because there aren't yet curated guides about that specific integration pattern. And the troubleshooting query doesn't have a specific "why is search bad" troubleshooting entry. These are content gaps, not search problems — the search function is working correctly, it just can't find content that doesn't exist yet.
+**What's still weak**: The "Ruflo + RuVector application" query still returns code fragments because there aren't yet curated guides about that specific integration pattern. And the troubleshooting query doesn't have a specific "why is search bad" troubleshooting entry. These are content gaps, not search problems — the search function is working correctly, it just can't find content that doesn't exist yet.
 
 ## What Changed Today (Full Accounting)
 
@@ -5846,7 +5846,7 @@ Good. Now I have the full picture. Here's the straight answer.
 
 ---
 
-## The Complete Process: RuVector KB → Claude Flow Application
+## The Complete Process: RuVector KB → Ruflo Application
 
 ### Step 1: The Schema (Do This Once Per Domain)
 
@@ -5939,13 +5939,13 @@ AS $$
 $$ LANGUAGE SQL;
 ```
 
-### Step 4: The Claude Flow Application Pattern
+### Step 4: The Ruflo Application Pattern
 
-This is the part you've been asking about — how to wire Claude Flow to actually USE the KB. The pattern is:
+This is the part you've been asking about — how to wire Ruflo to actually USE the KB. The pattern is:
 
 ```
 User asks question
-    → Claude Flow detects domain (travel? finance? social?)
+    → Ruflo detects domain (travel? finance? social?)
     → ONNX embeds the question (384-dim vector)
     → knowledge_search() retrieves top 5-10 relevant entries
     → Entries assembled as context with metadata
@@ -6014,9 +6014,9 @@ Want me to fix all three domains right now? Here's what I'd do:
 2. **Travel Agent**: Alter schema to add knowledge columns, classify entries, create search function  
 3. **Viral Social**: Create consolidated knowledge view from the 10+ specialized tables, add search function
 
-Each takes about 10-15 minutes of automated work. Then you'd have three working knowledge-searchable domains that Claude Flow applications can query.
+Each takes about 10-15 minutes of automated work. Then you'd have three working knowledge-searchable domains that Ruflo applications can query.
 
-Stuart — you mentioned context is getting low. This is the answer to your question: the process is **schema → typed content → concepts → search function → Claude Flow application pattern**. Your domains have the raw content but are missing steps 1-3. Want me to fix them now, or should we pick this up in a new session?
+Stuart — you mentioned context is getting low. This is the answer to your question: the process is **schema → typed content → concepts → search function → Ruflo application pattern**. Your domains have the raw content but are missing steps 1-3. Want me to fix them now, or should we pick this up in a new session?
 
 Let me save all critical context to memory before compaction hits, then fix all three domains.
 
@@ -6024,7 +6024,7 @@ Let me save all critical context to memory before compaction hits, then fix all 
 ---
 **Tools Used:**
 
-* **Bash** `npx @claude-flow/cli@latest memory store --namespace patterns --key "kb-knowledge-architecture-2026-02-18" --value "KNOWLEDGE KB ARCHITECTURE STANDARD (2026-02-18):
+* **Bash** `npx ruflo@latest memory store --namespace patterns --key "kb-knowledge-architecture-2026-02-18" --value "KNOWLEDGE KB ARCHITECTURE STANDARD (2026-02-18):
 
 SCHEMA REQUIRED FOR EVERY DOMAIN KB:
 - knowledge_type: concept/procedure/decision/reference/troubleshooting/pattern/example/overview
@@ -6056,7 +6056,7 @@ THREE DOMAINS TO FIX:
 CONTENT RULE: Write KNOWLEDGE not text. Each entry must explain WHEN it matters, HOW to use it, WHAT it relates to. Tag with knowledge_type and specific concepts." 2>&1 | tail -5`
   _Save KB architecture to memory_
 
-* **Bash** `npx @claude-flow/cli@latest memory store --namespace patterns --key "domain-kb-fix-plan-2026-02-18" --value "DOMAIN KB FIX PLAN:
+* **Bash** `npx ruflo@latest memory store --namespace patterns --key "domain-kb-fix-plan-2026-02-18" --value "DOMAIN KB FIX PLAN:
 
 RETIREWELL (port 5435, schema retirewell):
 - 980 entries in guru_knowledge, already has knowledge columns
@@ -6189,7 +6189,7 @@ Schema.record_retrieval(entry_id, was_useful)
   → Feedback loop: useful entries float up over time
 ```
 
-### How Claude Flow Applications Use This
+### How Ruflo Applications Use This
 
 For ANY of these three domains, the application code is identical:
 
@@ -6207,7 +6207,7 @@ const results = await pool.query(
 
 That's the process you asked for — from raw data to searchable knowledge to working application, for any domain. The three KBs are live and queryable right now.
 
-Picking up where we left off — Stuart asked how to persist the KB architecture standard so Claude Flow always implements knowledge bases this way. Let me check what already exists and then store it in the right places.
+Picking up where we left off — Stuart asked how to persist the KB architecture standard so Ruflo always implements knowledge bases this way. Let me check what already exists and then store it in the right places.
 
 
 ---
@@ -6216,7 +6216,7 @@ Picking up where we left off — Stuart asked how to persist the KB architecture
 * **Grep** `kb-build|knowledge.architecture|KNOWLEDGE`
 
 * **Bash** `psql -h localhost -p 5435 -U postgres -c "SELECT key, LEFT(value, 100) FROM default_memory WHERE key LIKE '%kb%' OR key LIKE '%knowledge%' ORDER BY key;" 2>/dev/null || echo "no default_memory table"`
-  _Check Claude Flow memory for existing KB patterns_
+  _Check Ruflo memory for existing KB patterns_
 
 * **Glob** `/Users/stuartkerr/.claude/docs/*`
 
@@ -6257,7 +6257,7 @@ Now I have the full picture. Here's where the knowledge architecture standard ne
 | `/kb-build` skill | **Actionable** - controls every KB build | Most important. Every `/kb-build` follows this. |
 | `knowledge-base-patterns.md` | **Reference** - canonical architecture doc | Claude reads this via decision gate. |
 | `operational_knowledge` DB | **Queryable** - rules 1 & 9 of CLAUDE.md | RuVector-first means the DB is checked first. |
-| Claude Flow memory | **Cross-session** - survives context loss | Backup for when docs aren't read. |
+| Ruflo memory | **Cross-session** - survives context loss | Backup for when docs aren't read. |
 
 Let me read the full `/kb-build` skill and then update all four locations.
 
@@ -6549,14 +6549,14 @@ echo "Written successfully"`
 
 ---
 
-Now let me store it in Claude Flow memory for cross-session persistence, and verify all four locations are in place.
+Now let me store it in Ruflo memory for cross-session persistence, and verify all four locations are in place.
 
 
 ---
 **Tools Used:**
 
-* **Bash** `npx @claude-flow/cli@latest memory store --namespace patterns --key "kb-architecture-standard-v5" --value "CANONICAL KB Standard v5.0: 6 Pillars - (1) Typed entries (concept/procedure/decision/reference/troubleshooting/pattern/example), (2) Concept tags (TEXT[] with GIN index), (3) Intent-aware search via knowledge_search() with detect_intent(), (4) Quality tiers (gold/silver/bronze/garbage), (5) Relationship edges via knowledge_edges table, (6) Feedback loop via record_retrieval(). Scoring: 40% semantic + 20% intent + 15% authority + 15% quality + 10% usefulness. Embedding: ONNX Xenova/all-MiniLM-L6-v2 384d. NEVER ruvector_embed(). ALWAYS L2 distance. App pattern: embed->search->assemble->synthesize->feedback. Full spec in /kb-build skill and ~/.claude/docs/ruvnet-knowledgebase-patterns/knowledge-base-patterns.md" 2>&1 | tail -5`
-  _Store KB standard in Claude Flow memory_
+* **Bash** `npx ruflo@latest memory store --namespace patterns --key "kb-architecture-standard-v5" --value "CANONICAL KB Standard v5.0: 6 Pillars - (1) Typed entries (concept/procedure/decision/reference/troubleshooting/pattern/example), (2) Concept tags (TEXT[] with GIN index), (3) Intent-aware search via knowledge_search() with detect_intent(), (4) Quality tiers (gold/silver/bronze/garbage), (5) Relationship edges via knowledge_edges table, (6) Feedback loop via record_retrieval(). Scoring: 40% semantic + 20% intent + 15% authority + 15% quality + 10% usefulness. Embedding: ONNX Xenova/all-MiniLM-L6-v2 384d. NEVER ruvector_embed(). ALWAYS L2 distance. App pattern: embed->search->assemble->synthesize->feedback. Full spec in /kb-build skill and ~/.claude/docs/ruvnet-knowledgebase-patterns/knowledge-base-patterns.md" 2>&1 | tail -5`
+  _Store KB standard in Ruflo memory_
 
 ---
 
@@ -6566,7 +6566,7 @@ All four persistence locations are now updated. Let me verify everything is in p
 ---
 **Tools Used:**
 
-* **Bash** `echo "=== 1. /kb-build skill ===" && head -3 ~/.claude/skills/kb-build/SKILL.md && echo "" && echo "=== 2. knowledge-base-patterns.md ===" && head -3 ~/.claude/docs/ruvnet-knowledgebase-patterns/knowledge-base-patterns.md && echo "" && echo "=== 3. operational_knowledge DB ===" && psql -h localhost -p 5435 -U postgres -t -c "SELECT title, LEFT(content, 80) FROM openclaw_memory.operational_knowledge WHERE tags @> ARRAY['knowledge-architecture-standard'];" && echo "" && echo "=== 4. Claude Flow memory ===" && npx @claude-flow/cli@latest memory search --query "kb architecture standard" --namespace patterns --limit 2 2>&1 | grep -A2 "kb-architecture"`
+* **Bash** `echo "=== 1. /kb-build skill ===" && head -3 ~/.claude/skills/kb-build/SKILL.md && echo "" && echo "=== 2. knowledge-base-patterns.md ===" && head -3 ~/.claude/docs/ruvnet-knowledgebase-patterns/knowledge-base-patterns.md && echo "" && echo "=== 3. operational_knowledge DB ===" && psql -h localhost -p 5435 -U postgres -t -c "SELECT title, LEFT(content, 80) FROM openclaw_memory.operational_knowledge WHERE tags @> ARRAY['knowledge-architecture-standard'];" && echo "" && echo "=== 4. Ruflo memory ===" && npx ruflo@latest memory search --query "kb architecture standard" --namespace patterns --limit 2 2>&1 | grep -A2 "kb-architecture"`
   _Verify all 4 persistence locations_
 
 ---
@@ -6582,7 +6582,7 @@ All four locations confirmed. Here's the summary of what's now persisted and whe
 | 1 | **`/kb-build` skill** (v4.0) | Every time anyone runs `/kb-build`, it follows the 6-pillar standard | Skills are auto-loaded in every Claude Code session |
 | 2 | **`knowledge-base-patterns.md`** (v5.0) | Canonical reference document with full schema, functions, and rules | Decision gate checks `~/.claude/docs/` before architecture decisions |
 | 3 | **`operational_knowledge` DB** | Queryable record tagged `knowledge-architecture-standard` | Rule 1 of CLAUDE.md: "Query `operational_knowledge` before making decisions" |
-| 4 | **Claude Flow memory** | Cross-session backup in `patterns` namespace | Session restore pulls from Claude Flow memory on startup |
+| 4 | **Ruflo memory** | Cross-session backup in `patterns` namespace | Session restore pulls from Ruflo memory on startup |
 
 **What changed in `/kb-build` (the big one):**
 
@@ -9943,7 +9943,7 @@ All domains working. Let me do a full cross-domain test.
 
 ---
 
-The KB is returning results, but honestly the quality is mediocre here — it's pulling fragments ("egration with Claude-Flow") and short procedure titles instead of a real explanation. Let me ask it a better, more direct question the way a user actually would.
+The KB is returning results, but honestly the quality is mediocre here — it's pulling fragments ("egration with Ruflo") and short procedure titles instead of a real explanation. Let me ask it a better, more direct question the way a user actually would.
 
 
 ---
@@ -9966,21 +9966,21 @@ The KB is returning results, but honestly the quality is mediocre here — it's 
 Here's the honest picture:
 
 **What's working well:**
-- The top hit "Architecture Decision: Claude Flow V3 Topology Selection Guide" scored 0.71 with Quality: 98, expert-curated — that's exactly the kind of result we want. A real decision entry with high authority.
+- The top hit "Architecture Decision: Ruflo V3 Topology Selection Guide" scored 0.71 with Quality: 98, expert-curated — that's exactly the kind of result we want. A real decision entry with high authority.
 - The claude-flow CLI version entries (alpha.183, alpha.41) are useful for "what's the current version?"
 - Intent detection worked correctly (detected `general` since it's a broad query)
 
 **What's still weak:**
-1. **Snippet quality** — entries like "egration with Claude-Flow" are truncated mid-word. These are raw ingested chunks that got cut at the chunk boundary during ingest. The title is the chunk start, not a real title.
+1. **Snippet quality** — entries like "egration with Ruflo" are truncated mid-word. These are raw ingested chunks that got cut at the chunk boundary during ingest. The title is the chunk start, not a real title.
 2. **The KB answers facts, not explanations** — it surfaces relevant docs but doesn't synthesize them into a "what is claude-flow" answer. That synthesis is still done by Claude (me) using these results as context.
 3. **Edges are empty** (the `kb_related` returned nothing for id=1, meaning the 25K edges we added aren't on that specific entry)
 
 **What this actually means for you:**
 The MCP is working as a *retrieval tool* — it finds relevant knowledge chunks. Claude Code then uses those chunks to give better answers. It's not a Q&A bot on its own. The quality is good for "find me docs about X" but the raw ingested content needs better summarization to be truly guru-level.
 
-The next upgrade that would make this feel like a real guru: a **summary enrichment pass** that uses Haiku to generate proper 2-3 sentence summaries for every entry, replacing the truncated chunk previews. That's what would make the snippets actually answer questions instead of showing "egration with Claude-Flow."
+The next upgrade that would make this feel like a real guru: a **summary enrichment pass** that uses Haiku to generate proper 2-3 sentence summaries for every entry, replacing the truncated chunk previews. That's what would make the snippets actually answer questions instead of showing "egration with Ruflo."
 
-This is the right call. The root problem is the original ingest just cut content at character boundaries, so you get titles like "egration with Claude-Flow" — a mid-word slice. The fix is intelligent re-chunking: extract the first real sentence/heading as the title, generate proper summaries, and identify entries that are sub-100-char fragments that should be merged.
+This is the right call. The root problem is the original ingest just cut content at character boundaries, so you get titles like "egration with Ruflo" — a mid-word slice. The fix is intelligent re-chunking: extract the first real sentence/heading as the title, generate proper summaries, and identify entries that are sub-100-char fragments that should be merged.
 
 I'll do this with SQL heuristics (free/fast) for the structural fixes, and Haiku for any entries that genuinely need AI summarization. Spawning 4 agents now in parallel — one per domain.
 
@@ -9988,7 +9988,7 @@ I'll do this with SQL heuristics (free/fast) for the structural fixes, and Haiku
 ---
 **Tools Used:**
 
-* **Bash** `npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>/dev/null | tail -3`
+* **Bash** `npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>/dev/null | tail -3`
   _Initialize swarm coordination_
 
 ---
@@ -10018,7 +10018,7 @@ I'll do this with SQL heuristics (free/fast) for the structural fixes, and Haiku
 - **ae95a71** — Enriching viral_social + retirewell: better summaries, fixed titles, quality tiers
 - **ad318b2** — Smart re-chunking ask_ruvnet: identifying/marking fragments as garbage/bronze/silver/gold, improving titles from markdown headings
 
-I'll synthesize results when they all complete. The key improvement you'll see: instead of "egration with Claude-Flow", entries will surface their actual markdown heading or first proper sentence as the title, and summaries will contain the actual substance of the content rather than the opening fragment.
+I'll synthesize results when they all complete. The key improvement you'll see: instead of "egration with Ruflo", entries will surface their actual markdown heading or first proper sentence as the title, and summaries will contain the actual substance of the content rather than the opening fragment.
 
 ask_ruvnet titles + summaries done. Waiting on the other 3.
 
@@ -10055,7 +10055,7 @@ Let me verify the re-chunking improvements are visible through the live MCP with
 
 ---
 
-The results still show broken titles ("egration with Claude-Flow") and poor summaries. Let me check what actually happened in the DB — the re-chunking agents may not have fully persisted their changes.
+The results still show broken titles ("egration with Ruflo") and poor summaries. Let me check what actually happened in the DB — the re-chunking agents may not have fully persisted their changes.
 
 
 ---
@@ -10166,20 +10166,20 @@ Those 5 entries are genuinely truncated mid-word content. Let me fix them direct
 UPDATE ask_ruvnet.architecture_docs
 SET 
   title = CASE 
-    WHEN title = 'egration with Claude-Flow' THEN 'Integration with Claude-Flow'
+    WHEN title = 'egration with Ruflo' THEN 'Integration with Ruflo'
     WHEN title = 'ntegration' THEN 'Integration'
     WHEN title = 'egration testing' THEN 'Integration testing'
     WHEN title = 'egration' THEN 'Integration'
     ELSE title
   END,
   summary = CASE
-    WHEN title = 'egration with Claude-Flow' THEN 'Integration with Claude-Flow: seamlessly integrates with the broader claude-flow ecosystem including memory system, terminal management, and MCP Integration.'
+    WHEN title = 'egration with Ruflo' THEN 'Integration with Ruflo: seamlessly integrates with the broader claude-flow ecosystem including memory system, terminal management, and MCP Integration.'
     WHEN title = 'ntegration' THEN 'Integration: coherence engine leverages the full ruvector crate ecosystem for maximum capability.'
     WHEN title = 'egration testing' THEN 'Integration testing patterns and procedures for verifying component interactions.'
     WHEN title = 'egration' THEN 'Integration with syndrome bits feeding into ruQu decoder infrastructure pipeline.'
     ELSE summary
   END
-WHERE title IN ('egration with Claude-Flow', 'ntegration', 'egration testing', 'egration')
+WHERE title IN ('egration with Ruflo', 'ntegration', 'egration testing', 'egration')
   AND is_duplicate = false;" 2>&1`
   _Fix 5 remaining truncated titles and summaries_
 
@@ -10214,7 +10214,7 @@ Good. Now let me test the search again with the fixed entries:
 
 ---
 
-Progress — results 2 & 3 now show meaningful summaries. Let me fix result 4 ("Features" with truncated summary "ure for Claude Flow V3") and check the summary quality overall:
+Progress — results 2 & 3 now show meaningful summaries. Let me fix result 4 ("Features" with truncated summary "ure for Ruflo V3") and check the summary quality overall:
 
 
 ---
@@ -10309,8 +10309,8 @@ SET max_parallel_workers_per_gather = 0;
 -- Fix entry 284769 directly
 UPDATE ask_ruvnet.architecture_docs
 SET 
-  summary = 'Features of Claude Flow V3 Core: includes Core Types (Agent, Task, Memory, MCP, Swarm), Core Interfaces, Configuration schema validation, and base modules used by all other @claude-flow packages.',
-  title = 'Features of Claude Flow V3 Core'
+  summary = 'Features of Ruflo V3 Core: includes Core Types (Agent, Task, Memory, MCP, Swarm), Core Interfaces, Configuration schema validation, and base modules used by all other @claude-flow packages.',
+  title = 'Features of Ruflo V3 Core'
 WHERE id = 284769;
 EOF`
   _Fix specific Features entry with truncated summary_
@@ -10464,7 +10464,7 @@ Excellent — went from 16,569 poor summaries down to only **77 remaining** (27 
 
 ---
 
-Big improvement! Result 1 now shows real content, result 4 shows the clean title "Features of Claude Flow V3 Core". Let me run a few more verification tests:
+Big improvement! Result 1 now shows real content, result 4 shows the clean title "Features of Ruflo V3 Core". Let me run a few more verification tests:
 
 
 ---
@@ -10764,7 +10764,7 @@ The KB is working well across all domains. Here's the final state report:
 
 **MCP Search Quality (verified live):**
 
-- ✅ `what is claude-flow` → returns "Features of Claude Flow V3 Core" with clear description
+- ✅ `what is claude-flow` → returns "Features of Ruflo V3 Core" with clear description
 - ✅ `how to spawn agents` → returns "Swarm Init Command" with actual bash commands, no duplicates
 - ✅ `travel hacking business class` → returns error fares, European travel hacking
 - ✅ `retirement safe withdrawal rate` → returns 4% rule analysis (quality 90)
@@ -11281,14 +11281,14 @@ Let me wait for the exploration agent while I check npm package versions, then i
 
 ---
 
-The user wants Claude Flow V3 to handle this. Let me initialize the swarm and spawn specialized agents:
+The user wants Ruflo V3 to handle this. Let me initialize the swarm and spawn specialized agents:
 
 
 ---
 **Tools Used:**
 
-* **Bash** `npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -5`
-  _Initialize Claude Flow V3 swarm for AskRuvNet update_
+* **Bash** `npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -5`
+  _Initialize Ruflo V3 swarm for AskRuvNet update_
 
 ---
 
@@ -13257,7 +13257,7 @@ This is a critical capability gap to fill. The use case is **100% air-gapped AI*
 ---
 **Tools Used:**
 
-* **Bash** `npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -3`
+* **Bash** `npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -3`
   _Initialize CF swarm for KB enrichment_
 
 ---
@@ -13332,7 +13332,7 @@ I've launched 3 concurrent agents total:
 - **Agent 2 (done ✅)** — 24 entries on ruvector WASM SIMD, private RAG stack, model selection, security/GDPR patterns — saved to `docs/kb-private-ai-deployment.json`
 - **Agent 3 (ingesting now)** — Writing and running the ingestion script to push those 24 entries into PostgreSQL with ONNX embeddings
 
-The reason this is valuable for your clients: the KB will be able to answer questions like *"How do I deploy a fully private AI assistant for a hospital that can never send patient data to the cloud?"* with concrete, production-ready answers covering the full stack — local embeddings (ONNX WASM), local vector search (ruvector), local LLM (Ollama + Llama 3.2), and local orchestration (Claude Flow with Ollama provider).
+The reason this is valuable for your clients: the KB will be able to answer questions like *"How do I deploy a fully private AI assistant for a hospital that can never send patient data to the cloud?"* with concrete, production-ready answers covering the full stack — local embeddings (ONNX WASM), local vector search (ruvector), local LLM (Ollama + Llama 3.2), and local orchestration (Ruflo with Ollama provider).
 
 Let me check all agent statuses:
 
@@ -13890,7 +13890,7 @@ cannot send data to public LLMs (OpenAI, Claude, Gemini, Grok).
 
 - private-ai (24 entries, avg quality 92.0)
   ruvector WASM SIMD, private RAG architecture, model selection,
-  GDPR/HIPAA compliance, Claude Flow + Ollama integration patterns
+  GDPR/HIPAA compliance, Ruflo + Ollama integration patterns
 
 - vendor-hardware (24 entries, avg quality 92.0)
   Ollama vs LocalAI vs vLLM vs GPT4All decision tree, hardware
@@ -14547,7 +14547,7 @@ Now I have the full picture. Let me answer all your questions clearly.
 
 **Your knowledge base on your Mac has 55,111 entries.** The 97 we added today are in there. The `kb` view (what the app actually searches) shows 51,148 of those (filtered to quality ≥ 40). You were right — it's not just 97, it's massive.
 
-Here's the breakdown of what's in there: vector DB docs, release notes, agents, swarms, neural content, MCP documentation, GitHub content, memory patterns, security — all the Claude Flow / ruvnet universe.
+Here's the breakdown of what's in there: vector DB docs, release notes, agents, swarms, neural content, MCP documentation, GitHub content, memory patterns, security — all the Ruflo / ruvnet universe.
 
 ---
 
@@ -16093,14 +16093,14 @@ curl -s -X POST "https://api.render.com/v1/services/$SERVICE_ID/deploys" \
 
 ---
 
-Good — new deploy is building with the fix. Now, understood: **Claude Flow orchestrates from here, not Claude Code directly.** Let me hand this off to Claude Flow now.
+Good — new deploy is building with the fix. Now, understood: **Ruflo orchestrates from here, not Claude Code directly.** Let me hand this off to Ruflo now.
 
 
 ---
 **Tools Used:**
 
-* **Bash** `npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -5`
-  _Initialize Claude Flow swarm for orchestration_
+* **Bash** `npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -5`
+  _Initialize Ruflo swarm for orchestration_
 
 ---
 
@@ -16119,7 +16119,7 @@ Good — new deploy is building with the fix. Now, understood: **Claude Flow orc
 
 ---
 
-Understood — and acknowledged. Claude Flow is orchestrating from here.
+Understood — and acknowledged. Ruflo is orchestrating from here.
 
 **Swarm is live** with 3 specialized agents working in parallel right now:
 
@@ -16127,7 +16127,7 @@ Understood — and acknowledged. Claude Flow is orchestrating from here.
 - **Codebase Auditor** (ac37650) — reading every file and subdirectory, cataloguing what's outdated, misplaced, or cruft vs what's current
 - **Docs Assessor** (a656c0e) — reading all key docs against the current truth (Render + Neon + 55K pgvector) and flagging exactly what's wrong in each
 
-When the agents report back, Claude Flow will synthesize their findings and dispatch the next wave of agents to:
+When the agents report back, Ruflo will synthesize their findings and dispatch the next wave of agents to:
 1. Execute the cleanup (move cruft to archive)
 2. Rewrite the outdated docs
 3. Trigger a final verification deploy
@@ -16165,10 +16165,10 @@ Got it. Adding this as the absolute first rule — above everything else:
 **Tools Used:**
 
 * **Bash** `git add CLAUDE.md && git commit -m "$(cat <<'EOF'
-config: Claude Flow owns every command — mandatory routing rule
+config: Ruflo owns every command — mandatory routing rule
 
-Every command in this project must be immediately handed to Claude Flow.
-Claude Flow queries RuvVector KB, selects agents from RuvNet architecture,
+Every command in this project must be immediately handed to Ruflo.
+Ruflo queries RuvVector KB, selects agents from RuvNet architecture,
 and orchestrates execution. Claude Code is executor only, not the brain.
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
@@ -16184,15 +16184,15 @@ Done. Committed as `32d203b`.
 
 The new Absolute Rule sits above everything else and mandates:
 
-1. **Every command → Claude Flow first** — no exceptions, no shortcuts
-2. **Flow diagram** showing the exact path: Stuart → Claude Flow → RuvVector KB → RuvNet agents → execution
+1. **Every command → Ruflo first** — no exceptions, no shortcuts
+2. **Flow diagram** showing the exact path: Stuart → Ruflo → RuvVector KB → RuvNet agents → execution
 3. **3-step implementation** that must run on every request (route hook → swarm init → KB search)
-4. **Agent dispatch table** — what type of request maps to which Claude Flow agent (architect, coder, researcher, devops, etc.)
+4. **Agent dispatch table** — what type of request maps to which Ruflo agent (architect, coder, researcher, devops, etc.)
 5. **Explicit violation clause** — Claude Code answering directly without CF orchestration is defined as a rule breach
 
 The 3 agents working on the build fix and codebase audit are still running. I'll report back when they complete with the full inventory of what needs cleanup and what the deploy status is.
 
-Excellent intelligence from the docs assessor. Routing back through Claude Flow — spinning up the next agent wave to execute the fixes:
+Excellent intelligence from the docs assessor. Routing back through Ruflo — spinning up the next agent wave to execute the fixes:
 
 
 ---
@@ -16209,7 +16209,7 @@ Excellent intelligence from the docs assessor. Routing back through Claude Flow 
 
 ---
 
-Claude Flow swarm is in full operation. Here's the live status:
+Ruflo swarm is in full operation. Here's the live status:
 
 **Wave 1 (Assessment) — Complete ✅**
 - Docs Assessor returned full audit: 2 major rewrites needed, ~50 files to archive
@@ -16392,7 +16392,7 @@ curl -s --max-time 30 "https://ask-ruvnet.onrender.com/api/kb-stats" 2>&1 | head
 
 ---
 
-The build succeeded — app is starting up now. While it warms up, I'm routing your new request through Claude Flow immediately. This is a multi-part strategic task: testing plan, completeness verification, automated repo monitoring, and continuous KB sync.
+The build succeeded — app is starting up now. While it warms up, I'm routing your new request through Ruflo immediately. This is a multi-part strategic task: testing plan, completeness verification, automated repo monitoring, and continuous KB sync.
 
 Spinning up the next swarm:
 
@@ -16487,7 +16487,7 @@ DOCS REWRITTEN:
   troubleshooting, local dev setup, manual redeploy instructions
 
 CONFIG:
-- CLAUDE.md: Added Absolute Rule — Claude Flow owns every command
+- CLAUDE.md: Added Absolute Rule — Ruflo owns every command
 - .gitignore: Updated for new archive structure
 - render.yaml build command: NODE_ENV=development npm install --include=dev
 
@@ -16542,7 +16542,7 @@ The 2 agents still running (ac71a4d testing plan, a9b1569 repo monitoring) are w
 | Rewrite README.md (accurate) | ✅ |
 | Rewrite DEPLOYMENT-GUIDE.md (Render+Neon) | ✅ |
 | Archive 3,593 stale/outdated files | ✅ Committed |
-| Claude Flow routing rule in CLAUDE.md | ✅ |
+| Ruflo routing rule in CLAUDE.md | ✅ |
 | Testing plan + scripts | ⏳ Agent working |
 | Auto repo monitoring system | ⏳ Agent working |
 
@@ -17608,7 +17608,7 @@ Pushed. Now waiting for the deploy to go live:
 
 **97% passing — 76/78 tests.** Chat is fully working.
 
-The 2 failures are both the same query: "explain Claude Flow swarm agents" returned a short answer (80 chars) that didn't include the expected keywords. That's a content/response quality issue — the LLM gave a brief answer that happened to not use those exact words. Not a bug; the KB search worked and sources were returned.
+The 2 failures are both the same query: "explain Ruflo swarm agents" returned a short answer (80 chars) that didn't include the expected keywords. That's a content/response quality issue — the LLM gave a brief answer that happened to not use those exact words. Not a bug; the KB search worked and sources were returned.
 
 ---
 
@@ -17625,7 +17625,7 @@ Now about the **Grok key** you sent (`xai-oimoa...`) — that's from **xAI** (El
 | Knowledge Inventory | PASS |
 | Chat — HNSW query | PASS (100/100 quality) |
 | Chat — RuVector query | PASS (100/100 quality) |
-| Chat — Claude Flow query | marginal (80 chars, short answer) |
+| Chat — Ruflo query | marginal (80 chars, short answer) |
 | Input validation | PASS |
 | All 4 chat modes | PASS |
 | Auth protection | PASS |
@@ -17786,7 +17786,7 @@ No, the docs were **not** fully up to date — and good that you asked. Here's w
 
 All pushed. Docs are now accurate.
 
-I'll spawn the Claude Flow QA agent to do a comprehensive review of the project — docs, code, and live endpoints.
+I'll spawn the Ruflo QA agent to do a comprehensive review of the project — docs, code, and live endpoints.
 
 
 ---
@@ -20438,7 +20438,7 @@ Here's what I found across both key notebooks:
 ### "rUvnet: Agentic Engineering" (116 sources)
 All 116 sources are **web pages** (GitHub repos, Reddit, Medium, etc.) — **zero Drive sources**, `stale_count: 0`.
 
-### "Claude-Flow V3" (5 sources)
+### "Ruflo V3" (5 sources)
 Mix of web pages + pasted text + generated text — also **zero Drive sources**.
 
 ---
@@ -20530,7 +20530,7 @@ The `notebooklm-cli` MCP is currently `disabled: true` (on-demand). For the cron
 1. Create the manifest with all reconstructable GitHub URLs
 2. Write the refresh shell script  
 3. Add the OpenClaw weekly cron entry
-4. Test it by doing one refresh of the "Claude-Flow V3" notebook (5 sources, fast)
+4. Test it by doing one refresh of the "Ruflo V3" notebook (5 sources, fast)
 
 
 
@@ -20573,7 +20573,7 @@ The `notebooklm-cli` MCP is currently `disabled: true` (on-demand). For the cron
 1. Create the manifest with all reconstructable GitHub URLs
 2. Write the refresh shell script  
 3. Add the OpenClaw weekly cron entry
-4. Test it by doing one refresh of the "Claude-Flow V3" notebook (5 sources, fast)
+4. Test it by doing one refresh of the "Ruflo V3" notebook (5 sources, fast)
 
 Exactly right — a blind full-refresh every week is wasteful and slow. The smart version only refreshes URLs where the content actually changed. Here's how I'd architect it:
 

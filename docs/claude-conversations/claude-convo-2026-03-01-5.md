@@ -10,7 +10,7 @@
 
 ## Human
 
-I need you to have the quality assurance agent go through everything here. For example, the Claude Flow V3, you're telling me it's 60 specialized agents. Aren't there a hell of a lot more than that? I thought there were.
+I need you to have the quality assurance agent go through everything here. For example, the Ruflo V3, you're telling me it's 60 specialized agents. Aren't there a hell of a lot more than that? I thought there were.
 
 And you're using the space on the right. Very poorly. There's lots and lots and lots of wasted space there. Tighten that up to make it denser so there's a lot more information that flows. And why are you only showing that you're tracking eight repositories?
 
@@ -21,7 +21,7 @@ And then when it goes to the CEO and CTO decks, they're not showing up. I'm just
 
 ✽ Harmonizing… (running stop hooks… 1/2 · 7m 35s · ↓ 3.8k tokens · thinking)
 
-And what the hell are all these stop hooks that feels like they're just hanging over and over and over again? They're just wasting our time. I need Claude Flow operating and completely finishing this application out now. 
+And what the hell are all these stop hooks that feels like they're just hanging over and over and over again? They're just wasting our time. I need Ruflo operating and completely finishing this application out now. 
 
 
 ## Assistant
@@ -467,7 +467,7 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 await page.goto('http://localhost:3000', { waitUntil: 'networkidle', timeout: 15000 });
 await page.waitForTimeout(1500);
 
-// Click Claude-Flow V3 pill  
+// Click Ruflo V3 pill  
 const pills = await page.$$('.prompt-pill');
 if (pills.length > 0) await pills[0].click();
 
@@ -591,7 +591,7 @@ EOF`
 ---
 
 Excellent. The follow-up suggestions are rendering perfectly:
-- "What agents does Claude-Flow V3 include?" (highlighted/active)
+- "What agents does Ruflo V3 include?" (highlighted/active)
 - "How does the ReasoningBank self-learning work?"
 - "Show me the swarm architecture"
 
@@ -883,13 +883,13 @@ Now I have all 9 screenshots reviewed. Here's the honest evaluation:
 
 **Capability Tiles** — 4 tiles (Videos, CEO & CTO Decks, Knowledge Universe, Knowledge Base) are clearly visible, each with an icon, title, and subtitle. They're clickable and each routes to the correct handler. The NotebookLM-inspired pattern works — a new user can immediately see what this app offers.
 
-**Prompt Starters** — 6 pills (up from 4) with emojis: Claude-Flow V3, ReasoningBank, RuVector DB, Rust Ecosystem, Impossible Apps, What's New. Good topic coverage.
+**Prompt Starters** — 6 pills (up from 4) with emojis: Ruflo V3, ReasoningBank, RuVector DB, Rust Ecosystem, Impossible Apps, What's New. Good topic coverage.
 
 **Resources & Documents** — 5 cards (4 PDFs + 1 video) visible below prompt starters. Clickable. Titles are truncated cleanly with ellipsis where needed.
 
 **Latest Updates** — Horizontal scroll row showing 5 repos (claude-flow, Ask-Ruvnet, agentic-flow, ruvector, ruvllm). Compact, doesn't dominate.
 
-**Canvas Split Views** — KB Status (screenshot 5) and Decks (screenshot 6) both open correctly in a 55/45 split. KB shows live system status, featured Claude-Flow V3 info, key features with checkmarks. Decks shows both CEO and CTO deck links with descriptions.
+**Canvas Split Views** — KB Status (screenshot 5) and Decks (screenshot 6) both open correctly in a 55/45 split. KB shows live system status, featured Ruflo V3 info, key features with checkmarks. Decks shows both CEO and CTO deck links with descriptions.
 
 **Knowledge Universe** — Confirmed working from earlier screenshots (323 nodes, 7 domains, fullscreen 3D graph with search and zoom).
 
@@ -2084,7 +2084,7 @@ if (input) {
   await p.waitForTimeout(300);
   await p.screenshot({ path: '/tmp/r2c-input-focus.png', fullPage: false });
   
-  await input.type('What is Claude-Flow V3 and how does it coordinate AI agents?');
+  await input.type('What is Ruflo V3 and how does it coordinate AI agents?');
   await p.waitForTimeout(200);
   
   // Click send
@@ -3994,7 +3994,7 @@ EOF`
 Both verified locally:
 
 1. **Homepage** — Clean, all 4 capability tiles visible, stats bar, 6 prompt starters, resources section, zero mermaid orphan SVGs
-2. **Deck picker** — Clicking "CEO & CTO Decks" opens the canvas with 4 clickable PDF cards (Agentic Engineering Stack, Agentic Intelligence Frameworks, Claude-Flow v3 Swarm Platform, The Agentic Toolkit). No crash.
+2. **Deck picker** — Clicking "CEO & CTO Decks" opens the canvas with 4 clickable PDF cards (Agentic Engineering Stack, Agentic Intelligence Frameworks, Ruflo v3 Swarm Platform, The Agentic Toolkit). No crash.
 
 Production deployment confirmed — Railway picked up commit `ea3d1f0` at 18:25 UTC. Let me verify production directly.
 
@@ -5105,7 +5105,7 @@ But here's what's missing: **the transition from explorer to conversationalist i
 
 **The deeper session (2-5 minutes):**
 
-If they're still here, they're interested. They might ask about Claude-Flow, then want to see the architecture in the CEO deck, then ask about RuVector benchmarks, then want to watch a video. Right now, each of these is a separate action that interrupts their flow. Open deck → close deck → ask question → open video → close video → ask another question.
+If they're still here, they're interested. They might ask about Ruflo, then want to see the architecture in the CEO deck, then ask about RuVector benchmarks, then want to watch a video. Right now, each of these is a separate action that interrupts their flow. Open deck → close deck → ask question → open video → close video → ask another question.
 
 What *should* happen: the canvas should feel like a companion, not a modal. They should be able to have a conversation going while a PDF is open beside it. They should be able to ask "show me the architecture diagram" and have it appear in the canvas without losing their chat history.
 
@@ -5483,9 +5483,9 @@ OK. Here's what I found across all 23 screenshots. I'm organizing by severity �
 
 2. **Tablet 768px: Same problem** — Canvas stacks below the chat panel. User has to scroll down past all the prompt pills and resource cards to find what they opened.
 
-3. **Follow-up suggestions not appearing** — The audit confirmed 0 follow-up pills after a Claude-Flow V3 response. The feature exists in code but isn't rendering. The response was still streaming (red cursor visible) — the follow-ups might only appear after completion but the 8-second wait wasn't enough, or the keyword matching isn't triggering.
+3. **Follow-up suggestions not appearing** — The audit confirmed 0 follow-up pills after a Ruflo V3 response. The feature exists in code but isn't rendering. The response was still streaming (red cursor visible) — the follow-ups might only appear after completion but the 8-second wait wasn't enough, or the keyword matching isn't triggering.
 
-4. **Resource card titles truncate** — "Agentic Intelligence Fram..." and "Claude-Flow v3 Swarm Pl..." — a user sees these and doesn't know what they are. These are the gateway to the most valuable content in the app.
+4. **Resource card titles truncate** — "Agentic Intelligence Fram..." and "Ruflo v3 Swarm Pl..." — a user sees these and doesn't know what they are. These are the gateway to the most valuable content in the app.
 
 **Significant issues (diminish the experience):**
 
@@ -5891,7 +5891,7 @@ All three major fixes verified:
 
 1. **Resource descriptions showing** — "80 Rust crates powering the ecosystem", "60+ agents, hive-mind consensus" etc. now visible under each title
 2. **Mobile canvas fullscreen takeover** — 375x667 full screen, close returns to hero. "Loading document..." text shows while PDF loads
-3. **Follow-up suggestions working** — 3 pills: "What agents does Claude-Flow V3 include?", "How does the ReasoningBank self-learning work?", "Show me the swarm architecture"
+3. **Follow-up suggestions working** — 3 pills: "What agents does Ruflo V3 include?", "How does the ReasoningBank self-learning work?", "Show me the swarm architecture"
 
 The resource titles still truncate on desktop at the current grid width — "Agentic Intelligence Fram..." — because the 3-column grid at 240px min doesn't give enough room. Let me fix the grid to 2 columns so the titles have room to breathe, and also check the mobile homepage experience more thoroughly:
 
@@ -7228,7 +7228,7 @@ Now, here's what the enhancements actually do for the user experience:
 
 ### Enhancement 1: Resource Drawer (the biggest one)
 
-**Before**: You're mid-conversation about Claude-Flow, someone asks "can I see the CEO deck?" — you have to start a new chat, losing everything.
+**Before**: You're mid-conversation about Ruflo, someone asks "can I see the CEO deck?" — you have to start a new chat, losing everything.
 
 **After**: There's a folder icon next to the text input that only appears once you're in a conversation. Tap it, and a compact panel slides in at the top of your chat showing all 4 capability tiles (Videos, Decks, Universe, KB) plus all 5 resource documents. Click any of them — the resource opens in the split view next to your conversation, which is still there. Close the resource, your chat is intact. Close the drawer, it's gone. Toggle it back anytime.
 
@@ -7431,7 +7431,7 @@ console.log('Version on page:', versionText);
 // Check for resource drawer button presence after sending a message
 const input = await p.$('input[type="text"], textarea');
 if (input) {
-  await input.fill('What is Claude-Flow?');
+  await input.fill('What is Ruflo?');
   await p.keyboard.press('Enter');
   await p.waitForTimeout(8000);
   const drawerBtn = await p.$('.resources-toggle');
@@ -7909,7 +7909,7 @@ EOF`
 
 Good progress. The screenshots show:
 
-1. **KB panel is now dense and tabular** — metrics table with real data (170 repos, 132K entries, 117K gold, 30 videos, 24 doc types), Claude-Flow V3 section visible below
+1. **KB panel is now dense and tabular** — metrics table with real data (170 repos, 132K entries, 117K gold, 30 videos, 24 doc types), Ruflo V3 section visible below
 2. **Deck picker now shows CEO & CTO decks prominently** — CEO Deck: Agentic Intelligence and CTO Deck: RuvNet Architecture with descriptions, plus Additional Resources below
 3. **Stats bar is dynamic** — pulling from the API (170+ repos, 132K+ entries, 117K gold, 30 videos)
 
@@ -8275,7 +8275,7 @@ EOF`
 
 2. **CEO & CTO Decks now work** — Converted the PPTX files to PDF, added them to the web assets, and the deck picker now shows "CEO Deck: Agentic Intelligence" and "CTO Deck: RuvNet Architecture" prominently with descriptions, plus the 4 additional resource PDFs below.
 
-3. **KB panel is dense and useful** — Replaced the sparse markdown report with a tight tabular layout showing all metrics at a glance (status, repos, entries, gold, videos, doc types, backend), Claude-Flow V3 capabilities table, and tracked packages with a note about the additional repos.
+3. **KB panel is dense and useful** — Replaced the sparse markdown report with a tight tabular layout showing all metrics at a glance (status, repos, entries, gold, videos, doc types, backend), Ruflo V3 capabilities table, and tracked packages with a note about the additional repos.
 
 4. **No more hardcoded numbers** — Stats bar, hero tagline, capability tiles, and KB panel all read from the API. The numbers on production (148 repos, 53K entries, 41K gold, 28 videos) differ from local (170, 132K, 117K, 30) because they're pulling from the actual Neon production database vs. the local PostgreSQL — which proves the dynamic data is working correctly.
 

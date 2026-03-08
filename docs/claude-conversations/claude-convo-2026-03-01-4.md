@@ -167,7 +167,7 @@ Now, here's what the enhancements actually do for the user experience:
 
 ### Enhancement 1: Resource Drawer (the biggest one)
 
-**Before**: You're mid-conversation about Claude-Flow, someone asks "can I see the CEO deck?" — you have to start a new chat, losing everything.
+**Before**: You're mid-conversation about Ruflo, someone asks "can I see the CEO deck?" — you have to start a new chat, losing everything.
 
 **After**: There's a folder icon next to the text input that only appears once you're in a conversation. Tap it, and a compact panel slides in at the top of your chat showing all 4 capability tiles (Videos, Decks, Universe, KB) plus all 5 resource documents. Click any of them — the resource opens in the split view next to your conversation, which is still there. Close the resource, your chat is intact. Close the drawer, it's gone. Toggle it back anytime.
 

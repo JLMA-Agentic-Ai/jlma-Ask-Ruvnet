@@ -826,7 +826,7 @@ What it SHOULD be:
 
 2. **What everyone else gives you** — Side-by-side comparison: Anthropic gives you Claude (one model, one conversation). OpenAI gives you GPT + assistants (still cloud-only, no coordination). Google gives you Gemini (locked to their ecosystem). None of them give you a SYSTEM — they give you a single model with an API.
 
-3. **What an agentic system actually IS** — Not one AI, but a coordinated team of specialized agents with: an orchestration layer (Claude Flow), a vector memory engine (RuVector), a learning system (AgentDB), security middleware (AIMDS), and offline containers (RVF). Explain it like explaining what an operating system does vs. a single app.
+3. **What an agentic system actually IS** — Not one AI, but a coordinated team of specialized agents with: an orchestration layer (Ruflo), a vector memory engine (RuVector), a learning system (AgentDB), security middleware (AIMDS), and offline containers (RVF). Explain it like explaining what an operating system does vs. a single app.
 
 4. **The visual comparison** — A clear side-by-side: "What you get from OpenAI" vs "What you get from RuvNet" showing the gap isn't incremental, it's architectural.
 
@@ -846,7 +846,7 @@ Here's the revised CEO deck structure (25 slides):
 
 **ACT 2: THE SYSTEM (Slides 7-10)**
 7. "This System Exists. It's Called the RuvNet Ecosystem." — Overview diagram showing all 6 components and how they connect. First time audience sees the product.
-8. "Claude Flow: The Orchestration Engine" — What it does, why it matters. 64 agent types, 5 topologies. Compare: "OpenAI has no equivalent."
+8. "Ruflo: The Orchestration Engine" — What it does, why it matters. 64 agent types, 5 topologies. Compare: "OpenAI has no equivalent."
 9. "RuVector: Microsecond Memory" — Vector search at 61μs (33x Pinecone). Why speed matters for real-time agent coordination. Compare: "Google Vertex AI Search: 2ms+"
 10. "AgentDB + AIMDS + RVF" — The remaining three pillars in a clear triptych. Self-learning, security, offline.
 
@@ -1124,7 +1124,7 @@ Progress: **10/20 images complete**. Halfway through. Continuing with ROI, befor
 | 3 | Single-model trap | nfsim0 | CEO s4 AI amnesia |
 | 4 | 87% failure rate | vu6n47 | CEO s5 why pilots fail |
 | 5 | 6-module blueprint | 2kony4 | CEO s6 complete system + CTO |
-| 6 | Orchestration 5 topologies | xvh2jg | CEO s8 Claude Flow |
+| 6 | Orchestration 5 topologies | xvh2jg | CEO s8 Ruflo |
 | 7 | HNSW vector search | x3ys4z | CEO s9 RuVector + CTO |
 | 8 | Persistent memory crystal | fso5iy | CEO s12 memory + CTO |
 | 9 | Security fortress | u53edg | CEO s13 security + CTO |
@@ -1314,7 +1314,7 @@ Every slide now has an AI-generated background. The narrative follows the arc yo
 
 Same treatment but deeper technically:
 - Slides 0-4: Architecture gap, what providers actually ship (detailed comparison table), "bring AI to your data"
-- Slides 5-13: Deep dive into each component — Claude Flow topologies, HNSW internals, AgentDB memory types, AIMDS security layers, RVF container specs, ReasoningBank learning pipeline
+- Slides 5-13: Deep dive into each component — Ruflo topologies, HNSW internals, AgentDB memory types, AIMDS security layers, RVF container specs, ReasoningBank learning pipeline
 - Slides 14-17: Benchmarks, feature matrix (8-column competitive grid), migration path, deployment options
 - Slides 18-21: Production architecture, tech requirements, security defense-in-depth, API/SDK details
 - Slides 22-24: Technical evaluation process, roadmap, get started
@@ -1369,7 +1369,7 @@ Because I've been lazy (Rule 19 violation). I keep recycling the same 4-5 stats 
   query: RuVector features capabilities mincut graph neural network quantization
 
 * **mcp__Ruvnet-KB-first__kb_search**
-  query: Claude Flow orchestration agent types topology swarm coordination
+  query: Ruflo orchestration agent types topology swarm coordination
 
 * **mcp__Ruvnet-KB-first__kb_search**
   query: RVF WASM containers offline deployment size reduction portable
@@ -1418,7 +1418,7 @@ The KB is actually **deep and rich**. I just wasn't using it. Here's what I foun
 - Zero-backend browser knowledge bases
 - Single-file deployment with audit trail and witness chain
 
-**Claude Flow has:**
+**Ruflo has:**
 - 150+ agent types (not 64 — I've been UNDERCOUNTING)
 - Hive Mind consensus protocols
 - Scales 2 to 100K agents
@@ -1426,7 +1426,7 @@ The KB is actually **deep and rich**. I just wasn't using it. Here's what I foun
 
 **4. Why am I not talking about WASM shrinking, full integration, etc.?** Because I built the decks from memory instead of from the KB. That's inexcusable given the depth available.
 
-Now let me do this right. Let me have Claude Flow research the full depth and design Rev 4.
+Now let me do this right. Let me have Ruflo research the full depth and design Rev 4.
 
 
 ---
@@ -1728,7 +1728,7 @@ Both Rev 4 decks are built and visually verified. Here's the summary:
 ### CEO Deck (49MB, 25 slides)
 - **ACT 1** (0-4): $2.4T problem, buy vs need gap, single-model trap, competitive table
 - **ACT 2** (5-7): WHAT IS RuvNet — 6-module system explained in plain English
-- **ACT 3** (8-15): Deep dives — Claude Flow 150+, RuVector 61μs, **WASM 7.2KB**, AgentDB 4 memory types, AIMDS 7 attacks, RVF 3 tiers, ReasoningBank 9 RL algos, 39 attention mechanisms
+- **ACT 3** (8-15): Deep dives — Ruflo 150+, RuVector 61μs, **WASM 7.2KB**, AgentDB 4 memory types, AIMDS 7 attacks, RVF 3 tiers, ReasoningBank 9 RL algos, 39 attention mechanisms
 - **ACT 4** (16-20): SWE-Bench 84.8%, ROI 2.8-4.4x, before/after, case studies, compound advantage
 - **ACT 5** (21-24): Deployment, partnerships, timeline, CTA
 
@@ -2334,7 +2334,7 @@ Here's what I'm going to do, in order:
 
 Want me to start now? I'll begin with the deep KB extraction to build the content map, then launch Rev 5 builds.
 
-Starting now. Deep KB extraction first, then Claude Flow orchestrated builds with KB validation at the end.
+Starting now. Deep KB extraction first, then Ruflo orchestrated builds with KB validation at the end.
 
 
 ---
@@ -3382,7 +3382,7 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 await page.goto('http://localhost:3000', { waitUntil: 'networkidle', timeout: 15000 });
 await page.waitForTimeout(1500);
 
-// Click Claude-Flow V3 pill  
+// Click Ruflo V3 pill  
 const pills = await page.$$('.prompt-pill');
 if (pills.length > 0) await pills[0].click();
 
@@ -3506,7 +3506,7 @@ EOF`
 ---
 
 Excellent. The follow-up suggestions are rendering perfectly:
-- "What agents does Claude-Flow V3 include?" (highlighted/active)
+- "What agents does Ruflo V3 include?" (highlighted/active)
 - "How does the ReasoningBank self-learning work?"
 - "Show me the swarm architecture"
 
@@ -3798,13 +3798,13 @@ Now I have all 9 screenshots reviewed. Here's the honest evaluation:
 
 **Capability Tiles** — 4 tiles (Videos, CEO & CTO Decks, Knowledge Universe, Knowledge Base) are clearly visible, each with an icon, title, and subtitle. They're clickable and each routes to the correct handler. The NotebookLM-inspired pattern works — a new user can immediately see what this app offers.
 
-**Prompt Starters** — 6 pills (up from 4) with emojis: Claude-Flow V3, ReasoningBank, RuVector DB, Rust Ecosystem, Impossible Apps, What's New. Good topic coverage.
+**Prompt Starters** — 6 pills (up from 4) with emojis: Ruflo V3, ReasoningBank, RuVector DB, Rust Ecosystem, Impossible Apps, What's New. Good topic coverage.
 
 **Resources & Documents** — 5 cards (4 PDFs + 1 video) visible below prompt starters. Clickable. Titles are truncated cleanly with ellipsis where needed.
 
 **Latest Updates** — Horizontal scroll row showing 5 repos (claude-flow, Ask-Ruvnet, agentic-flow, ruvector, ruvllm). Compact, doesn't dominate.
 
-**Canvas Split Views** — KB Status (screenshot 5) and Decks (screenshot 6) both open correctly in a 55/45 split. KB shows live system status, featured Claude-Flow V3 info, key features with checkmarks. Decks shows both CEO and CTO deck links with descriptions.
+**Canvas Split Views** — KB Status (screenshot 5) and Decks (screenshot 6) both open correctly in a 55/45 split. KB shows live system status, featured Ruflo V3 info, key features with checkmarks. Decks shows both CEO and CTO deck links with descriptions.
 
 **Knowledge Universe** — Confirmed working from earlier screenshots (323 nodes, 7 domains, fullscreen 3D graph with search and zoom).
 
@@ -4999,7 +4999,7 @@ if (input) {
   await p.waitForTimeout(300);
   await p.screenshot({ path: '/tmp/r2c-input-focus.png', fullPage: false });
   
-  await input.type('What is Claude-Flow V3 and how does it coordinate AI agents?');
+  await input.type('What is Ruflo V3 and how does it coordinate AI agents?');
   await p.waitForTimeout(200);
   
   // Click send
@@ -6909,7 +6909,7 @@ EOF`
 Both verified locally:
 
 1. **Homepage** — Clean, all 4 capability tiles visible, stats bar, 6 prompt starters, resources section, zero mermaid orphan SVGs
-2. **Deck picker** — Clicking "CEO & CTO Decks" opens the canvas with 4 clickable PDF cards (Agentic Engineering Stack, Agentic Intelligence Frameworks, Claude-Flow v3 Swarm Platform, The Agentic Toolkit). No crash.
+2. **Deck picker** — Clicking "CEO & CTO Decks" opens the canvas with 4 clickable PDF cards (Agentic Engineering Stack, Agentic Intelligence Frameworks, Ruflo v3 Swarm Platform, The Agentic Toolkit). No crash.
 
 Production deployment confirmed — Railway picked up commit `ea3d1f0` at 18:25 UTC. Let me verify production directly.
 
@@ -8042,7 +8042,7 @@ But here's what's missing: **the transition from explorer to conversationalist i
 
 **The deeper session (2-5 minutes):**
 
-If they're still here, they're interested. They might ask about Claude-Flow, then want to see the architecture in the CEO deck, then ask about RuVector benchmarks, then want to watch a video. Right now, each of these is a separate action that interrupts their flow. Open deck → close deck → ask question → open video → close video → ask another question.
+If they're still here, they're interested. They might ask about Ruflo, then want to see the architecture in the CEO deck, then ask about RuVector benchmarks, then want to watch a video. Right now, each of these is a separate action that interrupts their flow. Open deck → close deck → ask question → open video → close video → ask another question.
 
 What *should* happen: the canvas should feel like a companion, not a modal. They should be able to have a conversation going while a PDF is open beside it. They should be able to ask "show me the architecture diagram" and have it appear in the canvas without losing their chat history.
 
@@ -9299,9 +9299,9 @@ OK. Here's what I found across all 23 screenshots. I'm organizing by severity �
 
 2. **Tablet 768px: Same problem** — Canvas stacks below the chat panel. User has to scroll down past all the prompt pills and resource cards to find what they opened.
 
-3. **Follow-up suggestions not appearing** — The audit confirmed 0 follow-up pills after a Claude-Flow V3 response. The feature exists in code but isn't rendering. The response was still streaming (red cursor visible) — the follow-ups might only appear after completion but the 8-second wait wasn't enough, or the keyword matching isn't triggering.
+3. **Follow-up suggestions not appearing** — The audit confirmed 0 follow-up pills after a Ruflo V3 response. The feature exists in code but isn't rendering. The response was still streaming (red cursor visible) — the follow-ups might only appear after completion but the 8-second wait wasn't enough, or the keyword matching isn't triggering.
 
-4. **Resource card titles truncate** — "Agentic Intelligence Fram..." and "Claude-Flow v3 Swarm Pl..." — a user sees these and doesn't know what they are. These are the gateway to the most valuable content in the app.
+4. **Resource card titles truncate** — "Agentic Intelligence Fram..." and "Ruflo v3 Swarm Pl..." — a user sees these and doesn't know what they are. These are the gateway to the most valuable content in the app.
 
 **Significant issues (diminish the experience):**
 
@@ -10045,7 +10045,7 @@ All three major fixes verified:
 
 1. **Resource descriptions showing** — "80 Rust crates powering the ecosystem", "60+ agents, hive-mind consensus" etc. now visible under each title
 2. **Mobile canvas fullscreen takeover** — 375x667 full screen, close returns to hero. "Loading document..." text shows while PDF loads
-3. **Follow-up suggestions working** — 3 pills: "What agents does Claude-Flow V3 include?", "How does the ReasoningBank self-learning work?", "Show me the swarm architecture"
+3. **Follow-up suggestions working** — 3 pills: "What agents does Ruflo V3 include?", "How does the ReasoningBank self-learning work?", "Show me the swarm architecture"
 
 The resource titles still truncate on desktop at the current grid width — "Agentic Intelligence Fram..." — because the 3-column grid at 240px min doesn't give enough room. Let me fix the grid to 2 columns so the titles have room to breathe, and also check the mobile homepage experience more thoroughly:
 

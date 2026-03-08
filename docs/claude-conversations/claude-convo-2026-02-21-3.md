@@ -963,7 +963,7 @@ This is a critical capability gap to fill. The use case is **100% air-gapped AI*
 ---
 **Tools Used:**
 
-* **Bash** `npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -3`
+* **Bash** `npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -3`
   _Initialize CF swarm for KB enrichment_
 
 ---
@@ -1038,7 +1038,7 @@ I've launched 3 concurrent agents total:
 - **Agent 2 (done ✅)** — 24 entries on ruvector WASM SIMD, private RAG stack, model selection, security/GDPR patterns — saved to `docs/kb-private-ai-deployment.json`
 - **Agent 3 (ingesting now)** — Writing and running the ingestion script to push those 24 entries into PostgreSQL with ONNX embeddings
 
-The reason this is valuable for your clients: the KB will be able to answer questions like *"How do I deploy a fully private AI assistant for a hospital that can never send patient data to the cloud?"* with concrete, production-ready answers covering the full stack — local embeddings (ONNX WASM), local vector search (ruvector), local LLM (Ollama + Llama 3.2), and local orchestration (Claude Flow with Ollama provider).
+The reason this is valuable for your clients: the KB will be able to answer questions like *"How do I deploy a fully private AI assistant for a hospital that can never send patient data to the cloud?"* with concrete, production-ready answers covering the full stack — local embeddings (ONNX WASM), local vector search (ruvector), local LLM (Ollama + Llama 3.2), and local orchestration (Ruflo with Ollama provider).
 
 Let me check all agent statuses:
 
@@ -1596,7 +1596,7 @@ cannot send data to public LLMs (OpenAI, Claude, Gemini, Grok).
 
 - private-ai (24 entries, avg quality 92.0)
   ruvector WASM SIMD, private RAG architecture, model selection,
-  GDPR/HIPAA compliance, Claude Flow + Ollama integration patterns
+  GDPR/HIPAA compliance, Ruflo + Ollama integration patterns
 
 - vendor-hardware (24 entries, avg quality 92.0)
   Ollama vs LocalAI vs vLLM vs GPT4All decision tree, hardware
@@ -2253,7 +2253,7 @@ Now I have the full picture. Let me answer all your questions clearly.
 
 **Your knowledge base on your Mac has 55,111 entries.** The 97 we added today are in there. The `kb` view (what the app actually searches) shows 51,148 of those (filtered to quality ≥ 40). You were right — it's not just 97, it's massive.
 
-Here's the breakdown of what's in there: vector DB docs, release notes, agents, swarms, neural content, MCP documentation, GitHub content, memory patterns, security — all the Claude Flow / ruvnet universe.
+Here's the breakdown of what's in there: vector DB docs, release notes, agents, swarms, neural content, MCP documentation, GitHub content, memory patterns, security — all the Ruflo / ruvnet universe.
 
 ---
 
@@ -3799,14 +3799,14 @@ curl -s -X POST "https://api.render.com/v1/services/$SERVICE_ID/deploys" \
 
 ---
 
-Good — new deploy is building with the fix. Now, understood: **Claude Flow orchestrates from here, not Claude Code directly.** Let me hand this off to Claude Flow now.
+Good — new deploy is building with the fix. Now, understood: **Ruflo orchestrates from here, not Claude Code directly.** Let me hand this off to Ruflo now.
 
 
 ---
 **Tools Used:**
 
-* **Bash** `npx @claude-flow/cli@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -5`
-  _Initialize Claude Flow swarm for orchestration_
+* **Bash** `npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized 2>&1 | tail -5`
+  _Initialize Ruflo swarm for orchestration_
 
 ---
 
@@ -3825,7 +3825,7 @@ Good — new deploy is building with the fix. Now, understood: **Claude Flow orc
 
 ---
 
-Understood — and acknowledged. Claude Flow is orchestrating from here.
+Understood — and acknowledged. Ruflo is orchestrating from here.
 
 **Swarm is live** with 3 specialized agents working in parallel right now:
 
@@ -3833,7 +3833,7 @@ Understood — and acknowledged. Claude Flow is orchestrating from here.
 - **Codebase Auditor** (ac37650) — reading every file and subdirectory, cataloguing what's outdated, misplaced, or cruft vs what's current
 - **Docs Assessor** (a656c0e) — reading all key docs against the current truth (Render + Neon + 55K pgvector) and flagging exactly what's wrong in each
 
-When the agents report back, Claude Flow will synthesize their findings and dispatch the next wave of agents to:
+When the agents report back, Ruflo will synthesize their findings and dispatch the next wave of agents to:
 1. Execute the cleanup (move cruft to archive)
 2. Rewrite the outdated docs
 3. Trigger a final verification deploy
@@ -3871,10 +3871,10 @@ Got it. Adding this as the absolute first rule — above everything else:
 **Tools Used:**
 
 * **Bash** `git add CLAUDE.md && git commit -m "$(cat <<'EOF'
-config: Claude Flow owns every command — mandatory routing rule
+config: Ruflo owns every command — mandatory routing rule
 
-Every command in this project must be immediately handed to Claude Flow.
-Claude Flow queries RuvVector KB, selects agents from RuvNet architecture,
+Every command in this project must be immediately handed to Ruflo.
+Ruflo queries RuvVector KB, selects agents from RuvNet architecture,
 and orchestrates execution. Claude Code is executor only, not the brain.
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
@@ -3890,15 +3890,15 @@ Done. Committed as `32d203b`.
 
 The new Absolute Rule sits above everything else and mandates:
 
-1. **Every command → Claude Flow first** — no exceptions, no shortcuts
-2. **Flow diagram** showing the exact path: Stuart → Claude Flow → RuvVector KB → RuvNet agents → execution
+1. **Every command → Ruflo first** — no exceptions, no shortcuts
+2. **Flow diagram** showing the exact path: Stuart → Ruflo → RuvVector KB → RuvNet agents → execution
 3. **3-step implementation** that must run on every request (route hook → swarm init → KB search)
-4. **Agent dispatch table** — what type of request maps to which Claude Flow agent (architect, coder, researcher, devops, etc.)
+4. **Agent dispatch table** — what type of request maps to which Ruflo agent (architect, coder, researcher, devops, etc.)
 5. **Explicit violation clause** — Claude Code answering directly without CF orchestration is defined as a rule breach
 
 The 3 agents working on the build fix and codebase audit are still running. I'll report back when they complete with the full inventory of what needs cleanup and what the deploy status is.
 
-Excellent intelligence from the docs assessor. Routing back through Claude Flow — spinning up the next agent wave to execute the fixes:
+Excellent intelligence from the docs assessor. Routing back through Ruflo — spinning up the next agent wave to execute the fixes:
 
 
 ---
@@ -3915,7 +3915,7 @@ Excellent intelligence from the docs assessor. Routing back through Claude Flow 
 
 ---
 
-Claude Flow swarm is in full operation. Here's the live status:
+Ruflo swarm is in full operation. Here's the live status:
 
 **Wave 1 (Assessment) — Complete ✅**
 - Docs Assessor returned full audit: 2 major rewrites needed, ~50 files to archive
@@ -4098,7 +4098,7 @@ curl -s --max-time 30 "https://ask-ruvnet.onrender.com/api/kb-stats" 2>&1 | head
 
 ---
 
-The build succeeded — app is starting up now. While it warms up, I'm routing your new request through Claude Flow immediately. This is a multi-part strategic task: testing plan, completeness verification, automated repo monitoring, and continuous KB sync.
+The build succeeded — app is starting up now. While it warms up, I'm routing your new request through Ruflo immediately. This is a multi-part strategic task: testing plan, completeness verification, automated repo monitoring, and continuous KB sync.
 
 Spinning up the next swarm:
 
@@ -4193,7 +4193,7 @@ DOCS REWRITTEN:
   troubleshooting, local dev setup, manual redeploy instructions
 
 CONFIG:
-- CLAUDE.md: Added Absolute Rule — Claude Flow owns every command
+- CLAUDE.md: Added Absolute Rule — Ruflo owns every command
 - .gitignore: Updated for new archive structure
 - render.yaml build command: NODE_ENV=development npm install --include=dev
 
@@ -4248,7 +4248,7 @@ The 2 agents still running (ac71a4d testing plan, a9b1569 repo monitoring) are w
 | Rewrite README.md (accurate) | ✅ |
 | Rewrite DEPLOYMENT-GUIDE.md (Render+Neon) | ✅ |
 | Archive 3,593 stale/outdated files | ✅ Committed |
-| Claude Flow routing rule in CLAUDE.md | ✅ |
+| Ruflo routing rule in CLAUDE.md | ✅ |
 | Testing plan + scripts | ⏳ Agent working |
 | Auto repo monitoring system | ⏳ Agent working |
 
@@ -5314,7 +5314,7 @@ Pushed. Now waiting for the deploy to go live:
 
 **97% passing — 76/78 tests.** Chat is fully working.
 
-The 2 failures are both the same query: "explain Claude Flow swarm agents" returned a short answer (80 chars) that didn't include the expected keywords. That's a content/response quality issue — the LLM gave a brief answer that happened to not use those exact words. Not a bug; the KB search worked and sources were returned.
+The 2 failures are both the same query: "explain Ruflo swarm agents" returned a short answer (80 chars) that didn't include the expected keywords. That's a content/response quality issue — the LLM gave a brief answer that happened to not use those exact words. Not a bug; the KB search worked and sources were returned.
 
 ---
 
@@ -5331,7 +5331,7 @@ Now about the **Grok key** you sent (`xai-oimoa...`) — that's from **xAI** (El
 | Knowledge Inventory | PASS |
 | Chat — HNSW query | PASS (100/100 quality) |
 | Chat — RuVector query | PASS (100/100 quality) |
-| Chat — Claude Flow query | marginal (80 chars, short answer) |
+| Chat — Ruflo query | marginal (80 chars, short answer) |
 | Input validation | PASS |
 | All 4 chat modes | PASS |
 | Auth protection | PASS |
@@ -5492,7 +5492,7 @@ No, the docs were **not** fully up to date — and good that you asked. Here's w
 
 All pushed. Docs are now accurate.
 
-I'll spawn the Claude Flow QA agent to do a comprehensive review of the project — docs, code, and live endpoints.
+I'll spawn the Ruflo QA agent to do a comprehensive review of the project — docs, code, and live endpoints.
 
 
 ---
