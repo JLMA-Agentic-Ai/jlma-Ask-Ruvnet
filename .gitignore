@@ -87,3 +87,18 @@ ruvector/
 # Allow RVF knowledge base files for Railway deployment
 !knowledge.rvf.gz.part-*
 !content-sidecar.json.gz
+
+# RVF binary files (large)
+knowledge.rvf
+knowledge.rvf.gz
+knowledge.rvf.idmap.json
+self_booting.rvf
+
+# Build workspace
+workspace/
+
+# Log files
+logs/
+
+# NLM pipeline state
+.nlm-refresh-state.json
