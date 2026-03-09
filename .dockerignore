@@ -14,12 +14,10 @@ src/ui/node_modules
 
 # Build artifacts
 *.log
-*.part-*
 coverage/
 .nyc_output/
 
-# Large files handled separately
-*.tar.gz
+# Databases (not needed at runtime)
 *.db
 
 # IDE
