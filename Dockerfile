@@ -1,12 +1,9 @@
 # Railway Dockerfile for Ask-Ruvnet
-# Multi-stage build: build UI + extract KB in builder, slim production image
+# Single-stage build — proven reliable on Railway
 
-# ============================================================================
-# STAGE 1: Builder — install deps, build UI, extract KB
-# ============================================================================
-FROM node:22-bookworm-slim AS builder
+FROM node:22-bookworm-slim
 
-# Only build-essential needed for native modules during npm install
+# System deps for native module compilation
 RUN apt-get update && apt-get install -y \
     build-essential \
     ca-certificates \
@@ -42,33 +39,9 @@ RUN if ls knowledge.rvf.gz.part-* 1>/dev/null 2>&1; then \
 # Build the UI
 RUN cd src/ui && npm install && npm run build
 
-# Remove dev artifacts not needed at runtime
-RUN rm -rf src/ui/node_modules src/ui/src docs scripts/test-* scripts/ingest-* \
-    scripts/kb-curate scripts/ingestion .git .claude *.md
-
-# ============================================================================
-# STAGE 2: Production — minimal runtime image
-# ============================================================================
-FROM node:22-bookworm-slim AS production
-
-# Only runtime deps: sharp needs libvips, ONNX needs libc
-RUN apt-get update && apt-get install -y \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
-
-# Copy only what's needed from builder
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/src/server ./src/server
-COPY --from=builder /app/src/core ./src/core
-COPY --from=builder /app/src/ui/dist ./src/ui/dist
-COPY --from=builder /app/src/ui/public ./src/ui/public
-COPY --from=builder /app/scripts/deployment ./scripts/deployment
-COPY --from=builder /app/.ruvector ./.ruvector
-COPY --from=builder /app/knowledge.rvf* ./
-COPY --from=builder /app/content-sidecar.json.gz* ./
+# Clean up build-time artifacts to reduce image size
+RUN rm -rf src/ui/node_modules src/ui/src .git .claude docs *.md \
+    scripts/test-* scripts/ingest-* scripts/kb-curate scripts/ingestion
 
 # Expose port
 EXPOSE 3000
