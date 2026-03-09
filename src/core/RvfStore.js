@@ -125,6 +125,7 @@ class RvfStore {
         this.dimensions = 384;
         this.vectorCount = 0;
         this.rvfPath = null;
+        this.healthStatus = 'not_initialized';
     }
 
     async initialize() {
@@ -166,7 +167,21 @@ class RvfStore {
             this.contentMap = {};
         }
 
-        console.log('[RvfStore] Backend: RVF Native (HNSW-indexed cognitive container)');
+        // Validate vector/sidecar alignment
+        const contentMapSize = Object.keys(this.contentMap).length;
+        if (this.vectorCount > 0 && contentMapSize > 0) {
+            const ratio = Math.abs(this.vectorCount - contentMapSize) / Math.max(this.vectorCount, contentMapSize);
+            if (ratio > 0.05) {
+                console.warn(`[RvfStore] WARNING: Vector/sidecar count mismatch exceeds 5% — vectors: ${this.vectorCount.toLocaleString()}, sidecar: ${contentMapSize.toLocaleString()} (${(ratio * 100).toFixed(1)}% drift)`);
+                this.healthStatus = 'degraded';
+            } else {
+                this.healthStatus = 'ok';
+            }
+        } else {
+            this.healthStatus = this.vectorCount > 0 ? 'ok' : 'degraded';
+        }
+
+        console.log(`[RvfStore] Backend: RVF Native (HNSW-indexed cognitive container) — health: ${this.healthStatus}`);
         return true;
     }
 
@@ -270,7 +285,9 @@ class RvfStore {
         return {
             backend: 'RVF Native (HNSW cognitive container)',
             status: 'Active',
+            healthStatus: this.healthStatus,
             vectorCount: this.vectorCount,
+            contentMapSize: this.contentMap ? Object.keys(this.contentMap).length : 0,
             dimensions: this.dimensions,
             path: this.rvfPath
         };

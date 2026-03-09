@@ -1,3 +1,4 @@
+const startupTime = Date.now();
 const express = require('express');
 process.env.FORCE_TRANSFORMERS = 'true';
 const helmet = require('helmet');
@@ -26,12 +27,69 @@ const QueryExpander = require('../core/QueryExpander');
 const ReRanker = require('../core/ReRanker');
 const ContextCompressor = require('../core/ContextCompressor');
 const MultiHopRetriever = require('../core/MultiHopRetriever');
+const ResponseValidator = require('../core/ResponseValidator');
 const { OpenAI } = require('openai');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
 // Version from single source of truth (package.json)
 const { version: APP_VERSION } = require('../../package.json');
+
+// ============================================================================
+// Input Sanitization & Prompt Injection Protection
+// ============================================================================
+const PROMPT_INJECTION_PATTERNS = [
+    /ignore\s+(all\s+)?previous\s+instructions/i,
+    /you\s+are\s+now/i,
+    /system\s+prompt\s*:/i,
+    /forget\s+(all\s+)?your\s+instructions/i,
+    /disregard\s+(all\s+)?(above|previous|prior)/i,
+    /new\s+instructions\s*:/i,
+    /\bact\s+as\s+(if\s+)?you\s+are\b/i,
+    /\bpretend\s+(to\s+be|you\s+are)\b/i,
+    /\boverride\s+(your|all|the)\s+(instructions|rules|system)\b/i,
+    /\bdo\s+not\s+follow\s+(your|the|any)\s+(instructions|rules|guidelines)\b/i,
+];
+
+/**
+ * Sanitize user input text before it enters any processing pipeline.
+ * - Strips HTML tags
+ * - Removes control characters (preserves newlines and tabs)
+ * - Detects and strips prompt injection attempts (logs warning)
+ * - Truncates to 10,000 characters
+ * @param {string} text - Raw user input
+ * @returns {string} Cleaned text safe for pipeline consumption
+ */
+function sanitizeInput(text) {
+    if (typeof text !== 'string') return '';
+
+    let cleaned = text;
+
+    // 1. Strip HTML tags
+    cleaned = cleaned.replace(/<[^>]*>/g, '');
+
+    // 2. Remove control characters except newline (\n), carriage return (\r), tab (\t)
+    // eslint-disable-next-line no-control-regex
+    cleaned = cleaned.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
+
+    // 3. Detect and strip prompt injection patterns
+    for (const pattern of PROMPT_INJECTION_PATTERNS) {
+        if (pattern.test(cleaned)) {
+            // Log the attempt with a truncated sample for forensic review
+            const sample = cleaned.substring(0, 200).replace(/\n/g, '\\n');
+            console.warn(`[SECURITY] Prompt injection attempt detected and stripped. Pattern: ${pattern.source} | Sample: "${sample}"`);
+            // Remove the offending phrase
+            cleaned = cleaned.replace(pattern, '[redacted]');
+        }
+    }
+
+    // 4. Truncate to 10,000 characters
+    if (cleaned.length > 10000) {
+        cleaned = cleaned.substring(0, 10000);
+    }
+
+    return cleaned.trim();
+}
 
 // ============================================================================
 // Live npm version cache (refreshes every hour)
@@ -58,12 +116,216 @@ async function refreshNpmVersions() {
                 const d = await res.json();
                 results[repoName] = d.version;
             }
-        } catch (_) {}
+        } catch (err) {
+                console.warn(`[npm-versions] Failed to fetch ${pkg}:`, err.message);
+            }
     }));
     npmVersionCache = results;
     npmCacheExpiry = now + 3600_000; // 1 hour
     console.log('📦 npm versions refreshed:', results);
     return results;
+}
+
+// ============================================================================
+// NotebookLM Resource Map — maps query topics to available media assets
+// Built from actual files in src/ui/public/assets/docs/
+// ============================================================================
+const NLM_RESOURCES = [
+    // --- Videos (NotebookLM Studios) ---
+    {
+        topics: ['architecture', 'system design', 'how it works', 'components', 'technical architecture', 'stack'],
+        type: 'video',
+        title: 'Architecture That Changes Everything',
+        url: '/assets/docs/Architecture_That_Changes_Everything.mp4',
+        emoji: '\ud83d\udcfa',
+        description: 'Deep-dive video on the RuVector/Ruflo architecture and why it matters'
+    },
+    {
+        topics: ['ruflo', 'orchestration', 'agents', 'swarm', 'how ruflo works', 'agent coordination'],
+        type: 'video',
+        title: 'How Ruflo Actually Works',
+        url: '/assets/docs/How_Ruflo_Actually_Works.mp4',
+        emoji: '\ud83d\udcfa',
+        description: 'Video walkthrough of Ruflo agent orchestration internals'
+    },
+    {
+        topics: ['getting started', 'setup', 'tutorial', 'first project', 'quickstart', 'hello world', 'production'],
+        type: 'video',
+        title: 'From Zero to Production: Getting Started',
+        url: '/assets/docs/From_Zero_to_Production_Getting_Started.mp4',
+        emoji: '\ud83d\udcfa',
+        description: 'Step-by-step video guide from installation to production deployment'
+    },
+    {
+        topics: ['use cases', 'applications', 'what can i build', 'examples', 'impossible', 'real world'],
+        type: 'video',
+        title: 'Impossible Apps with RuvNet',
+        url: '/assets/docs/Impossible_Apps_RuvNet.mp4',
+        emoji: '\ud83d\udcfa',
+        description: 'Video showcase of applications that become possible with the RuvNet stack'
+    },
+    {
+        topics: ['wifi sensing', 'ruview', 'iot', 'esp32', 'hardware', 'edge', 'sensing'],
+        type: 'video',
+        title: 'RuView WiFi Sensing',
+        url: '/assets/docs/RuView_WiFi_Sensing.mp4',
+        emoji: '\ud83d\udcfa',
+        description: 'Video on WiFi-based sensing and edge AI with RuView'
+    },
+    {
+        topics: ['new features', 'updates', 'changelog', 'march 2026', 'whats new', 'release', 'latest'],
+        type: 'video',
+        title: "What's New in the RuvNet Stack (March 2026)",
+        url: '/assets/docs/Whats_New_RuvNet_Stack_March2026.mp4',
+        emoji: '\ud83d\udcfa',
+        description: 'Video overview of the latest features and improvements'
+    },
+    {
+        topics: ['migration', 'switch', 'why switch', 'developer teams', 'adoption', 'comparison', 'vs'],
+        type: 'video',
+        title: 'Why Dev Teams Should Switch',
+        url: '/assets/docs/Why_Dev_Teams_Should_Switch.mp4',
+        emoji: '\ud83d\udcfa',
+        description: 'Video making the case for developer teams to adopt the RuvNet stack'
+    },
+    {
+        topics: ['agentic', 'ai stack', 'toolkit', 'framework', 'agentic stack'],
+        type: 'video',
+        title: 'The Agentic Stack',
+        url: '/assets/docs/The_Agentic_Stack.mp4',
+        emoji: '\ud83d\udcfa',
+        description: 'Video deep-dive into the complete agentic AI technology stack'
+    },
+    // --- PDFs (Decks & Reports) ---
+    {
+        topics: ['ceo', 'investment', 'roi', 'business case', 'executive', 'investor', 'fundraising', 'valuation'],
+        type: 'pdf',
+        title: 'Ruflo v3.5 CEO Investment Deck',
+        url: '/assets/docs/Ruflo-v35-CEO-Deck.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Executive overview with ROI analysis, market opportunity, and investment thesis'
+    },
+    {
+        topics: ['cto', 'technical deck', 'benchmarks', 'developer experience', 'engineering'],
+        type: 'pdf',
+        title: 'Ruflo v3.5 CTO Technical Deck',
+        url: '/assets/docs/Ruflo-v35-CTO-Deck.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Technical architecture, benchmarks, and developer experience overview'
+    },
+    {
+        topics: ['business', 'why invest', 'company needs', 'enterprise', 'cost savings'],
+        type: 'pdf',
+        title: 'Business Case: Why Your Company Needs This',
+        url: '/assets/docs/Business_Case_Why_Your_Company_Needs_This.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Business justification with cost analysis and competitive advantages'
+    },
+    {
+        topics: ['ceo', 'investment', 'agentic intelligence', 'executive summary'],
+        type: 'pdf',
+        title: 'CEO Deck: Agentic Intelligence',
+        url: '/assets/docs/CEO-Deck-Agentic-Intelligence.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Executive deck on the agentic intelligence vision and market opportunity'
+    },
+    {
+        topics: ['cto', 'architecture', 'ruvnet architecture', 'technical overview'],
+        type: 'pdf',
+        title: 'CTO Deck: RuvNet Architecture',
+        url: '/assets/docs/CTO-Deck-RuvNet-Architecture.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Technical deep-dive deck on the RuvNet system architecture'
+    },
+    {
+        topics: ['agentic engineering', 'engineering stack', 'development patterns'],
+        type: 'pdf',
+        title: 'Agentic Engineering Stack',
+        url: '/assets/docs/Agentic_Engineering_Stack.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Comprehensive guide to the agentic engineering stack and patterns'
+    },
+    {
+        topics: ['agentic intelligence', 'frameworks', 'ai frameworks', 'orchestration frameworks'],
+        type: 'pdf',
+        title: 'Agentic Intelligence Frameworks',
+        url: '/assets/docs/Agentic_Intelligence_Frameworks.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Analysis of agentic intelligence frameworks and their capabilities'
+    },
+    {
+        topics: ['swarm', 'claude flow', 'platform', 'multi-agent', 'coordination'],
+        type: 'pdf',
+        title: 'Ruflo v3 Swarm Platform',
+        url: '/assets/docs/Claude-Flow_v3_Swarm_Platform.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Complete guide to the Ruflo v3 swarm orchestration platform'
+    },
+    {
+        topics: ['agentic toolkit', 'creation', 'tools', 'redefining'],
+        type: 'pdf',
+        title: 'The Agentic Toolkit: Redefining Creation',
+        url: '/assets/docs/The_Agentic_Toolkit_Redefining_Creation.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'How the agentic toolkit redefines software creation and development'
+    },
+    // --- Infographic ---
+    {
+        topics: ['ecosystem', 'overview', 'map', 'all components', 'full picture', 'ecosystem map'],
+        type: 'image',
+        title: 'RuvNet Ecosystem Map',
+        url: '/assets/docs/RuvNet_Ecosystem_Map.png',
+        emoji: '\ud83d\uddfa\ufe0f',
+        description: 'Visual map of the entire RuvNet ecosystem and component relationships'
+    },
+];
+
+/**
+ * Match user query against NLM_RESOURCES using keyword overlap scoring.
+ * Returns an array of matched resources sorted by relevance (best first).
+ * Each match must exceed a minimum score threshold to avoid noise.
+ */
+function matchNlmResources(query, maxResults = 4) {
+    const queryLower = query.toLowerCase();
+    const queryWords = queryLower.split(/\s+/).filter(w => w.length > 2);
+
+    const scored = NLM_RESOURCES.map(resource => {
+        let score = 0;
+
+        for (const topic of resource.topics) {
+            if (queryLower.includes(topic)) {
+                // Full phrase match — high value; longer phrases score higher
+                score += 3 + topic.split(/\s+/).length;
+            } else {
+                // Partial word overlap
+                const topicWords = topic.split(/\s+/);
+                const overlap = topicWords.filter(tw =>
+                    queryWords.some(qw => qw.includes(tw) || tw.includes(qw))
+                );
+                if (overlap.length > 0) {
+                    score += overlap.length;
+                }
+            }
+        }
+
+        return { ...resource, score };
+    });
+
+    return scored
+        .filter(r => r.score >= 2)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, maxResults);
+}
+
+/**
+ * Format matched NLM resources into a markdown section for LLM context injection.
+ */
+function formatNlmResourcesSection(matched) {
+    if (!matched || matched.length === 0) return '';
+    const lines = matched.map(r =>
+        `- ${r.emoji} [${r.title}](${r.url}) — ${r.description}`
+    );
+    return `\n\n### Related Media\n${lines.join('\n')}`;
 }
 
 // Initialize OpenAI client for special endpoints (if API key available)
@@ -74,8 +336,8 @@ if (process.env.OPENAI_API_KEY) {
 
 // Initialize Gemini client for image generation (visualize endpoint)
 const { GoogleGenAI } = require('@google/genai');
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyDR-2kQuxZ1HJyZ2-IhUHmPN0XG3DS4HgY';
-const geminiClient = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const geminiClient = GEMINI_API_KEY ? new GoogleGenAI({ apiKey: GEMINI_API_KEY }) : null;
 
 // ============================================================================
 // MULTI-PROVIDER LLM — automatic fallback chain for chat
@@ -91,12 +353,12 @@ function registerProviders() {
 
     // All supported providers — order matters (this is the default fallback chain)
     const all = [
-        { name: 'groq-free',  key: process.env.GROQ_API_KEY,       url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile' },
-        { name: 'groq-paid',  key: process.env.GROQ_PAID_API_KEY,  url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_PAID_MODEL || process.env.GROQ_MODEL || 'llama-3.3-70b-versatile' },
-        { name: 'openai',     key: process.env.OPENAI_API_KEY,     url: 'https://api.openai.com/v1/chat/completions',         model: process.env.OPENAI_MODEL || 'gpt-4o' },
-        { name: 'anthropic',  key: process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY, url: null, /* uses native SDK format */ model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514' },
-        { name: 'openrouter', key: process.env.OPENROUTER_API_KEY, url: 'https://openrouter.ai/api/v1/chat/completions',      model: process.env.OPENROUTER_MODEL || 'anthropic/claude-sonnet-4' },
-        { name: 'deepseek',   key: process.env.DEEPSEEK_API_KEY,   url: 'https://api.deepseek.com/v1/chat/completions',       model: process.env.DEEPSEEK_MODEL || 'deepseek-chat' },
+        { name: 'groq-free',  key: process.env.GROQ_API_KEY,       url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile', timeout: 10000 },
+        { name: 'groq-paid',  key: process.env.GROQ_PAID_API_KEY,  url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_PAID_MODEL || process.env.GROQ_MODEL || 'llama-3.3-70b-versatile', timeout: 10000 },
+        { name: 'openai',     key: process.env.OPENAI_API_KEY,     url: 'https://api.openai.com/v1/chat/completions',         model: process.env.OPENAI_MODEL || 'gpt-4o', timeout: 20000 },
+        { name: 'anthropic',  key: process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY, url: null, /* uses native SDK format */ model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514', timeout: 20000 },
+        { name: 'openrouter', key: process.env.OPENROUTER_API_KEY, url: 'https://openrouter.ai/api/v1/chat/completions',      model: process.env.OPENROUTER_MODEL || 'anthropic/claude-sonnet-4', timeout: 25000 },
+        { name: 'deepseek',   key: process.env.DEEPSEEK_API_KEY,   url: 'https://api.deepseek.com/v1/chat/completions',       model: process.env.DEEPSEEK_MODEL || 'deepseek-chat', timeout: 35000 },
     ];
 
     // Filter to providers with keys set
@@ -126,9 +388,11 @@ async function callAnthropicAPI(provider, messages, temperature, maxTokens) {
     // Anthropic uses a different API format than OpenAI-compatible providers
     const systemMsg = messages.find(m => m.role === 'system');
     const nonSystemMsgs = messages.filter(m => m.role !== 'system');
+    const timeoutMs = provider.timeout || 20000;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
+        signal: AbortSignal.timeout(timeoutMs),
         headers: {
             'x-api-key': provider.key,
             'anthropic-version': '2023-06-01',
@@ -150,8 +414,10 @@ async function callAnthropicAPI(provider, messages, temperature, maxTokens) {
 }
 
 async function callOpenAICompatible(provider, messages, temperature, maxTokens) {
+    const timeoutMs = provider.timeout || 20000;
     const response = await fetch(provider.url, {
         method: 'POST',
+        signal: AbortSignal.timeout(timeoutMs),
         headers: {
             'Authorization': `Bearer ${provider.key}`,
             'Content-Type': 'application/json'
@@ -176,23 +442,28 @@ async function llmChat(messages, { temperature = 0.3, maxTokens = 8192 } = {}) {
     }
 
     const errors = [];
+    const totalStart = Date.now();
     for (const provider of LLM_PROVIDERS) {
         try {
-            console.log(`🤖 Trying ${provider.name} (${provider.model})...`);
+            const providerStart = Date.now();
+            console.log(`🤖 Trying ${provider.name} (${provider.model}, timeout ${provider.timeout || 20000}ms)...`);
             let answer;
             if (provider.name === 'anthropic') {
                 answer = await callAnthropicAPI(provider, messages, temperature, maxTokens);
             } else {
                 answer = await callOpenAICompatible(provider, messages, temperature, maxTokens);
             }
-            console.log(`✅ ${provider.name} responded (${answer.length} chars)`);
+            const elapsed = Date.now() - providerStart;
+            console.log(`✅ ${provider.name} responded in ${elapsed}ms (${answer.length} chars)`);
             return { answer, provider: provider.name, model: provider.model };
         } catch (err) {
-            console.warn(`⚠️ ${provider.name} failed: ${err.message}`);
+            const elapsed = Date.now() - (Date.now());
+            console.warn(`⚠️ ${provider.name} failed after ${Date.now() - totalStart}ms: ${err.message}`);
             errors.push(`${provider.name}: ${err.message}`);
         }
     }
 
+    console.error(`❌ All LLM providers failed after ${Date.now() - totalStart}ms`);
     throw new Error(`All LLM providers failed:\n${errors.join('\n')}`);
 }
 
@@ -221,8 +492,10 @@ async function* llmChatStream(messages, { temperature = 0.3, maxTokens = 8192 } 
 }
 
 async function* streamOpenAICompatible(provider, messages, temperature, maxTokens) {
+    const timeoutMs = provider.timeout || 20000;
     const response = await fetch(provider.url, {
         method: 'POST',
+        signal: AbortSignal.timeout(timeoutMs),
         headers: {
             'Authorization': `Bearer ${provider.key}`,
             'Content-Type': 'application/json'
@@ -259,7 +532,9 @@ async function* streamOpenAICompatible(provider, messages, temperature, maxToken
                 const parsed = JSON.parse(data);
                 const token = parsed.choices?.[0]?.delta?.content;
                 if (token) yield token;
-            } catch (_) {}
+            } catch (err) {
+                console.warn(`[stream-openai] Failed to parse SSE chunk:`, err.message);
+            }
         }
     }
 }
@@ -267,9 +542,11 @@ async function* streamOpenAICompatible(provider, messages, temperature, maxToken
 async function* streamAnthropicAPI(provider, messages, temperature, maxTokens) {
     const systemMsg = messages.find(m => m.role === 'system');
     const nonSystemMsgs = messages.filter(m => m.role !== 'system');
+    const timeoutMs = provider.timeout || 20000;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
+        signal: AbortSignal.timeout(timeoutMs),
         headers: {
             'x-api-key': provider.key,
             'anthropic-version': '2023-06-01',
@@ -307,7 +584,9 @@ async function* streamAnthropicAPI(provider, messages, temperature, maxTokens) {
                 if (parsed.type === 'content_block_delta' && parsed.delta?.text) {
                     yield parsed.delta.text;
                 }
-            } catch (_) {}
+            } catch (err) {
+                console.warn(`[stream-anthropic] Failed to parse SSE chunk:`, err.message);
+            }
         }
     }
 }
@@ -328,14 +607,15 @@ const reRanker = new ReRanker({
     diversityWeight: 0.10
 });
 const contextCompressor = new ContextCompressor({
-    maxContextLength: 16000,  // Increased for more context
-    maxPerSource: 4000,
+    maxContextLength: 24000,  // Phase 2 H-2: increased from 16K for richer context
+    maxPerSource: 6000,       // Phase 2 H-2: increased from 4K per source
     preserveCode: true
 });
 const multiHopRetriever = new MultiHopRetriever({
     maxHops: 2,
     minConfidence: 0.3
 });
+const responseValidator = new ResponseValidator();
 
 // ============================================================================
 // ============================================================================
@@ -453,6 +733,15 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN || (process.env.NODE_ENV === 'production' ? false : '*')
 }));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: process.env.NODE_ENV === 'production' ? 100 : 500, standardHeaders: true }));
+
+// Stricter rate limit for /api/special — user content is injected directly into LLM prompts
+const specialEndpointLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 20,
+    standardHeaders: true,
+    message: { error: 'Too many special action requests. Try again later.' }
+});
+
 app.use(express.json({ limit: '1mb' }));
 const fs = require('fs');
 app.use(express.static(path.join(__dirname, '../ui/dist'))); // Serve frontend
@@ -463,6 +752,57 @@ app.use('/generated_imgs', express.static(path.join(__dirname, '../../generated_
 let modelRouter;
 let reasoningBank; // Now a RuvectorStore instance with reflexion-compatible API
 // pgKB removed — RuvectorStore is the single source of truth
+
+// ============================================================================
+// Startup readiness flag — blocks /api/chat* until all subsystems are loaded
+// ============================================================================
+let isReady = false;
+
+// ============================================================================
+// In-memory LRU cache for RAG pipeline results (avoids redundant retrieval)
+// Cache key: hash of (message + mode). TTL: 5 min. Max entries: 100.
+// Only caches the RAG retrieval (context, sources, systemPrompt) — the LLM
+// call still runs fresh every time to produce varied responses.
+// ============================================================================
+const RAG_CACHE_TTL_MS = 300_000;  // 5 minutes
+const RAG_CACHE_MAX_ENTRIES = 100;
+const ragCache = new Map();
+
+function simpleHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const ch = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + ch;
+        hash |= 0; // Convert to 32-bit integer
+    }
+    return String(hash);
+}
+
+function ragCacheKey(message, mode) {
+    return simpleHash(`${message}||${mode || 'Balanced'}`);
+}
+
+function ragCacheGet(key) {
+    const entry = ragCache.get(key);
+    if (!entry) return null;
+    if (Date.now() - entry.timestamp > RAG_CACHE_TTL_MS) {
+        ragCache.delete(key);
+        return null;
+    }
+    // Move to end (LRU refresh) — delete and re-set to maintain insertion order
+    ragCache.delete(key);
+    ragCache.set(key, entry);
+    return entry.value;
+}
+
+function ragCacheSet(key, value) {
+    // Evict oldest entries if at capacity
+    if (ragCache.size >= RAG_CACHE_MAX_ENTRIES) {
+        const firstKey = ragCache.keys().next().value;
+        ragCache.delete(firstKey);
+    }
+    ragCache.set(key, { value, timestamp: Date.now() });
+}
 
 async function initAgenticFlow() {
     try {
@@ -514,7 +854,7 @@ async function initHybridSearchIndex() {
         // Load all documents from RuvectorStore metadata (no external DB needed)
         if (reasoningBank && reasoningBank.db && reasoningBank.db.getAllMetadata) {
             const allMeta = reasoningBank.db.getAllMetadata();
-            const limit = Math.min(allMeta.length, 50000); // Cap at 50K for BM25 performance
+            const limit = Math.min(allMeta.length, 100000); // Phase 2 M-6: raised from 50K to 100K for fuller BM25 coverage
             for (let i = 0; i < limit; i++) {
                 const entry = allMeta[i];
                 const meta = entry.metadata || {};
@@ -541,7 +881,7 @@ async function initHybridSearchIndex() {
                     const batch = await reasoningBank.reflexion.retrieveRelevant({ task: term, k: 500 });
                     batch.forEach(r => allDocuments.set(r.id, r));
                 } catch (e) {
-                    // Continue on individual query failures
+                    console.warn(`[hybrid-search] Query "${term}" failed:`, e.message);
                 }
             }
         }
@@ -565,15 +905,394 @@ async function initHybridSearchIndex() {
     }
 }
 
-initAgenticFlow();
+initAgenticFlow().then(() => {
+    isReady = true;
+    console.log(`Server ready in ${Date.now() - startupTime}ms`);
+}).catch((err) => {
+    console.error('Startup failed, server NOT marked ready:', err.message);
+});
 
+// ============================================================================
+// Phase 2 C-2: Shared RAG Pipeline — single source of truth for both /api/chat
+// and /api/chat/stream. Returns { context, sources, systemPrompt, messages }.
+// ============================================================================
+async function runRAGPipeline(message, mode, conversationHistory) {
+    let context = '';
+    let sources = [];
+
+    if (reasoningBank && reasoningBank.reflexion) {
+        console.log(`Searching ReasoningBank for: "${message}"`);
+        try {
+            // ================================================================
+            // STAGE 0: Query Intent Detection — bias broad/vague queries
+            // toward on-topic RuVector/Ruflo content so retrieval doesn't
+            // return noise from the 103K-entry KB.
+            // ================================================================
+            const BROAD_QUERY_PATTERNS = [
+                /^(get|getting)\s+started/i,
+                /^what\s+(is|are|does)/i,
+                /^why\s+(should|would|do|does|is)/i,
+                /^how\s+(do|does|can|to|should)/i,
+                /^tell\s+me\s+about/i,
+                /^explain/i,
+                /^(show|give)\s+me/i,
+                /^(can|could)\s+you\s+(explain|tell|show|describe)/i,
+                /^(intro|introduction|overview|summary|basics)/i,
+                /^who\s+(is|are|should)/i,
+            ];
+            const DOMAIN_TERMS_RE = /\b(ruvector|ruflo|claude.?flow|hnsw|rvf|sona|min.?cut|mcp|swarm|agent|embedding|vector|aimds)\b/i;
+            let biasedMessage = message;
+            const isBroadQuery = BROAD_QUERY_PATTERNS.some(p => p.test(message.trim()));
+            const alreadyOnTopic = DOMAIN_TERMS_RE.test(message);
+            if (isBroadQuery && !alreadyOnTopic) {
+                biasedMessage = `RuVector Ruflo agentic AI: ${message}`;
+                console.log(`🎯 Broad query detected — biased to: "${biasedMessage}"`);
+            }
+
+            // ================================================================
+            // STAGE 1: Query Expansion - Generate multiple query variants
+            // ================================================================
+            const expandedQueries = queryExpander.expand(biasedMessage);
+            const adaptiveK = queryExpander.getRecommendedK(message);
+            console.log(`📝 Query expanded to ${expandedQueries.length} variants, adaptive k=${adaptiveK}`);
+
+            // ================================================================
+            // STAGE 2: Define search function for retrieval
+            // ================================================================
+            const semanticSearchFn = async (query, k) => {
+                const semanticResults = await reasoningBank.reflexion.retrieveRelevant({
+                    task: query,
+                    k: k
+                });
+                return semanticResults.map(r => ({
+                    id: r.metadata?.docId || r.id,
+                    title: r.metadata?.title || r.title || null,
+                    content: r.input || r.task || '',
+                    score: r.similarity || 0,
+                    similarity: r.similarity || 0,
+                    source: r.metadata?.source,
+                    metadata: r.metadata,
+                    timestamp: r.metadata?.timestamp
+                }));
+            };
+
+            // ================================================================
+            // STAGE 3: Multi-hop retrieval for complex queries
+            // ================================================================
+            let allResults = [];
+
+            if (multiHopRetriever.needsMultiHop(message)) {
+                console.log('🔄 Complex query detected - using multi-hop retrieval...');
+                const searchFn = hybridSearch
+                    ? async (q, k) => await hybridSearch.hybridSearch(q, semanticSearchFn, k)
+                    : semanticSearchFn;
+                allResults = await multiHopRetriever.retrieve(message, searchFn, adaptiveK);
+            } else {
+                // Standard retrieval with query expansion
+                const resultsMap = new Map();
+
+                // Run all expanded queries in parallel for lower latency
+                const queryPromises = expandedQueries.map(query => {
+                    if (hybridSearch) {
+                        console.log('🔀 Using hybrid search (semantic + BM25)...');
+                        return hybridSearch.hybridSearch(query, semanticSearchFn, adaptiveK);
+                    } else {
+                        console.log('🔍 Using semantic search only...');
+                        return semanticSearchFn(query, adaptiveK);
+                    }
+                });
+                const batchResults = await Promise.all(queryPromises);
+
+                // Aggregate results (boost for appearing in multiple query variants)
+                for (const queryResults of batchResults) {
+                    for (const result of queryResults) {
+                        const id = result.id;
+                        if (resultsMap.has(id)) {
+                            const existing = resultsMap.get(id);
+                            existing.score = Math.max(existing.score, result.score) + 0.05;
+                            existing.queryMatches = (existing.queryMatches || 1) + 1;
+                        } else {
+                            resultsMap.set(id, { ...result, queryMatches: 1 });
+                        }
+                    }
+                }
+
+                allResults = Array.from(resultsMap.values());
+            }
+
+            console.log(`Retrieved ${allResults.length} total results from search`);
+
+            // ================================================================
+            // STAGE 4: Re-ranking with cross-encoder style scoring
+            // ================================================================
+            const rerankedResults = reRanker.rerank(message, allResults, { maxResults: 12 });
+            console.log(`📊 Re-ranked to ${rerankedResults.length} results`);
+
+            // ================================================================
+            // STAGE 4b: Recency boost — coaching & video entries are our
+            // freshest knowledge (Oct 2025 – Jan 2026 sessions). Boost their
+            // scores so they surface ahead of older generic docs.
+            // ================================================================
+            const NOW_MS = Date.now();
+            const RECENCY_BOOST_MAX = 0.25; // up to +25% score boost
+            const applyRecencyBoost = (r) => {
+                const src = (r.source || r.metadata?.source || '').toLowerCase();
+                const isCoaching = src.includes('/coaching') || src.includes('coaching');
+                const isVideo = src.includes('/videos') || src.includes('video');
+                const rawDate = r.metadata?.package_version || r.metadata?.session_date || r.timestamp || null;
+                let ageDays = null;
+                if (rawDate) {
+                    const parsed = Date.parse(String(rawDate));
+                    if (!isNaN(parsed)) {
+                        ageDays = (NOW_MS - parsed) / (24 * 60 * 60 * 1000);
+                    }
+                }
+                let boost = 0;
+                if (ageDays !== null) {
+                    const freshness = Math.max(0, 1 - ageDays / 60);
+                    boost = RECENCY_BOOST_MAX * freshness;
+                } else if (isCoaching) {
+                    boost = 0.15;
+                } else if (isVideo) {
+                    boost = 0.10;
+                }
+                if (boost > 0) {
+                    const base = r.rerankedScore || r.score || 0;
+                    r.rerankedScore = Math.min(1.0, base + base * boost);
+                }
+                return r;
+            };
+            const boostedResults = rerankedResults.map(applyRecencyBoost);
+
+            // ================================================================
+            // STAGE 4c: Gold/curated entry DOMINATION — kb_ entries are
+            // expert-curated and MUST dominate results for broad queries.
+            // Uses multiplicative boost (3x-5x) instead of small additive.
+            // ================================================================
+            boostedResults.forEach(r => {
+                const id = r.id || '';
+                const isCurated = r.metadata?.is_curated || id.startsWith('kb_');
+                const qualityScore = r.metadata?.quality_score || r.quality_score || 0;
+                const base = r.rerankedScore || r.score || 0;
+
+                // Penalize entries with generic duplicate titles first
+                const title = (r.title || r.metadata?.title || '').toLowerCase();
+                if (/^\w+\s*\(\w+(-\w+)?\)$/.test(title)) {
+                    r.rerankedScore = base * 0.6;
+                }
+
+                // Multiplicative gold boost — gold entries get 4x, high-quality
+                // get 2x, good quality get 1.5x. This ensures 323 gold entries
+                // dominate over 103K noisy architecture docs.
+                if (isCurated) {
+                    r.rerankedScore = (r.rerankedScore || base) * 4.0;
+                } else if (qualityScore >= 95) {
+                    r.rerankedScore = (r.rerankedScore || base) * 2.0;
+                } else if (qualityScore >= 88) {
+                    r.rerankedScore = (r.rerankedScore || base) * 1.5;
+                }
+            });
+
+            // Re-sort after boost so higher-scored recent/gold entries bubble up
+            boostedResults.sort((a, b) => (b.rerankedScore || b.score || 0) - (a.rerankedScore || a.score || 0));
+            console.log(`📅 Recency boost applied to ${boostedResults.filter(r => (r.source || '').includes('coaching') || (r.source || '').includes('video')).length} coaching/video results`);
+
+            // ================================================================
+            // STAGE 5: Apply relevance floor — discard anything below 0.30
+            // to prevent off-topic noise from reaching the LLM context.
+            // ================================================================
+            const SIMILARITY_THRESHOLD = 0.30;
+            let filteredResults = boostedResults.filter(r => (r.rerankedScore || r.score || 0) >= SIMILARITY_THRESHOLD);
+            console.log(`After relevance floor (>=${SIMILARITY_THRESHOLD}): ${filteredResults.length} results`);
+
+            // ================================================================
+            // STAGE 5b: Anti-noise filter — drop non-gold results whose
+            // title+content contain NONE of the core domain terms.
+            // This catches off-topic entries like "FACT System", "Scaling Up
+            // methodology", etc. that sneak through vector similarity.
+            // ================================================================
+            const DOMAIN_TERMS_FILTER = /\b(ruvector|ruflo|claude.?flow|hnsw|vector|agent|swarm|mcp|rvf|sona|min.?cut|embedding|agentic|cognitive|wasm|onnx|aimds|knowledge.?base)\b/i;
+            const beforeNoise = filteredResults.length;
+            filteredResults = filteredResults.filter(r => {
+                const id = r.id || '';
+                const isCurated = r.metadata?.is_curated || id.startsWith('kb_');
+                if (isCurated) return true; // Gold entries always pass
+                const qualityScore = r.metadata?.quality_score || r.quality_score || 0;
+                if (qualityScore >= 95) return true; // High-quality entries pass
+                const text = `${r.title || r.metadata?.title || ''} ${(r.content || '').substring(0, 500)}`;
+                return DOMAIN_TERMS_FILTER.test(text);
+            });
+            if (beforeNoise !== filteredResults.length) {
+                console.log(`🚫 Anti-noise filter removed ${beforeNoise - filteredResults.length} off-topic results (${filteredResults.length} remain)`);
+            }
+
+            // ================================================================
+            // STAGE 6: Map to sources with full content
+            // ================================================================
+            sources = filteredResults.map(r => ({
+                id: r.id,
+                title: r.title || r.metadata?.title || null,
+                content: r.content || r.input || '',
+                score: r.rerankedScore || r.score || 0,
+                source: r.source || r.metadata?.source,
+                timestamp: r.timestamp || r.metadata?.timestamp,
+                scoreBreakdown: r.scoreBreakdown,
+                package_name: r.package_name || r.metadata?.package_name || null,
+                doc_type: r.doc_type || r.metadata?.doc_type || null,
+                file_path: r.file_path || r.metadata?.file_path || null,
+                topics: r.topics || r.metadata?.topics || [],
+                triage_tier: r.triage_tier || r.metadata?.triage_tier || null,
+                quality_score: r.quality_score || r.metadata?.quality_score || null,
+                metadata: r.metadata,
+            }));
+
+            // ================================================================
+            // STAGE 7: Diversity filter to avoid redundant content
+            // ================================================================
+            sources = applyDiversityFilter(sources, 8);
+            console.log(`After diversity filter: ${sources.length} sources`);
+
+            // ================================================================
+            // STAGE 8: Context compression for optimal LLM utilization
+            // ================================================================
+            context = contextCompressor.compress(sources, message);
+            console.log(`📦 Context compressed to ${context.length} chars`);
+
+        } catch (err) {
+            console.error('Error in RAG pipeline:', err);
+            // Continue without context
+        }
+    } else {
+        console.warn('ReasoningBank not initialized or reflexion memory unavailable.');
+    }
+
+    // Build system prompt with Learning Level adaptation
+    const { RUV_PERSONA } = require('./RuvPersona');
+    const learningLevel = mode || 'Balanced';
+    const levelInstructions = {
+        'Simple': `Explain like I'm 5 years old. Rules:
+- Use everyday analogies for EVERY concept (e.g., "A vector database is like a library where books are shelved by what they're about, not alphabetically")
+- Zero jargon — if you must use a technical term, immediately explain it in parentheses
+- Short sentences (max 15 words each)
+- Use emojis as visual markers: 🔑 for key points, ⚡ for actions, 🎯 for outcomes
+- Mermaid diagrams should use simple labels and emoji nodes
+- Skip the "What to Watch For" section — keep it fun and approachable
+- End with "Try This" instead of code examples — a simple hands-on activity`,
+
+        'Beginner': `Explain for someone new to programming who is eager to learn. Rules:
+- Define every technical term on first use with a real-world analogy
+- Include "Why This Matters" callouts (> blockquotes) explaining practical relevance
+- Show complete, runnable code examples with comments on every line
+- Mermaid diagrams should have descriptive labels and clear flow
+- Include "Common Mistake" callouts flagging what beginners get wrong
+- Comparison tables should include a "Best For" column
+- The "Explore Further" section should progress from easier → harder questions`,
+
+        'Balanced': `Provide a clear, well-structured response for an intermediate technical audience. Rules:
+- Balance depth with accessibility — assume programming knowledge, don't assume domain expertise
+- Analogies for complex architectural concepts, but skip basics
+- Code examples should be practical and production-oriented
+- Mermaid diagrams should show real component names and data flow
+- Include performance characteristics and scaling considerations
+- Comparison tables should include quantitative metrics where available
+- Cover edge cases in "What to Watch For"`,
+
+        'Technical': `Provide maximum technical depth for an experienced engineer. Rules:
+- Assume strong engineering background — skip analogies for basic concepts
+- Include implementation internals: data structures, algorithms, complexity analysis
+- Code examples should show advanced patterns, configuration, and optimization
+- Mermaid diagrams should include internal architecture, not just high-level boxes
+- Include benchmark data, memory characteristics, and performance implications
+- Cover failure modes, debugging approaches, and operational concerns
+- Reference ADRs, changelogs, and architectural evolution when available
+- Include SQL queries, API calls, and system commands where relevant`
+    };
+
+    // ================================================================
+    // STAGE 9: Match NotebookLM media resources to the user query
+    // ================================================================
+    const nlmMatches = matchNlmResources(message);
+    const nlmSection = formatNlmResourcesSection(nlmMatches);
+    if (nlmMatches.length > 0) {
+        console.log(`🎬 NLM resources matched: ${nlmMatches.map(r => r.title).join(', ')}`);
+    }
+
+    const systemPrompt = `${RUV_PERSONA}
+
+===== RESPONSE STYLE =====
+Learning Level: ${learningLevel}
+${levelInstructions[learningLevel] || levelInstructions['Balanced']}
+
+===== KNOWLEDGE BASE CONTEXT =====
+${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
+${nlmSection ? `
+===== AVAILABLE MEDIA RESOURCES =====
+The following NotebookLM-generated media resources are relevant to this query. You MUST include these as a "### Related Media" section at the END of your response (after "Explore Further"), using the exact markdown links provided. This helps the user access deep-dive content beyond your text response.
+${nlmSection}` : ''}
+
+===== INSTRUCTIONS =====
+MANDATORY: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid diagram → Practical Example → What to Watch For → Explore Further${nlmSection ? ' → Related Media' : ''}). Include a Mermaid diagram if the topic involves any system, workflow, or multi-step process. Base your answer ONLY on the knowledge base context above. When sources conflict, prefer [GOLD] over [SILVER] over [BRONZE]. Adapt depth and language to the ${learningLevel} learning level. If context is insufficient, say so honestly.
+
+CRITICAL: You MUST include at least ONE \`\`\`mermaid diagram and ONE | markdown table | in every response about architecture, workflows, or comparisons. Responses without visual elements are incomplete.${nlmSection ? '\n\nCRITICAL: You MUST include the "### Related Media" section with the exact markdown links from AVAILABLE MEDIA RESOURCES above. Do NOT omit this section when media resources are provided.' : ''}`;
+
+    // Build LLM messages array
+    const MAX_HISTORY_TURNS = 6;
+    const truncatedHistory = (conversationHistory || []).slice(-MAX_HISTORY_TURNS);
+    const messages = [
+        { role: 'system', content: systemPrompt },
+        ...truncatedHistory,
+        { role: 'user', content: message }
+    ];
+
+    // ========================================================================
+    // Confidence scoring (Phase 3, M-4)
+    // ========================================================================
+    let confidence = 'low';
+    if (sources.length > 0) {
+        const avgScore = sources.reduce((sum, s) => sum + (s.score || 0), 0) / sources.length;
+        const goldCount = sources.filter(s => {
+            const isCurated = s.metadata?.is_curated || (s.id || '').startsWith('kb_');
+            const qualityScore = s.quality_score || s.metadata?.quality_score || 0;
+            return isCurated || qualityScore >= 95;
+        }).length;
+        if (avgScore > 0.5 && goldCount >= 2) {
+            confidence = 'high';
+        } else if (avgScore > 0.3) {
+            confidence = 'medium';
+        }
+        console.log(`🎯 Confidence: ${confidence} (avgScore=${avgScore.toFixed(3)}, goldCount=${goldCount})`);
+    }
+
+    // ========================================================================
+    // Query classification for response validation (Phase 3, H-1)
+    // ========================================================================
+    const queryRequirements = responseValidator.classifyQuery(message);
+
+    return { context, sources, systemPrompt, messages, confidence, queryRequirements };
+}
+
+// ============================================================================
+// Readiness guard — reject chat requests while server is still starting up
+// ============================================================================
+app.use(['/api/chat', '/api/chat/stream'], (req, res, next) => {
+    if (!isReady) {
+        return res.status(503).json({ error: 'Server starting up, please retry in a few seconds' });
+    }
+    next();
+});
+
+// ============================================================================
+// Non-streaming Chat Endpoint
+// ============================================================================
 app.post('/api/chat', async (req, res) => {
-    const { message, history, mode } = req.body;
-    console.log(`[Chat] Received: ${message} (level: ${mode || 'Balanced'})`);
+    const { message: rawMessage, history, mode } = req.body;
 
-    if (!message || typeof message !== 'string') {
+    if (!rawMessage || typeof rawMessage !== 'string') {
         return res.status(400).json({ error: 'Message is required and must be a string' });
     }
+
+    const message = sanitizeInput(rawMessage);
+    console.log(`[Chat] Received: ${message} (level: ${mode || 'Balanced'})`);
 
     if (message.length > 10000) {
         return res.status(400).json({ error: 'Message too long (max 10,000 characters)' });
@@ -585,290 +1304,24 @@ app.post('/api/chat', async (req, res) => {
     }
 
     try {
-        console.log('Received chat request:', message);
-
-        // 1. Retrieve Context from ReasoningBank (Reflexion Memory)
-        let context = "";
-        let sources = [];
-
-        if (reasoningBank && reasoningBank.reflexion) {
-            console.log(`Searching ReasoningBank for: "${message}"`);
-            try {
-                // ================================================================
-                // STAGE 1: Query Expansion - Generate multiple query variants
-                // ================================================================
-                const expandedQueries = queryExpander.expand(message);
-                const adaptiveK = queryExpander.getRecommendedK(message);
-                console.log(`📝 Query expanded to ${expandedQueries.length} variants, adaptive k=${adaptiveK}`);
-
-                // ================================================================
-                // STAGE 2: Define search function for retrieval
-                // ================================================================
-                const semanticSearchFn = async (query, k) => {
-                    const semanticResults = await reasoningBank.reflexion.retrieveRelevant({
-                        task: query,
-                        k: k
-                    });
-                    return semanticResults.map(r => ({
-                        id: r.metadata?.docId || r.id,
-                        title: r.metadata?.title || r.title || null,
-                        content: r.input || r.task || '',
-                        score: r.similarity || 0,
-                        similarity: r.similarity || 0,
-                        source: r.metadata?.source,
-                        metadata: r.metadata,
-                        timestamp: r.metadata?.timestamp
-                    }));
-                };
-
-                // ================================================================
-                // STAGE 3: Multi-hop retrieval for complex queries
-                // ================================================================
-                let allResults = [];
-
-                if (multiHopRetriever.needsMultiHop(message)) {
-                    console.log('🔄 Complex query detected - using multi-hop retrieval...');
-                    if (hybridSearch) {
-                        allResults = await multiHopRetriever.retrieve(
-                            message,
-                            async (q, k) => await hybridSearch.hybridSearch(q, semanticSearchFn, k),
-                            adaptiveK
-                        );
-                    } else {
-                        allResults = await multiHopRetriever.retrieve(message, semanticSearchFn, adaptiveK);
-                    }
-                } else {
-                    // Standard retrieval with query expansion
-                    const resultsMap = new Map();
-
-                    // Run all expanded queries in parallel for lower latency
-                    const queryPromises = expandedQueries.map(query => {
-                        if (hybridSearch) {
-                            console.log('🔀 Using hybrid search (semantic + BM25)...');
-                            return hybridSearch.hybridSearch(query, semanticSearchFn, adaptiveK);
-                        } else {
-                            console.log('🔍 Using semantic search only...');
-                            return semanticSearchFn(query, adaptiveK);
-                        }
-                    });
-                    const batchResults = await Promise.all(queryPromises);
-
-                    // Aggregate results (boost for appearing in multiple query variants)
-                    for (const queryResults of batchResults) {
-                        for (const result of queryResults) {
-                            const id = result.id;
-                            if (resultsMap.has(id)) {
-                                const existing = resultsMap.get(id);
-                                existing.score = Math.max(existing.score, result.score) + 0.05;
-                                existing.queryMatches = (existing.queryMatches || 1) + 1;
-                            } else {
-                                resultsMap.set(id, { ...result, queryMatches: 1 });
-                            }
-                        }
-                    }
-
-                    allResults = Array.from(resultsMap.values());
-                }
-
-                console.log(`Retrieved ${allResults.length} total results from search`);
-
-                // ================================================================
-                // STAGE 4: Re-ranking with cross-encoder style scoring
-                // ================================================================
-                const rerankedResults = reRanker.rerank(message, allResults, { maxResults: 12 });
-                console.log(`📊 Re-ranked to ${rerankedResults.length} results`);
-
-                // ================================================================
-                // STAGE 4b: Recency boost — coaching & video entries are our
-                // freshest knowledge (Oct 2025 – Jan 2026 sessions). Boost their
-                // scores so they surface ahead of older generic docs.
-                // ================================================================
-                const NOW_MS = Date.now();
-                const RECENCY_BOOST_MAX = 0.25; // up to +25% score boost
-                const applyRecencyBoost = (r) => {
-                    const src = (r.source || r.metadata?.source || '').toLowerCase();
-                    const isCoaching = src.includes('/coaching') || src.includes('coaching');
-                    const isVideo = src.includes('/videos') || src.includes('video');
-                    // Check if a date string is embedded in the source or metadata
-                    const rawDate = r.metadata?.package_version || r.metadata?.session_date || r.timestamp || null;
-                    let ageDays = null;
-                    if (rawDate) {
-                        const parsed = Date.parse(String(rawDate));
-                        if (!isNaN(parsed)) {
-                            ageDays = (NOW_MS - parsed) / (24 * 60 * 60 * 1000);
-                        }
-                    }
-                    let boost = 0;
-                    if (ageDays !== null) {
-                        // Linear taper: entries <60 days old get full boost, older get less
-                        const freshness = Math.max(0, 1 - ageDays / 60);
-                        boost = RECENCY_BOOST_MAX * freshness;
-                    } else if (isCoaching) {
-                        // No date available but category is coaching — apply flat 15% boost
-                        boost = 0.15;
-                    } else if (isVideo) {
-                        boost = 0.10;
-                    }
-                    if (boost > 0) {
-                        const base = r.rerankedScore || r.score || 0;
-                        r.rerankedScore = Math.min(1.0, base + base * boost);
-                    }
-                    return r;
-                };
-                const boostedResults = rerankedResults.map(applyRecencyBoost);
-
-                // ================================================================
-                // STAGE 4c: Gold/curated entry boost — kb_ entries are expert-curated
-                // and should ALWAYS rank above bulk arch_ entries at equal relevance
-                // ================================================================
-                const applyGoldBoost = (r) => {
-                    const id = r.id || '';
-                    const isCurated = r.metadata?.is_curated || id.startsWith('kb_');
-                    const qualityScore = r.metadata?.quality_score || r.quality_score || 0;
-                    let boost = 0;
-                    if (isCurated) {
-                        boost = 0.30; // +30% boost for curated gold entries
-                    } else if (qualityScore >= 95) {
-                        boost = 0.15; // +15% for high-quality arch entries
-                    } else if (qualityScore >= 88) {
-                        boost = 0.05; // +5% for decent arch entries
-                    }
-                    // Penalize entries with generic duplicate titles
-                    const title = (r.title || r.metadata?.title || '').toLowerCase();
-                    if (/^\w+\s*\(\w+(-\w+)?\)$/.test(title)) {
-                        // Matches "PackageName (category)" pattern — generic bulk title
-                        const base = r.rerankedScore || r.score || 0;
-                        r.rerankedScore = base * 0.6; // -40% penalty for generic titles
-                    }
-                    if (boost > 0) {
-                        const base = r.rerankedScore || r.score || 0;
-                        r.rerankedScore = Math.min(1.0, base + base * boost);
-                    }
-                    return r;
-                };
-                boostedResults.forEach(applyGoldBoost);
-
-                // Re-sort after boost so higher-scored recent/gold entries bubble up
-                boostedResults.sort((a, b) => (b.rerankedScore || b.score || 0) - (a.rerankedScore || a.score || 0));
-                console.log(`📅 Recency boost applied to ${boostedResults.filter(r => (r.source || '').includes('coaching') || (r.source || '').includes('video')).length} coaching/video results`);
-
-                // ================================================================
-                // STAGE 5: Apply similarity threshold
-                // ================================================================
-                const SIMILARITY_THRESHOLD = 0.15; // Lower threshold since re-ranker normalizes scores
-                const filteredResults = boostedResults.filter(r => (r.rerankedScore || r.score || 0) >= SIMILARITY_THRESHOLD);
-                console.log(`After threshold filter (>=${SIMILARITY_THRESHOLD}): ${filteredResults.length} results`);
-
-                // ================================================================
-                // STAGE 6: Map to sources with full content
-                // ================================================================
-                sources = filteredResults.map(r => ({
-                    id: r.id,
-                    title: r.title || r.metadata?.title || null,
-                    content: r.content || r.input || '',
-                    score: r.rerankedScore || r.score || 0,
-                    source: r.source || r.metadata?.source,
-                    timestamp: r.timestamp || r.metadata?.timestamp,
-                    scoreBreakdown: r.scoreBreakdown,
-                    package_name: r.package_name || r.metadata?.package_name || null,
-                    doc_type: r.doc_type || r.metadata?.doc_type || null,
-                    file_path: r.file_path || r.metadata?.file_path || null,
-                    topics: r.topics || r.metadata?.topics || [],
-                    triage_tier: r.triage_tier || r.metadata?.triage_tier || null,
-                    quality_score: r.quality_score || r.metadata?.quality_score || null,
-                    metadata: r.metadata,
-                }));
-
-                // ================================================================
-                // STAGE 7: Diversity filter to avoid redundant content
-                // ================================================================
-                sources = applyDiversityFilter(sources, 8); // Keep top 8 diverse sources
-                console.log(`After diversity filter: ${sources.length} sources`);
-
-                // ================================================================
-                // STAGE 8: Context compression for optimal LLM utilization
-                // ================================================================
-                context = contextCompressor.compress(sources, message);
-                console.log(`📦 Context compressed to ${context.length} chars`);
-
-            } catch (err) {
-                console.error('Error retrieving from ReasoningBank:', err);
-                // Continue without context
-            }
+        // Check RAG cache before running the full pipeline
+        const cacheKey = ragCacheKey(message, mode);
+        let ragResult = ragCacheGet(cacheKey);
+        if (ragResult) {
+            console.log(`[RAG Cache] HIT for key ${cacheKey}`);
         } else {
-            console.warn('ReasoningBank not initialized or reflexion memory unavailable.');
+            ragResult = await runRAGPipeline(message, mode, history);
+            ragCacheSet(cacheKey, ragResult);
+            console.log(`[RAG Cache] MISS — cached key ${cacheKey}`);
         }
+        const { sources, messages, confidence, queryRequirements } = ragResult;
 
-        // 2. Construct System Prompt with Learning Level adaptation
-        const { RUV_PERSONA } = require('./RuvPersona');
-        console.log("Constructing system prompt...");
-
-        const learningLevel = mode || 'Balanced';
-        const levelInstructions = {
-            'Simple': `Explain like I'm 5 years old. Rules:
-- Use everyday analogies for EVERY concept (e.g., "A vector database is like a library where books are shelved by what they're about, not alphabetically")
-- Zero jargon — if you must use a technical term, immediately explain it in parentheses
-- Short sentences (max 15 words each)
-- Use emojis as visual markers: 🔑 for key points, ⚡ for actions, 🎯 for outcomes
-- Mermaid diagrams should use simple labels and emoji nodes
-- Skip the "What to Watch For" section — keep it fun and approachable
-- End with "Try This" instead of code examples — a simple hands-on activity`,
-
-            'Beginner': `Explain for someone new to programming who is eager to learn. Rules:
-- Define every technical term on first use with a real-world analogy
-- Include "Why This Matters" callouts (> blockquotes) explaining practical relevance
-- Show complete, runnable code examples with comments on every line
-- Mermaid diagrams should have descriptive labels and clear flow
-- Include "Common Mistake" callouts flagging what beginners get wrong
-- Comparison tables should include a "Best For" column
-- The "Explore Further" section should progress from easier → harder questions`,
-
-            'Balanced': `Provide a clear, well-structured response for an intermediate technical audience. Rules:
-- Balance depth with accessibility — assume programming knowledge, don't assume domain expertise
-- Analogies for complex architectural concepts, but skip basics
-- Code examples should be practical and production-oriented
-- Mermaid diagrams should show real component names and data flow
-- Include performance characteristics and scaling considerations
-- Comparison tables should include quantitative metrics where available
-- Cover edge cases in "What to Watch For"`,
-
-            'Technical': `Provide maximum technical depth for an experienced engineer. Rules:
-- Assume strong engineering background — skip analogies for basic concepts
-- Include implementation internals: data structures, algorithms, complexity analysis
-- Code examples should show advanced patterns, configuration, and optimization
-- Mermaid diagrams should include internal architecture, not just high-level boxes
-- Include benchmark data, memory characteristics, and performance implications
-- Cover failure modes, debugging approaches, and operational concerns
-- Reference ADRs, changelogs, and architectural evolution when available
-- Include SQL queries, API calls, and system commands where relevant`
-        };
-
-        const systemPrompt = `${RUV_PERSONA}
-
-===== RESPONSE STYLE =====
-Learning Level: ${learningLevel}
-${levelInstructions[learningLevel] || levelInstructions['Balanced']}
-
-===== KNOWLEDGE BASE CONTEXT =====
-${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
-
-===== INSTRUCTIONS =====
-MANDATORY: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid diagram → Practical Example → What to Watch For → Explore Further). Include a Mermaid diagram if the topic involves any system, workflow, or multi-step process. Base your answer ONLY on the knowledge base context above. When sources conflict, prefer [GOLD] over [SILVER] over [BRONZE]. Adapt depth and language to the ${learningLevel} learning level. If context is insufficient, say so honestly.`;
-
-        // 3. Generate Response using multi-provider LLM (with automatic fallback)
+        // Generate Response using multi-provider LLM (with automatic fallback)
         let answer = "";
         let errorMsg = null;
         let usedProvider = null;
         try {
-            // Truncate history to last 6 messages (3 exchanges) to prevent context overflow
-            const MAX_HISTORY_TURNS = 6;
-            const truncatedHistory = (history || []).slice(-MAX_HISTORY_TURNS);
-            const llmMessages = [
-                { role: 'system', content: systemPrompt },
-                ...truncatedHistory,
-                { role: 'user', content: message }
-            ];
-            const result = await llmChat(llmMessages);
+            const result = await llmChat(messages);
             answer = result.answer;
             usedProvider = result.provider;
             console.log(`✅ Got answer from ${result.provider} (${result.model})`);
@@ -878,10 +1331,21 @@ MANDATORY: Follow the response structure (TL;DR → Core Explanation → Archite
             errorMsg = error.message;
         }
 
-        const responseData = {
+        // Response validation (Phase 3, H-1) — log missing elements
+        const validation = responseValidator.validate(answer, queryRequirements);
+        if (!validation.valid) {
+            console.log(`⚠️ Response missing elements: ${validation.missing.join(', ')}`);
+            const suggestion = responseValidator.buildSuggestionNote(validation.missing);
+            if (suggestion) {
+                answer += suggestion;
+            }
+        }
+
+        res.json({
             answer,
             error: errorMsg,
             provider: usedProvider || null,
+            confidence: confidence || 'low',
             sources: sources.map(s => ({
                 id: s.id,
                 score: s.score,
@@ -894,12 +1358,7 @@ MANDATORY: Follow the response structure (TL;DR → Core Explanation → Archite
                 triage_tier: s.triage_tier || s.metadata?.triage_tier || null,
                 quality_score: s.quality_score || s.metadata?.quality_score || null,
             }))
-        };
-
-        // Cache the response (Optional, Agentic Flow might handle this)
-        // setCachedResponse(cacheKey, responseData);
-
-        res.json(responseData);
+        });
 
     } catch (error) {
         console.error('Error processing chat:', error);
@@ -911,12 +1370,15 @@ MANDATORY: Follow the response structure (TL;DR → Core Explanation → Archite
 // SSE Streaming Chat Endpoint — sends tokens as they arrive
 // ============================================================================
 app.post('/api/chat/stream', async (req, res) => {
-    const { message, history, mode } = req.body;
-    console.log(`[Stream] Received: ${message} (level: ${mode || 'Balanced'})`);
+    const { message: rawMessage, history, mode } = req.body;
 
-    if (!message || typeof message !== 'string') {
+    if (!rawMessage || typeof rawMessage !== 'string') {
         return res.status(400).json({ error: 'Message is required' });
     }
+
+    const message = sanitizeInput(rawMessage);
+    console.log(`[Stream] Received: ${message} (level: ${mode || 'Balanced'})`);
+
     if (message.length > 10000) {
         return res.status(400).json({ error: 'Message too long' });
     }
@@ -933,130 +1395,19 @@ app.post('/api/chat/stream', async (req, res) => {
     });
 
     try {
-        // === RAG Pipeline (same as /api/chat) ===
-        let context = "";
-        let sources = [];
-
-        if (reasoningBank && reasoningBank.reflexion) {
-            try {
-                const expandedQueries = queryExpander.expand(message);
-                const adaptiveK = queryExpander.getRecommendedK(message);
-
-                const semanticSearchFn = async (query, k) => {
-                    const results = await reasoningBank.reflexion.retrieveRelevant({ task: query, k });
-                    return results.map(r => ({
-                        id: r.metadata?.docId || r.id,
-                        title: r.metadata?.title || r.title || null,
-                        content: r.input || r.task || '',
-                        score: r.similarity || 0,
-                        similarity: r.similarity || 0,
-                        source: r.metadata?.source,
-                        metadata: r.metadata,
-                        timestamp: r.metadata?.timestamp
-                    }));
-                };
-
-                let allResults = [];
-                if (multiHopRetriever.needsMultiHop(message)) {
-                    const searchFn = hybridSearch
-                        ? async (q, k) => await hybridSearch.hybridSearch(q, semanticSearchFn, k)
-                        : semanticSearchFn;
-                    allResults = await multiHopRetriever.retrieve(message, searchFn, adaptiveK);
-                } else {
-                    const resultsMap = new Map();
-                    const queryPromises = expandedQueries.map(query =>
-                        hybridSearch
-                            ? hybridSearch.hybridSearch(query, semanticSearchFn, adaptiveK)
-                            : semanticSearchFn(query, adaptiveK)
-                    );
-                    const batchResults = await Promise.all(queryPromises);
-                    for (const queryResults of batchResults) {
-                        for (const result of queryResults) {
-                            const id = result.id;
-                            if (resultsMap.has(id)) {
-                                const existing = resultsMap.get(id);
-                                existing.score = Math.max(existing.score, result.score) + 0.05;
-                            } else {
-                                resultsMap.set(id, { ...result });
-                            }
-                        }
-                    }
-                    allResults = Array.from(resultsMap.values());
-                }
-
-                const rerankedResults = reRanker.rerank(message, allResults, { maxResults: 12 });
-
-                // Recency boost
-                const NOW_MS = Date.now();
-                const boostedResults = rerankedResults.map(r => {
-                    const src = (r.source || r.metadata?.source || '').toLowerCase();
-                    const isCoaching = src.includes('coaching');
-                    const isVideo = src.includes('video');
-                    const rawDate = r.metadata?.package_version || r.metadata?.session_date || r.timestamp || null;
-                    let boost = 0;
-                    if (rawDate) {
-                        const parsed = Date.parse(String(rawDate));
-                        if (!isNaN(parsed)) {
-                            const ageDays = (NOW_MS - parsed) / (86400000);
-                            boost = 0.25 * Math.max(0, 1 - ageDays / 60);
-                        }
-                    } else if (isCoaching) { boost = 0.15; }
-                    else if (isVideo) { boost = 0.10; }
-                    if (boost > 0) {
-                        const base = r.rerankedScore || r.score || 0;
-                        r.rerankedScore = Math.min(1.0, base + base * boost);
-                    }
-                    return r;
-                });
-
-                // Gold/curated entry boost — kb_ entries rank above bulk arch_ entries
-                boostedResults.forEach(r => {
-                    const id = r.id || '';
-                    const isCurated = r.metadata?.is_curated || id.startsWith('kb_');
-                    const qualityScore = r.metadata?.quality_score || r.quality_score || 0;
-                    let boost = 0;
-                    if (isCurated) boost = 0.30;
-                    else if (qualityScore >= 95) boost = 0.15;
-                    else if (qualityScore >= 88) boost = 0.05;
-                    // Penalize generic duplicate titles
-                    const title = (r.title || r.metadata?.title || '').toLowerCase();
-                    if (/^\w+\s*\(\w+(-\w+)?\)$/.test(title)) {
-                        const base = r.rerankedScore || r.score || 0;
-                        r.rerankedScore = base * 0.6;
-                    }
-                    if (boost > 0) {
-                        const base = r.rerankedScore || r.score || 0;
-                        r.rerankedScore = Math.min(1.0, base + base * boost);
-                    }
-                });
-
-                boostedResults.sort((a, b) => (b.rerankedScore || b.score || 0) - (a.rerankedScore || a.score || 0));
-
-                const filteredResults = boostedResults.filter(r => (r.rerankedScore || r.score || 0) >= 0.15);
-
-                sources = filteredResults.map(r => ({
-                    id: r.id,
-                    title: r.title || r.metadata?.title || null,
-                    content: r.content || r.input || '',
-                    score: r.rerankedScore || r.score || 0,
-                    source: r.source || r.metadata?.source,
-                    package_name: r.package_name || r.metadata?.package_name || null,
-                    doc_type: r.doc_type || r.metadata?.doc_type || null,
-                    file_path: r.file_path || r.metadata?.file_path || null,
-                    topics: r.topics || r.metadata?.topics || [],
-                    triage_tier: r.triage_tier || r.metadata?.triage_tier || null,
-                    quality_score: r.quality_score || r.metadata?.quality_score || null,
-                    metadata: r.metadata,
-                }));
-
-                sources = applyDiversityFilter(sources, 8);
-                context = contextCompressor.compress(sources, message);
-            } catch (err) {
-                console.error('Stream RAG error:', err);
-            }
+        // Check RAG cache before running the full pipeline
+        const cacheKey = ragCacheKey(message, mode);
+        let ragResult = ragCacheGet(cacheKey);
+        if (ragResult) {
+            console.log(`[RAG Cache] HIT for key ${cacheKey} (stream)`);
+        } else {
+            ragResult = await runRAGPipeline(message, mode, history);
+            ragCacheSet(cacheKey, ragResult);
+            console.log(`[RAG Cache] MISS — cached key ${cacheKey} (stream)`);
         }
+        const { sources, messages, confidence, queryRequirements } = ragResult;
 
-        // Send sources first as a JSON event
+        // Send sources and confidence first as JSON events
         const sourcesPayload = sources.map(s => ({
             id: s.id,
             score: s.score,
@@ -1070,76 +1421,25 @@ app.post('/api/chat/stream', async (req, res) => {
             quality_score: s.quality_score,
         }));
         res.write(`event: sources\ndata: ${JSON.stringify(sourcesPayload)}\n\n`);
-
-        // Build system prompt — MUST match /api/chat's full level instructions
-        const { RUV_PERSONA } = require('./RuvPersona');
-        const learningLevel = mode || 'Balanced';
-        const levelInstructions = {
-            'Simple': `Explain like I'm 5 years old. Rules:
-- Use everyday analogies for EVERY concept (e.g., "A vector database is like a library where books are shelved by what they're about, not alphabetically")
-- Zero jargon — if you must use a technical term, immediately explain it in parentheses
-- Short sentences (max 15 words each)
-- Use emojis as visual markers: 🔑 for key points, ⚡ for actions, 🎯 for outcomes
-- Mermaid diagrams should use simple labels and emoji nodes
-- Skip the "What to Watch For" section — keep it fun and approachable
-- End with "Try This" instead of code examples — a simple hands-on activity`,
-
-            'Beginner': `Explain for someone new to programming who is eager to learn. Rules:
-- Define every technical term on first use with a real-world analogy
-- Include "Why This Matters" callouts (> blockquotes) explaining practical relevance
-- Show complete, runnable code examples with comments on every line
-- Mermaid diagrams should have descriptive labels and clear flow
-- Include "Common Mistake" callouts flagging what beginners get wrong
-- Comparison tables should include a "Best For" column
-- The "Explore Further" section should progress from easier → harder questions`,
-
-            'Balanced': `Provide a clear, well-structured response for an intermediate technical audience. Rules:
-- Balance depth with accessibility — assume programming knowledge, don't assume domain expertise
-- Analogies for complex architectural concepts, but skip basics
-- Code examples should be practical and production-oriented
-- Mermaid diagrams should show real component names and data flow
-- Include performance characteristics and scaling considerations
-- Comparison tables should include quantitative metrics where available
-- Cover edge cases in "What to Watch For"`,
-
-            'Technical': `Provide maximum technical depth for an experienced engineer. Rules:
-- Assume strong engineering background — skip analogies for basic concepts
-- Include implementation internals: data structures, algorithms, complexity analysis
-- Code examples should show advanced patterns, configuration, and optimization
-- Mermaid diagrams should include internal architecture, not just high-level boxes
-- Include benchmark data, memory characteristics, and performance implications
-- Cover failure modes, debugging approaches, and operational concerns
-- Reference ADRs, changelogs, and architectural evolution when available
-- Include SQL queries, API calls, and system commands where relevant`
-        };
-
-        const systemPrompt = `${RUV_PERSONA}
-
-===== RESPONSE STYLE =====
-Learning Level: ${learningLevel}
-${levelInstructions[learningLevel] || levelInstructions['Balanced']}
-
-===== KNOWLEDGE BASE CONTEXT =====
-${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
-
-===== INSTRUCTIONS =====
-MANDATORY: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid diagram → Practical Example → What to Watch For → Explore Further). Include a Mermaid diagram if the topic involves any system, workflow, or multi-step process. Base your answer ONLY on the knowledge base context above. When sources conflict, prefer [GOLD] over [SILVER] over [BRONZE]. Adapt depth and language to the ${learningLevel} learning level. If context is insufficient, say so honestly.
-
-CRITICAL: You MUST include at least ONE \`\`\`mermaid diagram and ONE | markdown table | in every response about architecture, workflows, or comparisons. Responses without visual elements are incomplete.`;
-
-        const MAX_HISTORY_TURNS = 6;
-        const truncatedHistory = (history || []).slice(-MAX_HISTORY_TURNS);
-        const llmMessages = [
-            { role: 'system', content: systemPrompt },
-            ...truncatedHistory,
-            { role: 'user', content: message }
-        ];
+        res.write(`event: confidence\ndata: ${JSON.stringify({ confidence: confidence || 'low' })}\n\n`);
 
         // Stream LLM tokens
         let fullAnswer = '';
-        for await (const token of llmChatStream(llmMessages)) {
+        for await (const token of llmChatStream(messages)) {
             fullAnswer += token;
             res.write(`event: token\ndata: ${JSON.stringify(token)}\n\n`);
+        }
+
+        // Response validation (Phase 3, H-1) — log missing elements, append suggestion
+        const validation = responseValidator.validate(fullAnswer, queryRequirements);
+        if (!validation.valid) {
+            console.log(`⚠️ Stream response missing elements: ${validation.missing.join(', ')}`);
+            const suggestion = responseValidator.buildSuggestionNote(validation.missing);
+            if (suggestion) {
+                // Send suggestion as additional tokens so the client sees it
+                res.write(`event: token\ndata: ${JSON.stringify(suggestion)}\n\n`);
+                fullAnswer += suggestion;
+            }
         }
 
         console.log(`✅ Streamed ${fullAnswer.length} chars`);
@@ -1153,15 +1453,43 @@ CRITICAL: You MUST include at least ONE \`\`\`mermaid diagram and ONE | markdown
     }
 });
 
+// Readiness Probe — returns 200 only when all subsystems are loaded
+app.get('/readiness', (req, res) => {
+    if (isReady) {
+        return res.json({ status: 'ready', uptime: process.uptime(), startupMs: Date.now() - startupTime });
+    }
+    res.status(503).json({ status: 'starting', message: 'Server is still initializing, please retry in a few seconds' });
+});
+
 // Health Check Endpoint
 app.get('/health', async (req, res) => {
+    const vectorStoreStatus = (() => {
+        if (!reasoningBank) return { status: 'not_initialized', vectorCount: 0 };
+        const stats = reasoningBank.getStats?.() || {};
+        const count = stats.vectorCount || 0;
+        return { status: count > 0 ? 'ok' : 'empty', vectorCount: count, backend: stats.backend || 'unknown' };
+    })();
+
+    const hybridSearchStatus = (() => {
+        if (!hybridSearch) return { status: 'not_initialized', documentCount: 0 };
+        const docCount = hybridSearch.documentCount || hybridSearch.documents?.size || 0;
+        return { status: docCount > 0 ? 'ok' : 'empty', documentCount: docCount };
+    })();
+
+    const overallStatus = (vectorStoreStatus.status === 'ok' && hybridSearchStatus.status === 'ok') ? 'ok'
+        : (vectorStoreStatus.status === 'not_initialized' || hybridSearchStatus.status === 'not_initialized') ? 'degraded'
+        : 'ok';
+
     const health = {
-        status: 'ok',
+        status: overallStatus,
+        version: APP_VERSION,
         uptime: process.uptime(),
         timestamp: new Date(),
         checks: {
             server: 'ok',
-            vectorStore: 'unknown'
+            vectorStore: vectorStoreStatus,
+            hybridSearch: hybridSearchStatus,
+            gemini: GEMINI_API_KEY ? 'configured' : 'not_configured',
         }
     };
     res.json(health);
@@ -1172,9 +1500,14 @@ const usageStats = { queries: 0, resources: {}, capabilities: {}, startTime: Dat
 app.post('/api/analytics/event', (req, res) => {
     const { type, name } = req.body || {};
     if (!type || !name) return res.status(400).json({ error: 'type and name required' });
+    // Allowlist type values; sanitize name to prevent prototype pollution via object keys
+    const allowedTypes = ['query', 'resource', 'capability'];
+    if (!allowedTypes.includes(type)) return res.status(400).json({ error: 'Invalid type' });
+    const safeName = sanitizeInput(String(name)).substring(0, 200);
+    if (!safeName) return res.status(400).json({ error: 'Invalid name' });
     if (type === 'query') usageStats.queries++;
-    else if (type === 'resource') usageStats.resources[name] = (usageStats.resources[name] || 0) + 1;
-    else if (type === 'capability') usageStats.capabilities[name] = (usageStats.capabilities[name] || 0) + 1;
+    else if (type === 'resource') usageStats.resources[safeName] = (usageStats.resources[safeName] || 0) + 1;
+    else if (type === 'capability') usageStats.capabilities[safeName] = (usageStats.capabilities[safeName] || 0) + 1;
     res.json({ ok: true });
 });
 app.get('/api/analytics/summary', (req, res) => {
@@ -1341,6 +1674,10 @@ if (process.env.NODE_ENV !== 'production') {
 // Visualization Helper — Gemini image generation with KB context
 // ============================================================================
 async function generateVisualization(concept, style, resolution) {
+    if (!GEMINI_API_KEY || !geminiClient) {
+        throw new Error('Gemini API key not configured');
+    }
+
     // 1. Query KB for context about the concept via vector search
     let kbContext = '';
     if (reasoningBank && reasoningBank.reflexion) {
@@ -1419,11 +1756,13 @@ async function generateVisualization(concept, style, resolution) {
 
 // POST /api/visualize — Generate architectural diagram images via Gemini
 app.post('/api/visualize', async (req, res) => {
-    const { concept, style, resolution } = req.body;
+    const { concept: rawConcept, style, resolution } = req.body;
 
-    if (!concept || typeof concept !== 'string') {
+    if (!rawConcept || typeof rawConcept !== 'string') {
         return res.status(400).json({ error: 'concept is a required string' });
     }
+
+    const concept = sanitizeInput(rawConcept);
 
     const validResolutions = ['1K', '2K'];
     if (resolution && !validResolutions.includes(resolution)) {
@@ -1442,11 +1781,18 @@ app.post('/api/visualize', async (req, res) => {
 });
 
 // Special Actions Endpoint (simplify, code, diagram, visualize)
-app.post('/api/special', async (req, res) => {
-    const { action, content } = req.body;
+// Stricter rate limit: user content is injected directly into LLM prompts
+app.post('/api/special', specialEndpointLimiter, async (req, res) => {
+    const { action, content: rawContent } = req.body;
 
-    if (!action || !content || typeof action !== 'string' || typeof content !== 'string') {
+    if (!action || !rawContent || typeof action !== 'string' || typeof rawContent !== 'string') {
         return res.status(400).json({ error: 'action and content are required strings' });
+    }
+
+    const content = sanitizeInput(rawContent);
+
+    if (!content) {
+        return res.status(400).json({ error: 'content was empty after sanitization' });
     }
 
     if (!['simplify', 'code', 'diagram', 'visualize'].includes(action)) {
@@ -1611,7 +1957,7 @@ app.get('/api/knowledge', async (req, res) => {
             knowledge.repos = items.filter(file => {
                 try {
                     return fs.statSync(path.join(githubDir, file)).isDirectory();
-                } catch (e) { return false; }
+                } catch (e) { console.warn(`[knowledge] Failed to stat ${file}:`, e.message); return false; }
             }).map(repo => ({
                 name: repo,
                 type: 'GitHub Repository',
@@ -1701,7 +2047,9 @@ app.get('/api/knowledge', async (req, res) => {
             }
             return repo;
         });
-    } catch (_) {}
+    } catch (err) {
+        console.warn('[knowledge] Failed to enrich repos with live npm versions:', err.message);
+    }
 
     // Add version status indicator to each repo
     knowledge.repos = knowledge.repos.map(repo => ({
@@ -1741,11 +2089,36 @@ if (require.main === module) {
         console.log(`Ask rUVnet v${APP_VERSION} initialized.`);
     });
 
-    // Graceful shutdown
-    process.on('SIGTERM', () => {
-        console.log('SIGTERM received, shutting down gracefully...');
-        server.close(() => process.exit(0));
-    });
+    // Graceful shutdown handler
+    const shutdown = async (signal) => {
+        console.log(`${signal} received, shutting down gracefully...`);
+
+        // Force exit after 10 seconds if graceful shutdown stalls
+        const forceExitTimer = setTimeout(() => {
+            console.error('Graceful shutdown timed out after 10s, forcing exit.');
+            process.exit(1);
+        }, 10000);
+        forceExitTimer.unref();
+
+        // Close the RVF/vector store if it has a close method
+        if (reasoningBank && typeof reasoningBank.close === 'function') {
+            try {
+                await reasoningBank.close();
+                console.log('Vector store closed.');
+            } catch (err) {
+                console.error('Error closing vector store:', err.message);
+            }
+        }
+
+        // Close the HTTP server (stop accepting new connections, drain existing)
+        server.close(() => {
+            console.log('HTTP server closed.');
+            process.exit(0);
+        });
+    };
+
+    process.on('SIGTERM', () => shutdown('SIGTERM'));
+    process.on('SIGINT', () => shutdown('SIGINT'));
 }
 
 // Export app for testing and module imports

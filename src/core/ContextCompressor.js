@@ -35,10 +35,14 @@ class ContextCompressor {
 
             const content = source.content || '';
             const remainingSpace = this.maxContextLength - totalLength;
-            // Graduated allocation: top sources get more space, later ones less
-            const rankFactor = 1 - (i / (sources.length * 2));
+            // Graduated allocation: top-3 sources get 90%/80%/70% of maxPerSource,
+            // later sources taper down to a 30% floor (Phase 2 H-2)
+            const topFactors = [0.90, 0.80, 0.70]; // explicit floors for top 3
+            const rankFactor = i < topFactors.length
+                ? Math.max(topFactors[i], 1 - (i / (sources.length * 2)))
+                : 1 - (i / (sources.length * 2));
             const baseAllowed = Math.min(this.maxPerSource, remainingSpace);
-            const allowedLength = Math.round(baseAllowed * Math.max(0.4, rankFactor));
+            const allowedLength = Math.round(baseAllowed * Math.max(0.3, rankFactor));
 
             // Compress this source
             const compressedContent = this.compressSource(content, queryTerms, allowedLength);
@@ -314,7 +318,10 @@ class ContextCompressor {
             const tier = s.triage_tier || s.metadata?.triage_tier;
             const qualScore = s.quality_score || s.metadata?.quality_score;
             const tierLabel = tier === 'gold' ? ' [GOLD]' : tier === 'silver' ? ' [SILVER]' : '';
-            let header = `[Source ${i + 1}: ${sourceId} | Relevance: ${score}${tierLabel}]`;
+
+            // Build a human-readable title for citation references
+            const title = s.title || s.metadata?.title || sourceId;
+            let header = `[Source ${i + 1}: ${title} | Relevance: ${score}${tierLabel}]`;
 
             const metaLines = [];
             if (pkg) metaLines.push(`Repository: ${pkg}`);

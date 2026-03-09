@@ -1,0 +1,28 @@
+# Secrets — NEVER include in Docker image
+.env
+.env.*
+*.pem
+*.key
+
+# Development artifacts
+.git
+.claude
+.github
+docs/claude-conversations
+node_modules
+src/ui/node_modules
+
+# Build artifacts
+*.log
+*.part-*
+coverage/
+.nyc_output/
+
+# Large files handled separately
+*.tar.gz
+*.db
+
+# IDE
+.vscode
+.idea
+*.swp

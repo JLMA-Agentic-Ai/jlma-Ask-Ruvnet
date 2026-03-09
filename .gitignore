@@ -81,11 +81,10 @@ public/kb-universe-data.json
 .claude/commands/global/
 ruvector/
 
-# Allow RuvectorStore split data files for Railway deployment
-!ruvector-kb.tar.gz.part-*
+# Stale split files (no longer used for Railway deployment)
+*.part-*
 
-# Allow RVF knowledge base files for Railway deployment
-!knowledge.rvf.gz.part-*
+# Allow RVF content sidecar for Railway deployment
 !content-sidecar.json.gz
 
 # RVF binary files (large)

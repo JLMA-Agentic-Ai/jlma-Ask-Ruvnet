@@ -31,7 +31,7 @@ class ErrorBoundary extends React.Component {
 mermaid.initialize({
   startOnLoad: false,
   theme: 'dark',
-  securityLevel: 'loose',
+  securityLevel: 'strict',
   fontFamily: 'Inter, system-ui, sans-serif',
 });
 
@@ -59,7 +59,7 @@ const DECK_DOCS = [
 // NotebookLM deep-dive interactive notebook
 const NOTEBOOKLM_URL = 'https://notebooklm.google.com/notebook/50a4a2ef-a743-4fc7-81e3-774b95c667c3';
 
-// Resource documents available at /assets/docs/ — Auto-synced 2026-03-07
+// Resource documents available at /assets/docs/ — Auto-synced 2026-03-09
 const RESOURCE_DOCS = [
   { file: 'Whats_New_RuvNet_Stack_March2026.mp4', title: 'What\'s New (March 2026)', desc: 'Latest updates across Ruflo, RuVector, RuView, Dossier', icon: '🔊', type: 'video' },
   { file: 'Architecture_That_Changes_Everything.mp4', title: 'The Architecture That Changes Everything', desc: 'Why this is 2 std devs beyond state-of-art', icon: '🔊', type: 'video' },
@@ -70,10 +70,42 @@ const RESOURCE_DOCS = [
   { file: 'Why_Dev_Teams_Should_Switch.mp4', title: 'Why Dev Teams Should Switch', desc: 'Generations beyond Cursor, Copilot, and Devin', icon: '🎬', type: 'video' },
   { file: 'Business_Case_Why_Your_Company_Needs_This.pdf', title: 'Business Case', desc: 'C-level deck: why your company needs this now', icon: '📊', type: 'pdf' },
   { file: 'RuvNet_Ecosystem_Map.png', title: 'RuvNet Ecosystem Map', desc: 'Complete visual map of the entire ecosystem', icon: '🗺️', type: 'image' },
-  { file: null, title: 'NotebookLM: Interactive Deep Dive', desc: 'AI-powered audio, video, and interactive exploration of the full ecosystem', icon: '📓', type: 'notebooklm', url: NOTEBOOKLM_URL },
 ];
 
-// Follow-up suggestion generator based on response keywords
+// Extract LLM-generated follow-up questions from "## Explore Further" / "## Learn More" sections
+const extractExploreFurther = (content) => {
+  if (!content) return [];
+  // Match headings like "## Explore Further", "## Learn More", "## Questions to Explore", etc.
+  const headingPattern = /##\s*(?:Explore\s*Further|Learn\s*More|Questions?\s*(?:to\s*)?Explore|Further\s*Reading|Next\s*Steps|Dig\s*Deeper)\s*\n/i;
+  const match = content.match(headingPattern);
+  if (!match) return [];
+
+  // Get everything after the heading until the next heading or end of content
+  const startIdx = match.index + match[0].length;
+  const rest = content.slice(startIdx);
+  const nextHeading = rest.search(/\n##\s/);
+  const section = nextHeading >= 0 ? rest.slice(0, nextHeading) : rest;
+
+  // Extract bullet points or numbered items
+  const lines = section.split('\n')
+    .map(line => line.trim())
+    .filter(line => /^[-*\d.)\u2022]\s*/.test(line) || /^\*\*/.test(line))
+    .map(line =>
+      line
+        .replace(/^[-*\u2022]\s*/, '')       // strip bullet markers
+        .replace(/^\d+[.)]\s*/, '')          // strip numbered list markers
+        .replace(/\*\*/g, '')                // strip bold markdown
+        .replace(/^\*|\*$/g, '')             // strip italic markers
+        .replace(/^\[|\]$/g, '')             // strip bracket wrappers
+        .replace(/\?$/, '') + '?'            // ensure ends with ?
+    )
+    .map(line => line.replace(/\?\?$/, '?')) // fix double question marks
+    .filter(line => line.length > 5 && line.length < 200);
+
+  return lines.slice(0, 3);
+};
+
+// Follow-up suggestion generator based on response keywords (FALLBACK)
 const getFollowUpSuggestions = (content) => {
   const lower = (content || '').toLowerCase();
   if (lower.includes('ruflo') || lower.includes('claude-flow') || lower.includes('claude flow') || lower.includes('agentic flow')) {
@@ -419,6 +451,20 @@ function App() {
 
   const [presentationMode, setPresentationMode] = useState(false);
   const [showResourceDrawer, setShowResourceDrawer] = useState(false);
+  const [levelToast, setLevelToast] = useState(null);
+
+  const LEVEL_TOOLTIPS = {
+    Simple: "Explain like I'm 5 — no jargon, lots of analogies",
+    Beginner: 'New to coding — real-world examples, gentle explanations',
+    Balanced: 'Intermediate depth — practical examples with architecture details',
+    Technical: 'Expert level — benchmarks, internals, API details',
+  };
+
+  const handleLevelChange = (newLevel) => {
+    setLevel(newLevel);
+    setLevelToast(newLevel);
+    setTimeout(() => setLevelToast(null), 1800);
+  };
 
   // Auto view mode: canvas shows when content exists; presentation only when user explicitly toggles
   const effectiveViewMode = canvasContent
@@ -436,6 +482,8 @@ function App() {
   const lastMessageRef = useRef(null);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
+  const resourceDrawerRef = useRef(null);
+  const resourceToggleRef = useRef(null);
 
   const toggleTheme = () => {
     document.body.classList.toggle('light-mode');
@@ -461,6 +509,15 @@ function App() {
       });
     }
   }, [canvasContent]);
+
+  // Focus management for resource drawer
+  useEffect(() => {
+    if (showResourceDrawer && resourceDrawerRef.current) {
+      resourceDrawerRef.current.focus();
+    } else if (!showResourceDrawer && resourceToggleRef.current) {
+      resourceToggleRef.current.focus();
+    }
+  }, [showResourceDrawer]);
 
   const handleSubmit = async (e, specialMode = null) => {
     e?.preventDefault();
@@ -613,13 +670,29 @@ function App() {
               continue;
             }
 
-            // Check if it's a done event (explicitly via event type, or by shape)
-            if (eventType === 'done' || (parsed && typeof parsed === 'object' && parsed.length !== undefined && !Array.isArray(parsed))) {
+            // Check if it's confidence data (event: confidence or object with confidence key)
+            if (eventType === 'confidence' || (parsed && typeof parsed === 'object' && !Array.isArray(parsed) && parsed.confidence !== undefined)) {
               setMessages(prev => {
                 const updated = [...prev];
                 const last = updated[updated.length - 1];
                 if (last && last.role === 'assistant') {
-                  updated[updated.length - 1] = { ...last, streaming: false };
+                  updated[updated.length - 1] = { ...last, confidence: parsed.confidence, confidenceLabel: parsed.label || null };
+                }
+                return updated;
+              });
+              continue;
+            }
+
+            // Check if it's a done event (explicitly via event type, or by shape)
+            if (eventType === 'done' || (parsed && typeof parsed === 'object' && parsed.length !== undefined && !Array.isArray(parsed))) {
+              // Done event may also carry confidence data
+              const doneConfidence = parsed?.confidence;
+              setMessages(prev => {
+                const updated = [...prev];
+                const last = updated[updated.length - 1];
+                if (last && last.role === 'assistant') {
+                  const extra = doneConfidence !== undefined ? { confidence: doneConfidence, confidenceLabel: parsed.label || null } : {};
+                  updated[updated.length - 1] = { ...last, streaming: false, ...extra };
                 }
                 return updated;
               });
@@ -851,6 +924,7 @@ function App() {
   return (
     <ErrorBoundary>
     <div className="app-container">
+      <a href="#main-chat" className="skip-to-content">Skip to main content</a>
       {UniverseOverlay}
 
       {/* ===== HEADER TOOLBAR ===== */}
@@ -872,19 +946,26 @@ function App() {
           </button>
         </div>
         <div className="header-right">
-          <div className="header-control">
+          <div className="header-control" style={{ position: 'relative' }}>
             <label className="header-label" htmlFor="level-select">Level</label>
             <select
               id="level-select"
-              className="header-select"
+              className={`header-select${levelToast ? ' level-changed' : ''}`}
               value={level}
-              onChange={(e) => setLevel(e.target.value)}
+              title={LEVEL_TOOLTIPS[level]}
+              aria-label="Select explanation complexity level"
+              onChange={(e) => handleLevelChange(e.target.value)}
             >
-              <option value="Simple">Simple</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Balanced">Balanced</option>
-              <option value="Technical">Technical</option>
+              <option value="Simple" title={LEVEL_TOOLTIPS.Simple}>Simple</option>
+              <option value="Beginner" title={LEVEL_TOOLTIPS.Beginner}>Beginner</option>
+              <option value="Balanced" title={LEVEL_TOOLTIPS.Balanced}>Balanced</option>
+              <option value="Technical" title={LEVEL_TOOLTIPS.Technical}>Technical</option>
             </select>
+            {levelToast && (
+              <span className="level-toast" role="status" aria-live="polite">
+                {LEVEL_TOOLTIPS[levelToast]}
+              </span>
+            )}
           </div>
           <button
             className={`header-icon-btn has-label ${canvasContent?.action === 'knowledge' ? 'active' : ''}`}
@@ -930,7 +1011,7 @@ function App() {
         {effectiveViewMode !== 'presentation' && (
           <div className="chat-panel">
             {/* Chat messages */}
-            <div className="chat-container">
+            <div className="chat-container" id="main-chat" role="log" aria-live="polite" aria-label="Chat messages">
               {messages.length === 0 ? (
                 <HeroSection
                   onAction={(prompt) => handleSubmit(null, prompt)}
@@ -943,7 +1024,7 @@ function App() {
                 <>
                   {/* Collapsible resource drawer — accessible during chat */}
                   {showResourceDrawer && (
-                    <div className="resource-drawer" role="complementary" aria-label="Resources and documents">
+                    <div className="resource-drawer" role="dialog" aria-modal="true" aria-label="Resources and documents" ref={resourceDrawerRef} tabIndex={-1}>
                       <div className="resource-drawer-header">
                         <span className="resource-drawer-title">Resources & Explore</span>
                         <button className="resource-drawer-close" onClick={() => setShowResourceDrawer(false)} aria-label="Close resource drawer">✕</button>
@@ -996,38 +1077,57 @@ function App() {
                         {msg.role === 'assistant' ? <img src="/assets/Ruv prompt.png" alt="Ruv" className="avatar-img" /> : '👤'}
                       </div>
                       <div className="content">
-                        <div className={`markdown-content${msg.streaming ? ' streaming-cursor' : ''}`}>
-                          <ReactMarkdown
-                            remarkPlugins={[remarkGfm]}
-                            components={markdownComponents}
-                          >
-                            {msg.content}
-                          </ReactMarkdown>
-                        </div>
+                        {msg.streaming && !msg.content ? (
+                          <div className="thinking-skeleton" role="status" aria-label="Generating response">
+                            <div className="skeleton-bar" />
+                            <div className="skeleton-bar" />
+                            <div className="skeleton-bar" />
+                            <div className="skeleton-bar skeleton-bar-short" />
+                          </div>
+                        ) : (
+                          <div className={`markdown-content${msg.streaming ? ' streaming-cursor' : ''}`}>
+                            <ReactMarkdown
+                              remarkPlugins={[remarkGfm]}
+                              components={markdownComponents}
+                            >
+                              {msg.content}
+                            </ReactMarkdown>
+                          </div>
+                        )}
+                        {msg.role === 'assistant' && msg.confidence !== undefined && !msg.streaming && (
+                          <div className={`confidence-badge confidence-${msg.confidence}`} aria-label={`Confidence: ${msg.confidence}`}>
+                            <span className="confidence-dot" />
+                            <span className="confidence-text">
+                              {msg.confidence === 'high' && (msg.confidenceLabel || 'High confidence')}
+                              {msg.confidence === 'medium' && (msg.confidenceLabel || 'Medium confidence')}
+                              {msg.confidence === 'low' && (msg.confidenceLabel || 'Limited KB coverage — answer may be less reliable')}
+                            </span>
+                          </div>
+                        )}
                         {msg.role === 'assistant' && msg.sources && msg.sources.length > 0 && (
                           <SourceCards sources={msg.sources} />
                         )}
                         {msg.role === 'assistant' && !msg.canvasGenerated && (
                           <>
                             <div className="message-actions">
-                              <button className="action-btn" onClick={() => copyToClipboard(msg.content)}>📋 Copy</button>
-                              <button className="action-btn" onClick={() => setCanvasContent({ type: 'text', content: msg.content })}>➡️ Open in Canvas</button>
+                              <button className="action-btn" onClick={() => copyToClipboard(msg.content)} aria-label="Copy response to clipboard"><span aria-hidden="true">📋</span> Copy</button>
+                              <button className="action-btn" onClick={() => setCanvasContent({ type: 'text', content: msg.content })} aria-label="Open response in canvas"><span aria-hidden="true">➡️</span> Open in Canvas</button>
                             </div>
                             {idx === messages.length - 1 && !msg.streaming && (
                               <>
                                 {/* Quick Actions — one-click follow-ups */}
                                 <div className="quick-actions">
-                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Show me a diagram of: ${msg.content.slice(0, 100)}`)}>
-                                    <span className="qa-icon">📐</span> Visualize
+                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Show me a diagram of: ${msg.content.slice(0, 100)}`)} aria-label="Visualize as a diagram">
+                                    <span className="qa-icon" aria-hidden="true">📐</span> Visualize
                                   </button>
-                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Give me a practical code example for: ${msg.content.slice(0, 100)}`)}>
-                                    <span className="qa-icon">💻</span> Code Example
+                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Give me a practical code example for: ${msg.content.slice(0, 100)}`)} aria-label="Show a code example">
+                                    <span className="qa-icon" aria-hidden="true">💻</span> Code Example
                                   </button>
-                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Explain this more simply, as if to a non-technical person: ${msg.content.slice(0, 100)}`)}>
-                                    <span className="qa-icon">✨</span> Simplify
+                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Explain this more simply, as if to a non-technical person: ${msg.content.slice(0, 100)}`)} aria-label="Simplify the explanation">
+                                    <span className="qa-icon" aria-hidden="true">✨</span> Simplify
                                   </button>
-                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Go deeper on the most important aspect of: ${msg.content.slice(0, 100)}`)}>
-                                    <span className="qa-icon">🔬</span> Deep Dive
+                                  <button className="quick-action-btn" onClick={() => handleSubmit(null, `Go deeper on the most important aspect of: ${msg.content.slice(0, 100)}`)} aria-label="Deep dive into the topic">
+                                    <span className="qa-icon" aria-hidden="true">🔬</span> Deep Dive
                                   </button>
                                 </div>
                                 {/* Contextual resource cards — auto-surface based on query intent */}
@@ -1063,7 +1163,10 @@ function App() {
                                   );
                                 })()}
                                 <div className="follow-up-suggestions" aria-live="polite" aria-label="Follow-up suggestions">
-                                  {getFollowUpSuggestions(msg.content).map((suggestion, si) => (
+                                  {(extractExploreFurther(msg.content).length > 0
+                                    ? extractExploreFurther(msg.content)
+                                    : getFollowUpSuggestions(msg.content)
+                                  ).map((suggestion, si) => (
                                     <button key={si} className="follow-up-pill" onClick={() => { setInput(suggestion); handleSubmit(null, suggestion); }}>
                                       {suggestion}
                                     </button>
@@ -1096,7 +1199,7 @@ function App() {
             <form className="input-area" onSubmit={handleSubmit}>
               <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
               {messages.length > 0 && (
-                <button type="button" className={`icon-btn resources-toggle ${showResourceDrawer ? 'active' : ''}`} onClick={() => setShowResourceDrawer(p => !p)} aria-label="Browse resources" title="Browse resources & documents">📂</button>
+                <button type="button" ref={resourceToggleRef} className={`icon-btn resources-toggle ${showResourceDrawer ? 'active' : ''}`} onClick={() => setShowResourceDrawer(p => !p)} aria-label="Browse resources" title="Browse resources & documents">📂</button>
               )}
               <button type="button" className="icon-btn" onClick={() => fileInputRef.current.click()} aria-label="Attach file">📎</button>
               <button type="button" className={`icon-btn voice ${listening ? 'listening' : ''}`} onClick={startVoiceInput} aria-label={listening ? 'Stop listening' : 'Start voice input'}>{listening ? '🔴' : '🎤'}</button>
@@ -1104,7 +1207,7 @@ function App() {
                 {file && <div className="file-preview">📄 {file.name} <button type="button" onClick={() => setFile(null)} aria-label="Remove attached file">×</button></div>}
                 <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder={listening ? "Listening..." : "Ask a question..."} disabled={loading} aria-label="Type your question" />
               </div>
-              <button type="submit" disabled={loading || (!input.trim() && !file)}>SEND</button>
+              <button type="submit" disabled={loading || (!input.trim() && !file)} aria-label="Send message">SEND</button>
             </form>
           </div>
         )}
