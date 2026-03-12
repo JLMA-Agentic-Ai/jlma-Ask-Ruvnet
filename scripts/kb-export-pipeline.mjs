@@ -189,20 +189,28 @@ async function main() {
   }
 
   // -----------------------------------------------------------------------
-  // 4. Verify
+  // 4. Verify (hard check — counts MUST match)
   // -----------------------------------------------------------------------
 
   const newManifestCount = readManifestCount();
   log(`New manifest vectorCount: ${newManifestCount}`);
 
-  if (!FLAGS.stage2Only && newManifestCount < pgCount) {
-    log(`WARNING: Manifest (${newManifestCount}) < PG (${pgCount}). Partial export?`);
+  if (!FLAGS.stage2Only && newManifestCount !== pgCount) {
+    log(`CRITICAL: Manifest (${newManifestCount}) != PG (${pgCount}). Sync broken!`);
   }
 
   if (newManifestCount !== manifestCount) {
     log(`SUCCESS: Manifest updated ${manifestCount} -> ${newManifestCount} (delta: ${newManifestCount - manifestCount})`);
   } else if (FLAGS.force) {
     log('Force re-export complete (counts unchanged)');
+  }
+
+  // Stage 3: Rebuild knowledge.rvf (production uses this, not .ruvector/ directly)
+  log('Stage: 3 (binary -> RVF) -- running convert-to-rvf.mjs');
+  try {
+    runStage('3 (binary -> RVF)', 'convert-to-rvf.mjs', 300_000);
+  } catch (err) {
+    log(`WARNING: RVF conversion failed: ${err.message}`);
   }
 
   // -----------------------------------------------------------------------
