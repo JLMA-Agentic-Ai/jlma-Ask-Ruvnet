@@ -114,7 +114,7 @@ async function build() {
   });
 
   // ═══════════════════════════════════════════════════════════
-  // SLIDE 3: FULL SYSTEM ARCHITECTURE
+  // SLIDE 3: FULL SYSTEM ARCHITECTURE (ENHANCED)
   // ═══════════════════════════════════════════════════════════
   s = pres.addSlide();
   s.background = { color: C.bg };
@@ -171,7 +171,12 @@ async function build() {
   // Bottom stats
   const archStats = ["96 MCP Tools", "80+ Rust Crates", "49+ npm Packages", "25+ ADRs", "14 Modules"];
   archStats.forEach((st, i) => {
-    s.addText(st, { x: 0.5 + i * 1.8, y: 4.75, w: 1.7, h: 0.3, fontSize: 10, fontFace: "Consolas", color: C.accent, margin: 0, align: "center" });
+    s.addText(st, { x: 0.5 + i * 1.8, y: 4.7, w: 1.7, h: 0.3, fontSize: 10, fontFace: "Consolas", color: C.accent, margin: 0, align: "center" });
+  });
+
+  // CHANGE #4: Open source note at bottom of architecture slide
+  s.addText("This entire stack is open source. MIT license. Free forever.", {
+    x: 0.8, y: 5.15, w: 8.4, h: 0.25, fontSize: 11, fontFace: "Calibri", color: C.accent, italic: true, margin: 0
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -323,11 +328,11 @@ async function build() {
   ];
 
   kiExamples.forEach((ki, i) => {
-    const ky = 3.4 + i * 0.7;
-    s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: ky, w: 8.4, h: 0.55, fill: { color: C.bgCard } });
-    s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: ky, w: 0.06, h: 0.55, fill: { color: ki.color } });
-    s.addText(ki.name, { x: 1.1, y: ky + 0.03, w: 2, h: 0.2, fontSize: 10.5, fontFace: "Consolas", color: ki.color, bold: true, margin: 0 });
-    s.addText(ki.desc, { x: 1.1, y: ky + 0.23, w: 7.8, h: 0.3, fontSize: 9.5, fontFace: "Calibri", color: C.muted, margin: 0 });
+    const ky = 3.35 + i * 0.62;
+    s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: ky, w: 8.4, h: 0.5, fill: { color: C.bgCard } });
+    s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: ky, w: 0.06, h: 0.5, fill: { color: ki.color } });
+    s.addText(ki.name, { x: 1.1, y: ky + 0.02, w: 2, h: 0.18, fontSize: 10, fontFace: "Consolas", color: ki.color, bold: true, margin: 0 });
+    s.addText(ki.desc, { x: 1.1, y: ky + 0.2, w: 7.8, h: 0.28, fontSize: 9, fontFace: "Calibri", color: C.muted, margin: 0 });
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -387,7 +392,7 @@ async function build() {
   });
 
   // ═══════════════════════════════════════════════════════════
-  // SLIDE 5: RUVECTOR
+  // SLIDE 5: RUVECTOR (ENHANCED with new data architecture messaging)
   // ═══════════════════════════════════════════════════════════
   s = pres.addSlide();
   s.background = { color: C.bg };
@@ -401,7 +406,7 @@ async function build() {
   });
 
   // Left: Capabilities
-  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 1.35, w: 4.1, h: 3.2, fill: { color: C.bgCard }, shadow: shadow() });
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 1.35, w: 4.1, h: 2.7, fill: { color: C.bgCard }, shadow: shadow() });
   s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 1.35, w: 4.1, h: 0.04, fill: { color: C.sky } });
   s.addText("Core Capabilities", { x: 1.0, y: 1.45, w: 3.7, h: 0.3, fontSize: 13, fontFace: "Consolas", color: C.sky, bold: true, margin: 0 });
 
@@ -417,11 +422,11 @@ async function build() {
   ];
   s.addText(
     rvCaps.map((item, i) => ({ text: item, options: { bullet: true, breakLine: i < rvCaps.length - 1, fontSize: 10.5, color: C.mutedLight } })),
-    { x: 1.0, y: 1.85, w: 3.7, h: 2.5, fontFace: "Calibri", paraSpaceAfter: 5 }
+    { x: 1.0, y: 1.85, w: 3.7, h: 2.0, fontFace: "Calibri", paraSpaceAfter: 5 }
   );
 
   // Right: RVCOW
-  s.addShape(pres.shapes.RECTANGLE, { x: 5.1, y: 1.35, w: 4.1, h: 3.2, fill: { color: C.bgCard }, shadow: shadow() });
+  s.addShape(pres.shapes.RECTANGLE, { x: 5.1, y: 1.35, w: 4.1, h: 2.7, fill: { color: C.bgCard }, shadow: shadow() });
   s.addShape(pres.shapes.RECTANGLE, { x: 5.1, y: 1.35, w: 4.1, h: 0.04, fill: { color: C.warn } });
   s.addText("RVCOW: Multi-Tenant Economics", { x: 5.3, y: 1.45, w: 3.7, h: 0.3, fontSize: 13, fontFace: "Consolas", color: C.warn, bold: true, margin: 0 });
 
@@ -453,7 +458,7 @@ async function build() {
     { text: "CowMap cluster lookup: ", options: { fontSize: 10, color: C.muted } },
     { text: "28ns", options: { fontSize: 10, color: C.accent, bold: true, breakLine: true } },
     { text: "Row-level security per tenant", options: { fontSize: 10, color: C.muted } },
-  ], { x: 5.3, y: 3.65, w: 3.7, h: 0.7, fontFace: "Calibri", margin: 0 });
+  ], { x: 5.3, y: 3.55, w: 3.7, h: 0.5, fontFace: "Calibri", margin: 0 });
 
   // Bottom stat
   const rvStats = [
@@ -464,8 +469,14 @@ async function build() {
   ];
   rvStats.forEach((st, i) => {
     const sx = 0.8 + i * 2.3;
-    s.addText(st.num, { x: sx, y: 4.7, w: 2, h: 0.4, fontSize: 22, fontFace: "Consolas", color: C.accent, bold: true, margin: 0 });
-    s.addText(st.label, { x: sx, y: 5.05, w: 2, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
+    s.addText(st.num, { x: sx, y: 4.2, w: 2, h: 0.35, fontSize: 20, fontFace: "Consolas", color: C.accent, bold: true, margin: 0 });
+    s.addText(st.label, { x: sx, y: 4.5, w: 2, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
+  });
+
+  // CHANGE #6: New Data Architecture messaging at the bottom of RuVector slide
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 4.85, w: 8.4, h: 0.7, fill: { color: "0D2A2E" } });
+  s.addText("RuVector isn't just faster search. It's a fundamentally new data architecture that unlocks capabilities impossible with traditional vector databases \u2014 in-process execution, WASM portability, and native PostgreSQL integration that eliminates the 'AI sidecar' pattern entirely.", {
+    x: 1.0, y: 4.88, w: 8, h: 0.65, fontSize: 10, fontFace: "Calibri", color: C.accent, valign: "middle", margin: 0
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -630,6 +641,137 @@ async function build() {
   });
 
   // ═══════════════════════════════════════════════════════════
+  // SLIDE 8B: SHIP IT IN 5 LINES (NEW — code snippet slide)
+  // ═══════════════════════════════════════════════════════════
+  s = pres.addSlide();
+  s.background = { color: C.bg };
+  s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
+
+  s.addText("Ship It In 5 Lines", {
+    x: 0.8, y: 0.3, w: 8, h: 0.5, fontSize: 28, fontFace: "Cambria", color: C.white, bold: true, margin: 0
+  });
+  s.addText("Production multi-agent swarms. Self-learning. Self-healing. One require statement.", {
+    x: 0.8, y: 0.75, w: 8, h: 0.3, fontSize: 13, fontFace: "Calibri", color: C.muted, margin: 0
+  });
+
+  // Dark code block background
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 1.15, w: 8.8, h: 3.65, fill: { color: "151E2E" }, shadow: shadow() });
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 1.15, w: 8.8, h: 0.04, fill: { color: C.accent } });
+
+  // Code with syntax highlighting — each line as a text run
+  // Line 1: const ruflo = require('ruflo');
+  s.addText([
+    { text: "const", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: " ruflo = ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "require", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: "(", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'ruflo'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: ");", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 1.25, w: 8.2, h: 0.22, margin: 0 });
+
+  // Blank line + comment
+  s.addText("// Initialize a self-healing agent swarm", {
+    x: 0.9, y: 1.55, w: 8.2, h: 0.22, fontSize: 10, fontFace: "Consolas", color: C.muted, margin: 0
+  });
+
+  // Line 3-7: const swarm = await ruflo.swarm.init({...})
+  s.addText([
+    { text: "const", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: " swarm", options: { color: "8B5CF6", fontFace: "Consolas", fontSize: 10 } },
+    { text: " = ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "await", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: " ruflo.swarm.", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "init", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: "({", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 1.75, w: 8.2, h: 0.22, margin: 0 });
+
+  s.addText([
+    { text: "  topology: ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'hierarchical'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: ", agents: ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "8", options: { color: "F59E0B", fontFace: "Consolas", fontSize: 10 } },
+    { text: ", strategy: ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'specialized'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 1.95, w: 8.2, h: 0.22, margin: 0 });
+
+  s.addText("});", { x: 0.9, y: 2.15, w: 8.2, h: 0.22, fontSize: 10, fontFace: "Consolas", color: C.white, margin: 0 });
+
+  // Blank + comment
+  s.addText("// Deploy 51 autonomous agents in one command", {
+    x: 0.9, y: 2.42, w: 8.2, h: 0.22, fontSize: 10, fontFace: "Consolas", color: C.muted, margin: 0
+  });
+
+  // const fleet = await swarm.deploy({...})
+  s.addText([
+    { text: "const", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: " fleet", options: { color: "8B5CF6", fontFace: "Consolas", fontSize: 10 } },
+    { text: " = ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "await", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: " swarm.", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "deploy", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: "({", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 2.62, w: 8.2, h: 0.22, margin: 0 });
+
+  s.addText([
+    { text: "  domains: [", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'billing'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: ", ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'compliance'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: ", ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'support'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: "],", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 2.82, w: 8.2, h: 0.22, margin: 0 });
+
+  s.addText([
+    { text: "  memory: ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'persistent'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: ",       ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "// AgentDB - agents remember everything", options: { color: C.muted, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 3.02, w: 8.2, h: 0.22, margin: 0 });
+
+  s.addText([
+    { text: "  security: ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'aimds'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: ",          ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "// Chaos theory threat detection", options: { color: C.muted, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 3.22, w: 8.2, h: 0.22, margin: 0 });
+
+  s.addText([
+    { text: "  runtime: ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'rvf-wasm'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: "        ", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "// 5.5KB - runs anywhere", options: { color: C.muted, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 3.42, w: 8.2, h: 0.22, margin: 0 });
+
+  s.addText("});", { x: 0.9, y: 3.62, w: 8.2, h: 0.22, fontSize: 10, fontFace: "Consolas", color: C.white, margin: 0 });
+
+  // fleet.on callback
+  s.addText([
+    { text: "fleet", options: { color: "8B5CF6", fontFace: "Consolas", fontSize: 10 } },
+    { text: ".", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "on", options: { color: C.accent, fontFace: "Consolas", fontSize: 10 } },
+    { text: "(", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "'resolution'", options: { color: C.green, fontFace: "Consolas", fontSize: 10 } },
+    { text: ", (", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+    { text: "data", options: { color: "8B5CF6", fontFace: "Consolas", fontSize: 10 } },
+    { text: ") => {", options: { color: C.white, fontFace: "Consolas", fontSize: 10 } },
+  ], { x: 0.9, y: 3.87, w: 8.2, h: 0.22, margin: 0 });
+
+  s.addText("  // SONA generates LoRA adapters automatically", {
+    x: 0.9, y: 4.07, w: 8.2, h: 0.22, fontSize: 10, fontFace: "Consolas", color: C.muted, margin: 0
+  });
+  s.addText("  // Your AI gets smarter. Zero cost. Zero effort.", {
+    x: 0.9, y: 4.22, w: 8.2, h: 0.22, fontSize: 10, fontFace: "Consolas", color: C.muted, margin: 0
+  });
+  s.addText("});", { x: 0.9, y: 4.42, w: 8.2, h: 0.22, fontSize: 10, fontFace: "Consolas", color: C.white, margin: 0 });
+
+  // Bottom callout
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 4.7, w: 8.8, h: 0.5, fill: { color: C.bgAlt } });
+  s.addText("Claude Code shipped sub-agents in March 2026. Ruflo shipped this in August 2025. 8 months earlier.", {
+    x: 0.8, y: 4.7, w: 8.4, h: 0.5, fontSize: 13, fontFace: "Calibri", color: C.warn, bold: true, valign: "middle", margin: 0
+  });
+
+  // ═══════════════════════════════════════════════════════════
   // SLIDE 9: NERVOUS SYSTEM
   // ═══════════════════════════════════════════════════════════
   s = pres.addSlide();
@@ -661,48 +803,62 @@ async function build() {
   });
 
   // Circadian controller
-  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 5.0, w: 8.4, h: 0.45, fill: { color: C.bgAlt } });
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 4.8, w: 8.4, h: 0.4, fill: { color: C.bgAlt } });
   s.addText("Circadian Controller: 5-50x compute savings during quiet periods \u2014 the system sleeps when you do", {
-    x: 1.0, y: 5.0, w: 8, h: 0.45, fontSize: 11, fontFace: "Calibri", color: C.accent, valign: "middle", margin: 0
+    x: 1.0, y: 4.8, w: 8, h: 0.4, fontSize: 11, fontFace: "Calibri", color: C.accent, valign: "middle", margin: 0
   });
 
   // ═══════════════════════════════════════════════════════════
-  // SLIDE 10: PRIME RADIANT
+  // SLIDE 10: WE BUILT THIS FIRST (REPLACED PRIME RADIANT)
   // ═══════════════════════════════════════════════════════════
   s = pres.addSlide();
   s.background = { color: C.bg };
   s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
 
-  s.addText("Prime Radiant: Formal Anti-Hallucination", {
-    x: 0.8, y: 0.35, w: 8.4, h: 0.5, fontSize: 26, fontFace: "Cambria", color: C.white, bold: true, margin: 0
+  s.addText("We Built the Future 8 Months Early", {
+    x: 0.8, y: 0.35, w: 8.4, h: 0.5, fontSize: 28, fontFace: "Cambria", color: C.white, bold: true, margin: 0
   });
-  s.addText("Mathematical proofs, not confidence scores. If any engine disagrees, output is flagged.", {
-    x: 0.8, y: 0.85, w: 8, h: 0.3, fontSize: 13, fontFace: "Calibri", color: C.muted, margin: 0
+  s.addText("RuvNet doesn't follow the industry roadmap. The industry follows ours.", {
+    x: 0.8, y: 0.85, w: 8, h: 0.3, fontSize: 14, fontFace: "Calibri", color: C.accent, italic: true, margin: 0
   });
 
-  const engines = [
-    { name: "Cohomology Engine", items: ["Sheaf Laplacian mathematics", "Cross-section consistency", "Structural coherence verification"], color: C.accent },
-    { name: "Spectral Engine", items: ["Eigenvalue analysis", "Spectral gap measurement", "Frequency-domain coherence"], color: C.sky },
-    { name: "Causal Engine", items: ["Pearl's do-calculus", "Confounder detection", "Causal graph inference"], color: C.accentAlt },
+  // Timeline entries
+  const timeline = [
+    { date: "Aug 2025", event: "Ruflo ships multi-agent orchestration", detail: "150+ agent types, 5 topologies, hierarchical swarms with anti-drift detection", color: C.accent, shipped: true },
+    { date: "Oct 2025", event: "RVF cognitive containers ship (5.5KB)", detail: "24-segment binary format. WASM runtime. Self-booting intelligence units.", color: C.sky, shipped: true },
+    { date: "Dec 2025", event: "MinCut dynamic partitioning ships", detail: "Stoer-Wagner algorithm. Self-healing graph analytics. 448+ tests.", color: C.accentAlt, shipped: true },
+    { date: "Mar 2026", event: "Claude Code ships \"sub-agents\"", detail: "Anthropic announces sub-agent capability. 8 months after Ruflo.", color: C.warn, shipped: false },
+    { date: "???", event: "Industry catches up on vector search, WASM, chaos security", detail: "Still waiting for anyone to match RuVector, RVF, or AIMDS.", color: C.muted, shipped: false },
   ];
 
-  engines.forEach((e, i) => {
-    const ex = 0.8 + i * 2.9;
-    s.addShape(pres.shapes.RECTANGLE, { x: ex, y: 1.35, w: 2.7, h: 1.8, fill: { color: C.bgCard }, shadow: shadow() });
-    s.addShape(pres.shapes.RECTANGLE, { x: ex, y: 1.35, w: 2.7, h: 0.04, fill: { color: e.color } });
-    s.addText(e.name, { x: ex + 0.12, y: 1.45, w: 2.5, h: 0.3, fontSize: 12, fontFace: "Consolas", color: e.color, bold: true, margin: 0 });
-    s.addText(
-      e.items.map((item, j) => ({ text: item, options: { bullet: true, breakLine: j < e.items.length - 1, fontSize: 10.5, color: C.muted } })),
-      { x: ex + 0.12, y: 1.85, w: 2.5, h: 1.1, fontFace: "Calibri", paraSpaceAfter: 5 }
-    );
+  timeline.forEach((t, i) => {
+    const ty = 1.4 + i * 0.75;
+
+    // Timeline dot and line
+    s.addShape(pres.shapes.OVAL, { x: 0.95, y: ty + 0.12, w: 0.16, h: 0.16, fill: { color: t.color } });
+    if (i < timeline.length - 1) {
+      s.addShape(pres.shapes.RECTANGLE, { x: 1.01, y: ty + 0.28, w: 0.04, h: 0.62, fill: { color: "2A3550" } });
+    }
+
+    // Date badge
+    s.addShape(pres.shapes.RECTANGLE, { x: 1.35, y: ty + 0.02, w: 1.0, h: 0.32, fill: { color: t.shipped ? "0D2A2E" : C.bgCard } });
+    s.addText(t.date, { x: 1.35, y: ty + 0.02, w: 1.0, h: 0.32, fontSize: 10, fontFace: "Consolas", color: t.color, bold: true, margin: 0, align: "center", valign: "middle" });
+
+    // Event title + detail
+    s.addText(t.event, { x: 2.5, y: ty, w: 6.5, h: 0.25, fontSize: 13, fontFace: "Calibri", color: t.shipped ? C.white : C.muted, bold: true, margin: 0 });
+    s.addText(t.detail, { x: 2.5, y: ty + 0.27, w: 6.5, h: 0.25, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
+
+    // "SHIPPED" badge for RuvNet items
+    if (t.shipped) {
+      s.addShape(pres.shapes.RECTANGLE, { x: 8.3, y: ty + 0.02, w: 0.75, h: 0.28, fill: { color: "0D2A2E" } });
+      s.addText("SHIPPED", { x: 8.3, y: ty + 0.02, w: 0.75, h: 0.28, fontSize: 8, fontFace: "Consolas", color: C.green, bold: true, margin: 0, align: "center", valign: "middle" });
+    }
   });
 
-  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 3.4, w: 8.4, h: 0.6, fill: { color: "1A1520" } });
-  s.addText("Deployed: 12-agent swarm, ~35K lines of code, hierarchical mesh coordination", {
-    x: 1.0, y: 3.4, w: 4, h: 0.3, fontSize: 10.5, fontFace: "Calibri", color: C.muted, margin: 0
-  });
-  s.addText("Confidence scores can be wrong. Mathematical proofs cannot.", {
-    x: 1.0, y: 3.7, w: 6, h: 0.25, fontSize: 11, fontFace: "Calibri", color: C.accent, italic: true, margin: 0
+  // Bottom message
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 5.0, w: 8.4, h: 0.45, fill: { color: "0D2A2E" } });
+  s.addText("Two standard deviations beyond state of the art. Open source. MIT license. Free.", {
+    x: 1.0, y: 5.0, w: 8, h: 0.45, fontSize: 12, fontFace: "Calibri", color: C.accent, bold: true, valign: "middle", margin: 0
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -761,15 +917,15 @@ async function build() {
     { who: "Uber Eats", result: "20%+ engagement", how: "Graph-ranked discovery" },
   ];
   proofs.forEach((p, i) => {
-    const px = 0.8 + i * 2.9;
-    s.addShape(pres.shapes.RECTANGLE, { x: px, y: 4.25, w: 2.7, h: 0.7, fill: { color: C.bgAlt } });
-    s.addText(p.who, { x: px + 0.1, y: 4.28, w: 2.5, h: 0.2, fontSize: 10, fontFace: "Consolas", color: C.warn, bold: true, margin: 0 });
-    s.addText(p.result, { x: px + 0.1, y: 4.48, w: 2.5, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.mutedLight, margin: 0 });
-    s.addText(p.how, { x: px + 0.1, y: 4.68, w: 2.5, h: 0.2, fontSize: 9, fontFace: "Calibri", color: C.muted, margin: 0 });
+    const ppx = 0.8 + i * 2.9;
+    s.addShape(pres.shapes.RECTANGLE, { x: ppx, y: 4.25, w: 2.7, h: 0.7, fill: { color: C.bgAlt } });
+    s.addText(p.who, { x: ppx + 0.1, y: 4.28, w: 2.5, h: 0.2, fontSize: 10, fontFace: "Consolas", color: C.warn, bold: true, margin: 0 });
+    s.addText(p.result, { x: ppx + 0.1, y: 4.48, w: 2.5, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.mutedLight, margin: 0 });
+    s.addText(p.how, { x: ppx + 0.1, y: 4.68, w: 2.5, h: 0.2, fontSize: 9, fontFace: "Calibri", color: C.muted, margin: 0 });
   });
 
   // ═══════════════════════════════════════════════════════════
-  // SLIDE 12: BENCHMARKS
+  // SLIDE 12: BENCHMARKS (ENHANCED with Attention Mechanisms row)
   // ═══════════════════════════════════════════════════════════
   s = pres.addSlide();
   s.background = { color: C.bg };
@@ -806,11 +962,12 @@ async function build() {
     bRow("Reflex Response", "<1\u00B5s", "N/A", "Unique"),
     bRow("Agent Scale", "100K", "~10-50", "2,000x+"),
     bRow("SWE-Bench", "84.8%", "33.2% (GPT-4o)", "2.5x"),
+    bRow("Attention Mechanisms", "39 types", "1-3 types", "13-39x"),
   ], {
     x: 0.8, y: 1.35, w: 8.4,
     colW: [2.2, 1.8, 2.4, 2.0],
     border: { pt: 0.5, color: "2A3550" },
-    rowH: [0.32, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3],
+    rowH: [0.32, 0.28, 0.28, 0.28, 0.28, 0.28, 0.28, 0.28, 0.28, 0.28],
   });
 
   // Big callout stats
@@ -821,8 +978,8 @@ async function build() {
     { num: "18,000x", label: "Smaller Runtime" },
   ];
   bigStats.forEach((st, i) => {
-    s.addText(st.num, { x: 0.8 + i * 2.3, y: 4.35, w: 2, h: 0.4, fontSize: 22, fontFace: "Consolas", color: C.accent, bold: true, margin: 0 });
-    s.addText(st.label, { x: 0.8 + i * 2.3, y: 4.7, w: 2, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
+    s.addText(st.num, { x: 0.8 + i * 2.3, y: 4.4, w: 2, h: 0.4, fontSize: 22, fontFace: "Consolas", color: C.accent, bold: true, margin: 0 });
+    s.addText(st.label, { x: 0.8 + i * 2.3, y: 4.75, w: 2, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -897,36 +1054,36 @@ async function build() {
 
   const phases = [
     {
-      name: "Phase 1: Foundation", when: "Week 1-2",
+      name: "1: Foundation", when: "Week 1-2",
       items: ["Core RuVector PostgreSQL extension", "AIMDS security middleware", "Basic agent deployment", "HNSW index configuration"],
       color: C.accent
     },
     {
-      name: "Phase 2: Intelligence", when: "Week 3-4",
+      name: "2: Intelligence", when: "Week 3-4",
       items: ["AgentDB memory (4 types)", "ReasoningBank + SONA", "Ruflo orchestration", "MCP tool integration"],
       color: C.sky
     },
     {
-      name: "Phase 3: Customization", when: "Month 2",
+      name: "3: Customize", when: "Month 2",
       items: ["Custom agent development", "Domain-specific LoRA training", "Graph analytics deployment", "Performance tuning"],
       color: C.accentAlt
     },
     {
-      name: "Phase 4: Scale", when: "Month 3+",
+      name: "4: Scale", when: "Month 3+",
       items: ["Production scaling + monitoring", "WASM edge deployment", "Multi-tenant RVCOW", "Advanced swarm topologies"],
       color: C.warn
     },
   ];
 
   phases.forEach((ph, i) => {
-    const px = 0.8 + i * 2.25;
-    s.addShape(pres.shapes.RECTANGLE, { x: px, y: 1.35, w: 2.05, h: 3.2, fill: { color: C.bgCard }, shadow: shadow() });
-    s.addShape(pres.shapes.RECTANGLE, { x: px, y: 1.35, w: 2.05, h: 0.04, fill: { color: ph.color } });
-    s.addText(ph.name, { x: px + 0.1, y: 1.45, w: 1.85, h: 0.3, fontSize: 11, fontFace: "Consolas", color: ph.color, bold: true, margin: 0 });
-    s.addText(ph.when, { x: px + 0.1, y: 1.75, w: 1.85, h: 0.25, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
+    const phx = 0.8 + i * 2.25;
+    s.addShape(pres.shapes.RECTANGLE, { x: phx, y: 1.35, w: 2.05, h: 3.2, fill: { color: C.bgCard }, shadow: shadow() });
+    s.addShape(pres.shapes.RECTANGLE, { x: phx, y: 1.35, w: 2.05, h: 0.04, fill: { color: ph.color } });
+    s.addText(ph.name, { x: phx + 0.1, y: 1.45, w: 1.85, h: 0.3, fontSize: 11, fontFace: "Consolas", color: ph.color, bold: true, margin: 0 });
+    s.addText(ph.when, { x: phx + 0.1, y: 1.75, w: 1.85, h: 0.25, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
     s.addText(
       ph.items.map((item, j) => ({ text: item, options: { bullet: true, breakLine: j < ph.items.length - 1, fontSize: 9.5, color: C.mutedLight } })),
-      { x: px + 0.1, y: 2.1, w: 1.85, h: 2.2, fontFace: "Calibri", paraSpaceAfter: 5 }
+      { x: phx + 0.1, y: 2.1, w: 1.85, h: 2.2, fontFace: "Calibri", paraSpaceAfter: 5 }
     );
   });
 
@@ -936,7 +1093,7 @@ async function build() {
   });
 
   // ═══════════════════════════════════════════════════════════
-  // SLIDE 15: CTA
+  // SLIDE 15: CTA (ENHANCED)
   // ═══════════════════════════════════════════════════════════
   s = pres.addSlide();
   s.background = { color: C.bg };
@@ -971,8 +1128,9 @@ async function build() {
     s.addText(st.label, { x: 0.8 + i * 2.2, y: 4.35, w: 2, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
   });
 
-  s.addText("MIT License  |  Production Ready  |  Enterprise Support Available", {
-    x: 0.8, y: 4.8, w: 8.4, h: 0.3, fontSize: 12, fontFace: "Calibri", color: C.muted, margin: 0
+  // CHANGE #5: Enhanced CTA italic text
+  s.addText("Two standard deviations beyond state of the art. Open source. Free. The architecture everyone will use.", {
+    x: 0.8, y: 4.7, w: 8.4, h: 0.3, fontSize: 12, fontFace: "Calibri", color: C.accent, italic: true, margin: 0
   });
   s.addText("ruvnet.com  |  hello@ruvnet.com", {
     x: 0.8, y: 5.15, w: 8, h: 0.3, fontSize: 13, fontFace: "Consolas", color: C.accent, bold: true, margin: 0

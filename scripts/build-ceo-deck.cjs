@@ -106,7 +106,7 @@ async function build() {
   s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 1.6, w: 0.06, h: 2.2, fill: { color: C.warn } });
   s.addText("87%", { x: 1.1, y: 1.75, w: 3, h: 0.8, fontSize: 54, fontFace: "Arial", color: C.warn, bold: true, margin: 0 });
   s.addText("of enterprise AI pilots\nnever reach production", { x: 1.1, y: 2.5, w: 3, h: 0.6, fontSize: 15, fontFace: "Calibri", color: C.mutedLight, margin: 0 });
-  s.addText("— Gartner", { x: 1.1, y: 3.1, w: 3, h: 0.3, fontSize: 11, fontFace: "Calibri", color: C.muted, italic: true, margin: 0 });
+  s.addText("\u2014 Gartner", { x: 1.1, y: 3.1, w: 3, h: 0.3, fontSize: 11, fontFace: "Calibri", color: C.muted, italic: true, margin: 0 });
 
   // Why they fail - right side
   s.addText("Why They Fail", { x: 5.2, y: 1.6, w: 4, h: 0.4, fontSize: 18, fontFace: "Georgia", color: C.white, bold: true, margin: 0 });
@@ -239,7 +239,7 @@ async function build() {
     {
       name: "Fox Flow", org: "Community Builder",
       result: "12.8M queries/sec", context: "4,000x faster than Redis",
-      detail: "Built a database on RuVector that processes 12.8 million queries per second — four thousand times faster than Redis."
+      detail: "Built a database on RuVector that processes 12.8 million queries per second \u2014 four thousand times faster than Redis."
     },
     {
       name: "QE Fleet", org: "Quality Engineering",
@@ -249,12 +249,12 @@ async function build() {
     {
       name: "Bill Sentry", org: "Healthcare",
       result: "30 years expertise", context: "Automated medical billing",
-      detail: "A doctor with 30 years of AI experience built automated medical billing fraud detection — real clinical use, real savings."
+      detail: "A doctor with 30 years of AI experience built automated medical billing fraud detection \u2014 real clinical use, real savings."
     },
     {
       name: "Finland Gov", org: "Government",
       result: "National scale", context: "AI-native transformation",
-      detail: "National government deploying RuvNet for AI-native public services — the first country-scale agentic deployment."
+      detail: "National government deploying RuvNet for AI-native public services \u2014 the first country-scale agentic deployment."
     },
   ];
 
@@ -274,6 +274,82 @@ async function build() {
   });
 
   s.addText("These aren't our demos. These are our community's production deployments.", {
+    x: 0.8, y: 5.0, w: 8.4, h: 0.3, fontSize: 12, fontFace: "Calibri", color: C.muted, italic: true, margin: 0
+  });
+
+  // ═══════════════════════════════════════════════════════════
+  // SLIDE 5A: WHAT BUILDERS SAY (Community Voices)
+  // ═══════════════════════════════════════════════════════════
+  s = pres.addSlide();
+  s.background = { color: C.bg };
+  s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
+
+  s.addText("COMMUNITY", { x: 0.8, y: 0.3, w: 3, h: 0.25, fontSize: 11, fontFace: "Arial", color: C.accent, charSpacing: 3, bold: true, margin: 0 });
+  s.addText("What Builders Say", {
+    x: 0.8, y: 0.55, w: 8.4, h: 0.55, fontSize: 30, fontFace: "Georgia", color: C.white, bold: true, margin: 0
+  });
+
+  const quotes = [
+    {
+      quote: "We built a database on RuVector that processes 12.8 million queries per second \u2014 4,000x faster than Redis.",
+      author: "Fox Flow",
+      role: "Community Builder",
+      color: C.accent,
+    },
+    {
+      quote: "51 autonomous agents across 12 domains. Zero manual coordination.",
+      author: "QE Fleet",
+      role: "Quality Engineering",
+      color: "0EA5E9",
+    },
+    {
+      quote: "30 years of medical AI experience. RuvNet is the first stack that actually works in production.",
+      author: "Bill Sentry",
+      role: "Healthcare AI",
+      color: C.accentAlt,
+    },
+    {
+      quote: "National-scale AI-native transformation \u2014 the first country doing this.",
+      author: "Finland Gov",
+      role: "Government",
+      color: C.gold,
+    },
+  ];
+
+  quotes.forEach((q, i) => {
+    const col = i % 2;
+    const row = Math.floor(i / 2);
+    const qx = 0.8 + col * 4.4;
+    const qy = 1.3 + row * 1.8;
+
+    // Card background
+    s.addShape(pres.shapes.RECTANGLE, { x: qx, y: qy, w: 4.1, h: 1.55, fill: { color: C.bgCard }, shadow: cardShadow() });
+    s.addShape(pres.shapes.RECTANGLE, { x: qx, y: qy, w: 0.06, h: 1.55, fill: { color: q.color } });
+
+    // Opening quotation mark
+    s.addText("\u201C", {
+      x: qx + 0.15, y: qy + 0.0, w: 0.5, h: 0.5,
+      fontSize: 36, fontFace: "Georgia", color: q.color, margin: 0
+    });
+
+    // Quote text
+    s.addText(q.quote, {
+      x: qx + 0.2, y: qy + 0.35, w: 3.7, h: 0.75,
+      fontSize: 11, fontFace: "Georgia", color: C.mutedLight, italic: true, margin: 0
+    });
+
+    // Attribution
+    s.addText(q.author, {
+      x: qx + 0.2, y: qy + 1.2, w: 2.5, h: 0.25,
+      fontSize: 12, fontFace: "Arial", color: q.color, bold: true, margin: 0
+    });
+    s.addText(q.role, {
+      x: qx + 0.2, y: qy + 1.42, w: 2.5, h: 0.2,
+      fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0
+    });
+  });
+
+  s.addText("These are unsolicited testimonials from production users.", {
     x: 0.8, y: 5.0, w: 8.4, h: 0.3, fontSize: 12, fontFace: "Calibri", color: C.muted, italic: true, margin: 0
   });
 
@@ -335,7 +411,7 @@ async function build() {
   });
 
   s.addText("RVF cognitive containers shrink an entire AI application \u2014 model, logic, vector search, memory, security \u2014 into a single file that runs in a browser tab or on a phone.", {
-    x: 0.8, y: 1.2, w: 8.4, h: 0.4, fontSize: 12, fontFace: "Calibri", color: C.muted, margin: 0
+    x: 0.8, y: 1.3, w: 8.4, h: 0.4, fontSize: 12, fontFace: "Calibri", color: C.muted, margin: 0
   });
 
   // What fits in 5.5KB
@@ -433,51 +509,56 @@ async function build() {
   });
 
   // ═══════════════════════════════════════════════════════════
-  // SLIDE 6: THE PHILOSOPHY
+  // SLIDE 6: THIS IS FREE (replaces "Algorithms Beat GPUs")
   // ═══════════════════════════════════════════════════════════
   s = pres.addSlide();
   s.background = { color: C.bg };
   s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
 
-  s.addText("Algorithms Beat GPUs", {
-    x: 0.8, y: 0.4, w: 8, h: 0.6, fontSize: 32, fontFace: "Georgia", color: C.white, bold: true, margin: 0
-  });
-  s.addText("Instead of massive GPU clusters, RuvNet uses algorithmic efficiency to achieve\nsuperior results at a fraction of the cost.", {
-    x: 0.8, y: 1.0, w: 8.4, h: 0.5, fontSize: 14, fontFace: "Calibri", color: C.muted, margin: 0
+  s.addText("This Is Free \u2014 And That Should\nTerrify Your Competitors", {
+    x: 0.8, y: 0.35, w: 8.4, h: 0.85, fontSize: 28, fontFace: "Georgia", color: C.white, bold: true, margin: 0
   });
 
-  // Before/After comparison
-  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 1.7, w: 4.1, h: 2.4, fill: { color: "1A1520" }, shadow: cardShadow() });
-  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 1.7, w: 4.1, h: 0.05, fill: { color: C.warn } });
-  s.addText("Industry Standard", { x: 1.0, y: 1.85, w: 3.5, h: 0.3, fontSize: 14, fontFace: "Arial", color: C.warn, bold: true, margin: 0 });
-  s.addText([
-    { text: "$100M+/year on GPU clusters", options: { bullet: true, breakLine: true, fontSize: 11, color: C.muted } },
-    { text: "Brute-force every computation", options: { bullet: true, breakLine: true, fontSize: 11, color: C.muted } },
-    { text: "$30-40M/month operational cost", options: { bullet: true, breakLine: true, fontSize: 11, color: C.muted } },
-    { text: "Diminishing returns on scaling", options: { bullet: true, fontSize: 11, color: C.muted } },
-  ], { x: 1.0, y: 2.25, w: 3.6, h: 1.6, fontFace: "Calibri", paraSpaceAfter: 6 });
+  s.addText("RuvNet is open source. MIT license. Zero licensing cost. The entire 148-capability stack.", {
+    x: 0.8, y: 1.25, w: 8.4, h: 0.4, fontSize: 15, fontFace: "Calibri", color: C.muted, margin: 0
+  });
 
-  s.addShape(pres.shapes.RECTANGLE, { x: 5.1, y: 1.7, w: 4.1, h: 2.4, fill: { color: "0D2920" }, shadow: cardShadow() });
-  s.addShape(pres.shapes.RECTANGLE, { x: 5.1, y: 1.7, w: 4.1, h: 0.05, fill: { color: C.accent } });
-  s.addText("RuvNet Approach", { x: 5.3, y: 1.85, w: 3.5, h: 0.3, fontSize: 14, fontFace: "Arial", color: C.accent, bold: true, margin: 0 });
-  s.addText([
-    { text: "50-90% compute reduction (MinCut)", options: { bullet: true, breakLine: true, fontSize: 11, color: C.mutedLight } },
-    { text: "Skip unnecessary tokens automatically", options: { bullet: true, breakLine: true, fontSize: 11, color: C.mutedLight } },
-    { text: "$1.7M/month operational cost", options: { bullet: true, breakLine: true, fontSize: 11, color: C.mutedLight } },
-    { text: "Returns improve with optimization depth", options: { bullet: true, fontSize: 11, color: C.mutedLight } },
-  ], { x: 5.3, y: 2.25, w: 3.6, h: 1.6, fontFace: "Calibri", paraSpaceAfter: 6 });
-
-  // ROI callouts
-  const roiItems = [
-    { num: "95%", label: "Cost Reduction", sub: "$30M \u2192 $1.7M/mo" },
-    { num: "50-90%", label: "Compute Reduction", sub: "MinCut-Gated" },
-    { num: "7.47x", label: "Throughput Gain", sub: "Flash Attention" },
+  // Big stats - 4 across
+  const freeStats = [
+    { num: "MIT", label: "License", color: C.accent },
+    { num: "$0", label: "Licensing Cost", color: C.accent },
+    { num: "148", label: "Capabilities", color: C.accent },
+    { num: "80+", label: "Rust Crates", color: C.accent },
   ];
-  roiItems.forEach((r, i) => {
-    const rx = 0.8 + i * 3.1;
-    s.addText(r.num, { x: rx, y: 4.35, w: 2.8, h: 0.5, fontSize: 28, fontFace: "Arial", color: C.accent, bold: true, margin: 0 });
-    s.addText(r.label, { x: rx, y: 4.8, w: 2.8, h: 0.25, fontSize: 11, fontFace: "Calibri", color: C.white, margin: 0 });
-    s.addText(r.sub, { x: rx, y: 5.0, w: 2.8, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
+
+  freeStats.forEach((fs, i) => {
+    const fx = 0.8 + i * 2.25;
+    s.addShape(pres.shapes.RECTANGLE, { x: fx, y: 1.85, w: 2.05, h: 1.5, fill: { color: C.bgCard }, shadow: cardShadow() });
+    s.addShape(pres.shapes.RECTANGLE, { x: fx, y: 1.85, w: 2.05, h: 0.05, fill: { color: fs.color } });
+    s.addText(fs.num, {
+      x: fx + 0.1, y: 2.05, w: 1.85, h: 0.7,
+      fontSize: 36, fontFace: "Arial", color: fs.color, bold: true, align: "center", valign: "middle", margin: 0
+    });
+    s.addText(fs.label, {
+      x: fx + 0.1, y: 2.8, w: 1.85, h: 0.35,
+      fontSize: 12, fontFace: "Calibri", color: C.mutedLight, align: "center", margin: 0
+    });
+  });
+
+  // Why free matters
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 3.6, w: 8.4, h: 0.7, fill: { color: "0D2920" }, shadow: cardShadow() });
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 3.6, w: 0.06, h: 0.7, fill: { color: C.accent } });
+  s.addText("WHY FREE MATTERS", {
+    x: 1.1, y: 3.65, w: 3, h: 0.25, fontSize: 10, fontFace: "Arial", color: C.accent, charSpacing: 2, bold: true, margin: 0
+  });
+  s.addText("Every dollar your competitor spends on licensing, you invest in capability. The gap compounds daily.", {
+    x: 1.1, y: 3.9, w: 7.8, h: 0.3, fontSize: 13, fontFace: "Calibri", color: C.mutedLight, margin: 0
+  });
+
+  // Bottom callout
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 4.55, w: 8.4, h: 0.65, fill: { color: C.bgAlt } });
+  s.addText("This isn't a trial or freemium trap. This is the full production stack. Open source forever.", {
+    x: 1.0, y: 4.55, w: 8, h: 0.65, fontSize: 14, fontFace: "Georgia", color: C.accent, italic: true, align: "center", valign: "middle", margin: 0
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -498,9 +579,9 @@ async function build() {
   const useCases = [
     { sector: "Healthcare", impact: "HIPAA trivially solved", detail: "Diagnostics run on the device. Patient data never leaves the hospital." },
     { sector: "Defense", impact: "Classified AI, zero network", detail: "Full AI capability in air-gapped environments. No internet required." },
-    { sector: "Field Workers", impact: "Full AI without internet", detail: "Remote workers get complete AI on their laptop — offline, anywhere." },
+    { sector: "Field Workers", impact: "Full AI without internet", detail: "Remote workers get complete AI on their laptop \u2014 offline, anywhere." },
     { sector: "Retail", impact: "Real-time recommendations", detail: "POS systems run AI locally. No cloud round-trip. Instant response." },
-    { sector: "IoT / Edge", impact: "AI on every device", detail: "Sensors, cameras, devices — each one becomes an intelligent endpoint." },
+    { sector: "IoT / Edge", impact: "AI on every device", detail: "Sensors, cameras, devices \u2014 each one becomes an intelligent endpoint." },
     { sector: "Developing World", impact: "Same capability as anyone", detail: "A clinic in rural Africa gets the same AI as Johns Hopkins." },
   ];
 
@@ -628,41 +709,87 @@ async function build() {
   });
 
   // ═══════════════════════════════════════════════════════════
-  // SLIDE 10: ROI
+  // SLIDE 10: WE BUILT THE FUTURE EARLY (replaces ROI)
   // ═══════════════════════════════════════════════════════════
   s = pres.addSlide();
   s.background = { color: C.bg };
   s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
 
-  s.addText("The ROI Is Transformational", {
-    x: 0.8, y: 0.4, w: 8, h: 0.6, fontSize: 32, fontFace: "Georgia", color: C.white, bold: true, margin: 0
+  s.addText("We Built the Future 8 Months Early", {
+    x: 0.8, y: 0.35, w: 8.4, h: 0.6, fontSize: 28, fontFace: "Georgia", color: C.white, bold: true, margin: 0
   });
 
-  const roiCards = [
-    { before: "$30-40M/mo", after: "$1.7M/mo", saving: "95%", label: "Operational Cost" },
-    { before: "Full storage", after: "4% storage", saving: "96%", label: "Memory/Storage" },
-    { before: "Full token cost", after: "25-50% of cost", saving: "50-75%", label: "Token Optimization" },
-    { before: "Full memory", after: "6-12% memory", saving: "88-94%", label: "KV Cache (INT4)" },
+  s.addText("In March 2026, Anthropic launched \"sub-agents\" for Claude Code. Ruflo shipped multi-agent orchestration in August 2025.", {
+    x: 0.8, y: 0.95, w: 8.4, h: 0.45, fontSize: 14, fontFace: "Calibri", color: C.muted, margin: 0
+  });
+
+  // Timeline visual
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 1.6, w: 8.4, h: 1.1, fill: { color: C.bgCard }, shadow: cardShadow() });
+
+  // Aug 2025 marker
+  s.addShape(pres.shapes.RECTANGLE, { x: 1.2, y: 1.75, w: 0.12, h: 0.8, fill: { color: C.accent } });
+  s.addText("AUG 2025", { x: 1.5, y: 1.75, w: 1.5, h: 0.25, fontSize: 10, fontFace: "Arial", color: C.accent, bold: true, charSpacing: 1, margin: 0 });
+  s.addText("Ruflo ships multi-agent\norchestration (sub-agents)", { x: 1.5, y: 2.0, w: 2.5, h: 0.4, fontSize: 11, fontFace: "Calibri", color: C.mutedLight, margin: 0 });
+
+  // Arrow between
+  s.addShape(pres.shapes.RECTANGLE, { x: 4.2, y: 2.05, w: 1.5, h: 0.04, fill: { color: C.muted } });
+  s.addText("8 months", { x: 4.2, y: 1.8, w: 1.5, h: 0.25, fontSize: 10, fontFace: "Arial", color: C.gold, bold: true, align: "center", margin: 0 });
+
+  // Mar 2026 marker
+  s.addShape(pres.shapes.RECTANGLE, { x: 5.9, y: 1.75, w: 0.12, h: 0.8, fill: { color: C.muted } });
+  s.addText("MAR 2026", { x: 6.2, y: 1.75, w: 1.5, h: 0.25, fontSize: 10, fontFace: "Arial", color: C.muted, bold: true, charSpacing: 1, margin: 0 });
+  s.addText("Claude Code ships\nsub-agents (8 months later)", { x: 6.2, y: 2.0, w: 2.5, h: 0.4, fontSize: 11, fontFace: "Calibri", color: C.muted, margin: 0 });
+
+  // Subtitle
+  s.addText("This pattern repeats across the stack. RuvNet doesn't follow the industry \u2014 the industry follows RuvNet.", {
+    x: 0.8, y: 2.85, w: 8.4, h: 0.35, fontSize: 13, fontFace: "Georgia", color: C.accent, italic: true, margin: 0
+  });
+
+  // Proof points - 4 cards in a 2x2 grid
+  const proofPoints = [
+    {
+      name: "RuVector",
+      desc: "In-process vector search.",
+      industry: "Industry still uses external vector databases.",
+      color: C.accent,
+    },
+    {
+      name: "AIMDS",
+      desc: "Chaos theory security.",
+      industry: "Industry still uses rule-based WAFs.",
+      color: "0EA5E9",
+    },
+    {
+      name: "RVF",
+      desc: "5.5KB cognitive containers.",
+      industry: "Industry still uses Docker (50-500MB).",
+      color: C.accentAlt,
+    },
+    {
+      name: "SONA",
+      desc: "Self-optimizing neural architecture.",
+      industry: "Industry uses static models.",
+      color: C.gold,
+    },
   ];
 
-  roiCards.forEach((rc, i) => {
-    const rx = 0.8 + i * 2.25;
-    s.addShape(pres.shapes.RECTANGLE, { x: rx, y: 1.3, w: 2.05, h: 2.8, fill: { color: C.bgCard }, shadow: cardShadow() });
-    s.addShape(pres.shapes.RECTANGLE, { x: rx, y: 1.3, w: 2.05, h: 0.05, fill: { color: C.accent } });
+  proofPoints.forEach((pp, i) => {
+    const col = i % 2;
+    const row = Math.floor(i / 2);
+    const px = 0.8 + col * 4.4;
+    const py = 3.35 + row * 0.85;
 
-    s.addText(rc.label, { x: rx + 0.12, y: 1.45, w: 1.8, h: 0.3, fontSize: 11, fontFace: "Arial", color: C.white, bold: true, margin: 0 });
-    s.addText("BEFORE", { x: rx + 0.12, y: 1.85, w: 1.8, h: 0.2, fontSize: 8, fontFace: "Arial", color: C.warn, charSpacing: 2, margin: 0 });
-    s.addText(rc.before, { x: rx + 0.12, y: 2.05, w: 1.8, h: 0.3, fontSize: 14, fontFace: "Arial", color: C.muted, margin: 0 });
-    s.addText("AFTER", { x: rx + 0.12, y: 2.5, w: 1.8, h: 0.2, fontSize: 8, fontFace: "Arial", color: C.accent, charSpacing: 2, margin: 0 });
-    s.addText(rc.after, { x: rx + 0.12, y: 2.7, w: 1.8, h: 0.3, fontSize: 14, fontFace: "Arial", color: C.accent, bold: true, margin: 0 });
-
-    s.addText(rc.saving, { x: rx + 0.12, y: 3.2, w: 1.8, h: 0.55, fontSize: 32, fontFace: "Arial", color: C.accent, bold: true, margin: 0 });
-    s.addText("reduction", { x: rx + 0.12, y: 3.7, w: 1.8, h: 0.2, fontSize: 10, fontFace: "Calibri", color: C.muted, margin: 0 });
+    s.addShape(pres.shapes.RECTANGLE, { x: px, y: py, w: 4.1, h: 0.7, fill: { color: C.bgCard }, shadow: cardShadow() });
+    s.addShape(pres.shapes.RECTANGLE, { x: px, y: py, w: 0.06, h: 0.7, fill: { color: pp.color } });
+    s.addText(pp.name, { x: px + 0.2, y: py + 0.05, w: 1.2, h: 0.25, fontSize: 12, fontFace: "Arial", color: pp.color, bold: true, margin: 0 });
+    s.addText(pp.desc, { x: px + 1.4, y: py + 0.05, w: 2.5, h: 0.25, fontSize: 10, fontFace: "Calibri", color: C.mutedLight, margin: 0 });
+    s.addText(pp.industry, { x: px + 0.2, y: py + 0.35, w: 3.7, h: 0.25, fontSize: 10, fontFace: "Calibri", color: C.muted, italic: true, margin: 0 });
   });
 
-  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 4.4, w: 8.4, h: 0.5, fill: { color: C.bgAlt } });
-  s.addText("The savings aren't incremental. They're transformational. Open source means zero licensing cost.", {
-    x: 1.0, y: 4.4, w: 8, h: 0.5, fontSize: 13, fontFace: "Calibri", color: C.accent, italic: true, align: "center", valign: "middle", margin: 0
+  // Bottom bar
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 5.15, w: 8.4, h: 0.4, fill: { color: "0D2920" } });
+  s.addText("Two standard deviations beyond state of the art. And it's free.", {
+    x: 1.0, y: 5.15, w: 8, h: 0.4, fontSize: 13, fontFace: "Georgia", color: C.accent, bold: true, valign: "middle", align: "center", margin: 0
   });
 
   // ═══════════════════════════════════════════════════════════
@@ -695,7 +822,7 @@ async function build() {
   });
 
   s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 4.85, w: 8.4, h: 0.4, fill: { color: "2A1520" } });
-  s.addText("6-9 month window before commoditization. None of this can be replicated.", {
+  s.addText("This advantage compounds at the speed of AI. Every week you wait, you fall further behind.", {
     x: 1.0, y: 4.85, w: 8, h: 0.4, fontSize: 12, fontFace: "Calibri", color: C.warn, bold: true, valign: "middle", margin: 0
   });
 
@@ -773,7 +900,7 @@ async function build() {
   // Timeline
   const timeline = [
     { when: "NOW", who: "RuvNet", what: "Full 148-capability stack shipping today", color: C.accent, barW: 8.4 },
-    { when: "Q3 2026", who: "Anthropic", what: "Basic orchestration (MCP expansion)", color: C.muted, barW: 5.5 },
+    { when: "Q3 2026", who: "Anthropic", what: "Basic orchestration (sub-agents \u2014 8 months after Ruflo)", color: C.muted, barW: 5.5 },
     { when: "Q4 2026", who: "OpenAI", what: "Agent framework (limited capabilities)", color: C.muted, barW: 4.0 },
     { when: "2027+", who: "Google / AWS", what: "Partial stack (no WASM, no Prime Radiant)", color: C.muted, barW: 2.5 },
   ];
@@ -865,7 +992,7 @@ async function build() {
     s.addText(st.label, { x: sx, y: 4.25, w: 2, h: 0.25, fontSize: 11, fontFace: "Calibri", color: C.muted, margin: 0 });
   });
 
-  s.addText("The deepest agentic infrastructure available.  Open source.  MIT license.", {
+  s.addText("Two standard deviations beyond state of the art.  Open source.  Free.  Use it.", {
     x: 0.8, y: 4.8, w: 8.4, h: 0.3, fontSize: 13, fontFace: "Georgia", color: C.muted, italic: true, margin: 0
   });
   s.addText("ruvnet.com", {
