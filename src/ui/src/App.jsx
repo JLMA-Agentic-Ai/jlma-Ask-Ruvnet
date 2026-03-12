@@ -52,8 +52,8 @@ const timeAgo = (dateStr) => {
 
 // CEO & CTO presentation decks
 const DECK_DOCS = [
-  { file: 'Ruflo-v35-CEO-Deck.pdf', title: 'CEO Deck: Ruflo v3.5 Agentic Intelligence', desc: 'Business vision, market opportunity, and strategic roadmap', icon: '👔', type: 'pdf' },
-  { file: 'Ruflo-v35-CTO-Deck.pdf', title: 'CTO Deck: Ruflo v3.5 Technical Architecture', desc: 'Architecture deep-dive, performance benchmarks, and stack overview', icon: '🔧', type: 'pdf' },
+  { file: 'Ruflo-v35-CEO-Deck.pdf', title: 'CEO Deck: RuvNet — The Complete Agentic Stack', desc: 'Why RuvNet is 2 std devs beyond state of the art, free, and compounds at AI speed', icon: '👔', type: 'pdf' },
+  { file: 'Ruflo-v35-CTO-Deck.pdf', title: 'CTO Deck: RuvNet Technical Architecture', desc: 'Architecture deep-dive — RuVector, Ruflo, AIMDS, RVF, SONA, benchmarks', icon: '🔧', type: 'pdf' },
 ];
 
 // NotebookLM deep-dive interactive notebook
