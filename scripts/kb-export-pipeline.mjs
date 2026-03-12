@@ -103,11 +103,11 @@ async function queryPgCount() {
   }
 }
 
-function runStage(label, scriptName, timeoutMs) {
+function runStage(label, scriptName, timeoutMs, extraArgs = []) {
   const scriptPath = path.join(PROJECT_ROOT, 'scripts', scriptName);
-  log(`Stage: ${label} -- running ${scriptName}`);
+  log(`Stage: ${label} -- running ${scriptName}${extraArgs.length ? ' ' + extraArgs.join(' ') : ''}`);
   const stdio = FLAGS.verbose ? 'inherit' : ['ignore', 'ignore', 'inherit'];
-  execFileSync(NODE_BIN, [scriptPath], {
+  execFileSync(NODE_BIN, [scriptPath, ...extraArgs], {
     cwd: PROJECT_ROOT,
     stdio,
     timeout: timeoutMs,
@@ -144,11 +144,11 @@ async function main() {
 
   log(`Manifest vectorCount:       ${manifestCount}`);
 
-  const isStale = pgCount > manifestCount;
+  const isStale = pgCount !== manifestCount;
 
   if (FLAGS.check) {
     if (isStale) {
-      log(`STALE: PG has ${pgCount - manifestCount} new entries`);
+      log(`STALE: PG=${pgCount} vs Manifest=${manifestCount} (delta: ${pgCount - manifestCount})`);
       process.exit(1);
     } else {
       log('UP TO DATE');
@@ -157,7 +157,7 @@ async function main() {
   }
 
   if (!FLAGS.force && !isStale && !FLAGS.stage1Only && !FLAGS.stage2Only) {
-    log('No new entries detected. Use --force to re-export anyway.');
+    log('Counts match. Use --force to re-export anyway.');
     appendLogEntry({
       timestamp: new Date().toISOString(),
       action: 'skip',
@@ -173,7 +173,11 @@ async function main() {
   // -----------------------------------------------------------------------
 
   if (!FLAGS.stage2Only) {
-    runStage('1 (PG -> binary)', 'export-to-ruvectorstore.mjs', 900_000);
+    // Use --fresh when counts diverge (entries were added OR deleted in PG)
+    const needsFresh = pgCount !== manifestCount;
+    const stage1Args = needsFresh ? ['--fresh'] : [];
+    if (needsFresh) log(`Count mismatch (PG=${pgCount}, manifest=${manifestCount}) -- using --fresh rebuild`);
+    runStage('1 (PG -> binary)', 'export-to-ruvectorstore.mjs', 900_000, stage1Args);
   }
 
   // -----------------------------------------------------------------------
@@ -195,8 +199,8 @@ async function main() {
     log(`WARNING: Manifest (${newManifestCount}) < PG (${pgCount}). Partial export?`);
   }
 
-  if (newManifestCount > manifestCount) {
-    log(`SUCCESS: ${newManifestCount - manifestCount} new vectors exported`);
+  if (newManifestCount !== manifestCount) {
+    log(`SUCCESS: Manifest updated ${manifestCount} -> ${newManifestCount} (delta: ${newManifestCount - manifestCount})`);
   } else if (FLAGS.force) {
     log('Force re-export complete (counts unchanged)');
   }
