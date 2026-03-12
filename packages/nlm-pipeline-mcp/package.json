@@ -1,16 +1,16 @@
 {
-  "name": "@ruvnet/nlm-pipeline-mcp",
+  "name": "ask-ruvnet-mcp",
   "version": "0.1.0",
-  "description": "MCP server for NotebookLM source refresh + studio generation pipeline",
+  "description": "MCP server for Ask-RuvNet — NotebookLM source refresh + studio generation pipeline",
   "type": "module",
   "bin": {
-    "nlm-pipeline-mcp": "./src/index.mjs"
+    "ask-ruvnet-mcp": "bin/cli.cjs"
   },
   "main": "./src/index.mjs",
   "scripts": {
     "start": "node src/index.mjs"
   },
-  "keywords": ["mcp", "notebooklm", "nlm", "pipeline", "ai", "studio"],
+  "keywords": ["mcp", "notebooklm", "nlm", "pipeline", "ai", "studio", "ruvnet", "ask-ruvnet"],
   "author": "RuvNet",
   "license": "MIT",
   "engines": {

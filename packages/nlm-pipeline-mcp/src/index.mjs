@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @ruvnet/nlm-pipeline-mcp — MCP server for NotebookLM pipeline management
+ * ask-ruvnet-mcp — MCP server for Ask-RuvNet NotebookLM pipeline management
  *
  * Tools:
  *   nlm_refresh_sources  — Check GitHub repos for changes, refresh stale NotebookLM sources
@@ -20,8 +20,8 @@
  *   GITHUB_TOKEN          — Optional: for private repos
  *
  * Usage:
- *   npx @ruvnet/nlm-pipeline-mcp
- *   claude mcp add nlm-pipeline -- npx @ruvnet/nlm-pipeline-mcp
+ *   npx ask-ruvnet-mcp
+ *   claude mcp add ask-ruvnet -- npx ask-ruvnet-mcp
  */
 
 import { createInterface } from 'readline';
@@ -130,7 +130,7 @@ async function githubGet(url) {
   const token = await getGitHubToken();
   const headers = {
     'Accept': 'application/vnd.github+json',
-    'User-Agent': 'nlm-pipeline-mcp/1.0',
+    'User-Agent': 'ask-ruvnet-mcp/1.0',
   };
   if (token) headers['Authorization'] = `Bearer ${token}`;
 
@@ -680,7 +680,7 @@ class NlmPipelineMcpServer {
         return this.respond(id, {
           protocolVersion: '2024-11-05',
           capabilities: { tools: {} },
-          serverInfo: { name: 'nlm-pipeline-mcp', version: '0.1.0' }
+          serverInfo: { name: 'ask-ruvnet-mcp', version: '0.1.0' }
         });
 
       case 'tools/list':
@@ -748,7 +748,7 @@ async function main() {
     }
   });
 
-  process.stderr.write('nlm-pipeline-mcp server started (stdio)\n');
+  process.stderr.write('ask-ruvnet-mcp server started (stdio)\n');
 }
 
 main().catch(err => {

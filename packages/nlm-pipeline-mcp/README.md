@@ -1,19 +1,19 @@
-# @ruvnet/nlm-pipeline-mcp
+# ask-ruvnet-mcp
 
-An MCP server that manages NotebookLM source refresh and studio generation for the RuvNet ecosystem. It monitors GitHub repositories for changes, syncs sources into NotebookLM, and orchestrates studio artifact creation.
+An MCP server that manages NotebookLM source refresh and studio generation for the Ask-RuvNet ecosystem. It monitors GitHub repositories for changes, syncs sources into NotebookLM, and orchestrates studio artifact creation.
 
 ## Quick Start
 
 Add the server to Claude Code:
 
 ```bash
-claude mcp add nlm-pipeline -- npx @ruvnet/nlm-pipeline-mcp
+claude mcp add ask-ruvnet -- npx ask-ruvnet-mcp
 ```
 
 Or run directly:
 
 ```bash
-npx @ruvnet/nlm-pipeline-mcp
+npx ask-ruvnet-mcp
 ```
 
 ## Environment Variables

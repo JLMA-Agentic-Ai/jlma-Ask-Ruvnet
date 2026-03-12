@@ -80,7 +80,7 @@ Package the NotebookLM source refresh + studio pipeline as a publishable MCP ser
 - [x] **6.5** Add `npx` support: `npx @ruvnet/nlm-pipeline-mcp` to run the server
 - [x] **6.6** Write README with setup instructions, tool descriptions, and example usage
 - [x] **6.7** Test with Claude Code: `claude mcp add nlm-pipeline -- npx @ruvnet/nlm-pipeline-mcp`
-- [ ] **6.8** Publish to npm
+- [x] **6.8** Publish to npm (published as `ask-ruvnet-mcp` v0.1.0 — `npx ask-ruvnet-mcp`)
 
 ## 7. On-Ramp Enhancement (Research-Based)
 
@@ -137,8 +137,8 @@ Areas identified through research that should not be overlooked.
 | 3. NLM Utilization | 7 | 7 | 0 |
 | 4. CEO Deck | 9 | 9 | 0 |
 | 5. CTO Deck | 10 | 10 | 0 |
-| 6. MCP Package | 8 | 7 | 1 (publish to npm) |
+| 6. MCP Package | 8 | 8 | 0 |
 | 7. On-Ramp | 7 | 6 | 1 (7.7 future) |
 | 8. Documentation | 5 | 5 | 0 |
 | 9. Additional | 7 | 7 | 0 |
-| **TOTAL** | **64** | **62** | **2** |
+| **TOTAL** | **64** | **63** | **1** |
