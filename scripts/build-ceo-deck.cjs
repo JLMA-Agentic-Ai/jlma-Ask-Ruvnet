@@ -2,6 +2,7 @@ const pptxgen = require("pptxgenjs");
 const React = require("react");
 const ReactDOMServer = require("react-dom/server");
 const sharp = require("sharp");
+const path = require("path");
 
 // ─── Icon rendering ────────────────────────────────────────
 function renderIconSvg(IconComponent, color, size = 256) {
@@ -28,6 +29,15 @@ const C = {
   muted:     "8899AA",
   mutedLight:"B0BEC5",
   light:     "F0F4F8",
+};
+
+const IMG = {
+  arch: path.resolve(__dirname, "../docs/presentations/images/01-architecture-overview.png"),
+  sovereignty: path.resolve(__dirname, "../docs/presentations/images/02-data-sovereignty.png"),
+  compound: path.resolve(__dirname, "../docs/presentations/images/03-compounding-advantage.png"),
+  banner: path.resolve(__dirname, "../docs/presentations/images/ruflo-banner.jpeg"),
+  agenticStack: path.resolve(__dirname, "../docs/presentations/images/video-thumb-The_Agentic_Stack-mid.jpg"),
+  impossibleApps: path.resolve(__dirname, "../docs/presentations/images/video-thumb-Impossible_Apps_RuvNet-mid.jpg"),
 };
 
 // Helpers
@@ -57,8 +67,10 @@ async function build() {
     margin: 0
   });
 
+  s.addImage({ path: IMG.arch, x: 6.8, y: 1.2, w: 3.0, h: 2.0, transparency: 55 });
+
   s.addText("Your AI Projects\nAre Failing.", {
-    x: 0.8, y: 1.6, w: 8.4, h: 1.6,
+    x: 0.8, y: 1.6, w: 5.5, h: 1.6,
     fontSize: 48, fontFace: "Georgia", color: C.white, bold: true,
     margin: 0
   });
@@ -207,6 +219,8 @@ async function build() {
     { name: "RVF", role: "The Container", desc: "Pack AI into a single file.\nBrowser, kernel, or bare metal", stat: "5.5KB runtime", color: C.gold },
     { name: "SONA", role: "The Teacher", desc: "System gets smarter with every\ndecision. Zero cost learning", stat: "$0 per cycle", color: "E879F9" },
   ];
+
+  s.addImage({ path: IMG.arch, x: 1.5, y: 1.2, w: 7.0, h: 4.0, transparency: 70 });
 
   modules.forEach((m, i) => {
     const col = i % 3;
@@ -364,6 +378,8 @@ async function build() {
   s.addText("Your Data Never Leaves Your Building", {
     x: 0.8, y: 0.55, w: 8.4, h: 0.55, fontSize: 28, fontFace: "Georgia", color: C.white, bold: true, margin: 0
   });
+
+  s.addImage({ path: IMG.sovereignty, x: 0, y: 0, w: 10, h: 5.625, transparency: 92 });
 
   // The problem
   s.addShape(pres.shapes.RECTANGLE, { x: 0.8, y: 1.25, w: 4.1, h: 2.8, fill: { color: "1A1520" }, shadow: cardShadow() });
@@ -673,6 +689,8 @@ async function build() {
     x: 0.8, y: 0.95, w: 8, h: 0.3, fontSize: 14, fontFace: "Calibri", color: C.muted, margin: 0
   });
 
+  s.addImage({ path: IMG.agenticStack, x: 6.0, y: 0.2, w: 3.5, h: 2.0, transparency: 75 });
+
   const benchHeaders = [
     { text: "Capability", options: { bold: true, color: C.accent, fontSize: 11, fontFace: "Arial", fill: { color: C.bgAlt } } },
     { text: "RuvNet", options: { bold: true, color: C.accent, fontSize: 11, fontFace: "Arial", fill: { color: C.bgAlt }, align: "center" } },
@@ -805,6 +823,8 @@ async function build() {
   s.addText("Organizations deploying now accumulate advantages that cannot be replicated.", {
     x: 0.8, y: 0.95, w: 8, h: 0.35, fontSize: 14, fontFace: "Calibri", color: C.muted, margin: 0
   });
+
+  s.addImage({ path: IMG.compound, x: 0, y: 0, w: 10, h: 5.625, transparency: 93 });
 
   const advantages = [
     { title: "Proprietary Training Data", desc: "Every interaction generates training data unique to your organization. SONA converts this into LoRA adapters automatically. Your AI gets smarter from your data.", color: C.accent },

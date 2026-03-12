@@ -1,4 +1,5 @@
 const pptxgen = require("pptxgenjs");
+const path = require("path");
 
 // ─── Color Palette (Ocean/Tech) ────────────────────────────
 const C = {
@@ -14,6 +15,16 @@ const C = {
   white:     "F8FAFC",   // slate-50
   muted:     "94A3B8",   // slate-400
   mutedLight:"CBD5E1",   // slate-300
+};
+
+const IMG = {
+  arch: path.resolve(__dirname, "../docs/presentations/images/01-architecture-overview.png"),
+  sovereignty: path.resolve(__dirname, "../docs/presentations/images/02-data-sovereignty.png"),
+  compound: path.resolve(__dirname, "../docs/presentations/images/03-compounding-advantage.png"),
+  codeTerminal: path.resolve(__dirname, "../docs/presentations/images/04-code-terminal.png"),
+  banner: path.resolve(__dirname, "../docs/presentations/images/ruflo-banner.jpeg"),
+  howItWorks: path.resolve(__dirname, "../docs/presentations/images/video-thumb-How_Ruflo_Actually_Works-mid.jpg"),
+  impossibleApps: path.resolve(__dirname, "../docs/presentations/images/video-thumb-Impossible_Apps_RuvNet-mid.jpg"),
 };
 
 const shadow = () => ({ type: "outer", blur: 6, offset: 2, angle: 135, color: "000000", opacity: 0.25 });
@@ -34,11 +45,12 @@ async function build() {
   s.addText("RUVNET", {
     x: 0.8, y: 0.8, w: 8.4, h: 0.5, fontSize: 16, fontFace: "Consolas", color: C.accent, charSpacing: 6, margin: 0
   });
+  s.addImage({ path: IMG.arch, x: 6.8, y: 1.2, w: 3.0, h: 2.0, transparency: 55 });
   s.addText("Technical Architecture\nDeep Dive", {
-    x: 0.8, y: 1.5, w: 8.4, h: 1.4, fontSize: 44, fontFace: "Cambria", color: C.white, bold: true, margin: 0
+    x: 0.8, y: 1.5, w: 5.5, h: 1.4, fontSize: 44, fontFace: "Cambria", color: C.white, bold: true, margin: 0
   });
   s.addText("148 capabilities across 14 modules. Production-grade agentic infrastructure.", {
-    x: 0.8, y: 3.0, w: 7, h: 0.5, fontSize: 16, fontFace: "Calibri", color: C.muted, margin: 0
+    x: 0.8, y: 3.0, w: 5.5, h: 0.5, fontSize: 16, fontFace: "Calibri", color: C.muted, margin: 0
   });
 
   const titleStats = [
@@ -127,6 +139,8 @@ async function build() {
     x: 0.8, y: 0.75, w: 8, h: 0.25, fontSize: 13, fontFace: "Calibri", color: C.muted, margin: 0
   });
 
+  s.addImage({ path: IMG.arch, x: 1.0, y: 1.0, w: 8.0, h: 4.0, transparency: 90 });
+
   // Pipeline flow
   const pipeline = [
     { name: "Input", sub: "", color: C.muted, w: 0.8 },
@@ -185,6 +199,7 @@ async function build() {
   s = pres.addSlide();
   s.background = { color: C.bg };
   s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
+  s.addImage({ path: IMG.sovereignty, x: 0, y: 0, w: 10, h: 5.625, transparency: 85 });
 
   s.addText("ONLY POSSIBLE WITH RUVNET", { x: 0.8, y: 0.3, w: 4, h: 0.25, fontSize: 11, fontFace: "Consolas", color: C.warn, charSpacing: 3, bold: true, margin: 0 });
   s.addText("Enterprise AI Without Data Leakage", {
@@ -646,6 +661,7 @@ async function build() {
   s = pres.addSlide();
   s.background = { color: C.bg };
   s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
+  s.addImage({ path: IMG.codeTerminal, x: 0, y: 0, w: 10, h: 5.625, transparency: 92 });
 
   s.addText("Ship It In 5 Lines", {
     x: 0.8, y: 0.3, w: 8, h: 0.5, fontSize: 28, fontFace: "Cambria", color: C.white, bold: true, margin: 0
@@ -814,6 +830,7 @@ async function build() {
   s = pres.addSlide();
   s.background = { color: C.bg };
   s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
+  s.addImage({ path: IMG.compound, x: 0, y: 0, w: 10, h: 5.625, transparency: 93 });
 
   s.addText("We Built the Future 8 Months Early", {
     x: 0.8, y: 0.35, w: 8.4, h: 0.5, fontSize: 28, fontFace: "Cambria", color: C.white, bold: true, margin: 0
@@ -930,6 +947,7 @@ async function build() {
   s = pres.addSlide();
   s.background = { color: C.bg };
   s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 10, h: 0.06, fill: { color: C.accent } });
+  s.addImage({ path: IMG.howItWorks, x: 6.0, y: 0.2, w: 3.5, h: 2.0, transparency: 75 });
 
   s.addText("Performance Benchmarks", {
     x: 0.8, y: 0.35, w: 8, h: 0.5, fontSize: 28, fontFace: "Cambria", color: C.white, bold: true, margin: 0
