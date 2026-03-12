@@ -1,6 +1,6 @@
 {
   "name": "answerbot-builder",
-  "version": "3.6.1",
+  "version": "3.6.2",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -54,7 +54,13 @@
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "ruv-swarm": "^1.0.20",
-    "sharp": "^0.34.5",
     "tesseract.js": "^6.0.1"
+  },
+  "devDependencies": {
+    "pptxgenjs": "^4.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-icons": "^5.6.0",
+    "sharp": "^0.34.5"
   }
 }
