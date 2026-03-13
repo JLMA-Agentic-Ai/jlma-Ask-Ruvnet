@@ -5,7 +5,7 @@ Created: 2026-02-21
 
 ## Overview
 
-This document defines the comprehensive testing strategy for the AskRuvNet application — a Node.js/Express RAG (Retrieval-Augmented Generation) server backed by a PostgreSQL knowledge base of 54,543 enriched entries, ONNX embeddings (all-MiniLM-L6-v2, 384 dimensions), and a 5-provider LLM fallback chain (groq-free → openai → anthropic → openrouter → deepseek).
+This document defines the comprehensive testing strategy for the AskRuvNet application — a Node.js/Express RAG (Retrieval-Augmented Generation) server backed by an RVF knowledge base of 102,857 vectors (knowledge.rvf, HNSW-indexed), ONNX embeddings (all-MiniLM-L6-v2, 384 dimensions), and a 5-provider LLM fallback chain (groq-free → openai → anthropic → openrouter → deepseek).
 
 Production URL: https://ask-ruvnet-production.up.railway.app
 
@@ -18,7 +18,7 @@ Production URL: https://ask-ruvnet-production.up.railway.app
 - Chat endpoint returns no answer
 - KB entry count drops below 50,000
 - ONNX embedding pipeline fails to initialize
-- PostgreSQL connection pool exhausted
+- RVF file fails to load or is corrupt
 
 ### High Risk (P1 — Degrades quality silently)
 - Search returns low-relevance results
@@ -62,12 +62,12 @@ These tests run against the live deployment and must pass before any release is 
 **Endpoint:** GET /api/kb-stats
 **Expectation:**
 - HTTP 200
-- `backend` field equals `"PostgreSQL RuVector"`
+- `backend` field contains `"RuVector"` or `"RVF"`
 - `connected` field equals `true`
 - `domains.ask_ruvnet.total` > 50,000
 - Response time < 3000ms
 
-**Failure action:** PostgreSQL connection may be down. Check Neon database status. Verify DATABASE_URL environment variable is set.
+**Failure action:** RVF file may not be loaded. Check that knowledge.rvf exists and was extracted at startup. No DATABASE_URL needed — KB is embedded.
 
 ### 2.3 Knowledge Inventory
 
@@ -75,7 +75,7 @@ These tests run against the live deployment and must pass before any release is 
 **Expectation:**
 - HTTP 200
 - `kb_stats.total` > 50,000
-- `kb_backend` field equals `"PostgreSQL RuVector"`
+- `kb_backend` field contains `"RuVector"` or `"RVF"`
 - `repos` array is non-empty
 - Response time < 5000ms
 
@@ -111,7 +111,7 @@ Complete coverage of all routes defined in src/server/app.js.
 |-----------|-------|----------|
 | Connected state | GET /api/kb-stats | 200, connected: true |
 | Entry count | GET /api/kb-stats | total > 50000 |
-| Backend label | GET /api/kb-stats | backend contains "PostgreSQL" |
+| Backend label | GET /api/kb-stats | backend contains "RuVector" or "RVF" |
 | Domain breakdown | GET /api/kb-stats | domains object present |
 
 ### 3.3 GET /api/knowledge
@@ -181,7 +181,7 @@ For each test query, the top result should achieve a relevance score >= 0.4 and 
 
 ### 4.2 Intent Detection Accuracy
 
-The `detectIntent()` function in PostgresKnowledgeBase.js must classify queries correctly. Test by verifying that intent-specific searches return appropriately typed content.
+The intent detection logic must classify queries correctly. Test by verifying that intent-specific searches return appropriately typed content.
 
 | Query Pattern | Expected Intent |
 |---------------|----------------|

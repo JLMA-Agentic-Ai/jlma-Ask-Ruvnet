@@ -86,6 +86,14 @@ export const WATCH_TARGETS = [
     watchDocs: ['CHANGELOG.md', 'README.md'],
     label: 'Ruv Swarm',
   },
+  {
+    id: 'ruview',
+    owner: 'ruvnet',
+    repo: 'RuView',
+    npm: null,
+    watchDocs: ['CHANGELOG.md', 'README.md', 'docs/'],
+    label: 'RuView (DensePose)',
+  },
 ];
 
 // ---------------------------------------------------------------------------

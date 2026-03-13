@@ -3,9 +3,11 @@
  * kb-export-pipeline.mjs -- Automated KB export pipeline
  *
  * Detects when PostgreSQL KB has new entries that are not yet in the
- * binary RuvectorStore files, then runs a two-stage rebuild:
+ * binary RuvectorStore files, then runs a multi-stage rebuild:
  *   Stage 1: PG -> .ruvector/knowledge-base/ (binary vectors + metadata)
  *   Stage 2: binary -> src/ui/public/assets/ (scalar-quantized browser assets)
+ *   Stage 3: binary -> RVF (convert-to-rvf.mjs)
+ *   Stage 4: binary -> MCP KB (export-mcp-kb.mjs)
  *
  * CLI flags:
  *   --force       Skip count comparison, always re-export
@@ -16,7 +18,7 @@
  *
  * Scheduled via LaunchAgent ai.openclaw.kb-export at 5:00 AM daily.
  *
- * Updated: 2026-03-06 00:00:00 EST | Version 1.0.0
+ * Updated: 2026-03-12 00:00:00 EST | Version 1.1.0
  * Created: 2026-03-06
  */
 
@@ -211,6 +213,15 @@ async function main() {
     runStage('3 (binary -> RVF)', 'convert-to-rvf.mjs', 300_000);
   } catch (err) {
     log(`WARNING: RVF conversion failed: ${err.message}`);
+  }
+
+  // Stage 4: Export to MCP KB (non-fatal — warn but don't abort pipeline)
+  if (!FLAGS.stage1Only && !FLAGS.stage2Only) {
+    try {
+      runStage('4 (binary -> MCP KB)', 'export-mcp-kb.mjs', 120_000);
+    } catch (err) {
+      log(`WARNING: MCP KB export failed: ${err.message}`);
+    }
   }
 
   // -----------------------------------------------------------------------

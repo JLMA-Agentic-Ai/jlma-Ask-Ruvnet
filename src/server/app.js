@@ -4,23 +4,8 @@ process.env.FORCE_TRANSFORMERS = 'true';
 const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
-// RVF Native: uses @ruvector/rvf for vector search + content sidecar for text
-// Falls back to legacy RuvectorStore (PersistentVectorDB) if knowledge.rvf not found
-let StoreClass;
-try {
-    const fs = require('fs');
-    const rvfPath = require('path').resolve('knowledge.rvf');
-    if (fs.existsSync(rvfPath)) {
-        StoreClass = require('../core/RvfStore');
-        console.log('📦 Using RVF Native backend (knowledge.rvf detected)');
-    } else {
-        StoreClass = require('../core/RuvectorStore');
-        console.log('📦 Using legacy RuvectorStore backend (no knowledge.rvf found)');
-    }
-} catch {
-    StoreClass = require('../core/RuvectorStore');
-    console.log('📦 Falling back to RuvectorStore backend');
-}
+// RVF Native: embedded vector search via knowledge.rvf + content sidecar
+const StoreClass = require('../core/RvfStore');
 const HybridSearch = require('../core/HybridSearch');
 const TextChunker = require('../core/TextChunker');
 const QueryExpander = require('../core/QueryExpander');
@@ -220,6 +205,22 @@ const NLM_RESOURCES = [
         url: '/assets/docs/Business_Case_Why_Your_Company_Needs_This.pdf',
         emoji: '\ud83d\udcc4',
         description: 'Business justification with cost analysis and competitive advantages'
+    },
+    {
+        topics: ['ceo', 'investment', 'enterprise ai', '2026', 'executive summary', 'ruvnet'],
+        type: 'pdf',
+        title: 'CEO Deck: RuvNet 2026',
+        url: '/assets/docs/CEO-Deck-RuvNet-2026.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Executive investment deck — market opportunity, proof points, and competitive advantage (2026)'
+    },
+    {
+        topics: ['cto', 'architecture', 'ruvnet architecture', 'technical overview', '2026', 'deep dive'],
+        type: 'pdf',
+        title: 'CTO Deck: Technical Architecture 2026',
+        url: '/assets/docs/CTO-Deck-RuvNet-2026.pdf',
+        emoji: '\ud83d\udcc4',
+        description: 'Technical architecture deep dive — 14 modules, benchmarks, and implementation roadmap (2026)'
     },
     {
         topics: ['ceo', 'investment', 'agentic intelligence', 'executive summary'],
@@ -750,8 +751,7 @@ app.use('/generated_imgs', express.static(path.join(__dirname, '../../generated_
 
 // Initialize RuVector Native Components (replaces SQLite-based HybridReasoningBank)
 let modelRouter;
-let reasoningBank; // Now a RuvectorStore instance with reflexion-compatible API
-// pgKB removed — RuvectorStore is the single source of truth
+let reasoningBank; // RvfStore instance with reflexion-compatible API
 
 // ============================================================================
 // Startup readiness flag — blocks /api/chat* until all subsystems are loaded
@@ -815,15 +815,14 @@ async function initAgenticFlow() {
             console.log('⚠️ Agentic Flow Router not available (optional)');
         }
 
-        // PRIMARY: RVF native or legacy RuvectorStore (auto-detected at import)
-        // Single source of truth — no external database dependency
+        // RVF native store — single source of truth, no external database dependency
         const store = new StoreClass();
         await store.initialize();
         reasoningBank = store;
 
         const rvStats = store.getStats();
         console.log(`✅ ${rvStats.backend || 'Knowledge store'} loaded (${rvStats.vectorCount.toLocaleString()} entries)`);
-        console.log(`📊 Knowledge Backend: ${rvStats.backend || 'RuvectorStore'}`);
+        console.log(`📊 Knowledge Backend: ${rvStats.backend || 'RVF'}`);
 
         // OPTIMIZED: Initialize hybrid search index for BM25 + semantic fusion
         await initHybridSearchIndex();
@@ -851,7 +850,7 @@ async function initHybridSearchIndex() {
 
         const allDocuments = new Map();
 
-        // Load all documents from RuvectorStore metadata (no external DB needed)
+        // Load all documents from RVF store metadata (no external DB needed)
         if (reasoningBank && reasoningBank.db && reasoningBank.db.getAllMetadata) {
             const allMeta = reasoningBank.db.getAllMetadata();
             const limit = Math.min(allMeta.length, 100000); // Phase 2 M-6: raised from 50K to 100K for fuller BM25 coverage
@@ -864,10 +863,10 @@ async function initHybridSearchIndex() {
                     id: entry.id,
                     input: `${title}\n${content}`,
                     task: title,
-                    metadata: { docId: entry.id, source: meta.source || 'ruvectorstore', content, title }
+                    metadata: { docId: entry.id, source: meta.source || 'rvf', content, title }
                 });
             }
-            console.log(`📊 Loaded ${allDocuments.size} documents from RuvectorStore for BM25`);
+            console.log(`📊 Loaded ${allDocuments.size} documents from RVF store for BM25`);
         }
 
         // Fallback: use embedding-based sampling if metadata load failed
@@ -1524,12 +1523,12 @@ app.get('/api/providers', (req, res) => {
     });
 });
 
-// KB Statistics Endpoint - shows RuvectorStore state
+// KB Statistics Endpoint - shows RVF store state
 app.get('/api/kb-stats', async (req, res) => {
     try {
         const vectorStats = reasoningBank ? reasoningBank.getStats?.() || {} : {};
         res.json({
-            backend: 'RuvectorStore (HNSW binary)',
+            backend: 'RVF (HNSW binary)',
             connected: true,
             ...vectorStats
         });
@@ -1549,7 +1548,7 @@ app.get('/api/latest-repos', async (req, res) => {
             return res.json(latestReposCache);
         }
 
-        // Compute from RuvectorStore metadata
+        // Compute from RVF store metadata
         if (reasoningBank && reasoningBank.db && reasoningBank.db.getAllMetadata) {
             const allMeta = reasoningBank.db.getAllMetadata();
             const repoCounts = new Map();
@@ -1600,7 +1599,7 @@ app.get('/api/ecosystem-stats', async (req, res) => {
             return res.json(ecosystemStatsCache);
         }
 
-        // Compute from RuvectorStore metadata
+        // Compute from RVF store metadata
         if (reasoningBank && reasoningBank.db && reasoningBank.db.getAllMetadata) {
             const allMeta = reasoningBank.db.getAllMetadata();
             const repos = new Set();
@@ -1620,7 +1619,7 @@ app.get('/api/ecosystem-stats', async (req, res) => {
                 docTypes: docTypes.size,
                 goldCount,
                 lastUpdated: new Date().toISOString(),
-                kbBackend: 'RuvectorStore (HNSW binary)'
+                kbBackend: 'RVF (HNSW binary)'
             };
 
             ecosystemStatsCache = stats;
@@ -2062,12 +2061,11 @@ app.get('/api/knowledge', async (req, res) => {
     // Add app version to response
     knowledge.version = APP_VERSION;
 
-    // Add real KB stats from PostgreSQL if available
-    // Add RuvectorStore stats
+    // Add RVF store stats
     if (reasoningBank && reasoningBank.getStats) {
         const stats = reasoningBank.getStats();
         knowledge.kb_stats = stats;
-        knowledge.kb_backend = 'RuvectorStore (HNSW binary)';
+        knowledge.kb_backend = 'RVF (HNSW binary)';
         knowledge.kb_total_entries = stats.vectorCount || 0;
     }
 

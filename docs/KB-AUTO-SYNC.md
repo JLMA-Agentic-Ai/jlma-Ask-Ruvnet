@@ -44,9 +44,8 @@ State is stored in `.ruvnet-monitor-state.json` in the project root. The monitor
 
 The script uses the GitHub public API (no auth token needed) and the npm registry. Both are unauthenticated. The GitHub API rate limit is 60 requests per hour for unauthenticated access.
 
-You need either:
-- `DATABASE_URL` env var set (points to Neon or any PostgreSQL with the `ask_ruvnet` schema), or
-- Local ruvector-postgres running on port 5435
+You need:
+- Local ruvector-postgres running on port 5435 (Docker, authoring only — never deployed to production)
 
 ### Basic run (incremental — only new content since last check)
 
@@ -115,9 +114,7 @@ Add this to `~/.openclaw/cron/jobs.json`:
   "schedule": "0 */6 * * *",
   "command": "node /Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/scripts/kb-sync-ruvnet.mjs",
   "cwd": "/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet",
-  "env": {
-    "DATABASE_URL": "${DATABASE_URL}"
-  },
+  "env": {},
   "enabled": true
 }
 ```
@@ -145,12 +142,6 @@ Create `~/Library/LaunchAgents/com.askreuvnet.kb-sync.plist`:
 
   <key>WorkingDirectory</key>
   <string>/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet</string>
-
-  <key>EnvironmentVariables</key>
-  <dict>
-    <key>DATABASE_URL</key>
-    <string>postgresql://...</string>
-  </dict>
 
   <!-- Run every 6 hours -->
   <key>StartInterval</key>
@@ -184,7 +175,7 @@ Add:
 
 ```cron
 # RuvNet KB sync — every 6 hours
-0 */6 * * * cd /Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet && DATABASE_URL="postgresql://..." node scripts/kb-sync-ruvnet.mjs >> /tmp/kb-sync-ruvnet.log 2>&1
+0 */6 * * * cd /Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet && node scripts/kb-sync-ruvnet.mjs >> /tmp/kb-sync-ruvnet.log 2>&1
 ```
 
 ---
@@ -207,7 +198,7 @@ kb-sync-ruvnet.mjs
      |-- upsertChunk()       INSERT ... ON CONFLICT DO NOTHING
      v
 ask_ruvnet.architecture_docs
-(Neon pgvector / local ruvector-postgres)
+(local ruvector-postgres, port 5435)
      |
      v
 .ruvnet-monitor-state.json  (updated after each successful run)
@@ -271,10 +262,7 @@ The unauthenticated GitHub API allows 60 requests per hour. Each repo check uses
 Check which database the script is connecting to:
 
 ```bash
-# Use Neon
-DATABASE_URL="postgresql://..." node scripts/kb-sync-ruvnet.mjs --dry-run
-
-# Use local ruvector-postgres
+# Use local ruvector-postgres (the only supported target — no external databases)
 RUVECTOR_HOST=localhost RUVECTOR_PORT=5435 node scripts/kb-sync-ruvnet.mjs --dry-run
 ```
 

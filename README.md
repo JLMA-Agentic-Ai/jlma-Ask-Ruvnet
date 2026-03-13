@@ -1,29 +1,182 @@
 # Ask-RuvNet
 
-> Updated: 2026-03-07 | Version 3.5.0
+> Updated: 2026-03-12 | Version 3.6.4
 
 **The front door to one of the most ambitious open-source AI architecture projects ever built.**
 
-Ask-RuvNet is a RAG-powered knowledge assistant that makes 155+ interconnected repositories, 26 architecture decision records, and years of engineering decisions searchable, explainable, and visual. It exists because understanding an ecosystem this large should not require reading 103,000+ curated documents.
+Ask-RuvNet is a RAG-powered knowledge assistant that makes 155+ interconnected repositories, 26 architecture decision records, and years of engineering decisions searchable, explainable, and visual. It exists because understanding an ecosystem this large should not require reading 102,857 curated documents.
 
 **Production:** https://ask-ruvnet-production.up.railway.app
 
 ---
 
-## What's New in v3.2.0
+## Knowledge Base Architecture (RVF-First)
 
-### RuvectorStore: Zero External Database Dependencies
+> **This is the definitive architecture. There is ONE source of truth. No external databases at runtime. No Neon. No Railway PostgreSQL. Just RVF.**
 
-v3.2 replaces the external Neon PostgreSQL database with **RuvectorStore**, an embedded HNSW-indexed binary vector database. The entire 103,755-entry knowledge base ships inside the Docker container — no external database connection required. This eliminates connection timeouts, SSL configuration, and database hosting costs. The Neon database has been sunset.
+### The Single Source of Truth
 
-### Database Cleanup and Curation
+The entire Ask-RuvNet knowledge base is distributed as a single file: **`knowledge.rvf`** (151 MB). This is an [RVF (RuVector Format)](https://github.com/ruvnet/ruvector) cognitive container — a segmented binary file that holds vectors, an HNSW search index, and metadata all in one place. No database server is needed at runtime. The `.rvf` file IS the database.
 
-The knowledge base was cleaned from 135,632 raw entries down to 103,755 curated entries:
-- Removed 3,154 garbage-tier entries, 24,480 duplicates, and 1,397 low-quality fragments
-- Classified all entries by knowledge type (procedure, reference, concept, troubleshooting, example, decision, pattern)
-- 100% embedding coverage (384-dim, all-MiniLM-L6-v2)
-- 323 expert-curated gold teaching entries (avg quality 97.8/100)
-- 155+ repos represented across 24 document types
+**Current stats:**
+- 102,857 vectors (323 expert-curated + 102,534 architecture reference docs)
+- 384 dimensions (all-MiniLM-L6-v2 ONNX embeddings)
+- HNSW index: M=16, efConstruction=200, cosine metric
+- Shipped via Git LFS, extracted at Docker build time
+- @ruvector/rvf v0.2.0 (Rust N-API bindings for Node.js)
+
+### Three Consumers, One Source
+
+```
+PostgreSQL (local authoring workbench, never deployed)
+       |
+       | Nightly 5AM pipeline (LaunchAgent: ai.openclaw.kb-export)
+       v
+  .ruvector/knowledge-base/ (intermediate binary format)
+       |
+       +---> knowledge.rvf (151 MB)  ---> Railway server (read-only, /api/search)
+       |
+       +---> SQ8 browser assets      ---> Browser client (WASM HNSW, ~5ms search)
+       |     (9.9 MB gzipped)              Web Worker in rvf-search-worker.js
+       |
+       +---> MCP embedded KB         ---> Claude Code MCP tools (kb_search, etc.)
+             (kb-entries.json +              Zero dependencies, 15-30ms search
+              kb-embeddings.bin)
+```
+
+Every consumer reads the same data compiled from the same source. Counts are verified to match after every pipeline run.
+
+### Why RVF (and Why Nothing Else)
+
+| Alternative | Why It Was Rejected |
+|-------------|-------------------|
+| Neon PostgreSQL | Deleted. External dependency, connection timeouts, SSL config, hosting costs. |
+| Railway PostgreSQL | Unnecessary. Adds $7-20/month, creates another sync point, RVF already works. |
+| Raw flat files | No search index. Brute-force cosine on 102K vectors takes ~100ms vs 5ms with HNSW. |
+| Embedded SQLite | No native vector search. Would need custom HNSW implementation. |
+
+RVF was designed for exactly this use case: a static knowledge base that gets compiled nightly and served to multiple consumers as a self-contained artifact. Like compiling source code into a binary — you edit the source (PostgreSQL), you ship the binary (RVF).
+
+### RVF File Format
+
+A `.rvf` file contains multiple segments, each carrying a different payload:
+
+| Segment | ID | What It Stores | Used Here |
+|---------|-----|---------------|-----------|
+| MANIFEST_SEG | 0x00 | File metadata (dimensions, metric, epoch) | Yes |
+| VEC_SEG | 0x01 | Raw float32 vectors | Yes |
+| INDEX_SEG | 0x02 | HNSW graph structure | Yes |
+| META_SEG | 0x03 | Per-vector metadata (title, category, quality) | Yes |
+| QUANT_SEG | 0x04 | Quantization codebooks | Yes |
+| OVERLAY_SEG | 0x05 | LoRA adapter weights | No |
+| GRAPH_SEG | 0x06 | Property graph adjacency | No |
+| WASM_SEG | 0x08 | Embedded WASM modules | No |
+| KERNEL_SEG | 0x0E | Linux microkernel (self-booting) | No |
+| COW_MAP_SEG | 0x20 | Copy-on-write branching | No |
+
+Unknown segments are preserved by all tools — the format is forward-compatible.
+
+### Nightly Pipeline
+
+The pipeline is orchestrated by `scripts/kb-export-pipeline.mjs` and runs at 5:00 AM daily via LaunchAgent `ai.openclaw.kb-export`.
+
+```
+Stage 1: PostgreSQL --> .ruvector/knowledge-base/
+         export-to-ruvectorstore.mjs
+         Reads ask_ruvnet.kb_complete + architecture_docs
+         Outputs: vectors.bin (157 MB) + metadata.json (186 MB) + manifest.json
+
+Stage 2: .ruvector/ --> Browser SQ8 assets
+         build-quantized-rvf.mjs
+         Float32 --> Uint8 scalar quantization (0.9999 cosine quality)
+         Outputs: knowledge-sq8.bin.gz (8.8 MB) + knowledge-sq8-params.bin.gz (2.6 KB)
+                  + knowledge-meta.json.gz (1.1 MB)
+
+Stage 3: .ruvector/ --> knowledge.rvf
+         convert-to-rvf.mjs
+         Creates RVF with HNSW index (M=16, efConstruction=200)
+         Output: knowledge.rvf (151 MB)
+
+Stage 4: .ruvector/ --> MCP embedded KB
+         export-mcp-kb.mjs
+         Generates full dataset in MCP-compatible format
+         Outputs: kb-entries.json + kb-embeddings.bin
+
+Verify:  kb-sync-verify.mjs
+         Confirms PG count == manifest count == RVF count == browser asset count
+```
+
+### Compression Ratios
+
+| Format | Size | % of Source | Used By |
+|--------|------|------------|---------|
+| PostgreSQL source | 343 MB | 100% | Local authoring |
+| knowledge.rvf | 151 MB | 44% | Railway server |
+| Browser SQ8 (gzipped) | 9.9 MB | 2.9% | Web client |
+| MCP embedded KB | ~55 MB | 16% | Claude Code |
+
+### File Inventory
+
+```
+knowledge.rvf                        151 MB   Production store (Git LFS)
+knowledge.rvf.idmap.json             4.1 MB   String ID -> numeric mapping
+
+.ruvector/knowledge-base/
+  manifest.json                      251 B    Source metadata
+  vectors.bin                        157 MB   Float32 vectors (102,857 x 384 x 4)
+  metadata.json                      186 MB   Per-vector metadata sidecar
+
+src/ui/public/assets/
+  knowledge-sq8.bin.gz               8.8 MB   Quantized vectors for browser
+  knowledge-sq8-params.bin.gz        2.6 KB   SQ8 parameters (min/max per dim)
+  knowledge-meta.json.gz             1.1 MB   Compact metadata for browser
+  rvf-search-worker.js               ~8 KB    Web Worker (WASM HNSW search)
+  wasm/rvf_wasm_bg.wasm              46 KB    WASM control plane
+
+scripts/
+  kb-export-pipeline.mjs                      Pipeline orchestrator
+  export-to-ruvectorstore.mjs                 Stage 1: PG -> binary
+  build-quantized-rvf.mjs                     Stage 2: binary -> browser
+  convert-to-rvf.mjs                          Stage 3: binary -> RVF
+  export-mcp-kb.mjs                           Stage 4: binary -> MCP
+  kb-sync-verify.mjs                          Post-export verification
+```
+
+### Manual Pipeline Commands
+
+```bash
+# Full pipeline (all stages + verify)
+node scripts/kb-export-pipeline.mjs --force --verbose
+
+# Individual stages
+node scripts/export-to-ruvectorstore.mjs           # Stage 1: PG -> binary
+node scripts/export-to-ruvectorstore.mjs --fresh    # Stage 1: clean rebuild
+node scripts/build-quantized-rvf.mjs                # Stage 2: binary -> browser
+node scripts/convert-to-rvf.mjs                     # Stage 3: binary -> RVF
+node scripts/export-mcp-kb.mjs                      # Stage 4: binary -> MCP
+
+# Verification
+node scripts/kb-sync-verify.mjs                     # Check sync (exit 0=OK, 1=stale)
+node scripts/kb-sync-verify.mjs --fix               # Auto-fix if stale
+```
+
+### PostgreSQL: Local Authoring Only
+
+Docker PostgreSQL (port 5435) is the **workbench** where knowledge entries are created, edited, deduplicated, and curated. Think of it like Word — you edit in Word, you ship the PDF. PostgreSQL is Word. RVF is the PDF.
+
+PostgreSQL is needed because:
+- RVF is append-only (no in-place updates to individual entries)
+- SQL enables complex queries for curation (`WHERE quality_score < 50 AND is_duplicate = true`)
+- Deduplication logic runs in PG before export
+- 51 other schemas with personal/client data live in PG (these NEVER leave the machine)
+
+PostgreSQL is **never deployed**, **never exposed**, and **not needed at runtime**. If the KB stabilizes and edits become rare, PG could eventually be dropped entirely.
+
+### MCP Context Efficiency
+
+The MCP server operates in two modes:
+- **PostgreSQL mode** (when Docker is running): Full SQL search, returns complete content fields. ~7,500 chars per query.
+- **Embedded WASM mode** (no Docker needed): Uses kb-entries.json for metadata-only results, content loaded on-demand. ~1,000 chars per query. **~7x fewer context tokens.**
 
 ---
 
@@ -215,10 +368,10 @@ Ask-RuvNet sits at the **Applications** layer. It reaches down through every lay
                      │
                      ▼
   ┌──────────────────────────────────────────────┐
-  │       RuvectorStore (embedded HNSW binary)    │
+  │       RVF Store (embedded HNSW binary)         │
   │                                              │
-  │   103,755 curated entries (384d embeddings)  │
-  │   323 gold teaching + 103,432 architecture   │
+  │   102,857 curated entries (384d embeddings)  │
+  │   323 gold teaching + 102,534 architecture   │
   │   HNSW-indexed, zero external DB dependency  │
   └──────────────────┬───────────────────────────┘
                      │
@@ -399,7 +552,7 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/special \
 
 | Metric | Value |
 |--------|-------|
-| Total KB entries | 103,755 (curated) |
+| Total KB entries | 102,857 (curated) |
 | Gold teaching entries | 323 (avg quality 97.8/100) |
 | Architecture docs | 103,432 |
 | Repositories represented | 155+ |
@@ -409,8 +562,8 @@ curl -X POST https://ask-ruvnet-production.up.railway.app/api/special \
 | Embedding model | ONNX all-MiniLM-L6-v2 |
 | Embedding dimensions | 384 |
 | Index type | HNSW (embedded binary) |
-| Storage | RuvectorStore (`.ruvector/knowledge-base/`) |
-| Storage format | Binary vectors + JSON metadata |
+| Storage | RVF (`knowledge.rvf`) |
+| Storage format | Single HNSW-indexed binary (151 MB) |
 
 ### What Gets Ingested
 
@@ -793,8 +946,8 @@ npm install
 # Install and build the React frontend
 npm run build
 
-# Extract the knowledge base (shipped as split tarballs)
-cat ruvector-kb.tar.gz.part-* | tar xzf -
+# Ensure knowledge.rvf exists (assembled from .gz parts during Docker build)
+ls knowledge.rvf || echo "Need knowledge.rvf — see docs/DEPLOYMENT-GUIDE.md"
 
 # Create .env with your credentials
 cp .env.example .env
@@ -837,7 +990,7 @@ The app runs at http://localhost:3000. Express serves the React frontend from `s
 
 1. Push to `main` triggers Railway auto-deploy via GitHub integration
 2. Railway builds the Docker image from `Dockerfile`
-3. Dockerfile reassembles and extracts the RuvectorStore knowledge base from split tarballs
+3. Dockerfile reassembles and extracts `knowledge.rvf` from compressed parts
 4. Container starts via `scripts/deployment/start-railway.sh` → `node src/server/app.js`
 
 ### Verifying a Deployment
@@ -871,18 +1024,15 @@ git push origin main
 
 ```
 Ask-Ruvnet/
-├── .ruvector/knowledge-base/          # Embedded vector DB (extracted from tarballs)
-│   ├── vectors.bin                    # 152MB binary embeddings (384d × 103,755)
-│   ├── metadata.json                  # 191MB entry metadata (titles, content, etc.)
-│   └── manifest.json                  # DB config (dimensions, distance metric)
-├── ruvector-kb.tar.gz.part-aa         # Split tarball part 1 (90MB)
-├── ruvector-kb.tar.gz.part-ab         # Split tarball part 2 (74MB)
+├── knowledge.rvf                      # HNSW-indexed binary KB (151 MB, assembled at Docker build)
+├── knowledge.rvf.gz.part-*            # Split compressed parts (Git LFS, 50 MB each)
+├── content-sidecar.json.gz            # Full-text content for RVF entries
 ├── src/
 │   ├── server/
 │   │   ├── app.js                     # Express server, all endpoints
 │   │   └── RuvPersona.js              # LLM system prompt and persona
 │   ├── core/                          # RAG pipeline modules
-│   │   ├── RuvectorStore.js           # Primary KB backend (HNSW search)
+│   │   ├── RvfStore.js                # Primary KB backend (RVF HNSW search)
 │   │   ├── HybridSearch.js            # BM25 + semantic fusion
 │   │   ├── QueryExpander.js           # Query expansion
 │   │   ├── ReRanker.js                # 5-factor result reranking
@@ -891,8 +1041,7 @@ Ask-Ruvnet/
 │   │   ├── RecencyBoost.js            # Boost recent content
 │   │   └── ContentProcessor.js        # Content preprocessing
 │   ├── storage/
-│   │   ├── kb-embed.js                # Embedding utilities (ONNX)
-│   │   └── persistent-vector-db.js    # PersistentVectorDB engine
+│   │   └── kb-embed.js                # Embedding utilities (ONNX)
 │   └── ui/
 │       ├── src/                       # React source (Vite)
 │       └── dist/                      # Built frontend
@@ -900,7 +1049,8 @@ Ask-Ruvnet/
 │   ├── deployment/
 │   │   ├── start-railway.sh           # Docker startup
 │   │   └── deploy.sh                  # Version bump + push
-│   ├── export-to-ruvectorstore.mjs    # PostgreSQL → RuvectorStore export
+│   ├── export-to-ruvectorstore.mjs    # PostgreSQL → binary format export
+│   ├── export-mcp-kb.mjs             # Binary format → MCP KB export
 │   └── build-kb-universe.js           # KB visualization builder
 ├── Dockerfile                         # Railway Docker build
 ├── package.json                       # Version source of truth
@@ -912,7 +1062,7 @@ Ask-Ruvnet/
 ## Troubleshooting
 
 **Chat returns generic answers or no results**
-Check `/api/kb-stats` -- it should show `"connected": true` and `"vectorCount": 103755`. If vectorCount is 0, the RuvectorStore data was not extracted. Run `cat ruvector-kb.tar.gz.part-* | tar xzf -` to extract.
+Check `/api/kb-stats` -- it should show `"connected": true` and `"vectorCount": 102857`. If vectorCount is 0, the RVF knowledge base was not loaded. Check that knowledge.rvf exists or that .ruvector/knowledge-base/ was extracted.
 
 **Frontend not loading**
 Run `npm run build` and check for errors. The `dist/` directory must exist at `src/ui/dist/`.
@@ -954,7 +1104,7 @@ The `/api/visualize` endpoint requires a Gemini API key. Check that `GEMINI_API_
 | 2026-03-07 | 3.5.0 | NotebookLM studio pipeline (9 studios, auto-auth, nightly refresh), Ruflo rebrand (~324 files), ecosystem infographic, strategic goals and TODO tracking |
 | 2026-03-06 | 3.4.1 | Full codebase Ruflo rebrand — 2,900+ replacements across 324 files |
 | 2026-03-03 | 3.3.0 | RVF Cognitive Container with Transformers.js semantic search, container mode, optional WebLLM |
-| 2026-03-02 | 3.2.0 | RuvectorStore replaces Neon PostgreSQL as single source of truth. 103,755 curated entries embedded in container. Zero external DB dependency. KB cleaned from 135K to 103K entries. Neon sunset. |
+| 2026-03-02 | 3.2.0 | RVF-first architecture replaces external databases as single source of truth. 102,857 curated entries embedded in container. Zero external DB dependency. KB cleaned from 135K to 103K entries. |
 | 2026-03-01 | 3.1.0 | Resource drawer for mid-chat access to capabilities and documents, light mode contrast fixes, mobile fullscreen canvas overlay, responsive drawer layout |
 | 2026-03-01 | 3.0.0 | Complete visual overhaul: glassmorphism capability tiles, aurora animated background, stats bar with live ecosystem data, 6 prompt starters, resource documents grid, follow-up suggestion pills, color-coded accent system (red/blue/purple/amber), staggered entrance animations, gradient text and layered shadows |
 | 2026-02-27 | 2.2.0 | Rich responses with source citations, source cards with doc-type badges, 13K evolutionary knowledge chunks, full pipeline command, Gemini visual integration, markdown link styling |

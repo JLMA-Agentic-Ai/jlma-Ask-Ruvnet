@@ -208,7 +208,7 @@ For a knowledge base project with vector storage:
 
 📊 PROJECT PROFILE:
    Type: Knowledge base with 1,500+ entries
-   Current usage: RuvectorStore in scripts/ingest.js, src/storage/
+   Current usage: RvfStore (knowledge.rvf) for embedded vector search
    Key characteristic: Heavy embedding API usage for ingestion
 
 🆕 NEW FEATURES + APPLICABILITY:

@@ -1,4 +1,4 @@
-Updated: 2026-02-24 01:55:00 EST | Version 1.0.0
+Updated: 2026-03-12 16:30:00 EST | Version 2.0.0
 Created: 2026-02-24
 
 # Ask-RuvNet Production Architecture
@@ -49,14 +49,14 @@ Created: 2026-02-24
 │                                        └──────┬─────────────┘   │
 │                                               │                 │
 │                             ┌──────────────────▼──────────────┐ │
-│                             │  Neon PostgreSQL + pgvector     │ │
+│                             │  RVF Knowledge Base (embedded)  │ │
 │                             │                                 │ │
-│                             │  Host: ep-holy-pine-aksbss0s    │ │
-│                             │  Schema: ask_ruvnet             │ │
-│                             │  Table: architecture_docs       │ │
-│                             │  Rows: 54,543 (22,667 gold)    │ │
-│                             │  Embeddings: 384d ONNX          │ │
-│                             │  Index: HNSW (m=16, ef=64)     │ │
+│                             │  File: knowledge.rvf (151 MB)  │ │
+│                             │  Vectors: 102,857 (384d ONNX)  │ │
+│                             │  Index: HNSW (M=16, ef=200)    │ │
+│                             │  Format: RuVector binary (.rvf) │ │
+│                             │  Search: ~5ms per query         │ │
+│                             │  No external DB dependency      │ │
 │                             │  Scoring: 5-factor relevance   │ │
 │                             └─────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────┘
@@ -73,13 +73,13 @@ Created: 2026-02-24
 
 ```
 ┌──────────┐     ┌───────────┐     ┌──────────────┐     ┌─────────┐
-│  User    │────>│  Express  │────>│  RAG Pipeline│────>│  Neon   │
-│  Browser │     │  Server   │     │              │     │  pgvec  │
+│  User    │────>│  Express  │────>│  RAG Pipeline│────>│  RVF   │
+│  Browser │     │  Server   │     │              │     │  File  │
 └──────────┘     └─────┬─────┘     └──────┬───────┘     └────┬────┘
                        │                  │                   │
                        │    query + context                   │
                        │<─────────────────────────────────────┘
-                       │                                 KB results
+                       │                              knowledge.rvf
                        │
                  ┌─────▼──────┐
                  │  LLM Chain │
@@ -137,7 +137,7 @@ Created: 2026-02-24
 ┌─────────────────────────────────────────────────┐
 │  Railway Variables (set via dashboard or API)    │
 │                                                  │
-│  DATABASE_URL ─────────> PostgresKnowledgeBase  │
+│  (no DATABASE_URL needed — KB is embedded RVF)  │
 │  GROQ_API_KEY ─────────> Provider Chain #1      │
 │  OPENAI_API_KEY ───────> Provider Chain #2      │
 │  ANTHROPIC_API_KEY ────> Provider Chain #3      │
@@ -146,9 +146,9 @@ Created: 2026-02-24
 │  NODE_ENV=production                             │
 │  PORT=3000                                       │
 │                                                  │
-│  CRITICAL: Use DATABASE_URL (underscore)         │
-│  NOT DATABASE-URL (hyphen)                       │
-│  Node.js process.env cannot read hyphens!        │
+│  NOTE: DATABASE_URL is NOT used in production.   │
+│  The KB is embedded as knowledge.rvf (RVF file). │
+│  No external database required at runtime.       │
 └─────────────────────────────────────────────────┘
 ```
 

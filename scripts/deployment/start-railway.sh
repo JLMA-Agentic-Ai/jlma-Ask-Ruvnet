@@ -1,6 +1,6 @@
 #!/bin/bash
 # Railway/Docker Startup Script for Ask-Ruvnet
-# Backend: RVF Native (preferred) or legacy RuvectorStore (fallback)
+# Backend: RVF Native (knowledge.rvf)
 
 echo "🚀 Starting Ask-Ruvnet..."
 
@@ -13,13 +13,6 @@ elif ls knowledge.rvf.gz.part-* 1>/dev/null 2>&1; then
   gunzip knowledge.rvf.gz
   rm -f knowledge.rvf.gz.part-*
   echo "✅ RVF extracted ($(du -sh knowledge.rvf | cut -f1))"
-# === Legacy RuvectorStore fallback ===
-elif [ -d ".ruvector/knowledge-base" ]; then
-  echo "✅ Legacy RuvectorStore knowledge base present"
-elif ls ruvector-kb.tar.gz.part-* 1>/dev/null 2>&1; then
-  echo "📦 Reassembling legacy RuvectorStore knowledge base..."
-  cat ruvector-kb.tar.gz.part-* | tar xzf -
-  echo "✅ Legacy RuvectorStore extracted"
 else
   echo "⚠️ No knowledge base found — app will start with empty KB"
 fi

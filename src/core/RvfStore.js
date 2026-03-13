@@ -1,10 +1,8 @@
 /**
  * RvfStore — RVF-native knowledge store for Ask-RuvNet
  *
- * Replaces RuvectorStore (PersistentVectorDB) with @ruvector/rvf native format.
- * Uses knowledge.rvf for vector search + content-sidecar.json.gz for text content.
- *
- * API-compatible with RuvectorStore — drop-in replacement in app.js.
+ * Uses knowledge.rvf for HNSW vector search + content-sidecar.json.gz for text content.
+ * Single source of truth for the Ask-RuvNet knowledge base at runtime.
  *
  * Updated: 2026-03-02 10:00:00 EST | Version 1.0.0
  * Created: 2026-03-02
@@ -225,7 +223,7 @@ class RvfStore {
     }
 
     /**
-     * Reflexion-compatible interface (same API as RuvectorStore.reflexion)
+     * Reflexion-compatible interface for knowledge retrieval
      */
     get reflexion() {
         const self = this;

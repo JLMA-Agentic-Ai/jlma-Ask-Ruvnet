@@ -83,16 +83,11 @@ echo "📁 Domain knowledge: .ruvector/domain/ (your content)"
 Your project's domain-specific content goes in `.ruvector/domain/`:
 
 ```javascript
-const { RuvectorStore } = require('ruvector');
+const { RvfStore } = require('@ruvector/rvf');
 
 // Domain knowledge - isolated to this project
-const domainKB = new RuvectorStore({
-  dimension: 768,
-  persistence: {
-    enabled: true,
-    path: '.ruvector/domain'  // YOUR content goes here
-  }
-});
+const domainKB = new RvfStore();
+await domainKB.initialize();
 
 // Add retirement planning docs (example)
 await domainKB.addDocument({

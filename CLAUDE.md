@@ -49,7 +49,7 @@ Stuart gives command
        ↓
 Ruflo receives it (FIRST)
        ↓
-Ruflo queries RuvVector KB (ask_ruvnet schema, Neon pgvector)
+Ruflo queries RuvVector KB (RVF-first: knowledge.rvf + MCP embedded WASM KB)
        ↓
 Ruflo selects agents from RuvNet architecture
        ↓

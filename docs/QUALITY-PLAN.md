@@ -81,7 +81,7 @@ This document is the master execution plan for improving Ask-RuvNet's output qua
 
 **H-5: Stale split files consuming disk and causing confusion**
 - Severity: HIGH (operational hygiene)
-- Files: Root directory -- `knowledge.rvf.gz.part-aa`, `knowledge.rvf.gz.part-ab`, `ruvector-kb.tar.gz.part-aa`, `ruvector-kb.tar.gz.part-ab`
+- Files: Root directory -- `knowledge.rvf.gz.part-aa`, `knowledge.rvf.gz.part-ab`
 - Problem: Four split archive files totaling hundreds of MB sit in the project root. They are never merged or referenced by any code path. They were likely created during an earlier data pipeline step and never cleaned up. They bloat the repo, confuse new contributors, and may be accidentally included in deployments.
 - Fix: Delete the four files. Add entries to `.gitignore`: `*.part-aa`, `*.part-ab`, `*.part-*`. Verify the Dockerfile does not reference them.
 - Verification: `ls *.part-*` returns nothing. Build and deploy still work. `knowledge.rvf` (the actual file used by RvfStore) is unaffected.
@@ -184,8 +184,8 @@ This document is the master execution plan for improving Ask-RuvNet's output qua
 **L-4: `vectors.db` SQLite file in project root -- legacy artifact**
 - Severity: LOW
 - Files: Root -- `vectors.db`
-- Problem: A SQLite database file exists in the project root. The application has migrated to RVF native format. This file is likely from the legacy `RuvectorStore` backend and is no longer needed.
-- Fix: Verify `RuvectorStore.js` (the legacy backend) is the only code that might reference it, and that the production deployment uses RVF. If confirmed unused, delete it.
+- Problem: A SQLite database file exists in the project root. The application uses RVF native format exclusively. This file is a legacy artifact and is no longer needed.
+- Fix: Verify no code references it, and that the production deployment uses RVF. If confirmed unused, delete it.
 - Verification: Server starts and operates correctly without `vectors.db`.
 - Complexity: S
 

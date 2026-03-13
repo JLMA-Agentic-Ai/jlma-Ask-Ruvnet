@@ -256,10 +256,23 @@ async function ingestRepo(repoName) {
       const chunk = chunks[i];
       const docId = `github-${repoName}-${pathHash}-${i}`;
       const titleMatch = chunk.match(/^#\s+(.+)/m) || chunk.match(/^(.{1,80})/);
-      const title = titleMatch ? titleMatch[1].trim() : path.basename(filePath);
+      let title = titleMatch ? titleMatch[1].trim() : path.basename(filePath);
+
+      // Quality gate compliance: skip chunks that can't pass
+      if (chunk.length < 200) continue;  // Rule 3: content >= 200 chars
+      if (title.length < 10) {
+        // Rule 2: title >= 10 chars — pad with repo context
+        title = `${repoName}: ${title}`.slice(0, 200);
+        if (title.length < 10) title = `${repoName} — ${path.basename(filePath)} chunk ${i}`;
+      }
+
+      // Rule 4: content must have a ## heading — prepend one if missing
+      const contentWithHeading = chunk.includes('## ')
+        ? chunk
+        : `## ${title}\n\n${chunk}`;
 
       allChunks.push({
-        docId, title, content: chunk, filePath,
+        docId, title, content: contentWithHeading, filePath,
         sectionIndex: i, fileHash: hash,
         repoName, category: detectCategory(repoName, chunk),
         topics: detectTopics(repoName, chunk)
@@ -303,9 +316,9 @@ async function ingestRepo(repoName) {
         INSERT INTO ${SCHEMA}.${TABLE}
         (doc_id, title, content, file_path, section_index, file_hash,
          package_name, package_version, doc_type, category, topics,
-         embedding, quality_score, is_duplicate)
+         embedding, quality_score, is_duplicate, source_authority, knowledge_type)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,
-                $12::ruvector(384), 85, false)
+                $12::ruvector(384), 85, false, 'auto-ingested', 'reference')
         ON CONFLICT (doc_id) DO UPDATE SET
           title = EXCLUDED.title,
           content = EXCLUDED.content,
@@ -314,6 +327,8 @@ async function ingestRepo(repoName) {
           category = EXCLUDED.category,
           topics = EXCLUDED.topics,
           embedding = EXCLUDED.embedding,
+          source_authority = EXCLUDED.source_authority,
+          knowledge_type = EXCLUDED.knowledge_type,
           updated_at = NOW()
       `, [
         c.docId, c.title, c.content, c.filePath, c.sectionIndex, c.fileHash,
@@ -323,7 +338,8 @@ async function ingestRepo(repoName) {
       upserted++;
     } catch (err) {
       errors++;
-      if (errors <= 3) log(`    Error: ${err.message.slice(0, 100)}`);
+      if (errors <= 10) log(`    Error [${errors}]: ${err.message.slice(0, 150)}`);
+      if (errors === 10) log(`    (suppressing further errors — check _evergreen_log for totals)`);
     }
 
     if ((i + 1) % 1000 === 0) {

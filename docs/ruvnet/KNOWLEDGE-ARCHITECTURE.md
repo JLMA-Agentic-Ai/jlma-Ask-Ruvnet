@@ -132,25 +132,13 @@ node scripts/build-persistent-kb.js --query "Byzantine consensus configuration"
 Your project's content goes in `.ruvector/domain/`:
 
 ```javascript
-const { RuvectorStore } = require('ruvector');
+const { RvfStore } = require('@ruvector/rvf');
 
 // Domain knowledge - isolated to THIS project
-const domainKB = new RuvectorStore({
-  dimension: 768,
-  persistence: {
-    enabled: true,
-    path: '.ruvector/domain'
-  }
-});
+const domainKB = new RvfStore();
+await domainKB.initialize();
 
-// Add your domain docs
-await domainKB.addDocument({
-  id: 'my-doc-001',
-  content: 'Your domain-specific content...',
-  metadata: { category: 'your-category', source: 'your-source' }
-});
-
-// Query domain knowledge only
+// Query domain knowledge
 const results = await domainKB.search('your query', { limit: 5 });
 ```
 

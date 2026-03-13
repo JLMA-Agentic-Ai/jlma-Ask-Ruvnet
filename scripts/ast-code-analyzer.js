@@ -10,7 +10,7 @@
  *
  * Usage:
  *   node scripts/ast-code-analyzer.js ./src
- *   node scripts/ast-code-analyzer.js --file ./src/core/RuvectorStore.js
+ *   node scripts/ast-code-analyzer.js --file ./src/core/RvfStore.js
  *   node scripts/ast-code-analyzer.js --ingest ./src  # Add to KB
  */
 
@@ -66,7 +66,7 @@ Usage:
 
 Examples:
   node scripts/ast-code-analyzer.js ./src
-  node scripts/ast-code-analyzer.js --file ./src/core/RuvectorStore.js
+  node scripts/ast-code-analyzer.js --file ./src/core/RvfStore.js
   node scripts/ast-code-analyzer.js --ingest ./src --output analysis.json
 `);
   process.exit(0);
