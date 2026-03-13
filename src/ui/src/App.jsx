@@ -483,10 +483,26 @@ function App() {
     : 'chat';
 
   // Fetch live knowledge data on mount
+  const [kbWarning, setKbWarning] = useState(null);
   useEffect(() => {
     fetch('/api/knowledge').then(r => r.json()).then(data => setKnowledgeData(data)).catch(() => {});
     fetch('/api/ecosystem-stats').then(r => r.json()).then(data => setEcosystemStats(data)).catch(() => {});
     fetch('/api/latest-repos').then(r => r.json()).then(data => setLatestRepos(data)).catch(() => {});
+    // Check KB health — surface problems immediately
+    fetch('/api/kb-stats').then(r => {
+      if (!r.ok) return r.json().then(d => { throw new Error(d.error || 'KB unavailable'); });
+      return r.json();
+    }).then(data => {
+      if (!data.connected || data.status === 'not_initialized') {
+        setKbWarning('Knowledge base is not loaded. Answers may be inaccurate.');
+      } else if (data.vectorCount === 0) {
+        setKbWarning('Knowledge base is empty (0 entries). Answers will be from general AI knowledge only.');
+      } else {
+        setKbWarning(null);
+      }
+    }).catch(err => {
+      setKbWarning(`Knowledge base error: ${err.message}`);
+    });
   }, []);
 
   const messagesEndRef = useRef(null);
@@ -678,6 +694,12 @@ function App() {
                 }
                 return updated;
               });
+              continue;
+            }
+
+            // Check for KB warning from server
+            if (eventType === 'kb_warning') {
+              setKbWarning(parsed?.message || 'Knowledge base is degraded');
               continue;
             }
 
@@ -1003,6 +1025,14 @@ function App() {
         </div>
       </header>
 
+      {/* ===== KB WARNING BANNER ===== */}
+      {kbWarning && (
+        <div className="kb-warning-banner" role="alert">
+          <span>⚠️ {kbWarning}</span>
+          <button onClick={() => setKbWarning(null)} aria-label="Dismiss warning">✕</button>
+        </div>
+      )}
+
       {/* ===== ECOSYSTEM STATS BAR ===== */}
       {ecosystemStats && (
         <div className="stats-bar">
@@ -1119,6 +1149,7 @@ function App() {
                               {msg.confidence === 'high' && (msg.confidenceLabel || 'High confidence')}
                               {msg.confidence === 'medium' && (msg.confidenceLabel || 'Medium confidence')}
                               {msg.confidence === 'low' && (msg.confidenceLabel || 'Limited KB coverage — answer may be less reliable')}
+                              {msg.confidence === 'none' && '⚠️ KB NOT LOADED — answer from general AI knowledge only'}
                             </span>
                           </div>
                         )}

@@ -918,6 +918,27 @@ initAgenticFlow().then(() => {
 async function runRAGPipeline(message, mode, conversationHistory) {
     let context = '';
     let sources = [];
+    let kbStatus = 'ok'; // Track KB health for every response
+
+    if (!reasoningBank || !reasoningBank.reflexion) {
+        console.error('🚨 KB NOT INITIALIZED — returning degraded response with warning');
+        kbStatus = 'not_initialized';
+        // Do NOT silently fall through — surface the problem clearly
+        const { RUV_PERSONA } = require('./RuvPersona');
+        const warnPrompt = `${RUV_PERSONA}\n\n🚨 CRITICAL: The RuvNet knowledge base failed to load. You MUST start your response with:\n"⚠️ **Knowledge Base Unavailable** — The RuvNet knowledge base is not loaded on this server. My answers below are from general AI knowledge and may be incomplete or inaccurate. Please notify the administrator."\n\nThen answer to the best of your ability.`;
+        return {
+            context: '',
+            sources: [],
+            systemPrompt: warnPrompt,
+            messages: [
+                { role: 'system', content: warnPrompt },
+                { role: 'user', content: message }
+            ],
+            confidence: 'none',
+            kbStatus: 'not_initialized',
+            queryRequirements: { diagram: false, code: false, comparison: false },
+        };
+    }
 
     if (reasoningBank && reasoningBank.reflexion) {
         console.log(`Searching ReasoningBank for: "${message}"`);
@@ -1158,11 +1179,11 @@ async function runRAGPipeline(message, mode, conversationHistory) {
             console.log(`📦 Context compressed to ${context.length} chars`);
 
         } catch (err) {
-            console.error('Error in RAG pipeline:', err);
-            // Continue without context
+            console.error('🚨 RAG pipeline error:', err);
+            kbStatus = 'error';
+            // Surface the error — don't silently degrade
+            context = `\n\n⚠️ KNOWLEDGE BASE ERROR: The search pipeline encountered an error (${err.message}). Your answer may be incomplete.\n\n`;
         }
-    } else {
-        console.warn('ReasoningBank not initialized or reflexion memory unavailable.');
     }
 
     // Build system prompt with Learning Level adaptation
@@ -1267,7 +1288,7 @@ CRITICAL: You MUST include at least ONE \`\`\`mermaid diagram and ONE | markdown
     // ========================================================================
     const queryRequirements = responseValidator.classifyQuery(message);
 
-    return { context, sources, systemPrompt, messages, confidence, queryRequirements };
+    return { context, sources, systemPrompt, messages, confidence, kbStatus, queryRequirements };
 }
 
 // ============================================================================
@@ -1313,7 +1334,7 @@ app.post('/api/chat', async (req, res) => {
             ragCacheSet(cacheKey, ragResult);
             console.log(`[RAG Cache] MISS — cached key ${cacheKey}`);
         }
-        const { sources, messages, confidence, queryRequirements } = ragResult;
+        const { sources, messages, confidence, kbStatus, queryRequirements } = ragResult;
 
         // Generate Response using multi-provider LLM (with automatic fallback)
         let answer = "";
@@ -1345,6 +1366,7 @@ app.post('/api/chat', async (req, res) => {
             error: errorMsg,
             provider: usedProvider || null,
             confidence: confidence || 'low',
+            kbStatus: kbStatus || 'ok',
             sources: sources.map(s => ({
                 id: s.id,
                 score: s.score,
@@ -1404,9 +1426,12 @@ app.post('/api/chat/stream', async (req, res) => {
             ragCacheSet(cacheKey, ragResult);
             console.log(`[RAG Cache] MISS — cached key ${cacheKey} (stream)`);
         }
-        const { sources, messages, confidence, queryRequirements } = ragResult;
+        const { sources, messages, confidence, kbStatus, queryRequirements } = ragResult;
 
-        // Send sources and confidence first as JSON events
+        // Send KB status and confidence first as JSON events
+        if (kbStatus && kbStatus !== 'ok') {
+            res.write(`event: kb_warning\ndata: ${JSON.stringify({ kbStatus, message: 'Knowledge base is not loaded. Answers may be inaccurate.' })}\n\n`);
+        }
         const sourcesPayload = sources.map(s => ({
             id: s.id,
             score: s.score,
@@ -1526,14 +1551,24 @@ app.get('/api/providers', (req, res) => {
 // KB Statistics Endpoint - shows RVF store state
 app.get('/api/kb-stats', async (req, res) => {
     try {
-        const vectorStats = reasoningBank ? reasoningBank.getStats?.() || {} : {};
+        if (!reasoningBank) {
+            return res.status(503).json({
+                backend: 'RVF (HNSW binary)',
+                connected: false,
+                status: 'not_initialized',
+                error: 'Knowledge base failed to load. Check server logs for RVF errors.',
+                vectorCount: 0,
+            });
+        }
+        const vectorStats = reasoningBank.getStats?.() || {};
         res.json({
             backend: 'RVF (HNSW binary)',
             connected: true,
+            status: vectorStats.healthStatus || 'ok',
             ...vectorStats
         });
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err.message, connected: false, status: 'error' });
     }
 });
 
