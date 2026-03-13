@@ -19,6 +19,16 @@ src/ui/node_modules
 knowledge.rvf
 knowledge.rvf.idmap.json
 
+# Large uncompressed browser assets (only .gz versions are needed)
+src/ui/public/assets/knowledge-sq8.bin
+src/ui/public/assets/knowledge-sq8-params.bin
+src/ui/public/assets/knowledge-meta.json
+src/ui/public/assets/gold-knowledge.bin
+src/ui/public/assets/gold-content.json
+
+# Local vector store (not needed in Docker)
+.ruvector
+
 # Documentation (cleaned up in Docker build)
 docs/claude-conversations
 docs/presentations/images
