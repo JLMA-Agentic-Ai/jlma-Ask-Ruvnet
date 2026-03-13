@@ -87,8 +87,7 @@ ruvector/
 # Allow RVF content sidecar for Railway deployment
 !content-sidecar.json.gz
 
-# RVF binary files (large)
-knowledge.rvf
+# RVF binary files (large — only gz variants)
 knowledge.rvf.gz
 knowledge.rvf.idmap.json
 self_booting.rvf

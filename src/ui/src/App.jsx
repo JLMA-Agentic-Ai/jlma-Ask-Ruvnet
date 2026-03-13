@@ -158,6 +158,11 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
 
     {/* Capability Tiles */}
     <div className="capability-tiles" role="navigation" aria-label="Explore capabilities">
+      <button className="capability-tile" onClick={() => onCapability('pi')}>
+        <span className="tile-icon-wrapper tile-pi"><span className="tile-icon">🧠</span></span>
+        <span className="tile-label">Pi Collective Intelligence</span>
+        <span className="tile-count">NEW — Shared AI Brain</span>
+      </button>
       <button className="capability-tile" onClick={() => onCapability('videos')}>
         <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">📹</span></span>
         <span className="tile-label">Videos</span>
@@ -183,11 +188,6 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
         <span className="tile-label">RVF Engine</span>
         <span className="tile-count">Live Demo</span>
       </button>
-      <button className="capability-tile" onClick={() => onCapability('pi')}>
-        <span className="tile-icon-wrapper tile-pi"><span className="tile-icon">🧠</span></span>
-        <span className="tile-label">Pi Collective Intelligence</span>
-        <span className="tile-count">Shared AI Brain</span>
-      </button>
       <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
         <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">📓</span></span>
         <span className="tile-label">NotebookLM</span>
@@ -197,7 +197,10 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
 
     {/* Prompt Starters */}
     <div className="prompt-starters">
-      <button onClick={() => onAction('Give me a 60-second overview of what Ruflo can do, with a diagram')} className="prompt-pill prompt-pill-demo">
+      <button onClick={() => onAction('What is Pi collective intelligence (pi.ruv.io) and how does it create a shared AI brain with cryptographic trust?')} className="prompt-pill prompt-pill-demo">
+        <span className="pill-icon">🧠</span> Pi Brain — NEW
+      </button>
+      <button onClick={() => onAction('Give me a 60-second overview of what Ruflo can do, with a diagram')} className="prompt-pill">
         <span className="pill-icon">&#9889;</span> Try it live
       </button>
       <button onClick={() => onAction('What is Ruflo v3.5, its specialized agents, swarm topologies, and capabilities?')} className="prompt-pill">
@@ -214,9 +217,6 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
       </button>
       <button onClick={() => onAction('What impossible applications can be built with RuVector that traditional tools cannot?')} className="prompt-pill">
         <span className="pill-icon">🚀</span> Impossible Apps
-      </button>
-      <button onClick={() => onAction('What is Pi collective intelligence (pi.ruv.io) and how does it create a shared AI brain with cryptographic trust?')} className="prompt-pill">
-        <span className="pill-icon">🧠</span> Pi Brain
       </button>
       <button onClick={() => onAction("What's new in the agentic AI ecosystem and latest RuVector developments?")} className="prompt-pill">
         <span className="pill-icon">🆕</span> What's New
@@ -1044,6 +1044,10 @@ function App() {
                         <button className="resource-drawer-close" onClick={() => setShowResourceDrawer(false)} aria-label="Close resource drawer">✕</button>
                       </div>
                       <div className="capability-tiles capability-tiles-compact">
+                        <button className="capability-tile" onClick={() => { handleCapability('pi'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-pi"><span className="tile-icon">🧠</span></span>
+                          <span className="tile-label">Pi Brain</span>
+                        </button>
                         <button className="capability-tile" onClick={() => { handleCapability('videos'); setShowResourceDrawer(false); }}>
                           <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">📹</span></span>
                           <span className="tile-label">Videos</span>
@@ -1063,10 +1067,6 @@ function App() {
                         <button className="capability-tile" onClick={() => { handleCapability('rvf-engine'); setShowResourceDrawer(false); }}>
                           <span className="tile-icon-wrapper tile-rvf"><span className="tile-icon">&#9889;</span></span>
                           <span className="tile-label">RVF</span>
-                        </button>
-                        <button className="capability-tile" onClick={() => { handleCapability('pi'); setShowResourceDrawer(false); }}>
-                          <span className="tile-icon-wrapper tile-pi"><span className="tile-icon">🧠</span></span>
-                          <span className="tile-label">Pi</span>
                         </button>
                         <button className="capability-tile" onClick={() => { handleCapability('notebooklm'); setShowResourceDrawer(false); }}>
                           <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">📓</span></span>
