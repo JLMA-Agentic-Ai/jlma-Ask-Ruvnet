@@ -21,16 +21,18 @@ RUN npm install --legacy-peer-deps
 # Copy application code
 COPY . .
 
-# Extract RVF knowledge base at build time
+# Extract RVF knowledge base at build time (non-fatal — LFS pointers won't decompress)
 RUN if ls knowledge.rvf.gz.part-* 1>/dev/null 2>&1; then \
       echo "Reassembling knowledge.rvf from split parts..." && \
       cat knowledge.rvf.gz.part-* > knowledge.rvf.gz && \
       gunzip knowledge.rvf.gz && \
       rm -f knowledge.rvf.gz.part-* && \
       echo "RVF ready ($(du -sh knowledge.rvf | cut -f1))"; \
-    elif [ -f knowledge.rvf.gz ]; then \
+    elif [ -f knowledge.rvf.gz ] && file knowledge.rvf.gz | grep -q gzip; then \
       gunzip knowledge.rvf.gz && \
       echo "RVF ready ($(du -sh knowledge.rvf | cut -f1))"; \
+    else \
+      echo "⚠️ No valid knowledge.rvf found (LFS pointer or missing) — app starts with empty KB"; \
     fi
 
 # Build the UI

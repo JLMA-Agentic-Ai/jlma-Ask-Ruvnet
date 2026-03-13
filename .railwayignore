@@ -1,0 +1,44 @@
+# Railway upload — exclude everything not needed for Docker build
+# Target: under 100MB upload (down from 5GB+)
+
+# Large data directories (NOT needed at runtime)
+data_ingestion_ruv_coaching
+data_ingestion_github
+archive
+generated_imgs
+strange-loop-research
+workspace
+logs
+public
+
+# Node modules (reinstalled in Docker)
+node_modules
+src/ui/node_modules
+
+# Knowledge base (reassembled from .gz parts in Docker)
+knowledge.rvf
+knowledge.rvf.idmap.json
+
+# Documentation (cleaned up in Docker build)
+docs/claude-conversations
+docs/presentations/images
+
+# Development
+.git
+.claude
+.github
+.vscode
+.idea
+*.swp
+*.log
+coverage
+.nyc_output
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Databases
+*.db
