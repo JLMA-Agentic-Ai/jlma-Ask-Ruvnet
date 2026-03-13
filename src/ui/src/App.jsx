@@ -123,10 +123,13 @@ const getFollowUpSuggestions = (content) => {
   if (lower.includes('rvf') || lower.includes('cognitive container') || lower.includes('format')) {
     return ['What are the 24 segments of an RVF?', 'How does RVF enable offline AI?', 'Show me the RVF architecture'];
   }
-  if (lower.includes('ecosystem') || lower.includes('overview') || lower.includes('platform')) {
-    return ['How do all the pieces connect?', 'What makes this different from LangChain?', 'Show me the ecosystem map'];
+  if (lower.includes('pi') || lower.includes('collective') || lower.includes('shared brain') || lower.includes('hive')) {
+    return ['How does Pi cryptographic trust work?', 'What is Byzantine fault tolerance in Pi?', 'How do WASM edge nodes earn rewards?'];
   }
-  return ['Tell me more about this', 'What are the practical applications?', 'Show me a diagram of the architecture'];
+  if (lower.includes('ecosystem') || lower.includes('overview') || lower.includes('platform')) {
+    return ['How do all the pieces connect?', 'What makes this different from LangChain?', 'What is Pi collective intelligence?'];
+  }
+  return ['Tell me more about this', 'What are the practical applications?', 'What is Pi collective intelligence (pi.ruv.io)?'];
 };
 
 // Rotating hero taglines for dual-audience messaging
@@ -180,6 +183,11 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
         <span className="tile-label">RVF Engine</span>
         <span className="tile-count">Live Demo</span>
       </button>
+      <button className="capability-tile" onClick={() => onCapability('pi')}>
+        <span className="tile-icon-wrapper tile-pi"><span className="tile-icon">🧠</span></span>
+        <span className="tile-label">Pi Collective Intelligence</span>
+        <span className="tile-count">Shared AI Brain</span>
+      </button>
       <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
         <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">📓</span></span>
         <span className="tile-label">NotebookLM</span>
@@ -206,6 +214,9 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
       </button>
       <button onClick={() => onAction('What impossible applications can be built with RuVector that traditional tools cannot?')} className="prompt-pill">
         <span className="pill-icon">🚀</span> Impossible Apps
+      </button>
+      <button onClick={() => onAction('What is Pi collective intelligence (pi.ruv.io) and how does it create a shared AI brain with cryptographic trust?')} className="prompt-pill">
+        <span className="pill-icon">🧠</span> Pi Brain
       </button>
       <button onClick={() => onAction("What's new in the agentic AI ecosystem and latest RuVector developments?")} className="prompt-pill">
         <span className="pill-icon">🆕</span> What's New
@@ -913,6 +924,9 @@ function App() {
       case 'rvf-engine':
         setCanvasContent({ type: 'iframe', content: '/rvf-engine.html', title: 'RVF Engine Demo', action: 'rvf-engine' });
         break;
+      case 'pi':
+        window.open('https://pi.ruv.io', '_blank', 'noopener,noreferrer');
+        break;
       case 'notebooklm':
         window.open(NOTEBOOKLM_URL, '_blank', 'noopener,noreferrer');
         break;
@@ -1049,6 +1063,10 @@ function App() {
                         <button className="capability-tile" onClick={() => { handleCapability('rvf-engine'); setShowResourceDrawer(false); }}>
                           <span className="tile-icon-wrapper tile-rvf"><span className="tile-icon">&#9889;</span></span>
                           <span className="tile-label">RVF</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('pi'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-pi"><span className="tile-icon">🧠</span></span>
+                          <span className="tile-label">Pi</span>
                         </button>
                         <button className="capability-tile" onClick={() => { handleCapability('notebooklm'); setShowResourceDrawer(false); }}>
                           <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">📓</span></span>

@@ -2322,6 +2322,14 @@ body > div > svg[id^="mermaid-"],
   box-shadow: 0 8px 24px rgba(16,185,129,0.25), inset 0 1px 0 rgba(16,185,129,0.2);
 }
 
+.tile-icon-wrapper.tile-pi {
+  background: linear-gradient(135deg, rgba(236,72,153,0.3), rgba(168,85,247,0.2));
+  box-shadow: 0 4px 12px rgba(236,72,153,0.15), inset 0 1px 0 rgba(236,72,153,0.15);
+}
+.capability-tile:hover .tile-icon-wrapper.tile-pi {
+  box-shadow: 0 8px 24px rgba(236,72,153,0.3), inset 0 1px 0 rgba(236,72,153,0.2);
+}
+
 .tile-icon {
   font-size: 1.4rem;
 }
@@ -2678,6 +2686,7 @@ body > div > svg[id^="mermaid-"],
 .light-mode .tile-icon-wrapper.tile-kb { background: rgba(217,119,6,0.1); }
 .light-mode .tile-icon-wrapper.tile-rvf { background: rgba(0,180,220,0.1); }
 .light-mode .tile-icon-wrapper.tile-nlm { background: rgba(16,185,129,0.1); }
+.light-mode .tile-icon-wrapper.tile-pi { background: rgba(236,72,153,0.1); }
 .light-mode .quick-action-btn { background: rgba(139,92,246,0.04); border-color: rgba(139,92,246,0.15); }
 .light-mode .ctx-card { background: rgba(16,185,129,0.04); border-color: rgba(16,185,129,0.15); }
 
