@@ -154,7 +154,7 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
     <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo-sm" />
     <h1 className="hero-heading">What do you want to learn?</h1>
     <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
-    <p className="hero-tagline">Explore the agentic AI ecosystem — {repoCount}+ repos, {entryCount.toLocaleString()}+ knowledge entries, and {videoCount} deep-dive video sessions.</p>
+    <p className="hero-tagline">Explore the agentic AI ecosystem — 80+ Rust crates, {videoCount} deep-dive video sessions, and a growing collective intelligence network.</p>
 
     {/* Capability Tiles */}
     <div className="capability-tiles" role="navigation" aria-label="Explore capabilities">
@@ -223,16 +223,7 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
       </button>
     </div>
 
-    {/* Social Proof */}
-    <div className="social-proof-bar">
-      <span>500K+ npm downloads</span>
-      <span className="proof-dot" aria-hidden="true">&middot;</span>
-      <span>170+ repos</span>
-      <span className="proof-dot" aria-hidden="true">&middot;</span>
-      <span>Open source</span>
-      <span className="proof-dot" aria-hidden="true">&middot;</span>
-      <span>Used by teams at enterprise scale</span>
-    </div>
+    {/* Social proof is now in the animated stats bar at the top */}
 
     {/* Resource Documents */}
     <div className="resource-section">
@@ -949,10 +940,10 @@ function App() {
         setCanvasContent({ type: 'iframe', content: '/rvf-engine.html', title: 'RVF Engine Demo', action: 'rvf-engine' });
         break;
       case 'pi':
-        window.open('https://pi.ruv.io', '_blank', 'noopener,noreferrer');
+        handleSubmit(null, 'Tell me everything about Pi collective intelligence — what it is, how it works, why it matters, and how I can use it. Include architecture diagrams and practical examples.');
         break;
       case 'notebooklm':
-        window.open(NOTEBOOKLM_URL, '_blank', 'noopener,noreferrer');
+        handleSubmit(null, 'What NotebookLM content is available for the RuVector ecosystem? Show me the audio overviews, video explainers, and deep-dive sessions I can explore.');
         break;
       default:
         break;
