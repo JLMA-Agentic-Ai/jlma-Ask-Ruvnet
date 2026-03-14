@@ -139,10 +139,8 @@ const HERO_TAGLINES = [
   'For teams: One brain that learns across every department',
 ];
 
-// Hero with capability tiles, prompt starters, resources, and latest updates
-const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, latestRepos }) => {
-  const repoCount = ecosystemStats?.totalRepos || 170;
-  const entryCount = ecosystemStats?.totalEntries || 54543;
+// Hero with product on-ramp cards, explore tiles, and resources
+const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, latestRepos, communityStats }) => {
   const videoCount = knowledgeData?.videoStats?.total || 28;
   const [taglineIdx, setTaglineIdx] = useState(0);
   useEffect(() => {
@@ -152,78 +150,86 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
   return (
   <div className="hero-compact">
     <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo-sm" />
-    <h1 className="hero-heading">What do you want to learn?</h1>
+    <h1 className="hero-heading">What do you want to build?</h1>
     <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
-    <p className="hero-tagline">Explore the agentic AI ecosystem — 80+ Rust crates, {videoCount} deep-dive video sessions, and a growing collective intelligence network.</p>
+    <p className="hero-tagline">The on-ramp to agentic AI. Pick a product, get started in minutes.</p>
 
-    {/* Capability Tiles */}
-    <div className="capability-tiles" role="navigation" aria-label="Explore capabilities">
-      <button className="capability-tile" onClick={() => onCapability('pi')}>
-        <span className="tile-icon-wrapper tile-pi"><span className="tile-icon">🧠</span></span>
-        <span className="tile-label">Pi Collective Intelligence</span>
-        <span className="tile-count">NEW — Shared AI Brain</span>
+    {/* Product On-Ramp Cards */}
+    <div className="onramp-cards" role="navigation" aria-label="Get started with a product">
+      <button className="onramp-card onramp-ruflo" onClick={() => onAction('I want to get started with Ruflo. Walk me through what it is, why I need it, how to install it, and give me my first commands to run. Include architecture diagrams and show me what each command does.')}>
+        <span className="onramp-icon">&#9889;</span>
+        <span className="onramp-name">Ruflo</span>
+        <span className="onramp-hook">Orchestrate AI agent swarms</span>
+        <span className="onramp-stat">{communityStats?.github?.ruflo?.stars ? (communityStats.github.ruflo.stars/1000).toFixed(1)+'K' : '21K'} stars</span>
+        <span className="onramp-cta">Get Started</span>
       </button>
+      <button className="onramp-card onramp-ruvector" onClick={() => onAction('I want to get started with RuVector. Walk me through what it is, how it compares to pgvector and Pinecone, how to install it, and give me my first vector search query. Include architecture diagrams and benchmarks.')}>
+        <span className="onramp-icon">&#128270;</span>
+        <span className="onramp-name">RuVector</span>
+        <span className="onramp-hook">Search anything by meaning</span>
+        <span className="onramp-stat">{communityStats?.github?.ruvector?.stars ? (communityStats.github.ruvector.stars/1000).toFixed(1)+'K' : '3.2K'} stars</span>
+        <span className="onramp-cta">Get Started</span>
+      </button>
+      <button className="onramp-card onramp-pi" onClick={() => onAction('I want to get started with Pi Brain collective intelligence. Walk me through what it is, why a shared AI brain matters, how to connect to it, and give me my first search and share commands. Include architecture diagrams.')}>
+        <span className="onramp-icon">&#129504;</span>
+        <span className="onramp-name">Pi Brain</span>
+        <span className="onramp-hook">Share knowledge across AI sessions</span>
+        <span className="onramp-stat">{communityStats?.pi?.memories || 880} shared memories</span>
+        <span className="onramp-cta">Get Started</span>
+      </button>
+      <button className="onramp-card onramp-aimds" onClick={() => onAction('I want to add AI security to my application with AIMDS. Walk me through what it protects against, how to install it, and give me working Express middleware code. Include the 5-layer pipeline diagram.')}>
+        <span className="onramp-icon">&#128737;</span>
+        <span className="onramp-name">AIMDS</span>
+        <span className="onramp-hook">Secure your AI automatically</span>
+        <span className="onramp-stat">5-layer defense</span>
+        <span className="onramp-cta">Get Started</span>
+      </button>
+    </div>
+
+    {/* Explore Tiles */}
+    <div className="capability-tiles" role="navigation" aria-label="Explore more">
       <button className="capability-tile" onClick={() => onCapability('videos')}>
-        <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">📹</span></span>
+        <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">&#128249;</span></span>
         <span className="tile-label">Videos</span>
         <span className="tile-count">{videoCount} Sessions</span>
       </button>
       <button className="capability-tile" onClick={() => onCapability('decks')}>
-        <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">📊</span></span>
+        <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">&#128202;</span></span>
         <span className="tile-label">CEO & CTO Decks</span>
         <span className="tile-count">Presentations</span>
       </button>
       <button className="capability-tile" onClick={() => onCapability('universe')}>
-        <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">🌌</span></span>
+        <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">&#127756;</span></span>
         <span className="tile-label">Knowledge Universe</span>
         <span className="tile-count">3D Explorer</span>
-      </button>
-      <button className="capability-tile" onClick={() => onCapability('kb')}>
-        <span className="tile-icon-wrapper tile-kb"><span className="tile-icon">📚</span></span>
-        <span className="tile-label">Knowledge Base</span>
-        <span className="tile-count">{entryCount.toLocaleString()}+ Entries</span>
       </button>
       <button className="capability-tile" onClick={() => onCapability('rvf-engine')}>
         <span className="tile-icon-wrapper tile-rvf"><span className="tile-icon">&#9889;</span></span>
         <span className="tile-label">RVF Engine</span>
         <span className="tile-count">Live Demo</span>
       </button>
-      <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
-        <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">📓</span></span>
-        <span className="tile-label">NotebookLM</span>
-        <span className="tile-count">Interactive AI</span>
-      </button>
     </div>
 
-    {/* Prompt Starters */}
+    {/* Quick Ask Pills */}
     <div className="prompt-starters">
-      <button onClick={() => onAction('What is Pi collective intelligence (pi.ruv.io) and how does it create a shared AI brain with cryptographic trust?')} className="prompt-pill prompt-pill-demo">
-        <span className="pill-icon">🧠</span> Pi Brain — NEW
+      <button onClick={() => onAction('What is the difference between RuVector and Ruflo? When do I use each one?')} className="prompt-pill">
+        <span className="pill-icon">&#128161;</span> RuVector vs Ruflo
       </button>
-      <button onClick={() => onAction('Give me a 60-second overview of what Ruflo can do, with a diagram')} className="prompt-pill">
-        <span className="pill-icon">&#9889;</span> Try it live
+      <button onClick={() => onAction('Show me what impossible applications I can build with RuVector that traditional tools cannot handle.')} className="prompt-pill">
+        <span className="pill-icon">&#128640;</span> Impossible Apps
       </button>
-      <button onClick={() => onAction('What is Ruflo v3.5, its specialized agents, swarm topologies, and capabilities?')} className="prompt-pill">
-        <span className="pill-icon">⚡</span> Ruflo v3.5
+      <button onClick={() => onAction('What are the core Rust crates in the RuVector ecosystem and how do they all connect?')} className="prompt-pill">
+        <span className="pill-icon">&#129408;</span> Rust Ecosystem
       </button>
-      <button onClick={() => onAction('How does the ReasoningBank self-learning system work in Agentic Flow?')} className="prompt-pill">
-        <span className="pill-icon">🧠</span> ReasoningBank
-      </button>
-      <button onClick={() => onAction('What is RuVector and how does it compare to pgvector for AI applications?')} className="prompt-pill">
-        <span className="pill-icon">🔮</span> RuVector DB
-      </button>
-      <button onClick={() => onAction('What are the core Rust crates in the rUv ecosystem and how do they connect?')} className="prompt-pill">
-        <span className="pill-icon">🦀</span> Rust Ecosystem
-      </button>
-      <button onClick={() => onAction('What impossible applications can be built with RuVector that traditional tools cannot?')} className="prompt-pill">
-        <span className="pill-icon">🚀</span> Impossible Apps
-      </button>
-      <button onClick={() => onAction("What's new in the agentic AI ecosystem and latest RuVector developments?")} className="prompt-pill">
-        <span className="pill-icon">🆕</span> What's New
+      <button onClick={() => onAction("What's new in the RuVector ecosystem as of March 2026?")} className="prompt-pill">
+        <span className="pill-icon">&#127381;</span> What's New
       </button>
     </div>
 
-    {/* Social proof is now in the animated stats bar at the top */}
+    {/* Dog Food Story */}
+    <div className="dogfood-callout">
+      <span className="dogfood-text">This knowledge base runs on RuVector. 377 expert articles compressed to <strong>0.5MB</strong> via RVF format — <strong>85x smaller</strong> than v6. The tool explains itself using itself.</span>
+    </div>
 
     {/* Resource Documents */}
     <div className="resource-section">
@@ -1064,6 +1070,7 @@ function App() {
                   ecosystemStats={ecosystemStats}
                   knowledgeData={knowledgeData}
                   latestRepos={latestRepos}
+                  communityStats={communityStats}
                 />
               ) : (
                 <>
