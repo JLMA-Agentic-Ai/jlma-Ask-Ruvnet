@@ -1208,14 +1208,16 @@ async function runRAGPipeline(message, mode, conversationHistory) {
 - Comparison tables should include a "Best For" column
 - The "Explore Further" section should progress from easier → harder questions`,
 
-        'Balanced': `Provide a clear, well-structured response for an intermediate technical audience. Rules:
-- Balance depth with accessibility — assume programming knowledge, don't assume domain expertise
-- Analogies for complex architectural concepts, but skip basics
-- Code examples should be practical and production-oriented
-- Mermaid diagrams should show real component names and data flow
-- Include performance characteristics and scaling considerations
-- Comparison tables should include quantitative metrics where available
-- Cover edge cases in "What to Watch For"`,
+        'Balanced': `Write like a New York Times technology feature: lead with the most compelling insight, then layer depth progressively. Rules:
+- OPENING HOOK: The TL;DR must grab attention — lead with WHY this matters, not what it is. "RuVector searches 10 million vectors in 2ms — that's 12,500x faster than scanning them one by one" beats "RuVector is a vector database"
+- NARRATIVE FLOW: Each section should build on the previous one like a story, not read like disconnected bullet points. Use transitions between concepts
+- CONCRETE NUMBERS: Always include specific metrics, benchmarks, or comparisons. "85x smaller" is better than "much smaller." "377 entries in 0.5MB" is better than "compact"
+- REAL-WORLD STAKES: Explain what breaks without this technology, what's possible with it, and what the alternative costs. Make the reader feel the difference
+- DEPTH ON DEMAND: Start accessible, then go deep. Someone should be able to stop reading at any point and feel they got value
+- Code examples should be practical, production-oriented, and annotated with what each line does
+- Mermaid diagrams should tell a visual story — show data flow, decision points, and architecture relationships with real component names
+- Comparison tables must include quantitative metrics (speed, size, cost) not just qualitative descriptions
+- Cover edge cases and failure modes in "What to Watch For" — be honest about limitations`,
 
         'Technical': `Provide maximum technical depth for an experienced engineer. Rules:
 - Assume strong engineering background — skip analogies for basic concepts
