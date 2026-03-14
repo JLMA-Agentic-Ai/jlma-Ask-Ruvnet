@@ -4130,3 +4130,182 @@ button, a, .source-card, .prompt-pill {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* ── Inline Media Cards ── */
+/* Replaces plain markdown links to local assets / NotebookLM with interactive cards */
+
+.related-media-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 1rem 0 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.rml-icon {
+  font-size: 0.6rem;
+  color: var(--accent-emerald);
+}
+
+.inline-media-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  margin: 0.35rem 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.2s ease;
+  max-width: 420px;
+  cursor: default;
+}
+.inline-media-card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Type-specific accent borders */
+.inline-media-pdf { border-left: 3px solid var(--accent); }
+.inline-media-video { border-left: 3px solid var(--accent-blue); }
+.inline-media-audio { border-left: 3px solid var(--accent-purple); }
+
+.imc-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+}
+.imc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+  min-width: 0;
+}
+.imc-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.imc-desc {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* Evergreen badge for NotebookLM */
+.imc-evergreen {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.6rem;
+  color: var(--accent-emerald);
+  margin-top: 0.15rem;
+}
+.evergreen-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+  animation: evergreenPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes evergreenPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(16, 185, 129, 0.5); }
+  50% { opacity: 0.6; box-shadow: 0 0 3px rgba(16, 185, 129, 0.3); }
+}
+
+/* CTA button */
+.imc-action {
+  flex-shrink: 0;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-size: 0.68rem;
+  font-weight: 600;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.imc-action:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+.imc-action:active {
+  transform: translateY(0);
+}
+/* Type-specific action hover colors */
+.inline-media-pdf .imc-action:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+.inline-media-video .imc-action:hover {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+}
+.inline-media-audio .imc-action:hover {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: #c4b5fd;
+}
+
+/* Focus-visible for keyboard navigation */
+.imc-action:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Light mode overrides */
+.light-mode .inline-media-card {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+}
+.light-mode .inline-media-card:hover {
+  border-color: rgba(0, 0, 0, 0.14);
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+.light-mode .imc-action {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-primary);
+}
+.light-mode .imc-action:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.light-mode .related-media-heading {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Mobile: full width cards */
+@media (max-width: 768px) {
+  .inline-media-card {
+    max-width: 100%;
+  }
+  .imc-title {
+    font-size: 0.74rem;
+  }
+  .imc-action {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.64rem;
+  }
+}

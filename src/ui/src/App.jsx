@@ -545,6 +545,110 @@ function App() {
     }
   }, [showResourceDrawer]);
 
+  // Enhanced markdown components — extends base markdownComponents with inline media cards
+  // Intercepts links to local assets and NotebookLM, rendering interactive cards instead
+  const enhancedMarkdownComponents = React.useMemo(() => ({
+    ...markdownComponents,
+    h3({ children, ...props }) {
+      const text = String(children);
+      if (/related\s*media/i.test(text)) {
+        return (
+          <h3 className="related-media-heading" {...props}>
+            <span className="rml-icon" aria-hidden="true">&#9654;</span> {children}
+          </h3>
+        );
+      }
+      return <h3 {...props}>{children}</h3>;
+    },
+    a({ href, children, ...props }) {
+      if (!href) return <a href={href} {...props}>{children}</a>;
+      const label = String(children || '');
+
+      // NotebookLM links — render audio card with evergreen badge
+      if (href.includes('notebooklm.google.com')) {
+        return (
+          <span className="inline-media-card inline-media-audio" role="group" aria-label={`NotebookLM: ${label}`}>
+            <span className="imc-icon" aria-hidden="true">&#127911;</span>
+            <span className="imc-body">
+              <span className="imc-title">{label || 'NotebookLM Deep Dive'}</span>
+              <span className="imc-desc">Interactive AI-powered notebook</span>
+              <span className="imc-evergreen">
+                <span className="evergreen-dot" aria-hidden="true" />
+                Updated nightly from latest GitHub sources
+              </span>
+            </span>
+            <button className="imc-action" onClick={() => window.open(href, '_blank', 'noopener,noreferrer')} aria-label={`Listen: ${label}`}>
+              Listen
+            </button>
+          </span>
+        );
+      }
+
+      // Local PDF links — render PDF card
+      const pdfMatch = href.match(/\/assets\/docs\/(.+\.pdf)$/i);
+      if (pdfMatch) {
+        const filename = pdfMatch[1];
+        const displayTitle = label || filename.replace(/_/g, ' ').replace('.pdf', '');
+        const isCeo = /ceo/i.test(filename) || /ceo/i.test(label);
+        const isCto = /cto/i.test(filename) || /cto/i.test(label);
+        return (
+          <span className="inline-media-card inline-media-pdf" role="group" aria-label={`PDF: ${displayTitle}`}>
+            <span className="imc-icon" aria-hidden="true">{isCeo ? '\uD83D\uDC54' : isCto ? '\uD83D\uDD27' : '\uD83D\uDCC4'}</span>
+            <span className="imc-body">
+              <span className="imc-title">{displayTitle}</span>
+              <span className="imc-desc">PDF Document</span>
+            </span>
+            <button className="imc-action" onClick={() => setCanvasContent({ type: 'pdf', content: `/assets/docs/${filename}`, title: displayTitle, action: 'document' })} aria-label={`View in canvas: ${displayTitle}`}>
+              View in Canvas
+            </button>
+          </span>
+        );
+      }
+
+      // Local video links — render video card
+      const videoMatch = href.match(/\/assets\/docs\/(.+\.mp4)$/i);
+      if (videoMatch) {
+        const filename = videoMatch[1];
+        const displayTitle = label || filename.replace(/_/g, ' ').replace('.mp4', '');
+        return (
+          <span className="inline-media-card inline-media-video" role="group" aria-label={`Video: ${displayTitle}`}>
+            <span className="imc-icon" aria-hidden="true">&#9654;&#65039;</span>
+            <span className="imc-body">
+              <span className="imc-title">{displayTitle}</span>
+              <span className="imc-desc">Video</span>
+            </span>
+            <button className="imc-action" onClick={() => setCanvasContent({ type: 'video', content: `/assets/docs/${filename}`, title: displayTitle, action: 'document' })} aria-label={`Play in canvas: ${displayTitle}`}>
+              Play in Canvas
+            </button>
+          </span>
+        );
+      }
+
+      // NotebookLM audio links (various URL patterns)
+      if (href.includes('notebooklm') || /notebooklm|audio\s*overview/i.test(label)) {
+        return (
+          <span className="inline-media-card inline-media-audio" role="group" aria-label={`Audio: ${label}`}>
+            <span className="imc-icon" aria-hidden="true">&#127911;</span>
+            <span className="imc-body">
+              <span className="imc-title">{label || 'Audio Overview'}</span>
+              <span className="imc-desc">NotebookLM AI audio</span>
+              <span className="imc-evergreen">
+                <span className="evergreen-dot" aria-hidden="true" />
+                Updated nightly from latest GitHub sources
+              </span>
+            </span>
+            <button className="imc-action" onClick={() => window.open(href, '_blank', 'noopener,noreferrer')} aria-label={`Listen: ${label}`}>
+              Listen
+            </button>
+          </span>
+        );
+      }
+
+      // Default — render normal link
+      return <a href={href} {...props}>{children}</a>;
+    },
+  }), [setCanvasContent]);
+
   const handleSubmit = async (e, specialMode = null) => {
     e?.preventDefault();
     if (!input.trim() && !specialMode) return;
@@ -1144,7 +1248,7 @@ function App() {
                           <div className={`markdown-content${msg.streaming ? ' streaming-cursor' : ''}`}>
                             <ReactMarkdown
                               remarkPlugins={[remarkGfm]}
-                              components={markdownComponents}
+                              components={enhancedMarkdownComponents}
                             >
                               {msg.content}
                             </ReactMarkdown>
