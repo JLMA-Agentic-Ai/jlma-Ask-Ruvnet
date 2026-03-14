@@ -6,6 +6,29 @@ import packageJson from '../../../package.json';
 import PDFPresentation from './PDFPresentation';
 import './App.css';
 
+// Count-up animation component for stats
+const CountUp = ({ end, duration = 1500, suffix = '' }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!end) return;
+    const target = typeof end === 'string' ? parseFloat(end.replace(/[^0-9.]/g, '')) : end;
+    if (isNaN(target)) { setCount(end); return; }
+    const startTime = Date.now();
+    const step = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      setCount(Math.round(eased * target));
+      if (progress < 1) ref.current = requestAnimationFrame(step);
+    };
+    ref.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(ref.current);
+  }, [end, duration]);
+  if (typeof end === 'string' && isNaN(parseFloat(end.replace(/[^0-9.]/g, '')))) return <>{end}</>;
+  return <>{count.toLocaleString()}{suffix}</>;
+};
+
 // Error Boundary — must be a class component per React spec
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -1140,23 +1163,23 @@ function App() {
       {(communityStats || ecosystemStats) && (
         <div className="stats-bar">
           {communityStats?.github?.totalStars > 0 && (<>
-            <span><span className="stats-highlight">{(communityStats.github.totalStars).toLocaleString()}</span> GitHub Stars</span>
+            <span><span className="stats-highlight"><CountUp end={communityStats.github.totalStars} /></span> GitHub Stars</span>
             <span className="stats-dot">·</span>
           </>)}
           {communityStats?.npm?.monthlyDownloads > 0 && (<>
-            <span><span className="stats-highlight">{Math.round(communityStats.npm.monthlyDownloads / 1000)}K+</span> npm Downloads/mo</span>
+            <span><span className="stats-highlight"><CountUp end={Math.round(communityStats.npm.monthlyDownloads / 1000)} suffix="K+" /></span> npm Downloads/mo</span>
             <span className="stats-dot">·</span>
           </>)}
-          <span><span className="stats-highlight">{communityStats?.rustCrates || 80}+</span> Rust Crates</span>
+          <span><span className="stats-highlight"><CountUp end={communityStats?.rustCrates || 80} suffix="+" /></span> Rust Crates</span>
           <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">{communityStats?.kbEntries || ecosystemStats?.totalEntries || 377}</span> KB Entries</span>
+          <span><span className="stats-highlight"><CountUp end={communityStats?.kbEntries || ecosystemStats?.totalEntries || 377} /></span> KB Entries</span>
           {communityStats?.pi?.memories > 0 && (<>
             <span className="stats-dot">·</span>
-            <span><span className="stats-highlight">{communityStats.pi.memories}</span> Pi Memories</span>
+            <span><span className="stats-highlight"><CountUp end={communityStats.pi.memories} /></span> Pi Memories</span>
           </>)}
           {communityStats?.pi?.contributors > 0 && (<>
             <span className="stats-dot">·</span>
-            <span><span className="stats-highlight">{communityStats.pi.contributors}</span> Contributors</span>
+            <span><span className="stats-highlight"><CountUp end={communityStats.pi.contributors} /></span> Contributors</span>
           </>)}
         </div>
       )}
