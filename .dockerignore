@@ -8,7 +8,11 @@
 .git
 .claude
 .github
-docs/claude-conversations
+.vscode
+.idea
+*.swp
+
+# Node modules (reinstalled in Docker)
 node_modules
 src/ui/node_modules
 
@@ -20,7 +24,25 @@ coverage/
 # Databases (not needed at runtime)
 *.db
 
-# IDE
-.vscode
-.idea
-*.swp
+# Heavy directories (not needed at runtime)
+data_ingestion_ruv_coaching
+data_ingestion_github
+archive
+generated_imgs
+strange-loop-research
+workspace
+logs
+.ruvector
+.hive-mind
+.swarm
+.claude-flow
+.agentic-flow
+docs
+
+# Large files (knowledge.rvf is committed at 535KB — only that version should be used)
+knowledge.rvf.idmap.json
+
+# Uncompressed browser assets (gzipped versions are sufficient)
+src/ui/public/assets/knowledge-sq8.bin
+src/ui/public/assets/knowledge-meta.json
+src/ui/public/assets/knowledge-sq8-params.bin

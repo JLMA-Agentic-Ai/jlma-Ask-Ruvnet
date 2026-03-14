@@ -127,8 +127,12 @@ console.log(`  GZ params: ${gzParamsPath} (${gzParamsSize} bytes)`);
 // --- Step 5: Load and compress metadata ---
 console.log('\nStep 5: Building metadata index...');
 const metadataRaw = JSON.parse(fs.readFileSync(path.join(SOURCE_DIR, 'metadata.json'), 'utf8'));
-const idIndex = metadataRaw.idIndex;
-const metadataMap = metadataRaw.metadata;
+const rawIdIndex = metadataRaw.idIndex;
+// Handle both array and object formats from different build scripts
+const idIndex = Array.isArray(rawIdIndex)
+  ? rawIdIndex
+  : Object.keys(rawIdIndex).sort((a, b) => Number(a) - Number(b)).map(k => rawIdIndex[k]);
+const metadataMap = metadataRaw.metadata || metadataRaw.metadataIndex || {};
 
 // Build a compact metadata array: [{id, title, category, quality_score}]
 const compactMeta = idIndex.map((id) => {

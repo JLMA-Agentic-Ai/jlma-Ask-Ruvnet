@@ -89,7 +89,7 @@ mcp__Ruvnet-KB-first__kb_search({ query: "[relevant terms]", limit: 5 })
 
 ## RULE ZERO: KB-FIRST + RUFLO-FIRST (NON-NEGOTIABLE)
 
-**This project has a 269-entry expert-curated knowledge base (v4.0.0, 10 tools, 105 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector, agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, Ruflo, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
+**This project has a 353-entry expert-curated knowledge base (v5.0.0, 10 tools, 148 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector, agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, Ruflo, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
 
 ### Before Answering ANY Question:
 

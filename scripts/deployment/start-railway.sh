@@ -1,27 +1,23 @@
 #!/bin/bash
 # Railway/Docker Startup Script for Ask-Ruvnet
-# Backend: RVF Native (knowledge.rvf)
+# Architecture: RVF-First (knowledge.rvf + content-sidecar.json.gz)
 
-echo "🚀 Starting Ask-Ruvnet..."
+echo "Starting Ask-Ruvnet..."
 
-# === RVF Format (preferred) ===
+# Verify RVF knowledge base is present
 if [ -f "knowledge.rvf" ]; then
-  echo "✅ RVF knowledge base present ($(du -sh knowledge.rvf | cut -f1))"
-elif ls knowledge.rvf.gz.part-* 1>/dev/null 2>&1; then
-  echo "📦 Reassembling RVF knowledge base..."
-  cat knowledge.rvf.gz.part-* > knowledge.rvf.gz
-  gunzip knowledge.rvf.gz
-  rm -f knowledge.rvf.gz.part-*
-  echo "✅ RVF extracted ($(du -sh knowledge.rvf | cut -f1))"
+  echo "RVF knowledge base present ($(du -sh knowledge.rvf | cut -f1))"
 else
-  echo "⚠️ No knowledge base found — app will start with empty KB"
+  echo "WARNING: No knowledge.rvf found — app will start with empty KB"
 fi
 
-# Decompress content sidecar if compressed version exists
-if [ ! -f "content-sidecar.json.gz" ] && [ -f "content-sidecar.json.gz.bak" ]; then
-  cp content-sidecar.json.gz.bak content-sidecar.json.gz
+# Verify content sidecar
+if [ -f "content-sidecar.json.gz" ]; then
+  echo "Content sidecar present ($(du -sh content-sidecar.json.gz | cut -f1))"
+else
+  echo "WARNING: No content-sidecar.json.gz — text content unavailable"
 fi
 
 # Start the server
-echo "🔌 Starting Node.js server..."
-node src/server/app.js || { echo "❌ App crashed! Sleeping for debug..."; sleep 3600; }
+echo "Starting Node.js server..."
+node src/server/app.js || { echo "App crashed! Sleeping for debug..."; sleep 3600; }

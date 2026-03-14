@@ -1,5 +1,5 @@
 # Railway Dockerfile for Ask-Ruvnet
-# Single-stage build — proven reliable on Railway
+# Single-stage build — RVF-First architecture (353 gold entries, ~535KB)
 
 FROM node:22-bookworm-slim
 
@@ -11,36 +11,23 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Copy package files first for better layer caching
-COPY package.json ./
+# Copy package files for layer caching
+COPY package.json package-lock.json ./
 
-# Install dependencies using npm install (NOT npm ci)
-# This allows alpha versions that don't match lock file
-RUN npm install --legacy-peer-deps
+# Install dependencies (--legacy-peer-deps for alpha @ruvector packages)
+RUN npm install --legacy-peer-deps --omit=dev
 
 # Copy application code
 COPY . .
-
-# Extract RVF knowledge base at build time (non-fatal — LFS pointers won't decompress)
-RUN if ls knowledge.rvf.gz.part-* 1>/dev/null 2>&1; then \
-      echo "Reassembling knowledge.rvf from split parts..." && \
-      cat knowledge.rvf.gz.part-* > knowledge.rvf.gz && \
-      gunzip knowledge.rvf.gz && \
-      rm -f knowledge.rvf.gz.part-* && \
-      echo "RVF ready ($(du -sh knowledge.rvf | cut -f1))"; \
-    elif [ -f knowledge.rvf.gz ] && file knowledge.rvf.gz | grep -q gzip; then \
-      gunzip knowledge.rvf.gz && \
-      echo "RVF ready ($(du -sh knowledge.rvf | cut -f1))"; \
-    else \
-      echo "⚠️ No valid knowledge.rvf found (LFS pointer or missing) — app starts with empty KB"; \
-    fi
 
 # Build the UI
 RUN cd src/ui && npm install && npm run build
 
 # Clean up build-time artifacts to reduce image size
 RUN rm -rf src/ui/node_modules src/ui/src .git .claude docs *.md \
-    scripts/test-* scripts/ingest-* scripts/kb-curate scripts/ingestion
+    scripts/test-* scripts/ingest-* scripts/kb-curate scripts/ingestion \
+    .ruvector archive generated_imgs strange-loop-research workspace logs \
+    data_ingestion_ruv_coaching data_ingestion_github
 
 # Expose port
 EXPOSE 3000
