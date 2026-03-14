@@ -163,7 +163,7 @@ const HERO_TAGLINES = [
 ];
 
 // Hero with product on-ramp cards, explore tiles, and resources
-const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, latestRepos, communityStats }) => {
+const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowledgeData, latestRepos, communityStats }) => {
   const videoCount = knowledgeData?.videoStats?.total || 28;
   const [taglineIdx, setTaglineIdx] = useState(0);
   useEffect(() => {
@@ -179,28 +179,28 @@ const HeroSection = ({ onAction, onCapability, ecosystemStats, knowledgeData, la
 
     {/* Product On-Ramp Cards */}
     <div className="onramp-cards" role="navigation" aria-label="Get started with a product">
-      <button className="onramp-card onramp-ruflo" onClick={() => onAction('I want to get started with Ruflo. Walk me through what it is, why I need it, how to install it, and give me my first commands to run. Include architecture diagrams and show me what each command does.')}>
+      <button className="onramp-card onramp-ruflo" onClick={() => onOnramp('ruflo')}>
         <span className="onramp-icon">&#9889;</span>
         <span className="onramp-name">Ruflo</span>
         <span className="onramp-hook">Orchestrate AI agent swarms</span>
         <span className="onramp-stat">{communityStats?.github?.ruflo?.stars ? (communityStats.github.ruflo.stars/1000).toFixed(1)+'K' : '21K'} stars</span>
         <span className="onramp-cta">Get Started</span>
       </button>
-      <button className="onramp-card onramp-ruvector" onClick={() => onAction('I want to get started with RuVector. Walk me through what it is, how it compares to pgvector and Pinecone, how to install it, and give me my first vector search query. Include architecture diagrams and benchmarks.')}>
+      <button className="onramp-card onramp-ruvector" onClick={() => onOnramp('ruvector')}>
         <span className="onramp-icon">&#128270;</span>
         <span className="onramp-name">RuVector</span>
         <span className="onramp-hook">Search anything by meaning</span>
         <span className="onramp-stat">{communityStats?.github?.ruvector?.stars ? (communityStats.github.ruvector.stars/1000).toFixed(1)+'K' : '3.2K'} stars</span>
         <span className="onramp-cta">Get Started</span>
       </button>
-      <button className="onramp-card onramp-pi" onClick={() => onAction('I want to get started with Pi Brain collective intelligence. Walk me through what it is, why a shared AI brain matters, how to connect to it, and give me my first search and share commands. Include architecture diagrams.')}>
+      <button className="onramp-card onramp-pi" onClick={() => onOnramp('pi')}>
         <span className="onramp-icon">&#129504;</span>
         <span className="onramp-name">Pi Brain</span>
         <span className="onramp-hook">Share knowledge across AI sessions</span>
         <span className="onramp-stat">{communityStats?.pi?.memories || 880} shared memories</span>
         <span className="onramp-cta">Get Started</span>
       </button>
-      <button className="onramp-card onramp-aimds" onClick={() => onAction('I want to add AI security to my application with AIMDS. Walk me through what it protects against, how to install it, and give me working Express middleware code. Include the 5-layer pipeline diagram.')}>
+      <button className="onramp-card onramp-aimds" onClick={() => onOnramp('aimds')}>
         <span className="onramp-icon">&#128737;</span>
         <span className="onramp-name">AIMDS</span>
         <span className="onramp-hook">Secure your AI automatically</span>
@@ -1049,6 +1049,26 @@ function App() {
     </div>
   ) : null;
 
+  // Product on-ramp handler — sends chat message AND opens relevant canvas content
+  const handleOnramp = (product) => {
+    const prompts = {
+      ruflo: 'I want to get started with Ruflo. Walk me through what it is, why I need it, how to install it, and give me my first commands to run. Include architecture diagrams and show me what each command does.',
+      ruvector: 'I want to get started with RuVector. Walk me through what it is, how it compares to pgvector and Pinecone, how to install it, and give me my first vector search query. Include architecture diagrams and benchmarks.',
+      pi: 'Tell me everything about Pi Brain collective intelligence — what it is, how it works, why it matters, and how I can use it. Include architecture diagrams and practical examples.',
+      aimds: 'I want to add AI security to my application with AIMDS. Walk me through what it protects against, how to install it, and give me working Express middleware code. Include the 5-layer pipeline diagram.',
+    };
+    const canvasMap = {
+      ruflo: { type: 'pdf', content: '/assets/docs/Claude-Flow v3 Swarm Platform \u2014 CEO Briefing.pdf', title: 'Ruflo Architecture Overview', action: 'document' },
+      ruvector: { type: 'pdf', content: '/assets/docs/The Agentic Engineering Stack \u2014 Technical Overview.pdf', title: 'RuVector Technical Overview', action: 'document' },
+      pi: { type: 'iframe', content: 'https://pi.ruv.io', title: 'Pi Brain — Live', action: 'pi' },
+      aimds: { type: 'pdf', content: '/assets/docs/Agentic Intelligence Frameworks.pdf', title: 'AIMDS Security Framework', action: 'document' },
+    };
+    // Open canvas with relevant resource
+    if (canvasMap[product]) setCanvasContent(canvasMap[product]);
+    // Send the chat message
+    if (prompts[product]) handleSubmit(null, prompts[product]);
+  };
+
   // Capability tile handler
   const handleCapability = (type) => {
     switch (type) {
@@ -1194,6 +1214,7 @@ function App() {
                 <HeroSection
                   onAction={(prompt) => handleSubmit(null, prompt)}
                   onCapability={handleCapability}
+                  onOnramp={handleOnramp}
                   ecosystemStats={ecosystemStats}
                   knowledgeData={knowledgeData}
                   latestRepos={latestRepos}
