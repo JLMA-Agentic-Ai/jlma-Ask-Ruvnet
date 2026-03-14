@@ -1759,3 +1759,8 @@ Here's what's deployed now:
 - Railway CLI commands work: `railway status`, `railway deployment list`, `railway logs`
 
 **The "degraded" status** is expected — it means the vector store hasn't been initialized on this Railway instance (the KB data needs to be loaded). That's a separate issue from the decks, and has been this way since the architecture change to ship RuVector data via tar.gz.
+
+## Human
+
+push all of this and show off the pi as new solutions.
+
