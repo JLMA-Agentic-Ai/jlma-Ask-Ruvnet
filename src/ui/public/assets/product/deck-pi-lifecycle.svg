@@ -1,0 +1,194 @@
+<svg viewBox="0 0 1200 800" width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B1426" />
+      <stop offset="100%" style="stop-color:#050A13" />
+    </linearGradient>
+    <linearGradient id="amberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#F97316"/>
+    </linearGradient>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A855F7"/>
+      <stop offset="100%" style="stop-color:#9333EA"/>
+    </linearGradient>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#2563EB"/>
+    </linearGradient>
+    <linearGradient id="coreInsightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D3748"/>
+      <stop offset="100%" style="stop-color:#1A202C"/>
+    </linearGradient>
+
+    <!-- Subtle Shadow Filter -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Arrowhead marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3B82F6" />
+    </marker>
+
+    <!-- Common styles -->
+    <style>
+      .label { font-family: system-ui, -apple-system, sans-serif; font-size: 22px; font-weight: bold; fill: #e2e8f0; }
+      .detail { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #94A3B8; }
+      .metric { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: bold; fill: #e2e8f0; }
+      .arrow-label { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #94A3B8; }
+      .core-insight-text { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: bold; fill: #e2e8f0; text-anchor: middle;}
+    </style>
+
+    <!-- Reusable Icons -->
+    <!-- Brain Icon -->
+    <g id="icon-brain">
+      <circle cx="12" cy="12" r="10" stroke="url(#purpleGradient)" stroke-width="2" fill="none"/>
+      <path d="M12 2c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5zM12 12c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z" fill="url(#purpleGradient)"/>
+      <path d="M7 7 C5 9 5 15 7 17 M17 7 C19 9 19 15 17 17" stroke="url(#purpleGradient)" stroke-width="2" fill="none"/>
+    </g>
+
+    <!-- Shield Icon -->
+    <g id="icon-shield">
+      <path d="M12,2 L22,6 L22,12 C22,18 12,22 12,22 C12,22 2,18 2,12 L2,6 Z" fill="url(#blueGradient)"/>
+    </g>
+
+    <!-- Lock Icon -->
+    <g id="icon-lock">
+      <rect x="7" y="10" width="10" height="10" rx="2" fill="url(#blueGradient)"/>
+      <path d="M12 4C10 4 8 6 8 8V10h8V8c0-2-2-4-4-4z" fill="url(#blueGradient)"/>
+    </g>
+
+    <!-- Magnifying Glass Icon -->
+    <g id="icon-search">
+      <circle cx="10" cy="10" r="7" stroke="url(#purpleGradient)" stroke-width="2" fill="none"/>
+      <line x1="15" y1="15" x2="20" y2="20" stroke="url(#purpleGradient)" stroke-width="2"/>
+    </g>
+
+    <!-- Funnel Icon -->
+    <g id="icon-funnel">
+      <path d="M4 4 L20 4 L16 10 L8 10 Z" fill="url(#blueGradient)"/>
+      <path d="M8 10 L16 10 L14 20 L10 20 Z" fill="url(#blueGradient)"/>
+    </g>
+
+    <!-- Balance Scale Icon (for Evaluate) -->
+    <g id="icon-scale">
+      <rect x="11" y="2" width="2" height="15" fill="#10B981"/>
+      <line x1="6" y1="10" x2="18" y2="10" stroke="#10B981" stroke-width="2"/>
+      <circle cx="7" cy="12" r="3" fill="#10B981"/>
+      <circle cx="17" cy="12" r="3" fill="#10B981"/>
+    </g>
+
+    <!-- Star Icon (for Best Content) -->
+    <g id="icon-star">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.27l-6.18 3.25L7 14.14l-5-4.87 8.91-1.01L12 2z" fill="#10B981"/>
+    </g>
+
+    <!-- Network Nodes Icon (for Evolve) -->
+    <g id="icon-network">
+      <circle cx="6" cy="6" r="3" fill="url(#purpleGradient)"/>
+      <circle cx="18" cy="6" r="3" fill="url(#purpleGradient)"/>
+      <circle cx="12" cy="18" r="3" fill="url(#purpleGradient)"/>
+      <line x1="6" y1="6" x2="18" y2="6" stroke="url(#purpleGradient)" stroke-width="1"/>
+      <line x1="6" y1="6" x2="12" y2="18" stroke="url(#purpleGradient)" stroke-width="1"/>
+      <line x1="18" y1="6" x2="12" y2="18" stroke="url(#purpleGradient)" stroke-width="1"/>
+    </g>
+
+    <!-- Gear Icon -->
+    <g id="icon-gear">
+      <circle cx="12" cy="12" r="8" fill="none" stroke="url(#purpleGradient)" stroke-width="2"/>
+      <path d="M12 2l1 3h-2l1-3zm6.2 3.8l-2.6 1.5 1.5 2.6 2.6-1.5-1.5-2.6zM22 12l-3 1v-2l3 1zM18.2 18.2l-1.5-2.6-2.6 1.5 1.5 2.6 2.6-1.5zM12 22l-1-3h2l-1 3zM5.8 18.2l-2.6-1.5-1.5 2.6 2.6 1.5 1.5-2.6zM2 12l3-1v2l-3-1zM5.8 5.8l1.5-2.6 2.6 1.5-1.5 2.6-2.6-1.5z" fill="url(#purpleGradient)"/>
+    </g>
+
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#backgroundGradient)" />
+
+  <!-- Core Insight Callout -->
+  <rect x="250" y="50" width="700" height="70" rx="10" fill="url(#coreInsightGradient)" stroke="#F59E0B" stroke-width="2" filter="url(#shadow)"/>
+  <text x="600" y="90" class="core-insight-text">
+    <tspan x="600" dy="0">Pi Brain: An intelligent lifecycle for community-driven knowledge refinement.</tspan>
+  </text>
+
+  <!-- Central lifecycle ring -->
+  <circle cx="600" cy="450" r="300" fill="none" stroke="#3B82F6" stroke-width="8" opacity="0.2"/>
+  <circle cx="600" cy="450" r="280" fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.3"/>
+
+  <!-- Stage 1: CONTRIBUTE -->
+  <g transform="translate(150, 250)">
+    <rect x="0" y="0" width="250" height="180" rx="12" fill="url(#amberGradient)" stroke="#F97316" stroke-width="2" filter="url(#shadow)"/>
+    <use href="#icon-brain" transform="translate(10, 10) scale(1.5)"/>
+    <text x="90" y="30" class="label">CONTRIBUTE</text>
+    <text x="15" y="65" class="detail">Secure Knowledge Share</text>
+
+    <g transform="translate(15, 85)">
+      <use href="#icon-shield" transform="scale(0.8)"/>
+      <text x="30" y="15" class="detail" fill="#e2e8f0">PII Stripped</text>
+    </g>
+    <g transform="translate(15, 120)">
+      <use href="#icon-lock" transform="scale(0.8)"/>
+      <text x="30" y="15" class="detail" fill="#e2e8f0">Signed &amp; Sealed</text>
+    </g>
+    <text x="140" y="125" class="metric">128-dim Embeds</text>
+  </g>
+
+  <!-- Stage 2: DISCOVER -->
+  <g transform="translate(750, 250)">
+    <rect x="0" y="0" width="250" height="180" rx="12" fill="url(#amberGradient)" stroke="#F97316" stroke-width="2" filter="url(#shadow)"/>
+    <use href="#icon-search" transform="translate(10, 10) scale(1.5)"/>
+    <text x="90" y="30" class="label">DISCOVER</text>
+    <text x="15" y="65" class="detail">Hybrid Search &amp; Score</text>
+
+    <g transform="translate(15, 85)">
+      <use href="#icon-funnel" transform="scale(0.8)"/>
+      <text x="30" y="15" class="detail" fill="#e2e8f0">Scoring Engine</text>
+    </g>
+    <text x="140" y="125" class="metric">85% Keyword Match</text>
+  </g>
+
+  <!-- Stage 3: EVALUATE -->
+  <g transform="translate(750, 500)">
+    <rect x="0" y="0" width="250" height="180" rx="12" fill="url(#amberGradient)" stroke="#F97316" stroke-width="2" filter="url(#shadow)"/>
+    <use href="#icon-scale" transform="translate(10, 10) scale(1.5)"/>
+    <text x="90" y="30" class="label">EVALUATE</text>
+    <text x="15" y="65" class="detail">Community Quality Vote</text>
+
+    <g transform="translate(15, 85)">
+      <use href="#icon-star" transform="scale(0.8)"/>
+      <text x="30" y="15" class="detail" fill="#e2e8f0">Best Content</text>
+    </g>
+    <text x="140" y="125" class="metric">Bayesian Scoring</text>
+  </g>
+
+  <!-- Stage 4: EVOLVE -->
+  <g transform="translate(150, 500)">
+    <rect x="0" y="0" width="250" height="180" rx="12" fill="url(#amberGradient)" stroke="#F97316" stroke-width="2" filter="url(#shadow)"/>
+    <use href="#icon-network" transform="translate(10, 10) scale(1.5)"/>
+    <text x="90" y="30" class="label">EVOLVE</text>
+    <text x="15" y="65" class="detail">Graph Self-Organizes</text>
+
+    <g transform="translate(15, 85)">
+      <use href="#icon-gear" transform="scale(0.8)"/>
+      <text x="30" y="15" class="detail" fill="#e2e8f0">Consolidate Patterns</text>
+    </g>
+    <text x="140" y="125" class="metric">Content Decay</text>
+  </g>
+
+  <!-- Arrows connecting the stages -->
+  <!-- Contribute -> Discover -->
+  <path d="M400 340 C500 280, 650 280, 750 340" fill="none" stroke="url(#blueGradient)" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="575" y="295" class="arrow-label">Knowledge</text>
+
+  <!-- Discover -> Evaluate -->
+  <path d="M875 430 C950 480, 950 550, 875 600" fill="none" stroke="url(#blueGradient)" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="920" y="515" class="arrow-label">Relevant</text>
+
+  <!-- Evaluate -> Evolve -->
+  <path d="M750 600 C650 660, 500 660, 400 600" fill="none" stroke="url(#blueGradient)" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="575" y="645" class="arrow-label">Quality</text>
+
+  <!-- Evolve -> Contribute -->
+  <path d="M250 600 C175 550, 175 480, 250 340" fill="none" stroke="url(#blueGradient)" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="195" y="475" class="arrow-label">Refined</text>
+
+</svg>

@@ -180,31 +180,31 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
     {/* Product On-Ramp Cards */}
     <div className="onramp-cards" role="navigation" aria-label="Get started with a product">
       <button className="onramp-card onramp-ruflo" onClick={() => onOnramp('ruflo')}>
-        <span className="onramp-icon">&#9889;</span>
+        <img src="/assets/product/card-ruflo.png" alt="Ruflo: Solo developer gets an instant AI team" className="onramp-img" loading="lazy" />
         <span className="onramp-name">Ruflo</span>
-        <span className="onramp-hook">Orchestrate AI agent swarms</span>
-        <span className="onramp-stat">{communityStats?.github?.ruflo?.stars ? (communityStats.github.ruflo.stars/1000).toFixed(1)+'K' : '21K'} stars</span>
+        <span className="onramp-hook">One command. Instant AI team.</span>
+        <span className="onramp-stat"><CountUp end={communityStats?.github?.ruflo?.stars ? Math.round(communityStats.github.ruflo.stars/1000) : 21} suffix="K+ stars" /></span>
         <span className="onramp-cta">Get Started</span>
       </button>
       <button className="onramp-card onramp-ruvector" onClick={() => onOnramp('ruvector')}>
-        <span className="onramp-icon">&#128270;</span>
+        <img src="/assets/product/card-ruvector.png" alt="RuVector: Library that guides you to exactly what you need" className="onramp-img" loading="lazy" />
         <span className="onramp-name">RuVector</span>
-        <span className="onramp-hook">Search anything by meaning</span>
-        <span className="onramp-stat">{communityStats?.github?.ruvector?.stars ? (communityStats.github.ruvector.stars/1000).toFixed(1)+'K' : '3.2K'} stars</span>
+        <span className="onramp-hook">12,500x faster search.</span>
+        <span className="onramp-stat"><CountUp end={communityStats?.github?.ruvector?.stars ? Math.round(communityStats.github.ruvector.stars/1000) : 3} suffix="K+ stars" /></span>
         <span className="onramp-cta">Get Started</span>
       </button>
       <button className="onramp-card onramp-pi" onClick={() => onOnramp('pi')}>
-        <span className="onramp-icon">&#129504;</span>
+        <img src="/assets/product/card-pi.png" alt="Pi Brain: What one AI learns, all AIs know" className="onramp-img" loading="lazy" />
         <span className="onramp-name">Pi Brain</span>
-        <span className="onramp-hook">Share knowledge across AI sessions</span>
-        <span className="onramp-stat">{communityStats?.pi?.memories || 880} shared memories</span>
+        <span className="onramp-hook">What one learns, all know.</span>
+        <span className="onramp-stat"><CountUp end={communityStats?.pi?.memories || 880} /> shared memories</span>
         <span className="onramp-cta">Get Started</span>
       </button>
       <button className="onramp-card onramp-aimds" onClick={() => onOnramp('aimds')}>
-        <span className="onramp-icon">&#128737;</span>
+        <img src="/assets/product/card-aimds.png" alt="AIMDS: 5-layer self-learning security" className="onramp-img" loading="lazy" />
         <span className="onramp-name">AIMDS</span>
-        <span className="onramp-hook">Secure your AI automatically</span>
-        <span className="onramp-stat">5-layer defense</span>
+        <span className="onramp-hook">Self-learning defense.</span>
+        <span className="onramp-stat">5-layer security</span>
         <span className="onramp-cta">Get Started</span>
       </button>
     </div>

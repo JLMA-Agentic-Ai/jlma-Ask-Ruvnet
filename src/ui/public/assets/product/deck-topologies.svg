@@ -1,0 +1,178 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" style="font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#F97316;stop-opacity:0.8" />
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366F1" />
+    </marker>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="800" fill="#0B1426"/>
+
+  <!-- Main Title -->
+  <text x="600" y="50" text-anchor="middle" font-size="32" font-weight="bold" fill="#e2e8f0" filter="url(#shadow)">Agent Swarm Topologies</text>
+
+  <!-- Core Insight Callout -->
+  <rect x="250" y="100" width="700" height="60" rx="10" fill="url(#highlightGradient)" filter="url(#shadow)"/>
+  <text x="600" y="135" text-anchor="middle" font-size="18" font-weight="bold" fill="#0B1426">
+    Hierarchical-Mesh: Robust oversight + flexible peer communication for scalable swarms.
+  </text>
+
+  <!-- Common styles for agents and lines -->
+  <style>
+    .agent {
+      fill: #3B82F6; /* Blue */
+      stroke: #e2e8f0;
+      stroke-width: 2;
+      filter: url(#shadow);
+    }
+    .queen-agent {
+      fill: #F59E0B; /* Amber */
+      stroke: #e2e8f0;
+      stroke-width: 2;
+      filter: url(#shadow);
+    }
+    .comm-line {
+      stroke: #6366F1; /* Indigo */
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    .topology-title {
+      font-size: 22px;
+      font-weight: bold;
+      fill: #e2e8f0;
+      text-anchor: middle;
+    }
+    .topology-detail {
+      font-size: 14px;
+      fill: #94A3B8; /* Muted grey-blue */
+      text-anchor: middle;
+    }
+  </style>
+
+  <!-- X-coordinates for the center of each column: 170, 390, 610, 830, 1050 -->
+  <!-- Y-coordinate for the top of each diagram: 280 -->
+
+  <!-- 1. Hierarchical Topology -->
+  <g transform="translate(170, 280)">
+    <text y="-30" class="topology-title">Hierarchical</text>
+    <circle cx="0" cy="-40" r="20" class="queen-agent"/> <!-- Queen -->
+    <text x="0" y="-40" text-anchor="middle" font-size="12" font-weight="bold" fill="#0B1426">Q</text>
+
+    <circle cx="-40" cy="40" r="15" class="agent"/>
+    <circle cx="0" cy="40" r="15" class="agent"/>
+    <circle cx="40" cy="40" r="15" class="agent"/>
+
+    <line x1="0" y1="-20" x2="-40" y2="25" class="comm-line"/>
+    <line x1="0" y1="-20" x2="0" y2="25" class="comm-line"/>
+    <line x1="0" y1="-20" x2="40" y2="25" class="comm-line"/>
+
+    <text y="90" class="topology-detail">Queen + 6-8 Agents</text>
+    <text y="110" class="topology-detail">Anti-Drift Control</text>
+  </g>
+
+  <!-- 2. Mesh Topology -->
+  <g transform="translate(390, 280)">
+    <text y="-30" class="topology-title">Mesh</text>
+    <circle cx="-30" cy="0" r="15" class="agent"/>
+    <circle cx="30" cy="0" r="15" class="agent"/>
+    <circle cx="-30" cy="60" r="15" class="agent"/>
+    <circle cx="30" cy="60" r="15" class="agent"/>
+
+    <line x1="-30" y1="0" x2="30" y2="0" class="comm-line"/>
+    <line x1="-30" y1="0" x2="-30" y2="60" class="comm-line"/>
+    <line x1="-30" y1="0" x2="30" y2="60" class="comm-line"/>
+
+    <line x1="30" y1="0" x2="-30" y2="60" class="comm-line"/>
+    <line x1="30" y1="0" x2="30" y2="60" class="comm-line"/>
+
+    <line x1="-30" y1="60" x2="30" y2="60" class="comm-line"/>
+
+    <text y="90" class="topology-detail">All Peers Connected</text>
+    <text y="110" class="topology-detail">O(N²) Communication</text>
+  </g>
+
+  <!-- 3. Ring Topology -->
+  <g transform="translate(610, 280)">
+    <text y="-30" class="topology-title">Ring</text>
+    <circle cx="0" cy="-40" r="15" class="agent"/>
+    <circle cx="50" cy="10" r="15" class="agent"/>
+    <circle cx="30" cy="60" r="15" class="agent"/>
+    <circle cx="-30" cy="60" r="15" class="agent"/>
+    <circle cx="-50" cy="10" r="15" class="agent"/>
+
+    <path d="M0 -25 L45 10" class="comm-line"/>
+    <path d="M50 25 L35 60" class="comm-line"/>
+    <path d="M25 60 L-25 60" class="comm-line"/>
+    <path d="M-35 60 L-50 25" class="comm-line"/>
+    <path d="M-45 10 L0 -25" class="comm-line"/>
+
+    <text y="90" class="topology-detail">Sequential Pipeline</text>
+    <text y="110" class="topology-detail">Staged Processing</text>
+  </g>
+
+  <!-- 4. Star Topology -->
+  <g transform="translate(830, 280)">
+    <text y="-30" class="topology-title">Star</text>
+    <circle cx="0" cy="20" r="20" class="queen-agent"/> <!-- Hub -->
+    <text x="0" y="20" text-anchor="middle" font-size="12" font-weight="bold" fill="#0B1426">Hub</text>
+
+    <circle cx="0" cy="-40" r="15" class="agent"/>
+    <circle cx="50" cy="10" r="15" class="agent"/>
+    <circle cx="30" cy="70" r="15" class="agent"/>
+    <circle cx="-30" cy="70" r="15" class="agent"/>
+    <circle cx="-50" cy="10" r="15" class="agent"/>
+
+    <line x1="0" y1="0" x2="0" y2="-25" class="comm-line"/>
+    <line x1="15" y1="20" x2="35" y2="10" class="comm-line"/>
+    <line x1="10" y1="35" x2="20" y2="55" class="comm-line"/>
+    <line x1="-10" y1="35" x2="-20" y2="55" class="comm-line"/>
+    <line x1="-15" y1="20" x2="-35" y2="10" class="comm-line"/>
+
+    <text y="90" class="topology-detail">Central Hub</text>
+    <text y="110" class="topology-detail">Single Point of Failure</text>
+  </g>
+
+  <!-- 5. Hierarchical-Mesh Topology (Recommended) -->
+  <g transform="translate(1050, 280)">
+    <!-- Highlight rectangle -->
+    <rect x="-120" y="-70" width="240" height="220" rx="12" fill="none" stroke="url(#highlightGradient)" stroke-width="4" filter="url(#shadow)"/>
+    <text y="-30" class="topology-title" fill="#F59E0B">Hierarchical-Mesh</text>
+
+    <circle cx="0" cy="-40" r="20" class="queen-agent"/> <!-- Queen -->
+    <text x="0" y="-40" text-anchor="middle" font-size="12" font-weight="bold" fill="#0B1426">Q</text>
+
+    <!-- Mesh of workers -->
+    <circle cx="-40" cy="20" r="15" class="agent"/>
+    <circle cx="40" cy="20" r="15" class="agent"/>
+    <circle cx="0" cy="60" r="15" class="agent"/>
+
+    <!-- Queen to Workers -->
+    <line x1="0" y1="-20" x2="-25" y2="10" class="comm-line"/>
+    <line x1="0" y1="-20" x2="25" y2="10" class="comm-line"/>
+
+    <!-- Worker Mesh connections -->
+    <line x1="-40" y1="20" x2="40" y2="20" class="comm-line"/>
+    <line x1="-40" y1="20" x2="0" y2="60" class="comm-line"/>
+    <line x1="40" y1="20" x2="0" y2="60" class="comm-line"/>
+
+    <text y="90" class="topology-detail" fill="#F59E0B">Queen Oversight + Peer Comms</text>
+    <text y="110" class="topology-detail" fill="#F59E0B">10-15 Agents, Production Ready</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(100, 700)">
+    <rect x="0" y="0" width="180" height="70" rx="8" fill="#1C2638" filter="url(#shadow)"/>
+    <circle cx="20" cy="20" r="8" class="queen-agent"/>
+    <text x="35" y="25" font-size="14" fill="#e2e8f0">Queen / Hub Agent</text>
+    <circle cx="20" cy="50" r="8" class="agent"/>
+    <text x="35" y="55" font-size="14" fill="#e2e8f0">Worker / Peer Agent</text>
+  </g>
+
+</svg>

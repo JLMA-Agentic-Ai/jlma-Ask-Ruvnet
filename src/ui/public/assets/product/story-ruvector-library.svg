@@ -1,0 +1,239 @@
+<svg viewBox="0 0 1200 800" width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .font-main { font-family: system-ui, -apple-system, sans-serif; fill: #e2e8f0; }
+      .font-label { font-size: 22px; font-weight: bold; }
+      .font-caption { font-size: 16px; fill: #a0aec0; }
+      .font-metric { font-size: 18px; font-weight: bold; }
+      .font-speed { font-size: 48px; font-weight: bold; fill: #F59E0B; }
+      .bg-dark { fill: #0B1426; }
+      .panel-bg { fill: #1A202C; rx: 12; }
+      .library-shelf { fill: #3B82F6; }
+      .library-book { fill: #6366F1; rx: 2; }
+      .library-book-highlight { fill: #F97316; rx: 2; }
+      .person-color { fill: #e2e8f0; }
+      .arrowhead { fill: #F59E0B; }
+    </style>
+
+    <!-- Gradient for glowing path -->
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F97316;stop-opacity:0.8" />
+    </linearGradient>
+
+    <!-- Arrow marker -->
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,10 L10,5 Z" class="arrowhead" />
+    </marker>
+
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="800" class="bg-dark" />
+
+  <!-- Left Side: Traditional Search -->
+  <g transform="translate(100, 100)">
+    <rect x="0" y="0" width="450" height="550" class="panel-bg" />
+    <text x="225" y="40" text-anchor="middle" class="font-main font-label">The Old Way</text>
+
+    <!-- Library shelves and books (dense) -->
+    <g transform="translate(50, 80)">
+      <rect x="0" y="0" width="350" height="300" fill="#2D3748" rx="8" />
+      <!-- Shelves -->
+      <rect x="10" y="50" width="330" height="5" class="library-shelf" />
+      <rect x="10" y="100" width="330" height="5" class="library-shelf" />
+      <rect x="10" y="150" width="330" height="5" class="library-shelf" />
+      <rect x="10" y="200" width="330" height="5" class="library-shelf" />
+      <rect x="10" y="250" width="330" height="5" class="library-shelf" />
+
+      <!-- Books -->
+      <g transform="translate(15, 15)">
+        <rect x="0" y="0" width="20" height="30" class="library-book" />
+        <rect x="25" y="0" width="20" height="30" class="library-book" />
+        <rect x="50" y="0" width="20" height="30" class="library-book" />
+        <rect x="75" y="0" width="20" height="30" class="library-book" />
+        <rect x="100" y="0" width="20" height="30" class="library-book" />
+        <rect x="125" y="0" width="20" height="30" class="library-book" />
+        <rect x="150" y="0" width="20" height="30" class="library-book" />
+        <rect x="175" y="0" width="20" height="30" class="library-book" />
+        <rect x="200" y="0" width="20" height="30" class="library-book" />
+        <rect x="225" y="0" width="20" height="30" class="library-book" />
+        <rect x="250" y="0" width="20" height="30" class="library-book" />
+        <rect x="275" y="0" width="20" height="30" class="library-book" />
+        <rect x="300" y="0" width="20" height="30" class="library-book" />
+      </g>
+      <g transform="translate(15, 65)">
+        <rect x="0" y="0" width="20" height="30" class="library-book" />
+        <rect x="25" y="0" width="20" height="30" class="library-book" />
+        <rect x="50" y="0" width="20" height="30" class="library-book" />
+        <rect x="75" y="0" width="20" height="30" class="library-book" />
+        <rect x="100" y="0" width="20" height="30" class="library-book" />
+        <rect x="125" y="0" width="20" height="30" class="library-book" />
+        <rect x="150" y="0" width="20" height="30" class="library-book" />
+        <rect x="175" y="0" width="20" height="30" class="library-book" />
+        <rect x="200" y="0" width="20" height="30" class="library-book" />
+        <rect x="225" y="0" width="20" height="30" class="library-book" />
+        <rect x="250" y="0" width="20" height="30" class="library-book" />
+        <rect x="275" y="0" width="20" height="30" class="library-book" />
+        <rect x="300" y="0" width="20" height="30" class="library-book" />
+      </g>
+      <g transform="translate(15, 115)">
+        <rect x="0" y="0" width="20" height="30" class="library-book" />
+        <rect x="25" y="0" width="20" height="30" class="library-book" />
+        <rect x="50" y="0" width="20" height="30" class="library-book" />
+        <rect x="75" y="0" width="20" height="30" class="library-book" />
+        <rect x="100" y="0" width="20" height="30" class="library-book" />
+        <rect x="125" y="0" width="20" height="30" class="library-book" />
+        <rect x="150" y="0" width="20" height="30" class="library-book" />
+        <rect x="175" y="0" width="20" height="30" class="library-book" />
+        <rect x="200" y="0" width="20" height="30" class="library-book" />
+        <rect x="225" y="0" width="20" height="30" class="library-book" />
+        <rect x="250" y="0" width="20" height="30" class="library-book" />
+        <rect x="275" y="0" width="20" height="30" class="library-book" />
+        <rect x="300" y="0" width="20" height="30" class="library-book" />
+      </g>
+      <g transform="translate(15, 165)">
+        <rect x="0" y="0" width="20" height="30" class="library-book" />
+        <rect x="25" y="0" width="20" height="30" class="library-book" />
+        <rect x="50" y="0" width="20" height="30" class="library-book" />
+        <rect x="75" y="0" width="20" height="30" class="library-book" />
+        <rect x="100" y="0" width="20" height="30" class="library-book" />
+        <rect x="125" y="0" width="20" height="30" class="library-book" />
+        <rect x="150" y="0" width="20" height="30" class="library-book" />
+        <rect x="175" y="0" width="20" height="30" class="library-book" />
+        <rect x="200" y="0" width="20" height="30" class="library-book" />
+        <rect x="225" y="0" width="20" height="30" class="library-book" />
+        <rect x="250" y="0" width="20" height="30" class="library-book" />
+        <rect x="275" y="0" width="20" height="30" class="library-book" />
+        <rect x="300" y="0" width="20" height="30" class="library-book" />
+      </g>
+      <g transform="translate(15, 215)">
+        <rect x="0" y="0" width="20" height="30" class="library-book" />
+        <rect x="25" y="0" width="20" height="30" class="library-book" />
+        <rect x="50" y="0" width="20" height="30" class="library-book" />
+        <rect x="75" y="0" width="20" height="30" class="library-book" />
+        <rect x="100" y="0" width="20" height="30" class="library-book" />
+        <rect x="125" y="0" width="20" height="30" class="library-book" />
+        <rect x="150" y="0" width="20" height="30" class="library-book" />
+        <rect x="175" y="0" width="20" height="30" class="library-book" />
+        <rect x="200" y="0" width="20" height="30" class="library-book" />
+        <rect x="225" y="0" width="20" height="30" class="library-book" />
+        <rect x="250" y="0" width="20" height="30" class="library-book" />
+        <rect x="275" y="0" width="20" height="30" class="library-book" />
+        <rect x="300" y="0" width="20" height="30" class="library-book" />
+      </g>
+    </g>
+
+    <!-- Person (Exhausted) -->
+    <g transform="translate(225, 390)">
+      <circle cx="0" cy="-20" r="15" class="person-color" /> <!-- Head -->
+      <line x1="0" y1="-5" x2="0" y2="40" stroke="#a0aec0" stroke-width="5" stroke-linecap="round" /> <!-- Body -->
+      <line x1="-20" y1="10" x2="20" y2="10" stroke="#a0aec0" stroke-width="5" stroke-linecap="round" /> <!-- Arms -->
+      <line x1="-10" y1="40" x2="-20" y2="70" stroke="#a0aec0" stroke-width="5" stroke-linecap="round" /> <!-- Left Leg -->
+      <line x1="10" y1="40" x2="20" y2="70" stroke="#a0aec0" stroke-width="5" stroke-linecap="round" /> <!-- Right Leg -->
+      <path d="M-10,-10 Q0,-25 10,-10" stroke="#a0aec0" stroke-width="2" fill="none" /> <!-- Exhausted expression -->
+      <path d="M-8,-25 C-5,-30 5,-30 8,-25" stroke="#a0aec0" stroke-width="2" fill="none" /> <!-- Eyebrows -->
+    </g>
+
+    <!-- Clock -->
+    <circle cx="100" cy="460" r="30" fill="#2D3748" stroke="#a0aec0" stroke-width="2" />
+    <line x1="100" y1="460" x2="100" y2="435" stroke="#a0aec0" stroke-width="2" stroke-linecap="round" />
+    <line x1="100" y1="460" x2="120" y2="460" stroke="#a0aec0" stroke-width="2" stroke-linecap="round" />
+    <text x="100" y="505" text-anchor="middle" class="font-main font-metric">25 seconds</text>
+
+    <!-- Progress Bar -->
+    <rect x="250" y="445" width="150" height="20" fill="#2D3748" rx="5" />
+    <rect x="250" y="445" width="3" height="20" fill="#EF4444" rx="5" /> <!-- 2% -->
+    <text x="325" y="480" text-anchor="middle" class="font-main font-metric">2% complete</text>
+
+    <!-- Caption -->
+    <text x="225" y="520" text-anchor="middle" class="font-main font-caption">Checking every book, one by one</text>
+  </g>
+
+  <!-- Right Side: RuVector Search -->
+  <g transform="translate(650, 100)">
+    <rect x="0" y="0" width="450" height="550" class="panel-bg" />
+    <text x="225" y="40" text-anchor="middle" class="font-main font-label">The RuVector Way</text>
+
+    <!-- Library shelves and books (sparse, with paths) -->
+    <g transform="translate(50, 80)">
+      <rect x="0" y="0" width="350" height="300" fill="#2D3748" rx="8" />
+      <!-- Shelves -->
+      <rect x="10" y="50" width="330" height="5" class="library-shelf" />
+      <rect x="10" y="100" width="330" height="5" class="library-shelf" />
+      <rect x="10" y="150" width="330" height="5" class="library-shelf" />
+      <rect x="10" y="200" width="330" height="5" class="library-shelf" />
+      <rect x="10" y="250" width="330" height="5" class="library-shelf" />
+
+      <!-- Books (fewer, with highlights) -->
+      <g transform="translate(15, 15)">
+        <rect x="0" y="0" width="20" height="30" class="library-book" />
+        <rect x="50" y="0" width="20" height="30" class="library-book" />
+        <rect x="100" y="0" width="20" height="30" class="library-book-highlight" /> <!-- Highlight 1 -->
+        <rect x="150" y="0" width="20" height="30" class="library-book" />
+        <rect x="200" y="0" width="20" height="30" class="library-book" />
+        <rect x="250" y="0" width="20" height="30" class="library-book" />
+        <rect x="300" y="0" width="20" height="30" class="library-book" />
+      </g>
+      <g transform="translate(15, 65)">
+        <rect x="0" y="0" width="20" height="30" class="library-book" />
+        <rect x="75" y="0" width="20" height="30" class="library-book" />
+        <rect x="125" y="0" width="20" height="30" class="library-book" />
+        <rect x="175" y="0" width="20" height="30" class="library-book-highlight" /> <!-- Highlight 2 -->
+        <rect x="225" y="0" width="20" height="30" class="library-book" />
+        <rect x="275" y="0" width="20" height="30" class="library-book" />
+      </g>
+      <g transform="translate(15, 115)">
+        <rect x="25" y="0" width="20" height="30" class="library-book" />
+        <rect x="75" y="0" width="20" height="30" class="library-book" />
+        <rect x="150" y="0" width="20" height="30" class="library-book-highlight" /> <!-- Highlight 3 -->
+        <rect x="200" y="0" width="20" height="30" class="library-book" />
+        <rect x="250" y="0" width="20" height="30" class="library-book" />
+      </g>
+      <g transform="translate(15, 165)">
+        <rect x="50" y="0" width="20" height="30" class="library-book" />
+        <rect x="100" y="0" width="20" height="30" class="library-book" />
+        <rect x="175" y="0" width="20" height="30" class="library-book" />
+        <rect x="225" y="0" width="20" height="30" class="library-book" />
+      </g>
+      <g transform="translate(15, 215)">
+        <rect x="100" y="0" width="20" height="30" class="library-book" />
+        <rect x="150" y="0" width="20" height="30" class="library-book" />
+        <rect x="200" y="0" width="20" height="30" class="library-book" />
+      </g>
+
+      <!-- Glowing paths -->
+      <path d="M170,290 C170,250 120,200 120,130 C120,100 110,80 115,40" stroke="url(#glowGradient)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M170,290 C180,240 200,180 200,120 C200,100 200,80 185,40" stroke="url(#glowGradient)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M170,290 C160,250 150,200 150,150 C150,120 150,90 165,100" stroke="url(#glowGradient)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <!-- Person (Delighted) -->
+    <g transform="translate(225, 390)">
+      <circle cx="0" cy="-20" r="15" class="person-color" /> <!-- Head -->
+      <line x1="0" y1="-5" x2="0" y2="40" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" /> <!-- Body -->
+      <line x1="-20" y1="10" x2="-35" y2="-10" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" /> <!-- Left Arm up -->
+      <line x1="20" y1="10" x2="35" y2="-10" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" /> <!-- Right Arm up -->
+      <line x1="-10" y1="40" x2="-20" y2="70" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" /> <!-- Left Leg -->
+      <line x1="10" y1="40" x2="20" y2="70" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" /> <!-- Right Leg -->
+      <path d="M-10,-10 Q0,0 10,-10" stroke="#F59E0B" stroke-width="2" fill="none" /> <!-- Delighted expression -->
+      <path d="M-8,-25 C-5,-20 5,-20 8,-25" stroke="#F59E0B" stroke-width="2" fill="none" /> <!-- Eyebrows -->
+    </g>
+
+    <!-- Clock -->
+    <circle cx="100" cy="460" r="30" fill="#2D3748" stroke="#F59E0B" stroke-width="2" />
+    <line x1="100" y1="460" x2="100" y2="445" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
+    <line x1="100" y1="460" x2="105" y2="465" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
+    <text x="100" y="505" text-anchor="middle" class="font-main font-metric">0.002 seconds</text>
+
+    <!-- Caption -->
+    <text x="225" y="520" text-anchor="middle" class="font-main font-caption">The library guides you to exactly what you need</text>
+  </g>
+
+  <!-- Core Insight -->
+  <g transform="translate(0, 680)">
+    <line x1="325" y1="0" x2="875" y2="0" stroke="#F59E0B" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow)" />
+    <text x="600" y="60" text-anchor="middle" class="font-main font-speed">12,500x Faster</text>
+  </g>
+
+</svg>

@@ -1,0 +1,151 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0B1426;" />
+            <stop offset="100%" style="stop-color:#1A202C;" />
+        </linearGradient>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+        </filter>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#3B82F6" />
+        </marker>
+
+        <!-- Database Icon -->
+        <g id="icon-database">
+            <ellipse cx="0" cy="-20" rx="30" ry="10" fill="#6B7280"/>
+            <rect x="-30" y="-20" width="60" height="40" fill="#9CA3AF"/>
+            <ellipse cx="0" cy="20" rx="30" ry="10" fill="#6B7280"/>
+            <line x1="-30" y1="-20" x2="-30" y2="20" stroke="#6B7280" stroke-width="2"/>
+            <line x1="30" y1="-20" x2="30" y2="20" stroke="#6B7280" stroke-width="2"/>
+        </g>
+
+        <!-- Gear Icon -->
+        <g id="icon-gear">
+            <circle cx="0" cy="0" r="20" fill="#9CA3AF"/>
+            <path d="M 20 0 L 25 3 L 20 6 L 20 0 M -20 0 L -25 3 L -20 6 L -20 0 M 0 20 L 3 25 L 6 20 L 0 20 M 0 -20 L 3 -25 L 6 -20 L 0 -20" fill="#9CA3AF"/>
+            <rect x="20" y="-5" width="10" height="10" transform="rotate(0 25 0)" fill="#9CA3AF" rx="2" ry="2"/>
+            <rect x="15" y="15" width="10" height="10" transform="rotate(45 20 20)" fill="#9CA3AF" rx="2" ry="2"/>
+            <rect x="-5" y="20" width="10" height="10" transform="rotate(90 0 25)" fill="#9CA3AF" rx="2" ry="2"/>
+            <rect x="-15" y="15" width="10" height="10" transform="rotate(135 -20 20)" fill="#9CA3AF" rx="2" ry="2"/>
+            <rect x="-20" y="-5" width="10" height="10" transform="rotate(180 -25 0)" fill="#9CA3AF" rx="2" ry="2"/>
+            <rect x="-15" y="-15" width="10" height="10" transform="rotate(225 -20 -20)" fill="#9CA3AF" rx="2" ry="2"/>
+            <rect x="-5" y="-20" width="10" height="10" transform="rotate(270 0 -25)" fill="#9CA3AF" rx="2" ry="2"/>
+            <rect x="15" y="-15" width="10" height="10" transform="rotate(315 20 -20)" fill="#9CA3AF" rx="2" ry="2"/>
+        </g>
+
+        <!-- Lightning Bolt Icon -->
+        <g id="icon-lightning">
+            <polygon points="10 0, 0 20, 8 20, -2 40, 10 40, 20 20, 12 20" fill="#F59E0B"/>
+        </g>
+    </defs>
+
+    <rect width="1200" height="800" fill="url(#bgGradient)" />
+
+    <!-- Core Insight Callout -->
+    <text x="600" y="80" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#F97316" font-weight="bold" filter="url(#shadow)">
+        <tspan x="600" dy="0">RuVector's HNSW graph enables blazing-fast</tspan>
+        <tspan x="600" dy="35">vector similarity search.</tspan>
+    </text>
+
+    <!-- Traditional Linear Scan Section -->
+    <g transform="translate(250, 280)">
+        <rect x="-150" y="-150" width="300" height="400" rx="12" fill="#2D3748" filter="url(#shadow)"/>
+        <text x="0" y="-100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#e2e8f0" font-weight="bold">Traditional Scan</text>
+
+        <g transform="translate(0, -20)">
+            <use href="#icon-database" transform="scale(0.8)" fill="#9CA3AF"/>
+            <text x="0" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#e2e8f0" font-weight="bold">Database</text>
+        </g>
+
+        <g transform="translate(0, 100)">
+            <use href="#icon-gear" transform="scale(0.8)" fill="#9CA3AF"/>
+            <text x="0" y="70" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#e2e8f0" font-weight="bold">Linear Search</text>
+            <text x="0" y="95" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#A0AEC0">O(n) checks all</text>
+        </g>
+
+        <!-- Visual for Linear Scan -->
+        <g transform="translate(-100, 200)">
+            <circle cx="0" cy="0" r="5" fill="#6B7280"/>
+            <circle cx="20" cy="0" r="5" fill="#6B7280"/>
+            <circle cx="40" cy="0" r="5" fill="#6B7280"/>
+            <circle cx="60" cy="0" r="5" fill="#6B7280"/>
+            <circle cx="80" cy="0" r="5" fill="#6B7280"/>
+            <circle cx="100" cy="0" r="5" fill="#F59E0B"/> <!-- Found item -->
+            <circle cx="120" cy="0" r="5" fill="#6B7280"/>
+            <circle cx="140" cy="0" r="5" fill="#6B7280"/>
+            <path d="M -10 0 L 150 0" stroke="#3B82F6" stroke-width="3" marker-end="url(#arrowhead)"/>
+            <text x="70" y="-15" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#3B82F6">Scan Path</text>
+        </g>
+
+        <!-- Metric for Traditional -->
+        <rect x="-80" y="270" width="160" height="40" rx="8" fill="#6B7280"/>
+        <text x="0" y="295" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#e2e8f0" font-weight="bold">25 Seconds</text>
+    </g>
+
+    <!-- RuVector HNSW Graph Search Section -->
+    <g transform="translate(900, 280)">
+        <rect x="-250" y="-150" width="500" height="400" rx="12" fill="#2D3748" filter="url(#shadow)"/>
+        <text x="0" y="-100" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#e2e8f0" font-weight="bold">RuVector HNSW Graph Search</text>
+
+        <!-- HNSW Layers -->
+        <g transform="translate(0, 90)">
+            <!-- Layer 3: Express Highway -->
+            <rect x="-200" y="-80" width="400" height="150" rx="10" fill="#3B82F6" opacity="0.1"/>
+            <text x="0" y="-50" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#3B82F6" font-weight="bold">Layer 3: Express</text>
+            <text x="0" y="-30" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#A0AEC0">Sparse connections, large jumps</text>
+            <circle cx="-100" cy="-10" r="4" fill="#3B82F6"/>
+            <circle cx="100" cy="-10" r="4" fill="#3B82F6"/>
+            <circle cx="0" cy="20" r="4" fill="#3B82F6"/>
+
+            <!-- Layer 2: Regional Roads -->
+            <rect x="-150" y="-50" width="300" height="100" rx="8" fill="#3B82F6" opacity="0.2"/>
+            <text x="0" y="-20" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#3B82F6" font-weight="bold">Layer 2: Regional</text>
+            <text x="0" y="0" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#A0AEC0">More connections, medium jumps</text>
+            <circle cx="-70" cy="30" r="3" fill="#3B82F6"/>
+            <circle cx="70" cy="30" r="3" fill="#3B82F6"/>
+            <circle cx="0" cy="40" r="3" fill="#3B82F6"/>
+
+            <!-- Layer 1: Local Streets -->
+            <rect x="-100" y="-20" width="200" height="50" rx="6" fill="#3B82F6" opacity="0.3"/>
+            <text x="0" y="10" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#3B82F6" font-weight="bold">Layer 1: Local</text>
+            <text x="0" y="30" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#A0AEC0">Dense connections, small jumps</text>
+            <circle cx="-40" cy="40" r="2" fill="#3B82F6"/>
+            <circle cx="40" cy="40" r="2" fill="#3B82F6"/>
+
+            <!-- Layer 0: Dense Base -->
+            <rect x="-50" y="10" width="100" height="30" rx="4" fill="#3B82F6" opacity="0.4"/>
+            <text x="0" y="30" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#3B82F6" font-weight="bold">Layer 0: Dense Base</text>
+        </g>
+
+        <!-- Search Path through HNSW -->
+        <path d="M -150 20 L -100 0 A 20 20 0 0 1 -70 20 L -40 30 A 10 10 0 0 1 -20 40 L 0 50"
+              fill="none" stroke="#F59E0B" stroke-width="4" marker-end="url(#arrowhead)"/>
+        <text x="-100" y="-5" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#F59E0B" font-weight="bold">Fast Path</text>
+        <path d="M 0 50 L 0 100" fill="none" stroke="#F59E0B" stroke-width="4" marker-end="url(#arrowhead)"/>
+        <text x="0" y="75" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#F59E0B" font-weight="bold">Result</text>
+
+        <!-- Metric for RuVector -->
+        <rect x="-80" y="270" width="160" height="40" rx="8" fill="#F97316"/>
+        <text x="0" y="295" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#e2e8f0" font-weight="bold">2 Milliseconds</text>
+    </g>
+
+    <!-- Central Comparison Metrics -->
+    <g transform="translate(600, 580)">
+        <rect x="-200" y="-50" width="400" height="100" rx="12" fill="#F59E0B" filter="url(#shadow)"/>
+        <use href="#icon-lightning" transform="translate(-150, -20) scale(1.5)" fill="#e2e8f0"/>
+        <text x="0" y="15" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="48" fill="#e2e8f0" font-weight="bold">12,500x FASTER</text>
+    </g>
+
+    <g transform="translate(600, 680)">
+        <rect x="-100" y="-20" width="200" height="40" rx="8" fill="#3B82F6" filter="url(#shadow)"/>
+        <text x="0" y="5" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#e2e8f0" font-weight="bold">99.5% Recall</text>
+        <text x="0" y="25" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#A0AEC0">10M Vectors</text>
+    </g>
+
+    <!-- Connecting Arrows -->
+    <path d="M 400 380 H 480 A 20 20 0 0 1 500 400 V 500 H 700 V 400 A 20 20 0 0 1 720 380 H 800"
+          fill="none" stroke="#3B82F6" stroke-width="4" marker-end="url(#arrowhead)" opacity="0.4"/>
+    <text x="600" y="450" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#A0AEC0">Performance Comparison</text>
+
+</svg>

@@ -1,0 +1,165 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Radial Gradient for the brain glow -->
+    <radialGradient id="brainGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#F59E0B;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0" />
+    </radialGradient>
+    <!-- Linear Gradient for panel backgrounds -->
+    <linearGradient id="panelGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Arrowhead Markers -->
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10B981" />
+    </marker>
+    <marker id="arrowhead-amber" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F59E0B" />
+    </marker>
+
+    <!-- Reusable Icons as Symbols -->
+    <!-- Checkmark (Success) -->
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+    </symbol>
+    <!-- Question Mark (Struggling/Problem) -->
+    <symbol id="icon-question" viewBox="0 0 24 24">
+      <path d="M12 17c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2z" fill="currentColor"/>
+    </symbol>
+    <!-- Clock (Pending/Future) -->
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/>
+    </symbol>
+    <!-- Brain (Simplified) -->
+    <symbol id="icon-brain" viewBox="0 0 100 100">
+      <path d="M50,10 C30,10 15,25 15,45 C15,65 30,80 50,80 C70,80 85,65 85,45 C85,25 70,10 50,10 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M50,10 C55,15 60,20 60,30 C60,40 55,45 50,50 M50,10 C45,15 40,20 40,30 C40,40 45,45 50,50 M50,50 C55,55 60,60 60,70 C60,80 55,85 50,80 M50,50 C45,55 40,60 40,70 C40,80 45,85 50,80" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+      <path d="M35,30 Q30,20 25,30 Q20,40 25,50 Q30,60 35,50 Q40,40 35,30 Z" fill="currentColor" opacity="0.3"/>
+      <path d="M65,30 Q70,20 75,30 Q80,40 75,50 Q70,60 65,50 Q60,40 65,30 Z" fill="currentColor" opacity="0.3"/>
+    </symbol>
+    <!-- Lightbulb (Solution/Idea) -->
+    <symbol id="icon-lightbulb" viewBox="0 0 24 24">
+      <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19c-3.86 0-7 3.14-7 7 0 2.23 1.22 4.2 3 5.24V16c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.76c1.78-1.04 3-3.01 3-5.24 0-3.86-3.14-7-7-7zm2.25 10.04L13 13.28V15h-2v-1.72l-.25-.96C9.55 11.51 9 10.28 9 9c0-1.93 1.57-3.5 3.5-3.5S16 7.07 16 9c0 1.28-.55 2.51-1.25 3.04z" fill="currentColor"/>
+    </symbol>
+  </defs>
+
+  <!-- Global Styles -->
+  <style>
+    .panel-title { font-family: system-ui, -apple-system, sans-serif; font-size: 28px; font-weight: bold; fill: #e2e8f0; }
+    .caption { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; fill: #9CA3AF; text-anchor: middle; }
+    .element-label { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: bold; fill: #e2e8f0; }
+    .detail-text { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; fill: #9CA3AF; }
+    .arrow-label { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #10B981; }
+    .metric-value { font-family: system-ui, -apple-system, sans-serif; font-size: 24px; font-weight: bold; fill: #e2e8f0; }
+    .metric-label { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #e2e8f0; }
+    .core-insight { font-family: system-ui, -apple-system, sans-serif; font-size: 22px; font-weight: bold; fill: #F97316; text-anchor: middle; }
+  </style>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="800" fill="#0B1426" />
+
+  <!-- Core Insight Callout -->
+  <text x="600" y="80" class="core-insight">
+    The Pi Brain transforms isolated insights into shared, accelerating intelligence.
+  </text>
+
+  <!-- Panel 1: Today (The Problem) -->
+  <g transform="translate(40, 150)">
+    <rect x="0" y="0" width="350" height="550" rx="12" fill="url(#panelGradient)" stroke="#334155" stroke-width="2"/>
+    <text x="175" y="40" text-anchor="middle" class="panel-title">Today</text>
+
+    <!-- Session A -->
+    <rect x="50" y="100" width="250" height="100" rx="8" fill="#1E293B" stroke="#6D28D9" stroke-width="1"/>
+    <text x="175" y="130" text-anchor="middle" class="element-label">AI Session A</text>
+    <use href="#icon-check" x="120" y="155" width="30" height="30" fill="#10B981"/>
+    <text x="175" y="175" text-anchor="middle" class="detail-text" fill="#10B981">Auth Solved</text>
+
+    <!-- Session B -->
+    <rect x="50" y="250" width="250" height="100" rx="8" fill="#1E293B" stroke="#6D28D9" stroke-width="1"/>
+    <text x="175" y="280" text-anchor="middle" class="element-label">AI Session B</text>
+    <use href="#icon-question" x="120" y="305" width="30" height="30" fill="#EF4444"/>
+    <text x="175" y="325" text-anchor="middle" class="detail-text" fill="#EF4444">Auth Stuck</text>
+
+    <!-- Session C -->
+    <rect x="50" y="400" width="250" height="100" rx="8" fill="#1E293B" stroke="#6D28D9" stroke-width="1"/>
+    <text x="175" y="430" text-anchor="middle" class="element-label">AI Session C</text>
+    <use href="#icon-clock" x="120" y="455" width="30" height="30" fill="#9CA3AF"/>
+    <text x="175" y="475" text-anchor="middle" class="detail-text" fill="#9CA3AF">Auth Pending</text>
+
+    <text x="175" y="525" class="caption">Every session starts from scratch</text>
+  </g>
+
+  <!-- Panel 2: With Pi Brain (The Solution) -->
+  <g transform="translate(425, 150)">
+    <rect x="0" y="0" width="350" height="550" rx="12" fill="url(#panelGradient)" stroke="#334155" stroke-width="2"/>
+    <text x="175" y="40" text-anchor="middle" class="panel-title">With Pi Brain</text>
+
+    <!-- Pi Brain -->
+    <circle cx="175" cy="300" r="80" fill="url(#brainGlow)" stroke="#F59E0B" stroke-width="3"/>
+    <use href="#icon-brain" x="100" y="225" width="150" height="150" fill="#e2e8f0" stroke="#e2e8f0"/>
+    <text x="175" y="390" text-anchor="middle" class="element-label">Pi Brain</text>
+    <text x="175" y="415" text-anchor="middle" class="detail-text" fill="#F59E0B">Collective Intelligence</text>
+
+    <!-- Session A (sending solution) -->
+    <rect x="50" y="100" width="250" height="60" rx="8" fill="#1E293B" stroke="#6D28D9" stroke-width="1"/>
+    <text x="175" y="125" text-anchor="middle" class="element-label">AI Session A</text>
+    <path d="M175,160 L175,210" stroke="#10B981" stroke-width="3" marker-end="url(#arrowhead-green)"/>
+    <text x="175" y="185" text-anchor="middle" class="arrow-label">Learned Solution</text>
+
+    <!-- Session B (receiving solution) -->
+    <rect x="50" y="450" width="250" height="60" rx="8" fill="#1E293B" stroke="#6D28D9" stroke-width="1"/>
+    <text x="175" y="475" text-anchor="middle" class="element-label">AI Session B</text>
+    <path d="M175,395 L175,445" stroke="#10B981" stroke-width="3" marker-end="url(#arrowhead-green)"/>
+    <text x="175" y="420" text-anchor="middle" class="arrow-label">Shares Solution</text>
+
+    <!-- Session C (automatically receiving) -->
+    <rect x="50" y="520" width="250" height="60" rx="8" fill="#1E293B" stroke="#6D28D9" stroke-width="1"/>
+    <text x="175" y="545" text-anchor="middle" class="element-label">AI Session C</text>
+    <path d="M175,385 L175,510" stroke="#10B981" stroke-width="3" stroke-dasharray="8 4" marker-end="url(#arrowhead-green)"/>
+    <text x="175" y="420" text-anchor="middle" class="arrow-label">Auto-Applied</text>
+
+    <text x="175" y="525" class="caption">What one learns, all know</text>
+  </g>
+
+  <!-- Panel 3: Over Time (The Result) -->
+  <g transform="translate(810, 150)">
+    <rect x="0" y="0" width="350" height="550" rx="12" fill="url(#panelGradient)" stroke="#334155" stroke-width="2"/>
+    <text x="175" y="40" text-anchor="middle" class="panel-title">Over Time</text>
+
+    <!-- Larger, brighter brain -->
+    <circle cx="175" cy="270" r="100" fill="url(#brainGlow)" stroke="#F97316" stroke-width="4"/>
+    <use href="#icon-brain" x="75" y="170" width="200" height="200" fill="#e2e8f0" stroke="#e2e8f0"/>
+    <text x="175" y="395" text-anchor="middle" class="element-label">Pi Brain</text>
+    <text x="175" y="420" text-anchor="middle" class="detail-text" fill="#F59E0B">Accumulated Knowledge</text>
+
+    <!-- Solution icons inside the brain -->
+    <use href="#icon-lightbulb" x="120" y="220" width="25" height="25" fill="#e2e8f0" opacity="0.8"/>
+    <use href="#icon-check" x="180" y="200" width="25" height="25" fill="#e2e8f0" opacity="0.8"/>
+    <use href="#icon-lightbulb" x="200" y="250" width="25" height="25" fill="#e2e8f0" opacity="0.8"/>
+    <use href="#icon-check" x="150" y="280" width="25" height="25" fill="#e2e8f0" opacity="0.8"/>
+    <use href="#icon-lightbulb" x="100" y="270" width="25" height="25" fill="#e2e8f0" opacity="0.8"/>
+    <use href="#icon-check" x="130" y="300" width="25" height="25" fill="#e2e8f0" opacity="0.8"/>
+    <use href="#icon-lightbulb" x="220" y="300" width="25" height="25" fill="#e2e8f0" opacity="0.8"/>
+
+    <!-- New Session (connecting instantly) -->
+    <rect x="50" y="100" width="250" height="60" rx="8" fill="#1E293B" stroke="#6D28D9" stroke-width="1"/>
+    <text x="175" y="125" text-anchor="middle" class="element-label">New AI Session</text>
+    <path d="M175,160 L175,190" stroke="#10B981" stroke-width="3" stroke-dasharray="8 4" marker-end="url(#arrowhead-green)"/>
+    <text x="175" y="175" text-anchor="middle" class="arrow-label">Instant Access</text>
+
+    <!-- Metric Badge -->
+    <g transform="translate(175, 465)">
+      <rect x="-100" y="-30" width="200" height="60" rx="8" fill="#F59E0B" opacity="0.2" stroke="#F59E0B" stroke-width="1"/>
+      <text x="0" y="-5" text-anchor="middle" class="metric-value">880</text>
+      <text x="0" y="20" text-anchor="middle" class="metric-label">Shared Solutions</text>
+    </g>
+    <g transform="translate(175, 500)">
+      <text x="0" y="0" text-anchor="middle" class="metric-label" fill="#F59E0B">from 55 Contributors</text>
+    </g>
+
+    <text x="175" y="525" class="caption">The collective gets smarter every day</text>
+  </g>
+</svg>

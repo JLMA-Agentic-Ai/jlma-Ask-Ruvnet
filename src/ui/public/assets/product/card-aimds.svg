@@ -1,0 +1,150 @@
+<svg viewBox="0 0 1200 800" width="1200" height="800" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <!-- Background gradient for depth -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B1426" />
+      <stop offset="100%" style="stop-color:#000000" />
+    </linearGradient>
+
+    <!-- Funnel layer gradients (progressing from warm to cool, less intelligent to more) -->
+    <linearGradient id="layer1Gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="layer2Gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EAB308"/>
+    </linearGradient>
+    <linearGradient id="layer3Gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EAB308"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="layer4Gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="layer5Gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+
+    <!-- Arrowhead markers -->
+    <marker id="arrowheadRed" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#EF4444" />
+    </marker>
+    <marker id="arrowheadGreen" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22C55E" />
+    </marker>
+    <marker id="arrowheadPurple" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366F1" />
+    </marker>
+
+    <!-- Subtle shadow filter -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Icons -->
+    <!-- Lightning Bolt Icon (for speed/fast scanning) -->
+    <g id="icon-lightning" fill="#F97316" transform="scale(0.8)">
+      <polygon points="10 0, 4 12, 10 12, 10 24, 18 10, 12 10"/>
+    </g>
+    <!-- Eye Icon (for monitoring/detection) -->
+    <g id="icon-eye" fill="#e2e8f0" stroke="#e2e8f0" stroke-width="1.5" transform="scale(0.8)">
+      <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+      <circle cx="12" cy="12" r="3" fill="#3B82F6"/>
+    </g>
+    <!-- Brain Icon (simplified, for AI/intelligence) -->
+    <g id="icon-brain" fill="#6366F1" transform="scale(0.8)">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.05-1.22.13-1.82 2.05 1.23 4.79 2.05 7.87 2.05 3.08 0 5.82-.82 7.87-2.05.08.6.13 1.2.13 1.82 0 4.08-3.05 7.44-7 7.93V19zm-1-9.93c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm5 0c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+    </g>
+    <!-- Graph Icon (for tracking/behavior) -->
+    <g id="icon-graph" fill="#3B82F6" transform="scale(0.8)">
+      <path d="M16 11V5h-1V3h-2v2h-1v6h4zm4 4v-2h-4v2h4zm-8 4v-2h-4v2h4zm4 0v-2h-4v2h4zM8 8V2H6v6H4v2h4V8zm0 8v-2H4v2h4zm0 4v-2H4v2h4z"/>
+    </g>
+    <!-- Lock Icon (for security/strategy) -->
+    <g id="icon-lock" fill="#e2e8f0" transform="scale(0.8)">
+      <path d="M18 11h-1V9c0-2.76-2.24-5-5-5S7 6.24 7 9v2H6c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7c0-1.1-.9-2-2-2zm-6 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3-8H9V9c0-1.66 1.34-3 3-3s3 1.34 3 3v2z"/>
+    </g>
+    <!-- Gear Icon (for learning/adaptation) -->
+    <g id="icon-gear" fill="#e2e8f0" transform="scale(0.8)">
+      <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.09-.73-1.71-.98L14 2.1c-.06-.24-.29-.4-.54-.4h-4c-.25 0-.48.16-.54.4L8.03 4.25c-.62.25-1.19.58-1.71.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.12.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.09.73 1.71.98L9.46 21.9c.06.24.29.4.54.4h4c.25 0 .48-.16.54-.4l.45-2.15c.62-.25 1.19-.58 1.71-.98l2.49 1c.22.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+    </g>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="800" fill="url(#bgGradient)" />
+
+  <!-- Main Title -->
+  <text x="600" y="80" text-anchor="middle" font-size="32" fill="#e2e8f0" font-weight="bold" filter="url(#shadow)">
+    AIMDS 5-Layer AI Security Pipeline
+  </text>
+
+  <!-- Funnel container (translated to center it) -->
+  <g transform="translate(300, 150)" filter="url(#shadow)">
+    <!-- Layer 1 -->
+    <polygon points="0 0, 600 0, 500 100, 100 100" fill="url(#layer1Gradient)" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="300" y="50" text-anchor="middle" font-size="22" fill="#1a202c" font-weight="bold">Layer 1: Input Scanner</text>
+    <text x="300" y="75" text-anchor="middle" font-size="14" fill="#4a5568">Pattern matching</text>
+    <use href="#icon-lightning" x="180" y="30" transform="scale(1.2)" />
+    <use href="#icon-eye" x="400" y="30" transform="scale(1.2)" />
+    <rect x="520" y="40" width="60" height="25" rx="5" fill="#0B1426" stroke="#F97316" stroke-width="1"/>
+    <text x="550" y="58" text-anchor="middle" font-size="14" fill="#F97316" font-weight="bold">&lt;1ms</text>
+
+    <!-- Layer 2 -->
+    <polygon points="100 100, 500 100, 450 200, 150 200" fill="url(#layer2Gradient)" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="300" y="150" text-anchor="middle" font-size="22" fill="#1a202c" font-weight="bold">Layer 2: Semantic Analyzer</text>
+    <text x="300" y="175" text-anchor="middle" font-size="14" fill="#4a5568">Embedding-based intent</text>
+    <use href="#icon-brain" x="270" y="130" transform="scale(1.2)" />
+    <rect x="520" y="140" width="60" height="25" rx="5" fill="#0B1426" stroke="#F59E0B" stroke-width="1"/>
+    <text x="550" y="158" text-anchor="middle" font-size="14" fill="#F59E0B" font-weight="bold">2-5ms</text>
+
+    <!-- Layer 3 -->
+    <polygon points="150 200, 450 200, 400 300, 200 300" fill="url(#layer3Gradient)" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="300" y="250" text-anchor="middle" font-size="22" fill="#1a202c" font-weight="bold">Layer 3: Behavioral Monitor</text>
+    <text x="300" y="275" text-anchor="middle" font-size="14" fill="#4a5568">Session tracking + drift</text>
+    <use href="#icon-eye" x="220" y="230" transform="scale(1.2)" />
+    <use href="#icon-graph" x="350" y="230" transform="scale(1.2)" />
+
+    <!-- Layer 4 -->
+    <polygon points="200 300, 400 300, 350 400, 250 400" fill="url(#layer4Gradient)" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="300" y="350" text-anchor="middle" font-size="22" fill="#1a202c" font-weight="bold">Layer 4: ReasoningBank</text>
+    <text x="300" y="375" text-anchor="middle" font-size="14" fill="#4a5568">Chaos detection, game theory</text>
+    <use href="#icon-brain" x="220" y="330" transform="scale(1.2)"/>
+    <use href="#icon-lock" x="350" y="330" transform="scale(1.2)"/>
+
+    <!-- Layer 5 -->
+    <polygon points="250 400, 350 400, 325 500, 275 500" fill="url(#layer5Gradient)" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="300" y="450" text-anchor="middle" font-size="22" fill="#1a202c" font-weight="bold">Layer 5: Meta-Learning</text>
+    <text x="300" y="475" text-anchor="middle" font-size="14" fill="#4a5568">Adapts to zero-day attacks</text>
+    <use href="#icon-gear" x="220" y="430" transform="scale(1.2)"/>
+    <use href="#icon-brain" x="350" y="430" transform="scale(1.2)"/>
+    <rect x="180" y="440" width="60" height="25" rx="5" fill="#0B1426" stroke="#6366F1" stroke-width="1"/>
+    <text x="210" y="458" text-anchor="middle" font-size="14" fill="#6366F1" font-weight="bold">25 Levels</text>
+  </g>
+
+  <!-- Arrows for flow (absolute coordinates) -->
+  <!-- Incoming Threats -->
+  <path d="M600 100 L600 140" stroke="#EF4444" stroke-width="4" marker-end="url(#arrowheadRed)" filter="url(#shadow)"/>
+  <text x="610" y="125" text-anchor="start" font-size="16" fill="#EF4444" font-weight="bold">Threats</text>
+
+  <!-- Filtered Output -->
+  <path d="M600 650 L600 690" stroke="#22C55E" stroke-width="4" marker-end="url(#arrowheadGreen)" filter="url(#shadow)"/>
+  <text x="610" y="665" text-anchor="start" font-size="16" fill="#22C55E" font-weight="bold">Clean Data</text>
+
+  <!-- Feedback Loop -->
+  <path d="M575 650 C500 700, 150 700, 150 200 C150 150, 200 150, 350 150"
+        fill="none" stroke="#6366F1" stroke-width="4" marker-end="url(#arrowheadPurple)" filter="url(#shadow)"/>
+  <text x="170" y="670" text-anchor="start" font-size="16" fill="#6366F1" font-weight="bold">Self-Learning Feedback</text>
+
+  <!-- Core Insight Callout -->
+  <rect x="800" y="250" width="300" height="120" rx="12" fill="#1F2937" stroke="#6366F1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="290" text-anchor="middle" font-size="20" fill="#e2e8f0" font-weight="bold">Core Insight</text>
+  <text x="950" y="320" text-anchor="middle" font-size="16" fill="#9CA3AF">
+    Self-learning defense that adapts to
+  </text>
+  <text x="950" y="345" text-anchor="middle" font-size="16" fill="#9CA3AF">
+    evolving threats across 5 distinct intelligence layers.
+  </text>
+
+</svg>

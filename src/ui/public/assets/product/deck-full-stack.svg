@@ -1,0 +1,79 @@
+```svg
+<svg viewBox="0 0 1200 800" width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <linearGradient id="stackGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E2E8F0" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="800" fill="#0B1426"/>
+
+  <!-- Core Insight Callout -->
+  <rect x="100" y="50" width="1000" height="70" rx="12" fill="#1C2E4A" filter="url(#shadow)"/>
+  <text x="600" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="24px" font-weight="bold" fill="#F59E0B" text-anchor="middle">
+    Unified AI Stack for Secure, Intelligent Automation
+  </text>
+
+  <!-- AIMDS (Security Middleware) - Wrapping Layer -->
+  <rect x="150" y="180" width="800" height="550" rx="12" fill="#EF4444" fill-opacity="0.15" stroke="#EF4444" stroke-width="3" filter="url(#shadow)"/>
+  <!-- Shield Icon -->
+  <path d="M220,200 L290,230 L290,290 C290,350 220,390 220,390 C220,390 150,350 150,290 L150,230 Z" fill="#EF4444" transform="scale(0.8) translate(50, 50)" filter="url(#shadow)"/>
+  <text x="180" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="22px" font-weight="bold" fill="#EF4444" writing-mode="vertical-rl" text-orientation="upright">
+    AIMDS
+  </text>
+  <text x="175" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="14px" fill="#DC2626" writing-mode="vertical-rl" text-orientation="upright">
+    Security Middleware
+  </text>
+
+  <!-- Main Stack Elements -->
+  <!-- RuVector (Bottom) -->
+  <rect x="300" y="600" width="400" height="90" rx="10" fill="url(#stackGradient)" filter="url(#shadow)"/>
+  <ellipse cx="500" cy="600" rx="200" ry="15" fill="#F59E0B" opacity="0.8"/>
+  <ellipse cx="500" cy="690" rx="200" ry="15" fill="#F97316" opacity="0.8"/>
+  <rect x="300" y="600" width="400" height="90" rx="10" fill="none" stroke="#E2E8F0" stroke-opacity="0.2"/>
+  <!-- Database Icon -->
+  <path d="M490,620 v40 h20 v-40 M490,620 a10,10 0 0 1 20,0" fill="none" stroke="#E2E8F0" stroke-width="2" transform="translate(0, 5)"/>
+  <ellipse cx="500" cy="620" rx="15" ry="5" fill="#E2E8F0" opacity="0.8"/>
+  <ellipse cx="500" cy="660" rx="15" ry="5" fill="#E2E8F0" opacity="0.8"/>
+  <text x="500" y="645" font-family="system-ui, -apple-system, sans-serif" font-size="22px" font-weight="bold" fill="#E2E8F0" text-anchor="middle">
+    RuVector DB
+  </text>
+  <text x="500" y="670" font-family="system-ui, -apple-system, sans-serif" font-size="14px" fill="#E2E8F0" text-anchor="middle">
+    80+ Rust Crates
+  </text>
+
+  <!-- Ruflo (Middle) -->
+  <rect x="300" y="450" width="400" height="90" rx="10" fill="#3B82F6" filter="url(#shadow)"/>
+  <!-- Gear Icon -->
+  <g transform="translate(480, 470) scale(0.6)">
+    <circle cx="30" cy="30" r="25" fill="none" stroke="#E2E8F0" stroke-width="3"/>
+    <g fill="#E2E8F0">
+      <rect x="25" y="0" width="10" height="15" rx="2"/>
+      <rect x="25" y="45" width="10" height="15" rx="2"/>
+      <rect x="0" y="25" width="15" height="10" rx="2"/>
+      <rect x="45" y="25" width="15" height="10" rx="2"/>
+      <rect x="10" y="10" width="10" height="10" rx="2" transform="rotate(45 30 30)"/>
+      <rect x="40" y="10" width="10" height="10" rx="2" transform="rotate(45 30 30)"/>
+      <rect x="10" y="40" width="10" height="10" rx="2" transform="rotate(45 30 30)"/>
+      <rect x="40" y="40" width="10" height="10" rx="2" transform="rotate(45 30 30)"/>
+    </g>
+  </g>
+  <text x="500" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="22px" font-weight="bold" fill="#E2E8F0" text-anchor="middle">
+    Ruflo Agents
+  </text>
+  <text x="500" y="505" font-family="system-ui, -apple-system, sans-serif" font-size="14px" fill="#E2E8F0" text-anchor="middle">
+    60+ Agent Types, Swarms
+  </text>
+
+  <!-- Ask-RuvNet (Top) -->
+  <rect x="300" y="300" width="400" height="90" rx="10" fill="#3B82F6" filter="url(#shadow)"/>
+  <!-- Eye Icon -->
+  <g transform="translate(475, 320) scale(0.8)">

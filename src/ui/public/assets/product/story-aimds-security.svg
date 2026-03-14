@@ -1,0 +1,143 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <!-- Gradient for main elements -->
+    <linearGradient id="elementGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:1" />
+    </linearGradient>
+    <!-- Arrowhead marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F59E0B" />
+    </marker>
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Background -->
+  <rect x="0" y="0" width="1200" height="800" fill="#0B1426"/>
+
+  <!-- Building Entrance -->
+  <g transform="translate(450, 40)">
+    <rect x="0" y="0" width="300" height="80" fill="#2D3A4F" rx="10" ry="10" filter="url(#shadow)"/>
+    <rect x="20" y="20" width="260" height="40" fill="#e2e8f0" rx="5" ry="5"/>
+    <text x="150" y="45" font-size="24" fill="#0B1426" text-anchor="middle" font-weight="bold">AI System Entrance</text>
+  </g>
+
+  <!-- Checkpoint 1: Input Scanner -->
+  <g transform="translate(450, 140)">
+    <rect x="0" y="0" width="300" height="100" fill="url(#elementGradient)" rx="10" ry="10" filter="url(#shadow)"/>
+    <!-- Metal Detector Icon -->
+    <path d="M30 10 L30 90 L40 90 L40 10 Z M80 10 L80 90 L70 90 L70 10 Z M30 10 Q55 -10 80 10 M30 90 Q55 110 80 90" fill="none" stroke="#e2e8f0" stroke-width="4"/>
+    <text x="160" y="40" font-size="20" fill="#F59E0B" font-weight="bold">1. Input Scanner</text>
+    <text x="160" y="65" font-size="14" fill="#e2e8f0">Prompt injections. Instant.</text>
+    <text x="160" y="85" font-size="12" fill="#e2e8f0" font-style="italic">"Metal Detector"</text>
+  </g>
+
+  <!-- Arrow from Entrance to Checkpoint 1 -->
+  <line x1="600" y1="120" x2="600" y2="140" stroke="#F59E0B" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="610" y="130" font-size="12" fill="#e2e8f0">Incoming Data</text>
+
+  <!-- Checkpoint 2: Semantic Analyzer -->
+  <g transform="translate(450, 260)">
+    <rect x="0" y="0" width="300" height="100" fill="url(#elementGradient)" rx="10" ry="10" filter="url(#shadow)"/>
+    <!-- Bag Check Icon (Magnifying glass over a bag) -->
+    <rect x="30" y="40" width="50" height="40" fill="#e2e8f0" rx="5" ry="5"/>
+    <path d="M40 40 L40 30 C40 25 50 25 50 30 L50 40" fill="none" stroke="#e2e8f0" stroke-width="3"/> <!-- Handle -->
+    <circle cx="75" cy="25" r="12" fill="none" stroke="#e2e8f0" stroke-width="3"/> <!-- Magnifier head -->
+    <line x1="85" y1="35" x2="105" y2="55" stroke="#e2e8f0" stroke-width="3"/> <!-- Magnifier handle -->
+    <text x="160" y="40" font-size="20" fill="#F59E0B" font-weight="bold">2. Semantic Analyzer</text>
+    <text x="160" y="65" font-size="14" fill="#e2e8f0">Hidden threats. 2-5ms.</text>
+    <text x="160" y="85" font-size="12" fill="#e2e8f0" font-style="italic">"Bag Check"</text>
+  </g>
+
+  <!-- Arrow from Checkpoint 1 to Checkpoint 2 -->
+  <line x1="600" y1="240" x2="600" y2="260" stroke="#F59E0B" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="610" y="250" font-size="12" fill="#e2e8f0">Scanned</text>
+
+  <!-- Checkpoint 3: Behavioral Monitor -->
+  <g transform="translate(450, 380)">
+    <rect x="0" y="0" width="300" height="100" fill="url(#elementGradient)" rx="10" ry="10" filter="url(#shadow)"/>
+    <!-- Eye/Camera Icon -->
+    <path d="M80 50 C80 30 50 30 50 50 C50 70 80 70 80 50 Z" fill="none" stroke="#e2e8f0" stroke-width="3"/>
+    <circle cx="65" cy="50" r="8" fill="#e2e8f0"/>
+    <line x1="50" y1="50" x2="80" y2="50" stroke="#e2e8f0" stroke-dasharray="4 2"/> <!-- Scan line -->
+    <text x="160" y="40" font-size="20" fill="#F59E0B" font-weight="bold">3. Behavioral Monitor</text>
+    <text x="160" y="65" font-size="14" fill="#e2e8f0">Suspicious patterns. Ongoing.</text>
+    <text x="160" y="85" font-size="12" fill="#e2e8f0" font-style="italic">"Behavior Watch"</text>
+  </g>
+
+  <!-- Arrow from Checkpoint 2 to Checkpoint 3 -->
+  <line x1="600" y1="360" x2="600" y2="380" stroke="#F59E0B" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="610" y="370" font-size="12" fill="#e2e8f0">Analyzed</text>
+
+  <!-- Checkpoint 4: ReasoningBank -->
+  <g transform="translate(450, 500)">
+    <rect x="0" y="0" width="300" height="100" fill="url(#elementGradient)" rx="10" ry="10" filter="url(#shadow)"/>
+    <!-- Brain/Network Icon -->
+    <path d="M70 25 C60 15 40 15 30 25 C20 35 20 65 30 75 C40 85 60 85 70 75 C80 65 80 35 70 25 Z" fill="#e2e8f0" opacity="0.2"/>
+    <circle cx="50" cy="50" r="10" fill="#e2e8f0"/>
+    <circle cx="35" cy="40" r="5" fill="#e2e8f0"/>
+    <circle cx="65" cy="40" r="5" fill="#e2e8f0"/>
+    <circle cx="35" cy="60" r="5" fill="#e2e8f0"/>
+    <circle cx="65" cy="60" r="5" fill="#e2e8f0"/>
+    <line x1="50" y1="50" x2="35" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <line x1="50" y1="50" x2="65" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <line x1="50" y1="50" x2="35" y2="60" stroke="#e2e8f0" stroke-width="1"/>
+    <line x1="50" y1="50" x2="65" y2="60" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="160" y="40" font-size="20" fill="#F59E0B" font-weight="bold">4. ReasoningBank</text>
+    <text x="160" y="65" font-size="14" fill="#e2e8f0">Predictive threats. Game theory.</text>
+    <text x="160" y="85" font-size="12" fill="#e2e8f0" font-style="italic">"Intelligence Unit"</text>
+  </g>
+
+  <!-- Arrow from Checkpoint 3 to Checkpoint 4 -->
+  <line x1="600" y1="480" x2="600" y2="500" stroke="#F59E0B" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="610" y="490" font-size="12" fill="#e2e8f0">Monitored</text>
+
+  <!-- Checkpoint 5: Meta-Learning -->
+  <g transform="translate(450, 620)">
+    <rect x="0" y="0" width="300" height="100" fill="url(#elementGradient)" rx="10" ry="10" filter="url(#shadow)"/>
+    <!-- Learning Loop Icon (Brain with circling arrow) -->
+    <path d="M70 25 C60 15 40 15 30 25 C20 35 20 65 30 75 C40 85 60 85 70 75 C80 65 80 35 70 25 Z" fill="#e2e8f0" opacity="0.2"/>
+    <path d="M45 40 A15 15 0 1 1 55 40 L55 30 L65 45 L55 60 L55 50 A15 15 0 1 0 45 40 Z" fill="#e2e8f0"/>
+    <text x="160" y="40" font-size="20" fill="#F59E0B" font-weight="bold">5. Meta-Learning</text>
+    <text x="160" y="65" font-size="14" fill="#e2e8f0">Review incidents. Get smarter.</text>
+    <text x="160" y="85" font-size="12" fill="#e2e8f0" font-style="italic">"Training Academy"</text>
+  </g>
+
+  <!-- Arrow from Checkpoint 4 to Checkpoint 5 -->
+  <line x1="600" y1="600" x2="600" y2="620" stroke="#F59E0B" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="610" y="610" font-size="12" fill="#e2e8f0">Predicted</text>
+
+  <!-- Feedback Loop Arrow from Checkpoint 5 to Checkpoint 1 -->
+  <path d="M450 670 H420 V190 H450" fill="none" stroke="#F97316" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="360" y="420" font-size="14" fill="#F97316" font-weight="bold" writing-mode="vertical-lr" text-orientation="upright">Learned Insights</text>
+
+  <!-- Exiting Happy Person -->
+  <g transform="translate(560, 740)">
+    <circle cx="40" cy="15" r="10" fill="#10B981"/>
+    <line x1="40" y1="25" x2="40" y2="45" stroke="#10B981" stroke-width="3"/>
+    <line x1="30" y1="35" x2="50" y2="35" stroke="#10B981" stroke-width="3"/>
+    <line x1="30" y1="55" x2="50" y2="55" stroke="#10B981" stroke-width="3"/>
+    <text x="100" y="35" font-size="20" fill="#10B981" font-weight="bold">Clean, Safe Data</text>
+  </g>
+
+  <!-- Arrow from Checkpoint 5 to Exiting Person -->
+  <line x1="600" y1="720" x2="600" y2="740" stroke="#10B981" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="610" y="730" font-size="12" fill="#e2e8f0">Secured</text>
+
+  <!-- Core Insight Callout -->
+  <rect x="850" y="300" width="300" height="150" fill="#F97316" rx="10" ry="10" filter="url(#shadow)"/>
+  <text x="1000" y="350" font-size="22" fill="#0B1426" text-anchor="middle" font-weight="bold">Core Insight:</text>
+  <text x="1000" y="390" font-size="18" fill="#0B1426" text-anchor="middle" font-weight="normal">Self-learning defense.</text>
+  <text x="1000" y="415" font-size="18" fill="#0B1426" text-anchor="middle" font-weight="normal">Gets smarter from every attack.</text>
+
+</svg>

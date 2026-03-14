@@ -1,0 +1,175 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B1426"/>
+      <stop offset="100%" stop-color="#050A10"/>
+    </linearGradient>
+
+    <!-- Glowing effect for "magic" elements -->
+    <radialGradient id="magicGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="rgba(245, 158, 11, 0.8)"/>
+      <stop offset="70%" stop-color="rgba(245, 158, 11, 0.3)"/>
+      <stop offset="100%" stop-color="rgba(245, 158, 11, 0)"/>
+    </radialGradient>
+
+    <!-- Subtle Shadow for elements -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+
+    <!-- Arrowhead Marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F59E0B"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="800" fill="url(#bgGradient)"/>
+
+  <!-- Global Text Styles -->
+  <style>
+    .label { font-family: system-ui, -apple-system, sans-serif; font-weight: bold; font-size: 22px; fill: #E2E8F0; }
+    .detail { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #A0AEC0; }
+    .metric { font-family: system-ui, -apple-system, sans-serif; font-weight: bold; font-size: 28px; fill: #F97316; }
+    .insight { font-family: system-ui, -apple-system, sans-serif; font-weight: bold; font-size: 24px; fill: #F59E0B; text-anchor: middle;}
+    .bottom-text { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; fill: #E2E8F0; text-anchor: middle;}
+    .arrow-label { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #E2E8F0; font-weight: bold;}
+  </style>
+
+  <!-- FRAME 1: Before -->
+  <g transform="translate(100, 150)">
+    <text x="60" y="-30" class="label" fill="#A0AEC0" text-anchor="middle">Before</text>
+    <!-- Paper Stack -->
+    <rect x="0" y="0" width="120" height="400" rx="8" fill="#E2E8F0" filter="url(#shadow)"/>
+    <rect x="5" y="10" width="110" height="380" rx="6" fill="#A0AEC0"/>
+    <rect x="10" y="20" width="100" height="360" rx="4" fill="#E2E8F0"/>
+    <rect x="15" y="30" width="90" height="340" rx="2" fill="#A0AEC0"/>
+
+    <text x="60" y="420" class="metric" text-anchor="middle">102,857</text>
+    <text x="60" y="445" class="detail" text-anchor="middle">Raw Documents</text>
+
+    <text x="200" y="200" class="label">45 MB</text>
+    <text x="200" y="225" class="detail">Raw Knowledge Dump</text>
+
+    <!-- Overwhelmed Person -->
+    <g transform="translate(250, 300)">
+      <circle cx="0" cy="0" r="20" fill="#3B82F6"/> <!-- Head -->
+      <path d="M-20,25 Q0,5 20,25 L10,100 L-10,100 Z" fill="#3B82F6"/> <!-- Body -->
+      <line x1="-10" y1="50" x2="-30" y2="70" stroke="#3B82F6" stroke-width="5" stroke-linecap="round"/> <!-- Arm left -->
+      <line x1="10" y1="50" x2="30" y2="70" stroke="#3B82F6" stroke-width="5" stroke-linecap="round"/> <!-- Arm right -->
+      <path d="M-10,10 Q0,0 10,10" stroke="#E2E8F0" stroke-width="3" fill="none"/> <!-- Frown -->
+      <path d="M-10,5 Q-5,0 0,0 Q5,0 10,5" stroke="#E2E8F0" stroke-width="2" fill="none"/> <!-- Eyes -->
+    </g>
+  </g>
+
+  <!-- FRAME 2: The Magic -->
+  <g transform="translate(450, 100)">
+    <text x="150" y="0" class="label" fill="#F59E0B" text-anchor="middle">The Magic</text>
+    <!-- RVF Compression Machine -->
+    <rect x="0" y="50" width="300" height="500" rx="20" fill="#1A202C" stroke="#F59E0B" stroke-width="3" filter="url(#shadow)"/>
+    <rect x="5" y="55" width="290" height="490" rx="15" fill="rgba(245, 158, 11, 0.1)"/>
+    <circle cx="150" cy="300" r="200" fill="url(#magicGlow)"/>
+
+    <!-- Incoming papers (stylized) -->
+    <g transform="translate(100, 20)">
+      <rect x="0" y="0" width="10" height="15" fill="#E2E8F0" rx="2"/>
+      <rect x="15" y="5" width="10" height="15" fill="#A0AEC0" rx="2"/>
+      <rect x="30" y="0" width="10" height="15" fill="#E2E8F0" rx="2"/>
+    </g>
+    <path d="M150,50 L150,90" stroke="#A0AEC0" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="160" y="70" class="arrow-label">Raw</text>
+
+
+    <!-- Stage 1: Curate (Funnel) -->
+    <g transform="translate(75, 120)">
+      <path d="M0,0 L150,0 L120,60 L30,60 Z" fill="#3B82F6" rx="5"/>
+      <path d="M30,60 L120,60 L75,120 Z" fill="#3B82F6" rx="5"/>
+      <text x="75" y="30" class="label" text-anchor="middle">Curate</text>
+      <text x="75" y="55" class="detail" text-anchor="middle">Select 377 best</text>
+    </g>
+
+    <!-- Stage 2: Compress (Gear) -->
+    <g transform="translate(75, 280)">
+      <circle cx="75" cy="0" r="40" fill="#F97316"/>
+      <g fill="#E2E8F0" transform="translate(75,0)"> <!-- Group for teeth, centered on gear -->
+        <rect x="-5" y="-45" width="10" height="10" transform="rotate(0)"/>
+        <rect x="-5" y="-45" width="10" height="10" transform="rotate(45)"/>
+        <rect x="-5" y="-45" width="10" height="10" transform="rotate(90)"/>
+        <rect x="-5" y="-45" width="10" height="10" transform="rotate(135)"/>
+        <rect x="-5" y="-45" width="10" height="10" transform="rotate(180)"/>
+        <rect x="-5" y="-45" width="10" height="10" transform="rotate(225)"/>
+        <rect x="-5" y="-45" width="10" height="10" transform="rotate(270)"/>
+        <rect x="-5" y="-45" width="10" height="10" transform="rotate(315)"/>
+      </g>
+      <text x="75" y="100" class="label" text-anchor="middle">Compress</text>
+      <text x="75" y="125" class="detail" text-anchor="middle">Squeeze the data</text>
+    </g>
+
+    <!-- Stage 3: Index (Database) -->
+    <g transform="translate(75, 430)">
+      <ellipse cx="75" cy="0" rx="50" ry="15" fill="#3B82F6"/>
+      <rect x="25" y="0" width="100" height="60" fill="#3B82F6"/>
+      <ellipse cx="75" cy="60" rx="50" ry="15" fill="#3B82F6"/>
+      <text x="75" y="30" class="detail" text-anchor="middle" fill="#E2E8F0">SQL / Graph</text>
+      <text x="75" y="90" class="label" text-anchor="middle">Index</text>
+      <text x="75" y="115" class="detail" text-anchor="middle">Make searchable</text>
+    </g>
+
+    <!-- Outgoing papers (stylized) -->
+    <path d="M150,550 L150,590" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="160" y="570" class="arrow-label">Vectors</text>
+    <g transform="translate(100, 590)">
+      <rect x="0" y="0" width="8" height="12" fill="#F59E0B" rx="1"/>
+      <rect x="12" y="3" width="8" height="12" fill="#F97316" rx="1"/>
+      <rect x="24" y="0" width="8" height="12" fill="#F59E0B" rx="1"/>
+    </g>
+  </g>
+
+  <!-- FRAME 3: After -->
+  <g transform="translate(850, 150)">
+    <text x="40" y="-30" class="label" fill="#A0AEC0" text-anchor="middle">After</text>
+    <!-- Small Book (representing Gold Articles) -->
+    <rect x="0" y="0" width="80" height="120" rx="8" fill="#F97316" filter="url(#shadow)"/>
+    <rect x="5" y="5" width="70" height="110" rx="6" fill="#F59E0B"/>
+    <path d="M80,0 L90,10 L90,130 L80,120 Z" fill="#CC4B00"/> <!-- Spine -->
+
+    <text x="120" y="50" class="metric">0.5 MB</text>
+    <text x="120" y="75" class="detail">Compressed Size</text>
+
+    <text x="40" y="150" class="label" text-anchor="middle">377 Gold Articles</text>
+    <text x="40" y="175" class="detail" text-anchor="middle">Instantly Searchable</text>
+
+    <!-- Smiling Person -->
+    <g transform="translate(100, 300)">
+      <circle cx="0" cy="0" r="20" fill="#3B82F6"/> <!-- Head -->
+      <path d="M-20,25 Q0,5 20,25 L10,100 L-10,100 Z" fill="#3B82F6"/> <!-- Body -->
+      <line x1="-10" y1="50" x2="-30" y2="70" stroke="#3B82F6" stroke-width="5" stroke-linecap="round"/> <!-- Arm left -->
+      <line x1="10" y1="50" x2="30" y2="70" stroke="#3B82F6" stroke-width="5" stroke-linecap="round"/> <!-- Arm right -->
+      <path d="M-10,10 Q0,20 10,10" stroke="#E2E8F0" stroke-width="3" fill="none"/> <!-- Smile -->
+      <path d="M-10,5 Q-5,0 0,0 Q5,0 10,5" stroke="#E2E8F0" stroke-width="2" fill="none"/> <!-- Eyes -->
+      <!-- Small held book icon -->
+      <g transform="translate(-40, 40) scale(0.4) rotate(15)">
+        <rect x="0" y="0" width="80" height="120" rx="8" fill="#F97316"/>
+        <rect x="5" y="5" width="70" height="110" rx="6" fill="#F59E0B"/>
+        <path d="M80,0 L90,10 L90,130 L80,120 Z" fill="#CC4B00"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Arrows connecting frames -->
+  <!-- Arrow 1: Before to The Magic -->
+  <path d="M220,350 L350,350 L350,190 L595,190" stroke="#F59E0B" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="350" y="270" class="arrow-label" text-anchor="middle">Transform</text>
+
+  <!-- Arrow 2: The Magic to After -->
+  <path d="M600,690 L750,690 L750,210 L845,210" stroke="#F59E0B" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="750" y="450" class="arrow-label" text-anchor="middle">Deliver</text>
+
+  <!-- Core Insight Callout -->
+  <rect x="250" y="650" width="700" height="60" rx="10" fill="#1A202C" stroke="#F59E0B" stroke-width="2"/>
+  <text x="600" y="688" class="insight">Same knowledge. 85x smaller. Instant search.</text>
+
+  <!-- Bottom Text -->
+  <text x="600" y="760" class="bottom-text">This app uses this. You're looking at RuVector compression in action.</text>
+</svg>
