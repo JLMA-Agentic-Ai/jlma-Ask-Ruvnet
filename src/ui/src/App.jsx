@@ -365,38 +365,42 @@ function MermaidBlock({ code }) {
   const ref = React.useRef(null);
   const [svg, setSvg] = React.useState('');
   const [error, setError] = React.useState(null);
+  const debounceRef = React.useRef(null);
 
   React.useEffect(() => {
-    let cancelled = false;
-    // Generate a unique ID per render call -- Mermaid consumes the ID
-    const uniqueId = `mermaid-${Date.now()}-${++mermaidCounter}`;
+    // Debounce rendering — wait 400ms after last code change (handles streaming)
+    clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      let cancelled = false;
+      const uniqueId = `mermaid-${Date.now()}-${++mermaidCounter}`;
 
-    // Clean up orphaned mermaid SVGs that escape from the rendering container
-    const cleanupOrphans = () => {
-      const orphan = document.getElementById(uniqueId);
-      if (orphan) orphan.remove();
-      // Also remove any mermaid-created container for this ID
-      const container = document.querySelector(`[data-id="${uniqueId}"]`);
-      if (container) container.remove();
-    };
+      const cleanupOrphans = () => {
+        const orphan = document.getElementById(uniqueId);
+        if (orphan) orphan.remove();
+        const container = document.querySelector(`[data-id="${uniqueId}"]`);
+        if (container) container.remove();
+      };
 
-    mermaid.render(uniqueId, code).then(({ svg: renderedSvg }) => {
-      if (!cancelled) {
-        // Mermaid 11.x can resolve with an error SVG instead of rejecting
-        if (renderedSvg && renderedSvg.includes('Syntax error')) {
-          setError('Mermaid syntax error in diagram');
-          cleanupOrphans();
-        } else {
-          setSvg(renderedSvg);
-          setError(null);
+      mermaid.render(uniqueId, code).then(({ svg: renderedSvg }) => {
+        if (!cancelled) {
+          if (renderedSvg && renderedSvg.includes('Syntax error')) {
+            setError('Mermaid syntax error in diagram');
+            cleanupOrphans();
+          } else {
+            setSvg(renderedSvg);
+            setError(null);
+          }
         }
-      }
-      cleanupOrphans();
-    }).catch(err => {
-      if (!cancelled) setError(err.message || 'Diagram render failed');
-      cleanupOrphans();
-    });
-    return () => { cancelled = true; cleanupOrphans(); };
+        cleanupOrphans();
+      }).catch(err => {
+        if (!cancelled) setError(err.message || 'Diagram render failed');
+        cleanupOrphans();
+      });
+
+      return () => { cancelled = true; cleanupOrphans(); };
+    }, 400);
+
+    return () => clearTimeout(debounceRef.current);
   }, [code]);
 
   React.useEffect(() => {
