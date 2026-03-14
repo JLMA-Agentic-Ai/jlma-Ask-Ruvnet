@@ -1060,7 +1060,7 @@ function App() {
     const canvasMap = {
       ruflo: { type: 'pdf', content: '/assets/docs/Claude-Flow v3 Swarm Platform \u2014 CEO Briefing.pdf', title: 'Ruflo Architecture Overview', action: 'document' },
       ruvector: { type: 'pdf', content: '/assets/docs/The Agentic Engineering Stack \u2014 Technical Overview.pdf', title: 'RuVector Technical Overview', action: 'document' },
-      pi: { type: 'iframe', content: 'https://pi.ruv.io', title: 'Pi Brain — Live', action: 'pi' },
+      pi: { type: 'pdf', content: '/assets/docs/ceo-deck-rev4.pdf', title: 'RuvNet CEO Deck — Pi Brain & Ecosystem', action: 'document' },
       aimds: { type: 'pdf', content: '/assets/docs/Agentic Intelligence Frameworks.pdf', title: 'AIMDS Security Framework', action: 'document' },
     };
     // Open canvas with relevant resource
