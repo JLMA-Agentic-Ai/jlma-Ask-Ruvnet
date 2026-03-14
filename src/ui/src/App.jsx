@@ -172,7 +172,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
   }, []);
   return (
   <div className="hero-compact">
-    <img src="/assets/Ruv prompt.png" alt="RuvNet" className="hero-logo-sm" />
+    <img src="/assets/product/hero-ecosystem.png" alt="RuvNet Ecosystem — Ruflo, RuVector, Pi Brain, AIMDS connected through RVF" className="hero-ecosystem-img" />
     <h1 className="hero-heading">What do you want to build?</h1>
     <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
     <p className="hero-tagline">The on-ramp to agentic AI. Pick a product, get started in minutes.</p>
