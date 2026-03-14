@@ -458,6 +458,7 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [knowledgeData, setKnowledgeData] = useState(null);
   const [ecosystemStats, setEcosystemStats] = useState(null);
+  const [communityStats, setCommunityStats] = useState(null);
   const [latestRepos, setLatestRepos] = useState(null);
 
   const [presentationMode, setPresentationMode] = useState(false);
@@ -488,6 +489,7 @@ function App() {
     fetch('/api/knowledge').then(r => r.json()).then(data => setKnowledgeData(data)).catch(() => {});
     fetch('/api/ecosystem-stats').then(r => r.json()).then(data => setEcosystemStats(data)).catch(() => {});
     fetch('/api/latest-repos').then(r => r.json()).then(data => setLatestRepos(data)).catch(() => {});
+    fetch('/api/community-stats').then(r => r.json()).then(data => setCommunityStats(data)).catch(() => {});
     // Check KB health — surface problems immediately
     fetch('/api/kb-stats').then(r => {
       if (!r.ok) return r.json().then(d => { throw new Error(d.error || 'KB unavailable'); });
@@ -1033,20 +1035,28 @@ function App() {
         </div>
       )}
 
-      {/* ===== ECOSYSTEM STATS BAR ===== */}
-      {ecosystemStats && (
+      {/* ===== COMMUNITY STATS BAR ===== */}
+      {(communityStats || ecosystemStats) && (
         <div className="stats-bar">
-          <span><span className="stats-highlight">{ecosystemStats.totalRepos || '148'}+</span> Repos</span>
+          {communityStats?.github?.totalStars > 0 && (<>
+            <span><span className="stats-highlight">{(communityStats.github.totalStars).toLocaleString()}</span> GitHub Stars</span>
+            <span className="stats-dot">·</span>
+          </>)}
+          {communityStats?.npm?.monthlyDownloads > 0 && (<>
+            <span><span className="stats-highlight">{Math.round(communityStats.npm.monthlyDownloads / 1000)}K+</span> npm Downloads/mo</span>
+            <span className="stats-dot">·</span>
+          </>)}
+          <span><span className="stats-highlight">{communityStats?.rustCrates || 80}+</span> Rust Crates</span>
           <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">{(ecosystemStats.totalEntries || 54543).toLocaleString()}+</span> KB Entries</span>
-          <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">{(ecosystemStats.goldCount || 339).toLocaleString()}</span> Gold Curated</span>
-          <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">{knowledgeData?.videoStats?.total || '28'}</span> Video Sessions</span>
-          <span className="stats-dot">·</span>
-          <span><span className="stats-highlight">9</span> NLM Studios</span>
-          <span className="stats-dot">·</span>
-          <span>Updated Daily</span>
+          <span><span className="stats-highlight">{communityStats?.kbEntries || ecosystemStats?.totalEntries || 377}</span> KB Entries</span>
+          {communityStats?.pi?.memories > 0 && (<>
+            <span className="stats-dot">·</span>
+            <span><span className="stats-highlight">{communityStats.pi.memories}</span> Pi Memories</span>
+          </>)}
+          {communityStats?.pi?.contributors > 0 && (<>
+            <span className="stats-dot">·</span>
+            <span><span className="stats-highlight">{communityStats.pi.contributors}</span> Contributors</span>
+          </>)}
         </div>
       )}
 
