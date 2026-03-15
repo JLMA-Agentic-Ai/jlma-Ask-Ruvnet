@@ -4,19 +4,10 @@
 
 echo "Starting Ask-Ruvnet..."
 
-# Verify RVF knowledge base is present
-if [ -f "knowledge.rvf" ]; then
-  echo "RVF knowledge base present ($(du -sh knowledge.rvf | cut -f1))"
-else
-  echo "WARNING: No knowledge.rvf found — app will start with empty KB"
-fi
-
-# Verify content sidecar
-if [ -f "content-sidecar.json.gz" ]; then
-  echo "Content sidecar present ($(du -sh content-sidecar.json.gz | cut -f1))"
-else
-  echo "WARNING: No content-sidecar.json.gz — text content unavailable"
-fi
+# Run integrity check BEFORE starting the server
+echo ""
+node scripts/integrity-check.mjs 2>/dev/null || echo "Integrity check script not available"
+echo ""
 
 # Start the server
 echo "Starting Node.js server..."

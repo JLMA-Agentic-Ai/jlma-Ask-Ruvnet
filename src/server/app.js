@@ -1519,6 +1519,18 @@ app.get('/health', async (req, res) => {
         }
     } catch { nlmStatus = 'unknown'; }
 
+    // Integrity check results (from startup)
+    let integrityStatus = 'unknown';
+    let integrityProblems = [];
+    try {
+        const irPath = path.join(__dirname, '../../scripts/integrity-results.json');
+        if (fs.existsSync(irPath)) {
+            const ir = JSON.parse(fs.readFileSync(irPath, 'utf8'));
+            integrityStatus = ir.passed ? 'ok' : `${ir.problems.length} problems`;
+            integrityProblems = ir.problems || [];
+        }
+    } catch { integrityStatus = 'unknown'; }
+
     const health = {
         status: overallStatus,
         version: APP_VERSION,
@@ -1530,6 +1542,8 @@ app.get('/health', async (req, res) => {
             hybridSearch: hybridSearchStatus,
             gemini: GEMINI_API_KEY ? 'configured' : 'not_configured',
             nlmRefresh: nlmStatus,
+            integrity: integrityStatus,
+            integrityProblems: integrityProblems.length > 0 ? integrityProblems : undefined,
         }
     };
     res.json(health);
