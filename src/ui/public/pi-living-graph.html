@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Living Knowledge Graph — Pi Brain Demo</title>
+<title>Why Your AI Keeps Forgetting — Pi Brain Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   --bg: #0a0a0f;
@@ -193,34 +194,6 @@ html, body {
   transform: translateY(-1px);
 }
 
-/* --- Timeline slider --- */
-.timeline-slider {
-  -webkit-appearance: none;
-  width: 100%; max-width: 500px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--cyan), var(--gold), var(--red));
-  border-radius: 2px; outline: none;
-}
-.timeline-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 16px; height: 16px; border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 12px var(--cyan);
-  cursor: pointer;
-}
-
-/* --- Growth counters --- */
-.growth-counters {
-  display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
-}
-.growth-counter { text-align: center; }
-.growth-counter .value {
-  font-family: var(--mono); font-size: 1.8rem; font-weight: 700; color: var(--cyan);
-}
-.growth-counter .label {
-  font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;
-}
-
 /* --- Cluster legend --- */
 .cluster-legend {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -241,22 +214,211 @@ html, body {
   background: var(--surface); color: var(--text-dim);
 }
 
-/* --- Drift stats --- */
-.drift-stats {
+/* --- Collective knowledge meter --- */
+.knowledge-meter {
+  width: 100%; max-width: 500px;
+  margin-top: 16px;
+}
+.meter-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-bottom: 6px;
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.meter-track {
+  width: 100%; height: 6px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.meter-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  border-radius: 3px;
+  transition: width 1.5s ease;
+}
+
+/* --- Quality score display --- */
+.quality-display {
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--gold);
+  margin-top: 16px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.quality-display.visible { opacity: 1; }
+
+/* --- Voting demo --- */
+.voting-demo {
+  width: 100%; max-width: 520px;
+}
+.vote-bar-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+}
+.vote-bar-title {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text);
+  min-width: 180px;
+  flex-shrink: 0;
+}
+.vote-bar-track {
+  flex: 1; height: 10px;
+  background: var(--surface-2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.vote-bar-fill {
+  height: 100%; width: 50%;
+  border-radius: 5px;
+  transition: width 0.8s ease, background 0.8s ease;
+  background: var(--text-dim);
+}
+.vote-bar-score {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--cyan);
+  min-width: 36px;
+  text-align: right;
+}
+.vote-bar-count {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  min-width: 50px;
+  text-align: right;
+}
+
+/* --- Bayesian explainer --- */
+.bayesian-explainer {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  max-width: 520px;
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.bayesian-explainer.visible { opacity: 1; }
+.bayesian-explainer .highlight { color: var(--cyan); font-weight: 600; }
+
+/* --- Cross-cluster insight --- */
+.cross-cluster-insight {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(240, 192, 32, 0.06);
+  border: 1px solid rgba(240, 192, 32, 0.2);
+  border-radius: 10px;
+  max-width: 520px;
+  width: 100%;
+  font-size: 0.8rem;
+  color: var(--gold);
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.cross-cluster-insight.visible { opacity: 1; }
+
+/* --- Stage caption --- */
+.stage-caption {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  max-width: 540px;
+  text-align: center;
+  line-height: 1.7;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.stage-caption.visible { opacity: 1; }
+
+/* --- Live search --- */
+.live-search {
+  width: 100%; max-width: 520px;
   margin-bottom: 16px;
 }
-.drift-stat {
+.live-search input {
+  width: 100%; padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
   font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--text-dim);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
-.drift-stat .val {
-  color: var(--gold);
-  font-weight: 600;
+.live-search input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px rgba(0,212,255,0.1);
+}
+.search-results {
+  width: 100%; max-width: 520px;
+  min-height: 40px;
+}
+.search-result-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.search-result-item.visible {
+  opacity: 1; transform: translateY(0);
+}
+.result-title {
+  flex: 1;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+.result-score-badge {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--cyan-dim);
+  color: var(--cyan);
+}
+.result-vote-btn {
+  padding: 4px 10px;
+  border: 1px solid rgba(16,185,129,0.3);
+  background: rgba(16,185,129,0.08);
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.result-vote-btn:hover {
+  background: rgba(16,185,129,0.2);
+  box-shadow: 0 0 8px rgba(16,185,129,0.2);
+}
+.result-vote-btn.voted {
+  background: rgba(16,185,129,0.25);
+  border-color: var(--green);
 }
 
 /* --- Controls --- */
@@ -300,14 +462,15 @@ html, body {
   .stage-title { font-size: 1.4rem; }
   .stage-subtitle { font-size: 0.82rem; margin-bottom: 20px; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .growth-counters { gap: 14px; }
-  .growth-counter .value { font-size: 1.3rem; }
   .cluster-legend { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  .vote-bar-title { min-width: 120px; font-size: 0.62rem; }
+  .vote-bar-count { display: none; }
 }
 @media (max-width: 480px) {
   .controls { gap: 8px; }
   .ctrl-btn { padding: 6px 14px; font-size: 0.7rem; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .vote-bar-title { min-width: 90px; font-size: 0.58rem; }
 }
 </style>
 </head>
@@ -320,61 +483,78 @@ html, body {
 
 <div class="overlay">
   <div class="stage-nav" role="tablist" aria-label="Demo stages">
-    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: Dead Knowledge" aria-selected="true" tabindex="0"></div>
-    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: Knowledge Awakens" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: Clusters Emerge" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: Knowledge Drift" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: The Collective Grows" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: The Groundhog Day Problem" aria-selected="true" tabindex="0"></div>
+    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: Collective Memory" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: Quality Through Voting" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: Emergent Structure" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: The Collective: Live" aria-selected="false" tabindex="-1"></div>
   </div>
 
-  <!-- Stage 0: Dead Knowledge -->
+  <!-- Stage 0: The Groundhog Day Problem -->
   <div class="stage-content visible" id="stage0" role="tabpanel">
-    <div class="stage-title">Dead Knowledge</div>
-    <div class="stage-subtitle">Traditional databases: flat, isolated, frozen. Rows of data that never connect, never learn, never grow.</div>
+    <div class="stage-title">The Groundhog Day Problem</div>
+    <div class="stage-subtitle">Three developers. Same team. Same problem. Three separate conversations.</div>
+    <div class="knowledge-meter" id="meter0">
+      <div class="meter-label">
+        <span>Collective knowledge</span>
+        <span id="meter0Value">0%</span>
+      </div>
+      <div class="meter-track"><div class="meter-fill" id="meter0Fill"></div></div>
+    </div>
+    <div class="stage-caption" id="caption0"></div>
   </div>
 
-  <!-- Stage 1: Knowledge Awakens -->
+  <!-- Stage 1: Collective Memory -->
   <div class="stage-content" id="stage1" role="tabpanel">
-    <div class="stage-title">Knowledge Awakens</div>
-    <div class="stage-subtitle">Connect the dots. A force-directed graph reveals the hidden structure inside collective intelligence.</div>
-    <div class="stat-grid">
-      <div class="stat-card"><span class="stat-value" data-count="965">0</span><span class="stat-label">Memories</span></div>
-      <div class="stat-card"><span class="stat-value gold" data-count="59">0</span><span class="stat-label">Contributors</span></div>
-      <div class="stat-card"><span class="stat-value purple" data-count="125429">0</span><span class="stat-label">Edges</span></div>
-      <div class="stat-card"><span class="stat-value green" data-count="20">0</span><span class="stat-label">Clusters</span></div>
+    <div class="stage-title">Collective Memory</div>
+    <div class="stage-subtitle">Same three developers. But now solutions flow into a shared brain &mdash; and get better each time.</div>
+    <div class="quality-display" id="qualityDisplay">Quality: 0.72</div>
+    <div class="knowledge-meter" id="meter1">
+      <div class="meter-label">
+        <span>Collective knowledge</span>
+        <span id="meter1Value">0%</span>
+      </div>
+      <div class="meter-track"><div class="meter-fill" id="meter1Fill"></div></div>
     </div>
+    <div class="stage-caption" id="caption1"></div>
   </div>
 
-  <!-- Stage 2: Clusters Emerge -->
+  <!-- Stage 2: Quality Through Voting -->
   <div class="stage-content" id="stage2" role="tabpanel">
-    <div class="stage-title">Clusters Emerge</div>
-    <div class="stage-subtitle">Knowledge self-organizes. MinCut partitioning reveals natural communities &mdash; without anyone telling it how.</div>
-    <button class="demo-btn" id="revealBtn">Reveal Structure</button>
-    <div class="cluster-legend" id="clusterLegend" style="margin-top: 20px;"></div>
+    <div class="stage-title">Quality Through Voting</div>
+    <div class="stage-subtitle">Not all answers are equal. Bayesian voting surfaces the best &mdash; mathematically.</div>
+    <div class="voting-demo" id="votingDemo"></div>
+    <div class="bayesian-explainer" id="bayesianExplainer">
+      <div><span class="highlight">5 up, 0 down</span> &rarr; 0.83 confidence</div>
+      <div><span class="highlight">50 up, 10 down</span> &rarr; 0.82 confidence (more evidence, same conclusion)</div>
+      <div style="margin-top: 8px;">Each vote updates a probability distribution. More observations = more confidence.</div>
+    </div>
   </div>
 
-  <!-- Stage 3: Knowledge Drift -->
+  <!-- Stage 3: Emergent Structure -->
   <div class="stage-content" id="stage3" role="tabpanel">
-    <div class="stage-title">Knowledge Drift</div>
-    <div class="stage-subtitle">Knowledge ages. Fresh insights cool from cyan to red. Scrub the timeline to watch drift propagate.</div>
-    <div class="drift-stats" id="driftStats">
-      <div class="drift-stat">CV: <span class="val" id="driftCV">0.00</span></div>
-      <div class="drift-stat">Trend: <span class="val" id="driftTrend">stable</span></div>
-    </div>
-    <input type="range" class="timeline-slider" id="timelineSlider" min="0" max="100" value="0" aria-label="Timeline scrubber">
+    <div class="stage-title">Emergent Structure</div>
+    <div class="stage-subtitle">Nobody organized this. 965 memories formed 20 clusters on their own &mdash; the math found the structure.</div>
+    <button class="demo-btn" id="revealBtn">Reveal Clusters</button>
+    <div class="cluster-legend" id="clusterLegend" style="margin-top: 20px;"></div>
+    <div class="cross-cluster-insight" id="crossClusterInsight">A caching optimization from the performance cluster turned out to solve an authentication scaling issue. Transfer learning found this connection automatically.</div>
   </div>
 
-  <!-- Stage 4: The Collective Grows -->
+  <!-- Stage 4: The Collective: Live -->
   <div class="stage-content" id="stage4" role="tabpanel">
-    <div class="stage-title">The Collective Grows</div>
-    <div class="stage-subtitle">Watch a knowledge graph build itself in real time &mdash; every node a contribution, every edge a connection.</div>
-    <div class="growth-counters">
-      <div class="growth-counter"><span class="value" id="growthMemories">0</span><span class="label">Memories</span></div>
-      <div class="growth-counter"><span class="value" id="growthContributors">0</span><span class="label">Contributors</span></div>
-      <div class="growth-counter"><span class="value" id="growthVotes">0</span><span class="label">Votes</span></div>
-      <div class="growth-counter"><span class="value" id="growthClusters">0</span><span class="label">Clusters</span></div>
+    <div class="stage-title">The Collective: Live</div>
+    <div class="stage-subtitle">59 contributors built this over 3 months. Search it. Vote on it. Every interaction improves it.</div>
+    <div class="live-search">
+      <input type="text" id="liveSearch" placeholder="Search the collective..." aria-label="Search the collective intelligence">
     </div>
-    <button class="demo-btn" id="speedBtn" style="margin-top: 16px;">Faster</button>
+    <div class="search-results" id="searchResults"></div>
+    <div class="stat-grid" style="margin-top: 20px;">
+      <div class="stat-card"><span class="stat-value" id="statMemories">965</span><span class="stat-label">Memories</span></div>
+      <div class="stat-card"><span class="stat-value gold" id="statContributors">59</span><span class="stat-label">Contributors</span></div>
+      <div class="stat-card"><span class="stat-value purple" id="statVotes">947</span><span class="stat-label">Votes</span></div>
+      <div class="stat-card"><span class="stat-value green" id="statClusters">20</span><span class="stat-label">Clusters</span></div>
+    </div>
+    <div class="stage-caption visible">This collective was built by 59 contributors over 3 months. Search it, vote on it. Every interaction makes it smarter.</div>
   </div>
 
   <!-- Controls -->

@@ -14,7 +14,7 @@
   var animating = true;
   var autoPlay = false;
   var autoTimer = null;
-  var TOTAL_STAGES = 6;
+  var TOTAL_STAGES = 5;
 
   var CATEGORIES = [
     { color: [240, 192, 32], weight: 0.15 },
@@ -66,53 +66,52 @@
     var cx = W / 2, cy = H / 2;
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      var angle, dist, t, groupAngle, spread, baseX, baseY, clusterIdx;
+      var angle, dist, clusterIdx, baseX, baseY, spread, t;
 
       switch (stage) {
-        case 0: // Stream left-to-right
-          p.tx = (i / particles.length) * W + (Math.random() - 0.5) * 40;
-          p.ty = cy + (Math.random() - 0.5) * H * 0.6;
+        case 0: // Stage 0: Particles drift downward slowly (knowledge decaying)
+          p.tx = p.x + (Math.random() - 0.5) * 60;
+          p.ty = p.y + Math.random() * 20 + 5;
+          if (p.ty > H + 20) p.ty = -10;
           break;
 
-        case 1: // Circular loop
-          angle = (i / particles.length) * Math.PI * 2;
-          dist = Math.min(W, H) * 0.18 + Math.random() * 30;
+        case 1: // Stage 1: Particles pulse outward from center (detection firing)
+          angle = (i / particles.length) * Math.PI * 2 + Math.random() * 0.3;
+          dist = 40 + Math.random() * Math.min(W, H) * 0.25;
           p.tx = cx + Math.cos(angle) * dist;
           p.ty = cy + Math.sin(angle) * dist;
           break;
 
-        case 2: // Two clusters with bridge
-          clusterIdx = i % 3;
+        case 2: // Stage 2: Three clusters with bridge particles flowing between
+          clusterIdx = i % 5;
           if (clusterIdx < 2) {
-            baseX = clusterIdx === 0 ? cx - W * 0.18 : cx + W * 0.18;
-            baseY = cy;
-            spread = Math.min(W, H) * 0.08;
-            p.tx = baseX + (Math.random() - 0.5) * spread;
-            p.ty = baseY + (Math.random() - 0.5) * spread;
+            // Security cluster (top)
+            baseX = cx;
+            baseY = cy - Math.min(W, H) * 0.16;
+            spread = Math.min(W, H) * 0.06;
+          } else if (clusterIdx < 4) {
+            // API Design cluster (bottom-left)
+            baseX = cx - Math.min(W, H) * 0.15;
+            baseY = cy + Math.min(W, H) * 0.12;
+            spread = Math.min(W, H) * 0.06;
           } else {
-            // Bridge particles
-            t = Math.random();
-            p.tx = cx + (Math.random() - 0.5) * W * 0.1;
-            p.ty = cy + (Math.random() - 0.5) * 20;
+            // Sessions cluster (bottom-right)
+            baseX = cx + Math.min(W, H) * 0.15;
+            baseY = cy + Math.min(W, H) * 0.12;
+            spread = Math.min(W, H) * 0.06;
           }
+          p.tx = baseX + (Math.random() - 0.5) * spread;
+          p.ty = baseY + (Math.random() - 0.5) * spread;
           break;
 
-        case 3: // Drift: particles shift color via phase-based hue
-          angle = Math.random() * Math.PI * 2;
-          dist = Math.random() * Math.min(W, H) * 0.2;
-          p.tx = cx + Math.cos(angle) * dist;
-          p.ty = cy + Math.sin(angle) * dist;
-          // Color shift is handled in draw loop via phase
-          break;
-
-        case 4: // Orbital flywheel ring, accelerating
+        case 3: // Stage 3: Orbital ring accelerating (flywheel)
           angle = (i / particles.length) * Math.PI * 2 + p.phase;
           dist = Math.min(W, H) * 0.16 + (Math.random() - 0.5) * 20;
           p.tx = cx + Math.cos(angle) * dist;
           p.ty = cy + Math.sin(angle) * dist;
           break;
 
-        case 5: // Random ambient scatter
+        case 4: // Stage 4: Gentle ambient scatter
           p.tx = Math.random() * W;
           p.ty = Math.random() * H;
           break;
@@ -120,10 +119,12 @@
     }
   }
 
+  var flywheelSpeedMult = 1;
+
   function drawParticles() {
     ctx.clearRect(0, 0, W, H);
 
-    if (currentStage >= 1 && currentStage <= 4) {
+    if (currentStage >= 1 && currentStage <= 3) {
       var cx = W / 2, cy = H / 2;
       var grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.4);
       grd.addColorStop(0, 'rgba(0, 212, 255, 0.04)');
@@ -135,13 +136,24 @@
 
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      var ease = 0.015 + (currentStage === 0 || currentStage === 5 ? 0 : 0.008);
+      var ease = 0.015 + (currentStage === 0 || currentStage === 4 ? 0 : 0.008);
       p.x += (p.tx - p.x) * ease + p.vx + Math.sin(p.phase) * 0.15;
       p.y += (p.ty - p.y) * ease + p.vy + Math.cos(p.phase) * 0.15;
       p.phase += p.speed;
 
-      // Stage 4: slowly rotate targets for flywheel effect
-      if (currentStage === 4) {
+      // Stage 0: continuously drift particles downward
+      if (currentStage === 0) {
+        p.ty += 0.3;
+        if (p.y > H + 20) {
+          p.y = -10;
+          p.ty = Math.random() * H;
+          p.x = Math.random() * W;
+          p.tx = p.x + (Math.random() - 0.5) * 60;
+        }
+      }
+
+      // Stage 3: slowly rotate targets for flywheel effect
+      if (currentStage === 3) {
         var fwCx = W / 2, fwCy = H / 2;
         var fwAngle = Math.atan2(p.ty - fwCy, p.tx - fwCx);
         var fwDist = Math.sqrt((p.tx - fwCx) * (p.tx - fwCx) + (p.ty - fwCy) * (p.ty - fwCy));
@@ -150,26 +162,12 @@
         p.ty = fwCy + Math.sin(fwAngle) * fwDist;
       }
 
-      if (currentStage === 0 || currentStage === 5) {
+      if (currentStage === 4) {
         if (p.x < -10 || p.x > W + 10) p.tx = Math.random() * W;
         if (p.y < -10 || p.y > H + 10) p.ty = Math.random() * H;
       }
 
       var rgb = p.color;
-
-      // Stage 3: shift some particles from blue to orange based on phase
-      if (currentStage === 3 && driftProgress > 0.3) {
-        var driftFactor = Math.sin(p.phase * 3) * 0.5 + 0.5;
-        if (driftFactor > 0.7 && driftProgress > 0.4) {
-          var hueShift = Math.min(1, (driftProgress - 0.4) * 3);
-          rgb = [
-            Math.floor(rgb[0] + (240 - rgb[0]) * hueShift * driftFactor),
-            Math.floor(rgb[1] + (140 - rgb[1]) * hueShift * driftFactor),
-            Math.floor(rgb[2] * (1 - hueShift * driftFactor * 0.7))
-          ];
-        }
-      }
-
       var glowSize = p.r * (currentStage >= 2 ? 3 : 2);
 
       ctx.beginPath();
@@ -219,19 +217,6 @@
     triggerStageEffects(n);
   }
 
-  function animateCount(el, target) {
-    var duration = 1500;
-    var start = performance.now();
-    function tick(now) {
-      var t = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = Math.floor(eased * target).toLocaleString();
-      if (t < 1) requestAnimationFrame(tick);
-      else el.textContent = target.toLocaleString();
-    }
-    requestAnimationFrame(tick);
-  }
-
   function animateValue(el, from, to, duration, decimals) {
     var start = performance.now();
     var dec = decimals || 0;
@@ -246,642 +231,6 @@
     requestAnimationFrame(tick);
   }
 
-
-  // =====================================================================
-  // 3. STAGE 0 — DEAD END PIPELINE
-  // =====================================================================
-
-  var pipelineCanvas = document.getElementById('pipelineCanvas');
-  var pctx = pipelineCanvas ? pipelineCanvas.getContext('2d') : null;
-  var PW = 0, PH = 0;
-  var deadEndAnimFrame = 0;
-
-  var deadEndState = {
-    phase: 0,         // 0=idle, 1=question, 2=answer, 3=dissolve
-    currentUser: 0,
-    arrowProgress: 0,
-    wastedCount: 0,
-    dissolveParticles: [],
-    ghostArrows: [],
-    timer: 0
-  };
-
-  var USERS = [
-    { label: 'User 1', y: 0.25 },
-    { label: 'User 2', y: 0.50 },
-    { label: 'User 3', y: 0.75 }
-  ];
-
-  function initPipeline() {
-    if (!pipelineCanvas) return;
-    var wrap = pipelineCanvas.parentElement;
-    PW = wrap.clientWidth;
-    PH = wrap.clientHeight;
-    pipelineCanvas.width = PW;
-    pipelineCanvas.height = PH;
-    deadEndState.phase = 0;
-    deadEndState.currentUser = 0;
-    deadEndState.arrowProgress = 0;
-    deadEndState.wastedCount = 0;
-    deadEndState.dissolveParticles = [];
-    deadEndState.ghostArrows = [];
-    deadEndState.timer = 0;
-    document.getElementById('wastedCounter').textContent = '0';
-    cancelAnimationFrame(deadEndAnimFrame);
-    drawPipeline();
-  }
-
-  function quadBezier(t, p0x, p0y, cpx, cpy, p1x, p1y) {
-    var mt = 1 - t;
-    return {
-      x: mt * mt * p0x + 2 * mt * t * cpx + t * t * p1x,
-      y: mt * mt * p0y + 2 * mt * t * cpy + t * t * p1y
-    };
-  }
-
-  function drawRoundedBox(c, cx, cy, w, h, label, fill, stroke, textColor) {
-    var rr = 8;
-    c.save();
-    c.fillStyle = fill;
-    c.strokeStyle = stroke;
-    c.lineWidth = 1.5;
-    c.beginPath();
-    c.roundRect(cx - w / 2, cy - h / 2, w, h, rr);
-    c.fill();
-    c.stroke();
-    c.restore();
-    c.font = '11px JetBrains Mono, monospace';
-    c.fillStyle = textColor;
-    c.textAlign = 'center';
-    c.fillText(label, cx, cy + 4);
-  }
-
-  function drawBezierArrow(c, prog, sx, sy, cpx, cpy, ex, ey, color) {
-    c.beginPath();
-    for (var i = 0; i <= 20; i++) {
-      var t = (i / 20) * prog;
-      var p = quadBezier(t, sx, sy, cpx, cpy, ex, ey);
-      if (i === 0) c.moveTo(p.x, p.y);
-      else c.lineTo(p.x, p.y);
-    }
-    c.strokeStyle = color;
-    c.lineWidth = 2;
-    c.stroke();
-    if (prog > 0.1) {
-      var tip = quadBezier(prog, sx, sy, cpx, cpy, ex, ey);
-      var pre = quadBezier(Math.max(0, prog - 0.05), sx, sy, cpx, cpy, ex, ey);
-      var ang = Math.atan2(tip.y - pre.y, tip.x - pre.x);
-      c.save();
-      c.translate(tip.x, tip.y);
-      c.rotate(ang);
-      c.beginPath();
-      c.moveTo(0, 0);
-      c.lineTo(-8, -4);
-      c.lineTo(-8, 4);
-      c.closePath();
-      c.fillStyle = color;
-      c.fill();
-      c.restore();
-    }
-  }
-
-  function drawUserIcon(c, x, y, active) {
-    var col = active ? 'rgba(0, 212, 255, 0.7)' : 'rgba(136, 146, 164, 0.5)';
-    c.beginPath();
-    c.arc(x, y - 8, 7, 0, Math.PI * 2);
-    c.fillStyle = col;
-    c.fill();
-    c.beginPath();
-    c.moveTo(x, y + 1);
-    c.lineTo(x, y + 14);
-    c.strokeStyle = col;
-    c.lineWidth = 2;
-    c.stroke();
-  }
-
-  function drawPipeline() {
-    if (currentStage !== 0) return;
-    pctx.clearRect(0, 0, PW, PH);
-
-    var userX = PW * 0.12;
-    var aiX = PW * 0.82;
-    var aiY = PH * 0.5;
-    var aiW = PW * 0.13;
-    var aiH = PH * 0.18;
-
-    // Draw ghost arrows (accumulated waste)
-    for (var g = 0; g < deadEndState.ghostArrows.length; g++) {
-      var ghost = deadEndState.ghostArrows[g];
-      pctx.save();
-      pctx.globalAlpha = 0.06;
-      pctx.beginPath();
-      var gCpx = (ghost.sx + ghost.ex) / 2;
-      var gCpy = ghost.sy + (Math.random() - 0.5) * 20;
-      pctx.moveTo(ghost.sx, ghost.sy);
-      pctx.quadraticCurveTo(gCpx, gCpy, ghost.ex, ghost.ey);
-      pctx.strokeStyle = ghost.color;
-      pctx.lineWidth = 1.5;
-      pctx.stroke();
-      pctx.restore();
-    }
-
-    // Draw user icons
-    for (var u = 0; u < USERS.length; u++) {
-      var uy = PH * USERS[u].y;
-      drawUserIcon(pctx, userX, uy, u === deadEndState.currentUser);
-      pctx.font = '10px JetBrains Mono, monospace';
-      pctx.fillStyle = 'rgba(136, 146, 164, 0.6)';
-      pctx.textAlign = 'center';
-      pctx.fillText(USERS[u].label, userX, uy + 32);
-    }
-
-    // Draw AI box
-    drawRoundedBox(pctx, aiX, aiY, aiW, aiH, 'AI Model', 'rgba(168, 85, 247, 0.12)', 'rgba(168, 85, 247, 0.4)', 'rgba(168, 85, 247, 0.8)');
-
-    // Animate arrow exchange
-    var cu = USERS[deadEndState.currentUser];
-    var uY = PH * cu.y;
-    var cpxQ = (userX + aiX) / 2;
-    var cpyQ = uY - 30;
-    var cpxA = (userX + aiX) / 2;
-    var cpyA = uY + 30;
-
-    deadEndState.timer++;
-
-    if (deadEndState.phase === 0) {
-      // Start question after brief pause
-      if (deadEndState.timer > 30) {
-        deadEndState.phase = 1;
-        deadEndState.arrowProgress = 0;
-        deadEndState.timer = 0;
-      }
-    }
-
-    if (deadEndState.phase === 1) {
-      // Question arrow: user to AI
-      deadEndState.arrowProgress = Math.min(1, deadEndState.arrowProgress + 0.025);
-      var prog = deadEndState.arrowProgress;
-      drawBezierArrow(pctx, prog, userX + 14, uY, cpxQ, cpyQ, aiX - aiW / 2 - 6, aiY, 'rgba(240, 192, 32, 0.8)');
-      if (prog >= 1) {
-        deadEndState.phase = 2;
-        deadEndState.arrowProgress = 0;
-        deadEndState.timer = 0;
-      }
-    }
-
-    if (deadEndState.phase === 2) {
-      // Keep question arrow faded
-      drawBezierArrow(pctx, 1, userX + 14, uY, cpxQ, cpyQ, aiX - aiW / 2 - 6, aiY, 'rgba(240, 192, 32, 0.3)');
-      // Answer arrow
-      deadEndState.arrowProgress = Math.min(1, deadEndState.arrowProgress + 0.025);
-      var aProg = deadEndState.arrowProgress;
-      drawBezierArrow(pctx, aProg, aiX - aiW / 2 - 6, aiY, cpxA, cpyA, userX + 14, uY, 'rgba(0, 212, 255, 0.8)');
-      if (aProg >= 1) {
-        deadEndState.phase = 3;
-        deadEndState.timer = 0;
-        // Spawn dissolve particles along both paths
-        deadEndState.dissolveParticles = [];
-        for (var dp = 0; dp < 25; dp++) {
-          var dpt = Math.random();
-          var dpPos = quadBezier(dpt, userX + 14, uY, cpxQ, cpyQ, aiX - aiW / 2 - 6, aiY);
-          deadEndState.dissolveParticles.push({
-            x: dpPos.x, y: dpPos.y,
-            vx: (Math.random() - 0.5) * 3,
-            vy: -Math.random() * 2 - 0.5,
-            alpha: 0.9,
-            color: 'gold',
-            r: Math.random() * 2.5 + 1
-          });
-        }
-        for (var dp2 = 0; dp2 < 25; dp2++) {
-          var dp2t = Math.random();
-          var dp2Pos = quadBezier(dp2t, aiX - aiW / 2 - 6, aiY, cpxA, cpyA, userX + 14, uY);
-          deadEndState.dissolveParticles.push({
-            x: dp2Pos.x, y: dp2Pos.y,
-            vx: (Math.random() - 0.5) * 3,
-            vy: -Math.random() * 2 - 0.5,
-            alpha: 0.9,
-            color: 'cyan',
-            r: Math.random() * 2.5 + 1
-          });
-        }
-        // Store ghost arrow
-        deadEndState.ghostArrows.push({
-          sx: userX + 14, sy: uY,
-          ex: aiX - aiW / 2 - 6, ey: aiY,
-          color: 'rgba(240, 192, 32, 0.5)'
-        });
-        deadEndState.ghostArrows.push({
-          sx: aiX - aiW / 2 - 6, sy: aiY,
-          ex: userX + 14, ey: uY,
-          color: 'rgba(0, 212, 255, 0.5)'
-        });
-        // Keep only recent ghosts
-        if (deadEndState.ghostArrows.length > 24) {
-          deadEndState.ghostArrows = deadEndState.ghostArrows.slice(-24);
-        }
-      }
-    }
-
-    if (deadEndState.phase === 3) {
-      // Dissolve particles
-      var allFaded = true;
-      for (var dp3 = 0; dp3 < deadEndState.dissolveParticles.length; dp3++) {
-        var pp = deadEndState.dissolveParticles[dp3];
-        pp.x += pp.vx;
-        pp.y += pp.vy;
-        pp.vy -= 0.02; // Slight upward drift
-        pp.alpha -= 0.012;
-        if (pp.alpha > 0) {
-          allFaded = false;
-          var cStr = pp.color === 'gold'
-            ? 'rgba(240, 192, 32, ' + pp.alpha + ')'
-            : 'rgba(0, 212, 255, ' + pp.alpha + ')';
-          // Glow
-          pctx.beginPath();
-          pctx.arc(pp.x, pp.y, pp.r * 3, 0, Math.PI * 2);
-          pctx.fillStyle = pp.color === 'gold'
-            ? 'rgba(240, 192, 32, ' + (pp.alpha * 0.15) + ')'
-            : 'rgba(0, 212, 255, ' + (pp.alpha * 0.15) + ')';
-          pctx.fill();
-          // Core
-          pctx.beginPath();
-          pctx.arc(pp.x, pp.y, pp.r, 0, Math.PI * 2);
-          pctx.fillStyle = cStr;
-          pctx.fill();
-        }
-      }
-
-      if (allFaded || deadEndState.timer > 90) {
-        deadEndState.wastedCount++;
-        document.getElementById('wastedCounter').textContent = String(deadEndState.wastedCount);
-        deadEndState.currentUser = (deadEndState.currentUser + 1) % 3;
-        deadEndState.phase = 0;
-        deadEndState.timer = 0;
-        deadEndState.dissolveParticles = [];
-      }
-    }
-
-    deadEndAnimFrame = requestAnimationFrame(drawPipeline);
-  }
-
-
-  // =====================================================================
-  // 4. STAGE 1 — VOTE LOOP
-  // =====================================================================
-
-  var pipelineCanvas1 = document.getElementById('pipelineCanvas1');
-  var pctx1 = pipelineCanvas1 ? pipelineCanvas1.getContext('2d') : null;
-  var PW1 = 0, PH1 = 0;
-  var loopAnimFrame = 0;
-
-  var loopState = {
-    phase: 0,
-    currentUser: 0,
-    arrowProgress: 0,
-    quality: 0.72,
-    voteCount: 0,
-    timer: 0,
-    ripples: [],
-    feedbackProgress: 0
-  };
-
-  var miniGraphNodes = [];
-  var miniGraphEdges = [];
-
-  function initLoopPipeline() {
-    if (!pipelineCanvas1) return;
-    var wrap = pipelineCanvas1.parentElement;
-    PW1 = wrap.clientWidth;
-    PH1 = wrap.clientHeight;
-    pipelineCanvas1.width = PW1;
-    pipelineCanvas1.height = PH1;
-    loopState.phase = 0;
-    loopState.currentUser = 0;
-    loopState.arrowProgress = 0;
-    loopState.quality = 0.72;
-    loopState.voteCount = 0;
-    loopState.timer = 0;
-    loopState.ripples = [];
-    loopState.feedbackProgress = 0;
-    document.getElementById('qualityBadge').textContent = '0.72';
-    miniGraphNodes = [
-      { x: 40, y: 75, r: 4, color: '#00d4ff' },
-      { x: 100, y: 40, r: 3, color: '#a855f7' },
-      { x: 160, y: 75, r: 4, color: '#f0c020' }
-    ];
-    miniGraphEdges = [[0, 1], [1, 2]];
-    renderMiniGraph();
-    cancelAnimationFrame(loopAnimFrame);
-    drawLoopPipeline();
-  }
-
-  function renderMiniGraph() {
-    var svg = document.getElementById('miniGraph');
-    // Clear existing lines/circles except the background rect
-    while (svg.childNodes.length > 1) {
-      svg.removeChild(svg.lastChild);
-    }
-    for (var e = 0; e < miniGraphEdges.length; e++) {
-      var n1 = miniGraphNodes[miniGraphEdges[e][0]];
-      var n2 = miniGraphNodes[miniGraphEdges[e][1]];
-      var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', n1.x);
-      line.setAttribute('y1', n1.y);
-      line.setAttribute('x2', n2.x);
-      line.setAttribute('y2', n2.y);
-      line.setAttribute('stroke', 'rgba(0,212,255,0.25)');
-      line.setAttribute('stroke-width', '1');
-      svg.appendChild(line);
-    }
-    for (var n = 0; n < miniGraphNodes.length; n++) {
-      var node = miniGraphNodes[n];
-      var circ = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      circ.setAttribute('cx', node.x);
-      circ.setAttribute('cy', node.y);
-      circ.setAttribute('r', node.r);
-      circ.setAttribute('fill', node.color);
-      svg.appendChild(circ);
-    }
-  }
-
-  function addMiniGraphNode() {
-    var newX = 30 + Math.random() * 140;
-    var newY = 20 + Math.random() * 110;
-    var colors = ['#00d4ff', '#a855f7', '#f0c020', '#10b981', '#3b82f6'];
-    var newNode = { x: newX, y: newY, r: 3 + Math.random() * 2, color: colors[Math.floor(Math.random() * colors.length)] };
-    miniGraphNodes.push(newNode);
-    var newIdx = miniGraphNodes.length - 1;
-    // Connect to 1-2 random existing nodes
-    var connectTo = Math.min(2, miniGraphNodes.length - 1);
-    for (var c = 0; c < connectTo; c++) {
-      var target = Math.floor(Math.random() * (miniGraphNodes.length - 1));
-      miniGraphEdges.push([newIdx, target]);
-    }
-    renderMiniGraph();
-  }
-
-  function drawLoopPipeline() {
-    if (currentStage !== 1) return;
-    pctx1.clearRect(0, 0, PW1, PH1);
-
-    var userX = PW1 * 0.12;
-    var aiX = PW1 * 0.65;
-    var aiY = PH1 * 0.45;
-    var aiW = PW1 * 0.13;
-    var aiH = PH1 * 0.18;
-    var kbX = PW1 * 0.12;
-    var kbY = PH1 * 0.82;
-    var kbW = PW1 * 0.12;
-    var kbH = PH1 * 0.12;
-
-    var cu = USERS[loopState.currentUser];
-    var uY = PH1 * cu.y;
-
-    // Draw KB box
-    pctx1.save();
-    pctx1.fillStyle = 'rgba(16, 185, 129, 0.1)';
-    pctx1.strokeStyle = 'rgba(16, 185, 129, 0.4)';
-    pctx1.lineWidth = 1.5;
-    pctx1.beginPath();
-    pctx1.roundRect(kbX - kbW / 2, kbY - kbH / 2, kbW, kbH, 6);
-    pctx1.fill();
-    pctx1.stroke();
-    pctx1.restore();
-    pctx1.font = '9px JetBrains Mono, monospace';
-    pctx1.fillStyle = 'rgba(16, 185, 129, 0.7)';
-    pctx1.textAlign = 'center';
-    pctx1.fillText('KB', kbX, kbY + 3);
-
-    // Draw user icons
-    for (var u = 0; u < USERS.length; u++) {
-      drawUserIcon(pctx1, userX, PH1 * USERS[u].y, u === loopState.currentUser);
-    }
-
-    // Draw AI box
-    drawRoundedBox(pctx1, aiX, aiY, aiW, aiH, 'AI Model', 'rgba(168, 85, 247, 0.12)', 'rgba(168, 85, 247, 0.4)', 'rgba(168, 85, 247, 0.8)');
-
-    loopState.timer++;
-
-    var cpxQ = (userX + aiX) / 2;
-    var cpyQ = uY - 25;
-    var cpxA = (userX + aiX) / 2;
-    var cpyA = uY + 25;
-
-    if (loopState.phase === 0) {
-      if (loopState.timer > 30) {
-        loopState.phase = 1;
-        loopState.arrowProgress = 0;
-        loopState.timer = 0;
-      }
-    }
-
-    if (loopState.phase === 1) {
-      loopState.arrowProgress = Math.min(1, loopState.arrowProgress + 0.03);
-      drawBezierArrow(pctx1, loopState.arrowProgress, userX + 12, uY, cpxQ, cpyQ, aiX - aiW / 2 - 4, aiY, 'rgba(240, 192, 32, 0.7)');
-      if (loopState.arrowProgress >= 1) {
-        loopState.phase = 2;
-        loopState.arrowProgress = 0;
-        loopState.timer = 0;
-      }
-    }
-
-    if (loopState.phase === 2) {
-      // Keep question arrow faded
-      drawBezierArrow(pctx1, 1, userX + 12, uY, cpxQ, cpyQ, aiX - aiW / 2 - 4, aiY, 'rgba(240, 192, 32, 0.2)');
-      // Answer arrow
-      loopState.arrowProgress = Math.min(1, loopState.arrowProgress + 0.03);
-      drawBezierArrow(pctx1, loopState.arrowProgress, aiX - aiW / 2 - 4, aiY, cpxA, cpyA, userX + 12, uY, 'rgba(0, 212, 255, 0.7)');
-      if (loopState.arrowProgress >= 1) {
-        loopState.phase = 3; // Vote phase
-        loopState.timer = 0;
-        loopState.feedbackProgress = 0;
-      }
-    }
-
-    if (loopState.phase === 3) {
-      // Wait briefly, then auto-vote
-      if (loopState.timer > 60) {
-        loopState.phase = 4; // Feedback arrow phase
-        loopState.feedbackProgress = 0;
-        loopState.timer = 0;
-        // Trigger ripple
-        loopState.ripples.push({ x: userX, y: uY, r: 0, alpha: 0.8 });
-        loopState.ripples.push({ x: userX, y: uY, r: 0, alpha: 0.6 });
-        loopState.ripples.push({ x: userX, y: uY, r: 0, alpha: 0.4 });
-        // Update quality
-        loopState.voteCount++;
-        loopState.quality = Math.min(0.95, loopState.quality + 0.02);
-        animateValue(document.getElementById('qualityBadge'), loopState.quality - 0.02, loopState.quality, 500, 2);
-        addMiniGraphNode();
-      }
-    }
-
-    if (loopState.phase === 4) {
-      // Feedback arrow: user to KB
-      loopState.feedbackProgress = Math.min(1, loopState.feedbackProgress + 0.02);
-      var fbProg = loopState.feedbackProgress;
-
-      // Draw thin gold arrow from user to KB
-      var fbCpx = userX - 20;
-      var fbCpy = (uY + kbY) / 2;
-      pctx1.beginPath();
-      for (var fi = 0; fi <= 20; fi++) {
-        var ft = (fi / 20) * fbProg;
-        var fp = quadBezier(ft, userX, uY + 16, fbCpx, fbCpy, kbX, kbY - kbH / 2 - 4);
-        if (fi === 0) pctx1.moveTo(fp.x, fp.y);
-        else pctx1.lineTo(fp.x, fp.y);
-      }
-      pctx1.strokeStyle = 'rgba(240, 192, 32, 0.5)';
-      pctx1.lineWidth = 1.5;
-      pctx1.setLineDash([4, 4]);
-      pctx1.stroke();
-      pctx1.setLineDash([]);
-
-      if (fbProg >= 1) {
-        loopState.phase = 0;
-        loopState.timer = 0;
-        loopState.currentUser = (loopState.currentUser + 1) % 3;
-      }
-    }
-
-    // Draw ripples
-    for (var rp = loopState.ripples.length - 1; rp >= 0; rp--) {
-      var ripple = loopState.ripples[rp];
-      ripple.r += 1.5;
-      ripple.alpha -= 0.015;
-      if (ripple.alpha <= 0) {
-        loopState.ripples.splice(rp, 1);
-        continue;
-      }
-      pctx1.beginPath();
-      pctx1.arc(ripple.x, ripple.y, ripple.r, 0, Math.PI * 2);
-      pctx1.strokeStyle = 'rgba(0, 212, 255, ' + ripple.alpha + ')';
-      pctx1.lineWidth = 1.5;
-      pctx1.stroke();
-    }
-
-    loopAnimFrame = requestAnimationFrame(drawLoopPipeline);
-  }
-
-  // Vote buttons for Stage 1
-  var voteUpBtn = document.getElementById('voteUpBtn');
-  var voteDownBtn = document.getElementById('voteDownBtn');
-  if (voteUpBtn) {
-    voteUpBtn.addEventListener('click', function() {
-      if (currentStage !== 1) return;
-      loopState.voteCount++;
-      loopState.quality = Math.min(0.95, loopState.quality + 0.02);
-      animateValue(document.getElementById('qualityBadge'), loopState.quality - 0.02, loopState.quality, 500, 2);
-      loopState.ripples.push({ x: PW1 * 0.12, y: PH1 * 0.5, r: 0, alpha: 0.8 });
-      addMiniGraphNode();
-      voteUpBtn.classList.add('voted');
-      setTimeout(function() { voteUpBtn.classList.remove('voted'); }, 800);
-    });
-  }
-  if (voteDownBtn) {
-    voteDownBtn.addEventListener('click', function() {
-      if (currentStage !== 1) return;
-      loopState.quality = Math.max(0.50, loopState.quality - 0.01);
-      animateValue(document.getElementById('qualityBadge'), loopState.quality + 0.01, loopState.quality, 500, 2);
-      voteDownBtn.classList.add('voted');
-      setTimeout(function() { voteDownBtn.classList.remove('voted'); }, 800);
-    });
-  }
-
-
-  // =====================================================================
-  // 5. STAGE 2 — TRANSFER LEARNING
-  // =====================================================================
-
-  var transferSvg = document.getElementById('transferSvg');
-  var transferAnimTimer = null;
-
-  function initTransfer() {
-    if (!transferSvg) return;
-    clearInterval(transferAnimTimer);
-    // Clear previous content (keep defs)
-    var defs = transferSvg.querySelector('defs');
-    transferSvg.textContent = '';
-    if (defs) transferSvg.appendChild(defs);
-
-    // Source domain
-    var srcGroup = createSvgEl('g');
-    var srcCircle = createSvgEl('circle', { cx: 120, cy: 150, r: 70, fill: 'rgba(0,212,255,0.08)', stroke: 'rgba(0,212,255,0.4)', 'stroke-width': 2 });
-    srcGroup.appendChild(srcCircle);
-    var srcLabel = createSvgEl('text', { x: 120, y: 155, 'text-anchor': 'middle', fill: '#00d4ff', 'font-size': '12', 'font-family': 'JetBrains Mono, monospace' });
-    srcLabel.textContent = 'Vector Databases';
-    srcGroup.appendChild(srcLabel);
-    // Inner dots
-    for (var sd = 0; sd < 8; sd++) {
-      var sAngle = (sd / 8) * Math.PI * 2;
-      var sR = 25 + Math.random() * 25;
-      var sDot = createSvgEl('circle', {
-        cx: 120 + Math.cos(sAngle) * sR,
-        cy: 150 + Math.sin(sAngle) * sR,
-        r: 3,
-        fill: '#00d4ff',
-        opacity: '0.5'
-      });
-      srcGroup.appendChild(sDot);
-    }
-    transferSvg.appendChild(srcGroup);
-
-    // Target domain
-    var tgtGroup = createSvgEl('g');
-    var tgtCircle = createSvgEl('circle', { cx: 480, cy: 150, r: 70, fill: 'rgba(168,85,247,0.08)', stroke: 'rgba(168,85,247,0.4)', 'stroke-width': 2 });
-    tgtGroup.appendChild(tgtCircle);
-    var tgtLabel = createSvgEl('text', { x: 480, y: 155, 'text-anchor': 'middle', fill: '#a855f7', 'font-size': '12', 'font-family': 'JetBrains Mono, monospace' });
-    tgtLabel.textContent = 'Search Algorithms';
-    tgtGroup.appendChild(tgtLabel);
-    // Inner dots (start dim)
-    for (var td = 0; td < 8; td++) {
-      var tAngle = (td / 8) * Math.PI * 2;
-      var tR = 25 + Math.random() * 25;
-      var tDot = createSvgEl('circle', {
-        cx: 480 + Math.cos(tAngle) * tR,
-        cy: 150 + Math.sin(tAngle) * tR,
-        r: 3,
-        fill: '#a855f7',
-        opacity: '0.2',
-        class: 'target-dot'
-      });
-      tgtGroup.appendChild(tDot);
-    }
-    transferSvg.appendChild(tgtGroup);
-
-    // Bridge path
-    var bridgePath = createSvgEl('path', {
-      d: 'M 190 150 C 270 100, 370 100, 410 150',
-      fill: 'none',
-      stroke: 'rgba(240,192,32,0.5)',
-      'stroke-width': '2',
-      'stroke-dasharray': '400',
-      'stroke-dashoffset': '400',
-      id: 'bridgePath'
-    });
-    transferSvg.appendChild(bridgePath);
-
-    // Query text
-    var queryText = createSvgEl('text', {
-      x: 300, y: 260,
-      'text-anchor': 'middle',
-      fill: 'rgba(136,146,164,0.7)',
-      'font-size': '11',
-      'font-family': 'JetBrains Mono, monospace',
-      id: 'transferQuery'
-    });
-    queryText.textContent = '';
-    transferSvg.appendChild(queryText);
-
-    // Update metrics to zero
-    document.getElementById('transferConf').textContent = '0.00';
-    document.getElementById('transferDamp').textContent = '0.00';
-
-    // Animate
-    animateTransfer();
-  }
-
   function createSvgEl(tag, attrs) {
     var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
     if (attrs) {
@@ -894,305 +243,485 @@
     return el;
   }
 
-  function animateTransfer() {
-    var queryStr = '"How does approximate nearest neighbor search compare to KD-trees?"';
-    var queryEl = document.getElementById('transferQuery');
-    var bridgeEl = document.getElementById('bridgePath');
-    if (!queryEl || !bridgeEl) return;
 
-    // Phase 1: Typewriter query
-    var charIdx = 0;
-    var typeTimer = setInterval(function() {
-      if (currentStage !== 2) { clearInterval(typeTimer); return; }
-      charIdx++;
-      queryEl.textContent = queryStr.substring(0, charIdx);
-      if (charIdx >= queryStr.length) {
-        clearInterval(typeTimer);
-        // Phase 2: Source domain highlights
+  // =====================================================================
+  // 3. STAGE 0 — THE DECAY PROBLEM
+  // =====================================================================
+
+  var decayTimer = null;
+  var decayState = { month: 0, accuracy: 100 };
+
+  var monthData = [
+    { month: 'Mar', accuracy: 100, docText: 'POST /api/auth\nAPI key in header', realText: 'POST /api/auth\nAPI key in header' },
+    { month: 'Apr', accuracy: 95, docText: 'POST /api/auth\nAPI key in header', realText: 'POST /api/auth\nAPI key in header\nDELETE /api/v1/users \u2014 DEPRECATED' },
+    { month: 'May', accuracy: 82, docText: 'POST /api/auth\nAPI key in header', realText: 'POST /api/v2/auth\nOAuth2 bearer token' },
+    { month: 'Jun', accuracy: 68, docText: 'POST /api/auth\nAPI key in header', realText: 'POST /api/v2/auth \u2014 OAuth2\nGET /api/v2/tokens \u2014 new\nPOST /api/v2/refresh \u2014 new' },
+    { month: 'Jul', accuracy: 45, docText: 'POST /api/auth\nAPI key in header', realText: 'POST /api/v3/auth \u2014 OAuth2 + PKCE\nAll v1 endpoints removed' },
+    { month: 'Aug', accuracy: 30, docText: 'POST /api/auth\nAPI key in header', realText: 'POST /api/v3/auth \u2014 OAuth2 + PKCE\nNew SDK required' }
+  ];
+
+  function initDecay() {
+    clearInterval(decayTimer);
+    decayState.month = 0;
+    decayState.accuracy = 100;
+
+    // Reset UI
+    document.getElementById('docsText').textContent = monthData[0].docText;
+    document.getElementById('realityText').textContent = monthData[0].realText;
+    document.getElementById('accuracyFill').style.width = '100%';
+    document.getElementById('accuracyFill').style.background = 'var(--green)';
+    document.getElementById('accuracyLabel').textContent = '100% accurate';
+    document.getElementById('divergenceValue').textContent = '0% diverged';
+    document.getElementById('decayProgress').style.width = '0';
+    document.getElementById('decayScrubber').style.left = '0';
+    document.getElementById('decayAlert').classList.remove('visible');
+
+    // Reset month highlights
+    var monthEls = document.querySelectorAll('#decayTimeline .timeline-months span');
+    for (var m = 0; m < monthEls.length; m++) {
+      monthEls[m].classList.toggle('active-month', m === 0);
+    }
+
+    // Auto-advance every 1.5 seconds
+    decayTimer = setInterval(function() {
+      if (currentStage !== 0) { clearInterval(decayTimer); return; }
+      decayState.month++;
+      if (decayState.month >= monthData.length) {
+        clearInterval(decayTimer);
+        return;
+      }
+      updateDecayDisplay(decayState.month);
+    }, 1500);
+  }
+
+  function updateDecayDisplay(monthIdx) {
+    var data = monthData[monthIdx];
+    var progress = monthIdx / (monthData.length - 1);
+
+    // Timeline
+    document.getElementById('decayProgress').style.width = (progress * 100) + '%';
+    document.getElementById('decayScrubber').style.left = 'calc(' + (progress * 100) + '% - 8px)';
+
+    // Highlight active month
+    var monthEls = document.querySelectorAll('#decayTimeline .timeline-months span');
+    for (var m = 0; m < monthEls.length; m++) {
+      monthEls[m].classList.toggle('active-month', m === monthIdx);
+    }
+
+    // Docs panel: NEVER changes — that's the whole point
+    document.getElementById('docsText').textContent = data.docText;
+
+    // Reality panel: changes every month
+    document.getElementById('realityText').textContent = data.realText;
+
+    // Accuracy bar
+    var acc = data.accuracy;
+    var fill = document.getElementById('accuracyFill');
+    fill.style.width = acc + '%';
+    if (acc > 80) fill.style.background = 'var(--green)';
+    else if (acc > 50) fill.style.background = 'var(--gold)';
+    else fill.style.background = 'var(--red)';
+    document.getElementById('accuracyLabel').textContent = acc + '% accurate';
+
+    // Divergence
+    var divergence = 100 - acc;
+    document.getElementById('divergenceValue').textContent = divergence + '% diverged';
+
+    // At Aug: show the user complaint alert
+    if (monthIdx === 5) {
+      setTimeout(function() {
+        document.getElementById('decayAlert').classList.add('visible');
+      }, 400);
+    }
+  }
+
+
+  // =====================================================================
+  // 4. STAGE 1 — DRIFT DETECTION
+  // =====================================================================
+
+  var driftDetectTimer = null;
+  var driftDetectState = { month: 0 };
+
+  function initDriftDetection() {
+    clearInterval(driftDetectTimer);
+    driftDetectState.month = 0;
+
+    // Reset UI
+    document.getElementById('driftProgress').style.width = '0';
+    document.getElementById('driftScrubber').style.left = '0';
+    document.getElementById('cvMetric').textContent = '0.05';
+    document.getElementById('driftAlert1').classList.remove('visible');
+    document.getElementById('driftAlert2').classList.remove('visible');
+    document.getElementById('staleEntry').classList.remove('visible');
+    document.getElementById('freshEntry').classList.remove('visible');
+    document.getElementById('detectionComparison').classList.remove('visible');
+
+    // Reset month highlights
+    var monthEls = document.querySelectorAll('#driftTimeline .timeline-months span');
+    for (var m = 0; m < monthEls.length; m++) {
+      monthEls[m].classList.toggle('active-month', m === 0);
+    }
+
+    // Clear radar SVG (keep defs)
+    var radarSvg = document.getElementById('radarSvg');
+    var defs = radarSvg.querySelector('defs');
+    radarSvg.textContent = '';
+    if (defs) radarSvg.appendChild(defs);
+
+    // Draw the monitoring indicator (center eye/radar)
+    var centerDot = createSvgEl('circle', {
+      cx: 250, cy: 90, r: 8,
+      fill: 'var(--cyan)',
+      opacity: '0.6'
+    });
+    radarSvg.appendChild(centerDot);
+    var monitorLabel = createSvgEl('text', {
+      x: 250, y: 130,
+      'text-anchor': 'middle',
+      fill: 'rgba(0,212,255,0.6)',
+      'font-size': '10',
+      'font-family': 'JetBrains Mono, monospace'
+    });
+    monitorLabel.textContent = 'Pi-Brain Monitoring';
+    radarSvg.appendChild(monitorLabel);
+
+    // Auto-advance every 2 seconds
+    driftDetectTimer = setInterval(function() {
+      if (currentStage !== 1) { clearInterval(driftDetectTimer); return; }
+      driftDetectState.month++;
+      if (driftDetectState.month >= 6) {
+        clearInterval(driftDetectTimer);
+        return;
+      }
+      updateDriftDetectionDisplay(driftDetectState.month);
+    }, 2000);
+  }
+
+  function updateDriftDetectionDisplay(monthIdx) {
+    var progress = monthIdx / 5;
+
+    // Timeline
+    document.getElementById('driftProgress').style.width = (progress * 100) + '%';
+    document.getElementById('driftScrubber').style.left = 'calc(' + (progress * 100) + '% - 8px)';
+
+    // Month highlight
+    var monthEls = document.querySelectorAll('#driftTimeline .timeline-months span');
+    for (var m = 0; m < monthEls.length; m++) {
+      monthEls[m].classList.toggle('active-month', m === monthIdx);
+    }
+
+    // At Apr (monthIdx 1): first detection
+    if (monthIdx === 1) {
+      fireRadarPulse();
+      document.getElementById('cvMetric').textContent = '0.22';
+      setTimeout(function() {
+        document.getElementById('driftAlert1').classList.add('visible');
+      }, 800);
+    }
+
+    // At May (monthIdx 2): critical detection
+    if (monthIdx === 2) {
+      fireRadarPulse();
+      document.getElementById('cvMetric').textContent = '0.41';
+      setTimeout(function() {
+        document.getElementById('driftAlert2').classList.add('visible');
+      }, 800);
+      setTimeout(function() {
+        document.getElementById('staleEntry').classList.add('visible');
+      }, 1200);
+      setTimeout(function() {
+        document.getElementById('freshEntry').classList.add('visible');
+      }, 1600);
+    }
+
+    // At Jun+: show comparison
+    if (monthIdx >= 3) {
+      document.getElementById('detectionComparison').classList.add('visible');
+    }
+  }
+
+  function fireRadarPulse() {
+    var radarSvg = document.getElementById('radarSvg');
+    if (!radarSvg) return;
+
+    for (var rp = 0; rp < 3; rp++) {
+      (function(delay) {
         setTimeout(function() {
-          var src = transferSvg.querySelector('circle[cx="120"]');
-          if (src) {
-            src.setAttribute('stroke-width', '3');
-            src.setAttribute('filter', 'url(#glowTransfer)');
-          }
-          // Phase 3: Bridge draws
-          setTimeout(function() { animateBridge(bridgeEl); }, 600);
-        }, 400);
-      }
-    }, 30);
+          if (currentStage !== 1) return;
+          var pulse = createSvgEl('circle', {
+            cx: 250, cy: 90, r: 10,
+            fill: 'none',
+            stroke: 'rgba(0,212,255,0.6)',
+            'stroke-width': '2',
+            filter: 'url(#radarGlow)'
+          });
+          radarSvg.appendChild(pulse);
+          var pulseR = 10;
+          var pulseAlpha = 0.6;
+          var pulseTimer = setInterval(function() {
+            pulseR += 3;
+            pulseAlpha -= 0.012;
+            if (pulseAlpha <= 0) {
+              clearInterval(pulseTimer);
+              if (pulse.parentNode) pulse.parentNode.removeChild(pulse);
+              return;
+            }
+            pulse.setAttribute('r', pulseR);
+            pulse.setAttribute('stroke', 'rgba(0,212,255,' + pulseAlpha + ')');
+          }, 30);
+        }, delay * 300);
+      })(rp);
+    }
   }
 
-  function animateBridge(bridgeEl) {
-    if (!bridgeEl) return;
-    var totalLen = 400;
-    var offset = totalLen;
-    var bridgeTimer = setInterval(function() {
-      if (currentStage !== 2) { clearInterval(bridgeTimer); return; }
-      offset -= 8;
-      if (offset < 0) offset = 0;
-      bridgeEl.setAttribute('stroke-dashoffset', String(offset));
-      if (offset <= 0) {
-        clearInterval(bridgeTimer);
-        // Phase 4: Knowledge particles flow along path
-        spawnTransferParticles();
-      }
-    }, 30);
-  }
 
-  function spawnTransferParticles() {
-    var bridgeEl = document.getElementById('bridgePath');
-    if (!bridgeEl) return;
-    var pathLen = 400; // approximate
-    var pCount = 8;
-    var spawned = 0;
+  // =====================================================================
+  // 5. STAGE 2 — TRANSFER LEARNING
+  // =====================================================================
 
-    var spawnTimer = setInterval(function() {
-      if (currentStage !== 2 || spawned >= pCount) { clearInterval(spawnTimer); return; }
-      var dot = createSvgEl('circle', {
-        r: '4',
-        fill: '#f0c020',
-        opacity: '0.9',
-        filter: 'url(#glowTransfer)'
+  var transferAnimTimer = null;
+
+  function initTransfer() {
+    var transferSvg = document.getElementById('transferSvg');
+    if (!transferSvg) return;
+    clearInterval(transferAnimTimer);
+
+    // Clear previous content (keep defs)
+    var defs = transferSvg.querySelector('defs');
+    transferSvg.textContent = '';
+    if (defs) transferSvg.appendChild(defs);
+
+    // Reset metrics
+    document.getElementById('transferConf').textContent = '0.00';
+    document.getElementById('transferDomains').textContent = '0';
+    document.getElementById('transferInsights').textContent = '0';
+    document.getElementById('transferCaption').classList.remove('visible');
+
+    // Three domain circles in triangle layout
+    var domains = [
+      { label: 'Security', cx: 300, cy: 70, color: '#00d4ff', dotColor: 'rgba(0,212,255,' },
+      { label: 'API Design', cx: 130, cy: 270, color: '#f0c020', dotColor: 'rgba(240,192,32,' },
+      { label: 'Sessions', cx: 470, cy: 270, color: '#a855f7', dotColor: 'rgba(168,85,247,' }
+    ];
+
+    // Draw domain circles and inner dots
+    for (var d = 0; d < domains.length; d++) {
+      var dm = domains[d];
+      var domGroup = createSvgEl('g');
+
+      // Outer circle
+      var outerCircle = createSvgEl('circle', {
+        cx: dm.cx, cy: dm.cy, r: 60,
+        fill: 'rgba(255,255,255,0.02)',
+        stroke: dm.color,
+        'stroke-width': '2',
+        opacity: '0.5',
+        id: 'domain' + d
       });
-      transferSvg.appendChild(dot);
+      domGroup.appendChild(outerCircle);
 
-      var dist = 0;
-      var speed = 3 + Math.random() * 2;
-      var moveTimer = setInterval(function() {
-        if (currentStage !== 2) { clearInterval(moveTimer); return; }
-        dist += speed;
-        var t = Math.min(dist / pathLen, 1);
-        // Cubic bezier: M 190 150 C 270 100, 370 100, 410 150
-        var mt = 1 - t;
-        var px = mt * mt * mt * 190 + 3 * mt * mt * t * 270 + 3 * mt * t * t * 370 + t * t * t * 410;
-        var py = mt * mt * mt * 150 + 3 * mt * mt * t * 100 + 3 * mt * t * t * 100 + t * t * t * 150;
-        dot.setAttribute('cx', px);
-        dot.setAttribute('cy', py);
+      // Label
+      var label = createSvgEl('text', {
+        x: dm.cx, y: dm.cy + 4,
+        'text-anchor': 'middle',
+        fill: dm.color,
+        'font-size': '11',
+        'font-family': 'JetBrains Mono, monospace',
+        opacity: '0.8'
+      });
+      label.textContent = dm.label;
+      domGroup.appendChild(label);
 
-        if (t >= 1) {
-          clearInterval(moveTimer);
-          dot.setAttribute('opacity', '0');
-          setTimeout(function() {
-            if (dot.parentNode) dot.parentNode.removeChild(dot);
-          }, 300);
-          // Brighten target dots
-          var tDots = transferSvg.querySelectorAll('.target-dot');
-          for (var d = 0; d < tDots.length; d++) {
-            var curOp = parseFloat(tDots[d].getAttribute('opacity') || '0.2');
-            tDots[d].setAttribute('opacity', String(Math.min(1, curOp + 0.1)));
-          }
+      // Inner dots (5 per domain)
+      for (var dd = 0; dd < 5; dd++) {
+        var dAngle = (dd / 5) * Math.PI * 2;
+        var dR = 20 + Math.random() * 20;
+        var dot = createSvgEl('circle', {
+          cx: dm.cx + Math.cos(dAngle) * dR,
+          cy: dm.cy + Math.sin(dAngle) * dR,
+          r: 3,
+          fill: dm.color,
+          opacity: '0.3',
+          class: 'domain-dot domain-dot-' + d
+        });
+        domGroup.appendChild(dot);
+      }
+
+      transferSvg.appendChild(domGroup);
+    }
+
+    // Animate the transfer
+    animateTransferSequence(transferSvg, domains);
+  }
+
+  function animateTransferSequence(svg, domains) {
+    // Phase 1 (after 1s): New insight appears in Security
+    setTimeout(function() {
+      if (currentStage !== 2) return;
+
+      var insightDot = createSvgEl('circle', {
+        cx: 300, cy: 70, r: 6,
+        fill: '#00d4ff',
+        opacity: '0',
+        filter: 'url(#glowTransfer)',
+        id: 'insightDot'
+      });
+      svg.appendChild(insightDot);
+
+      // Pop in
+      var popAlpha = 0;
+      var popTimer = setInterval(function() {
+        popAlpha += 0.05;
+        if (popAlpha >= 1) { popAlpha = 1; clearInterval(popTimer); }
+        insightDot.setAttribute('opacity', String(popAlpha));
+      }, 30);
+
+      var insightLabel = createSvgEl('text', {
+        x: 300, y: 25,
+        'text-anchor': 'middle',
+        fill: 'rgba(0,212,255,0.8)',
+        'font-size': '9',
+        'font-family': 'JetBrains Mono, monospace',
+        id: 'insightLabel'
+      });
+      insightLabel.textContent = 'Short-lived JWT + refresh tokens';
+      svg.appendChild(insightLabel);
+    }, 1000);
+
+    // Phase 2 (after 2.5s): Draw bridge paths
+    setTimeout(function() {
+      if (currentStage !== 2) return;
+
+      // Bridge: Security -> API Design
+      var bridge1 = createSvgEl('path', {
+        d: 'M 260 110 C 220 170, 160 210, 150 220',
+        fill: 'none',
+        stroke: 'rgba(240,192,32,0.5)',
+        'stroke-width': '2',
+        'stroke-dasharray': '300',
+        'stroke-dashoffset': '300',
+        id: 'bridge1'
+      });
+      svg.appendChild(bridge1);
+
+      // Bridge: Security -> Sessions
+      var bridge2 = createSvgEl('path', {
+        d: 'M 340 110 C 380 170, 440 210, 450 220',
+        fill: 'none',
+        stroke: 'rgba(168,85,247,0.5)',
+        'stroke-width': '2',
+        'stroke-dasharray': '300',
+        'stroke-dashoffset': '300',
+        id: 'bridge2'
+      });
+      svg.appendChild(bridge2);
+
+      // Animate both bridges drawing simultaneously
+      var offset = 300;
+      var bridgeDrawTimer = setInterval(function() {
+        if (currentStage !== 2) { clearInterval(bridgeDrawTimer); return; }
+        offset -= 6;
+        if (offset < 0) offset = 0;
+        bridge1.setAttribute('stroke-dashoffset', String(offset));
+        bridge2.setAttribute('stroke-dashoffset', String(offset));
+        if (offset <= 0) {
+          clearInterval(bridgeDrawTimer);
+          // Phase 3: spawn flowing particles
+          spawnBridgeParticles(svg);
         }
       }, 30);
 
-      spawned++;
-    }, 250);
-
-    // Update metrics after particles finish
-    setTimeout(function() {
-      animateValue(document.getElementById('transferConf'), 0, 0.82, 1000, 2);
-      animateValue(document.getElementById('transferDamp'), 0, 0.15, 1000, 2);
-    }, pCount * 250 + 500);
+      document.getElementById('transferDomains').textContent = '3';
+    }, 2500);
   }
 
+  function spawnBridgeParticles(svg) {
+    var bridges = [
+      { id: 'bridge1', p0: [260, 110], cp: [220, 170], p1: [150, 220] },
+      { id: 'bridge2', p0: [340, 110], cp: [380, 170], p1: [450, 220] }
+    ];
 
-  // =====================================================================
-  // 6. STAGE 3 — DRIFT DETECTION
-  // =====================================================================
+    var totalSpawned = 0;
+    var maxPerBridge = 8;
 
-  var driftProgress = 0;
-  var driftTimer = null;
-  var driftNodes = [];
+    for (var b = 0; b < bridges.length; b++) {
+      (function(bridge, bridgeIdx) {
+        var spawned = 0;
+        var spawnTimer = setInterval(function() {
+          if (currentStage !== 2 || spawned >= maxPerBridge) { clearInterval(spawnTimer); return; }
 
-  function initDrift() {
-    clearInterval(driftTimer);
-    driftProgress = 0;
-    driftNodes = [];
+          var dot = createSvgEl('circle', {
+            r: '3',
+            fill: bridgeIdx === 0 ? '#f0c020' : '#a855f7',
+            opacity: '0.9',
+            filter: 'url(#glowTransfer)'
+          });
+          svg.appendChild(dot);
 
-    var driftSvg = document.getElementById('driftCluster');
-    if (!driftSvg) return;
+          var dist = 0;
+          var speed = 3 + Math.random() * 2;
+          var pathLen = 300;
+          var moveTimer = setInterval(function() {
+            if (currentStage !== 2) { clearInterval(moveTimer); return; }
+            dist += speed;
+            var t = Math.min(dist / pathLen, 1);
+            var mt = 1 - t;
+            // Quadratic bezier
+            var px = mt * mt * bridge.p0[0] + 2 * mt * t * bridge.cp[0] + t * t * bridge.p1[0];
+            var py = mt * mt * bridge.p0[1] + 2 * mt * t * bridge.cp[1] + t * t * bridge.p1[1];
+            dot.setAttribute('cx', px);
+            dot.setAttribute('cy', py);
 
-    // Clear (keep defs)
-    var defs = driftSvg.querySelector('defs');
-    driftSvg.textContent = '';
-    if (defs) driftSvg.appendChild(defs);
-
-    // Create 20 nodes in a cluster
-    var cx = 200, cy = 150;
-    for (var i = 0; i < 20; i++) {
-      var angle = (i / 20) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
-      var dist = 40 + Math.random() * 70;
-      var nx = cx + Math.cos(angle) * dist;
-      var ny = cy + Math.sin(angle) * dist;
-      var nodeData = { x: nx, y: ny, originalHue: 180, currentHue: 180, drifts: i < 5 };
-      driftNodes.push(nodeData);
-
-      var circle = createSvgEl('circle', {
-        cx: nx, cy: ny, r: 6,
-        fill: 'hsl(180, 80%, 55%)',
-        opacity: '0.8',
-        id: 'driftNode' + i
-      });
-      driftSvg.appendChild(circle);
-    }
-
-    // Connections
-    for (var e = 0; e < 30; e++) {
-      var a = Math.floor(Math.random() * 20);
-      var b = Math.floor(Math.random() * 20);
-      if (a !== b) {
-        var line = createSvgEl('line', {
-          x1: driftNodes[a].x, y1: driftNodes[a].y,
-          x2: driftNodes[b].x, y2: driftNodes[b].y,
-          stroke: 'rgba(0,212,255,0.15)',
-          'stroke-width': '1'
-        });
-        driftSvg.appendChild(line);
-      }
-    }
-
-    // Reset timeline
-    document.getElementById('timelineProgress').style.width = '0';
-    document.getElementById('timelineScrubber').style.left = '0';
-    document.getElementById('cvMetric').textContent = '0.05';
-
-    // Start animation
-    driftTimer = setInterval(function() {
-      if (currentStage !== 3) { clearInterval(driftTimer); return; }
-      driftProgress = Math.min(1, driftProgress + 0.004);
-
-      // Update timeline
-      document.getElementById('timelineProgress').style.width = (driftProgress * 100) + '%';
-      document.getElementById('timelineScrubber').style.left = 'calc(' + (driftProgress * 100) + '% - 8px)';
-
-      // At 40%: drift nodes start shifting hue
-      if (driftProgress > 0.4) {
-        var hueShift = Math.min(1, (driftProgress - 0.4) * 3);
-        for (var d = 0; d < 5; d++) {
-          var newHue = 180 - hueShift * 150; // 180 (cyan) -> 30 (orange)
-          driftNodes[d].currentHue = newHue;
-          var nodeEl = document.getElementById('driftNode' + d);
-          if (nodeEl) {
-            nodeEl.setAttribute('fill', 'hsl(' + Math.round(newHue) + ', 80%, 55%)');
-          }
-        }
-      }
-
-      // At 60%: radar pulse
-      if (driftProgress > 0.59 && driftProgress < 0.62) {
-        var driftSvg2 = document.getElementById('driftCluster');
-        for (var rp = 0; rp < 3; rp++) {
-          (function(delay) {
-            setTimeout(function() {
-              if (currentStage !== 3) return;
-              var pulse = createSvgEl('circle', {
-                cx: 200, cy: 150, r: 10,
-                fill: 'none',
-                stroke: 'rgba(239,68,68,0.6)',
-                'stroke-width': '2',
-                filter: 'url(#radarGlow)'
-              });
-              driftSvg2.appendChild(pulse);
-              var pulseR = 10;
-              var pulseAlpha = 0.6;
-              var pulseTimer = setInterval(function() {
-                pulseR += 3;
-                pulseAlpha -= 0.015;
-                if (pulseAlpha <= 0) {
-                  clearInterval(pulseTimer);
-                  if (pulse.parentNode) pulse.parentNode.removeChild(pulse);
-                  return;
-                }
-                pulse.setAttribute('r', pulseR);
-                pulse.setAttribute('stroke', 'rgba(239,68,68,' + pulseAlpha + ')');
-              }, 30);
-            }, delay * 400);
-          })(rp);
-        }
-      }
-
-      // At 70%: warning badges on drifted nodes
-      if (driftProgress > 0.69 && driftProgress < 0.72) {
-        for (var w = 0; w < 5; w++) {
-          var wNode = driftNodes[w];
-          var existing = document.getElementById('warning' + w);
-          if (!existing) {
-            var driftSvg3 = document.getElementById('driftCluster');
-            var warn = createSvgEl('text', {
-              x: wNode.x + 10, y: wNode.y - 10,
-              fill: '#ef4444',
-              'font-size': '14',
-              'font-weight': 'bold',
-              id: 'warning' + w
-            });
-            warn.textContent = '!';
-            driftSvg3.appendChild(warn);
-          }
-        }
-      }
-
-      // At 85%: swap drifted nodes
-      if (driftProgress > 0.84 && driftProgress < 0.87) {
-        for (var sw = 0; sw < 5; sw++) {
-          var swEl = document.getElementById('driftNode' + sw);
-          var warnEl = document.getElementById('warning' + sw);
-          if (swEl) {
-            swEl.setAttribute('opacity', '0.2');
-            swEl.setAttribute('fill', 'hsl(180, 80%, 55%)');
-            // After a moment, revive as fresh
-            (function(el, idx) {
+            if (t >= 1) {
+              clearInterval(moveTimer);
+              dot.setAttribute('opacity', '0');
               setTimeout(function() {
-                if (currentStage !== 3) return;
-                el.setAttribute('opacity', '0.9');
-                el.setAttribute('fill', 'hsl(180, 80%, 60%)');
-                driftNodes[idx].currentHue = 180;
-              }, 600);
-            })(swEl, sw);
-          }
-          if (warnEl && warnEl.parentNode) {
-            warnEl.parentNode.removeChild(warnEl);
-          }
-        }
-      }
+                if (dot.parentNode) dot.parentNode.removeChild(dot);
+              }, 200);
 
-      // CV metric
-      var cvVal = 0.05;
-      if (driftProgress > 0.4 && driftProgress <= 0.7) {
-        cvVal = 0.05 + (driftProgress - 0.4) * 1.1;
-      } else if (driftProgress > 0.7 && driftProgress <= 0.85) {
-        cvVal = 0.38;
-      } else if (driftProgress > 0.85) {
-        cvVal = 0.38 - (driftProgress - 0.85) * 1.7;
-        if (cvVal < 0.12) cvVal = 0.12;
-      }
-      document.getElementById('cvMetric').textContent = cvVal.toFixed(2);
+              // Brighten target domain dots
+              var targetDots = svg.querySelectorAll('.domain-dot-' + (bridgeIdx + 1));
+              for (var td = 0; td < targetDots.length; td++) {
+                var curOp = parseFloat(targetDots[td].getAttribute('opacity') || '0.3');
+                targetDots[td].setAttribute('opacity', String(Math.min(1, curOp + 0.15)));
+              }
 
-      if (driftProgress >= 1) {
-        clearInterval(driftTimer);
-      }
-    }, 30);
+              totalSpawned++;
+              if (totalSpawned >= maxPerBridge * 2) {
+                // Show metrics and caption
+                animateValue(document.getElementById('transferConf'), 0, 0.82, 800, 2);
+                document.getElementById('transferInsights').textContent = '2';
+                document.getElementById('transferCaption').classList.add('visible');
+              }
+            }
+          }, 30);
+
+          spawned++;
+        }, 200);
+      })(bridges[b], b);
+    }
   }
 
 
   // =====================================================================
-  // 7. STAGE 4 — FLYWHEEL
+  // 6. STAGE 3 — THE IMPROVEMENT FLYWHEEL
   // =====================================================================
 
   var flywheelSvg = document.getElementById('flywheelSvg');
   var flywheelTimer = null;
   var flywheelAngle = 0;
   var flywheelCycle = 0;
-  var flywheelSpeed = 0.015; // radians per tick
-  var flywheelSpeedMult = 1;
+  var flywheelSpeed = 0.015;
   var flywheelCenterNodes = [];
-  var flywheelCenterEdges = [];
   var flywheelSuccessShown = false;
 
   var STATIONS = [
     { label: 'Question', angle: -Math.PI / 2, color: '#00d4ff' },
-    { label: 'Search',   angle: -Math.PI / 2 + Math.PI * 2 / 5, color: '#f0c020' },
-    { label: 'Answer',   angle: -Math.PI / 2 + Math.PI * 4 / 5, color: '#10b981' },
-    { label: 'Vote',     angle: -Math.PI / 2 + Math.PI * 6 / 5, color: '#a855f7' },
-    { label: 'Improve',  angle: -Math.PI / 2 + Math.PI * 8 / 5, color: '#3b82f6' }
+    { label: 'Answer', angle: -Math.PI / 2 + Math.PI * 2 / 5, color: '#f0c020' },
+    { label: 'Vote', angle: -Math.PI / 2 + Math.PI * 4 / 5, color: '#10b981' },
+    { label: 'Monitor', angle: -Math.PI / 2 + Math.PI * 6 / 5, color: '#a855f7' },
+    { label: 'Transfer', angle: -Math.PI / 2 + Math.PI * 8 / 5, color: '#3b82f6' }
   ];
 
   function initFlywheel() {
@@ -1203,13 +732,12 @@
     flywheelSpeed = 0.015;
     flywheelSpeedMult = 1;
     flywheelCenterNodes = [];
-    flywheelCenterEdges = [];
     flywheelSuccessShown = false;
 
     // Clear SVG
     flywheelSvg.textContent = '';
 
-    var fwCx = 250, fwCy = 250, fwR = 160;
+    var fwCx = 250, fwCy = 200, fwR = 140;
 
     // Draw circular track
     var track = createSvgEl('circle', {
@@ -1235,7 +763,6 @@
       });
       flywheelSvg.appendChild(stationCircle);
 
-      // Label
       var labelX = fwCx + Math.cos(st.angle) * (fwR + 28);
       var labelY = fwCy + Math.sin(st.angle) * (fwR + 28);
       var stLabel = createSvgEl('text', {
@@ -1254,6 +781,16 @@
     var centerGroup = createSvgEl('g', { id: 'fwCenter' });
     flywheelSvg.appendChild(centerGroup);
 
+    // Traveler glow
+    var travGlow = createSvgEl('circle', {
+      cx: fwCx + Math.cos(-Math.PI / 2) * fwR,
+      cy: fwCy + Math.sin(-Math.PI / 2) * fwR,
+      r: 14,
+      fill: 'rgba(240,192,32,0.2)',
+      id: 'fwTravGlow'
+    });
+    flywheelSvg.appendChild(travGlow);
+
     // Traveling dot
     var traveler = createSvgEl('circle', {
       cx: fwCx + Math.cos(-Math.PI / 2) * fwR,
@@ -1264,27 +801,19 @@
     });
     flywheelSvg.appendChild(traveler);
 
-    // Glow behind traveler
-    var travGlow = createSvgEl('circle', {
-      cx: fwCx + Math.cos(-Math.PI / 2) * fwR,
-      cy: fwCy + Math.sin(-Math.PI / 2) * fwR,
-      r: 14,
-      fill: 'rgba(240,192,32,0.2)',
-      id: 'fwTravGlow'
-    });
-    flywheelSvg.insertBefore(travGlow, traveler);
-
-    // Reset metric displays
+    // Reset metrics
     document.getElementById('fwQuestions').textContent = '12';
     document.getElementById('fwQuality').textContent = '0.71';
     document.getElementById('fwContrib').textContent = '58';
     document.getElementById('fwDrift').textContent = '3';
+    document.getElementById('flywheelCaption').classList.remove('visible');
 
     // Start animation
     var lastStationIdx = -1;
+    var fwCx2 = fwCx, fwCy2 = fwCy, fwR2 = fwR;
 
     flywheelTimer = setInterval(function() {
-      if (currentStage !== 4) { clearInterval(flywheelTimer); return; }
+      if (currentStage !== 3) { clearInterval(flywheelTimer); return; }
 
       flywheelAngle += flywheelSpeed * flywheelSpeedMult;
 
@@ -1298,7 +827,6 @@
         if (diff < 0.15 || diff > Math.PI * 2 - 0.15) {
           if (lastStationIdx !== si) {
             lastStationIdx = si;
-            // Light up station
             pulseStation(si);
           }
         }
@@ -1307,14 +835,15 @@
       // Check for cycle completion
       if (normAngle < 0.3 && flywheelAngle > Math.PI) {
         flywheelCycle++;
-        // Accelerate
+
+        // Accelerate: 4s -> 3s -> 2s -> 1.5s
         if (flywheelCycle === 1) flywheelSpeedMult = 1.33;
         else if (flywheelCycle === 2) flywheelSpeedMult = 2;
         else if (flywheelCycle >= 3) flywheelSpeedMult = 2.67;
 
         // Update metrics
-        var qPerDay = 12 + flywheelCycle * 12;
-        var qual = 0.71 + flywheelCycle * 0.02;
+        var qPerDay = 12 + flywheelCycle * (5 + Math.floor(Math.random() * 8));
+        var qual = Math.min(0.95, 0.71 + flywheelCycle * 0.02);
         var contrib = 58 + flywheelCycle;
         var driftAlerts = Math.max(0, 3 - flywheelCycle);
         document.getElementById('fwQuestions').textContent = String(qPerDay);
@@ -1323,7 +852,7 @@
         document.getElementById('fwDrift').textContent = String(driftAlerts);
 
         // Add center graph node
-        addFlywheelCenterNode();
+        addFlywheelCenterNode(fwCx2, fwCy2);
 
         // Success state after 5 cycles
         if (flywheelCycle >= 5 && !flywheelSuccessShown) {
@@ -1335,11 +864,11 @@
               stEl.setAttribute('r', '14');
             }
           }
+          document.getElementById('flywheelCaption').classList.add('visible');
         }
       }
 
       // Update traveler position
-      var fwCx2 = 250, fwCy2 = 250, fwR2 = 160;
       var tx = fwCx2 + Math.cos(flywheelAngle) * fwR2;
       var ty = fwCy2 + Math.sin(flywheelAngle) * fwR2;
       var travelerEl = document.getElementById('fwTraveler');
@@ -1367,9 +896,8 @@
     }, 400);
   }
 
-  function addFlywheelCenterNode() {
-    var cx = 250, cy = 250;
-    var maxR = 50;
+  function addFlywheelCenterNode(cx, cy) {
+    var maxR = 45;
     var newX = cx + (Math.random() - 0.5) * maxR * 2;
     var newY = cy + (Math.random() - 0.5) * maxR * 2;
     var colors = ['#00d4ff', '#a855f7', '#f0c020', '#10b981', '#3b82f6'];
@@ -1395,7 +923,6 @@
       }
     }
 
-    // Add node dot
     var dot = createSvgEl('circle', {
       cx: newX, cy: newY, r: 3,
       fill: newNode.color,
@@ -1406,7 +933,7 @@
 
 
   // =====================================================================
-  // 8. STAGE 5 — LIVE API + SHARE
+  // 7. STAGE 4 — LIVE API + SHARE (JOIN THE COLLECTIVE)
   // =====================================================================
 
   var SIMULATED_RESULTS = [
@@ -1446,6 +973,10 @@
           if (data && data.memories) {
             shareContribCount = data.memories;
             piSearch.placeholder = 'Search ' + data.memories.toLocaleString() + ' collective memories...';
+          }
+          if (data && data.contributors) {
+            document.getElementById('liveBadge').textContent =
+              'Pi Brain \u00B7 ' + data.contributors + ' contributors \u00B7 Collective Intelligence \u00B7 Live';
           }
         })
         .catch(function() { /* use default */ });
@@ -1565,7 +1096,7 @@
     btn.classList.add('voted');
 
     var badge = document.getElementById('participationBadge');
-    badge.textContent = 'You just participated in collective intelligence';
+    badge.textContent = 'You just improved the collective. Quality score updated.';
     badge.classList.add('visible');
 
     try {
@@ -1622,7 +1153,6 @@
         onShareSuccess();
       })
       .catch(function() {
-        // Try proxy
         fetch('/api/pi/share', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1645,16 +1175,13 @@
     shareSubmitBtn.textContent = 'Share with the Brain';
     shareSubmitBtn.style.opacity = '1';
 
-    // Clear form
     document.getElementById('shareTitle').value = '';
     document.getElementById('shareContent').value = '';
 
-    // Show counter
     var counterEl = document.getElementById('contributionCounter');
-    counterEl.textContent = 'Your contribution #' + shareContribCount;
+    counterEl.textContent = 'Your contribution makes the collective smarter \u2014 #' + shareContribCount;
     counterEl.classList.add('visible');
 
-    // Show badge
     var badge = document.getElementById('participationBadge');
     badge.textContent = 'Knowledge shared with the collective brain';
     badge.classList.add('visible');
@@ -1670,7 +1197,6 @@
     celCanvas.height = window.innerHeight;
     var celCtx = celCanvas.getContext('2d');
 
-    // Get button position
     var btnRect = shareSubmitBtn.getBoundingClientRect();
     var originX = btnRect.left + btnRect.width / 2;
     var originY = btnRect.top + btnRect.height / 2;
@@ -1704,17 +1230,15 @@
         var p = celParticles[i];
         p.x += p.vx;
         p.y += p.vy;
-        p.vy += 0.08; // gravity
+        p.vy += 0.08;
         p.alpha -= 0.012;
         if (p.alpha <= 0) continue;
 
-        // Glow
         celCtx.beginPath();
         celCtx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
         celCtx.fillStyle = 'rgba(' + p.color[0] + ',' + p.color[1] + ',' + p.color[2] + ',' + (p.alpha * 0.2) + ')';
         celCtx.fill();
 
-        // Core
         celCtx.beginPath();
         celCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         celCtx.fillStyle = 'rgba(' + p.color[0] + ',' + p.color[1] + ',' + p.color[2] + ',' + p.alpha + ')';
@@ -1728,36 +1252,33 @@
 
 
   // =====================================================================
-  // 9. CONTROLS & INIT
+  // 8. CONTROLS & INIT
   // =====================================================================
 
   function triggerStageEffects(n) {
     // Cancel ongoing animations from other stages
-    cancelAnimationFrame(deadEndAnimFrame);
-    cancelAnimationFrame(loopAnimFrame);
-    clearInterval(driftTimer);
+    clearInterval(decayTimer);
+    clearInterval(driftDetectTimer);
+    clearInterval(transferAnimTimer);
     clearInterval(flywheelTimer);
 
     if (n === 0) {
-      initPipeline();
+      initDecay();
     }
     if (n === 1) {
-      initLoopPipeline();
+      initDriftDetection();
     }
     if (n === 2) {
       initTransfer();
     }
     if (n === 3) {
-      initDrift();
-    }
-    if (n === 4) {
       initFlywheel();
     }
-    if (n === 5) {
+    if (n === 4) {
       initPiBrainLive();
       // Expand particles after a moment
       setTimeout(function() {
-        if (currentStage !== 5) return;
+        if (currentStage !== 4) return;
         for (var i = 0; i < particles.length; i++) {
           var angle = Math.random() * Math.PI * 2;
           var dist = 50 + Math.random() * Math.min(W, H) * 0.3;
@@ -1807,43 +1328,26 @@
 
   // Keyboard navigation
   document.addEventListener('keydown', function(e) {
-    var tag = document.activeElement ? document.activeElement.tagName : '';
-    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
+    if (document.activeElement && document.activeElement.tagName === 'TEXTAREA') return;
     if (e.key === 'ArrowRight' || e.key === ' ') {
       e.preventDefault();
-      if (currentStage < TOTAL_STAGES - 1) goToStage(currentStage + 1);
+      goToStage(Math.min(currentStage + 1, TOTAL_STAGES - 1));
     }
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      if (currentStage > 0) goToStage(currentStage - 1);
+      goToStage(Math.max(currentStage - 1, 0));
     }
   });
 
-  // Window resize
+  // --- Init ---
+  resize();
   window.addEventListener('resize', function() {
     resize();
     setStageTargets(currentStage);
-    if (pipelineCanvas && currentStage === 0) {
-      var wrap0 = pipelineCanvas.parentElement;
-      PW = wrap0.clientWidth;
-      PH = wrap0.clientHeight;
-      pipelineCanvas.width = PW;
-      pipelineCanvas.height = PH;
-    }
-    if (pipelineCanvas1 && currentStage === 1) {
-      var wrap1 = pipelineCanvas1.parentElement;
-      PW1 = wrap1.clientWidth;
-      PH1 = wrap1.clientHeight;
-      pipelineCanvas1.width = PW1;
-      pipelineCanvas1.height = PH1;
-    }
   });
-
-  // --- INIT ---
-  resize();
   initParticles();
   setStageTargets(0);
   drawParticles();
   triggerStageEffects(0);
-
 })();

@@ -2279,6 +2279,23 @@ body > div > svg[id^="mermaid-"],
   color: rgba(139,92,246,0.9);
   font-weight: 700;
 }
+.light-mode .hero-ecosystem-img {
+  border-color: rgba(124,58,237,0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.light-mode .onramp-card {
+  background: linear-gradient(135deg, #fafafa, #f5f3ff);
+  border-color: rgba(124,58,237,0.15);
+}
+.light-mode .onramp-card:hover {
+  box-shadow: 0 8px 32px rgba(124,58,237,0.1);
+}
+.light-mode .onramp-name { color: #1c1917; }
+.light-mode .onramp-hook { color: #57534e; }
+.light-mode .onramp-stat { color: #7c3aed; text-shadow: none; }
+.light-mode .onramp-cta { color: #7c3aed; border-color: rgba(124,58,237,0.3); }
+.light-mode .onramp-img { opacity: 0.95; }
+
 .light-mode .dogfood-callout {
   background: linear-gradient(90deg, rgba(124,58,237,0.04), rgba(8,145,178,0.04));
 }
@@ -3662,14 +3679,15 @@ button, a, .source-card, .prompt-pill {
 
 /* Better contrast for stats bar in light mode */
 .light-mode .stats-bar {
-  border-bottom-color: #d6d3d1;
+  background: linear-gradient(90deg, rgba(124,58,237,0.06), rgba(8,145,178,0.06), rgba(234,88,12,0.06));
+  border-bottom-color: #e5e5e5;
+  color: #44403c;
 }
 
 .light-mode .stats-bar .stats-highlight {
-  background: linear-gradient(135deg, #ea580c, #db2777, #7c3aed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #7c3aed;
+  text-shadow: none;
+  -webkit-text-fill-color: unset;
   font-weight: 800;
 }
 
