@@ -103,6 +103,16 @@ fi
 echo "[auth] OK"
 
 # ---------------------------------------------------------------------------
+# Phase 0.5: New Repo Detection + Content Generation
+# ---------------------------------------------------------------------------
+echo ""
+echo "--- Phase 0.5: New Repo Content ---"
+"$NODE" "$SCRIPT_DIR/nlm-new-repo-content.mjs" 2>&1 || {
+  echo "[WARN] New repo content detection failed (non-fatal)"
+  WARNINGS=$((WARNINGS + 1))
+}
+
+# ---------------------------------------------------------------------------
 # Phase 1: Refresh NLM sources (detect GitHub changes, update stale sources)
 # ---------------------------------------------------------------------------
 echo ""
