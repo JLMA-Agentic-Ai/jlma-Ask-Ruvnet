@@ -1,11 +1,9 @@
 {
-  "lastAttempt": "2026-03-15T17:45:00Z",
-  "lastSuccess": null,
+  "lastAttempt": "2026-03-15T18:50:10Z",
+  "lastSuccess": "2026-03-15T18:50:10Z",
   "lastError": null,
   "consecutiveFailures": 0,
-  "totalRuns": 12,
-  "totalSuccesses": 6,
-  "authStatus": "ok",
-  "nlmVersion": "0.4.8",
-  "nlmBinary": "/Users/stuartkerr/.local/bin/nlm"
+  "totalRuns": 14,
+  "totalSuccesses": 8,
+  "authStatus": "ok"
 }
