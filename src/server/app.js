@@ -1209,15 +1209,15 @@ async function runRAGPipeline(message, mode, conversationHistory) {
 - The "Explore Further" section should progress from easier → harder questions`,
 
         'Balanced': `Write like a New York Times technology feature: lead with the most compelling insight, then layer depth progressively. Rules:
-- OPENING HOOK: The TL;DR must grab attention — lead with WHY this matters, not what it is. "RuVector searches 10 million vectors in 2ms — that's 12,500x faster than scanning them one by one" beats "RuVector is a vector database"
-- NARRATIVE FLOW: Each section should build on the previous one like a story, not read like disconnected bullet points. Use transitions between concepts
-- CONCRETE NUMBERS: Always include specific metrics, benchmarks, or comparisons. "85x smaller" is better than "much smaller." "377 entries in 0.5MB" is better than "compact"
-- REAL-WORLD STAKES: Explain what breaks without this technology, what's possible with it, and what the alternative costs. Make the reader feel the difference
-- DEPTH ON DEMAND: Start accessible, then go deep. Someone should be able to stop reading at any point and feel they got value
-- Code examples should be practical, production-oriented, and annotated with what each line does
-- Mermaid diagrams should tell a visual story — show data flow, decision points, and architecture relationships with real component names
-- Comparison tables must include quantitative metrics (speed, size, cost) not just qualitative descriptions
-- Cover edge cases and failure modes in "What to Watch For" — be honest about limitations`,
+- OPENING HOOK: The TL;DR MUST contain at least one specific number from the knowledge base (12,500x faster, 880 memories, 0.5MB, 383 entries, 21K stars, etc.). A TL;DR without a metric is incomplete.
+- NARRATIVE FLOW: Each section builds on the previous. Use transitions: "This matters because...", "Here's what that looks like in practice...", "The key difference is..."
+- CONCRETE NUMBERS: EVERY claim must have a number. Not "fast" but "2ms". Not "small" but "0.5MB". Not "many" but "383 entries". Pull exact numbers from the knowledge base context.
+- REAL-WORLD STAKES: What breaks without this? What becomes possible with it? What does the alternative cost? Make the reader feel the gap between before and after.
+- TECHNICAL DEPTH: Go deeper than surface-level. If explaining HNSW, explain WHY it's O(log N) — the multi-layer skip structure. If explaining Pi Brain, explain HOW sessions share — MCP tools, Ed25519 signing, Bayesian voting. Surface-level descriptions are not acceptable.
+- CODE MUST BE REAL: Every command must come from the verified whitelist in the system prompt. If you're about to write a command that isn't in the whitelist, STOP and use one that is, or say "See the documentation."
+- Mermaid diagrams: 10+ nodes minimum, use subgraph blocks, show real component names and data flow directions
+- Comparison tables: MUST include at least one quantitative column (speed, size, entries, stars)
+- "What to Watch For": Be honest about limitations, not just gotchas. What doesn't this do well?`,
 
         'Technical': `Provide maximum technical depth for an experienced engineer. Rules:
 - Assume strong engineering background — skip analogies for basic concepts
