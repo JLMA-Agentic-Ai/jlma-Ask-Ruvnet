@@ -231,6 +231,21 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
         <span className="tile-label">RVF Engine</span>
         <span className="tile-count">Live Demo</span>
       </button>
+      <button className="capability-tile" onClick={() => onCapability('pi-executable')}>
+        <span className="tile-icon-wrapper tile-pi-exec"><span className="tile-icon">&#129504;</span></span>
+        <span className="tile-label">Executable KB</span>
+        <span className="tile-count">6 Stages</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('pi-living-graph')}>
+        <span className="tile-icon-wrapper tile-pi-graph"><span className="tile-icon">&#127760;</span></span>
+        <span className="tile-label">Living Graph</span>
+        <span className="tile-count">5 Stages</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('pi-learning-loop')}>
+        <span className="tile-icon-wrapper tile-pi-loop"><span className="tile-icon">&#128260;</span></span>
+        <span className="tile-label">Learning Loop</span>
+        <span className="tile-count">6 Stages</span>
+      </button>
     </div>
 
     {/* Quick Ask Pills */}
@@ -251,7 +266,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
 
     {/* Dog Food Story */}
     <div className="dogfood-callout">
-      <span className="dogfood-text">This knowledge base runs on RuVector. 377 expert articles compressed to <strong>0.5MB</strong> via RVF format — <strong>85x smaller</strong> than v6. The tool explains itself using itself.</span>
+      <span className="dogfood-text">This knowledge base runs on RuVector. 383 expert articles compressed to <strong>0.5MB</strong> via RVF format — <strong>85x smaller</strong> than v6. The tool explains itself using itself.</span>
     </div>
 
     {/* Resource Documents */}
@@ -544,7 +559,7 @@ const PRODUCT_DATA = {
       'Pi runs as an MCP server, so any Claude Code session, Ruflo swarm, or custom agent can connect with a single command. No API keys, no setup, no cost. Just plug in and start learning from the collective.',
     ],
     deck: '/assets/docs/CEO-Deck-RuvNet-2026.pdf',
-    github: 'https://pi.ruv.io',
+    website: 'https://pi.ruv.io',
     statKey: 'pi',
   },
   aimds: {
@@ -698,9 +713,9 @@ const ProductChatCard = ({ product, communityStats, onAction }) => {
         <button className="pcc-link" onClick={() => onAction(`Tell me more about ${data.name} -- show me architecture diagrams and advanced features`)}>
           Ask a question
         </button>
-        {data.github && (
-          <a className="pcc-link pcc-link-ext" href={data.github} target="_blank" rel="noopener noreferrer">
-            View on GitHub
+        {(data.github || data.website) && (
+          <a className="pcc-link pcc-link-ext" href={data.github || data.website} target="_blank" rel="noopener noreferrer">
+            {data.github ? 'View on GitHub' : 'Visit Website'}
           </a>
         )}
       </div>
@@ -1179,7 +1194,7 @@ function App() {
         `| Last Updated | ${timestamp} |\n` +
         `| Total Repos | **${totalRepos}** across 3 orgs |\n` +
         `| KB Entries | **${totalEntries.toLocaleString()}** |\n` +
-        `| Gold Curated | **${(stats.goldCount || 339).toLocaleString()}** |\n` +
+        `| Gold Curated | **${(stats.goldCount || 383).toLocaleString()}** |\n` +
         `| Videos | **${videoCount}** sessions |\n` +
         `| Doc Types | **${stats.docTypes || 18}** |\n` +
         `| Backend | PostgreSQL RuVector + HNSW |\n\n` +
@@ -1192,7 +1207,7 @@ function App() {
         `| Consensus | BFT, Raft, CRDT, Gossip, Quorum |\n` +
         `| Search Speed | HNSW 150x–12,500x faster |\n` +
         `| Neural | SONA <0.05ms, Flash Attention 2.49x–7.47x |\n` +
-        `| Security | AIMDS 3-layer pipeline, AIDefence middleware |\n\n` +
+        `| Security | AIMDS 5-layer pipeline, AIDefence middleware |\n\n` +
         `---\n\n## PostgreSQL Knowledge Base\n\n` +
         (data.kb_stats ? `| Domain | Entries | Status |\n|--------|---------|--------|\n` +
         `| Ruflo & Agentic AI | ${data.kb_stats.domains?.ask_ruvnet?.total?.toLocaleString() || totalEntries.toLocaleString()} | ✅ Active |\n` +
@@ -1338,6 +1353,15 @@ function App() {
       case 'rvf-engine':
         setCanvasContent({ type: 'iframe', content: '/rvf-engine.html', title: 'RVF Engine Demo', action: 'rvf-engine' });
         break;
+      case 'pi-executable':
+        setCanvasContent({ type: 'iframe', content: '/pi-executable-knowledge.html', title: 'Executable Knowledge', action: 'pi-executable' });
+        break;
+      case 'pi-living-graph':
+        setCanvasContent({ type: 'iframe', content: '/pi-living-graph.html', title: 'Living Knowledge Graph', action: 'pi-living-graph' });
+        break;
+      case 'pi-learning-loop':
+        setCanvasContent({ type: 'iframe', content: '/pi-learning-loop.html', title: 'Learning Loop', action: 'pi-learning-loop' });
+        break;
       case 'pi':
         handleSubmit(null, 'Tell me everything about Pi collective intelligence — what it is, how it works, why it matters, and how I can use it. Include architecture diagrams and practical examples.');
         break;
@@ -1438,7 +1462,7 @@ function App() {
           </>)}
           <span><span className="stats-highlight"><CountUp end={communityStats?.rustCrates || 80} suffix="+" /></span> Rust Crates</span>
           <span className="stats-dot">·</span>
-          <span><span className="stats-highlight"><CountUp end={communityStats?.kbEntries || ecosystemStats?.totalEntries || 377} /></span> KB Entries</span>
+          <span><span className="stats-highlight"><CountUp end={communityStats?.kbEntries || ecosystemStats?.totalEntries || 383} /></span> KB Entries</span>
           {communityStats?.pi?.memories > 0 && (<>
             <span className="stats-dot">·</span>
             <span><span className="stats-highlight"><CountUp end={communityStats.pi.memories} /></span> Pi Memories</span>
@@ -1503,6 +1527,18 @@ function App() {
                         <button className="capability-tile" onClick={() => { handleCapability('notebooklm'); setShowResourceDrawer(false); }}>
                           <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">📓</span></span>
                           <span className="tile-label">NotebookLM</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('pi-executable'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-pi-exec"><span className="tile-icon">&#129504;</span></span>
+                          <span className="tile-label">Exec KB</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('pi-living-graph'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-pi-graph"><span className="tile-icon">&#127760;</span></span>
+                          <span className="tile-label">Graph</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('pi-learning-loop'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-pi-loop"><span className="tile-icon">&#128260;</span></span>
+                          <span className="tile-label">Loop</span>
                         </button>
                       </div>
                       <div className="resource-grid resource-grid-compact">

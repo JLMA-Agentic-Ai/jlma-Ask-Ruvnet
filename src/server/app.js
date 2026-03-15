@@ -255,7 +255,7 @@ const NLM_RESOURCES = [
         description: 'Analysis of agentic intelligence frameworks and their capabilities'
     },
     {
-        topics: ['swarm', 'claude flow', 'platform', 'multi-agent', 'coordination'],
+        topics: ['swarm', 'ruflo', 'claude flow', 'platform', 'multi-agent', 'coordination'],
         type: 'pdf',
         title: 'Ruflo v3 Swarm Platform',
         url: '/assets/docs/Claude-Flow_v3_Swarm_Platform.pdf',
@@ -1737,7 +1737,7 @@ app.get('/api/community-stats', async (req, res) => {
             npm: { monthlyDownloads: 105000 },
             pi: { memories: 880, contributors: 55, votes: 944 },
             rustCrates: 80,
-            kbEntries: 377,
+            kbEntries: 383,
             lastUpdated: new Date().toISOString(),
             cached: true,
         });

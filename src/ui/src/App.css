@@ -2295,9 +2295,9 @@ body > div > svg[id^="mermaid-"],
 /* ===== CAPABILITY TILES (explore row) ===== */
 .capability-tiles {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 0.75rem;
-  max-width: 740px;
+  max-width: 860px;
   width: 100%;
   margin-bottom: 1.5rem;
 }
@@ -2472,6 +2472,28 @@ body > div > svg[id^="mermaid-"],
 }
 .capability-tile:hover .tile-icon-wrapper.tile-nlm {
   box-shadow: 0 8px 24px rgba(16,185,129,0.25), inset 0 1px 0 rgba(16,185,129,0.2);
+}
+
+.tile-icon-wrapper.tile-pi-exec {
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(168,85,247,0.15));
+  box-shadow: 0 4px 12px rgba(0,212,255,0.1), inset 0 1px 0 rgba(168,85,247,0.12);
+}
+.capability-tile:hover .tile-icon-wrapper.tile-pi-exec {
+  box-shadow: 0 8px 24px rgba(0,212,255,0.2), inset 0 1px 0 rgba(168,85,247,0.2);
+}
+.tile-icon-wrapper.tile-pi-graph {
+  background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(0,212,255,0.15));
+  box-shadow: 0 4px 12px rgba(16,185,129,0.1), inset 0 1px 0 rgba(0,212,255,0.12);
+}
+.capability-tile:hover .tile-icon-wrapper.tile-pi-graph {
+  box-shadow: 0 8px 24px rgba(16,185,129,0.2), inset 0 1px 0 rgba(0,212,255,0.2);
+}
+.tile-icon-wrapper.tile-pi-loop {
+  background: linear-gradient(135deg, rgba(240,192,32,0.2), rgba(168,85,247,0.15));
+  box-shadow: 0 4px 12px rgba(240,192,32,0.1), inset 0 1px 0 rgba(168,85,247,0.12);
+}
+.capability-tile:hover .tile-icon-wrapper.tile-pi-loop {
+  box-shadow: 0 8px 24px rgba(240,192,32,0.2), inset 0 1px 0 rgba(168,85,247,0.2);
 }
 
 .tile-icon-wrapper.tile-pi {
@@ -2839,6 +2861,9 @@ body > div > svg[id^="mermaid-"],
 .light-mode .tile-icon-wrapper.tile-rvf { background: rgba(0,180,220,0.1); }
 .light-mode .tile-icon-wrapper.tile-nlm { background: rgba(16,185,129,0.1); }
 .light-mode .tile-icon-wrapper.tile-pi { background: rgba(236,72,153,0.1); }
+.light-mode .tile-icon-wrapper.tile-pi-exec { background: rgba(0,180,220,0.1); }
+.light-mode .tile-icon-wrapper.tile-pi-graph { background: rgba(16,185,129,0.1); }
+.light-mode .tile-icon-wrapper.tile-pi-loop { background: rgba(240,192,32,0.1); }
 .light-mode .quick-action-btn { background: rgba(139,92,246,0.04); border-color: rgba(139,92,246,0.15); }
 .light-mode .ctx-card { background: rgba(16,185,129,0.04); border-color: rgba(16,185,129,0.15); }
 
