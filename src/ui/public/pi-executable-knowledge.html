@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executable Knowledge — Pi Brain Demo</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --surface-2: #1a1a28;
+  --border: #2a2a3a;
+  --cyan: #00d4ff;
+  --cyan-dim: rgba(0, 212, 255, 0.15);
+  --gold: #f0c020;
+  --gold-dim: rgba(240, 192, 32, 0.15);
+  --purple: #a855f7;
+  --purple-dim: rgba(168, 85, 247, 0.15);
+  --blue: #3b82f6;
+  --blue-dim: rgba(59, 130, 246, 0.15);
+  --red: #ef4444;
+  --green: #10b981;
+  --green-dim: rgba(16, 185, 129, 0.15);
+  --text: #e8eaed;
+  --text-dim: #8892a4;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+#particleCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+.overlay * { pointer-events: auto; }
+
+.stage-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  z-index: 20;
+}
+.stage-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.stage-dot.active {
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan), 0 0 30px rgba(0,212,255,0.3);
+  transform: scale(1.3);
+}
+.stage-dot.completed {
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.stage-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  position: absolute;
+  top: 60px; left: 0; right: 0; bottom: 60px;
+  pointer-events: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.stage-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.stage-title {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+.stage-subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  color: var(--text-dim);
+  max-width: 640px;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* --- Stage 0: The Old Way --- */
+.old-way-demo {
+  max-width: 560px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.fake-chat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+.fake-user-msg {
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 12px 12px 4px 12px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  color: var(--cyan);
+  margin-bottom: 12px;
+  max-width: 80%;
+  margin-left: auto;
+  font-family: var(--mono);
+}
+.fake-ai-msg {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  transition: opacity 2s ease;
+  min-height: 60px;
+}
+.fake-ai-msg.faded { opacity: 0.35; }
+.engagement-meter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.meter-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.meter-track {
+  flex: 1;
+  height: 22px;
+  background: var(--surface);
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.meter-fill {
+  height: 100%;
+  border-radius: 11px;
+  background: linear-gradient(90deg, var(--red), var(--gold), var(--green));
+  transition: width 6s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+}
+.meter-value {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green);
+  min-width: 42px;
+  text-align: right;
+  transition: color 3s ease;
+}
+.meter-value.low { color: var(--red); }
+
+/* --- Stage 1: The New Way (HNSW) --- */
+.new-way-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 600px;
+  width: 100%;
+}
+.demo-canvas-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 5/4;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.demo-canvas-wrap canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.demo-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.demo-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,212,255,0.3);
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.15));
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.demo-btn:hover {
+  background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(168,85,247,0.25));
+  box-shadow: 0 0 16px rgba(0,212,255,0.2);
+  transform: translateY(-1px);
+}
+.demo-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* --- Stage 2: Embedding Explorer --- */
+.embed-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 600px;
+  width: 100%;
+}
+.embed-input-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+}
+.embed-input {
+  flex: 1;
+  padding: 10px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.embed-input:focus { border-color: var(--cyan); box-shadow: 0 0 16px rgba(0,212,255,0.12); }
+.embed-input::placeholder { color: rgba(136,146,164,0.5); }
+.embed-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  min-height: 24px;
+}
+.embed-result-tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.4s ease;
+}
+.embed-result-tag.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- Stage 3: Min-Cut --- */
+.mincut-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 600px;
+  width: 100%;
+}
+.mincut-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.mincut-stat {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.mincut-stat.visible { opacity: 1; }
+.mincut-stat .val { color: var(--cyan); font-weight: 600; }
+
+/* --- Stage 4: The Comparison --- */
+.comparison-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 680px;
+  width: 100%;
+}
+.compare-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.compare-row.visible { opacity: 1; transform: translateY(0); }
+.compare-old, .compare-new {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.compare-old {
+  background: rgba(239,68,68,0.06);
+  border: 1px solid rgba(239,68,68,0.15);
+  color: rgba(239,68,68,0.7);
+  justify-content: flex-end;
+  text-align: right;
+}
+.compare-vs {
+  width: 48px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+.compare-new {
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0,212,255,0.2);
+  color: var(--cyan);
+}
+.compare-icon { font-size: 1.1rem; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 600px;
+  width: 100%;
+  margin-top: 24px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.stat-card:hover { border-color: var(--cyan); transform: translateY(-2px); }
+.stat-value {
+  font-family: var(--mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cyan);
+  display: block;
+}
+.stat-value.gold { color: var(--gold); }
+.stat-value.purple { color: var(--purple); }
+.stat-value.green { color: var(--green); }
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Stage 5: Live Demo --- */
+.live-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 560px;
+  width: 100%;
+}
+.demo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--green);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.demo-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.search-box { width: 100%; position: relative; }
+.search-input {
+  width: 100%;
+  padding: 14px 18px 14px 44px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.search-input:focus { border-color: var(--cyan); box-shadow: 0 0 20px rgba(0,212,255,0.12); }
+.search-input::placeholder { color: rgba(136,146,164,0.5); }
+.search-icon {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  opacity: 0.4;
+}
+.search-results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.35s ease;
+}
+.result-item.visible { opacity: 1; transform: translateY(0); }
+.result-item:hover { border-color: rgba(0,212,255,0.3); background: var(--surface-2); }
+.result-score {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  padding: 3px 8px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+.result-text {
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.4;
+  flex: 1;
+}
+.result-category {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.result-vote {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.vote-btn {
+  width: 26px; height: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.7rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vote-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+.vote-btn.voted { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); }
+.latency-badge {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.latency-badge.visible { opacity: 1; }
+.participation-badge {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--green);
+  padding: 8px 20px;
+  background: var(--green-dim);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 10px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.participation-badge.visible { opacity: 1; transform: scale(1); }
+
+/* --- Controls --- */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  z-index: 20;
+}
+.ctrl-btn {
+  padding: 8px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.ctrl-btn:hover { border-color: var(--cyan); background: var(--surface-2); }
+.ctrl-btn.primary {
+  background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(168,85,247,0.2));
+  border-color: rgba(0,212,255,0.3);
+}
+.ctrl-btn.primary:hover {
+  background: linear-gradient(135deg, rgba(0,212,255,0.3), rgba(168,85,247,0.3));
+  box-shadow: 0 0 20px rgba(0,212,255,0.15);
+}
+.stage-counter {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .stage-content { padding: 16px; top: 50px; bottom: 60px; }
+  .stage-title { font-size: 1.4rem; }
+  .stage-subtitle { font-size: 0.82rem; margin-bottom: 20px; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .compare-old, .compare-new { padding: 8px 10px; font-size: 0.75rem; }
+  .compare-vs { width: 32px; }
+  .demo-canvas-wrap { aspect-ratio: 4/3; }
+}
+@media (max-width: 480px) {
+  .controls { gap: 8px; }
+  .ctrl-btn { padding: 6px 14px; font-size: 0.7rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<div class="overlay">
+  <div class="stage-nav" role="tablist" aria-label="Demo stages">
+    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: The Old Way" aria-selected="true" tabindex="0"></div>
+    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: The New Way" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: Embedding Explorer" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: Min-Cut Revealer" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: The Comparison" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="5" role="tab" aria-label="Stage 6: Try It Live" aria-selected="false" tabindex="-1"></div>
+  </div>
+
+  <!-- Stage 0: The Old Way -->
+  <div class="stage-content visible" id="stage0" role="tabpanel">
+    <div class="stage-title">The Old Way</div>
+    <div class="stage-subtitle">Ask a standard AI model "How does HNSW work?" and watch what happens.</div>
+    <div class="old-way-demo">
+      <div class="fake-chat">
+        <div class="fake-user-msg" id="userMsg"></div>
+        <div class="fake-ai-msg" id="aiMsg"></div>
+      </div>
+      <div class="engagement-meter">
+        <span class="meter-label">Engagement</span>
+        <div class="meter-track"><div class="meter-fill" id="meterFill"></div></div>
+        <span class="meter-value" id="meterValue">100%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 1: The New Way -->
+  <div class="stage-content" id="stage1" role="tabpanel">
+    <div class="stage-title">The New Way</div>
+    <div class="stage-subtitle">Same question. But now the answer <em>runs</em>. Click to build an HNSW graph.</div>
+    <div class="new-way-demo">
+      <div class="demo-canvas-wrap">
+        <canvas id="hnswCanvas"></canvas>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-btn" id="insertBtn">+ Insert Vector</button>
+        <button class="demo-btn" id="searchBtn">Search Nearest</button>
+        <span class="demo-label" id="hnswLabel">Layer 0 &mdash; 0 nodes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 2: Embedding Explorer -->
+  <div class="stage-content" id="stage2" role="tabpanel">
+    <div class="stage-title">Embedding Explorer</div>
+    <div class="stage-subtitle">See how your question navigates a 384-dimension space, projected to 2D.</div>
+    <div class="embed-demo">
+      <div class="demo-canvas-wrap">
+        <canvas id="embedCanvas"></canvas>
+      </div>
+      <div class="embed-input-row">
+        <input type="text" class="embed-input" id="embedQuery" placeholder="Type a query: agents, vectors, security..." autocomplete="off" />
+        <button class="demo-btn" id="embedFireBtn">Fire</button>
+      </div>
+      <div class="embed-results" id="embedResults"></div>
+    </div>
+  </div>
+
+  <!-- Stage 3: Min-Cut Revealer -->
+  <div class="stage-content" id="stage3" role="tabpanel">
+    <div class="stage-title">Min-Cut Revealer</div>
+    <div class="stage-subtitle">Find where knowledge clusters naturally separate &mdash; and where the bottlenecks hide.</div>
+    <div class="mincut-demo">
+      <div class="demo-canvas-wrap">
+        <canvas id="mincutCanvas"></canvas>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-btn" id="mincutBtn">Find Boundaries</button>
+      </div>
+      <div class="mincut-stats" id="mincutStats"></div>
+    </div>
+  </div>
+
+  <!-- Stage 4: The Comparison -->
+  <div class="stage-content" id="stage4" role="tabpanel">
+    <div class="stage-title">The Comparison</div>
+    <div class="stage-subtitle">Standard AI vs Pi Brain executable knowledge &mdash; side by side.</div>
+    <div class="comparison-grid" id="comparisonGrid">
+      <div class="compare-row"><div class="compare-old"><span class="compare-icon">&#128196;</span> Static text answers</div><div class="compare-vs">vs</div><div class="compare-new"><span class="compare-icon">&#9889;</span> Interactive widgets that run</div></div>
+      <div class="compare-row"><div class="compare-old"><span class="compare-icon">&#128683;</span> No memory between sessions</div><div class="compare-vs">vs</div><div class="compare-new"><span class="compare-icon">&#129504;</span> 965 shared memories, growing</div></div>
+      <div class="compare-row"><div class="compare-old"><span class="compare-icon">&#128100;</span> Same answer for everyone</div><div class="compare-vs">vs</div><div class="compare-new"><span class="compare-icon">&#128101;</span> Quality-voted by 59 contributors</div></div>
+      <div class="compare-row"><div class="compare-old"><span class="compare-icon">&#10060;</span> Can't tell when it's wrong</div><div class="compare-vs">vs</div><div class="compare-new"><span class="compare-icon">&#128200;</span> Drift detection catches staleness</div></div>
+      <div class="compare-row"><div class="compare-old"><span class="compare-icon">&#128300;</span> Isolated knowledge silos</div><div class="compare-vs">vs</div><div class="compare-new"><span class="compare-icon">&#127760;</span> Transfer learning across domains</div></div>
+    </div>
+    <div class="stat-grid" id="comparisonStats">
+      <div class="stat-card"><span class="stat-value" data-count="965">0</span><span class="stat-label">Memories</span></div>
+      <div class="stat-card"><span class="stat-value gold" data-count="59">0</span><span class="stat-label">Contributors</span></div>
+      <div class="stat-card"><span class="stat-value purple" data-count="947">0</span><span class="stat-label">Votes</span></div>
+      <div class="stat-card"><span class="stat-value green" data-count="20">0</span><span class="stat-label">Clusters</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 5: Try It Live -->
+  <div class="stage-content" id="stage5" role="tabpanel">
+    <div class="stage-title">Try It Live</div>
+    <div class="stage-subtitle">Search the collective brain. Vote on results. You just participated in collective intelligence.</div>
+    <div class="live-demo">
+      <div class="demo-badge">Pi Brain &middot; Collective Intelligence &middot; Live</div>
+      <div class="search-box">
+        <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
+        <input type="text" class="search-input" id="piSearch" placeholder="Search 965 collective memories..." autocomplete="off" aria-label="Search Pi Brain" />
+      </div>
+      <div class="latency-badge" id="piLatency" aria-live="polite"></div>
+      <div class="search-results" id="piResults" role="list"></div>
+      <div class="participation-badge" id="participationBadge"></div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="ctrl-btn" id="prevBtn" disabled aria-label="Previous stage">&larr; Prev</button>
+    <span class="stage-counter" id="stageCounter" aria-live="polite">1 / 6</span>
+    <button class="ctrl-btn primary" id="nextBtn" aria-label="Next stage">Next &rarr;</button>
+    <button class="ctrl-btn" id="autoBtn" aria-label="Toggle auto-play">&#9654; Auto</button>
+  </div>
+</div>
+
+<script src="/assets/pi-executable-knowledge.js"></script>
+</body>
+</html>
