@@ -81,6 +81,18 @@ echo "=== NLM Nightly Pipeline — $NOW ==="
 echo "Node: $NODE ($(${NODE} --version 2>/dev/null || echo 'unknown'))"
 
 # ---------------------------------------------------------------------------
+# Phase -1: Auto-update NLM CLI + check for stale tools
+# ---------------------------------------------------------------------------
+echo ""
+echo "--- Phase -1: Tool Updates ---"
+if command -v uv &>/dev/null; then
+  uv tool upgrade notebooklm-mcp-cli 2>&1 | grep -E "upgraded|already|error" || true
+  echo "[update] NLM CLI: $(nlm --version 2>/dev/null || echo 'unknown')"
+else
+  echo "[skip] uv not available for auto-updates"
+fi
+
+# ---------------------------------------------------------------------------
 # Phase 0: Auth pre-check + auto-renewal via agent-browser
 # ---------------------------------------------------------------------------
 echo ""

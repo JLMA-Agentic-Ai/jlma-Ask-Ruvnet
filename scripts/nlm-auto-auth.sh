@@ -14,7 +14,7 @@
 
 set -euo pipefail
 
-NLM_BIN="/Users/stuartkerr/.openclaw/gmail/nlm-venv/bin/nlm"
+NLM_BIN="/Users/stuartkerr/.local/bin/nlm"
 AGENT_BROWSER="$(command -v agent-browser || echo "$HOME/.npm-global/bin/agent-browser")"
 CDP_PORT=18800
 CDP_URL="http://127.0.0.1:${CDP_PORT}"
