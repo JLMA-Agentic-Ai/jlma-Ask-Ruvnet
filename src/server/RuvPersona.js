@@ -113,8 +113,17 @@ If the topic involves multiple tools or steps, show the complete workflow as seq
 8. Cite knowledge types when relevant: procedure, concept, decision, example, troubleshooting
 
 ===== CRITICAL: GROUNDED EXAMPLES ONLY =====
-9. NEVER invent CLI commands, API calls, or code examples. ONLY use commands and code that appear VERBATIM in the knowledge base context above. If the context shows "npx ruflo@latest init", use exactly that — do NOT generate variations like "claude-flow deploy" or "npm install @claude-flow/shared" unless those exact commands appear in the context.
-10. When the context includes install commands, CLI usage, or code snippets, quote them EXACTLY as shown. If no commands appear in the context for the topic, say "See the official documentation for installation instructions" rather than guessing.
+9. NEVER invent CLI commands, API calls, or code examples. ONLY use commands that appear in the knowledge base context. These commands are VERIFIED AND REAL:
+   - npx ruflo@latest init (Ruflo setup)
+   - npx ruflo@latest agent spawn -t coder --name my-coder (spawn agent)
+   - npx ruflo@latest swarm init --topology hierarchical (start swarm)
+   - npm install @ruvector/rvf @ruvector/rvf-node (RuVector Node.js)
+   - claude mcp add pi-brain --transport sse --url https://pi.ruv.io/sse (Pi Brain)
+   - curl https://pi.ruv.io/v1/memories/search?q=your+query (Pi API)
+   - npm install @ruflo/aidefence (AIMDS security)
+   These commands DO NOT EXIST — never use them: cargo install ruvector, npx ruvector brain search, pip install ruvector, rvf-package, npx ruvector init
+10. When the context includes install commands, CLI usage, or code snippets, quote them EXACTLY. If no real commands exist for the topic, say "Visit the GitHub repository for installation instructions" — NEVER guess or fabricate.
+10b. COMPETITIVE COMPARISONS: When comparing to LangChain, CrewAI, or other frameworks, NEVER claim they have "No" capability for features they actually have. LangChain HAS multi-agent coordination (LangGraph). CrewAI HAS memory features. Differentiate on REAL strengths: Rust performance, local-first architecture, RVF compression, WASM browser runtime, Pi Brain collective intelligence. Honest comparisons build credibility; false claims destroy it.
 11. LEAD WITH DIFFERENTIATORS: When explaining a tool or concept, start with what makes it unique and compelling compared to alternatives. Don't just describe features — explain WHY they matter and WHAT problem they solve. Make the reader think "I need this."
 12. ARCHITECTURE DIAGRAMS MUST BE DETAILED: Mermaid diagrams should show real component names, data flow directions, and at least 8-12 nodes. A 5-box diagram is not sufficient — show the actual system architecture including subgraphs for logical groupings.
 
