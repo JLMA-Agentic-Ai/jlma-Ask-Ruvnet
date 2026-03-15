@@ -384,17 +384,21 @@ function MermaidBlock({ code }) {
 
   React.useEffect(() => {
     // Debounce rendering — wait 400ms after last code change (handles streaming)
+    let cancelled = false;
+    let currentId = null;
+
+    const cleanupOrphans = () => {
+      if (!currentId) return;
+      const orphan = document.getElementById(currentId);
+      if (orphan) orphan.remove();
+      const container = document.querySelector(`[data-id="${currentId}"]`);
+      if (container) container.remove();
+    };
+
     clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
-      let cancelled = false;
       const uniqueId = `mermaid-${Date.now()}-${++mermaidCounter}`;
-
-      const cleanupOrphans = () => {
-        const orphan = document.getElementById(uniqueId);
-        if (orphan) orphan.remove();
-        const container = document.querySelector(`[data-id="${uniqueId}"]`);
-        if (container) container.remove();
-      };
+      currentId = uniqueId;
 
       mermaid.render(uniqueId, code).then(({ svg: renderedSvg }) => {
         if (!cancelled) {
@@ -411,11 +415,13 @@ function MermaidBlock({ code }) {
         if (!cancelled) setError(err.message || 'Diagram render failed');
         cleanupOrphans();
       });
-
-      return () => { cancelled = true; cleanupOrphans(); };
     }, 400);
 
-    return () => clearTimeout(debounceRef.current);
+    return () => {
+      cancelled = true;
+      clearTimeout(debounceRef.current);
+      cleanupOrphans();
+    };
   }, [code]);
 
   React.useEffect(() => {
