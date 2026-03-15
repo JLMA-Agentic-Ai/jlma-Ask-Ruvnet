@@ -1506,6 +1506,19 @@ app.get('/health', async (req, res) => {
         : (vectorStoreStatus.status === 'not_initialized' || hybridSearchStatus.status === 'not_initialized') ? 'degraded'
         : 'ok';
 
+    // NLM heartbeat check
+    let nlmStatus = 'unknown';
+    try {
+        const hbPath = path.join(__dirname, '../../scripts/nlm-heartbeat.json');
+        if (fs.existsSync(hbPath)) {
+            const hb = JSON.parse(fs.readFileSync(hbPath, 'utf8'));
+            const lastSuccess = hb.lastSuccess ? new Date(hb.lastSuccess) : null;
+            const hoursSince = lastSuccess ? (Date.now() - lastSuccess.getTime()) / 3600000 : Infinity;
+            nlmStatus = hoursSince < 48 ? 'ok' : hoursSince < 168 ? 'stale' : 'failed';
+            if (hb.authStatus === 'auth_expired') nlmStatus = 'auth_expired';
+        }
+    } catch { nlmStatus = 'unknown'; }
+
     const health = {
         status: overallStatus,
         version: APP_VERSION,
@@ -1516,6 +1529,7 @@ app.get('/health', async (req, res) => {
             vectorStore: vectorStoreStatus,
             hybridSearch: hybridSearchStatus,
             gemini: GEMINI_API_KEY ? 'configured' : 'not_configured',
+            nlmRefresh: nlmStatus,
         }
     };
     res.json(health);

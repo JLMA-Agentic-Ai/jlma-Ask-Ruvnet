@@ -45,7 +45,39 @@ rotate_log "$LOG_DIR/nlm-refresh-launchd.log"
 rotate_log "$LOG_DIR/nlm-refresh-launchd.err"
 rotate_log "$LOG_DIR/nlm-refresh-audit.jsonl"
 
-echo "=== NLM Nightly Pipeline — $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
+HEARTBEAT_FILE="$SCRIPT_DIR/nlm-heartbeat.json"
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+# Record attempt start
+update_heartbeat() {
+  local status="$1" error="${2:-}"
+  local runs=$(python3 -c "import json;d=json.load(open('$HEARTBEAT_FILE'));print(d.get('totalRuns',0))" 2>/dev/null || echo 0)
+  local successes=$(python3 -c "import json;d=json.load(open('$HEARTBEAT_FILE'));print(d.get('totalSuccesses',0))" 2>/dev/null || echo 0)
+  local fails=$(python3 -c "import json;d=json.load(open('$HEARTBEAT_FILE'));print(d.get('consecutiveFailures',0))" 2>/dev/null || echo 0)
+
+  runs=$((runs + 1))
+  if [ "$status" = "success" ]; then
+    successes=$((successes + 1))
+    fails=0
+    python3 -c "
+import json
+d={'lastAttempt':'$NOW','lastSuccess':'$NOW','lastError':None,'consecutiveFailures':0,'totalRuns':$runs,'totalSuccesses':$successes,'authStatus':'ok'}
+json.dump(d,open('$HEARTBEAT_FILE','w'),indent=2)
+" 2>/dev/null
+  else
+    fails=$((fails + 1))
+    python3 -c "
+import json
+d={'lastAttempt':'$NOW','lastSuccess':json.load(open('$HEARTBEAT_FILE')).get('lastSuccess'),'lastError':'$error','consecutiveFailures':$fails,'totalRuns':$runs,'totalSuccesses':$successes,'authStatus':'$status'}
+json.dump(d,open('$HEARTBEAT_FILE','w'),indent=2)
+" 2>/dev/null
+  fi
+}
+
+# Trap to record failure on any exit
+trap 'update_heartbeat "error" "script_crashed"' ERR
+
+echo "=== NLM Nightly Pipeline — $NOW ==="
 echo "Node: $NODE ($(${NODE} --version 2>/dev/null || echo 'unknown'))"
 
 # ---------------------------------------------------------------------------
@@ -63,6 +95,7 @@ if [ "$AUTH_OK" = false ]; then
     AUTH_OK=true
   else
     echo "[FATAL] Auto-renewal failed. Manual intervention required: nlm login"
+    update_heartbeat "auth_expired" "Auto-renewal failed. Run nlm login manually."
     notify "NLM Pipeline FAILED" "Auth expired and auto-renewal failed. Run 'nlm login' manually."
     exit 2
   fi
@@ -123,7 +156,9 @@ echo "=== NLM Nightly Pipeline Complete — $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
 echo "Warnings: $WARNINGS"
 
 if [ "$WARNINGS" -gt 0 ]; then
+  update_heartbeat "success" "Completed with $WARNINGS warnings"
   notify "NLM Pipeline Done (${WARNINGS} warnings)" "${WARNINGS} phase(s) had issues. Check logs/nlm-refresh-launchd.log"
 else
+  update_heartbeat "success"
   notify "NLM Pipeline OK" "All 4 phases completed successfully."
 fi

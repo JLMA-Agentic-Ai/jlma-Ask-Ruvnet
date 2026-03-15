@@ -1,0 +1,9 @@
+{
+  "lastAttempt": "2026-03-15T08:00:00Z",
+  "lastSuccess": "2026-03-09T08:01:23Z",
+  "lastError": "Auto-renewal failed. Run nlm login manually.",
+  "consecutiveFailures": 6,
+  "totalRuns": 12,
+  "totalSuccesses": 6,
+  "authStatus": "auth_expired"
+}
