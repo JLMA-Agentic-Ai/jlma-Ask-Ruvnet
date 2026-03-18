@@ -198,6 +198,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
     <h1 className="hero-heading">What do you want to build?</h1>
     <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
     <p className="hero-tagline">The on-ramp to agentic AI. Pick a product, get started in minutes.</p>
+    <p className="hero-dogfood">386 expert articles in 0.5MB — the tool explaining itself using itself.</p>
 
     {/* Product On-Ramp Cards */}
     <div className="onramp-cards" role="navigation" aria-label="Get started with a product">
