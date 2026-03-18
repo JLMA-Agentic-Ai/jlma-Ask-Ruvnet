@@ -342,9 +342,9 @@ const geminiClient = GEMINI_API_KEY ? new GoogleGenAI({ apiKey: GEMINI_API_KEY }
 
 // ============================================================================
 // MULTI-PROVIDER LLM — automatic fallback chain for chat
-// Default chain: groq-free → groq-paid → openai → anthropic → together → openrouter → deepseek
-// Set GROQ_API_KEY (free tier) and GROQ_PAID_API_KEY (paid tier) for dual-Groq setup.
-// When free Groq hits its daily rate limit, it seamlessly falls through to paid, then others.
+// Default chain: anthropic (Claude 4.6) first, then fallbacks
+// Claude Sonnet 4.6 is the primary — prompt is optimized specifically for it.
+// Fallbacks only if Anthropic API is down.
 // Override order with LLM_PROVIDER env var if desired.
 // ============================================================================
 const LLM_PROVIDERS = [];
@@ -353,12 +353,14 @@ function registerProviders() {
     const preferred = (process.env.LLM_PROVIDER || '').toLowerCase();
 
     // All supported providers — order matters (this is the default fallback chain)
+    // OpenRouter → Claude 4.6 FIRST — prompt is optimized for Claude's XML-tag processing.
+    // OpenRouter provides Claude access via OpenAI-compatible API (simplest integration).
+    // Direct Anthropic as second option. Groq/OpenAI as speed fallbacks.
     const all = [
+        { name: 'openrouter', key: process.env.OPENROUTER_API_KEY, url: 'https://openrouter.ai/api/v1/chat/completions',      model: process.env.OPENROUTER_MODEL || 'anthropic/claude-sonnet-4-6', timeout: 60000 },
+        { name: 'anthropic',  key: process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY, url: null, /* uses native SDK format */ model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6', timeout: 60000 },
         { name: 'groq-free',  key: process.env.GROQ_API_KEY,       url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile', timeout: 10000 },
-        { name: 'groq-paid',  key: process.env.GROQ_PAID_API_KEY,  url: 'https://api.groq.com/openai/v1/chat/completions',    model: process.env.GROQ_PAID_MODEL || process.env.GROQ_MODEL || 'llama-3.3-70b-versatile', timeout: 10000 },
         { name: 'openai',     key: process.env.OPENAI_API_KEY,     url: 'https://api.openai.com/v1/chat/completions',         model: process.env.OPENAI_MODEL || 'gpt-4o', timeout: 20000 },
-        { name: 'anthropic',  key: process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY, url: null, /* uses native SDK format */ model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514', timeout: 20000 },
-        { name: 'openrouter', key: process.env.OPENROUTER_API_KEY, url: 'https://openrouter.ai/api/v1/chat/completions',      model: process.env.OPENROUTER_MODEL || 'anthropic/claude-sonnet-4', timeout: 25000 },
         { name: 'deepseek',   key: process.env.DEEPSEEK_API_KEY,   url: 'https://api.deepseek.com/v1/chat/completions',       model: process.env.DEEPSEEK_MODEL || 'deepseek-chat', timeout: 35000 },
     ];
 

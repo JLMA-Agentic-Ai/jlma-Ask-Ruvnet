@@ -18,7 +18,12 @@
  *
  * Scheduled via LaunchAgent ai.openclaw.kb-export at 5:00 AM daily.
  *
- * Updated: 2026-03-12 00:00:00 EST | Version 1.1.0
+ * IMPORTANT: Stage 1 MUST use build-lean-rvf.mjs which queries ONLY
+ * ask_ruvnet.kb_complete (gold curated, ~400 entries). NEVER use
+ * export-to-ruvectorstore.mjs which pulls from architecture_docs (255K+
+ * entries) and produces 270MB+ build artifacts that crash the browser.
+ *
+ * Updated: 2026-03-18 08:00:00 EST | Version 2.0.0
  * Created: 2026-03-06
  */
 
@@ -90,14 +95,15 @@ function readManifestCount() {
 }
 
 async function queryPgCount() {
+  // IMPORTANT: Only count kb_complete (gold curated entries).
+  // architecture_docs (255K+ entries) is reference-only and must NEVER
+  // be included in the production build pipeline.
   const pool = new pg.Pool(DB_CONFIG);
   try {
     const result = await pool.query(`
-      SELECT
-        (SELECT count(*) FROM ask_ruvnet.architecture_docs
-         WHERE is_duplicate = false AND embedding IS NOT NULL) +
-        (SELECT count(*) FROM ask_ruvnet.kb_complete
-         WHERE embedding IS NOT NULL) AS total
+      SELECT count(*) AS total
+      FROM ask_ruvnet.kb_complete
+      WHERE embedding IS NOT NULL
     `);
     return parseInt(result.rows[0].total, 10);
   } finally {
@@ -175,11 +181,11 @@ async function main() {
   // -----------------------------------------------------------------------
 
   if (!FLAGS.stage2Only) {
-    // Use --fresh when counts diverge (entries were added OR deleted in PG)
-    const needsFresh = pgCount !== manifestCount;
-    const stage1Args = needsFresh ? ['--fresh'] : [];
-    if (needsFresh) log(`Count mismatch (PG=${pgCount}, manifest=${manifestCount}) -- using --fresh rebuild`);
-    runStage('1 (PG -> binary)', 'export-to-ruvectorstore.mjs', 900_000, stage1Args);
+    // FIXED (v2.0.0): Use build-lean-rvf.mjs which queries ONLY kb_complete.
+    // Previous version used export-to-ruvectorstore.mjs which pulled from
+    // architecture_docs (255K entries) and produced 270MB+ artifacts.
+    log(`Rebuilding from kb_complete (${pgCount} gold entries)...`);
+    runStage('1 (PG -> binary)', 'build-lean-rvf.mjs', 300_000);
   }
 
   // -----------------------------------------------------------------------
@@ -197,8 +203,15 @@ async function main() {
   const newManifestCount = readManifestCount();
   log(`New manifest vectorCount: ${newManifestCount}`);
 
+  // Sanity check: manifest must match kb_complete count, NOT architecture_docs
   if (!FLAGS.stage2Only && newManifestCount !== pgCount) {
-    log(`CRITICAL: Manifest (${newManifestCount}) != PG (${pgCount}). Sync broken!`);
+    log(`WARNING: Manifest (${newManifestCount}) != kb_complete (${pgCount}). Investigating...`);
+  }
+  // SAFEGUARD: If manifest shows >1000 entries, something went terribly wrong
+  if (newManifestCount > 1000) {
+    log(`CRITICAL: Manifest shows ${newManifestCount} vectors — this is NOT the gold KB!`);
+    log(`Expected ~400 entries from kb_complete. Aborting pipeline.`);
+    process.exit(3);
   }
 
   if (newManifestCount !== manifestCount) {

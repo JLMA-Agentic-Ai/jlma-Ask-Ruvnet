@@ -8,7 +8,11 @@
  *
  * The WASM runtime uses rvf_load_sq_params + rvf_dequant_i8 to dequantize at query time.
  *
- * Updated: 2026-03-02 22:00:00 EST | Version 1.0.0
+ * SAFEGUARD: Refuses to run if vectorCount > 1000 — this prevents
+ * accidental builds from the 255K architecture_docs table.
+ * The gold curated KB (kb_complete) has ~400 entries max.
+ *
+ * Updated: 2026-03-18 07:57:00 EST | Version 1.1.0
  * Created: 2026-03-02
  */
 
@@ -32,6 +36,19 @@ console.log('Step 1: Loading source vectors...');
 const manifest = JSON.parse(fs.readFileSync(path.join(SOURCE_DIR, 'manifest.json'), 'utf8'));
 const vectorCount = manifest.vectorCount;
 console.log(`  ${vectorCount} vectors, ${DIMENSIONS} dimensions`);
+
+// SAFEGUARD: The gold KB has ~400 entries. If we see >1000, someone ran the
+// wrong build script (e.g. export-to-ruvectorstore.mjs which pulls from
+// architecture_docs with 255K entries). Refuse to proceed.
+const MAX_GOLD_ENTRIES = 1000;
+if (vectorCount > MAX_GOLD_ENTRIES) {
+  console.error(`\n❌ SAFEGUARD TRIGGERED: vectorCount=${vectorCount} exceeds MAX_GOLD_ENTRIES=${MAX_GOLD_ENTRIES}`);
+  console.error(`   This means .ruvector/knowledge-base/ was built from the WRONG source.`);
+  console.error(`   Expected: ~400 entries from ask_ruvnet.kb_complete (gold curated)`);
+  console.error(`   Got: ${vectorCount} entries (likely from architecture_docs or MCP KB)`);
+  console.error(`\n   FIX: Run 'node scripts/build-lean-rvf.mjs' first to rebuild from kb_complete.`);
+  process.exit(1);
+}
 
 const vectorBuffer = fs.readFileSync(path.join(SOURCE_DIR, 'vectors.bin'));
 const vectors = new Float32Array(vectorBuffer.buffer, vectorBuffer.byteOffset, vectorCount * DIMENSIONS);
@@ -135,8 +152,10 @@ const idIndex = Array.isArray(rawIdIndex)
 const metadataMap = metadataRaw.metadata || metadataRaw.metadataIndex || {};
 
 // Build a compact metadata array: [{id, title, category, quality_score}]
-const compactMeta = idIndex.map((id) => {
-  const m = metadataMap[id] || {};
+// FIX (v1.1.0): metadataMap keys are numeric indices ("0","1",...) not kb IDs ("kb_1").
+// Previous code looked up metadataMap["kb_1"] which always returned {} — empty metadata.
+const compactMeta = idIndex.map((id, idx) => {
+  const m = metadataMap[id] || metadataMap[String(idx)] || {};
   return {
     id,
     t: m.title ? String(m.title).substring(0, 200) : '',

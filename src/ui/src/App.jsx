@@ -82,7 +82,7 @@ const DECK_DOCS = [
 // NotebookLM deep-dive interactive notebook
 const NOTEBOOKLM_URL = 'https://notebooklm.google.com/notebook/50a4a2ef-a743-4fc7-81e3-774b95c667c3';
 
-// Resource documents available at /assets/docs/ — Auto-synced 2026-03-15
+// Resource documents available at /assets/docs/ — Auto-synced 2026-03-18
 const RESOURCE_DOCS = [
   { file: 'Whats_New_RuvNet_Stack_March2026.mp4', title: 'What\'s New (March 2026)', desc: 'Latest updates across Ruflo, RuVector, RuView, Dossier', icon: '🔊', type: 'video' },
   { file: 'Architecture_That_Changes_Everything.mp4', title: 'The Architecture That Changes Everything', desc: 'Why this is 2 std devs beyond state-of-art', icon: '🔊', type: 'video' },
