@@ -2157,26 +2157,93 @@ body > div > svg[id^="mermaid-"],
   background: linear-gradient(90deg, rgba(234,88,12,0.04), rgba(124,58,237,0.04), rgba(8,145,178,0.04));
 }
 
-/* ===== HERO ECOSYSTEM IMAGE ===== */
-.hero-ecosystem-img {
-  max-width: 680px;
+/* ===== INTERACTIVE DIKW HERO STACK ===== */
+.hero-dikw-stack {
+  max-width: 640px;
   width: 100%;
-  max-height: 260px;
-  object-fit: contain;
-  border-radius: 12px;
-  margin: 0 auto 0.3rem;
-  display: block;
-  border: 1px solid rgba(139,92,246,0.15);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 40px rgba(139,92,246,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   animation: heroFadeIn 0.8s ease-out;
+}
+.hero-dikw-stack:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+}
+.dikw-layer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  transition: all 0.35s ease;
+}
+.dikw-layer .dikw-icon { font-size: 1.5rem; flex-shrink: 0; }
+.dikw-layer .dikw-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-family: 'Geist Mono', 'JetBrains Mono', monospace;
+  min-width: 130px;
+}
+.dikw-layer .dikw-desc {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.82rem;
+}
+.dikw-layer .dikw-detail {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  animation: fadeInUp 0.3s ease-out;
+}
+.dikw-layer .dikw-detail code {
+  background: rgba(139,92,246,0.2);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: 'Geist Mono', monospace;
+}
+.dikw-wisdom { background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(139,92,246,0.08)); }
+.dikw-wisdom .dikw-label { color: #c084fc; }
+.dikw-knowledge { background: linear-gradient(135deg, rgba(6,182,212,0.12), rgba(8,145,178,0.06)); }
+.dikw-knowledge .dikw-label { color: #22d3ee; }
+.dikw-orchestration { background: linear-gradient(135deg, rgba(234,88,12,0.12), rgba(251,146,60,0.06)); }
+.dikw-orchestration .dikw-label { color: #fb923c; }
+.hero-dikw-stack.expanded .dikw-layer { flex-wrap: wrap; padding: 1rem 1.25rem; }
+.dikw-expand-hint {
+  text-align: center;
+  padding: 0.4rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.light-mode .dikw-layer .dikw-desc { color: rgba(0,0,0,0.55); }
+.light-mode .dikw-layer .dikw-detail { color: rgba(0,0,0,0.7); }
+.light-mode .dikw-wisdom { background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(139,92,246,0.03)); }
+.light-mode .dikw-knowledge { background: linear-gradient(135deg, rgba(6,182,212,0.06), rgba(8,145,178,0.02)); }
+.light-mode .dikw-orchestration { background: linear-gradient(135deg, rgba(234,88,12,0.06), rgba(251,146,60,0.02)); }
+.light-mode .dikw-expand-hint { color: rgba(0,0,0,0.3); }
+.light-mode .hero-dikw-stack { border-color: rgba(124,58,237,0.15); }
+.light-mode .hero-dikw-stack:hover { border-color: rgba(124,58,237,0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+@media (max-width: 768px) {
+  .dikw-layer { flex-wrap: wrap; padding: 0.7rem 0.9rem; gap: 0.4rem; }
+  .dikw-layer .dikw-label { min-width: auto; font-size: 0.85rem; }
+  .dikw-layer .dikw-desc { font-size: 0.75rem; }
+  .hero-dikw-stack { max-width: 100%; }
 }
 @keyframes heroFadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
-@media (max-width: 768px) {
-  .hero-ecosystem-img { max-width: 100%; border-radius: 12px; }
-}
+/* Legacy static image — hidden, replaced by DIKW stack */
+.hero-ecosystem-img { display: none; }
 
 /* ===== PRODUCT ON-RAMP CARDS ===== */
 .onramp-cards {

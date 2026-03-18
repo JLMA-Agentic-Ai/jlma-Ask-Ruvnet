@@ -166,13 +166,35 @@ const HERO_TAGLINES = [
 const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowledgeData, latestRepos, communityStats }) => {
   const videoCount = knowledgeData?.videoStats?.total || 28;
   const [taglineIdx, setTaglineIdx] = useState(0);
+  const [heroExpanded, setHeroExpanded] = useState(false);
   useEffect(() => {
     const id = setInterval(() => setTaglineIdx(i => (i + 1) % HERO_TAGLINES.length), 4000);
     return () => clearInterval(id);
   }, []);
   return (
   <div className="hero-compact">
-    <img src="/assets/product/hero-ecosystem.png" alt="RuvNet Ecosystem — Ruflo, RuVector, Pi Brain, AIMDS connected through RVF" className="hero-ecosystem-img" />
+    {/* Interactive DIKW Stack — clean 3-layer hero, click to expand */}
+    <div className={`hero-dikw-stack ${heroExpanded ? 'expanded' : ''}`} onClick={() => setHeroExpanded(!heroExpanded)} role="button" tabIndex={0} aria-expanded={heroExpanded} aria-label="RuvNet ecosystem layers — click to expand">
+      <div className="dikw-layer dikw-wisdom">
+        <span className="dikw-icon">&#129504;</span>
+        <span className="dikw-label">Pi Brain</span>
+        <span className="dikw-desc">Collective intelligence that compounds</span>
+        {heroExpanded && <span className="dikw-detail">880+ shared memories across sessions. What one AI learns, every AI knows. Connect: <code>claude mcp add pi-brain</code></span>}
+      </div>
+      <div className="dikw-layer dikw-knowledge">
+        <span className="dikw-icon">&#128161;</span>
+        <span className="dikw-label">RuVector + RVF</span>
+        <span className="dikw-desc">Stores meaning, not just data</span>
+        {heroExpanded && <span className="dikw-detail">386 expert articles in 0.5MB. HNSW search in 0.3ms. 290+ PostgreSQL functions. Runs in browser via WASM.</span>}
+      </div>
+      <div className="dikw-layer dikw-orchestration">
+        <span className="dikw-icon">&#9889;</span>
+        <span className="dikw-label">Ruflo</span>
+        <span className="dikw-desc">60 agents, one command</span>
+        {heroExpanded && <span className="dikw-detail">Hierarchical swarms, 27 lifecycle hooks, self-learning routing. Get started: <code>npx ruflo@latest init</code></span>}
+      </div>
+      <span className="dikw-expand-hint">{heroExpanded ? 'Click to collapse' : 'Click to explore the stack'}</span>
+    </div>
     <h1 className="hero-heading">What do you want to build?</h1>
     <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
     <p className="hero-tagline">The on-ramp to agentic AI. Pick a product, get started in minutes.</p>
@@ -245,6 +267,11 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
         <span className="tile-icon-wrapper tile-pi-loop"><span className="tile-icon">&#128260;</span></span>
         <span className="tile-label">Learning Loop</span>
         <span className="tile-count">6 Stages</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
+        <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">&#128211;</span></span>
+        <span className="tile-label">NotebookLM</span>
+        <span className="tile-count">AI Deep Dive</span>
       </button>
     </div>
 
