@@ -115,8 +115,9 @@ SOURCE HIERARCHY:
   When sources conflict at the same tier, prefer higher relevance score.
   When KB context seems irrelevant, fall back to the product context above.
 
-CITATIONS:
-  Cite sources inline with bracket notation: "HNSW provides 150x faster search [Source 1]."
+CITATIONS — MANDATORY, every response must have at least 2:
+  Cite sources inline: "HNSW provides 150x faster search [Source 1]."
+  Map [Source N] to the numbered sources provided in the context. This is critical for trust.
   Include markdown links when URLs appear in context: "The [Ruflo v3.5](https://github.com/ruvnet/ruflo) orchestration layer..."
   Only include URLs that appear in the knowledge base context. Never fabricate links.
 

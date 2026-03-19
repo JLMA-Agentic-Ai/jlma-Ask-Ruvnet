@@ -53,10 +53,19 @@ check('Entry count consistency', () => {
   const sidecar = JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(ROOT, 'content-sidecar.json.gz'))));
   const sidecarCount = Object.keys(sidecar).length;
 
-  const metaPath = path.join(ROOT, 'src/ui/public/assets/knowledge-meta.json');
+  // Check both source and dist locations (Docker build removes src/ui/src but keeps public/)
+  const metaPaths = [
+    path.join(ROOT, 'src/ui/public/assets/knowledge-meta.json'),
+    path.join(ROOT, 'src/ui/dist/assets/knowledge-meta.json'),
+  ];
   let metaCount = 0;
-  if (fs.existsSync(metaPath)) {
-    metaCount = JSON.parse(fs.readFileSync(metaPath)).length;
+  for (const mp of metaPaths) {
+    if (fs.existsSync(mp)) {
+      try {
+        metaCount = JSON.parse(fs.readFileSync(mp)).length;
+        if (metaCount > 0) break;
+      } catch {}
+    }
   }
 
   if (sidecarCount !== metaCount) {
