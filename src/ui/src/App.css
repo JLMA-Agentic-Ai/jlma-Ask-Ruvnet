@@ -1164,6 +1164,22 @@ body {
   border-bottom-color: rgba(153, 187, 255, 0.6);
 }
 
+/* Inline images from markdown (e.g. product cards in LLM responses) */
+.markdown-content img {
+  display: block;
+  max-width: 280px;
+  width: 100%;
+  margin: 1rem auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.light-mode .markdown-content img {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
 /* ===== MESSAGE ACTIONS (2 buttons only) ===== */
 .message-actions {
   display: flex;
@@ -3044,11 +3060,16 @@ body > div > svg[id^="mermaid-"],
     gap: 0.4rem;
     padding: 0.35rem 0.75rem;
     justify-content: flex-start;
+    white-space: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     mask-image: linear-gradient(to right, transparent 0, black 8px, black calc(100% - 16px), transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0, black 8px, black calc(100% - 16px), transparent 100%);
+  }
+
+  .markdown-content img {
+    max-width: 100%;
   }
 
   .stats-bar::-webkit-scrollbar { display: none; }
@@ -4576,6 +4597,24 @@ button, a, .source-card, .prompt-pill {
   color: inherit;
   font-family: inherit;
 }
+
+.animated-terminal { border-radius: 10px; overflow: hidden; border: 1px solid rgba(139,92,246,0.2); margin: 0.5rem 0; }
+.terminal-header { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: rgba(0,0,0,0.4); }
+.terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+.terminal-dot.red { background: #ff5f57; }
+.terminal-dot.yellow { background: #febc2e; }
+.terminal-dot.green { background: #28c840; }
+.terminal-title { margin-left: auto; font-size: 0.7rem; color: rgba(255,255,255,0.4); font-family: 'Geist Mono', monospace; }
+.terminal-body { padding: 12px 16px; background: rgba(0,0,0,0.6); margin: 0; font-size: 0.8rem; font-family: 'Geist Mono', monospace; color: #22d3ee; line-height: 1.6; min-height: 80px; }
+.terminal-line { white-space: pre-wrap; }
+.terminal-active { color: #a855f7; }
+.terminal-cursor { animation: blink 0.8s step-end infinite; color: #a855f7; }
+@keyframes blink { 50% { opacity: 0; } }
+.light-mode .animated-terminal { border-color: rgba(124,58,237,0.15); }
+.light-mode .terminal-header { background: rgba(0,0,0,0.06); }
+.light-mode .terminal-body { background: rgba(0,0,0,0.03); color: #0891b2; }
+.light-mode .terminal-active { color: #7c3aed; }
+.light-mode .terminal-cursor { color: #7c3aed; }
 
 .product-output-block {
   margin: 0;

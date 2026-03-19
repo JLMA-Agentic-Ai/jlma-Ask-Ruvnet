@@ -241,33 +241,18 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
       </button>
       <button className="capability-tile" onClick={() => onCapability('decks')}>
         <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">&#128202;</span></span>
-        <span className="tile-label">CEO & CTO Decks</span>
-        <span className="tile-count">Presentations</span>
+        <span className="tile-label">Presentations</span>
+        <span className="tile-count">CEO & CTO Decks</span>
       </button>
       <button className="capability-tile" onClick={() => onCapability('universe')}>
         <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">&#127756;</span></span>
         <span className="tile-label">Knowledge Universe</span>
         <span className="tile-count">3D Explorer</span>
       </button>
-      <button className="capability-tile" onClick={() => onCapability('rvf-engine')}>
-        <span className="tile-icon-wrapper tile-rvf"><span className="tile-icon">&#9889;</span></span>
-        <span className="tile-label">RVF Engine</span>
-        <span className="tile-count">Live Demo</span>
-      </button>
       <button className="capability-tile" onClick={() => onCapability('pi-executable')}>
         <span className="tile-icon-wrapper tile-pi-exec"><span className="tile-icon">&#129504;</span></span>
-        <span className="tile-label">Executable KB</span>
-        <span className="tile-count">6 Stages</span>
-      </button>
-      <button className="capability-tile" onClick={() => onCapability('pi-living-graph')}>
-        <span className="tile-icon-wrapper tile-pi-graph"><span className="tile-icon">&#127760;</span></span>
-        <span className="tile-label">Living Graph</span>
-        <span className="tile-count">5 Stages</span>
-      </button>
-      <button className="capability-tile" onClick={() => onCapability('pi-learning-loop')}>
-        <span className="tile-icon-wrapper tile-pi-loop"><span className="tile-icon">&#128260;</span></span>
-        <span className="tile-label">Learning Loop</span>
-        <span className="tile-count">6 Stages</span>
+        <span className="tile-label">Pi Brain Demos</span>
+        <span className="tile-count">3 Interactive Demos</span>
       </button>
       <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
         <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">&#128211;</span></span>
@@ -621,6 +606,54 @@ const PRODUCT_DATA = {
   },
 };
 
+// Animated terminal component — types out lines one by one when scrolled into view
+const AnimatedTerminal = ({ lines, typingSpeed = 30 }) => {
+  const [displayedLines, setDisplayedLines] = useState([]);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [currentChar, setCurrentChar] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [started]);
+
+  useEffect(() => {
+    if (!started || currentLine >= lines.length) return;
+    const line = lines[currentLine];
+    if (currentChar < line.length) {
+      const timer = setTimeout(() => setCurrentChar(c => c + 1), typingSpeed);
+      return () => clearTimeout(timer);
+    } else {
+      setDisplayedLines(prev => [...prev, line]);
+      setCurrentLine(l => l + 1);
+      setCurrentChar(0);
+    }
+  }, [started, currentLine, currentChar, lines, typingSpeed]);
+
+  const activeLine = started && currentLine < lines.length ? lines[currentLine].substring(0, currentChar) : '';
+
+  return (
+    <div className="animated-terminal" ref={ref}>
+      <div className="terminal-header">
+        <span className="terminal-dot red" />
+        <span className="terminal-dot yellow" />
+        <span className="terminal-dot green" />
+        <span className="terminal-title">terminal</span>
+      </div>
+      <pre className="terminal-body">
+        {displayedLines.map((l, i) => <div key={i} className="terminal-line">{l}</div>)}
+        {activeLine && <div className="terminal-line terminal-active">{activeLine}<span className="terminal-cursor">|</span></div>}
+      </pre>
+    </div>
+  );
+};
+
 // Product deep-dive page component for canvas panel (v4 Learn Mode)
 const ProductPage = ({ product, onAskQuestion }) => {
   const data = PRODUCT_DATA[product];
@@ -664,7 +697,7 @@ const ProductPage = ({ product, onAskQuestion }) => {
 
       <div className="product-section">
         <h2 className="product-section-title">Expected Output</h2>
-        <pre className="product-output-block"><code>{data.expectedOutput}</code></pre>
+        <AnimatedTerminal lines={data.expectedOutput.split('\n')} typingSpeed={25} />
       </div>
 
       <div className="product-section">
@@ -918,21 +951,17 @@ function App() {
         );
       }
 
-      // Local video links — render video card
+      // Local video links — render inline video player
       const videoMatch = href.match(/\/assets\/docs\/(.+\.mp4)$/i);
       if (videoMatch) {
         const filename = videoMatch[1];
         const displayTitle = label || filename.replace(/_/g, ' ').replace('.mp4', '');
         return (
-          <span className="inline-media-card inline-media-video" role="group" aria-label={`Video: ${displayTitle}`}>
-            <span className="imc-icon" aria-hidden="true">&#9654;&#65039;</span>
-            <span className="imc-body">
-              <span className="imc-title">{displayTitle}</span>
-              <span className="imc-desc">Video</span>
-            </span>
-            <button className="imc-action" onClick={() => setCanvasContent({ type: 'video', content: `/assets/docs/${filename}`, title: displayTitle, action: 'document' })} aria-label={`Play in canvas: ${displayTitle}`}>
-              Play in Canvas
-            </button>
+          <span className="inline-video-card" role="group" aria-label={`Video: ${displayTitle}`}>
+            <video controls preload="metadata" style={{width:'100%',maxWidth:'560px',borderRadius:'12px',margin:'0.5rem 0'}}>
+              <source src={`/assets/docs/${filename}`} type="video/mp4" />
+            </video>
+            <span className="imc-title">{displayTitle}</span>
           </span>
         );
       }
