@@ -82,7 +82,7 @@ const DECK_DOCS = [
 // NotebookLM deep-dive interactive notebook
 const NOTEBOOKLM_URL = 'https://notebooklm.google.com/notebook/50a4a2ef-a743-4fc7-81e3-774b95c667c3';
 
-// Resource documents available at /assets/docs/ — Auto-synced 2026-03-18
+// Resource documents available at /assets/docs/ — Auto-synced 2026-03-19
 const RESOURCE_DOCS = [
   { file: 'Whats_New_RuvNet_Stack_March2026.mp4', title: 'What\'s New (March 2026)', desc: 'Latest updates across Ruflo, RuVector, RuView, Dossier', icon: '🔊', type: 'video' },
   { file: 'Architecture_That_Changes_Everything.mp4', title: 'The Architecture That Changes Everything', desc: 'Why this is 2 std devs beyond state-of-art', icon: '🔊', type: 'video' },
@@ -193,6 +193,20 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
         <span className="dikw-desc">60 agents, one command</span>
         {heroExpanded && <span className="dikw-detail">Hierarchical swarms, 27 lifecycle hooks, self-learning routing. Get started: <code>npx ruflo@latest init</code></span>}
       </div>
+      {heroExpanded && (
+        <div className="dikw-comparison">
+          <div className="dikw-compare-row">
+            <span className="dikw-compare-label">Pinecone/pgvector</span>
+            <span className="dikw-compare-level dikw-level-data">DATA</span>
+            <span className="dikw-compare-desc">Raw vectors, no meaning</span>
+          </div>
+          <div className="dikw-compare-row dikw-compare-highlight">
+            <span className="dikw-compare-label">RuVector + RVF</span>
+            <span className="dikw-compare-level dikw-level-knowledge">KNOWLEDGE</span>
+            <span className="dikw-compare-desc">Meaning, context, quality built in</span>
+          </div>
+        </div>
+      )}
       <span className="dikw-expand-hint">{heroExpanded ? 'Click to collapse' : 'Click to explore the stack'}</span>
     </div>
     <h1 className="hero-heading">What do you want to build?</h1>
@@ -680,18 +694,16 @@ const ProductPage = ({ product, onAskQuestion }) => {
 
       <div className="product-section">
         <h2 className="product-section-title">Install</h2>
-        <div className="product-install-block">
-          <div className="product-install-header">
-            <span className="product-install-label">terminal</span>
-            <button
-              className={`product-copy-btn ${copied === 'install' ? 'copied' : ''}`}
-              onClick={() => copyToClip(data.install, 'install')}
-              aria-label="Copy install command"
-            >
-              {copied === 'install' ? 'Copied' : 'Copy'}
-            </button>
-          </div>
-          <pre className="product-install-code"><code>$ {data.install}</code></pre>
+        <div style={{position:'relative'}}>
+          <AnimatedTerminal lines={['$ ' + data.install]} typingSpeed={20} />
+          <button
+            className={`product-copy-btn product-copy-floating ${copied === 'install' ? 'copied' : ''}`}
+            onClick={() => copyToClip(data.install, 'install')}
+            aria-label="Copy install command"
+            style={{position:'absolute',top:'8px',right:'12px',zIndex:1}}
+          >
+            {copied === 'install' ? 'Copied' : 'Copy'}
+          </button>
         </div>
       </div>
 
@@ -930,10 +942,12 @@ function App() {
         );
       }
 
-      // Local PDF links — render PDF card
-      const pdfMatch = href.match(/\/assets\/docs\/(.+\.pdf)$/i);
-      if (pdfMatch) {
-        const filename = pdfMatch[1];
+      // PDF links — render card that opens in canvas viewer (any .pdf href)
+      const localPdfMatch = href.match(/\/assets\/docs\/(.+\.pdf)$/i);
+      const anyPdfMatch = !localPdfMatch && href.match(/\.pdf(\?.*)?$/i);
+      if (localPdfMatch || anyPdfMatch) {
+        const filename = localPdfMatch ? localPdfMatch[1] : href.split('/').pop().replace(/\?.*$/, '');
+        const pdfUrl = localPdfMatch ? `/assets/docs/${filename}` : href;
         const displayTitle = label || filename.replace(/_/g, ' ').replace('.pdf', '');
         const isCeo = /ceo/i.test(filename) || /ceo/i.test(label);
         const isCto = /cto/i.test(filename) || /cto/i.test(label);
@@ -944,7 +958,7 @@ function App() {
               <span className="imc-title">{displayTitle}</span>
               <span className="imc-desc">PDF Document</span>
             </span>
-            <button className="imc-action" onClick={() => setCanvasContent({ type: 'pdf', content: `/assets/docs/${filename}`, title: displayTitle, action: 'document' })} aria-label={`View in canvas: ${displayTitle}`}>
+            <button className="imc-action" onClick={() => setCanvasContent({ type: 'pdf', content: pdfUrl, title: displayTitle, action: 'document' })} aria-label={`View in canvas: ${displayTitle}`}>
               View in Canvas
             </button>
           </span>
@@ -1534,6 +1548,7 @@ function App() {
             <span className="stats-dot">·</span>
             <span><span className="stats-highlight"><CountUp end={communityStats.pi.contributors} /></span> Contributors</span>
           </>)}
+          <span className="stat-live-dot" title="Stats refresh hourly from GitHub and npm">Live</span>
         </div>
       )}
 

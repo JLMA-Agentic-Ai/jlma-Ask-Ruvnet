@@ -2169,6 +2169,12 @@ body > div > svg[id^="mermaid-"],
   text-shadow: 0 0 14px rgba(34,211,238,0.5);
 }
 
+.stat-live-dot { color: rgba(34,211,238,0.5); font-size: 0.65rem; letter-spacing: 0.05em; }
+.stat-live-dot::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22d3ee; margin-right: 4px; animation: pulse-live 2s ease-in-out infinite; }
+@keyframes pulse-live { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+.light-mode .stat-live-dot { color: rgba(8,145,178,0.5); }
+.light-mode .stat-live-dot::before { background: #0891b2; }
+
 .light-mode .stats-bar {
   background: linear-gradient(90deg, rgba(234,88,12,0.04), rgba(124,58,237,0.04), rgba(8,145,178,0.04));
 }
@@ -2246,6 +2252,17 @@ body > div > svg[id^="mermaid-"],
 .light-mode .dikw-knowledge { background: linear-gradient(135deg, rgba(6,182,212,0.06), rgba(8,145,178,0.02)); }
 .light-mode .dikw-orchestration { background: linear-gradient(135deg, rgba(234,88,12,0.06), rgba(251,146,60,0.02)); }
 .light-mode .dikw-expand-hint { color: rgba(0,0,0,0.3); }
+.dikw-comparison { padding: 0.6rem 1.25rem; border-top: 1px solid rgba(139,92,246,0.15); }
+.dikw-compare-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.3rem 0; font-size: 0.78rem; }
+.dikw-compare-label { min-width: 120px; font-family: 'Geist Mono', monospace; color: rgba(255,255,255,0.5); }
+.dikw-compare-level { padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; font-family: 'Geist Mono', monospace; }
+.dikw-level-data { background: rgba(239,68,68,0.15); color: #f87171; }
+.dikw-level-knowledge { background: rgba(6,182,212,0.15); color: #22d3ee; }
+.dikw-compare-desc { color: rgba(255,255,255,0.4); font-size: 0.72rem; }
+.dikw-compare-highlight { background: rgba(6,182,212,0.05); border-radius: 6px; padding: 0.3rem 0.5rem; }
+.light-mode .dikw-compare-label { color: rgba(0,0,0,0.4); }
+.light-mode .dikw-compare-desc { color: rgba(0,0,0,0.35); }
+.light-mode .dikw-compare-highlight { background: rgba(6,182,212,0.03); }
 .light-mode .hero-dikw-stack { border-color: rgba(124,58,237,0.15); }
 .light-mode .hero-dikw-stack:hover { border-color: rgba(124,58,237,0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 @media (max-width: 768px) {
@@ -3030,9 +3047,11 @@ body > div > svg[id^="mermaid-"],
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
     right: 0;
     bottom: 0;
-    z-index: 100;
+    z-index: 1000;
     background: var(--bg-primary, #0a0a0a);
   }
 }
@@ -3128,9 +3147,11 @@ body > div > svg[id^="mermaid-"],
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
     right: 0;
     bottom: 0;
-    z-index: 100;
+    z-index: 1000;
     background: var(--bg-primary, #0a0a0a);
     overflow: hidden;
     display: flex;
@@ -3960,16 +3981,18 @@ button, a, .source-card, .prompt-pill {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
     right: 0;
     bottom: 0;
-    z-index: 100;
+    z-index: 1000;
     background: var(--bg-primary, #0a0a0a);
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
 
-  /* Canvas header: compact on mobile */
+  /* Canvas header: compact on mobile with visible close */
   .main-layout.split .canvas-header,
   .main-layout.presentation .canvas-header {
     padding: 0.5rem 0.75rem;
@@ -3986,20 +4009,43 @@ button, a, .source-card, .prompt-pill {
     font-size: 0.65rem;
   }
 
-  /* Canvas content: fills remaining space, scrollable both axes */
+  /* Close button: prominent on mobile so users can always dismiss */
+  .main-layout.split .close-content-btn,
+  .main-layout.presentation .close-content-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 8px;
+    background: rgba(239, 68, 68, 0.9);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Canvas content: fills remaining space, scrollable */
   .main-layout.split .canvas-content,
   .main-layout.presentation .canvas-content {
     flex: 1 1 0;
     min-height: 0;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     padding: 0.5rem;
+    padding-bottom: 80px;
+    height: 100%;
   }
 
-  /* Close button: compact */
-  .main-layout.split .close-content-btn {
-    padding: 6px 14px;
-    font-size: 0.75rem;
+  /* Product page content: ensure scrolling within canvas on mobile */
+  .main-layout.split .canvas-content .product-page,
+  .main-layout.presentation .canvas-content .product-page {
+    overflow-y: auto;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 80px;
   }
 
   .main-layout.split .content-controls {
@@ -4615,6 +4661,21 @@ button, a, .source-card, .prompt-pill {
 .light-mode .terminal-body { background: rgba(0,0,0,0.03); color: #0891b2; }
 .light-mode .terminal-active { color: #7c3aed; }
 .light-mode .terminal-cursor { color: #7c3aed; }
+
+.product-copy-floating {
+  background: rgba(139,92,246,0.15);
+  border: 1px solid rgba(139,92,246,0.3);
+  color: #c084fc;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  font-family: 'Geist Mono', monospace;
+  transition: all 0.2s;
+}
+.product-copy-floating:hover { background: rgba(139,92,246,0.25); }
+.product-copy-floating.copied { color: #22d3ee; border-color: rgba(6,182,212,0.3); }
+.light-mode .product-copy-floating { background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.2); color: #7c3aed; }
 
 .product-output-block {
   margin: 0;
