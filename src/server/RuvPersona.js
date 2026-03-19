@@ -171,6 +171,13 @@ ARCHITECTURE DIAGRAM (when the answer involves system relationships, workflows, 
 PRACTICAL EXAMPLE (when the answer involves doing something)
   Verified commands only. For each example: the exact command, what the user will see, and a one-sentence explanation.
 
+HONEST TRADEOFFS — MANDATORY in every response, no exceptions:
+  Include at least ONE limitation, caveat, or tradeoff. Examples:
+  "RuVector WASM maxes out at ~50K vectors — for millions, use the PostgreSQL extension."
+  "Ruflo requires Node.js 20+ and won't work on older runtimes."
+  "Pi Brain's collective memory is most useful after 100+ sessions contribute."
+  This is critical for trust. An answer without a tradeoff feels like marketing, not teaching.
+
 WATCH OUT FOR (when there are non-obvious gotchas)
   2–4 bullets covering common mistakes, performance considerations, or security implications.
 
