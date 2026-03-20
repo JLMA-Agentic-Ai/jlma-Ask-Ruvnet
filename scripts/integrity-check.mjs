@@ -100,7 +100,7 @@ check('Version sanity', () => {
 
 // 6. Key PDF assets exist
 check('CEO deck exists', () => {
-  const candidates = ['Ruflo-v35-CEO-Deck.pdf', 'CEO-Deck-RuvNet-2026.pdf'];
+  const candidates = ['CEO-Deck-RuvNet-2026-v2.pdf'];
   for (const f of candidates) {
     if (fs.existsSync(path.join(ROOT, 'src/ui/public/assets/docs', f))) return true;
   }

@@ -186,7 +186,7 @@ const NLM_RESOURCES = [
         topics: ['ceo', 'investment', 'roi', 'business case', 'executive', 'investor', 'fundraising', 'valuation'],
         type: 'pdf',
         title: 'Ruflo v3.5 CEO Investment Deck',
-        url: '/assets/docs/Ruflo-v35-CEO-Deck.pdf',
+        url: '/assets/docs/CEO-Deck-RuvNet-2026-v2.pdf',
         emoji: '\ud83d\udcc4',
         description: 'Executive overview with ROI analysis, market opportunity, and investment thesis'
     },
@@ -194,7 +194,7 @@ const NLM_RESOURCES = [
         topics: ['cto', 'technical deck', 'benchmarks', 'developer experience', 'engineering'],
         type: 'pdf',
         title: 'Ruflo v3.5 CTO Technical Deck',
-        url: '/assets/docs/Ruflo-v35-CTO-Deck.pdf',
+        url: '/assets/docs/CTO-Deck-RuvNet-2026-v2.pdf',
         emoji: '\ud83d\udcc4',
         description: 'Technical architecture, benchmarks, and developer experience overview'
     },
@@ -226,7 +226,7 @@ const NLM_RESOURCES = [
         topics: ['ceo', 'investment', 'agentic intelligence', 'executive summary'],
         type: 'pdf',
         title: 'CEO Deck: Agentic Intelligence',
-        url: '/assets/docs/CEO-Deck-Agentic-Intelligence.pdf',
+        url: '/assets/docs/CEO-Deck-RuvNet-2026-v2.pdf',
         emoji: '\ud83d\udcc4',
         description: 'Executive deck on the agentic intelligence vision and market opportunity'
     },
@@ -234,7 +234,7 @@ const NLM_RESOURCES = [
         topics: ['cto', 'architecture', 'ruvnet architecture', 'technical overview'],
         type: 'pdf',
         title: 'CTO Deck: RuvNet Architecture',
-        url: '/assets/docs/CTO-Deck-RuvNet-Architecture.pdf',
+        url: '/assets/docs/CTO-Deck-RuvNet-2026-v2.pdf',
         emoji: '\ud83d\udcc4',
         description: 'Technical deep-dive deck on the RuvNet system architecture'
     },

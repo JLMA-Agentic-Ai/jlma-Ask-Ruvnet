@@ -75,8 +75,8 @@ const timeAgo = (dateStr) => {
 
 // CEO & CTO presentation decks
 const DECK_DOCS = [
-  { file: 'Ruflo-v35-CEO-Deck.pdf', title: 'CEO Deck: RuvNet — The Complete Agentic Stack', desc: 'Why RuvNet is 2 std devs beyond state of the art, free, and compounds at AI speed', icon: '👔', type: 'pdf' },
-  { file: 'Ruflo-v35-CTO-Deck.pdf', title: 'CTO Deck: RuvNet Technical Architecture', desc: 'Architecture deep-dive — RuVector, Ruflo, AIMDS, RVF, SONA, benchmarks', icon: '🔧', type: 'pdf' },
+  { file: 'CEO-Deck-RuvNet-2026-v2.pdf', title: 'CEO Investment Deck 2026', desc: '21 slides — DIKW positioning, "2 Generations Ahead" timeline, case studies, $180B TAM', icon: '👔', type: 'pdf' },
+  { file: 'CTO-Deck-RuvNet-2026-v2.pdf', title: 'CTO Architecture Deck 2026', desc: '23 slides — PaperBanana diagrams, benchmark charts, WASM proof, swarm topology', icon: '🔧', type: 'pdf' },
 ];
 
 // NotebookLM deep-dive interactive notebook
@@ -543,7 +543,7 @@ const PRODUCT_DATA = {
       'Unlike Copilot or Cursor that suggest code line-by-line, Ruflo agents operate autonomously. They read your project, plan multi-step implementations, write tests, review each other\'s work, and learn from every session. The ReasoningBank self-learning system means your agents get smarter the more you use them.',
       'With 60+ specialized agent types, hierarchical swarm coordination, and a built-in MCP server with 96 tools, Ruflo is the operating system for AI-native development.',
     ],
-    deck: '/assets/docs/Ruflo-v35-CEO-Deck.pdf',
+    deck: '/assets/docs/CEO-Deck-RuvNet-2026-v2.pdf',
     github: 'https://github.com/ruvnet/ruflo',
     statKey: 'ruflo',
   },

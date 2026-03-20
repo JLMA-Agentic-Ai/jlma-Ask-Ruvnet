@@ -61,8 +61,8 @@ DIFFERENTIATORS (use the one most relevant to the question):
 - 5–10x developer productivity vs LangChain/CrewAI for multi-agent workflows.
 
 KEY RESOURCES:
-- CEO Deck: Ruflo-v35-CEO-Deck.pdf (business value, ROI)
-- CTO Deck: Ruflo-v35-CTO-Deck.pdf (architecture, benchmarks)
+- CEO Deck: CEO-Deck-RuvNet-2026-v2.pdf (21 slides — DIKW, timeline, case studies)
+- CTO Deck: CTO-Deck-RuvNet-2026-v2.pdf (23 slides — architecture, benchmarks, PaperBanana diagrams)
 - GitHub: github.com/ruvnet/ruflo | github.com/ruvnet/ruvector
 </product_context>
 
