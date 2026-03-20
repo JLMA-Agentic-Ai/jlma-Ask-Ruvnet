@@ -324,32 +324,40 @@ async function downloadStudio(reg, studio, artifactId, retries = null) {
 async function createStudio(reg, studio) {
   console.log(`\n[create] ${studio.title} (${studio.artifactType})...`);
 
-  // Use MCP tool via nlm CLI: nlm studio create <notebookId> --type <type> [options]
-  const createArgs = ['studio', 'create', reg.notebookId, '--type', studio.artifactType];
+  // FIX (2026-03-19): nlm CLI v0.4.9 removed `studio create` command.
+  // Use MCP bridge to call the MCP server's studio_create tool directly.
+  const bridgePath = path.join(ROOT, 'scripts', 'nlm-mcp-bridge.mjs');
+  const bridgeArgs = [
+    bridgePath, 'studio_create',
+    '--notebook_id', reg.notebookId,
+    '--artifact_type', studio.artifactType,
+    '--confirm', 'true',
+  ];
 
   if (studio.focusPrompt) {
-    createArgs.push('--instructions', studio.focusPrompt);
+    bridgeArgs.push('--focus_prompt', studio.focusPrompt);
   }
 
   if (studio.artifactType === 'audio') {
-    if (studio.audioFormat) createArgs.push('--format', studio.audioFormat);
-    if (studio.audioLength) createArgs.push('--length', studio.audioLength);
+    if (studio.audioFormat) bridgeArgs.push('--audio_format', studio.audioFormat);
+    if (studio.audioLength) bridgeArgs.push('--audio_length', studio.audioLength);
   } else if (studio.artifactType === 'video') {
-    if (studio.videoFormat) createArgs.push('--format', studio.videoFormat);
-    if (studio.visualStyle) createArgs.push('--style', studio.visualStyle);
+    if (studio.videoFormat) bridgeArgs.push('--video_format', studio.videoFormat);
+    if (studio.visualStyle) bridgeArgs.push('--visual_style', studio.visualStyle);
   } else if (studio.artifactType === 'slide_deck') {
-    if (studio.slideFormat) createArgs.push('--format', studio.slideFormat);
+    if (studio.slideFormat) bridgeArgs.push('--slide_format', studio.slideFormat);
+  } else if (studio.artifactType === 'infographic') {
+    bridgeArgs.push('--infographic_style', studio.infographicStyle || 'professional');
+    bridgeArgs.push('--orientation', studio.orientation || 'landscape');
   }
-
-  if (studio.sourceIds && studio.sourceIds.length > 0) {
-    createArgs.push('--source-ids', studio.sourceIds.join(','));
-  }
-
-  createArgs.push('--confirm');
-  createArgs.push('--wait'); // Wait for completion inline
 
   try {
-    const result = nlmExec(reg, createArgs, 120000);
+    const result = execFileSync('/usr/local/bin/node', bridgeArgs, {
+      encoding: 'utf8',
+      timeout: 60000,
+      stdio: ['pipe', 'pipe', 'pipe'],
+      cwd: ROOT,
+    }).trim();
     // Extract artifact ID from result
     let artifactId = null;
     try {

@@ -82,7 +82,7 @@ const DECK_DOCS = [
 // NotebookLM deep-dive interactive notebook
 const NOTEBOOKLM_URL = 'https://notebooklm.google.com/notebook/50a4a2ef-a743-4fc7-81e3-774b95c667c3';
 
-// Resource documents available at /assets/docs/ — Auto-synced 2026-03-19
+// Resource documents available at /assets/docs/ — Auto-synced 2026-03-20
 const RESOURCE_DOCS = [
   { file: 'Whats_New_RuvNet_Stack_March2026.mp4', title: 'What\'s New (March 2026)', desc: 'Latest updates across Ruflo, RuVector, RuView, Dossier', icon: '🔊', type: 'video' },
   { file: 'Architecture_That_Changes_Everything.mp4', title: 'The Architecture That Changes Everything', desc: 'Why this is 2 std devs beyond state-of-art', icon: '🔊', type: 'video' },
@@ -961,6 +961,24 @@ function App() {
             <button className="imc-action" onClick={() => setCanvasContent({ type: 'pdf', content: pdfUrl, title: displayTitle, action: 'document' })} aria-label={`View in canvas: ${displayTitle}`}>
               View in Canvas
             </button>
+          </span>
+        );
+      }
+
+      // Local audio deep dives — render inline audio player (match _Audio.mp4 BEFORE video)
+      if (href.match(/\/assets\/docs\/.*_Audio\.mp4$/i)) {
+        const filename = href.split('/assets/docs/')[1];
+        const displayTitle = label || filename.replace(/_/g, ' ').replace('_Audio.mp4', '');
+        return (
+          <span className="inline-media-card inline-media-audio" role="group" aria-label={`Audio: ${displayTitle}`}>
+            <span className="imc-icon" aria-hidden="true">&#127911;</span>
+            <span className="imc-body">
+              <span className="imc-title">{displayTitle}</span>
+              <span className="imc-desc">AI-hosted audio deep dive — play inline</span>
+              <audio controls preload="metadata" style={{width:'100%',maxWidth:'480px',marginTop:'0.5rem',borderRadius:'8px'}}>
+                <source src={href} type="audio/mp4" />
+              </audio>
+            </span>
           </span>
         );
       }

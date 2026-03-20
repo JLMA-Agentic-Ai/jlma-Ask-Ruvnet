@@ -98,21 +98,29 @@ Raw documentation chunks from this repo:
 ${context}
 ${existingList}
 
-Create ONE comprehensive teaching entry that:
-1. Has a clear, specific title (not just the repo name)
-2. Explains what this component does, why it matters, and how it fits in the ecosystem
-3. Uses plain English analogies — the reader is learning agentic AI
-4. Includes specific numbers, commands, or code examples from the chunks
-5. Is 800-2000 words
-6. Mentions honest limitations or tradeoffs
+Analyze the chunks and identify DISTINCT sub-components, crates, or major features.
+For EACH distinct component, create a separate teaching entry. For small repos, 1 entry is fine.
+For large monorepos with many crates/modules, create up to 5 entries covering the most important ones.
 
-Respond ONLY with valid JSON:
-{
-  "title": "...",
-  "content": "...",
-  "category": "one of: agents, vector-db, architecture, security, neural, swarms, deployment, performance, teaching, general, wasm-local-llm, memory, algorithms",
-  "quality_score": 85-100
-}`;
+Each entry MUST:
+1. Have a clear, specific title (not just the repo name — name the specific component)
+2. Explain what it does, why it matters, how it fits in the RuVector/Ruflo ecosystem
+3. Answer: "What is this? Why should I care? How do I use it? What can it do that alternatives can't?"
+4. Use plain English analogies — the reader is learning agentic AI, not a Rust expert
+5. Include specific numbers, commands, or code examples from the chunks
+6. Be 500-2000 words each
+7. Mention honest limitations or tradeoffs
+
+Respond ONLY with valid JSON — an ARRAY of entries:
+[
+  {
+    "title": "...",
+    "content": "...",
+    "category": "one of: agents, vector-db, architecture, security, neural, swarms, deployment, performance, teaching, general, wasm-local-llm, memory, algorithms",
+    "quality_score": 85-100
+  }
+]
+If only one entry is appropriate, still return an array with one element.`;
 
   try {
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -133,20 +141,30 @@ Respond ONLY with valid JSON:
     const data = await res.json();
     const text = data.choices?.[0]?.message?.content || '';
 
-    // Extract JSON from response (handle markdown code blocks)
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
+    // Extract JSON from response (handle markdown code blocks, arrays or objects)
+    const arrayMatch = text.match(/\[[\s\S]*\]/);
+    const objMatch = text.match(/\{[\s\S]*\}/);
+    let entries;
+    if (arrayMatch) {
+      entries = JSON.parse(arrayMatch[0]);
+    } else if (objMatch) {
+      entries = [JSON.parse(objMatch[0])];
+    } else {
       log(`  WARNING: LLM response for ${repoName} was not valid JSON`);
       return null;
     }
 
-    const entry = JSON.parse(jsonMatch[0]);
-    if (!entry.title || !entry.content || entry.content.length < 200) {
-      log(`  WARNING: Entry for ${repoName} failed quality gate (title/content too short)`);
+    if (!Array.isArray(entries)) entries = [entries];
+
+    // Filter valid entries
+    const valid = entries.filter(e => e.title && e.content && e.content.length >= 200);
+    if (valid.length === 0) {
+      log(`  WARNING: All entries for ${repoName} failed quality gate`);
       return null;
     }
 
-    return entry;
+    log(`  Synthesized ${valid.length} entries for ${repoName}`);
+    return valid;
   } catch (err) {
     log(`  ERROR synthesizing ${repoName}: ${err.message}`);
     return null;
@@ -251,41 +269,52 @@ async function main() {
     `, [`%${gap.package_name}%`]);
     const existingTitles = existingGold.map(r => r.title);
 
-    // Synthesize gold entry
-    const entry = await synthesizeGoldEntry(gap.package_name, chunks, existingTitles);
-    if (!entry) { errors++; continue; }
+    // Synthesize gold entries (may return multiple for monorepos)
+    const result = await synthesizeGoldEntry(gap.package_name, chunks, existingTitles);
+    if (!result) { errors++; continue; }
 
-    if (entry.quality_score < QUALITY_THRESHOLD) {
-      log(`  Skipping — quality score ${entry.quality_score} below threshold ${QUALITY_THRESHOLD}`);
-      continue;
-    }
+    // Handle both single entry and array of entries
+    const entries = Array.isArray(result) ? result : [result];
 
-    log(`  Synthesized: "${entry.title}" (${entry.content.length} chars, quality: ${entry.quality_score})`);
+    for (const entry of entries) {
+      if (entry.quality_score < QUALITY_THRESHOLD) {
+        log(`  Skipping "${entry.title}" — quality score ${entry.quality_score} below threshold ${QUALITY_THRESHOLD}`);
+        continue;
+      }
 
-    // Embed
-    const text = (entry.title + '\n' + entry.content).substring(0, 2000);
-    const result = await onnxSvc.embed(text);
-    const vecStr = '[' + Array.from(result.embedding).join(',') + ']';
+      log(`  Synthesized: "${entry.title}" (${entry.content.length} chars, quality: ${entry.quality_score})`);
 
-    // Upsert into kb_complete
-    try {
-      await pool.query(`
-        INSERT INTO ask_ruvnet.kb_complete
-        (title, content, category, quality_score, embedding, file_path)
-        VALUES ($1, $2, $3, $4, $5::ruvector(384), $6)
-      `, [
-        entry.title,
-        entry.content,
-        entry.category,
-        entry.quality_score,
-        vecStr,
-        `auto-curated/${gap.package_name}`
-      ]);
-      created++;
-      log(`  CREATED gold entry: "${entry.title}"`);
-    } catch (err) {
-      log(`  ERROR inserting: ${err.message}`);
-      errors++;
+      // Embed
+      const text = (entry.title + '\n' + entry.content).substring(0, 2000);
+      const embResult = await onnxSvc.embed(text);
+      const vecStr = '[' + Array.from(embResult.embedding).join(',') + ']';
+
+      // Upsert into kb_complete (use title-based slug for file_path uniqueness)
+      const slug = entry.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60);
+      try {
+        await pool.query(`
+          INSERT INTO ask_ruvnet.kb_complete
+          (title, content, category, quality_score, embedding, file_path)
+          VALUES ($1, $2, $3, $4, $5::ruvector(384), $6)
+          ON CONFLICT (file_path) DO UPDATE SET
+            content = EXCLUDED.content,
+            quality_score = EXCLUDED.quality_score,
+            embedding = EXCLUDED.embedding,
+            updated_at = now()
+        `, [
+          entry.title,
+          entry.content,
+          entry.category,
+          entry.quality_score,
+          vecStr,
+          `auto-curated/${gap.package_name}/${slug}`
+        ]);
+        created++;
+        log(`  CREATED gold entry: "${entry.title}"`);
+      } catch (err) {
+        log(`  ERROR inserting: ${err.message}`);
+        errors++;
+      }
     }
   }
 
@@ -307,7 +336,11 @@ async function main() {
       execFileSync('/usr/local/bin/node', [path.join(ROOT, 'scripts/build-quantized-rvf.mjs')], {
         cwd: ROOT, stdio: 'inherit', timeout: 120000
       });
-      log('RVF rebuild complete.');
+      // Also export to MCP kb-data format
+      execFileSync('/usr/local/bin/node', [path.join(ROOT, 'scripts/export-mcp-kb.mjs'), '--output', 'kb-data/'], {
+        cwd: ROOT, stdio: 'inherit', timeout: 120000
+      });
+      log('RVF rebuild + MCP export complete.');
     } catch (err) {
       log(`WARNING: RVF rebuild failed: ${err.message}`);
     }
