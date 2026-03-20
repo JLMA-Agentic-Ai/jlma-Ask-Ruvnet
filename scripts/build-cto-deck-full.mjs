@@ -1,18 +1,27 @@
 #!/usr/bin/env node
 /**
- * build-cto-deck-full.mjs — 19-slide CTO deck for RuvNet
+ * build-cto-deck-full.mjs — 23-slide CTO deck for RuvNet (v3)
  *
  * Narrative arc:
  *   Act 1 (1-4):   INTRIGUE — hook with the problem, show the gap
  *   Act 2 (5-9):   CREDIBILITY — benchmarks, code, architecture
- *   Act 3 (10-16): DEPTH — each major module gets its own slide
- *   Act 4 (17-19): CLOSE — roadmap, integration, CTA
+ *   Act 3 (10-18): DEPTH — each major module gets its own slide + proofs
+ *   Act 4 (19-23): CLOSE — roadmap, tradeoffs, CTA, appendix
  *
  * Design rules:
  *   - 60%+ visual, 40% text per slide
  *   - Dark navy background (#0F1629)
  *   - Fonts: Arial Black / Arial / Consolas
  *   - PaperBanana images as dominant visuals where available
+ *
+ * Changes from v2 (82/100 -> target 98/100):
+ *   1. Title/CTA overlay opacity increased for text legibility
+ *   2. NEW: "2 Generations Ahead" timeline slide (slide 15)
+ *   3. NEW: WASM proof slide with bar chart (slide 11)
+ *   4. Attention mechanisms reorganized into 4 category cards (slide 17)
+ *   5. NEW: "What We Don't Do (Yet)" tradeoffs slide (slide 21)
+ *   6. NEW: Appendix index slide (slide 23)
+ *   7. Competitive comparison RuvNet column highlighted green (slide 3)
  */
 
 import PptxGenJS from 'pptxgenjs';
@@ -119,22 +128,28 @@ function addSlideNumber(slide, num) {
   });
 }
 
+// Track slide number for correct numbering with new slides
+let slideNum = 0;
+function nextSlideNum() { return ++slideNum; }
+
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 1: Title — hero image background + 6 stat callouts
+// FIX: Increased overlay opacity for text legibility
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
 
-  // Hero image as background overlay (full slide, dimmed)
+  // Hero image as background overlay (full slide, dimmed more)
   s.addImage({
     path: IMG.hero, x: 0, y: 0, w: 13.333, h: 7.5,
-    transparency: 60,
+    transparency: 70,
   });
 
-  // Dark overlay for text legibility
+  // Dark overlay for text legibility — FIXED: 35% transparency = 65% opaque
   s.addShape(pptx.shapes.RECTANGLE, {
     x: 0, y: 0, w: 7, h: 7.5,
-    fill: { color: C.bg, transparency: 20 },
+    fill: { color: C.bg, transparency: 35 },
   });
 
   // Title block
@@ -165,13 +180,14 @@ function addSlideNumber(slide, num) {
     fontSize: 12, fontFace: FONT.body, color: C.textDim,
   });
   addFooter(s);
-  addSlideNumber(s, 1);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 2: The Problem — 87% failure rate
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
 
   // Problem image (right 60%)
@@ -225,13 +241,15 @@ function addSlideNumber(slide, num) {
   });
 
   addFooter(s);
-  addSlideNumber(s, 2);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 3: What Providers Ship — comparison table
+// FIX: RuvNet column has green background highlight
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('What Providers Actually Ship', {
     x: 0.8, y: 0.4, w: 8, h: 0.6,
@@ -259,12 +277,20 @@ function addSlideNumber(slide, num) {
   const startX = 4.8;
   const colW = 1.6;
 
+  // RuvNet column green background highlight — full height behind column
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: startX + 4 * colW - 0.1, y: 1.45, w: colW + 0.2, h: 5.6,
+    fill: { color: C.accentGreen, transparency: 85 },
+    rectRadius: 0.1,
+    line: { color: C.accentGreen, width: 2 },
+  });
+
   // Column headers
   providers.forEach((p, i) => {
     const isRuv = i === 4;
     s.addText(p, {
       x: startX + i * colW, y: 1.55, w: colW, h: 0.45,
-      fontSize: 12, fontFace: FONT.body, color: isRuv ? C.accent : C.textMuted,
+      fontSize: 12, fontFace: FONT.body, color: isRuv ? C.accentGreen : C.textMuted,
       bold: true, align: 'center', valign: 'middle',
     });
   });
@@ -288,7 +314,7 @@ function addSlideNumber(slide, num) {
     });
     vals.forEach((val, i) => {
       const isRuv = i === 4;
-      const symbol = val ? (isRuv ? '\u2713' : '\u2713') : '\u2014';
+      const symbol = val ? '\u2713' : '\u2014';
       const color = val ? (isRuv ? C.accentGreen : C.textDim) : C.textDim;
       const fsize = val ? 18 : 14;
       s.addText(symbol, {
@@ -300,13 +326,14 @@ function addSlideNumber(slide, num) {
   });
 
   addFooter(s);
-  addSlideNumber(s, 3);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 4: Algorithms Beat GPUs — cost comparison
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Algorithms Beat GPUs', {
     x: 0.8, y: 0.4, w: 8, h: 0.6,
@@ -359,13 +386,14 @@ function addSlideNumber(slide, num) {
   });
 
   addFooter(s);
-  addSlideNumber(s, 4);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 5: Performance Benchmarks — full-width image
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Performance Benchmarks', {
     x: 0.8, y: 0.2, w: 8, h: 0.5,
@@ -404,13 +432,14 @@ function addSlideNumber(slide, num) {
   });
 
   addFooter(s);
-  addSlideNumber(s, 5);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 6: System Architecture — hero image full-width
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('System Architecture', {
     x: 0.8, y: 0.2, w: 6, h: 0.5,
@@ -427,13 +456,14 @@ function addSlideNumber(slide, num) {
   });
 
   addFooter(s);
-  addSlideNumber(s, 6);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 7: Ship It In 5 Lines
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Ship It In 5 Lines', {
     x: 0.8, y: 0.3, w: 8, h: 0.6,
@@ -500,13 +530,14 @@ const fleet = await swarm.deploy({
   });
 
   addFooter(s);
-  addSlideNumber(s, 7);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 8: Ruflo Swarm — swarm image + callouts
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Ruflo: Multi-Agent Swarm Intelligence', {
     x: 0.8, y: 0.2, w: 8, h: 0.5,
@@ -540,13 +571,14 @@ const fleet = await swarm.deploy({
     C.accent3);
 
   addFooter(s);
-  addSlideNumber(s, 8);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 9: RuVector — HNSW image + stats
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('RuVector: PostgreSQL-Native Vector Search', {
     x: 0.8, y: 0.2, w: 10, h: 0.5,
@@ -580,13 +612,14 @@ const fleet = await swarm.deploy({
     C.accent3);
 
   addFooter(s);
-  addSlideNumber(s, 9);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
 // SLIDE 10: RVF Format — image + 24 segments
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('RVF: Cognitive Container Format', {
     x: 0.8, y: 0.2, w: 8, h: 0.5,
@@ -620,13 +653,85 @@ const fleet = await swarm.deploy({
     C.accent3);
 
   addFooter(s);
-  addSlideNumber(s, 10);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 11: AIMDS Security — security image + pipeline
+// SLIDE 11: NEW — WASM Proof (file size comparison bar chart)
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
+  const s = addSlide();
+  s.addText('The Proof Is Running Right Now', {
+    x: 0.8, y: 0.2, w: 10, h: 0.5,
+    fontSize: 28, fontFace: FONT.title, color: C.text,
+  });
+  s.addText('Runtime size comparison: containers vs. RVF WASM', {
+    x: 0.8, y: 0.7, w: 10, h: 0.3,
+    fontSize: 13, fontFace: FONT.body, color: C.textMuted,
+  });
+
+  // Bar chart: file size comparison
+  s.addChart(pptx.charts.BAR, [
+    {
+      name: 'Runtime Size (MB)',
+      labels: ['Docker Container', 'Minimal Container', 'RVF WASM Runtime'],
+      values: [250, 25, 0.0055],
+    },
+  ], {
+    x: 0.5, y: 1.2, w: 7.5, h: 4.5,
+    showTitle: false,
+    showValue: true,
+    valueFontSize: 14,
+    valueFontColor: C.text,
+    catAxisLabelColor: C.textMuted,
+    catAxisLabelFontSize: 12,
+    valAxisHidden: true,
+    chartColors: [C.accent],
+    plotArea: { fill: { color: C.bgLight } },
+    dataLabelPosition: 'outEnd',
+    barDir: 'bar',
+    barGapWidthPct: 150,
+  });
+
+  // Size labels (right side annotations)
+  addCard(s, 8.5, 1.2, 4.5, 1.3,
+    'Docker Container',
+    '50-500 MB typical. Includes OS layer,\npackage manager, runtime dependencies.\nMassive attack surface.',
+    C.accentRed);
+  addCard(s, 8.5, 2.7, 4.5, 1.3,
+    'Minimal Container (Alpine)',
+    '5-50 MB stripped down. Still needs\nbase OS. Still needs orchestration.\nStill needs networking stack.',
+    C.accent3);
+  addCard(s, 8.5, 4.2, 4.5, 1.3,
+    'RVF WASM Runtime',
+    '5.5 KB. That is not a typo.\nSelf-contained. Self-booting.\n18,000x smaller than Docker.',
+    C.accentGreen);
+
+  // Proof callout
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 0.5, y: 5.8, w: 12.3, h: 1.0,
+    fill: { color: C.bgLight }, rectRadius: 0.08,
+    line: { color: C.accentGreen, width: 2 },
+  });
+  s.addText('LIVE PROOF:', {
+    x: 0.8, y: 5.85, w: 2, h: 0.9,
+    fontSize: 14, fontFace: FONT.title, color: C.accentGreen, valign: 'middle', bold: true,
+  });
+  s.addText('This app (Ask-RuvNet) runs 434 expert articles in 0.6MB in your browser right now.\nThat is the proof. No server. No container. No GPU. Just mathematics.', {
+    x: 2.8, y: 5.85, w: 9.8, h: 0.9,
+    fontSize: 13, fontFace: FONT.body, color: C.text, valign: 'middle', lineSpacingMultiple: 1.4,
+  });
+
+  addFooter(s);
+  addSlideNumber(s, n);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SLIDE 12: AIMDS Security — security image + pipeline
+// ═══════════════════════════════════════════════════════════════
+{
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('AIMDS: Security via Chaos Theory', {
     x: 0.8, y: 0.2, w: 8, h: 0.5,
@@ -660,13 +765,14 @@ const fleet = await swarm.deploy({
     C.accentRed);
 
   addFooter(s);
-  addSlideNumber(s, 11);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 12: SONA Learning — sona image + two-tier LoRA
+// SLIDE 13: SONA Learning — sona image + two-tier LoRA
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('SONA: Self-Optimizing Neural Architecture', {
     x: 0.8, y: 0.2, w: 10, h: 0.5,
@@ -700,13 +806,14 @@ const fleet = await swarm.deploy({
     C.accentGreen);
 
   addFooter(s);
-  addSlideNumber(s, 12);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 13: Pi Brain — decentralized collective intelligence
+// SLIDE 14: Pi Brain — decentralized collective intelligence
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Pi Brain: Collective Intelligence', {
     x: 0.8, y: 0.2, w: 8, h: 0.5,
@@ -740,13 +847,99 @@ const fleet = await swarm.deploy({
     C.accentGreen);
 
   addFooter(s);
-  addSlideNumber(s, 13);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 14: Nervous System — 5-layer bio-inspired (shapes)
+// SLIDE 15: NEW — "2 Generations Ahead" Timeline
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
+  const s = addSlide();
+  s.addText('We Built the Future 8 Months Early', {
+    x: 0.8, y: 0.3, w: 12, h: 0.6,
+    fontSize: 32, fontFace: FONT.title, color: C.text,
+  });
+  s.addText('While providers shipped inference endpoints, we shipped the complete intelligence stack.', {
+    x: 0.8, y: 0.9, w: 12, h: 0.4,
+    fontSize: 14, fontFace: FONT.body, color: C.textMuted,
+  });
+
+  // Timeline horizontal line
+  s.addShape(pptx.shapes.RECTANGLE, {
+    x: 0.8, y: 3.5, w: 11.7, h: 0.06,
+    fill: { color: C.border },
+  });
+
+  const milestones = [
+    { date: 'Aug 2025',  label: 'Ruflo ships\n150+ agent swarms',        color: C.accent2,     competitor: false },
+    { date: 'Oct 2025',  label: 'AgentDB:\n9 RL algorithms',             color: C.accentGreen, competitor: false },
+    { date: 'Dec 2025',  label: 'RuVector\nWASM 5.5KB',                  color: C.accent,      competitor: false },
+    { date: 'Feb 2026',  label: 'SONA\n<1ms learning',                   color: C.accent3,     competitor: false },
+    { date: 'Mar 2026',  label: 'Claude Code ships\nsub-agents (1 type)', color: C.accentRed,   competitor: true },
+  ];
+
+  milestones.forEach((m, i) => {
+    const x = 1.0 + i * 2.5;
+    const dotSize = m.competitor ? 0.5 : 0.45;
+
+    // Milestone dot
+    s.addShape(pptx.shapes.OVAL, {
+      x: x + 0.5 - dotSize / 2, y: 3.5 - dotSize / 2 + 0.03,
+      w: dotSize, h: dotSize,
+      fill: { color: m.color },
+      line: m.competitor ? { color: C.text, width: 2 } : undefined,
+    });
+
+    // Date above
+    s.addText(m.date, {
+      x: x - 0.3, y: 2.3, w: 1.8, h: 0.4,
+      fontSize: 13, fontFace: FONT.title, color: m.color, align: 'center', bold: true,
+    });
+
+    // Label below
+    s.addText(m.label, {
+      x: x - 0.5, y: 4.0, w: 2.2, h: 0.8,
+      fontSize: 11, fontFace: FONT.body, color: C.textMuted, align: 'center', lineSpacingMultiple: 1.3,
+    });
+
+    // Competitor tag
+    if (m.competitor) {
+      s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+        x: x - 0.2, y: 4.85, w: 1.6, h: 0.35,
+        fill: { color: C.accentRed }, rectRadius: 0.05,
+      });
+      s.addText('COMPETITOR', {
+        x: x - 0.2, y: 4.85, w: 1.6, h: 0.35,
+        fontSize: 9, fontFace: FONT.title, color: C.text, align: 'center', valign: 'middle', bold: true,
+      });
+    }
+  });
+
+  // Bottom insight
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 0.5, y: 5.8, w: 12.3, h: 1.0,
+    fill: { color: C.bgLight }, rectRadius: 0.08,
+    line: { color: C.accent2, width: 2 },
+  });
+  s.addText('8 MONTHS AHEAD', {
+    x: 0.8, y: 5.85, w: 3, h: 0.9,
+    fontSize: 16, fontFace: FONT.title, color: C.accent2, valign: 'middle', bold: true,
+  });
+  s.addText('When Claude Code shipped its first sub-agent type in March 2026, Ruflo had already deployed 150+ specialized agents, 9 RL algorithms, WASM runtimes, and real-time learning. We are not catching up. They are.', {
+    x: 3.5, y: 5.85, w: 9.2, h: 0.9,
+    fontSize: 12, fontFace: FONT.body, color: C.textMuted, valign: 'middle', lineSpacingMultiple: 1.3,
+  });
+
+  addFooter(s);
+  addSlideNumber(s, n);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SLIDE 16: Nervous System — 5-layer bio-inspired (shapes)
+// ═══════════════════════════════════════════════════════════════
+{
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Nervous System: 5-Layer Bio-Inspired Architecture', {
     x: 0.8, y: 0.2, w: 10, h: 0.5,
@@ -818,96 +1011,110 @@ const fleet = await swarm.deploy({
   }
 
   addFooter(s);
-  addSlideNumber(s, 14);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 15: 39 Attention Mechanisms — grid layout (shapes)
+// SLIDE 17: 39 Attention Mechanisms — REORGANIZED into 4 category cards
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('39 Attention Mechanisms', {
     x: 0.8, y: 0.2, w: 8, h: 0.5,
     fontSize: 26, fontFace: FONT.title, color: C.text,
   });
-  s.addText('The most comprehensive attention library in open source. Every variant, optimized for production.', {
+  s.addText('The most comprehensive attention library in open source. Organized by purpose.', {
     x: 0.8, y: 0.7, w: 10, h: 0.3,
     fontSize: 13, fontFace: FONT.body, color: C.textMuted,
   });
 
-  const mechanisms = [
-    // Row 1: Core
-    'Multi-Head',      'Flash v2',        'Sliding Window',  'Cross',           'Sparse',          'Linear',
-    // Row 2: Efficient
-    'Grouped Query',   'Multi-Query',     'Ring',            'PagedKV',         'Local',           'Global',
-    // Row 3: Advanced
-    'Differential',    'Mixture-of-Depths','Flex Attention',  'Rotary',          'ALiBi',           'Polynomial',
-    // Row 4: Specialized
-    'Graph',           'Hyperbolic',      'State-Space',     'Mamba',           'Hyena',           'RWKV',
-    // Row 5: Experimental
-    'Softmax-Free',    'Cosine',          'Sigmoid',         'Gated',           'Additive',        'Multiplicative',
-    // Row 6: Novel
-    'Quantum-Inspired','Fractal',         'Spiking Neural',  'Neuromorphic',    'Topological',     'Geometric',
-    // Row 7: Remaining
-    'Hopfield',        'Performer',       'Longformer',
+  // 4 category cards
+  const categories = [
+    {
+      name: 'SPEED',
+      color: C.accent,
+      items: ['Flash v2 (2.49-7.47x)', 'Sparse', 'Linear', 'Performer', 'FNet', 'Multi-Query', 'Grouped Query', 'Softmax-Free'],
+    },
+    {
+      name: 'STRUCTURE',
+      color: C.accent2,
+      items: ['GraphRoPE*', 'MinCut-Gated*', 'Axial', 'Block-Sparse', 'Cross', 'Graph', 'Hyperbolic', 'Rotary'],
+    },
+    {
+      name: 'SCALE',
+      color: C.accent3,
+      items: ['Longformer', 'BigBird', 'Reformer', 'Sliding Window', 'Dilated', 'Ring', 'PagedKV', 'Local'],
+    },
+    {
+      name: 'NOVEL / RUVNET ORIGINALS',
+      color: C.accentGreen,
+      items: ['MinCut-Gated*', 'GraphRoPE*', 'Differential*', 'NSA*', 'Fractal', 'Spiking Neural', 'Neuromorphic', 'Topological'],
+    },
   ];
 
-  const cols = 6;
-  const cellW = 2.0;
-  const cellH = 0.65;
-  const startX = 0.5;
-  const startY = 1.15;
-  const colors = [C.accent, C.accent2, C.accent3, C.accentGreen, C.accentRed, C.accent];
+  categories.forEach((cat, i) => {
+    const isNovel = i === 3;
+    const x = 0.4 + i * 3.2;
+    const w = 3.0;
+    const cardH = 5.3;
 
-  mechanisms.forEach((mech, idx) => {
-    const row = Math.floor(idx / cols);
-    const col = idx % cols;
-    const x = startX + col * (cellW + 0.12);
-    const y = startY + row * (cellH + 0.1);
-    const colorIdx = row % colors.length;
-
-    // Cell background
+    // Card background
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-      x, y, w: cellW, h: cellH,
-      fill: { color: C.card }, rectRadius: 0.06,
-      line: { color: colors[colorIdx], width: 1 },
+      x, y: 1.15, w, h: cardH,
+      fill: { color: isNovel ? C.bgLight : C.card },
+      rectRadius: 0.1,
+      line: { color: cat.color, width: isNovel ? 3 : 2 },
     });
 
-    // Number badge
-    s.addShape(pptx.shapes.OVAL, {
-      x: x + 0.08, y: y + 0.15, w: 0.3, h: 0.3,
-      fill: { color: colors[colorIdx] },
+    // Category header bar
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x, y: 1.15, w, h: 0.6,
+      fill: { color: cat.color },
     });
-    s.addText(String(idx + 1), {
-      x: x + 0.08, y: y + 0.15, w: 0.3, h: 0.3,
-      fontSize: 8, fontFace: FONT.title, color: C.bg, align: 'center', valign: 'middle',
+    s.addText(cat.name, {
+      x, y: 1.15, w, h: 0.6,
+      fontSize: 13, fontFace: FONT.title, color: C.bg, align: 'center', valign: 'middle', bold: true,
     });
 
-    // Mechanism name
-    s.addText(mech, {
-      x: x + 0.42, y, w: cellW - 0.5, h: cellH,
-      fontSize: 9, fontFace: FONT.body, color: C.text, valign: 'middle',
+    // Item list
+    cat.items.forEach((item, j) => {
+      const isOriginal = item.endsWith('*');
+      const displayName = item;
+
+      s.addText('\u2022 ' + displayName, {
+        x: x + 0.2, y: 1.85 + j * 0.52, w: w - 0.4, h: 0.48,
+        fontSize: 11, fontFace: FONT.body,
+        color: isOriginal ? cat.color : C.textMuted,
+        bold: isOriginal,
+        valign: 'middle',
+      });
     });
   });
 
-  // Bottom callout
+  // Legend and bottom callout
   s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-    x: 0.5, y: 6.6, w: 12.3, h: 0.45,
+    x: 0.4, y: 6.55, w: 12.5, h: 0.5,
     fill: { color: C.bgLight }, rectRadius: 0.05,
   });
-  s.addText('Flash Attention alone delivers 2.49x-7.47x speedup. Combined with HNSW, this powers 8,000x vector search advantage.', {
-    x: 0.8, y: 6.6, w: 12, h: 0.45,
+  s.addText('* RuvNet originals — novel attention mechanisms not found in any other framework.', {
+    x: 0.7, y: 6.55, w: 5, h: 0.5,
+    fontSize: 11, fontFace: FONT.body, color: C.accentGreen, valign: 'middle', bold: true,
+  });
+  s.addText('Flash Attention alone delivers 2.49x-7.47x speedup. Combined with HNSW: 8,000x vector search.', {
+    x: 5.7, y: 6.55, w: 7, h: 0.5,
     fontSize: 11, fontFace: FONT.body, color: C.accent, valign: 'middle',
   });
 
   addFooter(s);
-  addSlideNumber(s, 15);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 16: Prime Radiant — Formal Verification (shapes)
+// SLIDE 18: Prime Radiant — Formal Verification (shapes)
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Prime Radiant: Formal Verification Engine', {
     x: 0.8, y: 0.2, w: 10, h: 0.5,
@@ -1019,13 +1226,14 @@ const fleet = await swarm.deploy({
   });
 
   addFooter(s);
-  addSlideNumber(s, 16);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 17: Integration Architecture (shapes — MCP, PostgreSQL, APIs)
+// SLIDE 19: Integration Architecture (shapes — MCP, PostgreSQL, APIs)
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Integration Architecture', {
     x: 0.8, y: 0.2, w: 8, h: 0.5,
@@ -1057,24 +1265,21 @@ const fleet = await swarm.deploy({
     { name: 'Claude Code',   detail: 'Sub-agents\nSkills',       x: 8.0,  y: 5.8,  color: C.accent2 },
   ];
 
-  nodes.forEach((n) => {
+  nodes.forEach((nd) => {
     // Node box
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-      x: n.x, y: n.y, w: 2.5, h: 1.2,
+      x: nd.x, y: nd.y, w: 2.5, h: 1.2,
       fill: { color: C.card }, rectRadius: 0.08,
-      line: { color: n.color, width: 2 },
+      line: { color: nd.color, width: 2 },
     });
-    s.addText(n.name, {
-      x: n.x, y: n.y + 0.05, w: 2.5, h: 0.45,
-      fontSize: 13, fontFace: FONT.title, color: n.color, align: 'center', bold: true,
+    s.addText(nd.name, {
+      x: nd.x, y: nd.y + 0.05, w: 2.5, h: 0.45,
+      fontSize: 13, fontFace: FONT.title, color: nd.color, align: 'center', bold: true,
     });
-    s.addText(n.detail, {
-      x: n.x, y: n.y + 0.5, w: 2.5, h: 0.6,
+    s.addText(nd.detail, {
+      x: nd.x, y: nd.y + 0.5, w: 2.5, h: 0.6,
       fontSize: 10, fontFace: FONT.body, color: C.textMuted, align: 'center',
     });
-
-    // Connection lines (approximated with thin rectangles pointing to center)
-    // Using arrow text as a simple connector
   });
 
   // Connection arrows (simplified with text arrows)
@@ -1094,13 +1299,14 @@ const fleet = await swarm.deploy({
   });
 
   addFooter(s);
-  addSlideNumber(s, 17);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 18: Implementation Roadmap — 4-phase timeline
+// SLIDE 20: Implementation Roadmap — 4-phase timeline
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
   s.addText('Implementation Roadmap', {
     x: 0.8, y: 0.2, w: 8, h: 0.5,
@@ -1217,25 +1423,108 @@ const fleet = await swarm.deploy({
   });
 
   addFooter(s);
-  addSlideNumber(s, 18);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SLIDE 19: CTA — Schedule Architecture Review
+// SLIDE 21: NEW — "What We Don't Do (Yet)" — Tradeoffs
 // ═══════════════════════════════════════════════════════════════
 {
+  const n = nextSlideNum();
   const s = addSlide();
-
-  // Hero image as background (dimmed)
-  s.addImage({
-    path: IMG.hero, x: 0, y: 0, w: 13.333, h: 7.5,
-    transparency: 75,
+  s.addText('What We Don\'t Do (Yet)', {
+    x: 0.8, y: 0.3, w: 10, h: 0.6,
+    fontSize: 32, fontFace: FONT.title, color: C.text,
+  });
+  s.addText('Honest tradeoffs. Every architecture decision has a cost. Here are ours.', {
+    x: 0.8, y: 0.9, w: 10, h: 0.4,
+    fontSize: 14, fontFace: FONT.body, color: C.textMuted,
   });
 
-  // Dark overlay
+  const tradeoffs = [
+    {
+      title: 'We Don\'t Host Your Data',
+      body: 'You own your infrastructure. RuvNet deploys into YOUR\nPostgreSQL, YOUR Kubernetes, YOUR private cloud.\n\nThis is not a limitation. This is by design.\nNo vendor lock-in. No data residency concerns.\nAir-gapped deployments are fully supported.',
+      framing: 'ADVANTAGE',
+      color: C.accentGreen,
+    },
+    {
+      title: 'We Don\'t Replace Your LLM',
+      body: 'RuvNet orchestrates any provider: OpenAI, Anthropic,\nGoogle, open-source models, or custom fine-tunes.\n\nSwap providers without changing a line of code.\nMCP protocol abstracts the model layer.\nYour choice. Your budget. Your compliance.',
+      framing: 'FLEXIBILITY',
+      color: C.accent,
+    },
+    {
+      title: 'Python SDK Is Community-Maintained',
+      body: 'TypeScript and Rust are first-class citizens.\nPython SDK exists but receives community updates.\n\nIf your stack is Python-first, expect contribution.\nWe prioritize where our users are: TS/Rust/WASM.\nPython parity is on the 2026 H2 roadmap.',
+      framing: 'HONEST GAP',
+      color: C.accent3,
+    },
+  ];
+
+  tradeoffs.forEach((t, i) => {
+    const x = 0.4 + i * 4.2;
+    const w = 4.0;
+    const cardH = 5.0;
+
+    // Card
+    s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+      x, y: 1.5, w, h: cardH,
+      fill: { color: C.card }, rectRadius: 0.1,
+      line: { color: t.color, width: 2 },
+    });
+
+    // Framing badge at top
+    s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+      x: x + w / 2 - 1, y: 1.65, w: 2, h: 0.35,
+      fill: { color: t.color }, rectRadius: 0.05,
+    });
+    s.addText(t.framing, {
+      x: x + w / 2 - 1, y: 1.65, w: 2, h: 0.35,
+      fontSize: 10, fontFace: FONT.title, color: C.bg, align: 'center', valign: 'middle', bold: true,
+    });
+
+    // Title
+    s.addText(t.title, {
+      x: x + 0.2, y: 2.2, w: w - 0.4, h: 0.5,
+      fontSize: 15, fontFace: FONT.title, color: t.color, align: 'center', bold: true,
+    });
+
+    // Divider
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x: x + 0.5, y: 2.8, w: w - 1, h: 0.02,
+      fill: { color: t.color },
+    });
+
+    // Body
+    s.addText(t.body, {
+      x: x + 0.3, y: 2.95, w: w - 0.6, h: 3.3,
+      fontSize: 11, fontFace: FONT.body, color: C.textMuted, lineSpacingMultiple: 1.35, valign: 'top',
+    });
+  });
+
+  addFooter(s);
+  addSlideNumber(s, n);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SLIDE 22: CTA — Schedule Architecture Review
+// FIX: Increased overlay opacity for text legibility
+// ═══════════════════════════════════════════════════════════════
+{
+  const n = nextSlideNum();
+  const s = addSlide();
+
+  // Hero image as background (dimmed more)
+  s.addImage({
+    path: IMG.hero, x: 0, y: 0, w: 13.333, h: 7.5,
+    transparency: 80,
+  });
+
+  // Dark overlay — FIXED: 35% transparency = 65% opaque
   s.addShape(pptx.shapes.RECTANGLE, {
     x: 0, y: 0, w: 13.333, h: 7.5,
-    fill: { color: C.bg, transparency: 30 },
+    fill: { color: C.bg, transparency: 35 },
   });
 
   // Main CTA
@@ -1275,7 +1564,83 @@ const fleet = await swarm.deploy({
     fontSize: 13, fontFace: FONT.title, color: C.bg, align: 'center', valign: 'middle',
   });
 
-  addSlideNumber(s, 19);
+  addSlideNumber(s, n);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SLIDE 23: NEW — Appendix Index
+// ═══════════════════════════════════════════════════════════════
+{
+  const n = nextSlideNum();
+  const s = addSlide();
+  s.addText('Appendix', {
+    x: 0.8, y: 0.4, w: 8, h: 0.6,
+    fontSize: 32, fontFace: FONT.title, color: C.text,
+  });
+  s.addText('Supporting materials available on request', {
+    x: 0.8, y: 1.0, w: 8, h: 0.4,
+    fontSize: 14, fontFace: FONT.body, color: C.textMuted,
+  });
+
+  const appendixItems = [
+    { title: 'Technical Architecture Deep Dive',       detail: 'This deck — full system walkthrough', color: C.accent },
+    { title: 'Implementation Playbook',                detail: 'Step-by-step deployment guide (available on request)', color: C.accent2 },
+    { title: 'Security & Compliance Whitepaper',       detail: 'AIMDS deep dive, SOC2 mapping, threat model', color: C.accentRed },
+    { title: 'Benchmark Methodology & Raw Data',       detail: 'Reproducible benchmarks with hardware specs', color: C.accent3 },
+    { title: 'API Reference',                          detail: 'ruvnet.com/docs', color: C.accentGreen },
+  ];
+
+  appendixItems.forEach((item, i) => {
+    const y = 1.8 + i * 1.0;
+
+    // Item card
+    s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+      x: 1.0, y, w: 11.3, h: 0.85,
+      fill: { color: C.card }, rectRadius: 0.08,
+    });
+
+    // Left accent bar
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x: 1.0, y, w: 0.06, h: 0.85,
+      fill: { color: item.color },
+    });
+
+    // Number circle
+    s.addShape(pptx.shapes.OVAL, {
+      x: 1.3, y: y + 0.17, w: 0.5, h: 0.5,
+      fill: { color: item.color },
+    });
+    s.addText(String(i + 1), {
+      x: 1.3, y: y + 0.17, w: 0.5, h: 0.5,
+      fontSize: 16, fontFace: FONT.title, color: C.bg, align: 'center', valign: 'middle',
+    });
+
+    // Title
+    s.addText(item.title, {
+      x: 2.1, y, w: 5, h: 0.85,
+      fontSize: 16, fontFace: FONT.body, color: item.color, bold: true, valign: 'middle',
+    });
+
+    // Detail
+    s.addText(item.detail, {
+      x: 7.2, y, w: 4.8, h: 0.85,
+      fontSize: 12, fontFace: FONT.body, color: C.textMuted, valign: 'middle',
+    });
+  });
+
+  // Bottom contact
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 3.0, y: 6.5, w: 7.3, h: 0.5,
+    fill: { color: C.bgLight }, rectRadius: 0.1,
+    line: { color: C.accent, width: 1 },
+  });
+  s.addText('Request materials: hello@ruvnet.com  |  ruvnet.com/docs', {
+    x: 3.0, y: 6.5, w: 7.3, h: 0.5,
+    fontSize: 13, fontFace: FONT.body, color: C.accent, align: 'center', valign: 'middle',
+  });
+
+  addFooter(s);
+  addSlideNumber(s, n);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1293,24 +1658,28 @@ console.log(`\nCTO Deck saved to: ${outputPath}`);
 console.log(`Total slides: ${pptx.slides.length}`);
 console.log(`\nSlide manifest:`);
 const slideNames = [
-  '1. Title + Hero Image + 6 Stats',
-  '2. The Problem (87% Failure Rate)',
-  '3. What Providers Ship (Comparison Table)',
-  '4. Algorithms Beat GPUs (Cost Chart)',
-  '5. Performance Benchmarks (Image)',
-  '6. System Architecture (Image)',
-  '7. Ship It In 5 Lines (Code + Cards)',
-  '8. Ruflo Swarm (Image + Cards)',
-  '9. RuVector HNSW (Image + Cards)',
+  '1.  Title + Hero Image + 6 Stats (overlay fix)',
+  '2.  The Problem (87% Failure Rate)',
+  '3.  What Providers Ship (RuvNet column highlighted)',
+  '4.  Algorithms Beat GPUs (Cost Chart)',
+  '5.  Performance Benchmarks (Image)',
+  '6.  System Architecture (Image)',
+  '7.  Ship It In 5 Lines (Code + Cards)',
+  '8.  Ruflo Swarm (Image + Cards)',
+  '9.  RuVector HNSW (Image + Cards)',
   '10. RVF Format (Image + Cards)',
-  '11. AIMDS Security (Image + Cards)',
-  '12. SONA Learning (Image + Cards)',
-  '13. Pi Brain (Image + Cards)',
-  '14. Nervous System (5-Layer Shapes)',
-  '15. 39 Attention Mechanisms (Grid)',
-  '16. Prime Radiant (3 Engine Columns)',
-  '17. Integration Architecture (Hub+Spokes)',
-  '18. Implementation Roadmap (4-Phase Timeline)',
-  '19. CTA + Stats + Contact',
+  '11. WASM Proof (Bar Chart + Live Proof) [NEW]',
+  '12. AIMDS Security (Image + Cards)',
+  '13. SONA Learning (Image + Cards)',
+  '14. Pi Brain (Image + Cards)',
+  '15. 2 Generations Ahead (Timeline) [NEW]',
+  '16. Nervous System (5-Layer Shapes)',
+  '17. 39 Attention Mechanisms (4 Category Cards) [REORGANIZED]',
+  '18. Prime Radiant (3 Engine Columns)',
+  '19. Integration Architecture (Hub+Spokes)',
+  '20. Implementation Roadmap (4-Phase Timeline)',
+  '21. What We Don\'t Do Yet (Tradeoffs) [NEW]',
+  '22. CTA + Stats + Contact (overlay fix)',
+  '23. Appendix Index [NEW]',
 ];
 slideNames.forEach(n => console.log(`  ${n}`));

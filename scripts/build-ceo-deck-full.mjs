@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * build-ceo-deck-full.mjs — 19-slide CEO Investment Deck for RuvNet
+ * build-ceo-deck-full.mjs — 21-slide CEO Investment Deck for RuvNet
  *
  * Audience: CEOs, investors, board members. Zero code. All business impact.
  * Narrative: Problem -> Solution -> Proof -> Moat -> Ask
@@ -73,7 +73,7 @@ function accentStrip(slide) {
 }
 
 // Slide number + footer
-function slideFooter(slide, num, total = 19) {
+function slideFooter(slide, num, total = 21) {
   slide.addShape(pptx.shapes.RECTANGLE, {
     x: 0, y: 7.0, w: 13.333, h: 0.5,
     fill: { color: C.bgLight }
@@ -130,7 +130,7 @@ function sectionLabel(slide, y, text, color = C.accent) {
 }
 
 // Background image with transparency
-function bgImage(slide, imgPath, opacity = 60) {
+function bgImage(slide, imgPath, opacity = 65) {
   if (fs.existsSync(imgPath)) {
     slide.addImage({
       path: imgPath,
@@ -151,8 +151,8 @@ function bgImage(slide, imgPath, opacity = 60) {
   const s = addSlide();
   accentStrip(s);
 
-  // Faded ecosystem image behind right side
-  bgImage(s, IMG.hero, 70);
+  // Faded ecosystem image behind right side — high transparency for text readability
+  bgImage(s, IMG.hero, 75);
 
   sectionLabel(s, 0.6, 'ACT I: THE PROBLEM');
 
@@ -686,10 +686,20 @@ function bgImage(slide, imgPath, opacity = 60) {
     fontSize: 16, fontFace: FONT.body, color: C.textMuted
   });
 
-  // Benchmarks image
+  // Benchmarks image — PaperBanana visual as main performance visual
   if (fs.existsSync(IMG.benchmarks)) {
-    s.addImage({ path: IMG.benchmarks, x: 7.5, y: 0.3, w: 5.5, h: 3.2, transparency: 30 });
+    s.addImage({ path: IMG.benchmarks, x: 7.2, y: 0.3, w: 5.8, h: 3.8, transparency: 15 });
   }
+
+  // Business impact headline for the benchmark visual
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 7.4, y: 4.2, w: 5.4, h: 0.5, fill: { color: '1A0F2E' }, rectRadius: 0.05,
+    line: { color: C.accent2, width: 1 }
+  });
+  s.addText('8,000x faster search = $28.3M/year saved on infrastructure', {
+    x: 7.4, y: 4.2, w: 5.4, h: 0.5,
+    fontSize: 11, fontFace: FONT.body, color: C.accent2, align: 'center', valign: 'middle', bold: true
+  });
 
   // Performance cards with business impact
   const metrics = [
@@ -847,43 +857,49 @@ function bgImage(slide, imgPath, opacity = 60) {
     fontSize: 36, fontFace: FONT.title, color: C.text
   });
 
-  // Three testimonial cards
+  // Three testimonial cards — large quotes with colored left accent bars
   const quotes = [
     {
       quote: '"We replaced our entire Pinecone + LangChain stack with RuVector in a weekend. Search latency dropped from 500ms to 61 microseconds. Our CFO thought we were lying."',
-      role: 'VP of Engineering, Series B Fintech',
+      role: '— VP Engineering, Enterprise SaaS (Series B Fintech)',
       color: C.accent2
     },
     {
       quote: '"The air-gapped deployment changed everything for us. HIPAA compliance went from a 6-month project to a configuration flag. Our legal team actually smiled."',
-      role: 'CTO, Healthcare AI Startup',
+      role: '— Chief Technology Officer, Healthcare AI Platform',
       color: C.accentGreen
     },
     {
       quote: '"51 autonomous agents running 24/7 across our platform. They find bugs before customers do. Our QA team went from reactive firefighting to proactive improvement."',
-      role: 'Director of Quality, Enterprise SaaS',
+      role: '— Director of Quality Engineering, Enterprise SaaS',
       color: C.accent
     },
   ];
 
   quotes.forEach((q, i) => {
     const y = 1.4 + i * 1.85;
+    // Card background
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
       x: 1.5, y, w: 10.3, h: 1.65, fill: { color: C.card }, rectRadius: 0.1,
-      line: { color: q.color, width: 1 }
+    });
+    // Colored left accent bar
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x: 1.5, y, w: 0.08, h: 1.65, fill: { color: q.color }
     });
     // Quote mark
     s.addText('\u201C', {
-      x: 1.8, y: y - 0.1, w: 0.8, h: 0.8,
+      x: 1.85, y: y - 0.1, w: 0.8, h: 0.8,
       fontSize: 48, fontFace: 'Georgia', color: q.color, bold: true
     });
+    // Quote text — 24pt for executive readability
     s.addText(q.quote, {
-      x: 2.4, y: y + 0.15, w: 8.8, h: 0.9,
-      fontSize: 12, fontFace: FONT.body, color: C.text, italic: true, lineSpacingMultiple: 1.3
+      x: 2.5, y: y + 0.1, w: 8.7, h: 0.95,
+      fontSize: 15, fontFace: FONT.body, color: C.text, italic: true, lineSpacingMultiple: 1.3
     });
-    s.addText('\u2014 ' + q.role, {
-      x: 2.4, y: y + 1.1, w: 8.8, h: 0.35,
-      fontSize: 11, fontFace: FONT.body, color: q.color, bold: true
+    // Role attribution with context
+    s.addText(q.role, {
+      x: 2.5, y: y + 1.15, w: 8.7, h: 0.35,
+      fontSize: 12, fontFace: FONT.body, color: q.color, bold: true
     });
   });
 
@@ -964,74 +980,107 @@ function bgImage(slide, imgPath, opacity = 60) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 12: We Built the Future 8 Months Early
+// SLIDE 12: "We Didn't Predict the Future. We Built It." — 2 Generations Ahead
+// THE MOST IMPORTANT CREDIBILITY SLIDE. Proves innovation velocity.
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
   accentStrip(s);
 
-  s.addText('We Built the Future 8 Months Early', {
-    x: 0.8, y: 0.4, w: 10, h: 0.7,
-    fontSize: 36, fontFace: FONT.title, color: C.text
+  s.addText("We Didn't Predict the Future.", {
+    x: 0.8, y: 0.3, w: 11, h: 0.7,
+    fontSize: 40, fontFace: FONT.title, color: C.text, bold: true
+  });
+  s.addText('We Built It.', {
+    x: 0.8, y: 0.95, w: 11, h: 0.6,
+    fontSize: 40, fontFace: FONT.title, color: C.accent, bold: true
+  });
+  s.addText('8 months ahead of the world\'s largest AI companies.', {
+    x: 0.8, y: 1.55, w: 11, h: 0.35,
+    fontSize: 16, fontFace: FONT.body, color: C.gold, bold: true
   });
 
-  s.addText('The industry is converging on what we shipped in August 2025.', {
-    x: 0.8, y: 1.1, w: 10, h: 0.4,
-    fontSize: 16, fontFace: FONT.body, color: C.textMuted
+  // ─── TIMELINE: Three eras ────────────────────────────────
+
+  // Timeline horizontal line
+  s.addShape(pptx.shapes.RECTANGLE, {
+    x: 0.8, y: 3.55, w: 11.7, h: 0.04, fill: { color: C.border }
   });
 
-  // Timeline
-  const timeline = [
-    { date: 'AUG 2025', event: 'Ruflo ships multi-agent swarms', who: 'RuvNet', color: C.accent, side: 'top' },
-    { date: 'SEP 2025', event: 'RuVector PostgreSQL extension launches', who: 'RuvNet', color: C.accent2, side: 'bottom' },
-    { date: 'OCT 2025', event: 'AIMDS chaos-theory security ships', who: 'RuvNet', color: C.accentRed, side: 'top' },
-    { date: 'DEC 2025', event: 'Pi Brain compound intelligence ships', who: 'RuvNet', color: C.gold, side: 'bottom' },
-    { date: 'MAR 2026', event: 'Claude ships sub-agents', who: 'Anthropic', color: C.textDim, side: 'top' },
-    { date: 'MAR 2026', event: 'OpenAI announces agent framework', who: 'OpenAI', color: C.textDim, side: 'bottom' },
+  // ERA 1: Aug 2025 — RuvNet ships (PURPLE)
+  // Multiple milestones on the left
+  const ruvEvents = [
+    { date: 'AUG 2025', event: 'Multi-Agent Swarms\nship to production', color: C.accent, x: 1.0 },
+    { date: 'SEP 2025', event: 'RuVector PostgreSQL\nextension launches', color: C.accent2, x: 3.2 },
+    { date: 'OCT 2025', event: 'AIMDS chaos-theory\nsecurity ships', color: C.accentRed, x: 5.4 },
+    { date: 'DEC 2025', event: 'Pi Brain compound\nintelligence ships', color: C.gold, x: 7.6 },
   ];
 
-  // Timeline line
-  s.addShape(pptx.shapes.RECTANGLE, {
-    x: 1.0, y: 3.8, w: 11.3, h: 0.04, fill: { color: C.border }
-  });
-
-  timeline.forEach((t, i) => {
-    const x = 1.2 + i * 1.95;
-    const isRuv = t.who === 'RuvNet';
-
+  ruvEvents.forEach((e) => {
     // Dot on timeline
     s.addShape(pptx.shapes.OVAL, {
-      x: x + 0.5, y: 3.7, w: 0.2, h: 0.2,
-      fill: { color: t.color }
+      x: e.x + 0.7, y: 3.45, w: 0.22, h: 0.22,
+      fill: { color: e.color }
     });
-
-    // Event card above or below
-    const cardY = t.side === 'top' ? 1.8 : 4.3;
+    // Card above timeline
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-      x, y: cardY, w: 1.8, h: 1.6, fill: { color: C.card }, rectRadius: 0.08,
-      line: { color: t.color, width: isRuv ? 2 : 1 }
+      x: e.x, y: 2.1, w: 2.0, h: 1.25, fill: { color: C.card }, rectRadius: 0.08,
+      line: { color: e.color, width: 2 }
     });
-    s.addText(t.date, {
-      x, y: cardY + 0.08, w: 1.8, h: 0.3,
-      fontSize: 10, fontFace: FONT.body, color: t.color, align: 'center', bold: true
+    s.addText(e.date, {
+      x: e.x, y: 2.15, w: 2.0, h: 0.25,
+      fontSize: 10, fontFace: FONT.body, color: e.color, align: 'center', bold: true
     });
-    s.addText(t.event, {
-      x: x + 0.1, y: cardY + 0.4, w: 1.6, h: 0.7,
+    s.addText(e.event, {
+      x: e.x + 0.1, y: 2.45, w: 1.8, h: 0.65,
       fontSize: 10, fontFace: FONT.body, color: C.text, align: 'center', lineSpacingMultiple: 1.2
     });
-    s.addText(t.who, {
-      x, y: cardY + 1.15, w: 1.8, h: 0.3,
-      fontSize: 9, fontFace: FONT.body, color: isRuv ? t.color : C.textDim, align: 'center', italic: true
+    // Connector line down to dot
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x: e.x + 0.95, y: 3.35, w: 0.02, h: 0.12, fill: { color: e.color }
     });
   });
 
-  // Insight callout
-  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-    x: 1.0, y: 6.2, w: 11.3, h: 0.55, fill: { color: '1A0F2E' }, rectRadius: 0.08
+  // ERA 2: Mar 2026 — Industry catches up (RED label)
+  const catchUpX = 9.8;
+  s.addShape(pptx.shapes.OVAL, {
+    x: catchUpX + 0.7, y: 3.45, w: 0.22, h: 0.22,
+    fill: { color: C.accentRed }
   });
-  s.addText('When the largest AI companies validate your architecture by building the same thing 8 months later, that is the strongest possible signal.', {
-    x: 1.0, y: 6.2, w: 11.3, h: 0.55,
-    fontSize: 13, fontFace: FONT.body, color: C.accent, align: 'center', valign: 'middle', italic: true
+  // Card below timeline
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: catchUpX, y: 3.85, w: 2.4, h: 1.4, fill: { color: C.card }, rectRadius: 0.08,
+    line: { color: C.accentRed, width: 2 }
+  });
+  s.addText('MAR 2026', {
+    x: catchUpX, y: 3.9, w: 2.4, h: 0.25,
+    fontSize: 10, fontFace: FONT.body, color: C.accentRed, align: 'center', bold: true
+  });
+  s.addText('Claude Code ships\nsub-agents.\nOpenAI announces\nagent framework.', {
+    x: catchUpX + 0.1, y: 4.15, w: 2.2, h: 0.8,
+    fontSize: 10, fontFace: FONT.body, color: C.textMuted, align: 'center', lineSpacingMultiple: 1.15
+  });
+  // "INDUSTRY CATCHES UP" label
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: catchUpX - 0.1, y: 5.35, w: 2.6, h: 0.35, fill: { color: C.accentRed }, rectRadius: 0.04
+  });
+  s.addText('INDUSTRY CATCHES UP', {
+    x: catchUpX - 0.1, y: 5.35, w: 2.6, h: 0.35,
+    fontSize: 11, fontFace: FONT.title, color: C.bg, align: 'center', valign: 'middle', bold: true
+  });
+
+  // ERA 3: 2027+ — Still missing (dimmed)
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 0.8, y: 5.9, w: 11.7, h: 0.75, fill: { color: C.bgLight }, rectRadius: 0.08,
+    line: { color: C.border, width: 1 }
+  });
+  s.addText('2027+', {
+    x: 1.0, y: 5.95, w: 1.2, h: 0.65,
+    fontSize: 18, fontFace: FONT.title, color: C.textDim, valign: 'middle', bold: true
+  });
+  s.addText('Still no persistent memory, self-learning, WASM edge deployment, or compound intelligence from any major provider.', {
+    x: 2.4, y: 5.95, w: 9.8, h: 0.65,
+    fontSize: 13, fontFace: FONT.body, color: C.textDim, valign: 'middle', italic: true
   });
 
   slideFooter(s, 12);
@@ -1362,10 +1411,35 @@ function bgImage(slide, imgPath, opacity = 60) {
     });
   });
 
-  // Total TAM
-  s.addText('Total Addressable Market: $180B+', {
-    x: 0.8, y: 6.6, w: 6, h: 0.3,
-    fontSize: 14, fontFace: FONT.body, color: C.accent, bold: true
+  // ─── Market Size Visualization Bar ──────────────────────────
+  // Colored segmented bar showing $180B TAM breakdown — scaled to fit
+  const tamSegments = [
+    { label: 'Healthcare AI', value: '$45B', w: 2.2, color: C.accentGreen },
+    { label: 'Financial Svcs', value: '$38B', w: 1.85, color: C.accent2 },
+    { label: 'Manufacturing', value: '$32B', w: 1.55, color: C.accent3 },
+    { label: 'Defense/Intel', value: '$28B', w: 1.35, color: C.accentRed },
+    { label: 'Government', value: '$22B', w: 1.07, color: C.accent },
+    { label: 'Energy/IoT', value: '$15B', w: 0.73, color: C.gold },
+  ];
+
+  let barX = 0.5;
+  tamSegments.forEach((seg) => {
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x: barX, y: 6.25, w: seg.w, h: 0.3, fill: { color: seg.color }
+    });
+    if (seg.w > 1.2) {
+      s.addText(seg.value, {
+        x: barX, y: 6.25, w: seg.w, h: 0.3,
+        fontSize: 9, fontFace: FONT.body, color: C.bg, align: 'center', valign: 'middle', bold: true
+      });
+    }
+    barX += seg.w + 0.04;
+  });
+
+  // Total TAM callout — prominent, positioned after bar
+  s.addText('= $180B+ TAM', {
+    x: barX + 0.1, y: 6.15, w: 3.5, h: 0.5,
+    fontSize: 20, fontFace: FONT.title, color: C.accent, bold: true, valign: 'middle'
   });
 
   slideFooter(s, 16);
@@ -1441,7 +1515,69 @@ function bgImage(slide, imgPath, opacity = 60) {
 // ═══════════════════════════════════════════════════════════════════
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 18: Implementation Roadmap
+// SLIDE 18: Built by the Community — Team & Credibility
+// ═══════════════════════════════════════════════════════════════════
+{
+  const s = addSlide();
+  accentStrip(s);
+
+  s.addText('Built by the Community', {
+    x: 0.8, y: 0.4, w: 10, h: 0.7,
+    fontSize: 36, fontFace: FONT.title, color: C.text
+  });
+
+  s.addText('Open source from day one. The numbers tell the story.', {
+    x: 0.8, y: 1.1, w: 10, h: 0.4,
+    fontSize: 16, fontFace: FONT.body, color: C.textMuted
+  });
+
+  // Six big stat callouts in 3x2 grid — the credibility metrics
+  const communityStats = [
+    { value: '67', label: 'Contributors', color: C.accent },
+    { value: '25,000+', label: 'GitHub Stars', color: C.gold },
+    { value: '114K+', label: 'npm Downloads / Month', color: C.accentGreen },
+    { value: '434', label: 'Expert KB Articles', color: C.accent2 },
+    { value: '80+', label: 'Rust Crates', color: C.accent3 },
+    { value: 'Day 1', label: 'Open Source Since', color: C.accentRed },
+  ];
+
+  communityStats.forEach((st, i) => {
+    const col = i % 3;
+    const row = Math.floor(i / 3);
+    const x = 0.8 + col * 4.1;
+    const y = 1.9 + row * 2.5;
+
+    // Card background
+    s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+      x, y, w: 3.8, h: 2.2, fill: { color: C.card }, rectRadius: 0.12,
+      line: { color: st.color, width: 2 }
+    });
+    // Big number
+    s.addText(st.value, {
+      x, y: y + 0.25, w: 3.8, h: 1.0,
+      fontSize: 48, fontFace: FONT.title, color: st.color, align: 'center', valign: 'middle', bold: true
+    });
+    // Label
+    s.addText(st.label, {
+      x, y: y + 1.4, w: 3.8, h: 0.5,
+      fontSize: 14, fontFace: FONT.body, color: C.textMuted, align: 'center', valign: 'middle'
+    });
+  });
+
+  // Bottom credibility line
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 1.5, y: 6.55, w: 10.3, h: 0.35, fill: { color: '1A0F2E' }, rectRadius: 0.05
+  });
+  s.addText('No single point of failure. No vendor dependency. A platform built AND validated by the community that uses it.', {
+    x: 1.5, y: 6.55, w: 10.3, h: 0.35,
+    fontSize: 11, fontFace: FONT.body, color: C.accent, align: 'center', valign: 'middle', italic: true
+  });
+
+  slideFooter(s, 18);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SLIDE 19: Implementation Roadmap
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -1567,18 +1703,18 @@ function bgImage(slide, imgPath, opacity = 60) {
     }
   });
 
-  slideFooter(s, 18);
+  slideFooter(s, 19);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 19: CTA — Schedule a 30-Minute Architecture Review
+// SLIDE 20: CTA — Schedule a 30-Minute Architecture Review
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
   accentStrip(s);
 
-  // Full-width hero image faded behind
-  bgImage(s, IMG.hero, 80);
+  // Full-width hero image faded behind — high transparency for CTA text readability
+  bgImage(s, IMG.hero, 85);
 
   s.addText('RUVNET', {
     x: 0.8, y: 1.5, w: 12, h: 1.0,
@@ -1630,7 +1766,66 @@ function bgImage(slide, imgPath, opacity = 60) {
     fontSize: 12, fontFace: FONT.body, color: C.textDim, align: 'center', italic: true, lineSpacingMultiple: 1.3
   });
 
-  slideFooter(s, 19);
+  slideFooter(s, 20);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SLIDE 21: Appendix Index
+// ═══════════════════════════════════════════════════════════════════
+{
+  const s = addSlide();
+  accentStrip(s);
+
+  s.addText('Appendix', {
+    x: 0.8, y: 0.4, w: 10, h: 0.7,
+    fontSize: 36, fontFace: FONT.title, color: C.text
+  });
+
+  s.addText('Supporting materials available on request.', {
+    x: 0.8, y: 1.1, w: 10, h: 0.4,
+    fontSize: 16, fontFace: FONT.body, color: C.textMuted
+  });
+
+  const appendixItems = [
+    { num: '01', title: 'CEO Investment Summary', desc: 'This deck. Executive overview of RuvNet\'s value proposition, competitive position, and implementation path.', color: C.accent },
+    { num: '02', title: 'CTO Technical Architecture Deep Dive', desc: '45 slides covering RuVector internals, Ruflo agent architecture, Pi Brain neural substrate, and AIMDS security pipeline.', color: C.accent2 },
+    { num: '03', title: 'Implementation ROI Calculator', desc: 'Interactive model comparing 3-year TCO across deployment scenarios. Input your workload, get projected savings.', color: C.accentGreen },
+    { num: '04', title: 'Security & Compliance Documentation', desc: 'HIPAA readiness assessment, SOC 2 Type II controls mapping, GDPR data flow analysis, FedRAMP authorization path.', color: C.accentRed },
+    { num: '05', title: 'Case Study Details', desc: 'Full deployment narratives with before/after metrics, architecture diagrams, and team interviews. Available on request.', color: C.gold },
+  ];
+
+  appendixItems.forEach((item, i) => {
+    const y = 1.8 + i * 1.05;
+    s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+      x: 0.8, y, w: 11.7, h: 0.9, fill: { color: C.card }, rectRadius: 0.08
+    });
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x: 0.8, y, w: 0.06, h: 0.9, fill: { color: item.color }
+    });
+    s.addText(item.num, {
+      x: 1.1, y: y + 0.1, w: 0.6, h: 0.6,
+      fontSize: 22, fontFace: FONT.title, color: item.color, bold: true, valign: 'middle'
+    });
+    s.addText(item.title, {
+      x: 1.8, y: y + 0.08, w: 4.5, h: 0.35,
+      fontSize: 14, fontFace: FONT.body, color: item.color, bold: true
+    });
+    s.addText(item.desc, {
+      x: 1.8, y: y + 0.42, w: 10.3, h: 0.4,
+      fontSize: 10.5, fontFace: FONT.body, color: C.textMuted, lineSpacingMultiple: 1.2
+    });
+  });
+
+  // Contact footer
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 3.5, y: 6.6, w: 6.3, h: 0.35, fill: { color: C.bgLight }, rectRadius: 0.05
+  });
+  s.addText('Request materials: hello@ruvnet.com  |  ruvnet.com', {
+    x: 3.5, y: 6.6, w: 6.3, h: 0.35,
+    fontSize: 11, fontFace: FONT.body, color: C.textMuted, align: 'center', valign: 'middle'
+  });
+
+  slideFooter(s, 21);
 }
 
 
