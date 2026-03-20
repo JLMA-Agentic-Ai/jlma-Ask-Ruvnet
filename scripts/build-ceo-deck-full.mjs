@@ -151,43 +151,47 @@ function bgImage(slide, imgPath, opacity = 65) {
   const s = addSlide();
   accentStrip(s);
 
-  // Faded ecosystem image behind right side — high transparency for text readability
-  bgImage(s, IMG.hero, 75);
-
+  // LEFT side: text only (no image overlap). RIGHT side: image only.
+  // Clean split at x=6.5 — text stays left, image stays right.
   sectionLabel(s, 0.6, 'ACT I: THE PROBLEM');
 
-  s.addText('Your AI Projects\nAre Failing.', {
-    x: 0.8, y: 1.2, w: 6, h: 2.0,
-    fontSize: 52, fontFace: FONT.title, color: C.text, bold: true,
-    lineSpacingMultiple: 1.1
+  s.addText('Your AI\nProjects\nAre Failing.', {
+    x: 0.8, y: 0.9, w: 5.5, h: 2.4,
+    fontSize: 44, fontFace: FONT.title, color: C.text, bold: true,
+    lineSpacingMultiple: 1.05
   });
 
   s.addText("Here's Why.", {
-    x: 0.8, y: 3.2, w: 6, h: 0.7,
-    fontSize: 36, fontFace: FONT.title, color: C.accent, bold: true
+    x: 0.8, y: 3.4, w: 5.5, h: 0.6,
+    fontSize: 30, fontFace: FONT.title, color: C.accent, bold: true
   });
 
   s.addText('87% of enterprise AI pilots never reach production.\n$2.4 trillion spent. Most of it wasted.', {
-    x: 0.8, y: 4.2, w: 6, h: 0.9,
-    fontSize: 16, fontFace: FONT.body, color: C.textMuted, lineSpacingMultiple: 1.5
+    x: 0.8, y: 4.2, w: 5.5, h: 0.8,
+    fontSize: 14, fontFace: FONT.body, color: C.textMuted, lineSpacingMultiple: 1.5
   });
 
-  // Stats bar
+  // Image on RIGHT half only — no overlap with text
+  if (fs.existsSync(IMG.hero)) {
+    s.addImage({ path: IMG.hero, x: 6.8, y: 0.3, w: 6.2, h: 5.5, transparency: 15 });
+  }
+
+  // Stats bar — LEFT side only (under text, not under image)
   const stats = [
     { n: '87%', l: 'Failure Rate' },
     { n: '$2.4T', l: 'Annual Spend' },
     { n: '11', l: 'Missing Layers' },
-    { n: '0', l: 'Providers Fixing This' },
+    { n: '0', l: 'Providers\nFixing This' },
   ];
   stats.forEach((st, i) => {
-    const sx = 0.8 + i * 2.4;
+    const sx = 0.8 + i * 1.5;
     s.addText(st.n, {
-      x: sx, y: 5.5, w: 2, h: 0.5,
-      fontSize: 28, fontFace: FONT.title, color: i === 0 ? C.accentRed : C.accent, bold: true
+      x: sx, y: 5.3, w: 1.4, h: 0.5,
+      fontSize: 24, fontFace: FONT.title, color: i === 0 ? C.accentRed : i === 3 ? C.accentGreen : C.accent, bold: true
     });
     s.addText(st.l, {
-      x: sx, y: 6.0, w: 2, h: 0.3,
-      fontSize: 11, fontFace: FONT.body, color: C.textMuted
+      x: sx, y: 5.8, w: 1.4, h: 0.4,
+      fontSize: 10, fontFace: FONT.body, color: C.textMuted
     });
   });
 
@@ -201,19 +205,19 @@ function bgImage(slide, imgPath, opacity = 65) {
   const s = addSlide();
   accentStrip(s);
 
-  // Problem image on right
+  // Problem image on right — starts at x:7, does NOT overlap with title
   if (fs.existsSync(IMG.problem)) {
-    s.addImage({ path: IMG.problem, x: 7.5, y: 0.5, w: 5.5, h: 4.0, transparency: 30 });
+    s.addImage({ path: IMG.problem, x: 7.2, y: 0.3, w: 5.8, h: 4.5, transparency: 25 });
   }
 
-  s.addText('The $2.4 Trillion Problem', {
-    x: 0.8, y: 0.4, w: 8, h: 0.7,
-    fontSize: 36, fontFace: FONT.title, color: C.text
+  s.addText('The $2.4 Trillion\nProblem', {
+    x: 0.8, y: 0.3, w: 6, h: 1.0,
+    fontSize: 34, fontFace: FONT.title, color: C.text, lineSpacingMultiple: 1.05
   });
 
   s.addText('Enterprise AI spending is massive. Returns are not.', {
-    x: 0.8, y: 1.1, w: 7, h: 0.4,
-    fontSize: 16, fontFace: FONT.body, color: C.textMuted
+    x: 0.8, y: 1.3, w: 6, h: 0.4,
+    fontSize: 15, fontFace: FONT.body, color: C.textMuted
   });
 
   // Big 87% stat
@@ -674,21 +678,19 @@ function bgImage(slide, imgPath, opacity = 65) {
   const s = addSlide();
   accentStrip(s);
 
-  sectionLabel(s, 0.35, 'ACT III: THE PROOF');
-
   s.addText('Performance That Saves Millions', {
-    x: 0.8, y: 0.6, w: 10, h: 0.7,
-    fontSize: 36, fontFace: FONT.title, color: C.text
+    x: 0.8, y: 0.25, w: 6.5, h: 0.5,
+    fontSize: 22, fontFace: FONT.title, color: C.text
   });
 
-  s.addText('"8,000x faster" is meaningless without context. Here is what it saves.', {
-    x: 0.8, y: 1.3, w: 10, h: 0.4,
-    fontSize: 16, fontFace: FONT.body, color: C.textMuted
+  s.addText('"8,000x faster" is meaningless without context.', {
+    x: 0.8, y: 0.75, w: 6, h: 0.25,
+    fontSize: 11, fontFace: FONT.body, color: C.textMuted
   });
 
-  // Benchmarks image — PaperBanana visual as main performance visual
+  // Benchmarks image — RIGHT side only, no overlap with title
   if (fs.existsSync(IMG.benchmarks)) {
-    s.addImage({ path: IMG.benchmarks, x: 7.2, y: 0.3, w: 5.8, h: 3.8, transparency: 15 });
+    s.addImage({ path: IMG.benchmarks, x: 7, y: 0.2, w: 6, h: 4.2, transparency: 10 });
   }
 
   // Business impact headline for the benchmark visual
@@ -734,9 +736,9 @@ function bgImage(slide, imgPath, opacity = 65) {
   ];
 
   metrics.forEach((m, i) => {
-    const y = 1.9 + i * 1.25;
+    const y = 1.15 + i * 1.25;
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-      x: 0.8, y, w: 6.5, h: 1.1, fill: { color: C.card }, rectRadius: 0.08
+      x: 0.8, y, w: 6.5, h: 1.0, fill: { color: C.card }, rectRadius: 0.08
     });
     s.addShape(pptx.shapes.RECTANGLE, {
       x: 0.8, y, w: 0.06, h: 1.1, fill: { color: m.color }
@@ -1795,9 +1797,9 @@ function bgImage(slide, imgPath, opacity = 65) {
   ];
 
   appendixItems.forEach((item, i) => {
-    const y = 1.8 + i * 1.05;
+    const y = 1.7 + i * 0.95;
     s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-      x: 0.8, y, w: 11.7, h: 0.9, fill: { color: C.card }, rectRadius: 0.08
+      x: 0.8, y, w: 11.7, h: 0.8, fill: { color: C.card }, rectRadius: 0.08
     });
     s.addShape(pptx.shapes.RECTANGLE, {
       x: 0.8, y, w: 0.06, h: 0.9, fill: { color: item.color }
