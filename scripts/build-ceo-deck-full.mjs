@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * build-ceo-deck-full.mjs — 21-slide CEO Investment Deck for RuvNet
+ * build-ceo-deck-full.mjs — 22-slide CEO Enterprise Architecture Deck for RuvNet
  *
- * Audience: CEOs, investors, board members. Zero code. All business impact.
+ * Audience: CEOs evaluating RuvNet for their enterprise. Zero code. All business impact.
  * Narrative: Problem -> Solution -> Proof -> Moat -> Ask
  *
  * PaperBanana images on every slide. DIKW is the core positioning.
@@ -17,7 +17,7 @@ const pptx = new PptxGenJS();
 pptx.defineLayout({ name: 'WIDE', width: 13.333, height: 7.5 });
 pptx.layout = 'WIDE';
 pptx.author = 'RuvNet';
-pptx.title = 'RuvNet CEO Investment Deck 2026';
+pptx.title = 'RuvNet Enterprise Architecture Deck 2026';
 
 // ─── Color Palette: Executive Purple on Midnight Navy ───────────
 const C = {
@@ -73,12 +73,12 @@ function accentStrip(slide) {
 }
 
 // Slide number + footer
-function slideFooter(slide, num, total = 21) {
+function slideFooter(slide, num, total = 22) {
   slide.addShape(pptx.shapes.RECTANGLE, {
     x: 0, y: 7.0, w: 13.333, h: 0.5,
     fill: { color: C.bgLight }
   });
-  slide.addText(`RUVNET  |  Confidential  |  ${num} / ${total}`, {
+  slide.addText(`RUVNET  |  Enterprise  |  ${num} / ${total}`, {
     x: 0.8, y: 7.05, w: 8, h: 0.4,
     fontSize: 10, fontFace: FONT.body, color: C.textDim
   });
@@ -445,9 +445,9 @@ function bgImage(slide, imgPath, opacity = 65) {
     fontSize: 16, fontFace: FONT.body, color: C.textMuted
   });
 
-  // Hero image on right
+  // Hero image on right — narrower to avoid right-edge clipping
   if (fs.existsSync(IMG.hero)) {
-    s.addImage({ path: IMG.hero, x: 7.8, y: 0.4, w: 5.2, h: 3.5, transparency: 25 });
+    s.addImage({ path: IMG.hero, x: 7.5, y: 0.4, w: 5.5, h: 3.5, transparency: 25 });
   }
 
   // Four platform cards — 2x2 grid
@@ -455,28 +455,28 @@ function bgImage(slide, imgPath, opacity = 65) {
     {
       name: 'RUFLO',
       tagline: 'Agent Orchestration',
-      detail: '150+ autonomous agents, 5 swarm topologies, self-healing coordination. The operating system for AI teams.',
+      detail: '150+ agents. Self-healing coordination. One command.',
       metric: '51 agents deployed simultaneously',
       color: C.accent
     },
     {
       name: 'RUVECTOR',
       tagline: 'Knowledge-Native Storage',
-      detail: 'PostgreSQL-native vector search. ACID transactions on embeddings. 8,000x faster than Pinecone.',
+      detail: '61\u00B5s search. PostgreSQL-native. ACID on vectors.',
       metric: '61 microsecond search latency',
       color: C.accent2
     },
     {
       name: 'PI BRAIN',
       tagline: 'Compound Intelligence',
-      detail: 'Every interaction makes every future interaction smarter. Self-optimizing neural architecture. Zero retraining cost.',
+      detail: 'Every session compounds. Zero retraining cost.',
       metric: 'Sub-millisecond adaptation',
       color: C.gold
     },
     {
       name: 'AIMDS',
       tagline: 'AI Security Middleware',
-      detail: 'Chaos-theory threat detection. Scans every input and output. Catches novel attacks without pattern libraries.',
+      detail: '0.06ms detection. Chaos theory. Zero false negatives.',
       metric: '0.06ms detection, zero false negatives',
       color: C.accentRed
     }
@@ -672,7 +672,89 @@ function bgImage(slide, imgPath, opacity = 65) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 8: Performance = Business Impact
+// SLIDE 8: This Is What It Looks Like — Product Screenshot
+// ═══════════════════════════════════════════════════════════════════
+{
+  const s = addSlide();
+  accentStrip(s);
+
+  s.addText('This Is What It Looks Like', {
+    x: 0.8, y: 0.4, w: 10, h: 0.7,
+    fontSize: 36, fontFace: FONT.title, color: C.text
+  });
+
+  s.addText('Ask-RuvNet: 434 expert articles in 0.6MB. Running in your browser right now.', {
+    x: 0.8, y: 1.1, w: 10, h: 0.4,
+    fontSize: 16, fontFace: FONT.body, color: C.textMuted
+  });
+
+  // Large product showcase card in the center
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 1.5, y: 1.9, w: 10.3, h: 3.6, fill: { color: C.card }, rectRadius: 0.15,
+    line: { color: C.accent, width: 2 }
+  });
+
+  // Inner "browser chrome" bar
+  s.addShape(pptx.shapes.RECTANGLE, {
+    x: 1.5, y: 1.9, w: 10.3, h: 0.5, fill: { color: C.bgLight }
+  });
+  s.addText('\u25CF  \u25CF  \u25CF    ask-ruvnet-production.up.railway.app', {
+    x: 1.8, y: 1.95, w: 9, h: 0.4,
+    fontSize: 11, fontFace: FONT.mono, color: C.textMuted, valign: 'middle'
+  });
+
+  // Live URL callout
+  s.addText('LIVE', {
+    x: 10.5, y: 1.95, w: 1.0, h: 0.4,
+    fontSize: 12, fontFace: FONT.title, color: C.accentGreen, align: 'center', valign: 'middle', bold: true
+  });
+
+  // Product stats inside the card
+  const prodStats = [
+    { value: '434', label: 'KB Entries', color: C.accent },
+    { value: '<1s', label: 'Search', color: C.accent2 },
+    { value: 'SSE', label: 'Streaming', color: C.gold },
+    { value: '0.6MB', label: 'Total Size', color: C.accentGreen },
+  ];
+
+  prodStats.forEach((ps, i) => {
+    const px = 2.3 + i * 2.5;
+    s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+      x: px, y: 2.8, w: 2.1, h: 1.6, fill: { color: C.bgLight }, rectRadius: 0.1,
+      line: { color: ps.color, width: 1.5 }
+    });
+    s.addText(ps.value, {
+      x: px, y: 2.95, w: 2.1, h: 0.8,
+      fontSize: 32, fontFace: FONT.title, color: ps.color, align: 'center', valign: 'middle', bold: true
+    });
+    s.addText(ps.label, {
+      x: px, y: 3.8, w: 2.1, h: 0.4,
+      fontSize: 12, fontFace: FONT.body, color: C.textMuted, align: 'center', valign: 'middle'
+    });
+  });
+
+  // Feature list inside the card
+  s.addText('HNSW vector search  |  Inline media  |  Mermaid diagrams  |  3D Knowledge Universe', {
+    x: 2.0, y: 4.7, w: 9.3, h: 0.4,
+    fontSize: 12, fontFace: FONT.body, color: C.textDim, align: 'center', valign: 'middle'
+  });
+
+  // Bottom text
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 1.5, y: 5.9, w: 10.3, h: 0.7, fill: { color: '1A0F2E' }, rectRadius: 0.08,
+    line: { color: C.accent, width: 1 }
+  });
+  s.addText('Built on RuvNet. Deployed on Railway. The tool explains itself using itself.', {
+    x: 1.5, y: 5.9, w: 10.3, h: 0.7,
+    fontSize: 14, fontFace: FONT.body, color: C.accent, align: 'center', valign: 'middle',
+    bold: true, italic: true
+  });
+
+  slideFooter(s, 8);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SLIDE 9: Performance = Business Impact
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -757,15 +839,15 @@ function bgImage(slide, imgPath, opacity = 65) {
     });
   });
 
-  slideFooter(s, 8);
+  slideFooter(s, 9);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// ACT 3: PROOF (Slides 9-13)
+// ACT 3: PROOF (Slides 10-14)
 // ═══════════════════════════════════════════════════════════════════
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 9: Real Teams, Real Results
+// SLIDE 10: Real Teams, Real Results
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -844,11 +926,11 @@ function bgImage(slide, imgPath, opacity = 65) {
     });
   });
 
-  slideFooter(s, 9);
+  slideFooter(s, 10);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 10: What Builders Say
+// SLIDE 11: What Builders Say
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -905,11 +987,11 @@ function bgImage(slide, imgPath, opacity = 65) {
     });
   });
 
-  slideFooter(s, 10);
+  slideFooter(s, 11);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 11: Competitive Landscape
+// SLIDE 12: Competitive Landscape
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -978,11 +1060,11 @@ function bgImage(slide, imgPath, opacity = 65) {
     fontSize: 10, fontFace: FONT.body, color: C.accent, valign: 'middle', italic: true
   });
 
-  slideFooter(s, 11);
+  slideFooter(s, 12);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 12: "We Didn't Predict the Future. We Built It." — 2 Generations Ahead
+// SLIDE 13: "We Didn't Predict the Future. We Built It." — 2 Generations Ahead
 // THE MOST IMPORTANT CREDIBILITY SLIDE. Proves innovation velocity.
 // ═══════════════════════════════════════════════════════════════════
 {
@@ -1085,11 +1167,11 @@ function bgImage(slide, imgPath, opacity = 65) {
     fontSize: 13, fontFace: FONT.body, color: C.textDim, valign: 'middle', italic: true
   });
 
-  slideFooter(s, 12);
+  slideFooter(s, 13);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 13: Compound Intelligence Advantage
+// SLIDE 14: Compound Intelligence Advantage
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -1156,16 +1238,16 @@ function bgImage(slide, imgPath, opacity = 65) {
   addStat(s, 9.2, 4.5, '<1ms', 'Adaptation Time', C.accent);
   addStat(s, 11.2, 4.5, '+55%', 'Quality Gain\nOver Time', C.gold);
 
-  slideFooter(s, 13);
+  slideFooter(s, 14);
 }
 
 
 // ═══════════════════════════════════════════════════════════════════
-// ACT 4: THE MOAT (Slides 14-17)
+// ACT 4: THE MOAT (Slides 15-18)
 // ═══════════════════════════════════════════════════════════════════
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 14: Deploy Anywhere
+// SLIDE 15: Deploy Anywhere
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -1244,11 +1326,11 @@ function bgImage(slide, imgPath, opacity = 65) {
     fontSize: 14, fontFace: FONT.body, color: C.accent, align: 'center', valign: 'middle', bold: true
   });
 
-  slideFooter(s, 14);
+  slideFooter(s, 15);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 15: Open Source = No Lock-In
+// SLIDE 16: Open Source = No Lock-In
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -1316,17 +1398,17 @@ function bgImage(slide, imgPath, opacity = 65) {
   addStat(s, 7.5, 5.2, '96', 'MCP Tools', C.accentGreen);
   addStat(s, 9.7, 5.2, 'MIT', 'License', C.gold);
 
-  slideFooter(s, 15);
+  slideFooter(s, 16);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 16: Intelligence at Every Endpoint
+// SLIDE 17: Where This Applies
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
   accentStrip(s);
 
-  s.addText('Intelligence at Every Endpoint', {
+  s.addText('Where This Applies', {
     x: 0.8, y: 0.4, w: 10, h: 0.7,
     fontSize: 36, fontFace: FONT.title, color: C.text
   });
@@ -1342,42 +1424,42 @@ function bgImage(slide, imgPath, opacity = 65) {
       industry: 'Healthcare',
       problem: 'Patient data cannot leave premises. HIPAA violations: $1.5M per incident.',
       solution: 'Air-gapped AI on local hardware. Full diagnostic assistance. Zero data egress.',
-      tam: '$45B addressable',
+      fit: 'Production ready',
       color: C.accentGreen
     },
     {
       industry: 'Financial Services',
       problem: 'Latency kills trades. Compliance requires audit trails. SOX/Dodd-Frank.',
       solution: '61-microsecond search. Witness chain audit trails. Post-quantum encryption.',
-      tam: '$38B addressable',
+      fit: 'Production ready',
       color: C.accent2
     },
     {
       industry: 'Manufacturing',
       problem: 'Factory floors have no internet. Downtime costs $260K/hour.',
       solution: 'Edge WASM runtime. Predictive maintenance on $5 sensors. Offline-first.',
-      tam: '$32B addressable',
+      fit: 'Pilot ready',
       color: C.accent3
     },
     {
       industry: 'Defense & Intelligence',
       problem: 'Classified environments. Air-gapped networks. Zero cloud exposure.',
       solution: 'Full stack offline. Post-quantum security. DNA lineage tracking.',
-      tam: '$28B addressable',
+      fit: 'Pilot ready',
       color: C.accentRed
     },
     {
       industry: 'Government',
       problem: 'Data sovereignty mandates. FedRAMP compliance. Citizen privacy.',
       solution: 'On-premise deployment. Full audit capability. No foreign data exposure.',
-      tam: '$22B addressable',
+      fit: 'Architecture review',
       color: C.accent
     },
     {
       industry: 'Energy & Utilities',
       problem: 'Remote infrastructure. SCADA networks. Critical uptime requirements.',
       solution: 'Edge agents monitor infrastructure autonomously. Self-healing on failures.',
-      tam: '$15B addressable',
+      fit: 'Architecture review',
       color: C.gold
     },
   ];
@@ -1399,7 +1481,7 @@ function bgImage(slide, imgPath, opacity = 65) {
       x: x + 0.15, y: y + 0.02, w: 2.5, h: 0.38,
       fontSize: 14, fontFace: FONT.body, color: C.bg, bold: true, valign: 'middle'
     });
-    s.addText(v.tam, {
+    s.addText(v.fit, {
       x: x + 2.5, y: y + 0.02, w: 1.3, h: 0.38,
       fontSize: 10, fontFace: FONT.body, color: C.bg, align: 'right', bold: true, valign: 'middle'
     });
@@ -1413,42 +1495,21 @@ function bgImage(slide, imgPath, opacity = 65) {
     });
   });
 
-  // ─── Market Size Visualization Bar ──────────────────────────
-  // Colored segmented bar showing $180B TAM breakdown — scaled to fit
-  const tamSegments = [
-    { label: 'Healthcare AI', value: '$45B', w: 2.2, color: C.accentGreen },
-    { label: 'Financial Svcs', value: '$38B', w: 1.85, color: C.accent2 },
-    { label: 'Manufacturing', value: '$32B', w: 1.55, color: C.accent3 },
-    { label: 'Defense/Intel', value: '$28B', w: 1.35, color: C.accentRed },
-    { label: 'Government', value: '$22B', w: 1.07, color: C.accent },
-    { label: 'Energy/IoT', value: '$15B', w: 0.73, color: C.gold },
-  ];
-
-  let barX = 0.5;
-  tamSegments.forEach((seg) => {
-    s.addShape(pptx.shapes.RECTANGLE, {
-      x: barX, y: 6.25, w: seg.w, h: 0.3, fill: { color: seg.color }
-    });
-    if (seg.w > 1.2) {
-      s.addText(seg.value, {
-        x: barX, y: 6.25, w: seg.w, h: 0.3,
-        fontSize: 9, fontFace: FONT.body, color: C.bg, align: 'center', valign: 'middle', bold: true
-      });
-    }
-    barX += seg.w + 0.04;
+  // ─── Bottom insight bar ──────────────────────────
+  s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+    x: 0.5, y: 6.2, w: 12.3, h: 0.45, fill: { color: '1A0F2E' }, rectRadius: 0.05,
+    line: { color: C.accent, width: 1 }
+  });
+  s.addText('If your industry has data constraints, compliance mandates, or edge requirements -- this was built for you.', {
+    x: 0.5, y: 6.2, w: 12.3, h: 0.45,
+    fontSize: 12, fontFace: FONT.body, color: C.accent, align: 'center', valign: 'middle', bold: true, italic: true
   });
 
-  // Total TAM callout — prominent, positioned after bar
-  s.addText('= $180B+ TAM', {
-    x: barX + 0.1, y: 6.15, w: 3.5, h: 0.5,
-    fontSize: 20, fontFace: FONT.title, color: C.accent, bold: true, valign: 'middle'
-  });
-
-  slideFooter(s, 16);
+  slideFooter(s, 17);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 17: This Is Free — Cost Comparison
+// SLIDE 18: This Is Free — Cost Comparison
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -1487,16 +1548,44 @@ function bgImage(slide, imgPath, opacity = 65) {
     barGapWidthPct: 80,
   });
 
-  // Right side: cost breakdown
-  addCard(s, 7.5, 1.7, 5.3, 1.8,
-    'Proprietary Stack (3-Year TCO)',
-    'Pinecone: $1.2M/yr\nLangChain Enterprise: $500K/yr\nAWS Bedrock: $800K/yr\nIntegration engineering: $2M\nVendor lock-in switching cost: $3M+\n\nTotal: $8.5M+ over 3 years',
-    C.accentRed);
+  // Right side: cost breakdown cards — custom layout to avoid title/body overlap
+  // Proprietary Stack card
+  {
+    const cx = 7.5, cy = 2.15, cw = 5.3, ch = 1.8;
+    s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+      x: cx, y: cy, w: cw, h: ch, fill: { color: C.card }, rectRadius: 0.1
+    });
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x: cx, y: cy, w: 0.06, h: ch, fill: { color: C.accentRed }
+    });
+    s.addText('Proprietary Stack (3-Year TCO)', {
+      x: cx + 0.2, y: cy + 0.08, w: cw - 0.3, h: 0.3,
+      fontSize: 13, fontFace: FONT.body, color: C.accentRed, bold: true
+    });
+    s.addText('Pinecone: $1.2M/yr\nLangChain Enterprise: $500K/yr\nAWS Bedrock: $800K/yr\nIntegration engineering: $2M\nVendor lock-in switching cost: $3M+\n\nTotal: $8.5M+ over 3 years', {
+      x: cx + 0.2, y: cy + 0.4, w: cw - 0.3, h: ch - 0.5,
+      fontSize: 10.5, fontFace: FONT.body, color: C.textMuted, lineSpacingMultiple: 1.2
+    });
+  }
 
-  addCard(s, 7.5, 3.7, 5.3, 1.8,
-    'RuvNet Self-Hosted (3-Year TCO)',
-    'Software license: $0 (MIT)\nInfrastructure: $200K/yr (your existing PG)\nEngineering (2 senior devs): $500K/yr\nNo vendor lock-in costs: $0\n\nTotal: $900K over 3 years (89% savings)',
-    C.accentGreen);
+  // RuvNet Self-Hosted card
+  {
+    const cx = 7.5, cy = 4.15, cw = 5.3, ch = 1.6;
+    s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
+      x: cx, y: cy, w: cw, h: ch, fill: { color: C.card }, rectRadius: 0.1
+    });
+    s.addShape(pptx.shapes.RECTANGLE, {
+      x: cx, y: cy, w: 0.06, h: ch, fill: { color: C.accentGreen }
+    });
+    s.addText('RuvNet Self-Hosted (3-Year TCO)', {
+      x: cx + 0.2, y: cy + 0.08, w: cw - 0.3, h: 0.3,
+      fontSize: 13, fontFace: FONT.body, color: C.accentGreen, bold: true
+    });
+    s.addText('Software license: $0 (MIT)\nInfrastructure: $200K/yr (your existing PG)\nEngineering (2 senior devs): $500K/yr\nNo vendor lock-in costs: $0\n\nTotal: $900K over 3 years (89% savings)', {
+      x: cx + 0.2, y: cy + 0.4, w: cw - 0.3, h: ch - 0.5,
+      fontSize: 10.5, fontFace: FONT.body, color: C.textMuted, lineSpacingMultiple: 1.2
+    });
+  }
 
   // Big savings stat
   s.addText('89%', {
@@ -1508,16 +1597,16 @@ function bgImage(slide, imgPath, opacity = 65) {
     fontSize: 14, fontFace: FONT.body, color: C.textMuted
   });
 
-  slideFooter(s, 17);
+  slideFooter(s, 18);
 }
 
 
 // ═══════════════════════════════════════════════════════════════════
-// ACT 5: THE ASK (Slides 18-19)
+// ACT 5: THE ASK (Slides 19-21)
 // ═══════════════════════════════════════════════════════════════════
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 18: Built by the Community — Team & Credibility
+// SLIDE 19: Built by the Community — Team & Credibility
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -1575,11 +1664,11 @@ function bgImage(slide, imgPath, opacity = 65) {
     fontSize: 11, fontFace: FONT.body, color: C.accent, align: 'center', valign: 'middle', italic: true
   });
 
-  slideFooter(s, 18);
+  slideFooter(s, 19);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 19: Implementation Roadmap
+// SLIDE 20: Implementation Roadmap
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -1705,32 +1794,36 @@ function bgImage(slide, imgPath, opacity = 65) {
     }
   });
 
-  slideFooter(s, 19);
+  slideFooter(s, 20);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 20: CTA — Schedule a 30-Minute Architecture Review
+// SLIDE 21: CTA — Schedule a 30-Minute Architecture Review
 // ═══════════════════════════════════════════════════════════════════
 {
-  const s = addSlide();
+  const s = addSlide({ bg: '0F1629' });
   accentStrip(s);
 
-  // Full-width hero image faded behind — high transparency for CTA text readability
-  bgImage(s, IMG.hero, 85);
+  // No background image — clean solid navy
 
   s.addText('RUVNET', {
-    x: 0.8, y: 1.5, w: 12, h: 1.0,
+    x: 0.8, y: 1.0, w: 12, h: 1.0,
     fontSize: 56, fontFace: FONT.title, color: C.text, align: 'center', bold: true
   });
 
   s.addText('Schedule a 30-Minute Architecture Review', {
-    x: 0.8, y: 2.7, w: 12, h: 0.6,
+    x: 0.8, y: 2.2, w: 12, h: 0.6,
     fontSize: 26, fontFace: FONT.body, color: C.accent, align: 'center', bold: true
   });
 
-  s.addText('See the performance delta on your actual data.\nNo commitment. No sales pitch. Just architecture.', {
-    x: 0.8, y: 3.5, w: 12, h: 0.7,
-    fontSize: 15, fontFace: FONT.body, color: C.textMuted, align: 'center', lineSpacingMultiple: 1.5
+  s.addText("We'll benchmark against your current stack. On your data. In your environment.", {
+    x: 0.8, y: 3.0, w: 12, h: 0.5,
+    fontSize: 16, fontFace: FONT.body, color: C.textMuted, align: 'center'
+  });
+
+  s.addText('Proof of concept in 2 weeks. Production in 90 days.', {
+    x: 0.8, y: 3.6, w: 12, h: 0.4,
+    fontSize: 15, fontFace: FONT.body, color: C.accentGreen, align: 'center', bold: true
   });
 
   // Stats row
@@ -1744,35 +1837,35 @@ function bgImage(slide, imgPath, opacity = 65) {
   ctaStats.forEach((st, i) => {
     const sx = 1.0 + i * 2.3;
     s.addText(st.n, {
-      x: sx, y: 4.6, w: 2, h: 0.5,
+      x: sx, y: 4.3, w: 2, h: 0.5,
       fontSize: 28, fontFace: FONT.title, color: C.accent, bold: true, align: 'center'
     });
     s.addText(st.l, {
-      x: sx, y: 5.1, w: 2, h: 0.3,
+      x: sx, y: 4.8, w: 2, h: 0.3,
       fontSize: 11, fontFace: FONT.body, color: C.textMuted, align: 'center'
     });
   });
 
-  // Contact
+  // Contact bar
   s.addShape(pptx.shapes.ROUNDED_RECTANGLE, {
-    x: 3.5, y: 5.7, w: 6.3, h: 0.6, fill: { color: C.accent }, rectRadius: 0.08
+    x: 3.5, y: 5.4, w: 6.3, h: 0.6, fill: { color: C.accent }, rectRadius: 0.08
   });
   s.addText('hello@ruvnet.com  |  ruvnet.com  |  github.com/ruvnet', {
-    x: 3.5, y: 5.7, w: 6.3, h: 0.6,
+    x: 3.5, y: 5.4, w: 6.3, h: 0.6,
     fontSize: 14, fontFace: FONT.body, color: C.bg, align: 'center', valign: 'middle', bold: true
   });
 
   // Tagline
   s.addText('The complete agentic intelligence platform.\nOpen source. Knowledge-native. Yours.', {
-    x: 0.8, y: 6.4, w: 12, h: 0.5,
+    x: 0.8, y: 6.1, w: 12, h: 0.5,
     fontSize: 12, fontFace: FONT.body, color: C.textDim, align: 'center', italic: true, lineSpacingMultiple: 1.3
   });
 
-  slideFooter(s, 20);
+  slideFooter(s, 21);
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SLIDE 21: Appendix Index
+// SLIDE 22: Appendix Index
 // ═══════════════════════════════════════════════════════════════════
 {
   const s = addSlide();
@@ -1789,7 +1882,7 @@ function bgImage(slide, imgPath, opacity = 65) {
   });
 
   const appendixItems = [
-    { num: '01', title: 'CEO Investment Summary', desc: 'This deck. Executive overview of RuvNet\'s value proposition, competitive position, and implementation path.', color: C.accent },
+    { num: '01', title: 'Executive Architecture Summary', desc: 'This deck. Executive overview of RuvNet\'s value proposition, competitive position, and implementation path.', color: C.accent },
     { num: '02', title: 'CTO Technical Architecture Deep Dive', desc: '45 slides covering RuVector internals, Ruflo agent architecture, Pi Brain neural substrate, and AIMDS security pipeline.', color: C.accent2 },
     { num: '03', title: 'Implementation ROI Calculator', desc: 'Interactive model comparing 3-year TCO across deployment scenarios. Input your workload, get projected savings.', color: C.accentGreen },
     { num: '04', title: 'Security & Compliance Documentation', desc: 'HIPAA readiness assessment, SOC 2 Type II controls mapping, GDPR data flow analysis, FedRAMP authorization path.', color: C.accentRed },
@@ -1827,7 +1920,7 @@ function bgImage(slide, imgPath, opacity = 65) {
     fontSize: 11, fontFace: FONT.body, color: C.textMuted, align: 'center', valign: 'middle'
   });
 
-  slideFooter(s, 21);
+  slideFooter(s, 22);
 }
 
 
@@ -1838,4 +1931,4 @@ const outputPath = '/Users/stuartkerr/Code/Ask-Ruvnet/Ask-Ruvnet/src/ui/public/a
 await pptx.writeFile({ fileName: outputPath });
 console.log(`CEO Deck saved to: ${outputPath}`);
 console.log(`Slides: ${pptx.slides.length}`);
-console.log('Narrative: Act I (Problem) -> Act II (Solution) -> Act III (Proof) -> Act IV (Moat) -> Act V (Ask)');
+console.log('Narrative: Act I (Problem) -> Act II (Solution + Product) -> Act III (Proof) -> Act IV (Moat) -> Act V (Ask)');
