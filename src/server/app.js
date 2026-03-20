@@ -209,18 +209,18 @@ const NLM_RESOURCES = [
     {
         topics: ['ceo', 'investment', 'enterprise ai', '2026', 'executive summary', 'ruvnet'],
         type: 'pdf',
-        title: 'CEO Deck: RuvNet 2026',
-        url: '/assets/docs/CEO-Deck-RuvNet-2026.pdf',
+        title: 'CEO Deck: RuvNet 2026 (Visual Redesign)',
+        url: '/assets/docs/CEO-Deck-RuvNet-2026-v2.pdf',
         emoji: '\ud83d\udcc4',
-        description: 'Executive investment deck — market opportunity, proof points, and competitive advantage (2026)'
+        description: '21-slide executive deck — DIKW positioning, "2 Generations Ahead" timeline, case studies, $180B TAM'
     },
     {
         topics: ['cto', 'architecture', 'ruvnet architecture', 'technical overview', '2026', 'deep dive'],
         type: 'pdf',
-        title: 'CTO Deck: Technical Architecture 2026',
-        url: '/assets/docs/CTO-Deck-RuvNet-2026.pdf',
+        title: 'CTO Deck: Technical Architecture 2026 (Visual Redesign)',
+        url: '/assets/docs/CTO-Deck-RuvNet-2026-v2.pdf',
         emoji: '\ud83d\udcc4',
-        description: 'Technical architecture deep dive — 14 modules, benchmarks, and implementation roadmap (2026)'
+        description: '23-slide architecture deep dive — PaperBanana diagrams, benchmark charts, WASM proof, swarm topology'
     },
     {
         topics: ['ceo', 'investment', 'agentic intelligence', 'executive summary'],
