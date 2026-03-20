@@ -99,12 +99,28 @@ function readMetadata(sourceDir) {
   const raw = fs.readFileSync(metadataPath, 'utf-8');
   const parsed = JSON.parse(raw);
 
+  // Handle both array format (old) and dict format (current .ruvector store)
+  let idIndex = parsed.idIndex;
+  if (idIndex && !Array.isArray(idIndex) && typeof idIndex === 'object') {
+    // Convert { "0": "kb_1", "1": "kb_2", ... } to ["kb_1", "kb_2", ...]
+    const maxKey = Math.max(...Object.keys(idIndex).map(Number));
+    idIndex = new Array(maxKey + 1);
+    for (const [k, v] of Object.entries(parsed.idIndex)) {
+      idIndex[Number(k)] = v;
+    }
+    parsed.idIndex = idIndex;
+    console.log(`  Converted idIndex from dict (${Object.keys(parsed.idIndex).length} keys) to array`);
+  }
   if (!Array.isArray(parsed.idIndex)) {
-    throw new Error('metadata.json missing idIndex array');
+    throw new Error('metadata.json missing idIndex (expected array or dict)');
   }
-  if (!parsed.metadata || typeof parsed.metadata !== 'object') {
-    throw new Error('metadata.json missing metadata map');
+
+  // Handle metadataIndex vs metadata naming
+  const metadata = parsed.metadata || parsed.metadataIndex;
+  if (!metadata || typeof metadata !== 'object') {
+    throw new Error('metadata.json missing metadata/metadataIndex map');
   }
+  parsed.metadata = metadata;
 
   return parsed;
 }
@@ -268,7 +284,8 @@ async function main() {
 
   for (let i = 0; i < entryCount; i++) {
     const entryId = idIndex[i];
-    const meta = metadataMap[entryId];
+    // metadataIndex uses numeric keys ("0","1",...), not KB IDs ("kb_1",...)
+    const meta = metadataMap[entryId] || metadataMap[String(i)];
 
     if (!meta) {
       skipped++;

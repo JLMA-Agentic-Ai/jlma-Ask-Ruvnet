@@ -1,0 +1,75 @@
+{
+  "version": "1.0.0",
+  "schema": "ask_ruvnet",
+  "exportedAt": "2026-03-20T10:54:44.869Z",
+  "totalEntries": 434,
+  "embeddingDim": 384,
+  "quantization": "binary",
+  "categories": [
+    {
+      "name": "teaching",
+      "count": 164
+    },
+    {
+      "name": "videos",
+      "count": 50
+    },
+    {
+      "name": "agents",
+      "count": 37
+    },
+    {
+      "name": "wasm-local-llm",
+      "count": 33
+    },
+    {
+      "name": "general",
+      "count": 29
+    },
+    {
+      "name": "architecture",
+      "count": 28
+    },
+    {
+      "name": "neural",
+      "count": 21
+    },
+    {
+      "name": "algorithms",
+      "count": 17
+    },
+    {
+      "name": "vector-db",
+      "count": 16
+    },
+    {
+      "name": "security",
+      "count": 15
+    },
+    {
+      "name": "deployment",
+      "count": 6
+    },
+    {
+      "name": "performance",
+      "count": 6
+    },
+    {
+      "name": "swarms",
+      "count": 5
+    },
+    {
+      "name": "memory",
+      "count": 3
+    },
+    {
+      "name": "reinforcement-learning",
+      "count": 2
+    },
+    {
+      "name": "sparc",
+      "count": 2
+    }
+  ],
+  "contentHash": "unknown"
+}

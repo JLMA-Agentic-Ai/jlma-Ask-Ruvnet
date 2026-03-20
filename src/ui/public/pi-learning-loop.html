@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Keep Knowledge Accurate — Pi Brain Demo</title>
+<title>In 5 Months, You'll Need Receipts — Pi Brain Demo</title>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -23,6 +23,7 @@
   --blue: #3b82f6;
   --blue-dim: rgba(59, 130, 246, 0.15);
   --red: #ef4444;
+  --red-dim: rgba(239, 68, 68, 0.15);
   --green: #10b981;
   --green-dim: rgba(16, 185, 129, 0.15);
   --text: #e8eaed;
@@ -124,287 +125,296 @@ html, body {
   line-height: 1.6;
   margin-bottom: 32px;
 }
-
-/* --- Decay Demo (Stage 0) --- */
-.decay-demo {
-  width: 100%;
-  max-width: 620px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.timeline-container {
-  width: 100%;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.timeline-months {
-  display: flex; justify-content: space-between;
-  font-family: var(--mono); font-size: 0.65rem; color: var(--text-dim);
-}
-.timeline-months span { transition: color 0.3s; }
-.timeline-months span.active-month { color: var(--cyan); font-weight: 600; }
-.timeline-bar {
-  height: 4px; background: var(--border); border-radius: 2px;
-  position: relative; overflow: visible;
-}
-.timeline-progress {
-  height: 100%; border-radius: 2px;
-  background: linear-gradient(90deg, var(--cyan), var(--gold), var(--red));
-  transition: width 0.3s ease;
-  width: 0;
-}
-.timeline-scrubber {
-  position: absolute; top: -6px;
-  width: 16px; height: 16px; border-radius: 50%;
-  background: var(--cyan); box-shadow: 0 0 12px var(--cyan);
-  transition: left 0.3s ease;
-  left: 0;
-}
-
-.accuracy-bar {
-  height: 24px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  position: relative;
-  overflow: hidden;
-}
-.accuracy-fill {
-  height: 100%;
-  border-radius: 5px;
-  transition: width 0.5s ease, background 0.5s ease;
-  width: 100%;
-  background: var(--green);
-}
-.accuracy-label {
-  position: absolute;
-  right: 8px; top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text);
-  z-index: 2;
-}
-
-.decay-panels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.decay-panel {
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  line-height: 1.7;
-  min-height: 100px;
-  position: relative;
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(8px);
-}
-.decay-panel .panel-label {
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-.decay-panel.docs-panel { border-color: rgba(16,185,129,0.3); }
-.decay-panel.docs-panel .panel-label { color: var(--green); }
-.decay-panel.reality-panel { border-color: rgba(168,85,247,0.3); }
-.decay-panel.reality-panel .panel-label { color: var(--purple); }
-.panel-text { color: var(--text); white-space: pre-line; }
-
-.divergence-counter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-}
-.divergence-label { color: var(--text-dim); }
-.divergence-value { color: var(--red); font-weight: 700; font-size: 1.1rem; }
-
-.decay-alert {
-  padding: 10px 16px;
-  border-radius: 8px;
-  background: rgba(239,68,68,0.1);
-  border: 1px solid rgba(239,68,68,0.3);
-  color: var(--red);
-  font-family: var(--mono);
-  font-size: 0.75rem;
+.stage-caption {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  max-width: 560px;
   text-align: center;
+  line-height: 1.6;
+  margin-top: 16px;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.5s, transform 0.5s;
+  transition: opacity 0.8s;
 }
-.decay-alert.visible { opacity: 1; transform: translateY(0); }
+.stage-caption.visible { opacity: 1; }
 
-/* --- Drift Detection (Stage 1) --- */
-.drift-demo {
+/* --- Stage 0: The Deadline --- */
+.deadline-demo {
   width: 100%;
-  max-width: 620px;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
   align-items: center;
+  gap: 20px;
 }
-.radar-wrap {
-  width: 100%;
-  max-width: 500px;
-  position: relative;
-}
-.radar-wrap svg { display: block; width: 100%; }
-.drift-alert-card {
-  padding: 12px 16px;
-  border-radius: 10px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+.countdown-number {
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-weight: 800;
+  color: var(--red);
+  text-shadow: 0 0 40px rgba(239, 68, 68, 0.4);
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.countdown-number.visible { opacity: 1; }
+.countdown-label {
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.compliance-checks {
   width: 100%;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+.compliance-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text);
   opacity: 0;
   transform: translateX(-20px);
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.drift-alert-card.visible { opacity: 1; transform: translateX(0); }
-.drift-alert-card.warn { border-color: rgba(240,192,32,0.4); }
-.drift-alert-card.critical { border-color: rgba(239,68,68,0.4); }
-.drift-alert-icon { margin-right: 8px; }
-
-.cv-display {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--mono);
-}
-.cv-label { font-size: 0.75rem; color: var(--text-dim); }
-.cv-value { font-size: 1.1rem; font-weight: 600; color: var(--cyan); }
-
-.detection-comparison {
-  padding: 10px 16px;
-  border-radius: 8px;
-  background: var(--green-dim);
-  border: 1px solid rgba(16,185,129,0.3);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--green);
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-.detection-comparison.visible { opacity: 1; }
-
-.stale-entry {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  width: 100%;
-  max-width: 500px;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-.stale-entry.visible { opacity: 1; }
-.stale-badge {
-  font-size: 0.6rem;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 600;
+.compliance-check.visible { opacity: 1; transform: translateX(0); }
+.compliance-check .check-icon {
+  font-size: 1rem;
   flex-shrink: 0;
 }
-.stale-badge.yellow { background: rgba(240,192,32,0.2); color: var(--gold); border: 1px solid rgba(240,192,32,0.3); }
-.stale-badge.red { background: rgba(239,68,68,0.2); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
-.fresh-badge { background: rgba(16,185,129,0.2); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
-
-/* --- Transfer Learning (Stage 2) --- */
-.transfer-viz { max-width: 600px; width: 100%; }
-.transfer-metrics {
-  display: flex;
-  gap: 16px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.transfer-metric {
-  padding: 8px 14px;
+.status-panel {
+  padding: 14px 20px;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--red);
   text-align: center;
-}
-.transfer-metric .tm-value { color: var(--gold); font-weight: 600; font-size: 1rem; display: block; }
-.transfer-metric .tm-label { color: var(--text-dim); font-size: 0.6rem; text-transform: uppercase; }
-.transfer-caption {
-  font-size: 0.82rem;
-  color: var(--text-dim);
-  max-width: 540px;
-  text-align: center;
-  line-height: 1.6;
-  margin-top: 12px;
+  width: 100%;
   opacity: 0;
-  transition: opacity 0.8s;
+  transition: opacity 0.6s;
 }
-.transfer-caption.visible { opacity: 1; }
+.status-panel.visible { opacity: 1; }
 
-/* --- Flywheel (Stage 3) --- */
-.flywheel-viz { max-width: 420px; width: 100%; }
-.flywheel-layout {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.flywheel-metrics {
+/* --- Stage 1: Shadow AI --- */
+.shadow-demo {
+  width: 100%;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-width: 160px;
+  align-items: center;
+  gap: 16px;
 }
-.flywheel-metric {
-  padding: 8px 12px;
+.org-canvas-wrap {
+  width: 100%;
+  max-width: 560px;
+  position: relative;
+}
+.org-canvas-wrap canvas { display: block; width: 100%; height: 320px; border-radius: 12px; }
+.shadow-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.shadow-stat {
+  padding: 10px 16px;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(239, 68, 68, 0.2);
   border-radius: 8px;
   font-family: var(--mono);
-  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
 }
-.flywheel-metric .fm-value {
-  color: var(--cyan);
-  font-weight: 600;
-  font-size: 1rem;
+.shadow-stat.visible { opacity: 1; transform: translateY(0); }
+.shadow-stat .stat-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--red);
 }
-.flywheel-metric .fm-label {
+.shadow-stat .stat-label {
+  font-size: 0.6rem;
   color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Stage 2: Built-In Protection --- */
+.protection-demo {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.protection-layer {
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.protection-layer.visible { opacity: 1; transform: translateY(0); }
+.protection-layer .layer-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.layer-badge {
+  font-family: var(--mono);
   font-size: 0.6rem;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
 }
-.flywheel-caption {
-  font-size: 0.82rem;
+.layer-badge.green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+.layer-badge.purple { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+.layer-badge.cyan { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(0,212,255,0.3); }
+.layer-title {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.layer-desc {
+  font-family: var(--mono);
+  font-size: 0.72rem;
   color: var(--text-dim);
-  max-width: 500px;
-  text-align: center;
   line-height: 1.6;
-  margin-top: 12px;
+}
+.layer-visual {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 6px;
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: auto;
+}
+.pii-highlight { color: var(--red); text-decoration: line-through; }
+.pii-redacted { color: var(--green); }
+.shield-merge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--cyan);
   opacity: 0;
   transition: opacity 0.8s;
 }
-.flywheel-caption.visible { opacity: 1; }
+.shield-merge.visible { opacity: 1; }
 
-/* --- Join the Collective (Stage 4) --- */
+/* --- Stage 3: Knowledge With Provenance --- */
+.provenance-demo {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.provenance-card {
+  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+}
+.prov-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.prov-row.visible { opacity: 1; transform: translateX(0); }
+.prov-row:last-child { border-bottom: none; }
+.prov-label {
+  color: var(--text-dim);
+  min-width: 90px;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.prov-value { color: var(--text); flex: 1; word-break: break-all; }
+.prov-title-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cyan);
+}
+.prov-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+.prov-badge.verified { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+.prov-badge.clean { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+.prov-modifications {
+  padding-left: 12px;
+  margin-top: 4px;
+}
+.prov-mod-item {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  padding: 3px 0;
+  border-left: 2px solid var(--border);
+  padding-left: 10px;
+  margin-bottom: 4px;
+}
+.quality-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+.quality-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.quality-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--green));
+  border-radius: 3px;
+  transition: width 1s ease;
+  width: 0;
+}
+
+/* --- Stage 4: Search With Provenance --- */
 .live-demo {
   display: flex;
   flex-direction: column;
@@ -422,7 +432,7 @@ html, body {
   border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: 20px;
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--green);
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -467,15 +477,16 @@ html, body {
 }
 .result-item {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;
   opacity: 0;
   transform: translateY(8px);
   transition: all 0.35s ease;
+  flex-wrap: wrap;
 }
 .result-item.visible { opacity: 1; transform: translateY(0); }
 .result-item:hover { border-color: rgba(0,212,255,0.3); background: var(--surface-2); }
@@ -494,15 +505,40 @@ html, body {
   color: var(--text);
   line-height: 1.4;
   flex: 1;
+  min-width: 120px;
+}
+.result-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 4px;
+  padding-left: 52px;
 }
 .result-category {
   font-family: var(--mono);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   color: var(--text-dim);
-  flex-shrink: 0;
   padding: 2px 6px;
   border-radius: 4px;
   border: 1px solid var(--border);
+}
+.result-witness {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--green);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(16,185,129,0.2);
+  background: rgba(16,185,129,0.06);
+}
+.result-contributor {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--purple);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(168,85,247,0.2);
 }
 .result-vote {
   display: flex;
@@ -547,58 +583,6 @@ html, body {
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .participation-badge.visible { opacity: 1; transform: scale(1); }
-
-.contribution-counter {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--gold);
-  margin-top: 8px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.contribution-counter.visible { opacity: 1; }
-
-/* --- Share form --- */
-.share-form {
-  width: 100%; max-width: 480px;
-  display: flex; flex-direction: column; gap: 10px;
-  padding: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  margin-top: 16px;
-}
-.share-form input, .share-form textarea, .share-form select {
-  padding: 8px 12px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  outline: none;
-}
-.share-form input:focus, .share-form textarea:focus { border-color: var(--cyan); }
-.share-form textarea { min-height: 60px; resize: vertical; }
-.share-form select { cursor: pointer; }
-
-/* --- Demo button --- */
-.demo-btn {
-  padding: 8px 18px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,212,255,0.3);
-  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.15));
-  color: var(--cyan);
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.demo-btn:hover {
-  background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(168,85,247,0.25));
-  box-shadow: 0 0 16px rgba(0,212,255,0.2);
-  transform: translateY(-1px);
-}
 
 /* --- Controls --- */
 .controls {
@@ -649,14 +633,16 @@ html, body {
   .stage-content { padding: 16px; top: 50px; bottom: 60px; }
   .stage-title { font-size: 1.4rem; }
   .stage-subtitle { font-size: 0.82rem; margin-bottom: 20px; }
-  .decay-panels { grid-template-columns: 1fr; }
-  .flywheel-layout { flex-direction: column; }
-  .flywheel-metrics { flex-direction: row; flex-wrap: wrap; min-width: auto; }
-  .transfer-metrics { flex-direction: column; align-items: center; }
+  .shadow-stats { flex-direction: column; align-items: center; }
+  .org-canvas-wrap canvas { height: 240px; }
+  .result-meta { padding-left: 0; }
+  .prov-row { flex-direction: column; gap: 4px; }
+  .prov-label { min-width: auto; }
 }
 @media (max-width: 480px) {
   .controls { gap: 8px; }
   .ctrl-btn { padding: 6px 14px; font-size: 0.7rem; }
+  .countdown-number { font-size: 3rem; }
 }
 </style>
 </head>
@@ -667,177 +653,180 @@ html, body {
 
 <div class="overlay">
   <div class="stage-nav" role="tablist" aria-label="Demo stages">
-    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: The Decay Problem" aria-selected="true" tabindex="0"></div>
-    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: Drift Detection" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: Transfer Learning" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: The Improvement Flywheel" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: Search, Vote, Contribute" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: The Deadline" aria-selected="true" tabindex="0"></div>
+    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: The Shadow AI Problem" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: Built-In Protection" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: Knowledge With Provenance" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: Compliant AI, Live" aria-selected="false" tabindex="-1"></div>
   </div>
 
-  <!-- Stage 0: The Decay Problem -->
+  <!-- Stage 0: The Deadline -->
   <div class="stage-content visible" id="stage0" role="tabpanel">
-    <div class="stage-title">The Decay Problem</div>
-    <div class="stage-subtitle">You wrote great API docs 6 months ago. The API moved on. Your docs didn't.</div>
-    <div class="decay-demo">
-      <div class="timeline-container" id="decayTimeline">
-        <div class="timeline-months">
-          <span class="active-month" data-m="0">Mar</span>
-          <span data-m="1">Apr</span>
-          <span data-m="2">May</span>
-          <span data-m="3">Jun</span>
-          <span data-m="4">Jul</span>
-          <span data-m="5">Aug</span>
+    <div class="stage-title">The Deadline</div>
+    <div class="stage-subtitle">EU AI Act. California SB 942. Both enforceable August 2, 2026. This isn't a feature request.</div>
+    <div class="deadline-demo">
+      <div class="countdown-number" id="countdownNumber"></div>
+      <div class="countdown-label">days remaining</div>
+      <div class="compliance-checks" id="complianceChecks">
+        <div class="compliance-check" id="check0">
+          <span class="check-icon">&#10060;</span>
+          <span>Automatic event logging for AI decisions</span>
         </div>
-        <div class="timeline-bar">
-          <div class="timeline-progress" id="decayProgress"></div>
-          <div class="timeline-scrubber" id="decayScrubber"></div>
+        <div class="compliance-check" id="check1">
+          <span class="check-icon">&#10060;</span>
+          <span>6-month minimum audit trail retention</span>
         </div>
-      </div>
-      <div class="accuracy-bar">
-        <div class="accuracy-fill" id="accuracyFill"></div>
-        <span class="accuracy-label" id="accuracyLabel">100% accurate</span>
-      </div>
-      <div class="decay-panels">
-        <div class="decay-panel docs-panel">
-          <div class="panel-label">Your Documentation</div>
-          <div class="panel-text" id="docsText">POST /api/auth
-API key in header</div>
-        </div>
-        <div class="decay-panel reality-panel">
-          <div class="panel-label">What the API Actually Does</div>
-          <div class="panel-text" id="realityText">POST /api/auth
-API key in header</div>
+        <div class="compliance-check" id="check2">
+          <span class="check-icon">&#10060;</span>
+          <span>PII detection and handling documentation</span>
         </div>
       </div>
-      <div class="divergence-counter">
-        <span class="divergence-label">Docs vs Reality:</span>
-        <span class="divergence-value" id="divergenceValue">0% diverged</span>
+      <div class="status-panel" id="statusPanel">
+        Most organizations: 0 of 3 ready
       </div>
-      <div class="decay-alert" id="decayAlert">User report: "Your docs are completely wrong."</div>
+      <div class="stage-caption" id="caption0">This isn't a roadmap item. It's law. EU AI Act Article 12 + California SB 942.</div>
     </div>
   </div>
 
-  <!-- Stage 1: Drift Detection -->
+  <!-- Stage 1: The Shadow AI Problem -->
   <div class="stage-content" id="stage1" role="tabpanel">
-    <div class="stage-title">Drift Detection</div>
-    <div class="stage-subtitle">Pi-Brain doesn't wait for users to complain. When new knowledge conflicts with old, drift fires automatically.</div>
-    <div class="drift-demo">
-      <div class="timeline-container" id="driftTimeline">
-        <div class="timeline-months">
-          <span class="active-month" data-m="0">Mar</span>
-          <span data-m="1">Apr</span>
-          <span data-m="2">May</span>
-          <span data-m="3">Jun</span>
-          <span data-m="4">Jul</span>
-          <span data-m="5">Aug</span>
+    <div class="stage-title">The Shadow AI Problem</div>
+    <div class="stage-subtitle">Your employees are putting customer data into AI tools you don't control. Every day.</div>
+    <div class="shadow-demo">
+      <div class="org-canvas-wrap">
+        <canvas id="shadowCanvas" width="560" height="320"></canvas>
+      </div>
+      <div class="shadow-stats" id="shadowStats">
+        <div class="shadow-stat" id="stat0">
+          <span class="stat-value" id="statPct">0%</span>
+          <span class="stat-label">Use unapproved AI</span>
         </div>
-        <div class="timeline-bar">
-          <div class="timeline-progress" id="driftProgress"></div>
-          <div class="timeline-scrubber" id="driftScrubber"></div>
+        <div class="shadow-stat" id="stat1">
+          <span class="stat-value" id="statViolations">0</span>
+          <span class="stat-label">Violations / month</span>
+        </div>
+        <div class="shadow-stat" id="stat2">
+          <span class="stat-value">PII</span>
+          <span class="stat-label">Embedded in vector DBs you don't own</span>
         </div>
       </div>
-      <div class="radar-wrap">
-        <svg id="radarSvg" viewBox="0 0 500 180">
-          <defs>
-            <filter id="radarGlow">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-        </svg>
-      </div>
-      <div class="cv-display">
-        <span class="cv-label">Coefficient of variation:</span>
-        <span class="cv-value" id="cvMetric">0.05</span>
-      </div>
-      <div class="drift-alert-card warn" id="driftAlert1">
-        <span class="drift-alert-icon">&#9888;&#65039;</span>
-        API docs drift detected &mdash; 1 endpoint may be deprecated
-      </div>
-      <div class="drift-alert-card critical" id="driftAlert2">
-        <span class="drift-alert-icon">&#128308;</span>
-        Auth docs critically outdated &mdash; OAuth2 migration detected
-      </div>
-      <div class="stale-entry" id="staleEntry">
-        <span class="stale-badge red">STALE</span>
-        <span style="flex:1; color: var(--text-dim); text-decoration: line-through;">POST /api/auth &mdash; API key in header</span>
-      </div>
-      <div class="stale-entry" id="freshEntry">
-        <span class="stale-badge fresh-badge">FRESH</span>
-        <span style="flex:1; color: var(--green);">POST /api/v2/auth &mdash; OAuth2 bearer token</span>
-      </div>
-      <div class="detection-comparison" id="detectionComparison">
-        Without Pi-Brain: problem invisible for 5 months. With Pi-Brain: caught in 1 month.
-      </div>
+      <div class="stage-caption" id="caption1">You can't audit what you can't see. Shadow AI is the compliance nightmare hiding in plain sight.</div>
     </div>
   </div>
 
-  <!-- Stage 2: Transfer Learning -->
+  <!-- Stage 2: Built-In, Not Bolted On -->
   <div class="stage-content" id="stage2" role="tabpanel">
-    <div class="stage-title">Transfer Learning</div>
-    <div class="stage-subtitle">What security discovers about tokens automatically informs API design and session management.</div>
-    <svg id="transferSvg" viewBox="0 0 600 350" class="transfer-viz">
-      <defs>
-        <filter id="glowTransfer">
-          <feGaussianBlur stdDeviation="4" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-    </svg>
-    <div class="transfer-metrics" id="transferMetrics">
-      <div class="transfer-metric"><span class="tm-value" id="transferConf">0.00</span><span class="tm-label">Transfer Confidence</span></div>
-      <div class="transfer-metric"><span class="tm-value" id="transferDomains">0</span><span class="tm-label">Domains Connected</span></div>
-      <div class="transfer-metric"><span class="tm-value" id="transferInsights">0</span><span class="tm-label">Insights Transferred</span></div>
-    </div>
-    <div class="transfer-caption" id="transferCaption">Without transfer learning, each team discovers this independently. With Pi-Brain, one insight improves three domains automatically.</div>
-  </div>
-
-  <!-- Stage 3: The Improvement Flywheel -->
-  <div class="stage-content" id="stage3" role="tabpanel">
-    <div class="stage-title">The Improvement Flywheel</div>
-    <div class="stage-subtitle">Standard AI is a straight line that ends. Pi-Brain is a flywheel that accelerates.</div>
-    <div class="flywheel-layout">
-      <svg id="flywheelSvg" viewBox="0 0 500 400" class="flywheel-viz"></svg>
-      <div class="flywheel-metrics" id="flywheelMetrics">
-        <div class="flywheel-metric"><span class="fm-value" id="fwQuestions">12</span><span class="fm-label">Questions / Day</span></div>
-        <div class="flywheel-metric"><span class="fm-value" id="fwQuality">0.71</span><span class="fm-label">Avg Quality</span></div>
-        <div class="flywheel-metric"><span class="fm-value" id="fwContrib">58</span><span class="fm-label">Contributors</span></div>
-        <div class="flywheel-metric"><span class="fm-value" id="fwDrift">3</span><span class="fm-label">Drift Alerts</span></div>
+    <div class="stage-title">Built-In, Not Bolted On</div>
+    <div class="stage-subtitle">Three layers of protection. One middleware. Zero integration projects.</div>
+    <div class="protection-demo" id="protectionDemo">
+      <div class="protection-layer" id="layer0">
+        <div class="layer-header">
+          <span class="layer-badge green">Layer 1</span>
+          <span class="layer-title" style="color: var(--green);">PII Stripping</span>
+        </div>
+        <div class="layer-desc">15 regex patterns. Automatic. Before data enters the system.</div>
+        <div class="layer-visual" id="piiVisual">
+          <span class="pii-highlight">john.smith@acme.com</span> <span class="pii-highlight">555-0123</span> <span class="pii-highlight">SSN: 123-45-6789</span><br>
+          &#8595;<br>
+          <span class="pii-redacted">[EMAIL]</span> <span class="pii-redacted">[PHONE]</span> <span class="pii-redacted">[SSN]</span>
+        </div>
       </div>
+      <div class="protection-layer" id="layer1">
+        <div class="layer-header">
+          <span class="layer-badge purple">Layer 2</span>
+          <span class="layer-title" style="color: var(--purple);">Witness Chains</span>
+        </div>
+        <div class="layer-desc">Cryptographic proof: who contributed, when, what changed. Ed25519 signatures.</div>
+        <div class="layer-visual">
+          knowledge entry &#8594; Ed25519 sign &#8594; chain of custody &#8594; immutable audit log
+        </div>
+      </div>
+      <div class="protection-layer" id="layer2">
+        <div class="layer-header">
+          <span class="layer-badge cyan">Layer 3</span>
+          <span class="layer-title" style="color: var(--cyan);">AIMDS Middleware</span>
+        </div>
+        <div class="layer-desc">Inbound and outbound protection. Every request scanned.</div>
+        <div class="layer-visual">
+          input &#8594; [SCAN] &#8594; process &#8594; [SCAN] &#8594; output
+        </div>
+      </div>
+      <div class="shield-merge" id="shieldMerge">
+        &#x1F6E1;&#xFE0F; One middleware. One install. npm install, configure, done.
+      </div>
+      <div class="stage-caption" id="caption2">Not three tools to integrate. One middleware layer. npm install, configure, done.</div>
     </div>
-    <div class="flywheel-caption" id="flywheelCaption">Every interaction makes the next one better. That's the flywheel.</div>
   </div>
 
-  <!-- Stage 4: Join the Collective -->
+  <!-- Stage 3: Knowledge With Provenance -->
+  <div class="stage-content" id="stage3" role="tabpanel">
+    <div class="stage-title">Every Piece Has a Paper Trail</div>
+    <div class="stage-subtitle">When the auditor asks "where did this come from?" &#8212; you have the answer.</div>
+    <div class="provenance-demo">
+      <div class="provenance-card" id="provCard">
+        <div class="prov-row" id="provTitle">
+          <span class="prov-label">Title</span>
+          <span class="prov-value prov-title-value">HNSW Index Construction Patterns</span>
+        </div>
+        <div class="prov-row" id="provContributor">
+          <span class="prov-label">Contributor</span>
+          <span class="prov-value">Anonymous #db339f...</span>
+        </div>
+        <div class="prov-row" id="provCreated">
+          <span class="prov-label">Created</span>
+          <span class="prov-value">2026-03-02T19:33:57Z</span>
+        </div>
+        <div class="prov-row" id="provModified">
+          <span class="prov-label">Modified</span>
+          <span class="prov-value">
+            3 times
+            <div class="prov-modifications" id="provMods">
+              <div class="prov-mod-item">2026-03-05 &#8212; Added construction parameter guidance</div>
+              <div class="prov-mod-item">2026-03-09 &#8212; Updated M/efConstruction benchmarks</div>
+              <div class="prov-mod-item">2026-03-12 &#8212; Corrected memory estimation formula</div>
+            </div>
+          </span>
+        </div>
+        <div class="prov-row" id="provQuality">
+          <span class="prov-label">Quality</span>
+          <span class="prov-value">
+            <div class="quality-bar-wrap">
+              <span>0.93</span>
+              <div class="quality-bar"><div class="quality-bar-fill" id="qualityFill"></div></div>
+              <span style="color: var(--text-dim); font-size: 0.65rem;">14 up, 1 down</span>
+            </div>
+          </span>
+        </div>
+        <div class="prov-row" id="provWitness">
+          <span class="prov-label">Witness</span>
+          <span class="prov-value" style="font-size: 0.65rem; color: var(--green);">
+            a6bdcf45e8...0aa55
+            <span class="prov-badge verified">&#10003; verified</span>
+          </span>
+        </div>
+        <div class="prov-row" id="provPii">
+          <span class="prov-label">PII Scan</span>
+          <span class="prov-value">
+            <span class="prov-badge clean">&#10003; No personal data detected</span>
+          </span>
+        </div>
+      </div>
+      <div class="stage-caption" id="caption3">Every piece of knowledge has a complete audit trail. That's not a feature &#8212; it's a requirement.</div>
+    </div>
+  </div>
+
+  <!-- Stage 4: Compliant AI, Live -->
   <div class="stage-content" id="stage4" role="tabpanel">
-    <div class="stage-title">Search, Vote, Contribute</div>
-    <div class="stage-subtitle">59 contributors built this. Every interaction improves it for everyone.</div>
+    <div class="stage-title">Compliant AI, Live</div>
+    <div class="stage-subtitle">Search the collective. Every result has a witness chain.</div>
     <div class="live-demo">
-      <div class="demo-badge" id="liveBadge">Pi Brain &middot; 59 contributors &middot; Collective Intelligence &middot; Live</div>
+      <div class="demo-badge" id="liveBadge">Pi Brain &middot; Witness Chains &middot; PII Stripped &middot; Audit Ready</div>
       <div class="search-box">
         <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
-        <input type="text" class="search-input" id="piSearch" placeholder="Search 965 collective memories..." autocomplete="off" aria-label="Search Pi Brain" />
+        <input type="text" class="search-input" id="piSearch" placeholder="Search collective memories..." autocomplete="off" aria-label="Search Pi Brain" />
       </div>
       <div class="latency-badge" id="piLatency" aria-live="polite"></div>
       <div class="search-results" id="piResults" role="list"></div>
-
-      <div class="share-form" id="shareForm">
-        <div style="font-family: var(--mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 4px;">Share Knowledge</div>
-        <input type="text" id="shareTitle" placeholder="Title" aria-label="Knowledge title" />
-        <textarea id="shareContent" placeholder="What did you learn?" aria-label="Knowledge content"></textarea>
-        <select id="shareCategory" aria-label="Category">
-          <option value="architecture">Architecture</option>
-          <option value="pattern">Pattern</option>
-          <option value="solution">Solution</option>
-          <option value="security">Security</option>
-          <option value="performance">Performance</option>
-          <option value="tooling">Tooling</option>
-          <option value="debug">Debug</option>
-        </select>
-        <button class="demo-btn" id="shareSubmitBtn">Share with the Brain</button>
-      </div>
-
-      <div class="contribution-counter" id="contributionCounter"></div>
       <div class="participation-badge" id="participationBadge"></div>
     </div>
   </div>

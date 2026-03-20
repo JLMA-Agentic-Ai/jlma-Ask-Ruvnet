@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 400" width="650" height="400">
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; }
+    .title { font-size: 14px; font-weight: 700; fill: #1a1a1a; }
+    .section-label { font-size: 12px; font-weight: 700; fill: #ffffff; }
+    .box-label { font-size: 10px; font-weight: 600; fill: #1a1a1a; }
+    .box-detail { font-size: 8.5px; fill: #666666; }
+    .middle-label { font-size: 11px; font-weight: 600; fill: #1a1a1a; }
+    .box { fill: #f8f9fa; stroke: #333333; stroke-width: 1.2; rx: 4; }
+    .arrow { stroke: #555555; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+    .section-inbound { fill: #4a90d9; rx: 6; }
+    .section-outbound { fill: #38a169; rx: 6; }
+    .section-middle { fill: #805ad5; rx: 6; opacity: 0.15; stroke: #805ad5; stroke-width: 1.2; }
+    .divider { stroke: #cccccc; stroke-width: 0.8; stroke-dasharray: 4,3; }
+    @media (prefers-color-scheme: dark) {
+      .title { fill: #e6edf3; }
+      .box-label { fill: #e6edf3; }
+      .box-detail { fill: #8b949e; }
+      .middle-label { fill: #e6edf3; }
+      .box { fill: #2d333b; stroke: #768390; }
+      .arrow { stroke: #768390; }
+      .divider { stroke: #444c56; }
+    }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555555" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="325" y="24" text-anchor="middle" class="title">Security Layers &amp; Request Lifecycle</text>
+
+  <!-- INBOUND Section Background -->
+  <rect x="30" y="38" width="590" height="120" class="section-inbound" opacity="0.12" rx="6" />
+  <rect x="30" y="38" width="590" height="22" class="section-inbound" rx="6" />
+  <rect x="30" y="50" width="590" height="10" fill="#4a90d9" />
+  <text x="325" y="54" text-anchor="middle" class="section-label">INBOUND</text>
+
+  <!-- Inbound boxes -->
+  <rect x="55" y="72" width="150" height="72" class="box" />
+  <text x="130" y="90" text-anchor="middle" class="box-label">Rate Limiter</text>
+  <text x="130" y="104" text-anchor="middle" class="box-detail">100 requests / 15 min</text>
+  <text x="130" y="116" text-anchor="middle" class="box-detail">Per-IP tracking</text>
+  <text x="130" y="128" text-anchor="middle" class="box-detail">429 on exceed</text>
+
+  <rect x="250" y="72" width="150" height="72" class="box" />
+  <text x="325" y="90" text-anchor="middle" class="box-label">Input Sanitize</text>
+  <text x="325" y="104" text-anchor="middle" class="box-detail">HTML tag stripping</text>
+  <text x="325" y="116" text-anchor="middle" class="box-detail">Control char removal</text>
+  <text x="325" y="128" text-anchor="middle" class="box-detail">UTF-8 normalize</text>
+
+  <rect x="445" y="72" width="150" height="72" class="box" />
+  <text x="520" y="90" text-anchor="middle" class="box-label">Injection Detection</text>
+  <text x="520" y="104" text-anchor="middle" class="box-detail">10 pattern rules</text>
+  <text x="520" y="116" text-anchor="middle" class="box-detail">10 KB size limit</text>
+  <text x="520" y="128" text-anchor="middle" class="box-detail">Block &amp; log on match</text>
+
+  <!-- Inbound arrows -->
+  <line x1="205" y1="108" x2="248" y2="108" class="arrow" />
+  <line x1="400" y1="108" x2="443" y2="108" class="arrow" />
+
+  <!-- Down arrow from inbound to middle -->
+  <line x1="325" y1="158" x2="325" y2="175" class="arrow" />
+
+  <!-- MIDDLE Section -->
+  <rect x="130" y="178" width="390" height="52" class="section-middle" />
+  <text x="245" y="210" text-anchor="middle" class="middle-label">RAG Pipeline</text>
+  <text x="245" y="222" text-anchor="middle" class="box-detail" style="fill: #805ad5;">Embed + Search + Rerank</text>
+  <line x1="350" y1="188" x2="350" y2="224" stroke="#805ad5" stroke-width="0.6" stroke-dasharray="2,2" />
+  <text x="430" y="210" text-anchor="middle" class="middle-label">LLM Call</text>
+  <text x="430" y="222" text-anchor="middle" class="box-detail" style="fill: #805ad5;">Generate response</text>
+
+  <!-- Down arrow from middle to outbound -->
+  <line x1="325" y1="232" x2="325" y2="252" class="arrow" />
+
+  <!-- OUTBOUND Section Background -->
+  <rect x="30" y="255" width="590" height="120" fill="#38a169" opacity="0.12" rx="6" />
+  <rect x="30" y="255" width="590" height="22" class="section-outbound" />
+  <rect x="30" y="267" width="590" height="10" fill="#38a169" />
+  <text x="325" y="271" text-anchor="middle" class="section-label">OUTBOUND</text>
+
+  <!-- Outbound boxes -->
+  <rect x="55" y="288" width="150" height="72" class="box" />
+  <text x="130" y="306" text-anchor="middle" class="box-label">Response Validate</text>
+  <text x="130" y="320" text-anchor="middle" class="box-detail">JSON schema check</text>
+  <text x="130" y="332" text-anchor="middle" class="box-detail">Content length verify</text>
+  <text x="130" y="344" text-anchor="middle" class="box-detail">Error sanitization</text>
+
+  <rect x="250" y="288" width="150" height="72" class="box" />
+  <text x="325" y="306" text-anchor="middle" class="box-label">Helmet XSS / CSP</text>
+  <text x="325" y="320" text-anchor="middle" class="box-detail">X-XSS-Protection</text>
+  <text x="325" y="332" text-anchor="middle" class="box-detail">Content-Security-Policy</text>
+  <text x="325" y="344" text-anchor="middle" class="box-detail">X-Content-Type-Options</text>
+
+  <rect x="445" y="288" width="150" height="72" class="box" />
+  <text x="520" y="306" text-anchor="middle" class="box-label">CORS Same-Origin</text>
+  <text x="520" y="320" text-anchor="middle" class="box-detail">Origin whitelist</text>
+  <text x="520" y="332" text-anchor="middle" class="box-detail">Credentials: false</text>
+  <text x="520" y="344" text-anchor="middle" class="box-detail">Methods: GET, POST</text>
+
+  <!-- Outbound arrows -->
+  <line x1="205" y1="324" x2="248" y2="324" class="arrow" />
+  <line x1="400" y1="324" x2="443" y2="324" class="arrow" />
+
+  <!-- Flow arrow labels on left side -->
+  <text x="18" y="112" text-anchor="middle" class="box-detail" style="font-size: 9px; fill: #4a90d9;" transform="rotate(-90, 18, 112)">REQUEST</text>
+  <text x="18" y="328" text-anchor="middle" class="box-detail" style="font-size: 9px; fill: #38a169;" transform="rotate(-90, 18, 328)">RESPONSE</text>
+
+  <!-- Down arrow on left side -->
+  <line x1="18" y1="80" x2="18" y2="140" stroke="#4a90d9" stroke-width="1.2" marker-end="url(#arrowhead)" fill="none" />
+  <line x1="18" y1="296" x2="18" y2="356" stroke="#38a169" stroke-width="1.2" marker-end="url(#arrowhead)" fill="none" />
+</svg>

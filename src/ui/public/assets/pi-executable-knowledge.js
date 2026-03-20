@@ -13,7 +13,7 @@
   var animating = true;
   var autoPlay = false;
   var autoTimer = null;
-  var TOTAL_STAGES = 6;
+  var TOTAL_STAGES = 5;
 
   var CATEGORIES = [
     { color: [240, 192, 32], weight: 0.15 },
@@ -61,65 +61,56 @@
     }
   }
 
+  // ============================================================
+  // PARTICLE FORMATIONS PER STAGE
+  // ============================================================
   function setStageTargets(stage) {
     var cx = W / 2, cy = H / 2;
+
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      var angle, dist, clusterIdx, clusterAngle, spread, baseX, baseY, band, ratio;
+      var cols, row, col, cellW, cellH, angle, dist;
 
       switch (stage) {
-        case 0: // Random scatter — chaotic unstructured search
-          p.tx = Math.random() * W;
-          p.ty = Math.random() * H;
+        case 0:
+          // Organized grid (false order)
+          cols = Math.ceil(Math.sqrt(PARTICLE_COUNT * (W / H)));
+          var rows = Math.ceil(PARTICLE_COUNT / cols);
+          row = Math.floor(i / cols);
+          col = i % cols;
+          cellW = W / cols;
+          cellH = H / rows;
+          p.tx = col * cellW + cellW / 2 + (Math.random() - 0.5) * cellW * 0.3;
+          p.ty = row * cellH + cellH / 2 + (Math.random() - 0.5) * cellH * 0.3;
           break;
 
-        case 1: // 5 clusters — semantic neighborhoods
-          clusterIdx = i % 5;
-          clusterAngle = (clusterIdx / 5) * Math.PI * 2 - Math.PI / 2;
-          spread = Math.min(W, H) * 0.07;
-          baseX = cx + Math.cos(clusterAngle) * Math.min(W, H) * 0.2;
-          baseY = cy + Math.sin(clusterAngle) * Math.min(W, H) * 0.2;
-          p.tx = baseX + (Math.random() - 0.5) * spread;
-          p.ty = baseY + (Math.random() - 0.5) * spread;
+        case 1:
+          // Particles drift downward slowly (decay)
+          p.tx = p.x + (Math.random() - 0.5) * 40;
+          p.ty = p.y + Math.random() * H * 0.3 + 20;
+          if (p.ty > H + 20) p.ty = Math.random() * H * 0.3;
           break;
 
-        case 2: // Three horizontal bands racing left to right
-          band = i % 3;
-          p.tx = Math.random() * W * 0.1;
-          p.ty = cy - H * 0.15 + band * H * 0.15 + (Math.random() - 0.5) * H * 0.08;
-          break;
-
-        case 3: // Three-layer structure (top sparse, middle medium, bottom dense)
-          ratio = i / particles.length;
-          if (ratio < 0.08) {
-            // Layer 2: sparse top
-            p.tx = cx + (Math.random() - 0.5) * W * 0.6;
-            p.ty = H * 0.15 + (Math.random() - 0.5) * H * 0.08;
-          } else if (ratio < 0.3) {
-            // Layer 1: medium middle
-            p.tx = cx + (Math.random() - 0.5) * W * 0.5;
-            p.ty = H * 0.42 + (Math.random() - 0.5) * H * 0.1;
-          } else {
-            // Layer 0: dense bottom
-            p.tx = cx + (Math.random() - 0.5) * W * 0.7;
-            p.ty = H * 0.72 + (Math.random() - 0.5) * H * 0.14;
-          }
-          break;
-
-        case 4: // Three separate card-sized clusters
-          clusterIdx = i % 3;
-          baseX = W * 0.2 + clusterIdx * W * 0.3;
-          baseY = cy;
-          spread = Math.min(W, H) * 0.08;
-          p.tx = baseX + (Math.random() - 0.5) * spread;
-          p.ty = baseY + (Math.random() - 0.5) * spread * 1.2;
-          break;
-
-        case 5: // Gentle ambient scatter
-          angle = Math.random() * Math.PI * 2;
-          dist = Math.random() * Math.min(W, H) * 0.4;
+        case 2:
+          // Particles pulse outward from center (detection)
+          angle = (i / particles.length) * Math.PI * 2 + Math.random() * 0.2;
+          dist = 30 + Math.random() * Math.min(W, H) * 0.28;
           p.tx = cx + Math.cos(angle) * dist;
           p.ty = cy + Math.sin(angle) * dist;
+          break;
+
+        case 3:
+          // Particles sort vertically (quality ranking)
+          var band = Math.floor((i / particles.length) * 6);
+          var bandY = (band / 6) * H * 0.7 + H * 0.15;
+          p.tx = Math.random() * W;
+          p.ty = bandY + (Math.random() - 0.5) * (H * 0.08);
+          break;
+
+        case 4:
+          // Gentle ambient scatter
+          p.tx = Math.random() * W;
+          p.ty = Math.random() * H;
           break;
       }
     }
@@ -128,10 +119,9 @@
   function drawParticles() {
     ctx.clearRect(0, 0, W, H);
 
-    // Subtle radial glow for stages 1-3
     if (currentStage >= 1 && currentStage <= 3) {
-      var pcx = W / 2, pcy = H / 2;
-      var grd = ctx.createRadialGradient(pcx, pcy, 0, pcx, pcy, Math.min(W, H) * 0.4);
+      var cx = W / 2, cy = H / 2;
+      var grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.4);
       grd.addColorStop(0, 'rgba(0, 212, 255, 0.04)');
       grd.addColorStop(0.5, 'rgba(168, 85, 247, 0.02)');
       grd.addColorStop(1, 'transparent');
@@ -146,13 +136,19 @@
       p.y += (p.ty - p.y) * ease + p.vy + Math.cos(p.phase) * 0.15;
       p.phase += p.speed;
 
-      if (currentStage === 0 || currentStage === 5) {
+      if (currentStage === 1) {
+        // Slow downward drift
+        p.ty += 0.1;
+        if (p.ty > H + 20) { p.ty = -10; p.y = -10; }
+      }
+
+      if (currentStage === 4) {
         if (p.x < -10 || p.x > W + 10) p.tx = Math.random() * W;
         if (p.y < -10 || p.y > H + 10) p.ty = Math.random() * H;
       }
 
       var rgb = p.color;
-      var glowSize = p.r * (currentStage >= 1 && currentStage <= 3 ? 3 : 2);
+      var glowSize = p.r * (currentStage >= 2 ? 3 : 2);
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, glowSize, 0, Math.PI * 2);
@@ -168,7 +164,6 @@
     if (animating) requestAnimationFrame(drawParticles);
   }
 
-
   // ============================================================
   // 2. STAGE MANAGEMENT
   // ============================================================
@@ -178,19 +173,24 @@
   var nextBtn = document.getElementById('nextBtn');
   var autoBtn = document.getElementById('autoBtn');
   var counter = document.getElementById('stageCounter');
+  var stageTimers = [];
 
-  // Active canvas animation frame IDs
-  var hnswAnimFrame = 0;
-  var embedAnimFrame = 0;
+  function clearStageTimers() {
+    for (var i = 0; i < stageTimers.length; i++) {
+      clearTimeout(stageTimers[i]);
+    }
+    stageTimers = [];
+  }
 
-  function stopStageCanvases() {
-    if (hnswAnimFrame) { cancelAnimationFrame(hnswAnimFrame); hnswAnimFrame = 0; }
-    if (embedAnimFrame) { cancelAnimationFrame(embedAnimFrame); embedAnimFrame = 0; }
+  function stageTimeout(fn, delay) {
+    var id = setTimeout(fn, delay);
+    stageTimers.push(id);
+    return id;
   }
 
   function goToStage(n) {
     if (n < 0 || n >= TOTAL_STAGES) return;
-    stopStageCanvases();
+    clearStageTimers();
     currentStage = n;
     for (var i = 0; i < stages.length; i++) {
       if (i === n) stages[i].classList.add('visible');
@@ -203,7 +203,7 @@
       dots[j].setAttribute('tabindex', j === n ? '0' : '-1');
     }
     prevBtn.disabled = n === 0;
-    nextBtn.textContent = n === (TOTAL_STAGES - 1) ? 'Restart' : 'Next \u2192';
+    nextBtn.textContent = n === TOTAL_STAGES - 1 ? 'Restart' : 'Next \u2192';
     counter.textContent = (n + 1) + ' / ' + TOTAL_STAGES;
 
     setStageTargets(n);
@@ -211,1215 +211,561 @@
   }
 
   function triggerStageEffects(n) {
-    if (n === 0) startKeywordDemo();
-    if (n === 1) initSemanticDemo();
-    if (n === 2) startSpeedRace();
-    if (n === 3) initHnswExplainer();
-    if (n === 4) showUseCases();
-    if (n === 5) initPiBrainLive();
+    if (n === 0) showHealthDashboard();
+    if (n === 1) showSilentDecay();
+    if (n === 2) showDriftDetection();
+    if (n === 3) showQualityEvolution();
+    if (n === 4) initLiveSearch();
   }
-
-  function animateCount(el, target) {
-    var duration = 1500;
-    var start = performance.now();
-    function tick(now) {
-      var t = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = Math.floor(eased * target).toLocaleString();
-      if (t < 1) requestAnimationFrame(tick);
-      else el.textContent = target.toLocaleString();
-    }
-    requestAnimationFrame(tick);
-  }
-
 
   // ============================================================
-  // 3. STAGE 0 — KEYWORD SEARCH ANIMATION
+  // 3. STAGE 0 — "Everything Looks Fine"
   // ============================================================
-  var kwTimer = null;
-  var kwStreamTimers = [];
-
-  function clearKwTimers() {
-    if (kwTimer) { clearInterval(kwTimer); kwTimer = null; }
-    for (var i = 0; i < kwStreamTimers.length; i++) {
-      clearTimeout(kwStreamTimers[i]);
-    }
-    kwStreamTimers = [];
-  }
-
-  function startKeywordDemo() {
-    clearKwTimers();
-    var queryEl = document.getElementById('kwQueryText');
-    var cursorEl = document.getElementById('kwCursor');
-    var resultsEl = document.getElementById('kwResults');
-    var missedEl = document.getElementById('kwMissed');
-    var captionEl = document.getElementById('kwCaption');
+  function showHealthDashboard() {
+    var panel = document.getElementById('dashboardPanel');
+    var items = [
+      document.getElementById('dashItem0'),
+      document.getElementById('dashItem1'),
+      document.getElementById('dashItem2'),
+      document.getElementById('dashItem3')
+    ];
+    var rotStats = [
+      document.getElementById('rotStat0'),
+      document.getElementById('rotStat1'),
+      document.getElementById('rotStat2')
+    ];
+    var caption = document.getElementById('dashCaption');
+    var source = document.getElementById('dashSource');
 
     // Reset
-    queryEl.textContent = '';
-    resultsEl.innerHTML = '';
-    missedEl.classList.remove('visible');
-    captionEl.classList.remove('visible');
-    cursorEl.style.display = 'inline-block';
-
-    var query = 'app crashes uploading';
-    var charIdx = 0;
-
-    // Wrong results
-    var wrongResults = [
-      { text: 'App crashes on startup — blank screen after splash', highlights: ['App crashes'] },
-      { text: 'Uploading photos to gallery freezes for 2 seconds', highlights: ['Uploading'] },
-      { text: 'Crash report handler updated to v3.2', highlights: ['Crash'] }
-    ];
-
-    // 1. Typewriter the search query
-    kwTimer = setInterval(function() {
-      if (charIdx < query.length) {
-        queryEl.textContent += query[charIdx];
-        charIdx++;
-      } else {
-        clearInterval(kwTimer);
-        kwTimer = null;
-        cursorEl.style.display = 'none';
-
-        // 2. After 800ms pause, slide in wrong results
-        kwStreamTimers.push(setTimeout(function() {
-          for (var r = 0; r < wrongResults.length; r++) {
-            (function(result, idx) {
-              kwStreamTimers.push(setTimeout(function() {
-                var item = document.createElement('div');
-                item.className = 'keyword-result-item';
-
-                var textSpan = document.createElement('span');
-                textSpan.className = 'result-text-kw';
-                // Build text with highlighted keywords
-                var txt = result.text;
-                for (var h = 0; h < result.highlights.length; h++) {
-                  var hw = result.highlights[h];
-                  var pos = txt.toLowerCase().indexOf(hw.toLowerCase());
-                  if (pos !== -1) {
-                    var before = txt.substring(0, pos);
-                    var match = txt.substring(pos, pos + hw.length);
-                    var after = txt.substring(pos + hw.length);
-                    txt = before + '<span class="kw-highlight">' + match + '</span>' + after;
-                  }
-                }
-                textSpan.innerHTML = txt;
-
-                var badge = document.createElement('span');
-                badge.className = 'keyword-match-badge';
-                badge.textContent = 'keyword match';
-
-                item.appendChild(textSpan);
-                item.appendChild(badge);
-                resultsEl.appendChild(item);
-
-                // Trigger visibility after append
-                requestAnimationFrame(function() {
-                  item.classList.add('visible');
-                });
-              }, idx * 200));
-            })(wrongResults[r], r);
-          }
-
-          // 3. After all wrong results, show the missed result
-          kwStreamTimers.push(setTimeout(function() {
-            missedEl.classList.add('visible');
-
-            // 4. Show caption
-            kwStreamTimers.push(setTimeout(function() {
-              captionEl.classList.add('visible');
-            }, 600));
-          }, wrongResults.length * 200 + 500));
-        }, 800));
-      }
-    }, 40);
-  }
-
-
-  // ============================================================
-  // 4. STAGE 1 — SEMANTIC VECTORS
-  // ============================================================
-  var embedCanvas2, embedCtx2, embedW2, embedH2;
-  var embedPoints2 = [];
-  var embedInitialized2 = false;
-  var embedArrowAnim = null;
-  var embedHighlighted = [];
-
-  // Concrete ticket data grouped by topic
-  var TICKET_CLUSTERS = [
-    { name: 'Upload/Transfer', color: [0, 212, 255], cx: 0.25, cy: 0.35, tickets: [
-      'File transfer fails with memory error on large image import',
-      'Photo upload timeout on slow connection',
-      'Batch image upload corrupts EXIF data',
-      'Video upload stalls at 95% progress',
-      'Cloud sync fails for files over 50MB',
-      'Drag-and-drop upload broken in Firefox',
-      'File picker crashes on network drives',
-      'Import wizard skips duplicate detection'
-    ]},
-    { name: 'Crash/Stability', color: [239, 68, 68], cx: 0.72, cy: 0.3, tickets: [
-      'App crashes on startup with blank screen',
-      'Random crash during background sync',
-      'Out-of-memory crash with 100+ tabs',
-      'Crash report handler updated to v3.2',
-      'Startup hang after OS update',
-      'App freezes when switching accounts',
-      'Fatal error on corrupted preferences',
-      'Crash on minimize while processing'
-    ]},
-    { name: 'Authentication', color: [168, 85, 247], cx: 0.5, cy: 0.72, tickets: [
-      'SSO login fails with SAML timeout',
-      'OAuth token refresh loop on mobile',
-      'Password reset email never arrives',
-      'MFA code rejected after timezone change',
-      '2FA backup codes not generating',
-      'Session expires during long uploads',
-      'API key rotation breaks integrations',
-      'LDAP sync misses nested groups'
-    ]},
-    { name: 'Performance', color: [240, 192, 32], cx: 0.18, cy: 0.7, tickets: [
-      'Dashboard takes 12s to load',
-      'Search results paginate slowly',
-      'Report generation hangs at 80%',
-      'Memory leak after 8 hours uptime',
-      'CPU spike during index rebuild',
-      'Slow query on user analytics page',
-      'Cache miss rate spiked after deploy',
-      'WebSocket reconnect storm on flaky wifi'
-    ]},
-    { name: 'UI/Display', color: [16, 185, 129], cx: 0.78, cy: 0.7, tickets: [
-      'Dark mode colors unreadable on charts',
-      'Modal dialog clips on small screens',
-      'Table columns overlap at 1024px width',
-      'Tooltip flickers on hover',
-      'Font rendering blurry on Windows',
-      'Sidebar scroll position resets',
-      'Icon alignment broken after update',
-      'RTL layout missing for Arabic users'
-    ]}
-  ];
-
-  // Keyword results from Stage 0 that we show dimmed
-  var KEYWORD_WRONG = [
-    { text: 'App crashes on startup', cluster: 1, localIdx: 0, sim: 0.31 },
-    { text: 'Uploading photos to gallery', cluster: 0, localIdx: 5, sim: 0.28 },
-    { text: 'Crash report handler', cluster: 1, localIdx: 3, sim: 0.19 }
-  ];
-
-  function boxMuller() {
-    var u = 0, v = 0;
-    while (u === 0) u = Math.random();
-    while (v === 0) v = Math.random();
-    return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-  }
-
-  function initSemanticDemo() {
-    embedCanvas2 = document.getElementById('embedCanvas');
-    var wrap = embedCanvas2.parentElement;
-    embedW2 = wrap.clientWidth;
-    embedH2 = wrap.clientHeight;
-    embedCanvas2.width = embedW2;
-    embedCanvas2.height = embedH2;
-    embedCtx2 = embedCanvas2.getContext('2d');
-
-    var resultsDiv = document.getElementById('embedResults');
-    resultsDiv.innerHTML = '';
-
-    if (!embedInitialized2) {
-      embedPoints2 = [];
-      var margin = 50;
-      var sigma = 28;
-
-      for (var c = 0; c < TICKET_CLUSTERS.length; c++) {
-        var cluster = TICKET_CLUSTERS[c];
-        var baseCx = margin + cluster.cx * (embedW2 - margin * 2);
-        var baseCy = margin + cluster.cy * (embedH2 - margin * 2);
-
-        for (var t = 0; t < cluster.tickets.length; t++) {
-          embedPoints2.push({
-            x: baseCx + boxMuller() * sigma,
-            y: baseCy + boxMuller() * sigma,
-            color: cluster.color,
-            label: cluster.tickets[t],
-            cluster: c,
-            localIdx: t,
-            highlighted: false,
-            dimmed: false,
-            sim: 0
-          });
-        }
-      }
-
-      embedInitialized2 = true;
-    }
-
-    // Reset highlight states
-    for (var i = 0; i < embedPoints2.length; i++) {
-      embedPoints2[i].highlighted = false;
-      embedPoints2[i].dimmed = false;
-      embedPoints2[i].sim = 0;
-    }
-    embedHighlighted = [];
-    embedArrowAnim = null;
-
-    drawEmbedPlot();
-
-    // Auto-fire query after 800ms
-    setTimeout(function() {
-      fireSemanticQuery();
-    }, 800);
-  }
-
-  function fireSemanticQuery() {
-    // The query "app crashes uploading" lands between upload cluster (0) and crash cluster (1)
-    var margin = 50;
-    var uploadCluster = TICKET_CLUSTERS[0];
-    var crashCluster = TICKET_CLUSTERS[1];
-    var qx = margin + ((uploadCluster.cx + crashCluster.cx) / 2) * (embedW2 - margin * 2);
-    var qy = margin + ((uploadCluster.cy + crashCluster.cy) / 2) * (embedH2 - margin * 2) - 10;
-
-    // Find the TRUE answer: "File transfer fails with memory error on large image import" — cluster 0, ticket 0
-    var trueAnswerIdx = -1;
-    for (var i = 0; i < embedPoints2.length; i++) {
-      if (embedPoints2[i].cluster === 0 && embedPoints2[i].localIdx === 0) {
-        trueAnswerIdx = i;
-        break;
-      }
-    }
-
-    // Calculate distances and find nearest 4
-    var dists = [];
-    for (var j = 0; j < embedPoints2.length; j++) {
-      var dx = qx - embedPoints2[j].x;
-      var dy = qy - embedPoints2[j].y;
-      var d = Math.sqrt(dx * dx + dy * dy);
-      dists.push({ idx: j, d: d });
-    }
-    dists.sort(function(a, b) { return a.d - b.d; });
-
-    // Top 4 semantic results
-    var topResults = dists.slice(0, 4);
-    var maxDist = dists[dists.length - 1].d;
-
-    // Assign similarity scores
-    for (var k = 0; k < topResults.length; k++) {
-      var sim = Math.max(0.1, 1 - (topResults[k].d / maxDist));
-      // Scale to realistic range 0.85-0.95
-      sim = 0.85 + sim * 0.1;
-      embedPoints2[topResults[k].idx].sim = sim;
-      embedPoints2[topResults[k].idx].highlighted = true;
-    }
-
-    // Dim the keyword wrong results
-    for (var w = 0; w < KEYWORD_WRONG.length; w++) {
-      var kw = KEYWORD_WRONG[w];
-      for (var p = 0; p < embedPoints2.length; p++) {
-        if (embedPoints2[p].cluster === kw.cluster && embedPoints2[p].localIdx === kw.localIdx) {
-          embedPoints2[p].dimmed = true;
-          embedPoints2[p].sim = kw.sim;
-          break;
-        }
-      }
-    }
-
-    // Arrow animation from bottom-left to query position
-    embedArrowAnim = {
-      sx: 40, sy: embedH2 - 40,
-      tx: qx, ty: qy,
-      progress: 0,
-      done: false
-    };
-
-    embedHighlighted = topResults;
-
-    // Show result tags below canvas after animation
-    setTimeout(function() {
-      showEmbedResults(topResults);
-    }, 1200);
-  }
-
-  function showEmbedResults(topResults) {
-    var resultsDiv = document.getElementById('embedResults');
-    resultsDiv.innerHTML = '';
-
-    // Show correct results
-    for (var i = 0; i < topResults.length; i++) {
-      var pt = embedPoints2[topResults[i].idx];
-      var tag = document.createElement('span');
-      tag.className = 'embed-result-tag correct';
-      tag.textContent = pt.sim.toFixed(2) + ' ' + pt.label.substring(0, 40) + (pt.label.length > 40 ? '...' : '');
-      resultsDiv.appendChild(tag);
-      (function(t) {
-        setTimeout(function() { t.classList.add('visible'); }, i * 120);
-      })(tag);
-    }
-
-    // Show dimmed wrong results
-    for (var w = 0; w < KEYWORD_WRONG.length; w++) {
-      var wtag = document.createElement('span');
-      wtag.className = 'embed-result-tag wrong';
-      wtag.textContent = KEYWORD_WRONG[w].sim.toFixed(2) + ' ' + KEYWORD_WRONG[w].text;
-      resultsDiv.appendChild(wtag);
-      (function(t, delay) {
-        setTimeout(function() { t.classList.add('visible'); }, delay);
-      })(wtag, (topResults.length + w) * 120);
-    }
-  }
-
-  function drawEmbedPlot() {
-    if (currentStage !== 1) return;
-    embedCtx2.clearRect(0, 0, embedW2, embedH2);
-
-    // Arrow animation
-    if (embedArrowAnim && !embedArrowAnim.done) {
-      embedArrowAnim.progress += 0.025;
-      if (embedArrowAnim.progress >= 1) {
-        embedArrowAnim.progress = 1;
-        embedArrowAnim.done = true;
-      }
-      var t = embedArrowAnim.progress;
-      var et = t * t * (3 - 2 * t); // smoothstep
-      var ax = embedArrowAnim.sx + (embedArrowAnim.tx - embedArrowAnim.sx) * et;
-      var ay = embedArrowAnim.sy + (embedArrowAnim.ty - embedArrowAnim.sy) * et;
-
-      // Trail particles
-      for (var tp = 0; tp < 5; tp++) {
-        var tt = Math.max(0, t - tp * 0.05);
-        var tet = tt * tt * (3 - 2 * tt);
-        var trx = embedArrowAnim.sx + (embedArrowAnim.tx - embedArrowAnim.sx) * tet;
-        var trY = embedArrowAnim.sy + (embedArrowAnim.ty - embedArrowAnim.sy) * tet;
-        embedCtx2.beginPath();
-        embedCtx2.arc(trx, trY, 3 - tp * 0.5, 0, Math.PI * 2);
-        embedCtx2.fillStyle = 'rgba(240, 192, 32, ' + (0.6 - tp * 0.1) + ')';
-        embedCtx2.fill();
-      }
-
-      // Arrow head
-      embedCtx2.save();
-      embedCtx2.shadowBlur = 12;
-      embedCtx2.shadowColor = 'rgba(240, 192, 32, 0.8)';
-      embedCtx2.beginPath();
-      embedCtx2.arc(ax, ay, 6, 0, Math.PI * 2);
-      embedCtx2.fillStyle = 'rgba(240, 192, 32, 0.9)';
-      embedCtx2.fill();
-      embedCtx2.restore();
-    }
-
-    // Draw connection lines for highlighted results
-    if (embedArrowAnim && embedArrowAnim.done) {
-      for (var h = 0; h < embedHighlighted.length; h++) {
-        var hp = embedPoints2[embedHighlighted[h].idx];
-        embedCtx2.beginPath();
-        embedCtx2.moveTo(embedArrowAnim.tx, embedArrowAnim.ty);
-        embedCtx2.lineTo(hp.x, hp.y);
-        embedCtx2.strokeStyle = 'rgba(0, 212, 255, 0.35)';
-        embedCtx2.lineWidth = 1.5;
-        embedCtx2.stroke();
-      }
-
-      // Query dot
-      embedCtx2.save();
-      embedCtx2.shadowBlur = 16;
-      embedCtx2.shadowColor = 'rgba(240, 192, 32, 0.8)';
-      embedCtx2.beginPath();
-      embedCtx2.arc(embedArrowAnim.tx, embedArrowAnim.ty, 6, 0, Math.PI * 2);
-      embedCtx2.fillStyle = 'rgba(240, 192, 32, 0.9)';
-      embedCtx2.fill();
-      embedCtx2.restore();
-
-      // Label "query"
-      embedCtx2.font = '10px "JetBrains Mono", monospace';
-      embedCtx2.fillStyle = 'rgba(240, 192, 32, 0.7)';
-      embedCtx2.fillText('query', embedArrowAnim.tx + 10, embedArrowAnim.ty - 8);
-    }
-
-    // Draw all points
-    for (var i = 0; i < embedPoints2.length; i++) {
-      var pt = embedPoints2[i];
-      var rgb = pt.color;
-      var alpha = 0.65;
-      var radius = 4;
-
-      if (pt.highlighted) {
-        alpha = 1;
-        radius = 7;
-        // Glow
-        embedCtx2.save();
-        embedCtx2.shadowBlur = 14;
-        embedCtx2.shadowColor = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',0.7)';
-        embedCtx2.beginPath();
-        embedCtx2.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
-        embedCtx2.fillStyle = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',0.95)';
-        embedCtx2.fill();
-        embedCtx2.restore();
-
-        // Similarity score label
-        embedCtx2.font = '9px "JetBrains Mono", monospace';
-        embedCtx2.fillStyle = 'rgba(0, 212, 255, 0.9)';
-        embedCtx2.fillText(pt.sim.toFixed(2), pt.x + 10, pt.y - 6);
-
-        // Ticket name (truncated)
-        embedCtx2.font = '8px "Inter", sans-serif';
-        embedCtx2.fillStyle = 'rgba(232, 234, 237, 0.7)';
-        var label = pt.label.length > 30 ? pt.label.substring(0, 30) + '...' : pt.label;
-        embedCtx2.fillText(label, pt.x + 10, pt.y + 6);
-      } else if (pt.dimmed) {
-        alpha = 0.25;
-        radius = 4;
-        // Show as dim with low score
-        embedCtx2.beginPath();
-        embedCtx2.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
-        embedCtx2.fillStyle = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + alpha + ')';
-        embedCtx2.fill();
-
-        embedCtx2.font = '8px "JetBrains Mono", monospace';
-        embedCtx2.fillStyle = 'rgba(239, 68, 68, 0.5)';
-        embedCtx2.fillText(pt.sim.toFixed(2), pt.x + 8, pt.y - 4);
-      } else {
-        // Normal dot
-        embedCtx2.beginPath();
-        embedCtx2.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
-        embedCtx2.fillStyle = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + alpha + ')';
-        embedCtx2.fill();
-      }
-    }
-
-    // Draw cluster labels
-    var margin = 50;
-    for (var c = 0; c < TICKET_CLUSTERS.length; c++) {
-      var cl = TICKET_CLUSTERS[c];
-      var lx = margin + cl.cx * (embedW2 - margin * 2);
-      var ly = margin + cl.cy * (embedH2 - margin * 2) - 35;
-      embedCtx2.font = '10px "JetBrains Mono", monospace';
-      embedCtx2.fillStyle = 'rgba(' + cl.color[0] + ',' + cl.color[1] + ',' + cl.color[2] + ', 0.5)';
-      embedCtx2.textAlign = 'center';
-      embedCtx2.fillText(cl.name, lx, ly);
-    }
-    embedCtx2.textAlign = 'start';
-
-    embedAnimFrame = requestAnimationFrame(drawEmbedPlot);
-  }
-
-
-  // ============================================================
-  // 5. STAGE 2 — THE SPEED PROBLEM (RACE)
-  // ============================================================
-  var raceTimer = null;
-  var raceScaleTimers = [];
-  var raceInitialized = false;
-
-  var RACE_SCALES = [
-    { vectors: 100000, bruteMs: 200, treeMs: 15, hnswMs: 0.5, bruteRecall: 100, treeRecall: 92, hnswRecall: 99.5 },
-    { vectors: 1000000, bruteMs: 2000, treeMs: 150, hnswMs: 0.8, bruteRecall: 100, treeRecall: 89, hnswRecall: 99.3 },
-    { vectors: 10000000, bruteMs: 20000, treeMs: 1500, hnswMs: 1.2, bruteRecall: 100, treeRecall: 85, hnswRecall: 99.1 }
-  ];
-  var currentRaceScale = 0;
-
-  function clearRaceTimers() {
-    if (raceTimer) { clearInterval(raceTimer); raceTimer = null; }
-    for (var i = 0; i < raceScaleTimers.length; i++) {
-      clearTimeout(raceScaleTimers[i]);
-    }
-    raceScaleTimers = [];
-  }
-
-  function startSpeedRace() {
-    clearRaceTimers();
-    currentRaceScale = 0;
-
-    // Wire scale buttons
-    if (!raceInitialized) {
-      var scaleBtns = document.querySelectorAll('.scale-btn');
-      for (var s = 0; s < scaleBtns.length; s++) {
-        (function(btn) {
-          btn.addEventListener('click', function() {
-            var scaleIdx = parseInt(btn.dataset.scale);
-            currentRaceScale = scaleIdx;
-            for (var sb = 0; sb < scaleBtns.length; sb++) {
-              scaleBtns[sb].classList.toggle('active', sb === scaleIdx);
-            }
-            runRace(scaleIdx);
-          });
-        })(scaleBtns[s]);
-      }
-      raceInitialized = true;
-    }
-
-    // Reset all scale buttons
-    var allScaleBtns = document.querySelectorAll('.scale-btn');
-    for (var r = 0; r < allScaleBtns.length; r++) {
-      allScaleBtns[r].classList.toggle('active', r === 0);
-    }
-
-    runRace(0);
-  }
-
-  function runRace(scaleIdx) {
-    clearRaceTimers();
-    var scale = RACE_SCALES[scaleIdx];
-
-    // Reset bars
-    var bruteFill = document.getElementById('raceBrute');
-    var treeFill = document.getElementById('raceTree');
-    var hnswFill = document.getElementById('raceHnsw');
-    var timeBrute = document.getElementById('timeBrute');
-    var timeTree = document.getElementById('timeTree');
-    var timeHnsw = document.getElementById('timeHnsw');
-    var recallBrute = document.getElementById('recallBrute');
-    var recallTree = document.getElementById('recallTree');
-    var recallHnsw = document.getElementById('recallHnsw');
-    var checkBrute = document.getElementById('checkBrute');
-    var checkTree = document.getElementById('checkTree');
-    var checkHnsw = document.getElementById('checkHnsw');
-    var caption = document.getElementById('raceCaption');
-
-    bruteFill.style.transition = 'none';
-    treeFill.style.transition = 'none';
-    hnswFill.style.transition = 'none';
-    bruteFill.style.width = '0%';
-    treeFill.style.width = '0%';
-    hnswFill.style.width = '0%';
-    timeBrute.textContent = '--';
-    timeTree.textContent = '--';
-    timeHnsw.textContent = '--';
-    recallBrute.textContent = '--';
-    recallTree.textContent = '--';
-    recallHnsw.textContent = '--';
-    checkBrute.classList.remove('visible');
-    checkTree.classList.remove('visible');
-    checkHnsw.classList.remove('visible');
-    checkBrute.style.color = '';
-    checkTree.style.color = '';
-    checkHnsw.style.color = '';
+    panel.classList.remove('warning');
+    for (var i = 0; i < items.length; i++) items[i].classList.remove('visible');
+    for (var j = 0; j < rotStats.length; j++) rotStats[j].classList.remove('visible');
     caption.classList.remove('visible');
+    source.classList.remove('visible');
 
-    // Use log scale for visual duration
-    // Max visual time = 4 seconds for the slowest algorithm
-    var maxVisualMs = 4000;
-    var logMax = Math.log10(scale.bruteMs + 1);
-    var bruteVisual = maxVisualMs;
-    var treeVisual = (Math.log10(scale.treeMs + 1) / logMax) * maxVisualMs;
-    var hnswVisual = Math.max(80, (Math.log10(scale.hnswMs + 1) / logMax) * maxVisualMs);
+    // 1. Animate dashboard items appearing one by one (300ms stagger)
+    for (var k = 0; k < items.length; k++) {
+      (function(item, delay) {
+        stageTimeout(function() { item.classList.add('visible'); }, delay);
+      })(items[k], 300 + k * 300);
+    }
 
-    // Start all races simultaneously
-    raceScaleTimers.push(setTimeout(function() {
-      // HNSW — finishes almost instantly
-      hnswFill.style.transition = 'width ' + hnswVisual + 'ms ease-out';
-      hnswFill.style.width = '100%';
-      raceScaleTimers.push(setTimeout(function() {
-        timeHnsw.textContent = scale.hnswMs + 'ms';
-        recallHnsw.textContent = scale.hnswRecall + '% recall';
-        recallHnsw.style.color = 'var(--cyan)';
-        checkHnsw.style.color = 'var(--cyan)';
-        checkHnsw.classList.add('visible');
-      }, hnswVisual + 50));
+    // 2. After 3.5s: flicker dashboard border from green to amber
+    stageTimeout(function() {
+      panel.classList.add('warning');
+    }, 3500);
 
-      // Tree — medium speed
-      treeFill.style.transition = 'width ' + treeVisual + 'ms ease-out';
-      treeFill.style.width = '100%';
-      raceScaleTimers.push(setTimeout(function() {
-        timeTree.textContent = scale.treeMs + 'ms';
-        recallTree.textContent = scale.treeRecall + '% recall';
-        recallTree.style.color = 'var(--gold)';
-        checkTree.style.color = 'var(--gold)';
-        checkTree.classList.add('visible');
-      }, treeVisual + 50));
+    // 3. Red stats fade in with stagger
+    for (var m = 0; m < rotStats.length; m++) {
+      (function(stat, delay) {
+        stageTimeout(function() { stat.classList.add('visible'); }, delay);
+      })(rotStats[m], 3800 + m * 400);
+    }
 
-      // Brute — crawls
-      bruteFill.style.transition = 'width ' + bruteVisual + 'ms linear';
-      bruteFill.style.width = '100%';
-      raceScaleTimers.push(setTimeout(function() {
-        timeBrute.textContent = (scale.bruteMs >= 1000 ? (scale.bruteMs / 1000) + 's' : scale.bruteMs + 'ms');
-        recallBrute.textContent = scale.bruteRecall + '% recall';
-        recallBrute.style.color = 'var(--red)';
-        checkBrute.style.color = 'var(--red)';
-        checkBrute.classList.add('visible');
-
-        // Show caption after brute finishes
-        var vectorLabel = scale.vectors >= 1000000 ? (scale.vectors / 1000000) + 'M' : (scale.vectors / 1000) + 'K';
-        var bruteLabel = scale.bruteMs >= 1000 ? (scale.bruteMs / 1000) + ' seconds' : scale.bruteMs + 'ms';
-        caption.textContent = 'At ' + vectorLabel + ' vectors: brute force takes ' + bruteLabel + '. HNSW: ' + scale.hnswMs + 'ms.';
-        caption.classList.add('visible');
-
-        // Auto-advance to next scale after 2s
-        if (scaleIdx < 2) {
-          raceScaleTimers.push(setTimeout(function() {
-            var nextIdx = scaleIdx + 1;
-            currentRaceScale = nextIdx;
-            var scaleBtns2 = document.querySelectorAll('.scale-btn');
-            for (var sb = 0; sb < scaleBtns2.length; sb++) {
-              scaleBtns2[sb].classList.toggle('active', sb === nextIdx);
-            }
-            runRace(nextIdx);
-          }, 2500));
-        }
-      }, bruteVisual + 50));
-    }, 300));
+    // 4. Caption + source
+    stageTimeout(function() { caption.classList.add('visible'); }, 5200);
+    stageTimeout(function() { source.classList.add('visible'); }, 5600);
   }
-
 
   // ============================================================
-  // 6. STAGE 3 — HOW HNSW WORKS (EXPLAINER)
+  // 4. STAGE 1 — "Silent Decay"
   // ============================================================
-  var hnswExpCanvas, hnswExpCtx, hnswExpW, hnswExpH;
-  var hnswExpInitialized = false;
-  var hnswLayers = [];
-  var hnswVerticalEdges = [];
-  var hnswSearchState = null;
-  var hnswSearchStepTimer = null;
-
-  function initHnswExplainer() {
-    hnswExpCanvas = document.getElementById('hnswCanvas');
-    var wrap = hnswExpCanvas.parentElement;
-    hnswExpW = wrap.clientWidth;
-    hnswExpH = wrap.clientHeight;
-    hnswExpCanvas.width = hnswExpW;
-    hnswExpCanvas.height = hnswExpH;
-    hnswExpCtx = hnswExpCanvas.getContext('2d');
-
-    var captionEl = document.getElementById('hnswCaption');
-    captionEl.textContent = '';
-    captionEl.classList.remove('visible');
-
-    // Show layer labels
-    var labels = document.querySelectorAll('.hnsw-layer-label');
-    for (var l = 0; l < labels.length; l++) {
-      (function(label, delay) {
-        setTimeout(function() { label.classList.add('visible'); }, delay);
-      })(labels[l], l * 200);
-    }
-
-    if (!hnswExpInitialized) {
-      buildHnswLayers();
-      hnswExpInitialized = true;
-    }
-
-    hnswSearchState = null;
-    if (hnswSearchStepTimer) { clearTimeout(hnswSearchStepTimer); hnswSearchStepTimer = null; }
-
-    drawHnswExplainer();
-
-    // Auto-start search after 1.2s
-    setTimeout(function() {
-      startHnswSearchAnimation();
-    }, 1200);
-  }
-
-  function buildHnswLayers() {
-    hnswLayers = [[], [], []];
-    hnswVerticalEdges = [];
-    var margin = 40;
-
-    // Layer 2 (top): 3 nodes spread widely
-    var layer2Y = hnswExpH * 0.15;
-    var layer2Nodes = [
-      { id: 'L2-0', x: hnswExpW * 0.2, y: layer2Y, layer: 2, connections: [], glow: 0, searchVisited: false },
-      { id: 'L2-1', x: hnswExpW * 0.5, y: layer2Y, layer: 2, connections: [], glow: 0, searchVisited: false },
-      { id: 'L2-2', x: hnswExpW * 0.8, y: layer2Y, layer: 2, connections: [], glow: 0, searchVisited: false }
-    ];
-    // Connect all L2 nodes (long-range)
-    layer2Nodes[0].connections.push(1);
-    layer2Nodes[1].connections.push(0, 2);
-    layer2Nodes[2].connections.push(1);
-    hnswLayers[2] = layer2Nodes;
-
-    // Layer 1 (middle): 8 nodes
-    var layer1Y = hnswExpH * 0.48;
-    var layer1Nodes = [];
-    for (var i = 0; i < 8; i++) {
-      layer1Nodes.push({
-        id: 'L1-' + i,
-        x: margin + (i + 0.5) * ((hnswExpW - margin * 2) / 8),
-        y: layer1Y + (Math.random() - 0.5) * 20,
-        layer: 1,
-        connections: [],
-        glow: 0,
-        searchVisited: false
-      });
-    }
-    // Connect adjacent + some skips
-    for (var j = 0; j < layer1Nodes.length - 1; j++) {
-      layer1Nodes[j].connections.push(j + 1);
-      layer1Nodes[j + 1].connections.push(j);
-    }
-    layer1Nodes[0].connections.push(2);
-    layer1Nodes[2].connections.push(0);
-    layer1Nodes[3].connections.push(6);
-    layer1Nodes[6].connections.push(3);
-    hnswLayers[1] = layer1Nodes;
-
-    // Layer 0 (bottom): 20 nodes
-    var layer0Y = hnswExpH * 0.82;
-    var layer0Nodes = [];
-    for (var k = 0; k < 20; k++) {
-      layer0Nodes.push({
-        id: 'L0-' + k,
-        x: margin + (k + 0.5) * ((hnswExpW - margin * 2) / 20),
-        y: layer0Y + (Math.random() - 0.5) * 16,
-        layer: 0,
-        connections: [],
-        glow: 0,
-        searchVisited: false
-      });
-    }
-    // Connect adjacent
-    for (var m = 0; m < layer0Nodes.length - 1; m++) {
-      layer0Nodes[m].connections.push(m + 1);
-      layer0Nodes[m + 1].connections.push(m);
-    }
-    // Some skip connections
-    for (var sk = 0; sk < layer0Nodes.length - 2; sk += 3) {
-      if (sk + 2 < layer0Nodes.length) {
-        layer0Nodes[sk].connections.push(sk + 2);
-        layer0Nodes[sk + 2].connections.push(sk);
-      }
-    }
-    hnswLayers[0] = layer0Nodes;
-
-    // Vertical edges: which nodes exist across layers
-    // L2-0 -> L1-1, L2-1 -> L1-4, L2-2 -> L1-6
-    hnswVerticalEdges.push({ fromLayer: 2, fromIdx: 0, toLayer: 1, toIdx: 1 });
-    hnswVerticalEdges.push({ fromLayer: 2, fromIdx: 1, toLayer: 1, toIdx: 4 });
-    hnswVerticalEdges.push({ fromLayer: 2, fromIdx: 2, toLayer: 1, toIdx: 6 });
-    // L1 -> L0 mappings
-    hnswVerticalEdges.push({ fromLayer: 1, fromIdx: 0, toLayer: 0, toIdx: 0 });
-    hnswVerticalEdges.push({ fromLayer: 1, fromIdx: 1, toLayer: 0, toIdx: 2 });
-    hnswVerticalEdges.push({ fromLayer: 1, fromIdx: 2, toLayer: 0, toIdx: 4 });
-    hnswVerticalEdges.push({ fromLayer: 1, fromIdx: 3, toLayer: 0, toIdx: 6 });
-    hnswVerticalEdges.push({ fromLayer: 1, fromIdx: 4, toLayer: 0, toIdx: 9 });
-    hnswVerticalEdges.push({ fromLayer: 1, fromIdx: 5, toLayer: 0, toIdx: 12 });
-    hnswVerticalEdges.push({ fromLayer: 1, fromIdx: 6, toLayer: 0, toIdx: 15 });
-    hnswVerticalEdges.push({ fromLayer: 1, fromIdx: 7, toLayer: 0, toIdx: 18 });
-  }
-
-  function startHnswSearchAnimation() {
-    // Reset all nodes
-    for (var layer = 0; layer < hnswLayers.length; layer++) {
-      for (var n = 0; n < hnswLayers[layer].length; n++) {
-        hnswLayers[layer][n].searchVisited = false;
-        hnswLayers[layer][n].glow = 0;
-      }
-    }
-
-    // Target: find node L0-14 (near right side)
-    // Entry point: L2-0 (left side — farthest from target)
-    var captionEl = document.getElementById('hnswCaption');
-
-    // Search path:
-    // L2: start at L2-0, hop to L2-1 (1 hop)
-    // Drop to L1: L1-4, follow to L1-5, then L1-6 (3 hops on L1)
-    // Drop to L0: L0-15, follow to L0-14 (2 hops on L0)
-    // Total: 6 hops
-
-    var searchSteps = [
-      { layer: 2, nodeIdx: 0, caption: '' },
-      { layer: 2, nodeIdx: 1, caption: 'Layer 2: One hop. Skipped 90% of the graph.' },
-      { layer: 1, nodeIdx: 4, caption: 'Dropped to Layer 1.' },
-      { layer: 1, nodeIdx: 5, caption: 'Layer 1: Following local connections...' },
-      { layer: 1, nodeIdx: 6, caption: 'Layer 1: Three hops. Found the right neighborhood.' },
-      { layer: 0, nodeIdx: 15, caption: 'Dropped to Layer 0.' },
-      { layer: 0, nodeIdx: 14, caption: 'Layer 0: Two hops. Found the exact answer.' }
-    ];
-
-    var stepIdx = 0;
-
-    function doStep() {
-      if (stepIdx >= searchSteps.length || currentStage !== 3) return;
-      var step = searchSteps[stepIdx];
-      hnswLayers[step.layer][step.nodeIdx].searchVisited = true;
-      hnswLayers[step.layer][step.nodeIdx].glow = 1.5;
-
-      if (step.caption) {
-        captionEl.textContent = step.caption;
-        captionEl.classList.add('visible');
-      }
-
-      stepIdx++;
-
-      if (stepIdx < searchSteps.length) {
-        hnswSearchStepTimer = setTimeout(doStep, 800);
-      } else {
-        // Final step: show total
-        hnswSearchStepTimer = setTimeout(function() {
-          captionEl.textContent = '6 hops instead of 20 comparisons. At scale: 30 hops instead of 10 million.';
-          // Restart animation after 5s
-          hnswSearchStepTimer = setTimeout(function() {
-            if (currentStage === 3) startHnswSearchAnimation();
-          }, 5000);
-        }, 1500);
-      }
-    }
-
-    // Start query dot
-    hnswSearchState = { active: true };
-    hnswSearchStepTimer = setTimeout(doStep, 400);
-  }
-
-  function drawHnswExplainer() {
-    if (currentStage !== 3) return;
-    hnswExpCtx.clearRect(0, 0, hnswExpW, hnswExpH);
-
-    var layerColors = [
-      [0, 212, 255],   // Layer 0: cyan
-      [168, 85, 247],  // Layer 1: purple
-      [240, 192, 32]   // Layer 2: gold
-    ];
-    var layerRadii = [4, 6, 8];
-
-    // Draw layer background bands
-    var bandAlpha = 0.03;
-    var bands = [
-      { y: hnswExpH * 0.7, h: hnswExpH * 0.25, color: layerColors[0] },
-      { y: hnswExpH * 0.36, h: hnswExpH * 0.25, color: layerColors[1] },
-      { y: hnswExpH * 0.04, h: hnswExpH * 0.22, color: layerColors[2] }
-    ];
-    for (var b = 0; b < bands.length; b++) {
-      hnswExpCtx.fillStyle = 'rgba(' + bands[b].color[0] + ',' + bands[b].color[1] + ',' + bands[b].color[2] + ',' + bandAlpha + ')';
-      hnswExpCtx.fillRect(0, bands[b].y, hnswExpW, bands[b].h);
-    }
-
-    // Draw vertical edges (dashed)
-    hnswExpCtx.setLineDash([4, 4]);
-    for (var ve = 0; ve < hnswVerticalEdges.length; ve++) {
-      var edge = hnswVerticalEdges[ve];
-      var fromNode = hnswLayers[edge.fromLayer][edge.fromIdx];
-      var toNode = hnswLayers[edge.toLayer][edge.toIdx];
-      hnswExpCtx.beginPath();
-      hnswExpCtx.moveTo(fromNode.x, fromNode.y);
-      hnswExpCtx.lineTo(toNode.x, toNode.y);
-      hnswExpCtx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-      hnswExpCtx.lineWidth = 1;
-      hnswExpCtx.stroke();
-    }
-    hnswExpCtx.setLineDash([]);
-
-    // Draw edges within each layer
-    for (var layer = 0; layer < hnswLayers.length; layer++) {
-      var nodes = hnswLayers[layer];
-      var col = layerColors[layer];
-
-      for (var n = 0; n < nodes.length; n++) {
-        var node = nodes[n];
-        for (var c = 0; c < node.connections.length; c++) {
-          var connIdx = node.connections[c];
-          if (connIdx <= n) continue; // avoid drawing twice
-          var conn = nodes[connIdx];
-
-          // Check if this edge is part of search trail
-          var isSearchEdge = node.searchVisited && conn.searchVisited;
-
-          hnswExpCtx.beginPath();
-          hnswExpCtx.moveTo(node.x, node.y);
-          hnswExpCtx.lineTo(conn.x, conn.y);
-
-          if (isSearchEdge) {
-            hnswExpCtx.save();
-            hnswExpCtx.shadowBlur = 10;
-            hnswExpCtx.shadowColor = 'rgba(0, 212, 255, 0.6)';
-            hnswExpCtx.strokeStyle = 'rgba(0, 212, 255, 0.7)';
-            hnswExpCtx.lineWidth = 2.5;
-            hnswExpCtx.stroke();
-            hnswExpCtx.restore();
-          } else {
-            hnswExpCtx.strokeStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ', 0.2)';
-            hnswExpCtx.lineWidth = 1;
-            hnswExpCtx.stroke();
-          }
-        }
-      }
-    }
-
-    // Draw nodes
-    for (var layer2 = 0; layer2 < hnswLayers.length; layer2++) {
-      var nodes2 = hnswLayers[layer2];
-      var col2 = layerColors[layer2];
-      var rad = layerRadii[layer2];
-
-      for (var n2 = 0; n2 < nodes2.length; n2++) {
-        var nd = nodes2[n2];
-
-        hnswExpCtx.save();
-        var glowAmt = 4 + (nd.glow || 0) * 10;
-        if (nd.searchVisited) {
-          hnswExpCtx.shadowBlur = glowAmt;
-          hnswExpCtx.shadowColor = 'rgba(0, 212, 255, 0.8)';
-        }
-
-        hnswExpCtx.beginPath();
-        hnswExpCtx.arc(nd.x, nd.y, rad + (nd.glow || 0) * 2, 0, Math.PI * 2);
-
-        if (nd.searchVisited) {
-          hnswExpCtx.fillStyle = 'rgba(0, 212, 255, 0.95)';
-        } else {
-          hnswExpCtx.fillStyle = 'rgba(' + col2[0] + ',' + col2[1] + ',' + col2[2] + ', 0.7)';
-        }
-        hnswExpCtx.fill();
-        hnswExpCtx.restore();
-
-        // Decay glow
-        if (nd.glow > 0.1) nd.glow *= 0.97;
-      }
-    }
-
-    // Draw layer labels on canvas
-    hnswExpCtx.font = '10px "JetBrains Mono", monospace';
-    hnswExpCtx.fillStyle = 'rgba(240, 192, 32, 0.4)';
-    hnswExpCtx.fillText('Layer 2', 8, hnswExpH * 0.13);
-    hnswExpCtx.fillStyle = 'rgba(168, 85, 247, 0.4)';
-    hnswExpCtx.fillText('Layer 1', 8, hnswExpH * 0.46);
-    hnswExpCtx.fillStyle = 'rgba(0, 212, 255, 0.4)';
-    hnswExpCtx.fillText('Layer 0', 8, hnswExpH * 0.8);
-
-    hnswAnimFrame = requestAnimationFrame(drawHnswExplainer);
-  }
-
-
-  // ============================================================
-  // 7. STAGE 4 — WHAT THIS ENABLES
-  // ============================================================
-  var usecasesBuilt = false;
-
-  function showUseCases() {
-    var grid = document.getElementById('usecaseGrid');
-    if (usecasesBuilt) {
-      // Just re-animate visibility
-      var cards = grid.querySelectorAll('.usecase-card');
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].classList.remove('visible');
-      }
-      setTimeout(function() {
-        for (var j = 0; j < cards.length; j++) {
-          (function(card, delay) {
-            setTimeout(function() { card.classList.add('visible'); }, delay);
-          })(cards[j], j * 400);
-        }
-        animateUsecaseContents();
-      }, 100);
-      return;
-    }
-
-    var cases = [
-      {
-        icon: '\uD83D\uDD0D', title: 'Codebase Search',
-        query: '"Find all code that handles authentication"',
-        results: ['login_handler.py (oauth2)', 'auth_middleware.go (jwt)', 'session.ts (cookies)', 'SecurityConfig.java (spring-security)'],
-        note: 'Different languages, different terms \u2014 same concept. Keyword search would need 50+ synonyms.'
-      },
-      {
-        icon: '\uD83C\uDFA7', title: 'Support Agent',
-        query: '"My dashboard loads slowly after the update"',
-        results: ['Ticket #8847: Dashboard render optimization (resolved)', 'Ticket #9102: CSS bundle size regression v2.3', 'Ticket #7654: Lazy loading fix for widget grid'],
-        note: 'Customer describes symptoms. HNSW finds solutions \u2014 in under 1ms across 100K tickets.'
-      },
-      {
-        icon: '\uD83D\uDCDA', title: 'Knowledge Discovery',
-        query: '"What do we know about caching?"',
-        results: ['Architecture Decision: Redis vs Memcached (2024)', 'Bug: Cache invalidation race condition (#445)', 'Slack: @sarah\'s caching strategy proposal', 'Design doc: CDN cache headers v2'],
-        note: 'Architecture docs, bug reports, Slack threads, design docs \u2014 all semantically related, never tagged.'
-      }
-    ];
-
-    grid.innerHTML = '';
-    for (var c = 0; c < cases.length; c++) {
-      var uc = cases[c];
-      var card = document.createElement('div');
-      card.className = 'usecase-card';
-      card.dataset.caseIdx = c;
-
-      var header = document.createElement('div');
-      header.className = 'usecase-header';
-      var iconSpan = document.createElement('span');
-      iconSpan.className = 'usecase-icon';
-      iconSpan.textContent = uc.icon;
-      var titleSpan = document.createElement('span');
-      titleSpan.className = 'usecase-title';
-      titleSpan.textContent = uc.title;
-      header.appendChild(iconSpan);
-      header.appendChild(titleSpan);
-
-      var queryDiv = document.createElement('div');
-      queryDiv.className = 'usecase-query';
-      queryDiv.dataset.queryText = uc.query;
-
-      var resultsDiv = document.createElement('div');
-      resultsDiv.className = 'usecase-results';
-      for (var r = 0; r < uc.results.length; r++) {
-        var rItem = document.createElement('div');
-        rItem.className = 'usecase-result-item';
-        rItem.textContent = uc.results[r];
-        resultsDiv.appendChild(rItem);
-      }
-
-      var noteDiv = document.createElement('div');
-      noteDiv.className = 'usecase-note';
-      noteDiv.textContent = uc.note;
-
-      card.appendChild(header);
-      card.appendChild(queryDiv);
-      card.appendChild(resultsDiv);
-      card.appendChild(noteDiv);
-      grid.appendChild(card);
-    }
-
-    usecasesBuilt = true;
-
-    // Stagger card visibility
-    setTimeout(function() {
-      var allCards = grid.querySelectorAll('.usecase-card');
-      for (var j = 0; j < allCards.length; j++) {
-        (function(card, delay) {
-          setTimeout(function() { card.classList.add('visible'); }, delay);
-        })(allCards[j], j * 400);
-      }
-      animateUsecaseContents();
-    }, 100);
-  }
-
-  function animateUsecaseContents() {
-    var cards = document.querySelectorAll('.usecase-card');
-    for (var c = 0; c < cards.length; c++) {
-      (function(card, cardDelay) {
-        var queryDiv = card.querySelector('.usecase-query');
-        var queryText = queryDiv.dataset.queryText || '';
-        var resultItems = card.querySelectorAll('.usecase-result-item');
-        var noteDiv = card.querySelector('.usecase-note');
-
-        // Typewriter for query
-        queryDiv.textContent = '';
-        var charIdx = 0;
-        setTimeout(function() {
-          var typeTimer = setInterval(function() {
-            if (charIdx < queryText.length) {
-              queryDiv.textContent += queryText[charIdx];
-              charIdx++;
-            } else {
-              clearInterval(typeTimer);
-
-              // Slide in results
-              for (var r = 0; r < resultItems.length; r++) {
-                (function(item, delay) {
-                  setTimeout(function() { item.classList.add('visible'); }, delay);
-                })(resultItems[r], r * 150);
-              }
-
-              // Fade in note
-              setTimeout(function() {
-                noteDiv.classList.add('visible');
-              }, resultItems.length * 150 + 200);
-            }
-          }, 25);
-        }, cardDelay);
-      })(cards[c], c * 400 + 600);
-    }
-  }
-
-
-  // ============================================================
-  // 8. STAGE 5 — LIVE SEARCH (Pi-Brain)
-  // ============================================================
-  var piSearchEl = document.getElementById('piSearch');
-  var piResultsEl = document.getElementById('piResults');
-  var piLatencyEl = document.getElementById('piLatency');
-  var participationBadge = document.getElementById('participationBadge');
-  var piSearchDebounce = null;
-  var piSearchStartTime = 0;
-  var piInitialized = false;
-
-  // Simulated fallback data
-  var SIMULATED_MEMORIES = [
-    { title: 'HNSW Graph Construction Algorithm', category: 'vectors', quality: 92 },
-    { title: 'Bayesian Quality Voting with Beta Distribution', category: 'algorithms', quality: 88 },
-    { title: 'Self-Optimizing Neural Architecture (SONA)', category: 'neural', quality: 95 },
-    { title: 'MinCut Graph Partitioning for Knowledge Clusters', category: 'architecture', quality: 90 },
-    { title: 'Transfer Learning Between Knowledge Domains', category: 'neural', quality: 85 },
-    { title: 'Differential Privacy in Collective Intelligence', category: 'security', quality: 87 },
-    { title: 'MicroLoRA Federated Learning Protocol', category: 'neural', quality: 91 },
-    { title: 'Witness Chain Cryptographic Provenance', category: 'security', quality: 89 },
-    { title: 'Cosine Similarity vs HNSW Performance Comparison', category: 'performance', quality: 93 },
-    { title: 'Embedding Dimensions and Quality Tradeoffs', category: 'vectors', quality: 86 }
+  var monthData = [
+    { month: 'Mar', accuracy: 100, divergence: 0, doc: 'POST /api/auth \u2014 API key in header', real: 'POST /api/auth \u2014 API key in header' },
+    { month: 'Apr', accuracy: 95, divergence: 1, doc: 'POST /api/auth \u2014 API key in header', real: 'POST /api/auth \u2014 API key in header\nDELETE /api/v1/users \u2014 DEPRECATED' },
+    { month: 'May', accuracy: 82, divergence: 2, doc: 'POST /api/auth \u2014 API key in header', real: 'POST /api/v2/auth \u2014 OAuth2 bearer token' },
+    { month: 'Jun', accuracy: 68, divergence: 4, doc: 'POST /api/auth \u2014 API key in header', real: 'POST /api/v2/auth \u2014 OAuth2\nGET /api/v2/tokens \u2014 new\nPOST /api/v2/refresh \u2014 new' },
+    { month: 'Jul', accuracy: 45, divergence: 6, doc: 'POST /api/auth \u2014 API key in header', real: 'POST /api/v3/auth \u2014 OAuth2 + PKCE\nAll v1 endpoints removed' },
+    { month: 'Aug', accuracy: 30, divergence: 8, doc: 'POST /api/auth \u2014 API key in header', real: 'POST /api/v3/auth \u2014 OAuth2 + PKCE\nNew SDK required\nAPI key auth removed' }
   ];
 
-  function initPiBrainLive() {
-    if (piInitialized) return;
-    piInitialized = true;
+  var decayInterval = null;
 
-    piSearchEl.addEventListener('input', function() {
-      clearTimeout(piSearchDebounce);
-      piSearchDebounce = setTimeout(function() {
-        performPiSearch(piSearchEl.value);
-      }, 150);
-    });
+  function showSilentDecay() {
+    var months = document.querySelectorAll('.timeline-month');
+    var accuracyFill = document.getElementById('accuracyFill');
+    var accuracyLabel = document.getElementById('accuracyLabel');
+    var docPanel = document.getElementById('docPanel');
+    var realityPanel = document.getElementById('realityPanel');
+    var divergenceCounter = document.getElementById('divergenceCounter');
+    var complaintAlert = document.getElementById('complaintAlert');
+    var decayCaption = document.getElementById('decayCaption');
 
-    piLatencyEl.textContent = 'This is searching 965 expert memories in under 5ms. The same HNSW algorithm, running live.';
-    piLatencyEl.classList.add('visible');
-    setTimeout(function() { piSearchEl.focus(); }, 500);
-  }
+    // Reset
+    if (decayInterval) clearInterval(decayInterval);
+    for (var i = 0; i < months.length; i++) {
+      months[i].classList.remove('active', 'past');
+    }
+    accuracyFill.style.width = '100%';
+    accuracyFill.style.background = 'var(--green)';
+    accuracyLabel.textContent = '100%';
+    accuracyLabel.style.color = 'var(--green)';
+    docPanel.innerHTML = 'POST /api/auth &mdash; API key in header';
+    realityPanel.innerHTML = 'POST /api/auth &mdash; API key in header';
+    divergenceCounter.classList.remove('visible');
+    complaintAlert.classList.remove('visible');
+    decayCaption.classList.remove('visible');
 
-  function performPiSearch(query) {
-    if (!query.trim()) {
-      piResultsEl.innerHTML = '';
-      piLatencyEl.textContent = 'This is searching 965 expert memories in under 5ms. The same HNSW algorithm, running live.';
-      piLatencyEl.classList.add('visible');
-      return;
+    var step = 0;
+
+    function advanceMonth() {
+      if (step >= monthData.length) {
+        clearInterval(decayInterval);
+        // Show complaint alert at the end
+        stageTimeout(function() {
+          complaintAlert.classList.add('visible');
+        }, 400);
+        stageTimeout(function() {
+          decayCaption.classList.add('visible');
+        }, 1200);
+        return;
+      }
+
+      var data = monthData[step];
+
+      // Update timeline
+      for (var m = 0; m < months.length; m++) {
+        months[m].classList.remove('active');
+        if (m < step) months[m].classList.add('past');
+      }
+      months[step].classList.add('active');
+
+      // Update accuracy meter
+      accuracyFill.style.width = data.accuracy + '%';
+      if (data.accuracy >= 80) {
+        accuracyFill.style.background = 'var(--green)';
+        accuracyLabel.style.color = 'var(--green)';
+      } else if (data.accuracy >= 50) {
+        accuracyFill.style.background = 'var(--amber)';
+        accuracyLabel.style.color = 'var(--amber)';
+      } else {
+        accuracyFill.style.background = 'var(--red)';
+        accuracyLabel.style.color = 'var(--red)';
+      }
+      accuracyLabel.textContent = data.accuracy + '%';
+
+      // Update panels — doc stays frozen, reality evolves
+      docPanel.innerHTML = escapeHtml(data.doc);
+      var realLines = data.real.split('\n');
+      var realHtml = '';
+      for (var r = 0; r < realLines.length; r++) {
+        var line = realLines[r];
+        // Highlight new/changed lines
+        if (data.doc.indexOf(line) === -1 && step > 0) {
+          realHtml += '<span class="new-line">' + escapeHtml(line) + '</span>\n';
+        } else {
+          realHtml += escapeHtml(line) + '\n';
+        }
+      }
+      realityPanel.innerHTML = realHtml.trim();
+
+      // Update divergence
+      if (data.divergence > 0) {
+        divergenceCounter.classList.add('visible');
+        divergenceCounter.innerHTML = '&#9888; Divergence: ' + data.divergence + ' breaking change' + (data.divergence > 1 ? 's' : '');
+      }
+
+      step++;
     }
 
-    piSearchStartTime = performance.now();
+    // Start auto-advancing
+    stageTimeout(function() {
+      advanceMonth();
+      decayInterval = setInterval(advanceMonth, 1500);
+    }, 600);
+  }
 
-    // Try live API first, fall back to simulated
-    fetch('https://pi.ruv.io/v1/memories/search?q=' + encodeURIComponent(query) + '&limit=5')
-      .then(function(r) {
-        if (!r.ok) throw new Error('API error');
-        return r.json();
-      })
-      .then(function(data) {
-        var elapsed = (performance.now() - piSearchStartTime).toFixed(1);
-        var results = (data.memories || data.results || data || []).slice(0, 5);
-        renderPiResults(results.map(function(m) {
-          return {
-            title: m.title || m.content || '',
-            category: m.category || m.knowledge_type || '',
-            quality: m.quality_score || Math.floor((m.quality || 0.8) * 100),
-            id: m.id || ''
-          };
-        }), elapsed, 'HNSW semantic');
-      })
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ============================================================
+  // 5. STAGE 2 — "Knowledge That Watches Itself"
+  // ============================================================
+  var driftInterval = null;
+
+  function showDriftDetection() {
+    var radarContainer = document.getElementById('radarContainer');
+    var cvMetric = document.getElementById('cvMetric');
+    var alertsDiv = document.getElementById('driftAlerts');
+    var gapWithout = document.getElementById('gapWithout');
+    var gapWith = document.getElementById('gapWith');
+    var driftCaption = document.getElementById('driftCaption');
+
+    // Reset
+    if (driftInterval) clearInterval(driftInterval);
+    radarContainer.style.display = 'none';
+    cvMetric.classList.remove('visible');
+    cvMetric.textContent = 'Coefficient of Variation: 0.05';
+    alertsDiv.innerHTML = '';
+    gapWithout.classList.remove('visible');
+    gapWith.classList.remove('visible');
+    driftCaption.classList.remove('visible');
+
+    var driftSteps = [
+      {
+        delay: 800,
+        action: function() {
+          // Show radar pulse
+          radarContainer.style.display = '';
+          cvMetric.classList.add('visible');
+        }
+      },
+      {
+        delay: 2500,
+        action: function() {
+          // April: drift detected
+          cvMetric.textContent = 'Coefficient of Variation: 0.05 \u2192 0.22';
+          var alert1 = document.createElement('div');
+          alert1.className = 'drift-alert warning';
+          alert1.innerHTML = '<span aria-hidden="true">&#9888;&#65039;</span> <span>API docs drift detected \u2014 1 endpoint may be deprecated</span>';
+          alertsDiv.appendChild(alert1);
+          stageTimeout(function() { alert1.classList.add('visible'); }, 50);
+        }
+      },
+      {
+        delay: 4500,
+        action: function() {
+          // May: critical drift
+          cvMetric.textContent = 'Coefficient of Variation: 0.22 \u2192 0.41';
+          var alert2 = document.createElement('div');
+          alert2.className = 'drift-alert critical';
+          alert2.innerHTML = '<span aria-hidden="true">&#128308;</span> <span>Auth docs critically outdated \u2014 OAuth2 migration detected</span>';
+          alertsDiv.appendChild(alert2);
+          stageTimeout(function() { alert2.classList.add('visible'); }, 50);
+        }
+      },
+      {
+        delay: 6500,
+        action: function() {
+          // Auto-fix applied
+          var alert3 = document.createElement('div');
+          alert3.className = 'drift-alert fixed';
+          alert3.innerHTML = '<span aria-hidden="true">&#10003;</span> <span>Stale entry flagged \u2014 fresh replacement queued for review</span>';
+          alertsDiv.appendChild(alert3);
+          stageTimeout(function() { alert3.classList.add('visible'); }, 50);
+        }
+      },
+      {
+        delay: 8000,
+        action: function() {
+          // Detection gap comparison
+          gapWithout.classList.add('visible');
+          stageTimeout(function() { gapWith.classList.add('visible'); }, 400);
+          stageTimeout(function() { driftCaption.classList.add('visible'); }, 1000);
+        }
+      }
+    ];
+
+    for (var s = 0; s < driftSteps.length; s++) {
+      (function(step) {
+        stageTimeout(step.action, step.delay);
+      })(driftSteps[s]);
+    }
+  }
+
+  // ============================================================
+  // 6. STAGE 3 — "Quality That Evolves"
+  // ============================================================
+  var memories = [
+    { title: 'Token bucket + Redis (tested, production)', score: 0.50 },
+    { title: 'Sliding window counter', score: 0.50 },
+    { title: 'Fixed window (simple but bursty)', score: 0.50 },
+    { title: 'API Gateway built-in throttle', score: 0.50 },
+    { title: 'nginx rate_limit module', score: 0.50 },
+    { title: 'setTimeout retry loop (DON\'T)', score: 0.50 }
+  ];
+
+  var voteRounds = [
+    // Round 1: best gets 3 up
+    { index: 0, delta: 0.25 },
+    // Round 2: worst gets 2 down, runner-up gets 2 up
+    { index: 5, delta: -0.17 },
+    { index: 1, delta: 0.17 },
+    // Round 3: best gets 2 more
+    { index: 0, delta: 0.14 },
+    // Round 4: best confirmed, worst confirmed
+    { index: 0, delta: 0.03 },
+    { index: 5, delta: -0.10 }
+  ];
+
+  function showQualityEvolution() {
+    var container = document.getElementById('votingDemo');
+    var explainer = document.getElementById('bayesianExplainer');
+    var caption = document.getElementById('votingCaption');
+
+    // Reset
+    explainer.classList.remove('visible');
+    caption.classList.remove('visible');
+    container.innerHTML = '';
+
+    // Reset scores
+    var scores = [];
+    for (var i = 0; i < memories.length; i++) {
+      scores.push({ title: memories[i].title, score: 0.50, index: i });
+    }
+
+    // Build initial bars
+    renderMemoryBars(container, scores);
+
+    // Animate vote rounds
+    var roundIndex = 0;
+
+    function nextRound() {
+      if (roundIndex >= voteRounds.length) {
+        // Show explainer and caption
+        stageTimeout(function() { explainer.classList.add('visible'); }, 400);
+        stageTimeout(function() { caption.classList.add('visible'); }, 1000);
+        return;
+      }
+
+      var round = voteRounds[roundIndex];
+      scores[round.index].score = Math.max(0.05, Math.min(0.99, scores[round.index].score + round.delta));
+      roundIndex++;
+
+      // Sort by score descending
+      scores.sort(function(a, b) { return b.score - a.score; });
+
+      // Re-render with transition
+      renderMemoryBars(container, scores);
+
+      stageTimeout(nextRound, 1200);
+    }
+
+    stageTimeout(nextRound, 1200);
+  }
+
+  function renderMemoryBars(container, scores) {
+    // Preserve or create bar elements
+    var existing = container.querySelectorAll('.memory-bar');
+    var needsBuild = existing.length !== scores.length;
+
+    if (needsBuild) {
+      container.innerHTML = '';
+      for (var i = 0; i < scores.length; i++) {
+        var bar = document.createElement('div');
+        bar.className = 'memory-bar';
+        bar.dataset.memIdx = scores[i].index;
+
+        var label = document.createElement('span');
+        label.className = 'memory-label';
+        label.textContent = scores[i].title;
+
+        var scoreBar = document.createElement('div');
+        scoreBar.className = 'memory-score-bar';
+        var fill = document.createElement('div');
+        fill.className = 'memory-score-fill';
+        fill.style.width = (scores[i].score * 100) + '%';
+        fill.style.background = scoreColor(scores[i].score);
+        scoreBar.appendChild(fill);
+
+        var val = document.createElement('span');
+        val.className = 'memory-score-value';
+        val.textContent = scores[i].score.toFixed(2);
+        val.style.color = scoreColor(scores[i].score);
+
+        bar.appendChild(label);
+        bar.appendChild(scoreBar);
+        bar.appendChild(val);
+        container.appendChild(bar);
+      }
+    } else {
+      // Update existing bars in new order
+      for (var j = 0; j < scores.length; j++) {
+        var existBar = existing[j];
+        existBar.querySelector('.memory-label').textContent = scores[j].title;
+        existBar.querySelector('.memory-score-fill').style.width = (scores[j].score * 100) + '%';
+        existBar.querySelector('.memory-score-fill').style.background = scoreColor(scores[j].score);
+        existBar.querySelector('.memory-score-value').textContent = scores[j].score.toFixed(2);
+        existBar.querySelector('.memory-score-value').style.color = scoreColor(scores[j].score);
+        existBar.dataset.memIdx = scores[j].index;
+      }
+    }
+  }
+
+  function scoreColor(score) {
+    if (score >= 0.75) return '#00d4ff';
+    if (score >= 0.50) return '#f0c020';
+    if (score >= 0.35) return '#f59e0b';
+    return '#ef4444';
+  }
+
+  // ============================================================
+  // 7. STAGE 4 — "Try It Live"
+  // ============================================================
+  var searchWorker = null;
+  var workerReady = false;
+  var embeddingWorker = null;
+  var embeddingReady = false;
+  var searchStartTime = 0;
+  var fallbackMode = false;
+  var realMetadata = null;
+  var piSearch = document.getElementById('piSearch');
+  var piResults = document.getElementById('piResults');
+  var piLatency = document.getElementById('piLatency');
+
+  function initLiveSearch() {
+    piSearch.value = '';
+    piResults.innerHTML = '';
+    piLatency.classList.remove('visible');
+    loadRealMetadata();
+    initSearchWorker();
+    initEmbeddingWorker();
+    stageTimeout(function() { piSearch.focus(); }, 500);
+  }
+
+  function loadRealMetadata() {
+    if (realMetadata) return Promise.resolve();
+    return fetch('/assets/knowledge-meta.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { realMetadata = data; })
       .catch(function() {
-        // Fallback to simulated search
-        var q = query.toLowerCase();
-        var scored = [];
-        for (var i = 0; i < SIMULATED_MEMORIES.length; i++) {
-          var entry = SIMULATED_MEMORIES[i];
-          var titleLower = entry.title.toLowerCase();
-          var catLower = entry.category.toLowerCase();
-          var score = 0;
-          var words = q.split(/\s+/);
-          for (var w = 0; w < words.length; w++) {
-            if (titleLower.indexOf(words[w]) !== -1) score += 0.3;
-            if (catLower.indexOf(words[w]) !== -1) score += 0.15;
-          }
-          if (titleLower.indexOf(q) !== -1) score += 0.5;
-          if (score > 0) {
-            scored.push({ title: entry.title, category: entry.category, quality: entry.quality, score: score });
-          }
-        }
-        scored.sort(function(a, b) { return b.score - a.score; });
-        if (scored.length === 0) {
-          // Return top 3 by quality as fallback
-          scored = SIMULATED_MEMORIES.slice(0, 3).map(function(m) {
-            return { title: m.title, category: m.category, quality: m.quality, score: 0.5 };
-          });
-        }
-        var elapsed = (performance.now() - piSearchStartTime).toFixed(1);
-        renderPiResults(scored.slice(0, 5), elapsed, 'simulated HNSW');
+        return fetch('/assets/knowledge-meta.json.gz')
+          .then(function(r) {
+            var ds = new DecompressionStream('gzip');
+            return new Response(r.body.pipeThrough(ds)).text();
+          })
+          .then(function(text) { realMetadata = JSON.parse(text); })
+          .catch(function() { realMetadata = []; });
       });
   }
 
-  function renderPiResults(results, elapsed, method) {
-    piLatencyEl.textContent = elapsed + 'ms \u2022 ' + results.length + ' results \u2022 ' + method;
-    piLatencyEl.classList.add('visible');
+  function initSearchWorker() {
+    if (searchWorker) return;
+    try {
+      searchWorker = new Worker('/assets/rvf-search-worker.js');
+      searchWorker.onmessage = function(e) {
+        var msg = e.data;
+        if (msg.type === 'progress') {
+          piLatency.textContent = msg.message;
+          piLatency.classList.add('visible');
+        } else if (msg.type === 'ready') {
+          workerReady = true;
+          piLatency.textContent = msg.vectorCount.toLocaleString() + ' vectors loaded \u2022 ' + (msg.hasWasm ? 'WASM HNSW' : 'brute-force') + ' search ready';
+          piLatency.classList.add('visible');
+          piSearch.placeholder = 'Search ' + msg.vectorCount.toLocaleString() + ' entries...';
+        } else if (msg.type === 'results') {
+          var totalElapsed = (performance.now() - searchStartTime).toFixed(1);
+          renderSearchResults(msg.results, totalElapsed, msg.method);
+        } else if (msg.type === 'error') {
+          piLatency.textContent = 'Error: ' + msg.message + ' \u2014 falling back to keyword search';
+          piLatency.classList.add('visible');
+          workerReady = false;
+          fallbackMode = true;
+        }
+      };
+      searchWorker.postMessage({ type: 'init', baseUrl: '/assets' });
+    } catch (err) {
+      fallbackMode = true;
+    }
+  }
 
-    piResultsEl.innerHTML = '';
+  function initEmbeddingWorker() {
+    if (embeddingWorker) return;
+    try {
+      embeddingWorker = new Worker('/assets/embedding-worker.js', { type: 'module' });
+      embeddingWorker.onmessage = function(e) {
+        var msg = e.data;
+        if (msg.type === 'progress') {
+          piLatency.textContent = msg.message;
+          piLatency.classList.add('visible');
+        } else if (msg.type === 'ready') {
+          embeddingReady = true;
+          piLatency.textContent = 'Semantic search ready \u2014 AI embeddings active';
+          piLatency.classList.add('visible');
+          piSearch.placeholder = 'Semantic search across memories...';
+        } else if (msg.type === 'embedding') {
+          if (workerReady && searchWorker) {
+            searchWorker.postMessage({ type: 'search', query: msg.embedding, k: 8 });
+          } else {
+            var results = fallbackSearch(piSearch.value);
+            var elapsed = (performance.now() - searchStartTime).toFixed(1);
+            renderSearchResults(results, elapsed, 'keyword (vectors loading)');
+          }
+        } else if (msg.type === 'error') {
+          // silently handle
+        }
+      };
+      embeddingWorker.postMessage({ type: 'init' });
+    } catch (err) {
+      // embedding worker unavailable
+    }
+  }
+
+  function fallbackSearch(query) {
+    if (!realMetadata || realMetadata.length === 0) return [];
+    var q = query.toLowerCase();
+    var words = q.split(/\s+/).filter(function(w) { return w.length > 1; });
+    var scored = [];
+
+    for (var i = 0; i < realMetadata.length; i++) {
+      var entry = realMetadata[i];
+      var title = (entry.t || '').toLowerCase();
+      var cat = (entry.c || '').toLowerCase();
+      var pkg = (entry.p || '').toLowerCase();
+      var searchText = title + ' ' + cat + ' ' + pkg;
+      var matchScore = 0;
+
+      for (var w = 0; w < words.length; w++) {
+        if (searchText.indexOf(words[w]) !== -1) matchScore += 0.3;
+      }
+      if (searchText.indexOf(q) !== -1) matchScore += 0.5;
+
+      if (matchScore > 0) {
+        var qualityBoost = (entry.q || 0) / 100 * 0.2;
+        scored.push({
+          title: entry.t || entry.id,
+          distance: 1 - Math.min(1, matchScore + qualityBoost),
+          category: entry.c || entry.k || '',
+          quality_score: entry.q || 0,
+          package_name: entry.p || ''
+        });
+      }
+    }
+    scored.sort(function(a, b) { return a.distance - b.distance; });
+    return scored.slice(0, 5);
+  }
+
+  var searchDebounce = null;
+  piSearch.addEventListener('input', function() {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(function() { performSearch(piSearch.value); }, 150);
+  });
+
+  function performSearch(query) {
+    if (!query.trim()) {
+      piResults.innerHTML = '';
+      piLatency.classList.remove('visible');
+      return;
+    }
+
+    searchStartTime = performance.now();
+
+    if (embeddingReady && embeddingWorker) {
+      piLatency.textContent = 'Embedding query...';
+      piLatency.classList.add('visible');
+      embeddingWorker.postMessage({ type: 'embed', text: query });
+    } else if (realMetadata) {
+      var results = fallbackSearch(query);
+      var elapsed = (performance.now() - searchStartTime).toFixed(1);
+      var methodLabel = embeddingReady ? 'keyword' : 'keyword (loading AI model...)';
+      renderSearchResults(results, elapsed, methodLabel);
+    } else {
+      loadRealMetadata().then(function() { performSearch(query); });
+      piLatency.textContent = 'Loading knowledge base...';
+      piLatency.classList.add('visible');
+    }
+  }
+
+  function renderSearchResults(results, elapsed, method) {
+    var methodLabel = method || 'keyword';
+    piLatency.textContent = elapsed + 'ms \u2022 ' + results.length + ' results \u2022 ' + methodLabel + ' \u2022 client-side';
+    piLatency.classList.add('visible');
+
+    piResults.innerHTML = '';
     for (var j = 0; j < results.length; j++) {
       (function(entry, index) {
         var div = document.createElement('div');
@@ -1428,41 +774,34 @@
 
         var scoreSpan = document.createElement('span');
         scoreSpan.className = 'result-score';
-        scoreSpan.textContent = (entry.quality / 100).toFixed(2);
+        scoreSpan.textContent = entry.distance != null ? (1 - entry.distance).toFixed(2) : (entry.quality_score / 100).toFixed(2);
 
         var textSpan = document.createElement('span');
         textSpan.className = 'result-text';
-        textSpan.textContent = entry.title;
+        textSpan.textContent = entry.title || entry.text || '';
 
         var catSpan = document.createElement('span');
         catSpan.className = 'result-category';
-        catSpan.textContent = entry.category;
+        catSpan.textContent = entry.category || entry.cat || '';
 
         var voteDiv = document.createElement('div');
         voteDiv.className = 'result-vote';
+
         var upBtn = document.createElement('button');
         upBtn.className = 'vote-btn';
-        upBtn.textContent = '\u25B2';
-        upBtn.setAttribute('aria-label', 'Vote up');
+        upBtn.setAttribute('aria-label', 'Upvote');
+        upBtn.innerHTML = '&#9650;';
+        upBtn.addEventListener('click', function() {
+          upBtn.classList.toggle('voted');
+          showParticipation();
+        });
+
         var downBtn = document.createElement('button');
         downBtn.className = 'vote-btn';
-        downBtn.textContent = '\u25BC';
-        downBtn.setAttribute('aria-label', 'Vote down');
-
-        upBtn.addEventListener('click', function() {
-          upBtn.classList.add('voted');
-          showParticipation();
-          // Try live vote
-          if (entry.id) {
-            fetch('https://pi.ruv.io/v1/memories/' + entry.id + '/vote', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ direction: 'up' })
-            }).catch(function() {});
-          }
-        });
+        downBtn.setAttribute('aria-label', 'Downvote');
+        downBtn.innerHTML = '&#9660;';
         downBtn.addEventListener('click', function() {
-          downBtn.classList.add('voted');
+          downBtn.classList.toggle('voted');
           showParticipation();
         });
 
@@ -1473,25 +812,26 @@
         div.appendChild(textSpan);
         div.appendChild(catSpan);
         div.appendChild(voteDiv);
-        piResultsEl.appendChild(div);
+        piResults.appendChild(div);
 
-        setTimeout(function() { div.classList.add('visible'); }, index * 80);
+        stageTimeout(function() { div.classList.add('visible'); }, index * 80);
       })(results[j], j);
     }
   }
 
   function showParticipation() {
-    participationBadge.textContent = 'You just participated in collective intelligence';
-    participationBadge.classList.add('visible');
+    var badge = document.getElementById('participationBadge');
+    badge.textContent = 'Your vote matters \u2014 you just helped improve collective knowledge quality';
+    badge.classList.add('visible');
+    stageTimeout(function() { badge.classList.remove('visible'); }, 4000);
   }
 
-
   // ============================================================
-  // 9. CONTROLS & INIT
+  // 8. CONTROLS
   // ============================================================
   prevBtn.addEventListener('click', function() { goToStage(currentStage - 1); });
   nextBtn.addEventListener('click', function() {
-    if (currentStage === (TOTAL_STAGES - 1)) goToStage(0);
+    if (currentStage === TOTAL_STAGES - 1) goToStage(0);
     else goToStage(currentStage + 1);
   });
 
@@ -1508,7 +848,7 @@
       autoTimer = setInterval(function() {
         if (currentStage < TOTAL_STAGES - 1) goToStage(currentStage + 1);
         else { autoPlay = false; autoBtn.textContent = '\u25B6 Auto'; clearInterval(autoTimer); }
-      }, 8000);
+      }, 10000);
     } else {
       clearInterval(autoTimer);
     }
@@ -1516,25 +856,18 @@
 
   // Keyboard navigation
   document.addEventListener('keydown', function(e) {
-    if (document.activeElement === piSearchEl) return;
-    if (e.key === 'ArrowRight' || e.key === ' ') {
-      e.preventDefault();
-      goToStage(Math.min(currentStage + 1, TOTAL_STAGES - 1));
-    }
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      goToStage(Math.max(currentStage - 1, 0));
-    }
+    if (document.activeElement === piSearch) return;
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goToStage(Math.min(currentStage + 1, TOTAL_STAGES - 1)); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goToStage(Math.max(currentStage - 1, 0)); }
   });
 
-  // --- Init ---
+  // ============================================================
+  // 9. INIT
+  // ============================================================
   resize();
   window.addEventListener('resize', function() {
     resize();
     setStageTargets(currentStage);
-    // Re-init canvases on resize
-    if (currentStage === 1) { embedInitialized2 = false; initSemanticDemo(); }
-    if (currentStage === 3) { hnswExpInitialized = false; initHnswExplainer(); }
   });
   initParticles();
   setStageTargets(0);

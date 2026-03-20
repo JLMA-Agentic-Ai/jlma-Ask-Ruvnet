@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400">
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; }
+    .title { font-size: 14px; font-weight: 700; fill: #1a1a1a; }
+    .lane-title { font-size: 12px; font-weight: 700; fill: #1a1a1a; }
+    .lane-bg-1 { fill: #f8f9fa; }
+    .lane-bg-2 { fill: #f0f2f5; }
+    .step-label { font-size: 10px; font-weight: 600; fill: #1a1a1a; }
+    .step-detail { font-size: 9px; fill: #666666; }
+    .step-num { font-size: 9px; font-weight: 700; fill: #ffffff; }
+    .box { fill: #f8f9fa; stroke: #333333; stroke-width: 1.2; rx: 4; }
+    .box-accent { fill: #4a90d9; stroke: #3a7bc0; stroke-width: 1.2; rx: 4; opacity: 0.9; }
+    .box-success { fill: #38a169; stroke: #2d8a57; stroke-width: 1.2; rx: 4; }
+    .box-build { fill: #805ad5; stroke: #6b46c1; stroke-width: 1.2; rx: 4; opacity: 0.9; }
+    .arrow-h { stroke: #555555; stroke-width: 1.5; fill: none; marker-end: url(#arr); }
+    .arrow-v { stroke: #555555; stroke-width: 1.5; fill: none; marker-end: url(#arr); }
+    .arrow-diag { stroke: #4a90d9; stroke-width: 1.5; fill: none; marker-end: url(#arr-blue); stroke-dasharray: 6,3; }
+    .lane-divider { stroke: #cccccc; stroke-width: 1; stroke-dasharray: 6,3; }
+    .live-label { font-size: 11px; font-weight: 700; fill: #38a169; }
+    .live-url { font-size: 9.5px; fill: #666666; font-family: ui-monospace, monospace; }
+    @media (prefers-color-scheme: dark) {
+      .title { fill: #e6edf3; }
+      .lane-title { fill: #e6edf3; }
+      .lane-bg-1 { fill: #22272e; }
+      .lane-bg-2 { fill: #2d333b; }
+      .step-label { fill: #e6edf3; }
+      .step-detail { fill: #8b949e; }
+      .box { fill: #2d333b; stroke: #768390; }
+      .arrow-h { stroke: #768390; }
+      .arrow-v { stroke: #768390; }
+      .lane-divider { stroke: #444c56; }
+      .live-label { fill: #3fb950; }
+      .live-url { fill: #8b949e; }
+    }
+  </style>
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555555" />
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#4a90d9" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="350" y="24" text-anchor="middle" class="title">Deployment Flow: Push to Production</text>
+
+  <!-- Swim Lane Backgrounds -->
+  <rect x="0" y="36" width="700" height="90" class="lane-bg-1" />
+  <rect x="0" y="126" width="700" height="90" class="lane-bg-2" />
+  <rect x="0" y="216" width="700" height="140" class="lane-bg-1" />
+
+  <!-- Swim Lane Dividers -->
+  <line x1="0" y1="126" x2="700" y2="126" class="lane-divider" />
+  <line x1="0" y1="216" x2="700" y2="216" class="lane-divider" />
+
+  <!-- Lane Labels -->
+  <text x="20" y="58" class="lane-title">Developer</text>
+  <text x="20" y="148" class="lane-title">GitHub</text>
+  <text x="20" y="238" class="lane-title">Railway</text>
+
+  <!-- Step numbers -->
+  <!-- Step 1: Developer - git push main -->
+  <circle cx="138" cy="82" r="9" fill="#4a90d9" />
+  <text x="138" y="86" text-anchor="middle" class="step-num">1</text>
+  <rect x="155" y="68" width="130" height="30" class="box" />
+  <text x="220" y="84" text-anchor="middle" class="step-label">git push main</text>
+  <text x="220" y="98" text-anchor="middle" class="step-detail">deploy.sh (bump + commit)</text>
+
+  <!-- Arrow 1 to 2: Developer down to GitHub -->
+  <line x1="220" y1="98" x2="220" y2="150" class="arrow-diag" />
+
+  <!-- Step 2: GitHub - webhook trigger -->
+  <circle cx="198" cy="164" r="9" fill="#4a90d9" />
+  <text x="198" y="168" text-anchor="middle" class="step-num">2</text>
+  <rect x="215" y="150" width="140" height="30" class="box" />
+  <text x="285" y="166" text-anchor="middle" class="step-label">Webhook Trigger</text>
+  <text x="285" y="180" text-anchor="middle" class="step-detail">push event to Railway</text>
+
+  <!-- Arrow 2 to 3: GitHub down to Railway -->
+  <line x1="285" y1="180" x2="285" y2="248" class="arrow-diag" />
+
+  <!-- Step 3: Railway build pipeline -->
+  <circle cx="138" cy="262" r="9" fill="#4a90d9" />
+  <text x="138" y="266" text-anchor="middle" class="step-num">3</text>
+
+  <rect x="155" y="248" width="100" height="30" class="box-build" />
+  <text x="205" y="267" text-anchor="middle" style="font-size: 10px; font-weight: 600; fill: #ffffff;">Docker Build</text>
+
+  <line x1="255" y1="263" x2="275" y2="263" class="arrow-h" />
+
+  <rect x="278" y="248" width="90" height="30" class="box-build" />
+  <text x="323" y="267" text-anchor="middle" style="font-size: 10px; font-weight: 600; fill: #ffffff;">npm install</text>
+
+  <line x1="368" y1="263" x2="388" y2="263" class="arrow-h" />
+
+  <rect x="391" y="248" width="85" height="30" class="box-build" />
+  <text x="433" y="267" text-anchor="middle" style="font-size: 10px; font-weight: 600; fill: #ffffff;">vite build</text>
+
+  <line x1="476" y1="263" x2="496" y2="263" class="arrow-h" />
+
+  <rect x="499" y="248" width="100" height="30" class="box-build" />
+  <text x="549" y="267" text-anchor="middle" style="font-size: 10px; font-weight: 600; fill: #ffffff;">start server</text>
+
+  <!-- Step 4: Health check -->
+  <circle cx="138" cy="312" r="9" fill="#4a90d9" />
+  <text x="138" y="316" text-anchor="middle" class="step-num">4</text>
+
+  <rect x="155" y="298" width="200" height="30" class="box-success" />
+  <text x="255" y="314" text-anchor="middle" style="font-size: 10px; font-weight: 600; fill: #ffffff;">Health Check /health</text>
+  <text x="255" y="326" text-anchor="middle" style="font-size: 9px; fill: rgba(255,255,255,0.8);">HTTP 200 OK</text>
+
+  <!-- Arrow from build to health check -->
+  <line x1="549" y1="278" x2="549" y2="303" stroke="#555555" stroke-width="1" fill="none" />
+  <line x1="549" y1="303" x2="358" y2="303" class="arrow-h" />
+
+  <!-- Checkmark icon -->
+  <circle cx="380" cy="313" r="10" fill="#38a169" />
+  <path d="M375,313 L378,316 L385,309" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Step 5: Live label -->
+  <rect x="130" y="345" width="440" height="28" rx="5" fill="#38a169" opacity="0.1" stroke="#38a169" stroke-width="1" stroke-dasharray="4,2" />
+  <circle cx="148" cy="359" r="5" fill="#38a169">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <text x="162" y="363" class="live-label">LIVE</text>
+  <text x="202" y="363" class="live-url">ask-ruvnet-production.up.railway.app</text>
+</svg>

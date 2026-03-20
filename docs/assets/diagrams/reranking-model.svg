@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="600" height="350">
+  <style>
+    text { font-family: system-ui, -apple-system, sans-serif; }
+    .title { font-size: 14px; font-weight: 700; fill: #1a1a1a; }
+    .bar-label { font-size: 11px; font-weight: 600; fill: #1a1a1a; }
+    .bar-pct { font-size: 11px; font-weight: 700; fill: #ffffff; }
+    .bar-pct-dark { font-size: 11px; font-weight: 700; fill: #1a1a1a; }
+    .footer-title { font-size: 10px; font-weight: 700; fill: #1a1a1a; }
+    .footer-text { font-size: 9.5px; fill: #666666; }
+    .axis-line { stroke: #cccccc; stroke-width: 0.8; }
+    .grid-line { stroke: #e8e8e8; stroke-width: 0.5; stroke-dasharray: 3,3; }
+    .divider { stroke: #cccccc; stroke-width: 0.8; stroke-dasharray: 4,3; }
+    @media (prefers-color-scheme: dark) {
+      .title { fill: #e6edf3; }
+      .bar-label { fill: #e6edf3; }
+      .bar-pct-dark { fill: #e6edf3; }
+      .footer-title { fill: #e6edf3; }
+      .footer-text { fill: #8b949e; }
+      .axis-line { stroke: #444c56; }
+      .grid-line { stroke: #373e47; }
+      .divider { stroke: #444c56; }
+    }
+  </style>
+
+  <!-- Title -->
+  <text x="300" y="26" text-anchor="middle" class="title">Re-Ranking Score Weights</text>
+
+  <!-- Grid lines at 10% intervals -->
+  <line x1="160" y1="44" x2="160" y2="210" class="grid-line" />
+  <line x1="244" y1="44" x2="244" y2="210" class="grid-line" />
+  <line x1="328" y1="44" x2="328" y2="210" class="grid-line" />
+  <line x1="412" y1="44" x2="412" y2="210" class="grid-line" />
+  <line x1="496" y1="44" x2="496" y2="210" class="grid-line" />
+
+  <!-- Axis -->
+  <line x1="160" y1="210" x2="560" y2="210" class="axis-line" />
+  <text x="160" y="224" text-anchor="middle" class="footer-text">0%</text>
+  <text x="244" y="224" text-anchor="middle" class="footer-text">10%</text>
+  <text x="328" y="224" text-anchor="middle" class="footer-text">20%</text>
+  <text x="412" y="224" text-anchor="middle" class="footer-text">30%</text>
+  <text x="496" y="224" text-anchor="middle" class="footer-text">40%</text>
+
+  <!-- Bar: Semantic 35% -->
+  <text x="150" y="64" text-anchor="end" class="bar-label">Semantic</text>
+  <rect x="160" y="50" width="294" height="26" rx="3" fill="#4a90d9" />
+  <text x="300" y="68" text-anchor="middle" class="bar-pct">35%</text>
+
+  <!-- Bar: Keyword 25% -->
+  <text x="150" y="100" text-anchor="end" class="bar-label">Keyword</text>
+  <rect x="160" y="86" width="210" height="26" rx="3" fill="#38a169" />
+  <text x="260" y="104" text-anchor="middle" class="bar-pct">25%</text>
+
+  <!-- Bar: Alignment 20% -->
+  <text x="150" y="136" text-anchor="end" class="bar-label">Alignment</text>
+  <rect x="160" y="122" width="168" height="26" rx="3" fill="#805ad5" />
+  <text x="240" y="140" text-anchor="middle" class="bar-pct">20%</text>
+
+  <!-- Bar: Recency 10% -->
+  <text x="150" y="172" text-anchor="end" class="bar-label">Recency</text>
+  <rect x="160" y="158" width="84" height="26" rx="3" fill="#d69e2e" />
+  <text x="202" y="176" text-anchor="middle" class="bar-pct-dark">10%</text>
+
+  <!-- Bar: Diversity 10% -->
+  <text x="150" y="208" text-anchor="end" class="bar-label">Diversity</text>
+  <rect x="160" y="194" width="84" height="26" rx="3" fill="#319795" />
+  <text x="202" y="212" text-anchor="middle" class="bar-pct">10%</text>
+
+  <!-- Separator -->
+  <line x1="30" y1="238" x2="570" y2="238" class="divider" />
+
+  <!-- Authority Boosts -->
+  <text x="40" y="260" class="footer-title">Authority Boosts</text>
+  <rect x="160" y="248" width="44" height="16" rx="3" fill="#4a90d9" opacity="0.8" />
+  <text x="182" y="260" text-anchor="middle" class="bar-pct" style="font-size: 9px;">ADR</text>
+  <text x="214" y="260" class="footer-text">+15%</text>
+  <rect x="250" y="248" width="68" height="16" rx="3" fill="#4a90d9" opacity="0.65" />
+  <text x="284" y="260" text-anchor="middle" class="bar-pct" style="font-size: 9px;">Changelog</text>
+  <text x="328" y="260" class="footer-text">+10%</text>
+  <rect x="366" y="248" width="56" height="16" rx="3" fill="#4a90d9" opacity="0.5" />
+  <text x="394" y="260" text-anchor="middle" class="bar-pct" style="font-size: 9px;">Release</text>
+  <text x="432" y="260" class="footer-text">+8%</text>
+  <rect x="464" y="248" width="54" height="16" rx="3" fill="#4a90d9" opacity="0.35" />
+  <text x="491" y="260" text-anchor="middle" class="bar-pct" style="font-size: 9px;">Commit</text>
+  <text x="528" y="260" class="footer-text">+5%</text>
+
+  <!-- Quality Tiers -->
+  <text x="40" y="292" class="footer-title">Quality Tiers</text>
+  <rect x="160" y="280" width="50" height="16" rx="3" fill="#d69e2e" />
+  <text x="185" y="292" text-anchor="middle" style="font-size: 9px; font-weight: 700; fill: #ffffff;">Gold</text>
+  <text x="220" y="292" class="footer-text">+10%</text>
+  <rect x="256" y="280" width="50" height="16" rx="3" fill="#a0aec0" />
+  <text x="281" y="292" text-anchor="middle" style="font-size: 9px; font-weight: 700; fill: #ffffff;">Silver</text>
+  <text x="316" y="292" class="footer-text">+5%</text>
+  <rect x="350" y="280" width="56" height="16" rx="3" fill="#a0734e" />
+  <text x="378" y="292" text-anchor="middle" style="font-size: 9px; font-weight: 700; fill: #ffffff;">Bronze</text>
+  <text x="416" y="292" class="footer-text">+0%</text>
+
+  <!-- Separator -->
+  <line x1="30" y1="310" x2="570" y2="310" class="divider" />
+
+  <!-- Formula -->
+  <text x="300" y="332" text-anchor="middle" class="footer-text" style="font-size: 9px; font-style: italic;">
+    final = (0.35 * semantic + 0.25 * keyword + 0.20 * alignment + 0.10 * recency + 0.10 * diversity) * authority * tier
+  </text>
+</svg>

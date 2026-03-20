@@ -110,7 +110,7 @@ function findFiles(dir, files = []) {
       const stat = statSync(fullPath);
       if (stat.isDirectory()) {
         findFiles(fullPath, files);
-      } else if (stat.isFile() && /\.(md|txt|rst)$/i.test(item) && stat.size < 500_000) {
+      } else if (stat.isFile() && /\.(md|txt|rst|toml)$/i.test(item) && stat.size < 500_000) {
         files.push(fullPath);
       }
     } catch {}

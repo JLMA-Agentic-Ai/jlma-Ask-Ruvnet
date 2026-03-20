@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <style>
+      .box { fill: #f8f9fa; stroke: #333333; stroke-width: 1.5; rx: 8; }
+      .title { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #1a1a1a; }
+      .detail { font-family: system-ui, sans-serif; font-size: 10px; fill: #666666; }
+      .arrow { stroke: #555555; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-bi { stroke: #555555; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); marker-start: url(#arrowhead-rev); }
+      @media (prefers-color-scheme: dark) {
+        .box { fill: #2d333b; stroke: #768390; }
+        .title { fill: #e6edf3; }
+        .detail { fill: #8b949e; }
+        .arrow, .arrow-bi { stroke: #768390; }
+      }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555555" />
+    </marker>
+    <marker id="arrowhead-rev" markerWidth="8" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555555" />
+    </marker>
+  </defs>
+
+  <!-- Row 1 -->
+  <!-- Browser -->
+  <rect class="box" x="20" y="30" width="220" height="140" />
+  <rect x="20" y="30" width="220" height="28" rx="8" ry="8" fill="#4a90d9" />
+  <rect x="20" y="50" width="220" height="8" fill="#4a90d9" />
+  <text class="title" x="130" y="50" text-anchor="middle" fill="#ffffff">BROWSER</text>
+  <text class="detail" x="130" y="82" text-anchor="middle">React 19</text>
+  <text class="detail" x="130" y="100" text-anchor="middle">Vite 7</text>
+  <text class="detail" x="130" y="118" text-anchor="middle">WASM Engine</text>
+
+  <!-- Server -->
+  <rect class="box" x="290" y="30" width="220" height="140" />
+  <rect x="290" y="30" width="220" height="28" rx="8" ry="8" fill="#38a169" />
+  <rect x="290" y="50" width="220" height="8" fill="#38a169" />
+  <text class="title" x="400" y="50" text-anchor="middle" fill="#ffffff">SERVER</text>
+  <text class="detail" x="400" y="82" text-anchor="middle">Express 5</text>
+  <text class="detail" x="400" y="100" text-anchor="middle">RAG Pipeline</text>
+  <text class="detail" x="400" y="118" text-anchor="middle">7 LLM Providers</text>
+
+  <!-- Knowledge -->
+  <rect class="box" x="560" y="30" width="220" height="140" />
+  <rect x="560" y="30" width="220" height="28" rx="8" ry="8" fill="#805ad5" />
+  <rect x="560" y="50" width="220" height="8" fill="#805ad5" />
+  <text class="title" x="670" y="50" text-anchor="middle" fill="#ffffff">KNOWLEDGE</text>
+  <text class="detail" x="670" y="82" text-anchor="middle">RVF Store HNSW</text>
+  <text class="detail" x="670" y="100" text-anchor="middle">353 Gold Entries</text>
+  <text class="detail" x="670" y="118" text-anchor="middle">Hybrid BM25 + Semantic</text>
+
+  <!-- Row 1 arrows -->
+  <line class="arrow-bi" x1="244" y1="100" x2="286" y2="100" />
+  <line class="arrow-bi" x1="514" y1="100" x2="556" y2="100" />
+
+  <!-- Row 2 -->
+  <!-- Pi-Brain -->
+  <rect class="box" x="20" y="220" width="220" height="140" />
+  <rect x="20" y="220" width="220" height="28" rx="8" ry="8" fill="#4a90d9" />
+  <rect x="20" y="240" width="220" height="8" fill="#4a90d9" />
+  <text class="title" x="130" y="240" text-anchor="middle" fill="#ffffff">PI-BRAIN</text>
+  <text class="detail" x="130" y="272" text-anchor="middle">965 Memories</text>
+  <text class="detail" x="130" y="290" text-anchor="middle">59 Contributors</text>
+  <text class="detail" x="130" y="308" text-anchor="middle">Live Search</text>
+
+  <!-- Build Pipeline -->
+  <rect class="box" x="290" y="220" width="220" height="140" />
+  <rect x="290" y="220" width="220" height="28" rx="8" ry="8" fill="#38a169" />
+  <rect x="290" y="240" width="220" height="8" fill="#38a169" />
+  <text class="title" x="400" y="240" text-anchor="middle" fill="#ffffff">BUILD PIPELINE</text>
+  <text class="detail" x="400" y="272" text-anchor="middle">PG &amp; RVF</text>
+  <text class="detail" x="400" y="290" text-anchor="middle">RVF &amp; SQ8</text>
+  <text class="detail" x="400" y="308" text-anchor="middle">Vite Build</text>
+
+  <!-- Deploy -->
+  <rect class="box" x="560" y="220" width="220" height="140" />
+  <rect x="560" y="220" width="220" height="28" rx="8" ry="8" fill="#805ad5" />
+  <rect x="560" y="240" width="220" height="8" fill="#805ad5" />
+  <text class="title" x="670" y="240" text-anchor="middle" fill="#ffffff">DEPLOY</text>
+  <text class="detail" x="670" y="272" text-anchor="middle">Git Push &amp; Railway</text>
+  <text class="detail" x="670" y="290" text-anchor="middle">Docker Node 22</text>
+  <text class="detail" x="670" y="308" text-anchor="middle">Auto-deploy on main</text>
+</svg>

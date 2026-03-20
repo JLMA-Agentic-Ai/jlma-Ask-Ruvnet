@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="500" height="600">
+  <defs>
+    <style>
+      .box { fill: #f8f9fa; stroke: #333333; stroke-width: 1.5; rx: 6; }
+      .box-ok { fill: #f0fff4; stroke: #38a169; stroke-width: 1.5; rx: 6; }
+      .label { font-family: system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #1a1a1a; }
+      .sub { font-family: system-ui, sans-serif; font-size: 10px; fill: #666666; }
+      .ok-label { font-family: system-ui, sans-serif; font-size: 11px; font-weight: 600; fill: #38a169; }
+      .fail-label { font-family: system-ui, sans-serif; font-size: 10px; fill: #c53030; }
+      .arrow-ok { stroke: #38a169; stroke-width: 1.5; fill: none; marker-end: url(#ah-green); }
+      .arrow-fail { stroke: #c53030; stroke-width: 1.5; stroke-dasharray: 5,3; fill: none; marker-end: url(#ah-red); }
+      @media (prefers-color-scheme: dark) {
+        .box { fill: #2d333b; stroke: #768390; }
+        .box-ok { fill: #1a2e1a; stroke: #3fb950; }
+        .label { fill: #e6edf3; }
+        .sub { fill: #8b949e; }
+        .ok-label { fill: #3fb950; }
+        .fail-label { fill: #f85149; }
+        .arrow-ok { stroke: #3fb950; }
+        .arrow-fail { stroke: #f85149; }
+      }
+    </style>
+    <marker id="ah-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#38a169" />
+    </marker>
+    <marker id="ah-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#c53030" />
+    </marker>
+  </defs>
+
+  <!-- Response box (shared target) -->
+  <rect class="box-ok" x="370" y="270" width="110" height="34" />
+  <text class="ok-label" x="425" y="292" text-anchor="middle">Response</text>
+
+  <!-- Provider 1: Groq Free -->
+  <rect class="box" x="40" y="20" width="200" height="40" />
+  <text class="label" x="140" y="38" text-anchor="middle">Groq Free</text>
+  <text class="sub" x="140" y="52" text-anchor="middle">llama-3.3</text>
+
+  <line class="arrow-ok" x1="243" y1="40" x2="367" y2="280" />
+  <text class="ok-label" x="310" y="145" text-anchor="middle">success</text>
+
+  <line class="arrow-fail" x1="140" y1="63" x2="140" y2="83" />
+  <text class="fail-label" x="162" y="78">fail</text>
+
+  <!-- Provider 2: Groq Paid -->
+  <rect class="box" x="40" y="86" width="200" height="40" />
+  <text class="label" x="140" y="104" text-anchor="middle">Groq Paid</text>
+  <text class="sub" x="140" y="118" text-anchor="middle">Priority tier</text>
+
+  <line class="arrow-ok" x1="243" y1="106" x2="367" y2="282" />
+
+  <line class="arrow-fail" x1="140" y1="129" x2="140" y2="149" />
+  <text class="fail-label" x="162" y="144">fail</text>
+
+  <!-- Provider 3: OpenAI -->
+  <rect class="box" x="40" y="152" width="200" height="40" />
+  <text class="label" x="140" y="170" text-anchor="middle">OpenAI</text>
+  <text class="sub" x="140" y="184" text-anchor="middle">gpt-4o</text>
+
+  <line class="arrow-ok" x1="243" y1="172" x2="367" y2="284" />
+
+  <line class="arrow-fail" x1="140" y1="195" x2="140" y2="215" />
+  <text class="fail-label" x="162" y="210">fail</text>
+
+  <!-- Provider 4: Anthropic -->
+  <rect class="box" x="40" y="218" width="200" height="40" />
+  <text class="label" x="140" y="236" text-anchor="middle">Anthropic</text>
+  <text class="sub" x="140" y="250" text-anchor="middle">Claude</text>
+
+  <line class="arrow-ok" x1="243" y1="238" x2="367" y2="286" />
+
+  <line class="arrow-fail" x1="140" y1="261" x2="140" y2="281" />
+  <text class="fail-label" x="162" y="276">fail</text>
+
+  <!-- Provider 5: Together -->
+  <rect class="box" x="40" y="284" width="200" height="40" />
+  <text class="label" x="140" y="302" text-anchor="middle">Together</text>
+  <text class="sub" x="140" y="316" text-anchor="middle">Open-source models</text>
+
+  <line class="arrow-ok" x1="243" y1="304" x2="367" y2="288" />
+
+  <line class="arrow-fail" x1="140" y1="327" x2="140" y2="347" />
+  <text class="fail-label" x="162" y="342">fail</text>
+
+  <!-- Provider 6: OpenRouter -->
+  <rect class="box" x="40" y="350" width="200" height="40" />
+  <text class="label" x="140" y="368" text-anchor="middle">OpenRouter</text>
+  <text class="sub" x="140" y="382" text-anchor="middle">Multi-provider router</text>
+
+  <line class="arrow-ok" x1="243" y1="370" x2="367" y2="290" />
+
+  <line class="arrow-fail" x1="140" y1="393" x2="140" y2="413" />
+  <text class="fail-label" x="162" y="408">fail</text>
+
+  <!-- Provider 7: DeepSeek -->
+  <rect class="box" x="40" y="416" width="200" height="40" />
+  <text class="label" x="140" y="434" text-anchor="middle">DeepSeek</text>
+  <text class="sub" x="140" y="448" text-anchor="middle">Last resort</text>
+
+  <line class="arrow-ok" x1="243" y1="436" x2="367" y2="292" />
+
+  <!-- Legend -->
+  <line x1="40" y1="500" x2="80" y2="500" stroke="#38a169" stroke-width="1.5" />
+  <text class="ok-label" x="88" y="504">Success path</text>
+
+  <line x1="40" y1="524" x2="80" y2="524" stroke="#c53030" stroke-width="1.5" stroke-dasharray="5,3" />
+  <text class="fail-label" x="88" y="528">Failure / fallback</text>
+
+  <text class="sub" x="40" y="560">Providers tried in order until one succeeds.</text>
+  <text class="sub" x="40" y="576">Groq Free is the default; DeepSeek is last resort.</text>
+</svg>

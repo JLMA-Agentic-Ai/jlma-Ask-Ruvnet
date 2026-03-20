@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Why Your AI Keeps Forgetting — Pi Brain Demo</title>
+<title>Your AI's Knowledge Is Trapped — Pi Brain Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -49,10 +49,11 @@ html, body {
   z-index: 0;
 }
 
-#graphCanvas {
+#pipelineCanvas {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 1;
+  pointer-events: none;
 }
 
 /* --- Overlay UI --- */
@@ -99,8 +100,8 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px;
+  justify-content: flex-start;
+  padding: 20px 40px 40px;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -133,227 +134,185 @@ html, body {
   max-width: 640px;
   text-align: center;
   line-height: 1.6;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
-/* --- Stats grid --- */
-.stat-grid {
+/* --- Pipeline canvas wrapper --- */
+.canvas-wrapper {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+}
+.canvas-wrapper canvas {
+  width: 100%;
+  border-radius: 12px;
+  background: rgba(10, 10, 15, 0.6);
+  border: 1px solid var(--border);
+}
+
+/* --- Size comparison --- */
+.size-compare {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
   max-width: 600px;
   width: 100%;
+  margin-top: 20px;
+  align-items: center;
 }
-.stat-card {
+.size-column {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 14px;
+  padding: 16px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
-.stat-card:hover {
+.size-column.theirs {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.size-column.ours {
+  border-color: rgba(0, 212, 255, 0.3);
+}
+.size-column-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.size-item {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  padding: 3px 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.size-item.visible { opacity: 1; }
+.size-total {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.size-total.red { color: var(--red); }
+.size-total.cyan { color: var(--cyan); }
+.size-arrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* --- Scenario cards --- */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 700px;
+  width: 100%;
+}
+.scenario-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+.scenario-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scenario-card:hover {
   border-color: var(--cyan);
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
-.stat-value {
+.scenario-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.scenario-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.scenario-desc {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.scenario-example {
   font-family: var(--mono);
-  font-size: 1.4rem;
+  font-size: 0.65rem;
+  color: var(--cyan);
+  opacity: 0.7;
+}
+
+/* --- Speed demo --- */
+.speed-demo {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 16px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+}
+.speed-metric {
+  text-align: center;
+}
+.speed-value {
+  font-family: var(--mono);
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--cyan);
-  display: block;
 }
-.stat-value.gold { color: var(--gold); }
-.stat-value.purple { color: var(--purple); }
-.stat-value.green { color: var(--green); }
-.stat-value.blue { color: var(--blue); }
-.stat-label {
-  font-size: 0.7rem;
+.speed-value.gold { color: var(--gold); }
+.speed-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
   color: var(--text-dim);
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-/* --- Demo button --- */
-.demo-btn {
-  padding: 8px 18px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,212,255,0.3);
-  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(168,85,247,0.15));
-  color: var(--cyan);
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.demo-btn:hover {
-  background: linear-gradient(135deg, rgba(0,212,255,0.25), rgba(168,85,247,0.25));
-  box-shadow: 0 0 16px rgba(0,212,255,0.2);
-  transform: translateY(-1px);
-}
-
-/* --- Cluster legend --- */
-.cluster-legend {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 6px; max-width: 600px; max-height: 180px; overflow-y: auto; width: 100%;
-}
-.cluster-badge {
-  display: flex; align-items: center; gap: 6px;
-  padding: 5px 8px; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 6px; font-family: var(--mono); font-size: 0.65rem; color: var(--text-dim);
-}
-.cluster-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-
-/* --- Demo mode badge --- */
-.mode-badge {
-  position: fixed; top: 12px; right: 12px; z-index: 30;
-  font-family: var(--mono); font-size: 0.65rem; padding: 4px 10px;
-  border-radius: 12px; border: 1px solid var(--border);
-  background: var(--surface); color: var(--text-dim);
-}
-
-/* --- Collective knowledge meter --- */
-.knowledge-meter {
-  width: 100%; max-width: 500px;
-  margin-top: 16px;
-}
-.meter-label {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  margin-bottom: 6px;
-  display: flex;
-  justify-content: space-between;
-}
-.meter-track {
-  width: 100%; height: 6px;
-  background: var(--surface-2);
-  border-radius: 3px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-}
-.meter-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--cyan), var(--green));
-  border-radius: 3px;
-  transition: width 1.5s ease;
-}
-
-/* --- Quality score display --- */
-.quality-display {
-  font-family: var(--mono);
-  font-size: 1rem;
-  color: var(--gold);
-  margin-top: 16px;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-.quality-display.visible { opacity: 1; }
-
-/* --- Voting demo --- */
-.voting-demo {
-  width: 100%; max-width: 520px;
-}
-.vote-bar-row {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 8px;
-  padding: 8px 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  transition: transform 0.6s ease, opacity 0.4s ease;
-}
-.vote-bar-title {
-  font-family: var(--mono);
-  font-size: 0.72rem;
+/* --- Reveal text --- */
+.reveal-text {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   color: var(--text);
-  min-width: 180px;
-  flex-shrink: 0;
-}
-.vote-bar-track {
-  flex: 1; height: 10px;
-  background: var(--surface-2);
-  border-radius: 5px;
-  overflow: hidden;
-}
-.vote-bar-fill {
-  height: 100%; width: 50%;
-  border-radius: 5px;
-  transition: width 0.8s ease, background 0.8s ease;
-  background: var(--text-dim);
-}
-.vote-bar-score {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--cyan);
-  min-width: 36px;
-  text-align: right;
-}
-.vote-bar-count {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  min-width: 50px;
-  text-align: right;
-}
-
-/* --- Bayesian explainer --- */
-.bayesian-explainer {
-  margin-top: 24px;
-  padding: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  max-width: 520px;
-  width: 100%;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--text-dim);
+  text-align: center;
+  max-width: 560px;
   line-height: 1.8;
   opacity: 0;
-  transition: opacity 0.8s ease;
-}
-.bayesian-explainer.visible { opacity: 1; }
-.bayesian-explainer .highlight { color: var(--cyan); font-weight: 600; }
-
-/* --- Cross-cluster insight --- */
-.cross-cluster-insight {
-  margin-top: 16px;
-  padding: 12px 16px;
-  background: rgba(240, 192, 32, 0.06);
-  border: 1px solid rgba(240, 192, 32, 0.2);
-  border-radius: 10px;
-  max-width: 520px;
-  width: 100%;
-  font-size: 0.8rem;
-  color: var(--gold);
-  line-height: 1.6;
-  opacity: 0;
   transition: opacity 1s ease;
 }
-.cross-cluster-insight.visible { opacity: 1; }
-
-/* --- Stage caption --- */
-.stage-caption {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  max-width: 540px;
-  text-align: center;
-  line-height: 1.7;
-  margin-top: 20px;
-  opacity: 0;
-  transition: opacity 1s ease;
+.reveal-text.visible { opacity: 1; }
+.reveal-text .highlight {
+  color: var(--cyan);
+  font-weight: 600;
 }
-.stage-caption.visible { opacity: 1; }
+.reveal-text .gold { color: var(--gold); }
 
 /* --- Live search --- */
 .live-search {
   width: 100%; max-width: 520px;
-  margin-bottom: 16px;
+  margin-top: 24px;
 }
 .live-search input {
   width: 100%; padding: 12px 16px;
@@ -421,6 +380,71 @@ html, body {
   border-color: var(--green);
 }
 
+/* --- Edge badge --- */
+.edge-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(168,85,247,0.12));
+  border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--cyan);
+  margin-top: 16px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.edge-badge.visible { opacity: 1; }
+.edge-badge .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--green); }
+  50% { opacity: 0.4; box-shadow: none; }
+}
+
+/* --- Latency badge --- */
+.latency-badge {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: 8px;
+  padding: 4px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.latency-badge.visible { opacity: 1; }
+
+/* --- Stage caption --- */
+.stage-caption {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  max-width: 540px;
+  text-align: center;
+  line-height: 1.7;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.stage-caption.visible { opacity: 1; }
+
+/* --- Demo mode badge --- */
+.mode-badge {
+  position: fixed; top: 12px; right: 12px; z-index: 30;
+  font-family: var(--mono); font-size: 0.65rem; padding: 4px 10px;
+  border-radius: 12px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text-dim);
+}
+
 /* --- Controls --- */
 .controls {
   display: flex;
@@ -458,103 +482,120 @@ html, body {
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  .stage-content { padding: 16px; top: 50px; bottom: 60px; }
+  .stage-content { padding: 12px 16px; top: 50px; bottom: 60px; }
   .stage-title { font-size: 1.4rem; }
-  .stage-subtitle { font-size: 0.82rem; margin-bottom: 20px; }
-  .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .cluster-legend { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-  .vote-bar-title { min-width: 120px; font-size: 0.62rem; }
-  .vote-bar-count { display: none; }
+  .stage-subtitle { font-size: 0.82rem; margin-bottom: 16px; }
+  .scenario-grid { grid-template-columns: 1fr; gap: 10px; }
+  .size-compare { grid-template-columns: 1fr; gap: 10px; }
+  .size-arrow { display: none; }
+  .speed-demo { flex-direction: column; gap: 16px; }
 }
 @media (max-width: 480px) {
   .controls { gap: 8px; }
   .ctrl-btn { padding: 6px 14px; font-size: 0.7rem; }
-  .stat-grid { grid-template-columns: repeat(2, 1fr); }
-  .vote-bar-title { min-width: 90px; font-size: 0.58rem; }
 }
 </style>
 </head>
 <body>
 
 <canvas id="particleCanvas"></canvas>
-<canvas id="graphCanvas"></canvas>
+<canvas id="pipelineCanvas"></canvas>
 
 <div class="mode-badge" id="modeBadge">LOADING...</div>
 
 <div class="overlay">
   <div class="stage-nav" role="tablist" aria-label="Demo stages">
-    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: The Groundhog Day Problem" aria-selected="true" tabindex="0"></div>
-    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: Collective Memory" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: Quality Through Voting" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: Emergent Structure" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: The Collective: Live" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: The Local AI Lie" aria-selected="true" tabindex="0"></div>
+    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: Knowledge That Travels" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: 41KB" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: Applications That Couldn't Exist" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: You're Already Using It" aria-selected="false" tabindex="-1"></div>
   </div>
 
-  <!-- Stage 0: The Groundhog Day Problem -->
+  <!-- Stage 0: The Local AI Lie -->
   <div class="stage-content visible" id="stage0" role="tabpanel">
-    <div class="stage-title">The Groundhog Day Problem</div>
-    <div class="stage-subtitle">Three developers. Same team. Same problem. Three separate conversations.</div>
-    <div class="knowledge-meter" id="meter0">
-      <div class="meter-label">
-        <span>Collective knowledge</span>
-        <span id="meter0Value">0%</span>
-      </div>
-      <div class="meter-track"><div class="meter-fill" id="meter0Fill"></div></div>
+    <div class="stage-title">The Local AI Lie</div>
+    <div class="stage-subtitle">Your "local AI" isn't local. Every knowledge query still hits the cloud.</div>
+    <div class="canvas-wrapper">
+      <canvas id="stage0Canvas" width="700" height="340"></canvas>
     </div>
     <div class="stage-caption" id="caption0"></div>
   </div>
 
-  <!-- Stage 1: Collective Memory -->
+  <!-- Stage 1: Knowledge That Travels -->
   <div class="stage-content" id="stage1" role="tabpanel">
-    <div class="stage-title">Collective Memory</div>
-    <div class="stage-subtitle">Same three developers. But now solutions flow into a shared brain &mdash; and get better each time.</div>
-    <div class="quality-display" id="qualityDisplay">Quality: 0.72</div>
-    <div class="knowledge-meter" id="meter1">
-      <div class="meter-label">
-        <span>Collective knowledge</span>
-        <span id="meter1Value">0%</span>
+    <div class="stage-title">Knowledge That Travels</div>
+    <div class="stage-subtitle">What if your entire knowledge system fit in a single file?</div>
+    <div class="canvas-wrapper">
+      <canvas id="stage1Canvas" width="700" height="320"></canvas>
+    </div>
+    <div class="size-compare" id="sizeCompare">
+      <div class="size-column theirs">
+        <div class="size-column-title">Their stack</div>
+        <div class="size-item" id="sc0">Kubernetes cluster</div>
+        <div class="size-item" id="sc1">Managed vector DB</div>
+        <div class="size-item" id="sc2">API gateway</div>
+        <div class="size-item" id="sc3">Load balancer</div>
+        <div class="size-item" id="sc4">Cloud storage</div>
+        <div class="size-total red">$2,400/month</div>
       </div>
-      <div class="meter-track"><div class="meter-fill" id="meter1Fill"></div></div>
+      <div class="size-arrow">=<br>Same<br>capability</div>
+      <div class="size-column ours">
+        <div class="size-column-title">Your stack</div>
+        <div class="size-item" id="sc5">knowledge.rvf</div>
+        <div class="size-total cyan">535KB, $0/month</div>
+      </div>
     </div>
     <div class="stage-caption" id="caption1"></div>
   </div>
 
-  <!-- Stage 2: Quality Through Voting -->
+  <!-- Stage 2: 41KB -->
   <div class="stage-content" id="stage2" role="tabpanel">
-    <div class="stage-title">Quality Through Voting</div>
-    <div class="stage-subtitle">Not all answers are equal. Bayesian voting surfaces the best &mdash; mathematically.</div>
-    <div class="voting-demo" id="votingDemo"></div>
-    <div class="bayesian-explainer" id="bayesianExplainer">
-      <div><span class="highlight">5 up, 0 down</span> &rarr; 0.83 confidence</div>
-      <div><span class="highlight">50 up, 10 down</span> &rarr; 0.82 confidence (more evidence, same conclusion)</div>
-      <div style="margin-top: 8px;">Each vote updates a probability distribution. More observations = more confidence.</div>
+    <div class="stage-title">41KB</div>
+    <div class="stage-subtitle">The entire search engine fits in a QR code. It searches 100,000 documents in under a millisecond.</div>
+    <div class="canvas-wrapper">
+      <canvas id="stage2Canvas" width="700" height="340"></canvas>
     </div>
+    <div class="speed-demo" id="speedDemo">
+      <div class="speed-metric">
+        <div class="speed-value" id="vectorCount">0</div>
+        <div class="speed-label">Vectors searched</div>
+      </div>
+      <div class="speed-metric">
+        <div class="speed-value gold" id="searchTime">0.0ms</div>
+        <div class="speed-label">Search time</div>
+      </div>
+      <div class="speed-metric">
+        <div class="speed-value" id="kernelSize">41KB</div>
+        <div class="speed-label">Kernel size</div>
+      </div>
+    </div>
+    <div class="stage-caption" id="caption2"></div>
   </div>
 
-  <!-- Stage 3: Emergent Structure -->
+  <!-- Stage 3: Applications That Couldn't Exist -->
   <div class="stage-content" id="stage3" role="tabpanel">
-    <div class="stage-title">Emergent Structure</div>
-    <div class="stage-subtitle">Nobody organized this. 965 memories formed 20 clusters on their own &mdash; the math found the structure.</div>
-    <button class="demo-btn" id="revealBtn">Reveal Clusters</button>
-    <div class="cluster-legend" id="clusterLegend" style="margin-top: 20px;"></div>
-    <div class="cross-cluster-insight" id="crossClusterInsight">A caching optimization from the performance cluster turned out to solve an authentication scaling issue. Transfer learning found this connection automatically.</div>
+    <div class="stage-title">Applications That Couldn't Exist</div>
+    <div class="stage-subtitle">Edge-native knowledge isn't a feature. It's an entirely new category.</div>
+    <div class="scenario-grid" id="scenarioGrid"></div>
+    <div class="stage-caption" id="caption3"></div>
   </div>
 
-  <!-- Stage 4: The Collective: Live -->
+  <!-- Stage 4: You're Already Using It -->
   <div class="stage-content" id="stage4" role="tabpanel">
-    <div class="stage-title">The Collective: Live</div>
-    <div class="stage-subtitle">59 contributors built this over 3 months. Search it. Vote on it. Every interaction improves it.</div>
-    <div class="live-search">
-      <input type="text" id="liveSearch" placeholder="Search the collective..." aria-label="Search the collective intelligence">
+    <div class="stage-title">You're Already Using It</div>
+    <div class="stage-subtitle">The search in this demo runs a 41KB WASM kernel. In your browser. Right now.</div>
+    <div class="reveal-text" id="revealText"></div>
+    <div class="live-search" id="liveSearchWrap" style="display:none;">
+      <input type="text" id="liveSearch" placeholder="Search the knowledge base..." aria-label="Search the knowledge base">
     </div>
     <div class="search-results" id="searchResults"></div>
-    <div class="stat-grid" style="margin-top: 20px;">
-      <div class="stat-card"><span class="stat-value" id="statMemories">965</span><span class="stat-label">Memories</span></div>
-      <div class="stat-card"><span class="stat-value gold" id="statContributors">59</span><span class="stat-label">Contributors</span></div>
-      <div class="stat-card"><span class="stat-value purple" id="statVotes">947</span><span class="stat-label">Votes</span></div>
-      <div class="stat-card"><span class="stat-value green" id="statClusters">20</span><span class="stat-label">Clusters</span></div>
+    <div class="latency-badge" id="latencyBadge"></div>
+    <div class="edge-badge" id="edgeBadge">
+      <span class="dot"></span>
+      Edge-native &middot; 41KB WASM &middot; Zero cloud dependency
     </div>
-    <div class="stage-caption visible">This collective was built by 59 contributors over 3 months. Search it, vote on it. Every interaction makes it smarter.</div>
+    <div class="stage-caption" id="caption4"></div>
   </div>
 
   <!-- Controls -->

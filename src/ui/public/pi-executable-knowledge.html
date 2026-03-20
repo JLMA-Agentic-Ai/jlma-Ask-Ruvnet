@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Why Your Search Is Broken — Pi Brain Demo</title>
+<title>Is Your Knowledge Rotting? — Pi Brain Demo</title>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -26,6 +26,8 @@
   --red-dim: rgba(239, 68, 68, 0.15);
   --green: #10b981;
   --green-dim: rgba(16, 185, 129, 0.15);
+  --amber: #f59e0b;
+  --amber-dim: rgba(245, 158, 11, 0.15);
   --text: #e8eaed;
   --text-dim: #8892a4;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -126,118 +128,232 @@ html, body {
   margin-bottom: 32px;
 }
 
-/* --- Stage 0: Keyword Search --- */
-.search-demo {
-  max-width: 560px;
+/* --- Stage 0: Health Dashboard --- */
+.health-dashboard {
+  max-width: 520px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-.search-query-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px 18px;
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  color: var(--text);
-  min-height: 42px;
+.dashboard-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid var(--green);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+  transition: border-color 1s ease, box-shadow 1s ease;
+}
+.dashboard-panel.warning {
+  border-color: var(--amber);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+}
+.dashboard-item {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-.search-query-box .search-icon-small {
-  opacity: 0.4;
+  padding: 8px 0;
   font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.dashboard-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.dashboard-item .check-icon {
+  color: var(--green);
+  font-weight: 700;
   flex-shrink: 0;
+  font-size: 1rem;
 }
-.search-query-box .query-text {
+.dashboard-item .item-text {
   flex: 1;
-  min-height: 1.2em;
+  font-family: var(--mono);
+  font-size: 0.82rem;
 }
-.search-query-box .cursor-blink {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background: var(--cyan);
-  animation: blink 1s step-end infinite;
-  vertical-align: text-bottom;
-}
-@keyframes blink { 50% { opacity: 0; } }
-
-.keyword-results {
+.rot-reveal {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 8px;
 }
-.keyword-result-item {
+.rot-stat {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
+  background: var(--red-dim);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--red);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rot-stat.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rot-stat .warn-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.dashboard-caption {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  margin-top: 8px;
+}
+.dashboard-caption.visible { opacity: 1; }
+.dashboard-source {
+  font-size: 0.7rem;
+  color: rgba(136, 146, 164, 0.6);
+  text-align: center;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  margin-top: 4px;
+}
+.dashboard-source.visible { opacity: 1; }
+
+/* --- Stage 1: Silent Decay --- */
+.decay-demo {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.timeline-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+.timeline-month {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+.timeline-month.active {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  background: var(--cyan-dim);
+}
+.timeline-month.past {
+  color: var(--text-dim);
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.06);
+}
+.accuracy-meter {
+  width: 100%;
+  height: 8px;
+  background: var(--surface);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.accuracy-fill {
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  background: var(--green);
+  transition: width 0.8s ease, background 0.8s ease;
+}
+.accuracy-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--green);
+  text-align: right;
+  transition: color 0.8s ease;
+}
+.decay-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.decay-panel {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;
-  font-size: 0.85rem;
+  padding: 14px;
+  min-height: 120px;
+}
+.decay-panel-title {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.decay-panel-title.frozen { color: var(--text-dim); }
+.decay-panel-title.reality { color: var(--cyan); }
+.decay-panel-code {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.decay-panel-code .new-line {
+  color: var(--green);
+}
+.decay-panel-code .removed-line {
+  color: var(--red);
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.divergence-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--red);
+  padding: 8px 16px;
+  background: var(--red-dim);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.divergence-counter.visible { opacity: 1; }
+.complaint-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 10px;
+  font-size: 0.82rem;
   color: var(--text);
   opacity: 0;
-  transform: translateX(-16px);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateX(30px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.keyword-result-item.visible {
+.complaint-alert.visible {
   opacity: 1;
   transform: translateX(0);
 }
-.keyword-result-item .result-text-kw { flex: 1; line-height: 1.4; }
-.keyword-result-item .result-text-kw .kw-highlight {
-  color: var(--red);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: rgba(239, 68, 68, 0.4);
-}
-.keyword-match-badge {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  padding: 2px 8px;
-  border-radius: 4px;
-  background: var(--red-dim);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: var(--red);
-  white-space: nowrap;
-  flex-shrink: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.missed-result {
-  padding: 12px 16px;
-  background: var(--surface);
-  border: 2px solid var(--cyan);
-  border-radius: 10px;
-  font-size: 0.85rem;
-  color: var(--text);
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  position: relative;
-  animation: none;
-}
-.missed-result.visible {
-  opacity: 1;
-  animation: pulseBorder 2s ease-in-out infinite;
-}
-@keyframes pulseBorder {
-  0%, 100% { border-color: var(--cyan); box-shadow: 0 0 8px rgba(0, 212, 255, 0.2); }
-  50% { border-color: rgba(0, 212, 255, 0.5); box-shadow: 0 0 20px rgba(0, 212, 255, 0.35); }
-}
-.missed-result .missed-label {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  color: var(--cyan);
-  margin-top: 8px;
-  display: block;
-}
-.keyword-caption {
+.decay-caption {
   font-size: 0.82rem;
   color: var(--text-dim);
   text-align: center;
@@ -246,340 +362,211 @@ html, body {
   transition: opacity 0.6s ease;
   margin-top: 4px;
 }
-.keyword-caption.visible { opacity: 1; }
+.decay-caption.visible { opacity: 1; }
 
-/* --- Stage 1: Semantic Vectors --- */
-.semantic-demo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+/* --- Stage 2: Knowledge That Watches Itself --- */
+.drift-demo {
   max-width: 600px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.demo-canvas-wrap {
+.radar-container {
   position: relative;
   width: 100%;
-  max-width: 520px;
-  aspect-ratio: 5/4;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-}
-.demo-canvas-wrap canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.embed-results {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
   justify-content: center;
-  min-height: 24px;
-}
-.embed-result-tag {
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-dim);
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.4s ease;
-}
-.embed-result-tag.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-.embed-result-tag.correct {
-  border-color: rgba(0, 212, 255, 0.4);
-  color: var(--cyan);
-  background: var(--cyan-dim);
-}
-.embed-result-tag.wrong {
-  border-color: rgba(239, 68, 68, 0.3);
-  color: rgba(239, 68, 68, 0.6);
-  background: rgba(239, 68, 68, 0.06);
-}
-
-/* --- Stage 2: The Speed Problem --- */
-.race-demo {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  max-width: 600px;
-  width: 100%;
+  min-height: 60px;
 }
-.scale-selector {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-.scale-btn {
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-dim);
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.scale-btn.active {
-  border-color: var(--cyan);
-  color: var(--cyan);
-  background: var(--cyan-dim);
-}
-.scale-btn:hover {
-  border-color: rgba(0, 212, 255, 0.4);
-}
-.race-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.race-lane {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.race-label {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  min-width: 100px;
-  text-align: right;
-  flex-shrink: 0;
-}
-.race-bar-track {
-  flex: 1;
-  height: 28px;
-  background: var(--surface);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  position: relative;
-}
-.race-bar-fill {
-  height: 100%;
-  border-radius: 8px;
-  width: 0%;
-  transition: width 0.1s linear;
-  position: relative;
-}
-.race-bar-fill.brute { background: linear-gradient(90deg, rgba(239, 68, 68, 0.6), rgba(239, 68, 68, 0.9)); }
-.race-bar-fill.tree { background: linear-gradient(90deg, rgba(240, 192, 32, 0.6), rgba(240, 192, 32, 0.9)); }
-.race-bar-fill.hnsw { background: linear-gradient(90deg, rgba(0, 212, 255, 0.6), rgba(0, 212, 255, 0.9)); }
-.race-meta {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  min-width: 160px;
-  flex-shrink: 0;
-}
-.race-time {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  min-width: 60px;
-}
-.race-recall {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  padding: 2px 6px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  color: var(--text-dim);
-}
-.race-check {
-  font-size: 0.9rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.race-check.visible { opacity: 1; }
-.race-caption {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  text-align: center;
-  min-height: 1.6em;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.race-caption.visible { opacity: 1; }
-
-/* --- Stage 3: How HNSW Works --- */
-.hnsw-explain-demo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  max-width: 640px;
-  width: 100%;
-}
-.hnsw-canvas-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  gap: 16px;
-  align-items: stretch;
-}
-.hnsw-canvas-wrap {
-  position: relative;
-  flex: 1;
-  min-height: 320px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-}
-.hnsw-canvas-wrap canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.hnsw-layer-labels {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 16px 0;
-  min-width: 160px;
-  flex-shrink: 0;
-}
-.hnsw-layer-label {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  line-height: 1.5;
-  color: var(--text-dim);
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  opacity: 0;
-  transform: translateX(10px);
-  transition: all 0.5s ease;
-}
-.hnsw-layer-label.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.hnsw-layer-label .layer-color {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
+.radar-pulse {
+  position: absolute;
+  width: 40px; height: 40px;
   border-radius: 50%;
-  margin-right: 6px;
-  vertical-align: middle;
-}
-.hnsw-search-caption {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--cyan);
-  text-align: center;
-  min-height: 1.4em;
+  border: 2px solid var(--cyan);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  animation: radarExpand 2s ease-out infinite;
 }
-.hnsw-search-caption.visible { opacity: 1; }
-
-/* --- Stage 4: What This Enables --- */
-.usecase-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 640px;
-  width: 100%;
+@keyframes radarExpand {
+  0% { width: 20px; height: 20px; opacity: 0.8; }
+  100% { width: 120px; height: 120px; opacity: 0; }
 }
-.usecase-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 20px;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+.radar-pulse:nth-child(2) { animation-delay: 0.5s; }
+.radar-pulse:nth-child(3) { animation-delay: 1s; }
+.radar-center {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+  z-index: 1;
 }
-.usecase-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.usecase-card:hover {
-  border-color: rgba(0, 212, 255, 0.3);
-  background: rgba(255, 255, 255, 0.05);
-}
-.usecase-header {
+.drift-alert {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
-}
-.usecase-icon { font-size: 1.3rem; }
-.usecase-title {
-  font-weight: 700;
-  font-size: 1rem;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.82rem;
   color: var(--text);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.usecase-query {
+.drift-alert.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.drift-alert.warning {
+  background: var(--amber-dim);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+.drift-alert.critical {
+  background: var(--red-dim);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+.drift-alert.fixed {
+  background: var(--green-dim);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+.cv-metric {
   font-family: var(--mono);
   font-size: 0.78rem;
   color: var(--cyan);
+  text-align: center;
+  padding: 6px 16px;
   background: var(--cyan-dim);
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: 1px solid rgba(0, 212, 255, 0.15);
-  margin-bottom: 10px;
-  min-height: 1.4em;
-}
-.usecase-results {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 10px;
-}
-.usecase-result-item {
-  font-size: 0.8rem;
-  color: var(--text);
-  padding: 3px 0 3px 16px;
-  position: relative;
-  opacity: 0;
-  transform: translateX(-8px);
-  transition: all 0.3s ease;
-}
-.usecase-result-item.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.usecase-result-item::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--cyan);
-  transform: translateY(-50%);
-}
-.usecase-note {
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  font-style: italic;
-  line-height: 1.5;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-.usecase-note.visible { opacity: 1; }
+.cv-metric.visible { opacity: 1; }
+.detection-gap {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: stretch;
+}
+.gap-card {
+  flex: 1;
+  max-width: 220px;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gap-card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.gap-card.without {
+  background: var(--red-dim);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--red);
+}
+.gap-card.with {
+  background: var(--green-dim);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--green);
+}
+.gap-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+.gap-label {
+  font-size: 0.68rem;
+  opacity: 0.8;
+}
+.drift-caption {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-align: center;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.drift-caption.visible { opacity: 1; }
 
-/* --- Stage 5: Live Demo --- */
+/* --- Stage 3: Quality That Evolves --- */
+.voting-demo {
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.memory-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.memory-label {
+  font-size: 0.78rem;
+  color: var(--text);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.memory-score-bar {
+  width: 100px;
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.memory-score-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease, background 0.6s ease;
+}
+.memory-score-value {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  min-width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+  transition: color 0.6s ease;
+}
+.bayesian-explainer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  margin-top: 8px;
+}
+.bayesian-explainer.visible { opacity: 1; }
+.bayesian-explainer strong { color: var(--cyan); }
+.voting-caption {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-align: center;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.voting-caption.visible { opacity: 1; }
+
+/* --- Stage 4: Try It Live --- */
 .live-demo {
   display: flex;
   flex-direction: column;
@@ -760,19 +747,16 @@ html, body {
   .stage-content { padding: 16px; top: 50px; bottom: 60px; }
   .stage-title { font-size: 1.4rem; }
   .stage-subtitle { font-size: 0.82rem; margin-bottom: 20px; }
-  .race-label { min-width: 70px; font-size: 0.68rem; }
-  .race-meta { min-width: 120px; }
-  .hnsw-canvas-container { flex-direction: column; }
-  .hnsw-layer-labels { flex-direction: row; min-width: unset; gap: 6px; }
-  .hnsw-layer-label { font-size: 0.65rem; padding: 6px 8px; }
-  .hnsw-canvas-wrap { min-height: 240px; }
-  .usecase-card { padding: 14px; }
-  .demo-canvas-wrap { aspect-ratio: 4/3; }
+  .decay-panels { grid-template-columns: 1fr; }
+  .detection-gap { flex-direction: column; align-items: center; }
+  .gap-card { max-width: 100%; }
+  .memory-label { font-size: 0.7rem; }
+  .memory-score-bar { width: 70px; }
 }
 @media (max-width: 480px) {
   .controls { gap: 8px; }
   .ctrl-btn { padding: 6px 14px; font-size: 0.7rem; }
-  .race-meta { flex-direction: column; gap: 2px; min-width: 80px; }
+  .dashboard-item .item-text { font-size: 0.72rem; }
 }
 </style>
 </head>
@@ -782,129 +766,136 @@ html, body {
 
 <div class="overlay">
   <div class="stage-nav" role="tablist" aria-label="Demo stages">
-    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: Keyword Search" aria-selected="true" tabindex="0"></div>
-    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: Semantic Vectors" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: The Speed Problem" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: How HNSW Works" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: What This Enables" aria-selected="false" tabindex="-1"></div>
-    <div class="stage-dot" data-stage="5" role="tab" aria-label="Stage 6: Live Vector Search" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot active" data-stage="0" role="tab" aria-label="Stage 1: Everything Looks Fine" aria-selected="true" tabindex="0"></div>
+    <div class="stage-dot" data-stage="1" role="tab" aria-label="Stage 2: Silent Decay" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="2" role="tab" aria-label="Stage 3: Knowledge That Watches Itself" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="3" role="tab" aria-label="Stage 4: Quality That Evolves" aria-selected="false" tabindex="-1"></div>
+    <div class="stage-dot" data-stage="4" role="tab" aria-label="Stage 5: Search With Quality Scores" aria-selected="false" tabindex="-1"></div>
   </div>
 
-  <!-- Stage 0: Keyword Search -->
+  <!-- Stage 0: Everything Looks Fine -->
   <div class="stage-content visible" id="stage0" role="tabpanel">
-    <div class="stage-title">Keyword Search</div>
-    <div class="stage-subtitle">You have 10,000 support tickets. Someone reports "app crashes when uploading photos." You search.</div>
-    <div class="search-demo">
-      <div class="search-query-box">
-        <span class="search-icon-small" aria-hidden="true">&#x1F50D;</span>
-        <span class="query-text" id="kwQueryText"></span><span class="cursor-blink" id="kwCursor"></span>
+    <div class="stage-title">Everything Looks Fine</div>
+    <div class="stage-subtitle">Your knowledge base looks healthy. 10,000 entries. All green. But is it?</div>
+    <div class="health-dashboard">
+      <div class="dashboard-panel" id="dashboardPanel">
+        <div class="dashboard-item" id="dashItem0">
+          <span class="check-icon" aria-hidden="true">&#10003;</span>
+          <span class="item-text">10,000 entries indexed</span>
+        </div>
+        <div class="dashboard-item" id="dashItem1">
+          <span class="check-icon" aria-hidden="true">&#10003;</span>
+          <span class="item-text">Search operational</span>
+        </div>
+        <div class="dashboard-item" id="dashItem2">
+          <span class="check-icon" aria-hidden="true">&#10003;</span>
+          <span class="item-text">Last indexed: 2 hours ago</span>
+        </div>
+        <div class="dashboard-item" id="dashItem3">
+          <span class="check-icon" aria-hidden="true">&#10003;</span>
+          <span class="item-text">Avg response: 45ms</span>
+        </div>
       </div>
-      <div class="keyword-results" id="kwResults"></div>
-      <div class="missed-result" id="kwMissed">
-        <span>File transfer fails with memory error on large image import</span>
-        <span class="missed-label">0 keyword matches &mdash; but this IS the answer</span>
+      <div class="rot-reveal" id="rotReveal">
+        <div class="rot-stat" id="rotStat0">
+          <span class="warn-icon" aria-hidden="true">&#9888;</span>
+          <span>60% outdated or irrelevant</span>
+        </div>
+        <div class="rot-stat" id="rotStat1">
+          <span class="warn-icon" aria-hidden="true">&#9888;</span>
+          <span>23% contradicts other entries</span>
+        </div>
+        <div class="rot-stat" id="rotStat2">
+          <span class="warn-icon" aria-hidden="true">&#9888;</span>
+          <span>14% duplicated across sources</span>
+        </div>
       </div>
-      <div class="keyword-caption" id="kwCaption">Keyword search finds words, not meaning.</div>
+      <div class="dashboard-caption" id="dashCaption">Your tools say everything is fine. 60% of your knowledge disagrees.</div>
+      <div class="dashboard-source" id="dashSource">Source: 1up.ai State of AI Knowledge Management Report, 2026</div>
     </div>
   </div>
 
-  <!-- Stage 1: Semantic Vectors -->
+  <!-- Stage 1: Silent Decay -->
   <div class="stage-content" id="stage1" role="tabpanel">
-    <div class="stage-title">Semantic Vectors</div>
-    <div class="stage-subtitle">Same query. But now every ticket is a 384-dimensional vector. Meaning, not just words.</div>
-    <div class="semantic-demo">
-      <div class="demo-canvas-wrap">
-        <canvas id="embedCanvas"></canvas>
+    <div class="stage-title">Silent Decay</div>
+    <div class="stage-subtitle">You wrote great API docs 6 months ago. The API moved on. Your docs didn't.</div>
+    <div class="decay-demo">
+      <div class="timeline-bar" id="timelineBar">
+        <span class="timeline-month" data-month="0">Mar</span>
+        <span class="timeline-month" data-month="1">Apr</span>
+        <span class="timeline-month" data-month="2">May</span>
+        <span class="timeline-month" data-month="3">Jun</span>
+        <span class="timeline-month" data-month="4">Jul</span>
+        <span class="timeline-month" data-month="5">Aug</span>
       </div>
-      <div class="embed-results" id="embedResults"></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-dim);">Accuracy</span>
+        <div class="accuracy-meter"><div class="accuracy-fill" id="accuracyFill"></div></div>
+        <span class="accuracy-label" id="accuracyLabel">100%</span>
+      </div>
+      <div class="decay-panels">
+        <div class="decay-panel">
+          <div class="decay-panel-title frozen">YOUR DOCUMENTATION</div>
+          <div class="decay-panel-code" id="docPanel">POST /api/auth &mdash; API key in header</div>
+        </div>
+        <div class="decay-panel">
+          <div class="decay-panel-title reality">WHAT THE API ACTUALLY DOES</div>
+          <div class="decay-panel-code" id="realityPanel">POST /api/auth &mdash; API key in header</div>
+        </div>
+      </div>
+      <div class="divergence-counter" id="divergenceCounter">Divergence: 0 breaking changes</div>
+      <div class="complaint-alert" id="complaintAlert">
+        <span aria-hidden="true">&#128680;</span>
+        <span>"Why doesn't auth work? I followed your docs exactly." &mdash; frustrated developer, August</span>
+      </div>
+      <div class="decay-caption" id="decayCaption">Documentation decays silently. By the time someone complains, you're 6 months behind.</div>
     </div>
   </div>
 
-  <!-- Stage 2: The Speed Problem -->
+  <!-- Stage 2: Knowledge That Watches Itself -->
   <div class="stage-content" id="stage2" role="tabpanel">
-    <div class="stage-title">The Speed Problem</div>
-    <div class="stage-subtitle">Semantic search works &mdash; but brute-force cosine similarity doesn't scale.</div>
-    <div class="race-demo">
-      <div class="scale-selector" id="scaleSelector">
-        <span style="font-family:var(--mono);font-size:0.72rem;color:var(--text-dim);">Vectors:</span>
-        <button class="scale-btn active" data-scale="0">100K</button>
-        <button class="scale-btn" data-scale="1">1M</button>
-        <button class="scale-btn" data-scale="2">10M</button>
+    <div class="stage-title">Knowledge That Watches Itself</div>
+    <div class="stage-subtitle">What if your system could tell you when knowledge goes stale &mdash; before your users do?</div>
+    <div class="drift-demo">
+      <div class="radar-container" id="radarContainer" style="display:none;">
+        <div class="radar-pulse"></div>
+        <div class="radar-pulse"></div>
+        <div class="radar-pulse"></div>
+        <div class="radar-center"></div>
       </div>
-      <div class="race-container" id="raceContainer">
-        <div class="race-lane">
-          <span class="race-label">Brute Force</span>
-          <div class="race-bar-track"><div class="race-bar-fill brute" id="raceBrute"></div></div>
-          <div class="race-meta">
-            <span class="race-time" id="timeBrute">--</span>
-            <span class="race-recall" id="recallBrute">--</span>
-            <span class="race-check" id="checkBrute">&#10003;</span>
-          </div>
+      <div class="cv-metric" id="cvMetric">Coefficient of Variation: 0.05</div>
+      <div id="driftAlerts"></div>
+      <div class="detection-gap" id="detectionGap">
+        <div class="gap-card without" id="gapWithout">
+          <span class="gap-value">5 months</span>
+          <span class="gap-label">Without drift detection</span>
         </div>
-        <div class="race-lane">
-          <span class="race-label">Tree-Based</span>
-          <div class="race-bar-track"><div class="race-bar-fill tree" id="raceTree"></div></div>
-          <div class="race-meta">
-            <span class="race-time" id="timeTree">--</span>
-            <span class="race-recall" id="recallTree">--</span>
-            <span class="race-check" id="checkTree">&#10003;</span>
-          </div>
-        </div>
-        <div class="race-lane">
-          <span class="race-label">HNSW</span>
-          <div class="race-bar-track"><div class="race-bar-fill hnsw" id="raceHnsw"></div></div>
-          <div class="race-meta">
-            <span class="race-time" id="timeHnsw">--</span>
-            <span class="race-recall" id="recallHnsw">--</span>
-            <span class="race-check" id="checkHnsw">&#10003;</span>
-          </div>
+        <div class="gap-card with" id="gapWith">
+          <span class="gap-value">1 month</span>
+          <span class="gap-label">With drift detection</span>
         </div>
       </div>
-      <div class="race-caption" id="raceCaption"></div>
+      <div class="drift-caption" id="driftCaption">Drift detection catches conflicts automatically. You learn about problems in days, not months.</div>
     </div>
   </div>
 
-  <!-- Stage 3: How HNSW Works -->
+  <!-- Stage 3: Quality That Evolves -->
   <div class="stage-content" id="stage3" role="tabpanel">
-    <div class="stage-title">How HNSW Works</div>
-    <div class="stage-subtitle">Not brute force. A graph of shortcuts. Like a map with interstates, local roads, and walking paths.</div>
-    <div class="hnsw-explain-demo">
-      <div class="hnsw-canvas-container">
-        <div class="hnsw-canvas-wrap">
-          <canvas id="hnswCanvas"></canvas>
-        </div>
-        <div class="hnsw-layer-labels" id="hnswLayerLabels">
-          <div class="hnsw-layer-label" id="layerLabel2">
-            <span class="layer-color" style="background:var(--gold);"></span>
-            Layer 2: Interstate &mdash; skip 90% of the graph
-          </div>
-          <div class="hnsw-layer-label" id="layerLabel1">
-            <span class="layer-color" style="background:var(--purple);"></span>
-            Layer 1: Local roads &mdash; right neighborhood
-          </div>
-          <div class="hnsw-layer-label" id="layerLabel0">
-            <span class="layer-color" style="background:var(--cyan);"></span>
-            Layer 0: Walking &mdash; exact match
-          </div>
-        </div>
-      </div>
-      <div class="hnsw-search-caption" id="hnswCaption"></div>
+    <div class="stage-title">Quality That Evolves</div>
+    <div class="stage-subtitle">Not thumbs up. Mathematical confidence that sharpens with every observation.</div>
+    <div class="voting-demo" id="votingDemo"></div>
+    <div class="bayesian-explainer" id="bayesianExplainer">
+      <strong>Bayesian scoring</strong> starts every entry at 0.50 &mdash; "we don't know yet." Each vote shifts the distribution. Upvotes from experts count more. Downvotes on outdated content sink it. After enough evidence, the best answer floats to the top &mdash; not because someone decided, but because the math proved it.
     </div>
+    <div class="voting-caption" id="votingCaption">The best answer rises. The wrong answer fades. Nobody edits anything &mdash; the math does it.</div>
   </div>
 
-  <!-- Stage 4: What This Enables -->
+  <!-- Stage 4: Search With Quality Scores -->
   <div class="stage-content" id="stage4" role="tabpanel">
-    <div class="stage-title">What This Enables</div>
-    <div class="stage-subtitle">Things keyword search literally cannot do &mdash; no matter how many synonyms you add.</div>
-    <div class="usecase-grid" id="usecaseGrid"></div>
-  </div>
-
-  <!-- Stage 5: Live Vector Search -->
-  <div class="stage-content" id="stage5" role="tabpanel">
-    <div class="stage-title">Live Vector Search</div>
-    <div class="stage-subtitle">965 expert memories. HNSW indexed. Semantic search. Under 5ms.</div>
+    <div class="stage-title">Search With Quality Scores</div>
+    <div class="stage-subtitle">965 expert memories. Quality-monitored for 3 months. 59 contributors. 947 votes.</div>
     <div class="live-demo">
-      <div class="demo-badge">965 memories &middot; HNSW indexed &middot; semantic search</div>
+      <div class="demo-badge">965 memories &middot; Quality-monitored &middot; Drift-detected</div>
       <div class="search-box">
         <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
         <input type="text" class="search-input" id="piSearch" placeholder="Search 965 collective memories..." autocomplete="off" aria-label="Search Pi Brain" />
@@ -918,7 +909,7 @@ html, body {
   <!-- Controls -->
   <div class="controls">
     <button class="ctrl-btn" id="prevBtn" disabled aria-label="Previous stage">&larr; Prev</button>
-    <span class="stage-counter" id="stageCounter" aria-live="polite">1 / 6</span>
+    <span class="stage-counter" id="stageCounter" aria-live="polite">1 / 5</span>
     <button class="ctrl-btn primary" id="nextBtn" aria-label="Next stage">Next &rarr;</button>
     <button class="ctrl-btn" id="autoBtn" aria-label="Toggle auto-play">&#9654; Auto</button>
   </div>

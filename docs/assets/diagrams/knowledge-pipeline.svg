@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300">
+  <defs>
+    <style>
+      .box { fill: #f8f9fa; stroke: #333333; stroke-width: 1.5; rx: 8; }
+      .header { font-family: system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #ffffff; }
+      .detail { font-family: system-ui, sans-serif; font-size: 10px; fill: #666666; }
+      .size { font-family: system-ui, sans-serif; font-size: 9px; font-weight: 600; fill: #4a90d9; }
+      .arrow { stroke: #555555; stroke-width: 1.5; fill: none; marker-end: url(#ah); }
+      @media (prefers-color-scheme: dark) {
+        .box { fill: #2d333b; stroke: #768390; }
+        .detail { fill: #8b949e; }
+        .size { fill: #6cb6ff; }
+        .arrow { stroke: #768390; }
+      }
+    </style>
+    <marker id="ah" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555555" />
+    </marker>
+  </defs>
+
+  <!-- Stage 1: PostgreSQL -->
+  <rect class="box" x="15" y="50" width="150" height="180" />
+  <rect x="15" y="50" width="150" height="26" rx="8" ry="8" fill="#805ad5" />
+  <rect x="15" y="68" width="150" height="8" fill="#805ad5" />
+  <text class="header" x="90" y="68" text-anchor="middle">PostgreSQL</text>
+  <text class="detail" x="90" y="100" text-anchor="middle">353 gold entries</text>
+  <text class="detail" x="90" y="118" text-anchor="middle">384-dim embeddings</text>
+  <text class="detail" x="90" y="136" text-anchor="middle">kb_complete view</text>
+  <text class="size" x="90" y="165" text-anchor="middle">Port 5435</text>
+
+  <!-- Arrow 1-2 -->
+  <line class="arrow" x1="168" y1="140" x2="195" y2="140" />
+
+  <!-- Stage 2: RVF Build -->
+  <rect class="box" x="198" y="50" width="150" height="180" />
+  <rect x="198" y="50" width="150" height="26" rx="8" ry="8" fill="#38a169" />
+  <rect x="198" y="68" width="150" height="8" fill="#38a169" />
+  <text class="header" x="273" y="68" text-anchor="middle">RVF Build</text>
+  <text class="detail" x="273" y="100" text-anchor="middle">vectors.bin</text>
+  <text class="size" x="273" y="114" text-anchor="middle">535 KB</text>
+  <text class="detail" x="273" y="134" text-anchor="middle">metadata</text>
+  <text class="size" x="273" y="148" text-anchor="middle">17 KB</text>
+  <text class="detail" x="273" y="168" text-anchor="middle">sidecar</text>
+  <text class="size" x="273" y="182" text-anchor="middle">474 KB</text>
+
+  <!-- Arrow 2-3 -->
+  <line class="arrow" x1="351" y1="140" x2="378" y2="140" />
+
+  <!-- Stage 3: Quantize -->
+  <rect class="box" x="381" y="50" width="150" height="180" />
+  <rect x="381" y="50" width="150" height="26" rx="8" ry="8" fill="#4a90d9" />
+  <rect x="381" y="68" width="150" height="8" fill="#4a90d9" />
+  <text class="header" x="456" y="68" text-anchor="middle">Quantize</text>
+  <text class="detail" x="456" y="100" text-anchor="middle">knowledge-sq8.bin</text>
+  <text class="size" x="456" y="114" text-anchor="middle">132 KB</text>
+  <text class="detail" x="456" y="134" text-anchor="middle">sq8-params.bin</text>
+  <text class="size" x="456" y="148" text-anchor="middle">3 KB</text>
+  <text class="detail" x="456" y="168" text-anchor="middle">gold-content.json</text>
+  <text class="size" x="456" y="182" text-anchor="middle">1.4 MB</text>
+
+  <!-- Arrow 3-4 -->
+  <line class="arrow" x1="534" y1="140" x2="561" y2="140" />
+
+  <!-- Stage 4: Vite Build -->
+  <rect class="box" x="564" y="50" width="150" height="180" />
+  <rect x="564" y="50" width="150" height="26" rx="8" ry="8" fill="#38a169" />
+  <rect x="564" y="68" width="150" height="8" fill="#38a169" />
+  <text class="header" x="639" y="68" text-anchor="middle">Vite Build</text>
+  <text class="detail" x="639" y="100" text-anchor="middle">Bundle assets</text>
+  <text class="detail" x="639" y="118" text-anchor="middle">Tree-shake</text>
+  <text class="detail" x="639" y="136" text-anchor="middle">Copy public/</text>
+  <text class="size" x="639" y="165" text-anchor="middle">dist/</text>
+
+  <!-- Arrow 4-5 -->
+  <line class="arrow" x1="717" y1="140" x2="744" y2="140" />
+
+  <!-- Stage 5: Railway Deploy -->
+  <rect class="box" x="747" y="50" width="138" height="180" />
+  <rect x="747" y="50" width="138" height="26" rx="8" ry="8" fill="#805ad5" />
+  <rect x="747" y="68" width="138" height="8" fill="#805ad5" />
+  <text class="header" x="816" y="68" text-anchor="middle">Railway Deploy</text>
+  <text class="detail" x="816" y="100" text-anchor="middle">Docker container</text>
+  <text class="detail" x="816" y="118" text-anchor="middle">Node 22 runtime</text>
+  <text class="detail" x="816" y="136" text-anchor="middle">Auto-deploy on push</text>
+  <text class="size" x="816" y="165" text-anchor="middle">Production</text>
+</svg>

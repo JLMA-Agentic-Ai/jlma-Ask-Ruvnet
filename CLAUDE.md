@@ -89,7 +89,7 @@ mcp__Ruvnet-KB-first__kb_search({ query: "[relevant terms]", limit: 5 })
 
 ## RULE ZERO: KB-FIRST + RUFLO-FIRST (NON-NEGOTIABLE)
 
-**This project has a 353-entry expert-curated knowledge base (v5.0.0, 10 tools, 148 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector, agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, Ruflo, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
+**This project has a 434-entry expert-curated knowledge base (v7.0.0, 10 tools, 164 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector (104 Rust crates), Ruflo (219 MCP tools), agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, SONA, MinCut, GNN, attention mechanisms, cognitive containers, WASM deployment, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
 
 ### Before Answering ANY Question:
 
@@ -144,6 +144,59 @@ psql -h localhost -p 5435 -U postgres -c "
 - Stuart says "just do it" or "skip the KB"
 - The task is purely mechanical (git commit, file rename, formatting)
 - You are reading/displaying a file without interpreting it
+
+---
+
+## KB OPERATIONS: SINGLE SOURCE OF TRUTH (Updated 2026-03-20)
+
+**This repo is the ONLY knowledge base for the entire RuVector/Ruflo ecosystem.** The old `Ruvnet-Koweldgebase-and-Application-Builder` repo was deleted on 2026-03-20. All KB content, MCP server code, and auto-curation pipelines live here.
+
+### MCP Server
+- **Location**: `bin/mcp-server.js` (v7.0.0, embedded-only)
+- **Data**: Reads from `kb-data/` directory (kb-entries.json.gz, kb-embeddings.bin, kb-metadata.json)
+- **Registration**: Global via `~/.mcp.json` as `Ruvnet-KB-first` + `~/.claude.json` as `ask-ruvnet`
+- **434 gold entries**, 16 categories, avg quality 97/100, binary-quantized 384-dim vectors
+
+### Nightly Auto-Discovery Pipeline
+```
+4:00 AM — kb-evergreen.mjs (LaunchAgent: com.ruvnet.kb-evergreen)
+           → Scans ALL ruvnet repos via gh repo list (~200+ repos)
+           → Ingests .md, .txt, .rst, AND .toml files (Cargo.toml for crate discovery)
+           → Stores raw chunks in architecture_docs with ONNX embeddings
+           → NEW repos are automatically detected and ingested
+
+5:00 AM — kb-auto-curate.mjs --rebuild (LaunchAgent: ai.openclaw.kb-curate)
+           → Detects gaps: repos in architecture_docs with no gold entry in kb_complete
+           → Detects stale: repos updated more recently than their gold entry
+           → Synthesizes MULTIPLE teaching entries per repo (up to 5 for monorepos)
+           → Each entry answers: What is it? Why care? How to use? What's unique?
+           → Embeds with ONNX, upserts to kb_complete
+           → Triggers full rebuild: lean RVF + quantized + MCP export
+
+6:00 AM — kb-export-pipeline.mjs (LaunchAgent: ai.openclaw.kb-export)
+           → Safety-net rebuild of RVF + browser assets + MCP kb-data
+```
+
+### How New Crates/Features Get Discovered
+1. `kb-evergreen.mjs` pulls ALL repos under `ruvnet` GitHub user nightly
+2. New repos (never seen before) are flagged and ingested immediately
+3. `Cargo.toml` files are now ingested — discovers crates without READMEs
+4. `kb-auto-curate.mjs` detects the gap (repo in architecture_docs, no gold entry)
+5. Claude Sonnet synthesizes teaching-quality entries explaining what/why/how
+6. Multiple entries generated for monorepos with many crates (up to 5)
+
+### KB Build Commands (Run in Order)
+1. `node scripts/build-lean-rvf.mjs` — PG → .ruvector/ + knowledge.rvf + sidecar
+2. `node scripts/build-quantized-rvf.mjs` — .ruvector/ → SQ8 browser assets
+3. `node scripts/export-mcp-kb.mjs --output kb-data/` — .ruvector/ → MCP format
+4. `cd src/ui && npm run build` — Frontend with quantized assets
+
+### NEVER DO (KB Operations)
+- NEVER rebuild knowledge.rvf from architecture_docs (255K+ entries, 270MB+)
+- NEVER point MCP at old `Ruvnet-Koweldgebase-and-Application-Builder` (DELETED)
+- NEVER use `ruvector_embed()` SQL function (BROKEN — returns constant vectors)
+- NEVER commit knowledge.rvf at >1MB — wrong build script ran
+- NEVER skip ONNX for embeddings — use Xenova/all-MiniLM-L6-v2, 384 dims
 
 ---
 
