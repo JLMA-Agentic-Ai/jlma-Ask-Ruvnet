@@ -100,3 +100,4 @@ logs/
 
 # NLM pipeline state
 .nlm-refresh-state.json
+upstream/
