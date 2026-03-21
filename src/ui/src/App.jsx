@@ -1461,7 +1461,7 @@ function App() {
         handleSubmit(null, 'Tell me everything about Pi collective intelligence — what it is, how it works, why it matters, and how I can use it. Include architecture diagrams and practical examples.');
         break;
       case 'notebooklm':
-        handleSubmit(null, 'What NotebookLM content is available for the RuVector ecosystem? Show me the audio overviews, video explainers, and deep-dive sessions I can explore.');
+        window.open(NOTEBOOKLM_URL, '_blank', 'noopener,noreferrer');
         break;
       default:
         break;
