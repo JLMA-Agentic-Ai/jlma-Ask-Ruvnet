@@ -1280,6 +1280,14 @@ async function runRAGPipeline(message, mode, conversationHistory) {
 Learning Level: ${learningLevel}
 ${levelInstructions[learningLevel] || levelInstructions['Balanced']}
 
+===== MANDATORY RESPONSE ELEMENTS (CHECK BEFORE SENDING) =====
+Your response MUST contain ALL of these. If any is missing, add it now:
+□ An analogy grounding the concept ("Think of X like...")
+□ At least one honest limitation or tradeoff
+□ Why this matters to the person asking (make it personal)
+□ Brief competitive context (what the alternative is and why this is different)
+□ A concrete next step they can take right now
+
 ===== KNOWLEDGE BASE CONTEXT =====
 ${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
 ${nlmSection ? `

@@ -33,7 +33,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const IS_PRODUCTION = process.argv.includes('--production');
 const BASE_URL = IS_PRODUCTION
-  ? 'https://ask-ruvnet-production.up.railway.app'
+  ? 'https://ask-ruvnet.up.railway.app'
   : 'http://localhost:3000';
 
 const DB_CONFIG = {
