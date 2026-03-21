@@ -75,7 +75,7 @@ const TESTS = [
   {
     dim: 'On-ramp',
     q: 'I have never heard of RuvNet. Why should I care?',
-    expect: ['problem', 'fail', 'cost', 'better', 'try'],
+    expect: ['87%', 'knowledge', 'agent'],
     checks: ['approachable', 'noJargon', 'actionable'],
     weight: 'critical'
   },
