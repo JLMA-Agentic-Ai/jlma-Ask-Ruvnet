@@ -185,7 +185,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
         <span className="dikw-icon">&#128161;</span>
         <span className="dikw-label">RuVector + RVF</span>
         <span className="dikw-desc">Stores meaning, not just data</span>
-        {heroExpanded && <span className="dikw-detail">386 expert articles in 0.5MB. HNSW search in 0.3ms. 290+ PostgreSQL functions. Runs in browser via WASM.</span>}
+        {heroExpanded && <span className="dikw-detail">439 expert articles in 0.6MB. HNSW search in 0.3ms. 290+ PostgreSQL functions. Runs in browser via WASM.</span>}
       </div>
       <div className="dikw-layer dikw-orchestration">
         <span className="dikw-icon">&#9889;</span>
@@ -212,7 +212,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
     <h1 className="hero-heading">What do you want to build?</h1>
     <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
     <p className="hero-tagline">The on-ramp to agentic AI. Pick a product, get started in minutes.</p>
-    <p className="hero-dogfood">386 expert articles in 0.5MB — the tool explaining itself using itself.</p>
+    <p className="hero-dogfood">439 expert articles in 0.6MB — the tool explaining itself using itself.</p>
 
     {/* Product On-Ramp Cards */}
     <div className="onramp-cards" role="navigation" aria-label="Get started with a product">
