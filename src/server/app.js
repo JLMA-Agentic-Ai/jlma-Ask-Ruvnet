@@ -931,9 +931,17 @@ async function initHybridSearchIndex() {
     }
 }
 
-initAgenticFlow().then(() => {
+initAgenticFlow().then(async () => {
     isReady = true;
     console.log(`Server ready in ${Date.now() - startupTime}ms`);
+    // Warmup: pre-load the first LLM provider connection to avoid cold-start on first query
+    try {
+        const warmupStart = Date.now();
+        await llmChat([{ role: 'system', content: 'You are a test.' }, { role: 'user', content: 'Say OK' }], { maxTokens: 10, temperature: 0 });
+        console.log(`🔥 LLM warmup complete in ${Date.now() - warmupStart}ms`);
+    } catch (e) {
+        console.warn('⚠️ LLM warmup failed (first query may be slow):', e.message?.substring(0, 80));
+    }
 }).catch((err) => {
     console.error('Startup failed, server NOT marked ready:', err.message);
 });
