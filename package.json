@@ -23,7 +23,9 @@
     "kb:sweep:force": "node scripts/kb-sweep-updates.js --force",
     "kb:evolution": "node scripts/ingest-github-evolution.js",
     "kb:github": "node scripts/ingest-github-repos.js",
-    "kb:full": "npm run kb:github && npm run kb:evolution && npm run kb:ingest"
+    "kb:full": "npm run kb:github && npm run kb:evolution && npm run kb:ingest",
+    "test:quality": "node scripts/test-quality-audit.mjs --production",
+    "test:verify": "node scripts/verify-everything.mjs --production"
   },
   "keywords": [],
   "author": "",
