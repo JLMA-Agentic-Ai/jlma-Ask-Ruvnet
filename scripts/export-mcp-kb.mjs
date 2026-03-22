@@ -1,11 +1,11 @@
 /**
- * Export RVF Knowledge Base to Ruvnet-KB-first MCP Format
+ * Export RVF Knowledge Base to ask-ruvnet MCP Format
  *
  * Updated: 2026-03-12 19:30:00 EST | Version 1.0.0
  * Created: 2026-03-12 19:30:00 EST
  *
  * Reads the .ruvector/knowledge-base/ binary store (Float32Array vectors +
- * metadata JSON) and outputs the three files the Ruvnet-KB-first MCP server
+ * metadata JSON) and outputs the three files the ask-ruvnet MCP server
  * expects:
  *
  *   kb-entries.json      - Array of entry objects with content and metadata
@@ -16,7 +16,7 @@
  *   node scripts/export-mcp-kb.mjs [--output <dir>] [--verbose]
  *
  * Flags:
- *   --output <dir>   Output directory (default: Ruvnet-KB-first MCP kb-data/)
+ *   --output <dir>   Output directory (default: ask-ruvnet MCP kb-data/)
  *   --verbose        Print detailed progress and per-entry diagnostics
  */
 

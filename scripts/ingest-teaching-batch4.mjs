@@ -325,7 +325,7 @@ You ask Claude about HNSW and get "I could not find relevant information in the 
 
 ## Step 1: Check the MCP Connection
 
-Ask Claude to run: mcp__Ruvnet-KB-first__kb_status()
+Ask Claude to run: mcp__ask-ruvnet__kb_status()
 
 If this fails, the MCP server is not connected. Restart Claude Code. Problem solved.
 

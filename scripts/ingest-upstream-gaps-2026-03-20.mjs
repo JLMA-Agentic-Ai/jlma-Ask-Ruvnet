@@ -107,7 +107,7 @@ MCP Brain (mcp-brain + mcp-brain-server) enables Claude Code sessions to share l
 
 ## Architecture
 
-- **mcp-brain** — MCP server (local) that connects Claude Code to the Shared Brain. Exposes tools for storing, searching, and retrieving shared knowledge. Runs as an MCP server alongside Ruflo and Ruvnet-KB-first.
+- **mcp-brain** — MCP server (local) that connects Claude Code to the Shared Brain. Exposes tools for storing, searching, and retrieving shared knowledge. Runs as an MCP server alongside Ruflo and ask-ruvnet.
 - **mcp-brain-server** — Cloud Run backend (axum REST API) with Firestore for metadata, GCS for vector storage, and Common Crawl integration for web-scale knowledge augmentation.
 
 ## Key Features (Updated Mar 15-17, 2026)
@@ -126,7 +126,7 @@ MCP Brain (mcp-brain + mcp-brain-server) enables Claude Code sessions to share l
 
 ## Integration
 
-MCP Brain is designed to work alongside Ruflo (orchestration) and Ruvnet-KB-first (curated knowledge). The hierarchy: KB-first provides foundational knowledge → MCP Brain adds experiential knowledge → Ruflo orchestrates access to both.`
+MCP Brain is designed to work alongside Ruflo (orchestration) and ask-ruvnet (curated knowledge). The hierarchy: KB-first provides foundational knowledge → MCP Brain adds experiential knowledge → Ruflo orchestrates access to both.`
 },
 
 {

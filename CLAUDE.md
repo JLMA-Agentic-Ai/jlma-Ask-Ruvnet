@@ -68,7 +68,7 @@ npx ruflo@latest hooks route --task "[Stuart's command]"
 npx ruflo@latest swarm init --topology hierarchical --max-agents 8 --strategy specialized
 
 # Step 3: Query RuvVector KB before any action
-mcp__Ruvnet-KB-first__kb_search({ query: "[relevant terms]", limit: 5 })
+mcp__ask-ruvnet__kb_search({ query: "[relevant terms]", limit: 5 })
 ```
 
 ### Agent Dispatch Rules:
@@ -97,11 +97,11 @@ mcp__Ruvnet-KB-first__kb_search({ query: "[relevant terms]", limit: 5 })
 
 ```sql
 -- Via MCP (preferred — 10 tools available):
-mcp__Ruvnet-KB-first__kb_search({ query: "<user's question>", limit: 5 })
+mcp__ask-ruvnet__kb_search({ query: "<user's question>", limit: 5 })
 -- For teaching/explanations:
-mcp__Ruvnet-KB-first__kb_teach({ query: "<concept>", limit: 3 })
+mcp__ask-ruvnet__kb_teach({ query: "<concept>", limit: 3 })
 -- For WASM/browser apps:
-mcp__Ruvnet-KB-first__kb_wasm({ query: "<wasm topic>", limit: 5 })
+mcp__ask-ruvnet__kb_wasm({ query: "<wasm topic>", limit: 5 })
 
 -- Via direct SQL (if MCP unavailable — query kb_complete FIRST, not architecture_docs):
 psql -h localhost -p 5435 -U postgres -c "
@@ -154,7 +154,7 @@ psql -h localhost -p 5435 -U postgres -c "
 ### MCP Server
 - **Location**: `bin/mcp-server.js` (v7.0.0, embedded-only)
 - **Data**: Reads from `kb-data/` directory (kb-entries.json.gz, kb-embeddings.bin, kb-metadata.json)
-- **Registration**: Global via `~/.mcp.json` as `Ruvnet-KB-first` + `~/.claude.json` as `ask-ruvnet`
+- **Registration**: Global via `~/.mcp.json` as `ask-ruvnet` + `~/.claude.json` as `ask-ruvnet`
 - **434 gold entries**, 16 categories, avg quality 97/100, binary-quantized 384-dim vectors
 
 ### Nightly Auto-Discovery Pipeline
