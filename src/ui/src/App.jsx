@@ -82,7 +82,7 @@ const DECK_DOCS = [
 // NotebookLM deep-dive interactive notebook
 const NOTEBOOKLM_URL = 'https://notebooklm.google.com/notebook/50a4a2ef-a743-4fc7-81e3-774b95c667c3';
 
-// Resource documents available at /assets/docs/ — Auto-synced 2026-03-20
+// Resource documents available at /assets/docs/ — Auto-synced 2026-03-28
 const RESOURCE_DOCS = [
   { file: 'Whats_New_RuvNet_Stack_March2026.mp4', title: 'What\'s New (March 2026)', desc: 'Latest updates across Ruflo, RuVector, RuView, Dossier', icon: '🔊', type: 'video' },
   { file: 'Architecture_That_Changes_Everything.mp4', title: 'The Architecture That Changes Everything', desc: 'Why this is 2 std devs beyond state-of-art', icon: '🔊', type: 'video' },
@@ -185,7 +185,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
         <span className="dikw-icon">&#128161;</span>
         <span className="dikw-label">RuVector + RVF</span>
         <span className="dikw-desc">Stores meaning, not just data</span>
-        {heroExpanded && <span className="dikw-detail">439 expert articles in 0.6MB. HNSW search in 0.3ms. 290+ PostgreSQL functions. Runs in browser via WASM.</span>}
+        {heroExpanded && <span className="dikw-detail">499 expert articles in 0.7MB. HNSW search in 0.3ms. 230+ PostgreSQL functions. Runs in browser via WASM.</span>}
       </div>
       <div className="dikw-layer dikw-orchestration">
         <span className="dikw-icon">&#9889;</span>
@@ -212,7 +212,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
     <h1 className="hero-heading">What do you want to build?</h1>
     <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
     <p className="hero-tagline">The on-ramp to agentic AI. Pick a product, get started in minutes.</p>
-    <p className="hero-dogfood">439 expert articles in 0.6MB — the tool explaining itself using itself.</p>
+    <p className="hero-dogfood">499 expert articles in 0.7MB — the tool explaining itself using itself.</p>
 
     {/* Product On-Ramp Cards */}
     <div className="onramp-cards" role="navigation" aria-label="Get started with a product">
@@ -273,6 +273,11 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
         <span className="tile-label">NotebookLM</span>
         <span className="tile-count">AI Deep Dive</span>
       </button>
+      <button className="capability-tile" onClick={() => onCapability('catalog')}>
+        <span className="tile-icon-wrapper tile-catalog"><span className="tile-icon">&#129408;</span></span>
+        <span className="tile-label">RuVector Catalog</span>
+        <span className="tile-count">114 Crates, 200+ Tech</span>
+      </button>
     </div>
 
     {/* Quick Ask Pills */}
@@ -293,7 +298,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
 
     {/* Dog Food Story */}
     <div className="dogfood-callout">
-      <span className="dogfood-text">This knowledge base runs on RuVector. 383 expert articles compressed to <strong>0.5MB</strong> via RVF format — <strong>85x smaller</strong> than v6. The tool explains itself using itself.</span>
+      <span className="dogfood-text">This knowledge base runs on RuVector. 499 expert articles compressed to <strong>0.7MB</strong> via RVF format. The tool explains itself using itself.</span>
     </div>
 
     {/* Resource Documents */}
@@ -1463,6 +1468,9 @@ function App() {
       case 'notebooklm':
         window.open(NOTEBOOKLM_URL, '_blank', 'noopener,noreferrer');
         break;
+      case 'catalog':
+        setCanvasContent({ type: 'iframe', content: '/ruvector-catalog.html', title: 'RuVector Technology Catalog', action: 'catalog' });
+        break;
       default:
         break;
     }
@@ -1635,6 +1643,10 @@ function App() {
                         <button className="capability-tile" onClick={() => { handleCapability('pi-learning-loop'); setShowResourceDrawer(false); }}>
                           <span className="tile-icon-wrapper tile-pi-loop"><span className="tile-icon">&#128260;</span></span>
                           <span className="tile-label">Loop</span>
+                        </button>
+                        <button className="capability-tile" onClick={() => { handleCapability('catalog'); setShowResourceDrawer(false); }}>
+                          <span className="tile-icon-wrapper tile-catalog"><span className="tile-icon">&#129408;</span></span>
+                          <span className="tile-label">Catalog</span>
                         </button>
                       </div>
                       <div className="resource-grid resource-grid-compact">

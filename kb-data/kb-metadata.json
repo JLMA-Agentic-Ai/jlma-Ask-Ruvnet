@@ -1,14 +1,14 @@
 {
   "version": "1.0.0",
   "schema": "ask_ruvnet",
-  "exportedAt": "2026-03-20T10:54:44.869Z",
-  "totalEntries": 434,
+  "exportedAt": "2026-03-28T18:37:02.397Z",
+  "totalEntries": 499,
   "embeddingDim": 384,
   "quantization": "binary",
   "categories": [
     {
       "name": "teaching",
-      "count": 164
+      "count": 165
     },
     {
       "name": "videos",
@@ -16,39 +16,39 @@
     },
     {
       "name": "agents",
+      "count": 47
+    },
+    {
+      "name": "architecture",
+      "count": 38
+    },
+    {
+      "name": "neural",
       "count": 37
     },
     {
       "name": "wasm-local-llm",
-      "count": 33
+      "count": 36
     },
     {
       "name": "general",
-      "count": 29
-    },
-    {
-      "name": "architecture",
-      "count": 28
-    },
-    {
-      "name": "neural",
-      "count": 21
+      "count": 34
     },
     {
       "name": "algorithms",
-      "count": 17
+      "count": 25
     },
     {
       "name": "vector-db",
-      "count": 16
+      "count": 22
     },
     {
       "name": "security",
-      "count": 15
+      "count": 20
     },
     {
       "name": "deployment",
-      "count": 6
+      "count": 7
     },
     {
       "name": "performance",

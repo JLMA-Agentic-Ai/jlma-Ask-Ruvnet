@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RuVector Technology Catalog</title>
+<style>
+:root{--bg:#0a0a0a;--surface:#141414;--surface2:#1a1a1a;--border:#262626;--text:#e5e5e5;--text2:#a3a3a3;--accent:#ef4444;--accent2:#ec4899;--green:#22c55e;--blue:#3b82f6;--purple:#a855f7;--orange:#f97316;--yellow:#eab308;--cyan:#06b6d4;--font:Inter,-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;overflow-x:hidden}
+.catalog{max-width:900px;margin:0 auto;padding:1.5rem 1.2rem 3rem}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:2rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
+.stat-num{display:block;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:var(--mono)}
+.stat-label{font-size:.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:.05em}
+.section{margin-bottom:2rem}
+.section-head{font-size:1.25rem;font-weight:700;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem}
+.cap-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem;cursor:pointer;transition:all .2s}
+.cap-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 20px rgba(239,68,68,.1)}
+.cap-card.expanded{grid-column:1/-1;background:var(--surface2)}
+.cap-name{font-weight:700;font-size:.95rem;margin-bottom:.25rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.cap-desc{font-size:.8rem;color:var(--text2);margin-bottom:.5rem}
+.cap-badge{display:inline-block;font-size:.65rem;padding:.15rem .4rem;border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.badge-prod{background:rgba(34,197,94,.15);color:var(--green)}
+.badge-exp{background:rgba(234,179,8,.15);color:var(--yellow)}
+.badge-research{background:rgba(168,85,247,.15);color:var(--purple)}
+.cap-crate{font-family:var(--mono);font-size:.75rem;color:var(--cyan);margin-top:.35rem}
+.cap-detail{display:none;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);font-size:.82rem;color:var(--text2);line-height:1.7}
+.cap-card.expanded .cap-detail{display:block}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:.75rem 0}
+.tier{text-align:center;padding:.75rem .5rem;border-radius:8px;border:1px solid var(--border);background:var(--surface)}
+.tier-size{font-size:1.1rem;font-weight:800;font-family:var(--mono);display:block}
+.tier-label{font-size:.7rem;color:var(--text2);display:block;margin-top:.15rem}
+.tier-micro .tier-size{color:var(--green)}
+.tier-small .tier-size{color:var(--blue)}
+.tier-med .tier-size{color:var(--purple)}
+.tier-ai .tier-size{color:var(--accent)}
+.install-section{background:linear-gradient(135deg,rgba(239,68,68,.06),rgba(236,72,153,.06));border:1px solid rgba(239,68,68,.2);border-radius:14px;padding:1.5rem;margin:2rem 0}
+.install-section h2{border:none;padding:0;margin-bottom:.5rem;font-size:1.25rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+.install-steps{display:flex;flex-direction:column;gap:1rem;margin-top:1rem}
+.install-step{display:flex;gap:.75rem;align-items:flex-start}
+.step-num{min-width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+.step-content{flex:1}
+.step-content h3{font-size:.9rem;font-weight:600;margin-bottom:.2rem}
+.step-content p{font-size:.82rem;color:var(--text2)}
+.step-content pre{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.6rem .8rem;margin:.4rem 0;font-family:var(--mono);font-size:.78rem;color:var(--cyan);overflow-x:auto;white-space:pre-wrap;word-break:break-all}
+.deploy-note{font-size:.78rem;color:var(--text2);margin-top:.5rem;padding:.5rem;background:var(--surface);border-radius:6px;border:1px solid var(--border)}
+@media(max-width:600px){.hero-stats{grid-template-columns:repeat(2,1fr)}.cap-grid{grid-template-columns:1fr}.tier-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="catalog">
+
+<div class="hero-stats">
+<div class="stat-card"><span class="stat-num">1,586,481</span><span class="stat-label">Lines of Rust</span></div>
+<div class="stat-card"><span class="stat-num">114</span><span class="stat-label">Crates</span></div>
+<div class="stat-card"><span class="stat-num">200+</span><span class="stat-label">Technologies</span></div>
+<div class="stat-card"><span class="stat-num">44</span><span class="stat-label">Examples</span></div>
+</div>
+
+<div class="section"><h2 class="section-head">&#128269; Vector Search</h2><div class="cap-grid" id="s-vector-search"></div></div>
+<div class="section"><h2 class="section-head">&#128376; Graph Intelligence</h2><div class="cap-grid" id="s-graph-intelligence"></div></div>
+<div class="section"><h2 class="section-head">&#129504; Attention Mechanisms &mdash; 18+ variants</h2><div class="cap-grid" id="s-attention"></div></div>
+<div class="section"><h2 class="section-head">&#127793; Self-Learning</h2><div class="cap-grid" id="s-self-learning"></div></div>
+<div class="section"><h2 class="section-head">&#128737; Coherence &amp; Safety</h2><div class="cap-grid" id="s-coherence"></div></div>
+<div class="section"><h2 class="section-head">&#129516; Nervous System &mdash; 5 bio-inspired layers</h2><div class="cap-grid" id="s-nervous-system"></div></div>
+<div class="section"><h2 class="section-head">&#128290; Mathematics</h2><div class="cap-grid" id="s-mathematics"></div></div>
+<div class="section"><h2 class="section-head">&#9879; Solvers &amp; Min-Cut</h2><div class="cap-grid" id="s-solvers"></div></div>
+<div class="section"><h2 class="section-head">&#129302; LLM Runtime</h2><div class="cap-grid" id="s-llm-runtime"></div></div>
+<div class="section"><h2 class="section-head">&#9883; Quantum Computing</h2><div class="cap-grid" id="s-quantum"></div></div>
+<div class="section"><h2 class="section-head">&#127760; Distributed Systems</h2><div class="cap-grid" id="s-distributed"></div></div>
+<div class="section"><h2 class="section-head">&#128451; Storage &amp; Database</h2><div class="cap-grid" id="s-storage"></div></div>
+<div class="section"><h2 class="section-head">&#127919; Specialized Domains</h2><div class="cap-grid" id="s-specialized"></div></div>
+
+<div class="section">
+<h2 class="section-head">&#128230; Browser Deployment (25+ WASM Crates)</h2>
+<div class="tier-grid">
+<div class="tier tier-micro"><span class="tier-size">11.8KB</span><span class="tier-label">Micro HNSW</span></div>
+<div class="tier tier-small"><span class="tier-size">247KB</span><span class="tier-label">Core Vector DB</span></div>
+<div class="tier tier-med"><span class="tier-size">812KB</span><span class="tier-label">Vector + Graph</span></div>
+<div class="tier tier-ai"><span class="tier-size">2.5MB</span><span class="tier-label">Full AI Stack</span></div>
+</div>
+<p class="deploy-note">Also: 11 Node.js NAPI packages, PostgreSQL extension (230+ functions), Edge (Vercel/Cloudflare/Deno), Embedded (no_std), FPGA</p>
+</div>
+
+<div class="install-section">
+<h2>&#128187; Install This as a Claude Code Skill</h2>
+<p style="font-size:.88rem;color:var(--text2)">Get instant access to all 200+ RuVector technologies directly in your Claude Code sessions. The skill <strong>activates automatically</strong> when you mention search, graphs, learning, attention, AI safety, LLMs, quantum, or any related technology.</p>
+<div class="install-steps">
+<div class="install-step"><span class="step-num">1</span><div class="step-content"><h3>Download the skill</h3><pre>curl -L -o ruvector-catalog.zip \
+  https://ask-ruvnet.up.railway.app/assets/ruvector-catalog.zip</pre></div></div>
+<div class="install-step"><span class="step-num">2</span><div class="step-content"><h3>Install it</h3><pre>unzip ruvector-catalog.zip -d ~/.claude/skills/</pre></div></div>
+<div class="install-step"><span class="step-num">3</span><div class="step-content"><h3>Use it</h3><p>Just describe your problem in any Claude Code session. The skill activates automatically when you mention anything related to search, graphs, learning, attention, AI safety, LLMs, quantum, robotics, trading, or any of 200+ indexed technologies.</p>
+<pre># Manual lookup:
+/ruvector-catalog
+
+# Or just ask naturally:
+"What can RuVector do for graph search?"
+"I need something that learns from experience"
+"How do I run an LLM in the browser?"</pre></div></div>
+</div>
+</div>
+
+</div>
+<script src="/assets/ruvector-catalog.js"></script>
+</body>
+</html>
