@@ -24,8 +24,9 @@ echo "Building frontend..."
 cd src/ui && npm run build && cd ../..
 echo "Frontend build OK"
 
-# Commit and push (dist/ is gitignored — Railway builds it in Docker)
-git add package.json package-lock.json
+# Stage all changes: version bump + any modified/new tracked files
+# (dist/ and other build artifacts are gitignored — Railway builds in Docker)
+git add -A
 git commit -m "v${VERSION}: deploy $BUMP"
 git push origin main
 
