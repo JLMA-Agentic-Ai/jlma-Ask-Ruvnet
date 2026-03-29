@@ -124,6 +124,9 @@ class RvfStore {
         this.vectorCount = 0;
         this.rvfPath = null;
         this.healthStatus = 'not_initialized';
+        this.fileId = null;          // RVF crypto file identity
+        this.lineageDepth = null;    // RVF provenance depth
+        this.segmentCount = 0;       // RVF segment count
     }
 
     async initialize() {
@@ -177,6 +180,21 @@ class RvfStore {
             }
         } else {
             this.healthStatus = this.vectorCount > 0 ? 'ok' : 'degraded';
+        }
+
+        // Read RVF crypto identity and provenance
+        try {
+            this.fileId = await this.rvfDb.fileId();
+            this.lineageDepth = await this.rvfDb.lineageDepth();
+            const segs = await this.rvfDb.segments();
+            this.segmentCount = segs.length;
+            const totalPayloadBytes = segs.reduce((sum, s) => sum + (s.payloadLength || 0), 0);
+            if (totalPayloadBytes > 0) {
+                console.log(`[RvfStore] Content embedded in RVF: ${(totalPayloadBytes / 1024).toFixed(0)} KB across ${this.segmentCount} segments`);
+            }
+            console.log(`[RvfStore] File ID: ${this.fileId.substring(0, 16)}...`);
+        } catch (e) {
+            console.log(`[RvfStore] RVF identity: ${e.message}`);
         }
 
         console.log(`[RvfStore] Backend: RVF Native (HNSW-indexed cognitive container) — health: ${this.healthStatus}`);
@@ -287,7 +305,10 @@ class RvfStore {
             vectorCount: this.vectorCount,
             contentMapSize: this.contentMap ? Object.keys(this.contentMap).length : 0,
             dimensions: this.dimensions,
-            path: this.rvfPath
+            path: this.rvfPath,
+            fileId: this.fileId ? this.fileId.substring(0, 16) + '...' : null,
+            lineageDepth: this.lineageDepth,
+            segmentCount: this.segmentCount,
         };
     }
 

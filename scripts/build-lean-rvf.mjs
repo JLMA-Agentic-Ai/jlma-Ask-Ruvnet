@@ -138,7 +138,8 @@ try {
     metric: 'cosine',
   });
 
-  // Insert vectors
+  // Insert vectors WITH payload (content embedded in RVF)
+  const encoder = new TextEncoder();
   const BATCH = 100;
   for (let i = 0; i < written; i += BATCH) {
     const end = Math.min(i + BATCH, written);
@@ -146,12 +147,29 @@ try {
     for (let j = i; j < end; j++) {
       const id = idIndex[j];
       const vecStart = j * BYTES_PER_VECTOR;
-      const vecEnd = vecStart + BYTES_PER_VECTOR;
       const vec = new Float32Array(finalVectors.buffer, finalVectors.byteOffset + vecStart, DIMENSIONS);
-      batch.push({ id, vector: Array.from(vec) });
+      // Encode content as Uint8Array payload — stored INSIDE the RVF container
+      const payloadJson = JSON.stringify(sidecar[id]);
+      const payload = encoder.encode(payloadJson);
+      batch.push({ id, vector: Array.from(vec), payload });
     }
     await db.ingestBatch(batch);
   }
+
+  // Log witness chain and file identity for integrity verification
+  try {
+    const { RvfSolver } = await import('@ruvector/rvf');
+    const solver = new RvfSolver(db);
+    const witness = solver.witnessChain();
+    console.log(`      Witness chain: ${JSON.stringify(witness).substring(0, 120)}...`);
+    solver.destroy();
+  } catch (e) {
+    console.log(`      Witness chain: not available (${e.message})`);
+  }
+
+  const fid = await db.fileId();
+  console.log(`      File ID: ${fid}`);
+  console.log(`      Lineage depth: ${await db.lineageDepth()}`);
 
   await db.close();
 
