@@ -46,3 +46,7 @@ knowledge.rvf.idmap.json
 src/ui/public/assets/knowledge-sq8.bin
 src/ui/public/assets/knowledge-meta.json
 src/ui/public/assets/knowledge-sq8-params.bin
+
+# Service account keys
+config/service-account.json
+config/

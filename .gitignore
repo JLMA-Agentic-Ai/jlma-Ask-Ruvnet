@@ -20,12 +20,14 @@ processed_knowledge.json
 video_visual_knowledge.json
 failed_videos.json
 
-# Database files (large)
+# Database files
 *.db
 *.db-shm
 *.db-wal
-.swarm/
-agentdb.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
 
 # ALLOW compressed database for Railway
 !swarm-db.tar.gz
@@ -33,53 +35,39 @@ agentdb.db
 # Archived files
 archive/
 
-# Allow UI Assets
+# Allow UI Assets (PDFs and videos served by frontend)
 !src/ui/public/assets/**/*.pdf
 !src/ui/public/assets/**/*.mp4
 
-# Ruflo / legacy Claude-Flow generated files
+# Ruflo / legacy runtime generated files
 .claude/settings.local.json
-.mcp.json
 ruflo.config.json
 claude-flow.config.json
 .swarm/
 .hive-mind/
 .ruflo/
 .claude-flow/
+.agentic-flow/
 memory/
 coordination/
-memory/ruflo-data.json
-memory/sessions/*
-!memory/sessions/README.md
-memory/agents/*
-!memory/agents/README.md
-coordination/memory_bank/*
-coordination/subtasks/*
-coordination/orchestration/*
-*.db
-*.db-journal
-*.db-wal
-*.sqlite
-*.sqlite-journal
-*.sqlite-wal
-ruflo
-claude-flow
-# Removed Windows wrapper files per user request
 hive-mind-prompt-*.txt
 service-account.json
-public/kb-universe-data.json
 
-# Large generated files
-public/Ask-Ruvnet-kb-visualization.html
-public/kb-universe-data.json
+# Root directories not needed in git
+public/
+generated_imgs/
+strange-loop-research/
+upstream/
+workspace/
+logs/
+ruvector/
+knowledge_assets/
+src/server/public/
 
 # RuVector intelligence data
 .ruvector/
 .claude/statusline.sh
-# Add large KB data file to gitignore
-public/kb-universe-data.json
 .claude/commands/global/
-ruvector/
 
 # Stale split files (no longer used for Railway deployment)
 *.part-*
@@ -92,12 +80,11 @@ knowledge.rvf.gz
 knowledge.rvf.idmap.json
 self_booting.rvf
 
-# Build workspace
-workspace/
-
-# Log files
-logs/
-
 # NLM pipeline state
 .nlm-refresh-state.json
-upstream/
+
+# Build/runtime state
+.ascii-to-svg-manifest.json
+.mcp.json
+.ruvnet-monitor-state.json
+scripts/integrity-results.json

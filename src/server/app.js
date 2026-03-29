@@ -773,8 +773,6 @@ const specialEndpointLimiter = rateLimit({
 app.use(express.json({ limit: '1mb' }));
 const fs = require('fs');
 app.use(express.static(path.join(__dirname, '../ui/dist'))); // Serve frontend
-app.use('/frames', express.static(path.join(__dirname, '../../data_ingestion_ruv_coaching'))); // Serve video frames
-app.use('/generated_imgs', express.static(path.join(__dirname, '../../generated_imgs'))); // Serve generated visualizations
 
 // Initialize RuVector Native Components (replaces SQLite-based HybridReasoningBank)
 let modelRouter;
