@@ -89,7 +89,7 @@ mcp__ask-ruvnet__kb_search({ query: "[relevant terms]", limit: 5 })
 
 ## RULE ZERO: KB-FIRST + RUFLO-FIRST (NON-NEGOTIABLE)
 
-**This project has a 434-entry expert-curated knowledge base (v7.0.0, 10 tools, 164 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector (104 Rust crates), Ruflo (219 MCP tools), agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, SONA, MinCut, GNN, attention mechanisms, cognitive containers, WASM deployment, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
+**This project has a 502-entry expert-curated knowledge base (v7.0.0, 10 tools, 164 teaching entries) with teaching content that is NOT in any LLM's training data.** It covers RuVector (104 Rust crates), Ruflo (219 MCP tools), agents, swarms, AIMDS, embeddings, HNSW, ONNX, MCP, RVF, SONA, MinCut, GNN, attention mechanisms, cognitive containers, WASM deployment, and advanced agentic patterns. Much of this technology was created after your knowledge cutoff.
 
 ### Before Answering ANY Question:
 
@@ -147,7 +147,7 @@ psql -h localhost -p 5435 -U postgres -c "
 
 ---
 
-## KB OPERATIONS: SINGLE SOURCE OF TRUTH (Updated 2026-03-20)
+## KB OPERATIONS: SINGLE SOURCE OF TRUTH (Updated 2026-03-28, v4.12.0)
 
 **This repo is the ONLY knowledge base for the entire RuVector/Ruflo ecosystem.** The old `Ruvnet-Koweldgebase-and-Application-Builder` repo was deleted on 2026-03-20. All KB content, MCP server code, and auto-curation pipelines live here.
 
@@ -155,9 +155,12 @@ psql -h localhost -p 5435 -U postgres -c "
 - **Location**: `bin/mcp-server.js` (v7.0.0, embedded-only)
 - **Data**: Reads from `kb-data/` directory (kb-entries.json.gz, kb-embeddings.bin, kb-metadata.json)
 - **Registration**: Global via `~/.mcp.json` as `ask-ruvnet` + `~/.claude.json` as `ask-ruvnet`
-- **434 gold entries**, 16 categories, avg quality 97/100, binary-quantized 384-dim vectors
+- **502 gold entries**, 16 categories, avg quality 97/100, binary-quantized 384-dim vectors
 
-### Nightly Auto-Discovery Pipeline
+### Source of Truth: `kb-master.json`
+As of v4.12.0, the build pipeline source of truth is `kb-master.json` (checked into repo root). Builds no longer require PostgreSQL. PostgreSQL (`kb_complete`) is still used by the nightly auto-curation scripts but is NOT needed for local builds or deploys.
+
+### Nightly Auto-Discovery Pipeline (uses PostgreSQL)
 ```
 4:00 AM — kb-evergreen.mjs (LaunchAgent: com.ruvnet.kb-evergreen)
            → Scans ALL ruvnet repos via gh repo list (~200+ repos)
@@ -177,6 +180,9 @@ psql -h localhost -p 5435 -U postgres -c "
            → Safety-net rebuild of RVF + browser assets + MCP kb-data
 ```
 
+### Ingestion
+- `node scripts/ingest-catalog.mjs` — writes entries to `kb-master.json` (not PG)
+
 ### How New Crates/Features Get Discovered
 1. `kb-evergreen.mjs` pulls ALL repos under `ruvnet` GitHub user nightly
 2. New repos (never seen before) are flagged and ingested immediately
@@ -186,17 +192,20 @@ psql -h localhost -p 5435 -U postgres -c "
 6. Multiple entries generated for monorepos with many crates (up to 5)
 
 ### KB Build Commands (Run in Order)
-1. `node scripts/build-lean-rvf.mjs` — PG → .ruvector/ + knowledge.rvf + sidecar
+1. `node scripts/build-lean-rvf.mjs` — reads `kb-master.json` (no PG needed) → .ruvector/ + knowledge.rvf + sidecar
 2. `node scripts/build-quantized-rvf.mjs` — .ruvector/ → SQ8 browser assets
 3. `node scripts/export-mcp-kb.mjs --output kb-data/` — .ruvector/ → MCP format
 4. `cd src/ui && npm run build` — Frontend with quantized assets
 
+### KB Inspection
+- `node scripts/kb-inspect.mjs` — inspect KB entries, categories, quality scores (replaces ad-hoc SQL queries)
+
 ### NEVER DO (KB Operations)
 - NEVER rebuild knowledge.rvf from architecture_docs (255K+ entries, 270MB+)
 - NEVER point MCP at old `Ruvnet-Koweldgebase-and-Application-Builder` (DELETED)
-- NEVER use `ruvector_embed()` SQL function (BROKEN — returns constant vectors)
 - NEVER commit knowledge.rvf at >1MB — wrong build script ran
 - NEVER skip ONNX for embeddings — use Xenova/all-MiniLM-L6-v2, 384 dims
+- NEVER point build-lean-rvf.mjs at PostgreSQL — it reads `kb-master.json` as of v4.12.0
 
 ---
 
