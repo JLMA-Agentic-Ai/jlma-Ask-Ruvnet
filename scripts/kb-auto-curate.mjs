@@ -167,6 +167,16 @@ async function main() {
   const master = loadMaster();
   const repoCount = Object.keys(rawManifest.repos).length;
 
+  // Predecessor check: verify evergreen ran recently
+  if (rawManifest.lastRun) {
+    const hoursAgo = (Date.now() - new Date(rawManifest.lastRun).getTime()) / 3600000;
+    if (hoursAgo > 48) log('WARNING: Evergreen last ran ' + hoursAgo.toFixed(0) + 'h ago. Raw data may be stale.');
+  } else if (repoCount === 0) {
+    log('WARNING: No raw manifest found. Run kb-evergreen.mjs first to populate .ruvector/raw/');
+  }
+  if (repoCount < 50 && repoCount > 0) log('WARNING: Only ' + repoCount + ' repos in raw (expected 100+). Possible bootstrap issue.');
+  if (!OPENROUTER_KEY) log('WARNING: No OPENROUTER_API_KEY set. Synthesis will be skipped for all gaps.');
+
   log('Raw repos: ' + repoCount + ', Gold entries: ' + master.entryCount);
 
   // Detect gaps
@@ -247,6 +257,21 @@ async function main() {
   log('Curation Complete — ' + created + ' created, ' + updated + ' updated, ' + errors + ' errors');
   log('Time: ' + ((Date.now() - startTime) / 1000).toFixed(1) + 's');
   log('==================================================');
+
+  // Write heartbeat + audit log
+  const logDir = path.join(ROOT, 'logs');
+  fs.mkdirSync(logDir, { recursive: true });
+  fs.writeFileSync(path.join(logDir, 'kb-curate-heartbeat.json'), JSON.stringify({
+    lastAttempt: new Date().toISOString(),
+    lastSuccess: errors === 0 ? new Date().toISOString() : null,
+    entriesCreated: created, entriesUpdated: updated, errors,
+    totalEntries: master.entryCount, version: '3.0.0',
+  }, null, 2));
+  fs.appendFileSync(path.join(logDir, 'kb-curate.jsonl'), JSON.stringify({
+    timestamp: new Date().toISOString(), created, updated, errors,
+    totalEntries: master.entryCount, gapsFound: gaps.length,
+    durationMs: Date.now() - startTime,
+  }) + '\n');
 
   // Optional rebuild
   if (REBUILD && (created > 0 || updated > 0)) {

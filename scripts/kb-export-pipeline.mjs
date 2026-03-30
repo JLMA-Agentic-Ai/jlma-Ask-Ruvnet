@@ -60,6 +60,12 @@ async function main() {
 
   const masterCount = readMasterCount();
   const manifestCount = readManifestCount();
+
+  // Predecessor check: verify kb-master.json is fresh
+  const masterStat = fs.statSync(MASTER_PATH);
+  const masterHoursAgo = (Date.now() - masterStat.mtimeMs) / 3600000;
+  if (masterHoursAgo > 72) log('WARNING: kb-master.json last modified ' + masterHoursAgo.toFixed(0) + 'h ago. Curate may not be running.');
+
   log('kb-master.json entries: ' + masterCount);
   log('Manifest vectorCount:   ' + manifestCount);
 
