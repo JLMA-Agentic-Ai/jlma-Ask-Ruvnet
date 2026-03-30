@@ -26,10 +26,43 @@ function hoursAgo(isoDate) {
   return (NOW - new Date(isoDate).getTime()) / 3600000;
 }
 
+const ALERT_EMAIL = 'sikerr@gmail.com';
+const GMAIL_USER = 'sikerr@gmail.com';
+const GMAIL_APP_PASSWORD = process.env.PERSONAL_GMAIL_APP_PASSWORD || '';
+
 function notify(title, msg) {
+  // macOS notification
   try {
     execFileSync('osascript', ['-e', 'display notification "' + msg.replace(/"/g, '\\"') + '" with title "' + title.replace(/"/g, '\\"') + '"']);
   } catch {}
+}
+
+function sendEmail(subject, body) {
+  if (!GMAIL_APP_PASSWORD) {
+    console.log('  (No PERSONAL_GMAIL_APP_PASSWORD — email skipped)');
+    return;
+  }
+  try {
+    const curlArgs = [
+      '--ssl-reqd',
+      '--url', 'smtps://smtp.gmail.com:465',
+      '--user', GMAIL_USER + ':' + GMAIL_APP_PASSWORD,
+      '--mail-from', GMAIL_USER,
+      '--mail-rcpt', ALERT_EMAIL,
+      '-T', '-',
+      '--max-time', '15',
+    ];
+    const emailContent = 'From: Ask-RuvNet Pipeline <' + GMAIL_USER + '>\r\n' +
+      'To: ' + ALERT_EMAIL + '\r\n' +
+      'Subject: ' + subject + '\r\n' +
+      'Content-Type: text/plain; charset=utf-8\r\n' +
+      '\r\n' +
+      body + '\r\n';
+    execFileSync('curl', curlArgs, { input: emailContent, timeout: 20000, stdio: ['pipe', 'pipe', 'pipe'] });
+    console.log('  Email sent to ' + ALERT_EMAIL);
+  } catch (e) {
+    console.log('  Email failed: ' + (e.message || '').substring(0, 60));
+  }
 }
 
 function lastJsonlEntry(filePath) {
@@ -132,5 +165,13 @@ if (issues.length === 0) {
   console.log(issues.length + ' ISSUE(S) FOUND:\n');
   issues.forEach(i => console.log('  [!] ' + i));
   notify('KB Pipeline Alert', issues.length + ' issue(s). Check logs.');
+  sendEmail(
+    '[Ask-RuvNet] Pipeline Alert: ' + issues.length + ' issue(s)',
+    'Ask-RuvNet Nightly Pipeline Health Check\n' +
+    'Time: ' + new Date().toISOString() + '\n\n' +
+    'ISSUES:\n' + issues.map(i => '  - ' + i).join('\n') + '\n\n' +
+    'Action: Check logs at ~/Code/Ask-Ruvnet/Ask-Ruvnet/logs/\n' +
+    'Run: node scripts/pipeline-health-check.mjs\n'
+  );
   process.exit(1);
 }
