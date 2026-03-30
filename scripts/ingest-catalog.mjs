@@ -3,7 +3,7 @@
  * ingest-catalog.mjs — Ingests the ruvector-catalog into kb_complete
  *
  * Reads all 17 catalog docs + catalog.json, creates teaching-quality KB entries
- * for every crate/technology, generates ONNX embeddings, and upserts to PostgreSQL.
+ * for every crate/technology, generates ONNX embeddings, and upserts to kb-master.json.
  *
  * Usage: node scripts/ingest-catalog.mjs [--dry-run] [--doc <name>]
  */

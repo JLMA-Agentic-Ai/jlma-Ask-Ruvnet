@@ -1,3 +1,5 @@
+> **NOTE (v4.12.0):** As of v4.12.0, the production build pipeline no longer requires PostgreSQL. The source of truth is `kb-master.json`. PostgreSQL references below apply only to the nightly auto-curation pipeline. See README.md for the current architecture.
+
 Updated: 2026-02-21 00:00:00 UTC | Version 1.0.0
 Created: 2026-02-21
 

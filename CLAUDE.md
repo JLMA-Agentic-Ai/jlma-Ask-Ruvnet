@@ -103,11 +103,8 @@ mcp__ask-ruvnet__kb_teach({ query: "<concept>", limit: 3 })
 -- For WASM/browser apps:
 mcp__ask-ruvnet__kb_wasm({ query: "<wasm topic>", limit: 5 })
 
--- Via direct SQL (if MCP unavailable — query kb_complete FIRST, not architecture_docs):
-psql -h localhost -p 5435 -U postgres -c "
-  SELECT title, LEFT(content, 500) FROM ask_ruvnet.kb_complete
-  WHERE quality_score >= 80
-  ORDER BY embedding <=> '<query_embedding>'::ruvector LIMIT 5;"
+-- Via local inspection (if MCP unavailable — no PostgreSQL needed):
+node scripts/kb-inspect.mjs --search "<relevant terms>"
 ```
 
 **STEP 2: Route through Ruflo.** Do NOT answer complex questions as raw Claude Code. Use Ruflo agents:

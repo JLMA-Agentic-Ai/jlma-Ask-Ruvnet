@@ -357,7 +357,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     },
     {
       name: 'kb_add',
-      description: 'Add a knowledge entry. NOTE: Embedded mode is read-only. Use local PostgreSQL authoring workflow.',
+      description: 'Add a knowledge entry. NOTE: Embedded mode is read-only. Edit kb-master.json and run build-lean-rvf.mjs to rebuild.',
       inputSchema: {
         type: 'object',
         properties: {
@@ -525,11 +525,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       case 'kb_add': {
         return txt(
           '**Read-Only Mode** - This MCP uses an embedded static KB.\n\n' +
-          'To add entries, use the local authoring workflow:\n' +
-          '1. Start ruvector-postgres Docker (port 5435)\n' +
-          '2. INSERT into ask_ruvnet.architecture_docs\n' +
-          '3. Run: node scripts/export-mcp-kb.mjs\n' +
-          '4. npm publish (ships new kb-data/)\n\n' +
+          'To add entries, edit kb-master.json then rebuild:\n' +
+          '1. Add entry to kb-master.json (with ONNX embedding)\n' +
+          '2. Run: node scripts/build-lean-rvf.mjs\n' +
+          '3. Run: node scripts/export-mcp-kb.mjs --output kb-data/\n' +
+          '4. Deploy: bash scripts/deployment/deploy.sh patch\n\n' +
           'Entry "' + args.title + '" was NOT added.'
         );
       }
