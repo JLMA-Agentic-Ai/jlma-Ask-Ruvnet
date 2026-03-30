@@ -1,358 +1,267 @@
 #!/usr/bin/env node
 /**
- * kb-auto-curate.mjs — Automated Knowledge Base Curation Pipeline
+ * kb-auto-curate.mjs — Automated KB Curation Pipeline (PG-FREE, v3.0.0)
  *
- * Detects stale/missing gold entries by comparing architecture_docs (raw)
- * against kb_complete (curated). Synthesizes new teaching-quality entries
- * from raw chunks using LLM, embeds with ONNX, and upserts to kb_complete.
+ * Detects stale/missing gold entries by comparing .ruvector/raw/ (NDJSON chunks)
+ * against kb-master.json (gold entries). Synthesizes new teaching entries with
+ * Claude Sonnet, generates ONNX embeddings, writes to kb-master.json, and
+ * optionally triggers a full RVF rebuild.
  *
- * Designed to run after kb-evergreen.mjs (which refreshes architecture_docs).
- * Schedule: daily at 6:00 AM (after evergreen at 4 AM, after export at 5 AM).
+ * NO PostgreSQL dependency. Reads/writes flat files only.
  *
- * Usage:
- *   node scripts/kb-auto-curate.mjs              # Auto-detect stale/gaps
- *   node scripts/kb-auto-curate.mjs --dry-run    # Show what would change
- *   node scripts/kb-auto-curate.mjs --force      # Re-curate all repos
- *   node scripts/kb-auto-curate.mjs --repo X     # Single repo only
- *   node scripts/kb-auto-curate.mjs --rebuild    # Also trigger RVF rebuild after curation
+ * LaunchAgent: ai.openclaw.kb-curate (5:00 AM daily)
+ * Usage: node scripts/kb-auto-curate.mjs [--rebuild] [--dry-run] [--force] [--repo <name>]
  *
- * Updated: 2026-03-19 12:00:00 EST | Version 1.0.0
- * Created: 2026-03-19
+ * Updated: 2026-03-30 | Version 3.0.0 (ADR-001: PG eliminated)
  */
 
-import pg from 'pg';
 import { execFileSync } from 'child_process';
+import fs from 'fs';
+import os from 'os';
 import path from 'path';
+import zlib from 'zlib';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
+const RAW_DIR = path.join(ROOT, '.ruvector', 'raw');
+const RAW_MANIFEST = path.join(RAW_DIR, 'manifest.json');
+const MASTER_PATH = path.join(ROOT, 'kb-master.json');
+const NODE_BIN = '/usr/local/bin/node';
+
+const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY || process.env.OPENROUTER_KEY || '';
+const LLM_MODEL = 'anthropic/claude-sonnet-4-6';
+const MAX_NEW_ENTRIES_PER_RUN = 20;
+const MIN_CHUNKS_FOR_ENTRY = 10;
+const QUALITY_THRESHOLD = 85;
+
+const REBUILD = process.argv.includes('--rebuild');
 const DRY_RUN = process.argv.includes('--dry-run');
 const FORCE = process.argv.includes('--force');
-const REBUILD = process.argv.includes('--rebuild');
-const SINGLE_REPO = process.argv.includes('--repo')
-  ? process.argv[process.argv.indexOf('--repo') + 1]
-  : null;
+const SINGLE_REPO = process.argv.includes('--repo') ? process.argv[process.argv.indexOf('--repo') + 1] : null;
 
-const DB_CONFIG = {
-  host: 'localhost', port: 5435, user: 'postgres', database: 'postgres',
-  max: 4, idleTimeoutMillis: 10000, connectionTimeoutMillis: 5000,
-};
-
-const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY;
-const LLM_MODEL = 'anthropic/claude-sonnet-4-6';
-const MIN_CHUNKS_FOR_ENTRY = 10; // Repos with fewer chunks aren't worth a gold entry
-const MAX_NEW_ENTRIES_PER_RUN = 20; // Safety cap
-const QUALITY_THRESHOLD = 85; // Minimum score for gold entry
-
-function log(msg) {
-  console.log(`[${new Date().toLocaleTimeString()}] ${msg}`);
-}
-
-// --- ONNX Embedding ---
 let onnxSvc = null;
+const startTime = Date.now();
+
+function log(msg) { console.log('[' + new Date().toLocaleTimeString() + '] ' + msg); }
+
 async function initOnnx() {
-  import('os').then(() => {});
-  const os = await import('os');
-  const embPath = path.join(
-    os.default.homedir(),
-    '.npm-global/lib/node_modules/@claude-flow/cli/node_modules/@claude-flow/embeddings/dist/index.js'
-  );
+  const embPath = path.join(os.homedir(), '.npm-global/lib/node_modules/@claude-flow/cli/node_modules/@claude-flow/embeddings/dist/index.js');
   const mod = await import(embPath);
-  onnxSvc = await mod.createEmbeddingServiceAsync({
-    provider: 'transformers', model: 'Xenova/all-MiniLM-L6-v2', dimensions: 384
-  });
+  onnxSvc = await mod.createEmbeddingServiceAsync({ provider: 'transformers', model: 'Xenova/all-MiniLM-L6-v2', dimensions: 384 });
   await onnxSvc.embed('warmup');
-  log('ONNX embedding model ready');
 }
 
-// --- LLM: Synthesize teaching-quality entry from raw chunks ---
+function slug(title) {
+  return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+}
+
+// ─── Read raw chunks from .ruvector/raw/ ───────────────────────────────
+
+function loadRawManifest() {
+  if (fs.existsSync(RAW_MANIFEST)) return JSON.parse(fs.readFileSync(RAW_MANIFEST, 'utf8'));
+  return { repos: {} };
+}
+
+function loadRepoChunks(repoName) {
+  const filePath = path.join(RAW_DIR, repoName + '.ndjson.gz');
+  if (!fs.existsSync(filePath)) return [];
+  const raw = zlib.gunzipSync(fs.readFileSync(filePath)).toString('utf8');
+  return raw.split('\n').filter(Boolean).map(line => JSON.parse(line));
+}
+
+// ─── Read/write kb-master.json ─────────────────────────────────────────
+
+function loadMaster() {
+  if (!fs.existsSync(MASTER_PATH)) { log('ERROR: kb-master.json not found'); process.exit(1); }
+  return JSON.parse(fs.readFileSync(MASTER_PATH, 'utf8'));
+}
+
+function saveMaster(master) {
+  master.entryCount = master.entries.length;
+  fs.writeFileSync(MASTER_PATH, JSON.stringify(master, null, 2));
+}
+
+// ─── Gap Detection (replaces PG CTE query) ─────────────────────────────
+
+function detectGaps(rawManifest, master) {
+  const goldRepos = new Set();
+  for (const entry of master.entries) {
+    // Match entries to repos by checking if repo name appears in title/content/file_path
+    for (const repoName of Object.keys(rawManifest.repos)) {
+      const lower = repoName.toLowerCase();
+      if ((entry.title || '').toLowerCase().includes(lower) ||
+          (entry.file_path || '').toLowerCase().includes(lower)) {
+        goldRepos.add(repoName);
+      }
+    }
+  }
+
+  const gaps = [];
+  for (const [repoName, info] of Object.entries(rawManifest.repos)) {
+    if (info.chunkCount < MIN_CHUNKS_FOR_ENTRY) continue;
+    if (SINGLE_REPO && repoName !== SINGLE_REPO) continue;
+
+    const hasGold = goldRepos.has(repoName);
+    if (FORCE || !hasGold) {
+      gaps.push({
+        package_name: repoName,
+        chunk_count: info.chunkCount,
+        status: hasGold ? 'STALE' : 'GAP',
+        lastUpdated: info.lastUpdated,
+      });
+    }
+  }
+
+  gaps.sort((a, b) => (a.status === 'GAP' ? 0 : 1) - (b.status === 'GAP' ? 0 : 1));
+  return gaps.slice(0, MAX_NEW_ENTRIES_PER_RUN);
+}
+
+// ─── LLM Synthesis ─────────────────────────────────────────────────────
+
 async function synthesizeGoldEntry(repoName, chunks, existingTitles) {
-  if (!OPENROUTER_KEY) {
-    log('WARNING: OPENROUTER_API_KEY not set, cannot synthesize entries');
-    return null;
-  }
+  if (!OPENROUTER_KEY) { log('  No OPENROUTER_API_KEY — skipping synthesis'); return null; }
 
-  // Sample representative chunks (first, middle, last — plus any with README/overview)
-  const sorted = chunks.sort((a, b) => (b.content?.length || 0) - (a.content?.length || 0));
-  const readmeChunks = sorted.filter(c => /readme|overview|getting.started/i.test(c.file_path || ''));
-  const sample = [
-    ...readmeChunks.slice(0, 3),
-    ...sorted.filter(c => !readmeChunks.includes(c)).slice(0, 5)
-  ].slice(0, 8);
+  // Sample representative chunks (prefer README, longest first)
+  const sorted = [...chunks].sort((a, b) => b.content.length - a.content.length);
+  const readmeChunks = sorted.filter(c => /readme|overview|getting.started/i.test(c.path || ''));
+  const sample = [...readmeChunks.slice(0, 3), ...sorted.slice(0, 5)].slice(0, 8);
+  const context = sample.map(c => c.content.slice(0, 1500)).join('\n\n---\n\n');
 
-  const context = sample.map((c, i) =>
-    `--- Chunk ${i + 1} (${c.category || 'general'}) ---\n${(c.content || '').substring(0, 1500)}`
-  ).join('\n\n');
-
-  const existingList = existingTitles.length > 0
-    ? `\nExisting gold entries about ${repoName}:\n${existingTitles.map(t => `- ${t}`).join('\n')}\nDo NOT duplicate these. Write about NEW aspects not already covered.`
-    : '';
-
-  const prompt = `You are creating a gold-standard knowledge base entry for the RuVector ecosystem.
-
-Repository: ${repoName}
-Raw documentation chunks from this repo:
-
-${context}
-${existingList}
-
-Analyze the chunks and identify DISTINCT sub-components, crates, or major features.
-For EACH distinct component, create a separate teaching entry. For small repos, 1 entry is fine.
-For large monorepos with many crates/modules, create up to 5 entries covering the most important ones.
-
-Each entry MUST:
-1. Have a clear, specific title (not just the repo name — name the specific component)
-2. Explain what it does, why it matters, how it fits in the RuVector/Ruflo ecosystem
-3. Answer: "What is this? Why should I care? How do I use it? What can it do that alternatives can't?"
-4. Use plain English analogies — the reader is learning agentic AI, not a Rust expert
-5. Include specific numbers, commands, or code examples from the chunks
-6. Be 500-2000 words each
-7. Mention honest limitations or tradeoffs
-
-Respond ONLY with valid JSON — an ARRAY of entries:
-[
-  {
-    "title": "...",
-    "content": "...",
-    "category": "one of: agents, vector-db, architecture, security, neural, swarms, deployment, performance, teaching, general, wasm-local-llm, memory, algorithms",
-    "quality_score": 85-100
-  }
-]
-If only one entry is appropriate, still return an array with one element.`;
+  const prompt = 'You are a technical writer creating expert teaching entries for the RuvNet knowledge base.\n\n' +
+    'Based on these code/documentation chunks from the "' + repoName + '" repository, write 1-5 teaching-quality knowledge base entries.\n\n' +
+    '--- SOURCE CHUNKS ---\n' + context + '\n--- END CHUNKS ---\n\n' +
+    'EXISTING TITLES (do NOT duplicate): ' + existingTitles.join(', ') + '\n\n' +
+    'Return a JSON array. Each entry: { "title": "...", "content": "... (500-2000 words, plain English, analogies)", "category": "one of: agents, vector-db, architecture, security, neural, swarms, deployment, performance, teaching, general, wasm-local-llm, memory, algorithms", "quality_score": 85-100 }';
 
   try {
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${OPENROUTER_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: LLM_MODEL,
-        messages: [{ role: 'user', content: prompt }],
-        temperature: 0.3,
-        max_tokens: 4096,
-      }),
+      headers: { 'Authorization': 'Bearer ' + OPENROUTER_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: LLM_MODEL, messages: [{ role: 'user', content: prompt }], temperature: 0.3, max_tokens: 4096 }),
       signal: AbortSignal.timeout(60000),
     });
-
     const data = await res.json();
     const text = data.choices?.[0]?.message?.content || '';
 
-    // Extract JSON from response (handle markdown code blocks, arrays or objects)
-    const arrayMatch = text.match(/\[[\s\S]*\]/);
-    const objMatch = text.match(/\{[\s\S]*\}/);
-    let entries;
-    if (arrayMatch) {
-      entries = JSON.parse(arrayMatch[0]);
-    } else if (objMatch) {
-      entries = [JSON.parse(objMatch[0])];
-    } else {
-      log(`  WARNING: LLM response for ${repoName} was not valid JSON`);
-      return null;
-    }
-
-    if (!Array.isArray(entries)) entries = [entries];
-
-    // Filter valid entries
-    const valid = entries.filter(e => e.title && e.content && e.content.length >= 200);
-    if (valid.length === 0) {
-      log(`  WARNING: All entries for ${repoName} failed quality gate`);
-      return null;
-    }
-
-    log(`  Synthesized ${valid.length} entries for ${repoName}`);
-    return valid;
-  } catch (err) {
-    log(`  ERROR synthesizing ${repoName}: ${err.message}`);
+    // Parse JSON from response
+    const jsonMatch = text.match(/\[[\s\S]*\]/);
+    if (!jsonMatch) return null;
+    const entries = JSON.parse(jsonMatch[0]);
+    return entries.filter(e => e.title && e.content && e.content.length >= 200);
+  } catch (e) {
+    log('  LLM error: ' + e.message);
     return null;
   }
 }
 
-// --- Main Pipeline ---
+// ─── Main ──────────────────────────────────────────────────────────────
+
 async function main() {
-  const startTime = Date.now();
-  log(`=== KB Auto-Curation Pipeline ${DRY_RUN ? '(DRY RUN)' : FORCE ? '(FORCE)' : '(Auto)'} ===`);
+  log('==================================================');
+  log('KB Auto-Curate v3.0.0 (PG-FREE)');
+  log('==================================================\n');
 
-  const pool = new pg.Pool(DB_CONFIG);
+  const rawManifest = loadRawManifest();
+  const master = loadMaster();
+  const repoCount = Object.keys(rawManifest.repos).length;
 
-  // 1. Find repos with stale or missing gold entries
-  log('Step 1: Detecting stale and missing gold entries...');
+  log('Raw repos: ' + repoCount + ', Gold entries: ' + master.entryCount);
 
-  const { rows: gaps } = await pool.query(`
-    WITH arch_repos AS (
-      SELECT package_name, MAX(updated_at) as arch_date, COUNT(*) as chunk_count
-      FROM ask_ruvnet.architecture_docs
-      WHERE package_name IS NOT NULL AND is_duplicate = false AND embedding IS NOT NULL
-      GROUP BY package_name
-      HAVING COUNT(*) >= ${MIN_CHUNKS_FOR_ENTRY}
-    ),
-    gold_dates AS (
-      SELECT package_name, MAX(updated_at) as gold_date
-      FROM (
-        SELECT unnest(ARRAY[
-          CASE WHEN title ILIKE '%' || a.package_name || '%' THEN a.package_name END
-        ]) as package_name, updated_at
-        FROM ask_ruvnet.kb_complete, arch_repos a
-        WHERE title ILIKE '%' || a.package_name || '%'
-           OR content ILIKE '%' || a.package_name || '%'
-      ) sub
-      WHERE package_name IS NOT NULL
-      GROUP BY package_name
-    )
-    SELECT
-      a.package_name,
-      a.chunk_count,
-      a.arch_date,
-      g.gold_date,
-      CASE
-        WHEN g.gold_date IS NULL THEN 'GAP'
-        WHEN a.arch_date > g.gold_date THEN 'STALE'
-        ELSE 'FRESH'
-      END as status
-    FROM arch_repos a
-    LEFT JOIN gold_dates g ON g.package_name = a.package_name
-    WHERE ${FORCE ? 'true' : SINGLE_REPO ? `a.package_name = '${SINGLE_REPO}'` : "(g.gold_date IS NULL OR a.arch_date > g.gold_date)"}
-    ORDER BY
-      CASE WHEN g.gold_date IS NULL THEN 0 ELSE 1 END,
-      a.arch_date DESC
-    LIMIT ${MAX_NEW_ENTRIES_PER_RUN}
-  `);
+  // Detect gaps
+  const gaps = detectGaps(rawManifest, master);
+  log('Gaps found: ' + gaps.length + ' (' + gaps.filter(g => g.status === 'GAP').length + ' new, ' + gaps.filter(g => g.status === 'STALE').length + ' stale)');
 
-  if (gaps.length === 0) {
-    log('All gold entries are up to date. Nothing to curate.');
-    await pool.end();
-    return;
+  if (gaps.length === 0) { log('No gaps. KB is up to date.'); return; }
+
+  for (const gap of gaps) {
+    log('  ' + gap.status + ': ' + gap.package_name + ' (' + gap.chunk_count + ' chunks)');
   }
 
-  log(`Found ${gaps.length} repos needing curation:`);
-  for (const g of gaps) {
-    log(`  ${g.status}: ${g.package_name} (${g.chunk_count} chunks, repo updated ${g.arch_date?.toISOString()?.split('T')[0] || '?'}, gold ${g.gold_date?.toISOString()?.split('T')[0] || 'NONE'})`);
-  }
+  if (DRY_RUN) { log('\nDry run — no changes made.'); return; }
 
-  if (DRY_RUN) {
-    log('DRY RUN — no changes made.');
-    await pool.end();
-    return;
-  }
-
-  // 2. Initialize ONNX for embeddings
-  log('Step 2: Loading ONNX model...');
+  // Initialize ONNX
+  log('\nLoading ONNX...');
   await initOnnx();
 
-  // 3. Process each repo
   let created = 0, updated = 0, errors = 0;
 
   for (const gap of gaps) {
-    log(`\nProcessing: ${gap.package_name} (${gap.status})...`);
+    log('\nProcessing: ' + gap.package_name);
 
-    // Get raw chunks for this repo
-    const { rows: chunks } = await pool.query(`
-      SELECT title, content, file_path, category
-      FROM ask_ruvnet.architecture_docs
-      WHERE package_name = $1 AND is_duplicate = false AND embedding IS NOT NULL
-      ORDER BY quality_score DESC, updated_at DESC
-      LIMIT 100
-    `, [gap.package_name]);
+    // Load raw chunks for this repo
+    const chunks = loadRepoChunks(gap.package_name);
+    if (chunks.length === 0) { log('  No chunks found — skipping'); continue; }
 
-    if (chunks.length < MIN_CHUNKS_FOR_ENTRY) {
-      log(`  Skipping — only ${chunks.length} chunks (need ${MIN_CHUNKS_FOR_ENTRY})`);
-      continue;
-    }
+    // Get existing titles to avoid duplication
+    const existingTitles = master.entries
+      .filter(e => (e.title || '').toLowerCase().includes(gap.package_name.toLowerCase()))
+      .map(e => e.title);
 
-    // Get existing gold titles for this repo to avoid duplication
-    const { rows: existingGold } = await pool.query(`
-      SELECT title FROM ask_ruvnet.kb_complete
-      WHERE title ILIKE $1 OR content ILIKE $1
-    `, [`%${gap.package_name}%`]);
-    const existingTitles = existingGold.map(r => r.title);
+    // Synthesize with LLM
+    const newEntries = await synthesizeGoldEntry(gap.package_name, chunks, existingTitles);
+    if (!newEntries || newEntries.length === 0) { log('  No entries synthesized'); errors++; continue; }
 
-    // Synthesize gold entries (may return multiple for monorepos)
-    const result = await synthesizeGoldEntry(gap.package_name, chunks, existingTitles);
-    if (!result) { errors++; continue; }
+    // Embed and upsert to kb-master.json
+    for (const entry of newEntries) {
+      if (entry.quality_score < QUALITY_THRESHOLD) { log('  Skipping "' + entry.title + '" — quality ' + entry.quality_score); continue; }
 
-    // Handle both single entry and array of entries
-    const entries = Array.isArray(result) ? result : [result];
-
-    for (const entry of entries) {
-      if (entry.quality_score < QUALITY_THRESHOLD) {
-        log(`  Skipping "${entry.title}" — quality score ${entry.quality_score} below threshold ${QUALITY_THRESHOLD}`);
-        continue;
-      }
-
-      log(`  Synthesized: "${entry.title}" (${entry.content.length} chars, quality: ${entry.quality_score})`);
-
-      // Embed
       const text = (entry.title + '\n' + entry.content).substring(0, 2000);
       const embResult = await onnxSvc.embed(text);
-      const vecStr = '[' + Array.from(embResult.embedding).join(',') + ']';
+      const embedding = Array.from(embResult.embedding);
+      const filePath = 'auto-curated/' + gap.package_name + '/' + slug(entry.title);
 
-      // Upsert into kb_complete (use title-based slug for file_path uniqueness)
-      const slug = entry.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60);
-      try {
-        await pool.query(`
-          INSERT INTO ask_ruvnet.kb_complete
-          (title, content, category, quality_score, embedding, file_path)
-          VALUES ($1, $2, $3, $4, $5::ruvector(384), $6)
-          ON CONFLICT (file_path) DO UPDATE SET
-            content = EXCLUDED.content,
-            quality_score = EXCLUDED.quality_score,
-            embedding = EXCLUDED.embedding,
-            updated_at = now()
-        `, [
-          entry.title,
-          entry.content,
-          entry.category,
-          entry.quality_score,
-          vecStr,
-          `auto-curated/${gap.package_name}/${slug}`
-        ]);
+      const existingIdx = master.entries.findIndex(e => e.file_path === filePath);
+      const record = {
+        id: 'curated_' + slug(entry.title),
+        title: entry.title,
+        content: entry.content,
+        category: entry.category,
+        quality_score: entry.quality_score,
+        file_path: filePath,
+        embedding: embedding,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      };
+
+      if (existingIdx >= 0) {
+        record.created_at = master.entries[existingIdx].created_at;
+        master.entries[existingIdx] = record;
+        updated++;
+        log('  Updated: "' + entry.title + '"');
+      } else {
+        master.entries.push(record);
         created++;
-        log(`  CREATED gold entry: "${entry.title}"`);
-      } catch (err) {
-        log(`  ERROR inserting: ${err.message}`);
-        errors++;
+        log('  Created: "' + entry.title + '"');
       }
     }
   }
 
-  // 4. Summary
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-  log(`\n=== Curation Complete ===`);
-  log(`  New entries created: ${created}`);
-  log(`  Entries updated: ${updated}`);
-  log(`  Errors: ${errors}`);
-  log(`  Time: ${elapsed}s`);
+  // Save kb-master.json
+  saveMaster(master);
+  log('\nSaved kb-master.json: ' + master.entryCount + ' entries');
 
-  // 5. Trigger rebuild if requested and entries were added
+  // Summary
+  log('\n==================================================');
+  log('Curation Complete — ' + created + ' created, ' + updated + ' updated, ' + errors + ' errors');
+  log('Time: ' + ((Date.now() - startTime) / 1000).toFixed(1) + 's');
+  log('==================================================');
+
+  // Optional rebuild
   if (REBUILD && (created > 0 || updated > 0)) {
     log('\nTriggering RVF rebuild...');
     try {
-      execFileSync('/usr/local/bin/node', [path.join(ROOT, 'scripts/build-lean-rvf.mjs')], {
-        cwd: ROOT, stdio: 'inherit', timeout: 300000
-      });
-      execFileSync('/usr/local/bin/node', [path.join(ROOT, 'scripts/build-quantized-rvf.mjs')], {
-        cwd: ROOT, stdio: 'inherit', timeout: 120000
-      });
-      // Also export to MCP kb-data format
-      execFileSync('/usr/local/bin/node', [path.join(ROOT, 'scripts/export-mcp-kb.mjs'), '--output', 'kb-data/'], {
-        cwd: ROOT, stdio: 'inherit', timeout: 120000
-      });
+      execFileSync(NODE_BIN, [path.join(ROOT, 'scripts/build-lean-rvf.mjs')], { cwd: ROOT, stdio: 'inherit', timeout: 300000 });
+      execFileSync(NODE_BIN, [path.join(ROOT, 'scripts/build-quantized-rvf.mjs')], { cwd: ROOT, stdio: 'inherit', timeout: 120000 });
+      execFileSync(NODE_BIN, [path.join(ROOT, 'scripts/export-mcp-kb.mjs'), '--output', 'kb-data/'], { cwd: ROOT, stdio: 'inherit', timeout: 120000 });
       log('RVF rebuild + MCP export complete.');
     } catch (err) {
-      log(`WARNING: RVF rebuild failed: ${err.message}`);
+      log('WARNING: RVF rebuild failed: ' + err.message);
     }
   } else if (created > 0 || updated > 0) {
-    log('\nNew entries added. Run the following to rebuild:');
-    log('  node scripts/build-lean-rvf.mjs && node scripts/build-quantized-rvf.mjs');
+    log('\nRun with --rebuild to automatically rebuild RVF after curation.');
   }
-
-  await pool.end();
 }
 
-main().catch(e => {
-  console.error('Fatal:', e.message);
-  process.exit(1);
-});
+main().catch(err => { log('FATAL: ' + err.message); process.exit(1); });

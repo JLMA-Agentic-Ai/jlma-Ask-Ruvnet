@@ -1,269 +1,110 @@
 #!/usr/bin/env node
 /**
- * kb-export-pipeline.mjs -- Automated KB export pipeline
+ * kb-export-pipeline.mjs — KB rebuild pipeline (PG-FREE, v3.0.0)
  *
- * Detects when PostgreSQL KB has new entries that are not yet in the
- * binary RuvectorStore files, then runs a multi-stage rebuild:
- *   Stage 1: PG -> .ruvector/knowledge-base/ (binary vectors + metadata)
- *   Stage 2: binary -> src/ui/public/assets/ (scalar-quantized browser assets)
- *   Stage 3: binary -> RVF (convert-to-rvf.mjs)
- *   Stage 4: binary -> MCP KB (export-mcp-kb.mjs)
+ * Detects when kb-master.json has changed and triggers a multi-stage rebuild:
+ *   Stage 1: kb-master.json -> .ruvector/ + knowledge.rvf + sidecar
+ *   Stage 2: .ruvector/ -> browser SQ8 assets
+ *   Stage 3: .ruvector/ -> MCP KB format (kb-data/)
  *
- * CLI flags:
- *   --force       Skip count comparison, always re-export
- *   --check       Only check staleness (exit 0=fresh, 1=stale)
- *   --stage1-only Only run PG -> binary export
- *   --stage2-only Only run binary -> browser assets
- *   --verbose     Show child script output (default: pipe to /dev/null)
+ * NO PostgreSQL dependency. Reads kb-master.json as sole source of truth.
  *
- * Scheduled via LaunchAgent ai.openclaw.kb-export at 5:00 AM daily.
+ * LaunchAgent: ai.openclaw.kb-export (6:00 AM daily)
+ * Usage: node scripts/kb-export-pipeline.mjs [--force] [--check]
  *
- * IMPORTANT: Stage 1 MUST use build-lean-rvf.mjs which queries ONLY
- * ask_ruvnet.kb_complete (gold curated, ~400 entries). NEVER use
- * export-to-ruvectorstore.mjs which pulls from architecture_docs (255K+
- * entries) and produces 270MB+ build artifacts that crash the browser.
- *
- * Updated: 2026-03-18 08:00:00 EST | Version 2.0.0
- * Created: 2026-03-06
+ * Updated: 2026-03-30 | Version 3.0.0 (ADR-001: PG eliminated)
  */
 
 import { execFileSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import pg from 'pg';
 import { fileURLToPath } from 'url';
 
-// ---------------------------------------------------------------------------
-// Paths
-// ---------------------------------------------------------------------------
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PROJECT_ROOT = path.resolve(__dirname, '..');
-const MANIFEST_PATH = path.join(PROJECT_ROOT, '.ruvector', 'knowledge-base', 'manifest.json');
-const LOG_DIR = path.join(PROJECT_ROOT, 'logs');
+const ROOT = path.resolve(__dirname, '..');
+const MASTER_PATH = path.join(ROOT, 'kb-master.json');
+const MANIFEST_PATH = path.join(ROOT, '.ruvector', 'knowledge-base', 'manifest.json');
+const LOG_DIR = path.join(ROOT, 'logs');
 const LOG_PATH = path.join(LOG_DIR, 'kb-export-pipeline.jsonl');
 const NODE_BIN = '/usr/local/bin/node';
 
-// ---------------------------------------------------------------------------
-// CLI flags
-// ---------------------------------------------------------------------------
+const FORCE = process.argv.includes('--force');
+const CHECK = process.argv.includes('--check');
 
-const FLAGS = {
-  force:      process.argv.includes('--force'),
-  check:      process.argv.includes('--check'),
-  stage1Only: process.argv.includes('--stage1-only'),
-  stage2Only: process.argv.includes('--stage2-only'),
-  verbose:    process.argv.includes('--verbose'),
-};
+function log(msg) { console.log('[' + new Date().toISOString() + '] ' + msg); }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-const DB_CONFIG = {
-  host: 'localhost',
-  port: 5435,
-  user: 'postgres',
-  database: 'postgres',
-  max: 2,
-  idleTimeoutMillis: 10000,
-  connectionTimeoutMillis: 5000,
-};
-
-function log(msg) {
-  const ts = new Date().toISOString();
-  console.log(`[${ts}] ${msg}`);
-}
-
-function appendLogEntry(entry) {
-  if (!fs.existsSync(LOG_DIR)) {
-    fs.mkdirSync(LOG_DIR, { recursive: true });
-  }
+function appendLog(entry) {
+  fs.mkdirSync(LOG_DIR, { recursive: true });
   fs.appendFileSync(LOG_PATH, JSON.stringify(entry) + '\n');
 }
 
 function readManifestCount() {
-  if (!fs.existsSync(MANIFEST_PATH)) {
-    return 0;
-  }
-  try {
-    const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
-    return manifest.vectorCount ?? 0;
-  } catch {
-    return 0;
-  }
+  if (!fs.existsSync(MANIFEST_PATH)) return 0;
+  try { return JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8')).vectorCount || 0; } catch { return 0; }
 }
 
-async function queryPgCount() {
-  // IMPORTANT: Only count kb_complete (gold curated entries).
-  // architecture_docs (255K+ entries) is reference-only and must NEVER
-  // be included in the production build pipeline.
-  const pool = new pg.Pool(DB_CONFIG);
-  try {
-    const result = await pool.query(`
-      SELECT count(*) AS total
-      FROM ask_ruvnet.kb_complete
-      WHERE embedding IS NOT NULL
-    `);
-    return parseInt(result.rows[0].total, 10);
-  } finally {
-    await pool.end();
-  }
+function readMasterCount() {
+  if (!fs.existsSync(MASTER_PATH)) { log('ERROR: kb-master.json not found'); process.exit(2); }
+  try { return JSON.parse(fs.readFileSync(MASTER_PATH, 'utf8')).entryCount || 0; } catch { return 0; }
 }
 
 function runStage(label, scriptName, timeoutMs, extraArgs = []) {
-  const scriptPath = path.join(PROJECT_ROOT, 'scripts', scriptName);
-  log(`Stage: ${label} -- running ${scriptName}${extraArgs.length ? ' ' + extraArgs.join(' ') : ''}`);
-  const stdio = FLAGS.verbose ? 'inherit' : ['ignore', 'ignore', 'inherit'];
-  execFileSync(NODE_BIN, [scriptPath, ...extraArgs], {
-    cwd: PROJECT_ROOT,
-    stdio,
-    timeout: timeoutMs,
-  });
-  log(`Stage: ${label} -- complete`);
+  log('Stage: ' + label + ' -- running ' + scriptName);
+  execFileSync(NODE_BIN, [path.join(ROOT, 'scripts', scriptName), ...extraArgs], { cwd: ROOT, stdio: 'inherit', timeout: timeoutMs });
+  log('Stage: ' + label + ' -- complete');
 }
-
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
 
 async function main() {
   const startTime = Date.now();
-  log('=== KB Export Pipeline ===');
+  log('=== KB Export Pipeline v3.0.0 (PG-FREE) ===');
 
-  // -----------------------------------------------------------------------
-  // 1. Detect staleness
-  // -----------------------------------------------------------------------
-
+  const masterCount = readMasterCount();
   const manifestCount = readManifestCount();
-  let pgCount;
+  log('kb-master.json entries: ' + masterCount);
+  log('Manifest vectorCount:   ' + manifestCount);
 
-  if (!FLAGS.stage2Only) {
-    try {
-      pgCount = await queryPgCount();
-    } catch (err) {
-      log(`ERROR: Could not query PostgreSQL -- ${err.message}`);
-      process.exit(2);
-    }
-    log(`PG entries with embeddings: ${pgCount}`);
-  } else {
-    pgCount = manifestCount; // stage2-only skips PG check
+  const isStale = masterCount !== manifestCount;
+
+  if (CHECK) {
+    log(isStale ? 'STALE: master=' + masterCount + ' vs manifest=' + manifestCount : 'UP TO DATE');
+    process.exit(isStale ? 1 : 0);
   }
 
-  log(`Manifest vectorCount:       ${manifestCount}`);
-
-  const isStale = pgCount !== manifestCount;
-
-  if (FLAGS.check) {
-    if (isStale) {
-      log(`STALE: PG=${pgCount} vs Manifest=${manifestCount} (delta: ${pgCount - manifestCount})`);
-      process.exit(1);
-    } else {
-      log('UP TO DATE');
-      process.exit(0);
-    }
-  }
-
-  if (!FLAGS.force && !isStale && !FLAGS.stage1Only && !FLAGS.stage2Only) {
+  if (!FORCE && !isStale) {
     log('Counts match. Use --force to re-export anyway.');
-    appendLogEntry({
-      timestamp: new Date().toISOString(),
-      action: 'skip',
-      pgCount,
-      manifestCount,
-      durationMs: Date.now() - startTime,
-    });
-    process.exit(0);
+    appendLog({ timestamp: new Date().toISOString(), action: 'skip', masterCount, manifestCount, durationMs: Date.now() - startTime });
+    return;
   }
 
-  // -----------------------------------------------------------------------
-  // 2. Stage 1: PG -> binary
-  // -----------------------------------------------------------------------
+  // Stage 1: kb-master.json -> binary + RVF
+  log('Rebuilding from kb-master.json (' + masterCount + ' entries)...');
+  runStage('1 (kb-master.json -> RVF)', 'build-lean-rvf.mjs', 300000);
 
-  if (!FLAGS.stage2Only) {
-    // FIXED (v2.0.0): Use build-lean-rvf.mjs which queries ONLY kb_complete.
-    // Previous version used export-to-ruvectorstore.mjs which pulled from
-    // architecture_docs (255K entries) and produced 270MB+ artifacts.
-    log(`Rebuilding from kb_complete (${pgCount} gold entries)...`);
-    runStage('1 (PG -> binary)', 'build-lean-rvf.mjs', 300_000);
+  // Stage 2: binary -> browser assets
+  runStage('2 (binary -> browser assets)', 'build-quantized-rvf.mjs', 120000);
+
+  // Stage 3: binary -> MCP KB
+  try {
+    runStage('3 (binary -> MCP KB)', 'export-mcp-kb.mjs', 120000, ['--output', 'kb-data/']);
+  } catch (err) {
+    log('WARNING: MCP export failed: ' + err.message);
   }
 
-  // -----------------------------------------------------------------------
-  // 3. Stage 2: binary -> browser assets
-  // -----------------------------------------------------------------------
+  // Verify
+  const newCount = readManifestCount();
+  log('New manifest vectorCount: ' + newCount);
 
-  if (!FLAGS.stage1Only) {
-    runStage('2 (binary -> browser assets)', 'build-quantized-rvf.mjs', 120_000);
-  }
-
-  // -----------------------------------------------------------------------
-  // 4. Verify (hard check — counts MUST match)
-  // -----------------------------------------------------------------------
-
-  const newManifestCount = readManifestCount();
-  log(`New manifest vectorCount: ${newManifestCount}`);
-
-  // Sanity check: manifest must match kb_complete count, NOT architecture_docs
-  if (!FLAGS.stage2Only && newManifestCount !== pgCount) {
-    log(`WARNING: Manifest (${newManifestCount}) != kb_complete (${pgCount}). Investigating...`);
-  }
-  // SAFEGUARD: If manifest shows >1000 entries, something went terribly wrong
-  if (newManifestCount > 1000) {
-    log(`CRITICAL: Manifest shows ${newManifestCount} vectors — this is NOT the gold KB!`);
-    log(`Expected ~400 entries from kb_complete. Aborting pipeline.`);
+  if (newCount > 1000) {
+    log('CRITICAL: Manifest shows ' + newCount + ' vectors -- NOT the gold KB! Aborting.');
     process.exit(3);
   }
 
-  if (newManifestCount !== manifestCount) {
-    log(`SUCCESS: Manifest updated ${manifestCount} -> ${newManifestCount} (delta: ${newManifestCount - manifestCount})`);
-  } else if (FLAGS.force) {
-    log('Force re-export complete (counts unchanged)');
+  if (newCount !== manifestCount) {
+    log('SUCCESS: Updated ' + manifestCount + ' -> ' + newCount);
   }
 
-  // Stage 3: Rebuild knowledge.rvf (production uses this, not .ruvector/ directly)
-  log('Stage: 3 (binary -> RVF) -- running convert-to-rvf.mjs');
-  try {
-    runStage('3 (binary -> RVF)', 'convert-to-rvf.mjs', 300_000);
-  } catch (err) {
-    log(`WARNING: RVF conversion failed: ${err.message}`);
-  }
-
-  // Stage 4: Export to MCP KB (non-fatal — warn but don't abort pipeline)
-  if (!FLAGS.stage1Only && !FLAGS.stage2Only) {
-    try {
-      runStage('4 (binary -> MCP KB)', 'export-mcp-kb.mjs', 120_000);
-    } catch (err) {
-      log(`WARNING: MCP KB export failed: ${err.message}`);
-    }
-  }
-
-  // -----------------------------------------------------------------------
-  // 5. Log
-  // -----------------------------------------------------------------------
-
-  const durationMs = Date.now() - startTime;
-  const entry = {
-    timestamp: new Date().toISOString(),
-    action: 'export',
-    flags: Object.keys(FLAGS).filter((k) => FLAGS[k]),
-    pgCount: pgCount ?? null,
-    oldManifestCount: manifestCount,
-    newManifestCount,
-    delta: newManifestCount - manifestCount,
-    durationMs,
-  };
-
-  appendLogEntry(entry);
-  log(`Pipeline finished in ${(durationMs / 1000).toFixed(1)}s`);
-  log(`Log appended to ${LOG_PATH}`);
+  appendLog({ timestamp: new Date().toISOString(), action: 'export', masterCount, oldManifest: manifestCount, newManifest: newCount, durationMs: Date.now() - startTime });
+  log('Pipeline finished in ' + ((Date.now() - startTime) / 1000).toFixed(1) + 's');
 }
 
-main().catch((err) => {
-  log(`FATAL: ${err.message}`);
-  appendLogEntry({
-    timestamp: new Date().toISOString(),
-    action: 'error',
-    error: err.message,
-  });
-  process.exit(2);
-});
+main().catch(err => { log('FATAL: ' + err.message); process.exit(1); });
