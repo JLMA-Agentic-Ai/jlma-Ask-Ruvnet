@@ -11,11 +11,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
-import pg from 'pg';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const CATALOG_DIR = path.join(ROOT, '..', 'ruvector-catalog', 'ruvector-catalog');
 const DOCS_DIR = path.join(CATALOG_DIR, 'docs');
+const MASTER_PATH = path.join(ROOT, 'kb-master.json');
 const DRY_RUN = process.argv.includes('--dry-run');
 const SINGLE_DOC = process.argv.includes('--doc') ? process.argv[process.argv.indexOf('--doc') + 1] : null;
 
@@ -44,7 +44,7 @@ const DOC_CATEGORIES = {
 };
 
 let onnxSvc = null;
-let pool = null;
+let master = null; // kb-master.json data
 let stats = { created: 0, updated: 0, skipped: 0, errors: 0 };
 
 // ─── ONNX Embedding Service ────────────────────────────────────────────────
@@ -71,20 +71,23 @@ async function initOnnx() {
 async function embed(text) {
   const truncated = text.substring(0, 2000);
   const result = await onnxSvc.embed(truncated);
-  return '[' + Array.from(result.embedding).join(',') + ']';
+  return Array.from(result.embedding);
 }
 
-// ─── PostgreSQL ────────────────────────────────────────────────────────────
+// ─── kb-master.json (replaces PostgreSQL) ─────────────────────────────────
 
-async function initDb() {
-  pool = new pg.Pool({
-    host: 'localhost',
-    port: 5435,
-    user: 'postgres',
-    database: 'postgres',
-  });
-  const res = await pool.query('SELECT COUNT(*) FROM ask_ruvnet.kb_complete');
-  console.log(`✅ PostgreSQL connected — ${res.rows[0].count} existing entries`);
+function initMaster() {
+  if (!fs.existsSync(MASTER_PATH)) {
+    console.error('❌ kb-master.json not found. Run: node scripts/migrate-pg-to-master.mjs');
+    process.exit(1);
+  }
+  master = JSON.parse(fs.readFileSync(MASTER_PATH, 'utf8'));
+  console.log(`✅ kb-master.json loaded — ${master.entryCount} existing entries`);
+}
+
+function saveMaster() {
+  master.entryCount = master.entries.length;
+  fs.writeFileSync(MASTER_PATH, JSON.stringify(master, null, 2));
 }
 
 async function upsertEntry(entry) {
@@ -96,31 +99,30 @@ async function upsertEntry(entry) {
     return;
   }
 
-  const vecStr = await embed(entry.title + '\n' + entry.content);
-  try {
-    const res = await pool.query(`
-      INSERT INTO ask_ruvnet.kb_complete
-      (title, content, category, quality_score, embedding, file_path)
-      VALUES ($1, $2, $3, $4, $5::ruvector(384), $6)
-      ON CONFLICT (file_path) DO UPDATE SET
-        title = EXCLUDED.title,
-        content = EXCLUDED.content,
-        quality_score = EXCLUDED.quality_score,
-        embedding = EXCLUDED.embedding,
-        updated_at = now()
-      RETURNING (xmax = 0) AS is_insert
-    `, [entry.title, entry.content, entry.category, entry.quality_score || QUALITY_SCORE, vecStr, filePath]);
+  const embedding = await embed(entry.title + '\n' + entry.content);
+  const existing = master.entries.findIndex(e => e.file_path === filePath);
 
-    if (res.rows[0]?.is_insert) {
-      stats.created++;
-      console.log(`  ✅ Created: "${entry.title}"`);
-    } else {
-      stats.updated++;
-      console.log(`  🔄 Updated: "${entry.title}"`);
-    }
-  } catch (err) {
-    stats.errors++;
-    console.error(`  ❌ Error upserting "${entry.title}":`, err.message);
+  const record = {
+    id: `catalog_${slug(entry.title)}`,
+    title: entry.title,
+    content: entry.content,
+    category: entry.category,
+    quality_score: entry.quality_score || QUALITY_SCORE,
+    file_path: filePath,
+    embedding: embedding,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+
+  if (existing >= 0) {
+    record.created_at = master.entries[existing].created_at;
+    master.entries[existing] = record;
+    stats.updated++;
+    console.log(`  🔄 Updated: "${entry.title}"`);
+  } else {
+    master.entries.push(record);
+    stats.created++;
+    console.log(`  ✅ Created: "${entry.title}"`);
   }
 }
 
@@ -1902,7 +1904,7 @@ async function main() {
   // Initialize services
   if (!DRY_RUN) {
     await initOnnx();
-    await initDb();
+    initMaster();
   }
 
   // Collect all entries
@@ -1959,9 +1961,8 @@ async function main() {
   console.log('═══════════════════════════════════════');
 
   if (!DRY_RUN) {
-    const count = await pool.query('SELECT COUNT(*) FROM ask_ruvnet.kb_complete');
-    console.log(`\n📚 KB now has ${count.rows[0].count} total entries`);
-    await pool.end();
+    saveMaster();
+    console.log(`\n📚 KB master now has ${master.entryCount} total entries`);
   }
 }
 

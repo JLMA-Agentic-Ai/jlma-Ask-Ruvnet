@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
   "schema": "ask_ruvnet",
-  "exportedAt": "2026-03-29T12:34:53.052Z",
-  "totalEntries": 500,
+  "exportedAt": "2026-03-30T16:18:45.591Z",
+  "totalEntries": 502,
   "embeddingDim": 384,
   "quantization": "binary",
   "categories": [
@@ -16,7 +16,7 @@
     },
     {
       "name": "agents",
-      "count": 47
+      "count": 48
     },
     {
       "name": "architecture",
@@ -32,7 +32,7 @@
     },
     {
       "name": "general",
-      "count": 34
+      "count": 35
     },
     {
       "name": "algorithms",
