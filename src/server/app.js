@@ -1151,6 +1151,38 @@ async function runRAGPipeline(message, mode, conversationHistory) {
             console.log(`📅 Recency boost applied to ${boostedResults.filter(r => (r.source || '').includes('coaching') || (r.source || '').includes('video')).length} coaching/video results`);
 
             // ================================================================
+            // STAGE 4d: Implementation intent detection + Golden Path boost
+            // ADR-002: When users ask HOW to do something, prescriptive
+            // implementation-path entries dominate over encyclopedic ones.
+            // ================================================================
+            const IMPLEMENTATION_INTENT = [
+                /^how\s+(do|can|should|to|would)/i,
+                /^(get|getting)\s+started/i,
+                /^(build|create|implement|set\s*up|install|configure|deploy|add|use|integrate)/i,
+                /^I\s+(want|need)\s+to/i,
+                /^(quick|fast|best|right)\s+(start|way|path|approach)/i,
+                /^what('s| is)\s+the\s+(best|right|recommended)/i,
+                /^(step|steps|guide|tutorial|walkthrough|example)/i,
+            ];
+            const hasImplementationIntent = IMPLEMENTATION_INTENT.some(p => p.test(message.trim()));
+            if (hasImplementationIntent) {
+                let goldenPathCount = 0;
+                boostedResults.forEach(r => {
+                    const category = r.metadata?.category || '';
+                    if (category === 'implementation-path') {
+                        const base = r.rerankedScore || r.score || 0;
+                        r.rerankedScore = base * 5.0;
+                        r.isGoldenPath = true;
+                        goldenPathCount++;
+                    }
+                });
+                if (goldenPathCount > 0) {
+                    boostedResults.sort((a, b) => (b.rerankedScore || b.score || 0) - (a.rerankedScore || a.score || 0));
+                    console.log(`🏆 Implementation intent detected — ${goldenPathCount} golden path entries boosted 5x`);
+                }
+            }
+
+            // ================================================================
             // STAGE 5: Apply relevance floor — discard anything below 0.30
             // to prevent off-topic noise from reaching the LLM context.
             // ================================================================
@@ -1198,6 +1230,28 @@ async function runRAGPipeline(message, mode, conversationHistory) {
                 quality_score: r.quality_score || r.metadata?.quality_score || null,
                 metadata: r.metadata,
             }));
+
+            // ================================================================
+            // STAGE 6b: Anti-pattern annotation (ADR-002)
+            // When golden path entries are in results, annotate alternative
+            // entries that describe the harder/deprecated path.
+            // ================================================================
+            const goldenPathTopics = sources
+                .filter(s => s.metadata?.category === 'implementation-path')
+                .map(s => (s.title || '').toLowerCase());
+            if (goldenPathTopics.length > 0) {
+                sources.forEach(s => {
+                    if (s.metadata?.category === 'implementation-path') return;
+                    const text = ((s.content || '') + ' ' + (s.title || '')).toLowerCase();
+                    const hasAlternative =
+                        (goldenPathTopics.some(gp => gp.includes('vector')) && text.includes('postgres') && !text.includes('golden path')) ||
+                        (goldenPathTopics.some(gp => gp.includes('swarm') || gp.includes('agent coordination')) && /\bmesh\b/.test(text) && !text.includes('golden path')) ||
+                        (goldenPathTopics.some(gp => gp.includes('sona') || gp.includes('self-learning')) && text.includes('sona') && !text.includes('intelligenceengine') && !text.includes('golden path'));
+                    if (hasAlternative) {
+                        s.content = `[NOTE: A simpler recommended approach exists — see the Golden Path entry in this context.]\n\n${s.content}`;
+                    }
+                });
+            }
 
             // ================================================================
             // STAGE 7: Diversity filter to avoid redundant content
@@ -1272,8 +1326,23 @@ async function runRAGPipeline(message, mode, conversationHistory) {
         console.log(`🎬 NLM resources matched: ${nlmMatches.map(r => r.title).join(', ')}`);
     }
 
-    const systemPrompt = `${RUV_PERSONA}
+    // ADR-002: Detect if golden path entries are in context
+    const hasGoldenPaths = sources.some(s => s.metadata?.category === 'implementation-path');
 
+    const systemPrompt = `${RUV_PERSONA}
+${hasGoldenPaths ? `
+===== PRESCRIPTIVE MODE (ADR-002) =====
+Your context includes Golden Path entries (category: implementation-path). These are
+VERIFIED, OPINIONATED best practices backed by structural analysis of 652,000 code symbols
+across 13 RuvNet repositories.
+RULES:
+- LEAD WITH THE GOLDEN PATH. Put the recommended code FIRST, before any explanation.
+- State the anti-pattern explicitly: "Do NOT use X for this because..." with the reason.
+- Only mention alternatives AFTER the golden path is fully explained with working code.
+- Include the "Graduate When" threshold so users know when to level up to the advanced option.
+- The goal is: the user should have WORKING CODE in 30 seconds.
+- If the Golden Path says "Do not use Postgres for new apps," say that clearly. Do not hedge.
+` : ''}
 ===== RESPONSE STYLE =====
 Learning Level: ${learningLevel}
 ${levelInstructions[learningLevel] || levelInstructions['Balanced']}

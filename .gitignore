@@ -88,3 +88,4 @@ self_booting.rvf
 .mcp.json
 .ruvnet-monitor-state.json
 scripts/integrity-results.json
+.gitnexus

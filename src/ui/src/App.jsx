@@ -82,7 +82,7 @@ const DECK_DOCS = [
 // NotebookLM deep-dive interactive notebook
 const NOTEBOOKLM_URL = 'https://notebooklm.google.com/notebook/50a4a2ef-a743-4fc7-81e3-774b95c667c3';
 
-// Resource documents available at /assets/docs/ — Auto-synced 2026-03-30
+// Resource documents available at /assets/docs/ — Auto-synced 2026-03-31
 const RESOURCE_DOCS = [
   { file: 'Whats_New_RuvNet_Stack_March2026.mp4', title: 'What\'s New (March 2026)', desc: 'Latest updates across Ruflo, RuVector, RuView, Dossier', icon: '🔊', type: 'video' },
   { file: 'Architecture_That_Changes_Everything.mp4', title: 'The Architecture That Changes Everything', desc: 'Why this is 2 std devs beyond state-of-art', icon: '🔊', type: 'video' },
@@ -162,174 +162,210 @@ const HERO_TAGLINES = [
   'For teams: One brain that learns across every department',
 ];
 
-// Hero with product on-ramp cards, explore tiles, and resources
+// Hero with intent-based entry, chat-first design (ADR-002 Phase 1)
 const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowledgeData, latestRepos, communityStats }) => {
   const videoCount = knowledgeData?.videoStats?.total || 28;
   const [taglineIdx, setTaglineIdx] = useState(0);
   const [heroExpanded, setHeroExpanded] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const heroInputRef = useRef(null);
+  const [heroInput, setHeroInput] = useState('');
   useEffect(() => {
     const id = setInterval(() => setTaglineIdx(i => (i + 1) % HERO_TAGLINES.length), 4000);
     return () => clearInterval(id);
   }, []);
+  const handleHeroSubmit = (e) => {
+    e.preventDefault();
+    if (heroInput.trim()) {
+      onAction(heroInput.trim());
+      setHeroInput('');
+    }
+  };
   return (
   <div className="hero-compact">
-    {/* Interactive DIKW Stack — clean 3-layer hero, click to expand */}
-    <div className={`hero-dikw-stack ${heroExpanded ? 'expanded' : ''}`} onClick={() => setHeroExpanded(!heroExpanded)} role="button" tabIndex={0} aria-expanded={heroExpanded} aria-label="RuvNet ecosystem layers — click to expand">
-      <div className="dikw-layer dikw-wisdom">
-        <span className="dikw-icon">&#129504;</span>
-        <span className="dikw-label">Pi Brain</span>
-        <span className="dikw-desc">Collective intelligence that compounds</span>
-        {heroExpanded && <span className="dikw-detail">880+ shared memories across sessions. What one AI learns, every AI knows. Connect: <code>claude mcp add pi-brain</code></span>}
-      </div>
-      <div className="dikw-layer dikw-knowledge">
-        <span className="dikw-icon">&#128161;</span>
-        <span className="dikw-label">RuVector + RVF</span>
-        <span className="dikw-desc">Stores meaning, not just data</span>
-        {heroExpanded && <span className="dikw-detail">499 expert articles in 0.7MB. HNSW search in 0.3ms. 230+ PostgreSQL functions. Runs in browser via WASM.</span>}
-      </div>
-      <div className="dikw-layer dikw-orchestration">
-        <span className="dikw-icon">&#9889;</span>
-        <span className="dikw-label">Ruflo</span>
-        <span className="dikw-desc">60 agents, one command</span>
-        {heroExpanded && <span className="dikw-detail">Hierarchical swarms, 27 lifecycle hooks, self-learning routing. Get started: <code>npx ruflo@latest init</code></span>}
-      </div>
-      {heroExpanded && (
-        <div className="dikw-comparison">
-          <div className="dikw-compare-row">
-            <span className="dikw-compare-label">Pinecone/pgvector</span>
-            <span className="dikw-compare-level dikw-level-data">DATA</span>
-            <span className="dikw-compare-desc">Raw vectors, no meaning</span>
-          </div>
-          <div className="dikw-compare-row dikw-compare-highlight">
-            <span className="dikw-compare-label">RuVector + RVF</span>
-            <span className="dikw-compare-level dikw-level-knowledge">KNOWLEDGE</span>
-            <span className="dikw-compare-desc">Meaning, context, quality built in</span>
-          </div>
-        </div>
-      )}
-      <span className="dikw-expand-hint">{heroExpanded ? 'Click to collapse' : 'Click to explore the stack'}</span>
-    </div>
-    <h1 className="hero-heading">What do you want to build?</h1>
-    <p className="hero-rotating-tagline" key={taglineIdx}>{HERO_TAGLINES[taglineIdx]}</p>
-    <p className="hero-tagline">The on-ramp to agentic AI. Pick a product, get started in minutes.</p>
-    <p className="hero-dogfood">499 expert articles in 0.7MB — the tool explaining itself using itself.</p>
+    {/* Primary CTA: Ask anything — chat input above the fold */}
+    <h1 className="hero-heading">Ask anything about RuVector</h1>
+    <p className="hero-subheading">507 expert articles. Answers in 3 seconds. No signup required.</p>
+    <form className="hero-search" onSubmit={handleHeroSubmit}>
+      <input
+        ref={heroInputRef}
+        type="text"
+        className="hero-search-input"
+        value={heroInput}
+        onChange={(e) => setHeroInput(e.target.value)}
+        placeholder="How do I store vectors? / Build a self-learning app / Compare to pgvector..."
+        aria-label="Ask a question about RuVector"
+        autoFocus
+      />
+      <button type="submit" className="hero-search-btn" disabled={!heroInput.trim()}>Ask</button>
+    </form>
 
-    {/* Product On-Ramp Cards */}
-    <div className="onramp-cards" role="navigation" aria-label="Get started with a product">
-      <button className="onramp-card onramp-ruflo" onClick={() => onOnramp('ruflo')}>
-        <img src="/assets/product/card-ruflo.png" alt="Ruflo: Solo developer gets an instant AI team" className="onramp-img" loading="lazy" />
-        <span className="onramp-name">Ruflo</span>
-        <span className="onramp-hook">One command. Instant AI team.</span>
-        <span className="onramp-stat"><CountUp end={communityStats?.github?.ruflo?.stars ? Math.round(communityStats.github.ruflo.stars/1000) : 21} suffix="K+ stars" /></span>
-        <span className="onramp-cta">Get Started</span>
+    {/* Quick Ask Pills — immediately visible */}
+    <div className="prompt-starters">
+      <button onClick={() => onAction('How do I get started with vector storage? Show me the fastest path.')} className="prompt-pill">
+        <span className="pill-icon">&#128161;</span> Store Vectors
       </button>
+      <button onClick={() => onAction('How do I coordinate multiple AI agents with Ruflo? Show me the quickest way.')} className="prompt-pill">
+        <span className="pill-icon">&#9889;</span> Coordinate Agents
+      </button>
+      <button onClick={() => onAction('How do I build a self-learning AI application with RuVector?')} className="prompt-pill">
+        <span className="pill-icon">&#129504;</span> Self-Learning AI
+      </button>
+      <button onClick={() => onAction('How does RuVector compare to pgvector and Pinecone? Show me benchmarks.')} className="prompt-pill">
+        <span className="pill-icon">&#128640;</span> Compare Alternatives
+      </button>
+    </div>
+
+    {/* Intent-Based On-Ramp Cards — organized by what you want to DO, not product names */}
+    <div className="onramp-cards" role="navigation" aria-label="Choose what you want to build">
       <button className="onramp-card onramp-ruvector" onClick={() => onOnramp('ruvector')}>
-        <img src="/assets/product/card-ruvector.png" alt="RuVector: Library that guides you to exactly what you need" className="onramp-img" loading="lazy" />
-        <span className="onramp-name">RuVector</span>
-        <span className="onramp-hook">12,500x faster search.</span>
-        <span className="onramp-stat"><CountUp end={communityStats?.github?.ruvector?.stars ? Math.round(communityStats.github.ruvector.stars/1000) : 3} suffix="K+ stars" /></span>
-        <span className="onramp-cta">Get Started</span>
+        <img src="/assets/product/card-ruvector.png" alt="Search documents by meaning" className="onramp-img" loading="lazy" />
+        <span className="onramp-name">Search Documents</span>
+        <span className="onramp-hook">Find anything by meaning, not keywords. 150x faster than pgvector.</span>
+        <span className="onramp-stat">Zero server. One file. 3 lines of code.</span>
+        <span className="onramp-cta">Build This</span>
+      </button>
+      <button className="onramp-card onramp-ruflo" onClick={() => onOnramp('ruflo')}>
+        <img src="/assets/product/card-ruflo.png" alt="Coordinate AI agents" className="onramp-img" loading="lazy" />
+        <span className="onramp-name">Coordinate AI Agents</span>
+        <span className="onramp-hook">One command, instant AI team. Agents that learn and adapt.</span>
+        <span className="onramp-stat">60+ agent types. Hierarchical swarms.</span>
+        <span className="onramp-cta">Build This</span>
       </button>
       <button className="onramp-card onramp-pi" onClick={() => onOnramp('pi')}>
-        <img src="/assets/product/card-pi.png" alt="Pi Brain: What one AI learns, all AIs know" className="onramp-img" loading="lazy" />
-        <span className="onramp-name">Pi Brain</span>
-        <span className="onramp-hook">What one learns, all know.</span>
+        <img src="/assets/product/card-pi.png" alt="Build shared AI memory" className="onramp-img" loading="lazy" />
+        <span className="onramp-name">Shared AI Memory</span>
+        <span className="onramp-hook">What one AI learns, every AI knows. Cross-session intelligence.</span>
         <span className="onramp-stat"><CountUp end={communityStats?.pi?.memories || 880} /> shared memories</span>
-        <span className="onramp-cta">Get Started</span>
-      </button>
-      <button className="onramp-card onramp-aimds" onClick={() => onOnramp('aimds')}>
-        <img src="/assets/product/card-aimds.png" alt="AIMDS: 5-layer self-learning security" className="onramp-img" loading="lazy" />
-        <span className="onramp-name">AIMDS</span>
-        <span className="onramp-hook">Self-learning defense.</span>
-        <span className="onramp-stat">5-layer security</span>
-        <span className="onramp-cta">Get Started</span>
+        <span className="onramp-cta">Build This</span>
       </button>
     </div>
 
-    {/* Explore Tiles */}
-    <div className="capability-tiles" role="navigation" aria-label="Explore more">
-      <button className="capability-tile" onClick={() => onCapability('videos')}>
-        <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">&#128249;</span></span>
-        <span className="tile-label">Videos</span>
-        <span className="tile-count">{videoCount} Sessions</span>
-      </button>
-      <button className="capability-tile" onClick={() => onCapability('decks')}>
-        <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">&#128202;</span></span>
-        <span className="tile-label">Presentations</span>
-        <span className="tile-count">CEO & CTO Decks</span>
-      </button>
-      <button className="capability-tile" onClick={() => onCapability('universe')}>
-        <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">&#127756;</span></span>
-        <span className="tile-label">Knowledge Universe</span>
-        <span className="tile-count">3D Explorer</span>
-      </button>
-      <button className="capability-tile" onClick={() => onCapability('pi-executable')}>
-        <span className="tile-icon-wrapper tile-pi-exec"><span className="tile-icon">&#129504;</span></span>
-        <span className="tile-label">Pi Brain Demos</span>
-        <span className="tile-count">3 Interactive Demos</span>
-      </button>
-      <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
-        <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">&#128211;</span></span>
-        <span className="tile-label">NotebookLM</span>
-        <span className="tile-count">AI Deep Dive</span>
-      </button>
-      <button className="capability-tile" onClick={() => onCapability('catalog')}>
-        <span className="tile-icon-wrapper tile-catalog"><span className="tile-icon">&#129408;</span></span>
-        <span className="tile-label">RuVector Catalog</span>
-        <span className="tile-count">114 Crates, 200+ Tech</span>
-      </button>
-    </div>
-
-    {/* Quick Ask Pills */}
-    <div className="prompt-starters">
-      <button onClick={() => onAction('What is the difference between RuVector and Ruflo? When do I use each one?')} className="prompt-pill">
-        <span className="pill-icon">&#128161;</span> RuVector vs Ruflo
-      </button>
-      <button onClick={() => onAction('Show me what impossible applications I can build with RuVector that traditional tools cannot handle.')} className="prompt-pill">
-        <span className="pill-icon">&#128640;</span> Impossible Apps
-      </button>
-      <button onClick={() => onAction('What are the core Rust crates in the RuVector ecosystem and how do they all connect?')} className="prompt-pill">
-        <span className="pill-icon">&#129408;</span> Rust Ecosystem
-      </button>
-      <button onClick={() => onAction("What's new in the RuVector ecosystem as of March 2026?")} className="prompt-pill">
-        <span className="pill-icon">&#127381;</span> What's New
-      </button>
-    </div>
-
-    {/* Dog Food Story */}
+    {/* Proof bar — one-line credibility */}
     <div className="dogfood-callout">
-      <span className="dogfood-text">This knowledge base runs on RuVector. 499 expert articles compressed to <strong>0.7MB</strong> via RVF format. The tool explains itself using itself.</span>
+      <span className="dogfood-text">This knowledge base runs on RuVector. 507 expert articles in <strong>0.8MB</strong>. No Docker. No database. No server. Just a file.</span>
     </div>
 
-    {/* Resource Documents */}
-    <div className="resource-section">
-      <h3 className="resource-heading">Resources & Documents</h3>
-      <div className="resource-grid">
-        {RESOURCE_DOCS.map((doc, i) => (
-          <button key={i} className={`resource-card resource-${doc.type}`} onClick={() => doc.type === 'notebooklm' ? window.open(doc.url, '_blank', 'noopener,noreferrer') : onAction(doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : doc.type === 'image' ? `VIEW_IMAGE:${doc.file}` : `VIEW_PDF:${doc.file}`)}>
-            <span className="resource-icon">{doc.icon}</span>
-            <span className="resource-text">
-              <span className="resource-title">{doc.title}</span>
-              {doc.desc && <span className="resource-desc">{doc.desc}</span>}
-            </span>
-          </button>
-        ))}
-      </div>
-    </div>
+    {/* Show More — everything else is below the fold */}
+    <button className="hero-show-more" onClick={() => setShowMore(!showMore)}>
+      {showMore ? 'Show less' : 'Explore more: Videos, Decks, 3D Universe, 114 Rust Crates...'}
+    </button>
 
-    {/* Latest Updates — shows 10 most active repos from /api/latest-repos */}
-    {latestRepos && latestRepos.length > 0 && (
-      <div className="latest-updates">
-        <h3 className="resource-heading">Latest Updates ({latestRepos.length} Active Repos)</h3>
-        <div className="updates-scroll">
-          {latestRepos.slice(0, 10).map((repo, i) => (
-            <div key={i} className="update-card" onClick={() => onAction(`Tell me about ${repo.name} — what does it do, its architecture, and key features`)}>
-              <span className="update-name">{repo.name}</span>
-              <span className="update-meta">{repo.entryCount?.toLocaleString() || '—'} entries{repo.lastUpdated ? ` · ${timeAgo(repo.lastUpdated)}` : ''}</span>
+    {showMore && (
+      <>
+        {/* Interactive DIKW Stack */}
+        <div className={`hero-dikw-stack ${heroExpanded ? 'expanded' : ''}`} onClick={() => setHeroExpanded(!heroExpanded)} role="button" tabIndex={0} aria-expanded={heroExpanded} aria-label="RuvNet ecosystem layers — click to expand">
+          <div className="dikw-layer dikw-wisdom">
+            <span className="dikw-icon">&#129504;</span>
+            <span className="dikw-label">Pi Brain</span>
+            <span className="dikw-desc">Collective intelligence that compounds</span>
+            {heroExpanded && <span className="dikw-detail">880+ shared memories across sessions. What one AI learns, every AI knows. Connect: <code>claude mcp add pi-brain</code></span>}
+          </div>
+          <div className="dikw-layer dikw-knowledge">
+            <span className="dikw-icon">&#128161;</span>
+            <span className="dikw-label">RuVector + RVF</span>
+            <span className="dikw-desc">Stores meaning, not just data</span>
+            {heroExpanded && <span className="dikw-detail">507 expert articles in 0.8MB. HNSW search in 0.3ms. 290+ PostgreSQL functions. Runs in browser via WASM.</span>}
+          </div>
+          <div className="dikw-layer dikw-orchestration">
+            <span className="dikw-icon">&#9889;</span>
+            <span className="dikw-label">Ruflo</span>
+            <span className="dikw-desc">60 agents, one command</span>
+            {heroExpanded && <span className="dikw-detail">Hierarchical swarms, 27 lifecycle hooks, self-learning routing. Get started: <code>npx ruflo@latest init</code></span>}
+          </div>
+          {heroExpanded && (
+            <div className="dikw-comparison">
+              <div className="dikw-compare-row">
+                <span className="dikw-compare-label">Pinecone/pgvector</span>
+                <span className="dikw-compare-level dikw-level-data">DATA</span>
+                <span className="dikw-compare-desc">Raw vectors, no meaning</span>
+              </div>
+              <div className="dikw-compare-row dikw-compare-highlight">
+                <span className="dikw-compare-label">RuVector + RVF</span>
+                <span className="dikw-compare-level dikw-level-knowledge">KNOWLEDGE</span>
+                <span className="dikw-compare-desc">Meaning, context, quality built in</span>
+              </div>
             </div>
-          ))}
+          )}
+          <span className="dikw-expand-hint">{heroExpanded ? 'Click to collapse' : 'Click to explore the stack'}</span>
         </div>
-      </div>
+
+        {/* Explore Tiles */}
+        <div className="capability-tiles" role="navigation" aria-label="Explore more">
+          <button className="capability-tile" onClick={() => onCapability('videos')}>
+            <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">&#128249;</span></span>
+            <span className="tile-label">Videos</span>
+            <span className="tile-count">{videoCount} Sessions</span>
+          </button>
+          <button className="capability-tile" onClick={() => onCapability('decks')}>
+            <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">&#128202;</span></span>
+            <span className="tile-label">Presentations</span>
+            <span className="tile-count">CEO & CTO Decks</span>
+          </button>
+          <button className="capability-tile" onClick={() => onCapability('universe')}>
+            <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">&#127756;</span></span>
+            <span className="tile-label">Knowledge Universe</span>
+            <span className="tile-count">3D Explorer</span>
+          </button>
+          <button className="capability-tile" onClick={() => onCapability('pi-executable')}>
+            <span className="tile-icon-wrapper tile-pi-exec"><span className="tile-icon">&#129504;</span></span>
+            <span className="tile-label">Pi Brain Demos</span>
+            <span className="tile-count">3 Interactive Demos</span>
+          </button>
+          <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
+            <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">&#128211;</span></span>
+            <span className="tile-label">NotebookLM</span>
+            <span className="tile-count">AI Deep Dive</span>
+          </button>
+          <button className="capability-tile" onClick={() => onCapability('catalog')}>
+            <span className="tile-icon-wrapper tile-catalog"><span className="tile-icon">&#129408;</span></span>
+            <span className="tile-label">RuVector Catalog</span>
+            <span className="tile-count">114 Crates, 200+ Tech</span>
+          </button>
+        </div>
+
+        {/* AIMDS card — shown in explore section, not primary */}
+        <div className="onramp-cards onramp-secondary" role="navigation" aria-label="More capabilities">
+          <button className="onramp-card onramp-aimds" onClick={() => onOnramp('aimds')}>
+            <img src="/assets/product/card-aimds.png" alt="AIMDS: AI security middleware" className="onramp-img" loading="lazy" />
+            <span className="onramp-name">Secure Your AI</span>
+            <span className="onramp-hook">Self-learning defense. 2 lines of code.</span>
+            <span className="onramp-stat">5-layer security pipeline</span>
+            <span className="onramp-cta">Build This</span>
+          </button>
+        </div>
+
+        {/* Resource Documents */}
+        <div className="resource-section">
+          <h3 className="resource-heading">Resources & Documents</h3>
+          <div className="resource-grid">
+            {RESOURCE_DOCS.map((doc, i) => (
+              <button key={i} className={`resource-card resource-${doc.type}`} onClick={() => doc.type === 'notebooklm' ? window.open(doc.url, '_blank', 'noopener,noreferrer') : onAction(doc.type === 'video' ? `VIEW_VIDEO:${doc.file}` : doc.type === 'image' ? `VIEW_IMAGE:${doc.file}` : `VIEW_PDF:${doc.file}`)}>
+                <span className="resource-icon">{doc.icon}</span>
+                <span className="resource-text">
+                  <span className="resource-title">{doc.title}</span>
+                  {doc.desc && <span className="resource-desc">{doc.desc}</span>}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Latest Updates */}
+        {latestRepos && latestRepos.length > 0 && (
+          <div className="latest-updates">
+            <h3 className="resource-heading">Latest Updates ({latestRepos.length} Active Repos)</h3>
+            <div className="updates-scroll">
+              {latestRepos.slice(0, 10).map((repo, i) => (
+                <div key={i} className="update-card" onClick={() => onAction(`Tell me about ${repo.name} — what does it do, its architecture, and key features`)}>
+                  <span className="update-name">{repo.name}</span>
+                  <span className="update-meta">{repo.entryCount?.toLocaleString() || '—'} entries{repo.lastUpdated ? ` · ${timeAgo(repo.lastUpdated)}` : ''}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </>
     )}
   </div>
   );

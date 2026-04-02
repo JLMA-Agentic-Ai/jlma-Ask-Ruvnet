@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
   "schema": "ask_ruvnet",
-  "exportedAt": "2026-03-30T16:18:45.591Z",
-  "totalEntries": 502,
+  "exportedAt": "2026-04-02T18:46:31.270Z",
+  "totalEntries": 507,
   "embeddingDim": 384,
   "quantization": "binary",
   "categories": [
@@ -56,6 +56,10 @@
     },
     {
       "name": "swarms",
+      "count": 5
+    },
+    {
+      "name": "implementation-path",
       "count": 5
     },
     {
