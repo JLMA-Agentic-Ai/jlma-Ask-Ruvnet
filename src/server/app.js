@@ -1329,20 +1329,30 @@ async function runRAGPipeline(message, mode, conversationHistory) {
     // ADR-002: Detect if golden path entries are in context
     const hasGoldenPaths = sources.some(s => s.metadata?.category === 'implementation-path');
 
-    const systemPrompt = `${RUV_PERSONA}
-${hasGoldenPaths ? `
-===== PRESCRIPTIVE MODE (ADR-002) =====
+    // Build response structure based on whether prescriptive mode is active
+    const prescriptiveStructure = hasGoldenPaths ? `
+===== PRESCRIPTIVE MODE — THIS OVERRIDES THE NORMAL RESPONSE STRUCTURE =====
 Your context includes Golden Path entries (category: implementation-path). These are
-VERIFIED, OPINIONATED best practices backed by structural analysis of 652,000 code symbols
-across 13 RuvNet repositories.
-RULES:
-- LEAD WITH THE GOLDEN PATH. Put the recommended code FIRST, before any explanation.
-- State the anti-pattern explicitly: "Do NOT use X for this because..." with the reason.
-- Only mention alternatives AFTER the golden path is fully explained with working code.
-- Include the "Graduate When" threshold so users know when to level up to the advanced option.
-- The goal is: the user should have WORKING CODE in 30 seconds.
-- If the Golden Path says "Do not use Postgres for new apps," say that clearly. Do not hedge.
-` : ''}
+VERIFIED, OPINIONATED best practices backed by structural analysis of 652,000 code symbols.
+
+YOU MUST USE THIS RESPONSE STRUCTURE (not the normal TL;DR → Explanation structure):
+
+1. **One-Line Summary** (1 sentence with a concrete number: "X in Y seconds" or "Zx faster")
+2. **The Code** (the COMPLETE, copy-paste code block IMMEDIATELY — no explanation before it)
+3. **What You Will See** (2-3 sentences: what happens when they run the code)
+4. **Do NOT Do This** (explicit anti-patterns: "Do NOT use Postgres for new applications because its attention cluster has 0.21 cohesion — it reaches across 5+ crates you don't need. Use RVF instead." Be specific and direct. NEVER present the anti-pattern as an equal alternative.)
+5. **Graduate When** (one paragraph: when should they move to the advanced option)
+6. **What's Next** (one sentence pointing to the NEXT golden path in the progression: vectors → self-learning → MCP → agents → security)
+
+CRITICAL RULES:
+- Keep the TOTAL response under 600 words. Brevity is the point. They want working code, not an essay.
+- Do NOT include a Mermaid diagram. Code IS the visual.
+- Do NOT include an "Explore Further" section. Use "What's Next" instead.
+- Do NOT present alternatives as equal options. The golden path IS the recommendation.
+- Do NOT start with an analogy or context-setting paragraph. Start with the summary, then code.
+` : '';
+
+    const normalStructure = !hasGoldenPaths ? `
 ===== RESPONSE STYLE =====
 Learning Level: ${learningLevel}
 ${levelInstructions[learningLevel] || levelInstructions['Balanced']}
@@ -1354,18 +1364,30 @@ Your response MUST contain ALL of these. If any is missing, add it now:
 □ Why this matters to the person asking (make it personal)
 □ Brief competitive context (what the alternative is and why this is different)
 □ A concrete next step they can take right now
+` : `
+===== RESPONSE STYLE =====
+Learning Level: ${learningLevel}
+Keep it concise and action-oriented. The user asked HOW to do something — give them the answer.
+`;
 
+    const normalInstructions = !hasGoldenPaths ? `
+===== INSTRUCTIONS =====
+MANDATORY: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid diagram → Practical Example → What to Watch For → Explore Further${nlmSection ? ' → Related Media' : ''}). Include a Mermaid diagram if the topic involves any system, workflow, or multi-step process. Base your answer ONLY on the knowledge base context above. When sources conflict, prefer [GOLD] over [SILVER] over [BRONZE]. Adapt depth and language to the ${learningLevel} learning level. If context is insufficient, say so honestly.
+
+CRITICAL: You MUST include at least ONE \`\`\`mermaid diagram and ONE | markdown table | in every response about architecture, workflows, or comparisons. Responses without visual elements are incomplete.${nlmSection ? '\n\nCRITICAL: You MUST include the "### Related Media" section with the exact markdown links from AVAILABLE MEDIA RESOURCES above. Do NOT omit this section when media resources are provided.' : ''}` : `
+===== INSTRUCTIONS =====
+Follow the PRESCRIPTIVE MODE structure above. Base your answer ONLY on the knowledge base context. When sources conflict, prefer [GOLD] over [SILVER] over [BRONZE]. Keep it under 600 words.${nlmSection ? '\n\nInclude a "### Related Media" section with the exact markdown links from AVAILABLE MEDIA RESOURCES above.' : ''}`;
+
+    const systemPrompt = `${RUV_PERSONA}
+${prescriptiveStructure}
+${normalStructure}
 ===== KNOWLEDGE BASE CONTEXT =====
 ${context || 'No specific context was found in the knowledge base for this query. You MUST tell the user that you do not have enough information in your knowledge base to answer this question accurately, and suggest they rephrase or ask about a topic covered in the knowledge base. Do NOT use general knowledge or guess.'}
 ${nlmSection ? `
 ===== AVAILABLE MEDIA RESOURCES =====
 The following NotebookLM-generated media resources are relevant to this query. You MUST include these as a "### Related Media" section at the END of your response (after "Explore Further"), using the exact markdown links provided. This helps the user access deep-dive content beyond your text response.
 ${nlmSection}` : ''}
-
-===== INSTRUCTIONS =====
-MANDATORY: Follow the response structure (TL;DR → Core Explanation → Architecture/How It Works with Mermaid diagram → Practical Example → What to Watch For → Explore Further${nlmSection ? ' → Related Media' : ''}). Include a Mermaid diagram if the topic involves any system, workflow, or multi-step process. Base your answer ONLY on the knowledge base context above. When sources conflict, prefer [GOLD] over [SILVER] over [BRONZE]. Adapt depth and language to the ${learningLevel} learning level. If context is insufficient, say so honestly.
-
-CRITICAL: You MUST include at least ONE \`\`\`mermaid diagram and ONE | markdown table | in every response about architecture, workflows, or comparisons. Responses without visual elements are incomplete.${nlmSection ? '\n\nCRITICAL: You MUST include the "### Related Media" section with the exact markdown links from AVAILABLE MEDIA RESOURCES above. Do NOT omit this section when media resources are provided.' : ''}`;
+${normalInstructions}`;
 
     // Build LLM messages array
     const MAX_HISTORY_TURNS = 6;

@@ -131,28 +131,51 @@ const extractExploreFurther = (content) => {
 // Follow-up suggestion generator based on response keywords (FALLBACK)
 const getFollowUpSuggestions = (content) => {
   const lower = (content || '').toLowerCase();
+
+  // ADR-002: Golden path chaining — after a prescriptive response, suggest the NEXT golden path
+  const isGoldenPath = lower.includes('golden path') || lower.includes('do not do this') || lower.includes('graduate when');
+  if (isGoldenPath) {
+    // Detect which golden path was just shown and suggest the next one in progression
+    if (lower.includes('rvfdatabase') || lower.includes('vector storage') || lower.includes('@ruvector/rvf')) {
+      return ['How do I add self-learning to my vector store?', 'How do I expose this via MCP so agents can use it?', 'How does RuVector compare to pgvector?'];
+    }
+    if (lower.includes('intelligenceengine') || lower.includes('self-learning') || lower.includes('enablesona')) {
+      return ['How do I expose my learning system via MCP?', 'How do I coordinate multiple AI agents with Ruflo?', 'What does SONA learn from my queries?'];
+    }
+    if (lower.includes('mcp') || lower.includes('rvf-mcp-server') || lower.includes('mcp-brain')) {
+      return ['How do I coordinate multiple AI agents with Ruflo?', 'How do I add AI security with AIMDS?', 'What MCP tools are available?'];
+    }
+    if (lower.includes('ruflo') || lower.includes('swarm') || lower.includes('agent coordination') || lower.includes('hierarchical')) {
+      return ['How do I add AI security with AIMDS?', 'How do I add self-learning to my agents?', 'What swarm topologies are available?'];
+    }
+    if (lower.includes('aimds') || lower.includes('security') || lower.includes('createaidefence')) {
+      return ['How do I store vectors with RuVector?', 'What is the full RuVector ecosystem?', 'How do all these pieces connect?'];
+    }
+  }
+
+  // Standard topic-based follow-ups for non-golden-path responses
   if (lower.includes('ruflo') || lower.includes('claude-flow') || lower.includes('claude flow') || lower.includes('agentic flow')) {
-    return ['What agents does Ruflo v3.5 include?', 'How does the ReasoningBank self-learning work?', 'Show me the swarm architecture'];
+    return ['How do I coordinate multiple AI agents with Ruflo?', 'How does the ReasoningBank self-learning work?', 'Show me the swarm architecture'];
   }
   if (lower.includes('ruvector') || lower.includes('hnsw') || lower.includes('vector')) {
-    return ['How does HNSW compare to pgvector?', 'What is the RVF cognitive container format?', 'What apps can be built with RuVector?'];
+    return ['How do I get started with vector storage?', 'What is the RVF cognitive container format?', 'How does RuVector compare to pgvector?'];
   }
   if (lower.includes('reasoning') || lower.includes('learning') || lower.includes('neural')) {
-    return ['How does SONA real-time learning work?', 'What is the Prime Radiant anti-hallucination engine?', 'Show me the intelligence pipeline'];
+    return ['How do I build a self-learning AI application?', 'What is the Prime Radiant anti-hallucination engine?', 'Show me the intelligence pipeline'];
   }
   if (lower.includes('rust') || lower.includes('wasm') || lower.includes('crate')) {
     return ['What is Micro-HNSW and how small is it?', 'How does the WASM runtime work?', 'What are the core Rust crates in the ecosystem?'];
   }
   if (lower.includes('rvf') || lower.includes('cognitive container') || lower.includes('format')) {
-    return ['What are the 24 segments of an RVF?', 'How does RVF enable offline AI?', 'Show me the RVF architecture'];
+    return ['How do I get started with vector storage?', 'How does RVF enable offline AI?', 'Show me the RVF architecture'];
   }
   if (lower.includes('pi') || lower.includes('collective') || lower.includes('shared brain') || lower.includes('hive')) {
     return ['How does Pi cryptographic trust work?', 'What is Byzantine fault tolerance in Pi?', 'How do WASM edge nodes earn rewards?'];
   }
   if (lower.includes('ecosystem') || lower.includes('overview') || lower.includes('platform')) {
-    return ['How do all the pieces connect?', 'What makes this different from LangChain?', 'What is Pi collective intelligence?'];
+    return ['How do I get started with vector storage?', 'What makes this different from LangChain?', 'How do all the pieces connect?'];
   }
-  return ['Tell me more about this', 'What are the practical applications?', 'What is Pi collective intelligence (pi.ruv.io)?'];
+  return ['How do I get started with vector storage?', 'What can I build with RuVector?', 'How does RuVector compare to alternatives?'];
 };
 
 // Rotating hero taglines for dual-audience messaging
@@ -1832,8 +1855,8 @@ function App() {
               )}
             </div>
 
-            {/* Input at BOTTOM */}
-            <form className="input-area" onSubmit={handleSubmit}>
+            {/* Input at BOTTOM — hidden when hero is showing (hero has its own input) */}
+            <form className={`input-area ${messages.length === 0 ? 'input-area-hidden' : ''}`} onSubmit={handleSubmit}>
               <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
               {messages.length > 0 && (
                 <button type="button" ref={resourceToggleRef} className={`icon-btn resources-toggle ${showResourceDrawer ? 'active' : ''}`} onClick={() => setShowResourceDrawer(p => !p)} aria-label="Browse resources" title="Browse resources & documents">📂</button>
