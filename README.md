@@ -1,10 +1,12 @@
 # Ask-RuvNet
 
-> Updated: 2026-03-28 | Version 4.12.0
+> Updated: 2026-04-02 | Version 4.14.0
 
 **The front door to one of the most ambitious open-source AI architecture projects ever built.**
 
-Ask-RuvNet is a RAG-powered knowledge interface for the RuVector ecosystem. It makes 200+ interconnected repositories, 114 Rust crates across 17 capability areas, and years of engineering decisions searchable, explainable, and visual -- powered by 502 expert-curated knowledge entries, HNSW vector search, and Claude Sonnet 4.6.
+Ask-RuvNet is a prescriptive, RAG-powered knowledge interface for the RuVector ecosystem. It makes 200+ interconnected repositories, 114 Rust crates across 17 capability areas, and years of engineering decisions searchable, explainable, and actionable -- powered by 507 expert-curated knowledge entries (including 5 Golden Path implementation guides), HNSW vector search, GitNexus structural intelligence across 13 repos (652K code symbols, 1.2M dependency edges), and Claude Sonnet 4.6.
+
+**New in v4.14.0:** The system is now *prescriptive, not encyclopedic*. When you ask "how do I store vectors?", it leads with the one best path (RVF), copy-paste code, and explicit anti-patterns -- not a balanced menu of options. Backed by structural analysis of module cohesion scores across the entire monorepo.
 
 **Production:** https://ask-ruvnet.up.railway.app
 
@@ -15,7 +17,7 @@ Ask-RuvNet is a RAG-powered knowledge interface for the RuVector ecosystem. It m
 Ask-RuvNet has no PostgreSQL dependency. The knowledge base lives in a single flat file (`kb-master.json`) and is compiled into RVF format for production.
 
 ```
-kb-master.json (502 entries, source of truth)
+kb-master.json (507 entries, source of truth)
   |
   +-> build-lean-rvf.mjs -----> knowledge.rvf (HNSW-indexed, content embedded)
   |                              + content-sidecar.json.gz
@@ -32,9 +34,12 @@ kb-master.json (502 entries, source of truth)
 
 | Metric | Value |
 |--------|-------|
-| Knowledge entries | 502 (expert-curated, avg quality 97/100) |
+| Knowledge entries | 507 (expert-curated, avg quality 97/100) |
+| Golden Path guides | 5 (prescriptive implementation paths) |
+| Categories | 17 (including new `implementation-path`) |
 | Rust crates covered | 114 across 17 capability areas |
 | Technologies covered | 200+ |
+| GitNexus structural data | 652K symbols, 1.2M edges across 13 repos |
 | Embedding model | ONNX Xenova/all-MiniLM-L6-v2 |
 | Embedding dimensions | 384 |
 | Index type | HNSW (M=16, efConstruction=200, cosine) |
@@ -45,7 +50,7 @@ kb-master.json (502 entries, source of truth)
 ### Three Consumers, One Source
 
 ```
-kb-master.json (502 gold entries)
+kb-master.json (507 gold entries)
        |
        +---> knowledge.rvf         ---> Railway server (read-only, /api/search)
        |
@@ -60,7 +65,7 @@ Every consumer reads the same data compiled from the same source.
 
 ## Features
 
-### RAG Pipeline
+### RAG Pipeline (ADR-002: Prescriptive Intelligence)
 
 Every question goes through a multi-stage pipeline before reaching the LLM:
 
@@ -69,8 +74,15 @@ Every question goes through a multi-stage pipeline before reaching the LLM:
 | 1. Expand | `QueryExpander` | Rewrites terse queries into richer search terms |
 | 2. Search | `HybridSearch` | Combines BM25 keyword matching with semantic HNSW vector search |
 | 3. Rank | `ReRanker` | Scores results using 5 weighted factors (semantic similarity 40%, intent alignment 20%, source authority 15%, quality score 15%, usefulness 10%) |
-| 4. Compress | `ContextCompressor` | Trims context to fit the token window, preserving code blocks |
-| 5. Retrieve | `MultiHopRetriever` | Follows cross-references for multi-step questions |
+| 4a. Gold boost | Stage 4c | Curated entries get 4x multiplicative boost over raw docs |
+| 4b. **Intent detect** | Stage 4d | Detects implementation intent ("how do I...", "build", "create") |
+| 4c. **Golden Path boost** | Stage 4d | Implementation-path entries get 5x boost when intent detected |
+| 5. Filter | Relevance floor | Discards anything below 0.30 similarity + anti-noise domain filter |
+| 6. **Anti-pattern** | Stage 6b | Annotates deprecated paths when golden path alternatives exist |
+| 7. Compress | `ContextCompressor` | Trims context to fit the token window, preserving code blocks |
+| 8. Retrieve | `MultiHopRetriever` | Follows cross-references for multi-step questions |
+
+**Prescriptive Mode:** When golden path entries appear in context, the system prompt shifts to prescriptive mode -- lead with code, state anti-patterns explicitly, include "Graduate When" thresholds. See `docs/adr/ADR-002-prescriptive-intelligence.md`.
 
 ### 5-Model LLM Fallback Chain
 
@@ -86,10 +98,12 @@ Ask-RuvNet automatically detects configured API keys and builds a resilient fall
 
 Set `LLM_PROVIDER` to override the primary.
 
-### Interactive UI
+### Interactive UI (v4.14.0: Intent-First Design)
 
-- DIKW hero section with live ecosystem statistics
-- Product on-ramp cards for exploring the ecosystem
+- **Chat-first hero** with prominent search input above the fold (autofocus, placeholder examples)
+- **Intent-based quick pills**: "Store Vectors", "Coordinate Agents", "Self-Learning AI", "Compare Alternatives"
+- **Use-case on-ramp cards**: "Search Documents", "Coordinate AI Agents", "Shared AI Memory" (organized by what you BUILD, not product names)
+- **Progressive disclosure**: DIKW stack, explore tiles, resources, and latest repos behind "Explore more" toggle
 - Mermaid diagram generation in responses
 - Source citations with relevance scores and direct links
 - Follow-up suggestion pills for deeper exploration
@@ -154,7 +168,7 @@ The app runs at http://localhost:3000.
 
 ## KB Management
 
-The knowledge base source of truth is `kb-master.json` -- a flat JSON file with 502 expert-curated entries. No PostgreSQL required.
+The knowledge base source of truth is `kb-master.json` -- a flat JSON file with 507 expert-curated entries. No PostgreSQL required.
 
 ```bash
 # Summary of KB contents
@@ -175,12 +189,25 @@ node scripts/ingest-catalog.mjs
 ```bash
 node scripts/build-lean-rvf.mjs       # kb-master.json -> .ruvector/ + knowledge.rvf + sidecar
 node scripts/build-quantized-rvf.mjs   # .ruvector/ -> SQ8 browser assets
+node scripts/export-mcp-kb.mjs --output kb-data/  # MCP server format
 cd src/ui && npm run build && cd ../.. # Frontend with quantized assets
 ```
 
-### Entry Categories (502 entries)
+### Entry Categories (507 entries, 17 categories)
 
-teaching, videos, wasm-local-llm, agents, general, security, architecture, vector-db, neural, algorithms, deployment, performance, swarms, RL, memory, sparc, and catalog entries covering 114 Rust crates.
+teaching (165), videos (50), agents (48), architecture (38), neural (37), wasm-local-llm (36), general (35), algorithms (25), vector-db (22), security (20), deployment (8), performance (6), **implementation-path (5)**, swarms (5), memory (3), reinforcement-learning (2), sparc (2).
+
+### Golden Path Entries (New in v4.14.0)
+
+Five prescriptive implementation guides backed by GitNexus structural analysis:
+
+| Entry | What It Prescribes | Anti-Pattern It Prevents |
+|-------|--------------------|--------------------------|
+| Vector Storage | Use RVF (`RvfDatabase.create()`) | Don't use postgres for new apps (cohesion: 0.21) |
+| Agent Coordination | Use Ruflo hierarchical, 3-5 agents | Don't use mesh with <10 agents (cohesion: 0.59) |
+| Self-Learning | Use `IntelligenceEngine` wrapper | Don't use SONA directly (7 cross-crate deps) |
+| MCP Integration | Use rvf-mcp-server or mcp-brain-server | Don't write raw MCP handlers |
+| Security | Use AIMDS middleware (2 lines) | Don't build custom validators (cohesion: 0.18) |
 
 ---
 
@@ -228,7 +255,7 @@ curl https://ask-ruvnet.up.railway.app/health
 ```
 
 ```json
-{ "status": "ok", "version": "4.12.0" }
+{ "status": "ok", "version": "4.14.0" }
 ```
 
 ### POST /api/chat
@@ -303,20 +330,21 @@ Perform special actions: `simplify`, `code`, `diagram`, or `visualize`.
 
 ## What You Can Ask
 
+**Getting Started (triggers Prescriptive Mode with Golden Paths)**
+- "How do I store vectors?" -- leads with RVF code, warns against postgres
+- "How do I coordinate AI agents?" -- leads with Ruflo hierarchical setup
+- "How do I build a self-learning app?" -- leads with IntelligenceEngine
+- "How do I add AI security?" -- leads with AIMDS 2-line middleware
+
 **Architecture and Design**
 - "What swarm topologies does Ruflo support?"
 - "How does SONA achieve sub-millisecond adaptation?"
 - "Explain the RVF cognitive container format"
 
-**Practical Usage**
-- "How do I set up a hierarchical swarm with 8 agents?"
-- "Show me how to use RuVector HNSW indexing"
-- "What crates are available for attention mechanisms?"
-
-**Decision-Making**
-- "When should I use mesh topology vs hierarchical?"
+**Comparison and Evaluation**
+- "How does RuVector compare to pgvector and Pinecone?"
 - "What are the tradeoffs between RuVector-WASM and RuVector-Postgres?"
-- "Which consensus protocol should I use for my use case?"
+- "Is RuVector production ready?"
 
 **Deep Technical**
 - "How does the ReasoningBank implement self-learning with LoRA?"
@@ -346,12 +374,16 @@ Ask-RuvNet is the knowledge interface for all of it.
 
 ```
 Ask-Ruvnet/
-+-- kb-master.json                       # Source of truth (502 entries, flat file)
++-- kb-master.json                       # Source of truth (507 entries, flat file)
 +-- knowledge.rvf                        # HNSW-indexed binary KB
 +-- content-sidecar.json.gz              # Full-text content for RVF entries
++-- docs/
+|   +-- adr/
+|       +-- ADR-001-eliminate-postgresql.md
+|       +-- ADR-002-prescriptive-intelligence.md  # GitNexus + Golden Path design
 +-- src/
 |   +-- server/
-|   |   +-- app.js                       # Express server, all endpoints
+|   |   +-- app.js                       # Express server, RAG pipeline (ADR-002 stages 4d, 6b)
 |   |   +-- RuvPersona.js                # LLM system prompt and persona
 |   +-- core/                            # RAG pipeline modules
 |   |   +-- RvfStore.js                  # Primary KB backend (RVF HNSW search)
@@ -401,6 +433,7 @@ The `/api/visualize` endpoint requires a Gemini API key. Check that `GEMINI_API_
 
 | Date | Version | Change |
 |------|---------|--------|
+| 2026-04-02 | 4.14.0 | **Prescriptive Intelligence (ADR-002).** 507 entries (5 Golden Path implementation guides), GitNexus integration (13 repos, 652K symbols, 1.2M edges), intent-aware RAG pipeline (implementation intent detection, 5x golden path boost, prescriptive system prompt injection, anti-pattern annotations), chat-first hero design (search input above fold, intent-based cards replacing product cards, progressive disclosure) |
 | 2026-03-28 | 4.12.0 | 502 entries, kb-master.json flat-file architecture (no PG dependency), RuVector Catalog (114 crates, 17 capability areas), installable Claude Code skill, 47 catalog entries |
 | 2026-03-19 | 4.10.0 | 434 gold entries, auto-curation pipeline, verification suite (36 checks, 7 layers) |
 | 2026-03-14 | 4.0.1 | Ground-up v4 redesign, DIKW framework, PaperBanana illustrations, RVF-first pipeline |
