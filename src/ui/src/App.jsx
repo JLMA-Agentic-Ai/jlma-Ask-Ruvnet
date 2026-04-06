@@ -208,7 +208,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
   <div className="hero-compact">
     {/* Primary CTA: Ask anything — chat input above the fold */}
     <h1 className="hero-heading">Ask anything about RuVector</h1>
-    <p className="hero-subheading">507 expert articles. Answers in 3 seconds. No signup required.</p>
+    <p className="hero-subheading">508 expert articles. Answers in 3 seconds. No signup required.</p>
     <form className="hero-search" onSubmit={handleHeroSubmit}>
       <input
         ref={heroInputRef}
@@ -264,14 +264,59 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
       </button>
     </div>
 
-    {/* Proof bar — one-line credibility */}
-    <div className="dogfood-callout">
-      <span className="dogfood-text">This knowledge base runs on RuVector. 507 expert articles in <strong>0.8MB</strong>. No Docker. No database. No server. Just a file.</span>
+    {/* Explore Tiles — always visible */}
+    <div className="capability-tiles" role="navigation" aria-label="Explore tools and resources">
+      <button className="capability-tile" onClick={() => onCapability('videos')}>
+        <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">&#128249;</span></span>
+        <span className="tile-label">Videos</span>
+        <span className="tile-count">{videoCount} Sessions</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('decks')}>
+        <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">&#128202;</span></span>
+        <span className="tile-label">Presentations</span>
+        <span className="tile-count">CEO & CTO Decks</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('universe')}>
+        <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">&#127756;</span></span>
+        <span className="tile-label">Knowledge Universe</span>
+        <span className="tile-count">3D Explorer</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('pi-executable')}>
+        <span className="tile-icon-wrapper tile-pi-exec"><span className="tile-icon">&#129504;</span></span>
+        <span className="tile-label">Pi Brain Demos</span>
+        <span className="tile-count">3 Interactive Demos</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
+        <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">&#128211;</span></span>
+        <span className="tile-label">NotebookLM</span>
+        <span className="tile-count">AI Deep Dive</span>
+      </button>
+      <button className="capability-tile" onClick={() => onCapability('catalog')}>
+        <span className="tile-icon-wrapper tile-catalog"><span className="tile-icon">&#129408;</span></span>
+        <span className="tile-label">RuVector Catalog</span>
+        <span className="tile-count">114 Crates, 200+ Tech</span>
+      </button>
     </div>
 
-    {/* Show More — everything else is below the fold */}
+    {/* AIMDS card — always visible */}
+    <div className="onramp-cards onramp-secondary" role="navigation" aria-label="More capabilities">
+      <button className="onramp-card onramp-aimds" onClick={() => onOnramp('aimds')}>
+        <img src="/assets/product/card-aimds.png" alt="AIMDS: AI security middleware" className="onramp-img" loading="lazy" />
+        <span className="onramp-name">Secure Your AI</span>
+        <span className="onramp-hook">Self-learning defense. 2 lines of code.</span>
+        <span className="onramp-stat">5-layer security pipeline</span>
+        <span className="onramp-cta">Build This</span>
+      </button>
+    </div>
+
+    {/* Proof bar — one-line credibility */}
+    <div className="dogfood-callout">
+      <span className="dogfood-text">This knowledge base runs on RuVector. 508 expert articles in <strong>0.8MB</strong>. No Docker. No database. No server. Just a file.</span>
+    </div>
+
+    {/* Show More — deep-dive content below the fold */}
     <button className="hero-show-more" onClick={() => setShowMore(!showMore)}>
-      {showMore ? 'Show less' : 'Explore more: Videos, Decks, 3D Universe, 114 Rust Crates...'}
+      {showMore ? 'Show less' : 'More: DIKW Stack, Resources, Latest Updates...'}
     </button>
 
     {showMore && (
@@ -288,7 +333,7 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
             <span className="dikw-icon">&#128161;</span>
             <span className="dikw-label">RuVector + RVF</span>
             <span className="dikw-desc">Stores meaning, not just data</span>
-            {heroExpanded && <span className="dikw-detail">507 expert articles in 0.8MB. HNSW search in 0.3ms. 290+ PostgreSQL functions. Runs in browser via WASM.</span>}
+            {heroExpanded && <span className="dikw-detail">508 expert articles in 0.8MB. HNSW search in 0.3ms. 290+ PostgreSQL functions. Runs in browser via WASM.</span>}
           </div>
           <div className="dikw-layer dikw-orchestration">
             <span className="dikw-icon">&#9889;</span>
@@ -311,51 +356,6 @@ const HeroSection = ({ onAction, onCapability, onOnramp, ecosystemStats, knowled
             </div>
           )}
           <span className="dikw-expand-hint">{heroExpanded ? 'Click to collapse' : 'Click to explore the stack'}</span>
-        </div>
-
-        {/* Explore Tiles */}
-        <div className="capability-tiles" role="navigation" aria-label="Explore more">
-          <button className="capability-tile" onClick={() => onCapability('videos')}>
-            <span className="tile-icon-wrapper tile-videos"><span className="tile-icon">&#128249;</span></span>
-            <span className="tile-label">Videos</span>
-            <span className="tile-count">{videoCount} Sessions</span>
-          </button>
-          <button className="capability-tile" onClick={() => onCapability('decks')}>
-            <span className="tile-icon-wrapper tile-decks"><span className="tile-icon">&#128202;</span></span>
-            <span className="tile-label">Presentations</span>
-            <span className="tile-count">CEO & CTO Decks</span>
-          </button>
-          <button className="capability-tile" onClick={() => onCapability('universe')}>
-            <span className="tile-icon-wrapper tile-universe"><span className="tile-icon">&#127756;</span></span>
-            <span className="tile-label">Knowledge Universe</span>
-            <span className="tile-count">3D Explorer</span>
-          </button>
-          <button className="capability-tile" onClick={() => onCapability('pi-executable')}>
-            <span className="tile-icon-wrapper tile-pi-exec"><span className="tile-icon">&#129504;</span></span>
-            <span className="tile-label">Pi Brain Demos</span>
-            <span className="tile-count">3 Interactive Demos</span>
-          </button>
-          <button className="capability-tile" onClick={() => onCapability('notebooklm')}>
-            <span className="tile-icon-wrapper tile-nlm"><span className="tile-icon">&#128211;</span></span>
-            <span className="tile-label">NotebookLM</span>
-            <span className="tile-count">AI Deep Dive</span>
-          </button>
-          <button className="capability-tile" onClick={() => onCapability('catalog')}>
-            <span className="tile-icon-wrapper tile-catalog"><span className="tile-icon">&#129408;</span></span>
-            <span className="tile-label">RuVector Catalog</span>
-            <span className="tile-count">114 Crates, 200+ Tech</span>
-          </button>
-        </div>
-
-        {/* AIMDS card — shown in explore section, not primary */}
-        <div className="onramp-cards onramp-secondary" role="navigation" aria-label="More capabilities">
-          <button className="onramp-card onramp-aimds" onClick={() => onOnramp('aimds')}>
-            <img src="/assets/product/card-aimds.png" alt="AIMDS: AI security middleware" className="onramp-img" loading="lazy" />
-            <span className="onramp-name">Secure Your AI</span>
-            <span className="onramp-hook">Self-learning defense. 2 lines of code.</span>
-            <span className="onramp-stat">5-layer security pipeline</span>
-            <span className="onramp-cta">Build This</span>
-          </button>
         </div>
 
         {/* Resource Documents */}
@@ -879,6 +879,7 @@ function App() {
   const [ecosystemStats, setEcosystemStats] = useState(null);
   const [communityStats, setCommunityStats] = useState(null);
   const [latestRepos, setLatestRepos] = useState(null);
+  const [visitorStats, setVisitorStats] = useState(null);
 
   const [presentationMode, setPresentationMode] = useState(false);
   const [showResourceDrawer, setShowResourceDrawer] = useState(false);
@@ -909,6 +910,7 @@ function App() {
     fetch('/api/ecosystem-stats').then(r => r.json()).then(data => setEcosystemStats(data)).catch(() => {});
     fetch('/api/latest-repos').then(r => r.json()).then(data => setLatestRepos(data)).catch(() => {});
     fetch('/api/community-stats').then(r => r.json()).then(data => setCommunityStats(data)).catch(() => {});
+    fetch('/api/visitors').then(r => r.json()).then(data => setVisitorStats(data)).catch(() => {});
     // Check KB health — surface problems immediately
     fetch('/api/kb-stats').then(r => {
       if (!r.ok) return r.json().then(d => { throw new Error(d.error || 'KB unavailable'); });
@@ -1632,6 +1634,10 @@ function App() {
           {communityStats?.pi?.contributors > 0 && (<>
             <span className="stats-dot">·</span>
             <span><span className="stats-highlight"><CountUp end={communityStats.pi.contributors} /></span> Contributors</span>
+          </>)}
+          {visitorStats?.uniqueVisitors > 0 && (<>
+            <span className="stats-dot">·</span>
+            <span><span className="stats-highlight"><CountUp end={visitorStats.uniqueVisitors} /></span> Unique Visitors</span>
           </>)}
           <span className="stat-live-dot" title="Stats refresh hourly from GitHub and npm">Live</span>
         </div>

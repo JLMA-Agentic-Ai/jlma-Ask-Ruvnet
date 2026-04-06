@@ -1683,6 +1683,55 @@ app.get('/health', async (req, res) => {
 
 // Lightweight usage analytics (9.3) — tracks resource engagement, no PII
 const usageStats = { queries: 0, resources: {}, capabilities: {}, startTime: Date.now() };
+
+// Unique visitor tracking by hashed IP — persists across restarts
+const crypto = require('crypto');
+const VISITORS_FILE = path.join(__dirname, '../../data/visitors.json');
+let visitorData = { uniqueIPs: [], totalPageViews: 0, firstSeen: Date.now() };
+try {
+    if (fs.existsSync(VISITORS_FILE)) {
+        visitorData = JSON.parse(fs.readFileSync(VISITORS_FILE, 'utf8'));
+    }
+} catch (e) {
+    console.warn('[visitors] Could not load visitors.json, starting fresh:', e.message);
+}
+const visitorIPSet = new Set(visitorData.uniqueIPs || []);
+function saveVisitorData() {
+    try {
+        const dir = path.dirname(VISITORS_FILE);
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(VISITORS_FILE, JSON.stringify({
+            uniqueIPs: [...visitorIPSet],
+            totalPageViews: visitorData.totalPageViews,
+            firstSeen: visitorData.firstSeen,
+            lastUpdated: new Date().toISOString()
+        }, null, 2));
+    } catch (e) {
+        console.warn('[visitors] Could not save visitors.json:', e.message);
+    }
+}
+// Middleware: track every request's IP (hashed)
+app.use((req, res, next) => {
+    const rawIP = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
+    const hashedIP = crypto.createHash('sha256').update(rawIP + 'ask-ruvnet-salt').digest('hex').substring(0, 16);
+    visitorData.totalPageViews++;
+    if (!visitorIPSet.has(hashedIP)) {
+        visitorIPSet.add(hashedIP);
+        // Save periodically (every new unique visitor)
+        saveVisitorData();
+    }
+    next();
+});
+// Save visitor data every 5 minutes regardless
+setInterval(saveVisitorData, 5 * 60 * 1000);
+// API endpoint for visitor stats
+app.get('/api/visitors', (req, res) => {
+    res.json({
+        uniqueVisitors: visitorIPSet.size,
+        totalPageViews: visitorData.totalPageViews,
+        trackingSince: new Date(visitorData.firstSeen).toISOString()
+    });
+});
 app.post('/api/analytics/event', (req, res) => {
     const { type, name } = req.body || {};
     if (!type || !name) return res.status(400).json({ error: 'type and name required' });
