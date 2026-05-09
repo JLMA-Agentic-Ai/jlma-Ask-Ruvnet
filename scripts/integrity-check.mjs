@@ -49,27 +49,35 @@ check('content-sidecar.json.gz exists', () => {
 });
 
 // 3. Entry count consistency
+// Reads knowledge-meta.json from public/ or dist/, falling back to .json.gz in either —
+// .railwayignore strips the uncompressed JSON to keep the upload small, so production
+// containers only have the .gz variant. Without the .gz fallback this check always
+// reported meta=0 in production, even when the file was correct (regression latent
+// since whoever added knowledge-meta.json to .railwayignore).
 check('Entry count consistency', () => {
   const sidecar = JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(ROOT, 'content-sidecar.json.gz'))));
   const sidecarCount = Object.keys(sidecar).length;
 
-  // Check both source and dist locations (Docker build removes src/ui/src but keeps public/)
   const metaPaths = [
     path.join(ROOT, 'src/ui/public/assets/knowledge-meta.json'),
     path.join(ROOT, 'src/ui/dist/assets/knowledge-meta.json'),
+    path.join(ROOT, 'src/ui/public/assets/knowledge-meta.json.gz'),
+    path.join(ROOT, 'src/ui/dist/assets/knowledge-meta.json.gz'),
   ];
   let metaCount = 0;
+  let metaSource = null;
   for (const mp of metaPaths) {
-    if (fs.existsSync(mp)) {
-      try {
-        metaCount = JSON.parse(fs.readFileSync(mp)).length;
-        if (metaCount > 0) break;
-      } catch {}
-    }
+    if (!fs.existsSync(mp)) continue;
+    try {
+      const raw = fs.readFileSync(mp);
+      const json = mp.endsWith('.gz') ? zlib.gunzipSync(raw).toString('utf8') : raw.toString('utf8');
+      metaCount = JSON.parse(json).length;
+      if (metaCount > 0) { metaSource = mp; break; }
+    } catch {}
   }
 
   if (sidecarCount !== metaCount) {
-    return `MISMATCH: sidecar=${sidecarCount}, meta=${metaCount}`;
+    return `MISMATCH: sidecar=${sidecarCount}, meta=${metaCount} (source=${metaSource || 'none-found'})`;
   }
   return true;
 });
