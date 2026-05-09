@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
   "schema": "ask_ruvnet",
-  "exportedAt": "2026-04-02T18:46:31.270Z",
-  "totalEntries": 507,
+  "exportedAt": "2026-05-09T21:17:22.953Z",
+  "totalEntries": 550,
   "embeddingDim": 384,
   "quantization": "binary",
   "categories": [
@@ -16,7 +16,7 @@
     },
     {
       "name": "agents",
-      "count": 48
+      "count": 49
     },
     {
       "name": "architecture",
@@ -63,7 +63,15 @@
       "count": 5
     },
     {
+      "name": "adr-ruvector-brain",
+      "count": 4
+    },
+    {
       "name": "memory",
+      "count": 3
+    },
+    {
+      "name": "adr-ruvector-rvagent",
       "count": 3
     },
     {
@@ -73,6 +81,110 @@
     {
       "name": "sparc",
       "count": 2
+    },
+    {
+      "name": "adr-rulake",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-llm",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-perf",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-coherence",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-temporal",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-rvf",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-graph",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-attention",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-hailo",
+      "count": 2
+    },
+    {
+      "name": "adr-ruvector-core",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-security",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-delta",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-quantum",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-vector-index",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-edge",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-mcp",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-decompiler",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-domain",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-trader",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-deploy",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-pipeline",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-ruvix",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-witness",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-tooling",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-exotic",
+      "count": 1
+    },
+    {
+      "name": "adr-ruvector-seed",
+      "count": 1
     }
   ],
   "contentHash": "unknown"

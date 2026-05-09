@@ -89,3 +89,8 @@ self_booting.rvf
 .ruvnet-monitor-state.json
 scripts/integrity-results.json
 .gitnexus
+
+# Runtime AgentDB state (NOT the production knowledge.rvf)
+agentdb.rvf
+agentdb.rvf.lock
+agentdb.rvf.idmap.json

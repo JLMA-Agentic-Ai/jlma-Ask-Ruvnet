@@ -67,57 +67,47 @@ function warn(name, detail) {
 // ============================================================
 async function checkPostgres() {
   console.log('\n=== 1. PostgreSQL kb_complete ===');
-  const pool = new pg.Pool(DB_CONFIG);
-  try {
-    // Entry count
-    const { rows: [counts] } = await pool.query(`
-      SELECT COUNT(*) as total,
-             COUNT(CASE WHEN embedding IS NOT NULL THEN 1 END) as with_emb,
-             COUNT(CASE WHEN embedding IS NULL THEN 1 END) as without_emb,
-             MIN(quality_score) as min_q, ROUND(AVG(quality_score)) as avg_q,
-             MAX(quality_score) as max_q
-      FROM ask_ruvnet.kb_complete
-    `);
-    const total = parseInt(counts.total);
-    if (total < 100) fail('Entry count', `Only ${total} entries (expected 400+)`);
-    else pass(`Entry count: ${total}`);
+  // v4.12.0+: kb-master.json is the source of truth, not PostgreSQL.
+  // PG (kb_complete) is updated by nightly auto-curation only. Local builds + production
+  // serve from kb-master.json. Use it directly so this verify script doesn't drift.
+  const masterPath = path.join(ROOT, 'kb-master.json');
+  if (!fs.existsSync(masterPath)) { fail('kb-master.json exists', 'File not found'); return 0; }
+  const master = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
+  const entries = master.entries || [];
+  const total = entries.length;
 
-    if (parseInt(counts.without_emb) > 0) fail('Missing embeddings', `${counts.without_emb} entries have no embedding`);
-    else pass(`All ${total} entries have embeddings`);
+  if (total < 100) fail('Entry count', `Only ${total} entries (expected 400+)`);
+  else pass(`Entry count: ${total} (kb-master.json — v4.12.0+ source of truth)`);
 
-    if (parseInt(counts.min_q) < 80) warn('Quality floor', `Minimum quality ${counts.min_q} (target ≥85)`);
-    else pass(`Quality floor: ${counts.min_q}/100 (avg ${counts.avg_q})`);
+  const withoutEmb = entries.filter(e => !e.embedding || e.embedding.length === 0).length;
+  if (withoutEmb > 0) fail('Missing embeddings', `${withoutEmb} entries have no embedding`);
+  else pass(`All ${total} entries have embeddings`);
 
-    // Category distribution
-    const { rows: cats } = await pool.query(`
-      SELECT category, COUNT(*) as cnt FROM ask_ruvnet.kb_complete GROUP BY category ORDER BY cnt DESC
-    `);
-    if (cats.length < 5) fail('Category diversity', `Only ${cats.length} categories (need ≥5)`);
-    else pass(`Category diversity: ${cats.length} categories`);
+  const qualities = entries.map(e => e.quality_score).filter(q => typeof q === 'number');
+  const minQ = Math.min(...qualities);
+  const avgQ = Math.round(qualities.reduce((a, b) => a + b, 0) / qualities.length);
+  if (minQ < 80) warn('Quality floor', `Minimum quality ${minQ} (target ≥85)`);
+  else pass(`Quality floor: ${minQ}/100 (avg ${avgQ})`);
 
-    // Check for duplicate titles
-    const { rows: [dupes] } = await pool.query(`
-      SELECT COUNT(*) as cnt FROM (
-        SELECT title, COUNT(*) as c FROM ask_ruvnet.kb_complete GROUP BY title HAVING COUNT(*) > 1
-      ) sub
-    `);
-    if (parseInt(dupes.cnt) > 0) warn('Duplicate titles', `${dupes.cnt} duplicate title groups`);
-    else pass('No duplicate titles');
+  const cats = new Set(entries.map(e => e.category));
+  if (cats.size < 5) fail('Category diversity', `Only ${cats.size} categories (need ≥5)`);
+  else pass(`Category diversity: ${cats.size} categories`);
 
-    // Freshness
-    const { rows: [dates] } = await pool.query(`
-      SELECT MIN(created_at)::date as oldest, MAX(created_at)::date as newest,
-             (NOW() - MAX(created_at)) as staleness
-      FROM ask_ruvnet.kb_complete
-    `);
-    const daysSinceNewest = Math.floor(parseFloat(dates.staleness?.days || 0));
-    if (daysSinceNewest > 7) warn('KB freshness', `Newest entry is ${daysSinceNewest} days old`);
-    else pass(`Freshness: newest entry ${daysSinceNewest} days ago`);
+  const titleCounts = new Map();
+  for (const e of entries) titleCounts.set(e.title, (titleCounts.get(e.title) || 0) + 1);
+  const dupes = [...titleCounts.values()].filter(c => c > 1).length;
+  if (dupes > 0) warn('Duplicate titles', `${dupes} duplicate title groups`);
+  else pass('No duplicate titles');
 
-    return total;
-  } finally {
-    await pool.end();
-  }
+  const newest = entries.reduce((acc, e) => {
+    const t = new Date(e.updated_at || e.created_at).getTime();
+    return t > acc ? t : acc;
+  }, 0);
+  const daysSinceNewest = Math.floor((Date.now() - newest) / 86400000);
+  if (daysSinceNewest > 7) warn('KB freshness', `Newest entry is ${daysSinceNewest} days old`);
+  else pass(`Freshness: newest entry ${daysSinceNewest} days ago`);
+
+  return total;
 }
 
 // ============================================================
